@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 81114768a3600544dda46efbc886e2f56932aba7
-ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
+ms.openlocfilehash: 7a0c606d82dd625c179ec89e22b9313dfa5d18b4
+ms.sourcegitcommit: c026bf76a0e14a5ee68983519a63574c674e9ff7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90592931"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91636779"
 ---
-# <a name="azure-ad-groups-administrative-roles-and-user-defined-roles"></a>Azure AD 그룹, 관리 역할 및 사용자 정의 역할
+# <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Azure Active Directory(AAD) 그룹, 관리자 역할, 사용자 정의 역할
 
 작성자: [Luke Latham](https://github.com/guardrex) 및 [Javier Calvarro Nelson](https://github.com/javiercn)
 
@@ -36,7 +36,7 @@ AAD(Azure Active Directory)는 ASP.NET Core Identity와 결합할 수 있는 몇
   * Microsoft 365
   * 분포
 * 역할
-  * 기본 제공 관리 역할
+  * AAD 관리자 역할
   * 사용자 정의 역할
 
 이 문서의 지침은 다음 항목에서 설명하는 Blazor WebAssembly AAD 배포 시나리오에 적용됩니다.
@@ -47,7 +47,7 @@ AAD(Azure Active Directory)는 ASP.NET Core Identity와 결합할 수 있는 몇
 
 ## <a name="microsoft-graph-api-permission"></a>Microsoft Graph API 권한
 
-5개 이상의 기본 제공 AAD 관리자 역할 및 보안 그룹 구성원 자격이 있는 앱 사용자에게는 [Microsoft Graph API](/graph/use-the-api) 호출이 필요합니다.
+5개 이상의 AAD 관리자 역할 및 보안 그룹 구성원 자격이 있는 앱 사용자에게는 [Microsoft Graph API](/graph/use-the-api) 호출이 필요합니다.
 
 Graph API 호출을 허용하려면 Azure Portal에서 호스트된 Blazor 솔루션의 독립 실행형 또는 클라이언트 앱에 다음 [Graph API 권한](/graph/permissions-reference)을 제공합니다.
 
@@ -57,18 +57,18 @@ Graph API 호출을 허용하려면 Azure Portal에서 호스트된 Blazor 솔�
 
 `Directory.Read.All`은 최소 권한이며 이 문서에서 설명하는 예제에 사용되는 권한입니다.
 
-## <a name="user-defined-groups-and-built-in-administrative-roles"></a>사용자 정의 그룹 및 기본 제공 관리 역할
+## <a name="user-defined-groups-and-administrator-roles"></a>사용자 정의 그룹 및 관리자 역할
 
-Azure Portal에서 `groups` 멤버 자격 클레임을 제공하도록 앱을 구성하려면 다음 Azure 문서를 참조하세요. 사용자를 사용자 정의 AAD 그룹 및 기본 제공 관리 역할에 할당합니다.
+Azure Portal에서 `groups` 멤버 자격 클레임을 제공하도록 앱을 구성하려면 다음 Azure 문서를 참조하세요. 사용자 정의 AAD 그룹 및 AAD 관리자 역할에 사용자를 할당합니다.
 
 * [Azure AD 보안 그룹을 사용하는 역할](/azure/architecture/multitenant-identity/app-roles#roles-using-azure-ad-security-groups)
 * [`groupMembershipClaims` 특성](/azure/active-directory/develop/reference-app-manifest#groupmembershipclaims-attribute)
 
-다음 예제에서는 사용자가 AAD 기본 제공 ‘대금 청구 관리자’ 역할에 할당되었다고 가정합니다.
+다음 예제에서는 사용자가 AAD 대금 청구 관리자 역할에 할당되었다고 가정합니다.
 
 AAD에서 보낸 단일 `groups` 클레임은 사용자의 그룹 및 역할을 JSON 배열의 개체 ID(GUID)로 표시합니다. 앱은 그룹 및 역할의 JSON 배열을 앱이 기준으로 삼아 [정책](xref:security/authorization/policies)을 빌드할 수 있는 개별 `group` 클레임으로 변환해야 합니다.
 
-할당된 기본 제공 Azure 관리 역할 및 사용자 정의 그룹 수가 5개를 초과하면 AAD는 `groups` 클레임을 전송하는 대신 `true` 값으로 `hasgroups` 클레임을 전송합니다. 사용자에게 할당된 역할과 그룹이 5개 이상일 수 있는 모든 앱은 사용자의 역할 및 그룹을 가져오기 위해 별도의 Graph API 호출을 수행해야 합니다. 이 문서에서 제공하는 예제 구현은 이 시나리오를 다룹니다. `groups` 및 `hasgroups` 클레임 정보([Microsoft ID 플랫폼 액세스 토큰: 페이로드 클레임](/azure/active-directory/develop/access-tokens#payload-claims) 문서)를 참조하세요.
+할당된 AAD 관리자 역할 및 사용자 정의 그룹 수가 5개를 초과하면 AAD는 `groups` 클레임을 전송하는 대신 `true` 값으로 `hasgroups` 클레임을 전송합니다. 사용자에게 할당된 역할과 그룹이 5개 이상일 수 있는 모든 앱은 사용자의 역할 및 그룹을 가져오기 위해 별도의 Graph API 호출을 수행해야 합니다. 이 문서에서 제공하는 예제 구현은 이 시나리오를 다룹니다. `groups` 및 `hasgroups` 클레임 정보([Microsoft ID 플랫폼 액세스 토큰: 페이로드 클레임](/azure/active-directory/develop/access-tokens#payload-claims) 문서)를 참조하세요.
 
 그룹 및 역할의 배열 속성을 포함하도록 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount>를 확장합니다. 나중에 `foreach` 루프에서 속성을 사용할 때 `null` 확인이 필요하지 않도록 각 속성에 빈 배열을 할당합니다.
 
@@ -267,7 +267,7 @@ builder.Services.AddMsalAuthentication<RemoteAuthenticationState,
     CustomUserFactory>();
 ```
 
-`Program.Main`의 그룹 또는 역할에 대해 [정책](xref:security/authorization/policies)을 만듭니다. 다음 예제에서는 AAD 기본 제공 ‘대금 청구 관리자’ 역할에 대한 정책을 만듭니다.
+`Program.Main`의 그룹 또는 역할에 대해 [정책](xref:security/authorization/policies)을 만듭니다. 다음 예제에서는 AAD 대금 청구 관리자 역할에 대한 정책을 만듭니다.
 
 ```csharp
 builder.Services.AddAuthorizationCore(options =>
@@ -277,7 +277,7 @@ builder.Services.AddAuthorizationCore(options =>
 });
 ```
 
-AAD 역할 개체 ID의 전체 목록은 [AAD 관리 역할 그룹 ID](#aad-adminstrative-role-group-ids) 섹션을 참조하세요.
+AAD 역할 개체 ID의 전체 목록은 [AAD 관리자 역할 개체 ID](#aad-administrator-role-object-ids) 섹션을 참조하세요.
 
 다음 예제에서 앱은 앞에 나온 정책을 사용하여 사용자에게 권한을 부여합니다.
 
@@ -287,7 +287,7 @@ AAD 역할 개체 ID의 전체 목록은 [AAD 관리 역할 그룹 ID](#aad-admi
 <AuthorizeView Policy="BillingAdministrator">
     <Authorized>
         <p>
-            The user is in the 'Billing Administrator' AAD Administrative Role
+            The user is in the 'Billing Administrator' AAD Administrator Role
             and can see this content.
         </p>
     </Authorized>
@@ -348,6 +348,291 @@ AAD 역할 개체 ID의 전체 목록은 [AAD 관리 역할 그룹 ID](#aad-admi
 }
 ```
 
+## <a name="authorize-server-api-access-for-user-defined-groups-and-administrator-roles"></a>사용자 정의 그룹 및 관리자 역할에 서버 API 액세스 권한 부여
+
+서버 API는 클라이언트 쪽 WebAssembly 앱의 사용자에게 페이지와 리소스에 대한 액세스 권한을 부여하는 것 외에도 보안 API 엔드포인트에 대한 액세스 권한을 사용자에게 부여할 수 있습니다. 서버 앱이 사용자 액세스 토큰의 유효성을 검사한 후:
+
+* 앱은 JWT(`id_token`)에서 사용자의 변경 불가능한 [개체 식별자 클레임(`oid`)](/azure/active-directory/develop/id-tokens#payload-claims)을 사용하여 Graph API의 액세스 토큰을 얻습니다.
+* Graph API 호출은 사용자의 Azure 사용자 정의 보안 그룹 및 관리자 역할 멤버 자격을 얻습니다.
+* 멤버 자격은 `group` 클레임을 설정하는 데 사용됩니다.
+* [권한 부여 정책](xref:security/authorization/policies)을 사용하여 서버 API 엔드포인트에 대한 사용자 액세스를 제한할 수 있습니다.
+
+> [!NOTE]
+> 이 지침에는 현재 [AAD 사용자 정의 역할](#user-defined-roles)을 기준으로 한 사용자 권한 부여가 포함되지 않습니다.
+
+### <a name="packages"></a>패키지
+
+다음 패키지의 서버 앱에 패키지 참조를 추가합니다.
+
+* [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)
+* [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages?q=Microsoft.IdentityModel.Clients.ActiveDirectory)
+
+### <a name="azure-configuration"></a>Azure 구성
+
+* 서버 앱 등록에 `Directory.Read.All`(보안 그룹의 최소 권한 액세스 수준)을 위한 Graph API 권한에 대한 API 액세스 권한이 제공되었는지 확인합니다. 권한 할당을 수행한 후 관리자 동의가 권한에 적용되는지 확인합니다.
+* 서버 앱에 새 클라이언트 암호를 할당합니다. [앱 설정](#app-settings) 섹션에서 앱 구성을 위한 암호를 확인합니다.
+
+### <a name="app-settings"></a>앱 설정
+
+앱 설정 파일(`appsettings.json` 또는 `appsettings.Production.json`)에서 Azure Portal의 서버 앱 클라이언트 암호를 사용하여 `ClientSecret` 항목을 만듭니다.
+
+```json
+"AzureAd": {
+  "Instance": "https://login.microsoftonline.com/",
+  "Domain": "XXXXXXXXXXXX.onmicrosoft.com",
+  "TenantId": "{GUID}",
+  "ClientId": "{GUID}",
+  "ClientSecret": "{CLIENT SECRET}"
+},
+```
+
+예를 들면 다음과 같습니다.
+
+```json
+"AzureAd": {
+  "Instance": "https://login.microsoftonline.com/",
+  "Domain": "contoso.onmicrosoft.com",
+  "TenantId": "34bf0ec1-7aeb-4b5d-ba42-82b059b3abe8",
+  "ClientId": "05d198e0-38c6-4efc-a67c-8ee87ed9bd3d",
+  "ClientSecret": "54uE~9a.-wW91fe8cRR25ag~-I5gEq_92~"
+},
+```
+
+### <a name="authorization-policies"></a>네임스페이스 수준에서 구성하는 권한 부여 정책도
+
+그룹 개체 ID와 [AAD 관리자 역할 개체 ID](#aad-administrator-role-object-ids)를 기준으로 서버 앱의 `Startup.ConfigureServices`(`Startup.cs`)에서 AAD 보안 그룹 및 AAD 관리자 역할의 [권한 부여 정책](xref:security/authorization/policies)을 만듭니다.
+
+예를 들어 Azure 대금 청구 관리자 역할 정책의 구성은 다음과 같습니다.
+
+```csharp
+services.AddAuthorization(options =>
+{
+    options.AddPolicy("BillingAdmin", policy => 
+        policy.RequireClaim("group", "69ff516a-b57d-4697-a429-9de4af7b5609"));
+});
+```
+
+자세한 내용은 <xref:security/authorization/policies>를 참조하세요.
+
+### <a name="controller-access"></a>컨트롤러 액세스
+
+서버 앱 컨트롤러에 대한 정책이 필요합니다.
+
+다음 예제는 [권한 부여 정책](#authorization-policies) 섹션에서 구성된 대로 정책 이름 `BillingAdmin`을 사용하여 `BillingDataController`의 청구 데이터에 대한 액세스를 Azure 대금 청구 관리자로 제한합니다.
+
+```csharp
+[Authorize(Policy = "BillingAdmin")]
+[ApiController]
+[Route("[controller]")]
+public class BillingDataController : ControllerBase
+{
+    ...
+}
+```
+
+### <a name="service-configuration"></a>서비스 구성
+
+서버 앱의 `Startup.ConfigureServices` 메서드는 Graph API 호출을 실행하는 논리를 추가하고 사용자의 보안 그룹 및 역할에 대한 사용자 `group` 클레임을 설정합니다.
+
+> [!NOTE]
+> 이 섹션의 예제 코드에서는 Microsoft Identity Platform v1.0을 기반으로 하는 ADAL(Active Directory 인증 라이브러리)을 사용합니다. .NET 5용 Identity v2.0의 경우 이 토픽이 업데이트될 예정입니다. [Blazor(dotnet/AspNetCore.Docs #19503)용 [RC1] Microsoft Identity Platform 2.0](https://github.com/dotnet/AspNetCore.Docs/issues/19503)을 모니터링하여 이 작업의 진행 상황을 추적하세요.
+
+서버 앱의 `Startup` 클래스에 있는 코드에는 추가 네임스페이스가 필요합니다. 다음 `using` 문 집합에는 이 섹션 뒷부분에 나오는 코드의 필수 네임스페이스가 포함되어 있습니다.
+
+```csharp
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.AzureAD.UI;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Graph;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.IdentityModel.Logging;
+```
+
+<xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents>를 구성하는 경우:
+
+* 필요한 경우 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnAuthenticationFailed?displayProperty=nameWithType>에 대한 처리를 포함합니다. 예를 들어 앱은 실패한 인증을 로그할 수 있습니다.
+* <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated?displayProperty=nameWithType>에서 Graph API 호출을 실행하여 사용자의 그룹과 역할을 얻습니다.
+
+> [!WARNING]
+> <xref:Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII?displayProperty=nameWithType>는 로깅 메시지에 PII(개인 식별 정보)를 제공합니다. 테스트 사용자 계정을 사용하여 디버깅하는 경우에만 PII를 활성화하세요.
+
+`Startup.ConfigureServices`의 경우
+
+```csharp
+#if DEBUG
+IdentityModelEventSource.ShowPII = true;
+#endif
+
+services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
+    .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+
+services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, 
+    options =>
+{
+    options.Events = new JwtBearerEvents()
+    {
+        OnAuthenticationFailed = context =>
+        {
+            // Optional: Log the exception
+
+#if DEBUG
+            Console.WriteLine($"OnAuthenticationFailed: {context.Exception}");
+#endif
+
+            return Task.FromResult(0);
+        },
+        OnTokenValidated = async context =>
+        {
+            var accessToken = context.SecurityToken as JwtSecurityToken;
+            var oid = accessToken.Claims.FirstOrDefault(x => x.Type == "oid")?
+                .Value;
+
+            if (!string.IsNullOrEmpty(oid))
+            {
+                var authContext = new AuthenticationContext(
+                    Configuration["AzureAd:Instance"] +
+                    Configuration["AzureAd:TenantId"]);
+                AuthenticationResult authResult = null;
+
+                try
+                {
+                    authResult = await authContext.AcquireTokenSilentAsync(
+                        "https://graph.microsoft.com", 
+                        Configuration["AzureAd:ClientId"]);
+                }
+                catch (AdalException adalException)
+                {
+                    if (adalException.ErrorCode == 
+                        AdalError.FailedToAcquireTokenSilently || 
+                        adalException.ErrorCode == 
+                        AdalError.UserInteractionRequired)
+                    {
+                        var userAssertion = new UserAssertion(accessToken.RawData,
+                            "urn:ietf:params:oauth:grant-type:jwt-bearer", oid);
+                        var clientCredential = new ClientCredential(
+                            Configuration["AzureAd:ClientId"],
+                            Configuration["AzureAd:ClientSecret"]);
+                        authResult = await authContext.AcquireTokenAsync(
+                            "https://graph.microsoft.com", clientCredential, 
+                            userAssertion);
+                    }
+                }
+
+                var graphClient = new GraphServiceClient(
+                    new DelegateAuthenticationProvider(async requestMessage => {
+                        requestMessage.Headers.Authorization =
+                            new AuthenticationHeaderValue("Bearer", 
+                                authResult.AccessToken);
+
+                        await Task.CompletedTask;
+                    }));
+
+                var userIdentity = (ClaimsIdentity)context.Principal.Identity;
+
+                IUserMemberOfCollectionWithReferencesPage groupsAndAzureRoles = 
+                    null;
+
+                try
+                {
+                    groupsAndAzureRoles = await graphClient.Users[oid].MemberOf
+                        .Request().GetAsync();
+                }
+                catch (ServiceException serviceException)
+                {
+                    // Optional: Log the error
+
+#if DEBUG
+                    Console.WriteLine(
+                        "OnTokenValidated: Service Exception: " +
+                        $"{serviceException.Message}");
+#endif
+                }
+
+                if (groupsAndAzureRoles != null)
+                {
+                    foreach (var entry in groupsAndAzureRoles)
+                    {
+                        userIdentity.AddClaim(new Claim("group", entry.Id));
+                    }
+                }
+            }
+            else
+            {
+                // Optional: Log missing OID claim
+
+#if DEBUG
+                Console.WriteLine($"OnTokenValidated: OID missing: " +
+                    $"{accessToken.RawData}");
+#endif
+            }
+
+            await Task.FromResult(0);
+        }
+    };
+});
+```
+
+앞의 예제에서:
+
+* 액세스 토큰이 ADAL 토큰 캐시에 이미 저장되어 있을 수 있으므로 자동 토큰 획득(<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A>)이 먼저 시도됩니다. 새 토큰을 요청하는 것보다 캐시에서 토큰을 얻는 것이 더 빠릅니다.
+* 캐시에서 액세스 토큰을 획득하지 않는 경우(<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.FailedToAcquireTokenSilently?displayProperty=nameWithType> 또는 <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UserInteractionRequired?displayProperty=nameWithType>이 throw 됨) 클라이언트 자격 증명(<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential>)을 사용한 사용자 어설션(<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion>)을 통해 사용자를 대신하여 토큰을 얻습니다(<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync%2A>). 다음으로 `Microsoft.Graph.GraphServiceClient`가 토큰을 사용하여 Graph API 호출을 실행할 수 있습니다. 이 토큰은 ADAL 토큰 캐시에 저장됩니다. 향후 동일한 사용자에 대한 Graph API 호출의 경우 토큰은 <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A>와 함께 캐시에서 자동으로 획득됩니다.
+
+<xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated>의 코드는 전이적 멤버 자격을 얻지 못합니다. 직접 및 전이적 멤버 자격을 얻도록 코드를 변경하려면 다음을 수행합니다.
+
+* 다음 코드 줄의 경우
+
+  ```csharp
+  IUserMemberOfCollectionWithReferencesPage groupsAndAzureRoles = null;
+  ```
+
+  위 줄을 다음으로 바꿉니다.
+
+  ```csharp
+  IUserTransitiveMemberOfCollectionWithReferencesPage groupsAndAzureRoles = null;
+  ```
+
+* 다음 코드 줄의 경우
+
+  ```csharp
+  groupsAndAzureRoles = await graphClient.Users[oid].MemberOf.Request().GetAsync();
+  ```
+
+  위 줄을 다음으로 바꿉니다.
+
+  ```csharp
+  groupsAndAzureRoles = await graphClient.Users[oid].TransitiveMemberOf.Request()
+      .GetAsync();
+  ```
+
+<xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated>의 코드는 클레임을 만들 때 AAD 보안 그룹과 AAD 관리자 역할을 구분하지 않습니다. 앱이 그룹과 역할을 구분하도록 그룹과 역할을 반복할 때 `entry.ODataType`을 확인하세요. 별도의 보안 그룹 및 역할 클레임을 만들려면 다음과 유사한 코드를 사용합니다.
+
+```csharp
+foreach (var entry in groupsAndAzureRoles)
+{
+    if (entry.ODataType == "#microsoft.graph.group")
+    {
+        userIdentity.AddClaim(new Claim("group", entry.Id));
+    }
+    else
+    {
+        // entry.ODataType == "#microsoft.graph.directoryRole"
+        userIdentity.AddClaim(new Claim("role", entry.Id));
+    }
+}
+```
+
 ## <a name="user-defined-roles"></a>사용자 정의 역할
 
 AAD에 등록된 앱은 사용자 정의 역할을 사용하도록 구성될 수도 있습니다.
@@ -366,7 +651,7 @@ Azure Portal에서 `roles` 멤버 자격 클레임을 제공하도록 앱을 구
 
 AAD에서 보낸 단일 `roles` 클레임은 사용자 정의 역할을 JSON 배열의 `appRoles`의 `value`로 표시합니다. 앱은 역할의 JSON 배열을 개별 `role` 클레임으로 변환해야 합니다.
 
-[사용자 정의 그룹 및 AAD 기본 제공 관리 역할](#user-defined-groups-and-built-in-administrative-roles) 섹션에 표시된 `CustomUserFactory`는 JSON 배열 값을 사용하여 `roles` 클레임에 대해 작동하도록 설정되었습니다. [사용자 정의 그룹 및 AAD 기본 제공 관리 역할](#user-defined-groups-and-built-in-administrative-roles) 섹션에 나와 있는 것처럼 호스트된 Blazor 솔루션의 독립 실행형 앱 또는 클라이언트 앱에 `CustomUserFactory`를 추가하고 등록합니다. 원래 `roles` 클레임은 프레임워크에 의해 자동으로 제거되므로 이를 제거하는 코드를 제공할 필요는 없습니다.
+[사용자 정의 그룹 및 AAD 관리자 역할](#user-defined-groups-and-administrator-roles) 섹션에 표시된 `CustomUserFactory`는 JSON 배열 값을 사용하여 `roles` 클레임에서 작동하도록 설정되었습니다. [사용자 정의 그룹 및 AAD 관리자 역할](#user-defined-groups-and-administrator-roles) 섹션에 나와 있는 것처럼 호스트된 Blazor 솔루션의 독립 실행형 앱 또는 클라이언트 앱에 `CustomUserFactory`를 추가하고 등록합니다. 원래 `roles` 클레임은 프레임워크에 의해 자동으로 제거되므로 이를 제거하는 코드를 제공할 필요는 없습니다.
 
 호스트된 Blazor 솔루션의 독립 실행형 앱 또는 클라이언트 앱의 `Program.Main`에서 "`role`"이라는 클레임을 역할 클레임으로 지정합니다.
 
@@ -394,11 +679,11 @@ builder.Services.AddMsalAuthentication(options =>
   }
   ```
 
-## <a name="aad-adminstrative-role-group-ids"></a>AAD 관리 역할 그룹 ID
+## <a name="aad-administrator-role-object-ids"></a>AAD 관리자 역할 개체 ID
 
-다음 표에 나와 있는 개체 ID는 `group` 클레임에 대한 [정책](xref:security/authorization/policies)을 만드는 데 사용됩니다. 정책은 앱이 앱의 여러 활동에 대해 사용자에게 권한을 부여하도록 허용합니다. 자세한 내용은 [사용자 정의 그룹 및 AAD 기본 제공 관리 역할](#user-defined-groups-and-built-in-administrative-roles) 섹션을 참조하세요.
+다음 표에 나와 있는 개체 ID는 `group` 클레임에 대한 [정책](xref:security/authorization/policies)을 만드는 데 사용됩니다. 정책은 앱이 앱의 여러 활동에 대해 사용자에게 권한을 부여하도록 허용합니다. 자세한 내용은 [사용자 정의 그룹 및 AAD 관리자 역할](#user-defined-groups-and-administrator-roles) 섹션을 참조하세요.
 
-AAD 관리 역할 | 개체 ID입니다.
+AAD 관리자 역할 | 개체 ID입니다.
 --- | ---
 애플리케이션 관리자 | fa11557b-4f15-4ddd-85d5-313c7cd74047
 애플리케이션 개발자 | 68adcbb8-9504-44f6-89f2-5cd48dc74a2c
