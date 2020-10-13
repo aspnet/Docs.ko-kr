@@ -5,7 +5,7 @@ description: 추가 보안 시나리오에 대해 Blazor Server를 구성하는 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/04/2020
+ms.date: 10/06/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,37 +18,190 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/additional-scenarios
-ms.openlocfilehash: 9b3698489300e45cf77c3d51611ff44e2f4e16a5
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 89288f3fce2dbb6f2647693ba8aaf29500b5bb2b
+ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393667"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91805494"
 ---
 # <a name="aspnet-core-no-locblazor-server-additional-security-scenarios"></a>ASP.NET Core Blazor Server 추가 보안 시나리오
 
 작성자: [Javier Calvarro Nelson](https://github.com/javiercn)
 
-## <a name="pass-tokens-to-a-no-locblazor-server-app"></a>Blazor Server 앱으로 토큰 전달
+::: moniker range=">= aspnetcore-5.0"
 
-Blazor Server 앱의 Razor 구성 요소 외부에서 사용할 수 있는 토큰은 이 섹션에서 설명하는 방법을 통해 구성 요소로 전달할 수 있습니다. 완전한 `Startup.ConfigureServices` 예제와 샘플 코드를 보려면 [Passing tokens to a server-side Blazor application](https://github.com/javiercn/blazor-server-aad-sample)(서버 쪽 Blazor 애플리케이션으로 토큰 전달)을 참조하세요.
+<h2 id="pass-tokens-to-a-blazor-server-app">Blazor Server 앱으로 토큰 전달</h2>
+
+Blazor Server 앱의 Razor 구성 요소 외부에서 사용할 수 있는 토큰은 이 섹션에서 설명하는 방법을 통해 구성 요소로 전달할 수 있습니다.
 
 일반 Razor Pages나 MVC 앱을 인증하는 것처럼 Blazor Server 앱을 인증합니다. 토큰을 프로비저닝하고 인증 cookie에 저장합니다. 예를 들어:
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 ...
 
 services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
 {
-    options.ResponseType = "code";
+    options.ResponseType = OpenIdConnectResponseType.Code;
     options.SaveTokens = true;
 
     options.Scope.Add("offline_access");
-    options.Scope.Add("{SCOPE}");
-    options.Resource = "{RESOURCE}";
 });
+```
+
+필요에 따라 `options.Scope.Add("{SCOPE}");`를 사용하여 추가 범위가 추가됩니다. 여기서 자리 표시자 `{SCOPE}`는 추가할 추가 범위입니다.
+
+Blazor 앱 내에서 [DI(종속성 주입)](xref:blazor/fundamentals/dependency-injection)로부터 토큰을 확인하는 데 사용할 수 있는 **범위가 지정된** 토큰 공급자 서비스를 정의합니다.
+
+```csharp
+public class TokenProvider
+{
+    public string AccessToken { get; set; }
+    public string RefreshToken { get; set; }
+}
+```
+
+`Startup.ConfigureServices`에서 다음 서비스를 추가합니다.
+
+* `IHttpClientFactory`
+* `TokenProvider`
+
+```csharp
+services.AddHttpClient();
+services.AddScoped<TokenProvider>();
+```
+
+액세스 토큰 및 새로 고침 토큰과 함께 초기 앱 상태를 전달하는 클래스를 정의합니다.
+
+```csharp
+public class InitialApplicationState
+{
+    public string AccessToken { get; set; }
+    public string RefreshToken { get; set; }
+}
+```
+
+`_Host.cshtml` 파일에서 `InitialApplicationState`의 인스턴스를 만들어 앱에 매개 변수로 전달합니다.
+
+```cshtml
+@using Microsoft.AspNetCore.Authentication
+
+...
+
+@{
+    var tokens = new InitialApplicationState
+    {
+        AccessToken = await HttpContext.GetTokenAsync("access_token"),
+        RefreshToken = await HttpContext.GetTokenAsync("refresh_token")
+    };
+}
+
+<component type="typeof(App)" param-InitialState="tokens" 
+    render-mode="ServerPrerendered" />
+```
+
+`App` 구성 요소(`App.razor`)에서 서비스를 확인하고 매개 변수로 받은 데이터를 사용하여 초기화합니다.
+
+```razor
+@inject TokenProvider TokenProvider
+
+...
+
+@code {
+    [Parameter]
+    public InitialApplicationState InitialState { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        TokenProvider.AccessToken = InitialState.AccessToken;
+        TokenProvider.RefreshToken = InitialState.RefreshToken;
+
+        return base.OnInitializedAsync();
+    }
+}
+```
+
+[`Microsoft.AspNet.WebApi.Client`](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client) NuGet 패키지용 앱에 패키지 참조를 추가합니다.
+
+보안 API 요청을 만드는 서비스에서 토큰 공급자를 삽입하고 API 요청의 토큰을 검색합니다.
+
+```csharp
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+public class WeatherForecastService
+{
+    private readonly HttpClient client;
+    private readonly TokenProvider tokenProvider;
+
+    public WeatherForecastService(IHttpClientFactory clientFactory, 
+        TokenProvider tokenProvider)
+    {
+        client = clientFactory.CreateClient();
+        this.tokenProvider = tokenProvider;
+    }
+
+    public async Task<WeatherForecast[]> GetForecastAsync()
+    {
+        var token = tokenProvider.AccessToken;
+        var request = new HttpRequestMessage(HttpMethod.Get, 
+            "https://localhost:5003/WeatherForecast");
+        request.Headers.Add("Authorization", $"Bearer {token}");
+        var response = await client.SendAsync(request);
+        response.EnsureSuccessStatusCode();
+
+        return await response.Content.ReadAsAsync<WeatherForecast[]>();
+    }
+}
+```
+
+<h2 id="set-the-authentication-scheme">인증 체계 설정</h2>
+
+여러 인증 미들웨어를 사용하여 인증 체계가 두 개 이상인 앱의 경우 Blazor가 사용하는 체계를 `Startup.Configure`의 엔드포인트 구성에서 명시적으로 설정할 수 있습니다. 다음 예제에서는 Azure Active Directory 체계를 설정합니다.
+
+```csharp
+endpoints.MapBlazorHub().RequireAuthorization(
+    new AuthorizeAttribute 
+    {
+        AuthenticationSchemes = AzureADDefaults.AuthenticationScheme
+    });
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+<h2 id="pass-tokens-to-a-blazor-server-app">Blazor Server 앱으로 토큰 전달</h2>
+
+Blazor Server 앱의 Razor 구성 요소 외부에서 사용할 수 있는 토큰은 이 섹션에서 설명하는 방법을 통해 구성 요소로 전달할 수 있습니다.
+
+일반 Razor Pages나 MVC 앱을 인증하는 것처럼 Blazor Server 앱을 인증합니다. 토큰을 프로비저닝하고 인증 cookie에 저장합니다. 예를 들어:
+
+```csharp
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+
+...
+
+services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
+{
+    options.ResponseType = OpenIdConnectResponseType.Code;
+    options.SaveTokens = true;
+
+    options.Scope.Add("offline_access");
+});
+```
+
+필요에 따라 `options.Scope.Add("{SCOPE}");`를 사용하여 추가 범위가 추가됩니다. 여기서 자리 표시자 `{SCOPE}`는 추가할 추가 범위입니다.
+
+필요에 따라 리소스는 `options.Resource = "{RESOURCE}";`를 사용하여 지정됩니다. 여기서 자리 표시자 `{RESOURCE}`는 리소스입니다. 예를 들어:
+
+```csharp
+options.Resource = "https://graph.microsoft.com";
 ```
 
 액세스 토큰 및 새로 고침 토큰과 함께 초기 앱 상태를 전달하는 클래스를 정의합니다.
@@ -123,9 +276,9 @@ services.AddScoped<TokenProvider>();
 }
 ```
 
-[Microsoft.AspNet.WebApi.Client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client) NuGet 패키지용 앱에 패키지 참조를 추가합니다.
+[`Microsoft.AspNet.WebApi.Client`](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client) NuGet 패키지용 앱에 패키지 참조를 추가합니다.
 
-보안 API 요청을 만드는 서비스에서 토큰 공급자를 주입하고 토큰을 가져와서 API를 호출합니다.
+보안 API 요청을 만드는 서비스에서 토큰 공급자를 삽입하고 API 요청의 토큰을 검색합니다.
 
 ```csharp
 using System;
@@ -134,24 +287,23 @@ using System.Threading.Tasks;
 
 public class WeatherForecastService
 {
-    private readonly TokenProvider store;
+    private readonly HttpClient client;
+    private readonly TokenProvider tokenProvider;
 
     public WeatherForecastService(IHttpClientFactory clientFactory, 
         TokenProvider tokenProvider)
     {
-        Client = clientFactory.CreateClient();
-        store = tokenProvider;
+        client = clientFactory.CreateClient();
+        this.tokenProvider = tokenProvider;
     }
 
-    public HttpClient Client { get; }
-
-    public async Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
+    public async Task<WeatherForecast[]> GetForecastAsync()
     {
-        var token = store.AccessToken;
+        var token = tokenProvider.AccessToken;
         var request = new HttpRequestMessage(HttpMethod.Get, 
             "https://localhost:5003/WeatherForecast");
         request.Headers.Add("Authorization", $"Bearer {token}");
-        var response = await Client.SendAsync(request);
+        var response = await client.SendAsync(request);
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadAsAsync<WeatherForecast[]>();
@@ -159,7 +311,7 @@ public class WeatherForecastService
 }
 ```
 
-## <a name="set-the-authentication-scheme"></a>인증 체계 설정
+<h2 id="set-the-authentication-scheme">인증 체계 설정</h2>
 
 여러 인증 미들웨어를 사용하여 인증 체계가 두 개 이상인 앱의 경우 Blazor가 사용하는 체계를 `Startup.Configure`의 엔드포인트 구성에서 명시적으로 설정할 수 있습니다. 다음 예제에서는 Azure Active Directory 체계를 설정합니다.
 
@@ -173,7 +325,7 @@ endpoints.MapBlazorHub().RequireAuthorization(
 
 ## <a name="use-openid-connect-oidc-v20-endpoints"></a>OIDC(OpenID Connect) v2.0 엔드포인트 사용
 
-인증 라이브러리 및 Blazor 템플릿은 OIDC(OpenID Connect) v1.0 엔드포인트를 사용합니다. v2.0 엔드포인트를 사용하려면 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>에서 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> 옵션을 구성해야 합니다.
+5\.0 이전 버전의 ASP.NET Core에서 인증 라이브러리 및 Blazor 템플릿은 OIDC(OpenID Connect) v1.0 엔드포인트를 사용합니다. 5\.0 이전 버전의 ASP.NET Core에서 v2.0 엔드포인트를 사용하려면 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>에서 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> 옵션을 구성합니다.
 
 ```csharp
 services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, 
@@ -231,3 +383,5 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme,
 ```
 
 OIDC 공급자 앱 등록 설명에서 사용해야 하는 앱 ID URI를 확인할 수 있습니다.
+
+::: moniker-end

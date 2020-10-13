@@ -5,7 +5,7 @@ description: Blazor WebAssembly와 함께 ASP.NET Core SignalR을 사용하는 �
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/10/2020
+ms.date: 10/01/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 4d33e99ceb8273487144447eae324469df67c9ff
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e4c77bd5bf5a26a11cdd23664ac24ae50986969b
+ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633385"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91754712"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-no-locblazor-webassembly"></a>Blazor WebAssembly와 함께 ASP.NET Core SignalR 사용
 
@@ -43,6 +43,34 @@ ms.locfileid: "88633385"
 [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>사전 요구 사항
+
+::: moniker range=">= aspnetcore-5.0"
+
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+<!-- * [Visual Studio 2019 16.8 or later](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) with the **ASP.NET and web development** workload -->
+* **ASP.NET 및 웹 개발** 워크로드가 포함된 [Visual Studio 2019 16.8 이상(미리 보기)](https://visualstudio.microsoft.com/vs/preview/)
+* [!INCLUDE [.NET Core 5.0 SDK](~/includes/5.0-SDK.md)]
+
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-5.0.md)]
+
+# <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
+
+<!-- * [Visual Studio for Mac version 8.8 or later (in preview)](https://visualstudio.microsoft.com/vs/mac/) -->
+* [Mac용 Visual Studio 버전 8.8 이상(미리 보기)](/visualstudio/releasenotes/vs2019-mac-preview-relnotes).
+* [!INCLUDE [.NET Core 5.0 SDK](~/includes/5.0-SDK.md)]
+
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+
+[!INCLUDE[](~/includes/5.0-SDK.md)]
+
+---
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -64,14 +92,27 @@ ms.locfileid: "88633385"
 
 ---
 
+::: moniker-end
+
 ## <a name="create-a-hosted-no-locblazor-webassembly-app-project"></a>호스트된 Blazor WebAssembly 앱 프로젝트 만들기
 
 선택한 도구의 지침을 따르세요.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
+::: moniker range=">= aspnetcore-5.0"
+
+> [!NOTE]
+> Visual Studio 16.8 이상 및 .NET Core SDK 5.0.0 이상이 필요합니다.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 > [!NOTE]
 > Visual Studio 16.6 이상 및 .NET Core SDK 3.1.300 이상이 필요합니다.
+
+::: moniker-end
 
 1. 새 프로젝트를 만듭니다.
 
@@ -176,7 +217,17 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 `BlazorSignalRApp.Server` 프로젝트에서 `Hubs`(복수형) 폴더를 만들고 다음 `ChatHub` 클래스(`Hubs/ChatHub.cs`)를 추가합니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Hubs/ChatHub.cs)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Hubs/ChatHub.cs)]
+
+::: moniker-end
 
 ## <a name="add-services-and-an-endpoint-for-the-no-locsignalr-hub"></a>서비스 및 SignalR 허브에 대한 엔드포인트 추가
 
@@ -190,14 +241,34 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. `Startup.ConfigureServices`에 SignalR 및 응답 압축 미들웨어 서비스를 추가합니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
+   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
    [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
+
+::: moniker-end
 
 1. `Startup.Configure`의 경우
 
    * 처리 파이프라인 구성의 위쪽에서 응답 압축 미들웨어를 사용합니다.
    * 컨트롤러와 클라이언트 쪽 대체에 대한 엔드포인트 사이에 허브에 대한 엔드포인트를 추가합니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
+   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
    [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
+
+::: moniker-end
 
 ## <a name="add-no-locrazor-component-code-for-chat"></a>채팅을 위한 Razor 구성 요소 코드 추가
 
@@ -205,7 +276,17 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. 태그를 다음 코드로 바꿉니다.
 
-[!code-razor[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Client/Pages/Index.razor)]
+::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Client/Pages/Index.razor)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Client/Pages/Index.razor)]
+
+::: moniker-end
 
 ## <a name="run-the-app"></a>앱 실행
 
@@ -227,9 +308,21 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. 서버 앱의 시작 프로필을 만들기 위한 VS Code가 제공되는 경우(`.vscode/launch.json`), `program` 항목은 다음과 유사하게 표시되어 앱의 어셈블리(`{APPLICATION NAME}.Server.dll`)를 가리킵니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
+   ```json
+   "program": "${workspaceFolder}/Server/bin/Debug/net5.0/{APPLICATION NAME}.Server.dll"
+   ```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
    ```json
    "program": "${workspaceFolder}/Server/bin/Debug/netcoreapp3.1/{APPLICATION NAME}.Server.dll"
    ```
+
+::: moniker-end
 
 1. <kbd>F5</kbd> 키를 눌러 디버깅이 설정된 상태로 앱을 실행하거나 <kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 디버깅 없이 실행합니다.
 

@@ -5,7 +5,7 @@ description: ASP.NET Core Blazor 앱에서 Razor 구성 요소 수명 주기 메
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/06/2020
+ms.date: 10/06/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,18 +18,48 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 00573f87b65e53a7bfd9cc2aed1d2ed7772b9a4a
-ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
+ms.openlocfilehash: 0acf757c21d444136e7a6d81d5958be5bc72c2fc
+ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90847613"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91805546"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>ASP.NET Core Blazor 수명 주기
 
 작성자: [Luke Latham](https://github.com/guardrex) 및 [Daniel Roth](https://github.com/danroth27)
 
 Blazor 프레임워크는 동기 및 비동기 수명 주기 메서드를 포함합니다. 구성 요소 초기화 및 렌더링 중에 구성 요소에서 추가 작업을 수행하려면 수명 주기 메서드를 재정의합니다.
+
+다음 다이어그램은 Blazor 수명 주기를 보여 줍니다. 수명 주기 메서드는 이 문서의 다음 섹션에 있는 예제를 사용하여 정의됩니다.
+
+구성 요소 수명 주기 이벤트:
+
+1. 구성 요소가 요청 시 처음 렌더링되는 경우:
+   * 구성 요소의 인스턴스를 만듭니다.
+   * 속성 삽입을 수행합니다. [`SetParametersAsync`](#before-parameters-are-set) 를 실행합니다.
+   * [`OnInitialized{Async}`](#component-initialization-methods)를 호출합니다. <xref:System.Threading.Tasks.Task>가 반환되면 <xref:System.Threading.Tasks.Task>가 대기한 다음, 구성 요소가 렌더링됩니다. <xref:System.Threading.Tasks.Task>가 반환되지 않으면 구성 요소를 렌더링합니다.
+1. [`OnParametersSet{Async}`](#after-parameters-are-set)를 호출합니다. <xref:System.Threading.Tasks.Task>가 반환되면 <xref:System.Threading.Tasks.Task>가 대기한 다음, 구성 요소가 렌더링됩니다. <xref:System.Threading.Tasks.Task>가 반환되지 않으면 구성 요소를 렌더링합니다.
+
+<img src="lifecycle/_static/lifecycle1.png" alt="Component lifecycle events of a Razor component in Blazor" data-linktype="relative-path" style="max-width:350px;display:block;margin:0 auto">
+
+DOM(문서 개체 모델) 이벤트 처리:
+
+1. 이벤트 처리기가 실행됩니다.
+1. <xref:System.Threading.Tasks.Task>가 반환되면 <xref:System.Threading.Tasks.Task>가 대기한 다음, 구성 요소가 렌더링됩니다. <xref:System.Threading.Tasks.Task>가 반환되지 않으면 구성 요소가 렌더링됩니다.
+
+<img src="lifecycle/_static/lifecycle2.png" alt="Document Object Model (DOM) event processing" data-linktype="relative-path" style="max-width:350px;display:block;margin:0 auto">
+
+`Render` 수명 주기:
+
+1. 이것이 구성 요소의 첫 번째 렌더링이 아니거나 [`ShouldRender`](#suppress-ui-refreshing)가 `false`로 평가되는 경우에는 구성 요소에서 추가 작업을 수행하지 마세요.
+1. 렌더링 트리 diff(차이)를 빌드하고 구성 요소를 렌더링합니다.
+1. DOM이 업데이트될 때까지 기다립니다.
+1. [`OnAfterRender{Async}`](#after-component-render)를 호출합니다.
+
+<img src="lifecycle/_static/lifecycle3.png" alt="Render lifecycle" data-linktype="relative-path" style="max-width:350px;display:block;margin:0 auto">
+
+개발자가 [`StateHasChanged`](#state-changes)를 호출하면 렌더러가 생성됩니다.
 
 ## <a name="lifecycle-methods"></a>수명 주기 메서드
 
@@ -191,7 +221,7 @@ Blazor 템플릿의 `FetchData` 구성 요소에서 <xref:Microsoft.AspNetCore.C
 
 Blazor Server 템플릿의 `Pages/FetchData.razor`:
 
-[!code-razor[](lifecycle/samples_snapshot/3.x/FetchData.razor?highlight=9,21,25)]
+[!code-razor[](lifecycle/samples_snapshot/FetchData.razor?highlight=9,21,25)]
 
 ## <a name="handle-errors"></a>오류 처리
 
@@ -286,11 +316,11 @@ public class WeatherForecastService
 
 * 프라이빗 필드 및 람다 접근 방식
 
-  [!code-razor[](lifecycle/samples_snapshot/3.x/event-handler-disposal-1.razor?highlight=23,28)]
+  [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-1.razor?highlight=23,28)]
 
 * 프라이빗 메서드 접근 방식
 
-  [!code-razor[](lifecycle/samples_snapshot/3.x/event-handler-disposal-2.razor?highlight=16,26)]
+  [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-2.razor?highlight=16,26)]
 
 ## <a name="cancelable-background-work"></a>취소할 수 있는 백그라운드 작업
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/options
-ms.openlocfilehash: a6af5a7b1b4bc066a563c7cac59274fd39594cf6
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 6eafad63bd4c49cee6a85108b37a8b61e1214bce
+ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632592"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762336"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core의 옵션 패턴
 
@@ -37,6 +37,8 @@ ms.locfileid: "88632592"
 * [문제의 분리](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) 앱의 다른 부분에 대한 설정은 다른 설정에 종속되거나 연결되지 않습니다.
 
 옵션은 구성 데이터의 유효성을 검사하는 메커니즘도 제공합니다. 자세한 내용은 [옵션 유효성 검사](#options-validation) 섹션을 참조하세요.
+
+이 항목에서는 ASP.NET Core의 옵션 패턴 정보를 제공합니다. 콘솔 앱에서 옵션 패턴을 사용하는 방법에 관한 자세한 내용은 [.NET의 옵션 패턴](/dotnet/core/extensions/options)을 참조하세요.
 
 [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 

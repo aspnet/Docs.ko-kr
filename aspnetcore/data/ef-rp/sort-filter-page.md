@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 5e073845acbecdf0db4c30c4725f12033cfc42ac
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e01704cb10c88f3e9442e74034f5e5d39787f300
+ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634685"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653895"
 ---
 # <a name="part-3-no-locrazor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>3부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 정렬, 필터, 페이징
 
@@ -42,25 +42,26 @@ ms.locfileid: "88634685"
 
 *Pages/Students/Index.cshtml.cs*에 있는 코드를 다음 코드로 바꿔서 정렬을 추가합니다.
 
-[!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_All&highlight=21-24,26,28-52)]
+[!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_All)]
 
 위의 코드는
 
+* `using System;`을 추가해야 합니다.
 * 정렬 매개 변수를 포함할 속성을 추가합니다.
 * `Student` 속성의 이름을 `Students`로 변경합니다.
 * `OnGetAsync` 메서드의 코드를 바꿉니다.
 
-`OnGetAsync` 메서드는 URL의 쿼리 문자열에서 `sortOrder` 매개 변수를 받습니다. URL(쿼리 문자열 포함)은 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에서 생성됩니다.
+`OnGetAsync` 메서드는 URL의 쿼리 문자열에서 `sortOrder` 매개 변수를 받습니다. URL 및 쿼리 문자열은 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에서 생성됩니다.
 
-`sortOrder` 매개 변수는 “Name” 또는 “Date”입니다. `sortOrder` 매개 변수의 뒤에 오는 “_desc”는 내림차순 순서를 지정하기 위한 옵션입니다. 기본 정렬 순서는 오름차순입니다.
+`sortOrder` 매개 변수는 `Name` 또는 `Date`입니다. 내림차순을 지정하려면 필요에 따라 `sortOrder` 매개 변수 뒤에 `_desc`를 추가합니다. 기본 정렬 순서는 오름차순입니다.
 
-인덱스 페이지가 **학생** 링크에서 요청되는 경우 쿼리 문자열이 없습니다. 학생은 성 기준 오름차순으로 표시됩니다. `switch` 문에서 성 기준 오름차순이 기본값(제어 이동 사례)입니다. 사용자가 열 제목 링크를 클릭하면 적절한 `sortOrder` 값이 쿼리 문자열 값에 제공됩니다.
+인덱스 페이지가 **학생** 링크에서 요청되는 경우 쿼리 문자열이 없습니다. 학생은 성 기준 오름차순으로 표시됩니다. `switch` 문에서는 성 기준 오름차순이 `default`입니다. 사용자가 열 제목 링크를 클릭하면 적절한 `sortOrder` 값이 쿼리 문자열 값에 제공됩니다.
 
 Razor Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으로 구성하기 위해 `NameSort` 및 `DateSort`가 사용됩니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_Ternary)]
 
-이 코드는 C# 조건 연산자 [?:](/dotnet/csharp/language-reference/operators/conditional-operator)을 사용합니다. `?:` 연산자는 피연산자 3개를 사용하는 삼항 연산자입니다. 첫 번째 줄은 `sortOrder`가 null이거나 비어 있는 경우 `NameSort`가 “name_desc”로 설정되도록 지정합니다. `sortOrder`가 null 또는 비어 있지 **않은** 경우 `NameSort`는 빈 문자열로 설정됩니다.
+이 코드는 C# [조건 연산자 ?:](/dotnet/csharp/language-reference/operators/conditional-operator)을 사용합니다. `?:` 연산자는 피연산자 3개를 사용하는 3개로 구성된 연산자입니다. 첫 번째 줄은 `sortOrder`가 null이거나 비어 있는 경우 `NameSort`가 `name_desc`로 설정되도록 지정합니다. `sortOrder`가 null 또는 비어 있지 ***않은*** 경우 `NameSort`는 빈 문자열로 설정됩니다.
 
 이러한 두 명령문을 사용하면 페이지에서 다음과 같이 열 제목 하이퍼링크를 설정할 수 있습니다.
 
@@ -110,7 +111,7 @@ Razor Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으
 
 *Students/Index.cshtml.cs*에 있는 코드를 다음 코드로 바꿔서 필터링을 추가합니다.
 
-[!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index2.cshtml.cs?name=snippet_All&highlight=28,33,37-41)]
+[!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index2.cshtml.cs?name=snippet_All&highlight=17,22,26-30)]
 
 위의 코드는
 
@@ -119,7 +120,7 @@ Razor Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으
 
 ### <a name="iqueryable-vs-ienumerable"></a>IQueryable 및 IEnumerable
 
-이 코드는 `IQueryable` 개체에서 `Where` 메서드를 호출하고, 필터는 서버에서 처리됩니다. 일부 시나리오에서 앱은 메모리 내 컬렉션에서 확장 메서드로 `Where` 메서드를 호출할 수 있습니다. 예를 들어 `_context.Students`가 EF Core `DbSet`에서 `IEnumerable` 컬렉션을 반환하는 리포지토리 메서드로 변경되었다고 가정합니다. 결과는 일반적으로 동일하지만 경우에 따라 다를 수 있습니다.
+이 코드는 `IQueryable` 개체에서 <xref:System.Linq.Queryable.Where%2A> 메서드를 호출하고, 필터는 서버에서 처리됩니다. 일부 시나리오에서 앱은 메모리 내 컬렉션에서 확장 메서드로 `Where` 메서드를 호출할 수 있습니다. 예를 들어 `_context.Students`가 EF Core `DbSet`에서 `IEnumerable` 컬렉션을 반환하는 리포지토리 메서드로 변경되었다고 가정합니다. 결과는 일반적으로 동일하지만 경우에 따라 다를 수 있습니다.
 
 예를 들어 `Contains`의 .NET Framework 구현은 기본적으로 대/소문자 구분 비교를 수행합니다. SQL Server에서 `Contains` 대/소문자 구분은 SQL Server 인스턴스의 컬렉션 설정에 의해 결정됩니다. SQL Server는 기본적으로 대/소문자를 구분하지 않습니다. SQLite는 기본적으로 대/소문자를 구분합니다. `ToUpper`는 테스트가 명시적으로 대/소문자를 구분하지 않도록 하기 위해 호출됩니다.
 
@@ -139,7 +140,7 @@ Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
 ### <a name="update-the-no-locrazor-page"></a>Razor 페이지 업데이트
 
-*Pages/Students/Index.cshtml*의 코드를 바꿔서 **검색** 단추와 다양한 크롬을 만듭니다.
+*Pages/Students/Index.cshtml*의 코드를 바꿔서 **검색** 단추를 추가합니다.
 
 [!code-cshtml[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index2.cshtml?highlight=14-23)]
 
@@ -153,8 +154,8 @@ Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
 URL에 검색 문자열이 포함되어 있음을 확인하세요. 예를 들어:
 
-```
-https://localhost:<port>/Students?SearchString=an
+```browser-address-bar
+https://localhost:5001/Students?SearchString=an
 ```
 
 페이지가 책갈피로 표시된 경우 책갈피에는 페이지에 대한 URL 및 `SearchString` 쿼리 문자열이 포함됩니다. `form` 태그의 `method="get"`으로 인해 쿼리 문자열이 생성됩니다.
@@ -181,15 +182,16 @@ https://localhost:<port>/Students?SearchString=an
 
 *Students/Index.cshtml.cs*의 코드를 바꿔서 페이징을 추가합니다.
 
-[!code-csharp[Main](intro/samples/cu30/Pages/Students/Index.cshtml.cs?name=snippet_All&highlight=26,28-29,31,34-41,68-70)]
+[!code-csharp[Main](intro/samples/cu30/Pages/Students/Index.cshtml.cs?name=snippet_All&highlight=15-20,23-30,57-59)]
 
 위의 코드는
 
 * `Students` 속성의 형식을 `IList<Student>`에서 `PaginatedList<Student>`로 변경합니다.
 * 페이지 인덱스, 현재 `sortOrder` 및 `currentFilter`를 `OnGetAsync` 메서드 시그니처에 추가합니다.
-* 정렬 순서를 CurrentSort 속성에 저장합니다.
+* `CurrentSort` 속성에 정렬 순서를 저장합니다.
 * 새 검색 문자열이 있는 경우 페이지 인덱스를 1로 다시 설정합니다.
 * `PaginatedList` 클래스를 사용하여 Student 엔터티를 가져옵니다.
+* `pageSize`를 3으로 설정합니다. 실제 앱은 [구성](xref:fundamentals/configuration/index)을 사용하여 페이지 크기 값을 설정합니다.
 
 다음과 같은 경우 `OnGetAsync`가 수신하는 모든 매개 변수는 Null입니다.
 
@@ -212,7 +214,7 @@ https://localhost:<port>/Students?SearchString=an
 
   `PaginatedList.CreateAsync` 메서드가 학생 쿼리를 페이징을 지원하는 컬렉션 형식의 단일 학생 페이지로 변환합니다. 해당 단일 학생 페이지가 Razor 페이지에 전달됩니다.
 
-  `PaginatedList.CreateAsync`에서 `pageIndex` 뒤에 있는 두 개의 물음표는 [Null 병합 연산자](/dotnet/csharp/language-reference/operators/null-conditional-operator)를 나타냅니다. Null 병합 연산자는 null 허용 형식에 대한 기본값을 정의합니다. 식 `(pageIndex ?? 1)`은 값이 있는 경우 `pageIndex`의 값을 반환함을 의미합니다. `pageIndex`에 값이 없으면 1을 반환합니다.
+  `PaginatedList.CreateAsync`에서 `pageIndex` 뒤에 있는 두 개의 물음표는 [Null 병합 연산자](/dotnet/csharp/language-reference/operators/null-conditional-operator)를 나타냅니다. Null 병합 연산자는 null 허용 형식에 대한 기본값을 정의합니다. `pageIndex ?? 1` 식은 값이 있으면 `pageIndex`의 값을 반환하고, 그렇지 않으면 1을 반환합니다.
 
 ### <a name="add-paging-links-to-the-no-locrazor-page"></a>Razor Page에 페이징 링크 추가
 
@@ -258,7 +260,7 @@ https://localhost:<port>/Students?SearchString=an
 
 ### <a name="create-the-page-model"></a>페이지 모델 만들기
 
-다음 코드로 *Pages/About.cshtml.cs* 파일을 만듭니다.
+*Pages/About.cshtml.cs* 파일을 다음 코드로 업데이트합니다.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/About.cshtml.cs)]
 

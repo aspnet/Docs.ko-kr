@@ -5,7 +5,7 @@ description: Identity Server를 사용하여 호스트된 ASP.NET Core Blazor We
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/09/2020
+ms.date: 09/02/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 58c21f4dbe831e99570ca8b0d7bc78616c1e5bfb
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: 91cc7ffc46f5f1f68efd7e481479b19938476cb0
+ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712378"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762245"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Identity 서버를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호
 
@@ -316,7 +316,7 @@ public class CustomUserFactory
         if (user.Identity.IsAuthenticated)
         {
             var identity = (ClaimsIdentity)user.Identity;
-            var roleClaims = identity.FindAll(identity.RoleClaimType);
+            var roleClaims = identity.FindAll(identity.RoleClaimType).ToArray();
 
             if (roleClaims != null && roleClaims.Any())
             {
@@ -466,6 +466,105 @@ services.AddTransient<IProfileService, ProfileService>();
 클라이언트 앱에서 `User.Identity.Name`에 사용자의 사용자 이름이 채워집니다. 이는 보통 사용자의 로그인 메일 주소입니다.
 
 [!INCLUDE[](~/includes/blazor-security/usermanager-signinmanager.md)]
+
+## <a name="host-in-azure-app-service-with-a-custom-domain"></a>사용자 지정 도메인을 사용하는 Azure App Service에서 호스트
+
+다음 지침에서는 Identity 서버와 함께 호스티드 Blazor WebAssembly 앱을 사용자 지정 도메인을 사용하는 [Azure App Service](https://azure.microsoft.com/services/app-service/)에 배포하는 방법을 설명합니다.
+
+이 호스팅 시나리오에서는 [Identity 서버의 토큰 서명 키](https://docs.identityserver.io/en/latest/topics/crypto.html#token-signing-and-validation) 및 브라우저에 대한 사이트의 HTTPS 보안 통신에 동일한 인증서를 사용하지 **않습니다**.
+
+* 두 가지 해당 요구 사항에 서로 다른 인증서를 사용하는 것은 각 목적에 맞게 프라이빗 키를 격리하기 때문에 좋은 보안 사례입니다.
+* 브라우저와 통신하기 위한 TLS 인증서는 Identity 서버의 토큰 서명에 영향을 주지 않고 독립적으로 관리됩니다.
+* [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)가 사용자 지정 도메인 바인딩을 위해 App Service 앱에 인증서를 제공하는 경우 Identity 서버는 토큰 서명을 위해 Azure Key Vault에서 동일한 인증서를 가져올 수 없습니다. 실제 경로에서 동일한 TLS 인증서를 사용하도록 Identity 서버를 구성할 수 있지만 보안 인증서를 소스 제어에 배치하는 것은 **좋지 않은 사례이며 대부분의 시나리오에서 피해야 합니다**.
+
+다음 지침에서 자체 서명된 인증서는 Identity 서버 토큰 서명을 위해서만 Azure Key Vault에 생성됩니다. Identity 서버 구성은 앱의 `My` > `CurrentUser` 인증서 저장소를 통해 키 자격 증명 모음 인증서를 사용합니다. 사용자 지정 도메인을 사용하는 HTTPS 트래픽에 사용되는 기타 인증서는 Identity 서버 서명 인증서와 별도로 생성 및 구성됩니다.
+
+사용자 지정 도메인 및 HTTPS를 사용하여 호스트하도록 앱, Azure App Service 및 Azure Key Vault를 구성하려면:
+
+1. `Basic B1` 이상의 계획 수준을 사용하여 [App Service 요금제](/azure/app-service/overview-hosting-plans)를 만듭니다. App Service에서는 사용자 지정 도메인을 사용하려면 `Basic B1` 이상 서비스 계층이 필요합니다.
+1. 조직이 제어하는 사이트 FQDN(정규화된 도메인 이름)의 일반 이름(예: `www.contoso.com`)을 사용하여 사이트 보안 브라우저 통신(HTTPS 프로토콜)용 PFX 인증서를 만듭니다. 다음을 사용하여 인증서를 만듭니다.
+   * 키 사용
+     * 디지털 시그니처 유효성 검사(`digitalSignature`)
+     * 키 암호화(`keyEncipherment`)
+   * 확장 키 사용
+     * 클라이언트 인증(1.3.6.1.5.5.7.3.2)
+     * 서버 인증(1.3.6.1.5.5.7.3.1)
+
+   인증서를 만들려면 다음 접근 방식 중 하나를 사용하거나 다른 적합한 도구나 온라인 서비스를 사용합니다.
+
+   * [Azure Key Vault](/azure/key-vault/certificates/quick-create-portal#add-a-certificate-to-key-vault)
+   * [Windows의 MakeCert](/windows/desktop/seccrypto/makecert)
+   * [OpenSSL](https://www.openssl.org)
+
+   나중에 Azure Key Vault로 인증서를 가져오는 데 사용되는 암호를 기록해 둡니다.
+
+   Azure Key Vault 인증서에 관한 자세한 내용은 [Azure Key Vault: 인증서](/azure/key-vault/certificates/)를 선택합니다.
+1. 새 Azure Key Vault를 만들거나 Azure 구독에서 기존 키 자격 증명 모음을 사용합니다.
+1. 키 자격 증명 모음의 **인증서** 영역에서 PFX 사이트 인증서를 가져옵니다. 나중에 앱 구성에서 사용되는 인증서 지문을 기록합니다.
+1. Azure Key Vault에서 Identity 서버 토큰 서명을 위한 새로운 자체 서명된 인증서를 생성합니다. 인증서에 **인증서 이름** 및 **주체**를 지정합니다. **주체**는 `CN={COMMON NAME}`으로 지정됩니다. 여기서 `{COMMON NAME}` 자리 표시자는 인증서의 일반 이름입니다. 일반 이름은 영숫자 문자열일 수 있습니다. 예를 들어 `CN=IdentityServerSigning`은 유효한 인증서 **주체**입니다. 기본 **고급 정책 구성** 설정을 사용합니다. 나중에 앱 구성에서 사용되는 인증서 지문을 기록합니다.
+1. Azure Portal에서 Azure App Service로 이동하고 다음 구성을 사용하여 새 App Service를 만듭니다.
+   * **게시**를 `Code`로 설정합니다.
+   * **런타임 스택**을 앱 런타임으로 설정합니다.
+   * **Sku 및 크기**의 경우 App Service 계층이 `Basic B1` 이상인지 확인합니다.  App Service에서는 사용자 지정 도메인을 사용하려면 `Basic B1` 이상 서비스 계층이 필요합니다.
+1. Azure가 App Service를 만든 후 앱 **구성**을 열고 이전에 기록된 인증서 지문을 지정하는 새 애플리케이션 설정을 추가합니다. 앱 설정 키는 `WEBSITE_LOAD_CERTIFICATES`입니다. 다음 예제와 같이 앱 설정 값의 인증서 지문을 쉼표로 구분합니다.
+   * 키: `WEBSITE_LOAD_CERTIFICATES`
+   * 값: `57443A552A46DB...D55E28D412B943565,29F43A772CB6AF...1D04F0C67F85FB0B1`
+
+   Azure Portal에서 앱 설정을 저장하는 작업은 2단계 프로세스입니다. `WEBSITE_LOAD_CERTIFICATES` 키-값 설정을 저장한 다음, 블레이드 위쪽에서 **저장** 단추를 선택합니다.
+1. 앱의 **TLS/SSL 설정**을 선택합니다. **프라이빗 키 인증서(.pfx)** 를 선택합니다. **키 자격 증명 모음 인증서 가져오기** 프로세스를 두 번 사용하여 HTTPS 통신용 사이트 인증서 및 사이트의 자체 서명된 Identity 서버 토큰 서명 인증서를 둘 다 가져옵니다.
+1. **사용자 지정 도메인** 블레이드로 이동합니다. 도메인 등록 기관의 웹 사이트에서 **IP 주소** 및 **사용자 지정 도메인 확인 ID**를 사용하여 도메인을 구성합니다. 일반적인 도메인 구성에는 다음이 포함됩니다.
+   * `@`의 **호스트** 및 Azure Portal의 IP 주소 값이 포함된 **A 레코드**.
+   * `asuid`의 **호스트** 및 Azure에서 생성하고 Azure Portal에서 제공하는 확인 ID 값이 포함된 **TXT 레코드**.
+
+   도메인 등록 기관의 웹 사이트에서 변경 내용을 올바르게 저장해야 합니다. 일부 등록 기관 웹 사이트에서는 도메인 레코드를 저장하려면 2단계 프로세스가 필요합니다. 하나 이상의 레코드를 개별적으로 저장한 다음, 별도 단추를 사용하여 도메인 등록을 업데이트합니다.
+1. Azure Portal에서 **사용자 지정 도메인** 블레이드로 돌아갑니다. **사용자 지정 도메인 추가**를 선택합니다. **A 레코드** 옵션을 선택합니다. 도메인을 제공하고 **유효성 검사**를 선택합니다. 도메인 레코드가 올바르고 인터넷에서 전파되는 경우 포털에서 **사용자 지정 도메인 추가** 단추를 선택할 수 있습니다.
+
+   도메인 등록 변경이 도메인 등록 기관에서 처리된 후 인터넷 DNS(도메인 이름 서버)에서 전파되는 데 며칠이 걸릴 수 있습니다. 도메인 레코드가 영업일 기준 3일 이내에 업데이트되지 않는 경우 도메인 등록 기관을 통해 레코드가 올바르게 설정되었는지 확인하고 고객 지원에 문의하세요.
+1. **사용자 지정 도메인** 블레이드에서 도메인의 **SSL 상태**가 `Not Secure`로 표시됩니다. **바인딩 추가** 링크를 선택합니다. 사용자 지정 도메인 바인딩을 위해 키 자격 증명 모음에서 사이트 HTTPS 인증서를 선택합니다.
+1. Visual Studio에서 ‘서버’ 프로젝트의 앱 설정 파일(`appsettings.json` 또는 `appsettings.Production.json`)을 엽니다. Identity 서버 구성에서 다음 `Key` 섹션을 추가합니다. `Name` 키의 자체 서명된 인증서 **주체**를 지정합니다. 다음 예제에서는 키 자격 증명 모음에 할당된 인증서의 일반 이름이 `IdentityServerSigning`이며 이 이름에서 `CN=IdentityServerSigning`의 **주체**가 생성됩니다.
+
+   ```json
+   "IdentityServer": {
+
+     ...
+
+     "Key": {
+       "Type": "Store",
+       "StoreName": "My",
+       "StoreLocation": "CurrentUser",
+       "Name": "CN=IdentityServerSigning"
+     }
+   },
+   ```
+
+1. Visual Studio에서 ‘서버’ 프로젝트의 Azure App Service [게시 프로필](xref:host-and-deploy/visual-studio-publish-profiles#publish-profiles)을 만듭니다. 메뉴 모음에서 다음을 선택합니다. **빌드** > **게시** > **새로 만들기** > **Azure** > **Azure App Service**(Windows 또는 Linux). Visual Studio가 Azure 구독에 연결된 경우 **리소스 종류**별로 Azure 리소스의 **뷰**를 설정할 수 있습니다. **웹앱** 목록 내에서 탐색하여 앱의 App Service를 찾고 선택합니다. **마침**을 선택합니다.
+1. Visual Studio가 **게시** 창으로 돌아가면 키 자격 증명 모음 및 SQL Server 데이터베이스 서비스 종속성이 자동으로 검색됩니다.
+
+   키 자격 증명 모음 서비스에는 기본 설정에 대한 구성 변경이 필요하지 않습니다.
+
+   테스트를 위해 기본적으로 Blazor 템플릿을 통해 구성되는 앱의 로컬 [SQLite](https://www.sqlite.org/index.html) 데이터베이스는 추가 구성 없이 앱과 함께 배포할 수 있습니다. 프로덕션 환경에서 Identity 서버에 대해 다른 데이터베이스를 구성하는 작업은 이 문서의 범위를 벗어납니다. 자세한 내용은 다음 설명서 세트의 데이터베이스 리소스를 참조하세요.
+   * [App Service](/azure/app-service/)
+   * [Identity서버](https://identityserver4.readthedocs.io/en/latest/)
+
+1. 창 위쪽에 있는 배포 프로필 이름에서 **편집** 링크를 선택합니다. 대상 URL을 사이트의 사용자 지정 도메인 URL(예: `https://www.contoso.com`)로 변경합니다. 설정을 저장합니다.
+1. 앱을 게시합니다. Visual Studio가 브라우저 창을 열고 해당 사용자 지정 도메인에서 사이트를 요청합니다.
+
+Azure 설명서에는 A 레코드 대신 CNAME 레코드를 사용하는 방법에 관한 정보를 포함하여 App Service에서 TLS 바인딩과 함께 Azure 서비스 및 사용자 지정 도메인을 사용하는 방법에 관한 추가적인 세부 정보가 있습니다. 자세한 내용은 다음 자료를 참조하세요.
+
+* [App Service 설명서](/azure/app-service/)
+* [자습서: Azure App Service에 기존 사용자 지정 DNS 이름 매핑](/azure/app-service/app-service-web-tutorial-custom-domain)
+* [Azure App Service에서 TLS/SSL 바인딩으로 사용자 지정 DNS 이름 보호](/azure/app-service/configure-ssl-bindings)
+* [Azure Key Vault](/azure/key-vault/)
+
+Azure Portal에서 앱, 앱 구성 또는 Azure 서비스를 변경한 후 각 앱 테스트 실행을 위해 새로운 InPrivate 또는 incognito 브라우저 창을 사용하는 것이 좋습니다. 이전 테스트 실행에서 느린 cookie로 인해 사이트의 구성이 올바르더라도 사이트를 테스트할 때 인증 또는 권한 부여에 실패할 수 있습니다. 각 테스트 실행을 위해 새로운 InPrivate 또는 incognito 브라우저 창을 열도록 Visual Studio를 구성하는 방법에 관한 자세한 내용은 [Cookie 및 사이트 데이터](#cookies-and-site-data) 섹션을 참조하세요.
+
+Azure Portal에서 App Service 구성이 변경되면 업데이트는 일반적으로 신속하게 적용되지만 즉시 적용되지는 않습니다. 경우에 따라 구성 변경 내용을 적용하려면 App Service가 다시 시작할 때까지 잠시 기다려야 합니다.
+
+인증서 로드 문제를 해결하는 경우 Azure Portal [Kudu](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service) PowerShell 명령 셸에서 다음 명령을 실행합니다. 명령은 앱이 `My` > `CurrentUser` 인증서 저장소에서 액세스할 수 있는 인증서 목록을 제공합니다. 출력에는 앱을 디버그할 때 유용한 인증서 주체 및 지문이 포함됩니다.
+
+```powershell
+Get-ChildItem -path Cert:\CurrentUser\My -Recurse | Format-List DnsNameList, Subject, Thumbprint, EnhancedKeyUsageList
+```
 
 [!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
 

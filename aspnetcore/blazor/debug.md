@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: e12b0e6d1bf9eab751f6605b9a156f637f2b0c0f
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: d4fd0d501ff14e37bb55b78bb6493ad43f9e5a87
+ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393836"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91805572"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly 디버그
 
@@ -345,6 +345,9 @@ Blazor에서는 [Chrome DevTools 프로토콜](https://chromedevtools.github.io/
 * **디버거** 탭에서 브라우저의 개발자 도구를 엽니다. 콘솔에서 `localStorage.clear()`를 실행하여 중단점을 모두 제거합니다.
 * ASP.NET Core HTTPS 개발 인증서를 설치하고 신뢰할 수 있는지 확인합니다. 자세한 내용은 <xref:security/enforcing-ssl#troubleshoot-certificate-problems>를 참조하세요.
 * Visual Studio를 사용하려면 **도구** > **옵션** > **디버깅** > **일반**에서 **ASP.NET에 대해 JavaScript 디버깅 사용(Chrome, Edge 및 IE)** 옵션이 필요합니다. 이것은 Visual Studio의 기본 설정입니다. 디버깅이 작동하지 않는 경우 옵션이 선택되어 있는지 확인합니다.
+* 사용자 환경에서 HTTP 프록시를 사용하는 경우 `localhost`가 프록시 바이패스 설정에 포함되는지 확인합니다. 이 작업을 수행하려면 다음 중 하나에서 `NO_PROXY` 환경 변수를 설정합니다.
+  * 프로젝트의 `launchSettings.json` 파일에서.
+  * 모든 앱에 적용할 사용자 또는 시스템 환경 변수 수준에서. 환경 변수를 사용하는 경우 변경을 적용하려면 Visual Studio를 다시 시작합니다.
 
 ### <a name="breakpoints-in-oninitializedasync-not-hit"></a>`OnInitialized{Async}`의 중단점이 적중되지 않음
 
