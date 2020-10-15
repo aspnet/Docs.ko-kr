@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 7a0c606d82dd625c179ec89e22b9313dfa5d18b4
-ms.sourcegitcommit: c026bf76a0e14a5ee68983519a63574c674e9ff7
+ms.openlocfilehash: ac666a4c7493140d4ae93047e18202c3d8314c7b
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91636779"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900702"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Azure Active Directory(AAD) 그룹, 관리자 역할, 사용자 정의 역할
 
@@ -49,7 +49,7 @@ AAD(Azure Active Directory)는 ASP.NET Core Identity와 결합할 수 있는 몇
 
 5개 이상의 AAD 관리자 역할 및 보안 그룹 구성원 자격이 있는 앱 사용자에게는 [Microsoft Graph API](/graph/use-the-api) 호출이 필요합니다.
 
-Graph API 호출을 허용하려면 Azure Portal에서 호스트된 Blazor 솔루션의 독립 실행형 또는 클라이언트 앱에 다음 [Graph API 권한](/graph/permissions-reference)을 제공합니다.
+Graph API 호출을 허용하려면 Azure Portal에서 호스트된 Blazor 솔루션의 독립 실행형 또는 *`Client`* 앱에 다음 [Graph API 권한](/graph/permissions-reference)을 제공합니다.
 
 * `Directory.Read.All`
 * `Directory.ReadWrite.All`
@@ -88,7 +88,7 @@ public class CustomUserAccount : RemoteUserAccount
 }
 ```
 
-호스트된 Blazor 솔루션의 독립 실행형 앱 또는 클라이언트 앱에서 사용자 지정 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> 클래스를 만듭니다. 역할 및 그룹 정보를 가져오는 Graph API 호출에 올바른 범위(권한)를 사용합니다.
+호스트된 Blazor 솔루션의 독립 실행형 앱 또는 *`Client`* 앱에서 사용자 지정 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> 클래스를 만듭니다. 역할 및 그룹 정보를 가져오는 Graph API 호출에 올바른 범위(권한)를 사용합니다.
 
 `GraphAPIAuthorizationMessageHandler.cs`:
 
@@ -250,7 +250,7 @@ public class CustomUserFactory
 >
 > 이 방법에 대한 일반적인 설명은 <xref:blazor/security/webassembly/additional-scenarios#custom-authorizationmessagehandler-class> 문서에 있습니다.
 
-호스트된 Blazor 솔루션의 독립 실행형 앱 또는 클라이언트 앱의 `Program.Main`(`Program.cs`)에 팩터리를 등록합니다. 앱의 추가 범위로 `Directory.Read.All` 권한 범위에 동의합니다.
+호스트된 Blazor 솔루션의 독립 실행형 앱 또는 *`Client`* 앱의 `Program.Main`(`Program.cs`)에 팩터리를 등록합니다. 앱의 추가 범위로 `Directory.Read.All` 권한 범위에 동의합니다.
 
 ```csharp
 builder.Services.AddMsalAuthentication<RemoteAuthenticationState, 
@@ -651,9 +651,9 @@ Azure Portal에서 `roles` 멤버 자격 클레임을 제공하도록 앱을 구
 
 AAD에서 보낸 단일 `roles` 클레임은 사용자 정의 역할을 JSON 배열의 `appRoles`의 `value`로 표시합니다. 앱은 역할의 JSON 배열을 개별 `role` 클레임으로 변환해야 합니다.
 
-[사용자 정의 그룹 및 AAD 관리자 역할](#user-defined-groups-and-administrator-roles) 섹션에 표시된 `CustomUserFactory`는 JSON 배열 값을 사용하여 `roles` 클레임에서 작동하도록 설정되었습니다. [사용자 정의 그룹 및 AAD 관리자 역할](#user-defined-groups-and-administrator-roles) 섹션에 나와 있는 것처럼 호스트된 Blazor 솔루션의 독립 실행형 앱 또는 클라이언트 앱에 `CustomUserFactory`를 추가하고 등록합니다. 원래 `roles` 클레임은 프레임워크에 의해 자동으로 제거되므로 이를 제거하는 코드를 제공할 필요는 없습니다.
+[사용자 정의 그룹 및 AAD 관리자 역할](#user-defined-groups-and-administrator-roles) 섹션에 표시된 `CustomUserFactory`는 JSON 배열 값을 사용하여 `roles` 클레임에서 작동하도록 설정되었습니다. [사용자 정의 그룹 및 AAD 관리자 역할](#user-defined-groups-and-administrator-roles) 섹션에 나와 있는 것처럼 호스트된 Blazor 솔루션의 독립 실행형 앱 또는 *`Client`* 앱에 `CustomUserFactory`를 추가하고 등록합니다. 원래 `roles` 클레임은 프레임워크에 의해 자동으로 제거되므로 이를 제거하는 코드를 제공할 필요는 없습니다.
 
-호스트된 Blazor 솔루션의 독립 실행형 앱 또는 클라이언트 앱의 `Program.Main`에서 "`role`"이라는 클레임을 역할 클레임으로 지정합니다.
+호스트된 Blazor 솔루션의 독립 실행형 앱 또는 *`Client`* 앱의 `Program.Main`에서 "`role`"이라는 클레임을 역할 클레임으로 지정합니다.
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>

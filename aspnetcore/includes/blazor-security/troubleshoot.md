@@ -21,13 +21,13 @@
     * Google Chrome: `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`
     * Mozilla Firefox: `C:\Program Files\Mozilla Firefox\firefox.exe`
   * **인수** 필드에 브라우저에서 시크릿 또는 프라이빗 모드로 열 때 사용하는 명령줄 옵션을 제공합니다. 일부 브라우저에는 앱의 URL이 필요합니다.
-    * Microsoft Edge: `-inprivate`
-    * Google Chrome: `--incognito --new-window https://localhost:5001`
-    * Mozilla Firefox: `-private -url https://localhost:5001`
+    * Microsoft Edge: `-inprivate`을 사용하십시오.
+    * Google Chrome: `--incognito --new-window {URL}`를 사용합니다. 여기서 자리 표시자 `{URL}`은 열려는 URL입니다(예: `https://localhost:5001`).
+    * Mozilla Firefox: `-private -url {URL}`을 사용합니다. 여기서 자리 표시자 `{URL}`은 열려는 URL입니다(예: `https://localhost:5001`).
   * **이름** 필드에 이름을 입력합니다. 예: `Firefox Auth Testing`.
   * **확인** 단추를 선택합니다.
   * 앱 테스트를 반복할 때마다 브라우저 프로필을 선택할 필요가 없도록 하려면 **기본값으로 설정** 단추를 사용하여 프로필을 기본값으로 설정합니다.
-  * 앱, 테스트 사용자 또는 공급자 구성이 변경되면 IDE를 통해 브라우저가 닫히도록 합니다.
+  * 앱, 테스트 사용자 또는 공급자 구성을 변경할 때 IDE를 통해 브라우저를 닫습니다.
 
 ### <a name="run-the-server-app"></a>서버 앱 실행
 
