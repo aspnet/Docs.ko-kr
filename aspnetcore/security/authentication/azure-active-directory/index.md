@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/azure-active-directory/index
-ms.openlocfilehash: b807681e00b196449c74dbe4240e9d6996af51fc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a71f81b4fca6d9a84ad98e0e8935748cfd358fa0
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633086"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113779"
 ---
 # <a name="azure-active-directory-with-aspnet-core"></a>ASP.NET Core와 Azure Active Directory
 
@@ -41,8 +41,6 @@ ms.locfileid: "88633086"
 
 * [Azure AD V2를 사용하여 ASP.NET Core 앱이 사용자를 로그인하고 웹 API를 호출할 수 있도록 설정하세요.](/samples/azure-samples/active-directory-aspnetcore-webapp-openidconnect-v2/enable-webapp-signin/) 
   * [이 관련 비디오](https://channel9.msdn.com/Events/Build/2018/THR5001)를 참조하세요.
-
 * [Azure AD V2를 사용하여 WPF 애플리케이션에서 ASP.NET Core 2.0 Web API 호출](/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/): 
   * [이 관련 비디오](https://channel9.msdn.com/Events/Build/2018/THR5000)를 참조하세요.
-
-* [Azure AD B2C를 사용하여 ASP.NET Core 웹 API](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapi/)
+* [Azure AD B2C를 사용하여 ASP.NET Core 웹앱](/samples/azure-samples/active-directory-b2c-dotnetcore-webapp/an-aspnet-core-web-app-with-azure-ad-b2c/)
