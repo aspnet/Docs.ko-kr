@@ -177,6 +177,9 @@
             - name: GitHub Actions를 사용하여 배포 >>
               display: 'tutorial, kubernetes, aks, acr, docker, devops'
               href: /learn/modules/microservices-devops-aspnet-core/
+            - name: 로그 및 모니터 >>
+              display: 'tutorial, kubernetes, aks, acr, docker, serilog'
+              href: /learn/modules/microservices-logging-aspnet-core/
         - name: 데이터 액세스 >>
           displayName: 'tutorial, ef, entity framework'
           href: /learn/modules/persist-data-ef-core/
@@ -1118,6 +1121,8 @@
           uid: security/authorization/policies
         - name: 인증 정책 공급자
           uid: security/authorization/iauthorizationpolicyprovider
+        - name: AuthorizationMiddleware의 동작 사용자 지정
+          uid: security/authorization/authorizationmiddlewareresulthandler
         - name: 요구 사항 처리기의 종속성 주입
           uid: security/authorization/dependencyinjection
         - name: 리소스 기반 권한 부여
