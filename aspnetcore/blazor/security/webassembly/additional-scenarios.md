@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: 2881b5d01f3b2e41659e3166a4e77b64a450f017
-ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
+ms.openlocfilehash: 50d455b37c51fdd6d3b52b10b3e819eb45526de4
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90592921"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900962"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly 추가 보안 시나리오
 
@@ -177,7 +177,7 @@ Blazor WebAssembly 호스트 프로젝트 템플릿에 기반한 Blazor 앱의 �
 
 ### <a name="graph-api-example"></a>Graph API 예제
 
-다음 예제에서는 Graph API에 대해 명명된 <xref:System.Net.Http.HttpClient>를 사용하여 통화를 처리하는 사용자의 휴대폰 번호를 가져옵니다. Azure Portal의 AAD 영역에서 Microsoft Graph API `User.Read` 권한을 추가하면 호스트된 Blazor 솔루션의 독립 실행형 앱이나 클라이언트 앱에서 명명된 클라이언트에 대해 범위가 구성됩니다.
+다음 예제에서는 Graph API에 대해 명명된 <xref:System.Net.Http.HttpClient>를 사용하여 통화를 처리하는 사용자의 휴대폰 번호를 가져옵니다. Azure Portal의 AAD 영역에서 Microsoft Graph API `User.Read` 권한을 추가한 후 호스티드 Blazor 솔루션의 독립 실행형 앱이나 *`Client`* 앱에서 명명된 클라이언트에 대해 범위가 구성됩니다.
 
 > [!NOTE]
 > 이 섹션의 예제에서는 ‘구성 요소 코드’에서 사용자에 대한 Graph API 데이터를 가져옵니다. Graph API에서 사용자 클레임을 만들려면 다음 리소스를 참조하세요.
@@ -1070,7 +1070,7 @@ AAD 보안 그룹과 AAD 관리자 역할에서 작동하는 추가 예제 및 �
 * 인증이 필요하지 않은 경로를 미리 렌더링합니다.
 * 인증이 필요한 경로를 미리 렌더링하지 않습니다.
 
-클라이언트 앱의 `Program` 클래스(`Program.cs`)에서 공통 서비스 등록을 별도의 메서드(예: `ConfigureCommonServices`)로 팩터링합니다.
+*`Client`* 앱의 `Program` 클래스(`Program.cs`)에서 공통 서비스 등록을 별도의 메서드(예: `ConfigureCommonServices`)로 팩터링합니다.
 
 ```csharp
 public class Program
@@ -1130,7 +1130,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-서버 앱에서 `Pages` 폴더가 없으면 이 폴더를 만듭니다. 서버 앱의 `Pages` 폴더 안에 `_Host.cshtml` 페이지를 만듭니다. 클라이언트 앱의 `wwwroot/index.html` 파일 콘텐츠를 `Pages/_Host.cshtml` 파일에 붙여넣습니다. 다음과 같이 파일 콘텐츠를 업데이트합니다.
+서버 앱에서 `Pages` 폴더가 없으면 이 폴더를 만듭니다. 서버 앱의 `Pages` 폴더 안에 `_Host.cshtml` 페이지를 만듭니다. *`Client`* 앱의 `wwwroot/index.html` 파일 콘텐츠를 `Pages/_Host.cshtml` 파일에 붙여넣습니다. 다음과 같이 파일 콘텐츠를 업데이트합니다.
 
 * `@page "_Host"`를 파일의 맨 위에 추가합니다.
 * `<app>Loading...</app>` 태그를 다음으로 바꿉니다.

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 91cc7ffc46f5f1f68efd7e481479b19938476cb0
-ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
+ms.openlocfilehash: 6ae8c55fcfc85dc725a7dd20a7dbecba063a13e9
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762245"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900789"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Identity 서버를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호
 
@@ -72,7 +72,7 @@ dotnet new blazorwasm -au Individual -ho -o {APP NAME}
 
 ---
 
-## <a name="server-app-configuration"></a>서버 앱 구성
+## <a name="server-app-configuration"></a>*`Server`* 앱 구성
 
 다음 섹션에서는 인증 지원이 포함된 경우 프로젝트의 추가 사항에 대해 설명합니다.
 
@@ -170,7 +170,7 @@ dotnet new blazorwasm -au Individual -ho -o {APP NAME}
 
 자리 표시자 `{APP ASSEMBLY}`는 앱의 어셈블리 이름입니다(예: `BlazorSample.Client`).
 
-## <a name="client-app-configuration"></a>클라이언트 앱 구성
+## <a name="client-app-configuration"></a>*`Client`* 앱 구성
 
 ### <a name="authentication-package"></a>인증 패키지
 
@@ -287,7 +287,7 @@ builder.Services.AddApiAuthorization();
 
 ### <a name="custom-user-factory"></a>사용자 지정 사용자 팩터리
 
-클라이언트 앱에서 사용자 지정 사용자 팩터리를 만듭니다. Identity 서버가 단일 `role` 클레임에서 여러 역할을 JSON 배열로 보냅니다. 클레임에서 단일 역할이 문자열 값으로 전송됩니다. 팩터리가 각 사용자 역할에 대해 개별 `role` 클레임을 만듭니다.
+*`Client`* 앱에서 사용자 지정 사용자 팩터리를 만듭니다. Identity 서버가 단일 `role` 클레임에서 여러 역할을 JSON 배열로 보냅니다. 클레임에서 단일 역할이 문자열 값으로 전송됩니다. 팩터리가 각 사용자 역할에 대해 개별 `role` 클레임을 만듭니다.
 
 `CustomUserFactory.cs`:
 
@@ -349,14 +349,14 @@ public class CustomUserFactory
 }
 ```
 
-클라이언트 앱에서 `Program.Main`(`Program.cs`)에 팩터리를 등록합니다.
+*`Client`* 앱에서 `Program.Main`(`Program.cs`)에 팩터리를 등록합니다.
 
 ```csharp
 builder.Services.AddApiAuthorization()
     .AddAccountClaimsPrincipalFactory<CustomUserFactory>();
 ```
 
-서버 앱에서 Identity 작성기에 대해 <xref:Microsoft.AspNetCore.Identity.IdentityBuilder.AddRoles*>를 호출하여 역할 관련 서비스를 추가합니다.
+*`Server`* 앱에서 Identity 작성기에 대해 <xref:Microsoft.AspNetCore.Identity.IdentityBuilder.AddRoles*>를 호출하여 역할 관련 서비스를 추가합니다.
 
 ```csharp
 using Microsoft.AspNetCore.Identity;
@@ -378,7 +378,7 @@ services.AddDefaultIdentity<ApplicationUser>(options =>
 
 #### <a name="api-authorization-options"></a>API 권한 부여 옵션
 
-서버 앱에서:
+*`Server`* 앱에서:
 
 * Identity 서버가 `name` 및 `role` 클레임을 ID 토큰 및 액세스 토큰에 배치하도록 구성합니다.
 * JWT 토큰 처리기에서 역할의 기본 매핑을 방지합니다.
@@ -402,7 +402,7 @@ JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("role");
 
 #### <a name="profile-service"></a>프로필 서비스
 
-서버 앱에서 `ProfileService` 구현을 만듭니다.
+*`Server`* 앱에서 `ProfileService` 구현을 만듭니다.
 
 `ProfileService.cs`:
 
@@ -436,7 +436,7 @@ public class ProfileService : IProfileService
 }
 ```
 
-서버 앱에서 `Startup.ConfigureServices`에 프로필 서비스를 등록합니다.
+*`Server`* 앱에서 `Startup.ConfigureServices`에 프로필 서비스를 등록합니다.
 
 ```csharp
 using IdentityServer4.Services;
@@ -448,7 +448,7 @@ services.AddTransient<IProfileService, ProfileService>();
 
 ### <a name="use-authorization-mechanisms"></a>권한 부여 메커니즘 사용
 
-이 시점에서는 클라이언트 앱의 구성 요소 권한 부여 방식이 작동합니다. 구성 요소의 모든 권한 부여 메커니즘에서 역할을 사용하여 사용자에게 권한을 부여할 수 있습니다.
+이 시점에서는 *`Client`* 앱의 구성 요소 권한 부여 방식이 작동합니다. 구성 요소의 모든 권한 부여 메커니즘에서 역할을 사용하여 사용자에게 권한을 부여할 수 있습니다.
 
 * [`AuthorizeView` 구성 요소](xref:blazor/security/index#authorizeview-component)(예: `<AuthorizeView Roles="admin">`)
 * [`[Authorize]` 특성 지시문](xref:blazor/security/index#authorize-attribute)(<xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute>)(예: `@attribute [Authorize(Roles = "admin")]`)
@@ -463,7 +463,7 @@ services.AddTransient<IProfileService, ProfileService>();
   }
   ```
 
-클라이언트 앱에서 `User.Identity.Name`에 사용자의 사용자 이름이 채워집니다. 이는 보통 사용자의 로그인 메일 주소입니다.
+*`Client`* 앱에서 `User.Identity.Name`에 사용자의 사용자 이름이 채워집니다. 이는 보통 사용자의 로그인 전자 메일 주소입니다.
 
 [!INCLUDE[](~/includes/blazor-security/usermanager-signinmanager.md)]
 

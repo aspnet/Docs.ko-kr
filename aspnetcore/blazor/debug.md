@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: d4fd0d501ff14e37bb55b78bb6493ad43f9e5a87
-ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
+ms.openlocfilehash: b8dd272d673e84b45a39272531385ebfd1d06175
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805572"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900988"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly 디버그
 
@@ -93,7 +93,7 @@ Visual Studio에서 Blazor WebAssembly 앱을 디버그하려면:
    > [!NOTE]
    > **디버깅하지 않고 시작**(<kbd>Ctrl</kbd>+<kbd>F5</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
 
-1. ‘클라이언트’ 앱에서 `Pages/Counter.razor`의 `currentCount++;` 줄에 중단점을 설정합니다.
+1. `*Client*` 앱에서 `Pages/Counter.razor`의 `currentCount++;` 줄에 중단점을 설정합니다.
 1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me**(여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
 1. Visual Studio에서 **지역** 창에 있는 `currentCount` 필드의 값을 검사합니다.
 1. <kbd>F5</kbd> 키를 눌러 실행을 계속합니다.
@@ -180,7 +180,7 @@ Blazor WebAssembly 앱에서의 사용자 지정 앱 기본 경로 사용에 대
 
 1. 독립 실행형 앱이 시작되고 디버깅 브라우저가 열립니다.
 
-1. ‘클라이언트’ 앱에서 `Pages/Counter.razor`의 `currentCount++;` 줄에 중단점을 설정합니다.
+1. `*Client*` 앱에서 `Pages/Counter.razor`의 `currentCount++;` 줄에 중단점을 설정합니다.
 
 1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me**(여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
 
@@ -285,7 +285,7 @@ Mac용 Visual Studio에서 Blazor WebAssembly 앱을 디버그하려면 다음�
    > [!IMPORTANT]
    > 디버깅 세션용으로 Google Chrome 또는 Microsoft Edge 브라우저를 선택해야 합니다.
 
-1. ‘클라이언트’ 앱에서 `Pages/Counter.razor`의 `currentCount++;` 줄에 중단점을 설정합니다.
+1. `*Client*` 앱에서 `Pages/Counter.razor`의 `currentCount++;` 줄에 중단점을 설정합니다.
 1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me**(여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
 1. Visual Studio에서 **지역** 창에 있는 `currentCount` 필드의 값을 검사합니다.
 1. <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd>을 눌러 실행을 계속합니다.

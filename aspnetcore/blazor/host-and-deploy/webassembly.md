@@ -5,7 +5,7 @@ description: ASP.NET Core, CDN(콘텐츠 배달 네트워크), 파일 서버 및
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/25/2020
+ms.date: 10/09/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 3436620123618ab32daa44c4a37057aaadb89563
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 63954bd2fbb8fdb2e347d552a10adc52263c3ad6
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393693"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900715"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core 호스트 및 배포 Blazor WebAssembly
 
@@ -867,3 +867,76 @@ Remove-Item $filepath\bin\Release\$tfm\wwwroot\_framework\blazor.boot.json.gz
 
 > [!NOTE]
 > 동일한 어셈블리의 이름을 바꾸고 로드를 지연하는 경우 <xref:blazor/webassembly-lazy-load-assemblies#onnavigateasync-events-and-renamed-assembly-files>의 지침을 참조하세요.
+
+## <a name="resolve-integrity-check-failures"></a>무결성 검사 실패 해결
+
+Blazor WebAssembly는 앱의 시작 파일을 다운로드할 때 응답에 대한 무결성 검사를 수행하도록 브라우저에 지시합니다. `blazor.boot.json` 파일의 정보를 사용하여 `.dll`, `.wasm` 및 기타 파일에 대해 예상되는 SHA-256 해시 값을 지정합니다. 이 기능은 다음과 같은 이유로 유용합니다.
+
+* 사용자가 애플리케이션 파일을 다운로드하는 동안 새 배포가 웹 서버에 적용되는 경우와 같이 일관되지 않은 파일 세트를 로드할 위험이 없는지 확인합니다. 일관되지 않은 파일로 인해 정의되지 않은 동작이 발생할 수 있습니다.
+* 사용자의 브라우저가 일관되지 않거나 잘못된 응답을 캐시하지 않는지 확인하여 페이지를 수동으로 새로 고치는 경우에도 앱을 시작하지 못하도록 할 수 있습니다.
+* 응답을 안전하게 캐시하며 예상된 SHA-256 해시가 변경될 때까지 서버 쪽 변경 내용을 확인하지 않도록 설정하므로 후속 페이지 로드는 더 적은 요청을 포함하여 훨씬 더 빠르게 완료됩니다.
+
+웹 서버가 예상된 SHA-256 해시와 일치하지 않는 응답을 반환하는 경우에는 브라우저의 개발자 콘솔에 다음과 같은 오류가 표시됩니다.
+
+```
+Failed to find a valid digest in the 'integrity' attribute for resource 'https://myapp.example.com/_framework/MyBlazorApp.dll' with computed SHA-256 integrity 'IIa70iwvmEg5WiDV17OpQ5eCztNYqL186J56852RpJY='. The resource has been blocked.
+```
+
+대부분의 경우에는 무결성 검사 자체에서 발생하는 문제가 ‘아닙니다’. 대신 일부 다른 문제가 있음을 의미하며 무결성 검사는 다른 문제에 관한 경고를 표시합니다.
+
+### <a name="diagnosing-integrity-problems"></a>무결성 문제 진단
+
+앱이 빌드되면 생성된 `blazor.boot.json` 매니페스트는 빌드 출력이 생성될 때 부팅 리소스(예: `.dll`, `.wasm` 및 기타 파일)의 SHA-256 해시를 설명합니다. `blazor.boot.json`의 SHA-256 해시가 브라우저에 배달된 파일과 일치하는 경우 무결성 검사가 통과합니다.
+
+이 작업이 실패하는 일반적인 이유는 다음과 같습니다.
+
+ * 웹 서버의 응답은 브라우저가 요청한 파일이 아닌 오류(예: ‘404 - 찾을 수 없음’ 또는 ‘500 - 내부 서버 오류’)입니다.  이는 브라우저에서 응답 실패가 아닌 무결성 검사 실패로 보고됩니다.
+ * 무엇인가 브라우저에 대한 파일의 빌드와 제공 사이에 파일 콘텐츠를 변경했습니다. 이 문제가 발생할 수 있는 경우는 다음과 같습니다.
+   * 사용자 또는 빌드 도구가 빌드 출력을 수동으로 수정하는 경우.
+   * 배포 프로세스의 일부 측면이 파일을 수정한 경우. 예를 들어 Git 기반 배포 메커니즘을 사용하는 경우 파일을 Windows에서 커밋하고 Linux에서 체크 아웃하는 경우 Git에서는 Windows 스타일 줄 끝을 Unix 스타일 줄 끝으로 투명하게 변환합니다. 파일 줄 끝을 변경하면 SHA-256 해시가 변경됩니다. 이 문제를 방지하려면 [`.gitattributes`를 사용하여 빌드 아티팩트를 `binary` 파일로 처리](https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes)하는 것이 좋습니다.
+   * 웹 서버는 파일 콘텐츠를 제공하는 동안 수정합니다. 예를 들어 일부 CDN(Content Delivery Network)은 자동으로 HTML을 [축소](xref:client-side/bundling-and-minification#minification)함으로써 수정합니다. 관련 기능을 사용하지 않도록 설정해야 할 수 있습니다.
+
+어떤 기능이 해당 사례에서 적용되는지 진단하려면:
+
+ 1. 오류 메시지를 읽어서 어떤 파일이 오류를 트리거하는지 확인합니다.
+ 1. 브라우저의 개발자 도구를 열고 ‘네트워크’ 탭을 확인합니다. 필요한 경우 페이지를 다시 로드하여 요청 및 응답 목록을 확인합니다. 해당 목록에서 오류를 트리거하는 파일을 찾습니다.
+ 1. 응답의 HTTP 상태 코드를 확인합니다. 서버가 *200 - OK*(또는 또 다른 2xx 상태 코드) 이외의 값을 반환하면 진단해야 하는 서버 쪽 문제가 있는 것입니다. 예를 들어 상태 코드 403은 권한 부여 문제가 있음을 의미하는 반면, 상태 코드 500은 서버가 지정되지 않은 방식으로 실패함을 의미합니다. 서버 쪽 로그를 참조하여 앱을 진단하고 수정합니다.
+ 1. 리소스에 대한 상태 코드가 *200-OK*인 경우 브라우저 개발자 도구에서 응답 콘텐츠를 확인하고 콘텐츠가 예상 데이터와 일치하는지 확인합니다. 예를 들어 일반적인 문제는 요청이 다른 파일에 대해서도 `index.html` 데이터를 반환하도록 라우팅을 잘못 구성하는 것입니다. `.wasm` 요청에 대한 응답이 WebAssembly 이진 파일이고 `.dll` 요청에 대한 응답이 .NET 어셈블리 이진 파일인지 확인합니다. 그렇지 않으면 진단해야 할 서버 쪽 라우팅 문제가 있는 것입니다.
+
+서버가 올바른 것 같은 데이터를 반환하고 있는지 확인하는 경우 파일의 빌드와 제공 사이에 콘텐츠를 수정하는 다른 항목이 있어야 합니다. 이를 조사하려면:
+
+ * 파일이 빌드된 후 파일을 수정 중인 경우 빌드 도구 체인 및 배포 메커니즘을 검토합니다. 여기에 해당하는 예제는 앞에서 설명한 대로 Git이 파일 줄 끝을 변환하는 경우입니다.
+ * 응답을 동적으로 수정하도록(예: HTML 축소 시도) 설정된 경우 웹 서버 또는 CDN 구성을 검토합니다. 압축을 푼 후 결과에 영향을 주지 않으므로 웹 서버가 HTTP 압축을 구현해도 괜찮습니다(예: `content-encoding: br` 또는 `content-encoding: gzip` 반환). 그러나 웹 서버가 압축되지 않은 데이터를 수정하는 것은 괜찮지 ‘않습니다’.
+
+### <a name="disable-integrity-checking-for-non-pwa-apps"></a>비 PWA 앱에 대한 무결성 검사 사용 안 함
+
+대부분의 경우 무결성 검사를 사용하지 않도록 설정하지 마세요. 무결성 검사를 사용하지 않으면 예기치 않은 응답을 발생시킨 근본적인 문제가 해결되지 않아 앞서 언급한 이점을 얻을 수 없습니다.
+
+웹 서버를 사용하여 일관된 응답을 반환할 수 없고 무결성 검사를 사용하지 않도록 설정하는 것 외에 선택 사항이 없는 경우가 있습니다. 무결성 검사를 사용하지 않도록 설정하려면 Blazor WebAssembly 프로젝트의 `.csproj` 파일에서 속성 그룹에 다음을 추가합니다.
+
+```xml
+<BlazorCacheBootResources>false</BlazorCacheBootResources>
+```
+
+또한, `BlazorCacheBootResources` 속성은 SHA-256 해시의 정확성을 기대할 수 없음을 나타내기 때문에 `.dll`, `.wasm` 및 SHA-256 해시 기반 기타 파일을 캐시하는 Blazor의 기본 동작을 사용하지 않도록 설정합니다. 이 설정을 사용하는 경우에도 브라우저의 일반 HTTP 캐시는 해당 파일을 캐시할 수 있지만 이 상황이 발생하는지는 웹 서버 구성 및 해당 구성이 제공하는 `cache-control` 헤더에 따라 달라집니다.
+
+> [!NOTE]
+> `BlazorCacheBootResources` 속성은 [PWA(프로그레시브 웹 애플리케이션)](xref:blazor/progressive-web-app)에 대한 무결성 검사를 사용하지 않도록 설정하지 않습니다. PWA 관련 지침은 [PWA에 대한 무결성 검사 사용 안 함](#disable-integrity-checking-for-pwas) 섹션을 참조하세요.
+
+### <a name="disable-integrity-checking-for-pwas"></a>PWA에 대한 무결성 검사 사용 안 함
+
+Blazor의 PWA(프로그레시브 웹 애플리케이션) 템플릿에는 오프라인에서 사용하기 위해 애플리케이션 파일을 페치하고 저장해야 하는 제안된 `service-worker.published.js` 파일이 포함됩니다. 이는 일반적인 앱 시작 메커니즘과 별도의 프로세스이며 자체적인 별도의 무결성 검사 논리를 포함합니다.
+
+`service-worker.published.js` 파일 내에 다음 줄이 있습니다.
+
+```javascript
+.map(asset => new Request(asset.url, { integrity: asset.hash }));
+```
+
+무결성 검사를 사용하지 않으려면 줄을 다음으로 변경하여 `integrity` 매개 변수를 제거합니다.
+
+```javascript
+.map(asset => new Request(asset.url));
+```
+
+또한 무결성 검사를 사용하지 않도록 설정하면 무결성 검사를 통해 제공되는 안전 보증이 손실됩니다. 예를 들어 사용자의 브라우저가 새 버전을 배포하는 바로 그 순간에 앱을 캐시 중인 경우 이전 배포의 일부 파일과 새 배포의 일부 파일을 캐시할 수 있는 위험이 있습니다. 이 경우 추가 업데이트를 배포할 때까지 앱이 중단됨 상태로 중단됩니다.

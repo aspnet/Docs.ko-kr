@@ -5,7 +5,7 @@ description: Azure Active Directory를 사용하여 ASP.NET Core Blazor WebAssem
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: devx-track-csharp, mvc
-ms.date: 07/08/2020
+ms.date: 10/08/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: 12a2509998bb9b4d56e250518b2db91f73dd0e67
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: e6f514793a2efde120f70ac58f4ad4be7516ada7
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712417"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900850"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>Azure Active Directory를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호
 
@@ -45,7 +45,7 @@ ms.locfileid: "88712417"
 1. 앱의 **이름**을 지정합니다(예: **Blazor Server AAD**).
 1. **지원되는 계정 유형**을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만**(단일 테넌트)을 선택합니다.
 1. 이 시나리오에서는 ‘서버 API 앱’에 **리디렉션 URI**가 필요하지 않으므로 드롭다운이 **웹**으로 설정된 상태로 두고 리디렉션 URI를 입력하지 않습니다.
-1. **사용 권한** > **openid 및 offline_access 권한에 대한 관리자 동의 허용** 확인란을 선택 해제합니다.
+1. **권한** > **openid 및 offline_access 권한에 대한 관리자 동의 허용** 확인란의 선택을 취소합니다.
 1. **등록**을 선택합니다.
 
 다음과 같은 정보를 기록해 둡니다.
@@ -68,30 +68,52 @@ ms.locfileid: "88712417"
 
 다음과 같은 정보를 기록해 둡니다.
 
-* 앱 ID URI(예: `https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd`, `api://41451fa7-82d9-4673-8fa5-69eff5a761fd` 또는 사용자가 지정한 사용자 지정 값)
+* 앱 ID URI(예: `api://41451fa7-82d9-4673-8fa5-69eff5a761fd`, `https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd` 또는 사용자가 제공하는 사용자 지정 값)
 * 범위 이름(예: `API.Access`)
-
-앱 ID URI는 이 항목의 뒷부분에 나오는 [액세스 토큰 범위](#access-token-scopes) 섹션에 설명된 대로 클라이언트 앱에서 특수한 구성이 필요할 수 있습니다.
 
 ### <a name="register-a-client-app"></a>클라이언트 앱 등록
 
-[빠른 시작: Microsoft ID 플랫폼에 애플리케이션 등록](/azure/active-directory/develop/quickstart-register-app) 및 후속 Azure AAD 항목의 지침에 따라 ‘클라이언트 앱’에 대해 AAD 앱을 등록하고 다음을 수행합니다.
+[빠른 시작: Microsoft ID 플랫폼에 애플리케이션 등록](/azure/active-directory/develop/quickstart-register-app) 및 후속 Azure AAD 항목의 지침에 따라 *`Client`* 앱에 대해 AAD 앱을 등록하고 다음을 수행합니다.
+
+::: moniker range=">= aspnetcore-5.0"
 
 1. **Azure Active Directory** > **앱 등록**에서 **새 등록**을 선택합니다.
 1. 앱의 **이름**을 지정합니다(예: **Blazor 클라이언트 AAD**).
 1. **지원되는 계정 유형**을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만**(단일 테넌트)을 선택합니다.
-1. **리디렉션 URI** 드롭다운은 **웹**으로 설정된 상태로 두고, 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다. Kestrel에서 실행되는 앱의 기본 포트는 5001입니다. 앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다. IIS Express의 경우, 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 서버 앱 속성에서 확인할 수 있습니다. 이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요. [앱 만들기](#create-the-app) 섹션에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.
-1. **사용 권한** > **openid 및 offline_access 권한에 대한 관리자 동의 허용** 확인란을 선택 해제합니다.
+1. **리디렉션 URI** 드롭다운은 **SPA(단일 페이지 애플리케이션)** 으로 설정하고 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다. Kestrel에서 실행되는 앱의 기본 포트는 5001입니다. 앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다. IIS Express의 경우 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 *`Server`* 앱 속성에서 확인할 수 있습니다. 이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요. [앱 만들기](#create-the-app) 섹션에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.
+1. **사용 권한**>**openid 및 offline_access 권한에 대한 관리자 동의 허용** 확인란을 선택 해제합니다.
 1. **등록**을 선택합니다.
 
-클라이언트 앱 애플리케이션(클라이언트) ID를 기록해 둡니다(예: `4369008b-21fa-427c-abaa-9b53bf58e538`).
+*`Client`* 앱 애플리케이션(클라이언트) ID를 기록해 둡니다(예: `4369008b-21fa-427c-abaa-9b53bf58e538`).
 
-**인증** > **플랫폼 구성** > **웹**에서:
+**인증** > **플랫폼 구성** > **SPA(단일 페이지 애플리케이션)** 에서 다음을 수행합니다.
+
+1. `https://localhost:{PORT}/authentication/login-callback`의 **리디렉션 URI**가 있는지 확인합니다.
+1. **암시적 허용**에서 **액세스 토큰** 및 **ID 토큰**의 확인란을 선택 **해제** 상태로 유지합니다.
+1. 이 환경에서는 앱의 나머지 기본값을 그대로 사용해도 좋습니다.
+1. **저장** 단추를 선택합니다.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+1. **Azure Active Directory** > **앱 등록**에서 **새 등록**을 선택합니다.
+1. 앱의 **이름**을 지정합니다(예: **Blazor 클라이언트 AAD**).
+1. **지원되는 계정 유형**을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만**(단일 테넌트)을 선택합니다.
+1. **리디렉션 URI** 드롭다운은 **웹**으로 설정된 상태로 두고, 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다. Kestrel에서 실행되는 앱의 기본 포트는 5001입니다. 앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다. IIS Express의 경우 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 *`Server`* 앱 속성에서 확인할 수 있습니다. 이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요. [앱 만들기](#create-the-app) 섹션에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.
+1. **사용 권한**>**openid 및 offline_access 권한에 대한 관리자 동의 허용** 확인란을 선택 해제합니다.
+1. **등록**을 선택합니다.
+
+*`Client`* 앱 애플리케이션(클라이언트) ID를 기록해 둡니다(예: `4369008b-21fa-427c-abaa-9b53bf58e538`).
+
+**인증** > **플랫폼 구성** > **웹**에서 다음을 수행합니다.
 
 1. `https://localhost:{PORT}/authentication/login-callback`의 **리디렉션 URI**가 있는지 확인합니다.
 1. **암시적 허용**에서는 **액세스 토큰** 및 **ID 토큰**의 확인란을 선택합니다.
 1. 이 환경에서는 앱의 나머지 기본값을 그대로 사용해도 좋습니다.
 1. **저장** 단추를 선택합니다.
+
+::: moniker-end
 
 **API 사용 권한**에서:
 
@@ -111,33 +133,62 @@ ms.locfileid: "88712417"
 dotnet new blazorwasm -au SingleOrg --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -o {APP NAME} --tenant-id "{TENANT ID}"
 ```
 
-| 자리표시자                  | Azure Portal 이름                                     | 예제                                |
-| ---------------------------- | ----------------------------------------------------- | -------------------------------------- |
-| `{APP NAME}`                 | &mdash;                                               | `BlazorSample`                         |
-| `{CLIENT APP CLIENT ID}`     | 클라이언트 앱의 애플리케이션(클라이언트) ID          | `4369008b-21fa-427c-abaa-9b53bf58e538` |
-| `{DEFAULT SCOPE}`            | 범위 이름                                            | `API.Access`                           |
-| `{SERVER API APP CLIENT ID}` | 서버 API 앱의 애플리케이션(클라이언트) ID      | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
-| `{SERVER API APP ID URI}`    | 애플리케이션 ID URI([참고 참조](#access-token-scopes)) | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
-| `{TENANT DOMAIN}`            | 주/게시자/테넌트 도메인                       | `contoso.onmicrosoft.com`              |
-| `{TENANT ID}`                | 디렉터리(테넌트) ID                                 | `e86c78e2-8bb4-4c41-aefd-918e0565a45e` |
+| 자리표시자                  | Azure Portal 이름                                     | 예제                                      |
+| ---------------------------- | ----------------------------------------------------- | -------------------------------------------- |
+| `{APP NAME}`                 | &mdash;                                               | `BlazorSample`                               |
+| `{CLIENT APP CLIENT ID}`     | *`Client`* 앱의 애플리케이션(클라이언트) ID        | `4369008b-21fa-427c-abaa-9b53bf58e538`       |
+| `{DEFAULT SCOPE}`            | 범위 이름                                            | `API.Access`                                 |
+| `{SERVER API APP CLIENT ID}` | 서버 API 앱의 애플리케이션(클라이언트) ID      | `41451fa7-82d9-4673-8fa5-69eff5a761fd`       |
+| `{SERVER API APP ID URI}`    | 애플리케이션 ID URI                                    | `api://41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{TENANT DOMAIN}`            | 주/게시자/테넌트 도메인                       | `contoso.onmicrosoft.com`                    |
+| `{TENANT ID}`                | 디렉터리(테넌트) ID                                 | `e86c78e2-8bb4-4c41-aefd-918e0565a45e`       |
 
 `-o|--output` 옵션으로 지정된 출력 위치는 프로젝트 폴더가 없는 경우 폴더를 하나 만들고 앱 이름의 일부가 됩니다.
 
-> [!NOTE]
-> 앱 ID URI를 `app-id-uri` 옵션으로 전달합니다. 단, 클라이언트 앱에서 구성 변경이 필요할 수 있습니다. 이에 대해서는 [액세스 토큰 범위](#access-token-scopes) 섹션에서 설명합니다.
+::: moniker range=">= aspnetcore-5.0"
 
 > [!NOTE]
-> Azure Portal에서 ‘클라이언트 앱’의 **인증** > **플랫폼 구성** > **웹** > **리디렉션 URI**는 Kestrel 서버에서 기본 설정으로 실행되는 앱의 경우 포트 5001로 구성됩니다.
->
-> 클라이언트 앱이 임의의 IIS Express 포트에서 실행되는 경우 앱의 포트는 **디버그** 패널의 서버 API 앱 속성에서 확인할 수 있습니다.
->
-> 앞에서 ‘클라이언트 앱’의 알려진 포트로 포트가 구성되지 않았다면 Azure Portal에서 ‘클라이언트 앱’의 등록으로 돌아가서 리디렉션 URI를 올바른 포트로 업데이트합니다. 
+> 확인되지 않은 게시자 도메인에서 Azure 테넌트를 사용하는 경우 구성 변경이 필요할 수 있으며 이는 [앱 설정](#app-settings) 섹션에 설명되어 있습니다.
 
-## <a name="server-app-configuration"></a>서버 앱 구성
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+> [!NOTE]
+> 확인되지 않은 게시자 도메인에서 Azure 테넌트를 사용하는 경우 구성 변경이 필요할 수 있으며 이는 [액세스 토큰 범위](#access-token-scopes) 섹션에 설명되어 있습니다.
+
+::: moniker-end
+
+> [!NOTE]
+> Azure Portal에서 *`Client`* 앱의 플랫폼 구성 **리디렉션 URI**는 Kestrel 서버에서 기본 설정으로 실행되는 앱의 경우 포트 5001로 구성됩니다.
+>
+> *`Client`* 앱이 임의의 IIS Express 포트에서 실행되는 경우 앱의 포트는 **디버그** 패널의 ‘서버 API 앱’ 속성에서 확인할 수 있습니다.
+>
+> 앞에서 *`Client`* 앱의 알려진 포트로 포트가 구성되지 않았다면 Azure Portal에서 *`Client`* 앱의 등록으로 돌아가서 리디렉션 URI를 올바른 포트로 업데이트합니다.
+
+## <a name="server-app-configuration"></a>*`Server`* 앱 구성
 
 ‘이 섹션은 솔루션의 **`Server`** 앱에 적용됩니다.’
 
 ### <a name="authentication-package"></a>인증 패키지
+
+::: moniker range=">= aspnetcore-5.0"
+
+Microsoft Identity 플랫폼을 통한 ASP.NET Core Web API에 대한 호출의 권한 부여 및 인증 지원은 다음 패키지에서 제공합니다.
+
+* [`Microsoft.Identity.Web`](https://www.nuget.org/packages/Microsoft.Identity.Web)
+* [`Microsoft.Identity.Web.UI`](https://www.nuget.org/packages/Microsoft.Identity.Web.UI)
+
+```xml
+<PackageReference Include="Microsoft.Identity.Web" Version="{VERSION}" />
+<PackageReference Include="Microsoft.Identity.Web.UI" Version="{VERSION}" />
+```
+
+자리 표시자 `{VERSION}`의 경우 앱의 공유 프레임워크 버전과 일치하는 안정적인 최신 버전의 패키지를 NuGet.org의 패키지 **버전 기록**에서 찾을 수 있습니다.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 ASP.NET Core Web API에 대한 호출의 인증 및 권한 부여 지원은 [`Microsoft.AspNetCore.Authentication.AzureAD.UI`](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.AzureAD.UI) 패키지에서 제공합니다.
 
@@ -148,7 +199,22 @@ ASP.NET Core Web API에 대한 호출의 인증 및 권한 부여 지원은 [`Mi
 
 자리 표시자 `{VERSION}`의 경우 애플리케이션의 공유 프레임워크 버전과 일치하는 안정적인 최신 버전의 패키지를 [NuGet.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.AzureAD.UI)의 패키지 **버전 기록**에서 찾을 수 있습니다.
 
+::: moniker-end
+
 ### <a name="authentication-service-support"></a>인증 서비스 지원
+
+::: moniker range=">= aspnetcore-5.0"
+
+`AddAuthentication` 메서드는 앱 내에서 인증 서비스를 설정하고 JWT 전달자 처리기를 기본 인증 메서드로 구성합니다. <xref:Microsoft.Identity.Web.MicrosoftIdentityWebApiAuthenticationBuilderExtensions.AddMicrosoftIdentityWebApi%2A> 메서드는 Microsoft Identity 플랫폼 v2.0을 사용하여 웹 API를 보호하도록 서비스를 구성합니다. 이 메서드에는 인증 옵션을 초기화하는 데 필요한 설정을 포함하는 앱 구성의 `AzureAd` 섹션이 필요합니다.
+
+```csharp
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 `AddAuthentication` 메서드는 앱 내에서 인증 서비스를 설정하고 JWT 전달자 처리기를 기본 인증 메서드로 구성합니다. <xref:Microsoft.AspNetCore.Authentication.AzureADAuthenticationBuilderExtensions.AddAzureADBearer%2A> 메서드는 JWT 전달자 처리기에서 Azure Active Directory에서 내보낸 토큰의 유효성을 검사하는 데 필요한 특정 매개 변수를 설정합니다.
 
@@ -156,6 +222,8 @@ ASP.NET Core Web API에 대한 호출의 인증 및 권한 부여 지원은 [`Mi
 services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
     .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
 ```
+
+::: moniker-end
 
 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication%2A> 및 <xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization%2A>은 다음을 수행합니다.
 
@@ -169,7 +237,7 @@ app.UseAuthorization();
 
 ### <a name="userno-locidentityname"></a>User.Identity.Name
 
-기본적으로 서버 앱 API는 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` 클레임 유형의 값을 사용하여 `User.Identity.Name`을 채웁니다(예: `2d64b3da-d9d5-42c6-9352-53d8df33d770@contoso.onmicrosoft.com`).
+기본적으로 *`Server`* 앱 API는 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` 클레임 유형의 값을 사용하여 `User.Identity.Name`을 채웁니다(예: `2d64b3da-d9d5-42c6-9352-53d8df33d770@contoso.onmicrosoft.com`).
 
 앱이 `name` 클레임 유형으로부터 값을 받도록 구성하려면 `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>의 <xref:Microsoft.IdentityModel.Tokens.TokenValidationParameters.NameClaimType?displayProperty=nameWithType>을 구성합니다.
 
@@ -186,6 +254,42 @@ services.Configure<JwtBearerOptions>(
 ```
 
 ### <a name="app-settings"></a>앱 설정
+
+::: moniker range=">= aspnetcore-5.0"
+
+`appsettings.json` 파일은 액세스 토큰의 유효성을 검사하는 데 사용되는 JWT 전달자 처리기를 구성하기 위한 옵션을 포함합니다.
+
+```json
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "Domain": "{DOMAIN}",
+    "TenantId": "{TENANT ID}",
+    "ClientId": "{SERVER API APP CLIENT ID}",
+    "CallbackPath": "/signin-oidc"
+  }
+}
+```
+
+예:
+
+```json
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "Domain": "contoso.onmicrosoft.com",
+    "TenantId": "e86c78e2-8bb4-4c41-aefd-918e0565a45e",
+    "ClientId": "41451fa7-82d9-4673-8fa5-69eff5a761fd",
+    "CallbackPath": "/signin-oidc"
+  }
+}
+```
+
+[!INCLUDE[](~/includes/blazor-security/azure-scope-5x.md)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 `appsettings.json` 파일은 액세스 토큰의 유효성을 검사하는 데 사용되는 JWT 전달자 처리기를 구성하기 위한 옵션을 포함합니다.
 
@@ -213,6 +317,8 @@ services.Configure<JwtBearerOptions>(
 }
 ```
 
+::: moniker-end
+
 ### <a name="weatherforecast-controller"></a>WeatherForecast 컨트롤러
 
 WeatherForecast 컨트롤러(*Controllers/WeatherForecastController.cs*)는 컨트롤러에 적용된 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성을 사용하여, 보호된 API를 노출합니다. 다음과 같은 사항을 이해하는 것이 **중요합니다**.
@@ -234,7 +340,7 @@ public class WeatherForecastController : ControllerBase
 }
 ```
 
-## <a name="client-app-configuration"></a>클라이언트 앱 구성
+## <a name="client-app-configuration"></a>*`Client`* 앱 구성
 
 ‘이 섹션은 솔루션의 **`Client`** 앱에 적용됩니다.’
 
@@ -325,7 +431,17 @@ builder.Services.AddMsalAuthentication(options =>
 });
 ```
 
-[!INCLUDE[](~/includes/blazor-security/azure-scope.md)]
+`AdditionalScopesToConsent`를 사용하여 추가 범위를 지정합니다.
+
+```csharp
+options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
+```
+
+::: moniker range="< aspnetcore-5.0"
+
+[!INCLUDE[](~/includes/blazor-security/azure-scope-3x.md)]
+
+::: moniker-end
 
 자세한 내용은 ‘추가 시나리오’ 문서의 다음 섹션을 참조하세요.
 

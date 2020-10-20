@@ -5,7 +5,7 @@ description: 인증 라이브러리를 사용하여 ASP.NET Core Blazor WebAssem
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/08/2020
+ms.date: 10/08/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: 795709853941f35b1645f72d6865fe1ebf935112
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: 03abaf0676860f50a3e4c1cba64039070910ff9d
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712365"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900880"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>인증 라이브러리를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
 
@@ -109,6 +109,8 @@ builder.Services.AddOidcAuthentication(options =>
 
 ## <a name="access-token-scopes"></a>액세스 토큰 범위
 
+Blazor WebAssembly 템플릿은 `openid` 및 `profile`의 기본 범위를 자동으로 구성합니다.
+
 Blazor WebAssembly 템플릿은 앱이 보안 API에 대한 액세스 토큰을 요청하도록 자동으로 구성하지 않습니다. 로그인 흐름의 일부로 액세스 토큰을 프로비저닝하려면 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>의 기본 토큰 범위에 해당 범위를 추가해야 합니다.
 
 ```csharp
@@ -119,7 +121,7 @@ builder.Services.AddOidcAuthentication(options =>
 });
 ```
 
-[!INCLUDE[](~/includes/blazor-security/azure-scope.md)]
+[!INCLUDE[](~/includes/blazor-security/azure-scope-3x.md)]
 
 자세한 내용은 ‘추가 시나리오’ 문서의 다음 섹션을 참조하세요.
 

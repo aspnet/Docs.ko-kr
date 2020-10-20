@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/logging-and-diagnostics
-ms.openlocfilehash: 9af2311dd1f42cce3547c8215af22d2613453510
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 523eec53d7d21723dcf136c4e5ce299533a78cc6
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91755196"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91901027"
 ---
 # <a name="log-creation-and-redirection"></a>로그 만들기 및 리디렉션
 
@@ -98,4 +98,4 @@ ASP.NET Core 모듈은 개선된 진단 로그를 제공하도록 구성할 수 
 > [!WARNING]
 > 배포에서 문제를 해결하는 데 필요한 시간보다 오래 디버그 로깅을 사용하도록 설정하지 **마세요**. 로그의 크기는 제한되지 않습니다. 디버그 로그를 사용하도록 설정한 대로 두면 사용 가능한 디스크 공간이 소진되어 서버 또는 앱 서비스가 크래시될 수 있습니다.
 
-`web.config` 파일에 있는 `aspNetCore` 요소의 예제는 [`web.config`를 사용한 구성](xref:host-and-deploy/iis/web-config#configuration-with-webconfig)을 참조하세요.
+`web.config` 파일에 있는 `aspNetCore` 요소의 예제는 [`web.config`를 사용한 ASP.NET Core 모듈 구성](xref:host-and-deploy/iis/web-config#configuration-of-aspnet-core-module-with-webconfig)을 참조하세요.

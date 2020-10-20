@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/blazor-server-ef-core
-ms.openlocfilehash: 36c0915649d9a25cf1b6b2d9ec69c3919aa7bc2c
-ms.sourcegitcommit: 6c82d78662332cd40d614019b9ed17c46e25be28
+ms.openlocfilehash: fc902cb5a82fda9fdbed09c40d66a846d9360f6a
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91424167"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900741"
 ---
 # <a name="aspnet-core-no-locblazor-server-with-entity-framework-core-efcore"></a>EFCore(Entity Framework Core)를 사용한 ASP.NET Core Blazor Server
 
@@ -99,7 +99,7 @@ EF Core에서는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 사용하여 
 
 종속성을 사용하여 새 <xref:Microsoft.EntityFrameworkCore.DbContext>를 만드는 권장 솔루션은 팩터리를 사용하는 것입니다. EF Core 5.0 이상에서는 새 컨텍스트를 만들기 위한 기본 제공 팩터리를 제공합니다.
 
-다음 예에서는 [SQLite](https://www.sqlite.org/index.html)를 구성하고 데이터 로깅을 사용하도록 설정합니다. 이 코드에서는 확장 메서드를 사용하여 DI용 데이터베이스 팩터리를 구성하고 기본 옵션을 제공합니다.
+다음 예에서는 [SQLite](https://www.sqlite.org/index.html)를 구성하고 데이터 로깅을 사용하도록 설정합니다. 이 코드에서는 [확장 메서드(`AddDbContextFactory`)](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Data/FactoryExtensions.cs)를 사용하여 DI용 데이터베이스 팩터리를 구성하고 기본 옵션을 제공합니다.
 
 [!code-csharp[](./common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Startup.cs?name=snippet1)]
 
