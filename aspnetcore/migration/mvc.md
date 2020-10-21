@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/mvc
-ms.openlocfilehash: d615f67fc5cb23499ee7e14b747390a7a1b5a693
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 51228e59284b5edf0554e9929b16deafe08ea31e
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865128"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326634"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC에서 ASP.NET Core MVC로 마이그레이션
 
@@ -38,7 +38,7 @@ ASP.NET MVC에서 마이그레이션하는 과정은 여러 단계로 진행 됩
 
 구성 및 코드 마이그레이션에 대 한 자세한 Identity 내용은 [ASP.NET Core 구성 마이그레이션](xref:migration/configuration) 및 [인증 및 Identity ASP.NET Core 마이그레이션](xref:migration/identity)을 참조 하세요.
 
-## <a name="prerequisites"></a>사전 준비 사항
+## <a name="prerequisites"></a>사전 요구 사항
 
 [!INCLUDE [prerequisites](../includes/net-core-prereqs-vs-3.1.md)]
 
@@ -57,7 +57,7 @@ ASP.NET MVC에서 마이그레이션하는 과정은 여러 단계로 진행 됩
 
 1. Visual Studio의 두 번째 인스턴스를 시작 합니다.
 1. **파일 메뉴**에서 **새로 만들기** > **프로젝트**를 선택합니다.
-1. **ASP.NET 웹 코어 웹 응용 프로그램** 을 선택 하 고 **다음**을 선택 합니다.
+1. **ASP.NET Core 웹 응용 프로그램**을 선택한 후, **다음**을 선택합니다.
 1. **새 프로젝트 구성** 대화 상자에서 프로젝트 이름을 *WebApp1*로 설정 합니다.
 1. 동일한 프로젝트 이름을 사용 하려면 위치를 이전 프로젝트가 아닌 다른 디렉터리로 설정 합니다. 동일한 네임 스페이스를 사용 하면 두 프로젝트 간에 코드를 쉽게 복사할 수 있습니다. **만들기**를 선택합니다.
 1. **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 3.1**이 선택되었는지 확인합니다. **웹 응용 프로그램 (모델-뷰-컨트롤러)** 프로젝트 템플릿을 선택 하 고 **만들기**를 선택 합니다.
@@ -109,7 +109,7 @@ ASP.NET Core *WebApp1* 프로젝트에는 ASP.NET MVC 프로젝트와 동일한 
 그러나 각 컨트롤러 끝점을 테스트할 수 있지만 레이아웃 및 스타일은 문서의 뒷부분에서 다룹니다.
 
 1. ASP.NET Core 앱을 실행 합니다.
-1. 현재 포트 번호를 ASP.NET Core 프로젝트에 사용 되는 포트 번호로 바꿔서 실행 중인 ASP.NET Core 앱의 브라우저에서 렌더링 된 뷰를 호출 합니다. 예: `https://localhost:44375/home/about`.
+1. 현재 포트 번호를 ASP.NET Core 프로젝트에 사용 되는 포트 번호로 바꿔서 실행 중인 ASP.NET Core 앱의 브라우저에서 렌더링 된 뷰를 호출 합니다. `https://localhost:44375/home/about`)을 입력합니다.
 
 ## <a name="migrate-static-content"></a>정적 콘텐츠 마이그레이션
 
@@ -372,7 +372,7 @@ JQuery 및 부트스트랩 JavaScript 포함에 대 한 대체 태그는 다음�
 
 ASP.NET Core 처리 되지 않은 예외를 HTTP 500 오류 응답으로 변환 합니다. 일반적으로 서버에 대 한 잠재적으로 중요 한 정보를 노출 하지 않도록 하기 위해 오류 정보는 이러한 응답에 포함 되지 않습니다. 자세한 내용은 [개발자 예외 페이지](xref:fundamentals/error-handling#developer-exception-page)를 참조 하세요.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:blazor/index>
 * <xref:mvc/views/tag-helpers/intro>
@@ -558,7 +558,7 @@ JQuery 및 부트스트랩 JavaScript 포함에 대 한 대체 태그는 다음�
 
 ASP.NET Core 처리 되지 않은 예외를 HTTP 500 오류 응답으로 변환 합니다. 일반적으로 서버에 대 한 잠재적으로 중요 한 정보를 노출 하지 않도록 하기 위해 오류 정보는 이러한 응답에 포함 되지 않습니다. 자세한 내용은 [개발자 예외 페이지](xref:fundamentals/error-handling#developer-exception-page)를 참조 하세요.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:blazor/index>
 * <xref:mvc/views/tag-helpers/intro>

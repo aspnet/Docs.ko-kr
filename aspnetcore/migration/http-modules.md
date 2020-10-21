@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: 213807634a2a6990e9025de7871295cf97a81faf
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 808215d103db9c5d63fe63b6875a222e6b0ba1fa
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865585"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326621"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>HTTP 처리기 및 모듈을 ASP.NET Core 미들웨어로 마이그레이션
 
@@ -356,7 +356,7 @@ public async Task Invoke(HttpContext context)
 
 **TransmitFile**
 
-파일을 처리 하는 방법은 [여기](../fundamentals/request-features.md#middleware-and-request-features)에 설명 되어 있습니다.
+파일을 처리 하는 방법은 [미들웨어 및 요청 기능](xref:fundamentals/request-features#middleware-and-request-features)에 설명 되어 있습니다.
 
 **HttpContext. 헤더**
 
@@ -393,7 +393,7 @@ public async Task Invoke(HttpContext httpContext)
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_SetCookies)]
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [HTTP 처리기 및 HTTP 모듈 개요](/iis/configuration/system.webserver/)
 * [Configuration](xref:fundamentals/configuration/index)
