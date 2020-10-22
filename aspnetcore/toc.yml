@@ -705,6 +705,9 @@
     - name: 로깅 및 진단
       displayName: signalr
       uid: signalr/diagnostics
+    - name: 문제 해결
+      displayName: signalr
+      uid: signalr/troubleshoot
     - name: 사양
       displayName: 'signalr, specs'
       items:
