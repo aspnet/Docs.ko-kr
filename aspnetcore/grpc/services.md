@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/services
-ms.openlocfilehash: 878792120d69bea9ca6f620a87a7e04da2ec1815
-ms.sourcegitcommit: 111b4e451da2e275fb074cde5d8a84b26a81937d
+ms.openlocfilehash: c4d37556a3345d275f45c537a40908c5966fe015
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89040842"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113623"
 ---
 # <a name="create-grpc-services-and-methods"></a>gRPC 서비스 및 메서드 만들기
 
@@ -87,7 +87,7 @@ public class HelloReply
 ```csharp
 public class GreeterService : GreeterBase
 {
-    public override Task<HelloReply> UnaryCall(HelloRequest request, ServerCallContext context)
+    public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
     {
         return Task.FromResult(new HelloRequest { Message = $"Hello {request.Name}" });
     }

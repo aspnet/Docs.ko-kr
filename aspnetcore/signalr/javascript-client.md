@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: 6fc586d144547585ef75d653bf54193def5c8b7f
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 6f611e56ec62ad7aea8a93e4761e1f67d0f76574
+ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606679"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379464"
 ---
 # <a name="aspnet-core-no-locsignalr-javascript-client"></a>SignalRJavaScript 클라이언트 ASP.NET Core
 
@@ -278,46 +278,6 @@ const connection = new signalR.HubConnectionBuilder()
 
 실제 구현에서는 지 수 백오프를 사용 하거나 지정 된 횟수 만큼 다시 시도 하 여 포기 합니다.
 
-## <a name="troubleshoot-websocket-handshake-errors"></a>WebSocket 핸드셰이크 오류 문제 해결
-
-이 섹션에서는 ASP.NET Core 허브에 대 한 연결을 설정 하려고 할 때 발생 하는 *"WebSocket 핸드셰이크 중 오류"* 예외에 대 한 도움말을 제공 합니다 SignalR .
-
-### <a name="response-code-400-or-503"></a>응답 코드 400 또는 503
-
-다음 오류의 경우:
-
-```log
-WebSocket connection to 'wss://xxx/HubName' failed: Error during WebSocket handshake: Unexpected response code: 400
-
-Error: Failed to start the connection: Error: There was an error with the transport.
-```
-
-이 오류는 일반적으로 클라이언트 전용 Websocket 전송을 사용 하지만 서버에서 Websocket 프로토콜을 사용 하도록 설정 하지 않은 경우에 발생 합니다.
-
-### <a name="response-code-307"></a>응답 코드 307
-
-```log
-WebSocket connection to 'ws://xxx/HubName' failed: Error during WebSocket handshake: Unexpected response code: 307
-```
-
-허브 서버에서 다음을 수행 하는 경우가 많습니다 SignalR .
-
-* HTTP와 HTTPS를 모두 수신 하 고 응답 합니다.
-* 는에서를 호출 하 여 HTTPS를 적용 `UseHttpsRedirection` `Startup` 하거나 URL 재작성 규칙을 통해 https를 적용 하도록 구성 됩니다.
-
-이 오류는를 사용 하 여 클라이언트 쪽에서 HTTP URL을 지정 하는 경우에 발생할 수 있습니다 `.withUrl("http://xxx/HubName")` . 이 경우의 해결 방법은 HTTPS URL을 사용 하도록 코드를 수정 하는 것입니다.
-
-### <a name="response-code-404"></a>응답 코드 404
-
-```log
-WebSocket connection to 'wss://xxx/HubName' failed: Error during WebSocket handshake: Unexpected response code: 404
-```
-
-응용 프로그램이 localhost에서 작동 하는 경우에는 IIS 서버에 게시 한 후에이 오류를 반환 합니다.
-
-* ASP.NET Core SignalR 앱이 IIS 하위 응용 프로그램으로 호스트 되는지 확인 합니다.
-* URL을 JavaScript 클라이언트 쪽의 하위 앱 pathbase로 설정 하지 마세요 SignalR `.withUrl("/SubAppName/HubName")` .
-
 ## <a name="additional-resources"></a>추가 리소스
 
 * [JavaScript API 참조](/javascript/api/?view=signalr-js-latest&preserve-view=true )
@@ -328,6 +288,7 @@ WebSocket connection to 'wss://xxx/HubName' failed: Error during WebSocket hands
 * [Azure에 게시](xref:signalr/publish-to-azure-web-app)
 * [원본 간 요청 (CORS)](xref:security/cors)
 * [Azure SignalR 서비스 서버 리스 설명서](/azure/azure-signalr/signalr-concept-serverless-development-config)
+* [연결 오류 문제 해결](xref:signalr/troubleshoot)
 
 ::: moniker-end
 

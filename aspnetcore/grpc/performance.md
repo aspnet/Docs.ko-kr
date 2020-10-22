@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/performance
-ms.openlocfilehash: 4d50698b8c55f7fb3ef9a2c3102e73e046a22a9c
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: b54d13bfd9207a7b8961c1c4fa9908d3d54a4270
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722847"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113857"
 ---
 # <a name="performance-best-practices-with-grpc"></a>gRPC 관련 성능 모범 사례
 
@@ -53,7 +53,7 @@ gRPC 클라이언트 팩터리는 중앙 집중식으로 채널을 구성하는 
 
 ## <a name="connection-concurrency"></a>연결 동시성
 
-일반적으로 HTTP/2 연결에는 하나의 연결에서 한 번에 사용 가능한 [최대 동시 스트림(활성 HTTP 요청)](https://http2.github.io/http2-spec/#rfc.section.5.1.2) 수에 한도가 있습니다. 기본적으로 대부분의 서버는 이 한도를 100개의 동시 스트림으로 설정합니다.
+일반적으로 HTTP/2 연결에는 하나의 연결에서 한 번에 사용 가능한 [최대 동시 스트림(활성 HTTP 요청)](https://httpwg.github.io/specs/rfc7540.html#rfc.section.5.1.2) 수에 한도가 있습니다. 기본적으로 대부분의 서버는 이 한도를 100개의 동시 스트림으로 설정합니다.
 
 gRPC 채널은 단일 HTTP/2 연결을 사용하고, 해당 연결에서 동시 호출이 멀티플렉싱됩니다. 활성 호출 수가 연결 스트림 한도에 도달하면 추가 호출은 클라이언트에서 큐에 대기합니다. 큐에 대기 중인 호출은 활성 호출이 완료될 때까지 대기한 후 전송됩니다. 부하가 높은 애플리케이션이나 장기 스트리밍 gRPC 호출에서는 이 한도로 인해 큐에 대기 중인 호출이 야기하는 성능 문제가 발생할 수 있습니다.
 

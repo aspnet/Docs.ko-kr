@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 212d8a80bdc466479c34bc5fbd9c3261ca9d54c4
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 9f67f8104eb5c21f244449ca3a4aaa96c750836d
+ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393914"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379475"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>자습서: ASP.NET Core를 사용하여 웹 API 만들기
 
@@ -520,7 +520,7 @@ Postman을 사용하여 할 일 항목을 삭제합니다.
 * 예를 들어 삭제할 개체의 URI를 `https://localhost:5001/api/TodoItems/1`로 설정합니다.
 * **보내기**를 선택합니다.
 
-<a name="over-post"></a>
+<a name="over-post-v5"></a>
 
 ## <a name="prevent-over-posting"></a>과도한 게시 방지
 
@@ -1008,6 +1008,7 @@ Postman을 사용하여 할 일 항목을 삭제합니다.
 * **보내기**를 선택합니다.
 
 <a name="over-post"></a>
+<a name="over-post-v3"></a>
 
 ## <a name="prevent-over-posting"></a>과도한 게시 방지
 
@@ -1389,7 +1390,7 @@ ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주�
   ![Postman 콘솔의 헤더 탭](first-web-api/_static/pmc2.png)
 
 * 메서드를 GET으로 설정합니다.
-\* URI를  `https://localhost:<port>/api/TodoItems/2`로 설정합니다. 예:  `https://localhost:5001/api/TodoItems/2`.
+* URI를 `https://localhost:<port>/api/TodoItems/2`으로 설정합니다. 예: `https://localhost:5001/api/TodoItems/2`.
 * **보내기**를 선택합니다.
 
 ## <a name="add-a-puttodoitem-method-21"></a>PutTodoItem 메서드 추가 2.1
