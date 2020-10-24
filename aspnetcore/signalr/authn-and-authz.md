@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 3a2ae5c7bc4853bad7b94af0d26ad5cd0358688f
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e16efa59a82d0f3cb1a2272ae0c07654ebec6a51
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628938"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491563"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-no-locsignalr"></a>ASP.NET Core의 인증 및 권한 부여 SignalR
 
@@ -99,8 +99,6 @@ Cookies는 브라우저 별로 액세스 토큰을 보낼 수 있지만 브라�
 
 클라이언트는를 사용 하는 대신 액세스 토큰을 제공할 수 있습니다 cookie . 서버는 토큰의 유효성을 검사하고 사용자를 확인하는 데 사용합니다. 이 유효성 검사는 연결이 설정 된 경우에만 수행 됩니다. 연결 수명이 지속 되는 동안 서버는 토큰 해지 검사를 위해 자동으로 유효성을 다시 검사 하지 않습니다.
 
-서버에서 [JWT 전달자 미들웨어](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer)를 사용하여 전달자 토큰 인증을 구성합니다.
-
 JavaScript 클라이언트에서 [accessTokenFactory](xref:signalr/configuration#configure-bearer-authentication) 옵션을 사용 하 여 토큰을 제공할 수 있습니다.
 
 [!code-typescript[Configure Access Token](authn-and-authz/sample/wwwroot/js/chat.ts?range=52-55)]
@@ -119,14 +117,60 @@ var connection = new HubConnectionBuilder()
 > [!NOTE]
 > 사용자가 제공 하는 액세스 토큰 함수는에서 수행 하는 **모든** HTTP 요청 전에 호출 됩니다 SignalR . 연결 중에 만료 될 수 있으므로 연결을 활성 상태로 유지 하기 위해 토큰을 갱신 해야 하는 경우이 함수 내에서이를 수행 하 고 업데이트 된 토큰을 반환 합니다.
 
-표준 웹 Api에서 전달자 토큰은 HTTP 헤더에 전송 됩니다. 그러나에서 SignalR 일부 전송을 사용할 때 브라우저에서 이러한 헤더를 설정할 수 없습니다. Websocket 및 서버에서 보낸 이벤트를 사용 하는 경우 토큰은 쿼리 문자열 매개 변수로 전송 됩니다. 서버에서이를 지원 하려면 추가 구성이 필요 합니다.
+표준 웹 Api에서 전달자 토큰은 HTTP 헤더에 전송 됩니다. 그러나에서 SignalR 일부 전송을 사용할 때 브라우저에서 이러한 헤더를 설정할 수 없습니다. Websocket 및 Server-Sent 이벤트를 사용 하는 경우 토큰은 쿼리 문자열 매개 변수로 전송 됩니다. 
+
+#### <a name="built-in-jwt-authentication"></a>기본 제공 JWT 인증
+
+서버에서 전달자 토큰 인증은 [JWT 전달자 미들웨어](xref:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions.AddJwtBearer%2A)를 사용 하 여 구성 됩니다.
 
 [!code-csharp[Configure Server to accept access token from Query String](authn-and-authz/sample/Startup.cs?name=snippet)]
 
 [!INCLUDE[request localized comments](~/includes/code-comments-loc.md)]
 
 > [!NOTE]
-> 쿼리 문자열은 브라우저 API 제한으로 인해 Websocket 및 서버에서 전송한 이벤트에 연결할 때 브라우저에서 사용 됩니다. HTTPS를 사용 하는 경우 쿼리 문자열 값은 TLS 연결을 통해 보안이 유지 됩니다. 그러나 많은 서버에서 쿼리 문자열 값을 기록 합니다. 자세한 내용은 [ASP.NET Core SignalR 의 보안 고려 사항 ](xref:signalr/security)을 참조 하세요. SignalR 는 헤더를 사용 하 여 토큰 (예: .NET 및 Java 클라이언트)을 지 원하는 환경에서 토큰을 전송 합니다.
+> 쿼리 문자열은 브라우저 API 제한으로 인해 Websocket 및 Server-Sent 이벤트를 사용 하 여 연결할 때 브라우저에서 사용 됩니다. HTTPS를 사용 하는 경우 쿼리 문자열 값은 TLS 연결을 통해 보안이 유지 됩니다. 그러나 많은 서버에서 쿼리 문자열 값을 기록 합니다. 자세한 내용은 [ASP.NET Core SignalR 의 보안 고려 사항 ](xref:signalr/security)을 참조 하세요. SignalR 는 헤더를 사용 하 여 토큰 (예: .NET 및 Java 클라이언트)을 지 원하는 환경에서 토큰을 전송 합니다.
+
+#### <a name="no-locidentity-server-jwt-authentication"></a>Identity 서버 JWT 인증
+
+서버를 사용 하는 경우 Identity <xref:Microsoft.Extensions.Options.PostConfigureOptions%601> 프로젝트에 서비스를 추가 합니다.
+
+```csharp
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
+public class ConfigureJwtBearerOptions : IPostConfigureOptions<JwtBearerOptions>
+{
+    public void PostConfigure(string name, JwtBearerOptions options)
+    {
+        var originalOnMessageReceived = options.Events.OnMessageReceived;
+        options.Events.OnMessageReceived = async context =>
+        {
+            await originalOnMessageReceived(context);
+                
+            if (string.IsNullOrEmpty(context.Token))
+            {
+                var accessToken = context.Request.Query["access_token"];
+                var path = context.HttpContext.Request.Path;
+                
+                if (!string.IsNullOrEmpty(accessToken) && 
+                    path.StartsWithSegments("/hubs"))
+                {
+                    context.Token = accessToken;
+                }
+            }
+        };
+    }
+}
+```
+
+`Startup.ConfigureServices`인증에 대 한 서비스 ( <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication%2A> ) 및 Identity 서버 ()의 인증 처리기를 추가한 후에 서비스를 등록 합니다 <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> .
+
+```csharp
+services.AddAuthentication()
+    .AddIdentityServerJwt();
+services.TryAddEnumerable(
+    ServiceDescriptor.Singleton<IPostConfigureOptions<JwtBearerOptions>, 
+        ConfigureJwtBearerOptions>());
+```
 
 ### <a name="no-loccookies-vs-bearer-tokens"></a>Cookies와 전달자 토큰 비교 
 
@@ -299,7 +343,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [ASP.NET Core에서 전달자 토큰 인증](https://blogs.msdn.microsoft.com/webdev/2016/10/27/bearer-token-authentication-in-asp-net-core/)
 * [리소스 기반 권한 부여](xref:security/authorization/resourcebased)
