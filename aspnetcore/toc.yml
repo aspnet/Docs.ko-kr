@@ -385,6 +385,8 @@
               uid: blazor/components/virtualization
             - name: 템플릿 기반 구성 요소
               uid: blazor/components/templated-components
+            - name: CSS 격리
+              uid: blazor/components/css-isolation
             - name: 구성 요소 통합
               uid: blazor/components/integrate-components-into-razor-pages-and-mvc-apps
             - name: 구성 요소 라이브러리
@@ -447,7 +449,7 @@
           uid: blazor/webassembly-lazy-load-assemblies
         - name: WebAssembly 성능
           uid: blazor/webassembly-performance-best-practices
-        - name: 테스트
+        - name: 테스트 구성 요소
           uid: blazor/test
         - name: 프로그레시브 웹 애플리케이션
           uid: blazor/progressive-web-app
