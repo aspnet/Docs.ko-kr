@@ -4,7 +4,7 @@ author: bradygaster
 description: 클라이언트와 서버 간에 데이터를 스트리밍하는 방법에 대해 알아봅니다.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 11/12/2019
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/streaming
-ms.openlocfilehash: 5a172818f8910a637b731dc1b1315965f448b2ba
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 732198cf07392bda008c9cc1c9768df2500852c0
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393576"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690636"
 ---
 # <a name="use-streaming-in-aspnet-core-no-locsignalr"></a>ASP.NET Core에서 스트리밍 사용 SignalR
 
@@ -322,7 +322,7 @@ hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [허브](xref:signalr/hubs)
 * [.NET 클라이언트](xref:signalr/dotnet-client)

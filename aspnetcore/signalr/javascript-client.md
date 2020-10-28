@@ -4,7 +4,7 @@ author: bradygaster
 description: SignalRJavaScript 클라이언트 ASP.NET Core 개요
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 04/08/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: 6f611e56ec62ad7aea8a93e4761e1f67d0f76574
-ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
+ms.openlocfilehash: be271272c952487fccc5136307c84fdf49391848
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379464"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690644"
 ---
 # <a name="aspnet-core-no-locsignalr-javascript-client"></a>SignalRJavaScript 클라이언트 ASP.NET Core
 
@@ -41,14 +41,14 @@ SignalRJavaScript 클라이언트 라이브러리는 [npm](https://www.npmjs.com
 
 ### <a name="install-with-npm"></a>Npm를 사용 하 여 설치
 
-Visual Studio의 경우 루트 폴더에 있는 동안 **패키지 관리자 콘솔** 에서 다음 명령을 실행 합니다. Visual Studio Code의 경우 **통합 터미널**에서 다음 명령을 실행 합니다.
+Visual Studio의 경우 루트 폴더에 있는 동안 **패키지 관리자 콘솔** 에서 다음 명령을 실행 합니다. Visual Studio Code의 경우 **통합 터미널** 에서 다음 명령을 실행 합니다.
 
 ```bash
 npm init -y
 npm install @microsoft/signalr
 ```
 
-npm 패키지 콘텐츠를 *node_modules \\ @microsoft\signalr\dist\browser * 폴더에 설치 합니다. *Wwwroot \\ lib* 폴더 아래에 *signalr* 라는 새 폴더를 만듭니다. *signalr.js* 파일을 *wwwroot\lib\signalr* 폴더에 복사 합니다.
+npm 패키지 콘텐츠를 *node_modules \\ @microsoft\signalr\dist\browser* 폴더에 설치 합니다. *Wwwroot \\ lib* 폴더 아래에 *signalr* 라는 새 폴더를 만듭니다. *signalr.js* 파일을 *wwwroot\lib\signalr* 폴더에 복사 합니다.
 
 SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. 예를 들면 다음과 같습니다.
 
@@ -306,14 +306,14 @@ SignalRJavaScript 클라이언트 라이브러리는 [npm](https://www.npmjs.com
 
 ### <a name="install-with-npm"></a>Npm를 사용 하 여 설치
 
-Visual Studio를 사용 하는 경우 루트 폴더에 있는 동안 **패키지 관리자 콘솔** 에서 다음 명령을 실행 합니다. Visual Studio Code의 경우 **통합 터미널**에서 다음 명령을 실행 합니다.
+Visual Studio를 사용 하는 경우 루트 폴더에 있는 동안 **패키지 관리자 콘솔** 에서 다음 명령을 실행 합니다. Visual Studio Code의 경우 **통합 터미널** 에서 다음 명령을 실행 합니다.
 
 ```bash
 npm init -y
 npm install @aspnet/signalr
 ```
 
-npm 패키지 콘텐츠를 *node_modules \\ @aspnet\signalr\dist\browser * 폴더에 설치 합니다. *Wwwroot \\ lib* 폴더 아래에 *signalr* 라는 새 폴더를 만듭니다. *signalr.js* 파일을 *wwwroot\lib\signalr* 폴더에 복사 합니다.
+npm 패키지 콘텐츠를 *node_modules \\ @aspnet\signalr\dist\browser* 폴더에 설치 합니다. *Wwwroot \\ lib* 폴더 아래에 *signalr* 라는 새 폴더를 만듭니다. *signalr.js* 파일을 *wwwroot\lib\signalr* 폴더에 복사 합니다.
 
 SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. 예를 들면 다음과 같습니다.
 

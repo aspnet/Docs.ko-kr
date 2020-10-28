@@ -4,7 +4,7 @@ author: bradygaster
 description: ASP.NET Core SignalR 지원 플랫폼에 대해 알아봅니다.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 01/16/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/supported-platforms
-ms.openlocfilehash: a342dd787eceadd22ac26b57a3615a6b0b21f461
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 761edbbe7bab28d2340207a0adea0718b37c7ec1
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754504"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690336"
 ---
 # <a name="aspnet-core-no-locsignalr-supported-platforms"></a>ASP.NET Core SignalR 지원 플랫폼
 
@@ -37,12 +37,12 @@ SignalR ASP.NET Core은 ASP.NET Core에서 지 원하는 모든 서버 플랫폼
 
 | 브라우저                          | 버전         |
 | -------------------------------- | --------------- |
-| IOS를 비롯 한 Apple Safari      | 현재&dagger; |
+| Apple Safari(iOS 포함)      | 현재&dagger; |
 | Google Chrome(Android 포함) | 현재&dagger; |
 | Microsoft Edge                   | 현재&dagger; |
 | Mozilla Firefox                  | 현재&dagger; |
 
-&dagger;*Current* 는 최신 버전의 브라우저를 나타냅니다.
+&dagger;‘현재’는 최신 버전의 브라우저를 나타냅니다.
 
 ## <a name="net-client"></a>.NET 클라이언트
 
