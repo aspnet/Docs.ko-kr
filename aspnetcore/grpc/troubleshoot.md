@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/troubleshoot
-ms.openlocfilehash: 2f2a41af544bc040bd20e15b057ad8fc7fb16cfe
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0c897c8c640f8713fc7d3b6cad0e6c571131d7a5
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633970"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113844"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>.NET Core에서 gRPC 문제 해결
 
@@ -86,7 +86,7 @@ var client = new Greet.GreeterClient(channel);
 
 ## <a name="call-insecure-grpc-services-with-net-core-client"></a>.NET Core 클라이언트를 사용하여 안전하지 않은 gRPC 서비스 호출
 
-.NET Core 클라이언트를 사용하여 안전하지 않은 gRPC 서비스를 호출하려면 추가 구성이 필요합니다. gRPC 클라이언트는 `System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport` 스위치를 `true`로 설정하고 서버 주소에 `http`를 사용해야 합니다.
+앱이 .NET Core 3.x를 사용하는 경우 .NET Core 클라이언트로 안전하지 않은 gRPC 서비스를 호출하려면 추가 구성이 필요합니다. gRPC 클라이언트는 `System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport` 스위치를 `true`로 설정하고 서버 주소에 `http`를 사용해야 합니다.
 
 ```csharp
 // This switch must be set before creating the GrpcChannel/HttpClient.
@@ -98,6 +98,8 @@ var channel = GrpcChannel.ForAddress("http://localhost:5000");
 var client = new Greet.GreeterClient(channel);
 ```
 
+.NET 5 앱에는 추가 구성이 필요하지 않지만 안전하지 않은 gRPC 서비스를 호출하려면 `Grpc.Net.Client` 버전 2.32.0 이상을 사용해야 합니다.
+
 ## <a name="unable-to-start-aspnet-core-grpc-app-on-macos"></a>macOS에서 ASP.NET Core gRPC 앱을 시작할 수 없음
 
 Kestrel은 macOS 및 이전 Windows 버전(예: Windows 7)에서 TLS를 사용하는 HTTP/2를 지원하지 않습니다. ASP.NET Core gRPC 템플릿과 샘플은 기본적으로 TLS를 사용합니다. gRPC 서버를 시작하려고 하면 다음과 같은 오류 메시지가 표시됩니다.
@@ -106,7 +108,7 @@ Kestrel은 macOS 및 이전 Windows 버전(예: Windows 7)에서 TLS를 사용�
 
 이 문제를 해결하려면 TLS ‘없이’ HTTP/2를 사용하도록 Kestrel 및 gRPC 클라이언트를 구성합니다. 이 작업은 개발 중에만 수행해야 합니다. TLS를 사용하지 않으면 gRPC 메시지가 암호화되지 않고 전송됩니다.
 
-Kestrel은 *Program.cs*에서 TLS 없이 HTTP/2 엔드포인트를 구성해야 합니다.
+Kestrel은 *Program.cs* 에서 TLS 없이 HTTP/2 엔드포인트를 구성해야 합니다.
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>

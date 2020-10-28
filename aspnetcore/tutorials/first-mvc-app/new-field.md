@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: a0c53755bd56b6c169437ca9f0ea915e46ad79ec
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 2a80a9c4848703802b15348a30f2564f9580a24b
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606749"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113883"
 ---
 # <a name="part-8-add-a-new-field-to-an-aspnet-core-mvc-app"></a>8부. ASP.NET Core MVC 앱에 새 필드 추가
 
@@ -40,7 +40,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 ## <a name="add-a-rating-property-to-the-movie-model"></a>영화 모델에 Rating 속성 추가
 
-*Models/Movie.cs*에 `Rating` 속성을 추가합니다.
+*Models/Movie.cs* 에 `Rating` 속성을 추가합니다.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/MovieDateRating.cs?highlight=13&name=snippet)]
 
@@ -62,7 +62,7 @@ dotnet build
 
 ------
 
-`Movie` 클래스에 새 필드를 추가했으므로 이 새 속성이 포함되도록 속성 바인딩 목록을 업데이트해야 합니다. *MoviesController.cs*에서 `Rating` 속성을 포함하도록 `Create` 및 `Edit` 작업 메서드에 대한 `[Bind]` 특성을 수정합니다.
+`Movie` 클래스에 새 필드를 추가했으므로 이 새 속성이 포함되도록 속성 바인딩 목록을 업데이트해야 합니다. *MoviesController.cs* 에서 `Rating` 속성을 포함하도록 `Create` 및 `Edit` 작업 메서드에 대한 `[Bind]` 특성을 수정합니다.
 
 ```csharp
 [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")]
@@ -74,7 +74,7 @@ dotnet build
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-64)]
 
-`Rating` 필드를 사용하여 */Views/Movies/Create.cshtml*을 수정합니다.
+`Rating` 필드를 사용하여 */Views/Movies/Create.cshtml* 을 수정합니다.
 
 # <a name="visual-studio--visual-studio-for-mac"></a>[Visual Studio / Visual Studio for Mac](#tab/visual-studio+visual-studio-mac)
 
@@ -112,7 +112,7 @@ dotnet build
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-**도구** 메뉴에서 **NuGet 패키지 관리자 > 패키지 관리자 콘솔**을 선택합니다.
+**도구** 메뉴에서 **NuGet 패키지 관리자 > 패키지 관리자 콘솔** 을 선택합니다.
 
   ![PMC 메뉴](adding-model/_static/pmc.png)
 
@@ -133,11 +133,16 @@ DB의 모든 레코드가 삭제되면 이니셜라이즈 메서드가 DB를 시
 
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-데이터베이스를 삭제하고 마이그레이션을 사용하여 데이터베이스를 다시 만듭니다. 데이터베이스를 삭제하려면 *MvcMovie.db* 데이터베이스 파일을 삭제합니다. 그런 다음, `ef database update` 명령을 실행합니다.
+데이터베이스와 이전 마이그레이션을 삭제하고 마이그레이션을 사용하여 데이터베이스를 다시 만듭니다.
 
 ```dotnetcli
+dotnet ef migrations remove
+dotnet ef database drop
+dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
+
+`dotnet ef migrations remove`는 마지막 마이그레이션을 제거합니다. 둘 이상의 마이그레이션이 있는 경우 마이그레이션 폴더를 삭제합니다.
 
 ---
 <!-- End of VS tabs -->

@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: d36140067ba6e75f2d00cb86ea488e40d28bd86f
-ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
+ms.openlocfilehash: 3bd881b124e00b91ab0aa9d3eb7531f10ef895f2
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762167"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326503"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor의 .NET 메서드에서 JavaScript 함수 호출
 
 작성자: [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27) 및 [Luke Latham](https://github.com/guardrex)
 
-Blazor 앱은 .NET 메서드에서 JavaScript 함수를 호출하고 JavaScript 함수에서 .NET 메서드를 호출할 수 있습니다. 이러한 시나리오를 *JavaScript 상호 운용성*(*JS interop*)이라고 합니다.
+Blazor 앱은 .NET 메서드에서 JavaScript 함수를 호출하고 JavaScript 함수에서 .NET 메서드를 호출할 수 있습니다. 이러한 시나리오를 *JavaScript 상호 운용성* ( *JS interop* )이라고 합니다.
 
 이 문서에서는 .NET에서 JavaScript 함수를 호출하는 방법을 설명합니다. JavaScript에서 .NET 메서드를 호출하는 방법에 대한 자세한 내용은 <xref:blazor/call-dotnet-from-javascript>를 참조하세요.
 
@@ -164,7 +164,10 @@ JavaScript 파일을 참조하는 `<script>` 태그를 `wwwroot/index.html` 파�
 
 ## <a name="call-a-void-javascript-function"></a>Void JavaScript 함수 호출
 
-[void(0)/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void) 또는 [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined)를 반환하는 JavaScript 함수는 <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType>를 사용하여 호출됩니다.
+다음에 <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType>을 사용합니다.
+
+* [void(0)/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void) 또는 [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined)를 반환하는 JavaScript 함수
+* .NET에서 JavaScript 호출 결과를 읽을 필요가 없는 경우
 
 ## <a name="detect-when-a-no-locblazor-server-app-is-prerendering"></a>Blazor Server 앱을 미리 렌더링 중인 경우 검색
  
@@ -192,7 +195,7 @@ JavaScript 파일을 참조하는 `<script>` 태그를 `wwwroot/index.html` 파�
 > [!WARNING]
 > 요소 참조만 사용하여 Blazor와 상호 작용하지 않는 빈 요소의 내용을 변경합니다. 이 시나리오는 타사 API가 요소에 콘텐츠를 제공하는 경우에 유용합니다. Blazor는 요소와 상호 작용하지 않으므로 요소의 Blazor 표시와 DOM 간에 충돌이 발생할 가능성이 없습니다.
 >
-> 다음 예제에서는 Blazor가 DOM과 상호 작용하여 이 요소의 목록 항목(`<li>`)을 채우기 때문에 순서가 지정되지 않은 목록(`ul`)의 콘텐츠를 변경하는 것은 *위험*합니다.
+> 다음 예제에서는 Blazor가 DOM과 상호 작용하여 이 요소의 목록 항목(`<li>`)을 채우기 때문에 순서가 지정되지 않은 목록(`ul`)의 콘텐츠를 변경하는 것은 *위험* 합니다.
 >
 > ```razor
 > <ul ref="MyList">
@@ -257,9 +260,7 @@ public static ValueTask<T> GenericMethod<T>(this ElementReference elementRef,
 
 ## <a name="reference-elements-across-components"></a>구성 요소 간 참조 요소
 
-<xref:Microsoft.AspNetCore.Components.ElementReference>는 구성 요소의 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> 메서드에서만 유효한 것으로 보장되며 요소 참조는 `struct`이므로 구성 요소 간에 요소 참조를 전달할 수 없습니다.
-
-부모 구성 요소는 다른 구성 요소에서 요소 참조를 사용할 수 있도록 하기 위해 다음을 수행할 수 있습니다.
+<xref:Microsoft.AspNetCore.Components.ElementReference> 인스턴스는 구성 요소의 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> 메서드에서만 유효한 것으로 보장되며 요소 참조는 `struct`이므로 구성 요소 간에 요소 참조를 전달할 수 없습니다. 부모 구성 요소는 다른 구성 요소에서 요소 참조를 사용할 수 있도록 하기 위해 다음을 수행할 수 있습니다.
 
 * 자식 구성 요소가 콜백을 등록할 수 있도록 허용합니다.
 * 전달된 요소 참조를 사용하여 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> 이벤트 중에 등록된 콜백을 호출합니다. 간접적으로 이 방법을 사용하면 자식 구성 요소가 부모의 요소 참조와 상호 작용할 수 있습니다.
@@ -665,8 +666,33 @@ export function setMapCenter(map, latitude, longitude) {
 
 ::: moniker-end
 
+## <a name="size-limits-on-js-interop-calls"></a>JS Interop 호출의 크기 제한
+
+Blazor WebAssembly에서 프레임워크는 JS interop 호출의 입력 및 출력 크기에 제한을 두지 않습니다.
+
+Blazor Server에서 JS Interop 호출 결과는 SignalR(<xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize>)에 의해 적용된 최대 페이로드 크기로 제한되며 기본값은 32KB입니다. 페이로드가 <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize> 보다 큰 JS interop 호출에 응답을 시도하는 애플리케이션은 오류를 throw합니다. <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize>를 수정하여 제한을 더 크게 구성할 수 있습니다. 다음 예는 최대 수신 메시지 크기를 64KB(64 * 1024 * 1024)로 설정합니다.
+
+```csharp
+services.AddServerSideBlazor()
+   .AddHubOptions(options => options.MaximumReceiveMessageSize = 64 * 1024 * 1024);
+```
+
+SignalR 제한을 늘리면 더 많은 서버 리소스를 사용해야 하며 이로 인해 서버가 악성 사용자에게 노출될 위험이 더 커집니다. 또한, 메모리에 대용량의 콘텐츠를 문자열 또는 바이트 배열로 읽어오면 할당이 가비지 수집기에서 제대로 작동하지 않아서 추가적인 성능 손실로 이어질 수도 있습니다. 대용량의 페이로드를 읽어오는 옵션 중 하나는 콘텐츠를 작은 덩어리로 전송하고 페이로드를 <xref:System.IO.Stream>으로 처리하는 것입니다. 이 옵션은 큰 JSON 페이로드를 읽어오거나 데이터를 JavaScript에서 원시 바이트로 사용할 수 있는 경우에 사용 가능합니다. `InputFile` 구성 요소와 유사한 기법을 사용하는 Blazor Server에서 대용량 이진 페이로드 전송을 보여주는 사례는 [이진 제출 샘플 앱](https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor/BinarySubmit)을 참조하세요.
+
+JavaScript와 Blazor 간에 대용량 데이터를 전송하는 코드를 개발하는 경우 다음 지침을 확인합니다.
+
+* 데이터를 작은 조각으로 분할하고, 서버가 모든 데이터를 받을 때까지 데이터 세그먼트를 순차적으로 보냅니다.
+* JavaScript 및 C# 코드에서 큰 개체를 할당하면 안 됩니다.
+* 데이터를 보내거나 받을 때 주 UI 스레드를 장기간 차단하면 안 됩니다.
+* 프로세스가 완료되거나 취소되면 사용된 메모리를 해제합니다.
+* 보안을 위해 다음과 같은 추가 요구 사항을 적용합니다.
+  * 전달할 수 있는 최대 파일 또는 데이터 크기를 선언합니다.
+  * 클라이언트에서 서버로의 최소 업로드 속도를 선언합니다.
+* 서버가 데이터를 받은 후에 데이터를 다음과 같이 처리할 수 있습니다.
+  * 모든 세그먼트가 수집될 때까지 메모리 버퍼에 임시로 저장합니다.
+  * 즉시 사용합니다. 예를 들어 각 세그먼트가 수신됨에 따라 데이터를 즉시 데이터베이스에 저장하거나 디스크에 쓸 수 있습니다.
+
 ## <a name="additional-resources"></a>추가 자료
 
 * <xref:blazor/call-dotnet-from-javascript>
 * [InteropComponent.razor 예제(dotnet/AspNetCore GitHub 리포지토리, 3.1 릴리스 분기)](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)
-* [Blazor Server 앱에서 대량 데이터 전송 수행](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)

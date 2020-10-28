@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 791cc14feac30ad8a571d155624ab821dfd77981
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 6f94323873937d1428d6cfa1b0ef15e44611fd47
+ms.sourcegitcommit: b3ec60f7682e43211c2b40c60eab3d4e45a48ab1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722860"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92153641"
 ---
 # <a name="docker-images-for-aspnet-core"></a>ASP.NET Core의 Docker 이미지
 
@@ -85,7 +85,7 @@ ms.locfileid: "90722860"
 
 ## <a name="run-the-app-locally"></a>로컬에서 앱 실행
 
-* *dotnet-docker/samples/aspnetapp/aspnetapp*에 있는 프로젝트 폴더로 이동합니다.
+* *dotnet-docker/samples/aspnetapp/aspnetapp* 에 있는 프로젝트 폴더로 이동합니다.
 
 * 다음 명령을 실행하여 앱을 로컬로 빌드 및 실행합니다.
 
@@ -99,9 +99,9 @@ ms.locfileid: "90722860"
 
 ## <a name="run-in-a-linux-container"></a>Linux 컨테이너에서 실행
 
-* Docker 클라이언트에서 Linux 컨테이너로 전환합니다.
+* Docker 클라이언트에서 [Linux 컨테이너로 전환](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)합니다.
 
-* *dotnet-docker/samples/aspnetapp*에 있는 Dockerfile 폴더로 이동합니다.
+* *dotnet-docker/samples/aspnetapp* 에 있는 Dockerfile 폴더로 이동합니다.
 
 * 다음 명령을 실행하여 Docker에서 샘플을 빌드 및 실행합니다.
 
@@ -125,7 +125,7 @@ ms.locfileid: "90722860"
 
 ## <a name="run-in-a-windows-container"></a>Windows 컨테이너에서 실행
 
-* Docker 클라이언트에서 Windows 컨테이너로 전환합니다.
+* Docker 클라이언트에서 [Windows 컨테이너로 전환](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)합니다.
 
 `dotnet-docker/samples/aspnetapp`에 있는 Docker 파일 폴더로 이동합니다.
 
@@ -157,7 +157,7 @@ ms.locfileid: "90722860"
 
 일부 시나리오에서는 런타임에 필요한 애플리케이션 파일을 컨테이너에 복사하여 앱을 컨테이너에 배포할 수 있습니다. 이 섹션에서는 수동으로 배포하는 방법을 보여 줍니다.
 
-* *dotnet-docker/samples/aspnetapp/aspnetapp*에 있는 프로젝트 폴더로 이동합니다.
+* *dotnet-docker/samples/aspnetapp/aspnetapp* 에 있는 프로젝트 폴더로 이동합니다.
 
 * [dotnet publish](/dotnet/core/tools/dotnet-publish) 명령을 실행합니다.
 
@@ -198,7 +198,7 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 
 ### <a name="the-dockerfile"></a>Dockerfile
 
-이전에 실행한 `docker build` 명령에서 사용되는 *Dockerfile*은 다음과 같습니다.  이 섹션에서 빌드 및 배포하기 위해 사용한 것과 동일한 방식으로 `dotnet publish`를 사용합니다.  
+이전에 실행한 `docker build` 명령에서 사용되는 *Dockerfile* 은 다음과 같습니다.  이 섹션에서 빌드 및 배포하기 위해 사용한 것과 동일한 방식으로 `dotnet publish`를 사용합니다.  
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
@@ -233,7 +233,7 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 
 ### <a name="the-dockerfile"></a>Dockerfile
 
-이전에 실행한 `docker build` 명령에서 사용되는 *Dockerfile*은 다음과 같습니다.  이 섹션에서 빌드 및 배포하기 위해 사용한 것과 동일한 방식으로 `dotnet publish`를 사용합니다.  
+이전에 실행한 `docker build` 명령에서 사용되는 *Dockerfile* 은 다음과 같습니다.  이 섹션에서 빌드 및 배포하기 위해 사용한 것과 동일한 방식으로 `dotnet publish`를 사용합니다.  
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build

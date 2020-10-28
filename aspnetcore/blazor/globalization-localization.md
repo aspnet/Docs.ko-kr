@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 2b8820acba564bdfb85f8338ed5482573960fbb4
-ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
+ms.openlocfilehash: 4345dd8525c2e72aaddc8e45a4fd4d9bfdd63040
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90080279"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326525"
 ---
 # <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>ASP.NET Core Blazor 세계화 및 지역화
 
@@ -37,7 +37,7 @@ ms.locfileid: "90080279"
 다음과 같은 제한된 ASP.NET Core의 지역화 시나리오가 현재 지원됩니다.
 
 * <xref:Microsoft.Extensions.Localization.IStringLocalizer> 및 <xref:Microsoft.Extensions.Localization.IStringLocalizer%601>는 Blazor 앱에서 지원됩니다.
-* <xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>, <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer> 및 데이터 주석 지역화는 ASP.NET Core MVC 시나리오로, Blazor 앱에서 **지원되지 않습니다**.
+* <xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>, <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer> 및 데이터 주석 지역화는 ASP.NET Core MVC 시나리오로, Blazor 앱에서 **지원되지 않습니다** .
 
 자세한 내용은 <xref:fundamentals/localization>를 참조하세요.
 
@@ -76,7 +76,28 @@ Blazor WebAssembly 앱은 사용자의 [언어 기본 설정](https://developer.
 
 ::: moniker range=">= aspnetcore-5.0"
 
-기본적으로 Blazor WebAssembly는 날짜 및 통화와 같은 값을 사용자의 문화권에 표시하는 데 필요한 세계화 리소스를 전달합니다. 앱에 지역화가 필요하지 않은 경우 `en-US` 문화권을 기반으로 하는 고정 문화권을 지원하도록 앱을 구성할 수 있습니다.
+기본적으로 Blazor WebAssembly는 날짜 및 통화와 같은 값을 사용자의 문화권에 표시하는 데 필요한 최소한의 세계화 리소스를 전달합니다. 문화권 변경을 동적으로 지원해야 하는 애플리케이션은 프로젝트 파일에서 `BlazorWebAssemblyLoadAllGlobalizationData`를 구성해야 합니다.
+
+```xml
+<PropertyGroup>
+  <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+</PropertyGroup>
+```
+
+Blazor WebAssembly는 `Blazor.start`에 전달된 옵션을 사용하여 특정 애플리케이션 문화권으로 실행하도록 구성할 수도 있습니다. 예를 들어 아래 샘플은 `en-GB` 문화권으로 실행하도록 구성된 앱을 보여줍니다.
+
+```html
+<script src="_framework/blazor.webassembly.js" autostart="false"></script>
+<script>
+  Blazor.start({
+    applicationCulture: 'en-GB'
+  });
+</script>
+```
+
+`applicationCulture`의 값은 [BCP-47 언어 태그 형식](https://tools.ietf.org/html/bcp47)을 준수해야 합니다.
+
+앱에 지역화가 필요하지 않은 경우 `en-US` 문화권을 기반으로 하는 고정 문화권을 지원하도록 앱을 구성할 수 있습니다.
 
 ```xml
 <PropertyGroup>
@@ -146,7 +167,7 @@ cookie를 사용하면 WebSocket 연결이 문화권을 올바르게 전파할 �
 
 #### <a name="provide-ui-to-choose-the-culture"></a>문화권을 선택하기 위한 UI 제공
 
-사용자가 문화권을 선택하기 위한 UI를 제공하려면 *리디렉션 기반 접근 방식*이 권장됩니다. 이 프로세스는 사용자가 보안 리소스에 액세스하려고 할 때 웹앱에서 발생하는 작업과 비슷합니다. 즉, 사용자는 로그인 페이지로 리디렉션되고 다시 원래 리소스로 리디렉션됩니다. 
+사용자가 문화권을 선택하기 위한 UI를 제공하려면 *리디렉션 기반 접근 방식* 이 권장됩니다. 이 프로세스는 사용자가 보안 리소스에 액세스하려고 할 때 웹앱에서 발생하는 작업과 비슷합니다. 즉, 사용자는 로그인 페이지로 리디렉션되고 다시 원래 리소스로 리디렉션됩니다. 
 
 앱은 컨트롤러에 대한 리디렉션을 통해 사용자가 선택한 문화권을 유지합니다. 컨트롤러는 사용자가 선택한 문화권을 cookie로 설정하고 사용자를 원래 URI로 다시 리디렉션합니다.
 

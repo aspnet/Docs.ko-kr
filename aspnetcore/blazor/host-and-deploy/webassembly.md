@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 63954bd2fbb8fdb2e347d552a10adc52263c3ad6
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: c3f537ff3b55f295db478cb097bc99023cc71a87
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900715"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326506"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core 호스트 및 배포 Blazor WebAssembly
 
@@ -124,7 +124,7 @@ IIS 서버에 배포하는 경우 앱의 게시된 `web.config` 파일과 함께
 
 ‘호스트된 배포’는 웹 서버에서 실행되는 [ASP.NET Core 앱](xref:index)에서 Blazor WebAssembly 앱을 브라우저에 제공하지 않습니다.
 
-클라이언트 Blazor WebAssembly 앱이 서버 앱의 `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` 폴더에 서버 앱의 다른 정적 웹 자산과 함께 게시됩니다. 두 앱이 함께 배포됩니다. ASP.NET Core 앱을 호스트할 수 있는 웹 서버가 필요합니다. 호스트된 배포의 경우 Visual Studio는 **`Hosted`** (`dotnet new` 명령을 사용하는 경우 `-ho|--hosted`) 옵션이 선택된 **Blazor WebAssembly 앱** 프로젝트 템플릿([`dotnet new`](/dotnet/core/tools/dotnet-new) 명령을 사용하는 경우 `blazorwasm` 템플릿)을 포함합니다.
+클라이언트 Blazor WebAssembly 앱이 서버 앱의 `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` 폴더에 서버 앱의 다른 정적 웹 자산과 함께 게시됩니다. 두 앱이 함께 배포됩니다. ASP.NET Core 앱을 호스트할 수 있는 웹 서버가 필요합니다. 호스트된 배포의 경우 Visual Studio는 **`Hosted`** (`dotnet new` 명령을 사용하는 경우 `-ho|--hosted`) 옵션이 선택된 **Blazor WebAssembly 앱** 프로젝트 템플릿( [`dotnet new`](/dotnet/core/tools/dotnet-new) 명령을 사용하는 경우 `blazorwasm` 템플릿)을 포함합니다.
 
 ASP.NET Core 앱 호스팅 및 배포에 대한 자세한 내용은 <xref:host-and-deploy/index>를 참조하세요.
 
@@ -336,7 +336,7 @@ Azure App Service 배포에 대한 자세한 내용은 <xref:tutorials/publish-t
 ```
 
 > [!WARNING]
-> 이미지를 소유하고 있지 않다면 차량 이미지를 공개적으로 게시하지 **마세요**. 게시할 경우 저작권 침해의 위험이 있습니다.
+> 이미지를 소유하고 있지 않다면 차량 이미지를 공개적으로 게시하지 **마세요** . 게시할 경우 저작권 침해의 위험이 있습니다.
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -450,18 +450,24 @@ Blazor 프로젝트가 게시되면 다음 IIS 구성을 사용하여 `web.confi
   
 #### <a name="use-a-custom-webconfig"></a>사용자 지정 web.config 사용
 
-사용자 지정 `web.config` 파일을 사용하려면 사용자 지정 `web.config` 파일을 프로젝트 폴더의 루트에 배치하고 프로젝트를 게시합니다.
+사용자 지정 `web.config` 파일을 사용하려면 사용자 지정 `web.config` 파일을 프로젝트 폴더의 루트에 배치합니다. 앱의 프로젝트 파일에서 `PublishIISAssets`를 사용하여 IIS 관련 자산을 게시하고 프로젝트를 게시하도록 프로젝트를 구성합니다.
+
+```xml
+<PropertyGroup>
+  <PublishIISAssets>true</PublishIISAssets>
+</PropertyGroup>
+```
 
 #### <a name="install-the-url-rewrite-module"></a>URL 재작성 모듈 설치
 
 URL을 다시 생성하려면 [URL 다시 생성 모듈](https://www.iis.net/downloads/microsoft/url-rewrite)이 필요합니다. 이 모듈은 기본적으로 설치되지 않으며 웹 서버(IIS) 역할 서비스 기능으로 설치하는 데 사용할 수 없습니다. 이 모듈은 IIS 웹 사이트에서 다운로드해야 합니다. 웹 플랫폼 설치 관리자를 사용하여 이 모듈을 설치합니다.
 
-1. 로컬에서 [URL 다시 생성 모듈 다운로드 페이지](https://www.iis.net/downloads/microsoft/url-rewrite#additionalDownloads)로 이동합니다. 영어 버전의 경우 **WebPI**를 선택하여 WebPI 설치 관리자를 다운로드합니다. 다른 언어의 경우 서버에 맞는 아키텍처(x86 x64)를 선택하여 설치 관리자를 다운로드합니다.
+1. 로컬에서 [URL 다시 생성 모듈 다운로드 페이지](https://www.iis.net/downloads/microsoft/url-rewrite#additionalDownloads)로 이동합니다. 영어 버전의 경우 **WebPI** 를 선택하여 WebPI 설치 관리자를 다운로드합니다. 다른 언어의 경우 서버에 맞는 아키텍처(x86 x64)를 선택하여 설치 관리자를 다운로드합니다.
 1. 설치 관리자를 서버에 복사합니다. 설치 관리자를 실행합니다. **설치** 버튼을 선택하고 사용 조건에 동의합니다. 설치가 완료된 후 서버를 다시 시작하지 않아도 됩니다.
 
 #### <a name="configure-the-website"></a>웹 사이트 구성
 
-웹 사이트의 **실제 경로**를 앱의 폴더로 설정합니다. 이 폴더는 다음을 포함합니다.
+웹 사이트의 **실제 경로** 를 앱의 폴더로 설정합니다. 이 폴더는 다음을 포함합니다.
 
 * 필요한 리디렉션 규칙 및 파일 콘텐츠 형식 등 IIS가 웹 사이트를 구성하기 위해 사용하는 `web.config` 파일
 * 앱의 정적 자산 폴더입니다.
@@ -514,8 +520,8 @@ IIS 배포 문제 해결에 대한 자세한 내용은 <xref:test/troubleshoot-a
 
 스토리지 계정에서 정적 웹 사이트 호스팅을 위해 BLOB 서비스를 사용할 수 있는 경우:
 
-* **인덱스 문서 이름**을 `index.html`로 설정합니다.
-* **오류 문서 경로**를 `index.html`로 설정합니다. Razor 구성 요소 및 기타 파일이 아닌 엔드포인트는 Blob 서비스에 의해 저장된 정적 콘텐츠의 실제 경로에 존재하지 않습니다. 이러한 리소스 중 하나를 Blazor 라우터가 처리해야 한다는 요청이 수신되면 BLOB 서비스에 의해 생성된 *404 - 찾을 수 없음* 오류가 요청을 **오류 문서 경로**로 라우팅합니다. `index.html` BLOB이 반환되고 Blazor 라우터가 로드되어 경로를 처리합니다.
+* **인덱스 문서 이름** 을 `index.html`로 설정합니다.
+* **오류 문서 경로** 를 `index.html`로 설정합니다. Razor 구성 요소 및 기타 파일이 아닌 엔드포인트는 Blob 서비스에 의해 저장된 정적 콘텐츠의 실제 경로에 존재하지 않습니다. 이러한 리소스 중 하나를 Blazor 라우터가 처리해야 한다는 요청이 수신되면 BLOB 서비스에 의해 생성된 *404 - 찾을 수 없음* 오류가 요청을 **오류 문서 경로** 로 라우팅합니다. `index.html` BLOB이 반환되고 Blazor 라우터가 로드되어 경로를 처리합니다.
 
 파일의 `Content-Type` 헤더에 부적절한 MIME 형식으로 인해 런타임에 파일이 로드되지 않을 경우 다음 작업 중 하나를 수행합니다.
 
@@ -524,8 +530,8 @@ IIS 배포 문제 해결에 대한 자세한 내용은 <xref:test/troubleshoot-a
 
   각 파일의 스토리지 탐색기(Azure Portal)에서
   
-  1. 파일을 마우스 오른쪽 단추로 클릭한 다음 **속성**을 선택합니다.
-  1. **ContentType**을 설정하고 **저장** 단추를 선택합니다.
+  1. 파일을 마우스 오른쪽 단추로 클릭한 다음 **속성** 을 선택합니다.
+  1. **ContentType** 을 설정하고 **저장** 단추를 선택합니다.
 
 자세한 내용은 [Azure Storage에서 정적 웹 사이트 호스팅](/azure/storage/blobs/storage-blob-static-website)을 참조하세요.
 
@@ -659,7 +665,7 @@ URL 다시 쓰기를 처리하려면 `index.html` 페이지로 요청 리디렉�
   "commandLineArgs": "--contentroot=/content-root-path"
   ```
 
-* Visual Studio의 **속성** > **디버그** > **애플리케이션 인수**에서 인수를 지정합니다. Visual Studio 속성 페이지에서 인수를 설정하면 해당 인수가 `launchSettings.json` 파일에 추가됩니다.
+* Visual Studio의 **속성** > **디버그** > **애플리케이션 인수** 에서 인수를 지정합니다. Visual Studio 속성 페이지에서 인수를 설정하면 해당 인수가 `launchSettings.json` 파일에 추가됩니다.
 
   ```console
   --contentroot=/content-root-path
@@ -684,7 +690,7 @@ URL 다시 쓰기를 처리하려면 `index.html` 페이지로 요청 리디렉�
   "commandLineArgs": "--pathbase=/relative-URL-path"
   ```
 
-* Visual Studio의 **속성** > **디버그** > **애플리케이션 인수**에서 인수를 지정합니다. Visual Studio 속성 페이지에서 인수를 설정하면 해당 인수가 `launchSettings.json` 파일에 추가됩니다.
+* Visual Studio의 **속성** > **디버그** > **애플리케이션 인수** 에서 인수를 지정합니다. Visual Studio 속성 페이지에서 인수를 설정하면 해당 인수가 `launchSettings.json` 파일에 추가됩니다.
 
   ```console
   --pathbase=/relative-URL-path
@@ -706,7 +712,7 @@ URL 다시 쓰기를 처리하려면 `index.html` 페이지로 요청 리디렉�
   "commandLineArgs": "--urls=http://127.0.0.1:0"
   ```
 
-* Visual Studio의 **속성** > **디버그** > **애플리케이션 인수**에서 인수를 지정합니다. Visual Studio 속성 페이지에서 인수를 설정하면 해당 인수가 `launchSettings.json` 파일에 추가됩니다.
+* Visual Studio의 **속성** > **디버그** > **애플리케이션 인수** 에서 인수를 지정합니다. Visual Studio 속성 페이지에서 인수를 설정하면 해당 인수가 `launchSettings.json` 파일에 추가됩니다.
 
   ```console
   --urls=http://127.0.0.1:0
@@ -900,8 +906,8 @@ Failed to find a valid digest in the 'integrity' attribute for resource 'https:/
 
  1. 오류 메시지를 읽어서 어떤 파일이 오류를 트리거하는지 확인합니다.
  1. 브라우저의 개발자 도구를 열고 ‘네트워크’ 탭을 확인합니다. 필요한 경우 페이지를 다시 로드하여 요청 및 응답 목록을 확인합니다. 해당 목록에서 오류를 트리거하는 파일을 찾습니다.
- 1. 응답의 HTTP 상태 코드를 확인합니다. 서버가 *200 - OK*(또는 또 다른 2xx 상태 코드) 이외의 값을 반환하면 진단해야 하는 서버 쪽 문제가 있는 것입니다. 예를 들어 상태 코드 403은 권한 부여 문제가 있음을 의미하는 반면, 상태 코드 500은 서버가 지정되지 않은 방식으로 실패함을 의미합니다. 서버 쪽 로그를 참조하여 앱을 진단하고 수정합니다.
- 1. 리소스에 대한 상태 코드가 *200-OK*인 경우 브라우저 개발자 도구에서 응답 콘텐츠를 확인하고 콘텐츠가 예상 데이터와 일치하는지 확인합니다. 예를 들어 일반적인 문제는 요청이 다른 파일에 대해서도 `index.html` 데이터를 반환하도록 라우팅을 잘못 구성하는 것입니다. `.wasm` 요청에 대한 응답이 WebAssembly 이진 파일이고 `.dll` 요청에 대한 응답이 .NET 어셈블리 이진 파일인지 확인합니다. 그렇지 않으면 진단해야 할 서버 쪽 라우팅 문제가 있는 것입니다.
+ 1. 응답의 HTTP 상태 코드를 확인합니다. 서버가 *200 - OK* (또는 또 다른 2xx 상태 코드) 이외의 값을 반환하면 진단해야 하는 서버 쪽 문제가 있는 것입니다. 예를 들어 상태 코드 403은 권한 부여 문제가 있음을 의미하는 반면, 상태 코드 500은 서버가 지정되지 않은 방식으로 실패함을 의미합니다. 서버 쪽 로그를 참조하여 앱을 진단하고 수정합니다.
+ 1. 리소스에 대한 상태 코드가 *200-OK* 인 경우 브라우저 개발자 도구에서 응답 콘텐츠를 확인하고 콘텐츠가 예상 데이터와 일치하는지 확인합니다. 예를 들어 일반적인 문제는 요청이 다른 파일에 대해서도 `index.html` 데이터를 반환하도록 라우팅을 잘못 구성하는 것입니다. `.wasm` 요청에 대한 응답이 WebAssembly 이진 파일이고 `.dll` 요청에 대한 응답이 .NET 어셈블리 이진 파일인지 확인합니다. 그렇지 않으면 진단해야 할 서버 쪽 라우팅 문제가 있는 것입니다.
 
 서버가 올바른 것 같은 데이터를 반환하고 있는지 확인하는 경우 파일의 빌드와 제공 사이에 콘텐츠를 수정하는 다른 항목이 있어야 합니다. 이를 조사하려면:
 

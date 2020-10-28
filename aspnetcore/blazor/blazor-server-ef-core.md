@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/blazor-server-ef-core
-ms.openlocfilehash: fc902cb5a82fda9fdbed09c40d66a846d9360f6a
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: ac84b9d2fac4fe3df48d356eea3ea48fd23bfda4
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900741"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113636"
 ---
 # <a name="aspnet-core-no-locblazor-server-with-entity-framework-core-efcore"></a>EFCore(Entity Framework Core)를 사용한 ASP.NET Core Blazor Server
 
@@ -55,9 +55,9 @@ Blazor Server는 상태 저장 앱 프레임워크입니다. 앱은 서버에 �
 
 EF Core에서는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 사용하여 [데이터베이스 액세스를 구성](/ef/core/miscellaneous/configuring-dbcontext)하고 [‘작업 단위’](https://martinfowler.com/eaaCatalog/unitOfWork.html) 역할을 합니다. EF Core는 컨텍스트를 기본적으로 ‘범위가 지정된’ 서비스로 등록하는 ASP.NET Core 앱에 대한 <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> 확장을 제공합니다. Blazor Server 앱에서는 사용자 회로 내의 구성 요소 간에 인스턴스가 공유되므로 범위가 지정된 서비스 등록을 사용할 경우 문제가 될 수 있습니다. <xref:Microsoft.EntityFrameworkCore.DbContext>는 스레드로부터 안전하지 않고 동시 사용을 위해 설계되지 않았습니다. 기존 수명은 다음과 같은 이유로 적합하지 않습니다.
 
-* **Singleton**은 앱의 모든 사용자에 대한 상태를 공유하고 부적절한 동시 사용을 초래합니다.
-* **범위 지정**(기본값)은 동일한 사용자에 대한 구성 요소 간에 유사한 문제를 초래합니다.
-* **임시**는 요청별로 새 인스턴스를 생성하지만 구성 요소가 오래 지속될 수 있으므로 의도한 것보다 수명이 긴 컨텍스트가 생성됩니다.
+* **Singleton** 은 앱의 모든 사용자에 대한 상태를 공유하고 부적절한 동시 사용을 초래합니다.
+* **범위 지정** (기본값)은 동일한 사용자에 대한 구성 요소 간에 유사한 문제를 초래합니다.
+* **임시** 는 요청별로 새 인스턴스를 생성하지만 구성 요소가 오래 지속될 수 있으므로 의도한 것보다 수명이 긴 컨텍스트가 생성됩니다.
 
 다음 권장 사항은 Blazor Server 앱에서 EF Core를 사용하는 일관된 방법을 제공하도록 설계되었습니다.
 
@@ -110,6 +110,19 @@ EF Core에서는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 사용하여 
 > [!NOTE]
 > `Wrapper`는 `GridWrapper` 구성 요소에 대한 [구성 요소 참조](xref:blazor/components/index#capture-references-to-components)입니다. [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/Index.razor)의 `Index` 구성 요소(`Pages/Index.razor`)를 참조하세요.
 
+새로운 <xref:Microsoft.EntityFrameworkCore.DbContext> 인스턴스는 [ASP.NET Core의 Identity 모델])(xref:security/authentication/customize_identity_model)을 사용하는 경우와 같이 `DbContext`에 따라 연결 문자열을 구성할 수 있는 팩터리로 생성할 수 있습니다.
+
+```csharp
+services.AddDbContextFactory<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+});
+
+services.AddScoped<ApplicationDbContext>(p => 
+    p.GetRequiredService<IDbContextFactory<ApplicationDbContext>>()
+    .CreateDbContext());
+```
+
 <h3 id="scope-to-the-component-lifetime-5x">구성 요소 수명으로 범위 지정</h3>
 
 구성 요소의 수명 동안 존재하는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 만들 수 있습니다. 그러면 해당 인스턴스를 [작업 단위](https://martinfowler.com/eaaCatalog/unitOfWork.html)로 사용하고 변경 내용 추적, 동시성 확인과 같은 기본 제공 기능을 활용할 수 있습니다.
@@ -127,6 +140,23 @@ EF Core에서는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 사용하여 
 마지막으로 [`OnInitializedAsync`](xref:blazor/components/lifecycle)를 재정의하여 새 컨텍스트를 만듭니다. 샘플 앱에서 [`OnInitializedAsync`](xref:blazor/components/lifecycle)는 동일한 방법으로 연락처를 로드합니다.
 
 [!code-csharp[](./common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/EditContact.razor?name=snippet2)]
+
+<h3 id="enable-sensitive-data-logging">중요한 데이터 로깅 사용</h3>
+
+<xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A>에는 예외 메시지 및 프레임워크 로깅의 애플리케이션 데이터가 포함됩니다. 로깅된 데이터에는 엔터티 인스턴스 속성에 할당된 값과 데이터베이스로 전송된 명령의 매개 변수 값이 포함될 수 있습니다. <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A>으로 데이터를 로깅하면 데이터베이스에 대해 실행되는 SQL 문을 로그할 때 암호와 기타 PII(개인 식별 정보)를 노출할 수 있으므로 **보안상 위험** 합니다.
+
+<xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A>은 개발 및 테스트 용도로만 사용하는 것이 좋습니다.
+
+```csharp
+#if DEBUG
+    services.AddDbContextFactory<ContactContext>(opt =>
+        opt.UseSqlite($"Data Source={nameof(ContactContext.ContactsDb)}.db")
+        .EnableSensitiveDataLogging());
+#else
+    services.AddDbContextFactory<ContactContext>(opt =>
+        opt.UseSqlite($"Data Source={nameof(ContactContext.ContactsDb)}.db"));
+#endif
+```
 
 :::moniker-end
 
@@ -156,9 +186,9 @@ Blazor Server는 상태 저장 앱 프레임워크입니다. 앱은 서버에 �
 
 EF Core에서는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 사용하여 [데이터베이스 액세스를 구성](/ef/core/miscellaneous/configuring-dbcontext)하고 [‘작업 단위’](https://martinfowler.com/eaaCatalog/unitOfWork.html) 역할을 합니다. EF Core는 컨텍스트를 기본적으로 ‘범위가 지정된’ 서비스로 등록하는 ASP.NET Core 앱에 대한 <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> 확장을 제공합니다. Blazor Server 앱에서는 사용자 회로 내의 구성 요소 간에 인스턴스가 공유되므로 이 경우 문제가 될 수 있습니다. <xref:Microsoft.EntityFrameworkCore.DbContext>는 스레드로부터 안전하지 않고 동시 사용을 위해 설계되지 않았습니다. 기존 수명은 다음과 같은 이유로 적합하지 않습니다.
 
-* **Singleton**은 앱의 모든 사용자에 대한 상태를 공유하고 부적절한 동시 사용을 초래합니다.
-* **범위 지정**(기본값)은 동일한 사용자에 대한 구성 요소 간에 유사한 문제를 초래합니다.
-* **임시**는 요청별로 새 인스턴스를 생성하지만 구성 요소가 오래 지속될 수 있으므로 의도한 것보다 수명이 긴 컨텍스트가 생성됩니다.
+* **Singleton** 은 앱의 모든 사용자에 대한 상태를 공유하고 부적절한 동시 사용을 초래합니다.
+* **범위 지정** (기본값)은 동일한 사용자에 대한 구성 요소 간에 유사한 문제를 초래합니다.
+* **임시** 는 요청별로 새 인스턴스를 생성하지만 구성 요소가 오래 지속될 수 있으므로 의도한 것보다 수명이 긴 컨텍스트가 생성됩니다.
 
 다음 권장 사항은 Blazor Server 앱에서 EF Core를 사용하는 일관된 방법을 제공하도록 설계되었습니다.
 
@@ -218,6 +248,19 @@ EF Core에서는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 사용하여 
 > [!NOTE]
 > `Wrapper`는 `GridWrapper` 구성 요소에 대한 [구성 요소 참조](xref:blazor/components/index#capture-references-to-components)입니다. [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/Index.razor)의 `Index` 구성 요소(`Pages/Index.razor`)를 참조하세요.
 
+새로운 <xref:Microsoft.EntityFrameworkCore.DbContext> 인스턴스는 [ASP.NET Core의 Identity 모델])(xref:security/authentication/customize_identity_model)을 사용하는 경우와 같이 `DbContext`에 따라 연결 문자열을 구성할 수 있는 팩터리로 생성할 수 있습니다.
+
+```csharp
+services.AddDbContextFactory<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+});
+
+services.AddScoped<ApplicationDbContext>(p => 
+    p.GetRequiredService<IDbContextFactory<ApplicationDbContext>>()
+    .CreateDbContext());
+```
+
 <h3 id="scope-to-the-component-lifetime-3x">구성 요소 수명으로 범위 지정</h3>
 
 구성 요소의 수명 동안 존재하는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 만들 수 있습니다. 그러면 해당 인스턴스를 [작업 단위](https://martinfowler.com/eaaCatalog/unitOfWork.html)로 사용하고 변경 내용 추적, 동시성 확인과 같은 기본 제공 기능을 활용할 수 있습니다.
@@ -240,6 +283,23 @@ EF Core에서는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 사용하여 
 
 * `Busy`를 `true`로 설정한 경우 비동기 작업이 시작될 수 있습니다. `Busy`를 `false`로 다시 설정할 경우 비동기 작업을 완료해야 합니다.
 * `catch` 블록에 추가 오류 처리 논리를 삽입합니다.
+
+<h3 id="enable-sensitive-data-logging">중요한 데이터 로깅 사용</h3>
+
+<xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A>에는 예외 메시지 및 프레임워크 로깅의 애플리케이션 데이터가 포함됩니다. 로깅된 데이터에는 엔터티 인스턴스 속성에 할당된 값과 데이터베이스로 전송된 명령의 매개 변수 값이 포함될 수 있습니다. <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A>으로 데이터를 로깅하면 데이터베이스에 대해 실행되는 SQL 문을 로그할 때 암호와 기타 PII(개인 식별 정보)를 노출할 수 있으므로 **보안상 위험** 합니다.
+
+<xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A>은 개발 및 테스트 용도로만 사용하는 것이 좋습니다.
+
+```csharp
+#if DEBUG
+    services.AddDbContextFactory<ContactContext>(opt =>
+        opt.UseSqlite($"Data Source={nameof(ContactContext.ContactsDb)}.db")
+        .EnableSensitiveDataLogging());
+#else
+    services.AddDbContextFactory<ContactContext>(opt =>
+        opt.UseSqlite($"Data Source={nameof(ContactContext.ContactsDb)}.db"));
+#endif
+```
 
 :::moniker-end
 
