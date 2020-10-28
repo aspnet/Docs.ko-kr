@@ -431,6 +431,8 @@
                   uid: blazor/security/webassembly/additional-scenarios
                 - name: AAD 그룹 및 역할
                   uid: blazor/security/webassembly/aad-groups-roles
+                - name: 그래프 API
+                  uid: blazor/security/webassembly/graph-api
             - name: Blazor 서버
               items:
                 - name: 개요

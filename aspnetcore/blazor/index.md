@@ -4,7 +4,7 @@ author: guardrex
 description: ASP.NET Core 앱에서 .NET을 사용하여 대화형 클라이언트 쪽 웹 UI를 빌드하는 방법인 ASP.NET Core Blazor를 살펴봅니다.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
-ms.custom: mvc, seoapril2019
+ms.custom: mvc, seoapril2019, devx-track-js
 ms.date: 09/25/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 7ad374fdc7452664e3367d6ef214fd4cebdf3b08
-ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
+ms.openlocfilehash: bae3e96021971e373ad743a0b52da7f69d839c40
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805528"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690599"
 ---
 # <a name="introduction-to-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor 소개
 
@@ -49,7 +49,7 @@ Blazor는 [.NET](/dotnet/standard/tour)을 사용하여 대화형 클라이언�
 
 ## <a name="components"></a>구성 요소
 
-Blazor 앱은 *구성 요소*를 기반으로 합니다. Blazor의 구성 요소는 페이지, 대화 상자 또는 데이터 입력 양식과 같은 UI의 요소입니다.
+Blazor 앱은 *구성 요소* 를 기반으로 합니다. Blazor의 구성 요소는 페이지, 대화 상자 또는 데이터 입력 양식과 같은 UI의 요소입니다.
 
 구성 요소는 [.NET 어셈블리](/dotnet/standard/assembly/)에 기본 제공되는 .NET C# 클래스이며 다음을 수행합니다.
 
@@ -58,7 +58,7 @@ Blazor 앱은 *구성 요소*를 기반으로 합니다. Blazor의 구성 요소
 * 중첩 및 재사용될 수 있습니다.
 * [Razor 클래스 라이브러리](xref:razor-pages/ui-class) 또는 [NuGet 패키지](/nuget/what-is-nuget)로 공유 및 배포될 수 있습니다.
 
-구성 요소 클래스는 일반적으로 `.razor` 파일 확장자를 가진 [Razor](xref:mvc/views/razor) 태그 페이지 형식으로 작성됩니다. Blazor의 구성 요소는 공식적으로 *Razor 구성 요소*라고 합니다. Razor는 개발자 생산성을 위해 설계된 HTML 태그와 C# 코드를 결합하는 구문입니다. Razor를 사용하면 Visual Studio의 [IntelliSense](/visualstudio/ide/using-intellisense) 프로그래밍 지원을 통해 동일한 파일에서 HTML 태그와 C# 간에 전환할 수 있습니다. Razor Pages 및 MVC도 Razor를 사용합니다. 요청/응답 모델을 중심으로 빌드된 Razor Pages 및 MVC와는 달리, 구성 요소는 특별히 클라이언트 쪽 UI 논리 및 컴퍼지션에 사용됩니다.
+구성 요소 클래스는 일반적으로 `.razor` 파일 확장자를 가진 [Razor](xref:mvc/views/razor) 태그 페이지 형식으로 작성됩니다. Blazor의 구성 요소는 공식적으로 *Razor 구성 요소* 라고 합니다. Razor는 개발자 생산성을 위해 설계된 HTML 태그와 C# 코드를 결합하는 구문입니다. Razor를 사용하면 Visual Studio의 [IntelliSense](/visualstudio/ide/using-intellisense) 프로그래밍 지원을 통해 동일한 파일에서 HTML 태그와 C# 간에 전환할 수 있습니다. Razor Pages 및 MVC도 Razor를 사용합니다. 요청/응답 모델을 중심으로 빌드된 Razor Pages 및 MVC와는 달리, 구성 요소는 특별히 클라이언트 쪽 UI 논리 및 컴퍼지션에 사용됩니다.
 
 Blazor는 UI 컴퍼지션에 자연스러운 HTML 태그를 사용합니다. 다음 Razor 태그는 사용자가 단추를 선택할 때 대화 상자를 표시하고 이벤트를 처리하는 구성 요소(`Dialog.razor`)를 보여줍니다.
 
@@ -107,7 +107,7 @@ Blazor는 UI 컴퍼지션에 자연스러운 HTML 태그를 사용합니다. 다
 
 ![인덱스 구성 요소 내에 중첩된 브라우저에서 렌더링되는 대화 상자 구성 요소입니다. 브라우저 개발자 도구 콘솔은 사용자가 예를 선택할 때 C# 코드로 작성한 메시지를 표시합니다. UI의 단추입니다.](index/_static/dialog.png)
 
-구성 요소는 유연하고 효율적인 방법으로 UI를 업데이트하는 데 사용되는 *렌더링 트리*라는 브라우저 [DOM(문서 개체 모델)](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)의 메모리 내 표시로 렌더링됩니다.
+구성 요소는 유연하고 효율적인 방법으로 UI를 업데이트하는 데 사용되는 *렌더링 트리* 라는 브라우저 [DOM(문서 개체 모델)](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)의 메모리 내 표시로 렌더링됩니다.
 
 ## Blazor WebAssembly
 
@@ -115,7 +115,7 @@ Blazor WebAssembly는 .NET을 사용하여 대화형 클라이언트 쪽 웹앱�
 
 웹 브라우저 내에서 .NET 코드를 실행하는 것은 [WebAssembly](https://webassembly.org)(약식 `wasm`)를 통해 가능합니다. WebAssembly는 빠른 다운로드와 최대 실행 속도를 위해 최적화된 압축 바이트 코드 형식입니다. WebAssembly는 개방형 웹 표준이고 플러그 인 없이 웹 브라우저에서 지원됩니다.
 
-WebAssembly 코드는 *JavaScript 상호 운용성*(종종 *JavaScript interop* 또는 *JS interop*로 단축됨)이라고 하는 JavaScript를 통해 브라우저의 전체 기능에 액세스할 수 있습니다. 브라우저에서 WebAssembly를 통해 실행된 .NET 코드는 브라우저의 JavaScript 샌드박스에서 클라이언트 컴퓨터의 악의적 활동에 대해 제공하는 보호를 사용하여 실행됩니다.
+WebAssembly 코드는 *JavaScript 상호 운용성* (종종 *JavaScript interop* 또는 *JS interop* 로 단축됨)이라고 하는 JavaScript를 통해 브라우저의 전체 기능에 액세스할 수 있습니다. 브라우저에서 WebAssembly를 통해 실행된 .NET 코드는 브라우저의 JavaScript 샌드박스에서 클라이언트 컴퓨터의 악의적 활동에 대해 제공하는 보호를 사용하여 실행됩니다.
 
 ![Blazor WebAssembly에서는 WebAssembly와 함께 브라우저에서 .NET 코드를 실행합니다.](index/_static/blazor-webassembly.png)
 
