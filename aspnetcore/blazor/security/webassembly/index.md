@@ -5,7 +5,7 @@ description: Blazor WebAssemlby 앱을 SPA(단일 페이지 애플리케이션)�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/16/2020
+ms.date: 10/27/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: e1af8f1de61edd934505a44e75ea07e0f09a67b5
-ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
+ms.openlocfilehash: 2c160f21ccccb44f9047cf23c67bc191ad1b2b3d
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90592958"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690371"
 ---
 # <a name="secure-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly 보호
 
@@ -91,7 +91,7 @@ Blazor WebAssembly 앱에서는 사용자가 클라이언트 쪽 코드를 모�
 * `Pages` 폴더의 각 Razor 구성 요소에 특성을 추가합니다.
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A>를 사용하는 정책에 대한 <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy?displayProperty=nameWithType> 설정은 지원되지 **않습니다**.
+> <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A>를 사용하는 정책에 대한 <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy?displayProperty=nameWithType> 설정은 지원되지 **않습니다** .
 
 ## <a name="refresh-tokens"></a>새로 고침 토큰
 
@@ -123,4 +123,17 @@ Blazor WebAssembly 앱에서는 사용자가 클라이언트 쪽 코드를 모�
 * [AAD(Azure Active Directory) B2C](xref:blazor/security/webassembly/hosted-with-azure-active-directory-b2c)
 * [Identity서버](xref:blazor/security/webassembly/hosted-with-identity-server)
 
-구성에 대한 추가 지침은 <xref:blazor/security/webassembly/additional-scenarios>를 참조하세요.
+::: moniker range=">= aspnetcore-5.0"
+
+추가 구성 지침은 다음 문서에서 확인할 수 있습니다.
+
+* <xref:blazor/security/webassembly/additional-scenarios>
+* <xref:blazor/security/webassembly/graph-api>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+추가 구성 지침은 <xref:blazor/security/webassembly/additional-scenarios>를 참조하세요.
+
+::: moniker-end
