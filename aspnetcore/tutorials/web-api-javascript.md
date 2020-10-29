@@ -3,7 +3,7 @@ title: '자습서: JavaScript로 ASP.NET Core 웹 API 호출하기'
 author: rick-anderson
 description: JavaScript를 사용하여 ASP.NET Core 웹 API를 호출하는 방법을 알아봅니다.
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 11/26/2019
 no-loc:
 - ASP.NET Core Identity
@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 3d097d724ac5e2313d24f1f06e47b881f29a4a98
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b41288bd63267a9aa7035e25ebc8d838eed5d93b
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633801"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690693"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>자습서: JavaScript로 ASP.NET Core 웹 API 호출하기
 
@@ -51,7 +51,7 @@ ASP.NET Core 2.2의 경우에는 [JavaScript를 사용하여 웹 API 호출하�
 
 가장 간단한 `fetch` 호출에서는 경로를 나타내는 단일 매개 변수가 허용됩니다. `init` 개체라고 하는 두 번째 매개 변수는 선택 사항입니다. `init`은 HTTP 요청 구성에 사용됩니다.
 
-1. [정적 파일을 제공](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)하고 [기본 파일 매핑을 사용](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)하도록 앱을 구성합니다. 다음의 강조 표시된 코드는 *Startup.cs*의 `Configure` 메서드에서 필요합니다.
+1. [정적 파일을 제공](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)하고 [기본 파일 매핑을 사용](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)하도록 앱을 구성합니다. 다음의 강조 표시된 코드는 *Startup.cs* 의 `Configure` 메서드에서 필요합니다.
 
     [!code-csharp[](first-web-api/samples/3.0/TodoApi/StartupJavaScript.cs?highlight=8-9&name=snippet_configure)]
 
@@ -59,17 +59,17 @@ ASP.NET Core 2.2의 경우에는 [JavaScript를 사용하여 웹 API 호출하�
 
 1. *wwwroot* 폴더 안에 *js* 폴더를 만듭니다.
 
-1. *index.html*이라는 HTML 파일을 *wwwroot* 폴더에 추가합니다. *index.html*의 콘텐츠를 다음 마크업으로 바꿉니다.
+1. *index.html* 이라는 HTML 파일을 *wwwroot* 폴더에 추가합니다. *index.html* 의 콘텐츠를 다음 마크업으로 바꿉니다.
 
     [!code-html[](first-web-api/samples/3.0/TodoApi/wwwroot/index.html)]
 
-1. *site.js*라는 JavaScript 파일을 *wwwroot/js* 폴더에 추가합니다. *site.js*의 콘텐츠를 다음 코드로 바꿉니다.
+1. *site.js* 라는 JavaScript 파일을 *wwwroot/js* 폴더에 추가합니다. *site.js* 의 콘텐츠를 다음 코드로 바꿉니다.
 
     [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_SiteJs)]
 
 HTML 페이지를 로컬에서 테스트하려면 ASP.NET Core 프로젝트의 시작 설정을 변경해야 할 수 있습니다.
 
-1. *Properties\launchSettings.json*을 엽니다.
+1. *Properties\launchSettings.json* 을 엽니다.
 1. `launchUrl` 속성을 제거하여 앱이 *index.html*&mdash; 프로젝트의 기본 파일에서 열리도록 합니다.
 
 이 샘플은 웹 API의 CRUD 메서드를 모두 호출합니다. 웹 API 요청에 대한 설명은 다음과 같습니다.
@@ -101,7 +101,7 @@ HTML 페이지를 로컬에서 테스트하려면 ASP.NET Core 프로젝트의 �
 
 할 일 항목 업데이트는 항목 추가와 비슷하지만 크게 두 가지에서 차이를 보입니다.
 
-* 경로는 업데이트할 항목의 고유 식별자를 접미사로 가집니다. 예를 들면 *api/TodoItems/1*과 같습니다.
+* 경로는 업데이트할 항목의 고유 식별자를 접미사로 가집니다. 예를 들면 *api/TodoItems/1* 과 같습니다.
 * HTTP 작업 동사는 `method` 옵션으로 표시되는 바와 같이 PUT입니다.
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_UpdateItem)]

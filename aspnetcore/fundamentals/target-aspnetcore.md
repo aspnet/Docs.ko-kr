@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: fundamentals/target-aspnetcore
 ms.openlocfilehash: 571e6c66f60bbc09b902ff9064d2fb1c18c433dc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/26/2020
 ms.locfileid: "88630057"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>클래스 라이브러리에서 ASP.NET Core API 사용
@@ -34,8 +34,8 @@ ms.locfileid: "88630057"
 
 ASP.NET Core는 [.NET Core 지원 정책](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)을 준수합니다. 라이브러리에서 지원할 ASP.NET Core 버전을 결정할 때 지원 정책을 참조하세요. 라이브러리는 다음을 수행해야 합니다.
 
-* *LTS*(장기 지원)로 분류된 모든 ASP.NET Core 버전을 지원하도록 노력합니다.
-* *EOL*(수명 종료)로 분류된 ASP.NET Core 버전을 지원할 의무는 없습니다.
+* *LTS* (장기 지원)로 분류된 모든 ASP.NET Core 버전을 지원하도록 노력합니다.
+* *EOL* (수명 종료)로 분류된 ASP.NET Core 버전을 지원할 의무는 없습니다.
 
 ASP.NET Core 미리 보기 릴리스가 출시되면 [aspnet/Announcements](https://github.com/aspnet/Announcements/issues) GitHub 리포지토리에 최신 변경 내용이 게시됩니다. 프레임워크 기능이 개발되는 동안 라이브러리의 호환성 테스트를 수행할 수 있습니다.
 

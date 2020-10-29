@@ -5,7 +5,7 @@ description: 인증 라이브러리를 사용하여 ASP.NET Core Blazor WebAssem
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/08/2020
+ms.date: 10/27/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: 03abaf0676860f50a3e4c1cba64039070910ff9d
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: 332bf73d21dfe36d2f79e4c016f7f8391c67a1f7
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900880"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690365"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>인증 라이브러리를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
 
@@ -37,9 +37,9 @@ ms.locfileid: "91900880"
 
 인증 메커니즘을 사용하여 새 Blazor WebAssembly 프로젝트를 만들려면
 
-1. **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **Blazor WebAssembly 앱** 템플릿을 선택한 후 **인증**에서 **변경**을 선택합니다.
+1. **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **Blazor WebAssembly 앱** 템플릿을 선택한 후 **인증** 에서 **변경** 을 선택합니다.
 
-1. **개별 사용자 계정**을 **사용자 계정 앱 내 저장** 옵션과 함께 선택하여 ASP.NET Core의 [Identity](xref:security/authentication/identity) 시스템을 사용해 앱 내에 사용자를 저장합니다.
+1. **개별 사용자 계정** 을 **사용자 계정 앱 내 저장** 옵션과 함께 선택하여 ASP.NET Core의 [Identity](xref:security/authentication/identity) 시스템을 사용해 앱 내에 사용자를 저장합니다.
 
 # <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code/.NET Core CLI](#tab/visual-studio-code+netcore-cli)
 
@@ -79,7 +79,7 @@ dotnet new blazorwasm -au Individual -o {APP NAME}
   Version="{VERSION}" />
 ```
 
-자리 표시자 `{VERSION}`의 경우 애플리케이션의 공유 프레임워크 버전과 일치하는 안정적인 최신 버전의 패키지를 [NuGet.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication)의 패키지 **버전 기록**에서 찾을 수 있습니다.
+자리 표시자 `{VERSION}`의 경우 애플리케이션의 공유 프레임워크 버전과 일치하는 안정적인 최신 버전의 패키지를 [NuGet.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication)의 패키지 **버전 기록** 에서 찾을 수 있습니다.
 
 ## <a name="authentication-service-support"></a>인증 서비스 지원
 
@@ -120,8 +120,6 @@ builder.Services.AddOidcAuthentication(options =>
     options.ProviderOptions.DefaultScopes.Add("{SCOPE URI}");
 });
 ```
-
-[!INCLUDE[](~/includes/blazor-security/azure-scope-3x.md)]
 
 자세한 내용은 ‘추가 시나리오’ 문서의 다음 섹션을 참조하세요.
 

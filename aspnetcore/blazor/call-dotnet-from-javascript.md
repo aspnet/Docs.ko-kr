@@ -4,7 +4,7 @@ author: guardrex
 description: Blazor 앱의 JavaScript 함수에서 .NET 메서드를 호출하는 방법을 알아봅니다.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 08/12/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-dotnet-from-javascript
-ms.openlocfilehash: 2a3685dbc654fb8be3420da73e5a62fe729092e6
-ms.sourcegitcommit: ad63e131224f3217bbafff4eb0e6fa1b25294460
+ms.openlocfilehash: 4a7c06ed985c290eb4b3ffca6d5ed74c6bc4e031
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89199695"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690300"
 ---
 # <a name="call-net-methods-from-javascript-functions-in-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor의 JavaScript 함수에서 .NET 메서드 호출
 
 작성자: [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Shashikant Rudrawadi](http://wisne.co) 및 [Luke Latham](https://github.com/guardrex)
 
-Blazor 앱은 .NET 메서드에서 JavaScript 함수를 호출하고 JavaScript 함수에서 .NET 메서드를 호출할 수 있습니다. 이러한 시나리오를 *JavaScript 상호 운용성*(*JS interop*)이라고 합니다.
+Blazor 앱은 .NET 메서드에서 JavaScript 함수를 호출하고 JavaScript 함수에서 .NET 메서드를 호출할 수 있습니다. 이러한 시나리오를 *JavaScript 상호 운용성* ( *JS interop* )이라고 합니다.
 
 이 문서에서는 JavaScript에서 .NET 메서드를 호출하는 방법을 설명합니다. .NET에서 JavaScript 함수를 호출하는 방법에 대한 내용은 <xref:blazor/call-javascript-from-dotnet>을 참조하세요.
 

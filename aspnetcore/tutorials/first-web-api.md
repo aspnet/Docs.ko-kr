@@ -3,7 +3,7 @@ title: '자습서: ASP.NET Core를 사용하여 웹 API 만들기'
 author: rick-anderson
 description: ASP.NET Core를 사용하여 웹 API를 빌드하는 방법을 알아봅니다.
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 08/13/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 9f67f8104eb5c21f244449ca3a4aaa96c750836d
-ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
+ms.openlocfilehash: 17f04dc9a0bdcf8ff016d83b915c017ff485cb36
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379475"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690701"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>자습서: ASP.NET Core를 사용하여 웹 API 만들기
 
@@ -80,10 +80,10 @@ ms.locfileid: "92379475"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **파일 메뉴**에서 **새로 만들기** > **프로젝트**를 선택합니다.
-* **ASP.NET Core 웹 애플리케이션** 템플릿을 선택하고 **다음**을 클릭합니다.
-* 프로젝트 이름을 *TodoApi*로 지정하고 **만들기**를 클릭합니다.
-* **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 5.0**이 선택되었는지 확인합니다. **API** 템플릿을 선택하고 **만들기**를 클릭합니다.
+* **파일 메뉴** 에서 **새로 만들기** > **프로젝트** 를 선택합니다.
+* **ASP.NET Core 웹 애플리케이션** 템플릿을 선택하고 **다음** 을 클릭합니다.
+* 프로젝트 이름을 *TodoApi* 로 지정하고 **만들기** 를 클릭합니다.
+* **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 5.0** 이 선택되었는지 확인합니다. **API** 템플릿을 선택하고 **만들기** 를 클릭합니다.
 
 ![VS 새 프로젝트 대화 상자](first-web-api/_static/5/vs.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "92379475"
    code -r ../TodoApi
    ```
 
-* 프로젝트에 필수 자산을 추가하려는지 묻는 대화 상자가 나타나면 **예**를 선택합니다.
+* 프로젝트에 필수 자산을 추가하려는지 묻는 대화 상자가 나타나면 **예** 를 선택합니다.
 
   이전 명령은
 
@@ -110,17 +110,17 @@ ms.locfileid: "92379475"
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* **파일** > **새 솔루션**을 선택합니다.
+* **파일** > **새 솔루션** 을 선택합니다.
 
   ![macOS 새 솔루션](first-web-api-mac/_static/sln.png)
 
-* Mac용 Visual Studio 버전 8.6 미만에서 **.NET Core** > **앱** > **API** > **다음**을 선택합니다. 버전 8.6 이상에서 **웹 및 콘솔** > **앱** > **API** > **다음**을 선택합니다.
+* Mac용 Visual Studio 버전 8.6 미만에서 **.NET Core** > **앱** > **API** > **다음** 을 선택합니다. 버전 8.6 이상에서 **웹 및 콘솔** > **앱** > **API** > **다음** 을 선택합니다.
 
   ![macOS API 템플릿 선택](first-web-api-mac/_static/api_template.png)
 
-* **새 ASP.NET Core Web API 구성** 대화 상자에서 최신 .NET Core 3.x **대상 프레임워크**를 선택합니다. **새로 만들기**를 선택합니다.
+* **새 ASP.NET Core Web API 구성** 대화 상자에서 최신 .NET Core 3.x **대상 프레임워크** 를 선택합니다. **새로 만들기** 를 선택합니다.
 
-* **프로젝트 이름**으로 *TodoApi*를 입력한 다음, **만들기**를 선택합니다.
+* **프로젝트 이름** 으로 *TodoApi* 를 입력한 다음, **만들기** 를 선택합니다.
 
   ![구성 대화 상자](first-web-api-mac/_static/2.png)
 
@@ -158,11 +158,11 @@ Ctrl+F5 키를 눌러 앱을 실행합니다. 브라우저에서 [https://localh
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-**실행** > **디버깅 시작**을 선택하여 앱을 시작합니다. Mac용 Visual Studio가 브라우저를 시작하고 `https://localhost:<port>`로 이동합니다. 여기서 `<port>`는 임의로 선택된 포트 번호입니다. HTTP 404(찾을 수 없음) 오류가 반환됩니다. `/swagger`를 URL에 추가합니다(URL을 `https://localhost:<port>/swagger`로 변경).
+**실행** > **디버깅 시작** 을 선택하여 앱을 시작합니다. Mac용 Visual Studio가 브라우저를 시작하고 `https://localhost:<port>`로 이동합니다. 여기서 `<port>`는 임의로 선택된 포트 번호입니다. HTTP 404(찾을 수 없음) 오류가 반환됩니다. `/swagger`를 URL에 추가합니다(URL을 `https://localhost:<port>/swagger`로 변경).
 
 ---
 
-Swagger 페이지 `/swagger/index.html`이 표시됩니다. **GET** > **사용해 보기** > **실행**을 선택합니다. 페이지에 다음이 표시됩니다.
+Swagger 페이지 `/swagger/index.html`이 표시됩니다. **GET** > **사용해 보기** > **실행** 을 선택합니다. 페이지에 다음이 표시됩니다.
 
 * WeatherForecast API를 테스트할 [Curl](https://curl.haxx.se/) 명령
 * WeatherForecast API를 테스트할 URL
@@ -214,7 +214,7 @@ Swagger는 웹 API에 유용한 설명서 및 도움말 페이지를 생성하�
 
 ### <a name="update-the-launchurl"></a>launchUrl 업데이트
 
-*Properties\launchSettings.json*에서 `launchUrl`을 `"swagger"`에서 `"api/TodoItems"`로 업데이트합니다.
+*Properties\launchSettings.json* 에서 `launchUrl`을 `"swagger"`에서 `"api/TodoItems"`로 업데이트합니다.
 
 ```json
 "launchUrl": "api/TodoItems",
@@ -224,13 +224,13 @@ Swagger가 제거되었기 때문에 위의 태그는 다음 섹션에 추가된
 
 ## <a name="add-a-model-class"></a>모델 클래스 추가
 
-*모델*은 앱에서 관리하는 데이터를 나타내는 일련의 클래스입니다. 이 앱에 대한 모델은 단일 `TodoItem` 클래스입니다.
+*모델* 은 앱에서 관리하는 데이터를 나타내는 일련의 클래스입니다. 이 앱에 대한 모델은 단일 `TodoItem` 클래스입니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **새 폴더**를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **새 폴더** 를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
 
-* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스**를 선택합니다. 클래스 이름을 *TodoItem*으로 지정하고 **추가**를 선택합니다.
+* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다. 클래스 이름을 *TodoItem* 으로 지정하고 **추가** 를 선택합니다.
 
 * 템플릿 코드를 다음으로 바꿉니다.
 
@@ -242,13 +242,13 @@ Swagger가 제거되었기 때문에 위의 태그는 다음 섹션에 추가된
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **새 폴더**를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
+* 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **새 폴더** 를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
 
   ![새 폴더](first-web-api-mac/_static/folder.png)
 
-* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** > **일반** > **빈 클래스**를 선택합니다.
+* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** > **일반** > **빈 클래스** 를 선택합니다.
 
-* 클래스 이름을 *TodoItem*으로 지정한 다음, **새로 만들기**를 클릭합니다.
+* 클래스 이름을 *TodoItem* 으로 지정한 다음, **새로 만들기** 를 클릭합니다.
 
 * 템플릿 코드를 다음으로 바꿉니다.
 
@@ -262,19 +262,19 @@ Swagger가 제거되었기 때문에 위의 태그는 다음 섹션에 추가된
 
 ## <a name="add-a-database-context"></a>데이터베이스 컨텍스트 추가
 
-*데이터베이스 컨텍스트*는 데이터 모델에 맞게 Entity Framework 기능을 조정하는 주 클래스입니다. <xref:Microsoft.EntityFrameworkCore.DbContext?displayProperty=fullName> 클래스에서 파생시키는 방식으로 이 클래스를 만듭니다.
+*데이터베이스 컨텍스트* 는 데이터 모델에 맞게 Entity Framework 기능을 조정하는 주 클래스입니다. <xref:Microsoft.EntityFrameworkCore.DbContext?displayProperty=fullName> 클래스에서 파생시키는 방식으로 이 클래스를 만듭니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ### <a name="add-nuget-packages"></a>NuGet 패키지 추가
 
-* **도구** 메뉴에서 **NuGet 패키지 관리자 > 솔루션용 NuGet 패키지 관리**를 선택합니다.
+* **도구** 메뉴에서 **NuGet 패키지 관리자 > 솔루션용 NuGet 패키지 관리** 를 선택합니다.
 * **찾아보기** 탭을 선택하고 **Microsoft.
-**EntityFrameworkCore.SqlServer**를 검색 상자에 입력합니다.
+**EntityFrameworkCore.SqlServer** 를 검색 상자에 입력합니다.
 <!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Delete this line at RTM -->
 * 5\.0 RC 버전을 사용할 수 있도록 **시험판 포함** 확인란을 선택합니다. 
-* 왼쪽 창에서 **Microsoft.EntityFrameworkCore.SqlServer**를 선택합니다.
-* 오른쪽 창에서 **프로젝트** 확인란을 선택하고 **설치**를 선택합니다.
+* 왼쪽 창에서 **Microsoft.EntityFrameworkCore.SqlServer** 를 선택합니다.
+* 오른쪽 창에서 **프로젝트** 확인란을 선택하고 **설치** 를 선택합니다.
 * 앞의 지침을 사용하여 **Microsoft.EntityFrameworkCore.InMemory** NuGet 패키지를 추가합니다.
 
 <!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Update this image at RTM -->
@@ -282,7 +282,7 @@ Swagger가 제거되었기 때문에 위의 태그는 다음 섹션에 추가된
 
 ## <a name="add-the-todocontext-database-context"></a>TodoContext 데이터베이스 컨텍스트 추가
 
-* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스**를 선택합니다. 클래스 이름을 *TodoContext*로 지정하고 **추가**를 클릭합니다.
+* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다. 클래스 이름을 *TodoContext* 로 지정하고 **추가** 를 클릭합니다.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
@@ -298,7 +298,7 @@ Swagger가 제거되었기 때문에 위의 태그는 다음 섹션에 추가된
 
 ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주입)](xref:fundamentals/dependency-injection) 컨테이너에 등록해야 합니다. 컨테이너는 컨트롤러에 서비스를 제공합니다.
 
-다음 코드로 *Startup.cs*를 업데이트합니다.
+다음 코드로 *Startup.cs* 를 업데이트합니다.
 
 [!code-csharp[](first-web-api/samples/5.x/TodoApi/Startup.cs?highlight=7-8,23-24&name=snippet_all)]
 
@@ -314,13 +314,13 @@ ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주�
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * *Controllers* 폴더를 마우스 오른쪽 단추로 클릭합니다.
-* **추가** > **스캐폴드 항목 새로 만들기**를 선택합니다.
-* **Entity Framework를 사용하며 동작이 포함된 API 컨트롤러**를 선택하고 **추가**를 선택합니다.
+* **추가** > **스캐폴드 항목 새로 만들기** 를 선택합니다.
+* **Entity Framework를 사용하며 동작이 포함된 API 컨트롤러** 를 선택하고 **추가** 를 선택합니다.
 * **Entity Framework를 사용하며 동작이 포함된 API 컨트롤러 추가** 대화 상자에서:
 
-  * **모델 클래스**에서 **TodoItem(TodoApi.Models)** 을 선택합니다.
-  * **데이터 컨텍스트 클래스**에서 **TodoContext(TodoApi.Models)** 를 선택합니다.
-  * **추가**를 선택합니다.
+  * **모델 클래스** 에서 **TodoItem(TodoApi.Models)** 을 선택합니다.
+  * **데이터 컨텍스트 클래스** 에서 **TodoContext(TodoApi.Models)** 를 선택합니다.
+  * **추가** 를 선택합니다.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
@@ -377,8 +377,8 @@ ASP.NET Core 템플릿과 관련해서 다음 사항을 확인합니다.
 * [Postman](https://www.getpostman.com/downloads/)을 설치합니다.
 * 웹앱을 시작합니다.
 * Postman을 시작합니다.
-* **SSL 인증서 확인**을 사용하지 않도록 설정합니다.
-  * **파일** > **설정**(**일반** 탭)에서 **SSL 인증서 확인**을 사용하지 않도록 설정합니다.
+* **SSL 인증서 확인** 을 사용하지 않도록 설정합니다.
+  * **파일** > **설정** ( **일반** 탭)에서 **SSL 인증서 확인** 을 사용하지 않도록 설정합니다.
     > [!WARNING]
     > 컨트롤러를 테스트한 후에 SSL 인증서 확인을 다시 사용하도록 설정합니다.
 
@@ -401,7 +401,7 @@ ASP.NET Core 템플릿과 관련해서 다음 사항을 확인합니다.
     }
     ```
 
-* **보내기**를 선택합니다.
+* **보내기** 를 선택합니다.
 
   ![생성 요청이 있는 Postman](first-web-api/_static/3/create.png)
 
@@ -418,7 +418,7 @@ Postman에서 테스트하려면 다음을 수행합니다.
 
 * HTTP 메서드를 `GET`로 설정합니다.
 * URI를 `https://localhost:<port>/api/TodoItems/1`로 설정합니다. 예: `https://localhost:5001/api/TodoItems/1`.
-* **보내기**를 선택합니다.
+* **보내기** 를 선택합니다.
 
 ## <a name="examine-the-get-methods"></a>GET 메서드 검사
 
@@ -447,10 +447,10 @@ Postman에서 테스트하려면 다음을 수행합니다.
 ### <a name="test-get-with-postman"></a>Postman을 사용하여 Get 테스트
 
 * 새 요청을 만듭니다.
-* HTTP 메서드를 **GET**으로 설정합니다.
+* HTTP 메서드를 **GET** 으로 설정합니다.
 * 요청 URI를 `https://localhost:<port>/api/TodoItems`로 설정합니다. 예: `https://localhost:5001/api/TodoItems`.
-* Postman에서 **두 개의 창 보기**를 설정합니다.
-* **보내기**를 선택합니다.
+* Postman에서 **두 개의 창 보기** 를 설정합니다.
+* **보내기** 를 선택합니다.
 
 이 앱은 메모리 내 데이터베이스를 사용합니다. 앱이 중지된 후 시작되면 이전 GET 요청이 데이터를 반환하지 않습니다. 데이터가 반환되지 않으면 앱에 데이터를 [POST](#post)합니다.
 
@@ -462,7 +462,7 @@ Postman에서 테스트하려면 다음을 수행합니다.
 
   [!code-csharp[](first-web-api/samples/5.x/TodoApi/Controllers/TodoItemsController.cs?name=TodoController&highlight=1)]
 
-* `[controller]`를 컨트롤러의 이름으로 바꿉니다. 일반적으로 컨트롤러 클래스 이름에서 "Controller" 접미사를 뺀 이름입니다. 이 샘플의 경우 컨트롤러 클래스 이름은 **TodoItems**Controller이므로 컨트롤러 이름은 “TodoItems”입니다. ASP.NET Core [라우팅](xref:mvc/controllers/routing)은 대/소문자를 구분하지 않습니다.
+* `[controller]`를 컨트롤러의 이름으로 바꿉니다. 일반적으로 컨트롤러 클래스 이름에서 "Controller" 접미사를 뺀 이름입니다. 이 샘플의 경우 컨트롤러 클래스 이름은 **TodoItems** Controller이므로 컨트롤러 이름은 “TodoItems”입니다. ASP.NET Core [라우팅](xref:mvc/controllers/routing)은 대/소문자를 구분하지 않습니다.
 * `[HttpGet]` 특성에 경로 템플릿(예: `[HttpGet("products")]`)이 있는 경우 경로에 추가합니다. 이 샘플은 템플릿을 사용하지 않습니다. 자세한 내용은 [Http[동사] 특성을 사용한 특성 라우팅](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes)을 참조하세요.
 
 다음 `GetTodoItem` 메서드에서 `"{id}"`는 할 일 항목의 고유 식별자에 대한 자리 표시자 변수입니다. `GetTodoItem`이 호출되면 URL의 `"{id}"` 값을 `id` 매개 변수의 메서드에 제공합니다.
@@ -518,13 +518,13 @@ Postman을 사용하여 할 일 항목을 삭제합니다.
 
 * 메서드를 `DELETE`로 설정합니다.
 * 예를 들어 삭제할 개체의 URI를 `https://localhost:5001/api/TodoItems/1`로 설정합니다.
-* **보내기**를 선택합니다.
+* **보내기** 를 선택합니다.
 
 <a name="over-post-v5"></a>
 
 ## <a name="prevent-over-posting"></a>과도한 게시 방지
 
-현재 샘플 앱은 전체 `TodoItem` 개체를 공개합니다. 일반적으로 프로덕션 앱은 모델의 하위 집합을 사용하여 입력 및 반환되는 데이터를 제한합니다. 이 동작에는 여러 가지 이유가 있으며, 보안이 주요 이유 중 하나입니다. 일반적으로 모델의 하위 집합을 DTO(데이터 전송 개체), 입력 모델 또는 뷰 모델이라고 합니다. 이 문서에서는 **DTO**를 사용합니다.
+현재 샘플 앱은 전체 `TodoItem` 개체를 공개합니다. 일반적으로 프로덕션 앱은 모델의 하위 집합을 사용하여 입력 및 반환되는 데이터를 제한합니다. 이 동작에는 여러 가지 이유가 있으며, 보안이 주요 이유 중 하나입니다. 일반적으로 모델의 하위 집합을 DTO(데이터 전송 개체), 입력 모델 또는 뷰 모델이라고 합니다. 이 문서에서는 **DTO** 를 사용합니다.
 
 DTO는 다음과 같은 용도로 사용할 수 있습니다.
 
@@ -606,10 +606,10 @@ DTO 모델을 만듭니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **파일 메뉴**에서 **새로 만들기** > **프로젝트**를 선택합니다.
-* **ASP.NET Core 웹 애플리케이션** 템플릿을 선택하고 **다음**을 클릭합니다.
-* 프로젝트 이름을 *TodoApi*로 지정하고 **만들기**를 클릭합니다.
-* **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 3.1**이 선택되었는지 확인합니다. **API** 템플릿을 선택하고 **만들기**를 클릭합니다.
+* **파일 메뉴** 에서 **새로 만들기** > **프로젝트** 를 선택합니다.
+* **ASP.NET Core 웹 애플리케이션** 템플릿을 선택하고 **다음** 을 클릭합니다.
+* 프로젝트 이름을 *TodoApi* 로 지정하고 **만들기** 를 클릭합니다.
+* **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 3.1** 이 선택되었는지 확인합니다. **API** 템플릿을 선택하고 **만들기** 를 클릭합니다.
 
 ![VS 새 프로젝트 대화 상자](first-web-api/_static/vs3.png)
 
@@ -627,7 +627,7 @@ DTO 모델을 만듭니다.
    code -r ../TodoApi
    ```
 
-* 프로젝트에 필수 자산을 추가하려는지 묻는 대화 상자가 나타나면 **예**를 선택합니다.
+* 프로젝트에 필수 자산을 추가하려는지 묻는 대화 상자가 나타나면 **예** 를 선택합니다.
 
   이전 명령은
 
@@ -636,17 +636,17 @@ DTO 모델을 만듭니다.
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* **파일** > **새 솔루션**을 선택합니다.
+* **파일** > **새 솔루션** 을 선택합니다.
 
   ![macOS 새 솔루션](first-web-api-mac/_static/sln.png)
 
-* Mac용 Visual Studio 버전 8.6 미만에서 **.NET Core** > **앱** > **API** > **다음**을 선택합니다. 버전 8.6 이상에서 **웹 및 콘솔** > **앱** > **API** > **다음**을 선택합니다.
+* Mac용 Visual Studio 버전 8.6 미만에서 **.NET Core** > **앱** > **API** > **다음** 을 선택합니다. 버전 8.6 이상에서 **웹 및 콘솔** > **앱** > **API** > **다음** 을 선택합니다.
 
   ![macOS API 템플릿 선택](first-web-api-mac/_static/api_template.png)
 
-* **새 ASP.NET Core Web API 구성** 대화 상자에서 최신 .NET Core 3.x **대상 프레임워크**를 선택합니다. **새로 만들기**를 선택합니다.
+* **새 ASP.NET Core Web API 구성** 대화 상자에서 최신 .NET Core 3.x **대상 프레임워크** 를 선택합니다. **새로 만들기** 를 선택합니다.
 
-* **프로젝트 이름**으로 *TodoApi*를 입력한 다음, **만들기**를 선택합니다.
+* **프로젝트 이름** 으로 *TodoApi* 를 입력한 다음, **만들기** 를 선택합니다.
 
   ![구성 대화 상자](first-web-api-mac/_static/2.png)
 
@@ -669,7 +669,7 @@ DTO 모델을 만듭니다.
 
 Ctrl+F5 키를 눌러 앱을 실행합니다. Visual Studio가 브라우저를 시작하고 `https://localhost:<port>/WeatherForecast`로 이동합니다. 여기서 `<port>`는 임의로 선택된 포트 번호입니다.
 
-IIS Express 인증서를 신뢰해야 하는지 묻는 대화 상자가 표시되면 **예**를 선택합니다. 다음으로, **보안 경고** 대화 상자가 나타나면 **예**를 선택합니다.
+IIS Express 인증서를 신뢰해야 하는지 묻는 대화 상자가 표시되면 **예** 를 선택합니다. 다음으로, **보안 경고** 대화 상자가 나타나면 **예** 를 선택합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -677,7 +677,7 @@ Ctrl+F5 키를 눌러 앱을 실행합니다. 브라우저에서 `https://localh
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-**실행** > **디버깅 시작**을 선택하여 앱을 시작합니다. Mac용 Visual Studio가 브라우저를 시작하고 `https://localhost:<port>`로 이동합니다. 여기서 `<port>`는 임의로 선택된 포트 번호입니다. HTTP 404(찾을 수 없음) 오류가 반환됩니다. `/WeatherForecast`를 URL에 추가합니다(URL을 `https://localhost:<port>/WeatherForecast`로 변경).
+**실행** > **디버깅 시작** 을 선택하여 앱을 시작합니다. Mac용 Visual Studio가 브라우저를 시작하고 `https://localhost:<port>`로 이동합니다. 여기서 `<port>`는 임의로 선택된 포트 번호입니다. HTTP 404(찾을 수 없음) 오류가 반환됩니다. `/WeatherForecast`를 URL에 추가합니다(URL을 `https://localhost:<port>/WeatherForecast`로 변경).
 
 ---
 
@@ -720,13 +720,13 @@ Ctrl+F5 키를 눌러 앱을 실행합니다. 브라우저에서 `https://localh
 
 ## <a name="add-a-model-class"></a>모델 클래스 추가
 
-*모델*은 앱에서 관리하는 데이터를 나타내는 일련의 클래스입니다. 이 앱에 대한 모델은 단일 `TodoItem` 클래스입니다.
+*모델* 은 앱에서 관리하는 데이터를 나타내는 일련의 클래스입니다. 이 앱에 대한 모델은 단일 `TodoItem` 클래스입니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **새 폴더**를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **새 폴더** 를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
 
-* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스**를 선택합니다. 클래스 이름을 *TodoItem*으로 지정하고 **추가**를 선택합니다.
+* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다. 클래스 이름을 *TodoItem* 으로 지정하고 **추가** 를 선택합니다.
 
 * 템플릿 코드를 다음 코드로 바꿉니다.
 
@@ -738,13 +738,13 @@ Ctrl+F5 키를 눌러 앱을 실행합니다. 브라우저에서 `https://localh
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **새 폴더**를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
+* 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **새 폴더** 를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
 
   ![새 폴더](first-web-api-mac/_static/folder.png)
 
-* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** > **일반** > **빈 클래스**를 선택합니다.
+* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** > **일반** > **빈 클래스** 를 선택합니다.
 
-* 클래스 이름을 *TodoItem*으로 지정한 다음, **새로 만들기**를 클릭합니다.
+* 클래스 이름을 *TodoItem* 으로 지정한 다음, **새로 만들기** 를 클릭합니다.
 
 * 템플릿 코드를 다음 코드로 바꿉니다.
 
@@ -758,23 +758,23 @@ Ctrl+F5 키를 눌러 앱을 실행합니다. 브라우저에서 `https://localh
 
 ## <a name="add-a-database-context"></a>데이터베이스 컨텍스트 추가
 
-*데이터베이스 컨텍스트*는 데이터 모델에 맞게 Entity Framework 기능을 조정하는 주 클래스입니다. `Microsoft.EntityFrameworkCore.DbContext` 클래스에서 파생시키는 방식으로 이 클래스를 만듭니다.
+*데이터베이스 컨텍스트* 는 데이터 모델에 맞게 Entity Framework 기능을 조정하는 주 클래스입니다. `Microsoft.EntityFrameworkCore.DbContext` 클래스에서 파생시키는 방식으로 이 클래스를 만듭니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ### <a name="add-nuget-packages"></a>NuGet 패키지 추가
 
-* **도구** 메뉴에서 **NuGet 패키지 관리자 > 솔루션용 NuGet 패키지 관리**를 선택합니다.
-* **찾아보기** 탭을 선택한 다음 검색 상자에 **Microsoft.EntityFrameworkCore.SqlServer**를 입력합니다.
-* 왼쪽 창에서 **Microsoft.EntityFrameworkCore.SqlServer**를 선택합니다.
-* 오른쪽 창에서 **프로젝트** 확인란을 선택하고 **설치**를 선택합니다.
+* **도구** 메뉴에서 **NuGet 패키지 관리자 > 솔루션용 NuGet 패키지 관리** 를 선택합니다.
+* **찾아보기** 탭을 선택한 다음 검색 상자에 **Microsoft.EntityFrameworkCore.SqlServer** 를 입력합니다.
+* 왼쪽 창에서 **Microsoft.EntityFrameworkCore.SqlServer** 를 선택합니다.
+* 오른쪽 창에서 **프로젝트** 확인란을 선택하고 **설치** 를 선택합니다.
 * 앞의 지침을 사용하여 **Microsoft.EntityFrameworkCore.InMemory** NuGet 패키지를 추가합니다.
 
 ![NuGet 패키지 관리자](first-web-api/_static/vs3NuGet.png)
 
 ## <a name="add-the-todocontext-database-context"></a>TodoContext 데이터베이스 컨텍스트 추가
 
-* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스**를 선택합니다. 클래스 이름을 *TodoContext*로 지정하고 **추가**를 클릭합니다.
+* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다. 클래스 이름을 *TodoContext* 로 지정하고 **추가** 를 클릭합니다.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
@@ -790,7 +790,7 @@ Ctrl+F5 키를 눌러 앱을 실행합니다. 브라우저에서 `https://localh
 
 ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주입)](xref:fundamentals/dependency-injection) 컨테이너에 등록해야 합니다. 컨테이너는 컨트롤러에 서비스를 제공합니다.
 
-*Startup.cs*를 다음 강조 표시된 코드로 업데이트합니다.
+*Startup.cs* 를 다음 강조 표시된 코드로 업데이트합니다.
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Startup.cs?highlight=7-8,23-24&name=snippet_all)]
 
@@ -805,13 +805,13 @@ ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주�
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * *Controllers* 폴더를 마우스 오른쪽 단추로 클릭합니다.
-* **추가** > **스캐폴드 항목 새로 만들기**를 선택합니다.
-* **Entity Framework를 사용하며 동작이 포함된 API 컨트롤러**를 선택하고 **추가**를 선택합니다.
+* **추가** > **스캐폴드 항목 새로 만들기** 를 선택합니다.
+* **Entity Framework를 사용하며 동작이 포함된 API 컨트롤러** 를 선택하고 **추가** 를 선택합니다.
 * **Entity Framework를 사용하며 동작이 포함된 API 컨트롤러 추가** 대화 상자에서:
 
-  * **모델 클래스**에서 **TodoItem(TodoApi.Models)** 을 선택합니다.
-  * **데이터 컨텍스트 클래스**에서 **TodoContext(TodoApi.Models)** 를 선택합니다.
-  * **추가**를 선택합니다.
+  * **모델 클래스** 에서 **TodoItem(TodoApi.Models)** 을 선택합니다.
+  * **데이터 컨텍스트 클래스** 에서 **TodoContext(TodoApi.Models)** 를 선택합니다.
+  * **추가** 를 선택합니다.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
@@ -868,8 +868,8 @@ ASP.NET Core 템플릿과 관련해서 다음 사항을 확인합니다.
 * [Postman](https://www.getpostman.com/downloads/)을 설치합니다.
 * 웹앱을 시작합니다.
 * Postman을 시작합니다.
-* **SSL 인증서 확인**을 사용하지 않도록 설정합니다.
-  * **파일** > **설정**(**일반** 탭)에서 **SSL 인증서 확인**을 사용하지 않도록 설정합니다.
+* **SSL 인증서 확인** 을 사용하지 않도록 설정합니다.
+  * **파일** > **설정** ( **일반** 탭)에서 **SSL 인증서 확인** 을 사용하지 않도록 설정합니다.
     > [!WARNING]
     > 컨트롤러를 테스트한 후에 SSL 인증서 확인을 다시 사용하도록 설정합니다.
 
@@ -892,7 +892,7 @@ ASP.NET Core 템플릿과 관련해서 다음 사항을 확인합니다.
     }
     ```
 
-* **보내기**를 선택합니다.
+* **보내기** 를 선택합니다.
 
   ![생성 요청이 있는 Postman](first-web-api/_static/3/create.png)
 
@@ -905,7 +905,7 @@ ASP.NET Core 템플릿과 관련해서 다음 사항을 확인합니다.
 
 * HTTP 메서드를 `GET`로 설정합니다.
 * URI를 `https://localhost:<port>/api/TodoItems/1`로 설정합니다. 예: `https://localhost:5001/api/TodoItems/1`.
-* **보내기**를 선택합니다.
+* **보내기** 를 선택합니다.
 
 ## <a name="examine-the-get-methods"></a>GET 메서드 검사
 
@@ -934,10 +934,10 @@ ASP.NET Core 템플릿과 관련해서 다음 사항을 확인합니다.
 ### <a name="test-get-with-postman"></a>Postman을 사용하여 Get 테스트
 
 * 새 요청을 만듭니다.
-* HTTP 메서드를 **GET**으로 설정합니다.
+* HTTP 메서드를 **GET** 으로 설정합니다.
 * 요청 URI를 `https://localhost:<port>/api/TodoItems`로 설정합니다. 예: `https://localhost:5001/api/TodoItems`.
-* Postman에서 **두 개의 창 보기**를 설정합니다.
-* **보내기**를 선택합니다.
+* Postman에서 **두 개의 창 보기** 를 설정합니다.
+* **보내기** 를 선택합니다.
 
 이 앱은 메모리 내 데이터베이스를 사용합니다. 앱이 중지된 후 시작되면 이전 GET 요청이 데이터를 반환하지 않습니다. 데이터가 반환되지 않으면 앱에 데이터를 [POST](#post)합니다.
 
@@ -949,7 +949,7 @@ ASP.NET Core 템플릿과 관련해서 다음 사항을 확인합니다.
 
   [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=TodoController&highlight=1)]
 
-* `[controller]`를 컨트롤러의 이름으로 바꿉니다. 일반적으로 컨트롤러 클래스 이름에서 "Controller" 접미사를 뺀 이름입니다. 이 샘플의 경우 컨트롤러 클래스 이름은 **TodoItems**Controller이므로 컨트롤러 이름은 “TodoItems”입니다. ASP.NET Core [라우팅](xref:mvc/controllers/routing)은 대/소문자를 구분하지 않습니다.
+* `[controller]`를 컨트롤러의 이름으로 바꿉니다. 일반적으로 컨트롤러 클래스 이름에서 "Controller" 접미사를 뺀 이름입니다. 이 샘플의 경우 컨트롤러 클래스 이름은 **TodoItems** Controller이므로 컨트롤러 이름은 “TodoItems”입니다. ASP.NET Core [라우팅](xref:mvc/controllers/routing)은 대/소문자를 구분하지 않습니다.
 * `[HttpGet]` 특성에 경로 템플릿(예: `[HttpGet("products")]`)이 있는 경우 경로에 추가합니다. 이 샘플은 템플릿을 사용하지 않습니다. 자세한 내용은 [Http[동사] 특성을 사용한 특성 라우팅](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes)을 참조하세요.
 
 다음 `GetTodoItem` 메서드에서 `"{id}"`는 할 일 항목의 고유 식별자에 대한 자리 표시자 변수입니다. `GetTodoItem`이 호출되면 URL의 `"{id}"` 값을 `id` 매개 변수의 메서드에 제공합니다.
@@ -1005,14 +1005,14 @@ Postman을 사용하여 할 일 항목을 삭제합니다.
 
 * 메서드를 `DELETE`로 설정합니다.
 * 예를 들어 삭제할 개체의 URI를 `https://localhost:5001/api/TodoItems/1`로 설정합니다.
-* **보내기**를 선택합니다.
+* **보내기** 를 선택합니다.
 
 <a name="over-post"></a>
 <a name="over-post-v3"></a>
 
 ## <a name="prevent-over-posting"></a>과도한 게시 방지
 
-현재 샘플 앱은 전체 `TodoItem` 개체를 공개합니다. 일반적으로 프로덕션 앱은 모델의 하위 집합을 사용하여 입력 및 반환되는 데이터를 제한합니다. 이 동작에는 여러 가지 이유가 있으며, 보안이 주요 이유 중 하나입니다. 일반적으로 모델의 하위 집합을 DTO(데이터 전송 개체), 입력 모델 또는 뷰 모델이라고 합니다. 이 문서에서는 **DTO**를 사용합니다.
+현재 샘플 앱은 전체 `TodoItem` 개체를 공개합니다. 일반적으로 프로덕션 앱은 모델의 하위 집합을 사용하여 입력 및 반환되는 데이터를 제한합니다. 이 동작에는 여러 가지 이유가 있으며, 보안이 주요 이유 중 하나입니다. 일반적으로 모델의 하위 집합을 DTO(데이터 전송 개체), 입력 모델 또는 뷰 모델이라고 합니다. 이 문서에서는 **DTO** 를 사용합니다.
 
 DTO는 다음과 같은 용도로 사용할 수 있습니다.
 
@@ -1097,10 +1097,10 @@ DTO 모델을 만듭니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **파일 메뉴**에서 **새로 만들기** > **프로젝트**를 선택합니다.
-* **ASP.NET Core 웹 애플리케이션** 템플릿을 선택하고 **다음**을 클릭합니다.
-* 프로젝트 이름을 *TodoApi*로 지정하고 **만들기**를 클릭합니다.
-* **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 2.2**가 선택되었는지 확인합니다. **API** 템플릿을 선택하고 **만들기**를 클릭합니다. **Docker 지원 사용**을 선택하지 **마세요**.
+* **파일 메뉴** 에서 **새로 만들기** > **프로젝트** 를 선택합니다.
+* **ASP.NET Core 웹 애플리케이션** 템플릿을 선택하고 **다음** 을 클릭합니다.
+* 프로젝트 이름을 *TodoApi* 로 지정하고 **만들기** 를 클릭합니다.
+* **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 2.2** 가 선택되었는지 확인합니다. **API** 템플릿을 선택하고 **만들기** 를 클릭합니다. **Docker 지원 사용** 을 선택하지 **마세요** .
 
 ![VS 새 프로젝트 대화 상자](first-web-api/_static/vs.png)
 
@@ -1117,19 +1117,19 @@ DTO 모델을 만듭니다.
 
   이러한 명령은 새 웹 API 프로젝트를 만들고 새 프로젝트 폴더에서 Visual Studio Code의 새 인스턴스를 엽니다.
 
-* 프로젝트에 필수 자산을 추가하려는지 묻는 대화 상자가 나타나면 **예**를 선택합니다.
+* 프로젝트에 필수 자산을 추가하려는지 묻는 대화 상자가 나타나면 **예** 를 선택합니다.
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* **파일** > **새 솔루션**을 선택합니다.
+* **파일** > **새 솔루션** 을 선택합니다.
 
   ![macOS 새 솔루션](first-web-api-mac/_static/sln.png)
 
-* Mac용 Visual Studio 버전 8.6 미만에서 **.NET Core** > **앱** > **API** > **다음**을 선택합니다. 버전 8.6 이상에서 **웹 및 콘솔** > **앱** > **API** > **다음**을 선택합니다.
+* Mac용 Visual Studio 버전 8.6 미만에서 **.NET Core** > **앱** > **API** > **다음** 을 선택합니다. 버전 8.6 이상에서 **웹 및 콘솔** > **앱** > **API** > **다음** 을 선택합니다.
   
-* **새 ASP.NET Core Web API 구성** 대화 상자에서 최신 .NET Core 2.x **대상 프레임워크**를 선택합니다. **새로 만들기**를 선택합니다.
+* **새 ASP.NET Core Web API 구성** 대화 상자에서 최신 .NET Core 2.x **대상 프레임워크** 를 선택합니다. **새로 만들기** 를 선택합니다.
 
-* **프로젝트 이름**으로 *TodoApi*를 입력한 다음, **만들기**를 선택합니다.
+* **프로젝트 이름** 으로 *TodoApi* 를 입력한 다음, **만들기** 를 선택합니다.
 
   ![구성 대화 상자](first-web-api-mac/_static/2.png)
 
@@ -1143,7 +1143,7 @@ DTO 모델을 만듭니다.
 
 Ctrl+F5 키를 눌러 앱을 실행합니다. Visual Studio가 브라우저를 시작하고 `https://localhost:<port>/api/values`로 이동합니다. 여기서 `<port>`는 임의로 선택된 포트 번호입니다.
 
-IIS Express 인증서를 신뢰해야 하는지 묻는 대화 상자가 표시되면 **예**를 선택합니다. 다음으로, **보안 경고** 대화 상자가 나타나면 **예**를 선택합니다.
+IIS Express 인증서를 신뢰해야 하는지 묻는 대화 상자가 표시되면 **예** 를 선택합니다. 다음으로, **보안 경고** 대화 상자가 나타나면 **예** 를 선택합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -1151,7 +1151,7 @@ Ctrl+F5 키를 눌러 앱을 실행합니다. 브라우저에서 `https://localh
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-**실행** > **디버깅 시작**을 선택하여 앱을 시작합니다. Mac용 Visual Studio가 브라우저를 시작하고 `https://localhost:<port>`로 이동합니다. 여기서 `<port>`는 임의로 선택된 포트 번호입니다. HTTP 404(찾을 수 없음) 오류가 반환됩니다. `/api/values`를 URL에 추가합니다(URL을 `https://localhost:<port>/api/values`로 변경).
+**실행** > **디버깅 시작** 을 선택하여 앱을 시작합니다. Mac용 Visual Studio가 브라우저를 시작하고 `https://localhost:<port>`로 이동합니다. 여기서 `<port>`는 임의로 선택된 포트 번호입니다. HTTP 404(찾을 수 없음) 오류가 반환됩니다. `/api/values`를 URL에 추가합니다(URL을 `https://localhost:<port>/api/values`로 변경).
 
 ---
 
@@ -1163,13 +1163,13 @@ Ctrl+F5 키를 눌러 앱을 실행합니다. 브라우저에서 `https://localh
 
 ## <a name="add-a-model-class-21"></a>모델 클래스 추가 2.1
 
-*모델*은 앱에서 관리하는 데이터를 나타내는 일련의 클래스입니다. 이 앱에 대한 모델은 단일 `TodoItem` 클래스입니다.
+*모델* 은 앱에서 관리하는 데이터를 나타내는 일련의 클래스입니다. 이 앱에 대한 모델은 단일 `TodoItem` 클래스입니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **새 폴더**를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **새 폴더** 를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
 
-* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스**를 선택합니다. 클래스 이름을 *TodoItem*으로 지정하고 **추가**를 선택합니다.
+* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다. 클래스 이름을 *TodoItem* 으로 지정하고 **추가** 를 선택합니다.
 
 * 템플릿 코드를 다음 코드로 바꿉니다.
 
@@ -1181,13 +1181,13 @@ Ctrl+F5 키를 눌러 앱을 실행합니다. 브라우저에서 `https://localh
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **새 폴더**를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
+* 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **새 폴더** 를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
 
   ![새 폴더](first-web-api-mac/_static/folder.png)
 
-* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** > **일반** > **빈 클래스**를 선택합니다.
+* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** > **일반** > **빈 클래스** 를 선택합니다.
 
-* 클래스 이름을 *TodoItem*으로 지정한 다음, **새로 만들기**를 클릭합니다.
+* 클래스 이름을 *TodoItem* 으로 지정한 다음, **새로 만들기** 를 클릭합니다.
 
 * 템플릿 코드를 다음 코드로 바꿉니다.
 
@@ -1201,11 +1201,11 @@ Ctrl+F5 키를 눌러 앱을 실행합니다. 브라우저에서 `https://localh
 
 ## <a name="add-a-database-context-21"></a>데이터베이스 컨텍스트 추가 2.1
 
-*데이터베이스 컨텍스트*는 데이터 모델에 맞게 Entity Framework 기능을 조정하는 주 클래스입니다. `Microsoft.EntityFrameworkCore.DbContext` 클래스에서 파생시키는 방식으로 이 클래스를 만듭니다.
+*데이터베이스 컨텍스트* 는 데이터 모델에 맞게 Entity Framework 기능을 조정하는 주 클래스입니다. `Microsoft.EntityFrameworkCore.DbContext` 클래스에서 파생시키는 방식으로 이 클래스를 만듭니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스**를 선택합니다. 클래스 이름을 *TodoContext*로 지정하고 **추가**를 클릭합니다.
+* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다. 클래스 이름을 *TodoContext* 로 지정하고 **추가** 를 클릭합니다.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
@@ -1221,7 +1221,7 @@ Ctrl+F5 키를 눌러 앱을 실행합니다. 브라우저에서 `https://localh
 
 ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주입)](xref:fundamentals/dependency-injection) 컨테이너에 등록해야 합니다. 컨테이너는 컨트롤러에 서비스를 제공합니다.
 
-*Startup.cs*를 다음 강조 표시된 코드로 업데이트합니다.
+*Startup.cs* 를 다음 강조 표시된 코드로 업데이트합니다.
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Startup1.cs?highlight=5,8,25-26&name=snippet_all)]
 
@@ -1236,9 +1236,9 @@ ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주�
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * *Controllers* 폴더를 마우스 오른쪽 단추로 클릭합니다.
-* **추가** > **새 항목**을 선택합니다.
+* **추가** > **새 항목** 을 선택합니다.
 * **새 항목 추가** 대화 상자에서 **API 컨트롤러 클래스** 템플릿을 선택합니다.
-* 클래스 이름을 *TodoController*로 지정하고 **추가**를 선택합니다.
+* 클래스 이름을 *TodoController* 로 지정하고 **추가** 를 선택합니다.
 
   ![검색 상자의 컨트롤러 및 웹 API 컨트롤러가 선택된 새 항목 추가 대화 상자](first-web-api/_static/new_controller.png)
 
@@ -1297,7 +1297,7 @@ ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주�
 
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=TodoController&highlight=3)]
 
-* `[controller]`를 컨트롤러의 이름으로 바꿉니다. 일반적으로 컨트롤러 클래스 이름에서 "Controller" 접미사를 뺀 이름입니다. 이 샘플의 경우 컨트롤러 클래스 이름은 **Todo**Controller이므로 컨트롤러 이름은 "todo"입니다. ASP.NET Core [라우팅](xref:mvc/controllers/routing)은 대/소문자를 구분하지 않습니다.
+* `[controller]`를 컨트롤러의 이름으로 바꿉니다. 일반적으로 컨트롤러 클래스 이름에서 "Controller" 접미사를 뺀 이름입니다. 이 샘플의 경우 컨트롤러 클래스 이름은 **Todo** Controller이므로 컨트롤러 이름은 "todo"입니다. ASP.NET Core [라우팅](xref:mvc/controllers/routing)은 대/소문자를 구분하지 않습니다.
 * `[HttpGet]` 특성에 경로 템플릿(예: `[HttpGet("products")]`)이 있는 경우 경로에 추가합니다. 이 샘플은 템플릿을 사용하지 않습니다. 자세한 내용은 [Http[동사] 특성을 사용한 특성 라우팅](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes)을 참조하세요.
 
 다음 `GetTodoItem` 메서드에서 `"{id}"`는 할 일 항목의 고유 식별자에 대한 자리 표시자 변수입니다. `GetTodoItem`가 호출되면 URL의 `"{id}"` 값을 `id` 매개 변수의 메서드에 제공합니다.
@@ -1320,15 +1320,15 @@ ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주�
 * [Postman](https://www.getpostman.com/downloads/)을 설치합니다.
 * 웹앱을 시작합니다.
 * Postman을 시작합니다.
-* **SSL 인증서 확인**을 사용하지 않도록 설정합니다.
+* **SSL 인증서 확인** 을 사용하지 않도록 설정합니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **파일** > **설정**(**일반** 탭)에서 **SSL 인증서 확인**을 사용하지 않도록 설정합니다.
+* **파일** > **설정** ( **일반** 탭)에서 **SSL 인증서 확인** 을 사용하지 않도록 설정합니다.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
-* **Postman** > **기본 설정**(**일반** 탭)에서 **SSL 인증서 확인**을 사용하지 않게 설정합니다. 또는 렌치를 선택하고 **설정**을 선택한 다음 SSL 인증서 확인을 사용하지 않게 설정합니다.
+* **Postman** > **기본 설정** ( **일반** 탭)에서 **SSL 인증서 확인** 을 사용하지 않게 설정합니다. 또는 렌치를 선택하고 **설정** 을 선택한 다음 SSL 인증서 확인을 사용하지 않게 설정합니다.
 
 ---
   
@@ -1336,10 +1336,10 @@ ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주�
 > 컨트롤러를 테스트한 후에 SSL 인증서 확인을 다시 사용하도록 설정합니다.
 
 * 새 요청을 만듭니다.
-  * HTTP 메서드를 **GET**으로 설정합니다.
+  * HTTP 메서드를 **GET** 으로 설정합니다.
   * 요청 URI를 `https://localhost:<port>/api/todo`로 설정합니다. 예: `https://localhost:5001/api/todo`.
-* Postman에서 **두 개의 창 보기**를 설정합니다.
-* **보내기**를 선택합니다.
+* Postman에서 **두 개의 창 보기** 를 설정합니다.
+* **보내기** 를 선택합니다.
 
 ![Get 요청이 있는 Postman](first-web-api/_static/2pv.png)
 
@@ -1376,7 +1376,7 @@ ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주�
     }
     ```
 
-* **보내기**를 선택합니다.
+* **보내기** 를 선택합니다.
 
   ![생성 요청이 있는 Postman](first-web-api/_static/create.png)
 
@@ -1391,7 +1391,7 @@ ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주�
 
 * 메서드를 GET으로 설정합니다.
 * URI를 `https://localhost:<port>/api/TodoItems/2`으로 설정합니다. 예: `https://localhost:5001/api/TodoItems/2`.
-* **보내기**를 선택합니다.
+* **보내기** 를 선택합니다.
 
 ## <a name="add-a-puttodoitem-method-21"></a>PutTodoItem 메서드 추가 2.1
 
@@ -1435,7 +1435,7 @@ Postman을 사용하여 할 일 항목을 삭제합니다.
 
 * 메서드를 `DELETE`로 설정합니다.
 * 삭제할 개체의 URI를 설정합니다(예: `https://localhost:5001/api/todo/1`).
-* **보내기**를 선택합니다.
+* **보내기** 를 선택합니다.
 
 샘플 앱을 사용하면 모든 항목을 삭제할 수 있습니다. 하지만 마지막 항목이 삭제되면 다음에 API를 호출하는 경우 모델 클래스 생성자에서 새로운 항목이 생성됩니다.
 
@@ -1443,23 +1443,23 @@ Postman을 사용하여 할 일 항목을 삭제합니다.
 
 이 섹션에는 JavaScript를 사용하여 웹 API를 호출하는 HTML 페이지가 추가되었습니다. jQuery가 요청을 시작합니다. JavaScript는 웹 API 응답의 세부 정보를 토대로 페이지를 업데이트합니다.
 
-다음 강조 표시된 코드로 *Startup.cs*를 업데이트하여 앱이 [정적 파일을 제공](xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A)하고 [기본 파일 매핑을 사용](xref:Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles%2A)하도록 구성합니다.
+다음 강조 표시된 코드로 *Startup.cs* 를 업데이트하여 앱이 [정적 파일을 제공](xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A)하고 [기본 파일 매핑을 사용](xref:Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles%2A)하도록 구성합니다.
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Startup.cs?highlight=14-15&name=snippet_configure)]
 
 프로젝트 디렉터리에서 *wwwroot* 폴더를 만듭니다.
 
-*index.html*이라는 HTML 파일을 *wwwroot* 디렉터리에 추가합니다. 다음 표시로 콘텐츠를 바꿉니다.
+*index.html* 이라는 HTML 파일을 *wwwroot* 디렉터리에 추가합니다. 다음 표시로 콘텐츠를 바꿉니다.
 
 [!code-html[](first-web-api/samples/2.2/TodoApi/wwwroot/index.html)]
 
-*site.js*라는 JavaScript 파일을 *wwwroot* 디렉터리에 추가합니다. 다음 코드로 콘텐츠를 바꿉니다.
+*site.js* 라는 JavaScript 파일을 *wwwroot* 디렉터리에 추가합니다. 다음 코드로 콘텐츠를 바꿉니다.
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_SiteJs)]
 
 HTML 페이지를 로컬에서 테스트하려면 ASP.NET Core 프로젝트의 시작 설정을 변경해야 할 수 있습니다.
 
-* *Properties\launchSettings.json*을 엽니다.
+* *Properties\launchSettings.json* 을 엽니다.
 * `launchUrl` 속성을 제거하여 앱이 *index.html*&mdash; 프로젝트의 기본 파일에서 열리도록 합니다.
 
 이 샘플은 웹 API의 CRUD 메서드를 모두 호출합니다. API 호출에 대한 설명은 다음과 같습니다.

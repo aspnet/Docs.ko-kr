@@ -4,7 +4,7 @@ author: pranavkm
 description: ASP.NET Core Blazor WebAssembly 앱의 성능을 높이고 일반적인 성능 문제를 방지하기 위한 팁입니다.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 10/09/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: ea3f197e5bab82f4fb40238fe31cd5ce29ab62ad
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: 0e827680e7024eabed09b989466476a3a80eb225
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900975"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690270"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>ASP.NET Core Blazor WebAssembly 성능 모범 사례
 
@@ -31,8 +31,8 @@ ms.locfileid: "91900975"
 
 Blazor WebAssembly는 세심하게 디자인되고 최적화되어 가장 현실적인 애플리케이션 UI 시나리오에서 고성능을 구현합니다. 하지만 개발자가 적합한 패턴과 기능을 사용해야만 최적의 결과를 얻을 수 있습니다. 다음 측면을 고려합니다.
 
-* **런타임 처리량**: .NET 코드는 WebAssembly 런타임 내의 인터프리터에서 실행되므로 CPU 처리량이 제한됩니다. 까다로운 시나리오에서 앱은 [렌더링 속도 최적화](#optimize-rendering-speed)를 활용합니다.
-* **시작 시간**: 앱은 브라우저에 .NET 런타임을 전송하므로 [애플리케이션 다운로드 크기를 최소화](#minimize-app-download-size)하는 기능을 사용해야 합니다.
+* **런타임 처리량** : .NET 코드는 WebAssembly 런타임 내의 인터프리터에서 실행되므로 CPU 처리량이 제한됩니다. 까다로운 시나리오에서 앱은 [렌더링 속도 최적화](#optimize-rendering-speed)를 활용합니다.
+* **시작 시간** : 앱은 브라우저에 .NET 런타임을 전송하므로 [애플리케이션 다운로드 크기를 최소화](#minimize-app-download-size)하는 기능을 사용해야 합니다.
 
 ## <a name="optimize-rendering-speed"></a>렌더링 속도 최적화
 
@@ -296,8 +296,8 @@ public static RenderFragment SayHello = __builder =>
 
 `<CascadingValue>` 구성 요소에는 `IsFixed`라는 선택적 매개 변수가 있습니다.
 
- * `IsFixed` 값이 `false`(기본값)이면 연계된 값의 모든 수신자가 변경 알림을 받도록 구독을 설정합니다. 이 경우 각 `[CascadingParameter]`는 구독 추적으로 인해 일반 `[Parameter]`보다 **비용이 훨씬 더 많이 듭니다**.
- * `IsFixed` 값이 `true`이면(예: `<CascadingValue Value="@someValue" IsFixed="true">`) 수신자는 초기 값을 수신하지만 구독이 업데이트를 수신하도록 설정하지 ‘않습니다’. 이 경우 각 `[CascadingParameter]`는 간단하며 일반 `[Parameter]`보다 **비용이 더 많이 들지 않습니다**.
+ * `IsFixed` 값이 `false`(기본값)이면 연계된 값의 모든 수신자가 변경 알림을 받도록 구독을 설정합니다. 이 경우 각 `[CascadingParameter]`는 구독 추적으로 인해 일반 `[Parameter]`보다 **비용이 훨씬 더 많이 듭니다** .
+ * `IsFixed` 값이 `true`이면(예: `<CascadingValue Value="@someValue" IsFixed="true">`) 수신자는 초기 값을 수신하지만 구독이 업데이트를 수신하도록 설정하지 ‘않습니다’. 이 경우 각 `[CascadingParameter]`는 간단하며 일반 `[Parameter]`보다 **비용이 더 많이 들지 않습니다** .
 
 따라서 가능하면 항상 연계된 값에서 `IsFixed="true"`를 사용해야 합니다. 제공되는 값이 시간 경과에 따라 변경되지 않을 때마다 이 작업을 수행할 수 있습니다. 구성 요소가 연계된 값으로 `this`를 전달하는 일반적인 패턴에서는 `IsFixed="true"`를 사용해야 합니다.
 

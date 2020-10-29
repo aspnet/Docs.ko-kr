@@ -4,7 +4,7 @@ author: scottaddie
 description: JavaScript Services를 사용하여 ASP.NET Core에서 지원하는 SPA(단일 페이지 애플리케이션)를 만드는 경우의 이점에 대해 알아봅니다.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, devx-track-js
 ms.date: 09/06/2019
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/spa-services
-ms.openlocfilehash: 379a8f52dab36d331bc42c1fee8d64b3971e9e91
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 33ae16c033142aa1c0f4cea53ca746e8a6aaf052
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625663"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690663"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>JavaScript Services를 사용하여 ASP.NET Core에서 단일 페이지 애플리케이션 만들기
 
@@ -114,7 +114,7 @@ npm i -S aspnet-prerendering
 
 ### <a name="asp-prerender-module-tag-helper"></a>asp-prerender-module 태그 도우미
 
-위의 코드 예제에서 사용되는 `asp-prerender-module` 태그 도우미는 Node.js를 통해 서버에서 *ClientApp/dist/main-server.js*를 실행합니다. 명확성을 위해 *main-server.js* 파일은 [Webpack](https://webpack.github.io/) 빌드 프로세스에서 TypeScript에서 JavaScript로의 소스 간 컴파일 태스크의 아티팩트입니다. Webpack은 `main-server`의 진입점 별칭을 정의합니다. 이 별칭에 대한 종속성 그래프 이동은 *ClientApp/boot-server.ts* 파일에서 시작됩니다.
+위의 코드 예제에서 사용되는 `asp-prerender-module` 태그 도우미는 Node.js를 통해 서버에서 *ClientApp/dist/main-server.js* 를 실행합니다. 명확성을 위해 *main-server.js* 파일은 [Webpack](https://webpack.github.io/) 빌드 프로세스에서 TypeScript에서 JavaScript로의 소스 간 컴파일 태스크의 아티팩트입니다. Webpack은 `main-server`의 진입점 별칭을 정의합니다. 이 별칭에 대한 종속성 그래프 이동은 *ClientApp/boot-server.ts* 파일에서 시작됩니다.
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=53)]
 
@@ -132,7 +132,7 @@ npm i -S aspnet-prerendering
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
-태그 도우미에 전달된 속성 이름은 **PascalCase** 표기법으로 표시됩니다. 동일한 속성 이름이 **camelCase**로 표시되는 JavaScript와는 다릅니다. 기본 JSON serialization 구성은 이러한 차이를 담당합니다.
+태그 도우미에 전달된 속성 이름은 **PascalCase** 표기법으로 표시됩니다. 동일한 속성 이름이 **camelCase** 로 표시되는 JavaScript와는 다릅니다. 기본 JSON serialization 구성은 이러한 차이를 담당합니다.
 
 위의 코드 예제를 확장하기 위해 `resolve` 함수에 제공 된 `globals` 속성을 하이드레이션하여 서버에서 뷰로 데이터를 전달할 수 있습니다.
 
@@ -242,7 +242,7 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 | MVC ASP.NET Core(React.js 사용)            | react      | [C#]     | Web/MVC/SPA |
 | MVC ASP.NET Core(React.js 및 Redux 사용)  | reactredux | [C#]     | Web/MVC/SPA |
 
-SPA 템플릿 중 하나를 사용하여 새 프로젝트를 만들려면 [dotnet new](/dotnet/core/tools/dotnet-new) 명령에 템플릿의 **짧은 이름**을 포함합니다. 다음 명령은 서버 쪽에 대해 구성된 ASP.NET Core MVC를 사용하여 Angular 애플리케이션을 만듭니다.
+SPA 템플릿 중 하나를 사용하여 새 프로젝트를 만들려면 [dotnet new](/dotnet/core/tools/dotnet-new) 명령에 템플릿의 **짧은 이름** 을 포함합니다. 다음 명령은 서버 쪽에 대해 구성된 ASP.NET Core MVC를 사용하여 Angular 애플리케이션을 만듭니다.
 
 ```dotnetcli
 dotnet new angular
@@ -252,10 +252,10 @@ dotnet new angular
 
 다음과 같은 두 가지 기본 런타임 구성 모드가 있습니다.
 
-* **개발**:
+* **개발** :
   * 디버깅을 용이하게 하는 소스 맵을 포함합니다.
   * 성능을 위해 클라이언트 쪽 코드를 최적화하지 않습니다.
-* **프로덕션**:
+* **프로덕션** :
   * 소스 맵을 제외합니다.
   * 묶음 및 축소를 통해 클라이언트 쪽 코드를 최적화합니다.
 
@@ -295,7 +295,7 @@ SpaServices 템플릿은 [Karma](https://karma-runner.github.io/1.0/index.html) 
 npm test
 ```
 
-이 스크립트는 *karma.conf.js* 파일에 정의된 설정을 읽는 Karma Test Runner를 시작합니다. 다른 설정 중에 *karma.conf.js*는 `files` 배열을 통해 실행할 테스트 파일을 식별합니다.
+이 스크립트는 *karma.conf.js* 파일에 정의된 설정을 읽는 Karma Test Runner를 시작합니다. 다른 설정 중에 *karma.conf.js* 는 `files` 배열을 통해 실행할 테스트 파일을 식별합니다.
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/test/karma.conf.js?range=4-5,8-11)]
 
