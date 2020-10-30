@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: da0c5579b0828aee7f1c78ec7f5731db50151e90
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 47926d12ac5f922f2937df164d38ff6eb63cacf1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634061"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053282"
 ---
 # <a name="twitter-external-sign-in-setup-with-aspnet-core"></a>ASP.NET Core로 Twitter 외부 로그인 설정
 
@@ -37,18 +38,18 @@ ms.locfileid: "88634061"
 
 * 으로 이동 하 여 [https://apps.twitter.com/](https://apps.twitter.com/) 로그인 합니다. Twitter 계정이 아직 없는 경우 **[지금 등록](https://twitter.com/signup)** 링크를 사용 하 여 계정을 만드세요.
 
-* **앱 만들기**를 선택 합니다. **앱 이름**, **응용 프로그램 설명** 및 공개 **웹 사이트** URI를 입력 합니다 (도메인 이름을 등록할 때까지 임시 일 수 있음).
+* **앱 만들기** 를 선택 합니다. **앱 이름** , **응용 프로그램 설명** 및 공개 **웹 사이트** URI를 입력 합니다 (도메인 이름을 등록할 때까지 임시 일 수 있음).
 
 * **Twitter로 로그인 사용** 옆의 확인란을 선택 합니다.
 
-* AspNetCore.Identity 기본적으로 사용자에 게 전자 메일 주소가 있어야 합니다. **권한** 탭으로 이동 하 고 **편집** 단추를 클릭 한 다음 **사용자에 게 전자 메일 주소 요청**옆의 확인란을 선택 합니다.
+* AspNetCore.Identity 기본적으로 사용자에 게 전자 메일 주소가 있어야 합니다. **권한** 탭으로 이동 하 고 **편집** 단추를 클릭 한 다음 **사용자에 게 전자 메일 주소 요청** 옆의 확인란을 선택 합니다.
 
 * `/signin-twitter` **콜백 url** 필드에를 추가 하 여 개발 URI를 입력 합니다 (예: `https://webapp128.azurewebsites.net/signin-twitter` ). 이 샘플의 뒷부분에서 구성 된 Twitter 인증 체계는 OAuth 흐름을 구현 하는 경로에서 요청을 자동으로 처리 합니다 `/signin-twitter` .
 
   > [!NOTE]
   > URI 세그먼트는 `/signin-twitter` Twitter 인증 공급자의 기본 콜백으로 설정 됩니다. [Twitteroptions](/dotnet/api/microsoft.aspnetcore.authentication.twitter.twitteroptions) 클래스의 상속 된 [Remoteauthenticationoptions. callbackpath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) 속성을 통해 Twitter 인증 미들웨어를 구성 하는 동안 기본 콜백 URI를 변경할 수 있습니다.
 
-* 양식의 나머지를 입력 하 고 **만들기**를 선택 합니다. 새 응용 프로그램 세부 정보가 표시 됩니다.
+* 양식의 나머지를 입력 하 고 **만들기** 를 선택 합니다. 새 응용 프로그램 세부 정보가 표시 됩니다.
 
 ## <a name="store-the-twitter-consumer-api-key-and-secret"></a>Twitter 소비자 API 키 및 암호 저장
 
@@ -80,7 +81,7 @@ Twitter 인증에서 지원 되는 구성 옵션에 대 한 자세한 내용은 
 
 ## <a name="sign-in-with-twitter"></a>Twitter로 로그인
 
-앱을 실행 하 고 **로그인**을 선택 합니다. Twitter를 사용 하 여 로그인 하는 옵션이 표시 됩니다.
+앱을 실행 하 고 **로그인** 을 선택 합니다. Twitter를 사용 하 여 로그인 하는 옵션이 표시 됩니다.
 
 **Twitter** 로 리디렉션하여 인증을 위해 twitter를 클릭 합니다.
 
@@ -98,7 +99,7 @@ Rather in the twitter setup, you can provide an External sign-in homepage. The e
 
 ## <a name="troubleshooting"></a>문제 해결
 
-* **ASP.NET Core 2.x에만 해당:** Identity 에서를 호출 하 여가 구성 되지 않은 경우 `services.AddIdentity` `ConfigureServices` 인증을 시도 하면 ArgumentException이 발생 합니다. *' SignInScheme ' 옵션을 제공 해야*합니다. 이 샘플에서 사용 되는 프로젝트 템플릿은이 작업이 수행 되도록 합니다.
+* **ASP.NET Core 2.x에만 해당:** Identity 에서를 호출 하 여가 구성 되지 않은 경우 `services.AddIdentity` `ConfigureServices` 인증을 시도 하면 ArgumentException이 발생 합니다. *' SignInScheme ' 옵션을 제공 해야* 합니다. 이 샘플에서 사용 되는 프로젝트 템플릿은이 작업이 수행 되도록 합니다.
 * 초기 마이그레이션을 적용 하 여 사이트 데이터베이스를 만들지 않은 경우 요청 오류를 *처리 하는 동안 데이터베이스 작업이 실패* 하 게 됩니다. **마이그레이션 적용** 을 탭 하 여 데이터베이스를 만들고 새로 고쳐 오류를 계속 합니다.
 
 ## <a name="next-steps"></a>다음 단계

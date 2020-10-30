@@ -7,6 +7,7 @@ ms.custom: seoapril2019, mvc, seodec18
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: ce0e7ad30c137562b74dc9fe5c53235e3599e575
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: be0b655645fd2bd0eab9f9c30a65485f386cead3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634360"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053360"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>ASP.NET Core의 Facebook 외부 로그인 설정
 
@@ -48,7 +49,7 @@ ms.locfileid: "88634360"
 
   ![새 앱 ID 양식 만들기](index/_static/FBNewAppId.png)
 
-* 새 앱 카드에서 **제품 추가**를 선택 합니다.  **Facebook 로그인** 카드에서 **설정** 을 클릭 합니다. 
+* 새 앱 카드에서 **제품 추가** 를 선택 합니다.  **Facebook 로그인** 카드에서 **설정** 을 클릭 합니다. 
 
   ![제품 설정 페이지](index/_static/FBProductSetup.png)
 
@@ -65,7 +66,7 @@ ms.locfileid: "88634360"
 > [!NOTE]
 > URI */signin-facebook* 는 facebook 인증 공급자의 기본 콜백으로 설정 됩니다. [FacebookOptions](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions) 클래스의 상속 된 [Remoteauthenticationoptions. callbackpath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) 속성을 통해 Facebook 인증 미들웨어를 구성 하는 동안 기본 콜백 URI를 변경할 수 있습니다.
 
-* **변경 내용 저장**을 클릭합니다.
+* **변경 내용 저장** 을 클릭합니다.
 
 * 왼쪽 탐색 영역에서 **설정**  >  **기본** 링크를 클릭 합니다.
 
@@ -103,8 +104,8 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 
 ## <a name="sign-in-with-facebook"></a>Facebook으로 로그인
 
-* 앱을 실행 하 고 **로그인**을 선택 합니다. 
-* **다른 서비스를 사용 하 여 로그인**에서 Facebook을 선택 합니다.
+* 앱을 실행 하 고 **로그인** 을 선택 합니다. 
+* **다른 서비스를 사용 하 여 로그인** 에서 Facebook을 선택 합니다.
 * 인증을 위해 **Facebook** 으로 리디렉션됩니다.
 * Facebook 자격 증명을 입력 합니다.
 * 전자 메일을 설정할 수 있는 사이트로 다시 리디렉션됩니다.
@@ -132,7 +133,7 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 * [Facebook.com](https://www.facebook.com/) 로 이동 합니다.
 * 로그인 한 경우 로그 아웃 해야 합니다.
 * 앱을 실행 하 고 Facebook 로그인을 선택 합니다.
-* **지금 안 함**을 선택 합니다. 지정 된 `AccessDeniedPath` 페이지로 리디렉션됩니다.
+* **지금 안 함** 을 선택 합니다. 지정 된 `AccessDeniedPath` 페이지로 리디렉션됩니다.
 
 <!-- End of React  -->
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
@@ -146,7 +147,7 @@ Facebook 인증에서 지 원하는 구성 옵션에 대 한 자세한 내용은
 
 ## <a name="troubleshooting"></a>문제 해결
 
-* **ASP.NET Core 2.x에만 해당:** Identity 에서를 호출 하 여가 구성 되지 않은 경우 `services.AddIdentity` `ConfigureServices` 인증을 시도 하면 ArgumentException이 발생 합니다. *' SignInScheme ' 옵션을 제공 해야*합니다. 이 자습서에서 사용 되는 프로젝트 템플릿은이 작업이 수행 되도록 합니다.
+* **ASP.NET Core 2.x에만 해당:** Identity 에서를 호출 하 여가 구성 되지 않은 경우 `services.AddIdentity` `ConfigureServices` 인증을 시도 하면 ArgumentException이 발생 합니다. *' SignInScheme ' 옵션을 제공 해야* 합니다. 이 자습서에서 사용 되는 프로젝트 템플릿은이 작업이 수행 되도록 합니다.
 * 초기 마이그레이션을 적용 하 여 사이트 데이터베이스를 만들지 않은 경우 *요청 오류를 처리 하는 동안 데이터베이스 작업이 실패 했습니다* . **마이그레이션 적용** 을 탭 하 여 데이터베이스를 만들고 새로 고쳐 오류를 계속 합니다.
 
 ## <a name="next-steps"></a>다음 단계

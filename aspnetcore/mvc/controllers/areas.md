@@ -5,6 +5,7 @@ description: 관련 기능을 별도의 네임스페이스(라우팅용) 및 폴
 ms.author: riande
 ms.date: 03/21/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/areas
-ms.openlocfilehash: 033b57f5406d0344347b2f787fa2b2fbb2da8604
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 42eec406813adce4d7edbc1ab66a1f689c4aca0e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630252"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053529"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core의 영역
 
@@ -62,7 +63,7 @@ ms.locfileid: "88630252"
 
 ### <a name="area-folder-structure"></a>영역 폴더 구조
 
-*Products* 및 *Services*의 두 논리 그룹이 존재하는 앱을 고려해보세요. 영역을 사용할 경우 폴더 구조는 다음과 유사할 것입니다.
+*Products* 및 *Services* 의 두 논리 그룹이 존재하는 앱을 고려해보세요. 영역을 사용할 경우 폴더 구조는 다음과 유사할 것입니다.
 
 * 프로젝트 이름
   * Areas
@@ -138,7 +139,7 @@ ms.locfileid: "88630252"
 
 ### <a name="shared-layout-for-areas-using-the-_viewstartcshtml-file"></a>_ViewStart.cshtml 파일을 사용하여 영역에 대한 레이아웃 공유
 
-전체 앱에 대 한 공통 레이아웃을 공유 하려면 [응용 프로그램 루트 폴더](#arf)에 *_ViewStart* 를 유지 합니다. 자세한 내용은 <xref:mvc/views/layout>를 참조하세요.
+전체 앱에 대 한 공통 레이아웃을 공유 하려면 [응용 프로그램 루트 폴더](#arf)에 *_ViewStart* 를 유지 합니다. 자세한 내용은 <xref:mvc/views/layout>을 참조하세요.
 
 <a name="arf"></a>
 
@@ -148,7 +149,7 @@ ms.locfileid: "88630252"
 
 ### <a name="_viewimportscshtml"></a>_ViewImports.cshtml
 
- */Views/_ViewImports*(MVC의 경우) 및/페이지에 대 한 */_ViewImports/* Razor 는 영역에서 뷰로 가져오지 않습니다. 다음 방법 중 하나를 사용 하 여 모든 보기에 대 한 보기 가져오기를 제공 합니다.
+ */Views/_ViewImports* (MVC의 경우) 및/페이지에 대 한 */_ViewImports/* Razor 는 영역에서 뷰로 가져오지 않습니다. 다음 방법 중 하나를 사용 하 여 모든 보기에 대 한 보기 가져오기를 제공 합니다.
 
 * [응용 프로그램 루트 폴더](#arf)에 *_ViewImports* 를 추가 합니다. 응용 프로그램 루트 폴더의 *_ViewImports* 는 앱의 모든 보기에 적용 됩니다.
 * *_ViewImports cshtml* 파일을 영역 아래의 적절 한 보기 폴더에 복사 합니다.
@@ -227,7 +228,7 @@ ms.locfileid: "88630252"
 
 ### <a name="shared-layout-for-no-locrazor-pages-areas"></a>페이지 영역에 대 한 공유 레이아웃 Razor
 
-전체 앱의 일반적인 레이아웃을 공유하려면 *_ViewStart.cshtml*을 애플리케이션 루트 폴더로 이동합니다.
+전체 앱의 일반적인 레이아웃을 공유하려면 *_ViewStart.cshtml* 을 애플리케이션 루트 폴더로 이동합니다.
 
 ### <a name="publishing-areas"></a>영역 게시
 
@@ -264,7 +265,7 @@ ms.locfileid: "88630252"
 
 ### <a name="area-folder-structure"></a>영역 폴더 구조
 
-*Products* 및 *Services*의 두 논리 그룹이 존재하는 앱을 고려해보세요. 영역을 사용할 경우 폴더 구조는 다음과 유사할 것입니다.
+*Products* 및 *Services* 의 두 논리 그룹이 존재하는 앱을 고려해보세요. 영역을 사용할 경우 폴더 구조는 다음과 유사할 것입니다.
 
 * 프로젝트 이름
   * Areas
@@ -336,11 +337,11 @@ ASP.NET Core 2.2에서 `MapAreaRoute`를 사용하는 경우에는 [이 GitHub �
 
 ### <a name="shared-layout-for-areas-using-the-_viewstartcshtml-file"></a>_ViewStart.cshtml 파일을 사용하여 영역에 대한 레이아웃 공유
 
-전체 앱의 일반적인 레이아웃을 공유하려면 *_ViewStart.cshtml*을 애플리케이션 루트 폴더로 이동합니다.
+전체 앱의 일반적인 레이아웃을 공유하려면 *_ViewStart.cshtml* 을 애플리케이션 루트 폴더로 이동합니다.
 
 ### <a name="_viewimportscshtml"></a>_ViewImports.cshtml
 
-표준 위치의 */Views/_ViewImports.cshtml*은 영역에 적용되지 않습니다. 사용자의 지역에서 공용 [태그 도우미](xref:mvc/views/tag-helpers/intro), 또는를 사용 하려면 `@using` 적절 한 `@inject` *_ViewImports cshtml* 파일이 [영역 보기에 적용](xref:mvc/views/layout#importing-shared-directives)되도록 합니다. 모든 보기에서 동일한 동작을 원하는 경우 */Views/_ViewImports.cshtml*을 응용 프로그램 루트로 이동합니다.
+표준 위치의 */Views/_ViewImports.cshtml* 은 영역에 적용되지 않습니다. 사용자의 지역에서 공용 [태그 도우미](xref:mvc/views/tag-helpers/intro), 또는를 사용 하려면 `@using` 적절 한 `@inject` *_ViewImports cshtml* 파일이 [영역 보기에 적용](xref:mvc/views/layout#importing-shared-directives)되도록 합니다. 모든 보기에서 동일한 동작을 원하는 경우 */Views/_ViewImports.cshtml* 을 응용 프로그램 루트로 이동합니다.
 
 <a name="rename"></a>
 
@@ -416,7 +417,7 @@ ASP.NET Core 2.2에서 `MapAreaRoute`를 사용하는 경우에는 [이 GitHub �
 
 ### <a name="shared-layout-for-no-locrazor-pages-areas"></a>페이지 영역에 대 한 공유 레이아웃 Razor
 
-전체 앱의 일반적인 레이아웃을 공유하려면 *_ViewStart.cshtml*을 애플리케이션 루트 폴더로 이동합니다.
+전체 앱의 일반적인 레이아웃을 공유하려면 *_ViewStart.cshtml* 을 애플리케이션 루트 폴더로 이동합니다.
 
 ### <a name="publishing-areas"></a>영역 게시
 

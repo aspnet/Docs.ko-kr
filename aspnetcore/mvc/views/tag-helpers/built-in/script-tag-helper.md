@@ -6,6 +6,7 @@ description: ASP.NET Core 스크립트 태그 도우미 특성 및 HTML 스크�
 ms.custom: mvc
 ms.date: 12/02/2019
 no-loc:
+- appsettings.json
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/script-tag-helper
-ms.openlocfilehash: b2f10b8230c1292614927d61c1e6d997dcb5640c
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: f5856bf19681a42551f82bb15c769f192f338b4a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020225"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053503"
 ---
 # <a name="script-tag-helper-in-aspnet-core"></a>ASP.NET Core의 스크립트 태그 도우미
 
