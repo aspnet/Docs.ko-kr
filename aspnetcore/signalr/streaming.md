@@ -5,7 +5,7 @@ description: 클라이언트와 서버 간에 데이터를 스트리밍하는 �
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc, devx-track-js
-ms.date: 11/12/2019
+ms.date: 10/29/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/streaming
-ms.openlocfilehash: 2f21248934395b682adf8060dae4e3d145e52215
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: b07c280f271ccdd525128b973da065001a5cf0ed
+ms.sourcegitcommit: 0d40fc4932531ce13fc4ee9432144584e03c2f1c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058209"
+ms.locfileid: "93062443"
 ---
 # <a name="use-streaming-in-aspnet-core-no-locsignalr"></a>ASP.NET Core에서 스트리밍 사용 SignalR
 
@@ -320,6 +320,22 @@ hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
 ```
 
 `stream`의 메서드는 `HubConnection` 스트림 항목 형식의 관찰 가능 개체를 반환 합니다. 관찰 가능한 형식의 `subscribe` 메서드는 `onNext` , `onError` 및 처리기가 `onCompleted` 정의 됩니다.
+
+### <a name="client-to-server-streaming"></a>클라이언트와 서버 간 스트리밍
+
+SignalRJava 클라이언트는 [Observable](https://rxjs-dev.firebaseapp.com/api/index/class/Observable) `send` `invoke` `stream` 호출 된 허브 메서드에 따라 관찰 가능 개체를, 또는에 인수로 전달 하 여 허브에서 클라이언트-서버 스트리밍 메서드를 호출할 수 있습니다.
+
+```java
+ReplaySubject<String> stream = ReplaySubject.create();
+hubConnection.send("UploadStream", stream);
+stream.onNext("FirstItem");
+stream.onNext("SecondItem");
+stream.onComplete();
+```
+
+`stream.onNext(item)`항목을 사용 하 여를 호출 하면 항목이 스트림에 기록 되 고 허브 메서드는 서버에서 항목을 받습니다.
+
+스트림을 종료 하려면를 호출 `stream.onComplete()` 합니다.
 
 ::: moniker-end
 
