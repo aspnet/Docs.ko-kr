@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/gdpr
-ms.openlocfilehash: 35a12cb8d2a9617e51d886e798cff5ee60b0a8ad
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ec65a2c8362c15716bebd6b22f5639785ba74c98
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634711"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051007"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>ASP.NET Core의 GDPR (EU 일반 데이터 보호 규정) 지원
 
@@ -46,7 +47,7 @@ cookieASP.NET Core 3.0 템플릿에서 생성 된 앱의 ASP.NET Core 2.2 템플
 
   [!code-cshtml[Main](gdpr/sample/RP3.0/Pages/Shared/_Layout.cshtml?name=snippet&highlight=4)]
 
-* * \_ Cookie ConsentPartial* 파일을 프로젝트에 추가 합니다.
+* *\_ Cookie ConsentPartial* 파일을 프로젝트에 추가 합니다.
 
   [!code-cshtml[Main](gdpr/sample/RP3.0/Pages/Shared/_CookieConsentPartial.cshtml)]
 
@@ -71,8 +72,8 @@ cookieASP.NET Core 3.0 템플릿에서 생성 된 앱의 ASP.NET Core 2.2 템플
 Razor 프로젝트 템플릿을 사용 하 여 만든 페이지 및 MVC 프로젝트에는 다음과 같은 GDPR 지원이 포함 됩니다.
 
 * [ Cookie Policyoptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) 및 [Use Cookie Policy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) 는 클래스에 설정 되어 있습니다 `Startup` .
-* * \_ Cookie ConsentPartial* [부분 뷰입니다](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper). **수락** 단추가이 파일에 포함 됩니다. 사용자가 **동의** 단추를 클릭 하면 저장소에 대 한 동의가 cookie 제공 됩니다.
-* *페이지/개인 정보* 보호 페이지 또는 *보기/홈/개인 정보. cshtml* 보기는 사이트의 개인 정보 취급 방침에 대 한 세부 정보를 제공 하는 페이지를 제공 합니다. * \_ Cookie ConsentPartial* 파일은 개인 정보 페이지에 대 한 링크를 생성 합니다.
+* *\_ Cookie ConsentPartial* [부분 뷰입니다](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper). **수락** 단추가이 파일에 포함 됩니다. 사용자가 **동의** 단추를 클릭 하면 저장소에 대 한 동의가 cookie 제공 됩니다.
+* *페이지/개인 정보* 보호 페이지 또는 *보기/홈/개인 정보. cshtml* 보기는 사이트의 개인 정보 취급 방침에 대 한 세부 정보를 제공 하는 페이지를 제공 합니다. *\_ Cookie ConsentPartial* 파일은 개인 정보 페이지에 대 한 링크를 생성 합니다.
 * 개별 사용자 계정을 사용 하 여 만든 앱의 경우 관리 페이지에 [개인 사용자 데이터](#pd)를 다운로드 하 고 삭제할 수 있는 링크가 제공 됩니다.
 
 ### <a name="no-loccookiepolicyoptions-and-useno-loccookiepolicy"></a>CookiePolicyOptions 및 사용 Cookie 정책
@@ -87,13 +88,13 @@ Razor 프로젝트 템플릿을 사용 하 여 만든 페이지 및 MVC 프로�
 
 ### <a name="_no-loccookieconsentpartialcshtml-partial-view"></a>\_CookieConsentPartial 부분 보기
 
-* \_ Cookie ConsentPartial* 부분 보기:
+*\_ Cookie ConsentPartial* 부분 보기:
 
 [!code-cshtml[](gdpr/sample/RP2.2/Pages/Shared/_CookieConsentPartial.cshtml)]
 
 이 부분:
 
-* 사용자에 대 한 추적 상태를 가져옵니다. 앱이 동의를 요구 하도록 구성 된 경우 사용자는를 추적할 수 있도록 먼저 동의 해야 합니다 cookie . 동의가 필요한 경우에는 cookie * \_ Layout* 파일에 의해 생성 된 탐색 모음 위에서 승인 패널을 고정 합니다.
+* 사용자에 대 한 추적 상태를 가져옵니다. 앱이 동의를 요구 하도록 구성 된 경우 사용자는를 추적할 수 있도록 먼저 동의 해야 합니다 cookie . 동의가 필요한 경우에는 cookie *\_ Layout* 파일에 의해 생성 된 탐색 모음 위에서 승인 패널을 고정 합니다.
 * `<p>`개인 정보를 요약 하 고 정책을 사용 하는 HTML 요소를 제공 cookie 합니다.
 * 사이트의 개인 정보 취급 방침에 대 한 세부 정보를 볼 수 있는 개인 정보 페이지 또는 보기에 대 한 링크를 제공 합니다.
 
@@ -121,7 +122,7 @@ Razor 프로젝트 템플릿을 사용 하 여 만든 페이지 및 MVC 프로�
 
 개별 사용자 계정을 사용 하 여 만든 ASP.NET Core 앱은 개인 데이터를 다운로드 하 고 삭제 하는 코드를 포함 합니다.
 
-사용자 이름을 선택 하 고 **개인 데이터**를 선택 합니다.
+사용자 이름을 선택 하 고 **개인 데이터** 를 선택 합니다.
 
 ![개인 데이터 관리 페이지](gdpr/_static/pd.png)
 
@@ -134,7 +135,7 @@ Razor 프로젝트 템플릿을 사용 하 여 만든 페이지 및 MVC 프로�
 
 ::: moniker-end
 
-## <a name="encryption-at-rest"></a>휴지 상태의 암호화
+## <a name="encryption-at-rest"></a>미사용 암호화
 
 일부 데이터베이스 및 저장소 메커니즘은 미사용 암호화를 허용 합니다. 저장 데이터 암호화:
 
@@ -143,20 +144,20 @@ Razor 프로젝트 템플릿을 사용 하 여 만든 페이지 및 MVC 프로�
 * 는 가장 쉽고 안전한 옵션입니다.
 * 데이터베이스에서 키와 암호화를 관리할 수 있습니다.
 
-다음은 그 예입니다. 
+다음은 그 예입니다.
 
 * Microsoft SQL 및 Azure SQL은 tde ( [투명한 데이터 암호화](/sql/relational-databases/security/encryption/transparent-data-encryption) )를 제공 합니다.
 * [SQL Azure는 기본적으로 데이터베이스를 암호화 합니다.](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)
 * [Azure blob, 파일, 테이블 및 Queue Storage는 기본적으로 암호화 됩니다](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 
-미사용 기본 암호화를 제공 하지 않는 데이터베이스의 경우 디스크 암호화를 사용 하 여 동일한 보호를 제공할 수 있습니다. 다음은 그 예입니다. 
+미사용 기본 암호화를 제공 하지 않는 데이터베이스의 경우 디스크 암호화를 사용 하 여 동일한 보호를 제공할 수 있습니다. 다음은 그 예입니다.
 
 * [Windows Server 용 BitLocker](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
 * Linux:
   * [eCryptfs](https://launchpad.net/ecryptfs)
   * [Encfs](https://github.com/vgough/encfs).
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [Microsoft.com/GDPR](https://www.microsoft.com/trustcenter/Privacy/GDPR)
 * [GDPR-ASP.NET Core에서 해지 동의 단추를 추가 하는 중](https://www.joeaudette.com/blog/2018/08/28/gdpr---adding-a-revoke-consent-button-in-aspnet-core)

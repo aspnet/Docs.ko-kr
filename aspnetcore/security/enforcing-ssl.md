@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: b5260084c2fdd296168e918f06d8b54faf1865d5
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: e473da9a7cbd91a601ad4af0c7c02c7f576f348c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722659"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051124"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>ASP.NET Core에서 HTTPS 적용
 
@@ -113,7 +114,7 @@ API가 없으면 클라이언트가 첫 번째 요청에서 중요 한 데이터
 
   * 호스트 구성에서.
   * `ASPNETCORE_HTTPS_PORT`환경 변수를 설정 합니다.
-  * appsettings.js에서 최상위 항목을 추가 하 여 다음 * 을*수행 합니다.
+  * 에서 최상위 항목을 추가 하 여 *appsettings.json* 다음을 수행 합니다.
 
     [!code-json[](enforcing-ssl/sample-snapshot/3.x/appsettings.json?highlight=2)]
 
@@ -127,7 +128,7 @@ API가 없으면 클라이언트가 첫 번째 요청에서 중요 한 데이터
 
   * 호스트 구성에서.
   * `ASPNETCORE_HTTPS_PORT`환경 변수를 설정 합니다.
-  * appsettings.js에서 최상위 항목을 추가 하 여 다음 * 을*수행 합니다.
+  * 에서 최상위 항목을 추가 하 여 *appsettings.json* 다음을 수행 합니다.
 
     [!code-json[](enforcing-ssl/sample-snapshot/2.x/appsettings.json?highlight=2)]
 
@@ -135,7 +136,7 @@ API가 없으면 클라이언트가 첫 번째 요청에서 중요 한 데이터
 
 ::: moniker-end
 
-* 개발에서 *launchsettings.js*의 HTTPS URL을 설정 합니다. IIS Express 사용 하는 경우 HTTPS를 사용 하도록 설정 합니다.
+* 개발에서 *launchsettings.js* 의 HTTPS URL을 설정 합니다. IIS Express 사용 하는 경우 HTTPS를 사용 하도록 설정 합니다.
 
 * [Kestrel](xref:fundamentals/servers/kestrel) 서버 또는 [HTTP.sys](xref:fundamentals/servers/httpsys) 서버의 공용에 지 배포에 대 한 HTTPS URL 끝점을 구성 합니다. 앱에서 **HTTPS 포트** 를 하나만 사용 합니다. 미들웨어는를 통해 포트를 검색 합니다 <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> .
 
@@ -192,7 +193,7 @@ Azure App Service에 배포할 때 [자습서: Azure Web Apps에 기존 사용�
 
 ::: moniker range=">= aspnetcore-3.0"
 
-*Startup.cs*에서 서비스를 구성 하는 경우:
+*Startup.cs* 에서 서비스를 구성 하는 경우:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -213,7 +214,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range="<= aspnetcore-2.2"
 
-*Startup.cs*에서 서비스를 구성 하는 경우:
+*Startup.cs* 에서 서비스를 구성 하는 경우:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -398,7 +399,7 @@ WSL (Linux 용 Windows 하위 시스템)은 HTTPS 자체 서명 된 인증서를
 
 ### <a name="all-platforms---certificate-not-trusted"></a>모든 플랫폼-인증서를 신뢰할 수 없음
 
-다음 명령을 실행합니다.
+다음 명령을 실행 합니다.
 
 ```dotnetcli
 dotnet dev-certs https --clean
@@ -419,7 +420,7 @@ dotnet dev-certs https --trust
 
 * 인증서 저장소의 인증서를 확인 합니다. `localhost`및의 이름을 가진 인증서가 있어야 합니다. `ASP.NET Core HTTPS development certificate` `Current User > Personal > Certificates``Current User > Trusted root certification authorities > Certificates`
 * 모든 찾은 인증서를 개인 및 신뢰할 수 있는 루트 인증 기관에서 제거 합니다. IIS Express localhost 인증서를 제거 **하지** 마십시오.
-* 다음 명령을 실행합니다.
+* 다음 명령을 실행 합니다.
 
 ```dotnetcli
 dotnet dev-certs https --clean
@@ -435,7 +436,7 @@ dotnet dev-certs https --trust
 * Localhost 인증서가 있는지 확인 합니다.
 * `+`모든 사용자가 신뢰할 수 있음을 나타내기 위해 아이콘에 기호가 포함 되어 있는지 확인 합니다.
 * 시스템 키 집합에서 인증서를 제거 합니다.
-* 다음 명령을 실행합니다.
+* 다음 명령을 실행 합니다.
 
 ```dotnetcli
 dotnet dev-certs https --clean

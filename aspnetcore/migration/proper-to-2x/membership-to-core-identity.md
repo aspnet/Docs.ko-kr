@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/10/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/membership-to-core-identity
-ms.openlocfilehash: a9ec02381b156a6599042d8e504a476036246302
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: d981c424fd2d6cad95b9164420f093672325c347
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865565"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051358"
 ---
 # <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-no-locidentity"></a>ASP.NET Membership authentication에서 ASP.NET Core 2.0으로 마이그레이션 Identity
 
@@ -47,16 +48,16 @@ ASP.NET Core 2.0은 [Identity](/aspnet/identity/index) ASP.NET 4.5에 도입 된
 
 ASP.NET Core 2.0에 대 한 스키마를 보는 가장 빠른 방법은 Identity 새 ASP.NET Core 2.0 앱을 만드는 것입니다. Visual Studio 2017에서 다음 단계를 수행 합니다.
 
-1. **파일** > **새로 만들기** > **프로젝트**를 선택합니다.
-1. *핵심 Identity 샘플*이라는 새 **ASP.NET Core 웹 응용 프로그램** 프로젝트를 만듭니다.
-1. 드롭다운 목록에서 **ASP.NET Core 2.0** 을 선택 하 고 **웹 응용 프로그램**을 선택 합니다. 이 템플릿은 [ Razor 페이지](xref:razor-pages/index) 앱을 생성 합니다. **확인**을 클릭 하기 전에 **인증 변경**을 클릭 합니다.
-1. 템플릿에 대 한 **개별 사용자 계정을** 선택 Identity 합니다. 마지막으로 **확인**을 클릭 한 다음 **확인**을 클릭 합니다. Visual Studio는 템플릿을 사용 하 여 프로젝트를 만듭니다 ASP.NET Core Identity .
+1. **File** > **New** > **Project** 를 선택합니다.
+1. *핵심 Identity 샘플* 이라는 새 **ASP.NET Core 웹 응용 프로그램** 프로젝트를 만듭니다.
+1. 드롭다운 목록에서 **ASP.NET Core 2.0** 을 선택 하 고 **웹 응용 프로그램** 을 선택 합니다. 이 템플릿은 [ Razor 페이지](xref:razor-pages/index) 앱을 생성 합니다. **확인** 을 클릭 하기 전에 **인증 변경** 을 클릭 합니다.
+1. 템플릿에 대 한 **개별 사용자 계정을** 선택 Identity 합니다. 마지막으로 **확인** 을 클릭 한 다음 **확인** 을 클릭 합니다. Visual Studio는 템플릿을 사용 하 여 프로젝트를 만듭니다 ASP.NET Core Identity .
 1. **도구**  >  **NuGet 패키지 관리자**  >  **패키지 관리자 콘솔** 을 선택 하 여 PMC ( **패키지 관리자 콘솔** ) 창을 엽니다.
 1. PMC의 프로젝트 루트로 이동 하 고 [EF (Entity Framework) Core](/ef/core) `Update-Database` 명령을 실행 합니다.
 
     ASP.NET Core 2.0는 Identity EF Core를 사용 하 여 인증 데이터를 저장 하는 데이터베이스와 상호 작용 합니다. 새로 만든 앱이 작동 하려면이 데이터를 저장할 데이터베이스가 있어야 합니다. 새 앱을 만든 후 데이터베이스 환경에서 스키마를 검사 하는 가장 빠른 방법은 [EF Core 마이그레이션을](/ef/core/managing-schemas/migrations/)사용 하 여 데이터베이스를 만드는 것입니다. 이 프로세스는 로컬 또는 다른 위치에 있는 데이터베이스를 만들어 해당 스키마를 모방 합니다. 자세한 내용은 위의 설명서를 참조 하십시오.
 
-    EF Core 명령은 *appsettings.js*에 지정 된 데이터베이스에 대 한 연결 문자열을 사용 합니다. 다음 연결 문자열은 이름이 *.asp*인 *localhost* 의 데이터베이스를 대상으로 합니다. 이 설정에서는 EF Core 연결 문자열을 사용 하도록 구성 됩니다 `DefaultConnection` .
+    EF Core 명령은에 지정 된 데이터베이스에 대 한 연결 문자열을 사용 *appsettings.json* 합니다. 다음 연결 문자열은 이름이 *.asp* 인 *localhost* 의 데이터베이스를 대상으로 합니다. 이 설정에서는 EF Core 연결 문자열을 사용 하도록 구성 됩니다 `DefaultConnection` .
 
     ```json
     {
@@ -66,7 +67,7 @@ ASP.NET Core 2.0에 대 한 스키마를 보는 가장 빠른 방법은 Identity
     }
     ```
 
-1. SQL Server 개체 탐색기 **보기**  >  **SQL Server Object Explorer**를 선택 합니다. appsettings.js의 속성에 지정 된 데이터베이스 이름에 해당 하는 노드를 확장 `ConnectionStrings:DefaultConnection` 합니다. *appsettings.json*
+1. SQL Server 개체 탐색기 **보기**  >  **SQL Server Object Explorer** 를 선택 합니다. 의 속성에 지정 된 데이터베이스 이름에 해당 하는 노드를 확장 `ConnectionStrings:DefaultConnection` *appsettings.json* 합니다.
 
     `Update-Database`명령은 스키마를 사용 하 여 지정 된 데이터베이스와 앱 초기화에 필요한 모든 데이터를 만들었습니다. 다음 그림에서는 앞의 단계를 사용 하 여 만든 테이블 구조를 보여 줍니다.
 
@@ -74,7 +75,7 @@ ASP.NET Core 2.0에 대 한 스키마를 보는 가장 빠른 방법은 Identity
 
 ## <a name="migrate-the-schema"></a>스키마 마이그레이션
 
-멤버 자격과의 테이블 구조와 필드에는 약간의 차이가 있습니다 ASP.NET Core Identity . 이 패턴은 ASP.NET 및 ASP.NET Core apps를 사용 하 여 인증/권한 부여에 대해 크게 변경 되었습니다. 에서 여전히 사용 되는 키 개체는 Identity *사용자* 및 *역할*입니다. *사용자*, *역할*및 *UserRoles*에 대 한 매핑 테이블은 다음과 같습니다.
+멤버 자격과의 테이블 구조와 필드에는 약간의 차이가 있습니다 ASP.NET Core Identity . 이 패턴은 ASP.NET 및 ASP.NET Core apps를 사용 하 여 인증/권한 부여에 대해 크게 변경 되었습니다. 에서 여전히 사용 되는 키 개체는 Identity *사용자* 및 *역할* 입니다. *사용자* , *역할* 및 *UserRoles* 에 대 한 매핑 테이블은 다음과 같습니다.
 
 ### <a name="users"></a>사용자
 
@@ -106,7 +107,7 @@ ASP.NET Core 2.0에 대 한 스키마를 보는 가장 빠른 방법은 Identity
 |`RoleId`                 |`string`  |`RoleId`      |`string`                   |
 |`UserId`                 |`string`  |`UserId`      |`string`                   |
 
-*사용자* 및 *역할*에 대 한 마이그레이션 스크립트를 만들 때 위의 매핑 테이블을 참조 합니다. 다음 예에서는 데이터베이스 서버에 데이터베이스가 두 개 있다고 가정 합니다. 하나의 데이터베이스에는 기존 ASP.NET 멤버 자격 스키마 및 데이터가 포함 됩니다. 다른 *핵심 Identity 샘플* 데이터베이스는 앞에서 설명한 단계를 사용 하 여 만들어졌습니다. 자세한 내용은 주석이 인라인으로 포함 되어 있습니다.
+*사용자* 및 *역할* 에 대 한 마이그레이션 스크립트를 만들 때 위의 매핑 테이블을 참조 합니다. 다음 예에서는 데이터베이스 서버에 데이터베이스가 두 개 있다고 가정 합니다. 하나의 데이터베이스에는 기존 ASP.NET 멤버 자격 스키마 및 데이터가 포함 됩니다. 다른 *핵심 Identity 샘플* 데이터베이스는 앞에서 설명한 단계를 사용 하 여 만들어졌습니다. 자세한 내용은 주석이 인라인으로 포함 되어 있습니다.
 
 ```sql
 -- THIS SCRIPT NEEDS TO RUN FROM THE CONTEXT OF THE MEMBERSHIP DB
@@ -200,7 +201,7 @@ COMMIT TRANSACTION MigrateUsersAndRoles
 > [!NOTE]
 > 멤버 자격 시스템에 전자 메일 주소와 일치 하지 않는 사용자 이름을 가진 사용자가 있는 경우이를 수용 하기 위해 이전에 만든 앱을 변경 해야 합니다. 기본 템플릿에는 `UserName` 와 `Email` 가 동일한 것으로 간주 됩니다. 서로 다른 경우에는 대신를 사용 하도록 로그인 프로세스를 수정 해야 합니다 `UserName` `Email` .
 
-`PageModel` *Pages\Account\Login.cshtml.cs*에 있는 로그인 페이지의에서 `[EmailAddress]` *전자 메일* 속성의 특성을 제거 합니다. 이름을 *UserName*으로 바꿉니다. 이렇게 하려면 `EmailAddress` *보기* 및 *PageModel*에서를 언급 하는 위치에 관계 없이 변경 해야 합니다. 결과는 다음과 같이 표시됩니다.
+`PageModel` *Pages\Account\Login.cshtml.cs* 에 있는 로그인 페이지의에서 `[EmailAddress]` *전자 메일* 속성의 특성을 제거 합니다. 이름을 *UserName* 으로 바꿉니다. 이렇게 하려면 `EmailAddress` *보기* 및 *PageModel* 에서를 언급 하는 위치에 관계 없이 변경 해야 합니다. 결과는 다음과 같이 표시됩니다.
 
  ![고정 로그인](identity/_static/fixed-login.png)
 

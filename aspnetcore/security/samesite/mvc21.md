@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/03/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/samesite/mvc21
-ms.openlocfilehash: 38e5f0d1a2ecf5b46f73bf8574f73934a070880f
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 61878af0f9af72284b43ffd46cca42b0cf043326
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722607"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051553"
 ---
 # <a name="aspnet-core-21-mvc-samesite-no-loccookie-sample"></a>ASP.NET Core 2.1 MVC SameSite cookie 샘플
 
@@ -90,7 +91,7 @@ services.AddSession(options =>
 
 를 가로채 고 cookie 사용자의 브라우저 에이전트에서 지원에 따라 없음 값을 조정 하려면 미들웨어를 사용 해야 합니다 `CookiePolicy` . 을 작성 하 고 내에서 구성 된 구성 요소 **보다 먼저** http 요청 파이프라인에 배치 해야 합니다 cookie `ConfigureServices()` .
 
-`app.UseCookiePolicy()` `Configure(IApplicationBuilder, IHostingEnvironment)` [Startup.cs](https://github.com/blowdart/AspNetSameSiteSamples/blob/master/AspNetCore21MVC/Startup.cs)의 메서드에서 파이프라인 사용에 삽입 합니다. 예를 들면 다음과 같습니다.
+`app.UseCookiePolicy()` `Configure(IApplicationBuilder, IHostingEnvironment)` [Startup.cs](https://github.com/blowdart/AspNetSameSiteSamples/blob/master/AspNetCore21MVC/Startup.cs)의 메서드에서 파이프라인 사용에 삽입 합니다. 다음은 그 예입니다.
 
 ```c#
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -120,7 +121,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-그런 다음를 `ConfigureServices(IServiceCollection services)` cookie 추가 하거나 삭제 하면에서 도우미 클래스를 호출 하도록 정책을 구성 합니다 cookie . 예를 들면 다음과 같습니다.
+그런 다음를 `ConfigureServices(IServiceCollection services)` cookie 추가 하거나 삭제 하면에서 도우미 클래스를 호출 하도록 정책을 구성 합니다 cookie . 다음은 그 예입니다.
 
 ```c#
 public void ConfigureServices(IServiceCollection services)

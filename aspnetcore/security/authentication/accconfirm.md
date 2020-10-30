@@ -5,6 +5,7 @@ description: 전자 메일 확인 및 암호 재설정을 사용 하 여 ASP.NET
 ms.author: riande
 ms.date: 03/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: d6ea37ceb83ffbaa94187e0c541c79428594e4b4
-ms.sourcegitcommit: 2039e60eb7b482da8298f82dcd5eda27cf747f32
+ms.openlocfilehash: 91148c67d5dc0bf97e2f926f50dcff5dd0708f4b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88906451"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052320"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>ASP.NET Core의 계정 확인 및 암호 복구
 
@@ -53,10 +54,10 @@ dotnet run
 
 앱을 실행 하 고, **등록** 링크를 선택 하 고, 사용자를 등록 합니다. 등록 되 면 `/Identity/Account/RegisterConfirmation` 전자 메일 확인을 시뮬레이트하는 링크를 포함 하는 to 페이지로 리디렉션됩니다.
 
-* `Click here to confirm your account` 링크를 선택합니다.
+* 링크를 선택 `Click here to confirm your account` 합니다.
 * **로그인** 링크를 선택 하 고 동일한 자격 증명을 사용 하 여 로그인 합니다.
 * `Hello YourEmail@provider.com!`페이지로 리디렉션되는 링크를 선택 합니다 `/Identity/Account/Manage/PersonalData` .
-* 왼쪽에서 **개인 데이터** 탭을 선택 하 고 **삭제**를 선택 합니다.
+* 왼쪽에서 **개인 데이터** 탭을 선택 하 고 **삭제** 를 선택 합니다.
 
 ### <a name="configure-an-email-provider"></a>전자 메일 공급자 구성
 
@@ -64,13 +65,13 @@ dotnet run
 
 SendGrid 계정에는 [발신자를 추가](https://sendgrid.com/docs/ui/sending-email/senders/)해야 할 수 있습니다.
 
-보안 전자 메일 키를 인출 하는 클래스를 만듭니다. 이 샘플의 경우 *Services/AuthMessageSenderOptions*을 만듭니다.
+보안 전자 메일 키를 인출 하는 클래스를 만듭니다. 이 샘플의 경우 *Services/AuthMessageSenderOptions* 을 만듭니다.
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
 #### <a name="configure-sendgrid-user-secrets"></a>SendGrid 사용자 비밀 구성
 
-`SendGridUser` `SendGridKey` [암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 및를 설정 합니다. 예를 들면
+`SendGridUser` `SendGridKey` [암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 및를 설정 합니다. 다음은 그 예입니다.
 
 ```dotnetcli
 dotnet user-secrets set SendGridUser RickAndMSFT
@@ -79,9 +80,9 @@ dotnet user-secrets set SendGridKey <key>
 Successfully saved SendGridUser = RickAndMSFT to the secret store.
 ```
 
-Windows에서 Secret Manager는 디렉터리의 파일 * 에 있는secrets.js* 의 키/값 쌍을 저장 `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>` 합니다.
+Windows에서 Secret Manager는 디렉터리의 파일 *에 있는secrets.js* 의 키/값 쌍을 저장 `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>` 합니다.
 
-파일의 *secrets.js* 내용이 암호화 되지 않았습니다. 다음 태그는 파일 * 의secrets.js* 을 보여 줍니다. `SendGridKey`값이 제거 되었습니다.
+파일의 *secrets.js* 내용이 암호화 되지 않았습니다. 다음 태그는 파일 *의secrets.js* 을 보여 줍니다. `SendGridKey`값이 제거 되었습니다.
 
 ```json
 {
@@ -155,7 +156,7 @@ https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Ident
 
 ### <a name="test-password-reset"></a>암호 재설정 테스트
 
-* 로그인 하는 경우 **로그 아웃**을 선택 합니다.
+* 로그인 하는 경우 **로그 아웃** 을 선택 합니다.
 * **로그인** 링크를 선택 하 고 암호를 **잊으셨나요?** 링크를 선택 합니다.
 * 계정을 등록 하는 데 사용한 전자 메일을 입력 합니다.
 * 암호를 재설정 하는 링크가 포함 된 전자 메일이 전송 됩니다. 전자 메일을 확인 하 고 링크를 클릭 하 여 암호를 다시 설정 합니다. 암호를 성공적으로 재설정 한 후에는 전자 메일 및 새 암호로 로그인 할 수 있습니다.
@@ -266,7 +267,7 @@ dotnet run
 
 테이블의 필드는 `EmailConfirmed` `False` 입니다.
 
-앱에서 확인 전자 메일을 보낼 때 다음 단계에서이 전자 메일을 다시 사용 하는 것이 좋습니다. 행을 마우스 오른쪽 단추로 클릭 하 고 **삭제**를 선택 합니다. 전자 메일 별칭을 삭제 하면 다음 단계에서 보다 쉽게 수행할 수 있습니다.
+앱에서 확인 전자 메일을 보낼 때 다음 단계에서이 전자 메일을 다시 사용 하는 것이 좋습니다. 행을 마우스 오른쪽 단추로 클릭 하 고 **삭제** 를 선택 합니다. 전자 메일 별칭을 삭제 하면 다음 단계에서 보다 쉽게 수행할 수 있습니다.
 
 <a name="prevent-login-at-registration"></a>
 
@@ -286,22 +287,22 @@ dotnet run
 
 이 자습서에서는 [SendGrid](https://sendgrid.com) 를 사용 하 여 전자 메일을 보냅니다. 전자 메일을 보내려면 SendGrid 계정 및 키가 필요 합니다. 다른 전자 메일 공급자를 사용할 수 있습니다. ASP.NET Core 2.x에는 `System.Net.Mail` 앱에서 전자 메일을 보낼 수 있는가 포함 되어 있습니다. SendGrid 또는 다른 전자 메일 서비스를 사용 하 여 전자 메일을 보내는 것이 좋습니다. SMTP는 안전 하 게 보호 하 고 올바르게 설정 하기 어렵습니다.
 
-보안 전자 메일 키를 인출 하는 클래스를 만듭니다. 이 샘플의 경우 *Services/AuthMessageSenderOptions*을 만듭니다.
+보안 전자 메일 키를 인출 하는 클래스를 만듭니다. 이 샘플의 경우 *Services/AuthMessageSenderOptions* 을 만듭니다.
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
 #### <a name="configure-sendgrid-user-secrets"></a>SendGrid 사용자 비밀 구성
 
-`SendGridUser` `SendGridKey` [암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 및를 설정 합니다. 예를 들면
+`SendGridUser` `SendGridKey` [암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 및를 설정 합니다. 다음은 그 예입니다.
 
 ```console
 C:/WebAppl>dotnet user-secrets set SendGridUser RickAndMSFT
 info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 ```
 
-Windows에서 Secret Manager는 디렉터리의 파일 * 에 있는secrets.js* 의 키/값 쌍을 저장 `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>` 합니다.
+Windows에서 Secret Manager는 디렉터리의 파일 *에 있는secrets.js* 의 키/값 쌍을 저장 `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>` 합니다.
 
-파일의 *secrets.js* 내용이 암호화 되지 않았습니다. 다음 태그는 파일 * 의secrets.js* 을 보여 줍니다. `SendGridKey`값이 제거 되었습니다.
+파일의 *secrets.js* 내용이 암호화 되지 않았습니다. 다음 태그는 파일 *의secrets.js* 을 보여 줍니다. `SendGridKey`값이 제거 되었습니다.
 
 ```json
 {
@@ -355,7 +356,7 @@ dotnet add package SendGrid
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>계정 확인 및 암호 복구 사용
 
-템플릿에는 계정 확인 및 암호 복구를 위한 코드가 있습니다. `OnPostAsync` *영역/ Identity /Pages/Account/Register.cshtml.cs*에서 메서드를 찾습니다.
+템플릿에는 계정 확인 및 암호 복구를 위한 코드가 있습니다. `OnPostAsync` *영역/ Identity /Pages/Account/Register.cshtml.cs* 에서 메서드를 찾습니다.
 
 다음 줄을 주석으로 처리 하 여 새로 등록 된 사용자가 자동으로 로그인 하지 않도록 합니다.
 
@@ -385,7 +386,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 ### <a name="test-password-reset"></a>암호 재설정 테스트
 
-* 로그인 하는 경우 **로그 아웃**을 선택 합니다.
+* 로그인 하는 경우 **로그 아웃** 을 선택 합니다.
 * **로그인** 링크를 선택 하 고 암호를 **잊으셨나요?** 링크를 선택 합니다.
 * 계정을 등록 하는 데 사용한 전자 메일을 입력 합니다.
 * 암호를 재설정 하는 링크가 포함 된 전자 메일이 전송 됩니다. 전자 메일을 확인 하 고 링크를 클릭 하 여 암호를 다시 설정 합니다. 암호를 성공적으로 재설정 한 후에는 전자 메일 및 새 암호로 로그인 할 수 있습니다.

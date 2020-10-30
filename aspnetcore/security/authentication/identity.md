@@ -5,6 +5,7 @@ description: IdentityASP.NET Core 앱과 함께 사용 합니다. 암호 요구 
 ms.author: riande
 ms.date: 7/15/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 1d14a3668192a165ea5025ae0575a8e3d6dfd8e4
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: bfcef860beb07ab81dda1a10a1648491ae187bef
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633255"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052021"
 ---
 # <a name="introduction-to-no-locidentity-on-aspnet-core"></a>ASP.NET Core 소개 Identity
 
@@ -61,10 +62,10 @@ Identity 는 일반적으로 사용자 이름, 암호 및 프로필 데이터를
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **파일** > **새로 만들기** > **프로젝트**를 선택 합니다.
-* **새 ASP.NET Core 웹 애플리케이션**을 선택합니다. 프로젝트의 이름을 **WebApp1** 프로젝트 다운로드와 동일한 네임 스페이스를 포함 합니다. **확인**을 클릭합니다.
-* ASP.NET Core **웹 응용 프로그램**을 선택한 다음 **인증 변경**을 선택 합니다.
-* **개별 사용자 계정을** 선택 하 고 **확인**을 클릭 합니다.
+* **파일** > **새로 만들기** > **프로젝트** 를 선택 합니다.
+* **새 ASP.NET Core 웹 애플리케이션** 을 선택합니다. 프로젝트의 이름을 **WebApp1** 프로젝트 다운로드와 동일한 네임 스페이스를 포함 합니다. **확인** 을 클릭합니다.
+* ASP.NET Core **웹 응용 프로그램** 을 선택한 다음 **인증 변경** 을 선택 합니다.
+* **개별 사용자 계정을** 선택 하 고 **확인** 을 클릭 합니다.
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -80,7 +81,7 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 ---
 
-생성 된 프로젝트는을 [ASP.NET Core Identity](xref:security/authentication/identity) [ Razor 클래스 라이브러리로](xref:razor-pages/ui-class)제공 합니다. Identity Razor 클래스 라이브러리는 영역을 사용 하 여 끝점을 노출 `Identity` 합니다. 다음은 그 예입니다. 
+생성 된 프로젝트는을 [ASP.NET Core Identity](xref:security/authentication/identity) [ Razor 클래스 라이브러리로](xref:razor-pages/ui-class)제공 합니다. Identity Razor 클래스 라이브러리는 영역을 사용 하 여 끝점을 노출 `Identity` 합니다. 다음은 그 예입니다.
 
 * /Identity/Account/Login
 * /Identity/계정/로그 아웃
@@ -142,7 +143,7 @@ Identity 는를 호출 하 여 사용할 수 <xref:Microsoft.AspNetCore.Builder.
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-**WebApp1**이름으로 프로젝트를 만든 경우 다음 명령을 실행 합니다. 그렇지 않으면에 대해 올바른 네임 스페이스를 사용 합니다 `ApplicationDbContext` .
+**WebApp1** 이름으로 프로젝트를 만든 경우 다음 명령을 실행 합니다. 그렇지 않으면에 대해 올바른 네임 스페이스를 사용 합니다 `ApplicationDbContext` .
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -189,7 +190,7 @@ https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Ident
 
 [SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) 에 저장 된 사용자의 클레임을 지웁니다 cookie .
 
-Post는 *Pages/Shared/_LoginPartial*에서 지정 됩니다. cshtml:
+Post는 *Pages/Shared/_LoginPartial* 에서 지정 됩니다. cshtml:
 
 [!code-cshtml[](identity/sample/WebApp3/Pages/Shared/_LoginPartial.cshtml?highlight=15)]
 
@@ -295,10 +296,10 @@ Identity SQL Server 데이터베이스를 사용 하 여 사용자 이름, 암�
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **파일** > **새로 만들기** > **프로젝트**를 선택 합니다.
-* **새 ASP.NET Core 웹 애플리케이션**을 선택합니다. 프로젝트의 이름을 **WebApp1** 프로젝트 다운로드와 동일한 네임 스페이스를 포함 합니다. **확인**을 클릭합니다.
-* ASP.NET Core **웹 응용 프로그램**을 선택한 다음 **인증 변경**을 선택 합니다.
-* **개별 사용자 계정을** 선택 하 고 **확인**을 클릭 합니다.
+* **파일** > **새로 만들기** > **프로젝트** 를 선택 합니다.
+* **새 ASP.NET Core 웹 애플리케이션** 을 선택합니다. 프로젝트의 이름을 **WebApp1** 프로젝트 다운로드와 동일한 네임 스페이스를 포함 합니다. **확인** 을 클릭합니다.
+* ASP.NET Core **웹 응용 프로그램** 을 선택한 다음 **인증 변경** 을 선택 합니다.
+* **개별 사용자 계정을** 선택 하 고 **확인** 을 클릭 합니다.
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -308,7 +309,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-생성 된 프로젝트는을 [ASP.NET Core Identity](xref:security/authentication/identity) [ Razor 클래스 라이브러리로](xref:razor-pages/ui-class)제공 합니다. Identity Razor 클래스 라이브러리는 영역을 사용 하 여 끝점을 노출 `Identity` 합니다. 다음은 그 예입니다. 
+생성 된 프로젝트는을 [ASP.NET Core Identity](xref:security/authentication/identity) [ Razor 클래스 라이브러리로](xref:razor-pages/ui-class)제공 합니다. Identity Razor 클래스 라이브러리는 영역을 사용 하 여 끝점을 노출 `Identity` 합니다. 다음은 그 예입니다.
 
 * /Identity/Account/Login
 * /Identity/계정/로그 아웃
@@ -366,7 +367,7 @@ Register, Login 및 LogOut 파일을 추가 합니다.
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-**WebApp1**이름으로 프로젝트를 만든 경우 다음 명령을 실행 합니다. 그렇지 않으면에 대해 올바른 네임 스페이스를 사용 합니다 `ApplicationDbContext` .
+**WebApp1** 이름으로 프로젝트를 만든 경우 다음 명령을 실행 합니다. 그렇지 않으면에 대해 올바른 네임 스페이스를 사용 합니다 `ApplicationDbContext` .
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -408,7 +409,7 @@ PowerShell은 세미콜론을 명령 구분 기호로 사용 합니다. PowerShe
 
 [SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) 에 저장 된 사용자의 클레임을 지웁니다 cookie .
 
-Post는 *Pages/Shared/_LoginPartial*에서 지정 됩니다. cshtml:
+Post는 *Pages/Shared/_LoginPartial* 에서 지정 됩니다. cshtml:
 
 [!code-cshtml[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
 

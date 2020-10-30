@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/16/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hubs
-ms.openlocfilehash: 71ca0896bc645b7625f60c3a9e8fe321079d524a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 4a31c16eb44e2244574d0df49c30e7a44b2bba6e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631279"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050942"
 ---
 # <a name="use-hubs-in-no-locsignalr-for-aspnet-core"></a>SignalRASP.NET Core 용 허브 사용
 
@@ -89,7 +90,7 @@ public class ChatHub : Hub
 
 클래스에는 `Hub` `Context` 연결에 대 한 정보를 포함 하는 다음과 같은 속성이 포함 된 속성이 있습니다.
 
-| 속성 | Description |
+| 속성 | 설명 |
 | ------ | ----------- |
 | `ConnectionId` | 에서 할당 한 연결의 고유 ID를 가져옵니다 SignalR . 각 연결에 대해 하나의 연결 ID가 있습니다.|
 | `UserIdentifier` | [사용자 식별자](xref:signalr/groups)를 가져옵니다. 기본적으로는 SignalR 연결과 관련 된의을 `ClaimTypes.NameIdentifier` `ClaimsPrincipal` 사용자 식별자로 사용 합니다. |
@@ -100,7 +101,7 @@ public class ChatHub : Hub
 
 `Hub.Context` 또한에는 다음 메서드도 포함 되어 있습니다.
 
-| 방법 | Description |
+| 메서드 | 설명 |
 | ------ | ----------- |
 | `GetHttpContext` | 연결 `HttpContext` 에 대 한를 반환 하거나, `null` 연결이 HTTP 요청과 연결 되지 않은 경우을 반환 합니다. HTTP 연결의 경우이 메서드를 사용 하 여 HTTP 헤더 및 쿼리 문자열과 같은 정보를 가져올 수 있습니다. |
 | `Abort` | 연결을 중단합니다. |
@@ -109,7 +110,7 @@ public class ChatHub : Hub
 
 클래스에는 `Hub` `Clients` 서버와 클라이언트 간의 통신에 대 한 다음 속성이 포함 된 속성이 있습니다.
 
-| 속성 | Description |
+| 속성 | 설명 |
 | ------ | ----------- |
 | `All` | 연결 된 모든 클라이언트에서 메서드를 호출 합니다. |
 | `Caller` | 허브 메서드를 호출한 클라이언트에서 메서드를 호출 합니다. |
@@ -117,7 +118,7 @@ public class ChatHub : Hub
 
 `Hub.Clients` 또한에는 다음 메서드도 포함 되어 있습니다.
 
-| 방법 | Description |
+| 메서드 | 설명 |
 | ------ | ----------- |
 | `AllExcept` | 지정 된 연결을 제외한 모든 연결 된 클라이언트에서 메서드를 호출 합니다. |
 | `Client` | 연결 된 특정 클라이언트에서 메서드를 호출 합니다. |
@@ -155,7 +156,7 @@ public class ChatHub : Hub
 
 를 사용 `Hub<IChatClient>` 하면 클라이언트 메서드를 컴파일할 때 검사할 수 있습니다. 이렇게 하면 매직 문자열을 사용 하 여 발생 하는 문제를 방지할 수 있기 때문에는 `Hub<T>` 인터페이스에 정의 된 메서드에만 액세스할 수 있습니다.
 
-강력한 형식의를 사용 하면을 `Hub<T>` 사용할 수 없습니다 `SendAsync` . 인터페이스에 정의 된 메서드는 여전히 비동기로 정의 될 수 있습니다. 실제로 이러한 각 메서드는를 반환 해야 `Task` 합니다. 인터페이스 이므로 키워드를 사용 하지 마세요 `async` . 다음은 그 예입니다. 
+강력한 형식의를 사용 하면을 `Hub<T>` 사용할 수 없습니다 `SendAsync` . 인터페이스에 정의 된 메서드는 여전히 비동기로 정의 될 수 있습니다. 실제로 이러한 각 메서드는를 반환 해야 `Task` 합니다. 인터페이스 이므로 키워드를 사용 하지 마세요 `async` . 다음은 그 예입니다.
 
 ```csharp
 public interface IClient
@@ -191,7 +192,7 @@ SignalR허브 API는 `OnConnectedAsync` `OnDisconnectedAsync` 연결을 관리 �
 
 [!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=23)]
 
-허브가 예외를 throw 하는 경우 연결이 닫혀 있지 않습니다. 기본적으로는 SignalR 일반 오류 메시지를 클라이언트에 반환 합니다. 다음은 그 예입니다. 
+허브가 예외를 throw 하는 경우 연결이 닫혀 있지 않습니다. 기본적으로는 SignalR 일반 오류 메시지를 클라이언트에 반환 합니다. 다음은 그 예입니다.
 
 ```
 Microsoft.AspNetCore.SignalR.HubException: An unexpected error occurred invoking 'MethodName' on the server.

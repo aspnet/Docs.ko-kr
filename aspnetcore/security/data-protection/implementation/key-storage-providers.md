@@ -5,6 +5,7 @@ description: ASP.NET Core의 키 저장소 공급자 및 키 저장소 위치를
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: fb21f7d4d784451096db5c420f2ffd4532c2b490
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 36e8bc494125d0770347ddf32390365d83a91d27
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631331"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051748"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>ASP.NET Core의 키 저장소 공급자
 
@@ -121,7 +122,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-자세한 내용은 아래 항목을 참조하세요.
+자세한 내용은 다음 항목을 참조하세요.
 
 * [StackExchange. Redis ConnectionMultiplexer](https://github.com/StackExchange/StackExchange.Redis/blob/master/docs/Basics.md)
 * [Azure Redis 캐시(영문)](/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache#connect-to-the-cache)
@@ -131,7 +132,7 @@ public void ConfigureServices(IServiceCollection services)
 
 **Windows 배포에만 적용 됩니다.**
 
-응용 프로그램에 파일 시스템에 대 한 쓰기 권한이 없을 수도 있습니다. 앱이 가상 서비스 계정 (예: *w3wp.exe*의 응용 프로그램 풀 id)으로 실행 되는 시나리오를 고려해 보세요. 이러한 경우 관리자는 서비스 계정 id로 액세스할 수 있는 레지스트리 키를 프로 비전 할 수 있습니다. 아래와 같이 [PersistKeysToRegistry](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystoregistry) 확장 메서드를 호출 합니다. 암호화 키를 저장 해야 하는 위치를 가리키는 [RegistryKey](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository.registrykey) 를 제공 합니다.
+응용 프로그램에 파일 시스템에 대 한 쓰기 권한이 없을 수도 있습니다. 앱이 가상 서비스 계정 (예: *w3wp.exe* 의 응용 프로그램 풀 id)으로 실행 되는 시나리오를 고려해 보세요. 이러한 경우 관리자는 서비스 계정 id로 액세스할 수 있는 레지스트리 키를 프로 비전 할 수 있습니다. 아래와 같이 [PersistKeysToRegistry](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystoregistry) 확장 메서드를 호출 합니다. 암호화 키를 저장 해야 하는 위치를 가리키는 [RegistryKey](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository.registrykey) 를 제공 합니다.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

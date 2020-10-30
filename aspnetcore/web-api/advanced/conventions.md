@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 425f1aaf1fa86f10d857c34e621c302f2db258e5
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0c5ea8ba69e4c6287afce1771ac9cee65bb188a8
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626794"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052541"
 ---
 # <a name="use-web-api-conventions"></a>웹 API 규칙 사용
 
@@ -36,7 +37,7 @@ ASP.NET Core 2.2 이상에는 일반적인 [API 설명서](xref:tutorials/web-ap
 * 특정 유형의 작업에서 반환되는 가장 일반적인 반환 형식 및 상태 코드를 정의합니다.
 * 정의된 표준에서 벗어나는 작업을 식별합니다.
 
-ASP.NET Core MVC 2.2 이상에는 <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>의 기본 규칙 집합이 포함되어 있습니다. 규칙은 ASP.NET Core **API** 프로젝트 템플릿에서 제공되는 컨트롤러(*ValuesController.cs*)를 기반으로 합니다. 작업이 템플릿의 패턴을 따르는 경우, 기본 규칙을 성공적으로 사용해야 합니다. 기본 규칙이 요구 사항을 충족하지 못하는 경우 [웹 API 규칙 만들기](#create-web-api-conventions)를 참조하세요.
+ASP.NET Core MVC 2.2 이상에는 <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>의 기본 규칙 집합이 포함되어 있습니다. 규칙은 ASP.NET Core **API** 프로젝트 템플릿에서 제공되는 컨트롤러( *ValuesController.cs* )를 기반으로 합니다. 작업이 템플릿의 패턴을 따르는 경우, 기본 규칙을 성공적으로 사용해야 합니다. 기본 규칙이 요구 사항을 충족하지 못하는 경우 [웹 API 규칙 만들기](#create-web-api-conventions)를 참조하세요.
 
 런타임 시 <xref:Microsoft.AspNetCore.Mvc.ApiExplorer>가 규칙을 이해합니다. `ApiExplorer`는 [OpenAPI](https://www.openapis.org/)(Swagger라고도 함) 문서 생성기와 통신하기 위한 MVC의 추상화입니다. 적용된 규칙의 특성은 작업과 연결되며 작업의 OpenAPI 설명서에 포함됩니다. [API 분석기](xref:web-api/advanced/analyzers)도 규칙을 이해합니다. 작업이 색다른 경우(예를 들어 적용된 규칙에 의해 문서화되지 않은 상태 코드를 반환하는 경우) 경고는 상태 코드를 문서화할 것을 권장합니다.
 
@@ -65,7 +66,7 @@ ASP.NET Core MVC 2.2 이상에는 <xref:Microsoft.AspNetCore.Mvc.DefaultApiConve
 
 1. &mdash; 컨트롤러에 `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute`를 적용하면 컨트롤러에서 모든 작업에 지정된 규칙 유형을 적용합니다. 규칙 메서드는 규칙 메서드가 적용되는 작업을 결정하는 힌트로 표시됩니다. 힌트에 대한 자세한 내용은 [웹 API 규칙 만들기](#create-web-api-conventions)를 참조하세요).
 
-    다음 예제에서는 *ContactsConventionController*의 모든 작업에 기본 규칙 집합이 적용됩니다.
+    다음 예제에서는 *ContactsConventionController* 의 모든 작업에 기본 규칙 집합이 적용됩니다.
 
     [!code-csharp[](conventions/sample/Controllers/ContactsConventionController.cs?name=snippet_ApiConventionTypeAttribute&highlight=2)]
 
@@ -84,7 +85,7 @@ ASP.NET Core MVC 2.2 이상에는 <xref:Microsoft.AspNetCore.Mvc.DefaultApiConve
 
 ### <a name="response-types"></a>응답 형식
 
-이러한 메서드에는 `[ProducesResponseType]` 또는 `[ProducesDefaultResponseType]` 특성으로 주석이 추가됩니다. 다음은 그 예입니다. 
+이러한 메서드에는 `[ProducesResponseType]` 또는 `[ProducesDefaultResponseType]` 특성으로 주석이 추가됩니다. 다음은 그 예입니다.
 
 ```csharp
 public static class MyAppConventions
@@ -104,7 +105,7 @@ public static class MyAppConventions
 
 ### <a name="naming-requirements"></a>명명 요구 사항
 
-`[ApiConventionNameMatch]` 및 `[ApiConventionTypeMatch]` 특성은 적용할 작업을 결정하는 규칙 메서드에 적용될 수 있습니다. 다음은 그 예입니다. 
+`[ApiConventionNameMatch]` 및 `[ApiConventionTypeMatch]` 특성은 적용할 작업을 결정하는 규칙 메서드에 적용될 수 있습니다. 다음은 그 예입니다.
 
 ```csharp
 [ProducesResponseType(StatusCodes.Status200OK)]
@@ -121,7 +122,7 @@ public static void Find(
 * 메서드에 적용된 `Microsoft.AspNetCore.Mvc.ApiExplorer.ApiConventionNameMatchBehavior.Prefix` 옵션은 규칙이 "찾기"로 접두사가 지정된 모든 작업과 일치함을 나타냅니다. 일치하는 작업의 예로는 `Find`, `FindPet` 및 `FindById`가 있습니다.
 * 매개 변수에 적용된 `Microsoft.AspNetCore.Mvc.ApiExplorer.ApiConventionNameMatchBehavior.Suffix`는 규칙이 접미사 식별자로 끝나는 정확히 하나의 매개 변수와 메서드가 일치함을 나타냅니다. 예제에는 `id` 또는 `petId`와 같은 매개 변수가 포함됩니다. `ApiConventionTypeMatch`는 매개 변수 유형을 제한하는 형식에 유사하게 적용할 수 있습니다. `params[]` 인수는 명시적으로 일치할 필요가 없는 나머지 매개 변수를 나타냅니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:web-api/advanced/analyzers>
 * <xref:tutorials/web-api-help-pages-using-swagger>

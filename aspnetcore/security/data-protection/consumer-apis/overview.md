@@ -5,6 +5,7 @@ description: ASP.NET Core 데이터 보호 라이브러리에서 사용할 수 �
 ms.author: riande
 ms.date: 06/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/consumer-apis/overview
-ms.openlocfilehash: 0cdc5d8700357f33fcd3d361f10a5d66cccb067d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 485ea3f669b518f2979d04493b281bd116b05f65
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629901"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051878"
 ---
 # <a name="consumer-apis-overview-for-aspnet-core"></a>ASP.NET Core에 대 한 소비자 Api 개요
 

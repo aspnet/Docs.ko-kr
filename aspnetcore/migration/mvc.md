@@ -5,6 +5,7 @@ description: ASP.NET MVC 프로젝트를 ASP.NET Core MVC로 마이그레이션�
 ms.author: wpickett
 ms.date: 06/18/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/mvc
-ms.openlocfilehash: 51228e59284b5edf0554e9929b16deafe08ea31e
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: 226ac6da508378c7b3c81779d38dd2e0840f1fed
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326634"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051515"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC에서 ASP.NET Core MVC로 마이그레이션
 
@@ -38,7 +39,7 @@ ASP.NET MVC에서 마이그레이션하는 과정은 여러 단계로 진행 됩
 
 구성 및 코드 마이그레이션에 대 한 자세한 Identity 내용은 [ASP.NET Core 구성 마이그레이션](xref:migration/configuration) 및 [인증 및 Identity ASP.NET Core 마이그레이션](xref:migration/identity)을 참조 하세요.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 [!INCLUDE [prerequisites](../includes/net-core-prereqs-vs-3.1.md)]
 
@@ -46,21 +47,21 @@ ASP.NET MVC에서 마이그레이션하는 과정은 여러 단계로 진행 됩
 
 마이그레이션할 Visual Studio의 예제 ASP.NET MVC 프로젝트를 만듭니다.
 
-1. **파일 메뉴**에서 **새로 만들기** > **프로젝트**를 선택합니다.
-1. **ASP.NET 웹 응용 프로그램 (.NET Framework)** 을 선택 하 고 **다음**을 선택 합니다.
-1. 다음 단계에서 만든 ASP.NET Core 프로젝트와 네임 스페이스가 일치 하도록 프로젝트 이름을 *WebApp1* 로 합니다. **만들기**를 선택합니다.
-1. **MVC**를 선택 하 고 **만들기**를 선택 합니다.
+1. **파일 메뉴** 에서 **새로 만들기** > **프로젝트** 를 선택합니다.
+1. **ASP.NET 웹 응용 프로그램 (.NET Framework)** 을 선택 하 고 **다음** 을 선택 합니다.
+1. 다음 단계에서 만든 ASP.NET Core 프로젝트와 네임 스페이스가 일치 하도록 프로젝트 이름을 *WebApp1* 로 합니다. **만들기** 를 선택합니다.
+1. **MVC** 를 선택 하 고 **만들기** 를 선택 합니다.
 
 ## <a name="create-the-aspnet-core-project"></a>ASP.NET Core 프로젝트 만들기
 
 마이그레이션할 새 ASP.NET Core 프로젝트를 사용 하 여 새 솔루션을 만듭니다.
 
 1. Visual Studio의 두 번째 인스턴스를 시작 합니다.
-1. **파일 메뉴**에서 **새로 만들기** > **프로젝트**를 선택합니다.
-1. **ASP.NET Core 웹 응용 프로그램**을 선택한 후, **다음**을 선택합니다.
-1. **새 프로젝트 구성** 대화 상자에서 프로젝트 이름을 *WebApp1*로 설정 합니다.
-1. 동일한 프로젝트 이름을 사용 하려면 위치를 이전 프로젝트가 아닌 다른 디렉터리로 설정 합니다. 동일한 네임 스페이스를 사용 하면 두 프로젝트 간에 코드를 쉽게 복사할 수 있습니다. **만들기**를 선택합니다.
-1. **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 3.1**이 선택되었는지 확인합니다. **웹 응용 프로그램 (모델-뷰-컨트롤러)** 프로젝트 템플릿을 선택 하 고 **만들기**를 선택 합니다.
+1. **파일 메뉴** 에서 **새로 만들기** > **프로젝트** 를 선택합니다.
+1. **ASP.NET Core 웹 응용 프로그램** 을 선택한 후, **다음** 을 선택합니다.
+1. **새 프로젝트 구성** 대화 상자에서 프로젝트 이름을 *WebApp1* 로 설정 합니다.
+1. 동일한 프로젝트 이름을 사용 하려면 위치를 이전 프로젝트가 아닌 다른 디렉터리로 설정 합니다. 동일한 네임 스페이스를 사용 하면 두 프로젝트 간에 코드를 쉽게 복사할 수 있습니다. **만들기** 를 선택합니다.
+1. **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 3.1** 이 선택되었는지 확인합니다. **웹 응용 프로그램 (모델-뷰-컨트롤러)** 프로젝트 템플릿을 선택 하 고 **만들기** 를 선택 합니다.
 
 ## <a name="configure-the-aspnet-core-site-to-use-mvc"></a>MVC를 사용 하도록 ASP.NET Core 사이트 구성
 
@@ -74,7 +75,7 @@ ASP.NET Core 3.0 이상 프로젝트에서 .NET Framework는 더 이상 지원 �
 
 ASP.NET Core에서 클래스는 `Startup` 다음과 같습니다.
 
-* *Global.asax*를 바꿉니다.
+* *Global.asax* 를 바꿉니다.
 * 모든 앱 시작 작업을 처리 합니다.
 
 자세한 내용은 <xref:fundamentals/startup>를 참조하세요.
@@ -98,9 +99,9 @@ ASP.NET Core 프로젝트에서 마이그레이션할 ASP.NET MVC 프로젝트�
 ASP.NET Core *WebApp1* 프로젝트에는 ASP.NET MVC 프로젝트와 동일한 이름의 최소 예제 컨트롤러 및 뷰가 이미 포함 되어 있습니다. ASP.NET MVC 컨트롤러에 대 한 자리 표시자와 ASP.NET MVC *WebApp1* 프로젝트에서 마이그레이션할 뷰를 제공 합니다.
 
 1. ASP.NET MVC에서 메서드를 복사 `HomeController` 하 여 새 ASP.NET Core 메서드를 `HomeController` 대체 합니다. 작업 메서드의 반환 형식을 변경할 필요가 없습니다. ASP.NET MVC 기본 제공 템플릿의 컨트롤러 동작 메서드 반환 형식은입니다 <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2> . MVC ASP.NET Core 작업 메서드는 대신을 반환 합니다 `IActionResult` . `ActionResult`는 `IActionResult`를 구현합니다.
-1. ASP.NET Core 프로젝트에서 *Views/Home* 디렉터리를 마우스 오른쪽 단추로 클릭 하 고 **Add** > **기존 항목**추가를 선택 합니다.
+1. ASP.NET Core 프로젝트에서 *Views/Home* 디렉터리를 마우스 오른쪽 단추로 클릭 하 고 **Add** > **기존 항목** 추가를 선택 합니다.
 1. **기존 항목 추가** 대화 상자에서 ASP.NET MVC *WebApp1* 프로젝트의 *Views/Home* 디렉터리로 이동 합니다.
-1. *About. cshtml*및 *Contact*를 선택 하 고,이 파일을 *인덱스* 를 선택 하 고, Razor **추가**를 선택 하 고 기존 파일을 바꿉니다.
+1. *About. cshtml* 및 *Contact* 를 선택 하 고,이 파일을 *인덱스* 를 선택 하 고, Razor **추가** 를 선택 하 고 기존 파일을 바꿉니다.
 
 자세한 내용은 <xref:mvc/controllers/actions> 및 <xref:mvc/views/overview>를 참조하세요.
 
@@ -109,31 +110,31 @@ ASP.NET Core *WebApp1* 프로젝트에는 ASP.NET MVC 프로젝트와 동일한 
 그러나 각 컨트롤러 끝점을 테스트할 수 있지만 레이아웃 및 스타일은 문서의 뒷부분에서 다룹니다.
 
 1. ASP.NET Core 앱을 실행 합니다.
-1. 현재 포트 번호를 ASP.NET Core 프로젝트에 사용 되는 포트 번호로 바꿔서 실행 중인 ASP.NET Core 앱의 브라우저에서 렌더링 된 뷰를 호출 합니다. `https://localhost:44375/home/about`)을 입력합니다.
+1. 현재 포트 번호를 ASP.NET Core 프로젝트에 사용 되는 포트 번호로 바꿔서 실행 중인 ASP.NET Core 앱의 브라우저에서 렌더링 된 뷰를 호출 합니다. 예: `https://localhost:44375/home/about`.
 
 ## <a name="migrate-static-content"></a>정적 콘텐츠 마이그레이션
 
-ASP.NET MVC 5 이전 버전에서 정적 콘텐츠는 웹 프로젝트의 루트 디렉터리에서 호스팅되며 서버 쪽 파일과 혼합 되어 있습니다. ASP.NET Core에서 정적 파일은 프로젝트의 [웹 루트](xref:fundamentals/index#web-root) 디렉터리에 저장 됩니다. 기본 디렉터리는 *{content root}/wwwroot*이지만 변경할 수 있습니다. 자세한 내용은 [ASP.NET Core의 정적 파일](xref:fundamentals/static-files#serve-static-files)을 참조하세요.
+ASP.NET MVC 5 이전 버전에서 정적 콘텐츠는 웹 프로젝트의 루트 디렉터리에서 호스팅되며 서버 쪽 파일과 혼합 되어 있습니다. ASP.NET Core에서 정적 파일은 프로젝트의 [웹 루트](xref:fundamentals/index#web-root) 디렉터리에 저장 됩니다. 기본 디렉터리는 *{content root}/wwwroot* 이지만 변경할 수 있습니다. 자세한 내용은 [ASP.NET Core의 정적 파일](xref:fundamentals/static-files#serve-static-files)을 참조하세요.
 
 ASP.NET MVC *WebApp1* 프로젝트의 정적 콘텐츠를 ASP.NET Core *WebApp1* 프로젝트의 *wwwroot* 디렉터리에 복사 합니다.
 
-1. ASP.NET Core 프로젝트에서 *wwwroot* 디렉터리를 마우스 오른쪽 단추로 클릭 하 고 **Add** > **기존 항목**추가를 선택 합니다.
+1. ASP.NET Core 프로젝트에서 *wwwroot* 디렉터리를 마우스 오른쪽 단추로 클릭 하 고 **Add** > **기존 항목** 추가를 선택 합니다.
 1. **기존 항목 추가** 대화 상자에서 ASP.NET MVC *WebApp1* 프로젝트로 이동 합니다.
-1. *Favicon* 파일을 선택한 다음 **추가**를 선택 하 고 기존 파일을 바꿉니다.
+1. *Favicon* 파일을 선택한 다음 **추가** 를 선택 하 고 기존 파일을 바꿉니다.
 
 ## <a name="migrate-the-layout-files"></a>레이아웃 파일 마이그레이션
 
 ASP.NET MVC 프로젝트 레이아웃 파일을 ASP.NET Core 프로젝트에 복사 합니다.
 
-1. ASP.NET Core 프로젝트에서 *Views* 디렉터리를 마우스 오른쪽 단추로 클릭 하 고 **Add** > **기존 항목**추가를 선택 합니다.
+1. ASP.NET Core 프로젝트에서 *Views* 디렉터리를 마우스 오른쪽 단추로 클릭 하 고 **Add** > **기존 항목** 추가를 선택 합니다.
 1. **기존 항목 추가** 대화 상자에서 ASP.NET MVC *WebApp1* 프로젝트의 *Views* 디렉터리로 이동 합니다.
-1. *_ViewStart* 파일을 선택한 다음 **추가**를 선택 합니다.
+1. *_ViewStart* 파일을 선택한 다음 **추가** 를 선택 합니다.
 
 ASP.NET MVC 프로젝트 공유 레이아웃 파일을 ASP.NET Core 프로젝트에 복사 합니다.
 
-1. ASP.NET Core 프로젝트에서 *Views/Shared* 디렉터리를 마우스 오른쪽 단추로 클릭 하 고 **Add** > **기존 항목**추가를 선택 합니다.
+1. ASP.NET Core 프로젝트에서 *Views/Shared* 디렉터리를 마우스 오른쪽 단추로 클릭 하 고 **Add** > **기존 항목** 추가를 선택 합니다.
 1. **기존 항목 추가** 대화 상자에서 ASP.NET MVC *WebApp1* 프로젝트의 *Views/Shared* 디렉터리로 이동 합니다.
-1. *_Layout* 파일을 선택한 다음 **추가**를 선택 하 여 기존 파일을 바꿉니다.
+1. *_Layout* 파일을 선택한 다음 **추가** 를 선택 하 여 기존 파일을 바꿉니다.
 
 ASP.NET Core 프로젝트에서 *_Layout* 파일을 엽니다. 아래에 표시 된 완료 된 코드와 일치 하도록 다음과 같이 변경 합니다.
 
@@ -176,7 +177,7 @@ ASP.NET Core는 [WebOptimizer](https://github.com/ligershark/WebOptimizer) 및 �
 
 ## <a name="solve-http-500-errors"></a>HTTP 500 오류 해결
 
-문제의 원인에 대 한 정보를 포함 하지 않는 HTTP 500 오류 메시지를 발생 시킬 수 있는 많은 문제가 있습니다. 예를 들어 *Views/_ViewImports cshtml* 파일에 프로젝트에 없는 네임 스페이스가 포함 된 경우 HTTP 500 오류가 생성 됩니다. 기본적으로 ASP.NET Core 앱에서는 확장이에 `UseDeveloperExceptionPage` 추가 되 `IApplicationBuilder` 고 환경에서 *개발*중일 때 실행 됩니다. 다음 코드에 자세히 설명 되어 있습니다.
+문제의 원인에 대 한 정보를 포함 하지 않는 HTTP 500 오류 메시지를 발생 시킬 수 있는 많은 문제가 있습니다. 예를 들어 *Views/_ViewImports cshtml* 파일에 프로젝트에 없는 네임 스페이스가 포함 된 경우 HTTP 500 오류가 생성 됩니다. 기본적으로 ASP.NET Core 앱에서는 확장이에 `UseDeveloperExceptionPage` 추가 되 `IApplicationBuilder` 고 환경에서 *개발* 중일 때 실행 됩니다. 다음 코드에 자세히 설명 되어 있습니다.
 
 [!code-csharp[](mvc/samples/3.x/Startup.cs?highlight=17-21&name=snippet)]
 
@@ -215,17 +216,17 @@ ASP.NET Core 처리 되지 않은 예외를 HTTP 500 오류 응답으로 변환 
 
 ![새 웹 응용 프로그램 대화 상자: ASP.NET 템플릿 패널에서 선택 된 MVC 프로젝트 템플릿](mvc/_static/new-project-select-mvc-template.png)
 
-*선택 사항:* 솔루션 이름을 *WebApp1* 에서 *Mvc5*로 변경 합니다. Visual Studio에서 새 솔루션 이름 (*Mvc5*)을 표시 합니다 .이를 통해 다음 프로젝트에서이 프로젝트를 더 쉽게 알 수 있습니다.
+*선택 사항:* 솔루션 이름을 *WebApp1* 에서 *Mvc5* 로 변경 합니다. Visual Studio에서 새 솔루션 이름 ( *Mvc5* )을 표시 합니다 .이를 통해 다음 프로젝트에서이 프로젝트를 더 쉽게 알 수 있습니다.
 
 ## <a name="create-the-aspnet-core-project"></a>ASP.NET Core 프로젝트 만들기
 
-두 프로젝트의 네임 스페이스가 일치 하도록 이전 프로젝트와 동일한 이름을 사용 하 여 *비어* 있는 ASP.NET Core 웹 앱 (*WebApp1*)을 새로 만듭니다. 동일한 네임 스페이스를 사용 하면 두 프로젝트 간에 코드를 쉽게 복사할 수 있습니다. 같은 이름을 사용 하려면 이전 프로젝트가 아닌 다른 디렉터리에이 프로젝트를 만듭니다.
+두 프로젝트의 네임 스페이스가 일치 하도록 이전 프로젝트와 동일한 이름을 사용 하 여 *비어* 있는 ASP.NET Core 웹 앱 ( *WebApp1* )을 새로 만듭니다. 동일한 네임 스페이스를 사용 하면 두 프로젝트 간에 코드를 쉽게 복사할 수 있습니다. 같은 이름을 사용 하려면 이전 프로젝트가 아닌 다른 디렉터리에이 프로젝트를 만듭니다.
 
 ![새 프로젝트 대화 상자](mvc/_static/new_core.png)
 
 ![New ASP.NET 웹 응용 프로그램 대화 상자: ASP.NET Core 템플릿 패널에서 빈 프로젝트 템플릿을 선택 했습니다.](mvc/_static/new-project-select-empty-aspnet5-template.png)
 
-* *선택 사항:* *웹 응용 프로그램* 프로젝트 템플릿을 사용 하 여 새 ASP.NET Core 앱을 만듭니다. 프로젝트 이름을 *WebApp1*로 하 고 **개별 사용자 계정**에 대 한 인증 옵션을 선택 합니다. 이 앱의 이름을 *FullAspNetCore*로 바꿉니다. 이 프로젝트를 만들면 변환 시 시간이 절약 됩니다. 템플릿 생성 코드에서 최종 결과를 볼 수 있습니다. 변환 프로젝트에 코드를 복사 하거나 템플릿 생성 프로젝트와 비교할 수 있습니다.
+* *선택 사항:* *웹 응용 프로그램* 프로젝트 템플릿을 사용 하 여 새 ASP.NET Core 앱을 만듭니다. 프로젝트 이름을 *WebApp1* 로 하 고 **개별 사용자 계정** 에 대 한 인증 옵션을 선택 합니다. 이 앱의 이름을 *FullAspNetCore* 로 바꿉니다. 이 프로젝트를 만들면 변환 시 시간이 절약 됩니다. 템플릿 생성 코드에서 최종 결과를 볼 수 있습니다. 변환 프로젝트에 코드를 복사 하거나 템플릿 생성 프로젝트와 비교할 수 있습니다.
 
 ## <a name="configure-the-site-to-use-mvc"></a>MVC를 사용 하도록 사이트 구성
 
@@ -253,7 +254,7 @@ ASP.NET Core 처리 되지 않은 예외를 HTTP 500 오류 응답으로 변환 
 
 * *뷰/홈* 디렉터리를 추가 합니다.
 
-* 뷰 */홈* 디렉터리에 *Index. cshtml* 이라는 ** Razor 뷰** 를 추가 합니다.
+* 뷰 */홈* 디렉터리에 *Index. cshtml* 이라는 **Razor 뷰** 를 추가 합니다.
 
 ![새 항목 추가 대화 상자](mvc/_static/view.png)
 
@@ -293,13 +294,13 @@ ASP.NET Core 처리 되지 않은 예외를 HTTP 500 오류 응답으로 변환 
 
 * ASP.NET MVC의 각 메서드 `HomeController` 를 새로 복사 `HomeController` 합니다. ASP.NET MVC에서 기본 제공 템플릿의 컨트롤러 동작 메서드 반환 형식은입니다. <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2> ASP.NET CORE mvc에서는 작업 메서드가 대신을 반환 합니다 `IActionResult` . `ActionResult` 는 `IActionResult` 를 구현 하므로 작업 메서드의 반환 형식을 변경할 필요가 없습니다.
 
-* *Contact.cshtml*ASP.NET MVC 프로젝트에서 MVC ASP.NET Core 프로젝트에 *대 한*파일을 *복사 합니다.* Razor
+* *Contact.cshtml* ASP.NET MVC 프로젝트에서 MVC ASP.NET Core 프로젝트에 *대 한* 파일을 *복사 합니다.* Razor
 
 ## <a name="test-each-method"></a>각 메서드 테스트
 
 레이아웃 파일 및 스타일은 아직 마이그레이션되지 않았으므로 렌더링 된 뷰에는 뷰 파일의 내용만 포함 됩니다. 및 뷰에 대해 생성 된 레이아웃 파일 링크를 `About` `Contact` 아직 사용할 수 없습니다.
 
-현재 포트 번호를 ASP.NET core 프로젝트에서 사용 되는 포트 번호로 바꿔 실행 중인 ASP.NET core 앱의 브라우저에서 렌더링 된 뷰를 호출 합니다. 예: `https://localhost:44375/home/about`
+현재 포트 번호를 ASP.NET core 프로젝트에서 사용 되는 포트 번호로 바꿔 실행 중인 ASP.NET core 앱의 브라우저에서 렌더링 된 뷰를 호출 합니다. 예: `https://localhost:44375/home/about`.
 
 ![연락처 페이지](mvc/_static/contact-page.png)
 
@@ -311,7 +312,7 @@ ASP.NET MVC 5 이전 버전에서 정적 콘텐츠는 웹 프로젝트의 루트
 
 * ASP.NET MVC 프로젝트의 *favicon* 파일을 ASP.NET Core 프로젝트의 *wwwroot* 디렉터리에 복사 합니다.
 
-ASP.NET MVC 프로젝트는 해당 스타일에 [부트스트랩](https://getbootstrap.com/) 을 사용 하 여 *콘텐츠* 및 *스크립트* 디렉터리에 부트스트랩 파일을 저장 합니다. ASP.NET MVC 프로젝트를 생성 한 템플릿은 레이아웃 파일 (*Views/Shared/_Layout cshtml*)의 부트스트랩을 참조 합니다. *bootstrap.js* 및 *부트스트랩 .css* 파일은 ASP.NET MVC 프로젝트에서 새 프로젝트의 *wwwroot* 디렉터리로 복사 될 수 있습니다. 대신이 문서는 다음 섹션에서 CDNs를 사용 하 여 부트스트랩 (및 기타 클라이언트 쪽 라이브러리)에 대 한 지원을 추가 합니다.
+ASP.NET MVC 프로젝트는 해당 스타일에 [부트스트랩](https://getbootstrap.com/) 을 사용 하 여 *콘텐츠* 및 *스크립트* 디렉터리에 부트스트랩 파일을 저장 합니다. ASP.NET MVC 프로젝트를 생성 한 템플릿은 레이아웃 파일 ( *Views/Shared/_Layout cshtml* )의 부트스트랩을 참조 합니다. *bootstrap.js* 및 *부트스트랩 .css* 파일은 ASP.NET MVC 프로젝트에서 새 프로젝트의 *wwwroot* 디렉터리로 복사 될 수 있습니다. 대신이 문서는 다음 섹션에서 CDNs를 사용 하 여 부트스트랩 (및 기타 클라이언트 쪽 라이브러리)에 대 한 지원을 추가 합니다.
 
 ## <a name="migrate-the-layout-file"></a>레이아웃 파일 마이그레이션
 
@@ -366,7 +367,7 @@ JQuery 및 부트스트랩 JavaScript 포함에 대 한 대체 태그는 다음�
 
 ## <a name="solve-http-500-errors"></a>HTTP 500 오류 해결
 
-문제의 원인에 대 한 정보를 포함 하지 않는 HTTP 500 오류 메시지를 발생 시킬 수 있는 많은 문제가 있습니다. 예를 들어 *Views/_ViewImports cshtml* 파일에 프로젝트에 없는 네임 스페이스가 포함 된 경우 HTTP 500 오류가 생성 됩니다. 기본적으로 ASP.NET Core 앱에서는 확장이에 `UseDeveloperExceptionPage` 추가 되 `IApplicationBuilder` 고 구성이 *개발*될 때 실행 됩니다. 다음 코드의 예제를 참조 하세요.
+문제의 원인에 대 한 정보를 포함 하지 않는 HTTP 500 오류 메시지를 발생 시킬 수 있는 많은 문제가 있습니다. 예를 들어 *Views/_ViewImports cshtml* 파일에 프로젝트에 없는 네임 스페이스가 포함 된 경우 HTTP 500 오류가 생성 됩니다. 기본적으로 ASP.NET Core 앱에서는 확장이에 `UseDeveloperExceptionPage` 추가 되 `IApplicationBuilder` 고 구성이 *개발* 될 때 실행 됩니다. 다음 코드의 예제를 참조 하세요.
 
 [!code-csharp[](mvc/samples/2.x/Startup.cs?highlight=11-15&name=snippet)]
 
@@ -401,17 +402,17 @@ ASP.NET Core 처리 되지 않은 예외를 HTTP 500 오류 응답으로 변환 
 
 ![새 웹 응용 프로그램 대화 상자: ASP.NET 템플릿 패널에서 선택 된 MVC 프로젝트 템플릿](mvc/_static/new-project-select-mvc-template.png)
 
-*선택 사항:* 솔루션 이름을 *WebApp1* 에서 *Mvc5*로 변경 합니다. Visual Studio에서 새 솔루션 이름 (*Mvc5*)을 표시 합니다 .이를 통해 다음 프로젝트에서이 프로젝트를 더 쉽게 알 수 있습니다.
+*선택 사항:* 솔루션 이름을 *WebApp1* 에서 *Mvc5* 로 변경 합니다. Visual Studio에서 새 솔루션 이름 ( *Mvc5* )을 표시 합니다 .이를 통해 다음 프로젝트에서이 프로젝트를 더 쉽게 알 수 있습니다.
 
 ## <a name="create-the-aspnet-core-project"></a>ASP.NET Core 프로젝트 만들기
 
-두 프로젝트의 네임 스페이스가 일치 하도록 이전 프로젝트와 동일한 이름을 사용 하 여 *비어* 있는 ASP.NET Core 웹 앱 (*WebApp1*)을 새로 만듭니다. 동일한 네임 스페이스를 사용 하면 두 프로젝트 간에 코드를 쉽게 복사할 수 있습니다. 같은 이름을 사용 하려면 이전 프로젝트가 아닌 다른 디렉터리에이 프로젝트를 만듭니다.
+두 프로젝트의 네임 스페이스가 일치 하도록 이전 프로젝트와 동일한 이름을 사용 하 여 *비어* 있는 ASP.NET Core 웹 앱 ( *WebApp1* )을 새로 만듭니다. 동일한 네임 스페이스를 사용 하면 두 프로젝트 간에 코드를 쉽게 복사할 수 있습니다. 같은 이름을 사용 하려면 이전 프로젝트가 아닌 다른 디렉터리에이 프로젝트를 만듭니다.
 
 ![새 프로젝트 대화 상자](mvc/_static/new_core.png)
 
 ![New ASP.NET 웹 응용 프로그램 대화 상자: ASP.NET Core 템플릿 패널에서 빈 프로젝트 템플릿을 선택 했습니다.](mvc/_static/new-project-select-empty-aspnet5-template.png)
 
-* *선택 사항:* *웹 응용 프로그램* 프로젝트 템플릿을 사용 하 여 새 ASP.NET Core 앱을 만듭니다. 프로젝트 이름을 *WebApp1*로 하 고 **개별 사용자 계정**에 대 한 인증 옵션을 선택 합니다. 이 앱의 이름을 *FullAspNetCore*로 바꿉니다. 이 프로젝트를 만들면 변환 시 시간이 절약 됩니다. 템플릿 생성 코드에서 최종 결과를 볼 수 있습니다. 변환 프로젝트에 코드를 복사 하거나 템플릿 생성 프로젝트와 비교할 수 있습니다.
+* *선택 사항:* *웹 응용 프로그램* 프로젝트 템플릿을 사용 하 여 새 ASP.NET Core 앱을 만듭니다. 프로젝트 이름을 *WebApp1* 로 하 고 **개별 사용자 계정** 에 대 한 인증 옵션을 선택 합니다. 이 앱의 이름을 *FullAspNetCore* 로 바꿉니다. 이 프로젝트를 만들면 변환 시 시간이 절약 됩니다. 템플릿 생성 코드에서 최종 결과를 볼 수 있습니다. 변환 프로젝트에 코드를 복사 하거나 템플릿 생성 프로젝트와 비교할 수 있습니다.
 
 ## <a name="configure-the-site-to-use-mvc"></a>MVC를 사용 하도록 사이트 구성
 
@@ -439,7 +440,7 @@ ASP.NET Core 처리 되지 않은 예외를 HTTP 500 오류 응답으로 변환 
 
 * *뷰/홈* 디렉터리를 추가 합니다.
 
-* 뷰 */홈* 디렉터리에 *Index. cshtml* 이라는 ** Razor 뷰** 를 추가 합니다.
+* 뷰 */홈* 디렉터리에 *Index. cshtml* 이라는 **Razor 뷰** 를 추가 합니다.
 
 ![새 항목 추가 대화 상자](mvc/_static/view.png)
 
@@ -479,13 +480,13 @@ ASP.NET Core 처리 되지 않은 예외를 HTTP 500 오류 응답으로 변환 
 
 * ASP.NET MVC의 각 메서드 `HomeController` 를 새로 복사 `HomeController` 합니다. ASP.NET MVC에서 기본 제공 템플릿의 컨트롤러 동작 메서드 반환 형식은입니다. <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2> ASP.NET CORE mvc에서는 작업 메서드가 대신을 반환 합니다 `IActionResult` . `ActionResult` 는 `IActionResult` 를 구현 하므로 작업 메서드의 반환 형식을 변경할 필요가 없습니다.
 
-* *Contact.cshtml*ASP.NET MVC 프로젝트에서 MVC ASP.NET Core 프로젝트에 *대 한*파일을 *복사 합니다.* Razor
+* *Contact.cshtml* ASP.NET MVC 프로젝트에서 MVC ASP.NET Core 프로젝트에 *대 한* 파일을 *복사 합니다.* Razor
 
 ## <a name="test-each-method"></a>각 메서드 테스트
 
 레이아웃 파일 및 스타일은 아직 마이그레이션되지 않았으므로 렌더링 된 뷰에는 뷰 파일의 내용만 포함 됩니다. 및 뷰에 대해 생성 된 레이아웃 파일 링크를 `About` `Contact` 아직 사용할 수 없습니다.
 
-* 현재 포트 번호를 ASP.NET core 프로젝트에서 사용 되는 포트 번호로 바꿔 실행 중인 ASP.NET core 앱의 브라우저에서 렌더링 된 뷰를 호출 합니다. 예: `https://localhost:44375/home/about`
+* 현재 포트 번호를 ASP.NET core 프로젝트에서 사용 되는 포트 번호로 바꿔 실행 중인 ASP.NET core 앱의 브라우저에서 렌더링 된 뷰를 호출 합니다. 예: `https://localhost:44375/home/about`.
 
 ![연락처 페이지](mvc/_static/contact-page.png)
 
@@ -497,7 +498,7 @@ ASP.NET MVC 5 이전 버전에서 정적 콘텐츠는 웹 프로젝트의 루트
 
 * ASP.NET MVC 프로젝트의 *favicon* 파일을 ASP.NET Core 프로젝트의 *wwwroot* 디렉터리에 복사 합니다.
 
-ASP.NET MVC 프로젝트는 해당 스타일에 [부트스트랩](https://getbootstrap.com/) 을 사용 하 여 *콘텐츠* 및 *스크립트* 디렉터리에 부트스트랩 파일을 저장 합니다. ASP.NET MVC 프로젝트를 생성 한 템플릿은 레이아웃 파일 (*Views/Shared/_Layout cshtml*)의 부트스트랩을 참조 합니다. *bootstrap.js* 및 *부트스트랩 .css* 파일은 ASP.NET MVC 프로젝트에서 새 프로젝트의 *wwwroot* 디렉터리로 복사 될 수 있습니다. 대신이 문서는 다음 섹션에서 CDNs를 사용 하 여 부트스트랩 (및 기타 클라이언트 쪽 라이브러리)에 대 한 지원을 추가 합니다.
+ASP.NET MVC 프로젝트는 해당 스타일에 [부트스트랩](https://getbootstrap.com/) 을 사용 하 여 *콘텐츠* 및 *스크립트* 디렉터리에 부트스트랩 파일을 저장 합니다. ASP.NET MVC 프로젝트를 생성 한 템플릿은 레이아웃 파일 ( *Views/Shared/_Layout cshtml* )의 부트스트랩을 참조 합니다. *bootstrap.js* 및 *부트스트랩 .css* 파일은 ASP.NET MVC 프로젝트에서 새 프로젝트의 *wwwroot* 디렉터리로 복사 될 수 있습니다. 대신이 문서는 다음 섹션에서 CDNs를 사용 하 여 부트스트랩 (및 기타 클라이언트 쪽 라이브러리)에 대 한 지원을 추가 합니다.
 
 ## <a name="migrate-the-layout-file"></a>레이아웃 파일 마이그레이션
 
@@ -552,7 +553,7 @@ JQuery 및 부트스트랩 JavaScript 포함에 대 한 대체 태그는 다음�
 
 ## <a name="solve-http-500-errors"></a>HTTP 500 오류 해결
 
-문제의 원인에 대 한 정보를 포함 하지 않는 HTTP 500 오류 메시지를 발생 시킬 수 있는 많은 문제가 있습니다. 예를 들어 *Views/_ViewImports cshtml* 파일에 프로젝트에 없는 네임 스페이스가 포함 된 경우 HTTP 500 오류가 생성 됩니다. 기본적으로 ASP.NET Core 앱에서는 확장이에 `UseDeveloperExceptionPage` 추가 되 `IApplicationBuilder` 고 구성이 *개발*될 때 실행 됩니다. 다음 코드의 예제를 참조 하세요.
+문제의 원인에 대 한 정보를 포함 하지 않는 HTTP 500 오류 메시지를 발생 시킬 수 있는 많은 문제가 있습니다. 예를 들어 *Views/_ViewImports cshtml* 파일에 프로젝트에 없는 네임 스페이스가 포함 된 경우 HTTP 500 오류가 생성 됩니다. 기본적으로 ASP.NET Core 앱에서는 확장이에 `UseDeveloperExceptionPage` 추가 되 `IApplicationBuilder` 고 구성이 *개발* 될 때 실행 됩니다. 다음 코드의 예제를 참조 하세요.
 
 [!code-csharp[](mvc/samples/2.x/Startup.cs?highlight=11-15&name=snippet)]
 

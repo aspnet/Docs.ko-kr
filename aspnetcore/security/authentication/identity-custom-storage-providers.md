@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: a8414efeece1afd55d0f30d232ef360d0a21714c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c89098bf0b2c4396f9856aca2be9967af5df0cb7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630135"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051904"
 ---
 # <a name="custom-storage-providers-for-no-locaspnet-core-identity"></a>사용자 지정 저장소 공급자 ASP.NET Core Identity
 
@@ -34,7 +35,7 @@ ASP.NET Core Identity 는 사용자 지정 저장소 공급자를 만들어 앱�
 
 ## <a name="introduction"></a>소개
 
-기본적으로 시스템은 ASP.NET Core Identity Entity Framework Core를 사용 하 여 SQL Server 데이터베이스에 사용자 정보를 저장 합니다. 이 접근 방식은 많은 앱에서 잘 작동 합니다. 그러나 다른 지 속성 메커니즘 또는 데이터 스키마를 사용 하는 것이 좋습니다. 다음은 그 예입니다. 
+기본적으로 시스템은 ASP.NET Core Identity Entity Framework Core를 사용 하 여 SQL Server 데이터베이스에 사용자 정보를 저장 합니다. 이 접근 방식은 많은 앱에서 잘 작동 합니다. 그러나 다른 지 속성 메커니즘 또는 데이터 스키마를 사용 하는 것이 좋습니다. 다음은 그 예입니다.
 
 * [Azure Table Storage](/azure/storage/) 또는 다른 데이터 저장소를 사용 합니다.
 * 데이터베이스 테이블의 구조가 다릅니다. 
@@ -94,7 +95,7 @@ ASP.NET Core Identity 는 관리자 및 저장소 라는 클래스로 구성 됩
 
 ### <a name="context-class"></a>Context 클래스
 
-정보를 캡슐화 하 여 지 속성 메커니즘에 연결 하 고 쿼리를 실행 합니다. 여러 데이터 클래스에는이 클래스의 인스턴스가 필요 합니다. 일반적으로 종속성 주입을 통해 제공 됩니다. [예:](/dotnet/api/microsoft.aspnet.identity.corecompat.identitydbcontext-1)
+정보를 캡슐화 하 여 지 속성 메커니즘에 연결 하 고 쿼리를 실행 합니다. 여러 데이터 클래스에는이 클래스의 인스턴스가 필요 합니다. 일반적으로 종속성 주입을 통해 제공 됩니다. [예제](/dotnet/api/microsoft.aspnet.identity.corecompat.identitydbcontext-1).
 
 ### <a name="user-storage"></a>사용자 저장소
 
@@ -180,7 +181,7 @@ ASP.NET Core Identity 는 관리자 및 저장소 라는 클래스로 구성 됩
 * **IQueryableUserStore**  
  [Iqueryableuserstore &lt; tuser &gt; ](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) 인터페이스는 쿼리 가능한 사용자 저장소를 제공 하기 위해 구현 하는 멤버를 정의 합니다.
 
-앱에 필요한 인터페이스만 구현 합니다. 다음은 그 예입니다. 
+앱에 필요한 인터페이스만 구현 합니다. 다음은 그 예입니다.
 
 ```csharp
 public class UserStore : IUserStore<IdentityUser>,
@@ -226,7 +227,7 @@ public class UserStore : IUserStore<IdentityUser>,
 1. 역할을 사용 하는 경우 `RoleManager` 클래스를 사용 하도록를 업데이트 합니다 `RoleStore` .
 1. 응용 프로그램의 구성에 대 한 연결 문자열 및 자격 증명을 업데이트 합니다.
 
-예:
+예제:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -246,7 +247,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="references"></a>참고자료
+## <a name="references"></a>참조
 
 * [ASP.NET 4.x의 사용자 지정 저장소 공급자 Identity](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
 * [ASP.NET Core Identity](https://github.com/dotnet/AspNetCore/tree/master/src/Identity):이 리포지토리에는 커뮤니티에서 유지 관리 하는 저장소 공급자에 대 한 링크가 포함 되어 있습니다.

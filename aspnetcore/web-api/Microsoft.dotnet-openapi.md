@@ -6,6 +6,7 @@ ms.author: rybrande
 ms.date: 09/26/2019
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/Microsoft.dotnet-openapi
-ms.openlocfilehash: 45921deb35452876b0a92a8731da68539a880c1d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 28a71c7040667c7544cc17c1184c09b5b39959b9
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626560"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052554"
 ---
 # <a name="develop-aspnet-core-apps-using-openapi-tools"></a>OpenAPI 도구를 사용한 ASP.NET Core 앱 개발
 
@@ -75,7 +76,7 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 #### <a name="arguments"></a>인수
 
-|  인수  | Description | 예제 |
+|  인수  | 설명 | 예제 |
 |-------------|-------------|---------|
 | source-file | 참조를 만들 원본입니다. OpenAPI 파일이어야 합니다. |dotnet openapi add file *.\OpenAPI.json* |
 
@@ -92,7 +93,7 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 #### <a name="arguments"></a>인수
 
-|  인수  | Description | 예제 |
+|  인수  | 설명 | 예제 |
 |-------------|-------------|---------|
 | 원본-URL | 참조를 만들 원본입니다. URL이어야 합니다. |dotnet openapi add url `https://contoso.com/openapi.json` |
 
@@ -109,7 +110,7 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 ### <a name="arguments"></a>인수
 
-|  인수  | Description| 예제 |
+|  인수  | 설명| 예제 |
 | ------------|------------|---------|
 | source-file | 참조를 제거할 속성입니다. |dotnet openapi remove *.\OpenAPI.json* |
 
@@ -126,6 +127,6 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 ### <a name="arguments"></a>인수
 
-|  인수  | Description | 예제 |
+|  인수  | 설명 | 예제 |
 | ------------|-------------|---------|
 | 원본-URL | 참조를 새로 고칠 URL입니다. | dotnet openapi refresh `https://contoso.com/openapi.json` |

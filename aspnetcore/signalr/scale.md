@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/17/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: 2bfe05748e6740043be7f1ccc6dbe22ad4b0ca44
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: d3e9cd23a55702bcf9b002dcce556428683afeca
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722568"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052775"
 ---
 # <a name="aspnet-core-no-locsignalr-hosting-and-scaling"></a>ASP.NET Core SignalR 호스팅 및 크기 조정
 
@@ -45,13 +46,13 @@ SignalR 특정 연결에 대 한 모든 HTTP 요청을 동일한 서버 프로�
 
 ## <a name="tcp-connection-resources"></a>TCP 연결 리소스
 
-웹 서버에서 지원할 수 있는 동시 TCP 연결 수가 제한 됩니다. 표준 HTTP 클라이언트는 *임시* 연결을 사용 합니다. 클라이언트를 유휴 상태로 전환 하 고 나중에 다시 열 때 이러한 연결을 닫을 수 있습니다. 반면에 SignalR 연결은 *영구적*입니다. SignalR 클라이언트가 유휴 상태가 되는 경우에도 연결이 열린 상태로 유지 됩니다. 많은 클라이언트에 서비스를 제공 하는 트래픽이 많은 앱에서 이러한 영구 연결을 사용 하면 서버가 최대 연결 수에 도달할 수 있습니다.
+웹 서버에서 지원할 수 있는 동시 TCP 연결 수가 제한 됩니다. 표준 HTTP 클라이언트는 *임시* 연결을 사용 합니다. 클라이언트를 유휴 상태로 전환 하 고 나중에 다시 열 때 이러한 연결을 닫을 수 있습니다. 반면에 SignalR 연결은 *영구적* 입니다. SignalR 클라이언트가 유휴 상태가 되는 경우에도 연결이 열린 상태로 유지 됩니다. 많은 클라이언트에 서비스를 제공 하는 트래픽이 많은 앱에서 이러한 영구 연결을 사용 하면 서버가 최대 연결 수에 도달할 수 있습니다.
 
 또한 영구 연결에서는 추가 메모리를 사용 하 여 각 연결을 추적 합니다.
 
 에서 연결 관련 리소스를 많이 사용 하는 SignalR 것은 동일한 서버에서 호스트 되는 다른 웹 앱에 영향을 줄 수 있습니다. SignalR가 열리고 사용 가능한 마지막 TCP 연결을 보유 하는 경우 동일한 서버의 다른 웹 앱에도 더 이상 사용할 수 있는 연결이 없습니다.
 
-서버에 연결 되지 않은 경우 임의의 소켓 오류 및 연결 다시 설정 오류가 표시 됩니다. 예를 들면 다음과 같습니다.
+서버에 연결 되지 않은 경우 임의의 소켓 오류 및 연결 다시 설정 오류가 표시 됩니다. 다음은 그 예입니다.
 
 ```
 An attempt was made to access a socket in a way forbidden by its access permissions...
@@ -120,14 +121,85 @@ Windows 10 및 Windows 8.x은 클라이언트 운영 체제입니다. 클라이�
 
 ## <a name="linux-with-nginx"></a>Nginx를 사용하는 Linux
 
-`Connection` `Upgrade` Websocket에 대해 프록시의 및 헤더를 다음으로 설정 합니다 SignalR .
+다음에는에 대해 Websocket, ServerSentEvents 및 Un폴링을 사용 하도록 설정 하는 데 필요한 최소 설정이 포함 되어 있습니다 SignalR .
 
 ```nginx
-proxy_set_header Upgrade $http_upgrade;
-proxy_set_header Connection $connection_upgrade;
+http {
+  map $http_connection $connection_upgrade {
+    "~*Upgrade" $http_connection;
+    default keep-alive;
+}
+
+  server {
+    listen 80;
+    server_name example.com *.example.com;
+
+    # Configure the SignalR Endpoint
+    location /hubroute {
+      # App server url
+      proxy_pass http://localhost:5000;
+
+      # Configuration for WebSockets
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection $connection_upgrade;
+      proxy_cache off;
+
+      # Configuration for ServerSentEvents
+      proxy_buffering off;
+
+      # Configuration for LongPolling or if your KeepAliveInterval is longer than 60 seconds
+      proxy_read_timeout 100s;
+
+      proxy_set_header Host $host;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+  }
+}
 ```
 
-자세한 내용은 [NGINX as a WebSocket Proxy](https://www.nginx.com/blog/websocket-nginx/)(NGINX를 WebSocket 프록시로 사용)를 참조하세요.
+여러 백 엔드 서버를 사용 하는 경우 연결 시 연결이 서버를 전환 하지 못하도록 고정 세션을 추가 해야 합니다 SignalR . Nginx에 고정 세션을 추가 하는 방법에는 여러 가지가 있습니다. 사용 가능한 항목에 따라 다음과 같은 두 가지 방법을 보여 줍니다.
+
+이전 구성 외에도 다음이 추가 됩니다. 다음 예에서는 `backend` 가 서버 그룹의 이름입니다.
+
+[Nginx 오픈 소스](https://nginx.org/en/)를 사용 하 여 `ip_hash` 클라이언트의 IP 주소에 따라 서버에 대 한 연결을 라우팅하는 데 사용 합니다.
+
+```nginx
+http {
+  upstream backend {
+    # App server 1
+    server http://localhost:5000;
+    # App server 2
+    server http://localhost:5002;
+
+    ip_hash;
+  }
+}
+```
+
+[Nginx Plus](https://www.nginx.com/products/nginx)를 사용 하 여를 `sticky` cookie 요청에 추가 하 고 사용자의 요청을 서버에 고정 합니다.
+
+```nginx
+http {
+  upstream backend {
+    # App server 1
+    server http://localhost:5000;
+    # App server 2
+    server http://localhost:5002;
+
+    sticky cookie srv_id expires=max domain=.example.com path=/ httponly;
+  }
+}
+```
+
+마지막으로 `proxy_pass http://localhost:5000` `server` 섹션에서를로 변경 `proxy_pass http://backend` 합니다.
+
+Nginx를 통한 Websocket에 대 한 자세한 내용은 [Nginx as a Websocket Proxy](https://www.nginx.com/blog/websocket-nginx)를 참조 하십시오.
+
+부하 분산 및 고정 세션에 대 한 자세한 내용은 [NGINX 부하 분산](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)을 참조 하세요.
+
+Nginx와 ASP.NET Core에 대 한 자세한 내용은 다음 문서를 참조 하세요.
+* <xref:host-and-deploy/linux-nginx>
 
 ## <a name="third-party-no-locsignalr-backplane-providers"></a>타사 SignalR 후면판 공급자
 

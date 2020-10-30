@@ -7,6 +7,7 @@ ms.author: brecon
 ms.custom: mvc
 ms.date: 05/22/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hub-filters
-ms.openlocfilehash: c3c44efcb3702f3edb51c821d042c2e7eb1748cd
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 5a4cb5122080b72875ac11cf2e682162d017d7b9
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626668"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052723"
 ---
 # <a name="use-hub-filters-in-aspnet-core-no-locsignalr"></a>ASP.NET Core에서 허브 필터 사용 SignalR
 
@@ -142,7 +143,7 @@ public class CustomFilter : IHubFilter
     }
     ```
 
-1. 허브 필터를 정의 하 여 특성을 확인 하 고 허브 메서드 인수에서 금지 된 구를 `***` 다음과 같이 바꿉니다.
+1. 허브 필터를 정의 하 여 특성을 확인 하 고 허브 메서드 인수에서 금지 된 구를 `**_` 다음과 같이 바꿉니다.
 
     ```csharp
     public class LanguageFilter : IHubFilter
@@ -161,7 +162,7 @@ public class CustomFilter : IHubFilter
             {
                 foreach (var bannedPhrase in bannedPhrases)
                 {
-                    str = str.Replace(bannedPhrase, "***");
+                    str = str.Replace(bannedPhrase, "_**");
                 }
 
                 arguments = invocationContext.HubMethodArguments.ToArray();
@@ -196,7 +197,7 @@ public class CustomFilter : IHubFilter
 
 에는 `HubInvocationContext` 현재 허브 메서드 호출에 대 한 정보가 포함 되어 있습니다.
 
-| 속성 | Description | Type |
+| 속성 | 설명 | 형식 |
 | ------ | ------ | ----------- |
 | `Context ` | 에는 `HubCallerContext` 연결에 대 한 정보가 포함 되어 있습니다. | `HubCallerContext` |
 | `Hub` | 이 허브 메서드 호출에 사용 되는 허브의 인스턴스입니다. | `Hub` |
@@ -209,7 +210,7 @@ public class CustomFilter : IHubFilter
 
 에는 `HubLifetimeContext` `OnConnectedAsync` 및 허브 메서드에 대 한 정보가 포함 되어 있습니다 `OnDisconnectedAsync` .
 
-| 속성 | Description | Type |
+| 속성 | 설명 | 형식 |
 | ------ | ------ | ----------- |
 | `Context ` | 에는 `HubCallerContext` 연결에 대 한 정보가 포함 되어 있습니다. | `HubCallerContext` |
 | `Hub` | 이 허브 메서드 호출에 사용 되는 허브의 인스턴스입니다. | `Hub` |

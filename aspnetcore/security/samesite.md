@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/03/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - SignalR
 - Electron
 uid: security/samesite
-ms.openlocfilehash: 3ba033b4165b19131d11311e5ae9d64e6afe48ca
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 6f826416e3045df32abf41e94e667120e71ae717
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865428"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051618"
 ---
 # <a name="work-with-samesite-no-loccookies-in-aspnet-core"></a>cookieASP.NET Core에서 SameSite s 작업
 
@@ -51,7 +52,7 @@ SameSite은 CSRF (교차 사이트 요청 위조) 공격에 대 한 보호를 �
 
 다음 샘플을 다운로드 하 고 테스트할 수 있습니다.
 
-| 샘플               | 문서 |
+| 예제               | 문서 |
 | ----------------- | ------------ |
 | [.NET Core MVC](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21MVC)  | <xref:security/samesite/mvc21> |
 | [.NET Core Razor 페이지](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21RazorPages)  | <xref:security/samesite/rp21> |
@@ -63,7 +64,7 @@ SameSite은 CSRF (교차 사이트 요청 위조) 공격에 대 한 보호를 �
 다음 샘플을 다운로드 하 고 테스트할 수 있습니다.
 
 
-| 샘플               | 문서 |
+| 예제               | 문서 |
 | ----------------- | ------------ |
 | [.NET Core Razor 페이지](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages)  | <xref:security/samesite/rp31> |
 
@@ -157,7 +158,7 @@ SameSite 지원은 [2016 초안 표준을](https://tools.ietf.org/html/draft-wes
 
 ## <a name="supporting-older-browsers"></a>이전 브라우저 지원
 
-2016 SameSite 표준에서는 알 수 없는 값을 값으로 처리 해야 합니다 `SameSite=Strict` . 2016 SameSite 표준을 지 원하는 이전 브라우저에서 액세스 된 앱은 값이 인 SameSite 속성을 가져올 때 손상 될 수 있습니다 `None` . 웹 앱은 이전 브라우저를 지원 하려는 경우 브라우저 검색을 구현 해야 합니다. 사용자 에이전트 값이 매우 휘발성 이며 자주 변경 되기 때문에 ASP.NET Core 브라우저 검색을 구현 하지 않습니다. 의 확장 지점은 <xref:Microsoft.AspNetCore.CookiePolicy> 사용자 에이전트 특정 논리를 연결 하는 것을 허용 합니다.
+2016 SameSite 표준에서는 알 수 없는 값을 값으로 처리 해야 합니다 `SameSite=Strict` . 2016 SameSite 표준을 지 원하는 이전 브라우저에서 액세스 된 앱은 값이 인 SameSite 속성을 가져올 때 손상 될 수 있습니다 `None` . 웹 앱은 이전 브라우저를 지원 하려는 경우 브라우저 검색을 구현 해야 합니다. ASP.NET Core은 User-Agents 값이 매우 휘발성 이며 자주 변경 되기 때문에 브라우저 검색을 구현 하지 않습니다. 의 확장 지점은 User-Agent 특정 논리를 연결 하는 것을 <xref:Microsoft.AspNetCore.CookiePolicy> 허용 합니다.
 
 에서 `Startup.Configure` 를 <xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*> 호출 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 하거나을 (를) 쓰는 *any* 메서드를 호출 하는 코드를 추가 합니다 cookie .
 
@@ -201,7 +202,7 @@ SameSite 지원은 [2016 초안 표준을](https://tools.ietf.org/html/draft-wes
 
 ### <a name="test-with-chrome"></a>Chrome으로 테스트
 
-Chrome 78 +는 일시적인 완화를 제공 하기 때문에 잘못 된 결과를 제공 합니다. Chrome 78 + 임시 완화를 사용 하면 2 분 이내에 s를 사용할 수 있습니다 cookie . 적절 한 테스트 플래그가 설정 된 Chrome 76 또는 77은 보다 정확한 결과를 제공 합니다. 새 SameSite 동작을 테스트 하려면 `chrome://flags/#same-site-by-default-cookies` **사용**으로 전환 합니다. 이전 버전의 Chrome (75 및 아래)은 새 설정으로 인해 실패 하는 것으로 보고 됩니다 `None` . 이 문서의 [이전 브라우저 지원](#sob) 을 참조 하세요.
+Chrome 78 +는 일시적인 완화를 제공 하기 때문에 잘못 된 결과를 제공 합니다. Chrome 78 + 임시 완화를 사용 하면 2 분 이내에 s를 사용할 수 있습니다 cookie . 적절 한 테스트 플래그가 설정 된 Chrome 76 또는 77은 보다 정확한 결과를 제공 합니다. 새 SameSite 동작을 테스트 하려면 `chrome://flags/#same-site-by-default-cookies` **사용** 으로 전환 합니다. 이전 버전의 Chrome (75 및 아래)은 새 설정으로 인해 실패 하는 것으로 보고 됩니다 `None` . 이 문서의 [이전 브라우저 지원](#sob) 을 참조 하세요.
 
 Google은 이전 chrome 버전을 사용할 수 없도록 설정 하지 않습니다. [Chromium 다운로드](https://www.chromium.org/getting-involved/download-chromium) 의 지침에 따라 이전 버전의 Chrome을 테스트 합니다. 이전 버전의 chrome을 검색 하 여 제공 된 링크에서 Chrome을 다운로드 **하지** 마세요.
 
@@ -230,7 +231,7 @@ SameSite 플래그는 페이지에 설정 되어 `edge://flags/#same-site-by-def
 
 버전에는 Electron 이전 버전의 Chromium가 포함 되어 있습니다. 예를 들어 팀에서 사용 하는의 버전은 Electron Chromium 66 이며,이는 이전 동작을 보여 주는 것입니다. 제품 버전을 사용 하 여 사용자 고유의 호환성 테스트를 수행 해야 합니다 Electron . 다음 섹션에서 [이전 브라우저 지원](#sob) 을 참조 하세요.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [Chromium 블로그: 개발자: 새 SameSite를 사용할 준비가 되었습니다. 보안 Cookie 설정](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)
 * [SameSite cookie s 설명](https://web.dev/samesite-cookies-explained/)
@@ -238,7 +239,7 @@ SameSite 플래그는 페이지에 설정 되어 `edge://flags/#same-site-by-def
 
  ::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
 
-| 샘플               | 문서 |
+| 예제               | 문서 |
 | ----------------- | ------------ |
 | [.NET Core MVC](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21MVC)  | <xref:security/samesite/mvc21> |
 | [.NET Core Razor 페이지](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21RazorPages)  | <xref:security/samesite/rp21> |
@@ -247,7 +248,7 @@ SameSite 플래그는 페이지에 설정 되어 `edge://flags/#same-site-by-def
 
  ::: moniker range=">= aspnetcore-3.0"
 
-| 샘플               | 문서 |
+| 예제               | 문서 |
 | ----------------- | ------------ |
 | [.NET Core Razor 페이지](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages)  | <xref:security/samesite/rp31> |
 

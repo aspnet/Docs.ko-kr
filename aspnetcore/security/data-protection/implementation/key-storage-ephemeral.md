@@ -5,6 +5,7 @@ description: ASP.NET Core 임시 데이터 보호 공급자의 구현 세부 정
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-ephemeral
-ms.openlocfilehash: 797cba7753fd9e2d3201a4dbb75466382531eb88
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ed0fca88ecf2b002a4421fb120d90adff1b5b12e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634776"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052701"
 ---
 # <a name="ephemeral-data-protection-providers-in-aspnet-core"></a>ASP.NET Core의 임시 데이터 보호 공급자
 

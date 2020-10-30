@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/27/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/introduction
-ms.openlocfilehash: ab850fa8afbee9d2664868937362388a03374908
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1810fef903362addcef4a6c9ec53264604f58d2b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634698"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051475"
 ---
 # <a name="introduction-to-aspnet-core-no-locsignalr"></a>ASP.NET Core SignalR 소개
 
@@ -54,7 +55,7 @@ SignalRASP.NET Core에 대 한 몇 가지 기능은 다음과 같습니다.
 SignalR 에서는 실시간 통신을 처리 하는 다음과 같은 기술을 지원 합니다 (정상적인 대체 순서).
 
 * [WebSockets](https://tools.ietf.org/html/rfc7118)
-* 서버에서 보낸 이벤트
+* Server-Sent 이벤트
 * 긴 폴링
 
 SignalR 는 서버 및 클라이언트의 기능 내에서 가장 적합 한 전송 방법을 자동으로 선택 합니다.
@@ -67,7 +68,7 @@ SignalR*허브* 를 사용 하 여 클라이언트와 서버 간에 통신 합�
 
 허브는 클라이언트 쪽 메서드의 이름 및 매개 변수를 포함 하는 메시지를 전송 하 여 클라이언트 쪽 코드를 호출 합니다. 메서드 매개 변수로 보낸 개체는 구성 된 프로토콜을 사용 하 여 deserialize 됩니다. 클라이언트는 클라이언트 쪽 코드의 메서드와 이름을 일치 시 키 려 고 시도 합니다. 클라이언트에서 일치 하는 항목을 찾으면 메서드를 호출 하 여 deserialize 된 매개 변수 데이터를 전달 합니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [SignalRASP.NET Core에 대 한 시작](xref:tutorials/signalr)
 * [지원 되는 플랫폼](xref:signalr/supported-platforms)

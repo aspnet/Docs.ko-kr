@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 7/18/2020
 ms.custom: mvc, seodec18
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: 5f86e514ee6339888171d83ab3117e9b3fcf107e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: accfd46fa72c33976f8af2a39267c993447e036e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627821"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051943"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>권한 부여로 보호 되는 사용자 데이터를 사용 하 여 ASP.NET Core 웹 앱 만들기
 
@@ -44,7 +45,7 @@ ms.locfileid: "88627821"
 
 이 문서의 이미지는 최신 템플릿과 정확히 일치 하지 않습니다.
 
-다음 이미지에서는 사용자 Rick ( `rick@example.com` )가 로그인 되어 있습니다. Rick는 승인 된 연락처만 볼 수 **있으며** / **Delete Delete**는 / 연락처에 대 한 새 링크를**만듭니다** . Rick에서 만든 마지막 레코드만 **편집** 및 **삭제** 링크를 표시 합니다. 관리자 또는 관리자가 상태를 "승인 됨"으로 변경할 때까지 다른 사용자는 마지막 레코드를 볼 수 없습니다.
+다음 이미지에서는 사용자 Rick ( `rick@example.com` )가 로그인 되어 있습니다. Rick는 승인 된 연락처만 볼 수 **있으며** / **Delete Delete** 는 / 연락처에 대 한 새 링크를 **만듭니다** . Rick에서 만든 마지막 레코드만 **편집** 및 **삭제** 링크를 표시 합니다. 관리자 또는 관리자가 상태를 "승인 됨"으로 변경할 때까지 다른 사용자는 마지막 레코드를 볼 수 없습니다.
 
 ![Rick 로그인을 보여 주는 스크린샷](secure-data/_static/rick.png)
 
@@ -74,7 +75,7 @@ ms.locfileid: "88627821"
 * `ContactManagerAuthorizationHandler`: 관리자가 연락처를 승인 하거나 거부할 수 있습니다.
 * `ContactAdministratorsAuthorizationHandler`: 관리자가 연락처를 승인 또는 거부 하 고 연락처를 편집/삭제할 수 있습니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 이 자습서는 고급입니다. 다음에 대해 잘 알고 있어야 합니다.
 
@@ -127,11 +128,11 @@ dotnet ef database update
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
-위의 강조 표시 된 코드는 [대체 인증 정책을](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy)설정 합니다. 대체 인증 정책에서는 ***all*** Razor 인증 특성이 있는 페이지, 컨트롤러 또는 작업 메서드를 제외 하 고 모든 사용자를 인증 해야 합니다. 예를 들어 Razor 또는를 사용 하는 페이지, 컨트롤러 또는 작업 메서드 `[AllowAnonymous]` `[Authorize(PolicyName="MyPolicy")]` 는 대체 인증 정책 대신 적용 된 인증 특성을 사용 합니다.
+위의 강조 표시 된 코드는 [대체 인증 정책을](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy)설정 합니다. 대체 인증 정책에는 *_all_* Razor 인증 특성이 있는 페이지, 컨트롤러 또는 작업 메서드를 제외 하 고 * 모든 _ 사용자를 인증 해야 합니다. 예를 들어 Razor 또는를 사용 하는 페이지, 컨트롤러 또는 작업 메서드 `[AllowAnonymous]` `[Authorize(PolicyName="MyPolicy")]` 는 대체 인증 정책 대신 적용 된 인증 특성을 사용 합니다.
 
 대체 인증 정책:
 
-* 는 인증 정책을 명시적으로 지정 하지 않는 모든 요청에 적용 됩니다. 끝점 라우팅을 통해 처리 되는 요청의 경우 권한 부여 특성을 지정 하지 않는 끝점이 여기에 포함 됩니다. [정적 파일과](xref:fundamentals/static-files)같이 권한 부여 미들웨어 후 다른 미들웨어에서 처리 하는 요청의 경우 모든 요청에 정책을 적용 합니다.
+_는 인증 정책을 명시적으로 지정 하지 않는 모든 요청에 적용 됩니다. 끝점 라우팅을 통해 처리 되는 요청의 경우 권한 부여 특성을 지정 하지 않는 끝점이 여기에 포함 됩니다. [정적 파일과](xref:fundamentals/static-files)같이 권한 부여 미들웨어 후 다른 미들웨어에서 처리 하는 요청의 경우 모든 요청에 정책을 적용 합니다.
 
 사용자를 인증 하도록 요구 하는 대체 인증 정책을 설정 하면 새로 추가 된 Razor 페이지와 컨트롤러를 보호 합니다. 기본적으로 인증을 요구 하는 것은 특성을 포함 하는 새 컨트롤러 및 페이지에 의존 하는 것 보다 안전 Razor 합니다 `[Authorize]` .
 
@@ -151,7 +152,7 @@ MVC 컨트롤러 및 Razor 페이지에서 모든 사용자를 인증 하도록 
 
 ### <a name="configure-the-test-account"></a>테스트 계정 구성
 
-`SeedData`클래스는 두 개의 계정 즉, 관리자와 관리자를 만듭니다. 암호 [관리자 도구](xref:security/app-secrets) 를 사용 하 여 이러한 계정에 대 한 암호를 설정 합니다. 프로젝트 디렉터리 ( *Program.cs*가 포함 된 디렉터리)에서 암호를 설정 합니다.
+`SeedData`클래스는 두 개의 계정 즉, 관리자와 관리자를 만듭니다. 암호 [관리자 도구](xref:security/app-secrets) 를 사용 하 여 이러한 계정에 대 한 암호를 설정 합니다. 프로젝트 디렉터리 ( *Program.cs* 가 포함 된 디렉터리)에서 암호를 설정 합니다.
 
 ```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
@@ -303,7 +304,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[](secure-data/samples/final3/Pages/Contacts/Details2.cshtml.cs?name=snippet)]
 
-위의 코드에서
+앞의 코드에서 다음을 확인할 수 있습니다.
 
 * 사용자가 인증 **되지 않은** 경우 `ChallengeResult` 이 반환 됩니다. 가 반환 되 면 `ChallengeResult` 사용자가 로그인 페이지로 리디렉션됩니다.
 * 사용자가 인증 되었지만 권한이 부여 되지 않은 경우 `ForbidResult` 이 반환 됩니다. 가 반환 되 면 `ForbidResult` 사용자가 액세스 거부 페이지로 리디렉션됩니다.
@@ -333,16 +334,16 @@ dotnet user-secrets set SeedUserPW <PW>
 
 | 사용자                | 앱에서 시드 | 옵션                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | 예                | 자신의 데이터를 편집/삭제 합니다.                |
-| manager@contoso.com | 예               | 자신의 데이터를 승인/거부 하 고 편집/삭제 합니다. |
-| admin@contoso.com   | 예               | 모든 데이터를 승인/거부 하 고 편집/삭제 합니다. |
+| test@example.com    | 아니요                | 자신의 데이터를 편집/삭제 합니다.                |
+| manager@contoso.com | Yes               | 자신의 데이터를 승인/거부 하 고 편집/삭제 합니다. |
+| admin@contoso.com   | Yes               | 모든 데이터를 승인/거부 하 고 편집/삭제 합니다. |
 
 관리자의 브라우저에서 연락처를 만듭니다. 관리자 연락처에서 삭제 및 편집에 대 한 URL을 복사 합니다. 이러한 링크를 테스트 사용자의 브라우저에 붙여넣어 테스트 사용자가 이러한 작업을 수행할 수 없는지 확인 합니다.
 
 ## <a name="create-the-starter-app"></a>시작 앱 만들기
 
 * Razor"연락처 관리자" 라는 페이지 앱 만들기
-  * **개별 사용자 계정을**사용 하 여 앱을 만듭니다.
+  * **개별 사용자 계정을** 사용 하 여 앱을 만듭니다.
   * 네임 스페이스는 샘플에서 사용 되는 네임 스페이스와 일치 하도록 "연락처 관리자"로 이름을 사용 합니다.
   * `-uld` SQLite 대신 LocalDB를 지정 합니다.
 
@@ -350,7 +351,7 @@ dotnet user-secrets set SeedUserPW <PW>
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* *모델/연락처를 추가 합니다. cs*:
+* *모델/연락처를 추가 합니다. cs* :
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
@@ -398,7 +399,7 @@ dotnet ef database update
 * **관리자** 는 연락처 데이터를 승인 하거나 거부할 수 있습니다. 승인 된 연락처만 사용자에 게 표시 됩니다.
 * **관리자** 는 데이터를 승인/거부 하 고 편집/삭제할 수 있습니다.
 
-다음 이미지에서는 사용자 Rick ( `rick@example.com` )가 로그인 되어 있습니다. Rick는 승인 된 연락처만 볼 수 **있으며** / **Delete Delete**는 / 연락처에 대 한 새 링크를**만듭니다** . Rick에서 만든 마지막 레코드만 **편집** 및 **삭제** 링크를 표시 합니다. 관리자 또는 관리자가 상태를 "승인 됨"으로 변경할 때까지 다른 사용자는 마지막 레코드를 볼 수 없습니다.
+다음 이미지에서는 사용자 Rick ( `rick@example.com` )가 로그인 되어 있습니다. Rick는 승인 된 연락처만 볼 수 **있으며** / **Delete Delete** 는 / 연락처에 대 한 새 링크를 **만듭니다** . Rick에서 만든 마지막 레코드만 **편집** 및 **삭제** 링크를 표시 합니다. 관리자 또는 관리자가 상태를 "승인 됨"으로 변경할 때까지 다른 사용자는 마지막 레코드를 볼 수 없습니다.
 
 ![Rick 로그인을 보여 주는 스크린샷](secure-data/_static/rick.png)
 
@@ -428,7 +429,7 @@ dotnet ef database update
 * `ContactManagerAuthorizationHandler`: 관리자가 연락처를 승인 하거나 거부할 수 있습니다.
 * `ContactAdministratorsAuthorizationHandler`: 관리자가 연락처를 승인 또는 거부 하 고 연락처를 편집/삭제할 수 있습니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 이 자습서는 고급입니다. 다음에 대해 잘 알고 있어야 합니다.
 
@@ -487,7 +488,7 @@ dotnet ef database update
 
 ### <a name="configure-the-test-account"></a>테스트 계정 구성
 
-`SeedData`클래스는 두 개의 계정 즉, 관리자와 관리자를 만듭니다. 암호 [관리자 도구](xref:security/app-secrets) 를 사용 하 여 이러한 계정에 대 한 암호를 설정 합니다. 프로젝트 디렉터리 ( *Program.cs*가 포함 된 디렉터리)에서 암호를 설정 합니다.
+`SeedData`클래스는 두 개의 계정 즉, 관리자와 관리자를 만듭니다. 암호 [관리자 도구](xref:security/app-secrets) 를 사용 하 여 이러한 계정에 대 한 암호를 설정 합니다. 프로젝트 디렉터리 ( *Program.cs* 가 포함 된 디렉터리)에서 암호를 설정 합니다.
 
 ```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
@@ -660,16 +661,16 @@ dotnet user-secrets set SeedUserPW <PW>
 
 | 사용자                | 앱에서 시드 | 옵션                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | 예                | 자신의 데이터를 편집/삭제 합니다.                |
-| manager@contoso.com | 예               | 자신의 데이터를 승인/거부 하 고 편집/삭제 합니다. |
-| admin@contoso.com   | 예               | 모든 데이터를 승인/거부 하 고 편집/삭제 합니다. |
+| test@example.com    | 아니요                | 자신의 데이터를 편집/삭제 합니다.                |
+| manager@contoso.com | Yes               | 자신의 데이터를 승인/거부 하 고 편집/삭제 합니다. |
+| admin@contoso.com   | Yes               | 모든 데이터를 승인/거부 하 고 편집/삭제 합니다. |
 
 관리자의 브라우저에서 연락처를 만듭니다. 관리자 연락처에서 삭제 및 편집에 대 한 URL을 복사 합니다. 이러한 링크를 테스트 사용자의 브라우저에 붙여넣어 테스트 사용자가 이러한 작업을 수행할 수 없는지 확인 합니다.
 
 ## <a name="create-the-starter-app"></a>시작 앱 만들기
 
 * Razor"연락처 관리자" 라는 페이지 앱 만들기
-  * **개별 사용자 계정을**사용 하 여 앱을 만듭니다.
+  * **개별 사용자 계정을** 사용 하 여 앱을 만듭니다.
   * 네임 스페이스는 샘플에서 사용 되는 네임 스페이스와 일치 하도록 "연락처 관리자"로 이름을 사용 합니다.
   * `-uld` SQLite 대신 LocalDB를 지정 합니다.
 
@@ -677,7 +678,7 @@ dotnet user-secrets set SeedUserPW <PW>
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* *모델/연락처를 추가 합니다. cs*:
+* *모델/연락처를 추가 합니다. cs* :
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
@@ -713,7 +714,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 <a name="secure-data-add-resources-label"></a>
 
-### <a name="additional-resources"></a>추가 자료
+### <a name="additional-resources"></a>추가 리소스
 
 * [Azure App Service에서 .NET Core 및 SQL 데이터베이스 웹앱 빌드](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 * [권한 부여 랩을 ASP.NET Core](https://github.com/blowdart/AspNetAuthorizationWorkshop)합니다. 이 랩에서는이 자습서에서 소개 하는 보안 기능에 대해 자세히 설명 합니다.

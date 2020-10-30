@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc, devx-track-js
 ms.date: 04/08/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: be271272c952487fccc5136307c84fdf49391848
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: b4b1bc6131a6676710adbf2503efe3f304d89a58
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690644"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050851"
 ---
 # <a name="aspnet-core-no-locsignalr-javascript-client"></a>SignalRJavaScript 클라이언트 ASP.NET Core
 
@@ -50,7 +51,7 @@ npm install @microsoft/signalr
 
 npm 패키지 콘텐츠를 *node_modules \\ @microsoft\signalr\dist\browser* 폴더에 설치 합니다. *Wwwroot \\ lib* 폴더 아래에 *signalr* 라는 새 폴더를 만듭니다. *signalr.js* 파일을 *wwwroot\lib\signalr* 폴더에 복사 합니다.
 
-SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. 예를 들면 다음과 같습니다.
+SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. 다음은 그 예입니다.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -58,7 +59,7 @@ SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. �
 
 ### <a name="use-a-content-delivery-network-cdn"></a>CDN (Content Delivery Network) 사용
 
-Npm 필수 구성 요소 없이 클라이언트 라이브러리를 사용 하려면 클라이언트 라이브러리의 CDN 호스트 복사본을 참조 합니다. 예를 들면 다음과 같습니다.
+Npm 필수 구성 요소 없이 클라이언트 라이브러리를 사용 하려면 클라이언트 라이브러리의 CDN 호스트 복사본을 참조 합니다. 다음은 그 예입니다.
 
 [!code-html[](javascript-client/samples/3.x/SignalRChat/Pages/Index.cshtml?name=snippet_CDN)]
 
@@ -81,6 +82,9 @@ Npm 필수 구성 요소 없이 클라이언트 라이브러리를 사용 하려
 ### <a name="cross-origin-connections"></a>크로스-원본 연결
 
 일반적으로 브라우저는 요청 된 페이지와 동일한 도메인의 연결을 로드 합니다. 그러나 다른 도메인에 연결 해야 하는 경우도 있습니다.
+
+> [!IMPORTANT]
+> 클라이언트 코드는 상대 URL이 아닌 절대 URL을 사용 해야 합니다. `.withUrl("/chathub")`을 `.withUrl("https://myappurl/chathub")`으로 변경합니다.
 
 악의적인 사이트에서 다른 사이트의 중요 한 데이터를 읽지 못하도록 하기 위해 [교차 원본 연결은](xref:security/cors) 기본적으로 사용 하지 않도록 설정 됩니다. 원본 간 요청을 허용 하려면 클래스에서 사용 하도록 설정 합니다 `Startup` .
 
@@ -315,7 +319,7 @@ npm install @aspnet/signalr
 
 npm 패키지 콘텐츠를 *node_modules \\ @aspnet\signalr\dist\browser* 폴더에 설치 합니다. *Wwwroot \\ lib* 폴더 아래에 *signalr* 라는 새 폴더를 만듭니다. *signalr.js* 파일을 *wwwroot\lib\signalr* 폴더에 복사 합니다.
 
-SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. 예를 들면 다음과 같습니다.
+SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. 다음은 그 예입니다.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -323,7 +327,7 @@ SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. �
 
 ### <a name="use-a-content-delivery-network-cdn"></a>CDN (Content Delivery Network) 사용
 
-Npm 필수 구성 요소 없이 클라이언트 라이브러리를 사용 하려면 클라이언트 라이브러리의 CDN 호스트 복사본을 참조 합니다. 예를 들면 다음과 같습니다.
+Npm 필수 구성 요소 없이 클라이언트 라이브러리를 사용 하려면 클라이언트 라이브러리의 CDN 호스트 복사본을 참조 합니다. 다음은 그 예입니다.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.3/signalr.min.js"></script>

@@ -5,8 +5,9 @@ description: IdentityASP.NET Core 앱 내에서 호스팅되는 단일 페이지
 monikerRange: '>= aspnetcore-3.0'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/08/2019
+ms.date: 10/27/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,30 +19,30 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 1e50fb2f2f5e3621b189f756c53e80a2dd64c8a6
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 8acc34c88bf62b3da1b920acc7318c94435c100e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754530"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051982"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>SPAs에 대 한 인증 및 권한 부여
 
 ASP.NET Core 3.1 이상 템플릿은 API 권한 부여에 대 한 지원을 사용 하 여 SPAs (단일 페이지 앱)의 인증을 제공 합니다. ASP.NET Core Identity사용자를 인증 하 고 저장 하기 위해 Openid connect Connect를 구현 하기 위해 [ Identity 서버](https://identityserver.io/) 와 결합 됩니다.
 
-인증 매개 변수는 **웹 응용 프로그램 (모델-뷰-컨트롤러)** (MVC) 및 **웹 응용 프로그램** (페이지) 프로젝트 템플릿의 인증 매개 변수와 비슷한 **각도** 및 **반응** 프로젝트 템플릿에 추가 되었습니다 Razor . 허용 되는 매개 변수 값은 **None** 및 **개인용**입니다. 현재 **React.js 및 Redux** 프로젝트 템플릿에서 인증 매개 변수를 지원 하지 않습니다.
+인증 매개 변수는 **웹 응용 프로그램 (모델-뷰-컨트롤러)** (MVC) 및 **웹 응용 프로그램** (페이지) 프로젝트 템플릿의 인증 매개 변수와 비슷한 **각도** 및 **반응** 프로젝트 템플릿에 추가 되었습니다 Razor . 허용 되는 매개 변수 값은 **None** 및 **개인용** 입니다. 현재 **React.js 및 Redux** 프로젝트 템플릿에서 인증 매개 변수를 지원 하지 않습니다.
 
 ## <a name="create-an-app-with-api-authorization-support"></a>API 권한 부여를 지 원하는 앱 만들기
 
 사용자 인증 및 권한 부여는 모두와 함께 사용할 수 있습니다. 명령 셸을 열고 다음 명령을 실행 합니다.
 
-**각도**:
+**각도** :
 
 ```dotnetcli
 dotnet new angular -o <output_directory_name> -au Individual
 ```
 
-**반응**:
+**반응** :
 
 ```dotnetcli
 dotnet new react -o <output_directory_name> -au Individual
@@ -119,9 +120,9 @@ dotnet new react -o <output_directory_name> -au Individual
 
 *Controllers\OidcConfigurationController.cs* 파일에서 클라이언트가 사용 해야 하는 oidc 매개 변수를 제공 하도록 프로 비전 된 끝점을 확인 합니다.
 
-### <a name="appsettingsjson"></a>appsettings.json
+### appsettings.json
 
-프로젝트 루트의 *appsettings.js* 파일에는 `IdentityServer` 구성 된 클라이언트 목록을 설명 하는 새 섹션이 있습니다. 다음 예제에는 단일 클라이언트가 있습니다. 클라이언트 이름은 앱 이름에 대응되며 규칙에 따라 OAuth `ClientId` 매개 변수에 매핑됩니다. 프로필은 구성되는 앱 유형을 나타냅니다. 서버에 대 한 구성 프로세스를 간소화 하는 규칙을 구동 하기 위해 내부적으로 사용 됩니다. [응용 프로그램 프로필](#application-profiles) 섹션에 설명 된 대로 몇 가지 프로필을 사용할 수 있습니다.
+*appsettings.json* 프로젝트 루트의 파일에는 `IdentityServer` 구성 된 클라이언트 목록을 설명 하는 새 섹션이 있습니다. 다음 예제에는 단일 클라이언트가 있습니다. 클라이언트 이름은 앱 이름에 대응되며 규칙에 따라 OAuth `ClientId` 매개 변수에 매핑됩니다. 프로필은 구성되는 앱 유형을 나타냅니다. 서버에 대 한 구성 프로세스를 간소화 하는 규칙을 구동 하기 위해 내부적으로 사용 됩니다. [응용 프로그램 프로필](#application-profiles) 섹션에 설명 된 대로 몇 가지 프로필을 사용할 수 있습니다.
 
 ```json
 "IdentityServer": {
@@ -150,9 +151,9 @@ dotnet new react -o <output_directory_name> -au Individual
 각도 템플릿에서 인증 및 API 권한 부여 지원은 *Clientapp\src\api\ac-authentication* 디렉터리의 자체 각도 모듈에 있습니다. 모듈은 다음 요소로 구성 됩니다.
 
 * 3 개 구성 요소:
-  * *login. component. ts*: 앱의 로그인 흐름을 처리 합니다.
-  * *logout*. s a t: 응용 프로그램의 로그 아웃 흐름을 처리 합니다.
-  * *login-menu. component*: 다음 링크 집합 중 하나를 표시 하는 위젯:
+  * *login. component. ts* : 앱의 로그인 흐름을 처리 합니다.
+  * *logout* . s a t: 응용 프로그램의 로그 아웃 흐름을 처리 합니다.
+  * *login-menu. component* : 다음 링크 집합 중 하나를 표시 하는 위젯:
     * 사용자가 인증 되 면 사용자 프로필 관리 및 로그 아웃 링크를 사용 합니다.
     * 사용자가 인증 되지 않은 경우 등록 및 로그인 링크.
 * 경로 `AuthorizeGuard` 에 추가할 수 있으며 경로를 방문 하기 전에 사용자를 인증 해야 하는 경로 가드입니다.
@@ -165,12 +166,12 @@ dotnet new react -o <output_directory_name> -au Individual
 반응 템플릿에서 인증 및 API 권한 부여에 대 한 지원은 *ClientApp\src\components\api-authorization* 디렉터리에 있습니다. 다음 요소로 구성 됩니다.
 
 * 4 구성 요소:
-  * *Login.js*: 앱의 로그인 흐름을 처리 합니다.
-  * *Logout.js*: 응용 프로그램의 로그 아웃 흐름을 처리 합니다.
-  * *LoginMenu.js*: 다음 링크 집합 중 하나를 표시 하는 위젯:
+  * *Login.js* : 앱의 로그인 흐름을 처리 합니다.
+  * *Logout.js* : 응용 프로그램의 로그 아웃 흐름을 처리 합니다.
+  * *LoginMenu.js* : 다음 링크 집합 중 하나를 표시 하는 위젯:
     * 사용자가 인증 되 면 사용자 프로필 관리 및 로그 아웃 링크를 사용 합니다.
     * 사용자가 인증 되지 않은 경우 등록 및 로그인 링크.
-  * *AuthorizeRoute.js*: 매개 변수에 표시 된 구성 요소를 렌더링 하기 전에 사용자를 인증 해야 하는 경로 구성 요소입니다 `Component` .
+  * *AuthorizeRoute.js* : 매개 변수에 표시 된 구성 요소를 렌더링 하기 전에 사용자를 인증 해야 하는 경로 구성 요소입니다 `Component` .
 * `authService` `AuthorizeService` 인증 프로세스의 하위 수준 정보를 처리 하 고 인증 된 사용자에 대 한 정보를 사용 하기 위해 나머지 앱에 노출 하는 클래스의 내보낸 인스턴스입니다.
 
 이제 솔루션의 주요 구성 요소를 살펴보았으므로 앱에 대 한 개별 시나리오를 자세히 살펴볼 수 있습니다.
@@ -197,7 +198,7 @@ services.Configure<JwtBearerOptions>(
 
 API의 JWT 처리기는를 사용 하 여 인증 프로세스를 제어할 수 있는 이벤트를 발생 시킵니다 `JwtBearerEvents` . API 권한 부여에 대 한 지원을 제공 하기 위해는 `AddIdentityServerJwt` 자체 이벤트 처리기를 등록 합니다.
 
-이벤트 처리를 사용자 지정 하려면 필요한 만큼 추가 논리를 사용 하 여 기존 이벤트 처리기를 래핑합니다. 예를 들면 다음과 같습니다.
+이벤트 처리를 사용자 지정 하려면 필요한 만큼 추가 논리를 사용 하 여 기존 이벤트 처리기를 래핑합니다. 다음은 그 예입니다.
 
 ```csharp
 services.Configure<JwtBearerOptions>(
@@ -282,11 +283,32 @@ async populateWeatherData() {
   * PowerShell 또는 OpenSSL 같은 표준 도구를 통해 생성할 수 있습니다.
   * 대상 컴퓨터의 인증서 저장소에 설치 하거나 강력한 암호를 사용 하 여 *.pfx* 파일로 배포할 수 있습니다.
 
+### <a name="example-deploy-to-a-non-azure-web-hosting-provider"></a>예: 비 Azure 웹 호스팅 공급자에 배포
+
+웹 호스팅 패널에서 인증서를 만들거나 로드 합니다. 그런 다음 앱의 *appsettings.json* 파일에서 섹션을 수정 `IdentityServer` 하 여 키 세부 정보를 포함 합니다. 다음은 그 예입니다.
+
+```json
+"IdentityServer": {
+  "Key": {
+    "Type": "Store",
+    "StoreName": "WebHosting",
+    "StoreLocation": "CurrentUser",
+    "Name": "CN=MyApplication"
+  }
+}
+```
+
+앞의 예제에서:
+
+* `StoreName` 인증서가 저장 되는 인증서 저장소의 이름을 나타냅니다. 이 경우 웹 호스팅 저장소를 가리킵니다.
+* `StoreLocation` 인증서를 로드할 위치를 나타냅니다 ( `CurrentUser` 이 경우).
+* `Name` 인증서의 고유 주체에 해당 합니다.
+
 ### <a name="example-deploy-to-azure-app-service"></a>예: Azure App Service에 배포
 
 이 섹션에서는 인증서 저장소에 저장 된 인증서를 사용 하 여 Azure App Service에 앱을 배포 하는 방법을 설명 합니다. 인증서 저장소에서 인증서를 로드 하도록 앱을 수정 하려면 이후 단계에서 Azure Portal에서 앱을 구성할 때 표준 계층 서비스 계획 이상이 필요 합니다.
 
-파일 * 의 앱appsettings.js* 에서 섹션을 수정 하 여 `IdentityServer` 키 세부 정보를 포함 합니다.
+앱의 파일에서 *appsettings.json* 섹션을 수정 `IdentityServer` 하 여 키 세부 정보를 포함 합니다.
 
 ```json
 "IdentityServer": {
@@ -383,7 +405,7 @@ AddApiAuthorization<ApplicationUser, ApplicationDbContext>(options =>
 });
 ```
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:spa/angular>
 * <xref:spa/react>

@@ -6,6 +6,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/client-features
-ms.openlocfilehash: bb8352b11e78582c4a32b67da7dcb701d020b0d9
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 1d1778f95c53179ca05eaced3d1913f208220df4
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90721712"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050981"
 ---
 # <a name="aspnet-core-no-locsignalr-clients"></a>ASP.NET Core SignalR 클라이언트
 
@@ -53,7 +54,7 @@ SignalR클라이언트는 서버 구성 요소와 함께 제공 되며 일치 �
 | [클라이언트와 서버 간 스트리밍](xref:signalr/streaming)          |3.0.0|3.0.0|3.0.0|3.0.0|
 | 자동 다시 연결 ([.net](./dotnet-client.md?tabs=visual-studio&view=aspnetcore-3.0#handle-lost-connection), [JavaScript](./javascript-client.md?view=aspnetcore-3.0#reconnect-clients))          |3.0.0|3.0.0|3.0.0|❌|
 | Websocket 전송 |2.1.0|1.0.0|1.0.0|1.0.0|
-| 서버에서 보낸 이벤트 전송 |2.1.0|1.0.0|1.0.0|❌|
+| Server-Sent 이벤트 전송 |2.1.0|1.0.0|1.0.0|❌|
 | 긴 폴링 전송 |2.1.0|1.0.0|1.0.0|3.0.0|
 | JSON 허브 프로토콜 |2.1.0|1.0.0|1.0.0|1.0.0|
 | MessagePack 허브 프로토콜 |2.1.0|1.0.0|1.0.0|❌|
