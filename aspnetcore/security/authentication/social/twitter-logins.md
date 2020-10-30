@@ -7,55 +7,56 @@ ms.custom: mvc
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
-- ASP.NET Core Identity
-- cookie
-- Cookie
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(appsettings.json):::'
+- ':::no-loc(ASP.NET Core Identity):::'
+- ':::no-loc(cookie):::'
+- ':::no-loc(Cookie):::'
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: da0c5579b0828aee7f1c78ec7f5731db50151e90
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 47926d12ac5f922f2937df164d38ff6eb63cacf1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634061"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053282"
 ---
-# <a name="twitter-external-sign-in-setup-with-aspnet-core"></a><span data-ttu-id="afe01-103">ASP.NET Core로 Twitter 외부 로그인 설정</span><span class="sxs-lookup"><span data-stu-id="afe01-103">Twitter external sign-in setup with ASP.NET Core</span></span>
+# <a name="twitter-external-sign-in-setup-with-aspnet-core"></a><span data-ttu-id="c9284-103">ASP.NET Core로 Twitter 외부 로그인 설정</span><span class="sxs-lookup"><span data-stu-id="c9284-103">Twitter external sign-in setup with ASP.NET Core</span></span>
 
-<span data-ttu-id="afe01-104">작성자: [Valeriy Novytskyy](https://github.com/01binary) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="afe01-104">By [Valeriy Novytskyy](https://github.com/01binary) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="c9284-104">작성자: [Valeriy Novytskyy](https://github.com/01binary) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="c9284-104">By [Valeriy Novytskyy](https://github.com/01binary) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="afe01-105">이 샘플에서는 [이전 페이지](xref:security/authentication/social/index)에서 만든 샘플 ASP.NET Core 3.0 프로젝트를 사용 하 여 사용자가 [Twitter 계정으로 로그인](https://dev.twitter.com/web/sign-in/desktop-browser) 할 수 있게 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-105">This sample shows how to enable users to [sign in with their Twitter account](https://dev.twitter.com/web/sign-in/desktop-browser) using a sample ASP.NET Core 3.0 project created on the [previous page](xref:security/authentication/social/index).</span></span>
+<span data-ttu-id="c9284-105">이 샘플에서는 [이전 페이지](xref:security/authentication/social/index)에서 만든 샘플 ASP.NET Core 3.0 프로젝트를 사용 하 여 사용자가 [Twitter 계정으로 로그인](https://dev.twitter.com/web/sign-in/desktop-browser) 할 수 있게 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-105">This sample shows how to enable users to [sign in with their Twitter account](https://dev.twitter.com/web/sign-in/desktop-browser) using a sample ASP.NET Core 3.0 project created on the [previous page](xref:security/authentication/social/index).</span></span>
 
-## <a name="create-the-app-in-twitter"></a><span data-ttu-id="afe01-106">Twitter에서 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="afe01-106">Create the app in Twitter</span></span>
+## <a name="create-the-app-in-twitter"></a><span data-ttu-id="c9284-106">Twitter에서 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="c9284-106">Create the app in Twitter</span></span>
 
-* <span data-ttu-id="afe01-107">[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Twitter/3.0.0) NuGet 패키지를 프로젝트에 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-107">Add the [Microsoft.AspNetCore.Authentication.Twitter](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Twitter/3.0.0) NuGet package to the project.</span></span>
+* <span data-ttu-id="c9284-107">[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Twitter/3.0.0) NuGet 패키지를 프로젝트에 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-107">Add the [Microsoft.AspNetCore.Authentication.Twitter](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Twitter/3.0.0) NuGet package to the project.</span></span>
 
-* <span data-ttu-id="afe01-108">으로 이동 하 여 [https://apps.twitter.com/](https://apps.twitter.com/) 로그인 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-108">Navigate to [https://apps.twitter.com/](https://apps.twitter.com/) and sign in.</span></span> <span data-ttu-id="afe01-109">Twitter 계정이 아직 없는 경우 **[지금 등록](https://twitter.com/signup)** 링크를 사용 하 여 계정을 만드세요.</span><span class="sxs-lookup"><span data-stu-id="afe01-109">If you don't already have a Twitter account, use the **[Sign up now](https://twitter.com/signup)** link to create one.</span></span>
+* <span data-ttu-id="c9284-108">으로 이동 하 여 [https://apps.twitter.com/](https://apps.twitter.com/) 로그인 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-108">Navigate to [https://apps.twitter.com/](https://apps.twitter.com/) and sign in.</span></span> <span data-ttu-id="c9284-109">Twitter 계정이 아직 없는 경우 **[지금 등록](https://twitter.com/signup)** 링크를 사용 하 여 계정을 만드세요.</span><span class="sxs-lookup"><span data-stu-id="c9284-109">If you don't already have a Twitter account, use the **[Sign up now](https://twitter.com/signup)** link to create one.</span></span>
 
-* <span data-ttu-id="afe01-110">**앱 만들기**를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-110">Select **Create an app**.</span></span> <span data-ttu-id="afe01-111">**앱 이름**, **응용 프로그램 설명** 및 공개 **웹 사이트** URI를 입력 합니다 (도메인 이름을 등록할 때까지 임시 일 수 있음).</span><span class="sxs-lookup"><span data-stu-id="afe01-111">Fill out the **App name**, **Application description** and public **Website** URI (this can be temporary until you register the domain name):</span></span>
+* <span data-ttu-id="c9284-110">**앱 만들기** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-110">Select **Create an app** .</span></span> <span data-ttu-id="c9284-111">**앱 이름** , **응용 프로그램 설명** 및 공개 **웹 사이트** URI를 입력 합니다 (도메인 이름을 등록할 때까지 임시 일 수 있음).</span><span class="sxs-lookup"><span data-stu-id="c9284-111">Fill out the **App name** , **Application description** and public **Website** URI (this can be temporary until you register the domain name):</span></span>
 
-* <span data-ttu-id="afe01-112">**Twitter로 로그인 사용** 옆의 확인란을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-112">Check the box next to **Enable Sign in with Twitter**</span></span>
+* <span data-ttu-id="c9284-112">**Twitter로 로그인 사용** 옆의 확인란을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-112">Check the box next to **Enable Sign in with Twitter**</span></span>
 
-* <span data-ttu-id="afe01-113">AspNetCore.Identity</span><span class="sxs-lookup"><span data-stu-id="afe01-113">Microsoft.AspNetCore.Identity</span></span> <span data-ttu-id="afe01-114">기본적으로 사용자에 게 전자 메일 주소가 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-114">requires users to have an email address by default.</span></span> <span data-ttu-id="afe01-115">**권한** 탭으로 이동 하 고 **편집** 단추를 클릭 한 다음 **사용자에 게 전자 메일 주소 요청**옆의 확인란을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-115">Go to the **Permissions** tab, click the **Edit** button and check the box next to **Request email address from users**.</span></span>
+* <span data-ttu-id="c9284-113">AspNetCore.:::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="c9284-113">Microsoft.AspNetCore.:::no-loc(Identity):::</span></span> <span data-ttu-id="c9284-114">기본적으로 사용자에 게 전자 메일 주소가 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-114">requires users to have an email address by default.</span></span> <span data-ttu-id="c9284-115">**권한** 탭으로 이동 하 고 **편집** 단추를 클릭 한 다음 **사용자에 게 전자 메일 주소 요청** 옆의 확인란을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-115">Go to the **Permissions** tab, click the **Edit** button and check the box next to **Request email address from users** .</span></span>
 
-* <span data-ttu-id="afe01-116">`/signin-twitter` **콜백 url** 필드에를 추가 하 여 개발 URI를 입력 합니다 (예: `https://webapp128.azurewebsites.net/signin-twitter` ).</span><span class="sxs-lookup"><span data-stu-id="afe01-116">Enter your development URI with `/signin-twitter` appended into the **Callback URLs** field (for example: `https://webapp128.azurewebsites.net/signin-twitter`).</span></span> <span data-ttu-id="afe01-117">이 샘플의 뒷부분에서 구성 된 Twitter 인증 체계는 OAuth 흐름을 구현 하는 경로에서 요청을 자동으로 처리 합니다 `/signin-twitter` .</span><span class="sxs-lookup"><span data-stu-id="afe01-117">The Twitter authentication scheme configured later in this sample will automatically handle requests at `/signin-twitter` route to implement the OAuth flow.</span></span>
+* <span data-ttu-id="c9284-116">`/signin-twitter` **콜백 url** 필드에를 추가 하 여 개발 URI를 입력 합니다 (예: `https://webapp128.azurewebsites.net/signin-twitter` ).</span><span class="sxs-lookup"><span data-stu-id="c9284-116">Enter your development URI with `/signin-twitter` appended into the **Callback URLs** field (for example: `https://webapp128.azurewebsites.net/signin-twitter`).</span></span> <span data-ttu-id="c9284-117">이 샘플의 뒷부분에서 구성 된 Twitter 인증 체계는 OAuth 흐름을 구현 하는 경로에서 요청을 자동으로 처리 합니다 `/signin-twitter` .</span><span class="sxs-lookup"><span data-stu-id="c9284-117">The Twitter authentication scheme configured later in this sample will automatically handle requests at `/signin-twitter` route to implement the OAuth flow.</span></span>
 
   > [!NOTE]
-  > <span data-ttu-id="afe01-118">URI 세그먼트는 `/signin-twitter` Twitter 인증 공급자의 기본 콜백으로 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-118">The URI segment `/signin-twitter` is set as the default callback of the Twitter authentication provider.</span></span> <span data-ttu-id="afe01-119">[Twitteroptions](/dotnet/api/microsoft.aspnetcore.authentication.twitter.twitteroptions) 클래스의 상속 된 [Remoteauthenticationoptions. callbackpath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) 속성을 통해 Twitter 인증 미들웨어를 구성 하는 동안 기본 콜백 URI를 변경할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-119">You can change the default callback URI while configuring the Twitter authentication middleware via the inherited [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) property of the [TwitterOptions](/dotnet/api/microsoft.aspnetcore.authentication.twitter.twitteroptions) class.</span></span>
+  > <span data-ttu-id="c9284-118">URI 세그먼트는 `/signin-twitter` Twitter 인증 공급자의 기본 콜백으로 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-118">The URI segment `/signin-twitter` is set as the default callback of the Twitter authentication provider.</span></span> <span data-ttu-id="c9284-119">[Twitteroptions](/dotnet/api/microsoft.aspnetcore.authentication.twitter.twitteroptions) 클래스의 상속 된 [Remoteauthenticationoptions. callbackpath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) 속성을 통해 Twitter 인증 미들웨어를 구성 하는 동안 기본 콜백 URI를 변경할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-119">You can change the default callback URI while configuring the Twitter authentication middleware via the inherited [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) property of the [TwitterOptions](/dotnet/api/microsoft.aspnetcore.authentication.twitter.twitteroptions) class.</span></span>
 
-* <span data-ttu-id="afe01-120">양식의 나머지를 입력 하 고 **만들기**를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-120">Fill out the rest of the form and select **Create**.</span></span> <span data-ttu-id="afe01-121">새 응용 프로그램 세부 정보가 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-121">New application details are displayed:</span></span>
+* <span data-ttu-id="c9284-120">양식의 나머지를 입력 하 고 **만들기** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-120">Fill out the rest of the form and select **Create** .</span></span> <span data-ttu-id="c9284-121">새 응용 프로그램 세부 정보가 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-121">New application details are displayed:</span></span>
 
-## <a name="store-the-twitter-consumer-api-key-and-secret"></a><span data-ttu-id="afe01-122">Twitter 소비자 API 키 및 암호 저장</span><span class="sxs-lookup"><span data-stu-id="afe01-122">Store the Twitter consumer API key and secret</span></span>
+## <a name="store-the-twitter-consumer-api-key-and-secret"></a><span data-ttu-id="c9284-122">Twitter 소비자 API 키 및 암호 저장</span><span class="sxs-lookup"><span data-stu-id="c9284-122">Store the Twitter consumer API key and secret</span></span>
 
-<span data-ttu-id="afe01-123">[암호 관리자](xref:security/app-secrets)를 사용 하 여 TWITTER 소비자 API 키 및 암호와 같은 중요 한 설정을 저장 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-123">Store sensitive settings such as the Twitter consumer API key and secret with [Secret Manager](xref:security/app-secrets).</span></span> <span data-ttu-id="afe01-124">이 샘플에서는 다음 단계를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-124">For this sample, use the following steps:</span></span>
+<span data-ttu-id="c9284-123">[암호 관리자](xref:security/app-secrets)를 사용 하 여 TWITTER 소비자 API 키 및 암호와 같은 중요 한 설정을 저장 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-123">Store sensitive settings such as the Twitter consumer API key and secret with [Secret Manager](xref:security/app-secrets).</span></span> <span data-ttu-id="c9284-124">이 샘플에서는 다음 단계를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-124">For this sample, use the following steps:</span></span>
 
-1. <span data-ttu-id="afe01-125">[비밀 저장소 사용](xref:security/app-secrets#enable-secret-storage)의 지침에 따라 비밀 저장소에 대 한 프로젝트를 초기화 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-125">Initialize the project for secret storage per the instructions at [Enable secret storage](xref:security/app-secrets#enable-secret-storage).</span></span>
-1. <span data-ttu-id="afe01-126">비밀 키 및를 사용 하 여 로컬 비밀 저장소에 중요 한 설정을 저장 합니다 `Authentication:Twitter:ConsumerKey` `Authentication:Twitter:ConsumerSecret` .</span><span class="sxs-lookup"><span data-stu-id="afe01-126">Store the sensitive settings in the local secret store with the secrets keys `Authentication:Twitter:ConsumerKey` and `Authentication:Twitter:ConsumerSecret`:</span></span>
+1. <span data-ttu-id="c9284-125">[비밀 저장소 사용](xref:security/app-secrets#enable-secret-storage)의 지침에 따라 비밀 저장소에 대 한 프로젝트를 초기화 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-125">Initialize the project for secret storage per the instructions at [Enable secret storage](xref:security/app-secrets#enable-secret-storage).</span></span>
+1. <span data-ttu-id="c9284-126">비밀 키 및를 사용 하 여 로컬 비밀 저장소에 중요 한 설정을 저장 합니다 `Authentication:Twitter:ConsumerKey` `Authentication:Twitter:ConsumerSecret` .</span><span class="sxs-lookup"><span data-stu-id="c9284-126">Store the sensitive settings in the local secret store with the secrets keys `Authentication:Twitter:ConsumerKey` and `Authentication:Twitter:ConsumerSecret`:</span></span>
 
     ```dotnetcli
     dotnet user-secrets set "Authentication:Twitter:ConsumerAPIKey" "<consumer-api-key>"
@@ -64,11 +65,11 @@ ms.locfileid: "88634061"
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
-<span data-ttu-id="afe01-127">이러한 토큰은 새 Twitter 응용 프로그램을 만든 후에 **키 및 액세스 토큰** 탭에서 찾을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-127">These tokens can be found on the **Keys and Access Tokens** tab after creating a new Twitter application:</span></span>
+<span data-ttu-id="c9284-127">이러한 토큰은 새 Twitter 응용 프로그램을 만든 후에 **키 및 액세스 토큰** 탭에서 찾을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-127">These tokens can be found on the **Keys and Access Tokens** tab after creating a new Twitter application:</span></span>
 
-## <a name="configure-twitter-authentication"></a><span data-ttu-id="afe01-128">Twitter 인증 구성</span><span class="sxs-lookup"><span data-stu-id="afe01-128">Configure Twitter Authentication</span></span>
+## <a name="configure-twitter-authentication"></a><span data-ttu-id="c9284-128">Twitter 인증 구성</span><span class="sxs-lookup"><span data-stu-id="c9284-128">Configure Twitter Authentication</span></span>
 
-<span data-ttu-id="afe01-129">`ConfigureServices` *Startup.cs* 파일의 메서드에 Twitter 서비스를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-129">Add the Twitter service in the `ConfigureServices` method in *Startup.cs* file:</span></span>
+<span data-ttu-id="c9284-129">`ConfigureServices` *Startup.cs* 파일의 메서드에 Twitter 서비스를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-129">Add the Twitter service in the `ConfigureServices` method in *Startup.cs* file:</span></span>
 
 [!code-csharp[](~/security/authentication/social/social-code/3.x/StartupTwitter3x.cs?name=snippet&highlight=10-15)]
 
@@ -76,17 +77,17 @@ ms.locfileid: "88634061"
 
 [!INCLUDE[](includes/chain-auth-providers.md)]
 
-<span data-ttu-id="afe01-130">Twitter 인증에서 지원 되는 구성 옵션에 대 한 자세한 내용은 [Twitteroptions](/dotnet/api/microsoft.aspnetcore.builder.twitteroptions) API 참조를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="afe01-130">See the [TwitterOptions](/dotnet/api/microsoft.aspnetcore.builder.twitteroptions) API reference for more information on configuration options supported by Twitter authentication.</span></span> <span data-ttu-id="afe01-131">사용자에 대 한 다른 정보를 요청 하는 데 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-131">This can be used to request different information about the user.</span></span>
+<span data-ttu-id="c9284-130">Twitter 인증에서 지원 되는 구성 옵션에 대 한 자세한 내용은 [Twitteroptions](/dotnet/api/microsoft.aspnetcore.builder.twitteroptions) API 참조를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="c9284-130">See the [TwitterOptions](/dotnet/api/microsoft.aspnetcore.builder.twitteroptions) API reference for more information on configuration options supported by Twitter authentication.</span></span> <span data-ttu-id="c9284-131">사용자에 대 한 다른 정보를 요청 하는 데 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-131">This can be used to request different information about the user.</span></span>
 
-## <a name="sign-in-with-twitter"></a><span data-ttu-id="afe01-132">Twitter로 로그인</span><span class="sxs-lookup"><span data-stu-id="afe01-132">Sign in with Twitter</span></span>
+## <a name="sign-in-with-twitter"></a><span data-ttu-id="c9284-132">Twitter로 로그인</span><span class="sxs-lookup"><span data-stu-id="c9284-132">Sign in with Twitter</span></span>
 
-<span data-ttu-id="afe01-133">앱을 실행 하 고 **로그인**을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-133">Run the app and select **Log in**.</span></span> <span data-ttu-id="afe01-134">Twitter를 사용 하 여 로그인 하는 옵션이 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-134">An option to sign in with Twitter appears:</span></span>
+<span data-ttu-id="c9284-133">앱을 실행 하 고 **로그인** 을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-133">Run the app and select **Log in** .</span></span> <span data-ttu-id="c9284-134">Twitter를 사용 하 여 로그인 하는 옵션이 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-134">An option to sign in with Twitter appears:</span></span>
 
-<span data-ttu-id="afe01-135">**Twitter** 로 리디렉션하여 인증을 위해 twitter를 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-135">Clicking on **Twitter** redirects to Twitter for authentication:</span></span>
+<span data-ttu-id="c9284-135">**Twitter** 로 리디렉션하여 인증을 위해 twitter를 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-135">Clicking on **Twitter** redirects to Twitter for authentication:</span></span>
 
-<span data-ttu-id="afe01-136">Twitter 자격 증명을 입력 하면 전자 메일을 설정할 수 있는 웹 사이트로 다시 리디렉션됩니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-136">After entering your Twitter credentials, you are redirected back to the web site where you can set your email.</span></span>
+<span data-ttu-id="c9284-136">Twitter 자격 증명을 입력 하면 전자 메일을 설정할 수 있는 웹 사이트로 다시 리디렉션됩니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-136">After entering your Twitter credentials, you are redirected back to the web site where you can set your email.</span></span>
 
-<span data-ttu-id="afe01-137">이제 Twitter 자격 증명을 사용 하 여 로그인 됩니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-137">You are now logged in using your Twitter credentials:</span></span>
+<span data-ttu-id="c9284-137">이제 Twitter 자격 증명을 사용 하 여 로그인 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-137">You are now logged in using your Twitter credentials:</span></span>
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
@@ -96,15 +97,15 @@ Twitter doesn't support AccessDeniedPath
 Rather in the twitter setup, you can provide an External sign-in homepage. The external sign-in homepage doesn't support localhost. Tested with https://cors3.azurewebsites.net/ and that works.
 -->
 
-## <a name="troubleshooting"></a><span data-ttu-id="afe01-138">문제 해결</span><span class="sxs-lookup"><span data-stu-id="afe01-138">Troubleshooting</span></span>
+## <a name="troubleshooting"></a><span data-ttu-id="c9284-138">문제 해결</span><span class="sxs-lookup"><span data-stu-id="c9284-138">Troubleshooting</span></span>
 
-* <span data-ttu-id="afe01-139">**ASP.NET Core 2.x에만 해당:** Identity 에서를 호출 하 여가 구성 되지 않은 경우 `services.AddIdentity` `ConfigureServices` 인증을 시도 하면 ArgumentException이 발생 합니다. *' SignInScheme ' 옵션을 제공 해야*합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-139">**ASP.NET Core 2.x only:** If Identity isn't configured by calling `services.AddIdentity` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided*.</span></span> <span data-ttu-id="afe01-140">이 샘플에서 사용 되는 프로젝트 템플릿은이 작업이 수행 되도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-140">The project template used in this sample ensures that this is done.</span></span>
-* <span data-ttu-id="afe01-141">초기 마이그레이션을 적용 하 여 사이트 데이터베이스를 만들지 않은 경우 요청 오류를 *처리 하는 동안 데이터베이스 작업이 실패* 하 게 됩니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-141">If the site database has not been created by applying the initial migration, you will get *A database operation failed while processing the request* error.</span></span> <span data-ttu-id="afe01-142">**마이그레이션 적용** 을 탭 하 여 데이터베이스를 만들고 새로 고쳐 오류를 계속 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-142">Tap **Apply Migrations** to create the database and refresh to continue past the error.</span></span>
+* <span data-ttu-id="c9284-139">**ASP.NET Core 2.x에만 해당:** :::no-loc(Identity)::: 에서를 호출 하 여가 구성 되지 않은 경우 `services.Add:::no-loc(Identity):::` `ConfigureServices` 인증을 시도 하면 ArgumentException이 발생 합니다. *' SignInScheme ' 옵션을 제공 해야* 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-139">**ASP.NET Core 2.x only:** If :::no-loc(Identity)::: isn't configured by calling `services.Add:::no-loc(Identity):::` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided* .</span></span> <span data-ttu-id="c9284-140">이 샘플에서 사용 되는 프로젝트 템플릿은이 작업이 수행 되도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-140">The project template used in this sample ensures that this is done.</span></span>
+* <span data-ttu-id="c9284-141">초기 마이그레이션을 적용 하 여 사이트 데이터베이스를 만들지 않은 경우 요청 오류를 *처리 하는 동안 데이터베이스 작업이 실패* 하 게 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-141">If the site database has not been created by applying the initial migration, you will get *A database operation failed while processing the request* error.</span></span> <span data-ttu-id="c9284-142">**마이그레이션 적용** 을 탭 하 여 데이터베이스를 만들고 새로 고쳐 오류를 계속 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-142">Tap **Apply Migrations** to create the database and refresh to continue past the error.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="afe01-143">다음 단계</span><span class="sxs-lookup"><span data-stu-id="afe01-143">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="c9284-143">다음 단계</span><span class="sxs-lookup"><span data-stu-id="c9284-143">Next steps</span></span>
 
-* <span data-ttu-id="afe01-144">이 문서에서는 Twitter를 사용 하 여 인증할 수 있는 방법을 살펴보았습니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-144">This article showed how you can authenticate with Twitter.</span></span> <span data-ttu-id="afe01-145">[위의 페이지](xref:security/authentication/social/index)에 나열 된 다른 공급자를 사용 하 여 인증 하는 유사한 방법을 따를 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-145">You can follow a similar approach to authenticate with other providers listed on the [previous page](xref:security/authentication/social/index).</span></span>
+* <span data-ttu-id="c9284-144">이 문서에서는 Twitter를 사용 하 여 인증할 수 있는 방법을 살펴보았습니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-144">This article showed how you can authenticate with Twitter.</span></span> <span data-ttu-id="c9284-145">[위의 페이지](xref:security/authentication/social/index)에 나열 된 다른 공급자를 사용 하 여 인증 하는 유사한 방법을 따를 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-145">You can follow a similar approach to authenticate with other providers listed on the [previous page](xref:security/authentication/social/index).</span></span>
 
-* <span data-ttu-id="afe01-146">Azure 웹 앱에 웹 사이트를 게시 한 후에는 `ConsumerSecret` Twitter 개발자 포털에서를 다시 설정 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-146">Once you publish your web site to Azure web app, you should reset the `ConsumerSecret` in the Twitter developer portal.</span></span>
+* <span data-ttu-id="c9284-146">Azure 웹 앱에 웹 사이트를 게시 한 후에는 `ConsumerSecret` Twitter 개발자 포털에서를 다시 설정 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-146">Once you publish your web site to Azure web app, you should reset the `ConsumerSecret` in the Twitter developer portal.</span></span>
 
-* <span data-ttu-id="afe01-147">`Authentication:Twitter:ConsumerKey` `Authentication:Twitter:ConsumerSecret` Azure Portal에서 및을 응용 프로그램 설정으로 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-147">Set the `Authentication:Twitter:ConsumerKey` and `Authentication:Twitter:ConsumerSecret` as application settings in the Azure portal.</span></span> <span data-ttu-id="afe01-148">구성 시스템은 환경 변수에서 키를 읽도록 설정 되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="afe01-148">The configuration system is set up to read keys from environment variables.</span></span>
+* <span data-ttu-id="c9284-147">`Authentication:Twitter:ConsumerKey` `Authentication:Twitter:ConsumerSecret` Azure Portal에서 및을 응용 프로그램 설정으로 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-147">Set the `Authentication:Twitter:ConsumerKey` and `Authentication:Twitter:ConsumerSecret` as application settings in the Azure portal.</span></span> <span data-ttu-id="c9284-148">구성 시스템은 환경 변수에서 키를 읽도록 설정 되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c9284-148">The configuration system is set up to read keys from environment variables.</span></span>
