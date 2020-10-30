@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 4/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/app-secrets
-ms.openlocfilehash: 74c9ae63ffbe39d6ba6e77aee8f6adcc8c8a157a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 174f831583c2ef6cb7f122a22fe855acc8fe3047
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634906"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056870"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>ASP.NET Core에서 개발 중인 앱 비밀 안전 저장소
 
@@ -38,7 +39,7 @@ ms.locfileid: "88634906"
 
 환경 변수는 코드 또는 로컬 구성 파일에서 앱 암호의 저장을 방지 하는 데 사용 됩니다. 환경 변수는 이전에 지정 된 모든 구성 소스에 대 한 구성 값을 재정의 합니다.
 
-**개별 사용자 계정** 보안이 사용 되는 ASP.NET Core 웹 앱을 고려 합니다. 기본 데이터베이스 연결 문자열은 키가 있는 파일 * 에 대* 한 프로젝트의appsettings.js에 포함 됩니다 `DefaultConnection` . 기본 연결 문자열은 사용자 모드에서 실행 되며 암호를 요구 하지 않는 LocalDB 용입니다. 앱을 배포 하는 동안 `DefaultConnection` 환경 변수의 값으로 키 값을 재정의할 수 있습니다. 환경 변수는 중요 한 자격 증명을 사용 하 여 전체 연결 문자열을 저장할 수 있습니다.
+**개별 사용자 계정** 보안이 사용 되는 ASP.NET Core 웹 앱을 고려 합니다. 기본 데이터베이스 연결 문자열은 키가 있는 프로젝트의 파일에 포함 됩니다 *appsettings.json* `DefaultConnection` . 기본 연결 문자열은 사용자 모드에서 실행 되며 암호를 요구 하지 않는 LocalDB 용입니다. 앱을 배포 하는 동안 `DefaultConnection` 환경 변수의 값으로 키 값을 재정의할 수 있습니다. 환경 변수는 중요 한 자격 증명을 사용 하 여 전체 연결 문자열을 저장할 수 있습니다.
 
 > [!WARNING]
 > 환경 변수는 일반적으로 암호화 되지 않은 일반 텍스트로 저장 됩니다. 컴퓨터 또는 프로세스가 손상 되 면 신뢰할 수 없는 당사자가 환경 변수에 액세스할 수 있습니다. 사용자 비밀 공개를 방지 하는 추가 조치가 필요할 수 있습니다.
@@ -100,7 +101,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 
 앞의 예제에서 콜론은 `Movies` 가 속성을 사용 하는 개체 리터럴이어야 함을 나타냅니다 `ServiceApiKey` .
 
-암호 관리자 도구는 다른 디렉터리 에서도 사용할 수 있습니다. 옵션을 사용 `--project` 하 여 *.csproj* 파일이 있는 파일 시스템 경로를 제공 합니다. 다음은 그 예입니다. 
+암호 관리자 도구는 다른 디렉터리 에서도 사용할 수 있습니다. 옵션을 사용 `--project` 하 여 *.csproj* 파일이 있는 파일 시스템 경로를 제공 합니다. 다음은 그 예입니다.
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
@@ -108,7 +109,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ### <a name="json-structure-flattening-in-visual-studio"></a>Visual Studio의 JSON 구조 평면화
 
-Visual Studio의 **사용자 비밀 관리** 제스처는 텍스트 편집기에서 파일 * 에secrets.js* 를 엽니다. *secrets.js* 의 내용을 저장할 키-값 쌍으로 바꿉니다. 다음은 그 예입니다. 
+Visual Studio의 **사용자 비밀 관리** 제스처는 텍스트 편집기에서 파일 *에secrets.js* 를 엽니다. *secrets.js* 의 내용을 저장할 키-값 쌍으로 바꿉니다. 다음은 그 예입니다.
 
 ```json
 {
@@ -129,7 +130,7 @@ JSON 구조는 또는를 통해 수정 된 후에 결합 됩니다 `dotnet user-
 
 ## <a name="set-multiple-secrets"></a>여러 비밀 설정
 
-암호 일괄 처리는 명령에 대해 파이프로 파이프 하 여 설정할 수 있습니다 `set` . 다음 예제에서는 파일의 내용 * 에 대 한input.js* 를 명령으로 파이프 `set` 합니다.
+암호 일괄 처리는 명령에 대해 파이프로 파이프 하 여 설정할 수 있습니다 `set` . 다음 예제에서는 파일의 내용 *에 대 한input.js* 를 명령으로 파이프 `set` 합니다.
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
@@ -181,17 +182,17 @@ API를 통해 사용자 암호를 검색할 수 있습니다 `Configuration` .
 
 ## <a name="string-replacement-with-secrets"></a>암호를 사용 하 여 문자열 대체
 
-암호를 일반 텍스트로 저장 하는 것은 안전 하지 않습니다. 예를 들어 *appsettings.js* 에 저장 된 데이터베이스 연결 문자열은 지정 된 사용자에 대 한 암호를 포함할 수 있습니다.
+암호를 일반 텍스트로 저장 하는 것은 안전 하지 않습니다. 예를 들어에 저장 된 데이터베이스 연결 문자열은 *appsettings.json* 지정 된 사용자에 대 한 암호를 포함할 수 있습니다.
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
-보다 안전한 방법은 암호를 비밀로 저장 하는 것입니다. 다음은 그 예입니다. 
+보다 안전한 방법은 암호를 비밀로 저장 하는 것입니다. 다음은 그 예입니다.
 
 ```dotnetcli
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-appsettings.js의 `Password` 연결 문자열에서 키-값 쌍을 제거 *appsettings.json*합니다. 다음은 그 예입니다. 
+`Password`에서 연결 문자열의 키-값 쌍을 제거 합니다 *appsettings.json* . 다음은 그 예입니다.
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings.json?highlight=3)]
 
@@ -216,7 +217,7 @@ Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted
 Movies:ServiceApiKey = 12345
 ```
 
-앞의 예제에서 키 이름의 콜론은 *secrets.js에서*개체 계층 구조를 나타냅니다.
+앞의 예제에서 키 이름의 콜론은 *secrets.js에서* 개체 계층 구조를 나타냅니다.
 
 ## <a name="remove-a-single-secret"></a>단일 비밀 제거
 
@@ -228,7 +229,7 @@ Movies:ServiceApiKey = 12345
 dotnet user-secrets remove "Movies:ConnectionString"
 ```
 
-키에 연결 된 키-값 쌍을 제거 하기 위해 파일 * 에 대 한 앱secrets.js* 수정 되었습니다 `MoviesConnectionString` .
+키에 연결 된 키-값 쌍을 제거 하기 위해 파일 *에 대 한 앱secrets.js* 수정 되었습니다 `MoviesConnectionString` .
 
 ```json
 {
@@ -254,7 +255,7 @@ Movies:ServiceApiKey = 12345
 dotnet user-secrets clear
 ```
 
-앱에 대 한 모든 사용자 비밀이 파일 * 의secrets.js* 에서 삭제 되었습니다.
+앱에 대 한 모든 사용자 비밀이 파일 *의secrets.js* 에서 삭제 되었습니다.
 
 ```json
 {}
@@ -266,7 +267,7 @@ dotnet user-secrets clear
 No secrets configured for this application.
 ```
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * IIS에서 암호 관리자에 액세스 하는 방법에 대 한 자세한 내용은 [이 문제](https://github.com/dotnet/AspNetCore.Docs/issues/16328) 를 참조 하세요.
 * <xref:fundamentals/configuration/index>
@@ -286,7 +287,7 @@ No secrets configured for this application.
 
 환경 변수는 코드 또는 로컬 구성 파일에서 앱 암호의 저장을 방지 하는 데 사용 됩니다. 환경 변수는 이전에 지정 된 모든 구성 소스에 대 한 구성 값을 재정의 합니다.
 
-**개별 사용자 계정** 보안이 사용 되는 ASP.NET Core 웹 앱을 고려 합니다. 기본 데이터베이스 연결 문자열은 키가 있는 파일 * 에 대* 한 프로젝트의appsettings.js에 포함 됩니다 `DefaultConnection` . 기본 연결 문자열은 사용자 모드에서 실행 되며 암호를 요구 하지 않는 LocalDB 용입니다. 앱을 배포 하는 동안 `DefaultConnection` 환경 변수의 값으로 키 값을 재정의할 수 있습니다. 환경 변수는 중요 한 자격 증명을 사용 하 여 전체 연결 문자열을 저장할 수 있습니다.
+**개별 사용자 계정** 보안이 사용 되는 ASP.NET Core 웹 앱을 고려 합니다. 기본 데이터베이스 연결 문자열은 키가 있는 프로젝트의 파일에 포함 됩니다 *appsettings.json* `DefaultConnection` . 기본 연결 문자열은 사용자 모드에서 실행 되며 암호를 요구 하지 않는 LocalDB 용입니다. 앱을 배포 하는 동안 `DefaultConnection` 환경 변수의 값으로 키 값을 재정의할 수 있습니다. 환경 변수는 중요 한 자격 증명을 사용 하 여 전체 연결 문자열을 저장할 수 있습니다.
 
 > [!WARNING]
 > 환경 변수는 일반적으로 암호화 되지 않은 일반 텍스트로 저장 됩니다. 컴퓨터 또는 프로세스가 손상 되 면 신뢰할 수 없는 당사자가 환경 변수에 액세스할 수 있습니다. 사용자 비밀 공개를 방지 하는 추가 조치가 필요할 수 있습니다.
@@ -343,7 +344,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 
 앞의 예제에서 콜론은 `Movies` 가 속성을 사용 하는 개체 리터럴이어야 함을 나타냅니다 `ServiceApiKey` .
 
-암호 관리자 도구는 다른 디렉터리 에서도 사용할 수 있습니다. 옵션을 사용 `--project` 하 여 *.csproj* 파일이 있는 파일 시스템 경로를 제공 합니다. 다음은 그 예입니다. 
+암호 관리자 도구는 다른 디렉터리 에서도 사용할 수 있습니다. 옵션을 사용 `--project` 하 여 *.csproj* 파일이 있는 파일 시스템 경로를 제공 합니다. 다음은 그 예입니다.
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
@@ -351,7 +352,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ### <a name="json-structure-flattening-in-visual-studio"></a>Visual Studio의 JSON 구조 평면화
 
-Visual Studio의 **사용자 비밀 관리** 제스처는 텍스트 편집기에서 파일 * 에secrets.js* 를 엽니다. *secrets.js* 의 내용을 저장할 키-값 쌍으로 바꿉니다. 다음은 그 예입니다. 
+Visual Studio의 **사용자 비밀 관리** 제스처는 텍스트 편집기에서 파일 *에secrets.js* 를 엽니다. *secrets.js* 의 내용을 저장할 키-값 쌍으로 바꿉니다. 다음은 그 예입니다.
 
 ```json
 {
@@ -372,7 +373,7 @@ JSON 구조는 또는를 통해 수정 된 후에 결합 됩니다 `dotnet user-
 
 ## <a name="set-multiple-secrets"></a>여러 비밀 설정
 
-암호 일괄 처리는 명령에 대해 파이프로 파이프 하 여 설정할 수 있습니다 `set` . 다음 예제에서는 파일의 내용 * 에 대 한input.js* 를 명령으로 파이프 `set` 합니다.
+암호 일괄 처리는 명령에 대해 파이프로 파이프 하 여 설정할 수 있습니다 `set` . 다음 예제에서는 파일의 내용 *에 대 한input.js* 를 명령으로 파이프 `set` 합니다.
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
@@ -426,17 +427,17 @@ API를 통해 사용자 암호를 검색할 수 있습니다 `Configuration` .
 
 ## <a name="string-replacement-with-secrets"></a>암호를 사용 하 여 문자열 대체
 
-암호를 일반 텍스트로 저장 하는 것은 안전 하지 않습니다. 예를 들어 *appsettings.js* 에 저장 된 데이터베이스 연결 문자열은 지정 된 사용자에 대 한 암호를 포함할 수 있습니다.
+암호를 일반 텍스트로 저장 하는 것은 안전 하지 않습니다. 예를 들어에 저장 된 데이터베이스 연결 문자열은 *appsettings.json* 지정 된 사용자에 대 한 암호를 포함할 수 있습니다.
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
-보다 안전한 방법은 암호를 비밀로 저장 하는 것입니다. 다음은 그 예입니다. 
+보다 안전한 방법은 암호를 비밀로 저장 하는 것입니다. 다음은 그 예입니다.
 
 ```dotnetcli
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-appsettings.js의 `Password` 연결 문자열에서 키-값 쌍을 제거 *appsettings.json*합니다. 다음은 그 예입니다. 
+`Password`에서 연결 문자열의 키-값 쌍을 제거 합니다 *appsettings.json* . 다음은 그 예입니다.
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
@@ -461,7 +462,7 @@ Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted
 Movies:ServiceApiKey = 12345
 ```
 
-앞의 예제에서 키 이름의 콜론은 *secrets.js에서*개체 계층 구조를 나타냅니다.
+앞의 예제에서 키 이름의 콜론은 *secrets.js에서* 개체 계층 구조를 나타냅니다.
 
 ## <a name="remove-a-single-secret"></a>단일 비밀 제거
 
@@ -473,7 +474,7 @@ Movies:ServiceApiKey = 12345
 dotnet user-secrets remove "Movies:ConnectionString"
 ```
 
-키에 연결 된 키-값 쌍을 제거 하기 위해 파일 * 에 대 한 앱secrets.js* 수정 되었습니다 `MoviesConnectionString` .
+키에 연결 된 키-값 쌍을 제거 하기 위해 파일 *에 대 한 앱secrets.js* 수정 되었습니다 `MoviesConnectionString` .
 
 ```json
 {
@@ -499,7 +500,7 @@ Movies:ServiceApiKey = 12345
 dotnet user-secrets clear
 ```
 
-앱에 대 한 모든 사용자 비밀이 파일 * 의secrets.js* 에서 삭제 되었습니다.
+앱에 대 한 모든 사용자 비밀이 파일 *의secrets.js* 에서 삭제 되었습니다.
 
 ```json
 {}
@@ -511,7 +512,7 @@ dotnet user-secrets clear
 No secrets configured for this application.
 ```
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * IIS에서 암호 관리자에 액세스 하는 방법에 대 한 자세한 내용은 [이 문제](https://github.com/dotnet/AspNetCore.Docs/issues/16328) 를 참조 하세요.
 * <xref:fundamentals/configuration/index>

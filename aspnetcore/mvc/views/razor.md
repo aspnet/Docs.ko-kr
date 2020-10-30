@@ -5,6 +5,7 @@ description: Razor웹 페이지에 서버 기반 코드를 포함 하는 태그 
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: 9c2bbd2d463af8a2ea7db716d01bf1436338ea77
-ms.sourcegitcommit: cd861463faf44956855e3c4b3669483bbc4a7463
+ms.openlocfilehash: c1278b0cd3e58814b1c06dca81efd662c3de0c54
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89101363"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059197"
 ---
 # <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor ASP.NET Core에 대 한 구문 참조
 
 [Rick Anderson](https://twitter.com/RickAndMSFT), [Mullen](https://twitter.com/ntaylormullen)및 [Dan Vicarel](https://github.com/Rabadash8820)
 
-Razor 서버 기반 코드를 웹 페이지에 포함 하는 태그 구문입니다. Razor구문은 Razor 태그, c # 및 HTML로 구성 됩니다. Razor일반적으로를 포함 하는 파일의 확장명은 *cshtml* 입니다. Razor는 [ Razor 구성 요소](xref:blazor/components/index) 파일 (*razor*)에도 있습니다.
+Razor 서버 기반 코드를 웹 페이지에 포함 하는 태그 구문입니다. Razor구문은 Razor 태그, c # 및 HTML로 구성 됩니다. Razor일반적으로를 포함 하는 파일의 확장명은 *cshtml* 입니다. Razor는 [ Razor 구성 요소](xref:blazor/components/index) 파일 ( *razor* )에도 있습니다.
 
 ## <a name="rendering-html"></a>HTML 렌더링
 
@@ -72,7 +73,7 @@ C# `await` 키워드를 제외하고, 암시적 식에 공백이 있으면 안 �
 <p>@await DoSomething("hello", "world")</p>
 ```
 
-암시적 식은 C# 제네릭을 포함할 수 **없습니다**. 대괄호(`<>`) 안에 있는 문자가 HTML 태그로 해석되기 때문입니다. 다음 코드는 유효하지 **않습니다**.
+암시적 식은 C# 제네릭을 포함할 수 **없습니다** . 대괄호(`<>`) 안에 있는 문자가 HTML 태그로 해석되기 때문입니다. 다음 코드는 유효하지 **않습니다** .
 
 ```cshtml
 <p>@GenericMethod<int>()</p>
@@ -496,7 +497,7 @@ Razor구성 요소의 경우 `@code` 는의 별칭이 [`@functions`](#functions)
 
 ::: moniker-end
 
-예를 들면 다음과 같습니다.
+다음은 그 예입니다.
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -657,11 +658,11 @@ Razor`Model`뷰에 전달 된 모델에 액세스 하기 위한 속성을 노출
 
 Razor다음 표에 표시 된 페이지 예:
 
-* 각 페이지에서는 *Pages/_ViewImports.cshtml*을 가져옵니다.
-* *Pages/_ViewImports.cshtml*에는 `@namespace Hello.World`가 포함되어 있습니다.
+* 각 페이지에서는 *Pages/_ViewImports.cshtml* 을 가져옵니다.
+* *Pages/_ViewImports.cshtml* 에는 `@namespace Hello.World`가 포함되어 있습니다.
 * 각 페이지에는 `Hello.World`가 네임스페이스의 루트로 포함되어 있습니다.
 
-| 페이지                                        | 네임스페이스                             |
+| 호출                                        | 네임스페이스                             |
 | ------------------------------------------- | ------------------------------------- |
 | *Pages/Index. cshtml*                        | `Hello.World`                         |
 | *Pages/MorePages/Page.cshtml*               | `Hello.World.MorePages`               |
@@ -673,7 +674,7 @@ Razor다음 표에 표시 된 페이지 예:
 
 이전 예제의 *EvenMorePages* 폴더에 `@namespace Another.Planet`이 포함된 가져오기 파일이 있으면(또는 *Pages/MorePages/EvenMorePages/Page.cshtml* 파일에 `@namespace Another.Planet` 포함), 다음 표에 결과가 표시됩니다.
 
-| 페이지                                        | 네임스페이스               |
+| 호출                                        | 네임스페이스               |
 | ------------------------------------------- | ----------------------- |
 | *Pages/Index. cshtml*                        | `Hello.World`           |
 | *Pages/MorePages/Page.cshtml*               | `Hello.World.MorePages` |
@@ -968,7 +969,7 @@ C # Razor 키워드는를 사용 하 여 이중 이스케이프 되어야 합니
            Index.g.cshtml.cs
 ```
 
-*Pages/Index. cshtml*에 대해 생성 된 클래스를 보려면 *obj/Debug/Netcoreapp1.0 2.1/ Razor /Pages/Index.g.cshtml.cs*를 엽니다.
+*Pages/Index. cshtml* 에 대해 생성 된 클래스를 보려면 *obj/Debug/Netcoreapp1.0 2.1/ Razor /Pages/Index.g.cshtml.cs* 를 엽니다.
 
 ::: moniker-end
 
@@ -993,8 +994,8 @@ ASP.NET Core MVC 프로젝트에 다음 클래스를 추가합니다.
 Razor뷰 엔진은 뷰에 대해 대/소문자를 구분 하는 조회를 수행 합니다. 그러나 실제 조회는 기본 파일 시스템에 의해 결정됩니다.
 
 * 파일 기반 원본:
-  * 파일 시스템이 대/소문자를 구문하지 않은 운영 체제(예: Windows)에서는 실제 파일 공급자 조회에서 대/소문자를 구분하지 않습니다. 예를 들어 `return View("Test")`는 */Views/Home/Test.cshtml*, */Views/home/test.cshtml* 및 기타 대/소문자 구분 변형과 일치하는 항목을 반환합니다.
-  * 대/소문자를 구분하는 파일 시스템(예: Linux, OSX 및 `EmbeddedFileProvider`를 사용하는 파일 시스템)에서는 조회 시 대/소문자를 구분합니다. 예를 들어 `return View("Test")`는 */Views/Home/Test.cshtml*과 정확히 일치하는 항목을 찾습니다.
+  * 파일 시스템이 대/소문자를 구문하지 않은 운영 체제(예: Windows)에서는 실제 파일 공급자 조회에서 대/소문자를 구분하지 않습니다. 예를 들어 `return View("Test")`는 */Views/Home/Test.cshtml* , */Views/home/test.cshtml* 및 기타 대/소문자 구분 변형과 일치하는 항목을 반환합니다.
+  * 대/소문자를 구분하는 파일 시스템(예: Linux, OSX 및 `EmbeddedFileProvider`를 사용하는 파일 시스템)에서는 조회 시 대/소문자를 구분합니다. 예를 들어 `return View("Test")`는 */Views/Home/Test.cshtml* 과 정확히 일치하는 항목을 찾습니다.
 * 미리 컴파일된 보기: ASP.NET 2.0 이상을 사용하는 경우 모든 운영 체제에서 미리 컴파일된 보기 조회 시 대/소문자를 구분하지 않습니다. 이 동작은 Windows의 물리적 파일 공급자 동작과 동일합니다. 미리 컴파일된 두 보기의 대소문자만 다른 경우 조회 결과가 불명확합니다.
 
 개발자는 파일 및 디렉터리 이름의 대/소문자를 다음의 대/소문자와 매칭하는 것이 좋습니다.

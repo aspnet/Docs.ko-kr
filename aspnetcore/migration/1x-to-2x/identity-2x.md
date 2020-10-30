@@ -5,6 +5,7 @@ description: 이 문서에서는 ASP.NET Core 1.x 인증 및 ASP.NET Core 2.0를
 ms.author: scaddie
 ms.date: 06/21/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 63f2fadc328650063078339467e65c6b0e97a08e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cad7582670013661f5fcbfbebad923f0f092462e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634321"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057182"
 ---
 # <a name="migrate-authentication-and-no-locidentity-to-aspnet-core-20"></a>인증과 Identity ASP.NET Core 2.0으로 마이그레이션
 
@@ -60,7 +61,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory)
 }
 ```
 
-2.0 프로젝트에서 인증은 서비스를 통해 구성 됩니다. 각 인증 체계가 `ConfigureServices` *Startup.cs*의 메서드에서 등록 됩니다. `UseIdentity`메서드는로 대체 됩니다 `UseAuthentication` .
+2.0 프로젝트에서 인증은 서비스를 통해 구성 됩니다. 각 인증 체계가 `ConfigureServices` *Startup.cs* 의 메서드에서 등록 됩니다. `UseIdentity`메서드는로 대체 됩니다 `UseAuthentication` .
 
 다음 2.0 예제에서는 Startup.cs에서를 사용 하 여 Facebook 인증을 구성 합니다 Identity . *Startup.cs*
 
@@ -91,7 +92,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
 ### <a name="no-loccookie-based-authentication"></a>Cookie기반 인증
 
-아래 두 옵션 중 하나를 선택 하 고 *Startup.cs*에서 필요한 변경을 수행 합니다.
+아래 두 옵션 중 하나를 선택 하 고 *Startup.cs* 에서 필요한 변경을 수행 합니다.
 
 1. cookie에서 사용Identity
     - `UseIdentity`메서드에서를로 바꿉니다 `UseAuthentication` `Configure` .
@@ -133,7 +134,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
 ### <a name="jwt-bearer-authentication"></a>JWT 전달자 인증
 
-*Startup.cs*에서 다음과 같이 변경 합니다.
+*Startup.cs* 에서 다음과 같이 변경 합니다.
 - `UseJwtBearerAuthentication`메서드의 메서드 호출을 `Configure` 다음으로 바꿉니다 `UseAuthentication` .
 
     ```csharp
@@ -155,7 +156,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
 ### <a name="openid-connect-oidc-authentication"></a>OIDC (Openid connect Connect) 인증
 
-*Startup.cs*에서 다음과 같이 변경 합니다.
+*Startup.cs* 에서 다음과 같이 변경 합니다.
 
 - `UseOpenIdConnectAuthentication`메서드의 메서드 호출을 `Configure` 다음으로 바꿉니다 `UseAuthentication` .
 
@@ -190,7 +191,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
     
 ### <a name="facebook-authentication"></a>Facebook 인증
 
-*Startup.cs*에서 다음과 같이 변경 합니다.
+*Startup.cs* 에서 다음과 같이 변경 합니다.
 - `UseFacebookAuthentication`메서드의 메서드 호출을 `Configure` 다음으로 바꿉니다 `UseAuthentication` .
 
     ```csharp
@@ -210,7 +211,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
 ### <a name="google-authentication"></a>Google 인증
 
-*Startup.cs*에서 다음과 같이 변경 합니다.
+*Startup.cs* 에서 다음과 같이 변경 합니다.
 - `UseGoogleAuthentication`메서드의 메서드 호출을 `Configure` 다음으로 바꿉니다 `UseAuthentication` .
 
     ```csharp
@@ -232,7 +233,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
 Microsoft 계정 인증에 대 한 자세한 내용은 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/14455)를 참조 하세요.
 
-*Startup.cs*에서 다음과 같이 변경 합니다.
+*Startup.cs* 에서 다음과 같이 변경 합니다.
 - `UseMicrosoftAccountAuthentication`메서드의 메서드 호출을 `Configure` 다음으로 바꿉니다 `UseAuthentication` .
 
     ```csharp
@@ -252,7 +253,7 @@ Microsoft 계정 인증에 대 한 자세한 내용은 [이 GitHub 문제](https
 
 ### <a name="twitter-authentication"></a>Twitter 인증
 
-*Startup.cs*에서 다음과 같이 변경 합니다.
+*Startup.cs* 에서 다음과 같이 변경 합니다.
 - `UseTwitterAuthentication`메서드의 메서드 호출을 `Configure` 다음으로 바꿉니다 `UseAuthentication` .
 
     ```csharp
@@ -274,7 +275,7 @@ Microsoft 계정 인증에 대 한 자세한 내용은 [이 GitHub 문제](https
 
 1.x에서 `AutomaticAuthenticate` `AutomaticChallenge` [authenticationoptions](/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1) 기본 클래스의 및 속성은 단일 인증 체계에 설정 하기 위한 것입니다. 이를 적용 하는 좋은 방법은 없습니다.
 
-2.0에서는 이러한 두 속성이 개별 인스턴스에서 속성으로 제거 되었습니다 `AuthenticationOptions` . `AddAuthentication` `ConfigureServices` *Startup.cs*의 메서드 내에서 메서드 호출을 통해 구성할 수 있습니다.
+2.0에서는 이러한 두 속성이 개별 인스턴스에서 속성으로 제거 되었습니다 `AuthenticationOptions` . `AddAuthentication` `ConfigureServices` *Startup.cs* 의 메서드 내에서 메서드 호출을 통해 구성할 수 있습니다.
 
 ```csharp
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -341,7 +342,7 @@ Windows 인증에는 두 가지 변형이 있습니다.
 
   > `System.InvalidOperationException`: AuthenticationScheme이 지정 되지 않았으므로 DefaultChallengeScheme을 찾을 수 없습니다.
 
-자세한 내용은 <xref:security/authentication/windowsauth>을 참조하세요.
+자세한 내용은 <xref:security/authentication/windowsauth>를 참조하세요.
 
 <a name="identity-cookie-options"></a>
 
@@ -349,7 +350,7 @@ Windows 인증에는 두 가지 변형이 있습니다.
 
 2.0 변경의 부작용은 옵션 인스턴스 대신 명명 된 옵션을 사용 하는 것으로 전환 되는 것입니다 cookie . 스키마 이름을 사용자 지정 하는 기능이 Identity cookie 제거 됩니다.
 
-예를 들어 1. x 프로젝트는 [생성자 주입](xref:mvc/controllers/dependency-injection#constructor-injection) 을 사용 하 여 `IdentityCookieOptions` 매개 변수를 *AccountController.cs* 및 *ManageController.cs*에 전달 합니다. 외부 cookie 인증 체계는 제공 된 인스턴스에서 액세스할 수 있습니다.
+예를 들어 1. x 프로젝트는 [생성자 주입](xref:mvc/controllers/dependency-injection#constructor-injection) 을 사용 하 여 `IdentityCookieOptions` 매개 변수를 *AccountController.cs* 및 *ManageController.cs* 에 전달 합니다. 외부 cookie 인증 체계는 제공 된 인스턴스에서 액세스할 수 있습니다.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor&highlight=4,11)]
 
@@ -429,7 +430,7 @@ protected override void OnModelCreating(ModelBuilder builder)
 
 ## <a name="replace-getexternalauthenticationschemes"></a>GetExternalAuthenticationSchemes 바꾸기
 
-`GetExternalAuthenticationSchemes`비동기 버전을 위해 동기 메서드가 제거 되었습니다. 1.x 프로젝트에는 *controller/ManageController*에 다음 코드가 있습니다.
+`GetExternalAuthenticationSchemes`비동기 버전을 위해 동기 메서드가 제거 되었습니다. 1.x 프로젝트에는 *controller/ManageController* 에 다음 코드가 있습니다.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemes)]
 
@@ -441,7 +442,7 @@ protected override void OnModelCreating(ModelBuilder builder)
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemesAsync)]
 
-*Login. cshtml*에서 `AuthenticationScheme` 루프에 액세스 된 속성이 `foreach` 로 변경 됩니다 `Name` .
+*Login. cshtml* 에서 `AuthenticationScheme` 루프에 액세스 된 속성이 `foreach` 로 변경 됩니다 `Name` .
 
 [!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Views/Account/Login.cshtml?name=snippet_GetExtAuthNSchemesAsync&highlight=2,19)]
 
@@ -449,7 +450,7 @@ protected override void OnModelCreating(ModelBuilder builder)
 
 ## <a name="manageloginsviewmodel-property-change"></a>ManageLoginsViewModel 속성 변경
 
-`ManageLoginsViewModel` `ManageLogins` *ManageController.cs*의 작업에 개체가 사용 됩니다. 1.x 프로젝트에서 개체의 `OtherLogins` 속성 반환 형식은 `IList<AuthenticationDescription>` 입니다. 이 반환 형식에는 다음과 같은 가져오기가 필요 합니다 `Microsoft.AspNetCore.Http.Authentication` .
+`ManageLoginsViewModel` `ManageLogins` *ManageController.cs* 의 작업에 개체가 사용 됩니다. 1.x 프로젝트에서 개체의 `OtherLogins` 속성 반환 형식은 `IList<AuthenticationDescription>` 입니다. 이 반환 형식에는 다음과 같은 가져오기가 필요 합니다 `Microsoft.AspNetCore.Http.Authentication` .
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Models/ManageViewModels/ManageLoginsViewModel.cs?name=snippet_ManageLoginsViewModel&highlight=2,11)]
 
@@ -459,6 +460,6 @@ protected override void OnModelCreating(ModelBuilder builder)
 
 <a name="additional-resources"></a>
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 자세한 내용은 GitHub의 [Auth 2.0 문제에 대 한 설명을](https://github.com/aspnet/Security/issues/1338) 참조 하세요.

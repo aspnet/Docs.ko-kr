@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/14/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 3d76eff93d5c7c53b57136e5183e1ca5287dec81
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 77ca96b329136ee044ab6fc5f6b5ebb5b67fe64c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631123"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059080"
 ---
 # <a name="no-locrazor-file-compilation-in-aspnet-core"></a>Razor ASP.NET Core에서 파일 컴파일
 
@@ -45,7 +46,7 @@ Razor페이지 및 MVC 프로젝트 템플릿에는 프로젝트를 만들 때 �
 **새 ASP.NET Core 웹 응용 프로그램 만들기** 대화 상자에서 다음을 수행 합니다.
 
 1. **웹 응용 프로그램** 또는 **웹 응용 프로그램 (모델-뷰-컨트롤러)** 프로젝트 템플릿을 선택 합니다.
-1. ** Razor 런타임 컴파일 사용** 확인란을 선택 합니다.
+1. **Razor 런타임 컴파일 사용** 확인란을 선택 합니다.
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -62,7 +63,7 @@ dotnet new webapp --razor-runtime-compilation
 기존 프로젝트의 모든 환경에 대해 런타임 컴파일을 사용 하도록 설정 하려면 다음을 수행 합니다.
 
 1. AspNetCore를 설치 합니다. [ Razor RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) NuGet 패키지입니다.
-1. <xref:Microsoft.Extensions.DependencyInjection.RazorRuntimeCompilationMvcBuilderExtensions.AddRazorRuntimeCompilation*>에 대한 호출을 포함하도록 프로젝트의 `Startup.ConfigureServices` 메서드를 업데이트합니다. 다음은 그 예입니다. 
+1. <xref:Microsoft.Extensions.DependencyInjection.RazorRuntimeCompilationMvcBuilderExtensions.AddRazorRuntimeCompilation*>에 대한 호출을 포함하도록 프로젝트의 `Startup.ConfigureServices` 메서드를 업데이트합니다. 다음은 그 예입니다.
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -84,7 +85,7 @@ dotnet new webapp --razor-runtime-compilation
 개발 환경 에서만 런타임 컴파일을 사용 하도록 설정 하려면 다음을 수행 합니다.
 
 1. AspNetCore를 설치 합니다. [ Razor RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) NuGet 패키지입니다.
-1. launchSettings.js에서 시작 프로필 `environmentVariables` 섹션을 *launchSettings.json*수정 합니다.
+1. launchSettings.js에서 시작 프로필 `environmentVariables` 섹션을 *launchSettings.json* 수정 합니다.
     * `ASPNETCORE_ENVIRONMENT`가로 설정 되어 있는지 확인 `"Development"` 합니다.
     * `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`를 `"Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"`로 설정합니다.
 
@@ -96,7 +97,7 @@ dotnet new webapp --razor-runtime-compilation
 
 ## <a name="enable-runtime-compilation-for-a-no-locrazor-class-library"></a>클래스 라이브러리에 대해 런타임 컴파일 사용 Razor
 
-RazorPages 프로젝트가 이름이 *MyClassLib*인 [ Razor 클래스 라이브러리 (rcl)](xref:razor-pages/ui-class) 를 참조 하는 시나리오를 고려해 보세요. RCL에는 모든 팀의 MVC 및 페이지 프로젝트에서 사용 하는 *_Layout cshtml* 파일이 포함 되어 있습니다 Razor . RCL에서 *_Layout. cshtml* 파일에 대해 런타임 컴파일을 사용 하도록 설정 하려고 합니다. Pages 프로젝트에서 다음과 같이 변경 합니다 Razor .
+RazorPages 프로젝트가 이름이 *MyClassLib* 인 [ Razor 클래스 라이브러리 (rcl)](xref:razor-pages/ui-class) 를 참조 하는 시나리오를 고려해 보세요. RCL에는 모든 팀의 MVC 및 페이지 프로젝트에서 사용 하는 *_Layout cshtml* 파일이 포함 되어 있습니다 Razor . RCL에서 *_Layout. cshtml* 파일에 대해 런타임 컴파일을 사용 하도록 설정 하려고 합니다. Pages 프로젝트에서 다음과 같이 변경 합니다 Razor .
 
 1. [기존 프로젝트에서 조건부로 런타임 컴파일을 사용 하도록 설정](#conditionally-enable-runtime-compilation-in-an-existing-project)하는 지침을 사용 하 여 런타임 컴파일을 사용 하도록 설정 합니다.
 1. 에서 런타임 컴파일 옵션을 구성 합니다 `Startup.ConfigureServices` .
@@ -105,7 +106,7 @@ RazorPages 프로젝트가 이름이 *MyClassLib*인 [ Razor 클래스 라이브
 
     위의 코드에서는 *MyClassLib* rcl에 대 한 절대 경로가 생성 됩니다. 실제 파일 [공급자 API](xref:fundamentals/file-providers#physicalfileprovider) 는 해당 절대 경로에서 디렉터리와 파일을 찾는 데 사용 됩니다. 마지막으로 `PhysicalFileProvider` 인스턴스는 RCL의 *cshtml* 파일에 액세스할 수 있도록 하는 파일 공급자 컬렉션에 추가 됩니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [ Razor CompileOnBuild 및 Razor CompileOnPublish](xref:razor-pages/sdk#properties) 속성
 * <xref:razor-pages/index>
@@ -128,7 +129,7 @@ Razor확장명이 *cshtml* 인 파일은 [ Razor SDK](xref:razor-pages/sdk)를 �
 
 1. AspNetCore를 설치 합니다. [ Razor RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) NuGet 패키지입니다.
 
-1. <xref:Microsoft.Extensions.DependencyInjection.RazorRuntimeCompilationMvcBuilderExtensions.AddRazorRuntimeCompilation*>에 대한 호출을 포함하도록 프로젝트의 `Startup.ConfigureServices` 메서드를 업데이트합니다. 다음은 그 예입니다. 
+1. <xref:Microsoft.Extensions.DependencyInjection.RazorRuntimeCompilationMvcBuilderExtensions.AddRazorRuntimeCompilation*>에 대한 호출을 포함하도록 프로젝트의 `Startup.ConfigureServices` 메서드를 업데이트합니다. 다음은 그 예입니다.
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -160,7 +161,7 @@ Razor확장명이 *cshtml* 인 파일은 [ Razor SDK](xref:razor-pages/sdk)를 �
 
     [!code-csharp[](~/mvc/views/view-compilation/samples/3.0/Startup.cs?name=snippet)]
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [ Razor CompileOnBuild 및 Razor CompileOnPublish](xref:razor-pages/sdk#properties) 속성
 * <xref:razor-pages/index>
@@ -187,7 +188,7 @@ Razor파일은 연결 된 Razor 페이지 또는 MVC 뷰가 호출 될 때 런�
 
 빌드 타임 컴파일은 파일의 런타임 컴파일을 통해 보완 됩니다 Razor . ASP.NET Core MVC는 Razor *cshtml* 파일의 내용이 변경 될 때 파일을 다시 컴파일합니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:razor-pages/index>
 * <xref:mvc/views/overview>

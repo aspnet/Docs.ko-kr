@@ -5,6 +5,7 @@ description: 모델 바인딩을 통해 컨트롤러 작업이 ASP.NET Core의 �
 ms.author: riande
 ms.date: 01/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 7e1151b04f39f637f889e690bccc97eb6f0c91ea
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 7675e95c43b9ee428ee5fda86ea3ead9815ed645
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865579"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058469"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>ASP.NET Core의 사용자 지정 모델 바인딩
 
@@ -39,7 +40,7 @@ ms.locfileid: "88865579"
 
 ## <a name="model-binding-review"></a>모델 바인딩 검토
 
-모델 바인딩은 작업을 수행하는 형식에 대한 특정 정의를 사용합니다. *단순 형식*은 입력의 단일 문자열에서 변환됩니다. *복합 형식*은 여러 입력 값에서 변환됩니다. 프레임워크는 `TypeConverter`의 존재 여부에 따라 차이점을 확인합니다. 외부 리소스가 필요 없는 간단한 `string` -> `SomeType` 매핑이 있는 경우 형식 변환기를 만드는 것이 좋습니다.
+모델 바인딩은 작업을 수행하는 형식에 대한 특정 정의를 사용합니다. *단순 형식* 은 입력의 단일 문자열에서 변환됩니다. *복합 형식* 은 여러 입력 값에서 변환됩니다. 프레임워크는 `TypeConverter`의 존재 여부에 따라 차이점을 확인합니다. 외부 리소스가 필요 없는 간단한 `string` -> `SomeType` 매핑이 있는 경우 형식 변환기를 만드는 것이 좋습니다.
 
 개발자 고유의 사용자 지정 모델 바인더를 만들기 전에 기존 모델 바인더가 구현되는 방식을 검토하는 것이 좋습니다. base64로 인코딩된 문자열을 바이트 배열로 변환하는 데 사용할 수 있는 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinder>를 고려해 보세요. 바이트 배열은 종종 파일 또는 데이터베이스 BLOB 필드로 저장됩니다.
 
@@ -163,7 +164,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 ## <a name="model-binding-review"></a>모델 바인딩 검토
 
-모델 바인딩은 작업을 수행하는 형식에 대한 특정 정의를 사용합니다. *단순 형식*은 입력의 단일 문자열에서 변환됩니다. *복합 형식*은 여러 입력 값에서 변환됩니다. 프레임워크는 `TypeConverter`의 존재 여부에 따라 차이점을 확인합니다. 외부 리소스가 필요 없는 간단한 `string` -> `SomeType` 매핑이 있는 경우 형식 변환기를 만드는 것이 좋습니다.
+모델 바인딩은 작업을 수행하는 형식에 대한 특정 정의를 사용합니다. *단순 형식* 은 입력의 단일 문자열에서 변환됩니다. *복합 형식* 은 여러 입력 값에서 변환됩니다. 프레임워크는 `TypeConverter`의 존재 여부에 따라 차이점을 확인합니다. 외부 리소스가 필요 없는 간단한 `string` -> `SomeType` 매핑이 있는 경우 형식 변환기를 만드는 것이 좋습니다.
 
 개발자 고유의 사용자 지정 모델 바인더를 만들기 전에 기존 모델 바인더가 구현되는 방식을 검토하는 것이 좋습니다. base64로 인코딩된 문자열을 바이트 배열로 변환하는 데 사용할 수 있는 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinder>를 고려해 보세요. 바이트 배열은 종종 파일 또는 데이터베이스 BLOB 필드로 저장됩니다.
 

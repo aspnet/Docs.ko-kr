@@ -6,6 +6,7 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 12/18/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: ca2f071ccb84fdb2eb06f533fc4d088ad1b1c785
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: a3be22134246c76b0a809ddb97b33ff97ace9a5b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393888"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057507"
 ---
 # <a name="model-binding-in-aspnet-core"></a>ASP.NET Core의 모델 바인딩
 
@@ -80,7 +81,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/Instructors/Edit.cshtml.cs?name=snippet_BindProperty&highlight=3-4)]
 
-### <a name="bindpropertiesattribute"></a>[BindProperties] 특성
+### <a name="bindproperties-attribute"></a>[BindProperties] 특성
 
 ASP.NET Core 2.1 이상에서 사용할 수 있습니다.  모델 바인딩이 클래스의 모든 공용 속성을 대상으로 하도록 컨트롤러 또는 `PageModel` 클래스에 적용할 수 있습니다.
 
@@ -147,7 +148,7 @@ public class Pet
 }
 ```
 
-이전 예제에서는 다음을 수행합니다.
+앞의 예제에서:
 
 * `[FromQuery]` 특성은 무시됩니다.
 * `Breed` 속성은 쿼리 문자열 매개 변수에서 채워지지 않습니다. 
@@ -158,7 +159,7 @@ public class Pet
 
 ### <a name="additional-sources"></a>추가 원본
 
-원본 데이터는 *값 공급 기업*에 의해 모델 바인딩 시스템에 제공됩니다. 다른 원본에서 모델 바인딩에 대한 데이터를 가져오는 사용자 지정 값 공급 기업을 작성 및 등록할 수 있습니다. 예를 들어 또는 세션 상태의 데이터를 사용할 수 있습니다 cookie . 새 원본에서 데이터를 가져오려면 다음을 수행합니다.
+원본 데이터는 *값 공급 기업* 에 의해 모델 바인딩 시스템에 제공됩니다. 다른 원본에서 모델 바인딩에 대한 데이터를 가져오는 사용자 지정 값 공급 기업을 작성 및 등록할 수 있습니다. 예를 들어 또는 세션 상태의 데이터를 사용할 수 있습니다 cookie . 새 원본에서 데이터를 가져오려면 다음을 수행합니다.
 
 * `IValueProvider`를 구현하는 클래스를 만듭니다.
 * `IValueProviderFactory`를 구현하는 클래스를 만듭니다.
@@ -217,13 +218,13 @@ public class Pet
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
 * [Uri](xref:System.UriTypeConverter)
-* [Version](xref:System.ComponentModel.VersionConverter)
+* [버전](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>복합 형식
 
 복합 형식에 공용 기본 생성자와 바인딩할 공용 쓰기 가능 속성이 있어야 합니다. 모델 바인딩이 발생하면 클래스는 공용 기본 생성자를 사용하여 인스턴스화됩니다. 
 
-복합 형식의 각 속성의 경우 모델 바인딩은 이름 패턴*prefix.property_name*에 대한 원본을 찾습니다. 아무것도 없는 경우 접두사 없이 *property_name*만을 찾습니다.
+복합 형식의 각 속성의 경우 모델 바인딩은 이름 패턴 *prefix.property_name* 에 대한 원본을 찾습니다. 아무것도 없는 경우 접두사 없이 *property_name* 만을 찾습니다.
 
 매개 변수에 대한 바인딩의 경우 접두사는 매개 변수 이름입니다. `PageModel` 공용 속성에 대한 바인딩의 경우 접두사는 공용 속성 이름입니다. 일부 특성에는 매개 변수의 기본 사용 또는 속성 이름을 재정의할 수 있도록 하는 `Prefix` 속성이 있습니다.
 
@@ -279,11 +280,11 @@ public IActionResult OnPost(
 * `[BindNever]`
 
 > [!WARNING]
-> 이러한 특성은 게시된 양식 데이터가 값의 원본일 때 모델 바인딩에 영향을 줍니다. 게시 된 JSON 및 XML 요청 본문을 처리 하는 입력 포맷터에 ***는 영향을 주지 않습니다.*** 입력 포맷터는 [이 문서의 뒷부분](#input-formatters)에 설명되어 있습니다.
+> 이러한 특성은 게시된 양식 데이터가 값의 원본일 때 모델 바인딩에 영향을 줍니다. 게시 된 JSON 및 XML 요청 본문을 처리 하는 입력 포맷터에 영향을 **주지 않습니다.** 입력 포맷터는 [이 문서의 뒷부분](#input-formatters)에 설명되어 있습니다.
 
 ### <a name="bind-attribute"></a>[Bind] 특성
 
-클래스 또는 메서드 매개 변수에 적용될 수 있습니다. 모델 바인딩에 포함되어야 하는 모델의 속성을 지정합니다. `[Bind]`입력 포맷터 ***에는 영향을 주지 않습니다.***
+클래스 또는 메서드 매개 변수에 적용될 수 있습니다. 모델 바인딩에 포함되어야 하는 모델의 속성을 지정합니다. `[Bind]`입력 포맷터 _*_에는 영향을 주지 않습니다._*_
 
 다음 예제에서 모든 처리기 또는 작업 메서드가 호출될 때 지정된 속성의 `Instructor` 모델만 바인딩됩니다.
 
@@ -299,7 +300,7 @@ public class Instructor
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-`[Bind]` 특성은 *만들기* 시나리오에서 초과 게시를 방지하는 데 사용될 수 있습니다. 제외된 속성은 변경되지 않은 채로 남겨지는 대신 Null 또는 기본값으로 설정되기 때문에 편집 시나리오에서 잘 작동하지 않습니다. 초과 게시에 대한 방어의 경우 뷰 모델이 `[Bind]` 특성보다 권장됩니다. 자세한 내용은 [초과 게시에 대한 보안 정보](xref:data/ef-mvc/crud#security-note-about-overposting)를 참조하세요.
+`[Bind]`특성을 사용 하 여 _create * 시나리오에서 과도 한 게시를 방지할 수 있습니다. 제외된 속성은 변경되지 않은 채로 남겨지는 대신 Null 또는 기본값으로 설정되기 때문에 편집 시나리오에서 잘 작동하지 않습니다. 초과 게시에 대한 방어의 경우 뷰 모델이 `[Bind]` 특성보다 권장됩니다. 자세한 내용은 [초과 게시에 대한 보안 정보](xref:data/ef-mvc/crud#security-note-about-overposting)를 참조하세요.
 
 ### <a name="bindrequired-attribute"></a>[BindRequired] 특성
 
@@ -317,7 +318,7 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
 ## <a name="collections"></a>컬렉션
 
-단순 형식의 컬렉션인 대상의 경우 모델 바인딩은 *parameter_name* 또는 *property_name*에 대한 일치 항목을 찾습니다. 일치하는 항목이 없는 경우 접두사 없이 지원되는 양식 중 하나를 찾습니다. 예를 들면 다음과 같습니다.
+단순 형식의 컬렉션인 대상의 경우 모델 바인딩은 *parameter_name* 또는 *property_name* 에 대한 일치 항목을 찾습니다. 일치하는 항목이 없는 경우 접두사 없이 지원되는 양식 중 하나를 찾습니다. 다음은 그 예입니다.
 
 * 바인딩되는 매개 변수가 `selectedCourses`라는 배열이라고 가정합니다.
 
@@ -362,7 +363,7 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
 ## <a name="dictionaries"></a>사전
 
-`Dictionary` 대상의 경우 모델 바인딩은 *parameter_name* 또는 *property_name*에 대한 일치 항목을 찾습니다. 일치하는 항목이 없는 경우 접두사 없이 지원되는 양식 중 하나를 찾습니다. 예를 들면 다음과 같습니다.
+`Dictionary` 대상의 경우 모델 바인딩은 *parameter_name* 또는 *property_name* 에 대한 일치 항목을 찾습니다. 일치하는 항목이 없는 경우 접두사 없이 지원되는 양식 중 하나를 찾습니다. 다음은 그 예입니다.
 
 * 대상 매개 변수가 `selectedCourses`라는 `Dictionary<int, string>`라고 가정합니다.
 
@@ -474,7 +475,7 @@ HTTP 요청에 포함되는 업로드된 파일입니다.  또한 여러 파일�
 
 ## <a name="input-formatters"></a>입력 포맷터
 
-요청 본문의 데이터는 JSON, XML 또는 일부 다른 형식일 수 있습니다. 이 데이터를 구문 분석하기 위해 모델 바인딩은 특정 콘텐츠 유형을 처리하도록 구성된 *입력 포맷터*를 사용합니다. 기본적으로 ASP.NET Core는 JSON 데이터를 처리하기 위한 JSON 기반 입력 포맷터를 포함합니다. 다른 콘텐츠 형식에 대해 다른 포맷터를 추가할 수 있습니다.
+요청 본문의 데이터는 JSON, XML 또는 일부 다른 형식일 수 있습니다. 이 데이터를 구문 분석하기 위해 모델 바인딩은 특정 콘텐츠 유형을 처리하도록 구성된 *입력 포맷터* 를 사용합니다. 기본적으로 ASP.NET Core는 JSON 데이터를 처리하기 위한 JSON 기반 입력 포맷터를 포함합니다. 다른 콘텐츠 형식에 대해 다른 포맷터를 추가할 수 있습니다.
 
 ASP.NET Core는 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute) 특성을 기반으로 입력 포맷터를 선택합니다. 특성이 없는 경우 [Content-Type 헤더](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html)를 사용합니다.
 
@@ -547,7 +548,7 @@ ASP.NET Core는 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute) 특�
 
 이 특성의 이름은 데이터 원본을 지정하는 모델 바인딩 특성의 패턴을 따릅니다. 그러나 값 공급 기업의 바인딩 데이터에 대한 것은 아닙니다. [종속성 주입](xref:fundamentals/dependency-injection) 컨테이너에서 형식의 인스턴스를 가져옵니다. 특정 메서드가 호출되는 경우에만 서비스가 필요할 때 생성자 주입에 대안을 제공하는 것이 목적입니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:mvc/models/validation>
 * <xref:mvc/advanced/custom-model-binding>
@@ -608,7 +609,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Edit.cshtml.cs?name=snippet_BindProperty&highlight=3-4)]
 
-### <a name="bindpropertiesattribute"></a>[BindProperties] 특성
+### <a name="bindproperties-attribute"></a>[BindProperties] 특성
 
 ASP.NET Core 2.1 이상에서 사용할 수 있습니다.  모델 바인딩이 클래스의 모든 공용 속성을 대상으로 하도록 컨트롤러 또는 `PageModel` 클래스에 적용할 수 있습니다.
 
@@ -675,7 +676,7 @@ public class Pet
 }
 ```
 
-이전 예제에서는 다음을 수행합니다.
+앞의 예제에서:
 
 * `[FromQuery]` 특성은 무시됩니다.
 * `Breed` 속성은 쿼리 문자열 매개 변수에서 채워지지 않습니다. 
@@ -686,7 +687,7 @@ public class Pet
 
 ### <a name="additional-sources"></a>추가 원본
 
-원본 데이터는 *값 공급 기업*에 의해 모델 바인딩 시스템에 제공됩니다. 다른 원본에서 모델 바인딩에 대한 데이터를 가져오는 사용자 지정 값 공급 기업을 작성 및 등록할 수 있습니다. 예를 들어 또는 세션 상태의 데이터를 사용할 수 있습니다 cookie . 새 원본에서 데이터를 가져오려면 다음을 수행합니다.
+원본 데이터는 *값 공급 기업* 에 의해 모델 바인딩 시스템에 제공됩니다. 다른 원본에서 모델 바인딩에 대한 데이터를 가져오는 사용자 지정 값 공급 기업을 작성 및 등록할 수 있습니다. 예를 들어 또는 세션 상태의 데이터를 사용할 수 있습니다 cookie . 새 원본에서 데이터를 가져오려면 다음을 수행합니다.
 
 * `IValueProvider`를 구현하는 클래스를 만듭니다.
 * `IValueProviderFactory`를 구현하는 클래스를 만듭니다.
@@ -745,13 +746,13 @@ public class Pet
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
 * [Uri](xref:System.UriTypeConverter)
-* [Version](xref:System.ComponentModel.VersionConverter)
+* [버전](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>복합 형식
 
 복합 형식에 공용 기본 생성자와 바인딩할 공용 쓰기 가능 속성이 있어야 합니다. 모델 바인딩이 발생하면 클래스는 공용 기본 생성자를 사용하여 인스턴스화됩니다. 
 
-복합 형식의 각 속성의 경우 모델 바인딩은 이름 패턴*prefix.property_name*에 대한 원본을 찾습니다. 아무것도 없는 경우 접두사 없이 *property_name*만을 찾습니다.
+복합 형식의 각 속성의 경우 모델 바인딩은 이름 패턴 *prefix.property_name* 에 대한 원본을 찾습니다. 아무것도 없는 경우 접두사 없이 *property_name* 만을 찾습니다.
 
 매개 변수에 대한 바인딩의 경우 접두사는 매개 변수 이름입니다. `PageModel` 공용 속성에 대한 바인딩의 경우 접두사는 공용 속성 이름입니다. 일부 특성에는 매개 변수의 기본 사용 또는 속성 이름을 재정의할 수 있도록 하는 `Prefix` 속성이 있습니다.
 
@@ -845,7 +846,7 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
 ## <a name="collections"></a>컬렉션
 
-단순 형식의 컬렉션인 대상의 경우 모델 바인딩은 *parameter_name* 또는 *property_name*에 대한 일치 항목을 찾습니다. 일치하는 항목이 없는 경우 접두사 없이 지원되는 양식 중 하나를 찾습니다. 예를 들면 다음과 같습니다.
+단순 형식의 컬렉션인 대상의 경우 모델 바인딩은 *parameter_name* 또는 *property_name* 에 대한 일치 항목을 찾습니다. 일치하는 항목이 없는 경우 접두사 없이 지원되는 양식 중 하나를 찾습니다. 다음은 그 예입니다.
 
 * 바인딩되는 매개 변수가 `selectedCourses`라는 배열이라고 가정합니다.
 
@@ -890,7 +891,7 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
 ## <a name="dictionaries"></a>사전
 
-`Dictionary` 대상의 경우 모델 바인딩은 *parameter_name* 또는 *property_name*에 대한 일치 항목을 찾습니다. 일치하는 항목이 없는 경우 접두사 없이 지원되는 양식 중 하나를 찾습니다. 예를 들면 다음과 같습니다.
+`Dictionary` 대상의 경우 모델 바인딩은 *parameter_name* 또는 *property_name* 에 대한 일치 항목을 찾습니다. 일치하는 항목이 없는 경우 접두사 없이 지원되는 양식 중 하나를 찾습니다. 다음은 그 예입니다.
 
 * 대상 매개 변수가 `selectedCourses`라는 `Dictionary<int, string>`라고 가정합니다.
 
@@ -961,7 +962,7 @@ HTTP 요청에 포함되는 업로드된 파일입니다.  또한 여러 파일�
 
 ## <a name="input-formatters"></a>입력 포맷터
 
-요청 본문의 데이터는 JSON, XML 또는 일부 다른 형식일 수 있습니다. 이 데이터를 구문 분석하기 위해 모델 바인딩은 특정 콘텐츠 유형을 처리하도록 구성된 *입력 포맷터*를 사용합니다. 기본적으로 ASP.NET Core는 JSON 데이터를 처리하기 위한 JSON 기반 입력 포맷터를 포함합니다. 다른 콘텐츠 형식에 대해 다른 포맷터를 추가할 수 있습니다.
+요청 본문의 데이터는 JSON, XML 또는 일부 다른 형식일 수 있습니다. 이 데이터를 구문 분석하기 위해 모델 바인딩은 특정 콘텐츠 유형을 처리하도록 구성된 *입력 포맷터* 를 사용합니다. 기본적으로 ASP.NET Core는 JSON 데이터를 처리하기 위한 JSON 기반 입력 포맷터를 포함합니다. 다른 콘텐츠 형식에 대해 다른 포맷터를 추가할 수 있습니다.
 
 ASP.NET Core는 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute) 특성을 기반으로 입력 포맷터를 선택합니다. 특성이 없는 경우 [Content-Type 헤더](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html)를 사용합니다.
 
@@ -1009,7 +1010,7 @@ ASP.NET Core는 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute) 특�
 
 이 특성의 이름은 데이터 원본을 지정하는 모델 바인딩 특성의 패턴을 따릅니다. 그러나 값 공급 기업의 바인딩 데이터에 대한 것은 아닙니다. [종속성 주입](xref:fundamentals/dependency-injection) 컨테이너에서 형식의 인스턴스를 가져옵니다. 특정 메서드가 호출되는 경우에만 서비스가 필요할 때 생성자 주입에 대안을 제공하는 것이 목적입니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:mvc/models/validation>
 * <xref:mvc/advanced/custom-model-binding>

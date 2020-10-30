@@ -6,6 +6,7 @@ description: ASP.NET Core 링크 태그 도우미 특성 및 HTML 링크 태그�
 ms.custom: mvc
 ms.date: 09/24/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/link-tag-helper
-ms.openlocfilehash: 09507294b90f08bbaf134f611aad0b91504ccffb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 7998cec94ebb56cbe6dbc321f7cb499260d6fe74
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635075"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059119"
 ---
 # <a name="link-tag-helper-in-aspnet-core"></a>ASP.NET Core의 링크 태그 도우미
 
@@ -58,11 +59,11 @@ ms.locfileid: "88635075"
 
 ### <a name="asp-fallback-test-class"></a>asp-fallback-test-class
 
-대체 테스트에 사용할 스타일시트에 정의된 클래스 이름입니다. 자세한 내용은 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestClass>을 참조하세요.
+대체 테스트에 사용할 스타일시트에 정의된 클래스 이름입니다. 자세한 내용은 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestClass>를 참조하세요.
 
 ### <a name="asp-fallback-test-property"></a>asp-fallback-test-property
 
-대체 테스트에 사용할 CSS 속성 이름입니다. 자세한 내용은 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestProperty>을 참조하세요.
+대체 테스트에 사용할 CSS 속성 이름입니다. 자세한 내용은 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestProperty>를 참조하세요.
 
 ### <a name="asp-fallback-test-value"></a>asp-fallback-test-value
 

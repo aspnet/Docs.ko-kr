@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 04/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/ObjectPool
-ms.openlocfilehash: 6997dbfdd5c654e4a8b15a026fd3ec61d024f02d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 3bbfde6f68a238131149e67ce72f0ddc68a9ea0f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632371"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056909"
 ---
 # <a name="object-reuse-with-objectpool-in-aspnet-core"></a>ASP.NET Core ObjectPool에서 개체 다시 사용
 
@@ -73,8 +74,8 @@ ObjectPool은 여러 가지 방법으로 앱에서 사용할 수 있습니다.
 ::: moniker range=">= aspnetcore-3.0"
 <xref:Microsoft.Extensions.ObjectPool.DefaultObjectPoolProvider>를 사용 하는 경우 `T` 다음을 구현 합니다 `IDisposable` .
 
-* 풀에 반환 ***되지*** 않는 항목은 삭제 됩니다.
-* DI가 풀을 삭제 하면 풀의 모든 항목이 삭제 됩니다.
+* 풀로 반환 되는 *가 **아닌** 항목은 삭제 됩니다.
+_ DI에서 풀을 삭제 하면 풀의 모든 항목이 삭제 됩니다.
 
 참고: 풀이 삭제 된 후:
 

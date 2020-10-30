@@ -5,6 +5,7 @@ description: ASP.NET Core의 웹 API에서 사용자 지정 포맷터를 만들�
 ms.author: riande
 ms.date: 06/25/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: 9f87d02dd3abe6dca8db495e482ccf9c440a2469
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e4d73fdc0db3faeace5d68b3d71718315e68cae3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627548"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058924"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>ASP.NET Core Web API에서 포맷터 사용자 지정
 
@@ -132,7 +133,7 @@ Deserialization 또는 serialization은 또는에서 수행 됩니다 `ReadReque
 
 [!code-csharp[](custom-formatters/samples/3.x/CustomFormattersSample/Formatters/VcardInputFormatter.cs?name=snippet_Class)]
 
-## <a name="test-the-app"></a>앱을 테스트합니다.
+## <a name="test-the-app"></a>앱 테스트
 
 기본 vCard 입력 및 출력 포맷터를 구현 하는 [이 문서에 대 한 샘플 앱을 실행](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/samples)합니다. 앱은 다음과 유사 하 게 Vcard를 읽고 씁니다.
 
@@ -152,7 +153,7 @@ VCard를 메모리 내 연락처 컬렉션에 추가 하려면 다음을 수행 
 * `Content-Type` 헤더를 `text/vcard`으로 설정합니다.
 * `vCard`앞의 예제와 같이 서식이 지정 된 본문에 텍스트를 설정 합니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:web-api/advanced/formatting>
 * <xref:grpc/dotnet-grpc>

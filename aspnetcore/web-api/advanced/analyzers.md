@@ -7,6 +7,7 @@ ms.author: prkrishn
 ms.custom: mvc
 ms.date: 09/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/analyzers
-ms.openlocfilehash: 1bc76f3965009dbdd66c58b197f4c12bd44faf18
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cf0415e7d72e21a48db8bbeb4540f05e0b0a4198
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633034"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057923"
 ---
 # <a name="use-web-api-analyzers"></a>웹 API 분석기 사용
 
@@ -59,7 +60,7 @@ ASP.NET Core 3.0 이상에서 분석기는 .NET Core SDK에 포함되어 있습�
 ### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 **패키지 관리자 콘솔** 창에서:
-  * **View** > **다른 Windows** > **패키지 관리자 콘솔**보기로 이동 합니다.
+  * **View** > **다른 Windows** > **패키지 관리자 콘솔** 보기로 이동 합니다.
   * *ApiConventions.csproj* 파일이 위치한 디렉터리로 이동합니다.
   * 다음 명령을 실행합니다.
 
@@ -69,14 +70,14 @@ ASP.NET Core 3.0 이상에서 분석기는 .NET Core SDK에 포함되어 있습�
 
 ### <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* *Packages* **Solution Pad** > **패키지 추가**Solution Pad에서 패키지 폴더를 마우스 오른쪽 단추로 클릭 합니다.
+* *Packages* **Solution Pad** > **패키지 추가** Solution Pad에서 패키지 폴더를 마우스 오른쪽 단추로 클릭 합니다.
 * **패키지 추가** 창의 **원본** 드롭다운을 "nuget.org"로 설정 합니다.
 * 검색 상자에 "Microsoft.AspNetCore.Mvc.Api.Analyzers"를 입력합니다.
-* 결과 창에서 "Microsoft.AspNetCore.Mvc.Api.Analyzers" 패키지를 선택하고 **패키지 추가**를 클릭합니다.
+* 결과 창에서 "Microsoft.AspNetCore.Mvc.Api.Analyzers" 패키지를 선택하고 **패키지 추가** 를 클릭합니다.
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-**통합 터미널**에서 다음 명령을 실행합니다.
+**통합 터미널** 에서 다음 명령을 실행합니다.
 
 ```dotnetcli
 dotnet add ApiConventions.csproj package Microsoft.AspNetCore.Mvc.Api.Analyzers
@@ -98,7 +99,7 @@ dotnet add ApiConventions.csproj package Microsoft.AspNetCore.Mvc.Api.Analyzers
 
 OpenAPI 문서에는 작업이 반환할 수 있는 상태 코드 및 응답 형식이 포함되어 있습니다. ASP.NET Core MVC에서는 <xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute> 및 <xref:Microsoft.AspNetCore.Mvc.ProducesAttribute> 와 같은 특성을 사용하여 작업을 문서화합니다. <xref:tutorials/web-api-help-pages-using-swagger>는 웹 API 문서화에 대해 자세히 설명합니다.
 
-패키지의 분석기 중 하나는 <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute>로 주석을 단 컨트롤러를 검사하고 응답을 완전히 문서화하지 않은 작업을 식별합니다. 다음과 같은 예제를 참조하세요.
+패키지의 분석기 중 하나는 <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute>로 주석을 단 컨트롤러를 검사하고 응답을 완전히 문서화하지 않은 작업을 식별합니다. 다음 예제를 참조하세요.
 
 [!code-csharp[](conventions/sample/Controllers/ContactsController.cs?name=missing404docs&highlight=10)]
 
@@ -106,7 +107,7 @@ OpenAPI 문서에는 작업이 반환할 수 있는 상태 코드 및 응답 형
 
 ![경고를 보고하는 분석기](conventions/_static/Analyzer.gif)
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:web-api/advanced/conventions>
 * <xref:tutorials/web-api-help-pages-using-swagger>

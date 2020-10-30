@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 09/24/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: 15ae8911e2ffba43c7bb885efd153d8b6803bc2a
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: e7d19a42e48048d2be4b87d6b0ac1ba6b2596ff1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393680"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058170"
 ---
 # <a name="use-messagepack-hub-protocol-in-no-locsignalr-for-aspnet-core"></a>ASP.NET Core에 대해에서 MessagePack Hub 프로토콜 사용 SignalR
 
@@ -96,10 +97,10 @@ Npm 패키지를 설치한 후 다음 파일을 참조 하 여 JavaScript 모듈
 
 *node_modules\\@microsoft\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 
 
-브라우저에서 `msgpack5` 라이브러리도 참조 해야 합니다. 태그를 사용 `<script>` 하 여 참조를 만듭니다. 라이브러리는 *node_modules\msgpack5\dist\msgpack5.js*에서 찾을 수 있습니다.
+브라우저에서 `msgpack5` 라이브러리도 참조 해야 합니다. 태그를 사용 `<script>` 하 여 참조를 만듭니다. 라이브러리는 *node_modules\msgpack5\dist\msgpack5.js* 에서 찾을 수 있습니다.
 
 > [!NOTE]
-> 요소를 사용 하는 경우 `<script>` 순서가 중요 합니다. *msgpack5.js*전에 *signalr-protocol-msgpack.js* 참조 된 경우 MessagePack에 연결 하려고 하면 오류가 발생 합니다. *signalr-protocol-msgpack.js*하기 전에 *signalr.js* 도 필요 합니다.
+> 요소를 사용 하는 경우 `<script>` 순서가 중요 합니다. *msgpack5.js* 전에 *signalr-protocol-msgpack.js* 참조 된 경우 MessagePack에 연결 하려고 하면 오류가 발생 합니다. *signalr-protocol-msgpack.js* 하기 전에 *signalr.js* 도 필요 합니다.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -135,7 +136,7 @@ public class ChatMessage
 }
 ```
 
-JavaScript 클라이언트에서 전송 하는 경우 `PascalCased` 대/소문자 구분이 c # 클래스와 정확 하 게 일치 해야 하므로 속성 이름을 사용 해야 합니다. 예를 들면 다음과 같습니다.
+JavaScript 클라이언트에서 전송 하는 경우 `PascalCased` 대/소문자 구분이 c # 클래스와 정확 하 게 일치 해야 하므로 속성 이름을 사용 해야 합니다. 다음은 그 예입니다.
 
 ```javascript
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
@@ -187,7 +188,7 @@ InvalidDataException: Error binding arguments. Make sure that the types of the p
 
 이 제한 사항에 대 한 자세한 내용은 GitHub 문제 [aspnet/ SignalR #2937](https://github.com/aspnet/SignalR/issues/2937)를 참조 하세요.
 
-## <a name="related-resources"></a>관련 참고 자료
+## <a name="related-resources"></a>관련 리소스
 
 * [시작](xref:tutorials/signalr)
 * [.NET 클라이언트](xref:signalr/dotnet-client)
@@ -276,10 +277,10 @@ Npm 패키지를 설치한 후 다음 파일을 참조 하 여 JavaScript 모듈
 
 *node_modules\\@microsoft\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 
 
-브라우저에서 `msgpack5` 라이브러리도 참조 해야 합니다. 태그를 사용 `<script>` 하 여 참조를 만듭니다. 라이브러리는 *node_modules\msgpack5\dist\msgpack5.js*에서 찾을 수 있습니다.
+브라우저에서 `msgpack5` 라이브러리도 참조 해야 합니다. 태그를 사용 `<script>` 하 여 참조를 만듭니다. 라이브러리는 *node_modules\msgpack5\dist\msgpack5.js* 에서 찾을 수 있습니다.
 
 > [!NOTE]
-> 요소를 사용 하는 경우 `<script>` 순서가 중요 합니다. *msgpack5.js*전에 *signalr-protocol-msgpack.js* 참조 된 경우 MessagePack에 연결 하려고 하면 오류가 발생 합니다. *signalr-protocol-msgpack.js*하기 전에 *signalr.js* 도 필요 합니다.
+> 요소를 사용 하는 경우 `<script>` 순서가 중요 합니다. *msgpack5.js* 전에 *signalr-protocol-msgpack.js* 참조 된 경우 MessagePack에 연결 하려고 하면 오류가 발생 합니다. *signalr-protocol-msgpack.js* 하기 전에 *signalr.js* 도 필요 합니다.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -315,7 +316,7 @@ public class ChatMessage
 }
 ```
 
-JavaScript 클라이언트에서 전송 하는 경우 `PascalCased` 대/소문자 구분이 c # 클래스와 정확 하 게 일치 해야 하므로 속성 이름을 사용 해야 합니다. 예를 들면 다음과 같습니다.
+JavaScript 클라이언트에서 전송 하는 경우 `PascalCased` 대/소문자 구분이 c # 클래스와 정확 하 게 일치 해야 하므로 속성 이름을 사용 해야 합니다. 다음은 그 예입니다.
 
 ```javascript
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
@@ -367,7 +368,7 @@ InvalidDataException: Error binding arguments. Make sure that the types of the p
 
 이 제한 사항에 대 한 자세한 내용은 GitHub 문제 [aspnet/ SignalR #2937](https://github.com/aspnet/SignalR/issues/2937)를 참조 하세요.
 
-## <a name="related-resources"></a>관련 참고 자료
+## <a name="related-resources"></a>관련 리소스
 
 * [시작](xref:tutorials/signalr)
 * [.NET 클라이언트](xref:signalr/dotnet-client)
@@ -456,10 +457,10 @@ Npm 패키지를 설치한 후 다음 파일을 참조 하 여 JavaScript 모듈
 
 *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js*
 
-브라우저에서 `msgpack5` 라이브러리도 참조 해야 합니다. 태그를 사용 `<script>` 하 여 참조를 만듭니다. 라이브러리는 *node_modules\msgpack5\dist\msgpack5.js*에서 찾을 수 있습니다.
+브라우저에서 `msgpack5` 라이브러리도 참조 해야 합니다. 태그를 사용 `<script>` 하 여 참조를 만듭니다. 라이브러리는 *node_modules\msgpack5\dist\msgpack5.js* 에서 찾을 수 있습니다.
 
 > [!NOTE]
-> 요소를 사용 하는 경우 `<script>` 순서가 중요 합니다. *msgpack5.js*전에 *signalr-protocol-msgpack.js* 참조 된 경우 MessagePack에 연결 하려고 하면 오류가 발생 합니다. *signalr-protocol-msgpack.js*하기 전에 *signalr.js* 도 필요 합니다.
+> 요소를 사용 하는 경우 `<script>` 순서가 중요 합니다. *msgpack5.js* 전에 *signalr-protocol-msgpack.js* 참조 된 경우 MessagePack에 연결 하려고 하면 오류가 발생 합니다. *signalr-protocol-msgpack.js* 하기 전에 *signalr.js* 도 필요 합니다.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -495,7 +496,7 @@ public class ChatMessage
 }
 ```
 
-JavaScript 클라이언트에서 전송 하는 경우 `PascalCased` 대/소문자 구분이 c # 클래스와 정확 하 게 일치 해야 하므로 속성 이름을 사용 해야 합니다. 예를 들면 다음과 같습니다.
+JavaScript 클라이언트에서 전송 하는 경우 `PascalCased` 대/소문자 구분이 c # 클래스와 정확 하 게 일치 해야 하므로 속성 이름을 사용 해야 합니다. 다음은 그 예입니다.
 
 ```javascript
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
@@ -547,7 +548,7 @@ InvalidDataException: Error binding arguments. Make sure that the types of the p
 
 이 제한 사항에 대 한 자세한 내용은 GitHub 문제 [aspnet/ SignalR #2937](https://github.com/aspnet/SignalR/issues/2937)를 참조 하세요.
 
-## <a name="related-resources"></a>관련 참고 자료
+## <a name="related-resources"></a>관련 리소스
 
 * [시작](xref:tutorials/signalr)
 * [.NET 클라이언트](xref:signalr/dotnet-client)

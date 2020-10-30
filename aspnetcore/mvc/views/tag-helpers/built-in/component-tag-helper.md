@@ -6,6 +6,7 @@ description: ASP.NET Core 구성 요소 태그 도우미를 사용 하 여 Razor
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
-ms.openlocfilehash: 1a0422da6bd48049cac73debe7d335da91e311be
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cddbca7f95e4d2143d4632aaa83133bc6210e251
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633918"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059158"
 ---
 # <a name="component-tag-helper-in-aspnet-core"></a>ASP.NET Core의 구성 요소 태그 도우미
 
@@ -30,7 +31,7 @@ ms.locfileid: "88633918"
 
 페이지 또는 뷰에서 구성 요소를 렌더링하려면 [구성 요소 태그 도우미](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper)를 사용합니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 문서의 *페이지 및 뷰에서 구성 요소를 사용 하도록 앱 준비* 섹션의 지침을 따르세요 <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps#prepare-the-app> .
 
@@ -106,7 +107,7 @@ ms.locfileid: "88633918"
 
 다음 예제에서는 클래스 개체가 구성 요소에 전달 됩니다.
 
-*MyClass.cs*:
+*MyClass.cs* :
 
 ```csharp
 public class MyClass
@@ -122,7 +123,7 @@ public class MyClass
 
 **클래스에는 매개 변수가 없는 public 생성자가 있어야 합니다.**
 
-*Shared/MyComponent*:
+*Shared/MyComponent* :
 
 ```razor
 <h2>MyComponent</h2>
@@ -137,7 +138,7 @@ public class MyClass
 }
 ```
 
-*Pages/m*:
+*Pages/m* :
 
 ```cshtml
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
@@ -173,7 +174,7 @@ public class MyClass
 
 정적 HTML 페이지에서 서버 구성 요소를 렌더링할 수는 없습니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper>
 * <xref:mvc/views/tag-helpers/intro>
