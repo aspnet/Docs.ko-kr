@@ -7,37 +7,38 @@ ms.author: prkrishn
 ms.custom: mvc
 ms.date: 07/23/2020
 no-loc:
-- ASP.NET Core Identity
-- cookie
-- Cookie
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(appsettings.json):::'
+- ':::no-loc(ASP.NET Core Identity):::'
+- ':::no-loc(cookie):::'
+- ':::no-loc(Cookie):::'
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: web-api/handle-errors
-ms.openlocfilehash: d9d5703e6c02ed2b95cbe95d3624cd0647ee239f
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0efcf1bbeeb65cf7f4420f8c50fb4adf7d1d016d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631266"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052528"
 ---
-# <a name="handle-errors-in-aspnet-core-web-apis"></a><span data-ttu-id="73b3b-103">ASP.NET Core 웹 API에서 오류 처리</span><span class="sxs-lookup"><span data-stu-id="73b3b-103">Handle errors in ASP.NET Core web APIs</span></span>
+# <a name="handle-errors-in-aspnet-core-web-apis"></a><span data-ttu-id="3435c-103">ASP.NET Core 웹 API에서 오류 처리</span><span class="sxs-lookup"><span data-stu-id="3435c-103">Handle errors in ASP.NET Core web APIs</span></span>
 
-<span data-ttu-id="73b3b-104">이 문서에서는 ASP.NET Core 웹 API를 사용하여 오류를 처리하고 사용자 지정하는 방법을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-104">This article describes how to handle and customize error handling with ASP.NET Core web APIs.</span></span>
+<span data-ttu-id="3435c-104">이 문서에서는 ASP.NET Core 웹 API를 사용하여 오류를 처리하고 사용자 지정하는 방법을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-104">This article describes how to handle and customize error handling with ASP.NET Core web APIs.</span></span>
 
-<span data-ttu-id="73b3b-105">[샘플 코드 보기 또는 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/handle-errors/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="73b3b-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/handle-errors/samples) ([How to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="3435c-105">[샘플 코드 보기 또는 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/handle-errors/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="3435c-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/handle-errors/samples) ([How to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="developer-exception-page"></a><span data-ttu-id="73b3b-106">개발자 예외 페이지</span><span class="sxs-lookup"><span data-stu-id="73b3b-106">Developer Exception Page</span></span>
+## <a name="developer-exception-page"></a><span data-ttu-id="3435c-106">개발자 예외 페이지</span><span class="sxs-lookup"><span data-stu-id="3435c-106">Developer Exception Page</span></span>
 
-<span data-ttu-id="73b3b-107">[개발자 예외 페이지](xref:fundamentals/error-handling)는 서버 오류에 대한 자세한 스택 추적을 가져오는 데 유용한 도구입니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-107">The [Developer Exception Page](xref:fundamentals/error-handling) is a useful tool to get detailed stack traces for server errors.</span></span> <span data-ttu-id="73b3b-108">이것은 <xref:Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware>를 사용하여 HTTP 파이프라인에서 동기 및 비동기 예외를 캡처하고 오류 응답을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-108">It uses <xref:Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware> to capture synchronous and asynchronous exceptions from the HTTP pipeline and to generate error responses.</span></span> <span data-ttu-id="73b3b-109">설명하려면 다음 컨트롤러 작업을 고려하세요.</span><span class="sxs-lookup"><span data-stu-id="73b3b-109">To illustrate, consider the following controller action:</span></span>
+<span data-ttu-id="3435c-107">[개발자 예외 페이지](xref:fundamentals/error-handling)는 서버 오류에 대한 자세한 스택 추적을 가져오는 데 유용한 도구입니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-107">The [Developer Exception Page](xref:fundamentals/error-handling) is a useful tool to get detailed stack traces for server errors.</span></span> <span data-ttu-id="3435c-108">이것은 <xref:Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware>를 사용하여 HTTP 파이프라인에서 동기 및 비동기 예외를 캡처하고 오류 응답을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-108">It uses <xref:Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware> to capture synchronous and asynchronous exceptions from the HTTP pipeline and to generate error responses.</span></span> <span data-ttu-id="3435c-109">설명하려면 다음 컨트롤러 작업을 고려하세요.</span><span class="sxs-lookup"><span data-stu-id="3435c-109">To illustrate, consider the following controller action:</span></span>
 
 [!code-csharp[](handle-errors/samples/3.x/Controllers/WeatherForecastController.cs?name=snippet_GetByCity)]
 
-<span data-ttu-id="73b3b-110">다음 `curl` 명령을 실행하여 이전 작업을 테스트합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-110">Run the following `curl` command to test the preceding action:</span></span>
+<span data-ttu-id="3435c-110">다음 `curl` 명령을 실행하여 이전 작업을 테스트합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-110">Run the following `curl` command to test the preceding action:</span></span>
 
 ```bash
 curl -i https://localhost:5001/weatherforecast/chicago
@@ -45,7 +46,7 @@ curl -i https://localhost:5001/weatherforecast/chicago
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="73b3b-111">ASP.NET Core 3.0 이전에서 클라이언트가 HTML 형식의 출력을 요청하지 않는 경우 개발자 예외 페이지에 일반 텍스트 응답이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-111">In ASP.NET Core 3.0 and later, the Developer Exception Page displays a plain-text response if the client doesn't request HTML-formatted output.</span></span> <span data-ttu-id="73b3b-112">다음과 같은 출력이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-112">The following output appears:</span></span>
+<span data-ttu-id="3435c-111">ASP.NET Core 3.0 이전에서 클라이언트가 HTML 형식의 출력을 요청하지 않는 경우 개발자 예외 페이지에 일반 텍스트 응답이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-111">In ASP.NET Core 3.0 and later, the Developer Exception Page displays a plain-text response if the client doesn't request HTML-formatted output.</span></span> <span data-ttu-id="3435c-112">다음과 같은 출력이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-112">The following output appears:</span></span>
 
 ```console
 HTTP/1.1 500 Internal Server Error
@@ -79,19 +80,19 @@ Host: localhost:44312
 User-Agent: curl/7.55.1
 ```
 
-<span data-ttu-id="73b3b-113">HTML 형식의 응답을 대신 표시하려면 `Accept` HTTP 요청 헤더를 `text/html` 미디어 유형으로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-113">To display an HTML-formatted response instead, set the `Accept` HTTP request header to the `text/html` media type.</span></span> <span data-ttu-id="73b3b-114">다음은 그 예입니다. </span><span class="sxs-lookup"><span data-stu-id="73b3b-114">For example:</span></span>
+<span data-ttu-id="3435c-113">HTML 형식의 응답을 대신 표시하려면 `Accept` HTTP 요청 헤더를 `text/html` 미디어 유형으로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-113">To display an HTML-formatted response instead, set the `Accept` HTTP request header to the `text/html` media type.</span></span> <span data-ttu-id="3435c-114">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-114">For example:</span></span>
 
 ```bash
 curl -i -H "Accept: text/html" https://localhost:5001/weatherforecast/chicago
 ```
 
-<span data-ttu-id="73b3b-115">HTTP 응답에서 다음 발췌 내용을 살펴보세요.</span><span class="sxs-lookup"><span data-stu-id="73b3b-115">Consider the following excerpt from the HTTP response:</span></span>
+<span data-ttu-id="3435c-115">HTTP 응답에서 다음 발췌 내용을 살펴보세요.</span><span class="sxs-lookup"><span data-stu-id="3435c-115">Consider the following excerpt from the HTTP response:</span></span>
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.2"
 
-<span data-ttu-id="73b3b-116">ASP.NET Core 2.2 이전 버전에서 개발자 예외 페이지에는 HTML 형식 응답이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-116">In ASP.NET Core 2.2 and earlier, the Developer Exception Page displays an HTML-formatted response.</span></span> <span data-ttu-id="73b3b-117">예를 들어 HTTP 응답에서 다음 발췌 내용을 살펴보세요.</span><span class="sxs-lookup"><span data-stu-id="73b3b-117">For example, consider the following excerpt from the HTTP response:</span></span>
+<span data-ttu-id="3435c-116">ASP.NET Core 2.2 이전 버전에서 개발자 예외 페이지에는 HTML 형식 응답이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-116">In ASP.NET Core 2.2 and earlier, the Developer Exception Page displays an HTML-formatted response.</span></span> <span data-ttu-id="3435c-117">예를 들어 HTTP 응답에서 다음 발췌 내용을 살펴보세요.</span><span class="sxs-lookup"><span data-stu-id="3435c-117">For example, consider the following excerpt from the HTTP response:</span></span>
 
 ::: moniker-end
 
@@ -119,20 +120,20 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="73b3b-118">HTML 형식 응답은 Postman과 같은 도구를 사용하여 테스트하는 경우에 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-118">The HTML-formatted response becomes useful when testing via tools like Postman.</span></span> <span data-ttu-id="73b3b-119">다음 화면 캡처는 Postman에 표시되는 일반 텍스트와 HTML 형식 응답을 모두 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-119">The following screen capture shows both the plain-text and the HTML-formatted responses in Postman:</span></span>
+<span data-ttu-id="3435c-118">HTML 형식 응답은 Postman과 같은 도구를 사용하여 테스트하는 경우에 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-118">The HTML-formatted response becomes useful when testing via tools like Postman.</span></span> <span data-ttu-id="3435c-119">다음 화면 캡처는 Postman에 표시되는 일반 텍스트와 HTML 형식 응답을 모두 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-119">The following screen capture shows both the plain-text and the HTML-formatted responses in Postman:</span></span>
 
 ![Postman에서 개발자 예외 페이지 테스트](handle-errors/_static/developer-exception-page-postman.gif)
 
 ::: moniker-end
 
 > [!WARNING]
-> <span data-ttu-id="73b3b-121">**앱이 개발 환경에서 실행 중인 경우에만** 개발자 예외 페이지를 사용하도록 설정하세요.</span><span class="sxs-lookup"><span data-stu-id="73b3b-121">Enable the Developer Exception Page **only when the app is running in the Development environment**.</span></span> <span data-ttu-id="73b3b-122">프로덕션 환경에서 앱을 실행할 때 자세한 예외 정보를 공개적으로 공유하기를 원하지는 않을 것입니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-122">You don't want to share detailed exception information publicly when the app runs in production.</span></span> <span data-ttu-id="73b3b-123">환경 구성 방법에 대한 자세한 내용은 <xref:fundamentals/environments>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="73b3b-123">For more information on configuring environments, see <xref:fundamentals/environments>.</span></span>
+> <span data-ttu-id="3435c-121">**앱이 개발 환경에서 실행 중인 경우에만** 개발자 예외 페이지를 사용하도록 설정하세요.</span><span class="sxs-lookup"><span data-stu-id="3435c-121">Enable the Developer Exception Page **only when the app is running in the Development environment** .</span></span> <span data-ttu-id="3435c-122">프로덕션 환경에서 앱을 실행할 때 자세한 예외 정보를 공개적으로 공유하기를 원하지는 않을 것입니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-122">You don't want to share detailed exception information publicly when the app runs in production.</span></span> <span data-ttu-id="3435c-123">환경 구성 방법에 대한 자세한 내용은 <xref:fundamentals/environments>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="3435c-123">For more information on configuring environments, see <xref:fundamentals/environments>.</span></span>
 
-## <a name="exception-handler"></a><span data-ttu-id="73b3b-124">예외 처리기</span><span class="sxs-lookup"><span data-stu-id="73b3b-124">Exception handler</span></span>
+## <a name="exception-handler"></a><span data-ttu-id="3435c-124">예외 처리기</span><span class="sxs-lookup"><span data-stu-id="3435c-124">Exception handler</span></span>
 
-<span data-ttu-id="73b3b-125">비개발 환경에서는 [예외 처리 미들웨어](xref:fundamentals/error-handling)를 사용하여 오류 페이로드를 생성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-125">In non-development environments, [Exception Handling Middleware](xref:fundamentals/error-handling) can be used to produce an error payload:</span></span>
+<span data-ttu-id="3435c-125">비개발 환경에서는 [예외 처리 미들웨어](xref:fundamentals/error-handling)를 사용하여 오류 페이로드를 생성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-125">In non-development environments, [Exception Handling Middleware](xref:fundamentals/error-handling) can be used to produce an error payload:</span></span>
 
-1. <span data-ttu-id="73b3b-126">`Startup.Configure`에서 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A>를 호출하여 미들웨어를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-126">In `Startup.Configure`, invoke <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A> to use the middleware:</span></span>
+1. <span data-ttu-id="3435c-126">`Startup.Configure`에서 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A>를 호출하여 미들웨어를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-126">In `Startup.Configure`, invoke <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A> to use the middleware:</span></span>
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -146,7 +147,7 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-1. <span data-ttu-id="73b3b-127">`/error` 경로에 응답하도록 컨트롤러 작업을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-127">Configure a controller action to respond to the `/error` route:</span></span>
+1. <span data-ttu-id="3435c-127">`/error` 경로에 응답하도록 컨트롤러 작업을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-127">Configure a controller action to respond to the `/error` route:</span></span>
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -160,11 +161,11 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-<span data-ttu-id="73b3b-128">위의 `Error` 작업은 [RFC 7807](https://tools.ietf.org/html/rfc7807) 호환 페이로드를 클라이언트에 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-128">The preceding `Error` action sends an [RFC 7807](https://tools.ietf.org/html/rfc7807)-compliant payload to the client.</span></span>
+<span data-ttu-id="3435c-128">위의 `Error` 작업은 [RFC 7807](https://tools.ietf.org/html/rfc7807) 호환 페이로드를 클라이언트에 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-128">The preceding `Error` action sends an [RFC 7807](https://tools.ietf.org/html/rfc7807)-compliant payload to the client.</span></span>
 
-<span data-ttu-id="73b3b-129">예외 처리 미들웨어는 로컬 개발 환경에서 보다 자세한 콘텐츠 협상 출력을 제공할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-129">Exception Handling Middleware can also provide more detailed content-negotiated output in the local development environment.</span></span> <span data-ttu-id="73b3b-130">다음 단계를 사용하여 개발 및 프로덕션 환경에서 일관된 페이로드 형식을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-130">Use the following steps to produce a consistent payload format across development and production environments:</span></span>
+<span data-ttu-id="3435c-129">예외 처리 미들웨어는 로컬 개발 환경에서 보다 자세한 콘텐츠 협상 출력을 제공할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-129">Exception Handling Middleware can also provide more detailed content-negotiated output in the local development environment.</span></span> <span data-ttu-id="3435c-130">다음 단계를 사용하여 개발 및 프로덕션 환경에서 일관된 페이로드 형식을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-130">Use the following steps to produce a consistent payload format across development and production environments:</span></span>
 
-1. <span data-ttu-id="73b3b-131">`Startup.Configure`에서 환경별 예외 처리 미들웨어 인스턴스를 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-131">In `Startup.Configure`, register environment-specific Exception Handling Middleware instances:</span></span>
+1. <span data-ttu-id="3435c-131">`Startup.Configure`에서 환경별 예외 처리 미들웨어 인스턴스를 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-131">In `Startup.Configure`, register environment-specific Exception Handling Middleware instances:</span></span>
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -202,12 +203,12 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-    <span data-ttu-id="73b3b-132">위의 코드에서 미들웨어는 다음에 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-132">In the preceding code, the middleware is registered with:</span></span>
+    <span data-ttu-id="3435c-132">위의 코드에서 미들웨어는 다음에 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-132">In the preceding code, the middleware is registered with:</span></span>
 
-    * <span data-ttu-id="73b3b-133">개발 환경에서 `/error-local-development`의 경로.</span><span class="sxs-lookup"><span data-stu-id="73b3b-133">A route of `/error-local-development` in the Development environment.</span></span>
-    * <span data-ttu-id="73b3b-134">개발되지 않은 환경에서 `/error`의 경로.</span><span class="sxs-lookup"><span data-stu-id="73b3b-134">A route of `/error` in environments that aren't Development.</span></span>
+    * <span data-ttu-id="3435c-133">개발 환경에서 `/error-local-development`의 경로.</span><span class="sxs-lookup"><span data-stu-id="3435c-133">A route of `/error-local-development` in the Development environment.</span></span>
+    * <span data-ttu-id="3435c-134">개발되지 않은 환경에서 `/error`의 경로.</span><span class="sxs-lookup"><span data-stu-id="3435c-134">A route of `/error` in environments that aren't Development.</span></span>
     
-1. <span data-ttu-id="73b3b-135">컨트롤러 작업에 특성 라우팅 적용:</span><span class="sxs-lookup"><span data-stu-id="73b3b-135">Apply attribute routing to controller actions:</span></span>
+1. <span data-ttu-id="3435c-135">컨트롤러 작업에 특성 라우팅 적용:</span><span class="sxs-lookup"><span data-stu-id="3435c-135">Apply attribute routing to controller actions:</span></span>
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -221,21 +222,21 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-## <a name="use-exceptions-to-modify-the-response"></a><span data-ttu-id="73b3b-136">예외를 사용하여 응답 수정</span><span class="sxs-lookup"><span data-stu-id="73b3b-136">Use exceptions to modify the response</span></span>
+## <a name="use-exceptions-to-modify-the-response"></a><span data-ttu-id="3435c-136">예외를 사용하여 응답 수정</span><span class="sxs-lookup"><span data-stu-id="3435c-136">Use exceptions to modify the response</span></span>
 
-<span data-ttu-id="73b3b-137">응답의 내용은 컨트롤러 외부에서 수정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-137">The contents of the response can be modified from outside of the controller.</span></span> <span data-ttu-id="73b3b-138">ASP.NET 4.x Web API에서 이것을 수행하는 한 가지 방법은 <xref:System.Web.Http.HttpResponseException> 형식을 사용하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-138">In ASP.NET 4.x Web API, one way to do this was using the <xref:System.Web.Http.HttpResponseException> type.</span></span> <span data-ttu-id="73b3b-139">ASP.NET Core에는 동일한 형식이 포함되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-139">ASP.NET Core doesn't include an equivalent type.</span></span> <span data-ttu-id="73b3b-140">다음 단계로 `HttpResponseException`에 대한 지원을 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-140">Support for `HttpResponseException` can be added with the following steps:</span></span>
+<span data-ttu-id="3435c-137">응답의 내용은 컨트롤러 외부에서 수정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-137">The contents of the response can be modified from outside of the controller.</span></span> <span data-ttu-id="3435c-138">ASP.NET 4.x Web API에서 이것을 수행하는 한 가지 방법은 <xref:System.Web.Http.HttpResponseException> 형식을 사용하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-138">In ASP.NET 4.x Web API, one way to do this was using the <xref:System.Web.Http.HttpResponseException> type.</span></span> <span data-ttu-id="3435c-139">ASP.NET Core에는 동일한 형식이 포함되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-139">ASP.NET Core doesn't include an equivalent type.</span></span> <span data-ttu-id="3435c-140">다음 단계로 `HttpResponseException`에 대한 지원을 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-140">Support for `HttpResponseException` can be added with the following steps:</span></span>
 
-1. <span data-ttu-id="73b3b-141">`HttpResponseException`이라는 잘 알려진 예외 형식을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-141">Create a well-known exception type named `HttpResponseException`:</span></span>
+1. <span data-ttu-id="3435c-141">`HttpResponseException`이라는 잘 알려진 예외 형식을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-141">Create a well-known exception type named `HttpResponseException`:</span></span>
 
     [!code-csharp[](handle-errors/samples/3.x/Exceptions/HttpResponseException.cs?name=snippet_HttpResponseException)]
 
-1. <span data-ttu-id="73b3b-142">`HttpResponseExceptionFilter`이라는 작업 필터를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-142">Create an action filter named `HttpResponseExceptionFilter`:</span></span>
+1. <span data-ttu-id="3435c-142">`HttpResponseExceptionFilter`이라는 작업 필터를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-142">Create an action filter named `HttpResponseExceptionFilter`:</span></span>
 
     [!code-csharp[](handle-errors/samples/3.x/Filters/HttpResponseExceptionFilter.cs?name=snippet_HttpResponseExceptionFilter)]
 
-    <span data-ttu-id="73b3b-143">위의 필터에서 매직 number 10은 최대 정수 값에서 뺍니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-143">In the preceding filter, the magic number 10 is subtracted from the maximum integer value.</span></span> <span data-ttu-id="73b3b-144">이 숫자를 빼면 파이프라인의 끝에서 다른 필터를 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-144">Subtracting this number allows other filters to run at the very end of the pipeline.</span></span>
+    <span data-ttu-id="3435c-143">위의 필터에서 매직 number 10은 최대 정수 값에서 뺍니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-143">In the preceding filter, the magic number 10 is subtracted from the maximum integer value.</span></span> <span data-ttu-id="3435c-144">이 숫자를 빼면 파이프라인의 끝에서 다른 필터를 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-144">Subtracting this number allows other filters to run at the very end of the pipeline.</span></span>
 
-1. <span data-ttu-id="73b3b-145">`Startup.ConfigureServices`에서 필터 컬렉션에 작업 필터를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-145">In `Startup.ConfigureServices`, add the action filter to the filters collection:</span></span>
+1. <span data-ttu-id="3435c-145">`Startup.ConfigureServices`에서 필터 컬렉션에 작업 필터를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-145">In `Startup.ConfigureServices`, add the action filter to the filters collection:</span></span>
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -255,9 +256,9 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-## <a name="validation-failure-error-response"></a><span data-ttu-id="73b3b-146">유효성 검사 실패 오류 응답</span><span class="sxs-lookup"><span data-stu-id="73b3b-146">Validation failure error response</span></span>
+## <a name="validation-failure-error-response"></a><span data-ttu-id="3435c-146">유효성 검사 실패 오류 응답</span><span class="sxs-lookup"><span data-stu-id="3435c-146">Validation failure error response</span></span>
 
-<span data-ttu-id="73b3b-147">Web API 컨트롤러의 경우, 모델 유효성 검사에 실패하면 MVC는 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> 응답 형식으로 응답합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-147">For web API controllers, MVC responds with a <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> response type when model validation fails.</span></span> <span data-ttu-id="73b3b-148">MVC는 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory>의 결과를 사용하여 유효성 검사 실패에 대한 오류 응답을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-148">MVC uses the results of <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory> to construct the error response for a validation failure.</span></span> <span data-ttu-id="73b3b-149">다음 예제에서는 팩터리를 사용하여 `Startup.ConfigureServices`에서 기본 응답 형식을 <xref:Microsoft.AspNetCore.Mvc.SerializableError>로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-149">The following example uses the factory to change the default response type to <xref:Microsoft.AspNetCore.Mvc.SerializableError> in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="3435c-147">Web API 컨트롤러의 경우, 모델 유효성 검사에 실패하면 MVC는 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> 응답 형식으로 응답합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-147">For web API controllers, MVC responds with a <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> response type when model validation fails.</span></span> <span data-ttu-id="3435c-148">MVC는 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory>의 결과를 사용하여 유효성 검사 실패에 대한 오류 응답을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-148">MVC uses the results of <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory> to construct the error response for a validation failure.</span></span> <span data-ttu-id="3435c-149">다음 예제에서는 팩터리를 사용하여 `Startup.ConfigureServices`에서 기본 응답 형식을 <xref:Microsoft.AspNetCore.Mvc.SerializableError>로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-149">The following example uses the factory to change the default response type to <xref:Microsoft.AspNetCore.Mvc.SerializableError> in `Startup.ConfigureServices`:</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -277,29 +278,29 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
 ::: moniker-end
 
-## <a name="client-error-response"></a><span data-ttu-id="73b3b-150">클라이언트 오류 응답</span><span class="sxs-lookup"><span data-stu-id="73b3b-150">Client error response</span></span>
+## <a name="client-error-response"></a><span data-ttu-id="3435c-150">클라이언트 오류 응답</span><span class="sxs-lookup"><span data-stu-id="3435c-150">Client error response</span></span>
 
-<span data-ttu-id="73b3b-151">*오류 결과*는 400 이상의 HTTP 상태 코드를 가진 결과로 정의됩니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-151">An *error result* is defined as a result with an HTTP status code of 400 or higher.</span></span> <span data-ttu-id="73b3b-152">Web API 컨트롤러의 경우, MVC는 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>의 결과로 오류 결과를 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-152">For web API controllers, MVC transforms an error result to a result with <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>.</span></span>
+<span data-ttu-id="3435c-151">*오류 결과* 는 400 이상의 HTTP 상태 코드를 가진 결과로 정의됩니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-151">An *error result* is defined as a result with an HTTP status code of 400 or higher.</span></span> <span data-ttu-id="3435c-152">Web API 컨트롤러의 경우, MVC는 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>의 결과로 오류 결과를 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-152">For web API controllers, MVC transforms an error result to a result with <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>.</span></span>
 
 ::: moniker range="= aspnetcore-2.1"
 
 > [!IMPORTANT]
-> <span data-ttu-id="73b3b-153">ASP.NET Core 2.1은 RFC 7807을 거의 준수하는 문제 세부 정보 응답을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-153">ASP.NET Core 2.1 generates a problem details response that's nearly RFC 7807-compliant.</span></span> <span data-ttu-id="73b3b-154">100% 준수가 중요한 경우 프로젝트를 ASP.NET Core 2.2 이상으로 업그레이드하세요.</span><span class="sxs-lookup"><span data-stu-id="73b3b-154">If 100 percent compliance is important, upgrade the project to ASP.NET Core 2.2 or later.</span></span>
+> <span data-ttu-id="3435c-153">ASP.NET Core 2.1은 RFC 7807을 거의 준수하는 문제 세부 정보 응답을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-153">ASP.NET Core 2.1 generates a problem details response that's nearly RFC 7807-compliant.</span></span> <span data-ttu-id="3435c-154">100% 준수가 중요한 경우 프로젝트를 ASP.NET Core 2.2 이상으로 업그레이드하세요.</span><span class="sxs-lookup"><span data-stu-id="3435c-154">If 100 percent compliance is important, upgrade the project to ASP.NET Core 2.2 or later.</span></span>
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="73b3b-155">오류 응답은 다음 방법 중 하나로 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-155">The error response can be configured in one of the following ways:</span></span>
+<span data-ttu-id="3435c-155">오류 응답은 다음 방법 중 하나로 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-155">The error response can be configured in one of the following ways:</span></span>
 
-1. [<span data-ttu-id="73b3b-156">ProblemDetailsFactory 구현</span><span class="sxs-lookup"><span data-stu-id="73b3b-156">Implement ProblemDetailsFactory</span></span>](#implement-problemdetailsfactory)
-1. [<span data-ttu-id="73b3b-157">ApiBehaviorOptions.ClientErrorMapping 사용</span><span class="sxs-lookup"><span data-stu-id="73b3b-157">Use ApiBehaviorOptions.ClientErrorMapping</span></span>](#use-apibehavioroptionsclienterrormapping)
+1. [<span data-ttu-id="3435c-156">ProblemDetailsFactory 구현</span><span class="sxs-lookup"><span data-stu-id="3435c-156">Implement ProblemDetailsFactory</span></span>](#implement-problemdetailsfactory)
+1. [<span data-ttu-id="3435c-157">ApiBehaviorOptions.ClientErrorMapping 사용</span><span class="sxs-lookup"><span data-stu-id="3435c-157">Use ApiBehaviorOptions.ClientErrorMapping</span></span>](#use-apibehavioroptionsclienterrormapping)
 
-### <a name="implement-problemdetailsfactory"></a><span data-ttu-id="73b3b-158">`ProblemDetailsFactory` 구현</span><span class="sxs-lookup"><span data-stu-id="73b3b-158">Implement `ProblemDetailsFactory`</span></span>
+### <a name="implement-problemdetailsfactory"></a><span data-ttu-id="3435c-158">`ProblemDetailsFactory` 구현</span><span class="sxs-lookup"><span data-stu-id="3435c-158">Implement `ProblemDetailsFactory`</span></span>
 
-<span data-ttu-id="73b3b-159">MVC는 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory?displayProperty=fullName>를 사용하여 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> 및 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>의 모든 인스턴스를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-159">MVC uses <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory?displayProperty=fullName> to produce all instances of <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> and <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>.</span></span> <span data-ttu-id="73b3b-160">여기에는 클라이언트 오류 응답, 유효성 검사 실패 오류 응답, <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A?displayProperty=nameWithType> 및 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem%2A?displayProperty=nameWithType> 도우미 메서드가 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-160">This includes client error responses, validation failure error responses, and the <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A?displayProperty=nameWithType> and <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem%2A?displayProperty=nameWithType> helper methods.</span></span>
+<span data-ttu-id="3435c-159">MVC는 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory?displayProperty=fullName>를 사용하여 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> 및 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>의 모든 인스턴스를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-159">MVC uses <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory?displayProperty=fullName> to produce all instances of <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> and <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>.</span></span> <span data-ttu-id="3435c-160">여기에는 클라이언트 오류 응답, 유효성 검사 실패 오류 응답, <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A?displayProperty=nameWithType> 및 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem%2A?displayProperty=nameWithType> 도우미 메서드가 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-160">This includes client error responses, validation failure error responses, and the <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A?displayProperty=nameWithType> and <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem%2A?displayProperty=nameWithType> helper methods.</span></span>
 
-<span data-ttu-id="73b3b-161">문제 세부 정보 응답을 사용자 지정하려면 `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory>의 사용자 지정 구현을 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-161">To customize the problem details response, register a custom implementation of <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory> in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="3435c-161">문제 세부 정보 응답을 사용자 지정하려면 `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory>의 사용자 지정 구현을 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-161">To customize the problem details response, register a custom implementation of <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory> in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection serviceCollection)
@@ -313,15 +314,15 @@ public void ConfigureServices(IServiceCollection serviceCollection)
 
 ::: moniker range="= aspnetcore-2.2"
 
-<span data-ttu-id="73b3b-162">오류 응답은 [ApiBehaviorOptions.ClientErrorMapping 사용](#use-apibehavioroptionsclienterrormapping) 섹션에 설명된 대로 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-162">The error response can be configured as outlined in the [Use ApiBehaviorOptions.ClientErrorMapping](#use-apibehavioroptionsclienterrormapping) section.</span></span>
+<span data-ttu-id="3435c-162">오류 응답은 [ApiBehaviorOptions.ClientErrorMapping 사용](#use-apibehavioroptionsclienterrormapping) 섹션에 설명된 대로 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-162">The error response can be configured as outlined in the [Use ApiBehaviorOptions.ClientErrorMapping](#use-apibehavioroptionsclienterrormapping) section.</span></span>
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.2"
 
-### <a name="use-apibehavioroptionsclienterrormapping"></a><span data-ttu-id="73b3b-163">ApiBehaviorOptions.ClientErrorMapping 사용</span><span class="sxs-lookup"><span data-stu-id="73b3b-163">Use ApiBehaviorOptions.ClientErrorMapping</span></span>
+### <a name="use-apibehavioroptionsclienterrormapping"></a><span data-ttu-id="3435c-163">ApiBehaviorOptions.ClientErrorMapping 사용</span><span class="sxs-lookup"><span data-stu-id="3435c-163">Use ApiBehaviorOptions.ClientErrorMapping</span></span>
 
-<span data-ttu-id="73b3b-164"><xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping%2A> 속성을 사용하여 `ProblemDetails` 응답의 내용을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-164">Use the <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping%2A> property to configure the contents of the `ProblemDetails` response.</span></span> <span data-ttu-id="73b3b-165">예를 들어 `Startup.ConfigureServices` 내의 다음 코드는 404 응답에 대해 `type` 속성을 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="73b3b-165">For example, the following code in `Startup.ConfigureServices` updates the `type` property for 404 responses:</span></span>
+<span data-ttu-id="3435c-164"><xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping%2A> 속성을 사용하여 `ProblemDetails` 응답의 내용을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-164">Use the <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping%2A> property to configure the contents of the `ProblemDetails` response.</span></span> <span data-ttu-id="3435c-165">예를 들어 `Startup.ConfigureServices` 내의 다음 코드는 404 응답에 대해 `type` 속성을 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="3435c-165">For example, the following code in `Startup.ConfigureServices` updates the `type` property for 404 responses:</span></span>
 
 ::: moniker-end
 
