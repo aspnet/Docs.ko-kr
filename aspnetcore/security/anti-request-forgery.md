@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, devx-track-js
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/anti-request-forgery
-ms.openlocfilehash: 201ffe692c1ded3661a5e1ac566f90b29d61ce9e
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 197954965ee57b2a44ad0217d79ba142114e7df6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690344"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060848"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>ASP.NET Core에서 교차 사이트 요청 위조 (XSRF/CSRF) 공격 방지
 
@@ -221,7 +222,7 @@ services.AddAntiforgery(options =>
 
 &dagger;`Cookie` [ Cookie 작성기](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder) 클래스의 속성을 사용 하 여 위조 방지 속성을 설정 합니다.
 
-| 옵션 | Description |
+| 옵션 | 설명 |
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | 위조 방지를 만드는 데 사용 되는 설정을 결정 합니다 cookie . |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | 위조 방지 시스템이 뷰에서 위조 방지 토큰을 렌더링 하는 데 사용 하는 숨겨진 양식 필드의 이름입니다. |
@@ -245,12 +246,12 @@ services.AddAntiforgery(options =>
 });
 ```
 
-| 옵션 | Description |
+| 옵션 | 설명 |
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | 위조 방지를 만드는 데 사용 되는 설정을 결정 합니다 cookie . |
 | [Cookie도메인](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | 의 도메인 cookie 입니다. 기본값은 `null`입니다. 이 속성은 사용 되지 않으며 이후 버전에서 제거 될 예정입니다. 대신를 사용할 것을 권장 합니다 Cookie . 도메인. |
 | [CookieName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | cookie의 이름입니다. 설정 하지 않으면 시스템은 [기본 Cookie 접두사](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (")로 시작 하는 고유한 이름을 생성 합니다. AspNetCore. "). 이 속성은 사용 되지 않으며 이후 버전에서 제거 될 예정입니다. 대신를 사용할 것을 권장 합니다 Cookie . 이름의. |
-| [Cookie경로](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | 에 설정 된 경로 cookie 입니다. 이 속성은 사용 되지 않으며 이후 버전에서 제거 될 예정입니다. 대신를 사용할 것을 권장 합니다 Cookie . Path. |
+| [CookiePath](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | 에 설정 된 경로 cookie 입니다. 이 속성은 사용 되지 않으며 이후 버전에서 제거 될 예정입니다. 대신를 사용할 것을 권장 합니다 Cookie . Path. |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | 위조 방지 시스템이 뷰에서 위조 방지 토큰을 렌더링 하는 데 사용 하는 숨겨진 양식 필드의 이름입니다. |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | 위조 방지 시스템에서 사용 하는 헤더의 이름입니다. 이면 `null` 시스템은 폼 데이터만 고려 합니다. |
 | [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | 위조 방지 시스템에 HTTPS가 필요한 지 여부를 지정 합니다. 이면 `true` HTTPS가 아닌 요청이 실패 합니다. 기본값은 `false`입니다. 이 속성은 사용 되지 않으며 이후 버전에서 제거 될 예정입니다. 대신를 설정 하는 것이 좋습니다 Cookie . SecurePolicy. |

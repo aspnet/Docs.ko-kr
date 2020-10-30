@@ -5,6 +5,7 @@ description: ASP.NET Core 데이터 보호 키 저장소 형식에 대 한 구�
 ms.author: riande
 ms.date: 04/08/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-format
-ms.openlocfilehash: daf86d3e3357d42ddad74d5e2f06e00e0e24db07
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 4a8503964c98d1828dc9d02640a7621b370e679c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631994"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060146"
 ---
 # <a name="key-storage-format-in-aspnet-core"></a>ASP.NET Core의 키 저장소 형식
 
@@ -34,7 +35,7 @@ ms.locfileid: "88631994"
 
 ## <a name="the-key-element"></a>\<key> 요소
 
-키가 키 리포지토리에서 최상위 개체로 존재 합니다. 규칙에 따라 키에는 파일 이름 **-{guid} .xml**이 있습니다. 여기서 {guid}는 키의 id입니다. 이러한 각 파일에는 단일 키가 포함 되어 있습니다. 파일 형식은 다음과 같습니다.
+키가 키 리포지토리에서 최상위 개체로 존재 합니다. 규칙에 따라 키에는 파일 이름 **-{guid} .xml** 이 있습니다. 여기서 {guid}는 키의 id입니다. 이러한 각 파일에는 단일 키가 포함 되어 있습니다. 파일 형식은 다음과 같습니다.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -77,7 +78,7 @@ ms.locfileid: "88631994"
 
 ## <a name="the-encryptedsecret-element"></a>\<encryptedSecret> 요소
 
-[미사용 비밀 암호화를 사용 하는](xref:security/data-protection/implementation/key-encryption-at-rest)경우 비밀 키 자료의 암호화 된 형식을 포함 하는 ** &lt; encryptedsecret &gt; ** 요소가 있을 수 있습니다. 특성은 `decryptorType` [IXmlDecryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmldecryptor)을 구현 하는 형식의 어셈블리로 한정 된 이름입니다. 이 형식은 내부 ** &lt; encryptedKey &gt; ** 요소를 읽고 암호를 해독 하 여 원래 일반 텍스트를 복구 합니다.
+[미사용 비밀 암호화를 사용 하는](xref:security/data-protection/implementation/key-encryption-at-rest)경우 비밀 키 자료의 암호화 된 형식을 포함 하는 **&lt; encryptedsecret &gt;** 요소가 있을 수 있습니다. 특성은 `decryptorType` [IXmlDecryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmldecryptor)을 구현 하는 형식의 어셈블리로 한정 된 이름입니다. 이 형식은 내부 **&lt; encryptedKey &gt;** 요소를 읽고 암호를 해독 하 여 원래 일반 텍스트를 복구 합니다.
 
 와 마찬가지로 `<descriptor>` 요소의 특정 형식은 `<encryptedSecret>` 사용 중인 미사용 암호화 메커니즘에 따라 달라 집니다. 위의 예제에서 마스터 키는 주석에 따라 Windows DPAPI를 사용 하 여 암호화 됩니다.
 

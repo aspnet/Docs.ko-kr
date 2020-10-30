@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/policies
-ms.openlocfilehash: 140969c80191c9549bc19507b9c4818b88fed0d1
-ms.sourcegitcommit: c026bf76a0e14a5ee68983519a63574c674e9ff7
+ms.openlocfilehash: 286dc3bcc66b86a2a6b7d3cb7b6052bf7b474aff
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91636805"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060211"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>ASP.NET Core에서 정책 기반 권한 부여
 
@@ -122,17 +123,17 @@ public void ConfigureServices(IServiceCollection services)
 
 페이지를 사용 하 Razor 는 경우이 문서의 [ Razor 페이지에 정책 적용](#apply-policies-to-razor-pages) 을 참조 하세요.
 
-정책은 정책 이름으로 특성을 사용 하 여 컨트롤러에 적용 됩니다 `[Authorize]` . 예를 들면 다음과 같습니다.
+정책은 정책 이름으로 특성을 사용 하 여 컨트롤러에 적용 됩니다 `[Authorize]` . 다음은 그 예입니다.
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
 ## <a name="apply-policies-to-no-locrazor-pages"></a>페이지에 정책 적용 Razor
 
-정책은 Razor `[Authorize]` 정책 이름이 있는 특성을 사용 하 여 페이지에 적용 됩니다. 예를 들면 다음과 같습니다.
+정책은 Razor `[Authorize]` 정책 이름이 있는 특성을 사용 하 여 페이지에 적용 됩니다. 다음은 그 예입니다.
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-정책은 페이지 처리기 수준에서 적용할 수 ***없으며*** Razor 페이지에 적용 되어야 합니다.
+정책은 페이지 처리기 **not** 수준에서 적용 될 수 없습니다 Razor . 페이지에 적용 되어야 합니다.
 
 Razor [권한 부여 규칙](xref:security/authorization/razor-pages-authorization)을 사용 하 여 페이지에 정책을 적용할 수 있습니다.
 
@@ -142,7 +143,7 @@ Razor [권한 부여 규칙](xref:security/authorization/razor-pages-authorizati
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Requirements/MinimumAgeRequirement.cs?name=snippet_MinimumAgeRequirementClass)]
 
-권한 부여 정책에 여러 권한 부여 요구 사항이 포함 된 경우 정책 평가가 성공 하려면 모든 요구 사항이 통과 해야 합니다. 즉, 단일 권한 부여 정책에 추가 된 여러 권한 부여 요구 사항은 **및** 기준으로 처리 됩니다.
+권한 부여 정책에 여러 권한 부여 요구 사항이 포함 된 경우 정책 평가가 성공 하려면 모든 요구 사항이 통과 해야 합니다. 즉, 단일 권한 부여 정책에 추가 된 여러 권한 부여 요구 사항은 _ *및* * 단위로 처리 됩니다.
 
 > [!NOTE]
 > 요구 사항에는 데이터 또는 속성이 필요 하지 않습니다.
@@ -177,7 +178,7 @@ Razor [권한 부여 규칙](xref:security/authorization/razor-pages-authorizati
 
 ### <a name="handler-registration"></a>처리기 등록
 
-처리기는 구성 하는 동안 서비스 컬렉션에 등록 됩니다. 예를 들면 다음과 같습니다.
+처리기는 구성 하는 동안 서비스 컬렉션에 등록 됩니다. 다음은 그 예입니다.
 
 [!code-csharp[](policies/samples/3.0PoliciesAuthApp1/Startup.cs?range=31-32,39-40,42-45, 53-55, 58)]
 
@@ -202,7 +203,7 @@ Razor [권한 부여 규칙](xref:security/authorization/razor-pages-authorizati
 
 ## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>요구 사항에 대 한 여러 처리기가 필요한 이유는 무엇 인가요?
 
-평가를 **또는** 기준으로 하려는 경우 단일 요구 사항에 대 한 여러 처리기를 구현 합니다. 예를 들어 Microsoft에는 키 카드만 여는 문이 있습니다. 키 카드를 집에서 벗어나면 접수원는 임시 스티커를 인쇄 하 고 도어를 엽니다. 이 시나리오에서는 단일 요구 사항이 *BuildingEntry*하나는 단일 요구 사항을 검사 합니다.
+평가를 **또는** 기준으로 하려는 경우 단일 요구 사항에 대 한 여러 처리기를 구현 합니다. 예를 들어 Microsoft에는 키 카드만 여는 문이 있습니다. 키 카드를 집에서 벗어나면 접수원는 임시 스티커를 인쇄 하 고 도어를 엽니다. 이 시나리오에서는 단일 요구 사항이 *BuildingEntry* 하나는 단일 요구 사항을 검사 합니다.
 
 *BuildingEntryRequirement.cs*
 
@@ -230,7 +231,7 @@ Razor [권한 부여 규칙](xref:security/authorization/razor-pages-authorizati
 
 `HandleRequirementAsync`권한 부여 처리기에서 구현 하는 메서드에는 두 개의 매개 변수인 `AuthorizationHandlerContext` 및를 `TRequirement` 처리 하 고 있습니다. MVC 또는와 같은 프레임 워크 SignalR `Resource` 는 `AuthorizationHandlerContext` 추가 정보를 전달 하기 위해 개체를의 속성에 자유롭게 추가할 수 있습니다.
 
-끝점 라우팅을 사용 하는 경우 권한 부여는 일반적으로 권한 부여 미들웨어에 의해 처리 됩니다. 이 경우 `Resource` 속성은의 인스턴스입니다 <xref:Microsoft.AspNetCore.Http.Endpoint> . 끝점을 사용 하 여 라우팅하는 기본 리소스를 검색할 수 있습니다. 예를 들면 다음과 같습니다.
+끝점 라우팅을 사용 하는 경우 권한 부여는 일반적으로 권한 부여 미들웨어에 의해 처리 됩니다. 이 경우 `Resource` 속성은의 인스턴스입니다 <xref:Microsoft.AspNetCore.Http.Endpoint> . 끝점을 사용 하 여 라우팅하는 기본 리소스를 검색할 수 있습니다. 다음은 그 예입니다.
 
 ```csharp
 if (context.Resource is Endpoint endpoint)
@@ -358,13 +359,13 @@ public void ConfigureServices(IServiceCollection services)
 
 페이지를 사용 하 Razor 는 경우이 문서의 [ Razor 페이지에 정책 적용](#apply-policies-to-razor-pages) 을 참조 하세요.
 
-정책은 정책 이름으로 특성을 사용 하 여 컨트롤러에 적용 됩니다 `[Authorize]` . 예를 들면 다음과 같습니다.
+정책은 정책 이름으로 특성을 사용 하 여 컨트롤러에 적용 됩니다 `[Authorize]` . 다음은 그 예입니다.
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
 ## <a name="apply-policies-to-no-locrazor-pages"></a>페이지에 정책 적용 Razor
 
-정책은 Razor `[Authorize]` 정책 이름이 있는 특성을 사용 하 여 페이지에 적용 됩니다. 예를 들면 다음과 같습니다.
+정책은 Razor `[Authorize]` 정책 이름이 있는 특성을 사용 하 여 페이지에 적용 됩니다. 다음은 그 예입니다.
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
@@ -411,7 +412,7 @@ Razor [권한 부여 규칙](xref:security/authorization/razor-pages-authorizati
 
 ### <a name="handler-registration"></a>처리기 등록
 
-처리기는 구성 하는 동안 서비스 컬렉션에 등록 됩니다. 예를 들면 다음과 같습니다.
+처리기는 구성 하는 동안 서비스 컬렉션에 등록 됩니다. 다음은 그 예입니다.
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=32-33,48-53,61,62-63,66)]
 
@@ -436,7 +437,7 @@ Razor [권한 부여 규칙](xref:security/authorization/razor-pages-authorizati
 
 ## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>요구 사항에 대 한 여러 처리기가 필요한 이유는 무엇 인가요?
 
-평가를 **또는** 기준으로 하려는 경우 단일 요구 사항에 대 한 여러 처리기를 구현 합니다. 예를 들어 Microsoft에는 키 카드만 여는 문이 있습니다. 키 카드를 집에서 벗어나면 접수원는 임시 스티커를 인쇄 하 고 도어를 엽니다. 이 시나리오에서는 단일 요구 사항이 *BuildingEntry*하나는 단일 요구 사항을 검사 합니다.
+평가를 **또는** 기준으로 하려는 경우 단일 요구 사항에 대 한 여러 처리기를 구현 합니다. 예를 들어 Microsoft에는 키 카드만 여는 문이 있습니다. 키 카드를 집에서 벗어나면 접수원는 임시 스티커를 인쇄 하 고 도어를 엽니다. 이 시나리오에서는 단일 요구 사항이 *BuildingEntry* 하나는 단일 요구 사항을 검사 합니다.
 
 *BuildingEntryRequirement.cs*
 

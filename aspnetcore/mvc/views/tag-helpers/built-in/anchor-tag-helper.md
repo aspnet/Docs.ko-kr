@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/13/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: fcb58e2e0bfc6598edeb8c7f79986c3faf84e316
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d39db59b0fc273fe4193a4864f302ecd3f4ad348
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633931"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060913"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>ASP.NET Core의 앵커 태그 도우미
 
@@ -34,7 +35,7 @@ ms.locfileid: "88633931"
 
 [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
-이 문서의 예제 전반에서는 다음의 *SpeakerController*가 사용됩니다.
+이 문서의 예제 전반에서는 다음의 *SpeakerController* 가 사용됩니다.
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?name=snippet_SpeakerController)]
 
@@ -52,7 +53,7 @@ ms.locfileid: "88633931"
 <a href="/Speaker">All Speakers</a>
 ```
 
-`asp-controller` 특성이 지정되고 `asp-action`이 지정되지 않으면, 기본 `asp-action` 값은 현재 실행 중인 보기와 연결된 컨트롤러 작업입니다. *HomeController*의 *Index* 뷰(*/Home*)에서 위의 태그에서 `asp-action`을 생략한 앵커 태그 도우미를 사용할 경우, 생성되는 HTML은 다음과 같습니다.
+`asp-controller` 특성이 지정되고 `asp-action`이 지정되지 않으면, 기본 `asp-action` 값은 현재 실행 중인 보기와 연결된 컨트롤러 작업입니다. *HomeController* 의 *Index* 뷰( */Home* )에서 위의 태그에서 `asp-action`을 생략한 앵커 태그 도우미를 사용할 경우, 생성되는 HTML은 다음과 같습니다.
 
 ```html
 <a href="/Home">All Speakers</a>
@@ -82,7 +83,7 @@ ms.locfileid: "88633931"
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Controllers/BuiltInTagController.cs?name=snippet_AnchorTagHelperAction)]
 
-*Startup.Configure*에 정의된 기본 경로 템플릿을 사용할 경우:
+*Startup.Configure* 에 정의된 기본 경로 템플릿을 사용할 경우:
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=8-10)]
 
@@ -225,11 +226,11 @@ Razor 페이지 영역은 ASP.NET Core 2.1 이상에서 지원 됩니다.
 * **{프로젝트 이름}**
   * **wwwroot**
   * **Areas**
-    * **블로그**
+    * **Blogs**
       * **컨트롤러**
         * *HomeController.cs*
       * **Views**
-        * **Home**
+        * **홈**
           * *AboutBlog.cshtml*
           * *Index.cshtml*
         * *\_ViewStart. cshtml*
@@ -246,13 +247,13 @@ Razor 페이지 영역은 ASP.NET Core 2.1 이상에서 지원 됩니다.
 ```
 
 > [!TIP]
-> MVC 앱에서 영역을 지원하려면 경로 템플릿에 해당 영역에 대한 참조가 포함되어야 합니다(존재할 경우). 해당 템플릿은 *Startup.Configure*에서 `routes.MapRoute` 메서드 호출의 두 번째 매개 변수에 표시됩니다.
+> MVC 앱에서 영역을 지원하려면 경로 템플릿에 해당 영역에 대한 참조가 포함되어야 합니다(존재할 경우). 해당 템플릿은 *Startup.Configure* 에서 `routes.MapRoute` 메서드 호출의 두 번째 매개 변수에 표시됩니다.
 >
 > [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
 ### <a name="asp-protocol"></a>asp-protocol
 
-[asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) 특성은 URL에서 프로토콜(예: `https`)을 지정하는 데 사용됩니다. 다음은 그 예입니다. 
+[asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) 특성은 URL에서 프로토콜(예: `https`)을 지정하는 데 사용됩니다. 다음은 그 예입니다.
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspProtocol)]
 
@@ -266,7 +267,7 @@ Razor 페이지 영역은 ASP.NET Core 2.1 이상에서 지원 됩니다.
 
 ### <a name="asp-host"></a>asp-host
 
-[asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) 특성은 URL에 호스트 이름을 지정하는 데 사용됩니다. 다음은 그 예입니다. 
+[asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) 특성은 URL에 호스트 이름을 지정하는 데 사용됩니다. 다음은 그 예입니다.
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspHost)]
 
@@ -318,7 +319,7 @@ Razor 페이지 영역은 ASP.NET Core 2.1 이상에서 지원 됩니다.
 <a href="/Attendee?attendeeid=12&handler=Profile">Attendee Profile</a>
 ```
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:mvc/controllers/areas>
 * <xref:razor-pages/index>

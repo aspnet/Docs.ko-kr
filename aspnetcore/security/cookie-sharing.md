@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cookie-sharing
-ms.openlocfilehash: 6ac808d11790ae27e82606b442ff215d95b93e41
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 8f54f2e4894328f8471d5f80c8184839ce47add6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631370"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059691"
 ---
 # <a name="share-authentication-no-loccookies-among-aspnet-apps"></a>cookieASP.NET apps 간에 인증 공유
 
@@ -49,7 +50,7 @@ Websites는 일반적으로 함께 작동 하는 개별 웹 앱으로 구성 됩
 
 ASP.NET Core Identity를 사용하는 경우:
 
-* 데이터 보호 키와 앱 이름은 앱 간에 공유 되어야 합니다. 다음 예에서는 일반 키 저장소 위치가 메서드에 제공 됩니다 <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.PersistKeysToFileSystem*> . <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*>다음 예에서는를 사용 하 여 공통 공유 앱 이름을 구성 `SharedCookieApp` 합니다. 자세한 내용은 <xref:security/data-protection/configuration/overview>을 참조하세요.
+* 데이터 보호 키와 앱 이름은 앱 간에 공유 되어야 합니다. 다음 예에서는 일반 키 저장소 위치가 메서드에 제공 됩니다 <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.PersistKeysToFileSystem*> . <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*>다음 예에서는를 사용 하 여 공통 공유 앱 이름을 구성 `SharedCookieApp` 합니다. 자세한 내용은 <xref:security/data-protection/configuration/overview>를 참조하세요.
 * <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.ConfigureApplicationCookie*>확장 메서드를 사용 하 여에 대 한 데이터 보호 서비스를 설정 cookie 합니다.
 * 기본 인증 형식은 `Identity.Application` 입니다.
 
@@ -106,7 +107,7 @@ options.Cookie.Domain = ".contoso.com";
 
 ## <a name="encrypt-data-protection-keys-at-rest"></a>휴지 상태의 데이터 보호 키 암호화
 
-프로덕션 배포의 경우 `DataProtectionProvider` DPAPI 또는 X509Certificate를 사용 하 여 미사용 키를 암호화 하도록를 구성 합니다. 자세한 내용은 <xref:security/data-protection/implementation/key-encryption-at-rest>을 참조하세요. 다음 예제에서는에 대 한 인증서 지문을 제공 합니다 <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.ProtectKeysWithCertificate*> .
+프로덕션 배포의 경우 `DataProtectionProvider` DPAPI 또는 X509Certificate를 사용 하 여 미사용 키를 암호화 하도록를 구성 합니다. 자세한 내용은 <xref:security/data-protection/implementation/key-encryption-at-rest>를 참조하세요. 다음 예제에서는에 대 한 인증서 지문을 제공 합니다 <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.ProtectKeysWithCertificate*> .
 
 ```csharp
 services.AddDataProtection()
@@ -134,7 +135,7 @@ cookieASP.NET 4.x 앱과 ASP.NET Core 앱 간의 인증을 공유 하려면 [ co
 
 및를 설정 하지 않으면 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` `http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider` <xref:System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier> 고유한 사용자를 구별 하는 클레임으로 설정 합니다.
 
-*App_Start/startup.auth.cs*:
+*App_Start/startup.auth.cs* :
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -167,9 +168,9 @@ System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier =
     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name";
 ```
 
-사용자 id를 생성 하는 경우 인증 유형 ( `Identity.Application` )이 `AuthenticationType` `UseCookieAuthentication` *App_Start/startup.auth.cs*의로 설정 된에 정의 된 유형과 일치 해야 합니다.
+사용자 id를 생성 하는 경우 인증 유형 ( `Identity.Application` )이 `AuthenticationType` `UseCookieAuthentication` *App_Start/startup.auth.cs* 의로 설정 된에 정의 된 유형과 일치 해야 합니다.
 
-*모델/ Identity Models.cs*:
+*모델/ Identity Models.cs* :
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -195,6 +196,6 @@ public class ApplicationUser : IdentityUser
 
 앱에서 Identity 스키마가 서로 다를 때, 일반적으로 앱이 서로 다른 버전을 사용 하기 때문에 Identity 최신 버전을 기반으로 하는 공통 데이터베이스를 공유 하는 것은 Identity 다른 앱의 스키마에서 열을 다시 매핑 및 추가 하지 않고도 가능 Identity 합니다 Identity앱에서 공통 데이터베이스를 공유할 수 있도록 최신 버전을 사용 하도록 다른 앱을 업그레이드 하는 것이 더 효율적입니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:host-and-deploy/web-farm>

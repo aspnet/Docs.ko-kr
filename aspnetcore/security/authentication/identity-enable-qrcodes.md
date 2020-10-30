@@ -5,6 +5,7 @@ description: ASP.NET Core 2 단계 인증을 사용 하는 TOTP authenticator �
 ms.author: riande
 ms.date: 08/14/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: e61aa925262fc9fe25c7bb2d37958cfaa308aeaf
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b778e7238911ec9966edf7f0f7becd113b1e197a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630798"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060835"
 ---
 # <a name="enable-qr-code-generation-for-totp-authenticator-apps-in-aspnet-core"></a>ASP.NET Core에서 TOTP authenticator 앱에 대 한 QR 코드 생성 사용
 
@@ -49,8 +50,8 @@ ASP.NET Core 웹 앱 템플릿은 인증자을 지원 하지만 QRCode 생성에
 
 ::: moniker range=">= aspnetcore-2.1"
 
-* [스 캐 폴드 Identity ](xref:security/authentication/scaffold-identity) 의 지침에 따라 */Areas/ Identity /Pages/Account/Manage/EnableAuthenticator.cshtml*을 생성 합니다.
-* */Areas/ Identity /Pages/Account/Manage/EnableAuthenticator.cshtml*에서 파일 끝에 있는 섹션을 찾습니다 `Scripts` .
+* [스 캐 폴드 Identity](xref:security/authentication/scaffold-identity) 의 지침에 따라 */Areas/ Identity /Pages/Account/Manage/EnableAuthenticator.cshtml* 을 생성 합니다.
+* */Areas/ Identity /Pages/Account/Manage/EnableAuthenticator.cshtml* 에서 파일 끝에 있는 섹션을 찾습니다 `Scripts` .
 
 ::: moniker-end
 
@@ -96,7 +97,7 @@ ASP.NET Core 웹 앱 템플릿은 인증자을 지원 하지만 QRCode 생성에
 
 ::: moniker range=">= aspnetcore-2.1"
 
-QR 코드의 사이트 이름은 처음 프로젝트를 만들 때 선택한 프로젝트 이름에서 가져옵니다. `GenerateQrCodeUri(string email, string unformattedKey)` */Areas/ Identity /Pages/Account/Manage/EnableAuthenticator.cshtml.cs*에서 메서드를 검색 하 여 변경할 수 있습니다.
+QR 코드의 사이트 이름은 처음 프로젝트를 만들 때 선택한 프로젝트 이름에서 가져옵니다. `GenerateQrCodeUri(string email, string unformattedKey)` */Areas/ Identity /Pages/Account/Manage/EnableAuthenticator.cshtml.cs* 에서 메서드를 검색 하 여 변경할 수 있습니다.
 
 ::: moniker-end
 
@@ -134,6 +135,6 @@ QR 코드에 대해 올바른 형식의 URL은에서 사용할 수 있습니다.
 
 ## <a name="totp-client-and-server-time-skew"></a>TOTP 클라이언트 및 서버 시간 오차
 
-TOTP (시간 기반 일회용 암호) 인증은 서버 및 인증자 장치에 정확한 시간이 있는 경우에 따라 달라 집니다. 토큰은 30 초 동안만 지속 됩니다. TOTP 2FA 로그인이 실패 하는 경우 서버 시간이 정확 하 고 정확한 NTP 서비스와 동기화 될 수 있는지 확인 합니다.
+TOTP (시간 기반 One-Time 암호) 인증은 서버 및 인증자 장치에 정확한 시간이 있는 경우에 따라 달라 집니다. 토큰은 30 초 동안만 지속 됩니다. TOTP 2FA 로그인이 실패 하는 경우 서버 시간이 정확 하 고 정확한 NTP 서비스와 동기화 될 수 있는지 확인 합니다.
 
 ::: moniker-end

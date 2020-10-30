@@ -5,6 +5,7 @@ description: MVC 요소가 ASP.NET Core에서 작동하는 방법을 수정하�
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/application-model
-ms.openlocfilehash: f2e86a8607ddd00dc7f4bec36079660f0cd1eea3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a7a654eb43c0dbf375af911d8d5353ac4c04a825
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630291"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060939"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>ASP.NET Core에서 애플리케이션 모델 작업
 
 작성자: [Steve Smith](https://ardalis.com/)
 
-ASP.NET Core MVC는 MVC 앱의 구성 요소를 나타내는 *응용 프로그램 모델*을 정의합니다. 이 모델을 읽고 조작하여 MVC 요소의 작동 방법을 수정할 수 있습니다. 기본적으로 MVC는 어떤 클래스가 컨트롤러로 간주되는지, 해당 클래스의 어떤 메서드가 작업인지 및 매개 변수와 라우팅의 작동 방법을 결정하는 특정 규칙을 따릅니다. 고유한 규칙을 만들고 전역으로 또는 특성으로 적용하여 앱의 요구 사항에 맞게 이 동작을 사용자 지정할 수 있습니다.
+ASP.NET Core MVC는 MVC 앱의 구성 요소를 나타내는 *응용 프로그램 모델* 을 정의합니다. 이 모델을 읽고 조작하여 MVC 요소의 작동 방법을 수정할 수 있습니다. 기본적으로 MVC는 어떤 클래스가 컨트롤러로 간주되는지, 해당 클래스의 어떤 메서드가 작업인지 및 매개 변수와 라우팅의 작동 방법을 결정하는 특정 규칙을 따릅니다. 고유한 규칙을 만들고 전역으로 또는 특성으로 적용하여 앱의 요구 사항에 맞게 이 동작을 사용자 지정할 수 있습니다.
 
 ## <a name="models-and-providers"></a>모델 및 공급자
 
@@ -141,7 +142,7 @@ Then(`Order=-990`):
 
 ### <a name="sample-modifying-the-actionmodel-name"></a>샘플: ActionModel 이름 수정
 
-다음 규칙은 적용되는 작업의 *이름*을 업데이트하도록 `ActionModel`을 수정합니다. 새 이름은 특성에 대한 매개 변수로 제공됩니다. 라우팅에서 새 이름을 사용하므로 이 작업 메서드에 연결하는 데 사용되는 경로에 영향을 줍니다.
+다음 규칙은 적용되는 작업의 *이름* 을 업데이트하도록 `ActionModel`을 수정합니다. 새 이름은 특성에 대한 매개 변수로 제공됩니다. 라우팅에서 새 이름을 사용하므로 이 작업 메서드에 연결하는 데 사용되는 경로에 영향을 줍니다.
 
 [!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/CustomActionNameAttribute.cs)]
 

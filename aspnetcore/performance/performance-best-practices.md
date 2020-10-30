@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 01575ec87d2d346da7367523ca5e257d53de4983
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: a3fc398569fafefc0b4634e80433a5d4e0e1b4ff
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722620"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061004"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>ASP.NET Core 성능 모범 사례
 
@@ -44,13 +45,13 @@ ASP.NET Core 앱은 여러 요청을 동시에 처리 하도록 설계 해야 �
 
 ASP.NET Core 앱의 일반적인 성능 문제는 비동기 일 수 있는 호출을 차단 하는 것입니다. 많은 동기 차단 호출이 [스레드 풀 고갈](/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall) 및 저하 된 응답 시간을 초래 합니다.
 
-안 **함**:
+안 **함** :
 
 * [작업. 대기](/dotnet/api/system.threading.tasks.task.wait) 또는 [작업](/dotnet/api/system.threading.tasks.task-1.result)을 호출 하 여 비동기 실행을 차단 합니다.
 * 공용 코드 경로에서 잠금을 가져옵니다. ASP.NET Core 앱은 코드를 병렬로 실행 하도록 설계 될 때 가장 효율적입니다.
 * 작업을 호출 [합니다 .를 실행](/dotnet/api/system.threading.tasks.task.run) 하 고 즉시 기다립니다. ASP.NET Core는 정상적인 스레드 풀 스레드에서 이미 앱 코드를 실행 하 고 있으므로 작업을 호출 하면 추가 불필요 한 스레드 풀 예약이 발생 합니다. 예약 된 코드에서 스레드를 차단 하는 경우에도 작업. 실행은이를 방지 하지 않습니다.
 
-**Do**:
+**Do** :
 
 * [핫 코드 경로](#understand-hot-code-paths) 를 비동기식으로 만듭니다.
 * 비동기 API를 사용할 수 있는 경우 데이터 액세스, i/o 및 장기 실행 작업 Api를 비동기적으로 호출 합니다. 작업을 실행 **하 여 동기** API를 비동기식으로 만듭니다 [.](/dotnet/api/system.threading.tasks.task.run)
@@ -71,7 +72,7 @@ ASP.NET Core 3.0부터는를 `IAsyncEnumerable<T>` 비동기적으로 열거 하
 권장 사항:
 
 * 자주 사용 되는 많은 개체를 캐싱하는 **것이 좋습니다** . 큰 개체를 캐시 하면 비용이 많이 드는 할당이 방지 됩니다.
-* [ArrayPool \<T> ](/dotnet/api/system.buffers.arraypool-1) 를 사용 하 여 대량 배열을 저장 함으로써 풀 버퍼를 **수행** 합니다.
+* [ArrayPool \<T>](/dotnet/api/system.buffers.arraypool-1) 를 사용 하 여 대량 배열을 저장 함으로써 풀 버퍼를 **수행** 합니다.
 * [핫 코드 경로](#understand-hot-code-paths)에 단기 수명이 많은 개체를 할당 **하지 마세요** .
 
 [Perfview](https://github.com/Microsoft/perfview) 및 검사에서 GC (가비지 수집) 통계를 검토 하 여 위와 같은 메모리 문제를 진단할 수 있습니다.

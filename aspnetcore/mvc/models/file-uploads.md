@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/21/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 6ff78b26e8e2363cf6c54ebb2a392f390fb2995c
-ms.sourcegitcommit: cd412a44f26cb416ceb348fc0a1ccc9a6e9ca73e
+ms.openlocfilehash: 14561bace565c104d0a9c926cad3105c4865e72a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88720281"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061173"
 ---
 # <a name="upload-files-in-aspnet-core"></a>ASP.NET Core에서 파일 업로드
 
@@ -46,7 +47,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 공격이 성공할 가능성을 줄이는 보안 단계는 다음과 같습니다.
 
 * 전용 파일 업로드 영역(바람직하게는 시스템 드라이브가 아닌 위치)에 파일을 업로드합니다. 전용 위치를 사용하면 업로드된 파일에 대한 보안 제한을 더 쉽게 적용할 수 있습니다. 파일 업로드 위치에 대한 실행 권한을 사용하지 않도록 설정합니다.&dagger;
-* 업로드된 파일을 앱과 동일한 디렉터리 트리에 보관하지 **마세요**.&dagger;
+* 업로드된 파일을 앱과 동일한 디렉터리 트리에 보관하지 **마세요** .&dagger;
 * 앱에 의해 결정된 안전한 파일 이름을 사용합니다. 사용자가 제공한 파일 이름 또는 업로드 된 파일의 신뢰할 수 없는 파일 이름을 사용 하지 마세요. &dagger; HTML을 표시 하는 경우 신뢰할 수 없는 파일 이름을 인코딩합니다. 예를 들어 파일 이름을 기록 하거나 UI에 표시 하는 경우 ( Razor 자동으로 HTML 인코딩 출력)
 * 앱의 디자인 사양으로 승인된 파일 확장명만 허용합니다.&dagger; <!-- * Check the file format signature to prevent a user from uploading a masqueraded file.&dagger; For example, don't permit a user to upload an *.exe* file with a *.txt* extension. Add this back when we get instructions how to do this.  -->
 * 서버에서 클라이언트 쪽 검사가 수행 되는지 확인 합니다. &dagger; 클라이언트 쪽 검사는 쉽게 피할 수 있습니다.
@@ -112,7 +113,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 소용량 파일 버퍼링은 이 항목의 다음 섹션에서 설명합니다.
 
 * [물리적 스토리지](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Database](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [데이터베이스](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **스트리밍**
 
@@ -124,7 +125,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 
 소용량 파일을 업로드하려면 다중 파트 양식을 사용하거나 JavaScript를 사용하여 POST 요청을 생성합니다.
 
-다음 예제에서는 Razor pages 폼을 사용 하 여 단일 파일 (샘플 응용 프로그램의*Pages/BufferedSingleFileUploadPhysical* )을 업로드 하는 방법을 보여 줍니다.
+다음 예제에서는 Razor pages 폼을 사용 하 여 단일 파일 (샘플 응용 프로그램의 *Pages/BufferedSingleFileUploadPhysical* )을 업로드 하는 방법을 보여 줍니다.
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -194,7 +195,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 [Fetch API](https://caniuse.com/#feat=fetch)를 지원하지 않는 클라이언트에 대해 JavaScript로 양식 POST를 수행하려면 다음 방법 중 하나를 사용합니다.
 
 * Fetch Polyfill(예: [window.fetch polyfill (github/fetch)](https://github.com/github/fetch))을 사용합니다.
-* `XMLHttpRequest`을 사용합니다. 예를 들면 다음과 같습니다.
+* `XMLHttpRequest`을 사용합니다. 다음은 그 예입니다.
 
   ```javascript
   <script>
@@ -225,7 +226,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 <a name="filename"></a>
 
 > [!WARNING]
-> 표시 및 로깅 이외에는 <xref:Microsoft.AspNetCore.Http.IFormFile>의 `FileName` 속성을 사용하지 **마세요**. 표시하거나 로깅할 경우 파일 이름을 HTML로 인코딩합니다. 공격자는 전체 경로나 상대 경로를 포함하여 악의적인 파일 이름을 제공할 수 있습니다. 애플리케이션에서 다음을 수행해야 합니다.
+> 표시 및 로깅 이외에는 <xref:Microsoft.AspNetCore.Http.IFormFile>의 `FileName` 속성을 사용하지 **마세요** . 표시하거나 로깅할 경우 파일 이름을 HTML로 인코딩합니다. 공격자는 전체 경로나 상대 경로를 포함하여 악의적인 파일 이름을 제공할 수 있습니다. 애플리케이션에서 다음을 수행해야 합니다.
 >
 > * 사용자가 제공한 파일 이름에서 경로를 제거합니다.
 > * UI 또는 로깅을 위해 HTML로 인코딩되고 경로가 제거된 파일 이름을 저장합니다.
@@ -307,7 +308,7 @@ foreach (var formFile in files)
 
 <xref:Microsoft.AspNetCore.Http.IFormFile> 기술을 사용하여 업로드된 파일은 처리 전에 서버의 메모리나 디스크에 버퍼링됩니다. 작업 메서드 내부에서 <xref:Microsoft.AspNetCore.Http.IFormFile> 내용을 <xref:System.IO.Stream>으로 액세스할 수 있습니다. 로컬 파일 시스템 외에도 파일을 네트워크 공유 또는 파일 스토리지 서비스(예: [Azure Blob Storage](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs))에 저장할 수 있습니다.
 
-업로드를 위해 여러 파일에 대해 루프를 실행하고 안전한 파일 이름을 사용하는 또 하나의 예제는 샘플 앱에서 *Pages/BufferedMultipleFileUploadPhysical.cshtml.cs*를 참조하세요.
+업로드를 위해 여러 파일에 대해 루프를 실행하고 안전한 파일 이름을 사용하는 또 하나의 예제는 샘플 앱에서 *Pages/BufferedMultipleFileUploadPhysical.cshtml.cs* 를 참조하세요.
 
 > [!WARNING]
 > 이전 임시 파일을 삭제하지 않고 65,535개를 초과하는 파일을 만들면 [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*)이 <xref:System.IO.IOException>을 throw합니다. 65535개 파일 제한은 서버당 제한입니다. Windows OS에서 이 제한에 대한 자세한 내용은 다음 항목의 설명을 참조하세요.
@@ -435,7 +436,7 @@ EF Core를 사용하여 데이터베이스에 스트리밍하기 위한 전체 `
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper`(*Utilities/MultipartRequestHelper.cs*):
+`MultipartRequestHelper`( *Utilities/MultipartRequestHelper.cs* ):
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -467,7 +468,7 @@ EF Core를 사용하여 데이터베이스에 스트리밍하기 위한 전체 `
 
 ### <a name="file-extension-validation"></a>파일 확장명 유효성 검사
 
-업로드된 파일의 확장명을 허용된 확장명 목록에 따라 확인해야 합니다. 예를 들면 다음과 같습니다.
+업로드된 파일의 확장명을 허용된 확장명 목록에 따라 확인해야 합니다. 다음은 그 예입니다.
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -533,7 +534,7 @@ Razor 자동으로 표시 하기 위해 속성 값을 인코딩합니다. 다음
 
 업로드된 파일의 크기를 제한합니다.
 
-샘플 앱에서 파일 크기는 2MB(바이트 단위로 표시)로 제한됩니다. 이 제한은 *appsettings.json* 파일의 [구성](xref:fundamentals/configuration/index)을 통해 제공됩니다.
+샘플 앱에서 파일 크기는 2MB(바이트 단위로 표시)로 제한됩니다. 이 제한은 파일의 [구성을](xref:fundamentals/configuration/index) 통해 제공 됩니다 *appsettings.json* .
 
 ```json
 {
@@ -770,7 +771,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 공격이 성공할 가능성을 줄이는 보안 단계는 다음과 같습니다.
 
 * 전용 파일 업로드 영역(바람직하게는 시스템 드라이브가 아닌 위치)에 파일을 업로드합니다. 전용 위치를 사용하면 업로드된 파일에 대한 보안 제한을 더 쉽게 적용할 수 있습니다. 파일 업로드 위치에 대한 실행 권한을 사용하지 않도록 설정합니다.&dagger;
-* 업로드된 파일을 앱과 동일한 디렉터리 트리에 보관하지 **마세요**.&dagger;
+* 업로드된 파일을 앱과 동일한 디렉터리 트리에 보관하지 **마세요** .&dagger;
 * 앱에 의해 결정된 안전한 파일 이름을 사용합니다. 사용자가 제공한 파일 이름 또는 업로드 된 파일의 신뢰할 수 없는 파일 이름을 사용 하지 마세요. &dagger; HTML을 표시 하는 경우 신뢰할 수 없는 파일 이름을 인코딩합니다. 예를 들어 파일 이름을 기록 하거나 UI에 표시 하는 경우 ( Razor 자동으로 HTML 인코딩 출력)
 * 앱의 디자인 사양으로 승인된 파일 확장명만 허용합니다.&dagger; <!-- * Check the file format signature to prevent a user from uploading a masqueraded file.&dagger; For example, don't permit a user to upload an *.exe* file with a *.txt* extension. Add this back when we get instructions how to do this.  -->
 * 서버에서 클라이언트 쪽 검사가 수행 되는지 확인 합니다. &dagger; 클라이언트 쪽 검사는 쉽게 피할 수 있습니다.
@@ -836,7 +837,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 소용량 파일 버퍼링은 이 항목의 다음 섹션에서 설명합니다.
 
 * [물리적 스토리지](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Database](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [데이터베이스](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **스트리밍**
 
@@ -848,7 +849,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 
 소용량 파일을 업로드하려면 다중 파트 양식을 사용하거나 JavaScript를 사용하여 POST 요청을 생성합니다.
 
-다음 예제에서는 Razor pages 폼을 사용 하 여 단일 파일 (샘플 응용 프로그램의*Pages/BufferedSingleFileUploadPhysical* )을 업로드 하는 방법을 보여 줍니다.
+다음 예제에서는 Razor pages 폼을 사용 하 여 단일 파일 (샘플 응용 프로그램의 *Pages/BufferedSingleFileUploadPhysical* )을 업로드 하는 방법을 보여 줍니다.
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -918,7 +919,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 [Fetch API](https://caniuse.com/#feat=fetch)를 지원하지 않는 클라이언트에 대해 JavaScript로 양식 POST를 수행하려면 다음 방법 중 하나를 사용합니다.
 
 * Fetch Polyfill(예: [window.fetch polyfill (github/fetch)](https://github.com/github/fetch))을 사용합니다.
-* `XMLHttpRequest`을 사용합니다. 예를 들면 다음과 같습니다.
+* `XMLHttpRequest`을 사용합니다. 다음은 그 예입니다.
 
   ```javascript
   <script>
@@ -949,7 +950,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 <a name="filename"></a>
 
 > [!WARNING]
-> 표시 및 로깅 이외에는 <xref:Microsoft.AspNetCore.Http.IFormFile>의 `FileName` 속성을 사용하지 **마세요**. 표시하거나 로깅할 경우 파일 이름을 HTML로 인코딩합니다. 공격자는 전체 경로나 상대 경로를 포함하여 악의적인 파일 이름을 제공할 수 있습니다. 애플리케이션에서 다음을 수행해야 합니다.
+> 표시 및 로깅 이외에는 <xref:Microsoft.AspNetCore.Http.IFormFile>의 `FileName` 속성을 사용하지 **마세요** . 표시하거나 로깅할 경우 파일 이름을 HTML로 인코딩합니다. 공격자는 전체 경로나 상대 경로를 포함하여 악의적인 파일 이름을 제공할 수 있습니다. 애플리케이션에서 다음을 수행해야 합니다.
 >
 > * 사용자가 제공한 파일 이름에서 경로를 제거합니다.
 > * UI 또는 로깅을 위해 HTML로 인코딩되고 경로가 제거된 파일 이름을 저장합니다.
@@ -1031,7 +1032,7 @@ foreach (var formFile in files)
 
 <xref:Microsoft.AspNetCore.Http.IFormFile> 기술을 사용하여 업로드된 파일은 처리 전에 서버의 메모리나 디스크에 버퍼링됩니다. 작업 메서드 내부에서 <xref:Microsoft.AspNetCore.Http.IFormFile> 내용을 <xref:System.IO.Stream>으로 액세스할 수 있습니다. 로컬 파일 시스템 외에도 파일을 네트워크 공유 또는 파일 스토리지 서비스(예: [Azure Blob Storage](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs))에 저장할 수 있습니다.
 
-업로드를 위해 여러 파일에 대해 루프를 실행하고 안전한 파일 이름을 사용하는 또 하나의 예제는 샘플 앱에서 *Pages/BufferedMultipleFileUploadPhysical.cshtml.cs*를 참조하세요.
+업로드를 위해 여러 파일에 대해 루프를 실행하고 안전한 파일 이름을 사용하는 또 하나의 예제는 샘플 앱에서 *Pages/BufferedMultipleFileUploadPhysical.cshtml.cs* 를 참조하세요.
 
 > [!WARNING]
 > 이전 임시 파일을 삭제하지 않고 65,535개를 초과하는 파일을 만들면 [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*)이 <xref:System.IO.IOException>을 throw합니다. 65535개 파일 제한은 서버당 제한입니다. Windows OS에서 이 제한에 대한 자세한 내용은 다음 항목의 설명을 참조하세요.
@@ -1159,7 +1160,7 @@ EF Core를 사용하여 데이터베이스에 스트리밍하기 위한 전체 `
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper`(*Utilities/MultipartRequestHelper.cs*):
+`MultipartRequestHelper`( *Utilities/MultipartRequestHelper.cs* ):
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1191,7 +1192,7 @@ EF Core를 사용하여 데이터베이스에 스트리밍하기 위한 전체 `
 
 ### <a name="file-extension-validation"></a>파일 확장명 유효성 검사
 
-업로드된 파일의 확장명을 허용된 확장명 목록에 따라 확인해야 합니다. 예를 들면 다음과 같습니다.
+업로드된 파일의 확장명을 허용된 확장명 목록에 따라 확인해야 합니다. 다음은 그 예입니다.
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -1257,7 +1258,7 @@ Razor 자동으로 표시 하기 위해 속성 값을 인코딩합니다. 다음
 
 업로드된 파일의 크기를 제한합니다.
 
-샘플 앱에서 파일 크기는 2MB(바이트 단위로 표시)로 제한됩니다. 이 제한은 *appsettings.json* 파일의 [구성](xref:fundamentals/configuration/index)을 통해 제공됩니다.
+샘플 앱에서 파일 크기는 2MB(바이트 단위로 표시)로 제한됩니다. 이 제한은 파일의 [구성을](xref:fundamentals/configuration/index) 통해 제공 됩니다 *appsettings.json* .
 
 ```json
 {
@@ -1505,7 +1506,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 공격이 성공할 가능성을 줄이는 보안 단계는 다음과 같습니다.
 
 * 전용 파일 업로드 영역(바람직하게는 시스템 드라이브가 아닌 위치)에 파일을 업로드합니다. 전용 위치를 사용하면 업로드된 파일에 대한 보안 제한을 더 쉽게 적용할 수 있습니다. 파일 업로드 위치에 대한 실행 권한을 사용하지 않도록 설정합니다.&dagger;
-* 업로드된 파일을 앱과 동일한 디렉터리 트리에 보관하지 **마세요**.&dagger;
+* 업로드된 파일을 앱과 동일한 디렉터리 트리에 보관하지 **마세요** .&dagger;
 * 앱에 의해 결정된 안전한 파일 이름을 사용합니다. 사용자가 제공한 파일 이름 또는 업로드 된 파일의 신뢰할 수 없는 파일 이름을 사용 하지 마세요. &dagger; HTML을 표시 하는 경우 신뢰할 수 없는 파일 이름을 인코딩합니다. 예를 들어 파일 이름을 기록 하거나 UI에 표시 하는 경우 ( Razor 자동으로 HTML 인코딩 출력)
 * 앱의 디자인 사양으로 승인된 파일 확장명만 허용합니다.&dagger; <!-- * Check the file format signature to prevent a user from uploading a masqueraded file.&dagger; For example, don't permit a user to upload an *.exe* file with a *.txt* extension. Add this back when we get instructions how to do this.  -->
 * 서버에서 클라이언트 쪽 검사가 수행 되는지 확인 합니다. &dagger; 클라이언트 쪽 검사는 쉽게 피할 수 있습니다.
@@ -1571,7 +1572,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 소용량 파일 버퍼링은 이 항목의 다음 섹션에서 설명합니다.
 
 * [물리적 스토리지](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Database](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [데이터베이스](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **스트리밍**
 
@@ -1583,7 +1584,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 
 소용량 파일을 업로드하려면 다중 파트 양식을 사용하거나 JavaScript를 사용하여 POST 요청을 생성합니다.
 
-다음 예제에서는 Razor pages 폼을 사용 하 여 단일 파일 (샘플 응용 프로그램의*Pages/BufferedSingleFileUploadPhysical* )을 업로드 하는 방법을 보여 줍니다.
+다음 예제에서는 Razor pages 폼을 사용 하 여 단일 파일 (샘플 응용 프로그램의 *Pages/BufferedSingleFileUploadPhysical* )을 업로드 하는 방법을 보여 줍니다.
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1653,7 +1654,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 [Fetch API](https://caniuse.com/#feat=fetch)를 지원하지 않는 클라이언트에 대해 JavaScript로 양식 POST를 수행하려면 다음 방법 중 하나를 사용합니다.
 
 * Fetch Polyfill(예: [window.fetch polyfill (github/fetch)](https://github.com/github/fetch))을 사용합니다.
-* `XMLHttpRequest`을 사용합니다. 예를 들면 다음과 같습니다.
+* `XMLHttpRequest`을 사용합니다. 다음은 그 예입니다.
 
   ```javascript
   <script>
@@ -1684,7 +1685,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 <a name="filename2"></a>
 
 > [!WARNING]
-> 표시 및 로깅 이외에는 <xref:Microsoft.AspNetCore.Http.IFormFile>의 `FileName` 속성을 사용하지 **마세요**. 표시하거나 로깅할 경우 파일 이름을 HTML로 인코딩합니다. 공격자는 전체 경로나 상대 경로를 포함하여 악의적인 파일 이름을 제공할 수 있습니다. 애플리케이션에서 다음을 수행해야 합니다.
+> 표시 및 로깅 이외에는 <xref:Microsoft.AspNetCore.Http.IFormFile>의 `FileName` 속성을 사용하지 **마세요** . 표시하거나 로깅할 경우 파일 이름을 HTML로 인코딩합니다. 공격자는 전체 경로나 상대 경로를 포함하여 악의적인 파일 이름을 제공할 수 있습니다. 애플리케이션에서 다음을 수행해야 합니다.
 >
 > * 사용자가 제공한 파일 이름에서 경로를 제거합니다.
 > * UI 또는 로깅을 위해 HTML로 인코딩되고 경로가 제거된 파일 이름을 저장합니다.
@@ -1766,7 +1767,7 @@ foreach (var formFile in files)
 
 <xref:Microsoft.AspNetCore.Http.IFormFile> 기술을 사용하여 업로드된 파일은 처리 전에 서버의 메모리나 디스크에 버퍼링됩니다. 작업 메서드 내부에서 <xref:Microsoft.AspNetCore.Http.IFormFile> 내용을 <xref:System.IO.Stream>으로 액세스할 수 있습니다. 로컬 파일 시스템 외에도 파일을 네트워크 공유 또는 파일 스토리지 서비스(예: [Azure Blob Storage](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs))에 저장할 수 있습니다.
 
-업로드를 위해 여러 파일에 대해 루프를 실행하고 안전한 파일 이름을 사용하는 또 하나의 예제는 샘플 앱에서 *Pages/BufferedMultipleFileUploadPhysical.cshtml.cs*를 참조하세요.
+업로드를 위해 여러 파일에 대해 루프를 실행하고 안전한 파일 이름을 사용하는 또 하나의 예제는 샘플 앱에서 *Pages/BufferedMultipleFileUploadPhysical.cshtml.cs* 를 참조하세요.
 
 > [!WARNING]
 > 이전 임시 파일을 삭제하지 않고 65,535개를 초과하는 파일을 만들면 [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*)이 <xref:System.IO.IOException>을 throw합니다. 65535개 파일 제한은 서버당 제한입니다. Windows OS에서 이 제한에 대한 자세한 내용은 다음 항목의 설명을 참조하세요.
@@ -1894,7 +1895,7 @@ EF Core를 사용하여 데이터베이스에 스트리밍하기 위한 전체 `
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper`(*Utilities/MultipartRequestHelper.cs*):
+`MultipartRequestHelper`( *Utilities/MultipartRequestHelper.cs* ):
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1926,7 +1927,7 @@ EF Core를 사용하여 데이터베이스에 스트리밍하기 위한 전체 `
 
 ### <a name="file-extension-validation"></a>파일 확장명 유효성 검사
 
-업로드된 파일의 확장명을 허용된 확장명 목록에 따라 확인해야 합니다. 예를 들면 다음과 같습니다.
+업로드된 파일의 확장명을 허용된 확장명 목록에 따라 확인해야 합니다. 다음은 그 예입니다.
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -1992,7 +1993,7 @@ Razor 자동으로 표시 하기 위해 속성 값을 인코딩합니다. 다음
 
 업로드된 파일의 크기를 제한합니다.
 
-샘플 앱에서 파일 크기는 2MB(바이트 단위로 표시)로 제한됩니다. 이 제한은 *appsettings.json* 파일의 [구성](xref:fundamentals/configuration/index)을 통해 제공됩니다.
+샘플 앱에서 파일 크기는 2MB(바이트 단위로 표시)로 제한됩니다. 이 제한은 파일의 [구성을](xref:fundamentals/configuration/index) 통해 제공 됩니다 *appsettings.json* .
 
 ```json
 {
@@ -2219,7 +2220,7 @@ The request filtering module is configured to deny a request that exceeds the re
 ::: moniker-end
 
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [HTTP 연결 요청 드레이닝](xref:fundamentals/servers/kestrel#http11-request-draining)
 * [무제한 파일 업로드](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload)

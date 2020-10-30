@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/authn-and-authz
-ms.openlocfilehash: e16efa59a82d0f3cb1a2272ae0c07654ebec6a51
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: 0e220d72fe9ef4ada402b449ef20e31324f7bcd2
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491563"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060120"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-no-locsignalr"></a>ASP.NET Core의 인증 및 권한 부여 SignalR
 

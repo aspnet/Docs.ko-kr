@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: db718b8d4c305b75ad52054efde6b2d03f6825ed
-ms.sourcegitcommit: 4cce99cbd44372fd4575e8da8c0f4345949f4d9a
+ms.openlocfilehash: 08ec018238d18cd253e793267c5b146df8319485
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89153534"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060770"
 ---
 # <a name="key-management-extensibility-in-aspnet-core"></a>ASP.NET Core의 키 관리 확장성
 
 이러한 Api의 기본 개념 중 일부를 설명 하므로이 섹션을 읽기 전에 [키 관리](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management) 섹션을 참조 하세요.
 
-**경고**: 다음 인터페이스를 구현 하는 형식은 여러 호출자에 대해 스레드로부터 안전 해야 합니다.
+**경고** : 다음 인터페이스를 구현 하는 형식은 여러 호출자에 대해 스레드로부터 안전 해야 합니다.
 
 ## <a name="key"></a>키
 

@@ -7,6 +7,7 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/api-design
-ms.openlocfilehash: 4a838c3a051476bd3d281e133d08b643656ae3b7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 87665a7950edbc70b664230d2f078598e9dbc0aa
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632904"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059652"
 ---
 # <a name="no-locsignalr-api-design-considerations"></a>SignalR API 디자인 고려 사항
 
@@ -33,7 +34,7 @@ ms.locfileid: "88632904"
 
 ## <a name="use-custom-object-parameters-to-ensure-backwards-compatibility"></a>사용자 지정 개체 매개 변수를 사용 하 여 이전 버전과의 호환성 보장
 
-SignalR클라이언트 또는 서버에서 허브 메서드에 매개 변수를 추가 하는 것은 *주요 변경 사항*입니다. 즉, 이전 클라이언트/서버에서 적절 한 수의 매개 변수를 사용 하지 않고 메서드를 호출 하려고 하면 오류가 발생 합니다. 그러나 사용자 지정 개체 매개 변수에 속성을 추가 하는 것은 주요 변경 사항이 **아닙니다** . 이를 사용 하 여 클라이언트 또는 서버의 변경 내용에 대해 복원 력이 있는 호환 Api를 디자인할 수 있습니다.
+SignalR클라이언트 또는 서버에서 허브 메서드에 매개 변수를 추가 하는 것은 *주요 변경 사항* 입니다. 즉, 이전 클라이언트/서버에서 적절 한 수의 매개 변수를 사용 하지 않고 메서드를 호출 하려고 하면 오류가 발생 합니다. 그러나 사용자 지정 개체 매개 변수에 속성을 추가 하는 것은 주요 변경 사항이 **아닙니다** . 이를 사용 하 여 클라이언트 또는 서버의 변경 내용에 대해 복원 력이 있는 호환 Api를 디자인할 수 있습니다.
 
 예를 들어 다음과 같은 서버 쪽 API를 살펴보겠습니다.
 
@@ -43,7 +44,7 @@ JavaScript 클라이언트는 다음과 같이를 사용 하 여이 메서드를
 
 [!code-typescript[CallWithOneParameter](api-design/sample/Samples.ts?name=CallWithOneParameter)]
 
-나중에 서버 메서드에 두 번째 매개 변수를 추가 하는 경우 이전 클라이언트는이 매개 변수 값을 제공 하지 않습니다. 다음은 그 예입니다. 
+나중에 서버 메서드에 두 번째 매개 변수를 추가 하는 경우 이전 클라이언트는이 매개 변수 값을 제공 하지 않습니다. 다음은 그 예입니다.
 
 [!code-csharp[ParameterBasedNewVersion](api-design/sample/Samples.cs?name=ParameterBasedNewVersion)]
 

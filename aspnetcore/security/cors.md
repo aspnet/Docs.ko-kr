@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/17/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cors
-ms.openlocfilehash: cebaa9ae65557ca5d938c5728882382830deca9d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 03008f40fc1c4b323535d08a1bb4c4007bc145f7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629264"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060822"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>ASP.NET Core에서 CORS (원본 간 요청) 사용
 
@@ -32,7 +33,7 @@ ms.locfileid: "88629264"
 
 이 문서에서는 ASP.NET Core 앱에서 CORS를 사용 하도록 설정 하는 방법을 보여 줍니다.
 
-브라우저 보안 때문에 웹 페이지에서 해당 웹 페이지를 제공한 도메인이 아닌 다른 도메인에 요청을 수행할 수는 없습니다. 이러한 제한 사항을 *동일 원본 정책*이라고 합니다. 동일 원본 정책은 악성 사이트에서 다른 사이트의 중요한 데이터를 읽지 못하도록 차단합니다. 경우에 따라 다른 사이트에서 앱에 대 한 원본 간 요청을 수행할 수 있도록 허용 하는 것이 좋습니다. 자세한 내용은 [MOZILLA CORS 문서](https://developer.mozilla.org/docs/Web/HTTP/CORS)를 참조 하세요.
+브라우저 보안 때문에 웹 페이지에서 해당 웹 페이지를 제공한 도메인이 아닌 다른 도메인에 요청을 수행할 수는 없습니다. 이러한 제한 사항을 *동일 원본 정책* 이라고 합니다. 동일 원본 정책은 악성 사이트에서 다른 사이트의 중요한 데이터를 읽지 못하도록 차단합니다. 경우에 따라 다른 사이트에서 앱에 대 한 원본 간 요청을 수행할 수 있도록 허용 하는 것이 좋습니다. 자세한 내용은 [MOZILLA CORS 문서](https://developer.mozilla.org/docs/Web/HTTP/CORS)를 참조 하세요.
 
 CORS ( [원본 간 리소스 공유](https://www.w3.org/TR/cors/) ):
 
@@ -126,7 +127,7 @@ CORS 미들웨어는 크로스-원본 요청을 처리 합니다. 다음 코드�
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupEndPt.cs?name=snippet2&highlight=3,7-15,32,40,43)]
 
-위의 코드에서
+앞의 코드에서 다음을 확인할 수 있습니다.
 
 * `app.UseCors` CORS 미들웨어를 사용 하도록 설정 합니다. 기본 정책은 구성 되지 않았기 때문에 `app.UseCors()` CORS를 사용 하도록 설정 하지 않습니다.
 * `/echo`및 컨트롤러 끝점은 지정 된 정책을 사용 하 여 원본 간 요청을 허용 합니다.
@@ -153,7 +154,7 @@ CORS 미들웨어는 크로스-원본 요청을 처리 합니다. 다음 코드�
 * 컨트롤러
 * 컨트롤러 동작 방법
 
-특성을 사용 하는 컨트롤러, 페이지 모델 또는 작업 메서드에 다른 정책을 적용할 수 있습니다 `[EnableCors]` . `[EnableCors]`특성이 컨트롤러, 페이지 모델 또는 동작 메서드에 적용 되 고 CORS가 미들웨어에서 사용 하도록 설정 된 경우 **두 정책이 모두** 적용 됩니다. **정책을 결합 하지 않는 것이 좋습니다. ** `[EnableCors]` **동일한 앱에서 특성 또는 미들웨어를 사용 합니다.**
+특성을 사용 하는 컨트롤러, 페이지 모델 또는 작업 메서드에 다른 정책을 적용할 수 있습니다 `[EnableCors]` . `[EnableCors]`특성이 컨트롤러, 페이지 모델 또는 동작 메서드에 적용 되 고 CORS가 미들웨어에서 사용 하도록 설정 된 경우 **두 정책이 모두** 적용 됩니다. **정책을 결합 하지 않는 것이 좋습니다.** `[EnableCors]` **동일한 앱에서 특성 또는 미들웨어를 사용 합니다.**
 
 다음 코드는 각 메서드에 다른 정책을 적용 합니다.
 
@@ -270,7 +271,7 @@ Access-Control-Request-Headers: Cache-Control, Content-Language
 * `Last-Modified`
 * `Pragma`
 
-CORS 사양은 이러한 헤더 *단순 응답 헤더*를 호출 합니다. 앱에서 다른 헤더를 사용할 수 있도록 하려면 다음을 호출 합니다 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithExposedHeaders*> .
+CORS 사양은 이러한 헤더 *단순 응답 헤더* 를 호출 합니다. 앱에서 다른 헤더를 사용할 수 있도록 하려면 다음을 호출 합니다 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithExposedHeaders*> .
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupAllowSubdomain.cs?name=snippet5)]
 ### <a name="credentials-in-cross-origin-requests"></a>원본 간 요청에 대 한 자격 증명
@@ -523,7 +524,7 @@ Sec-Fetch-Site: cross-site
 User-Agent: Mozilla/5.0
 ```
 
-위의 **응답 헤더**에서 서버는 응답에 [액세스 제어 허용 원본](https://developer.mozilla.org/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) 헤더를 설정 합니다. `https://cors1.azurewebsites.net`이 헤더의 값은 요청의 헤더와 일치 합니다 `Origin` .
+위의 **응답 헤더** 에서 서버는 응답에 [액세스 제어 허용 원본](https://developer.mozilla.org/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) 헤더를 설정 합니다. `https://cors1.azurewebsites.net`이 헤더의 값은 요청의 헤더와 일치 합니다 `Origin` .
 
 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>가 호출 되 면 `Access-Control-Allow-Origin: *` 와일드 카드 값이 반환 됩니다. `AllowAnyOrigin` 모든 원본을 허용 합니다.
 
@@ -618,9 +619,9 @@ C:\Program Files\Git\mingw64\bin\
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/Controllers/TodoItems2Controller.cs?name=snippet2)]
 
-배포 된 샘플의 [테스트 페이지](https://cors1.azurewebsites.net/test?number=2) 에서 이전 코드를 테스트 합니다. **컨트롤러** 드롭다운 목록에서 실행 **전** 을 선택 하 고 **컨트롤러를 설정**합니다. 끝점에 대 한 모든 CORS 호출이 `TodoItems2Controller` 성공 했습니다.
+배포 된 샘플의 [테스트 페이지](https://cors1.azurewebsites.net/test?number=2) 에서 이전 코드를 테스트 합니다. **컨트롤러** 드롭다운 목록에서 실행 **전** 을 선택 하 고 **컨트롤러를 설정** 합니다. 끝점에 대 한 모든 CORS 호출이 `TodoItems2Controller` 성공 했습니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [CORS (원본 간 리소스 공유)](https://developer.mozilla.org/docs/Web/HTTP/CORS)
 * [IIS CORS 모듈 시작](https://blogs.iis.net/iisteam/getting-started-with-the-iis-cors-module)
@@ -633,7 +634,7 @@ C:\Program Files\Git\mingw64\bin\
 
 이 문서에서는 ASP.NET Core 앱에서 CORS를 사용 하도록 설정 하는 방법을 보여 줍니다.
 
-브라우저 보안 때문에 웹 페이지에서 해당 웹 페이지를 제공한 도메인이 아닌 다른 도메인에 요청을 수행할 수는 없습니다. 이러한 제한 사항을 *동일 원본 정책*이라고 합니다. 동일 원본 정책은 악성 사이트에서 다른 사이트의 중요한 데이터를 읽지 못하도록 차단합니다. 경우에 따라 다른 사이트에서 앱에 대 한 원본 간 요청을 허용 하는 것이 좋습니다. 자세한 내용은 [MOZILLA CORS 문서](https://developer.mozilla.org/docs/Web/HTTP/CORS)를 참조 하세요.
+브라우저 보안 때문에 웹 페이지에서 해당 웹 페이지를 제공한 도메인이 아닌 다른 도메인에 요청을 수행할 수는 없습니다. 이러한 제한 사항을 *동일 원본 정책* 이라고 합니다. 동일 원본 정책은 악성 사이트에서 다른 사이트의 중요한 데이터를 읽지 못하도록 차단합니다. 경우에 따라 다른 사이트에서 앱에 대 한 원본 간 요청을 허용 하는 것이 좋습니다. 자세한 내용은 [MOZILLA CORS 문서](https://developer.mozilla.org/docs/Web/HTTP/CORS)를 참조 하세요.
 
 CORS ( [원본 간 리소스 공유](https://www.w3.org/TR/cors/) ):
 
@@ -723,7 +724,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 * 컨트롤러
 * 컨트롤러 동작 방법
 
-특성을 사용 하 여 컨트롤러/페이지-모델/작업에 다른 정책을 적용할 수 있습니다  `[EnableCors]` . `[EnableCors]`특성이 컨트롤러/페이지 모델/동작 메서드에 적용 되 고 CORS가 미들웨어에서 사용 하도록 설정 된 경우 두 정책이 **모두** 적용 됩니다. 정책을 결합 **하지 않는** 것이 좋습니다. `[EnableCors]`특성 또는 미들웨어를 사용 합니다 **not both**. 를 사용 하 `[EnableCors]` 는 경우 기본 정책을 정의 **하지** 마십시오.
+특성을 사용 하 여 컨트롤러/페이지-모델/작업에 다른 정책을 적용할 수 있습니다  `[EnableCors]` . `[EnableCors]`특성이 컨트롤러/페이지 모델/동작 메서드에 적용 되 고 CORS가 미들웨어에서 사용 하도록 설정 된 경우 두 정책이 **모두** 적용 됩니다. 정책을 결합 **하지 않는** 것이 좋습니다. `[EnableCors]`특성 또는 미들웨어를 사용 합니다 **not both** . 를 사용 하 `[EnableCors]` 는 경우 기본 정책을 정의 **하지** 마십시오.
 
 다음 코드는 각 메서드에 다른 정책을 적용 합니다.
 
@@ -774,7 +775,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ### <a name="set-the-allowed-request-headers"></a>허용 되는 요청 헤더 설정
 
-*작성자 요청 헤더*라는 CORS 요청에서 특정 헤더를 보낼 수 있게 하려면를 호출 하 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*> 고 허용 되는 헤더를 지정 합니다.
+*작성자 요청 헤더* 라는 CORS 요청에서 특정 헤더를 보낼 수 있게 하려면를 호출 하 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*> 고 허용 되는 헤더를 지정 합니다.
 
 [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=55-60&highlight=5)]
 
@@ -816,7 +817,7 @@ Access-Control-Request-Headers: Cache-Control, Content-Language
 * `Last-Modified`
 * `Pragma`
 
-CORS 사양은 이러한 헤더 *단순 응답 헤더*를 호출 합니다. 앱에서 다른 헤더를 사용할 수 있도록 하려면 다음을 호출 합니다 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithExposedHeaders*> .
+CORS 사양은 이러한 헤더 *단순 응답 헤더* 를 호출 합니다. 앱에서 다른 헤더를 사용할 수 있도록 하려면 다음을 호출 합니다 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithExposedHeaders*> .
 
 [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=73-78&highlight=5)]
 
@@ -867,7 +868,7 @@ CORS 사양은 `"*"` 헤더가 있는 경우 원본으로 설정 (모든 원본)
 
 ### <a name="preflight-requests"></a>실행 전 요청
 
-일부 CORS 요청의 경우 브라우저는 실제 요청을 만들기 전에 추가 요청을 보냅니다. 이 요청을 실행 *전 요청*이라고 합니다. 다음 조건에 해당 하는 경우 브라우저에서 실행 전 요청을 건너뛸 수 있습니다.
+일부 CORS 요청의 경우 브라우저는 실제 요청을 만들기 전에 추가 요청을 보냅니다. 이 요청을 실행 *전 요청* 이라고 합니다. 다음 조건에 해당 하는 경우 브라우저에서 실행 전 요청을 건너뛸 수 있습니다.
 
 * 요청 메서드는 GET, HEAD 또는 POST입니다.
 * 앱은 `Accept` ,, `Accept-Language` `Content-Language` , `Content-Type` 또는 이외의 요청 헤더를 설정 하지 않습니다 `Last-Event-ID` .
@@ -876,7 +877,7 @@ CORS 사양은 `"*"` 헤더가 있는 경우 원본으로 설정 (모든 원본)
   * `multipart/form-data`
   * `text/plain`
 
-클라이언트 요청에 대해 설정 된 요청 헤더에 대 한 규칙은 응용 프로그램에서 개체에 대해를 호출 하 여 설정 하는 헤더에 적용 됩니다 `setRequestHeader` `XMLHttpRequest` . CORS 사양은 이러한 헤더 *작성자 요청 헤더*를 호출 합니다. 이 규칙은 브라우저에서 설정할 수 있는 헤더 (예:, 또는)에는 적용 되지 않습니다 `User-Agent` `Host` `Content-Length` .
+클라이언트 요청에 대해 설정 된 요청 헤더에 대 한 규칙은 응용 프로그램에서 개체에 대해를 호출 하 여 설정 하는 헤더에 적용 됩니다 `setRequestHeader` `XMLHttpRequest` . CORS 사양은 이러한 헤더 *작성자 요청 헤더* 를 호출 합니다. 이 규칙은 브라우저에서 설정할 수 있는 헤더 (예:, 또는)에는 적용 되지 않습니다 `User-Agent` `Host` `Content-Length` .
 
 다음은 실행 전 요청의 예입니다.
 
@@ -991,7 +992,7 @@ Test message
 CORS를 테스트 하려면:
 
 1. [API 프로젝트를 만듭니다](xref:tutorials/first-web-api). 또는 [샘플을 다운로드할](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample/Cors)수 있습니다.
-1. 이 문서의 방법 중 하나를 사용 하 여 CORS를 사용 하도록 설정 합니다. 다음은 그 예입니다. 
+1. 이 문서의 방법 중 하나를 사용 하 여 CORS를 사용 하도록 설정 합니다. 다음은 그 예입니다.
 
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
 
@@ -1026,7 +1027,7 @@ CORS 사용 끝점은 [Fiddler](https://www.telerik.com/fiddler) 또는 [postman
 
 IIS에 배포할 때 서버에서 익명 액세스를 허용 하도록 구성 되지 않은 경우 CORS를 Windows 인증 전에 실행 해야 합니다. 이 시나리오를 지원 하려면 앱에 대해 [IIS CORS 모듈](https://www.iis.net/downloads/microsoft/iis-cors-module) 을 설치 하 고 구성 해야 합니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [CORS (원본 간 리소스 공유)](https://developer.mozilla.org/docs/Web/HTTP/CORS)
 * [IIS CORS 모듈 시작](https://blogs.iis.net/iisteam/getting-started-with-the-iis-cors-module)

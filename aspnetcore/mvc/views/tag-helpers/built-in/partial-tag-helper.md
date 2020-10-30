@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 04/06/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: 4a9f1958cd26bb57fcf3944aabacd57c470fb17e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 124f23caa4a757f63a80dfea627304204ba2cdca
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626950"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061433"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>ASP.NET Core의 부분 태그 도우미
 
@@ -58,15 +59,15 @@ ms.locfileid: "88626950"
 
 `name` 특성은 필수입니다. 이 특성은 렌더링할 부분 보기의 이름 또는 경로를 나타냅니다. 부분 보기의 이름을 지정할 경우 [보기 검색](xref:mvc/views/overview#view-discovery) 과정이 시작됩니다. 명시적인 경로가 지정되면 이 과정이 생략됩니다. 허용되는 모든 `name` 값은 [부분 보기 검색](xref:mvc/views/partial#partial-view-discovery)을 참조하세요.
 
-다음 태그는 명시적인 경로를 사용해서 *Shared* 폴더의 *_ProductPartial.cshtml*을 로드하도록 지시합니다. [for](#for) 특성을 사용하면 바인딩을 위한 모델이 부분 보기에 전달됩니다.
+다음 태그는 명시적인 경로를 사용해서 *Shared* 폴더의 *_ProductPartial.cshtml* 을 로드하도록 지시합니다. [for](#for) 특성을 사용하면 바인딩을 위한 모델이 부분 보기에 전달됩니다.
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Product.cshtml?name=snippet_Name)]
 
-## <a name="for"></a>-
+## <a name="for"></a>for
 
 `for` 특성은 현재 모델과 비교 평가할 [ModelExpression](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.modelexpression)을 할당합니다. `ModelExpression`은 `@Model.` 구문을 추론합니다. 예를 들어 `for="@Model.Product"` 대신 `for="Product"`를 사용할 수 있습니다. 이 기본 추론 동작은 인라인 식을 정의하는 `@` 기호를 사용하여 재정의됩니다.
 
-다음 태그는 *_ProductPartial.cshtml*을 로드합니다.
+다음 태그는 *_ProductPartial.cshtml* 을 로드합니다.
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Product.cshtml?name=snippet_For)]
 
@@ -104,7 +105,7 @@ ms.locfileid: "88626950"
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Products.cshtml?name=snippet_TagHelper&highlight=3)]
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:mvc/views/partial>
 * <xref:mvc/views/overview#weakly-typed-data-viewdata-viewdata-attribute-and-viewbag>

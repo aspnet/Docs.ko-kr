@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/ip-safelist
-ms.openlocfilehash: 621be5351acb251335a42f57e8ea670af1b35a87
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: dfc134b97bb0976bc682a53d536cd27785550c7d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634451"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059665"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>ASP.NET Core에 대 한 클라이언트 IP safelist
 
@@ -48,7 +49,7 @@ ms.locfileid: "88634451"
 
 샘플 앱에서 IP 주소 safelist는 다음과 같습니다.
 
-* `AdminSafeList` *appsettings.js* 파일의 속성으로 정의 됩니다.
+* `AdminSafeList`파일의 속성으로 정의 *appsettings.json* 됩니다.
 * [IPv4 (인터넷 프로토콜 버전 4)](https://wikipedia.org/wiki/IPv4) 및 [IPv6 (인터넷 프로토콜 버전 6)](https://wikipedia.org/wiki/IPv6) 주소를 둘 다 포함할 수 있는 세미콜론으로 구분 된 문자열입니다.
 
 [!code-json[](ip-safelist/samples/3.x/ClientIpAspNetCore/appsettings.json?range=1-3&highlight=2)]
@@ -67,7 +68,7 @@ ms.locfileid: "88634451"
 
 ## <a name="action-filter"></a>작업 필터
 
-특정 MVC 컨트롤러나 작업 메서드에 대 한 safelist 기반 액세스 제어를 원하는 경우 작업 필터를 사용 합니다. 다음은 그 예입니다. 
+특정 MVC 컨트롤러나 작업 메서드에 대 한 safelist 기반 액세스 제어를 원하는 경우 작업 필터를 사용 합니다. 다음은 그 예입니다.
 
 [!code-csharp[](ip-safelist/samples/Shared/ClientIpSafelistComponents/Filters/ClientIpCheckActionFilter.cs?name=snippet_ClassOnly)]
 
@@ -104,7 +105,7 @@ ms.locfileid: "88634451"
 
 ## <a name="no-locrazor-pages-filter"></a>Razor 페이지 필터
 
-페이지 앱에 대 한 safelist 기반 access control Razor 을 사용 하려면 Razor 페이지 필터를 사용 합니다. 다음은 그 예입니다. 
+페이지 앱에 대 한 safelist 기반 access control Razor 을 사용 하려면 Razor 페이지 필터를 사용 합니다. 다음은 그 예입니다.
 
 [!code-csharp[](ip-safelist/samples/Shared/ClientIpSafelistComponents/Filters/ClientIpCheckPageFilter.cs?name=snippet_ClassOnly)]
 
@@ -129,7 +130,7 @@ dbug: ClientIpSafelistComponents.Filters.ClientIpCheckPageFilter[0]
       Remote IpAddress: ::1
 ```
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:fundamentals/middleware/index>
 * [작업 필터](xref:mvc/controllers/filters#action-filters)

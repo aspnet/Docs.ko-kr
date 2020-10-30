@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
 ms.date: 07/16/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 57d46e34993148943b1e9680a372405be9c80605
-ms.sourcegitcommit: 6c82d78662332cd40d614019b9ed17c46e25be28
+ms.openlocfilehash: 83525a4c1e87a60b57130c1bba14360c7d03f552
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91424206"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061381"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>ASP.NET Core에서 인증서 인증 구성
 
@@ -47,7 +48,7 @@ HTTPS 인증서를 획득 하 고 적용 한 다음 인증서를 요구 하도�
 
 인증이 실패 하는 경우이 처리기는 `403 (Forbidden)` 정상적으로 응답을 반환 `401 (Unauthorized)` 합니다. 초기 TLS 연결 중에 인증이 수행 되어야 한다는 것을 의미 합니다. 처리기에 도달할 때까지 너무 늦습니다. 익명 연결에서 인증서를 사용 하는 연결로의 연결을 업그레이드할 수 있는 방법은 없습니다.
 
-또한 `app.UseAuthentication();` 메서드에를 추가 `Startup.Configure` 합니다. 그렇지 않으면 `HttpContext.User` 인증서에서 생성 된로 설정 되지 않습니다 `ClaimsPrincipal` . 예를 들면 다음과 같습니다.
+또한 `app.UseAuthentication();` 메서드에를 추가 `Startup.Configure` 합니다. 그렇지 않으면 `HttpContext.User` 인증서에서 생성 된로 설정 되지 않습니다 `ClaimsPrincipal` . 다음은 그 예입니다.
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -234,7 +235,7 @@ services.AddAuthentication(
 
 ### <a name="kestrel"></a>Kestrel
 
-*Program.cs*에서 다음과 같이 Kestrel을 구성 합니다.
+*Program.cs* 에서 다음과 같이 Kestrel을 구성 합니다.
 
 ```csharp
 public static void Main(string[] args)
@@ -617,7 +618,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-기본 캐싱 구현에서는 결과를 메모리에 저장 합니다. `ICertificateValidationCache`종속성 주입을 사용 하 여 구현 하 고 등록 하 여 자체 캐시를 제공할 수 있습니다. 예들 들어 `services.AddSingleton<ICertificateValidationCache, YourCache>()`입니다.
+기본 캐싱 구현에서는 결과를 메모리에 저장 합니다. `ICertificateValidationCache`종속성 주입을 사용 하 여 구현 하 고 등록 하 여 자체 캐시를 제공할 수 있습니다. 예: `services.AddSingleton<ICertificateValidationCache, YourCache>()`.
 
 ::: moniker-end
 
@@ -639,7 +640,7 @@ ASP.NET Core 5 preview 7 이상에서는 선택적 클라이언트 인증서에 
 
 * 도메인 및 하위 도메인에 대 한 바인딩 설정:
   * 예를 들어 및에 대 한 바인딩을 설정 `contoso.com` `myClient.contoso.com` 합니다. 호스트에는 `contoso.com` 클라이언트 인증서가 필요 하지 `myClient.contoso.com` 않습니다.
-  * 자세한 내용은 다음을 참조하세요.
+  * 자세한 내용은 다음을 참조하십시오.
     * [Kestrel](/fundamentals/servers/kestrel):
       * [ListenOptions.UseHttps](xref:fundamentals/servers/kestrel#listenoptionsusehttps)
       * <xref:Microsoft.AspNetCore.Server.Kestrel.Https.HttpsConnectionAdapterOptions.ClientCertificateMode>

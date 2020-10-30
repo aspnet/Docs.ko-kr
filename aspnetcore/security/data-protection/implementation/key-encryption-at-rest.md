@@ -5,6 +5,7 @@ description: 미사용 데이터 보호 키 암호화 ASP.NET Core의 구현 세
 ms.author: riande
 ms.date: 07/16/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: 4ca2d998141639406a8283c4c756c05a93251928
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e2841278e8262e6dbbfcf172e0b6599bb19f1d6c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633683"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061277"
 ---
 # <a name="key-encryption-at-rest-in-windows-and-azure-using-aspnet-core"></a>ASP.NET Core를 사용 하 여 Windows 및 Azure에서 휴지 상태의 키 암호화
 

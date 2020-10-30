@@ -5,6 +5,7 @@ description: ASP.NET Core 앱에서 뷰를 렌더링하기 전에 일반적인 �
 ms.author: riande
 ms.date: 07/30/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/layout
-ms.openlocfilehash: 308e567e0480f83972ab7a55c7b957af83a164fd
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 502df268e7f5f33acfffccd5ec0bd65267fa12da
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630694"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060978"
 ---
 # <a name="layout-in-aspnet-core"></a>ASP.NET Core의 레이아웃
 
@@ -46,7 +47,7 @@ ms.locfileid: "88630694"
 
 스크립트 및 스타일시트와 같은 일반적인 HTML 구조도 앱 내의 많은 페이지에서 자주 사용됩니다. 이러한 공유 요소는 모두 응용 프로그램 내에서 사용 되는 보기에서 참조할 수 있는 *레이아웃* 파일에 정의 될 수 있습니다. 레이아웃은 뷰의 중복 코드를 줄입니다.
 
-규칙에 따라, ASP.NET Core 앱의 기본 레이아웃 이름을 *_Layout.cshtml*로 지정합니다. 템플릿을 사용하여 생성된 새로운 ASP.NET Core 프로젝트의 레이아웃 파일:
+규칙에 따라, ASP.NET Core 앱의 기본 레이아웃 이름을 *_Layout.cshtml* 로 지정합니다. 템플릿을 사용하여 생성된 새로운 ASP.NET Core 프로젝트의 레이아웃 파일:
 
 * Razor Pages: *pages/Shared/_Layout cshtml*
 
@@ -68,7 +69,7 @@ Razor 뷰에는 `Layout` 속성이 있습니다. 이 속성을 설정하여 레�
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
-지정된 레이아웃은 전체 경로(예: */Pages/Shared/_Layout.cshtml* 또는 */Views/Shared/_Layout.cshtml*) 또는 부분적인 이름(예: `_Layout`)을 사용할 수 있습니다. 부분 이름이 제공 되 면 Razor 뷰 엔진은 표준 검색 프로세스를 사용 하 여 레이아웃 파일을 검색 합니다. 처리기 메서드(또는 컨트롤러)가 있는 폴더가 먼저 검색된 후 *공유* 폴더가 검색됩니다. 이 검색 프로세스는 [부분 뷰](xref:mvc/views/partial#partial-view-discovery)를 검색하는 데 사용된 프로세스와 동일합니다.
+지정된 레이아웃은 전체 경로(예: */Pages/Shared/_Layout.cshtml* 또는 */Views/Shared/_Layout.cshtml* ) 또는 부분적인 이름(예: `_Layout`)을 사용할 수 있습니다. 부분 이름이 제공 되 면 Razor 뷰 엔진은 표준 검색 프로세스를 사용 하 여 레이아웃 파일을 검색 합니다. 처리기 메서드(또는 컨트롤러)가 있는 폴더가 먼저 검색된 후 *공유* 폴더가 검색됩니다. 이 검색 프로세스는 [부분 뷰](xref:mvc/views/partial#partial-view-discovery)를 검색하는 데 사용된 프로세스와 동일합니다.
 
 기본적으로 모든 레이아웃에서 `RenderBody`를 호출해야 합니다. `RenderBody` 호출이 배치될 때마다 뷰의 내용이 렌더링됩니다.
 
@@ -76,7 +77,7 @@ Razor 뷰에는 `Layout` 속성이 있습니다. 이 속성을 설정하여 레�
 <!-- https://stackoverflow.com/questions/23327578 -->
 ### <a name="sections"></a>섹션
 
-레이아웃은 `RenderSection`을 호출하여 필요에 따라 하나 이상의 *섹션*을 참조합니다. 섹션에서는 특정 페이지 요소를 배치할 위치를 구성하는 방법을 제공합니다. `RenderSection` 호출 때마다 섹션이 필수 또는 옵션인지 여부를 지정할 수 있습니다.
+레이아웃은 `RenderSection`을 호출하여 필요에 따라 하나 이상의 *섹션* 을 참조합니다. 섹션에서는 특정 페이지 요소를 배치할 위치를 구성하는 방법을 제공합니다. `RenderSection` 호출 때마다 섹션이 필수 또는 옵션인지 여부를 지정할 수 있습니다.
 
 ```html
 <script type="text/javascript" src="~/scripts/global.js"></script>
@@ -94,9 +95,9 @@ Razor 뷰에는 `Layout` 속성이 있습니다. 이 속성을 설정하여 레�
 }
 ```
 
-이전 코드에서는 *scripts/main.js*가 페이지 또는 보기의 `scripts` 섹션에 추가됩니다. 동일한 앱의 다른 페이지 또는 보기는 이 스크립트가 필요하지 않을 수 있으며, 스크립트 섹션을 정의하지 않습니다.
+이전 코드에서는 *scripts/main.js* 가 페이지 또는 보기의 `scripts` 섹션에 추가됩니다. 동일한 앱의 다른 페이지 또는 보기는 이 스크립트가 필요하지 않을 수 있으며, 스크립트 섹션을 정의하지 않습니다.
 
-다음 태그는 [부분 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)를 사용하여 *_ValidationScriptsPartial.cshtml*을 렌더링합니다.
+다음 태그는 [부분 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)를 사용하여 *_ValidationScriptsPartial.cshtml* 을 렌더링합니다.
 
 ```html
 @section Scripts {
@@ -136,7 +137,7 @@ Razor 뷰에는 `Layout` 속성이 있습니다. 이 속성을 설정하여 레�
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
 
-ASP.NET Core MVC 앱에 대한 *_ViewImports.cshtml* 파일은 일반적으로 *Pages*(또는 *Views*) 폴더에 배치됩니다. *_ViewImports.cshtml* 파일은 모든 폴더 내에 배치할 수 있으며, 이 경우 해당 폴더 및 해당 하위 폴더 내의 페이지 또는 보기에만 적용됩니다. `_ViewImports` 파일은 루트 수준부터 처리된 후 각 폴더의 페이지 또는 보기 자체의 위치까지 처리됩니다. 루트 수준에 지정된 `_ViewImports` 설정은 폴더 수준에서 재정의될 수 있습니다.
+ASP.NET Core MVC 앱에 대한 *_ViewImports.cshtml* 파일은 일반적으로 *Pages* (또는 *Views* ) 폴더에 배치됩니다. *_ViewImports.cshtml* 파일은 모든 폴더 내에 배치할 수 있으며, 이 경우 해당 폴더 및 해당 하위 폴더 내의 페이지 또는 보기에만 적용됩니다. `_ViewImports` 파일은 루트 수준부터 처리된 후 각 폴더의 페이지 또는 보기 자체의 위치까지 처리됩니다. 루트 수준에 지정된 `_ViewImports` 설정은 폴더 수준에서 재정의될 수 있습니다.
 
 예를 들어 다음을 가정해 보세요.
 
@@ -158,7 +159,7 @@ ASP.NET Core MVC 앱에 대한 *_ViewImports.cshtml* 파일은 일반적으로 *
 
 ## <a name="running-code-before-each-view"></a>각 뷰 이전에 코드 실행
 
-*_ViewStart.cshtml* 파일에 각 보기 또는 페이지를 배치하기 전에 실행되어야 하는 코드. 규칙에 따라, *_ViewStart.cshtml* 파일은 *Pages*(또는 *Views*) 폴더에 있습니다. *_ViewStart.cshtml*에 나열된 문은 모든 전체 뷰(레이아웃 및 부분 뷰가 아님) 이전에 실행됩니다. [ViewImports.cshtml](xref:mvc/views/layout#viewimports)처럼 *_ViewStart.cshtml*은 계층적입니다. *_ViewStart.cshtml* 파일이 보기 또는 페이지 폴더에 정의된 경우 *Pages*(또는 *Views*) 폴더의 루트에 정의된 항목 뒤에 실행됩니다(있는 경우).
+*_ViewStart.cshtml* 파일에 각 보기 또는 페이지를 배치하기 전에 실행되어야 하는 코드. 규칙에 따라, *_ViewStart.cshtml* 파일은 *Pages* (또는 *Views* ) 폴더에 있습니다. *_ViewStart.cshtml* 에 나열된 문은 모든 전체 뷰(레이아웃 및 부분 뷰가 아님) 이전에 실행됩니다. [ViewImports.cshtml](xref:mvc/views/layout#viewimports)처럼 *_ViewStart.cshtml* 은 계층적입니다. *_ViewStart.cshtml* 파일이 보기 또는 페이지 폴더에 정의된 경우 *Pages* (또는 *Views* ) 폴더의 루트에 정의된 항목 뒤에 실행됩니다(있는 경우).
 
 샘플 *_ViewStart.cshtml* 파일:
 
@@ -166,4 +167,4 @@ ASP.NET Core MVC 앱에 대한 *_ViewImports.cshtml* 파일은 일반적으로 *
 
 위의 파일은 모든 뷰가 *_Layout.cshtml* 레이아웃을 사용하도록 지정합니다.
 
-*_ViewStart.cshtml* 및 *_ViewImports.cshtml*은 일반적으로 */Pages/Shared*(또는 */Views/Shared*) 폴더에 배치되지 **않습니다**. 이러한 파일의 앱 수준 버전은 */Pages*(또는 */Views*) 폴더에 직접 배치해야 합니다.
+*_ViewStart.cshtml* 및 *_ViewImports.cshtml* 은 일반적으로 */Pages/Shared* (또는 */Views/Shared* ) 폴더에 배치되지 **않습니다** . 이러한 파일의 앱 수준 버전은 */Pages* (또는 */Views* ) 폴더에 직접 배치해야 합니다.

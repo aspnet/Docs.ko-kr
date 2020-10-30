@@ -7,6 +7,7 @@ ms.author: anurse
 ms.custom: devx-track-csharp, signalr, devx-track-js
 ms.date: 06/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 890359c9e9f6c3c60f3105124f52c66b09a8a4fb
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 6e5e9d866a1e03e69856cc63dcfe30284048dd6d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690679"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061316"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>ASP.NET Core의 로깅 및 진단 SignalR
 
@@ -43,7 +44,7 @@ SignalR 에서는 두 개의로 거 범주를 사용 합니다.
 * `Microsoft.AspNetCore.SignalR`: 허브 프로토콜과 관련 된 로그, 허브 활성화, 메서드 호출 및 기타 허브 관련 작업
 * `Microsoft.AspNetCore.Http.Connections`: Websocket, 긴 폴링, Server-Sent 이벤트, 하위 수준 인프라 등의 전송과 관련 된 로그 SignalR
 
-에서 자세한 로그를 사용 하도록 설정 하려면 SignalR `Debug` 의 하위 섹션에 다음 항목을 추가 하 여 *appsettings.js* 파일의 수준에 위의 접두사를 모두 구성 합니다 `LogLevel` `Logging` .
+에서 자세한 로그를 사용 하도록 설정 하려면 SignalR `Debug` *appsettings.json* 의 하위 섹션에 다음 항목을 추가 하 여 위의 접두사를 파일의 수준으로 구성 합니다 `LogLevel` `Logging` .
 
 [!code-json[](diagnostics/logging-config.json?highlight=7-8)]
 
@@ -93,7 +94,7 @@ JavaScript 클라이언트를 사용 하는 경우의 메서드를 사용 하 �
 
 다음 표에서는 JavaScript 클라이언트에서 사용할 수 있는 로그 수준을 보여 줍니다. 로그 수준을 이러한 값 중 하나로 설정 하면 해당 수준 및 테이블 위의 모든 수준에서 로깅을 사용할 수 있습니다.
 
-| Level | Description |
+| Level | 설명 |
 | ----- | ----------- |
 | `None` | 메시지가 기록 되지 않습니다. |
 | `Critical` | 전체 앱에서 오류를 나타내는 메시지입니다. |
@@ -225,7 +226,7 @@ tcpdump -i [interface] -w trace.pcap
 
 SignalR 서버 메트릭은 이벤트 원본에 보고 됩니다 <xref:Microsoft.AspNetCore.Http.Connections> .
 
-| Name                    | Description                 |
+| Name                    | 설명                 |
 |-------------------------|-----------------------------|
 | `connections-started`   | 시작 되는 총 연결   |
 | `connections-stopped`   | 중지 된 총 연결   |

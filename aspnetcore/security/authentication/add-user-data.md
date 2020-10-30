@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 03/26/2020
 ms.custom: mvc, seodec18
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/add-user-data
-ms.openlocfilehash: a71395e82ed15dae753888a438471495208a14da
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a4e1fd780947cfa5f09fb1e03964595fa09f0f18
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631851"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061420"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-no-locidentity-in-an-aspnet-core-project"></a>ASP.NET Core 프로젝트에서 사용자 지정 사용자 데이터 추가, 다운로드 및 삭제 Identity
 
@@ -57,7 +58,7 @@ ms.locfileid: "88631851"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* Visual Studio **파일** 메뉴에서 **새로 만들기** > **프로젝트**를 선택합니다. [다운로드 샘플](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) 코드의 네임 스페이스와 일치 시키려는 경우 프로젝트 이름을 **WebApp1** 로 표시 합니다.
+* Visual Studio **파일** 메뉴에서 **새로 만들기** > **프로젝트** 를 선택합니다. [다운로드 샘플](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) 코드의 네임 스페이스와 일치 시키려는 경우 프로젝트 이름을 **WebApp1** 로 표시 합니다.
 * **ASP.NET Core 웹 응용 프로그램** > **확인을** 선택 합니다.
 * 드롭다운에서 **ASP.NET Core 3.0** 을 선택 합니다.
 * **웹 응용 프로그램** > **확인을** 선택 합니다.
@@ -67,7 +68,7 @@ ms.locfileid: "88631851"
 
 ::: moniker range="< aspnetcore-3.0"
 
-* Visual Studio **파일** 메뉴에서 **새로 만들기** > **프로젝트**를 선택합니다. [다운로드 샘플](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) 코드의 네임 스페이스와 일치 시키려는 경우 프로젝트 이름을 **WebApp1** 로 표시 합니다.
+* Visual Studio **파일** 메뉴에서 **새로 만들기** > **프로젝트** 를 선택합니다. [다운로드 샘플](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) 코드의 네임 스페이스와 일치 시키려는 경우 프로젝트 이름을 **WebApp1** 로 표시 합니다.
 * **ASP.NET Core 웹 응용 프로그램** > **확인을** 선택 합니다.
 * 드롭다운에서 **ASP.NET Core 2.2** 을 선택 합니다.
 * **웹 응용 프로그램** > **확인을** 선택 합니다.
@@ -88,16 +89,16 @@ dotnet new webapp -o WebApp1
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭 하 > **Add**  >  **새 스 캐 폴드 항목**추가를 클릭 합니다.
-* **스 캐 폴드 추가** 대화 상자의 왼쪽 창에서 추가를 선택 **Identity**  >  **Add**합니다.
-* **추가 Identity ** 대화 상자에서 다음 옵션을 선택 합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭 하 > **Add**  >  **새 스 캐 폴드 항목** 추가를 클릭 합니다.
+* **스 캐 폴드 추가** 대화 상자의 왼쪽 창에서 추가를 선택 **Identity**  >  **Add** 합니다.
+* **추가 Identity** 대화 상자에서 다음 옵션을 선택 합니다.
   * 기존 레이아웃 파일  *~/Pages/Shared/_Layout를 선택 합니다.*
   * 재정의할 다음 파일 선택:
     * **계정/등록**
     * **계정/관리/인덱스**
-  * 단추를 선택 **+** 하 여 새 **데이터 컨텍스트 클래스**를 만듭니다. 프로젝트 이름이 **WebApp1**인 경우 형식 (**WebApp1. WebApp1Context** )을 적용 합니다.
-  * 단추를 선택 **+** 하 여 새 **사용자 클래스**를 만듭니다. 형식 (프로젝트 이름이 **WebApp1**인 경우**WebApp1User** )을 적용 > **추가**합니다.
-* **추가**를 선택합니다.
+  * 단추를 선택 **+** 하 여 새 **데이터 컨텍스트 클래스** 를 만듭니다. 프로젝트 이름이 **WebApp1** 인 경우 형식 ( **WebApp1. WebApp1Context** )을 적용 합니다.
+  * 단추를 선택 **+** 하 여 새 **사용자 클래스** 를 만듭니다. 형식 (프로젝트 이름이 **WebApp1** 인 경우 **WebApp1User** )을 적용 > **추가** 합니다.
+* **추가** 를 선택합니다.
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -131,7 +132,7 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 [마이그레이션, UseAuthentication 및 레이아웃](xref:security/authentication/scaffold-identity#efm) 의 지침에 따라 다음 단계를 수행 합니다.
 
 * 마이그레이션을 만들고 데이터베이스를 업데이트 합니다.
-* `UseAuthentication`를 `Startup.Configure`에 추가합니다.
+* `UseAuthentication`을 `Startup.Configure`에 추가합니다.
 * `<partial name="_LoginPartial" />`레이아웃 파일에를 추가 합니다.
 * 앱을 테스트합니다.
   * 사용자 등록
@@ -142,7 +143,7 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 ## <a name="add-custom-user-data-to-the-no-locidentity-db"></a>DB에 사용자 지정 사용자 데이터 추가 Identity
 
-`IdentityUser`사용자 지정 속성을 사용 하 여 파생 클래스를 업데이트 합니다. WebApp1 프로젝트의 이름을 지정 하는 경우 파일의 이름은 *Areas/ Identity /Data/WebApp1User.cs*입니다. 다음 코드를 사용 하 여 파일을 업데이트 합니다.
+`IdentityUser`사용자 지정 속성을 사용 하 여 파생 클래스를 업데이트 합니다. WebApp1 프로젝트의 이름을 지정 하는 경우 파일의 이름은 *Areas/ Identity /Data/WebApp1User.cs* 입니다. 다음 코드를 사용 하 여 파일을 업데이트 합니다.
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -216,7 +217,7 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Visual Studio **패키지 관리자 콘솔**에서 다음을 수행 합니다.
+Visual Studio **패키지 관리자 콘솔** 에서 다음을 수행 합니다.
 
 ```powershell
 Add-Migration CustomUserData

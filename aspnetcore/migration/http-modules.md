@@ -5,6 +5,7 @@ description: ''
 ms.author: riande
 ms.date: 12/07/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: 808215d103db9c5d63fe63b6875a222e6b0ba1fa
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: 9664f49bd709d2c9e46130773211c339e391d1f6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326621"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060705"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>HTTP 처리기 및 모듈을 ASP.NET Core 미들웨어로 마이그레이션
 
@@ -57,7 +58,7 @@ ms.locfileid: "92326621"
 
 1. <https://docs.microsoft.com/previous-versions/ms227673(v=vs.140)>ASP.NET: [BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest)등에 의해 발생 된 시리즈 이벤트 인입니다. 각 모듈은 하나 이상의 이벤트에 대 한 처리기를 만들 수 있습니다.
 
-2. 동일한 이벤트의 경우 *Web.config*에서 구성 된 순서입니다.
+2. 동일한 이벤트의 경우 *Web.config* 에서 구성 된 순서입니다.
 
 모듈 외에도 *Global.asax.cs* 파일에 수명 주기 이벤트에 대 한 처리기를 추가할 수 있습니다. 이러한 처리기는 구성 된 모듈의 처리기 다음에 실행 됩니다.
 
@@ -65,7 +66,7 @@ ms.locfileid: "92326621"
 
 **미들웨어는 HTTP 모듈 및 처리기 보다 간단 합니다.**
 
-* 모듈, 처리기, *Global.asax.cs*, *Web.config* (IIS 구성 제외) 및 응용 프로그램 수명 주기가 사라졌습니다.
+* 모듈, 처리기, *Global.asax.cs* , *Web.config* (IIS 구성 제외) 및 응용 프로그램 수명 주기가 사라졌습니다.
 
 * 미들웨어에서 모듈 및 처리기의 역할을 모두 가져왔습니다.
 
@@ -132,7 +133,7 @@ ms.locfileid: "92326621"
 
 ## <a name="migrating-module-insertion-into-the-request-pipeline"></a>모듈 삽입을 요청 파이프라인으로 마이그레이션
 
-일반적으로 HTTP 모듈은 *Web.config*를 사용 하 여 요청 파이프라인에 추가 됩니다.
+일반적으로 HTTP 모듈은 *Web.config* 를 사용 하 여 요청 파이프라인에 추가 됩니다.
 
 [!code-xml[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6&range=1-3,32-33,36,43,50,101)]
 
@@ -140,7 +141,7 @@ ms.locfileid: "92326621"
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=16)]
 
-파이프라인에서 새 미들웨어를 삽입 하는 정확한 위치는 모듈 (, 등)로 처리 되는 이벤트 `BeginRequest` `EndRequest` 와 *Web.config*의 모듈 목록에서 해당 순서에 따라 달라 집니다.
+파이프라인에서 새 미들웨어를 삽입 하는 정확한 위치는 모듈 (, 등)로 처리 되는 이벤트 `BeginRequest` `EndRequest` 와 *Web.config* 의 모듈 목록에서 해당 순서에 따라 달라 집니다.
 
 앞에서 설명한 것 처럼 ASP.NET Core에는 응용 프로그램 수명 주기가 없으며 미들웨어에서 응답이 처리 되는 순서는 모듈에서 사용 하는 순서와 다릅니다. 이렇게 하면 순서 결정을 더 어려울 수 있습니다.
 
@@ -180,7 +181,7 @@ HTTP 처리기 구성은 *Web.config* 에서 수행 되며 다음과 같습니�
 
 ## <a name="loading-middleware-options-using-the-options-pattern"></a>옵션 패턴을 사용 하 여 미들웨어 옵션 로드
 
-일부 모듈 및 처리기는 *Web.config*에 저장 되는 구성 옵션을 포함 합니다. 그러나 ASP.NET Core *Web.config*대신 새 구성 모델이 사용 됩니다.
+일부 모듈 및 처리기는 *Web.config* 에 저장 되는 구성 옵션을 포함 합니다. 그러나 ASP.NET Core *Web.config* 대신 새 구성 모델이 사용 됩니다.
 
 새 [구성 시스템](xref:fundamentals/configuration/index) 은이를 해결 하는 다음과 같은 옵션을 제공 합니다.
 
@@ -194,7 +195,7 @@ HTTP 처리기 구성은 *Web.config* 에서 수행 되며 다음과 같습니�
 
 2. 옵션 값 저장
 
-   구성 시스템을 사용 하 여 원하는 위치에 옵션 값을 저장할 수 있습니다. 그러나 대부분의 사이트는 *appsettings.js*를 사용 하므로 다음 방법을 사용 합니다.
+   구성 시스템을 사용 하 여 원하는 위치에 옵션 값을 저장할 수 있습니다. 그러나 대부분의 사이트에서는 *appsettings.json* 를 사용 하기 때문에 다음 방법을 사용 합니다.
 
    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,14-18)]
 
@@ -206,7 +207,7 @@ HTTP 처리기 구성은 *Web.config* 에서 수행 되며 다음과 같습니�
 
     클래스를 업데이트 합니다 `Startup` .
 
-   1. *에서appsettings.js*를 사용 하는 경우 생성자의 구성 작성기에 추가 합니다 `Startup` .
+   1. 를 사용 하는 경우 *appsettings.json* 생성자의 구성 작성기에 추가 합니다 `Startup` .
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Ctor&highlight=5-6)]
 
@@ -234,9 +235,9 @@ HTTP 처리기 구성은 *Web.config* 에서 수행 되며 다음과 같습니�
 
 이 솔루션은 클래스의 실제 옵션 값을 사용 하 여 옵션 개체를 가져온 `Startup` 다음 미들웨어의 각 인스턴스에 직접 전달 하는 것입니다.
 
-1. *appsettings.js* 에 두 번째 키를 추가 합니다.
+1. 두 번째 키를에 추가 합니다. *appsettings.json*
 
-   파일 * 의appsettings.js* 에 두 번째 옵션 집합을 추가 하려면 새 키를 사용 하 여 해당 옵션을 고유 하 게 식별 합니다.
+   파일에 두 번째 옵션 집합을 추가 하려면 새 키를 사용 하 여 해당 옵션을 고유 하 게 *appsettings.json* 식별 합니다.
 
    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,10-18&highlight=2-5)]
 
@@ -294,7 +295,7 @@ public async Task Invoke(HttpContext context)
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Host)]
 
-**HttpContext 요청. Cookie ** 는 다음과 같이 변환 됩니다.
+**HttpContext 요청. Cookie** 는 다음과 같이 변환 됩니다.
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Cookies)]
 
@@ -323,7 +324,7 @@ public async Task Invoke(HttpContext context)
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Form)]
 
 > [!WARNING]
-> 콘텐츠 하위 형식이 *x-www-form-urlencoded* 또는 *양식 데이터*인 경우에만 양식 값을 읽습니다.
+> 콘텐츠 하위 형식이 *x-www-form-urlencoded* 또는 *양식 데이터* 인 경우에만 양식 값을 읽습니다.
 
 **InputStream** 는 다음과 같이 변환 됩니다.
 
@@ -379,7 +380,7 @@ public async Task Invoke(HttpContext httpContext)
 
 **HttpContext 응답입니다. Cookie 삭제**
 
-Cookies는 *설정- Cookie * 응답 헤더의 브라우저로 이동 합니다. 따라서를 보내는 cookie 데는 응답 헤더를 보내는 데 사용 되는 것과 동일한 콜백이 필요 합니다.
+Cookies는 *설정- Cookie* 응답 헤더의 브라우저로 이동 합니다. 따라서를 보내는 cookie 데는 응답 헤더를 보내는 데 사용 되는 것과 동일한 콜백이 필요 합니다.
 
 ```csharp
 public async Task Invoke(HttpContext httpContext)

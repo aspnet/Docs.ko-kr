@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: c337e727a4683b0b3c67307af93ef8efa246e2ad
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a568ad481eb09587e2ddce8e84d0ac3eff01e990
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631019"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060900"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 형식의 태그 도우미
 
@@ -67,7 +68,7 @@ MVC 런타임은 형식 태그 도우미 특성 `asp-controller` 및 `asp-action
 
 [!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
 
-*보기/계정* 폴더의 보기 중 다수(*개별 사용자 계정*을 사용하여 새로운 웹앱을 만들 때 생성됨)에는 [asp-route-returnurl](xref:mvc/views/working-with-forms) 특성이 포함됩니다.
+*보기/계정* 폴더의 보기 중 다수( *개별 사용자 계정* 을 사용하여 새로운 웹앱을 만들 때 생성됨)에는 [asp-route-returnurl](xref:mvc/views/working-with-forms) 특성이 포함됩니다.
 
 ```cshtml
 <form asp-controller="Account" asp-action="Login"
@@ -84,7 +85,7 @@ MVC 런타임은 형식 태그 도우미 특성 `asp-controller` 및 `asp-action
 
 `formaction`의 값을 제어하기 위해 지원되는 [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) 특성:
 
-|attribute|Description|
+|attribute|설명|
 |---|---|
 |[asp-controller](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-controller)|컨트롤러의 이름입니다.|
 |[asp-action](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-action)|작업 메서드의 이름입니다.|
@@ -92,7 +93,7 @@ MVC 런타임은 형식 태그 도우미 특성 `asp-controller` 및 `asp-action
 |[asp-page](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|페이지의 이름 Razor 입니다.|
 |[asp-page-handler](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|페이지 처리기의 이름 Razor 입니다.|
 |[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|경로의 이름입니다.|
-|[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|단일 URL 경로 값입니다. 예들 들어 `asp-route-id="1234"`입니다.|
+|[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|단일 URL 경로 값입니다. 예: `asp-route-id="1234"`.|
 |[asp-all-route-data](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-all-route-data)|모든 경로 값입니다.|
 |[asp-fragment](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-fragment)|URL 조각입니다.|
 
@@ -465,9 +466,9 @@ public IActionResult Edit(int id, int colorIndex)
 |--- |--- |
 |ValidationSummary.All|속성 및 모델 수준|
 |ValidationSummary.ModelOnly|모델|
-|ValidationSummary.None|None|
+|ValidationSummary.None|없음|
 
-### <a name="sample"></a>샘플
+### <a name="sample"></a>예제
 
 다음 예제에서 데이터 모델에는 `DataAnnotation` 특성이 있습니다. 이 특성은 `<input>` 요소에 대한 유효성 검사 오류 메시지를 생성합니다.  유효성 검사 오류가 발생하는 경우 유효성 검사 태그 도우미는 다음 오류 메시지를 표시합니다.
 
@@ -502,7 +503,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * HTML 도우미 대안 `Html.DropDownListFor` 및 `Html.ListBoxFor`가 있습니다.
 
-`Select Tag Helper` `asp-for`는 [선택](https://www.w3.org/wiki/HTML/Elements/select) 요소에 대한 모델 속성 이름을 지정하고 `asp-items`는 [옵션](https://www.w3.org/wiki/HTML/Elements/option) 요소를 지정합니다.  다음은 그 예입니다. 
+`Select Tag Helper` `asp-for`는 [선택](https://www.w3.org/wiki/HTML/Elements/select) 요소에 대한 모델 속성 이름을 지정하고 `asp-items`는 [옵션](https://www.w3.org/wiki/HTML/Elements/option) 요소를 지정합니다.  다음은 그 예입니다.
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
@@ -673,7 +674,7 @@ HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) 요소를 추가 
  </form>
  ```
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:mvc/views/tag-helpers/intro>
 * [HTML 양식 요소](https://www.w3.org/TR/html401/interact/forms.html)

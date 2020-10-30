@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: c1891b8093c5a4c1599cd3c4ed4e5e60e2fd13e8
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 306416db3d9ae0219f859c3cf459eb08a5b778cf
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629004"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060926"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core의 작성자 태그 도우미
 
@@ -36,13 +37,13 @@ ms.locfileid: "88629004"
 
 태그 도우미는 `ITagHelper` 인터페이스를 구현하는 클래스입니다. 그러나 태그 도우미를 작성할 때 일반적으로 `TagHelper`에서 파생되므로 `Process` 메서드에 액세스할 수 있습니다.
 
-1. **AuthoringTagHelpers**라는 새로운 ASP.NET Core 프로젝트를 만듭니다. 이 프로젝트에 대한 인증이 필요하지 않습니다.
+1. **AuthoringTagHelpers** 라는 새로운 ASP.NET Core 프로젝트를 만듭니다. 이 프로젝트에 대한 인증이 필요하지 않습니다.
 
-1. *TagHelpers*라는 태그 도우미를 보관할 폴더를 만듭니다. *TagHelpers* 폴더는 필수는 *아니지만* 있는 것이 좋습니다. 이제 몇 가지 간단한 태그 도우미를 작성하는 것으로 시작해 보겠습니다.
+1. *TagHelpers* 라는 태그 도우미를 보관할 폴더를 만듭니다. *TagHelpers* 폴더는 필수는 *아니지만* 있는 것이 좋습니다. 이제 몇 가지 간단한 태그 도우미를 작성하는 것으로 시작해 보겠습니다.
 
 ## <a name="a-minimal-tag-helper"></a>최소한의 태그 도우미
 
-이 섹션에서는 이메일 태그를 업데이트하는 태그 도우미를 작성합니다. 다음은 그 예입니다. 
+이 섹션에서는 이메일 태그를 업데이트하는 태그 도우미를 작성합니다. 다음은 그 예입니다.
 
 ```html
 <email>Support</email>
@@ -60,7 +61,7 @@ ms.locfileid: "88629004"
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1EmailTagHelperCopy.cs)]
 
-   * 태그 도우미는 루트 클래스 이름의 요소를 대상으로 하는 명명 규칙을 사용합니다(클래스 이름의 *TagHelper* 부분 제외). 이 예에서 **EmailTagHelper**의 루트 이름이 *email*이므로 `<email>` 태그가 대상으로 지정됩니다. 이 명명 규칙은 대부분의 태그 도우미에서 작동하며, 나중에는 재정의하는 방법에 대해 설명하기로 합니다.
+   * 태그 도우미는 루트 클래스 이름의 요소를 대상으로 하는 명명 규칙을 사용합니다(클래스 이름의 *TagHelper* 부분 제외). 이 예에서 **EmailTagHelper** 의 루트 이름이 *email* 이므로 `<email>` 태그가 대상으로 지정됩니다. 이 명명 규칙은 대부분의 태그 도우미에서 작동하며, 나중에는 재정의하는 방법에 대해 설명하기로 합니다.
 
    * `EmailTagHelper` 클래스는 `TagHelper`에서 파생됩니다. `TagHelper` 클래스는 태그 도우미를 작성하기 위한 메서드 및 속성을 제공합니다.
 
@@ -70,7 +71,7 @@ ms.locfileid: "88629004"
 
    * `Process`(및 `ProcessAsync`)에 대한 출력 매개 변수는 HTML 태그 및 콘텐츠를 생성하는 데 사용된 원본 소스의 상태 저장 HTML 요소 표현을 포함합니다.
 
-   * 클래스 이름에는 **TagHelper**라는 접미사가 있으며 필수는 *아니지만* 관례적으로 사용됩니다. 다음과 같이 클래스를 선언할 수 있습니다.
+   * 클래스 이름에는 **TagHelper** 라는 접미사가 있으며 필수는 *아니지만* 관례적으로 사용됩니다. 다음과 같이 클래스를 선언할 수 있습니다.
 
    ```csharp
    public class Email : TagHelper
@@ -93,13 +94,13 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
     [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
 -->
 
-FQN을 사용하여 뷰에 태그 도우미를 추가하려면 먼저 FQN(`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)을 추가한 후 **어셈블리 이름**(*AuthoringTagHelpers*, 반드시 `namespace`는 아님)을 추가합니다. 대부분의 개발자는 와일드 카드 구문을 사용하는 방법을 선호합니다. [태그 도우미 소개](intro.md)에서는 태그 도우미 추가, 제거, 계층 구조 및 와일드 카드 구문에 대해 자세히 설명합니다.
+FQN을 사용하여 뷰에 태그 도우미를 추가하려면 먼저 FQN(`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)을 추가한 후 **어셈블리 이름** ( *AuthoringTagHelpers* , 반드시 `namespace`는 아님)을 추가합니다. 대부분의 개발자는 와일드 카드 구문을 사용하는 방법을 선호합니다. [태그 도우미 소개](intro.md)에서는 태그 도우미 추가, 제거, 계층 구조 및 와일드 카드 구문에 대해 자세히 설명합니다.
 
 1. *Views/Home/Contact.cshtml* 파일에서 태그를 다음 변경 내용으로 업데이트합니다.
 
    [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
 
-1. 앱을 실행하고 선호하는 브라우저를 사용하여 HTML 소스를 보면 이메일 태그가 앵커 태그로 대체되었는지 확인할 수 있습니다(예: `<a>Support</a>`). *지원* 및 *마케팅*은 링크로 렌더링되지만 작동하도록 하는 `href` 특성이 없습니다. 다음 섹션에서 이 문제를 해결합니다.
+1. 앱을 실행하고 선호하는 브라우저를 사용하여 HTML 소스를 보면 이메일 태그가 앵커 태그로 대체되었는지 확인할 수 있습니다(예: `<a>Support</a>`). *지원* 및 *마케팅* 은 링크로 렌더링되지만 작동하도록 하는 `href` 특성이 없습니다. 다음 섹션에서 이 문제를 해결합니다.
 
 ## <a name="setattribute-and-setcontent"></a>SetAttribute 및 SetContent
 
@@ -172,7 +173,7 @@ FQN을 사용하여 뷰에 태그 도우미를 추가하려면 먼저 FQN(`Autho
 
    위의 `[HtmlTargetElement]` 특성은 "bold" 특성 이름을 제공하는 HTML 태그만 대상으로 합니다. `<bold>` 요소는 태그 도우미에 의해 수정되지 않았습니다.
 
-1. `[HtmlTargetElement]` 특성 줄을 주석 처리하고 기본적으로 `<bold>` 태그를 대상으로 합니다. 즉, `<bold>` 형식의 HTML 태그입니다. 기본 명명 규칙은 클래스 이름 **Bold**TagHelper를 `<bold>` 태그와 일치시킨다는 점을 유의합니다.
+1. `[HtmlTargetElement]` 특성 줄을 주석 처리하고 기본적으로 `<bold>` 태그를 대상으로 합니다. 즉, `<bold>` 형식의 HTML 태그입니다. 기본 명명 규칙은 클래스 이름 **Bold** TagHelper를 `<bold>` 태그와 일치시킨다는 점을 유의합니다.
 
 1. 앱을 실행하고 `<bold>` 태그가 태그 도우미에 의해 처리되는지 확인합니다.
 

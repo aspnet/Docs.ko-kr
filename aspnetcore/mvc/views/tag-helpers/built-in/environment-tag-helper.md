@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: de37bf704ac377a15ef600b96ba78056c51ea7be
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 4f8330521bb9114f6639c1889cc15ebd18adc0ed
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633866"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061134"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a>ASP.NET Core의 환경 태그 도우미
 
@@ -76,6 +77,6 @@ ms.locfileid: "88633866"
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:fundamentals/environments>

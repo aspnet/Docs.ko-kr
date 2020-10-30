@@ -5,6 +5,7 @@ description: 권한 부여의 기본 사항과 ASP.NET Core apps에서 권한 �
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/introduction
-ms.openlocfilehash: 7d7570ead1365588fd582d9bea364685da29a576
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 8afee7d8bc6b7ad71154916f4a41a2b417b24f9a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634438"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060250"
 ---
 # <a name="introduction-to-authorization-in-aspnet-core"></a>ASP.NET Core 권한 부여 소개
 

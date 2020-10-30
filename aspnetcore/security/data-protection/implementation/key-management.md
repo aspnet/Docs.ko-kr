@@ -5,6 +5,7 @@ description: ASP.NET Core Data Protection key management Api에 대 한 구현 �
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-management
-ms.openlocfilehash: 7cc0c7203dbc7b607bb7359990b75b000bb09b7e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f7e0fa5e80208469188a11239a9453ecafdcf5f3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634399"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060198"
 ---
 # <a name="key-management-in-aspnet-core"></a>ASP.NET Core의 키 관리
 

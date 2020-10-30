@@ -5,6 +5,7 @@ description: 를 사용 하지 않고 Facebook, Google, Twitter 등의 계정 �
 ms.author: riande
 ms.date: 12/10/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/social-without-identity
-ms.openlocfilehash: a91a2f2fb7873e5a672c624e9cf863ae720c8005
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cd7545a3ddaccedfa64ef5e9d5458c21c651257a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634230"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060289"
 ---
 # <a name="use-social-sign-in-provider-authentication-without-no-locaspnet-core-identity"></a>다음을 사용 하지 않고 소셜 로그인 공급자 인증 사용 ASP.NET Core Identity
 
@@ -40,7 +41,7 @@ ms.locfileid: "88634230"
 * [Twitter 인증](xref:security/authentication/twitter-logins)
 * [기타 공급자](xref:security/authentication/otherlogins)
 
-## <a name="configuration"></a>구성
+## <a name="configuration"></a>Configuration
 
 `ConfigureServices`메서드에서 <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> , 및 메서드를 사용 하 여 앱의 인증 체계를 구성 합니다 <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> <xref:Microsoft.Extensions.DependencyInjection.GoogleExtensions.AddGoogle*> .
 
@@ -76,7 +77,7 @@ ms.locfileid: "88634230"
 
 에 대 한 호출은 `SignOutAsync` 인증 체계를 지정 하지 않습니다. 의 응용 프로그램 `DefaultScheme` 은 `CookieAuthenticationDefaults.AuthenticationScheme` 대체로 사용 됩니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:security/authorization/simple>
 * <xref:security/authentication/social/additional-claims>
@@ -95,7 +96,7 @@ ms.locfileid: "88634230"
 * [Twitter 인증](xref:security/authentication/twitter-logins)
 * [기타 공급자](xref:security/authentication/otherlogins)
 
-## <a name="configuration"></a>구성
+## <a name="configuration"></a>Configuration
 
 `ConfigureServices`메서드에서 `AddAuthentication` , 및 메서드를 사용 하 여 앱의 인증 체계를 구성 합니다 `AddCookie` `AddGoogle` .
 
@@ -131,7 +132,7 @@ ms.locfileid: "88634230"
 
 에 대 한 호출은 `SignOutAsync` 인증 체계를 지정 하지 않습니다. 의 응용 프로그램 `DefaultScheme` 은 `CookieAuthenticationDefaults.AuthenticationScheme` 대체로 사용 됩니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:security/authorization/simple>
 * <xref:security/authentication/social/additional-claims>

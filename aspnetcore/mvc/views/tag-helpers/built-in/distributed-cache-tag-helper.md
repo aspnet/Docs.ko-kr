@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/24/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
-ms.openlocfilehash: 67e5b7ef09525063da6e6b7dfce6fd084d279869
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 04ab5be4d9cec066a4b7cd422a1566bcbb5a291a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633905"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061160"
 ---
 # <a name="distributed-cache-tag-helper-in-aspnet-core"></a>ASP.NET Core의 분산 캐시 태그 도우미
 
@@ -34,7 +35,7 @@ ms.locfileid: "88633905"
 
 분산 캐시 태그 도우미는 캐시 태그 도우미와 동일한 기본 클래스를 상속받습니다. 모든 [캐시 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper) 특성을 분산 태그 도우미에서 사용할 수 있습니다.
 
-분산 캐시 태그 도우미는 [생성자 주입](xref:fundamentals/dependency-injection#constructor-injection-behavior)을 사용합니다. 분산 캐시 태그 도우미의 생성자에는 <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> 인터페이스가 전달됩니다. `Startup.ConfigureServices`(*Startup.cs*)에서 `IDistributedCache`의 구체적 구현이 생성되지 않으면, 분산 캐시 태그 도우미는 [캐시 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)와 동일한 메모리 내 공급자를 사용하여 캐시된 데이터를 저장합니다.
+분산 캐시 태그 도우미는 [생성자 주입](xref:fundamentals/dependency-injection#constructor-injection-behavior)을 사용합니다. 분산 캐시 태그 도우미의 생성자에는 <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> 인터페이스가 전달됩니다. `Startup.ConfigureServices`( *Startup.cs* )에서 `IDistributedCache`의 구체적 구현이 생성되지 않으면, 분산 캐시 태그 도우미는 [캐시 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)와 동일한 메모리 내 공급자를 사용하여 캐시된 데이터를 저장합니다.
 
 ## <a name="distributed-cache-tag-helper-attributes"></a>분산 캐시 태그 도우미 특성
 
@@ -61,7 +62,7 @@ ms.locfileid: "88633905"
 
 `name`은 필수입니다. `name` 특성은 저장된 각 캐시 인스턴스의 키로 사용됩니다. 페이지의 페이지 이름과 위치를 기준으로 각 인스턴스에 캐시 키를 할당 하는 캐시 태그 도우미와 달리 Razor Razor 분산 캐시 태그 도우미는 특성에 대 한 키만을 기준으로 `name` 합니다.
 
-예:
+예제:
 
 ```cshtml
 <distributed-cache name="my-distributed-cache-unique-key-101">
@@ -75,7 +76,7 @@ ASP.NET Core에는 두 가지 <xref:Microsoft.Extensions.Caching.Distributed.IDi
 
 특정 `IDistributedCache` 구현의 사용과 특별히 관련된 태그 특성은 없습니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
 * <xref:fundamentals/dependency-injection>

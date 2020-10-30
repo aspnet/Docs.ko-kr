@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/08/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/views
-ms.openlocfilehash: 775ebdffe2b0753de18bf07d9ff1193235a45b17
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b3d6e595aa08208f2bf9e95d7070cf9c24802b62
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629888"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061329"
 ---
 # <a name="view-based-authorization-in-aspnet-core-mvc"></a>ASP.NET Core MVC에서 보기 기반 권한 부여
 
@@ -57,4 +58,4 @@ ms.locfileid: "88629888"
 위의 코드에서 모델은 정책 평가를 고려해 야 하는 리소스로 전달 됩니다.
 
 > [!WARNING]
-> 앱의 UI 요소에 대 한 표시 여부를 단독 권한 부여 확인으로 전환 하는 것을 사용 하지 마세요. UI 요소를 숨기면 연결 된 컨트롤러 작업에 대 한 액세스를 완전히 방지할 수 없습니다. 예를 들어 위의 코드 조각에서 단추를 살펴보겠습니다. 사용자는 `Edit` 상대 리소스 URL이 */Document/Edit/1*인 것으로 알고 있는 경우 작업 메서드를 호출할 수 있습니다. 이러한 이유로 `Edit` 작업 메서드는 자체 권한 부여 검사를 수행 해야 합니다.
+> 앱의 UI 요소에 대 한 표시 여부를 단독 권한 부여 확인으로 전환 하는 것을 사용 하지 마세요. UI 요소를 숨기면 연결 된 컨트롤러 작업에 대 한 액세스를 완전히 방지할 수 없습니다. 예를 들어 위의 코드 조각에서 단추를 살펴보겠습니다. 사용자는 `Edit` 상대 리소스 URL이 */Document/Edit/1* 인 것으로 알고 있는 경우 작업 메서드를 호출할 수 있습니다. 이러한 이유로 `Edit` 작업 메서드는 자체 권한 부여 검사를 수행 해야 합니다.

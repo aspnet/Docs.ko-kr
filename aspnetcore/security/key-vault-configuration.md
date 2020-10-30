@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc, devx-track-azurecli
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: e3adbe127f618b8851b3a83025b27c066947e8b4
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: 10a949831c180f51bc6bb9b8294150a558f9343c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491576"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060133"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core의 Azure Key Vault 구성 공급자
 
@@ -86,7 +87,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 1. [Azure Portal](https://portal.azure.com/)에서 다음 방법 중 하나를 사용 하 여 Azure Cloud shell을 엽니다.
 
-   * 코드 블록의 오른쪽 위 모서리에서 **사용**을 선택합니다. 텍스트 상자에 "Azure CLI" 검색 문자열을 사용 합니다.
+   * 코드 블록의 오른쪽 위 모서리에서 **사용** 을 선택합니다. 텍스트 상자에 "Azure CLI" 검색 문자열을 사용 합니다.
    * **Cloud Shell 시작** 단추를 사용 하 여 브라우저에서 Cloud Shell를 엽니다.
    * Azure Portal의 오른쪽 위 모서리에 있는 메뉴에서 **Cloud Shell** 단추를 선택합니다.
 
@@ -119,30 +120,30 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 ## <a name="use-application-id-and-x509-certificate-for-non-azure-hosted-apps"></a>Azure에서 호스트 되지 않는 앱에 응용 프로그램 ID 및 x.509 인증서 사용
 
-**앱이 azure 외부에서 호스팅될 때**Azure Active Directory 응용 프로그램 ID 및 x.509 인증서를 사용 하 여 Key Vault에 인증 하도록 azure AD, Azure Key Vault 및 앱을 구성 합니다. 자세한 내용은 [키, 암호 및 인증서 정보](/azure/key-vault/about-keys-secrets-and-certificates)를 참조하세요.
+**앱이 azure 외부에서 호스팅될 때** Azure Active Directory 응용 프로그램 ID 및 x.509 인증서를 사용 하 여 Key Vault에 인증 하도록 azure AD, Azure Key Vault 및 앱을 구성 합니다. 자세한 내용은 [키, 암호 및 인증서 정보](/azure/key-vault/about-keys-secrets-and-certificates)를 참조하세요.
 
 > [!NOTE]
 > Azure에서 호스트 되는 앱에는 응용 프로그램 ID 및 x.509 인증서를 사용할 수 있지만 azure에서 앱을 호스팅할 때 [azure 리소스에 관리 되는 id](#use-managed-identities-for-azure-resources) 를 사용 하는 것이 좋습니다. 관리 되는 id는 응용 프로그램 또는 개발 환경에서 인증서를 저장할 필요가 없습니다.
 
 샘플 앱은 `#define` *Program.cs* 파일의 맨 위에 있는 문이로 설정 된 경우 응용 프로그램 ID 및 x.509 인증서를 사용 `Certificate` 합니다.
 
-1. PKCS # 12 archive (*.pfx*) 인증서를 만듭니다. 인증서를 만들기 위한 옵션에는 Windows 및 [OpenSSL](https://www.openssl.org/) [의 makecert.exe](/windows/desktop/seccrypto/makecert) 가 포함 됩니다.
+1. PKCS # 12 archive ( *.pfx* ) 인증서를 만듭니다. 인증서를 만들기 위한 옵션에는 Windows 및 [OpenSSL](https://www.openssl.org/) [의 makecert.exe](/windows/desktop/seccrypto/makecert) 가 포함 됩니다.
 1. 현재 사용자의 개인 인증서 저장소에 인증서를 설치 합니다. 키를 내보낼 수 있는 것으로 표시는 선택 사항입니다. 이 프로세스의 뒷부분에서 사용 되는 인증서의 지문을 적어둡니다.
-1. PKCS # 12 archive (*.pfx*) 인증서를 DER로 인코딩된 인증서 (*.cer*)로 내보냅니다.
-1. Azure AD (**앱 등록**)에 앱을 등록 합니다.
-1. DER로 인코딩된 인증서 (*.cer*)를 Azure AD에 업로드 합니다.
+1. PKCS # 12 archive ( *.pfx* ) 인증서를 DER로 인코딩된 인증서 ( *.cer* )로 내보냅니다.
+1. Azure AD ( **앱 등록** )에 앱을 등록 합니다.
+1. DER로 인코딩된 인증서 ( *.cer* )를 Azure AD에 업로드 합니다.
    1. Azure AD에서 앱을 선택 합니다.
-   1. **인증서 & 암호**로 이동 합니다.
-   1. **인증서 업로드** 를 선택 하 여 공개 키가 포함 된 인증서를 업로드 합니다. *.Cer*, *pem*또는 *.crt* 인증서를 사용할 수 있습니다.
-1. 응용 프로그램의 *appsettings.js* 파일에 키 자격 증명 모음 이름, 응용 프로그램 ID 및 인증서 지문을 저장 합니다.
+   1. **인증서 & 암호** 로 이동 합니다.
+   1. **인증서 업로드** 를 선택 하 여 공개 키가 포함 된 인증서를 업로드 합니다. *.Cer* , *pem* 또는 *.crt* 인증서를 사용할 수 있습니다.
+1. 키 자격 증명 모음 이름, 응용 프로그램 ID 및 인증서 지문을 앱의 파일에 저장 *appsettings.json* 합니다.
 1. Azure Portal에서 **키 자격 증명 모음** 으로 이동 합니다.
 1. [Azure Key Vault를 사용 하 여 프로덕션 환경에서 암호 저장소](#secret-storage-in-the-production-environment-with-azure-key-vault) 에 만든 key vault를 선택 합니다.
-1. **액세스 정책**을 선택합니다.
-1. **액세스 정책 추가**를 선택합니다.
+1. **액세스 정책** 을 선택합니다.
+1. **액세스 정책 추가** 를 선택합니다.
 1. **비밀 권한을** 열고 **Get** 및 **List** 권한을 사용 하 여 앱을 제공 합니다.
 1. **보안 주체 선택** 을 선택 하 고 이름으로 등록 된 앱을 선택 합니다. **선택** 단추를 누릅니다.
-1. **확인**을 선택합니다.
-1. **저장**을 선택합니다.
+1. **확인** 을 선택합니다.
+1. **저장** 을 선택합니다.
 1. 앱을 배포합니다.
 
 `Certificate`샘플 앱은 `IConfigurationRoot` 암호 이름과 동일한 이름을 사용 하 여에서 해당 구성 값을 가져옵니다.
@@ -152,7 +153,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
-X.509 인증서는 OS를 통해 관리 됩니다. 앱은 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 파일 * 의appsettings.js* 에서 제공 하는 값으로을 호출 합니다.
+X.509 인증서는 OS를 통해 관리 됩니다. 응용 프로그램은 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 파일에서 제공 하는 값을 사용 하 여를 호출 합니다 *appsettings.json* .
 
 [!code-csharp[](key-vault-configuration/samples/3.x/SampleApp/Program.cs?name=snippet1&highlight=20-23)]
 
@@ -162,7 +163,7 @@ X.509 인증서는 OS를 통해 관리 됩니다. 앱은 <xref:Microsoft.Extensi
 * 응용 프로그램 ID: `627e911e-43cc-61d4-992e-12db9c81b413`
 * 인증서 지문: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`
 
-*appsettings.json*:
+*appsettings.json* :
 
 [!code-json[](key-vault-configuration/samples/3.x/SampleApp/appsettings.json?highlight=10-12)]
 
@@ -174,7 +175,7 @@ X.509 인증서는 OS를 통해 관리 됩니다. 앱은 <xref:Microsoft.Extensi
 
 샘플 앱은 `#define` *Program.cs* 파일의 맨 위에 있는 문이로 설정 된 경우 Azure 리소스에 대해 관리 id를 사용 `Managed` 합니다.
 
-응용 프로그램의 *appsettings.js파일에* 자격 증명 모음 이름을 입력 합니다. 샘플 앱에는 버전으로 설정 된 경우 응용 프로그램 ID 및 암호 (클라이언트 암호)가 필요 하지 `Managed` 않으므로 이러한 구성 항목을 무시할 수 있습니다. 앱이 Azure에 배포 되 고 Azure는 *appsettings.js* 파일에 저장 된 자격 증명 모음 이름만 사용 하 여 Azure Key Vault에 액세스 하도록 앱을 인증 합니다.
+앱의 파일에 자격 증명 모음 이름을 입력 합니다 *appsettings.json* . 샘플 앱에는 버전으로 설정 된 경우 응용 프로그램 ID 및 암호 (클라이언트 암호)가 필요 하지 `Managed` 않으므로 이러한 구성 항목을 무시할 수 있습니다. 앱이 Azure에 배포 되 고 Azure는 파일에 저장 된 자격 증명 모음 이름을 사용 하 여 Azure Key Vault에만 액세스 하도록 앱을 인증 합니다 *appsettings.json* .
 
 Azure App Service에 샘플 앱을 배포 합니다.
 
@@ -198,7 +199,7 @@ Azure CLI, PowerShell 또는 Azure Portal를 사용 하 여 **앱을 다시 시�
 
 Key vault 이름 예 값: `contosovault`
     
-*appsettings.json*:
+*appsettings.json* :
 
 ```json
 {
@@ -304,7 +305,7 @@ config.AddAzureKeyVault(
 
 Azure Key Vault 키는 콜론을 구분 기호로 사용할 수 없습니다. 이 항목에서 설명 하는 방법에서는 이중 대시 ( `--` )를 계층적 값 (섹션) 구분 기호로 사용 합니다. 배열 키는 이중 대시 및 숫자 키 세그먼트 ( `--0--` ,,)를 사용 하는 Azure Key Vault에 저장 됩니다 `--1--` &hellip; `--{n}--` .
 
-JSON 파일에서 제공 하는 다음과 같은 [Serilog](https://serilog.net/) 로깅 공급자 구성을 검토 합니다. `WriteTo`출력 로깅의 대상을 설명 하는 두 개의 Serilog *싱크*를 반영 하는 두 개의 개체 리터럴이 배열에 정의 되어 있습니다.
+JSON 파일에서 제공 하는 다음과 같은 [Serilog](https://serilog.net/) 로깅 공급자 구성을 검토 합니다. `WriteTo`출력 로깅의 대상을 설명 하는 두 개의 Serilog *싱크* 를 반영 하는 두 개의 개체 리터럴이 배열에 정의 되어 있습니다.
 
 ```json
 "Serilog": {
@@ -432,7 +433,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 1. [Azure Portal](https://portal.azure.com/)에서 다음 방법 중 하나를 사용 하 여 Azure Cloud shell을 엽니다.
 
-   * 코드 블록의 오른쪽 위 모서리에서 **사용**을 선택합니다. 텍스트 상자에 "Azure CLI" 검색 문자열을 사용 합니다.
+   * 코드 블록의 오른쪽 위 모서리에서 **사용** 을 선택합니다. 텍스트 상자에 "Azure CLI" 검색 문자열을 사용 합니다.
    * **Cloud Shell 시작** 단추를 사용 하 여 브라우저에서 Cloud Shell를 엽니다.
    * Azure Portal의 오른쪽 위 모서리에 있는 메뉴에서 **Cloud Shell** 단추를 선택합니다.
 
@@ -465,30 +466,30 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 ## <a name="use-application-id-and-x509-certificate-for-non-azure-hosted-apps"></a>Azure에서 호스트 되지 않는 앱에 응용 프로그램 ID 및 x.509 인증서 사용
 
-**앱이 azure 외부에서 호스팅될 때**Azure Active Directory 응용 프로그램 ID 및 x.509 인증서를 사용 하 여 Key Vault에 인증 하도록 azure AD, Azure Key Vault 및 앱을 구성 합니다. 자세한 내용은 [키, 암호 및 인증서 정보](/azure/key-vault/about-keys-secrets-and-certificates)를 참조하세요.
+**앱이 azure 외부에서 호스팅될 때** Azure Active Directory 응용 프로그램 ID 및 x.509 인증서를 사용 하 여 Key Vault에 인증 하도록 azure AD, Azure Key Vault 및 앱을 구성 합니다. 자세한 내용은 [키, 암호 및 인증서 정보](/azure/key-vault/about-keys-secrets-and-certificates)를 참조하세요.
 
 > [!NOTE]
 > Azure에서 호스트 되는 앱에는 응용 프로그램 ID 및 x.509 인증서를 사용할 수 있지만 azure에서 앱을 호스팅할 때 [azure 리소스에 관리 되는 id](#use-managed-identities-for-azure-resources) 를 사용 하는 것이 좋습니다. 관리 되는 id는 응용 프로그램 또는 개발 환경에서 인증서를 저장할 필요가 없습니다.
 
 샘플 앱은 `#define` *Program.cs* 파일의 맨 위에 있는 문이로 설정 된 경우 응용 프로그램 ID 및 x.509 인증서를 사용 `Certificate` 합니다.
 
-1. PKCS # 12 archive (*.pfx*) 인증서를 만듭니다. 인증서를 만들기 위한 옵션에는 Windows 및 [OpenSSL](https://www.openssl.org/) [의 makecert.exe](/windows/desktop/seccrypto/makecert) 가 포함 됩니다.
+1. PKCS # 12 archive ( *.pfx* ) 인증서를 만듭니다. 인증서를 만들기 위한 옵션에는 Windows 및 [OpenSSL](https://www.openssl.org/) [의 makecert.exe](/windows/desktop/seccrypto/makecert) 가 포함 됩니다.
 1. 현재 사용자의 개인 인증서 저장소에 인증서를 설치 합니다. 키를 내보낼 수 있는 것으로 표시는 선택 사항입니다. 이 프로세스의 뒷부분에서 사용 되는 인증서의 지문을 적어둡니다.
-1. PKCS # 12 archive (*.pfx*) 인증서를 DER로 인코딩된 인증서 (*.cer*)로 내보냅니다.
-1. Azure AD (**앱 등록**)에 앱을 등록 합니다.
-1. DER로 인코딩된 인증서 (*.cer*)를 Azure AD에 업로드 합니다.
+1. PKCS # 12 archive ( *.pfx* ) 인증서를 DER로 인코딩된 인증서 ( *.cer* )로 내보냅니다.
+1. Azure AD ( **앱 등록** )에 앱을 등록 합니다.
+1. DER로 인코딩된 인증서 ( *.cer* )를 Azure AD에 업로드 합니다.
    1. Azure AD에서 앱을 선택 합니다.
-   1. **인증서 & 암호**로 이동 합니다.
-   1. **인증서 업로드** 를 선택 하 여 공개 키가 포함 된 인증서를 업로드 합니다. *.Cer*, *pem*또는 *.crt* 인증서를 사용할 수 있습니다.
-1. 응용 프로그램의 *appsettings.js* 파일에 키 자격 증명 모음 이름, 응용 프로그램 ID 및 인증서 지문을 저장 합니다.
+   1. **인증서 & 암호** 로 이동 합니다.
+   1. **인증서 업로드** 를 선택 하 여 공개 키가 포함 된 인증서를 업로드 합니다. *.Cer* , *pem* 또는 *.crt* 인증서를 사용할 수 있습니다.
+1. 키 자격 증명 모음 이름, 응용 프로그램 ID 및 인증서 지문을 앱의 파일에 저장 *appsettings.json* 합니다.
 1. Azure Portal에서 **키 자격 증명 모음** 으로 이동 합니다.
 1. [Azure Key Vault를 사용 하 여 프로덕션 환경에서 암호 저장소](#secret-storage-in-the-production-environment-with-azure-key-vault) 에 만든 key vault를 선택 합니다.
-1. **액세스 정책**을 선택합니다.
-1. **액세스 정책 추가**를 선택합니다.
+1. **액세스 정책** 을 선택합니다.
+1. **액세스 정책 추가** 를 선택합니다.
 1. **비밀 권한을** 열고 **Get** 및 **List** 권한을 사용 하 여 앱을 제공 합니다.
 1. **보안 주체 선택** 을 선택 하 고 이름으로 등록 된 앱을 선택 합니다. **선택** 단추를 누릅니다.
-1. **확인**을 선택합니다.
-1. **저장**을 선택합니다.
+1. **확인** 을 선택합니다.
+1. **저장** 을 선택합니다.
 1. 앱을 배포합니다.
 
 `Certificate`샘플 앱은 `IConfigurationRoot` 암호 이름과 동일한 이름을 사용 하 여에서 해당 구성 값을 가져옵니다.
@@ -498,7 +499,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
-X.509 인증서는 OS를 통해 관리 됩니다. 앱은 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 파일 * 의appsettings.js* 에서 제공 하는 값으로을 호출 합니다.
+X.509 인증서는 OS를 통해 관리 됩니다. 응용 프로그램은 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 파일에서 제공 하는 값을 사용 하 여를 호출 합니다 *appsettings.json* .
 
 [!code-csharp[](key-vault-configuration/samples/2.x/SampleApp/Program.cs?name=snippet1&highlight=20-23)]
 
@@ -508,7 +509,7 @@ X.509 인증서는 OS를 통해 관리 됩니다. 앱은 <xref:Microsoft.Extensi
 * 응용 프로그램 ID: `627e911e-43cc-61d4-992e-12db9c81b413`
 * 인증서 지문: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`
 
-*appsettings.json*:
+*appsettings.json* :
 
 [!code-json[](key-vault-configuration/samples/2.x/SampleApp/appsettings.json?highlight=10-12)]
 
@@ -520,7 +521,7 @@ X.509 인증서는 OS를 통해 관리 됩니다. 앱은 <xref:Microsoft.Extensi
 
 샘플 앱은 `#define` *Program.cs* 파일의 맨 위에 있는 문이로 설정 된 경우 Azure 리소스에 대해 관리 id를 사용 `Managed` 합니다.
 
-응용 프로그램의 *appsettings.js파일에* 자격 증명 모음 이름을 입력 합니다. 샘플 앱에는 버전으로 설정 된 경우 응용 프로그램 ID 및 암호 (클라이언트 암호)가 필요 하지 `Managed` 않으므로 이러한 구성 항목을 무시할 수 있습니다. 앱이 Azure에 배포 되 고 Azure는 *appsettings.js* 파일에 저장 된 자격 증명 모음 이름만 사용 하 여 Azure Key Vault에 액세스 하도록 앱을 인증 합니다.
+앱의 파일에 자격 증명 모음 이름을 입력 합니다 *appsettings.json* . 샘플 앱에는 버전으로 설정 된 경우 응용 프로그램 ID 및 암호 (클라이언트 암호)가 필요 하지 `Managed` 않으므로 이러한 구성 항목을 무시할 수 있습니다. 앱이 Azure에 배포 되 고 Azure는 파일에 저장 된 자격 증명 모음 이름을 사용 하 여 Azure Key Vault에만 액세스 하도록 앱을 인증 합니다 *appsettings.json* .
 
 Azure App Service에 샘플 앱을 배포 합니다.
 
@@ -544,7 +545,7 @@ Azure CLI, PowerShell 또는 Azure Portal를 사용 하 여 **앱을 다시 시�
 
 Key vault 이름 예 값: `contosovault`
     
-*appsettings.json*:
+*appsettings.json* :
 
 ```json
 {
@@ -631,7 +632,7 @@ Key vault 이름 예 값: `contosovault`
 
 Azure Key Vault 키는 콜론을 구분 기호로 사용할 수 없습니다. 이 항목에서 설명 하는 방법에서는 이중 대시 ( `--` )를 계층적 값 (섹션) 구분 기호로 사용 합니다. 배열 키는 이중 대시 및 숫자 키 세그먼트 ( `--0--` ,,)를 사용 하는 Azure Key Vault에 저장 됩니다 `--1--` &hellip; `--{n}--` .
 
-JSON 파일에서 제공 하는 다음과 같은 [Serilog](https://serilog.net/) 로깅 공급자 구성을 검토 합니다. `WriteTo`출력 로깅의 대상을 설명 하는 두 개의 Serilog *싱크*를 반영 하는 두 개의 개체 리터럴이 배열에 정의 되어 있습니다.
+JSON 파일에서 제공 하는 다음과 같은 [Serilog](https://serilog.net/) 로깅 공급자 구성을 검토 합니다. `WriteTo`출력 로깅의 대상을 설명 하는 두 개의 Serilog *싱크* 를 반영 하는 두 개의 개체 리터럴이 배열에 정의 되어 있습니다.
 
 ```json
 "Serilog": {

@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.date: 11/21/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/version-differences
-ms.openlocfilehash: 965fbb3d8007cb64aaf51d82d87ed7a3a5298e9b
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: c4c0ff83cb789e9aa35085496daa461404615726
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90721790"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061212"
 ---
 # <a name="differences-between-aspnet-no-locsignalr-and-aspnet-core-no-locsignalr"></a>ASP.NET SignalR 와 ASP.NET Core 간의 차이점 SignalR
 
@@ -38,7 +39,7 @@ ASP.NET Core SignalR ASP.NET의 클라이언트 또는 서버와 호환 되지 �
 | **클라이언트 NuGet 패키지** | [Microsoft SignalR . AspNet. 클라이언트로](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[Microsoft SignalR . AspNet. .JS](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [AspNetCore SignalR . 클라이언트로](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
 | **JavaScript client npm 패키지** | [signalr](https://www.npmjs.com/package/signalr) | [`@microsoft/signalr`](https://www.npmjs.com/package/@microsoft/signalr) |
 | **Java 클라이언트** | [GitHub 리포지토리](https://github.com/SignalR/java-client) (사용 되지 않음)  | Maven package [signalr](https://search.maven.org/artifact/com.microsoft.signalr/signalr) |
-| **서버 앱 유형** | ASP.NET (System.web) 또는 OWIN 자체 호스트 | ASP.NET Core |
+| **서버 앱 유형** | ASP.NET (System.web) 또는 OWIN Self-Host | ASP.NET Core |
 | **지원 되는 서버 플랫폼** | .NET Framework 4.5 이상 | .NET Core 3.0 이상 |
 
 ::: moniker-end
@@ -51,7 +52,7 @@ ASP.NET Core SignalR ASP.NET의 클라이언트 또는 서버와 호환 되지 �
 | **클라이언트 NuGet 패키지** | [Microsoft SignalR . AspNet. 클라이언트로](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[Microsoft SignalR . AspNet. .JS](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [AspNetCore SignalR . 클라이언트로](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
 | **JavaScript client npm 패키지** | [signalr](https://www.npmjs.com/package/signalr) | [`@aspnet/signalr`](https://www.npmjs.com/package/@aspnet/signalr) |
 | **Java 클라이언트** | [GitHub 리포지토리](https://github.com/SignalR/java-client) (사용 되지 않음)  | Maven package [signalr](https://search.maven.org/artifact/com.microsoft.signalr/signalr) |
-| **서버 앱 유형** | ASP.NET (System.web) 또는 OWIN 자체 호스트 | ASP.NET Core |
+| **서버 앱 유형** | ASP.NET (System.web) 또는 OWIN Self-Host | ASP.NET Core |
 | **지원 되는 서버 플랫폼** | .NET Framework 4.5 이상 | .NET Framework 4.6.1 이상<br>.NET Core 2.1 이상 |
 
 ::: moniker-end
@@ -202,7 +203,8 @@ JQuery에 대 한 종속성이 제거 되었지만 프로젝트에서 jQuery를 
 
 ### <a name="internet-explorer-support"></a>Internet Explorer 지원
 
-ASP.NET Core SignalR Microsoft internet explorer 11 이상이 필요 합니다 (ASP.NET SignalR Microsoft internet explorer 8 이상 지원).
+ASP.NET Core SignalR 는 Microsoft internet explorer 11 이상을 지원 하지만 ASP.NET는 SignalR Microsoft internet explorer 8 이상을 지원 합니다.
+브라우저 지원에 대 한 자세한 내용은 [지원 되는 플랫폼](xref:signalr/supported-platforms#javascript-client)에서 찾을 수 있습니다.
 
 ### <a name="javascript-client-method-syntax"></a>JavaScript 클라이언트 메서드 구문
 

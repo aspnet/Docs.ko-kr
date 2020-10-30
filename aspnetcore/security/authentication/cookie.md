@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 02/11/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/cookie
-ms.openlocfilehash: 211b6c7ec0bc7a48671e614427961cb332d06aa3
-ms.sourcegitcommit: c0a15ab8549cb729731a0fdf1d7da0b7feaa11ff
+ms.openlocfilehash: 04469e0e75c433b40b364873a7e72e30421936f4
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91671771"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061355"
 ---
 # <a name="use-no-loccookie-authentication-without-no-locaspnet-core-identity"></a>인증을 사용 cookie 하지 않고 사용 ASP.NET Core Identity
 

@@ -5,6 +5,7 @@ description: RazorASP.NET Core의 응용 프로그램 부분을 사용 하 여 �
 ms.author: riande
 ms.date: 11/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 2e86025eaf98c4e2cbbd86a5a353664204c35594
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 33deb5ff794982e0c074186bb2abb88344e8a116
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630421"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061186"
 ---
 # <a name="share-controllers-views-no-locrazor-pages-and-more-with-application-parts"></a>Razor응용 프로그램 파트를 사용 하 여 컨트롤러, 뷰, 페이지 등 공유
 
@@ -31,7 +32,7 @@ ms.locfileid: "88630421"
 
 [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
-*애플리케이션 파트*는 앱의 리소스에 대한 추상화입니다. 응용 프로그램 파트를 사용 하 여 컨트롤러 검색, 구성 요소 보기, 태그 도우미, Razor 페이지, razor 컴파일 소스 등을 ASP.NET Core 수 있습니다. <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.AssemblyPart>는 애플리케이션 파트입니다. `AssemblyPart`는 어셈블리 참조를 캡슐화하고 형식 및 컴파일 참조를 공개합니다.
+*애플리케이션 파트* 는 앱의 리소스에 대한 추상화입니다. 응용 프로그램 파트를 사용 하 여 컨트롤러 검색, 구성 요소 보기, 태그 도우미, Razor 페이지, razor 컴파일 소스 등을 ASP.NET Core 수 있습니다. <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.AssemblyPart>는 애플리케이션 파트입니다. `AssemblyPart`는 어셈블리 참조를 캡슐화하고 형식 및 컴파일 참조를 공개합니다.
 
 [기능 공급자](#fp)는 애플리케이션 파트를 사용하여 ASP.NET Core 앱의 기능을 구성합니다. 애플리케이션 파트에 대한 주요 사용 사례는 어셈블리에서 ASP.NET Core 기능을 검색(또는 로드를 방지)하도록 앱을 구성하는 것입니다. 예를 들어 여러 앱 간에 공통적인 기능을 공유하는 것이 좋습니다. 응용 프로그램 파트를 사용 하 여 여러 앱에서 컨트롤러, 뷰, Razor 페이지, razor 컴파일 소스, 태그 도우미 등을 포함 하는 어셈블리 (DLL)를 공유할 수 있습니다. 여러 프로젝트에서 코드를 복제하려면 어셈블리를 공유하는 것이 좋습니다.
 
@@ -55,7 +56,7 @@ ASP.NET Core 앱은 <xref:System.Web.WebPages.ApplicationPart>로부터 기능�
 
 ### <a name="prevent-loading-resources"></a>리소스 로드 방지
 
-애플리케이션 파트를 사용하여 리소스가 특정 어셈블리나 위치에서 로드되는 것을 *방지*할 수 있습니다. <xref:Microsoft.AspNetCore.Mvc.ApplicationParts> 컬렉션의 멤버를 추가 또는 제거하여 리소스를 숨기거나 사용 가능하게 만듭니다. `ApplicationParts` 컬렉션에 있는 항목의 순서는 중요하지 않습니다. 컨테이너에서 서비스를 구성하는 데 사용하기 전에 `ApplicationPartManager`를 구성합니다. 예를 들어 `AddControllersAsServices`를 호출하기 전에 `ApplicationPartManager`를 구성합니다. `ApplicationParts` 컬렉션에서 `Remove`를 호출하여 리소스를 제거합니다.
+애플리케이션 파트를 사용하여 리소스가 특정 어셈블리나 위치에서 로드되는 것을 *방지* 할 수 있습니다. <xref:Microsoft.AspNetCore.Mvc.ApplicationParts> 컬렉션의 멤버를 추가 또는 제거하여 리소스를 숨기거나 사용 가능하게 만듭니다. `ApplicationParts` 컬렉션에 있는 항목의 순서는 중요하지 않습니다. 컨테이너에서 서비스를 구성하는 데 사용하기 전에 `ApplicationPartManager`를 구성합니다. 예를 들어 `AddControllersAsServices`를 호출하기 전에 `ApplicationPartManager`를 구성합니다. `ApplicationParts` 컬렉션에서 `Remove`를 호출하여 리소스를 제거합니다.
 
 `ApplicationPartManager`에는 다음을 위한 파트가 포함됩니다.
 
@@ -121,9 +122,9 @@ HTTP 404 오류는 애플리케이션 파트를 사용하여 개발할 때 일�
 
 [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
-*애플리케이션 파트*는 앱의 리소스에 대한 추상화입니다. 응용 프로그램 파트를 사용 하 여 컨트롤러 검색, 구성 요소 보기, 태그 도우미, Razor 페이지, razor 컴파일 소스 등을 ASP.NET Core 수 있습니다. [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart)는 애플리케이션 파트입니다. `AssemblyPart`는 어셈블리 참조를 캡슐화하고 형식 및 컴파일 참조를 공개합니다.
+*애플리케이션 파트* 는 앱의 리소스에 대한 추상화입니다. 응용 프로그램 파트를 사용 하 여 컨트롤러 검색, 구성 요소 보기, 태그 도우미, Razor 페이지, razor 컴파일 소스 등을 ASP.NET Core 수 있습니다. [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart)는 애플리케이션 파트입니다. `AssemblyPart`는 어셈블리 참조를 캡슐화하고 형식 및 컴파일 참조를 공개합니다.
 
-*기능 공급자*는 애플리케이션 파트를 사용하여 ASP.NET Core 앱의 기능을 구성합니다. 애플리케이션 파트에 대한 주요 사용 사례는 어셈블리에서 ASP.NET Core 기능을 검색(또는 로드를 방지)하도록 앱을 구성하는 것입니다. 예를 들어 여러 앱 간에 공통적인 기능을 공유하는 것이 좋습니다. 응용 프로그램 파트를 사용 하 여 여러 앱에서 컨트롤러, 뷰, Razor 페이지, razor 컴파일 소스, 태그 도우미 등을 포함 하는 어셈블리 (DLL)를 공유할 수 있습니다. 여러 프로젝트에서 코드를 복제하려면 어셈블리를 공유하는 것이 좋습니다.
+*기능 공급자* 는 애플리케이션 파트를 사용하여 ASP.NET Core 앱의 기능을 구성합니다. 애플리케이션 파트에 대한 주요 사용 사례는 어셈블리에서 ASP.NET Core 기능을 검색(또는 로드를 방지)하도록 앱을 구성하는 것입니다. 예를 들어 여러 앱 간에 공통적인 기능을 공유하는 것이 좋습니다. 응용 프로그램 파트를 사용 하 여 여러 앱에서 컨트롤러, 뷰, Razor 페이지, razor 컴파일 소스, 태그 도우미 등을 포함 하는 어셈블리 (DLL)를 공유할 수 있습니다. 여러 프로젝트에서 코드를 복제하려면 어셈블리를 공유하는 것이 좋습니다.
 
 ASP.NET Core 앱은 <xref:System.Web.WebPages.ApplicationPart>로부터 기능을 로드합니다. <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.AssemblyPart> 클래스는 어셈블리에서 지원하는 애플리케이션 파트를 나타냅니다.
 
@@ -145,7 +146,7 @@ ASP.NET Core 앱은 <xref:System.Web.WebPages.ApplicationPart>로부터 기능�
 
 ### <a name="prevent-loading-resources"></a>리소스 로드 방지
 
-애플리케이션 파트를 사용하여 리소스가 특정 어셈블리나 위치에서 로드되는 것을 *방지*할 수 있습니다. <xref:Microsoft.AspNetCore.Mvc.ApplicationParts> 컬렉션의 멤버를 추가 또는 제거하여 리소스를 숨기거나 사용 가능하게 만듭니다. `ApplicationParts` 컬렉션에 있는 항목의 순서는 중요하지 않습니다. 컨테이너에서 서비스를 구성하는 데 사용하기 전에 `ApplicationPartManager`를 구성합니다. 예를 들어 `AddControllersAsServices`를 호출하기 전에 `ApplicationPartManager`를 구성합니다. `ApplicationParts` 컬렉션에서 `Remove`를 호출하여 리소스를 제거합니다.
+애플리케이션 파트를 사용하여 리소스가 특정 어셈블리나 위치에서 로드되는 것을 *방지* 할 수 있습니다. <xref:Microsoft.AspNetCore.Mvc.ApplicationParts> 컬렉션의 멤버를 추가 또는 제거하여 리소스를 숨기거나 사용 가능하게 만듭니다. `ApplicationParts` 컬렉션에 있는 항목의 순서는 중요하지 않습니다. 컨테이너에서 서비스를 구성하는 데 사용하기 전에 `ApplicationPartManager`를 구성합니다. 예를 들어 `AddControllersAsServices`를 호출하기 전에 `ApplicationPartManager`를 구성합니다. `ApplicationParts` 컬렉션에서 `Remove`를 호출하여 리소스를 제거합니다.
 
 다음 코드는 <xref:Microsoft.AspNetCore.Mvc.ApplicationParts>를 사용하여 앱에서 `MyDependentLibrary`를 제거합니다.[!code-csharp[](./app-parts/sample1/WebAppParts/StartupRm.cs?name=snippet)]
 

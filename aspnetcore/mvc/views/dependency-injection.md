@@ -5,6 +5,7 @@ description: ASP.NET Core가 MVC 보기에 종속성 주입을 지원하는 방�
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: 5ab79740d2068a50e4138e5b86f1622af8ef5ec7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a596d05e3d1d73d4faa2f84d97a40e4a2c1234e4
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633606"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059288"
 ---
 # <a name="dependency-injection-into-views-in-aspnet-core"></a>ASP.NET Core의 보기에 종속성 주입
 
@@ -33,9 +34,9 @@ ASP.NET Core는 보기에 대한 [종속성 주입](xref:fundamentals/dependency
 
 ## <a name="configuration-injection"></a>구성 주입
 
-*appsettings.json* 값을 직접 보기에 주입할 수 있습니다.
+*appsettings.json* 값을 뷰에 직접 삽입할 수 있습니다.
 
-*appsettings.json* 파일의 예:
+파일의 예 *appsettings.json* :
 
 ```json
 {
@@ -66,7 +67,7 @@ ASP.NET Core는 보기에 대한 [종속성 주입](xref:fundamentals/dependency
 
 [!code-cshtml[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
 
-이 보기는 전체 통계를 보여주는 요약 정보와 함께 `ToDoItem` 인스턴스 목록을 표시합니다. 요약 정보는 주입된 `StatisticsService`에서 채워집니다. 이 서비스는 *Startup.cs*의 `ConfigureServices`에서 종속성 주입을 위해 등록됩니다.
+이 보기는 전체 통계를 보여주는 요약 정보와 함께 `ToDoItem` 인스턴스 목록을 표시합니다. 요약 정보는 주입된 `StatisticsService`에서 채워집니다. 이 서비스는 *Startup.cs* 의 `ConfigureServices`에서 종속성 주입을 위해 등록됩니다.
 
 [!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs?highlight=6,7&range=15-22)]
 
@@ -115,6 +116,6 @@ ASP.NET Core는 보기에 대한 [종속성 주입](xref:fundamentals/dependency
 
 기존 서비스를 확장하려는 경우 간단하게 이 기술을 사용하여 기존 구현에서 상속하거나 기존 구현을 개발자 고유의 구현으로 래핑하면 됩니다.
 
-## <a name="see-also"></a>관련 항목
+## <a name="see-also"></a>참고 항목
 
 * Simon Timms 블로그: [보기로 조회 데이터 가져오기](https://blog.simontimms.com/2015/06/09/getting-lookup-data-into-you-view/)

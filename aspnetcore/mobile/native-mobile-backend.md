@@ -5,6 +5,7 @@ description: ASP.NET Core MVC를 사용하여 네이티브 모바일 앱을 지�
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 00e0c93d200e7eec6fd6bdac1f1246fe0909fc54
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0bbf740cb49b77b476e7e015afee311110bbe5ea
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630538"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060991"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>ASP.NET Core를 사용하여 네이티브 모바일 앱용 백 엔드 서비스 만들기
 
@@ -63,11 +64,11 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 ## <a name="creating-the-aspnet-core-project"></a>ASP.NET Core 프로젝트 만들기
 
-Visual Studio에서 새 ASP.NET Core 웹 애플리케이션을 만듭니다. 웹 API 템플릿과 인증 안 함을 선택합니다. 프로젝트 이름을 *ToDoApi*로 지정합니다.
+Visual Studio에서 새 ASP.NET Core 웹 애플리케이션을 만듭니다. 웹 API 템플릿과 인증 안 함을 선택합니다. 프로젝트 이름을 *ToDoApi* 로 지정합니다.
 
 ![Web API 프로젝트 템플릿이 선택된 새 ASP.NET 웹 애플리케이션 대화 상자](native-mobile-backend/_static/web-api-template.png)
 
-애플리케이션은 포트 5000에 대한 모든 요청에 응답해야 합니다. 이를 수행하기 위해 `.UseUrls("http://*:5000")`를 포함하도록 *Program.cs*를 업데이트합니다.
+애플리케이션은 포트 5000에 대한 모든 요청에 응답해야 합니다. 이를 수행하기 위해 `.UseUrls("http://*:5000")`를 포함하도록 *Program.cs* 를 업데이트합니다.
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Program.cs?range=10-16&highlight=3)]
 
@@ -86,18 +87,18 @@ API 메서드에는 데이터를 사용하는 방법이 필요합니다. 원래 
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Services/ToDoRepository.cs)]
 
-*Startup.cs*에서 구현을 구성합니다.
+*Startup.cs* 에서 구현을 구성합니다.
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Startup.cs?highlight=6&range=29-35)]
 
-이 시점에서 *ToDoItemsController*를 만들 준비가 되었습니다.
+이 시점에서 *ToDoItemsController* 를 만들 준비가 되었습니다.
 
 > [!TIP]
 > [ASP.NET Core MVC 및 Visual Studio를 사용하여 첫 번째 Web API 빌드](../tutorials/first-web-api.md)에서 Web API를 만드는 방법에 대해 자세히 알아봅니다.
 
 ## <a name="creating-the-controller"></a>컨트롤러 만들기
 
-프로젝트에 새 컨트롤러, *ToDoItemsController*를 추가합니다. Microsoft.AspNetCore.Mvc.Controller에서 상속해야 합니다. `Route` 특성을 추가하여 컨트롤러에서 `api/todoitems`로 시작하는 경로에 대해 만든 요청을 처리하는 것을 나타냅니다. 경로의 `[controller]` 토큰은 컨트롤러의 이름으로 대체되며(`Controller` 접미사 생략) 글로벌 경로에 대해 특히 유용합니다. [라우팅](../fundamentals/routing.md)에 대해 자세히 알아봅니다.
+프로젝트에 새 컨트롤러, *ToDoItemsController* 를 추가합니다. Microsoft.AspNetCore.Mvc.Controller에서 상속해야 합니다. `Route` 특성을 추가하여 컨트롤러에서 `api/todoitems`로 시작하는 경로에 대해 만든 요청을 처리하는 것을 나타냅니다. 경로의 `[controller]` 토큰은 컨트롤러의 이름으로 대체되며(`Controller` 접미사 생략) 글로벌 경로에 대해 특히 유용합니다. [라우팅](../fundamentals/routing.md)에 대해 자세히 알아봅니다.
 
 컨트롤러는 작동하기 위해 `IToDoRepository`가 필요합니다. 컨트롤러의 생성자를 통해 이 유형의 인스턴스를 요청합니다. 런타임 시 이 인스턴스는 [종속성 주입](../fundamentals/dependency-injection.md)에 대한 프레임워크의 지원을 사용하여 제공됩니다.
 
@@ -163,6 +164,6 @@ Postman으로 테스트하려면 동사를 PUT으로 변경합니다. 요청의 
 
 API에 대한 일반적인 정책을 식별했으면 [필터](../mvc/controllers/filters.md)에서 캡슐화할 수 있습니다. [ASP.NET Core MVC 애플리케이션에서 일반적인 API 정책을 캡슐화하는 방법](/archive/msdn-magazine/2016/august/asp-net-core-real-world-asp-net-core-mvc-filters)에 대해 자세히 알아봅니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [인증 및 권한 부여](/xamarin/xamarin-forms/enterprise-application-patterns/authentication-and-authorization)

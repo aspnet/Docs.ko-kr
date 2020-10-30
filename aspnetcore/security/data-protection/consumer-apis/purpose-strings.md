@@ -5,6 +5,7 @@ description: ASP.NET Core 데이터 보호 Api에서 용도 문자열이 사용 
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/consumer-apis/purpose-strings
-ms.openlocfilehash: 1119c45570338f629a3ab7adbd43361529aa23e7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 9a55131714b23909da5d00b73607078b295a1c4d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626924"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060809"
 ---
 # <a name="purpose-strings-in-aspnet-core"></a>ASP.NET Core의 용도 문자열
 

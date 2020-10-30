@@ -5,6 +5,7 @@ description: ''
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/actions
-ms.openlocfilehash: 9542a7c0fd16c00f46ee69c5873878a7c70ef626
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a9319e74d0213b178c2a71be69a0332270d9446c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630330"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061459"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>ASP.NET Core MVC에서 컨트롤러를 사용한 요청 처리
 
@@ -31,7 +32,7 @@ ms.locfileid: "88630330"
 
 ## <a name="what-is-a-controller"></a>컨트롤러란?
 
-컨트롤러는 일련의 작업을 정의하고 그룹화하는 데 사용됩니다. 작업(또는 *작업 메서드*)은 요청을 처리하는 컨트롤러의 메서드입니다. 컨트롤러는 논리적으로 유사한 작업을 함께 그룹화합니다. 이 작업의 집합체를 통해 라우팅, 캐싱 및 권한 부여와 같은 일반적인 규칙 모음을 일괄적으로 적용할 수 있습니다. 요청은 [라우팅](xref:mvc/controllers/routing)을 통해 작업에 매핑됩니다.
+컨트롤러는 일련의 작업을 정의하고 그룹화하는 데 사용됩니다. 작업(또는 *작업 메서드* )은 요청을 처리하는 컨트롤러의 메서드입니다. 컨트롤러는 논리적으로 유사한 작업을 함께 그룹화합니다. 이 작업의 집합체를 통해 라우팅, 캐싱 및 권한 부여와 같은 일반적인 규칙 모음을 일괄적으로 적용할 수 있습니다. 요청은 [라우팅](xref:mvc/controllers/routing)을 통해 작업에 매핑됩니다.
 
 규칙에 따라 컨트롤러 클래스는:
 
@@ -48,7 +49,7 @@ ms.locfileid: "88630330"
 
 컨트롤러는 [명시적 종속성 원칙](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)을 따라야 합니다. 이 원칙을 구현하는 방법에는 몇 가지가 있습니다. 여러 컨트롤러 작업에서 동일한 서비스가 필요한 경우 해당 종속성을 요청하는 데 [생성자 주입](xref:mvc/controllers/dependency-injection#constructor-injection)을 사용하는 것을 고려합니다. 서비스가 단일 작업 메서드에서만 필요한 경우에는 종속성을 요청하는 데 [작업 주입](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices)의 사용을 고려하세요.
 
-**M**odel-**V**iew-**C**ontroller(모델-뷰-컨트롤러) 패턴에서 컨트롤러는 초기 요청 처리 및 모델의 인스턴스화를 담당합니다. 일반적으로 비즈니스 의사 결정은 모델 내에서 수행되어야 합니다.
+**M** odel- **V** iew- **C** ontroller(모델-뷰-컨트롤러) 패턴에서 컨트롤러는 초기 요청 처리 및 모델의 인스턴스화를 담당합니다. 일반적으로 비즈니스 의사 결정은 모델 내에서 수행되어야 합니다.
 
 컨트롤러는 모델의 처리 결과(있는 경우)를 사용하고, 적절한 보기와 관련된 보기 데이터 또는 API 호출의 결과를 반환합니다. [ASP.NET Core MVC 개요](xref:mvc/overview) 및 [ASP.NET Core MVC 및 Visual Studio 시작](xref:tutorials/first-mvc-app/start-mvc)에서 자세히 알아봅니다.
 
@@ -60,7 +61,7 @@ ms.locfileid: "88630330"
 
 작업 메서드는 비즈니스 문제에 요청을 매핑하기 위한 논리를 포함해야 합니다. 비즈니스 문제는 일반적으로 컨트롤러가 [종속성 주입](xref:mvc/controllers/dependency-injection)을 통해 액세스하는 서비스로 표현되어야 합니다. 그런 다음 작업은 비즈니스 작업의 결과를 애플리케이션 상태에 매핑합니다.
 
-작업은 무엇이든 반환할 수 있지만, 흔히 응답을 생성하는 `IActionResult`(또는 비동기 메서드에 대한 `Task<IActionResult>`)의 인스턴스를 반환합니다. 작업 메서드는 *응답의 종류*를 선택해야 합니다. 작업 결과는 *응답을 수행*합니다.
+작업은 무엇이든 반환할 수 있지만, 흔히 응답을 생성하는 `IActionResult`(또는 비동기 메서드에 대한 `Task<IActionResult>`)의 인스턴스를 반환합니다. 작업 메서드는 *응답의 종류* 를 선택해야 합니다. 작업 결과는 *응답을 수행* 합니다.
 
 ### <a name="controller-helper-methods"></a>컨트롤러 도우미 메서드
 
@@ -100,13 +101,13 @@ ms.locfileid: "88630330"
 
 #### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. 메서드는 클라이언트와 협상 된 콘텐츠 형식으로 비어 있지 않은 응답 본문의 형식을 지정 합니다.
 
-이 범주는 **콘텐츠 협상**으로 더 잘 알려져 있습니다. [콘텐츠 협상](xref:web-api/advanced/formatting#content-negotiation)은 작업이 [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) 형식 또는 [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult) 구현 이외의 형식을 반환할 때마다 적용됩니다. 비 `IActionResult` 구현을 반환하는 작업(예: `object`)도 서식화된 응답을 반환합니다.
+이 범주는 **콘텐츠 협상** 으로 더 잘 알려져 있습니다. [콘텐츠 협상](xref:web-api/advanced/formatting#content-negotiation)은 작업이 [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) 형식 또는 [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult) 구현 이외의 형식을 반환할 때마다 적용됩니다. 비 `IActionResult` 구현을 반환하는 작업(예: `object`)도 서식화된 응답을 반환합니다.
 
 이 형식의 몇 가지 도우미 메서드에는 `BadRequest`, `CreatedAtRoute` 및 `Ok`가 포함됩니다. 이러한 메서드의 예로는 각각 `return BadRequest(modelState);`, `return CreatedAtRoute("routename", values, newobject);` 및 `return Ok(value);`가 있습니다. `BadRequest` 및 `Ok`는 값이 전달될 때만 콘텐츠 협상을 수행합니다. 값을 전달하지 않으면 대신 HTTP 상태 코드 결과 형식을 제공합니다. 반면, `CreatedAtRoute` 메서드는 해당 오버로드에서 모두 값이 전달되어야 하므로 항상 콘텐츠 협상을 수행합니다.
 
 ### <a name="cross-cutting-concerns"></a>횡단 관심사
 
-응용 프로그램은 일반적으로 해당 워크플로의 일부를 공유합니다. 예를 들어 쇼핑 카트 액세스를 위해 인증이 필요한 앱이나 일부 페이지에서 데이터를 캐시하는 앱이 있습니다. 작업 메서드 전후로 논리를 수행하려면 *필터*를 사용합니다. 횡단 관심사에서 [필터](xref:mvc/controllers/filters)를 사용하면 중복을 줄일 수 있습니다.
+응용 프로그램은 일반적으로 해당 워크플로의 일부를 공유합니다. 예를 들어 쇼핑 카트 액세스를 위해 인증이 필요한 앱이나 일부 페이지에서 데이터를 캐시하는 앱이 있습니다. 작업 메서드 전후로 논리를 수행하려면 *필터* 를 사용합니다. 횡단 관심사에서 [필터](xref:mvc/controllers/filters)를 사용하면 중복을 줄일 수 있습니다.
 
 `[Authorize]`와 같은 대부분의 필터 특성은 원하는 세분성 수준에 따라 컨트롤러 또는 작업 수준에 적용할 수 있습니다.
 

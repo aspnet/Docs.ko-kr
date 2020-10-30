@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: c72dd4f6da796364756d001a6e424eb3a96710a4
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: edc6971ac42756504b5b371ba509d7a657a0c396
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633840"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061121"
 ---
 # <a name="image-tag-helper-in-aspnet-core"></a>ASP.NET Core의 이미지 태그 도우미
 
@@ -69,6 +70,6 @@ ms.locfileid: "88633840"
 
 이미지 태그 도우미는 로컬 웹 서버의 캐시 공급자를 사용하여 해당 파일의 계산된 `Sha512` 해시를 저장합니다. 파일이 여러 번 요청되더라도 해시가 다시 계산되지 않습니다. 캐시는 파일의 `Sha512` 해시가 계산될 때 파일에 첨부된 파일 감시자에 의해 무효화됩니다. 디스크에서 파일이 변경되면 새 해시가 계산되고 캐시됩니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:performance/caching/memory>

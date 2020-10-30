@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/08/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/troubleshoot
-ms.openlocfilehash: 2ffe8bcf4bef5dcb9fc74513c7507e5cb3a6b7cb
-ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
+ms.openlocfilehash: f1d9761267d7c6af76c0be6abb238742f40fb016
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379566"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059613"
 ---
 # <a name="troubleshoot-connection-errors"></a>연결 오류 문제 해결
 

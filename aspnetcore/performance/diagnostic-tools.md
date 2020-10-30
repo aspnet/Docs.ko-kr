@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 04/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/diagnostic-tools
-ms.openlocfilehash: 5f3daaf132b903898e756160a459d4df5f421c11
-ms.sourcegitcommit: dd0e87abf2bb50ee992d9185bb256ed79d48f545
+ms.openlocfilehash: 71386de232265840f9b825bd33d23bb1d218efc6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88746548"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060861"
 ---
 # <a name="performance-diagnostic-tools"></a>성능 진단 도구
 

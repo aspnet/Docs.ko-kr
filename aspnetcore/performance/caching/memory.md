@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/02/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/memory
-ms.openlocfilehash: c4d21992695828e81e03eca92f167c0a3d69c724
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 4d5f459d54a3c74a2eb23a50db6537eeaf8596b3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627288"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061446"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>ASP.NET Core 메모리 내 캐시
 
@@ -121,7 +122,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 [I
 
 `MemoryCache`인스턴스는 필요에 따라 크기 제한을 지정 하 고 적용할 수 있습니다. 캐시 크기 제한에는 항목의 크기를 측정 하는 메커니즘이 없기 때문에 정의 된 측정 단위가 없습니다. 캐시 크기 제한이 설정 된 경우 모든 항목의 크기를 지정 해야 합니다. ASP.NET Core 런타임은 메모리 압력에 따라 캐시 크기를 제한 하지 않습니다. 캐시 크기를 제한 하는 것은 개발자에 게 있습니다. 지정 된 크기는 개발자가 선택 하는 단위입니다.
 
-다음은 그 예입니다. 
+다음은 그 예입니다.
 
 * 웹 앱이 주로 문자열을 캐싱하는 경우 각 캐시 엔트리 크기는 문자열 길이가 될 수 있습니다.
 * 앱은 모든 항목의 크기를 1로 지정 하 고, 크기 제한은 항목 수를 지정 합니다.
@@ -195,7 +196,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 [I
 
 과 같은 [백그라운드 서비스](xref:fundamentals/host/hosted-services) 를 사용 <xref:Microsoft.Extensions.Hosting.IHostedService> 하 여 캐시를 업데이트 합니다. 백그라운드 서비스는 항목을 다시 계산 하 고 준비 된 경우에만 캐시에 할당할 수 있습니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:performance/caching/distributed>
 * <xref:fundamentals/change-tokens>
@@ -297,7 +298,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 �
 
 `MemoryCache`인스턴스는 필요에 따라 크기 제한을 지정 하 고 적용할 수 있습니다. 캐시 크기 제한에는 항목의 크기를 측정 하는 메커니즘이 없기 때문에 정의 된 측정 단위가 없습니다. 캐시 크기 제한이 설정 된 경우 모든 항목의 크기를 지정 해야 합니다. ASP.NET Core 런타임은 메모리 압력에 따라 캐시 크기를 제한 하지 않습니다. 캐시 크기를 제한 하는 것은 개발자에 게 있습니다. 지정 된 크기는 개발자가 선택 하는 단위입니다.
 
-다음은 그 예입니다. 
+다음은 그 예입니다.
 
 * 웹 앱이 주로 문자열을 캐싱하는 경우 각 캐시 엔트리 크기는 문자열 길이가 될 수 있습니다.
 * 앱은 모든 항목의 크기를 1로 지정 하 고, 크기 제한은 항목 수를 지정 합니다.
@@ -366,7 +367,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 �
 
 과 같은 [백그라운드 서비스](xref:fundamentals/host/hosted-services) 를 사용 <xref:Microsoft.Extensions.Hosting.IHostedService> 하 여 캐시를 업데이트 합니다. 백그라운드 서비스는 항목을 다시 계산 하 고 준비 된 경우에만 캐시에 할당할 수 있습니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:performance/caching/distributed>
 * <xref:fundamentals/change-tokens>

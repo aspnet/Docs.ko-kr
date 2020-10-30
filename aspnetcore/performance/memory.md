@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/memory
-ms.openlocfilehash: 7f1d20687f6dd588e125acf3815815c2bcf0cd04
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 6d2a89ec7c64728bc585ad235293f2277f9a66f7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722685"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061485"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>ASP.NET Core의 메모리 관리 및 GC (가비지 수집)
 
@@ -137,8 +138,8 @@ public ActionResult<string> GetBigString()
 
 .NET 가비지 수집기에는 다음과 같은 두 가지 모드가 있습니다.
 
-* **워크스테이션 GC**: 데스크톱에 최적화 되어 있습니다.
-* **서버 GC**. ASP.NET Core 앱에 대 한 기본 GC입니다. 서버에 최적화 되어 있습니다.
+* **워크스테이션 GC** : 데스크톱에 최적화 되어 있습니다.
+* **서버 GC** . ASP.NET Core 앱에 대 한 기본 GC입니다. 서버에 최적화 되어 있습니다.
 
 GC 모드는 프로젝트 파일이 나 게시 된 앱의 파일에 있는 *runtimeconfig.js* 에서 명시적으로 설정할 수 있습니다. 다음 태그는 `ServerGarbageCollection` 프로젝트 파일의 설정을 보여 줍니다.
 
@@ -209,7 +210,7 @@ public ActionResult<string> GetStaticString()
 
 .NET에서는 <xref:System.IDisposable> 개발자가 네이티브 메모리를 릴리스할 수 있는 인터페이스를 제공 합니다. <xref:System.IDisposable.Dispose*>가 호출 되지 않더라도 올바르게 구현 `Dispose` 된 클래스는 [종료 자가](/dotnet/csharp/programming-guide/classes-and-structs/destructors) 실행 될 때를 호출 합니다.
 
-다음 코드를 살펴보세요.
+다음 코드를 생각해보세요.
 
 ```csharp
 [HttpGet("fileprovider")]
@@ -235,7 +236,7 @@ public void GetFileProvider()
 
 ### <a name="large-objects-heap"></a>Large objects 힙
 
-메모리를 자주 할당/해제 하는 주기는 메모리를 조각화 할 수 있습니다. 특히 대량의 메모리를 할당 하는 경우입니다. 개체는 인접 한 메모리 블록에 할당 됩니다. 조각화를 완화 하기 위해 GC가 메모리를 해제 하는 경우 조각 모음을 시도 합니다. 이 프로세스를 **압축**이라고 합니다. 압축에는 개체 이동이 포함 됩니다. 개체를 이동 하면 성능이 저하 됩니다. 이러한 이유로, GC는 LOH ( [large object heap](/dotnet/standard/garbage-collection/large-object-heap) ) 라는 _커다란_ 개체에 대 한 특수 메모리 영역을 만듭니다. 85000 바이트 (약 83 KB) 보다 큰 개체는 다음과 같습니다.
+메모리를 자주 할당/해제 하는 주기는 메모리를 조각화 할 수 있습니다. 특히 대량의 메모리를 할당 하는 경우입니다. 개체는 인접 한 메모리 블록에 할당 됩니다. 조각화를 완화 하기 위해 GC가 메모리를 해제 하는 경우 조각 모음을 시도 합니다. 이 프로세스를 **압축** 이라고 합니다. 압축에는 개체 이동이 포함 됩니다. 개체를 이동 하면 성능이 저하 됩니다. 이러한 이유로, GC는 LOH ( [large object heap](/dotnet/standard/garbage-collection/large-object-heap) ) 라는 _커다란_ 개체에 대 한 특수 메모리 영역을 만듭니다. 85000 바이트 (약 83 KB) 보다 큰 개체는 다음과 같습니다.
 
 * LOH에 배치 됩니다.
 * 압축 되지 않습니다.
@@ -271,7 +272,7 @@ public int GetLOH1(int size)
 
 ![이전 차트](memory/_static/loh1.png)
 
-다음 차트에서는 끝점을 호출 하는 메모리 프로필 `/api/loh/84976` 을 보여 주며 *바이트를 하나 더*할당 합니다.
+다음 차트에서는 끝점을 호출 하는 메모리 프로필 `/api/loh/84976` 을 보여 주며 *바이트를 하나 더* 할당 합니다.
 
 ![이전 차트](memory/_static/loh2.png)
 
@@ -292,7 +293,7 @@ public int GetLOH1(int size)
 * [ResponseCaching/스트림/StreamUtilities .cs](https://github.com/dotnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
 * [ResponseCaching/MemoryResponseCache](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
 
-자세한 내용은 다음을 참조하세요.
+자세한 내용은 다음을 참조하십시오.
 
 * [대량 개체 힙 검사](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
 * [Large object 힙](/dotnet/standard/garbage-collection/large-object-heap)
@@ -393,7 +394,7 @@ NuGet 패키지의 경우 이러한 풀을 관리 하는 데 도움이 되는 �
 
 이전 코드는 `byte` [ArrayPool \<T> ](xref:System.Buffers.ArrayPool`1)를 사용 하 여 버퍼를 풀링 하 여 최적화할 수 있습니다. 정적 인스턴스는 요청에서 재사용 됩니다.
 
-이 방법의 다른 기능은 풀링된 개체가 API에서 반환 된다는 것입니다. 즉, 다음을 의미 합니다.
+이 방법의 다른 기능은 풀링된 개체가 API에서 반환 된다는 것입니다. 이는 다음을 의미합니다.
 
 * 메서드에서 반환 하는 즉시 개체는 컨트롤에서 제외 됩니다.
 * 개체를 해제할 수 없습니다.

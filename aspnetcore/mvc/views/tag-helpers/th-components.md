@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
 ms.date: 06/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: d3bae9cd5b4a5c7315c795229c7eafbf1e44e22d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 15bddd8ce18546bef7ee7e6ec2e32e369d0858a3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627587"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060562"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>ASP.NET Core의 태그 도우미 구성 요소
 
@@ -30,7 +31,7 @@ ms.locfileid: "88627587"
 
 태그 도우미 구성 요소는 서버 쪽 코드에서 HTML 요소를 조건부로 수정하거나 추가할 수 있도록 하는 태그 도우미입니다. 이 기능은 ASP.NET Core 2.0 이상에서 사용할 수 있습니다.
 
-ASP.NET Core에는 두 개의 기본 제공 태그 도우미 구성 요소, 즉 `head` 및 `body`가 포함되어 있습니다. <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers>네임 스페이스는 네임 스페이스에 있으며 MVC와 페이지에서 모두 사용할 수 있습니다 Razor . 태그 도우미 구성 요소는 *_ViewImports.cshtml*에서 앱을 등록할 필요가 없습니다.
+ASP.NET Core에는 두 개의 기본 제공 태그 도우미 구성 요소, 즉 `head` 및 `body`가 포함되어 있습니다. <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers>네임 스페이스는 네임 스페이스에 있으며 MVC와 페이지에서 모두 사용할 수 있습니다 Razor . 태그 도우미 구성 요소는 *_ViewImports.cshtml* 에서 앱을 등록할 필요가 없습니다.
 
 [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/th-components/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
@@ -49,7 +50,7 @@ HTML `<head>` 요소 내에서 CSS 파일은 일반적으로 HTML `<link>` 요�
 
 [!code-csharp[](th-components/samples/RazorPagesSample/TagHelpers/AddressStyleTagHelperComponent.cs)]
 
-위의 코드에서
+앞의 코드에서 다음을 확인할 수 있습니다.
 
 * `AddressStyleTagHelperComponent`는 <xref:Microsoft.AspNetCore.Razor.TagHelpers.TagHelperComponent>를 구현합니다. 추상은 다음과 같습니다.
   * <xref:Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext>를 사용한 클래스 초기화를 허용합니다.
@@ -63,7 +64,7 @@ HTML `<head>` 요소 내에서 CSS 파일은 일반적으로 HTML `<link>` 요�
 
 [!code-csharp[](th-components/samples/RazorPagesSample/TagHelpers/AddressScriptTagHelperComponent.cs)]
 
-별도의 HTML 파일이 `<script>` 요소를 저장하는 데 사용됩니다. HTML 파일은 코드를 더 깔끔하고 유지 관리가 가능하도록 만듭니다. 위의 코드는 *TagHelpers/Templates/AddressToolTipScript.html*의 내용을 읽고 태그 도우미 출력으로 추가합니다. *AddressToolTipScript.html* 파일에는 다음 태그가 포함됩니다.
+별도의 HTML 파일이 `<script>` 요소를 저장하는 데 사용됩니다. HTML 파일은 코드를 더 깔끔하고 유지 관리가 가능하도록 만듭니다. 위의 코드는 *TagHelpers/Templates/AddressToolTipScript.html* 의 내용을 읽고 태그 도우미 출력으로 추가합니다. *AddressToolTipScript.html* 파일에는 다음 태그가 포함됩니다.
 
 [!code-html[](th-components/samples/RazorPagesSample/TagHelpers/Templates/AddressToolTipScript.html)]
 
@@ -91,7 +92,7 @@ HTML `<head>` 요소 내에서 CSS 파일은 일반적으로 HTML `<link>` 요�
 
 [!code-cshtml[](th-components/samples/RazorPagesSample/Pages/Contact.cshtml?name=snippet_ITagHelperComponentManager)]
 
-위의 코드에서
+앞의 코드에서 다음을 확인할 수 있습니다.
 
 * `@inject` 지시문은 `ITagHelperComponentManager`의 인스턴스를 제공합니다. 인스턴스는 `manager` 파일의 access 다운스트림에 대해 라는 변수에 할당 됩니다 Razor .
 * `AddressTagHelperComponent` 인스턴스가 앱의 태그 도우미 구성 요소 컬렉션에 추가됩니다.
@@ -112,7 +113,7 @@ HTML `<head>` 요소 내에서 CSS 파일은 일반적으로 HTML `<link>` 요�
 
 [!code-csharp[](th-components/samples/RazorPagesSample/Pages/Index.cshtml.cs?name=snippet_IndexModelClass)]
 
-위의 코드에서
+앞의 코드에서 다음을 확인할 수 있습니다.
 
 * 생성자 주입은 `ITagHelperComponentManager`의 인스턴스에 액세스하는 데 사용됩니다.
 * `AddressTagHelperComponent` 인스턴스가 앱의 태그 도우미 구성 요소 컬렉션에 추가됩니다.
@@ -123,7 +124,7 @@ HTML `<head>` 요소 내에서 CSS 파일은 일반적으로 HTML `<link>` 요�
 
 * <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperComponentTagHelper>에서 파생된 공용 클래스를 만듭니다.
 * [`[HtmlTargetElement]`](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute)클래스에 특성을 적용 합니다. 대상 HTML 요소의 이름을 지정합니다.
-* *선택 사항*: [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) 클래스에 특성을 적용 하 여 IntelliSense에서 형식의 표시를 표시 하지 않습니다.
+* *선택 사항* : [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) 클래스에 특성을 적용 하 여 IntelliSense에서 형식의 표시를 표시 하지 않습니다.
 
 다음 코드는 `<address>` HTML 요소를 대상으로 하는 사용자 지정 태그 도우미 구성 요소를 만듭니다.
 
@@ -166,7 +167,7 @@ public class AddressTagHelperComponent : TagHelperComponent
 
 [!code-cshtml[](th-components/samples/RazorPagesSample/Pages/Contact.cshtml?name=snippet_AddressPrintable)]
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:fundamentals/dependency-injection>
 * <xref:mvc/views/dependency-injection>

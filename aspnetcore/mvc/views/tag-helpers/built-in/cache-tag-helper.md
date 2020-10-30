@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: b1cab7ab8b491529ee4208d92fb30082be795eda
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a87f91255bd1f280b1567f522423a6f4e88a6dd8
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635062"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060887"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>ASP.NET Core MVC의 캐시 태그 도우미
 
@@ -48,9 +49,9 @@ Razor현재 날짜를 캐시 하는 태그는 다음과 같습니다.
 | --------------- | --------------- | ------- |
 | 부울         | `true`, `false` | `true`  |
 
-`enabled`는 캐시 태그 도우미로 묶인 콘텐츠를 캐시할지 여부를 결정합니다. 기본값은 `true`입니다. `false`로 설정하면 렌더링된 출력이 캐시되지 **않습니다**.
+`enabled`는 캐시 태그 도우미로 묶인 콘텐츠를 캐시할지 여부를 결정합니다. 기본값은 `true`입니다. `false`로 설정하면 렌더링된 출력이 캐시되지 **않습니다** .
 
-예:
+예제:
 
 ```cshtml
 <cache enabled="true">
@@ -82,7 +83,7 @@ Razor현재 날짜를 캐시 하는 태그는 다음과 같습니다.
 
 `expires-after`는 첫 번째 요청 시간으로부터 콘텐츠를 캐시할 때까지의 시간 길이를 설정합니다.
 
-예:
+예제:
 
 ```cshtml
 <cache expires-after="@TimeSpan.FromSeconds(120)">
@@ -100,7 +101,7 @@ Razor뷰 엔진은 기본값 `expires-after` 을 20 분으로 설정 합니다.
 
 캐시 항목 값이 액세스되지 않을 경우 캐시 항목을 제거해야 하는 시간을 설정합니다.
 
-예:
+예제:
 
 ```cshtml
 <cache expires-sliding="@TimeSpan.FromSeconds(60)">
@@ -110,7 +111,7 @@ Razor뷰 엔진은 기본값 `expires-after` 을 20 분으로 설정 합니다.
 
 ### <a name="vary-by-header"></a>vary-by-header
 
-| 특성 유형 | 예제                                    |
+| 특성 유형 | 예                                    |
 | -------------- | ------------------------------------------- |
 | String         | `User-Agent`, `User-Agent,content-encoding` |
 
@@ -126,7 +127,7 @@ Razor뷰 엔진은 기본값 `expires-after` 을 20 분으로 설정 합니다.
 
 ### <a name="vary-by-query"></a>vary-by-query
 
-| 특성 유형 | 예제             |
+| 특성 유형 | 예             |
 | -------------- | -------------------- |
 | String         | `Make`, `Make,Model` |
 
@@ -142,15 +143,15 @@ Razor뷰 엔진은 기본값 `expires-after` 을 20 분으로 설정 합니다.
 
 ### <a name="vary-by-route"></a>vary-by-route
 
-| 특성 유형 | 예제             |
+| 특성 유형 | 예             |
 | -------------- | -------------------- |
 | String         | `Make`, `Make,Model` |
 
 `vary-by-route`는 경로 데이터 매개 변수 값이 변경될 때 캐시 새로 고침을 트리거할 쉼표로 구분된 경로 매개 변수 이름 목록을 허용합니다.
 
-예:
+예제:
 
-*Startup.cs*:
+*Startup.cs* :
 
 ```csharp
 routes.MapRoute(
@@ -158,7 +159,7 @@ routes.MapRoute(
     template: "{controller=Home}/{action=Index}/{Make?}/{Model?}");
 ```
 
-*인덱스 cshtml*:
+*인덱스 cshtml* :
 
 ```cshtml
 <cache vary-by-route="Make,Model">
@@ -168,7 +169,7 @@ routes.MapRoute(
 
 ### <a name="vary-by-no-loccookie"></a>다름cookie
 
-| 특성 유형 | 예제                                                                         |
+| 특성 유형 | 예                                                                         |
 | -------------- | -------------------------------------------------------------------------------- |
 | String         | `.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor` |
 
@@ -223,7 +224,7 @@ public IActionResult Index(string myParam1, string myParam2, string myParam3)
 }
 ```
 
-*인덱스 cshtml*:
+*인덱스 cshtml* :
 
 ```cshtml
 <cache vary-by="@Model">
@@ -239,7 +240,7 @@ public IActionResult Index(string myParam1, string myParam2, string myParam3)
 
 `priority`는 기본 제공 캐시 공급자에게 캐시 제거 지침을 제공합니다. 웹 서버는 메모리가 부족할 경우 가장 먼저 `Low` 캐시 항목부터 제거합니다.
 
-예:
+예제:
 
 ```cshtml
 <cache priority="High">
@@ -251,7 +252,7 @@ public IActionResult Index(string myParam1, string myParam2, string myParam3)
 
 캐시 태그 도우미는 [메모리 캐시 서비스](xref:performance/caching/memory)에 의존합니다. 해당 서비스가 추가되지 않은 경우 캐시 태그 도우미가 서비스를 추가합니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:performance/caching/memory>
 * <xref:security/authentication/identity>

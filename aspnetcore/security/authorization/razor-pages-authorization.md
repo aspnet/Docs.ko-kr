@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: b17717e7b3cbaa64d4ff00661f15439728f161d3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 69e1d639aeb55ae64cc54b1cda402ed6bcbb04ab
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634893"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060185"
 ---
 # <a name="no-locrazor-pages-authorization-conventions-in-aspnet-core"></a>Razor ASP.NET Core의 페이지 권한 부여 규칙
 
@@ -74,7 +75,7 @@ options.Conventions.AuthorizeFolder("/Private", "AtLeast21");
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 ```
 
-페이지 이름은 지정 된 영역에 대 한 페이지 루트 디렉터리에 상대적인 확장명이 없는 파일의 경로입니다. 예를 들어 파일 *영역/ Identity /Pages/Manage/Accounts.cshtml* 의 페이지 이름은 */Manage/Accounts*입니다.
+페이지 이름은 지정 된 영역에 대 한 페이지 루트 디렉터리에 상대적인 확장명이 없는 파일의 경로입니다. 예를 들어 파일 *영역/ Identity /Pages/Manage/Accounts.cshtml* 의 페이지 이름은 */Manage/Accounts* 입니다.
 
 [권한 부여 정책을](xref:security/authorization/policies)지정 하려면 [AuthorizeAreaPage 오버 로드](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*)를 사용 합니다.
 
@@ -90,7 +91,7 @@ options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts", "AtLeast21
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 ```
 
-폴더 경로는 지정 된 영역에 대 한 페이지 루트 디렉터리를 기준으로 하는 폴더의 경로입니다. 예를 들어 *영역/ Identity /Pages/Manage/* 아래에 있는 파일의 폴더 경로는/ *관리*입니다.
+폴더 경로는 지정 된 영역에 대 한 페이지 루트 디렉터리를 기준으로 하는 폴더의 경로입니다. 예를 들어 *영역/ Identity /Pages/Manage/* 아래에 있는 파일의 폴더 경로는/ *관리* 입니다.
 
 [권한 부여 정책을](xref:security/authorization/policies)지정 하려면 [AuthorizeAreaFolder 오버 로드](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*)를 사용 합니다.
 
@@ -132,7 +133,7 @@ options.Conventions.AuthorizeAreaFolder("Identity", "/Manage", "AtLeast21");
 
 개인 페이지에 대 한 권한 부여가 실패 합니다. <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter>및 <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> 가 모두 페이지에 적용 되 면가 <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> 우선 하 고 액세스를 제어 합니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:razor-pages/razor-pages-conventions>
 * <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection>
@@ -186,7 +187,7 @@ options.Conventions.AuthorizeFolder("/Private", "AtLeast21");
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 ```
 
-페이지 이름은 지정 된 영역에 대 한 페이지 루트 디렉터리에 상대적인 확장명이 없는 파일의 경로입니다. 예를 들어 파일 *영역/ Identity /Pages/Manage/Accounts.cshtml* 의 페이지 이름은 */Manage/Accounts*입니다.
+페이지 이름은 지정 된 영역에 대 한 페이지 루트 디렉터리에 상대적인 확장명이 없는 파일의 경로입니다. 예를 들어 파일 *영역/ Identity /Pages/Manage/Accounts.cshtml* 의 페이지 이름은 */Manage/Accounts* 입니다.
 
 [권한 부여 정책을](xref:security/authorization/policies)지정 하려면 [AuthorizeAreaPage 오버 로드](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*)를 사용 합니다.
 
@@ -202,7 +203,7 @@ options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts", "AtLeast21
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 ```
 
-폴더 경로는 지정 된 영역에 대 한 페이지 루트 디렉터리를 기준으로 하는 폴더의 경로입니다. 예를 들어 *영역/ Identity /Pages/Manage/* 아래에 있는 파일의 폴더 경로는/ *관리*입니다.
+폴더 경로는 지정 된 영역에 대 한 페이지 루트 디렉터리를 기준으로 하는 폴더의 경로입니다. 예를 들어 *영역/ Identity /Pages/Manage/* 아래에 있는 파일의 폴더 경로는/ *관리* 입니다.
 
 [권한 부여 정책을](xref:security/authorization/policies)지정 하려면 [AuthorizeAreaFolder 오버 로드](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*)를 사용 합니다.
 
@@ -244,7 +245,7 @@ options.Conventions.AuthorizeAreaFolder("Identity", "/Manage", "AtLeast21");
 
 개인 페이지에 대 한 권한 부여가 실패 합니다. <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter>및 <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> 가 모두 페이지에 적용 되 면가 <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> 우선 하 고 액세스를 제어 합니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:razor-pages/razor-pages-conventions>
 * <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection>

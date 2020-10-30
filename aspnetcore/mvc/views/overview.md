@@ -5,6 +5,7 @@ description: ASP.NET Core MVC에서 보기가 앱의 데이터 프레젠테이�
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/overview
-ms.openlocfilehash: 6afd69414f2dc0158f724c6e6f7b3a3e51c1e92c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 373b17377740441d3859e3b7d942017a22bc7a68
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630681"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060627"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC에서 보기
 
@@ -29,13 +30,13 @@ ms.locfileid: "88630681"
 
 이 항목에서는 ASP.NET Core MVC 애플리케이션에서 사용되는 보기에 대해 설명합니다. 페이지에 대 한 자세한 내용은 Razor [ Razor 페이지 소개](xref:razor-pages/index)를 참조 하세요.
 
-MVC(Model-View-Controller) 패턴에서 *보기*는 앱의 데이터 프레젠테이션과 사용자 상호 작용을 처리합니다. 뷰는 포함 된 [ Razor 태그가](xref:mvc/views/razor)있는 HTML 템플릿입니다. Razor 태그는 HTML 태그와 상호 작용 하 여 클라이언트에 전송 되는 웹 페이지를 생성 하는 코드입니다.
+MVC(Model-View-Controller) 패턴에서 *보기* 는 앱의 데이터 프레젠테이션과 사용자 상호 작용을 처리합니다. 뷰는 포함 된 [ Razor 태그가](xref:mvc/views/razor)있는 HTML 템플릿입니다. Razor 태그는 HTML 태그와 상호 작용 하 여 클라이언트에 전송 되는 웹 페이지를 생성 하는 코드입니다.
 
 MVC ASP.NET Core 뷰는 태그에서 [c # 프로그래밍 언어](/dotnet/csharp/) 를 사용 하는 *. cshtml* 파일입니다. Razor 일반적으로 보기 파일은 앱의 [컨트롤러](xref:mvc/controllers/actions) 각각에 대해 명명된 폴더로 그룹화됩니다. 이 폴더는 앱 루트의 *Views* 폴더에 저장됩니다.
 
 ![Visual Studio의 솔루션 탐색기에 About.cshtml, Contact.cshtml 및 Index.cshtml 파일을 표시하도록 Home 폴더가 열린 상태로 Views 폴더가 열려 있습니다.](overview/_static/views_solution_explorer.png)
 
-*Home* 컨트롤러는 *Views* 폴더 내에 *Home* 폴더로 표시됩니다. *Home* 폴더는 *About*, *Contact* 및 *Index*(홈페이지) 웹 페이지에 대한 보기를 포함하고 있습니다. 사용자가 이러한 세 웹 페이지 중 하나를 요청하면 *Home* 컨트롤러의 컨트롤러 작업이 세 가지 보기 중 어떤 보기를 사용하여 웹 페이지를 만들고 사용자에게 반환할지 결정합니다.
+*Home* 컨트롤러는 *Views* 폴더 내에 *Home* 폴더로 표시됩니다. *Home* 폴더는 *About* , *Contact* 및 *Index* (홈페이지) 웹 페이지에 대한 보기를 포함하고 있습니다. 사용자가 이러한 세 웹 페이지 중 하나를 요청하면 *Home* 컨트롤러의 컨트롤러 작업이 세 가지 보기 중 어떤 보기를 사용하여 웹 페이지를 만들고 사용자에게 반환할지 결정합니다.
 
 일관된 웹 페이지 섹션을 제공하고 코드 반복을 줄이려면 [레이아웃](xref:mvc/views/layout)을 사용하세요. 레이아웃에는 보통 머리글, 탐색 및 메뉴 요소 및 바닥글이 포함됩니다. 머리글 및 바닥글에는 일반적으로 다양한 메타데이터 요소에 대한 상용구 태그와 스크립트 및 스타일 자산에 대한 링크가 포함됩니다. 레이아웃을 사용하면 이런 상용구 태그가 보기에 포함되는 것을 피할 수 있습니다.
 
@@ -96,9 +97,9 @@ MVC ASP.NET Core 뷰는 태그에서 [c # 프로그래밍 언어](/dotnet/csharp
 
 ### <a name="view-discovery"></a>보기 검색
 
-작업이 보기를 반환하면 *보기 검색*이라는 프로세스가 수행됩니다. 이 프로세스는 보기 이름을 기반으로 어떤 보기 파일을 사용할지 결정합니다. 
+작업이 보기를 반환하면 *보기 검색* 이라는 프로세스가 수행됩니다. 이 프로세스는 보기 이름을 기반으로 어떤 보기 파일을 사용할지 결정합니다. 
 
-`View` 메서드(`return View();`)의 기본 동작은 호출된 작업 메서드와 같은 이름의 보기를 반환하는 것입니다. 예를 들어 컨트롤러의 *About* `ActionResult` 메서드 이름은 *About.cshtml*이라는 이름의 보기 파일을 검색하는 데 사용됩니다. 먼저, 런타임은 *Views/[ControllerName]* 폴더에서 보기를 찾습니다. 이 위치에서 일치하는 보기를 찾지 못하면 *Shared* 폴더에서 보기를 검색합니다.
+`View` 메서드(`return View();`)의 기본 동작은 호출된 작업 메서드와 같은 이름의 보기를 반환하는 것입니다. 예를 들어 컨트롤러의 *About* `ActionResult` 메서드 이름은 *About.cshtml* 이라는 이름의 보기 파일을 검색하는 데 사용됩니다. 먼저, 런타임은 *Views/[ControllerName]* 폴더에서 보기를 찾습니다. 이 위치에서 일치하는 보기를 찾지 못하면 *Shared* 폴더에서 보기를 검색합니다.
 
 `return View();`;`를 사용하여 암시적으로 `ViewResult`를 반환하거나 `return View("<ViewName>");`를 사용하여 명시적으로 보기 이름을 `View` 메서드에 전달하는 것은 문제가 되지 않습니다. 두 경우 모두, 뷰 검색 시 일치하는 뷰 파일을 다음 순서로 검색합니다.
 
@@ -142,9 +143,9 @@ return View("./About");
 
 ### <a name="strongly-typed-data-viewmodel"></a>강력한 형식의 데이터(viewmodel)
 
-가장 강력한 방법은 뷰에서 [모델](xref:mvc/models/model-binding) 형식을 지정하는 것입니다. 이 모델은 일반적으로 *viewmodel*이라고 합니다. 작업에서 viewmodel 형식의 인스턴스를 보기에 전달합니다.
+가장 강력한 방법은 뷰에서 [모델](xref:mvc/models/model-binding) 형식을 지정하는 것입니다. 이 모델은 일반적으로 *viewmodel* 이라고 합니다. 작업에서 viewmodel 형식의 인스턴스를 보기에 전달합니다.
 
-viewmodel을 사용하여 뷰에 데이터를 전달하면 뷰에서 *강력한* 형식 검사를 활용할 수 있습니다. *강력한 형식화*(또는 *강력한 형식의*)는 모든 변수 및 상수가 명시적으로 정의된 형식(예: `string`, `int` 또는 `DateTime`)을 포함함을 의미합니다. 뷰에 사용된 형식의 유효성 검사는 컴파일 시간에 검사됩니다.
+viewmodel을 사용하여 뷰에 데이터를 전달하면 뷰에서 *강력한* 형식 검사를 활용할 수 있습니다. *강력한 형식화* (또는 *강력한 형식의* )는 모든 변수 및 상수가 명시적으로 정의된 형식(예: `string`, `int` 또는 `DateTime`)을 포함함을 의미합니다. 뷰에 사용된 형식의 유효성 검사는 컴파일 시간에 검사됩니다.
 
 [Visual Studio](https://visualstudio.microsoft.com) 및 [Visual Studio Code](https://code.visualstudio.com/)는 [IntelliSense](/visualstudio/ide/using-intellisense)라는 기능을 사용하여 강력한 형식의 클래스 멤버를 나열합니다. viewmodel 속성을 보려는 경우 viewmodel에 대한 변수 이름과 마침표(`.`)를 입력합니다. 이렇게 하면 오류를 줄이면서 보다 빠르게 코드를 작성할 수 있습니다.
 
@@ -181,7 +182,7 @@ public IActionResult Contact()
 }
 ```
 
-뷰에 제공할 수 있는 모델 유형에 대한 제한은 없습니다. 동작(메서드)가 거의 또는 전혀 정의되지 않은 POCO(Plain Old CLR Object) viewmodel을 사용하는 것이 좋습니다. 일반적으로 viewmodel 클래스는 앱의 루트에서 *Models* 폴더 또는 별도의 *ViewModels* 폴더에 저장됩니다. 위의 예제에 사용된 *Address* viewmodel은 *Address.cs*라는 파일에 저장된 POCO viewmodel입니다.
+뷰에 제공할 수 있는 모델 유형에 대한 제한은 없습니다. 동작(메서드)가 거의 또는 전혀 정의되지 않은 POCO(Plain Old CLR Object) viewmodel을 사용하는 것이 좋습니다. 일반적으로 viewmodel 클래스는 앱의 루트에서 *Models* 폴더 또는 별도의 *ViewModels* 폴더에 저장됩니다. 위의 예제에 사용된 *Address* viewmodel은 *Address.cs* 라는 파일에 저장된 POCO viewmodel입니다.
 
 ```csharp
 namespace WebApplication1.ViewModels
@@ -205,7 +206,7 @@ Viewmodel 형식 및 비즈니스 모델 형식 모두에 같은 클래스를 �
 
 `ViewBag`*에서 Razor 사용할 수 없음 페이지.*
 
-강력한 형식의 뷰 외에도, 뷰는 *약한 형식*(*느슨한 형식*이라고도 함) 데이터 컬렉션에 액세스할 수 있습니다. 강력한 형식과 달리, *약한 형식*(또는 *느슨한 형식*)은 사용 중인 데이터 형식을 명시적으로 선언하지 않는 것을 의미합니다. 컨트롤러 및 뷰 간에 적은 양의 데이터를 전달하기 위해 약한 형식의 데이터 컬렉션을 사용할 수 있습니다.
+강력한 형식의 뷰 외에도, 뷰는 *약한 형식* ( *느슨한 형식* 이라고도 함) 데이터 컬렉션에 액세스할 수 있습니다. 강력한 형식과 달리, *약한 형식* (또는 *느슨한 형식* )은 사용 중인 데이터 형식을 명시적으로 선언하지 않는 것을 의미합니다. 컨트롤러 및 뷰 간에 적은 양의 데이터를 전달하기 위해 약한 형식의 데이터 컬렉션을 사용할 수 있습니다.
 
 | 다음 사이에 데이터 전달 ...                        | 예제                                                                        |
 | ------------------------------------------------- | ------------------------------------------------------------------------------ |

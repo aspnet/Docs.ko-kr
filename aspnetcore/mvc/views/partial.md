@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/partial
-ms.openlocfilehash: bb75d8b7d78c82c9c32605ac645b8895fdfb78e3
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 01fb87205f7855f0995cbcd135b6b01f15835e3b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393654"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060601"
 ---
 # <a name="partial-views-in-aspnet-core"></a>ASP.NET Core의 부분 보기
 
@@ -32,7 +33,7 @@ ms.locfileid: "91393654"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-용어 *부분 보기* 는 태그 파일을 *뷰*라고 하는 MVC 앱 이나 Razor 태그 파일을 *페이지*라고 하는 pages 앱을 개발할 때 사용 됩니다. 이 항목에서는 일반적으로 MVC 뷰 및 Razor 페이지 페이지를 *태그 파일로*나타냅니다.
+용어 *부분 보기* 는 태그 파일을 *뷰* 라고 하는 MVC 앱 이나 Razor 태그 파일을 *페이지* 라고 하는 pages 앱을 개발할 때 사용 됩니다. 이 항목에서는 일반적으로 MVC 뷰 및 Razor 페이지 페이지를 *태그 파일로* 나타냅니다.
 
 ::: moniker-end
 
@@ -61,7 +62,7 @@ ms.locfileid: "91393654"
 
 ASP.NET Core MVC에서 컨트롤러의 <xref:Microsoft.AspNetCore.Mvc.ViewResult>는 보기 또는 부분 보기를 반환할 수 있습니다. Razor페이지에서는 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 개체로 표시 된 부분 뷰를 반환할 수 있습니다 <xref:Microsoft.AspNetCore.Mvc.PartialViewResult> . 부분 보기 참조 및 렌더링은 [부분 보기 참조](#reference-a-partial-view) 섹션에 설명되어 있습니다.
 
-MVC 보기 또는 페이지 렌더링과 달리 부분 보기는 *_ViewStart.cshtml*을 실행하지 않습니다. *_ViewStart.cshtml*에 대한 자세한 내용은 <xref:mvc/views/layout>을 참조하세요.
+MVC 보기 또는 페이지 렌더링과 달리 부분 보기는 *_ViewStart.cshtml* 을 실행하지 않습니다. *_ViewStart.cshtml* 에 대한 자세한 내용은 <xref:mvc/views/layout>을 참조하세요.
 
 부분 보기 파일 이름은 종종 밑줄(`_`)로 시작됩니다. 이 명명 규칙은 필수는 아니지만 부분 보기를 보기 및 페이지와 시각적으로 구분하는 데 도움이 됩니다.
 
@@ -69,11 +70,11 @@ MVC 보기 또는 페이지 렌더링과 달리 부분 보기는 *_ViewStart.csh
 
 ::: moniker range="< aspnetcore-2.0"
 
-부분 보기는 ‘보기’ 폴더에서 유지 관리되는 *.cshtml* 태그 파일입니다.**
+부분 보기는 ‘보기’ 폴더에서 유지 관리되는 
 
 컨트롤러의 <xref:Microsoft.AspNetCore.Mvc.ViewResult>는 보기 또는 부분 보기를 반환할 수 있습니다. 부분 보기 참조 및 렌더링은 [부분 보기 참조](#reference-a-partial-view) 섹션에 설명되어 있습니다.
 
-MVC 보기 렌더링과 달리 부분 보기는 *_ViewStart.cshtml*을 실행하지 않습니다. *_ViewStart.cshtml*에 대한 자세한 내용은 <xref:mvc/views/layout>을 참조하세요.
+MVC 보기 렌더링과 달리 부분 보기는 *_ViewStart.cshtml* 을 실행하지 않습니다. *_ViewStart.cshtml* 에 대한 자세한 내용은 <xref:mvc/views/layout>을 참조하세요.
 
 부분 보기 파일 이름은 종종 밑줄(`_`)로 시작됩니다. 이 명명 규칙은 필수는 아니지만 부분 보기를 보기와 시각적으로 구분하는 데 도움이 됩니다.
 
@@ -85,7 +86,7 @@ MVC 보기 렌더링과 달리 부분 보기는 *_ViewStart.cshtml*을 실행하
 
 ### <a name="use-a-partial-view-in-a-no-locrazor-pages-pagemodel"></a>PageModel 페이지에서 부분 보기 사용 Razor
 
-ASP.NET Core 2.0 또는 2.1에서 다음 처리기 메서드는 응답에 대 한 다음과 같은 작업을 수행 * \_ 합니다.*
+ASP.NET Core 2.0 또는 2.1에서 다음 처리기 메서드는 응답에 대 한 다음과 같은 작업을 수행 *\_ 합니다.*
 
 ```csharp
 public IActionResult OnGetPartial() =>
@@ -273,15 +274,15 @@ HTML 도우미를 사용할 때 가장 좋은 방법은 <xref:Microsoft.AspNetCo
 다음 규칙이 부분 보기 검색에 적용됩니다.
 
 * 부분 보기가 다른 폴더에 존재할 경우 파일 이름이 같은 다른 부분 보기가 허용됩니다.
-* 파일 확장명 없이 이름으로 부분 보기를 참조하면서 부분 보기가 호출자의 폴더와 *Shared* 폴더 모두에 존재할 경우 호출자 폴더에 위치해 있는 부분 보기가 부분 보기를 제공합니다. 호출자의 폴더에 부분 보기가 존재하지 않으면 부분 보기는 *Shared* 폴더에서 제공됩니다. *Shared* 폴더의 부분 보기를 *공유 부분 보기* 또는 *기본 부분 보기*라고 합니다.
-* 부분 뷰를 연결할 *수*있습니다 &mdash; . 순환 참조가 호출로 구성 되지 않은 경우 부분 보기는 다른 부분 뷰를 호출할 수 있습니다. 상대 경로는 항상, 파일의 루트 또는 부모가 아닌 현재 파일에 상대적입니다.
+* 파일 확장명 없이 이름으로 부분 보기를 참조하면서 부분 보기가 호출자의 폴더와 *Shared* 폴더 모두에 존재할 경우 호출자 폴더에 위치해 있는 부분 보기가 부분 보기를 제공합니다. 호출자의 폴더에 부분 보기가 존재하지 않으면 부분 보기는 *Shared* 폴더에서 제공됩니다. *Shared* 폴더의 부분 보기를 *공유 부분 보기* 또는 *기본 부분 보기* 라고 합니다.
+* 부분 뷰를 연결할 *수* 있습니다 &mdash; . 순환 참조가 호출로 구성 되지 않은 경우 부분 보기는 다른 부분 뷰를 호출할 수 있습니다. 상대 경로는 항상, 파일의 루트 또는 부모가 아닌 현재 파일에 상대적입니다.
 
 > [!NOTE]
 > [Razor](xref:mvc/views/razor) `section` 부분 보기에 정의 된는 부모 태그 파일에 표시 되지 않습니다. `section`만 정의되어 있는 부분 보기에 표시됩니다.
 
 ## <a name="access-data-from-partial-views"></a>부분 보기에서 데이터 액세스
 
-부분 보기가 인스턴스화되면 부모의 `ViewData` 사전의 ‘사본’을 수신합니다.** 부분 보기 내에서 데이터에 대한 업데이트는 부모 보기에 유지되지 않습니다. 부분 보기에서 변경된 `ViewData`는 부분 보기가 반환될 때 손실됩니다.
+부분 보기가 인스턴스화되면 부모의 `ViewData` 사전의 ‘사본’을 수신합니다.  부분 보기 내에서 데이터에 대한 업데이트는 부모 보기에 유지되지 않습니다. 부분 보기에서 변경된 `ViewData`는 부분 보기가 반환될 때 손실됩니다.
 
 다음 예는 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 인스턴스를 부분 보기에 전달하는 방법을 보여 줍니다.
 
@@ -303,11 +304,11 @@ HTML 도우미를 사용할 때 가장 좋은 방법은 <xref:Microsoft.AspNetCo
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/ReadRP.cshtml?name=snippet_ReadPartialViewRP&highlight=5,15-20)]
 
-*Pages/Shared/_AuthorPartialRP.cshtml*은 *ReadRP.cshtml* 태그 파일에서 참조하는 첫 번째 부분 보기입니다.
+*Pages/Shared/_AuthorPartialRP.cshtml* 은 *ReadRP.cshtml* 태그 파일에서 참조하는 첫 번째 부분 보기입니다.
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Pages/Shared/_AuthorPartialRP.cshtml)]
 
-*Pages/ArticlesRP/_ArticleSectionRP.cshtml*은 *ReadRP.cshtml* 태그 파일에서 참조하는 두 번째 부분 보기입니다.
+*Pages/ArticlesRP/_ArticleSectionRP.cshtml* 은 *ReadRP.cshtml* 태그 파일에서 참조하는 두 번째 부분 보기입니다.
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/_ArticleSectionRP.cshtml)]
 
@@ -319,11 +320,11 @@ HTML 도우미를 사용할 때 가장 좋은 방법은 <xref:Microsoft.AspNetCo
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-20)]
 
-*Views/Shared/_AuthorPartial.cshtml*은 *Read.cshtml* 태그 파일에서 참조하는 첫 번째 부분 보기입니다.
+*Views/Shared/_AuthorPartial.cshtml* 은 *Read.cshtml* 태그 파일에서 참조하는 첫 번째 부분 보기입니다.
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Shared/_AuthorPartial.cshtml)]
 
-*Views/Articles/_ArticleSection.cshtml*은 *Read.cshtml* 태그 파일에서 참조하는 두 번째 부분 보기입니다.
+*Views/Articles/_ArticleSection.cshtml* 은 *Read.cshtml* 태그 파일에서 참조하는 두 번째 부분 보기입니다.
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/_ArticleSection.cshtml)]
 
@@ -348,7 +349,7 @@ HTML 도우미를 사용할 때 가장 좋은 방법은 <xref:Microsoft.AspNetCo
 >
 > 그러나 크게 볼 때 우리는 전념할 수 없습 ...
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 ::: moniker range=">= aspnetcore-2.1"
 

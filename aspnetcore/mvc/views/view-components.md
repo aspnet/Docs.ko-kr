@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-components
-ms.openlocfilehash: 32ae699c4ef501096a9c4ab7bca6673139910f02
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e0ff97b53d12fbf6c6a89e94704de1aee9d7f9e6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635088"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060588"
 ---
 # <a name="view-components-in-aspnet-core"></a>ASP.NET Core의 보기 구성 요소
 
@@ -53,7 +54,7 @@ ms.locfileid: "88635088"
 
 보기 구성 요소는 클래스(일반적으로 [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)에서 파생됨)와 보기 구성 요소가 반환하는 결과(일반적으로 보기)의 두 부분으로 구성됩니다. 컨트롤러와 마찬가지로, 뷰 구성 요소는 POCO일 수 있지만 대부분의 개발자는 `ViewComponent`에서 파생되어 사용 가능한 메서드와 속성을 활용하려고 합니다.
 
-뷰 구성 요소가 앱의 사양을 충족 하는지 고려할 때 구성 요소를 대신 사용 하는 것이 좋습니다 Razor . Razor 또한 구성 요소는 태그를 c # 코드와 결합 하 여 재사용 가능한 UI 단위를 생성 합니다. Razor 구성 요소는 클라이언트 쪽 UI 논리 및 컴퍼지션을 제공할 때 개발자 생산성을 위해 설계 되었습니다. 자세한 내용은 <xref:blazor/components/index>을 참조하세요.
+뷰 구성 요소가 앱의 사양을 충족 하는지 고려할 때 구성 요소를 대신 사용 하는 것이 좋습니다 Razor . Razor 또한 구성 요소는 태그를 c # 코드와 결합 하 여 재사용 가능한 UI 단위를 생성 합니다. Razor 구성 요소는 클라이언트 쪽 UI 논리 및 컴퍼지션을 제공할 때 개발자 생산성을 위해 설계 되었습니다. 자세한 내용은 <xref:blazor/components/index>를 참조하세요.
 
 ## <a name="creating-a-view-component"></a>뷰 구성 요소 만들기
 
@@ -63,7 +64,7 @@ ms.locfileid: "88635088"
 
 다음 중 한 가지 방법을 사용하여 보기 구성 요소 클래스를 만들 수 있습니다.
 
-* *ViewComponent*에서 파생
+* *ViewComponent* 에서 파생
 * `[ViewComponent]` 특성을 사용하여 클래스를 데코레이팅하거나 `[ViewComponent]` 특성이 사용된 클래스에서 파생
 * 이름이 *ViewComponent* 접미사로 끝나는 클래스 만들기
 
@@ -95,9 +96,9 @@ ms.locfileid: "88635088"
 
 검색 경로는 컨트롤러 + 뷰 및 페이지를 사용 하는 프로젝트에 적용 됩니다 Razor .
 
-뷰 구성 요소에 대한 기본 뷰 이름은 *Default*이며 이것은 일반적으로 뷰 파일의 이름이 *Default.cshtml*로 지정됨을 의미합니다. 뷰 구성 요소 결과를 만들거나 `View` 메서드를 호출할 때 다른 뷰 이름을 지정할 수 있습니다.
+뷰 구성 요소에 대한 기본 뷰 이름은 *Default* 이며 이것은 일반적으로 뷰 파일의 이름이 *Default.cshtml* 로 지정됨을 의미합니다. 뷰 구성 요소 결과를 만들거나 `View` 메서드를 호출할 때 다른 뷰 이름을 지정할 수 있습니다.
 
-뷰 파일 이름을 *Default.cshtml*로 지정하고 *Views/Shared/Components/{View Component Name}/{View Name}* 경로를 사용하는 것이 좋습니다. 이 샘플에 사용된 `PriorityList` 뷰 구성 요소는 뷰 구성 요소 보기에 *Views/Shared/Components/PriorityList/Default.cshtml*을 사용합니다.
+뷰 파일 이름을 *Default.cshtml* 로 지정하고 *Views/Shared/Components/{View Component Name}/{View Name}* 경로를 사용하는 것이 좋습니다. 이 샘플에 사용된 `PriorityList` 뷰 구성 요소는 뷰 구성 요소 보기에 *Views/Shared/Components/PriorityList/Default.cshtml* 을 사용합니다.
 
 ### <a name="customize-the-view-search-path"></a>보기 검색 경로 사용자 지정
 
@@ -179,7 +180,7 @@ ASP.NET Core 1.1 이상에서는 뷰 구성 요소를 [태그 도우미](xref:mv
 코드에 대한 참고 사항:
 
 * 보기 구성 요소 클래스는 프로젝트의 **모든** 폴더에 포함될 수 있습니다.
-* 클래스 이름 PriorityList**ViewComponent**는 **ViewComponent** 접미사로 끝나기 때문에 런타임이 보기에서 클래스 구성 요소를 참조할 때 "PriorityList" 문자열을 사용합니다. 나중에 보다 자세히 설명합니다.
+* 클래스 이름 PriorityList **ViewComponent** 는 **ViewComponent** 접미사로 끝나기 때문에 런타임이 보기에서 클래스 구성 요소를 참조할 때 "PriorityList" 문자열을 사용합니다. 나중에 보다 자세히 설명합니다.
 * `[ViewComponent]` 특성은 보기 구성 요소를 참조하는 데 사용되는 이름을 변경할 수 있습니다. 예를 들어 클래스의 이름을 `XYZ`로 지정하고 `ViewComponent` 특성을 적용할 수 있습니다.
 
   ```csharp
@@ -194,7 +195,7 @@ ASP.NET Core 1.1 이상에서는 뷰 구성 요소를 [태그 도우미](xref:mv
 
 ### <a name="create-the-view-component-no-locrazor-view"></a>뷰 구성 요소 Razor 보기 만들기
 
-* *Views/Shared/Components* 폴더를 만듭니다. 이 폴더의 이름은 *Components*로 **지정되어야만** 합니다.
+* *Views/Shared/Components* 폴더를 만듭니다. 이 폴더의 이름은 *Components* 로 **지정되어야만** 합니다.
 
 * *Views/Shared/Components/PriorityList* 폴더를 만듭니다. 이 폴더 이름은 보기 구성 요소 클래스의 이름 또는 클래스 이름에서 접미사를 뺀 이름과 일치해야 합니다(규칙을 준수하고 클래스 이름에 *ViewComponent* 접미사를 사용한 경우). `ViewComponent` 특성을 사용한 경우 클래스 이름은 특성 지정과 일치해야 합니다.
 
@@ -203,9 +204,9 @@ ASP.NET Core 1.1 이상에서는 뷰 구성 요소를 [태그 도우미](xref:mv
 
   [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
 
-   뷰를 사용 하 여 Razor 목록을 `TodoItem` 표시 하 고 표시 합니다. 뷰 구성 요소 `InvokeAsync` 메서드가 뷰의 이름을 전달하지 않은 경우(샘플에서처럼) 규칙에 따라 뷰 이름으로 *Default*가 사용됩니다. 자습서의 뒷부분에서 뷰 이름을 전달하는 방법을 보여 줍니다. 특정 컨트롤러에 대 한 기본 스타일을 재정의 하려면 뷰를 컨트롤러 관련 뷰 폴더에 추가 합니다 (예: *Views/ToDo/Components/PriorityList/default. cshtml)*.
+   뷰를 사용 하 여 Razor 목록을 `TodoItem` 표시 하 고 표시 합니다. 뷰 구성 요소 `InvokeAsync` 메서드가 뷰의 이름을 전달하지 않은 경우(샘플에서처럼) 규칙에 따라 뷰 이름으로 *Default* 가 사용됩니다. 자습서의 뒷부분에서 뷰 이름을 전달하는 방법을 보여 줍니다. 특정 컨트롤러에 대 한 기본 스타일을 재정의 하려면 뷰를 컨트롤러 관련 뷰 폴더에 추가 합니다 (예: *Views/ToDo/Components/PriorityList/default. cshtml)* .
 
-    뷰 구성 요소가 컨트롤러에 특정 한 경우에는 컨트롤러 관련 폴더 (*Views/ToDo/Components/PriorityList/Default. cshtml*)에 해당 구성 요소를 추가할 수 있습니다.
+    뷰 구성 요소가 컨트롤러에 특정 한 경우에는 컨트롤러 관련 폴더 ( *Views/ToDo/Components/PriorityList/Default. cshtml* )에 해당 구성 요소를 추가할 수 있습니다.
 
 * `div`우선 순위 목록 구성 요소에 대 한 호출을 포함 하는을 *Views/ToDo/index. cshtml* 파일의 아래쪽에 추가 합니다.
 
@@ -229,11 +230,11 @@ ASP.NET Core 1.1 이상에서는 뷰 구성 요소를 [태그 도우미](xref:mv
 
 [!code-csharp[](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs?highlight=4,5,6,7,8,9&range=28-39)]
 
-*Views/Shared/Components/PriorityList/Default.cshtml* 파일을 *Views/Shared/Components/PriorityList/PVC.cshtml*이라는 보기로 복사합니다. PVC 뷰가 사용되었다는 것을 나타내는 제목을 추가합니다.
+*Views/Shared/Components/PriorityList/Default.cshtml* 파일을 *Views/Shared/Components/PriorityList/PVC.cshtml* 이라는 보기로 복사합니다. PVC 뷰가 사용되었다는 것을 나타내는 제목을 추가합니다.
 
 [!code-cshtml[](../../mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml?highlight=3)]
 
-*Views/ToDo/Index.cshtml*을 수정합니다.
+*Views/ToDo/Index.cshtml* 을 수정합니다.
 
 <!-- Views/ToDo/Index.cshtml is never imported, so change to test tutorial -->
 
@@ -248,7 +249,7 @@ PVC 보기가 렌더링되지 않는다면 우선 순위가 4 이상인 보기 �
 ### <a name="examine-the-view-path"></a>보기 경로 검토
 
 * 우선 순위 뷰가 반환되지 않도록 우선 순위 매개 변수를 3 이하로 변경합니다.
-* *Views/ToDo/Components/PriorityList/Default. cshtml* 의 이름을 *기본값인 1*로 바꿉니다.
+* *Views/ToDo/Components/PriorityList/Default. cshtml* 의 이름을 *기본값인 1* 로 바꿉니다.
 * 앱을 테스트하면 다음과 같은 오류가 발생합니다.
 
    ```
@@ -290,7 +291,7 @@ public class PriorityList : ViewComponent
 }
 ```
 
-뷰 구성 요소 파일에는 Razor 메서드에 전달 된 문자열이 나열 됩니다 `Invoke` (*Views/Home/Components/PriorityList/Default. cshtml*).
+뷰 구성 요소 파일에는 Razor 메서드에 전달 된 문자열이 나열 됩니다 `Invoke` ( *Views/Home/Components/PriorityList/Default. cshtml* ).
 
 ```cshtml
 @model List<string>
@@ -306,7 +307,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker range=">= aspnetcore-1.1"
 
-뷰 구성 요소는 Razor 다음 방법 중 하나를 사용 하 여 파일 (예: *Views/Home/Index. cshtml*)에서 호출 됩니다.
+뷰 구성 요소는 Razor 다음 방법 중 하나를 사용 하 여 파일 (예: *Views/Home/Index. cshtml* )에서 호출 됩니다.
 
 * <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>
 * [태그 도우미](xref:mvc/views/tag-helpers/intro)
@@ -317,7 +318,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker range="< aspnetcore-1.1"
 
-뷰 구성 요소는 Razor 를 사용 하 여 파일 (예: *Views/Home/Index. cshtml*)에서 호출 됩니다 <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> .
+뷰 구성 요소는 Razor 를 사용 하 여 파일 (예: *Views/Home/Index. cshtml* )에서 호출 됩니다 <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> .
 
 `Component.InvokeAsync`를 호출합니다.
 
@@ -354,6 +355,6 @@ public class PriorityList : ViewComponent
 * ViewComponent가 마크업을 렌더링하지 않습니다.
 * 오류가 throw되지 않습니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [보기에 종속성 주입](xref:mvc/views/dependency-injection)

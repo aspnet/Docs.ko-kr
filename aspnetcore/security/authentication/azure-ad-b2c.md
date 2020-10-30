@@ -6,6 +6,7 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc
 ms.date: 01/21/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: edacded5df4d5f4819b3657bc7eff99e6d96d394
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: f917bec8f2d929e62bf43494159a63458f135c5f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712547"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061394"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>ASP.NET Core에서 Azure Active Directory B2C를 사용 하는 클라우드 인증
 
@@ -58,11 +59,11 @@ ms.locfileid: "88712547"
 
 다음 값을 사용합니다.
 
-| Setting                       | 값                     | 메모                                                                                                                                                                                              |
+| 설정                       | 값                     | 참고                                                                                                                                                                                              |
 |-------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **이름**                      | *&lt;앱 이름&gt;*        | 소비자에 게 앱을 설명 하는 앱의 **이름을** 입력 합니다.                                                                                                                                 |
-| **웹앱/웹 API 포함** | 예                       |                                                                                                                                                                                                    |
-| **암시적 흐름 허용**       | 예                       |                                                                                                                                                                                                    |
+| **웹앱/웹 API 포함** | Yes                       |                                                                                                                                                                                                    |
+| **암시적 흐름 허용**       | Yes                       |                                                                                                                                                                                                    |
 | **회신 URL**                 | `https://localhost:44300/signin-oidc` | 회신 URL은 Azure AD B2C에서 앱이 요청한 토큰을 반환하는 엔드포인트입니다. Visual Studio는 사용할 회신 URL을 제공 합니다. 이제를 입력 `https://localhost:44300/signin-oidc` 하 여 양식을 완성 합니다. |
 | **앱 ID URI**                | 비워 둠               | 이 자습서에서는 필요 하지 않습니다.                                                                                                                                                                    |
 | **네이티브 클라이언트 포함**     | 아니요                        |                                                                                                                                                                                                    |
@@ -86,13 +87,13 @@ Visual Studio에서 다음을 수행합니다.
     
     ![인증 변경 단추](./azure-ad-b2c/_static/changeauth.png)
 
-4. **인증 변경** 대화 상자에서 **개별 사용자 계정**을 선택한 다음 드롭다운에서 **클라우드의 기존 사용자 저장소에 연결** 을 선택 합니다. 
+4. **인증 변경** 대화 상자에서 **개별 사용자 계정** 을 선택한 다음 드롭다운에서 **클라우드의 기존 사용자 저장소에 연결** 을 선택 합니다. 
     
     ![인증 대화 상자 변경](./azure-ad-b2c/_static/changeauthdialog.png)
 
 5. 다음 값을 사용 하 여 양식을 작성 합니다.
     
-    | Setting                       | 값                                                 |
+    | 설정                       | 값                                                 |
     |-------------------------------|-------------------------------------------------------|
     | **도메인 이름**               | *&lt;B2C 테 넌 트의 도메인 이름&gt;*          |
     | **애플리케이션 ID**            | *&lt;클립보드에서 응용 프로그램 ID 붙여넣기&gt;* |
@@ -108,14 +109,14 @@ Visual Studio에서 다음을 수행합니다.
 B2C 앱 속성이 계속 열려 있는 브라우저 창으로 돌아갑니다. 이전에 지정한 임시 **회신 URL** 을 Visual Studio에서 복사한 값으로 변경 합니다. 창 맨 위에 있는 **저장** 을 선택 합니다.
 
 > [!TIP]
-> 회신 URL을 복사 하지 않은 경우 웹 프로젝트 속성의 디버그 탭에서 HTTPS 주소를 사용 하 고 *appsettings.js*에서 **callbackpath** 값을 추가 합니다.
+> 회신 URL을 복사 하지 않은 경우 웹 프로젝트 속성의 디버그 탭에서 HTTPS 주소를 사용 하 고에서 **Callbackpath** 값을 추가 *appsettings.json* 합니다.
 
 ## <a name="configure-policies"></a>정책 구성
 
-Azure AD B2C 설명서의 단계를 사용 하 여 [등록 또는 로그인 정책을 만든](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)다음 [암호 재설정 정책을 만듭니다](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions). ** Identity 공급자**, **등록 특성**및 **응용 프로그램 클레임**에 대 한 설명서에 제공 된 예제 값을 사용 합니다. 설명서에 설명 된 대로 **지금 실행** 단추를 사용 하 여 정책을 테스트 하는 것은 선택 사항입니다.
+Azure AD B2C 설명서의 단계를 사용 하 여 [등록 또는 로그인 정책을 만든](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)다음 [암호 재설정 정책을 만듭니다](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions). **Identity 공급자** , **등록 특성** 및 **응용 프로그램 클레임** 에 대 한 설명서에 제공 된 예제 값을 사용 합니다. 설명서에 설명 된 대로 **지금 실행** 단추를 사용 하 여 정책을 테스트 하는 것은 선택 사항입니다.
 
 > [!WARNING]
-> Visual Studio의 **인증 변경** 대화 상자에서 정책 이름이 사용 되었으므로 정책 이름이 설명서에 설명 된 것과 정확 하 게 일치 하는지 확인 합니다. 정책 이름은 *appsettings.js*에서 확인할 수 있습니다.
+> Visual Studio의 **인증 변경** 대화 상자에서 정책 이름이 사용 되었으므로 정책 이름이 설명서에 설명 된 것과 정확 하 게 일치 하는지 확인 합니다. 에서 정책 이름을 확인할 수 있습니다 *appsettings.json* .
 
 ## <a name="configure-the-underlying-openidconnectoptionsjwtbearerno-loccookie-options"></a>기본 OpenIdConnectOptions/JwtBearer/options 구성 Cookie
 
@@ -143,7 +144,7 @@ services.Configure<JwtBearerOptions>(
 
 ## <a name="run-the-app"></a>앱 실행
 
-Visual Studio에서 **f5** 키를 눌러 앱을 빌드하고 실행 합니다. 웹 앱이 시작 된 후 **동의 함** 을 선택 하 여 cookie s (메시지가 표시 되는 경우)를 사용 하 고 **로그인**을 선택 합니다.
+Visual Studio에서 **f5** 키를 눌러 앱을 빌드하고 실행 합니다. 웹 앱이 시작 된 후 **동의 함** 을 선택 하 여 cookie s (메시지가 표시 되는 경우)를 사용 하 고 **로그인** 을 선택 합니다.
 
 ![앱에 로그인](./azure-ad-b2c/_static/signin.png)
 

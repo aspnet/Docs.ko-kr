@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 05/26/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/webapi
-ms.openlocfilehash: e3e46f8050ba87c3108885341675c9d2a2cb7847
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 320805c0d40bf06cee384e6d98caea5c420d45bc
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635166"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061472"
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>ASP.NET Web API에서 ASP.NET Core로 마이그레이션
 
@@ -42,7 +43,7 @@ ASP.NET 4.x Web API는 브라우저 및 모바일 장치를 비롯 한 광범위
 
 이 문서에서는 [ASP.NET Web API 2 시작](/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)에서 만든 *ProductsApp* 프로젝트를 사용 합니다. 해당 프로젝트에서 기본 ASP.NET 4.x 웹 API 프로젝트는 다음과 같이 구성 됩니다.
 
-*Global.asax.cs*에서 다음을 호출 합니다 `WebApiConfig.Register` .
+*Global.asax.cs* 에서 다음을 호출 합니다 `WebApiConfig.Register` .
 
 [!code-csharp[](webapi/sample/3.x/ProductsApp/Global.asax.cs?highlight=14)]
 
@@ -62,16 +63,16 @@ ASP.NET 4.x Web API는 브라우저 및 모바일 장치를 비롯 한 광범위
 
 Visual Studio에서 비어 있는 새 솔루션을 만들고 마이그레이션할 ASP.NET 4.x 웹 API 프로젝트를 추가 합니다.
 
-1. **파일 메뉴**에서 **새로 만들기** > **프로젝트**를 선택합니다.
-1. **빈 솔루션** 템플릿을 선택 하 고 **다음**을 선택 합니다.
-1. 솔루션 이름을 *WebAPIMigration*로 합니다. **만들기**를 선택합니다.
+1. **파일 메뉴** 에서 **새로 만들기** > **프로젝트** 를 선택합니다.
+1. **빈 솔루션** 템플릿을 선택 하 고 **다음** 을 선택 합니다.
+1. 솔루션 이름을 *WebAPIMigration* 로 합니다. **만들기** 를 선택합니다.
 1. 기존 *ProductsApp* 프로젝트를 솔루션에 추가 합니다.
 
 마이그레이션할 새 API 프로젝트를 추가 합니다.
 
 1. 새 **ASP.NET Core 웹 응용 프로그램** 프로젝트를 솔루션에 추가 합니다.
-1. **새 프로젝트 구성** 대화 상자에서 프로젝트의 이름을 *제품 점수*로 하 고 **만들기**를 선택 합니다.
-1. **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 3.1**이 선택되었는지 확인합니다. **API** 프로젝트 템플릿을 선택하고 **만들기**를 선택합니다.
+1. **새 프로젝트 구성** 대화 상자에서 프로젝트의 이름을 *제품 점수* 로 하 고 **만들기** 를 선택 합니다.
+1. **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 3.1** 이 선택되었는지 확인합니다. **API** 프로젝트 템플릿을 선택하고 **만들기** 를 선택합니다.
 1. 새 *제품 점수* 프로젝트에서 *WeatherForecast.cs* 및 *Controllers/WeatherForecastController* 예제 파일을 제거 합니다.
 
 이제 솔루션에는 두 개의 프로젝트가 포함 되어 있습니다. 다음 섹션에서는 *ProductsApp* 프로젝트의 콘텐츠를 *제품 점수* 프로젝트로 마이그레이션하는 방법에 대해 설명 합니다.
@@ -82,10 +83,10 @@ ASP.NET Core *App_Start* 폴더 또는 *global.asax* 파일을 사용 하지 않
 
 `Startup` 클래스는:
 
-* *Global.asax*를 바꿉니다.
+* *Global.asax* 를 바꿉니다.
 * 모든 앱 시작 작업을 처리 합니다.
 
-자세한 내용은 <xref:fundamentals/startup>을 참조하세요.
+자세한 내용은 <xref:fundamentals/startup>를 참조하세요.
 
 ## <a name="migrate-models-and-controllers"></a>모델 및 컨트롤러 마이그레이션
 
@@ -145,9 +146,9 @@ ASP.NET Core *API* 프로젝트 템플릿에는 생성 된 코드의 끝점 라�
     * [`[HttpGet]`](xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute)작업에 특성을 적용 `GetAllProducts` 합니다.
     * `[HttpGet("{id}")]`작업에 특성을 적용 `GetProduct` 합니다.
 
-마이그레이션된 프로젝트를 실행 하 고로 이동 `/api/products` 합니다. 세 제품의 전체 목록이 표시 됩니다. `/api/products/1`으로 이동합니다. 첫 번째 제품이 표시 됩니다.
+마이그레이션된 프로젝트를 실행 하 고로 이동 `/api/products` 합니다. 세 제품의 전체 목록이 표시 됩니다. [https://www.microsoft.com]\(`/api/products/1`) 로 이동합니다. 첫 번째 제품이 표시 됩니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:web-api/index>
 * <xref:web-api/action-return-types>
@@ -156,7 +157,7 @@ ASP.NET Core *API* 프로젝트 템플릿에는 생성 된 코드의 끝점 라�
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.2"
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 [!INCLUDE [prerequisites](../includes/net-core-prereqs-vs2019-2.2.md)]
 
@@ -164,7 +165,7 @@ ASP.NET Core *API* 프로젝트 템플릿에는 생성 된 코드의 끝점 라�
 
 이 문서에서는 [ASP.NET Web API 2 시작](/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)에서 만든 *ProductsApp* 프로젝트를 사용 합니다. 해당 프로젝트에서 기본 ASP.NET 4.x 웹 API 프로젝트는 다음과 같이 구성 됩니다.
 
-*Global.asax.cs*에서 다음을 호출 합니다 `WebApiConfig.Register` .
+*Global.asax.cs* 에서 다음을 호출 합니다 `WebApiConfig.Register` .
 
 [!code-csharp[](webapi/sample/2.x/ProductsApp/Global.asax.cs?highlight=14)]
 
@@ -180,9 +181,9 @@ ASP.NET Core *API* 프로젝트 템플릿에는 생성 된 코드의 끝점 라�
 
 Visual Studio에서 다음 단계를 완료 합니다.
 
-* **파일**  >  **새로 만들기**  >  **프로젝트**  >  **기타 프로젝트 형식**  >  **Visual Studio 솔루션**으로 이동 합니다. **비어 있는 솔루션**을 선택 하 고 솔루션의 이름을 *WebAPIMigration*로 선택 합니다. **확인** 단추를 클릭합니다.
+* **파일**  >  **새로 만들기**  >  **프로젝트**  >  **기타 프로젝트 형식**  >  **Visual Studio 솔루션** 으로 이동 합니다. **비어 있는 솔루션** 을 선택 하 고 솔루션의 이름을 *WebAPIMigration* 로 선택 합니다. **확인** 단추를 클릭합니다.
 * 기존 *ProductsApp* 프로젝트를 솔루션에 추가 합니다.
-* 새 **ASP.NET Core 웹 응용 프로그램** 프로젝트를 솔루션에 추가 합니다. 드롭다운에서 **.Net Core** 대상 프레임 워크를 선택 하 고 **API** 프로젝트 템플릿을 선택 합니다. 프로젝트의 이름을 *제품 점수*로 매기고 **확인** 단추를 클릭 합니다.
+* 새 **ASP.NET Core 웹 응용 프로그램** 프로젝트를 솔루션에 추가 합니다. 드롭다운에서 **.Net Core** 대상 프레임 워크를 선택 하 고 **API** 프로젝트 템플릿을 선택 합니다. 프로젝트의 이름을 *제품 점수* 로 매기고 **확인** 단추를 클릭 합니다.
 
 이제 솔루션에는 두 개의 프로젝트가 포함 되어 있습니다. 다음 섹션에서는 *ProductsApp* 프로젝트의 콘텐츠를 *제품 점수* 프로젝트로 마이그레이션하는 방법에 대해 설명 합니다.
 
@@ -195,10 +196,10 @@ Visual Studio에서 다음 단계를 완료 합니다.
 
 `Startup` 클래스는:
 
-* *Global.asax*를 바꿉니다.
+* *Global.asax* 를 바꿉니다.
 * 모든 앱 시작 작업을 처리 합니다.
 
-자세한 내용은 <xref:fundamentals/startup>을 참조하세요.
+자세한 내용은 <xref:fundamentals/startup>를 참조하세요.
 
 ASP.NET Core MVC에서는가에서 호출 될 때 특성 라우팅이 기본적으로 포함 됩니다 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc*> `Startup.Configure` . 다음 `UseMvc` 호출은 *ProductsApp* 프로젝트의 *App_Start/Webapicon.cs* 파일을 대체 합니다.
 
@@ -258,7 +259,7 @@ ASP.NET Core에는 다음 구성 요소가 없습니다.
     * [`[HttpGet]`](xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute)작업에 특성을 적용 `GetAllProducts` 합니다.
     * `[HttpGet("{id}")]`작업에 특성을 적용 `GetProduct` 합니다.
 
-마이그레이션된 프로젝트를 실행 하 고로 이동 `/api/products` 합니다. 세 제품의 전체 목록이 표시 됩니다. `/api/products/1`으로 이동합니다. 첫 번째 제품이 표시 됩니다.
+마이그레이션된 프로젝트를 실행 하 고로 이동 `/api/products` 합니다. 세 제품의 전체 목록이 표시 됩니다. [https://www.microsoft.com]\(`/api/products/1`) 로 이동합니다. 첫 번째 제품이 표시 됩니다.
 
 ## <a name="compatibility-shim"></a>호환성 shim
 
@@ -291,7 +292,7 @@ Web API 호환성 shim은 ASP.NET Core로의 large ASP.NET 4.x 웹 API 프로젝
 1. 에서를 호출 하 여 앱의 DI 컨테이너에 호환성 shim의 서비스를 등록 `services.AddMvc().AddWebApiConventions()` `Startup.ConfigureServices` 합니다.
 1. 앱 호출의에서를 사용 하 여 웹 API 관련 경로를 정의 `MapWebApiRoute` `IRouteBuilder` `IApplicationBuilder.UseMvc` 합니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:web-api/index>
 * <xref:web-api/action-return-types>

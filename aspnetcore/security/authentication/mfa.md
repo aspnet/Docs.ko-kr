@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/17/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/mfa
-ms.openlocfilehash: 76a11aa7b89b3ce60ed11bd7553a7e5898f661f4
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 873f7d113df84c931ad7fbf2c72aa292e4e87c48
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606796"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060393"
 ---
 # <a name="multi-factor-authentication-in-aspnet-core"></a>ASP.NET Core에서 multi-factor authentication
 
@@ -151,7 +152,7 @@ namespace IdentityStandaloneMfa
 }
 ```
 
-Identity클래스에서 서비스 설정이 변경 되었으므로의 `Startup` 레이아웃을 Identity 업데이트 해야 합니다. 페이지를 Identity 앱으로 스 캐 폴드. * Identity /Account/Manage/_Layout. cshtml* 파일에 레이아웃을 정의 합니다.
+Identity클래스에서 서비스 설정이 변경 되었으므로의 `Startup` 레이아웃을 Identity 업데이트 해야 합니다. 페이지를 Identity 앱으로 스 캐 폴드. *Identity /Account/Manage/_Layout. cshtml* 파일에 레이아웃을 정의 합니다.
 
 ```cshtml
 @{
@@ -332,7 +333,7 @@ You can enable MFA to login here:
 
 `Login`메서드에서 `IIdentityServerInteractionService` 인터페이스 구현은 `_interaction` openid connect Connect 요청 매개 변수에 액세스 하는 데 사용 됩니다. `acr_values`매개 변수는 속성을 사용 하 여 액세스 됩니다 `AcrValues` . 클라이언트에서 set를 사용 하 여이 `mfa` 를 보내면이를 확인할 수 있습니다.
 
-MFA가 필요 하 고의 사용자에 게 ASP.NET Core Identity mfa를 사용 하도록 설정한 경우 로그인은 계속 됩니다. 사용자가 MFA를 사용 하도록 설정 하지 않은 경우 사용자는 사용자 지정 보기 *ErrorEnable2FA*리디렉션됩니다. 그런 다음 ASP.NET Core Identity 에서 사용자에 게 서명 합니다.
+MFA가 필요 하 고의 사용자에 게 ASP.NET Core Identity mfa를 사용 하도록 설정한 경우 로그인은 계속 됩니다. 사용자가 MFA를 사용 하도록 설정 하지 않은 경우 사용자는 사용자 지정 보기 *ErrorEnable2FA* 리디렉션됩니다. 그런 다음 ASP.NET Core Identity 에서 사용자에 게 서명 합니다.
 
 ```csharp
 //

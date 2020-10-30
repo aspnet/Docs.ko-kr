@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 03/18/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 345d20494111b808dac9678637de060169730a53
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 781365d99c6d36d8abaec9681128ba712db8cb88
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865351"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060666"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>ASP.NET Core의 태그 도우미
 
@@ -75,13 +76,13 @@ public class Movie
 
 ### <a name="addtaghelper-makes-tag-helpers-available"></a>`@addTagHelper`는 태그 도우미를 사용할 수 있도록 설정
 
-*AuthoringTagHelpers*라는 새 ASP.NET Core 웹앱을 만들면 다음과 같은 *Views/_ViewImports.cshtml* 파일이 프로젝트에 추가됩니다.
+*AuthoringTagHelpers* 라는 새 ASP.NET Core 웹앱을 만들면 다음과 같은 *Views/_ViewImports.cshtml* 파일이 프로젝트에 추가됩니다.
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
-`@addTagHelper` 지시문은 태그 도우미를 보기에 사용할 수 있게 해줍니다. 이 경우 뷰 파일은 pages */_ViewImports입니다.* 이 파일은 기본적으로 *pages* 폴더와 하위 폴더의 모든 파일에 상속 됩니다. 태그 도우미를 사용할 수 있도록 합니다. 위의 코드는 와일드 카드 구문 (" \* ")을 사용 하 여 지정 된 어셈블리의 모든 태그 도우미 (*AspNetCore. TagHelpers*)를 *Views* 디렉터리 또는 하위 디렉터리의 모든 뷰 파일에 사용할 수 있도록 지정 합니다. `@addTagHelper` 뒤에 나오는 첫 번째 매개 변수는 로드할 태그 도우미를 지정하고(여기서는 모든 태그 도우미에 "\*" 사용), 두 번째 매개 변수 "Microsoft.AspNetCore.Mvc.TagHelpers"는 태그 도우미를 포함하는 어셈블리를 지정합니다. *Microsoft.AspNetCore.Mvc.TagHelpers*는 기본 제공 ASP.NET Core 태그 도우미에 대한 어셈블리입니다.
+`@addTagHelper` 지시문은 태그 도우미를 보기에 사용할 수 있게 해줍니다. 이 경우 뷰 파일은 pages */_ViewImports입니다.* 이 파일은 기본적으로 *pages* 폴더와 하위 폴더의 모든 파일에 상속 됩니다. 태그 도우미를 사용할 수 있도록 합니다. 위의 코드는 와일드 카드 구문 (" \* ")을 사용 하 여 지정 된 어셈블리의 모든 태그 도우미 ( *AspNetCore. TagHelpers* )를 *Views* 디렉터리 또는 하위 디렉터리의 모든 뷰 파일에 사용할 수 있도록 지정 합니다. `@addTagHelper` 뒤에 나오는 첫 번째 매개 변수는 로드할 태그 도우미를 지정하고(여기서는 모든 태그 도우미에 "\*" 사용), 두 번째 매개 변수 "Microsoft.AspNetCore.Mvc.TagHelpers"는 태그 도우미를 포함하는 어셈블리를 지정합니다. *Microsoft.AspNetCore.Mvc.TagHelpers* 는 기본 제공 ASP.NET Core 태그 도우미에 대한 어셈블리입니다.
 
-이 프로젝트의 모든 태그 도우미(*AuthoringTagHelpers*라는 어셈블리를 만드는)를 노출하려면 다음을 사용합니다.
+이 프로젝트의 모든 태그 도우미( *AuthoringTagHelpers* 라는 어셈블리를 만드는)를 노출하려면 다음을 사용합니다.
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=3)]
 
@@ -93,7 +94,7 @@ public class Movie
 @addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers
 ```
 
-FQN을 사용하여 보기에 태그 도우미를 추가하려면 먼저 FQN(`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)을 추가한 후 어셈블리 이름(*AuthoringTagHelpers*)을 추가합니다. 대부분의 개발자는 "\*" 와일드카드 구문을 사용하는 방법을 선호합니다. 와일드카드 구문을 사용하면 "\*" 와일드카드 문자를 FQN에 접미사로 삽입할 수 있습니다. 예를 들어 다음 지시문은 `EmailTagHelper`를 가져옵니다.
+FQN을 사용하여 보기에 태그 도우미를 추가하려면 먼저 FQN(`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)을 추가한 후 어셈블리 이름( *AuthoringTagHelpers* )을 추가합니다. 대부분의 개발자는 "\*" 와일드카드 구문을 사용하는 방법을 선호합니다. 와일드카드 구문을 사용하면 "\*" 와일드카드 문자를 FQN에 접미사로 삽입할 수 있습니다. 예를 들어 다음 지시문은 `EmailTagHelper`를 가져옵니다.
 
 ```cshtml
 @addTagHelper AuthoringTagHelpers.TagHelpers.E*, AuthoringTagHelpers
@@ -106,11 +107,11 @@ FQN을 사용하여 보기에 태그 도우미를 추가하려면 먼저 FQN(`Au
 
 ### <a name="removetaghelper-removes-tag-helpers"></a>`@removeTagHelper`로 태그 도우미 제거
 
-`@removeTagHelper`는 `@addTagHelper`와 동일한 두 개의 매개 변수를 갖고 있으며, 이전에 추가된 태그 도우미를 제거합니다. 예를 들어 특정 보기에 적용된 `@removeTagHelper`는 보기에서 지정된 태그 도우미를 제거합니다. *Views/Folder/_ViewImports.cshtml* 파일에 `@removeTagHelper`를 사용하면 *폴더*에 있는 모든 보기에서 지정된 태그 도우미가 제거됩니다.
+`@removeTagHelper`는 `@addTagHelper`와 동일한 두 개의 매개 변수를 갖고 있으며, 이전에 추가된 태그 도우미를 제거합니다. 예를 들어 특정 보기에 적용된 `@removeTagHelper`는 보기에서 지정된 태그 도우미를 제거합니다. *Views/Folder/_ViewImports.cshtml* 파일에 `@removeTagHelper`를 사용하면 *폴더* 에 있는 모든 보기에서 지정된 태그 도우미가 제거됩니다.
 
 ### <a name="controlling-tag-helper-scope-with-the-_viewimportscshtml-file"></a>*_ViewImports.cshtml* 파일을 사용하여 태그 도우미 범위 제어
 
-보기 폴더에 *_ViewImports.cshtml*을 추가할 수 있습니다. 그러면 보기 엔진이 해당 파일과 *Views/_ViewImports.cshtml* 파일의 지시문을 적용합니다. *홈* 보기에 대한 비어 있는 *Views/Home/_ViewImports.cshtml* 파일을 추가한 경우 변경되는 내용이 없습니다. *_ViewImports.cshtml* 파일은 추가 파일이기 때문입니다. *Views/Home/_ViewImports.cshtml* 파일(기본 *Views/_ViewImports.cshtml* 파일에 없음)에 추가되는 `@addTagHelper` 지시문은 *홈* 폴더에 있는 보기에만 태그 도우미를 노출합니다.
+보기 폴더에 *_ViewImports.cshtml* 을 추가할 수 있습니다. 그러면 보기 엔진이 해당 파일과 *Views/_ViewImports.cshtml* 파일의 지시문을 적용합니다. *홈* 보기에 대한 비어 있는 *Views/Home/_ViewImports.cshtml* 파일을 추가한 경우 변경되는 내용이 없습니다. *_ViewImports.cshtml* 파일은 추가 파일이기 때문입니다. *Views/Home/_ViewImports.cshtml* 파일(기본 *Views/_ViewImports.cshtml* 파일에 없음)에 추가되는 `@addTagHelper` 지시문은 *홈* 폴더에 있는 보기에만 태그 도우미를 노출합니다.
 
 <a name="opt-out"></a>
 
@@ -272,13 +273,13 @@ Visual Studio 편집기를 사용하면 레지스터 양식의 태그 도우미 
 
 ## <a name="customizing-the-tag-helper-element-font"></a>태그 도우미 요소 글꼴 사용자 지정
 
-**도구**  >  **옵션**  >  **환경**  >  **글꼴 및 색**에서 글꼴 및 색 지정을 사용자 지정할 수 있습니다.
+**도구**  >  **옵션**  >  **환경**  >  **글꼴 및 색** 에서 글꼴 및 색 지정을 사용자 지정할 수 있습니다.
 
 ![이미지](intro/_static/fontoptions2.png)
 
 [!INCLUDE[](~/includes/built-in-TH.md)]
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [태그 도우미 작성](xref:mvc/views/tag-helpers/authoring)
 * [양식 사용](xref:mvc/views/working-with-forms)
