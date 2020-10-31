@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 01/21/2020
 ms.custom: mvc, seodec18
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/azure-active-directory/index
-ms.openlocfilehash: a71f81b4fca6d9a84ad98e0e8935748cfd358fa0
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: c8a3d6838b9b93ff58dfaff8423bd6946b5ca743
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113779"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061407"
 ---
 # <a name="azure-active-directory-with-aspnet-core"></a>ASP.NET Core와 Azure Active Directory
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: c79dfc64d4311088c3f9ea03aad7570189000e2a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 813dd7837c265c78c584d66dd51bc23399d12fbe
+ms.sourcegitcommit: 5156eab2118584405eb663e1fcd82f8bd7764504
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053321"
+ms.lasthandoff: 10/31/2020
+ms.locfileid: "93141497"
 ---
 # <a name="scaffold-no-locidentity-in-aspnet-core-projects"></a>IdentityASP.NET Core 프로젝트의 스 캐 폴드
 
@@ -372,6 +372,14 @@ Identity페이지 레이아웃 및 스타일을 수정 하 여 기본 테마를 
 
 일부 Identity 옵션은 *영역/ Identity / Identity HostingStartup.cs* 구성 됩니다. 자세한 내용은 [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)를 참조 하세요.
 
+## <a name="standalone-or-hosted-no-locblazor-webassembly-apps"></a>독립 실행형 또는 호스트 된 Blazor WebAssembly 앱
+
+클라이언트 쪽 Blazor WebAssembly 앱은 자체 Identity UI 방법을 사용 하 고 ASP.NET Core Identity 스 캐 폴딩을 사용할 수 없습니다. 호스팅된 솔루션의 서버 쪽 ASP.NET Core 앱은 Blazor Razor 이 문서의 PAGES/MVC 지침을 따를 수 있으며,에서 지 원하는 다른 유형의 ASP.NET Core 앱과 마찬가지로 구성 됩니다 Identity .
+
+Blazor프레임 워크는 Razor UI 페이지의 구성 요소 버전을 포함 하지 않습니다 Identity . Identity UI Razor 구성 요소는 사용자가 작성 하거나 지원 되지 않는 타사 원본에서 가져올 수 있습니다.
+
+자세한 내용은 [ Blazor 보안 및 Identity 문서](xref:blazor/security/index)를 참조 하세요.
+
 <a name="full"></a>
 
 ## <a name="create-full-no-locidentity-ui-source"></a>전체 Identity UI 원본 만들기
@@ -550,7 +558,7 @@ Identity는 *영역/ Identity / Identity HostingStartup.cs* 에서 구성 됩니
 
 ### <a name="enable-authentication"></a>인증 사용
 
-`Configure`클래스의 메서드에서 다음 `Startup` 이후에 [useauthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 을 호출 합니다 `UseStaticFiles` .
+`Configure`클래스의 메서드에서 `Startup` 다음을 호출 합니다 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication%2A> `UseStaticFiles` .
 
 [!code-csharp[](scaffold-identity/sample/StartupRPnoAuth.cs?name=snippet1&highlight=29)]
 
@@ -607,7 +615,7 @@ Identity는 *영역/ Identity / Identity HostingStartup.cs* 에서 구성 됩니
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-다음 이후에 [Useauthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 호출 `UseStaticFiles` :
+다음 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication%2A> 이후에 호출 `UseStaticFiles` :
 
 [!code-csharp[](scaffold-identity/sample/StartupMvcNoAuth.cs?name=snippet1&highlight=23)]
 

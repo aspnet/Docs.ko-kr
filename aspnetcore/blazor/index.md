@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc, seoapril2019, devx-track-js
 ms.date: 09/25/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: bae3e96021971e373ad743a0b52da7f69d839c40
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: ecdf4f59aca0fe71bbfcfe61a99109127c8b92df
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690599"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055714"
 ---
 # <a name="introduction-to-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor 소개
 

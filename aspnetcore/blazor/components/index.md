@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/19/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: be1584e72fc1504ac9f8ca10a6b084c95a579b5b
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: d30f40945a3b2799dfc2d9391bba37eee1bfdc18
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009624"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056272"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>ASP.NET Core Razor 구성 요소 만들기 및 사용
 
@@ -31,7 +32,7 @@ ms.locfileid: "90009624"
 
 [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
-Blazor 앱은 *구성 요소*를 사용하여 빌드됩니다. 구성 요소는 페이지, 대화 상자 또는 양식과 같은 UI(사용자 인터페이스)의 자체 포함 청크입니다. 구성 요소는 데이터를 주입하거나 UI 이벤트에 응답하는 데 필요한 HTML 태그와 처리 논리를 포함합니다. 구성 요소는 유연하고 간단합니다. 프로젝트 간에 중첩, 재사용 및 공유될 수 있습니다.
+Blazor 앱은 *구성 요소* 를 사용하여 빌드됩니다. 구성 요소는 페이지, 대화 상자 또는 양식과 같은 UI(사용자 인터페이스)의 자체 포함 청크입니다. 구성 요소는 데이터를 주입하거나 UI 이벤트에 응답하는 데 필요한 HTML 태그와 처리 논리를 포함합니다. 구성 요소는 유연하고 간단합니다. 프로젝트 간에 중첩, 재사용 및 공유될 수 있습니다.
 
 ## <a name="component-classes"></a>구성 요소 클래스
 
@@ -266,7 +267,7 @@ namespace BlazorSample
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=5-6)]
 
 > [!WARNING]
-> 자체 *구성 요소 매개 변수*에 쓰는 구성 요소를 만들지 말고 대신 private 필드를 사용합니다. 자세한 내용은 [덮어쓴 매개 변수](#overwritten-parameters) 섹션을 참조하세요.
+> 자체 *구성 요소 매개 변수* 에 쓰는 구성 요소를 만들지 말고 대신 private 필드를 사용합니다. 자세한 내용은 [덮어쓴 매개 변수](#overwritten-parameters) 섹션을 참조하세요.
 
 ## <a name="child-content"></a>자식 콘텐츠
 
@@ -463,7 +464,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 구성 요소 참조 캡처에는 [요소 참조 캡처](xref:blazor/call-javascript-from-dotnet#capture-references-to-elements)와 유사한 구문을 사용하지만 JavaScript interop 기능이 아닙니다. 구성 요소 참조가 JavaScript 코드로 전달되지 않습니다. 구성 요소 참조는 .NET 코드에서만 사용됩니다.
 
 > [!NOTE]
-> 구성 요소 참조를 사용하여 자식 구성 요소의 상태를 변경하지 **않도록 합니다**. 대신, 일반 선언적 매개 변수를 사용하여 자식 구성 요소에 데이터를 전달합니다. 일반 선언적 매개 변수를 사용하면 자식 구성 요소가 올바른 시간에 자동으로 다시 렌더링됩니다.
+> 구성 요소 참조를 사용하여 자식 구성 요소의 상태를 변경하지 **않도록 합니다** . 대신, 일반 선언적 매개 변수를 사용하여 자식 구성 요소에 데이터를 전달합니다. 일반 선언적 매개 변수를 사용하면 자식 구성 요소가 올바른 시간에 자동으로 다시 렌더링됩니다.
 
 ## <a name="synchronization-context"></a>동기화 컨텍스트
 
@@ -484,7 +485,7 @@ Blazor Server의 동기화 컨텍스트는 단일 스레드인 브라우저의 W
 
 ### <a name="invoke-component-methods-externally-to-update-state"></a>외부에서 구성 요소 메서드를 호출하여 상태 업데이트
 
-외부 이벤트(예: 타이머 또는 다른 알림)를 기준으로 구성 요소를 업데이트해야 하는 경우 Blazor의 동기화 컨텍스트에 디스패치되는 `InvokeAsync` 메서드를 사용합니다. 예를 들어, 업데이트된 상태를 수신 구성 요소에 알릴 수 있는 *알림 서비스*을 고려해 보세요.
+외부 이벤트(예: 타이머 또는 다른 알림)를 기준으로 구성 요소를 업데이트해야 하는 경우 Blazor의 동기화 컨텍스트에 디스패치되는 `InvokeAsync` 메서드를 사용합니다. 예를 들어, 업데이트된 상태를 수신 구성 요소에 알릴 수 있는 *알림 서비스* 을 고려해 보세요.
 
 ```csharp
 public class NotifierService
@@ -614,7 +615,7 @@ public class NotifierService
 
 [`@key`][5]로 diff를 수행할 때 성능 비용이 발생합니다. 성능 비용은 크지 않지만 요소 또는 구성 요소 유지 규칙을 제어할 때 앱에 도움이 되는 경우에만 [`@key`][5]를 지정합니다.
 
-[`@key`][5]가 사용되지 않더라도 Blazor는 자식 요소와 구성 요소 인스턴스를 최대한 많이 보존합니다. [`@key`][5]를 사용할 때의 유일한 장점은 매핑을 선택하는 diff 알고리즘 대신, 모델 인스턴스가 유지된 구성 요소 인스턴스에 매핑되는 *방법*을 제어할 수 있다는 것입니다.
+[`@key`][5]가 사용되지 않더라도 Blazor는 자식 요소와 구성 요소 인스턴스를 최대한 많이 보존합니다. [`@key`][5]를 사용할 때의 유일한 장점은 매핑을 선택하는 diff 알고리즘 대신, 모델 인스턴스가 유지된 구성 요소 인스턴스에 매핑되는 *방법* 을 제어할 수 있다는 것입니다.
 
 ### <a name="what-values-to-use-for-key"></a>\@ 키에 사용할 값
 
@@ -765,7 +766,7 @@ HTML 요소 특성은 .NET 값에 따라 조건부로 렌더링됩니다. 값이
 일반적으로 문자열은 DOM 텍스트 노드를 사용하여 렌더링됩니다. 즉, 포함될 수 있는 모든 태그는 무시되고 리터럴 텍스트로 처리됩니다. 원시 HTML을 렌더링하려면 HTML 콘텐츠를 `MarkupString` 값으로 래핑합니다. 값은 HTML 또는 SVG로 구문 분석되고 DOM에 삽입됩니다.
 
 > [!WARNING]
-> 신뢰할 수 없는 원본에서 생성된 원시 HTML을 렌더링할 경우 **보안 위험**이 있으므로 피해야 합니다.
+> 신뢰할 수 없는 원본에서 생성된 원시 HTML을 렌더링할 경우 **보안 위험** 이 있으므로 피해야 합니다.
 
 다음 예제에서는 `MarkupString` 형식을 사용하여 정적 HTML 콘텐츠 블록을 구성 요소의 렌더링된 출력에 추가하는 방법을 보여 줍니다.
 
@@ -822,7 +823,7 @@ Blazor는 프로젝트의 [`web root (wwwroot)` 폴더](xref:fundamentals/index#
 <img alt="Company logo" src="/images/logo.png" />
 ```
 
-Razor 구성 요소는 물결표-슬래시 표기법(`~/`)을 지원하지 **않습니다**.
+Razor 구성 요소는 물결표-슬래시 표기법(`~/`)을 지원하지 **않습니다** .
 
 앱의 기본 경로를 설정하는 방법에 대한 내용은 <xref:blazor/host-and-deploy/index#app-base-path>를 참조하세요.
 

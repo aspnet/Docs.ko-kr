@@ -6,6 +6,7 @@ ms.author: casoper
 ms.date: 08/07/2018
 ms.custom: devx-track-csharp, mvc, seodec18
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/index
-ms.openlocfilehash: af8e130fe63a266eabacd70a9c84aac56ac1c4c0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 10a6bae73743d3063ad2e1ab49fc418ad1d63756
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625364"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052294"
 ---
 # <a name="devops-with-aspnet-core-and-azure"></a>ASP.NET Core 및 Azure에서 DevOps
 

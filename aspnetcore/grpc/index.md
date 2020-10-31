@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/20/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/index
-ms.openlocfilehash: 4a2f86d906c7b268b1fb2a63c50a1b8f0dd2b154
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 80f44e3845cc1e3c87d5d657807a318eb65e6c6f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633190"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059899"
 ---
 # <a name="introduction-to-grpc-on-net-core"></a>.NET Core에서 gRPC 소개
 
@@ -105,7 +106,7 @@ public class GreeterService : Greeter.GreeterBase
 }
 ```
 
-`GreeterService`는 *\*.proto* 파일의 `Greeter` 서비스에서 생성되는 `GreeterBase` 형식에서 상속됩니다. 이 서비스는 *Startup.cs*에서 클라이언트가 액세스할 수 있게 구성됩니다.
+`GreeterService`는 *\*.proto* 파일의 `Greeter` 서비스에서 생성되는 `GreeterBase` 형식에서 상속됩니다. 이 서비스는 *Startup.cs* 에서 클라이언트가 액세스할 수 있게 구성됩니다.
 
 ```csharp
 app.UseEndpoints(endpoints =>

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: d6d0f6f859dbaef98c6c8a9c53fe9858705cdc0a
-ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
+ms.openlocfilehash: 108fb3a8a24295cad43fd8c83303abd95a7ecd33
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805507"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055479"
 ---
 # <a name="secure-aspnet-core-no-locblazor-server-apps"></a>ASP.NET Core Blazor Server 앱 보호
 
@@ -39,12 +40,12 @@ Blazor Server 앱은 ASP.NET Core 앱과 동일한 방식으로 보안이 구성
 
 <xref:blazor/tooling>의 Visual Studio 지침에 따라 인증 메커니즘이 있는 새 Blazor Server 프로젝트를 만듭니다.
 
-**새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **Blazor Server 앱** 템플릿을 선택한 후 **인증**에서 **변경**을 선택합니다.
+**새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **Blazor Server 앱** 템플릿을 선택한 후 **인증** 에서 **변경** 을 선택합니다.
 
 다른 ASP.NET Core 프로젝트에 사용할 수 있는 것과 동일한 인증 메커니즘 세트를 제공하는 대화 상자가 열립니다.
 
 * **인증 없음**
-* **개별 사용자 계정**: 사용자 계정은 다음과 같이 저장될 수 있습니다.
+* **개별 사용자 계정** : 사용자 계정은 다음과 같이 저장될 수 있습니다.
   * ASP.NET Core의 [Identity](xref:security/authentication/identity) 시스템을 사용하는 앱 내에 저장
   * [Azure AD B2C](xref:security/authentication/azure-ad-b2c) 사용
 * **회사 또는 학교 계정**

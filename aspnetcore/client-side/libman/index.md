@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/14/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/libman/index
-ms.openlocfilehash: 8458f2fe1cdc139a3f22c7d73675301d89ad368e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 62b6859b0a8ad0f98a2684f21c0f68dbbd67c4c1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625637"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054660"
 ---
 # <a name="client-side-library-acquisition-in-aspnet-core-with-libman"></a>LibMan을 사용하여 ASP.NET Core에서 클라이언트 쪽 라이브러리 획득
 

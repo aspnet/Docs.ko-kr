@@ -5,6 +5,7 @@ description: 이 문서는 다양한 ASP.NET Core 데이터 보호 호환성 항
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/compatibility/index
-ms.openlocfilehash: 8df81a16b2693a0699272e297dc6ca5c12ab59f8
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: eb18c08120607314dc02eedcd729851087422812
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633723"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053048"
 ---
 # <a name="compatibility-in-aspnet-core"></a>ASP.NET Core의 호환성
 

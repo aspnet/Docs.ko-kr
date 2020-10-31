@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/15/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/index
-ms.openlocfilehash: 7bde61b0ff1d122b449ccc9d7ea9629fc8fb6108
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 082072d2b70abfe60da8e2cd40daa8b93ebcc9ac
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628094"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055817"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor"></a>ASP.NET Core 호스트 및 배포 Blazor
 
@@ -35,13 +36,13 @@ ms.locfileid: "88628094"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 탐색 모음에서 **빌드** >  **{APPLICATION} 게시**를 선택합니다.
-1. *publish target*을 선택합니다. 로컬로 게시하려면 **폴더**를 선택합니다.
+1. 탐색 모음에서 **빌드** >  **{APPLICATION} 게시** 를 선택합니다.
+1. *publish target* 을 선택합니다. 로컬로 게시하려면 **폴더** 를 선택합니다.
 1. **폴더 선택** 필드에서 기본 위치를 그대로 사용하거나 다른 위치를 지정합니다. **`Publish`** 단추를 선택합니다.
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-1. **빌드** > **폴더에 게시**를 선택합니다.
+1. **빌드** > **폴더에 게시** 를 선택합니다.
 1. 게시된 자산을 받을 폴더를 확인하고 **`Publish`** 를 선택합니다.
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
@@ -67,7 +68,7 @@ dotnet publish -c Release
 
 ## <a name="app-base-path"></a>앱 기본 경로
 
-*앱 기본 경로*는 앱의 루트 URL 경로입니다. 다음 ASP.NET Core 앱 및 Blazor 하위 앱을 고려하세요.
+*앱 기본 경로* 는 앱의 루트 URL 경로입니다. 다음 ASP.NET Core 앱 및 Blazor 하위 앱을 고려하세요.
 
 * ASP.NET Core 앱은 `MyApp`으로 이름이 지정됩니다.
   * 앱의 실제 위치는 `d:/MyApp`입니다.

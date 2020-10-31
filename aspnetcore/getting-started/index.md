@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: getting-started
-ms.openlocfilehash: afded8890afe3b8f7b1d0b5634fc7764906bc9d7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: fef5ae525a7c01d0ea7733e990233f413aac61a7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635010"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057793"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>자습서: ASP.NET Core 시작
 
@@ -55,7 +56,7 @@ dotnet new webapp -o aspnetcoreapp
 이전 명령은
 
 * 새 웹앱을 만듭니다.  
-* `-o aspnetcoreapp` 매개 변수는 앱의 원본 파일을 사용하여 *aspnetcoreapp*라는 이름의 디렉터리를 만듭니다.
+* `-o aspnetcoreapp` 매개 변수는 앱의 원본 파일을 사용하여 *aspnetcoreapp* 라는 이름의 디렉터리를 만듭니다.
 
 ### <a name="trust-the-development-certificate"></a>개발 인증서 신뢰
 
@@ -71,7 +72,7 @@ dotnet dev-certs https --trust
 
 ![보안 경고 대화 상자](~/getting-started/_static/cert.png)
 
-개발 인증서를 신뢰하는 데 동의하는 경우 **예**를 선택합니다.
+개발 인증서를 신뢰하는 데 동의하는 경우 **예** 를 선택합니다.
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
@@ -106,7 +107,7 @@ dotnet watch run
 
 ## <a name="edit-a-no-locrazor-page"></a>Razor 페이지 편집
 
-*Pages/Index.cshtml*을 열고 다음에서 강조 표시된 영역처럼 페이지를 수정하고 저장합니다.
+*Pages/Index.cshtml* 을 열고 다음에서 강조 표시된 영역처럼 페이지를 수정하고 저장합니다.
 
 [!code-cshtml[](sample/index.cshtml?highlight=9)]
 

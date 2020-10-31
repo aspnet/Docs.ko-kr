@@ -5,6 +5,7 @@ description: 다양한 ASP.NET Core 데이터 보호 구현 항목을 찾아봅�
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/index
-ms.openlocfilehash: f97b9ec40422a2c6cce45b23f166934acc64e2c9
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 067f41957cfe06ddfb5a8fd3b0d77b0d17a0ed1b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633697"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051085"
 ---
 # <a name="aspnet-core-data-protection-implementation"></a>ASP.NET Core 데이터 보호 구현
 
