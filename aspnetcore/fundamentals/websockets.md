@@ -5,7 +5,7 @@ description: ASP.NET Core에서 Websocket을 시작하는 방법을 알아봅니
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 11/1/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/websockets
-ms.openlocfilehash: 685e694a3d974a8a51255bdbb83d33459137a3d9
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 11cd1c266516c696859c4116c940400e90d09ab4
+ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629017"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678541"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core에서 WebSocket 지원
 
@@ -37,39 +37,25 @@ ms.locfileid: "88629017"
 
 [ASP.NET Core SignalR](xref:signalr/introduction)은 앱에 실시간 웹 기능을 추가하는 것을 간소화하는 라이브러리입니다. 가능하면 Websocket을 사용합니다.
 
-대부분의 애플리케이션의 경우 원시 WebSockets보다 SignalR을 권장합니다. SignalR은 WebSockets를 사용할 수 없는 환경에 대한 전송 대체(fallback)를 제공합니다. 간단한 원격 프로시저 호출 앱 모델도 제공합니다. 그리고 대부분의 시나리오에서 SignalR은 원시 WebSockets 사용과 비교할 때 큰 성능상의 단점이 없습니다.
+대부분의 애플리케이션의 경우 원시 WebSockets보다 SignalR을 권장합니다. SignalR은 WebSockets를 사용할 수 없는 환경에 대한 전송 대체(fallback)를 제공합니다. 기본 원격 프로시저 호출 앱 모델도 제공합니다. 그리고 대부분의 시나리오에서 SignalR은 원시 WebSockets 사용과 비교할 때 큰 성능상의 단점이 없습니다.
+
+일부 앱에 대해 [.NET의 gRPC](xref:grpc/index)는 Websocket을 대신하는 방법을 제공합니다.
 
 ## <a name="prerequisites"></a>사전 요구 사항
 
-* ASP.NET Core 1.1 이상
-* ASP.NET Core를 지원하는 모든 OS:
-  
+* ASP.NET Core를 지원하는 모든 OS:  
   * Windows 7/Windows Server 2008 이상
   * Linux
-  * macOS
-  
+  * macOS  
 * IIS가 있는 Windows에서 앱을 실행하는 경우:
-
   * Windows 8 / Windows Server 2012 이상
   * IIS 8 / IIS 8 Express
-  * WebSockets를 활성화해야 합니다([IIS/IIS Express 지원](#iisiis-express-support) 섹션 참조).
-  
+  * Websocket을 사용하도록 설정해야 합니다. [IIS/IIS Express 지원](#iisiis-express-support) 섹션을 참조하세요.  
 * 앱이 [HTTP.sys](xref:fundamentals/servers/httpsys)에서 실행되는 경우:
-
   * Windows 8 / Windows Server 2012 이상
-
 * 지원되는 브라우저는 https://caniuse.com/#feat=websockets 를 참조하세요.
 
-::: moniker range="< aspnetcore-2.1"
-
-## <a name="nuget-package"></a>NuGet 패키지
-
-[Microsoft.AspNetCore.WebSockets](https://www.nuget.org/packages/Microsoft.AspNetCore.WebSockets/) 패키지를 설치합니다.
-
-::: moniker-end
-
 ## <a name="configure-the-middleware"></a>미들웨어 구성하기
-
 
 `Startup` 클래스의 `Configure` 메서드에 WebSockets 미들웨어를 추가합니다.
 
@@ -106,7 +92,7 @@ ms.locfileid: "88629017"
 
 WebSocket 요청은 모든 URL을 통해서 전달될 수 있지만, 이 예제 코드에서는 `/ws` 에 대한 요청만 수락합니다.
 
-WebSocket을 사용하는 경우 연결 기간 동안 미들웨어 파이프라인이 계속 실행되도록 **해야 합니다**. 미들웨어 파이프라인 종료 후 WebSocket 메시지를 보내거나 받으려고 하면 다음과 같은 예외가 발생할 수 있습니다.
+WebSocket을 사용하는 경우 연결 기간 동안 미들웨어 파이프라인이 계속 실행되도록 **해야 합니다** . 미들웨어 파이프라인 종료 후 WebSocket 메시지를 보내거나 받으려고 하면 다음과 같은 예외가 발생할 수 있습니다.
 
 ```
 System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed the WebSocket connection without completing the close handshake. ---> System.ObjectDisposedException: Cannot write to the response body, the response has completed.
@@ -115,19 +101,11 @@ Object name: 'HttpResponseStream'.
 
 백그라운드 서비스를 사용하여 WebSocket에 데이터를 쓰는 경우 미들웨어 파이프라인이 계속 실행되도록 해야 합니다. <xref:System.Threading.Tasks.TaskCompletionSource%601>을 사용하여 이 작업을 수행합니다. `TaskCompletionSource`를 백그라운드 서비스에 전달하고 WebSocket 사용을 완료하면 <xref:System.Threading.Tasks.TaskCompletionSource%601.TrySetResult%2A>를 호출하도록 합니다. 그런 다음, `await`는 요청 중에 다음 예제와 같이 <xref:System.Threading.Tasks.TaskCompletionSource%601.Task> 속성을 만듭니다.
 
-```csharp
-app.Use(async (context, next) => {
-    var socket = await context.WebSockets.AcceptWebSocketAsync();
-    var socketFinishedTcs = new TaskCompletionSource<object>();
+[!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup2.cs?name=AcceptWebSocket)]
 
-    BackgroundSocketProcessor.AddSocket(socket, socketFinishedTcs); 
+작업 메서드에서 너무 빨리 반환하면 WebSocket 닫힌 예외가 발생할 수도 있습니다. 작업 메서드에서 소켓을 수락하는 경우 작업 메서드에서 반환하기 전에 소켓을 사용하는 코드가 완료될 때까지 기다립니다.
 
-    await socketFinishedTcs.Task;
-});
-```
-작업 메서드에서 너무 빨리 반환하면 WebSocket 닫힌 예외가 발생할 수도 있습니다. 작업 메서드에서 소켓을 수락하는 경우, 작업 메서드에서 반환하기 전에 소켓을 사용하는 코드가 완료될 때까지 기다립니다.
-
-소켓이 완료될 때까지 대기하려면 `Task.Wait()`, `Task.Result` 또는 유사한 차단 호출을 사용하지 마세요. 심각한 스레드 문제가 발생할 수 있습니다. 항상 `await`를 사용합니다.
+소켓이 완료될 때까지 대기하려면 `Task.Wait`, `Task.Result` 또는 유사한 차단 호출을 사용하지 마세요. 심각한 스레드 문제가 발생할 수 있습니다. 항상 `await`를 사용합니다.
 
 ## <a name="send-and-receive-messages"></a>메시지 보내기 및 받기
 
@@ -149,7 +127,7 @@ app.Use(async (context, next) => {
 
 ## <a name="websocket-origin-restriction"></a>WebSocket 원본 제한
 
-CORS에서 제공하는 보호 기능은 WebSocket에 적용되지 않습니다. 브라우저는 다음을 수행하지 **않습니다**.
+CORS에서 제공하는 보호 기능은 WebSocket에 적용되지 않습니다. 브라우저는 다음을 수행하지 **않습니다** .
 
 * CORS pre-flight 요청을 수행합니다.
 * WebSocket 요청을 생성할 때 `Access-Control` 헤더에 지정된 제한 사항을 준수합니다.
@@ -161,7 +139,7 @@ CORS에서 제공하는 보호 기능은 WebSocket에 적용되지 않습니다.
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSocketsOptionsAO&highlight=6-7)]
 
 > [!NOTE]
-> `Origin` 헤더는 클라이언트에 의해 제어되며 `Referer` 헤더와 마찬가지로 위조될 수 있습니다. 이러한 헤더를 인증 메커니즘으로 사용하지 **마세요**.
+> `Origin` 헤더는 클라이언트에 의해 제어되며 `Referer` 헤더와 마찬가지로 위조될 수 있습니다. 이러한 헤더를 인증 메커니즘으로 사용하지 **마세요** .
 
 ::: moniker-end
 
@@ -179,27 +157,27 @@ Windows Server 2012 이상에서 WebSocket 프로토콜을 지원하려면:
 > [!NOTE]
 > IIS Express를 사용할 때 이러한 단계가 필요하지 않습니다.
 
-1. **관리** 메뉴 또는 **서버 관리자**의 링크를 통해 **역할 및 기능 추가** 마법사를 사용합니다.
-1. **역할 기반 또는 기능 기반 설치**를 선택합니다. **새로 만들기**를 선택합니다.
-1. 적절한 서버를 선택합니다(로컬 서버가 기본적으로 선택됨). **새로 만들기**를 선택합니다.
-1. **역할** 트리에서 **Web Server(IIS)** 를 확장하고 **Web Server**를 확장한 다음, **애플리케이션 개발**을 확장합니다.
-1. **WebSocket 프로토콜**을 선택합니다. **새로 만들기**를 선택합니다.
-1. 추가 기능이 필요 없는 경우 **다음**을 선택합니다.
-1. **설치**를 선택합니다.
-1. 설치가 완료되면 **닫기**를 선택하여 마법사를 종료합니다.
+1. **관리** 메뉴 또는 **서버 관리자** 의 링크를 통해 **역할 및 기능 추가** 마법사를 사용합니다.
+1. **역할 기반 또는 기능 기반 설치** 를 선택합니다. **새로 만들기** 를 선택합니다.
+1. 적절한 서버를 선택합니다(로컬 서버가 기본적으로 선택됨). **새로 만들기** 를 선택합니다.
+1. **역할** 트리에서 **Web Server(IIS)** 를 확장하고 **Web Server** 를 확장한 다음, **애플리케이션 개발** 을 확장합니다.
+1. **WebSocket 프로토콜** 을 선택합니다. **새로 만들기** 를 선택합니다.
+1. 추가 기능이 필요 없는 경우 **다음** 을 선택합니다.
+1. **설치** 를 선택합니다.
+1. 설치가 완료되면 **닫기** 를 선택하여 마법사를 종료합니다.
 
 Windows 8 이상에서 WebSocket 프로토콜을 지원하려면:
 
 > [!NOTE]
 > IIS Express를 사용할 때 이러한 단계가 필요하지 않습니다.
 
-1. **제어판** > **프로그램** > **프로그램 및 기능** > **Windows 기능 사용/사용 안 함**(화면 왼쪽)으로 이동합니다.
-1. 다음 노드를 엽니다. **인터넷 정보 서비스** > **World Wide Web 서비스** > **애플리케이션 개발 기능**.
-1. **WebSocket 프로토콜** 기능을 선택합니다. **확인**을 선택합니다.
+1. **제어판** > **프로그램** > **프로그램 및 기능** > **Windows 기능 사용/사용 안 함** (화면 왼쪽)으로 이동합니다.
+1. 다음 노드를 엽니다. **인터넷 정보 서비스** > **World Wide Web 서비스** > **애플리케이션 개발 기능** .
+1. **WebSocket 프로토콜** 기능을 선택합니다. **확인** 을 선택합니다.
 
 ### <a name="disable-websocket-when-using-socketio-on-nodejs"></a>Node.js에서 socket.io를 사용할 때 WebSocket 비활성화
 
-[Node.js](https://nodejs.org/)의 [socket.io](https://socket.io/)에서 WebSocket 지원을 사용하는 경우 *web.config* 또는 *applicationHost.config*의 `webSocket` 요소를 사용하여 기본 IIS WebSocket 모듈을 비활성화합니다. 이 단계를 수행하지 않으면 IIS WebSocket 모듈이 Node.js 및 앱이 아닌 WebSocket 통신을 처리하려고 시도합니다.
+[Node.js](https://nodejs.org/)의 [socket.io](https://socket.io/)에서 WebSocket 지원을 사용하는 경우 *web.config* 또는 *applicationHost.config* 의 `webSocket` 요소를 사용하여 기본 IIS WebSocket 모듈을 비활성화합니다. 이 단계를 수행하지 않으면 IIS WebSocket 모듈이 Node.js 및 앱이 아닌 WebSocket 통신을 처리하려고 시도합니다.
 
 ```xml
 <system.webServer>

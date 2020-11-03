@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 4345dd8525c2e72aaddc8e45a4fd4d9bfdd63040
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: 52810cb5a5961ffe932a7f5ac2a3a03033781cc9
+ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326525"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678492"
 ---
 # <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>ASP.NET Core Blazor 세계화 및 지역화
 
@@ -164,6 +164,19 @@ cookie를 사용하면 WebSocket 연결이 문화권을 올바르게 전파할 �
 1. 브라우저는 WebSocket 연결을 열어 대화형 Blazor Server 세션을 만듭니다.
 1. 지역화 미들웨어는 cookie를 읽고 문화권을 할당합니다.
 1. Blazor Server 세션이 올바른 문화권으로 시작합니다.
+
+<xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage>로 작업하는 경우 <xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage.Context> 속성을 사용합니다.
+
+```razor
+@{
+    this.Context.Response.Cookies.Append(
+        CookieRequestCultureProvider.DefaultCookieName,
+        CookieRequestCultureProvider.MakeCookieValue(
+            new RequestCulture(
+                CultureInfo.CurrentCulture,
+                CultureInfo.CurrentUICulture)));
+}
+```
 
 #### <a name="provide-ui-to-choose-the-culture"></a>문화권을 선택하기 위한 UI 제공
 

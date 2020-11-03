@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/30/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/index
-ms.openlocfilehash: 8fa44f567906ecf36a9bbaa5076cd36c75c10781
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 25348f8486ec6ccb53ebf527ad4519638dd5f73e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634880"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059379"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 기본 사항
 
@@ -48,7 +49,7 @@ ms.locfileid: "88634880"
 
 ASP.NET Core는 구성된 서비스를 앱을 통해 사용할 수 있도록 만드는 기본 제공 DI(종속성 주입) 프레임워크를 포함합니다. 예를 들어 로깅 구성 요소는 서비스입니다.
 
-서비스를 구성(또는 *등록*)하는 코드는 `Startup.ConfigureServices` 메서드에 추가됩니다. 예를 들어:
+서비스를 구성(또는 *등록* )하는 코드는 `Startup.ConfigureServices` 메서드에 추가됩니다. 예를 들어:
 
 [!code-csharp[](index/samples_snapshot/3.x/ConfigureServices.cs)]
 
@@ -100,7 +101,7 @@ ASP.NET Core 앱은 시작 시 ‘호스트’를 빌드합니다. 호스트는 
 `CreateDefaultBuilder` 및 `ConfigureWebHostDefaults` 메서드는 다음과 같은 기본 옵션으로 호스트를 구성합니다.
 
 * [Kestrel](#servers)을 웹 서버로 사용하고 IIS 통합을 설정합니다.
-* *appsettings.json*, *appsettings.{Environment Name}.json*, 환경 변수, 명령줄 인수 및 기타 구성 소스의 구성을 로드합니다.
+* *appsettings.json* , *appsettings.{Environment Name}.json* , 환경 변수, 명령줄 인수 및 기타 구성 소스의 구성을 로드합니다.
 * 콘솔 및 디버그 공급자에게 로깅 출력을 보냅니다.
 
 자세한 내용은 <xref:fundamentals/host/generic-host>를 참조하세요.
@@ -117,9 +118,9 @@ ASP.NET Core 앱은 HTTP 요청을 수신하기 위해 HTTP 서버 구현을 사
 
 ASP.NET Core는 다음과 같은 서버 구현을 제공합니다.
 
-* *Kestrel*은 플랫폼 간 웹 서버입니다. Kestrel은 보통 [IIS](https://www.iis.net/)를 사용하여 역방향 프록시 구성에서 실행됩니다. Kestrel은 ASP.NET Core 2.0 이상에서 인터넷에 직접 공개되는 공용 연결 에지 서버로 실행할 수도 있습니다.
+* *Kestrel* 은 플랫폼 간 웹 서버입니다. Kestrel은 보통 [IIS](https://www.iis.net/)를 사용하여 역방향 프록시 구성에서 실행됩니다. Kestrel은 ASP.NET Core 2.0 이상에서 인터넷에 직접 공개되는 공용 연결 에지 서버로 실행할 수도 있습니다.
 * ‘IIS HTTP 서버’는 IIS를 사용하는 Windows용 서버입니다. 이 서버를 사용하면 ASP.NET Core 앱 및 IIS는 동일한 프로세스에서 실행됩니다.
-* *HTTP.sys*는 IIS에서 사용되지 않는 Windows용 서버입니다.
+* *HTTP.sys* 는 IIS에서 사용되지 않는 Windows용 서버입니다.
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
@@ -137,7 +138,7 @@ ASP.NET Core는 *Kestrel* 플랫폼 간 서버 구현을 제공합니다. Kestre
 
 ASP.NET Core는 정렬된 일련의 구성 공급 기업에서 이름-값 쌍으로 설정을 가져오는 구성 프레임워크를 제공합니다. *.json* 파일, *.xml* 파일, 환경 변수 및 명령줄 인수와 같은 다양한 소스에서 기본 제공 구성 공급자를 사용할 수 있습니다. 다른 소스를 지원하려면 사용자 지정 구성 공급자를 작성하세요.
 
-[기본적으로](xref:fundamentals/configuration/index#default) ASP.NET Core 앱은 *appsettings.json*, 환경 변수, 명령줄 등에서 읽도록 구성되어 있습니다. 앱의 구성이 로드되면 환경 변수의 값이 *appsettings.json*의 값을 재정의합니다.
+[기본적으로](xref:fundamentals/configuration/index#default) ASP.NET Core 앱은 *appsettings.json* , 환경 변수, 명령줄 등에서 읽도록 구성되어 있습니다. 앱의 구성이 로드되면 환경 변수의 값이 *appsettings.json* 의 값을 재정의합니다.
 
 관련 구성 값을 읽는 기본 방법은 [옵션 패턴](xref:fundamentals/configuration/options)를 사용하는 것입니다. 자세한 내용은 [Bind hierarchical configuration data using the options pattern](xref:fundamentals/configuration/index#optpat)(옵션 패턴을 사용하여 계층적 구성 데이터 바인딩)을 참조하세요.
 
@@ -177,7 +178,7 @@ ASP.NET Core는 다양한 기본 제공 및 타사 로깅 공급자와 함께 �
 
 ## <a name="routing"></a>라우팅
 
-*경로*는 처리기에 매핑되는 URL 패턴입니다. 처리기는 일반적으로 Razor Page, MVC 컨트롤러의 작업 메서드 또는 미들웨어와 같습니다. ASP.NET Core 라우팅을 사용하면 앱에서 사용되는 URL을 제어할 수 있습니다.
+*경로* 는 처리기에 매핑되는 URL 패턴입니다. 처리기는 일반적으로 Razor Page, MVC 컨트롤러의 작업 메서드 또는 미들웨어와 같습니다. ASP.NET Core 라우팅을 사용하면 앱에서 사용되는 URL을 제어할 수 있습니다.
 
 자세한 내용은 <xref:fundamentals/routing>를 참조하세요.
 
@@ -198,7 +199,7 @@ ASP.NET Core에는 다음과 같은 오류를 처리하기 위한 기본 제공 
 
 * 논리적 `HttpClient` 인스턴스를 구성하고 이름을 지정하기 위한 중앙 위치를 제공합니다. 예를 들어, GitHub에 액세스하는 *github* 클라이언트를 등록 및 구성합니다. 다른 용도를 위한 기본 클라이언트를 등록 및 구성합니다.
 * 나가는 요청 미들웨어 파이프라인을 빌드하기 위해 여러 위임 처리기를 연결하고 등록하도록 지원합니다. 이 패턴은 ASP.NET Core의 인바운드 미들웨어 파이프라인과 비슷합니다. 이 패턴은 캐싱, 오류 처리, serialization 및 로깅을 포함한 HTTP 요청 관련 횡단 문제를 관리하기 위한 메커니즘을 제공합니다.
-* 일시적인 오류를 처리하기 위해 널리 사용되는 타사 라이브러리인 *Polly*와 통합합니다.
+* 일시적인 오류를 처리하기 위해 널리 사용되는 타사 라이브러리인 *Polly* 와 통합합니다.
 * `HttpClient` 수명을 수동으로 관리할 때 발생하는 일반적인 DNS 문제를 피하기 위해 기본 `HttpClientHandler` 인스턴스의 풀링 및 수명을 관리합니다.
 * 팩터리에서 만든 클라이언트를 통해 전송된 모든 요청에 대해 <xref:Microsoft.Extensions.Logging.ILogger>를 통해 구성 가능한 로깅 환경을 추가합니다.
 
@@ -208,12 +209,12 @@ ASP.NET Core에는 다음과 같은 오류를 처리하기 위한 기본 제공 
 
 콘텐츠 루트는 다음의 기본 경로입니다.
 
-* 앱을 호스트하는 실행 파일( *.exe*)
-* 앱을 구성하는 컴파일된 어셈블리( *.dll*)
+* 앱을 호스트하는 실행 파일( *.exe* )
+* 앱을 구성하는 컴파일된 어셈블리( *.dll* )
 * 앱에서 사용하는 다음과 같은 콘텐츠 파일:
-  * Razor 파일( *.cshtml*, *.razor*)
-  * 구성 파일( *.json*, *.xml*)
-  * 데이터 파일( *.db*)
+  * Razor 파일( *.cshtml* , *.razor* )
+  * 구성 파일( *.json* , *.xml* )
+  * 데이터 파일( *.db* )
 * [웹 루트](#web-root)(일반적으로 *wwwroot* 폴더)
 
 개발 중에는 콘텐츠 루트가 기본적으로 프로젝트의 루트 디렉터리로 설정됩니다. 이 디렉터리는 앱의 콘텐츠 파일과 [웹 루트](#web-root)의 기본 경로이기도 합니다. [호스트를 빌드](#host)할 때는 경로를 설정하여 다른 콘텐츠 루트를 지정하세요. 자세한 내용은 [콘텐츠 루트](xref:fundamentals/host/generic-host#contentroot)를 참조하세요.
@@ -222,13 +223,13 @@ ASP.NET Core에는 다음과 같은 오류를 처리하기 위한 기본 제공 
 
 웹 루트는 다음과 같은 퍼블릭 정적 리소스 파일의 기본 경로입니다.
 
-* 스타일시트( *.css*)
-* JavaScript( *.js*)
-* 이미지( *.png*, *.jpg*)
+* 스타일시트( *.css* )
+* JavaScript( *.js* )
+* 이미지( *.png* , *.jpg* )
 
-정적 파일은 기본적으로 웹 루트 디렉터리와 그 하위 디렉터리에서만 제공됩니다. 웹 루트 경로는 기본적으로 *{content root}/wwwroot*로 설정됩니다. [호스트를 빌드](#host)할 때는 경로를 설정하여 다른 웹 루트를 지정하세요. 자세한 내용은 [웹 루트](xref:fundamentals/host/generic-host#webroot)를 참조하세요.
+정적 파일은 기본적으로 웹 루트 디렉터리와 그 하위 디렉터리에서만 제공됩니다. 웹 루트 경로는 기본적으로 *{content root}/wwwroot* 로 설정됩니다. [호스트를 빌드](#host)할 때는 경로를 설정하여 다른 웹 루트를 지정하세요. 자세한 내용은 [웹 루트](xref:fundamentals/host/generic-host#webroot)를 참조하세요.
 
-프로젝트 파일에서 [\<Content> 프로젝트 항목](/visualstudio/msbuild/common-msbuild-project-items#content)을 사용하여 *wwwroot*에 파일을 게시하지 못하도록 합니다. 다음 예제에서는 *wwwroot/local*과 그 하위 디렉터리에서 콘텐츠가 게시되지 못하도록 합니다.
+프로젝트 파일에서 [\<Content> 프로젝트 항목](/visualstudio/msbuild/common-msbuild-project-items#content)을 사용하여 *wwwroot* 에 파일을 게시하지 못하도록 합니다. 다음 예제에서는 *wwwroot/local* 과 그 하위 디렉터리에서 콘텐츠가 게시되지 못하도록 합니다.
 
 ```xml
 <ItemGroup>
@@ -236,7 +237,7 @@ ASP.NET Core에는 다음과 같은 오류를 처리하기 위한 기본 제공 
 </ItemGroup>
 ```
 
-Razor *.cshtml* 파일에서는 물결표 슬래시(`~/`)가 웹 루트를 가리킵니다. `~/`(으)로 시작하는 경로를 *가상 경로*라고 합니다.
+Razor *.cshtml* 파일에서는 물결표 슬래시(`~/`)가 웹 루트를 가리킵니다. `~/`(으)로 시작하는 경로를 *가상 경로* 라고 합니다.
 
 자세한 내용은 <xref:fundamentals/static-files>를 참조하세요.
 
@@ -253,7 +254,7 @@ Razor *.cshtml* 파일에서는 물결표 슬래시(`~/`)가 웹 루트를 가�
 * 앱에서 요구하는 서비스가 구성됩니다.
 * 요청 처리 파이프라인이 정의됩니다.
 
-*서비스*는 앱에서 사용되는 구성 요소입니다. 예를 들어 로깅 구성 요소는 서비스입니다. 서비스를 구성(또는 *등록*)하는 코드는 `Startup.ConfigureServices` 메서드에 추가됩니다.
+*서비스* 는 앱에서 사용되는 구성 요소입니다. 예를 들어 로깅 구성 요소는 서비스입니다. 서비스를 구성(또는 *등록* )하는 코드는 `Startup.ConfigureServices` 메서드에 추가됩니다.
 
 요청 처리 파이프라인은 일련의 *미들웨어* 구성 요소로 구성됩니다. 예를 들어 미들웨어는 정적 파일에 대한 요청을 처리하거나 HTTP 요청을 HTTPS로 리디렉션할 수 있습니다. 각 미들웨어는 `HttpContext` 상에서 비동기 작업을 수행한 다음, 파이프라인의 다음 미들웨어를 호출하거나 요청을 종료합니다. 요청 처리 파이프라인을 구성하는 코드는 `Startup.Configure` 메서드에 추가됩니다.
 
@@ -291,7 +292,7 @@ ASP.NET Core는 풍부한 일련의 기본 제공 미들웨어를 포함하고 �
 
 ## <a name="host"></a>호스트
 
-ASP.NET Core 앱은 시작 시 *호스트*를 빌드합니다. 호스트는 다음과 같은 앱의 리소스를 모두 캡슐화하는 개체입니다.
+ASP.NET Core 앱은 시작 시 *호스트* 를 빌드합니다. 호스트는 다음과 같은 앱의 리소스를 모두 캡슐화하는 개체입니다.
 
 * HTTP 서버 구현
 * 미들웨어 구성 요소
@@ -310,7 +311,7 @@ ASP.NET Core 앱은 시작 시 *호스트*를 빌드합니다. 호스트는 다�
 `CreateDefaultBuilder` 메서드는 다음과 같이 일반적으로 사용되는 옵션으로 호스트를 구성합니다.
 
 * [Kestrel](#servers)을 웹 서버로 사용하고 IIS 통합을 설정합니다.
-* *appsettings.json*, *appsettings.{Environment Name}.json*, 환경 변수, 명령줄 인수 및 기타 구성 소스의 구성을 로드합니다.
+* *appsettings.json* , *appsettings.{Environment Name}.json* , 환경 변수, 명령줄 인수 및 기타 구성 소스의 구성을 로드합니다.
 * 콘솔 및 디버그 공급자에게 로깅 출력을 보냅니다.
 
 자세한 내용은 <xref:fundamentals/host/web-host>를 참조하세요.
@@ -331,9 +332,9 @@ ASP.NET Core 앱은 HTTP 요청을 수신하기 위해 HTTP 서버 구현을 사
 
 ASP.NET Core는 다음과 같은 서버 구현을 제공합니다.
 
-* *Kestrel*은 플랫폼 간 웹 서버입니다. Kestrel은 보통 [IIS](https://www.iis.net/)를 사용하여 역방향 프록시 구성에서 실행됩니다. Kestrel은 인터넷에 직접 공개되는 공용 연결 에지 서버로 실행할 수도 있습니다.
+* *Kestrel* 은 플랫폼 간 웹 서버입니다. Kestrel은 보통 [IIS](https://www.iis.net/)를 사용하여 역방향 프록시 구성에서 실행됩니다. Kestrel은 인터넷에 직접 공개되는 공용 연결 에지 서버로 실행할 수도 있습니다.
 * ‘IIS HTTP 서버’는 IIS를 사용하는 Windows용 서버입니다. 이 서버를 사용하면 ASP.NET Core 앱 및 IIS는 동일한 프로세스에서 실행됩니다.
-* *HTTP.sys*는 IIS에서 사용되지 않는 Windows용 서버입니다.
+* *HTTP.sys* 는 IIS에서 사용되지 않는 Windows용 서버입니다.
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
@@ -353,8 +354,8 @@ ASP.NET Core는 *Kestrel* 플랫폼 간 서버 구현을 제공합니다. Kestre
 
 ASP.NET Core는 다음과 같은 서버 구현을 제공합니다.
 
-* *Kestrel*은 플랫폼 간 웹 서버입니다. Kestrel은 보통 [IIS](https://www.iis.net/)를 사용하여 역방향 프록시 구성에서 실행됩니다. Kestrel은 인터넷에 직접 공개되는 공용 연결 에지 서버로 실행할 수도 있습니다.
-* *HTTP.sys*는 IIS에서 사용되지 않는 Windows용 서버입니다.
+* *Kestrel* 은 플랫폼 간 웹 서버입니다. Kestrel은 보통 [IIS](https://www.iis.net/)를 사용하여 역방향 프록시 구성에서 실행됩니다. Kestrel은 인터넷에 직접 공개되는 공용 연결 에지 서버로 실행할 수도 있습니다.
+* *HTTP.sys* 는 IIS에서 사용되지 않는 Windows용 서버입니다.
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
@@ -384,7 +385,7 @@ ASP.NET Core는 암호와 같은 기밀 구성 데이터를 관리하기 위해 
 
 ## <a name="options"></a>옵션
 
-가능할 경우 ASP.NET Core는 구성 값을 저장하고 검색하기 위해 *옵션 패턴*을 따릅니다. 옵션 패턴은 클래스를 사용하여 관련 설정 그룹을 나타냅니다.
+가능할 경우 ASP.NET Core는 구성 값을 저장하고 검색하기 위해 *옵션 패턴* 을 따릅니다. 옵션 패턴은 클래스를 사용하여 관련 설정 그룹을 나타냅니다.
 
 예를 들어 다음 코드에서는 WebSockets 옵션을 설정합니다.
 
@@ -394,7 +395,7 @@ ASP.NET Core는 암호와 같은 기밀 구성 데이터를 관리하기 위해 
 
 ## <a name="environments"></a>환경
 
-*개발*, *준비* 및 *프로덕션*과 같은 실행 환경은 ASP.NET Core의 일급 개념입니다. `ASPNETCORE_ENVIRONMENT` 환경 변수를 설정하여 앱을 실행 중인 환경을 지정할 수 있습니다. ASP.NET Core는 앱 시작 시 해당 환경 변수를 읽고 `IHostingEnvironment` 구현에서 값을 저장합니다. 환경 개체는 DI를 통해 앱에서 사용할 수 있습니다.
+*개발* , *준비* 및 *프로덕션* 과 같은 실행 환경은 ASP.NET Core의 일급 개념입니다. `ASPNETCORE_ENVIRONMENT` 환경 변수를 설정하여 앱을 실행 중인 환경을 지정할 수 있습니다. ASP.NET Core는 앱 시작 시 해당 환경 변수를 읽고 `IHostingEnvironment` 구현에서 값을 저장합니다. 환경 개체는 DI를 통해 앱에서 사용할 수 있습니다.
 
 `Startup` 클래스의 다음 샘플 코드는 개발 중에 실행할 때만 자세한 오류 정보를 제공하도록 앱을 구성합니다.
 
@@ -426,7 +427,7 @@ DI에서 `ILogger` 개체를 가져오고 로그 메서드를 호출하여 앱 �
 
 ## <a name="routing"></a>라우팅
 
-*경로*는 처리기에 매핑되는 URL 패턴입니다. 처리기는 일반적으로 Razor Page, MVC 컨트롤러의 작업 메서드 또는 미들웨어와 같습니다. ASP.NET Core 라우팅을 사용하면 앱에서 사용되는 URL을 제어할 수 있습니다.
+*경로* 는 처리기에 매핑되는 URL 패턴입니다. 처리기는 일반적으로 Razor Page, MVC 컨트롤러의 작업 메서드 또는 미들웨어와 같습니다. ASP.NET Core 라우팅을 사용하면 앱에서 사용되는 URL을 제어할 수 있습니다.
 
 자세한 내용은 <xref:fundamentals/routing>를 참조하세요.
 
@@ -447,7 +448,7 @@ ASP.NET Core에는 다음과 같은 오류를 처리하기 위한 기본 제공 
 
 * 논리적 `HttpClient` 인스턴스를 구성하고 이름을 지정하기 위한 중앙 위치를 제공합니다. 예를 들어, *github* 클라이언트는 GitHub에 액세스하도록 등록 및 구성할 수 있습니다. 기본 클라이언트는 다른 용도로 등록할 수 있습니다.
 * 나가는 요청 미들웨어 파이프라인을 빌드하기 위해 여러 위임 처리기를 연결하고 등록하도록 지원합니다. 이 패턴은 ASP.NET Core의 인바운드 미들웨어 파이프라인과 비슷합니다. 이 패턴은 캐싱, 오류 처리, 직렬화 및 로깅을 포함한 HTTP 요청을 둘러싼 횡단 관심사를 관리하기 위한 메커니즘을 제공합니다.
-* 일시적인 오류를 처리하기 위해 널리 사용되는 타사 라이브러리인 *Polly*와 통합합니다.
+* 일시적인 오류를 처리하기 위해 널리 사용되는 타사 라이브러리인 *Polly* 와 통합합니다.
 * `HttpClient` 수명을 수동으로 관리할 때 발생하는 일반적인 DNS 문제를 피하기 위해 기본 `HttpClientHandler` 인스턴스의 풀링 및 수명을 관리합니다.
 * 팩터리에서 만든 클라이언트를 통해 전송된 모든 요청에 대해 구성 가능한 로깅 경험(`ILogger`을 통해)을 추가합니다.
 
@@ -457,12 +458,12 @@ ASP.NET Core에는 다음과 같은 오류를 처리하기 위한 기본 제공 
 
 콘텐츠 루트는 다음의 기본 경로입니다.
 
-* 앱을 호스트하는 실행 파일( *.exe*)
-* 앱을 구성하는 컴파일된 어셈블리( *.dll*)
+* 앱을 호스트하는 실행 파일( *.exe* )
+* 앱을 구성하는 컴파일된 어셈블리( *.dll* )
 * 다음과 같은 앱에서 사용하는 비코드 콘텐츠 파일:
-  * Razor 파일( *.cshtml*, *.razor*)
-  * 구성 파일( *.json*, *.xml*)
-  * 데이터 파일( *.db*)
+  * Razor 파일( *.cshtml* , *.razor* )
+  * 구성 파일( *.json* , *.xml* )
+  * 데이터 파일( *.db* )
 * [웹 루트](#web-root)(일반적으로 *wwwroot* 폴더에 게시됨)
 
 개발 중:
@@ -478,15 +479,15 @@ ASP.NET Core에는 다음과 같은 오류를 처리하기 위한 기본 제공 
 
 웹 루트는 다음과 같은 공용, 비코드, 정적 리소스 파일의 기본 경로입니다.
 
-* 스타일시트( *.css*)
-* JavaScript( *.js*)
-* 이미지( *.png*, *.jpg*)
+* 스타일시트( *.css* )
+* JavaScript( *.js* )
+* 이미지( *.png* , *.jpg* )
 
 정적 파일은 기본적으로 웹 루트 디렉터리 및 하위 디렉터리에서만 제공됩니다.
 
-웹 루트 경로는 *{content root}/wwwroot*를 기본값으로 지정하지만 [호스트를 빌드](#host)할 때 다른 웹 루트를 지정할 수도 있습니다. 자세한 내용은 [웹 루트](xref:fundamentals/host/web-host#web-root)를 참조하세요.
+웹 루트 경로는 *{content root}/wwwroot* 를 기본값으로 지정하지만 [호스트를 빌드](#host)할 때 다른 웹 루트를 지정할 수도 있습니다. 자세한 내용은 [웹 루트](xref:fundamentals/host/web-host#web-root)를 참조하세요.
 
-프로젝트 파일에서 [\<Content> 프로젝트 항목](/visualstudio/msbuild/common-msbuild-project-items#content)을 사용하여 *wwwroot*에 파일을 게시하지 못하도록 합니다. 다음 예에서는 *wwwroot/local* 디렉터리 및 하위 디렉터리에 콘텐츠를 게시하지 못하도록 합니다.
+프로젝트 파일에서 [\<Content> 프로젝트 항목](/visualstudio/msbuild/common-msbuild-project-items#content)을 사용하여 *wwwroot* 에 파일을 게시하지 못하도록 합니다. 다음 예에서는 *wwwroot/local* 디렉터리 및 하위 디렉터리에 콘텐츠를 게시하지 못하도록 합니다.
 
 ```xml
 <ItemGroup>
@@ -494,7 +495,7 @@ ASP.NET Core에는 다음과 같은 오류를 처리하기 위한 기본 제공 
 </ItemGroup>
 ```
 
-Razor( *.cshtml*) 파일에서는 물결표 슬래시(`~/`)가 웹 루트를 가리킵니다. `~/`(으)로 시작하는 경로를 *가상 경로*라고 합니다.
+Razor( *.cshtml* ) 파일에서는 물결표 슬래시(`~/`)가 웹 루트를 가리킵니다. `~/`(으)로 시작하는 경로를 *가상 경로* 라고 합니다.
 
 자세한 내용은 <xref:fundamentals/static-files>를 참조하세요.
 

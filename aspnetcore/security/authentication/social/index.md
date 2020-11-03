@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: da025cb8dced8ac8a6ecf559d4de7795c9797f71
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1f7c8cd0716f1ada3517add0d37a09e419f38774
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634282"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053308"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core에서 Facebook, Google 및 외부 공급자 인증
 
@@ -44,11 +45,11 @@ ms.locfileid: "88634282"
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 새 프로젝트를 만듭니다.
-* **ASP.NET Core 웹 애플리케이션** 및 **다음**을 선택합니다.
-* **프로젝트 이름**을 제공하고 **위치**를 확인하거나 변경합니다. **만들기**를 선택합니다.
-* 드롭다운(**ASP.NET Core {x.y}** )에서 최신 버전의 ASP.NET Core를 선택한 다음 **웹 애플리케이션**을 선택하세요.
-* **인증**에서 **변경**을 선택하고 인증을 **개별 사용자 계정**으로 설정합니다. **확인**을 선택합니다.
-* **새 ASP.NET Core 웹 애플리케이션 만들기** 창에서 **만들기**를 선택합니다.
+* **ASP.NET Core 웹 애플리케이션** 및 **다음** 을 선택합니다.
+* **프로젝트 이름** 을 제공하고 **위치** 를 확인하거나 변경합니다. **만들기** 를 선택합니다.
+* 드롭다운( **ASP.NET Core {x.y}** )에서 최신 버전의 ASP.NET Core를 선택한 다음 **웹 애플리케이션** 을 선택하세요.
+* **인증** 에서 **변경** 을 선택하고 인증을 **개별 사용자 계정** 으로 설정합니다. **확인** 을 선택합니다.
+* **새 ASP.NET Core 웹 애플리케이션 만들기** 창에서 **만들기** 를 선택합니다.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
@@ -78,14 +79,14 @@ ms.locfileid: "88634282"
 ## <a name="apply-migrations"></a>마이그레이션 적용
 
 * 앱을 실행하고 **레지스터** 링크를 선택합니다.
-* 새 계정의 메일과 암호를 입력한 다음 **등록**을 선택합니다.
+* 새 계정의 메일과 암호를 입력한 다음 **등록** 을 선택합니다.
 * 지침에 따라 마이그레이션을 적용합니다.
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a>SecretManager를 사용하여 로그인 공급자에 의해 할당된 토큰 저장
 
-소셜 로그인 공급자는 등록 프로세스 중에 **애플리케이션 ID** 및 **애플리케이션 암호** 토큰을 할당합니다. 정확한 토큰 이름은 공급자에 따라 달라집니다. 이러한 토큰은 앱이 API에 액세스하는 데 사용하는 자격 증명을 나타냅니다. 토큰은 [Secret Manager](xref:security/app-secrets#secret-manager)의 도움으로 앱 구성에 연결할 수 있는 "암호"를 구성합니다. Secret Manager는 *appsettings.json*과 같은 구성 파일에 토큰을 저장하는 보다 안전한 대안입니다.
+소셜 로그인 공급자는 등록 프로세스 중에 **애플리케이션 ID** 및 **애플리케이션 암호** 토큰을 할당합니다. 정확한 토큰 이름은 공급자에 따라 달라집니다. 이러한 토큰은 앱이 API에 액세스하는 데 사용하는 자격 증명을 나타냅니다. 토큰은 [Secret Manager](xref:security/app-secrets#secret-manager)의 도움으로 앱 구성에 연결할 수 있는 "암호"를 구성합니다. Secret Manager는 *appsettings.json* 같은 구성 파일에 토큰을 저장하는 보다 안전한 대안입니다.
 
 > [!IMPORTANT]
 > Secret Manager는 개발 목적으로만 사용됩니다. [Azure Key Vault 구성 제공자](xref:security/key-vault-configuration)로 Azure 테스트 및 프로덕션 암호를 저장하고 보호할 수 있습니다.
@@ -114,7 +115,7 @@ ms.locfileid: "88634282"
 
 ![웹 애플리케이션 관리 뷰](index/_static/pass1a.png)
 
-* **만들기**를 선택합니다.
+* **만들기** 를 선택합니다.
 
 ![암호 페이지 설정](index/_static/pass2a.png)
 

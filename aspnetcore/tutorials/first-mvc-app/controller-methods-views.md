@@ -16,18 +16,18 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: 07b67cd7c267c39b99277114b73642b5caa3e312
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 745703aaa4ceb39c75789bab0bde4564f3d79a30
+ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632839"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678556"
 ---
 # <a name="part-6-controller-methods-and-views-in-aspnet-core"></a>6부. ASP.NET Core의 컨트롤러 메서드 및 보기
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-동영상 앱을 적절하게 시작했지만 프레젠테이션은 이상적이지 않습니다. 예를 들어 **ReleaseDate**는 두 단어여야 합니다.
+동영상 앱을 적절하게 시작했지만 프레젠테이션은 이상적이지 않습니다. 예를 들어 **ReleaseDate** 는 두 단어여야 합니다.
 
 ![인덱스 보기: 릴리스 날짜는 한 단어(공백 없음)이며 모든 동영상 릴리스 날짜는 오전 12시를 표시합니다.](working-with-sql/_static/m55.png)
 
@@ -43,11 +43,11 @@ Entity Framework Core가 `Price`를 데이터베이스의 통화에 올바르게
 
 ![브라우저 창에서 편집 링크에 마우스를 가져가면 https://localhost:5001/Movies/Edit/5 의 링크 Url이 표시됩니다.](~/tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
-**Edit**, **Details** 및 **Delete** 링크는 *Views/Movies/Index.cshtml* 파일의 Core MVC 앵커 태그 도우미에 의해서 생성됩니다.
+**Edit** , **Details** 및 **Delete** 링크는 *Views/Movies/Index.cshtml* 파일의 Core MVC 앵커 태그 도우미에 의해서 생성됩니다.
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
-[태그 도우미](xref:mvc/views/tag-helpers/intro)를 사용하면 Razor 파일에서 HTML 요소를 만들고 렌더링하는 데 서버 쪽 코드를 사용할 수 있습니다. 위의 코드에서는 `AnchorTagHelper`가 컨트롤러 작업 메서드 및 경로 ID로부터 HTML `href` 특성 값을 동적으로 생성합니다. 선호하는 브라우저에서 **소스 보기**나 개발자 도구를 사용하여 생성된 태그를 확인합니다. 생성된 HTML의 일부는 다음과 같습니다.
+[태그 도우미](xref:mvc/views/tag-helpers/intro)를 사용하면 Razor 파일에서 HTML 요소를 만들고 렌더링하는 데 서버 쪽 코드를 사용할 수 있습니다. 위의 코드에서는 `AnchorTagHelper`가 컨트롤러 작업 메서드 및 경로 ID로부터 HTML `href` 특성 값을 동적으로 생성합니다. 선호하는 브라우저에서 **소스 보기** 나 개발자 도구를 사용하여 생성된 태그를 확인합니다. 생성된 HTML의 일부는 다음과 같습니다.
 
 ```html
  <td>
@@ -107,7 +107,7 @@ ASP.NET Core는 `https://localhost:5001/Movies/Edit/4`를 매개 변수 `Id`가 
 
 `HttpPost` 특성은 이 `Edit` 메서드가 `POST` 요청에 *대해서만* 호출될 수 있음을 지정합니다. 첫 번째 Edit 메서드에도 `[HttpGet]` 특성을 적용할 수 있지만 `[HttpGet]`이 기본값이므로 그럴 필요가 없습니다.
 
-`ValidateAntiForgeryToken` 특성은 [요청 위조 방지](xref:security/anti-request-forgery)를 위해 사용되며 편집 보기 파일(*Views/Movies/Edit.cshtml*)에서 생성된 위조 방지 토큰과 쌍을 이룹니다. 편집 보기 파일은 [Form 태그 도우미](xref:mvc/views/working-with-forms)를 통해서 위조 방지 토큰을 생성합니다.
+`ValidateAntiForgeryToken` 특성은 [요청 위조 방지](xref:security/anti-request-forgery)를 위해 사용되며 편집 보기 파일( *Views/Movies/Edit.cshtml* )에서 생성된 위조 방지 토큰과 쌍을 이룹니다. 편집 보기 파일은 [Form 태그 도우미](xref:mvc/views/working-with-forms)를 통해서 위조 방지 토큰을 생성합니다.
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 
@@ -149,7 +149,7 @@ ASP.NET Core는 `https://localhost:5001/Movies/Edit/4`를 매개 변수 `Id`가 
 
 `[ValidateAntiForgeryToken]` 특성은 [Form 태그 도우미](xref:mvc/views/working-with-forms)의 위조 방지 토큰 생성기에서 생성된 숨겨진 [XSRF](xref:security/anti-request-forgery) 토큰의 유효성을 검사합니다.
 
-[모델 바인딩](xref:mvc/models/model-binding) 시스템은 게시된 양식 값을 가져와서 `movie` 매개 변수로 전달되는 `Movie` 개체를 만듭니다. `ModelState.IsValid` 메서드는 양식에서 제출된 데이터가 `Movie` 개체를 수정하는 데(편집 또는 수정) 사용될 수 있는지 확인합니다. 데이터가 유효하면 저장됩니다. 수정된(편집된) 영화 데이터는 데이터베이스 컨텍스트의 `SaveChangesAsync` 메서드를 호출하여 데이터베이스에 저장됩니다. 데이터를 저장한 후 코드는 사용자를 `MoviesController` 클래스의 `Index` 작업 메서드로 다시 전달하며, 여기에서는 방금 수행한 변경 사항을 포함한 영화 컬렉션이 표시됩니다.
+[모델 바인딩](xref:mvc/models/model-binding) 시스템은 게시된 양식 값을 가져와서 `movie` 매개 변수로 전달되는 `Movie` 개체를 만듭니다. `ModelState.IsValid` 속성은 양식에서 제출된 데이터를 사용하여 `Movie` 개체를 수정(편집 또는 업데이트)할 수 있는지를 확인합니다. 데이터가 유효하면 저장됩니다. 수정된(편집된) 영화 데이터는 데이터베이스 컨텍스트의 `SaveChangesAsync` 메서드를 호출하여 데이터베이스에 저장됩니다. 데이터를 저장한 후 코드는 사용자를 `MoviesController` 클래스의 `Index` 작업 메서드로 다시 전달하며, 여기에서는 방금 수행한 변경 사항을 포함한 영화 컬렉션이 표시됩니다.
 
 양식을 서버에 게시하기 전에 클라이언트 쪽 유효성 검사가 필드의 모든 유효성 검사 규칙을 확인합니다. 유효성 검사 오류가 있으면 오류 메시지를 표시하고 양식을 게시하지 않습니다. JavaScript를 사용하지 않을 경우 클라이언트 쪽 유효성 검사가 수행되지 않으나 서버에서 유효하지 않은 게시 값을 탐지하며 양식 값이 오류 메시지와 함께 다시 표시됩니다. 이 자습서의 뒷부분에서 [모델 유효성 검사](xref:mvc/models/validation)를 더 자세히 다룹니다. *Views/Movies/Edit.cshtml* 보기 템플릿의 [Validation 태그 도우미](xref:mvc/views/working-with-forms)는 적절한 오류 메시지의 표시를 담당합니다.
 

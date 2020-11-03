@@ -5,7 +5,7 @@ description: 이벤트 인수 형식, 이벤트 콜백, 기본 브라우저 이�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/17/2020
+ms.date: 10/20/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: 0d832d98ac9d1364b5db2bf65f31cbc5442db7f6
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: e8c3d6a9f2c6b50fc18da59b8e0b5475360673c7
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393784"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491467"
 ---
 # <a name="aspnet-core-no-locblazor-event-handling"></a>ASP.NET Core Blazor 이벤트 처리
 
@@ -71,7 +71,7 @@ Razor 구성 요소는 이벤트 처리 기능을 제공합니다. 대리자 형
 @code {
     private async Task UpdateHeading(MouseEventArgs e)
     {
-        ...
+        await ...
     }
 }
 ```
@@ -167,7 +167,7 @@ private void ShowMessage(MouseEventArgs e)
 ```
 
 > [!NOTE]
-> 위 `for` 루프 예제의 `i`와 같이 람다 식에서 직접 루프 변수를 사용하지 **않습니다**. 직접 사용하는 경우 모든 람다 식에서 동일한 변수가 사용되어 모든 람다에서 동일한 값이 사용됩니다. 변수 값을 항상 지역 변수에 캡처한 다음에 사용합니다. 위의 예제에서는 루프 변수 `i`가 `buttonNumber`에 할당됩니다.
+> 위 `for` 루프 예제의 `i`와 같이 람다 식에서 직접 루프 변수를 사용하지 **않습니다** . 직접 사용하는 경우 모든 람다 식에서 동일한 변수가 사용되어 모든 람다에서 동일한 값이 사용됩니다. 변수 값을 항상 지역 변수에 캡처한 다음에 사용합니다. 위의 예제에서는 루프 변수 `i`가 `buttonNumber`에 할당됩니다.
 
 ## <a name="eventcallback"></a>EventCallback
 
@@ -289,3 +289,26 @@ await OnClickCallback.InvokeAsync(arg);
         Console.WriteLine($"A child div was selected. {DateTime.Now}");
 }
 ```
+
+::: moniker range=">= aspnetcore-5.0"
+
+## <a name="focus-an-element"></a>요소에 포커스
+
+[요소 참조](xref:blazor/call-javascript-from-dotnet#capture-references-to-elements)에서 `FocusAsync`를 호출하여 코드의 요소에 포커스를 둡니다.
+
+```razor
+<input @ref="exampleInput" />
+
+<button @onclick="ChangeFocus">Focus the Input Element</button>
+
+@code {
+    private ElementReference exampleInput;
+    
+    private async Task ChangeFocus()
+    {
+        await exampleInput.FocusAsync();
+    }
+}
+```
+
+::: moniker-end

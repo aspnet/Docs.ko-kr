@@ -5,7 +5,7 @@ description: Azure App Service에 ASP.NET Core 앱을 게시 하는 방법을 �
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 11/02/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/publish-to-azure-web-app
-ms.openlocfilehash: e00eea81788c9b335691b7e5ffe6a46534c3c492
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 8e6d36fe0b38486f94078b8f9cf12b852da7e0d9
+ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058222"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234514"
 ---
 # <a name="publish-an-aspnet-core-no-locsignalr-app-to-azure-app-service"></a>SignalRAzure App Service에 ASP.NET Core 앱 게시
 
@@ -47,14 +47,14 @@ ms.locfileid: "93058222"
 
    **App Service 만들기** 대화 상자에서 다음 표에 설명 된 정보를 입력 하 고 **만들기** 를 선택 합니다.
 
-   | 항목               | 설명 |
+   | 항목               | Description |
    | ------------------ | ----------- |
    | **이름**           | 앱의 고유한 이름입니다. |
    | **구독**   | 앱에서 사용 하는 Azure 구독입니다. |
    | **리소스 그룹** | 앱이 속한 관련 리소스 그룹입니다. |
    | **호스팅 계획**   | 웹 앱에 대 한 가격 책정 계획입니다. |
 
-1. **종속성** 추가 드롭다운 목록에서 **Azure SignalR 서비스** 를 선택 합니다  >  **Add** .
+1. **서비스 종속성** 섹션에서 **Azure SignalR 서비스** 를 선택 합니다. 단추를 선택 합니다 **+** .
 
    ![추가 드롭다운 목록에서 Azure::: no loc (SignalR)::: Service 선택 항목을 표시 하는 종속성 영역](publish-to-azure-web-app/_static/signalr-service-dependency.png)
 

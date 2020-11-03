@@ -5,7 +5,7 @@ description: Blazor 앱의 구성 요소 및 DOM 요소에 대한 데이터 바�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/19/2020
+ms.date: 10/22/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 0884b0bedd9ed31b8c85790c6950c7c5d63bdf44
-ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
+ms.openlocfilehash: fd337a6fb54c418ff08af18014073a6b3f07bb8c
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653908"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491468"
 ---
 # <a name="aspnet-core-no-locblazor-data-binding"></a>ASP.NET Core Blazor 데이터 바인딩
 
@@ -141,9 +141,15 @@ Blazor에서는 기본적으로 날짜 형식을 지정할 수 있도록 지원�
 <input type="date" @bind="startDate" @bind:format="yyyy-MM-dd">
 ```
 
-## <a name="parent-to-child-binding-with-component-parameters"></a>구성 요소 매개 변수를 사용한 부모-자식 바인딩
+## <a name="binding-with-component-parameters"></a>구성 요소 매개 변수를 사용하여 바인딩
+
+일반적인 시나리오는 자식 구성 요소의 속성을 부모의 속성에 바인딩하는 것입니다. 여러 수준의 바인딩이 동시에 발생하기 때문에 이 시나리오를 *체인 바인딩* 이라고 합니다.
 
 구성 요소 매개 변수는 `@bind-{PROPERTY OR FIELD}` 구문을 사용하여 부모 구성 요소의 속성 및 필드 바인딩을 허용합니다.
+
+자식 구성 요소에 [`@bind`](xref:mvc/views/razor#bind) 구문을 사용하여 체인 바인딩을 구현할 수 없습니다. 자식 구성 요소에서 부모의 속성 업데이트를 지원하려면 이벤트 처리기와 값을 별도로 지정해야 합니다.
+
+부모 구성 요소는 계속 [`@bind`](xref:mvc/views/razor#bind) 구문을 활용하여 자식 구성 요소와 데이터 바인딩을 설정합니다.
 
 다음 `Child` 구성 요소(`Shared/Child.razor`)에는 `Year` 구성 요소 매개 변수와 `YearChanged` 콜백이 있습니다.
 
@@ -155,16 +161,25 @@ Blazor에서는 기본적으로 날짜 형식을 지정할 수 있도록 지원�
     </div>
 </div>
 
+<button @onclick="UpdateYearFromChild">Update Year from Child</button>
+
 @code {
+    private Random r = new Random();
+
     [Parameter]
     public int Year { get; set; }
 
     [Parameter]
     public EventCallback<int> YearChanged { get; set; }
+
+    private async Task UpdateYearFromChild()
+    {
+        await YearChanged.InvokeAsync(r.Next(1950, 2021));
+    }
 }
 ```
 
-콜백(<xref:Microsoft.AspNetCore.Components.EventCallback%601>)의 이름은 구성 요소 매개 변수 이름 뒤에 “`Changed`” 접미사(`{PARAMETER NAME}Changed`)를 붙여 지정해야 합니다. 이전 예제에서 콜백의 이름은 `YearChanged`로 지정됩니다. <xref:Microsoft.AspNetCore.Components.EventCallback%601>에 대한 자세한 내용은 <xref:blazor/components/event-handling#eventcallback>를 참조하세요.
+콜백(<xref:Microsoft.AspNetCore.Components.EventCallback%601>)의 이름은 구성 요소 매개 변수 이름 뒤에 “`Changed`” 접미사(`{PARAMETER NAME}Changed`)를 붙여 지정해야 합니다. 이전 예제에서 콜백의 이름은 `YearChanged`로 지정됩니다. <xref:Microsoft.AspNetCore.Components.EventCallback.InvokeAsync%2A?displayProperty=nameWithType>는 제공된 인수를 사용하여 바인딩과 연결된 대리자를 호출하고 변경된 속성에 대한 이벤트 알림을 디스패치합니다.
 
 다음 `Parent` 구성 요소(`Parent.razor`)에서 `year` 필드는 자식 구성 요소의 `Year` 매개 변수에 바인딩됩니다.
 
@@ -198,13 +213,7 @@ Blazor에서는 기본적으로 날짜 형식을 지정할 수 있도록 지원�
 <Child @bind-Year="year" @bind-Year:event="YearChanged" />
 ```
 
-## <a name="child-to-parent-binding-with-chained-bind"></a>체인 바인딩을 사용한 자식-부모 바인딩
-
-일반적인 시나리오는 데이터 바인딩 매개 변수를 구성 요소 출력의 페이지 요소에 체인하는 것입니다. 여러 수준의 바인딩이 동시에 발생하기 때문에 이 시나리오를 *체인 바인딩*이라고 합니다.
-
-자식 구성 요소에 [`@bind`](xref:mvc/views/razor#bind) 구문을 사용하여 체인 바인딩을 구현할 수 없습니다. 이벤트 처리기 및 값은 별도로 지정해야 합니다. 그러나 부모 구성 요소는 자식 구성 요소의 매개 변수에서 [`@bind`](xref:mvc/views/razor#bind) 구문을 사용할 수 있습니다.
-
-다음 `PasswordField` 구성 요소(`PasswordField.razor`)는
+더욱 정교한 실제 예제에서 다음 `PasswordField` 구성 요소(`PasswordField.razor`)는 다음을 수행합니다.
 
 * `<input>` 요소의 값을 `password` 필드로 설정합니다.
 * 자식의 `password` 필드의 현재 값을 인수로 전달하는 [`EventCallback`](xref:blazor/components/event-handling#eventcallback)을 사용하여 `Password` 속성의 변경 내용을 부모 구성 요소에 노출합니다.
@@ -234,11 +243,11 @@ Password:
     [Parameter]
     public EventCallback<string> PasswordChanged { get; set; }
 
-    private Task OnPasswordChanged(ChangeEventArgs e)
+    private async Task OnPasswordChanged(ChangeEventArgs e)
     {
         password = e.Value.ToString();
 
-        return PasswordChanged.InvokeAsync(password);
+        await PasswordChanged.InvokeAsync(password);
     }
 
     private void ToggleShowPassword()
@@ -294,7 +303,7 @@ Password:
     private Task OnPasswordChanged(ChangeEventArgs e)
     {
         password = e.Value.ToString();
-        
+
         if (password.Contains(' '))
         {
             validationMessage = "Spaces not allowed!";
@@ -316,12 +325,14 @@ Password:
 }
 ```
 
+<xref:Microsoft.AspNetCore.Components.EventCallback%601>에 대한 자세한 내용은 <xref:blazor/components/event-handling#eventcallback>를 참조하세요.
+
 ## <a name="bind-across-more-than-two-components"></a>셋 이상의 구성 요소에서 바인딩
 
 중첩된 구성 요소는 개수에 관계없이 바인딩할 수 있지만 데이터의 단방향 흐름을 준수해야 합니다.
 
-* 변경 알림은 *계층 구조를 따라 올라갑니다*.
-* 새 매개 변수 값은 *계층 구조를 따라 내려옵니다*.
+* 변경 알림은 *계층 구조를 따라 올라갑니다* .
+* 새 매개 변수 값은 *계층 구조를 따라 내려옵니다* .
 
 일반적이고 권장되는 방법은 업데이트할 상태에 대한 혼동을 방지할 수 있게, 부모 구성 요소에 기본 데이터만 저장하는 것입니다.
 
@@ -378,9 +389,9 @@ Password:
         set => PropertyChanged.InvokeAsync(value);
     }
 
-    private Task ChangeValue()
+    private async Task ChangeValue()
     {
-        return PropertyChanged.InvokeAsync($"Set in Child {DateTime.Now}");
+        await PropertyChanged.InvokeAsync($"Set in Child {DateTime.Now}");
     }
 }
 ```
@@ -405,9 +416,9 @@ Password:
     [Parameter]
     public EventCallback<string> PropertyChanged { get; set; }
 
-    private Task ChangeValue()
+    private async Task ChangeValue()
     {
-        return PropertyChanged.InvokeAsync($"Set in Grandchild {DateTime.Now}");
+        await PropertyChanged.InvokeAsync($"Set in Grandchild {DateTime.Now}");
     }
 }
 ```

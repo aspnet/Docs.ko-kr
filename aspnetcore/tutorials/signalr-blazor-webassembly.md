@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: e4c77bd5bf5a26a11cdd23664ac24ae50986969b
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 6086c422b2d0598af309bbf8b900b9e03a3fe147
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754712"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491589"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-no-locblazor-webassembly"></a>Blazor WebAssembly와 함께 ASP.NET Core SignalR 사용
 
@@ -116,15 +116,15 @@ ms.locfileid: "91754712"
 
 1. 새 프로젝트를 만듭니다.
 
-1. **Blazor 앱**를 선택하고 **다음**을 선택합니다.
+1. **Blazor 앱** 를 선택하고 **다음** 을 선택합니다.
 
-1. **프로젝트 이름** 필드에 `BlazorSignalRApp`을 입력합니다. **위치** 항목이 올바른지 확인하거나 프로젝트의 위치를 제공합니다. **만들기**를 선택합니다.
+1. **프로젝트 이름** 필드에 `BlazorSignalRApp`을 입력합니다. **위치** 항목이 올바른지 확인하거나 프로젝트의 위치를 제공합니다. **만들기** 를 선택합니다.
 
 1. **Blazor WebAssembly 앱** 템플릿을 선택합니다.
 
-1. **고급**에서 **ASP.NET Core 호스팅** 확인란을 선택합니다.
+1. **고급** 에서 **ASP.NET Core 호스팅** 확인란을 선택합니다.
 
-1. **만들기**를 선택합니다.
+1. **만들기** 를 선택합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -136,21 +136,21 @@ ms.locfileid: "91754712"
 
 1. Visual Studio Code에서 앱의 프로젝트 폴더를 엽니다.
 
-1. 앱을 빌드하고 디버그할 자산을 추가하기 위한 대화 상자가 나타나면 **예**를 선택합니다. Visual Studio Code는 생성된 `launch.json` 및 `tasks.json` 파일이 포함된 `.vscode` 폴더를 자동으로 추가합니다.
+1. 앱을 빌드하고 디버그할 자산을 추가하기 위한 대화 상자가 나타나면 **예** 를 선택합니다. Visual Studio Code는 생성된 `launch.json` 및 `tasks.json` 파일이 포함된 `.vscode` 폴더를 자동으로 추가합니다.
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
 1. 최신 버전의 [Mac용 Visual Studio](https://visualstudio.microsoft.com/vs/mac/)를 설치하고 다음 단계를 수행합니다.
 
-1. **파일** > **새 솔루션**을 선택하거나 **시작 창**에서 **새** 프로젝트를 만듭니다.
+1. **파일** > **새 솔루션** 을 선택하거나 **시작 창** 에서 **새** 프로젝트를 만듭니다.
 
-1. 사이드바에서 **웹 및 콘솔** > **앱**을 선택합니다.
+1. 사이드바에서 **웹 및 콘솔** > **앱** 을 선택합니다.
 
-1. **Blazor WebAssembly 앱** 템플릿을 선택합니다. **새로 만들기**를 선택합니다.
+1. **Blazor WebAssembly 앱** 템플릿을 선택합니다. **새로 만들기** 를 선택합니다.
 
-1. **인증**이 **인증 없음**으로 설정되었는지 확인합니다. **ASP.NET Core에서 호스트** 확인란을 선택합니다. **새로 만들기**를 선택합니다.
+1. **인증** 이 **인증 없음** 으로 설정되었는지 확인합니다. **ASP.NET Core에서 호스트** 확인란을 선택합니다. **새로 만들기** 를 선택합니다.
 
-1. **프로젝트 이름** 필드에서 앱 이름을 `BlazorSignalRApp`로 지정합니다. **만들기**를 선택합니다.
+1. **프로젝트 이름** 필드에서 앱 이름을 `BlazorSignalRApp`로 지정합니다. **만들기** 를 선택합니다.
 
    개발 인증서를 신뢰하라는 메시지가 표시되면 인증서를 신뢰하고 계속합니다. 인증서를 신뢰하려면 사용자 및 키 집합 암호가 필요합니다.
 
@@ -170,21 +170,21 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-1. **솔루션 탐색기**에서 `BlazorSignalRApp.Client` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리**를 선택합니다.
+1. **솔루션 탐색기** 에서 `BlazorSignalRApp.Client` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다.
 
-1. **NuGet 패키지 관리** 대화 상자에서 **패키지 원본**이 `nuget.org`로 설정되어 있는지 확인합니다.
+1. **NuGet 패키지 관리** 대화 상자에서 **패키지 원본** 이 `nuget.org`로 설정되어 있는지 확인합니다.
 
-1. **찾아보기**를 선택하고 검색 상자에 `Microsoft.AspNetCore.SignalR.Client`를 입력합니다.
+1. **찾아보기** 를 선택하고 검색 상자에 `Microsoft.AspNetCore.SignalR.Client`를 입력합니다.
 
-1. 검색 결과에서 [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) 패키지를 선택하고 **설치**를 선택합니다.
+1. 검색 결과에서 [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) 패키지를 선택하고 **설치** 를 선택합니다.
 
-1. **변경 내용 미리 보기** 대화 상자가 표시되면 **확인**을 선택합니다.
+1. **변경 내용 미리 보기** 대화 상자가 표시되면 **확인** 을 선택합니다.
 
-1. **라이선스 승인** 대화 상자가 나타나면 사용 조건에 동의하는 경우 **동의함**을 선택합니다.
+1. **라이선스 승인** 대화 상자가 나타나면 사용 조건에 동의하는 경우 **동의함** 을 선택합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-**통합 터미널**(도구 모음에서 **보기** > **터미널**)에서 다음 명령을 실행합니다.
+**통합 터미널** (도구 모음에서 **보기** > **터미널** )에서 다음 명령을 실행합니다.
 
 ```dotnetcli
 dotnet add Client package Microsoft.AspNetCore.SignalR.Client
@@ -192,15 +192,15 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-1. **솔루션** 사이드바에서 `BlazorSignalRApp.Client` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리**를 선택합니다.
+1. **솔루션** 사이드바에서 `BlazorSignalRApp.Client` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다.
 
 1. **NuGet 패키지 관리** 대화 상자에서 원본 드롭다운이 `nuget.org`로 설정되어 있는지 확인합니다.
 
-1. **찾아보기**를 선택하고 검색 상자에 `Microsoft.AspNetCore.SignalR.Client`를 입력합니다.
+1. **찾아보기** 를 선택하고 검색 상자에 `Microsoft.AspNetCore.SignalR.Client`를 입력합니다.
 
-1. 검색 결과에서 [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) 패키지 옆의 확인란을 선택하고 **패키지 추가**를 선택합니다.
+1. 검색 결과에서 [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) 패키지 옆의 확인란을 선택하고 **패키지 추가** 를 선택합니다.
 
-1. **라이선스 승인** 대화 상자가 나타나면 사용 조건에 동의하는 경우 **동의함**을 선택합니다.
+1. **라이선스 승인** 대화 상자가 나타나면 사용 조건에 동의하는 경우 **동의함** 을 선택합니다.
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
@@ -294,7 +294,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. **솔루션 탐색기**에서 `BlazorSignalRApp.Server` 프로젝트를 선택합니다. <kbd>F5</kbd> 키를 눌러 디버깅이 설정된 상태로 앱을 실행하거나 <kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 디버깅 없이 실행합니다.
+1. **솔루션 탐색기** 에서 `BlazorSignalRApp.Server` 프로젝트를 선택합니다. <kbd>F5</kbd> 키를 눌러 디버깅이 설정된 상태로 앱을 실행하거나 <kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 디버깅 없이 실행합니다.
 
 1. 주소 표시줄에서 URL을 복사하고, 다른 브라우저 인스턴스 또는 탭을 열고, 주소 표시줄에 URL을 붙여넣습니다.
 
@@ -380,6 +380,7 @@ Blazor 앱 빌드에 대한 자세한 내용은 Blazor 설명서를 참조하세
 
 > [!div class="nextstepaction"]
 > <xref:blazor/index>
+> [Identity 서버, WebSocket 및 Server-Sent 이벤트를 사용하는 전달자 토큰 인증](xref:signalr/authn-and-authz#bearer-token-authentication)
 
 ## <a name="additional-resources"></a>추가 자료
 

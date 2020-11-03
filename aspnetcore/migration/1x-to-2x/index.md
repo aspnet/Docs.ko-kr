@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 6160dfd117235065ba4b990b95bbc1f4abdf1626
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 6d67924d87cdbe72cb08c5305dfe45c5b22b31bc
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634347"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057117"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>ASP.NET Core 1.x에서 2.0으로 마이그레이션
 
@@ -107,11 +108,11 @@ ASP.NET Core 2.0 및 Entity Framework Core 2.0의 모든 기능은 metapackage�
 
 ## <a name="update-main-method-in-programcs"></a>Program.cs의 Main 메서드 업데이트
 
-1\.x 프로젝트에서 *Program.cs*의 `Main` 메서드는 다음과 같았습니다.
+1\.x 프로젝트에서 *Program.cs* 의 `Main` 메서드는 다음과 같았습니다.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Program.cs?name=snippet_ProgramCs&highlight=8-19)]
 
-2\.0 프로젝트에서 *Program.cs*의 `Main` 메서드는 간소화되었습니다.
+2\.0 프로젝트에서 *Program.cs* 의 `Main` 메서드는 간소화되었습니다.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Program.cs?highlight=8-11)]
 
@@ -129,13 +130,13 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_1xStartup)]
 
-위의 예제에서는 `IHostingEnvironment.EnvironmentName` 속성과 일치하는 *appsettings.\<EnvironmentName\>.json* 파일뿐만 아니라 *appsettings.json*의 구성 설정을 사용하여 `Configuration` 멤버를 로드합니다. 이러한 파일의 위치는 *Startup.cs*와 동일한 경로에 있습니다.
+위의 예제에서는 `IHostingEnvironment.EnvironmentName` 속성과 일치하는 *appsettings.\<EnvironmentName\>.json* 파일뿐만 아니라 *appsettings.json* 의 구성 설정을 사용하여 `Configuration` 멤버를 로드합니다. 이러한 파일의 위치는 *Startup.cs* 와 동일한 경로에 있습니다.
 
 2\.0 프로젝트에서 1.x 프로젝트에 포함된 기본 구성 코드는 백그라운드에서 실행됩니다. 예를 들어 환경 변수 및 앱 설정은 시작 시 로드됩니다. 동일한 *Startup.cs* 코드는 삽입된 인스턴스를 사용하여 `IConfiguration` 초기화로 축소됩니다.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/Startup.cs?name=snippet_2xStartup)]
 
-`WebHostBuilder.CreateDefaultBuilder`를 추가하여 기본 공급자를 제거하려면 `ConfigureAppConfiguration` 내부의 `IConfigurationBuilder.Sources` 속성에서 `Clear` 메서드를 호출합니다. 다시 공급자를 추가하려면 *Program.cs*에서 `ConfigureAppConfiguration` 메서드를 활용합니다.
+`WebHostBuilder.CreateDefaultBuilder`를 추가하여 기본 공급자를 제거하려면 `ConfigureAppConfiguration` 내부의 `IConfigurationBuilder.Sources` 속성에서 `Clear` 메서드를 호출합니다. 다시 공급자를 추가하려면 *Program.cs* 에서 `ConfigureAppConfiguration` 메서드를 활용합니다.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/Program.cs?name=snippet_ProgramMainConfigProviders&highlight=9-14)]
 
@@ -155,15 +156,15 @@ EF Core 1.x를 사용하는 1.x 프로젝트에서 `dotnet ef migrations add`와
 
 EF Core 2.0을 사용하는 2.0 프로젝트에서는 애플리케이션 서비스를 가져오기 위해 `Program.BuildWebHost`가 호출됩니다. 1\.x와 달리 2.0 프로젝트에서는 `Startup.Configure`를 호출하는 데 부작용이 추가로 발생합니다. 1\.x 앱이 `Configure` 메서드에서 데이터베이스 초기화 코드를 호출한 경우 예기치 않은 문제가 발생할 수 있습니다. 예를 들어 데이터베이스가 아직 없는 경우 EF Core 마이그레이션 명령 실행 전에 시드 코드가 실행됩니다. 아직 데이터베이스가 없는 경우 이 문제가 `dotnet ef migrations list` 명령 실패의 원인이 됩니다.
 
-*Startup.cs*의 `Configure` 메서드에서 다음 1.x 시드 초기화 코드를 고려하세요.
+*Startup.cs* 의 `Configure` 메서드에서 다음 1.x 시드 초기화 코드를 고려하세요.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_ConfigureSeedData&highlight=8)]
 
-2\.0 프로젝트에서 `SeedData.Initialize` 호출을 *Program.cs*의 `Main` 메서드로 이동합니다.
+2\.0 프로젝트에서 `SeedData.Initialize` 호출을 *Program.cs* 의 `Main` 메서드로 이동합니다.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Program2.cs?name=snippet_Main2Code&highlight=10)]
 
-2\.0부터 `BuildWebHost`에서 웹 호스트를 빌드하고 구성하는 작업 외에 다른 작업을 수행하는 것은 바람직하지 않습니다. 애플리케이션 실행과 관련된 모든 작업은 `BuildWebHost` &mdash; 외부(보통 *Program.cs*의 `Main` 메서드)에서 처리해야 합니다.
+2\.0부터 `BuildWebHost`에서 웹 호스트를 빌드하고 구성하는 작업 외에 다른 작업을 수행하는 것은 바람직하지 않습니다. 애플리케이션 실행과 관련된 모든 작업은 `BuildWebHost` &mdash; 외부(보통 *Program.cs* 의 `Main` 메서드)에서 처리해야 합니다.
 
 <a name="view-compilation"></a>
 
@@ -189,11 +190,11 @@ Visual Studio 2017에서 만든 ASP.NET Core 1.1 프로젝트는 기본적으로
 
     [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=10)]
 
-2. .NET Core를 대상으로 하는 경우 *Program.cs*에서 `UseApplicationInsights` 확장 메서드 호출을 제거합니다.
+2. .NET Core를 대상으로 하는 경우 *Program.cs* 에서 `UseApplicationInsights` 확장 메서드 호출을 제거합니다.
 
     [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Program.cs?name=snippet_ProgramCsMain&highlight=8)]
 
-3. *_Layout.cshtml*에서 Application Insights 클라이언트 쪽 API 호출을 제거합니다. 다음 두 코드 줄을 구성합니다.
+3. *_Layout.cshtml* 에서 Application Insights 클라이언트 쪽 API 호출을 제거합니다. 다음 두 코드 줄을 구성합니다.
 
     [!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Shared/_Layout.cshtml?range=1,19&dedent=4)]
 

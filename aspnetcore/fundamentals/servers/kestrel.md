@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 44558a0f2fdc61eb860223658f5bef1d0117ba87
-ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
+ms.openlocfilehash: 50bf2a60f14238c9b71fe90a64c284da202bff59
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653952"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491602"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core에서 Kestrel 웹 서버 구현
 
@@ -66,7 +66,7 @@ HTTP/2는 기본적으로 사용할 수 없습니다. 구성에 대한 자세한
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Kestrel을 역방향 프록시와 함께 사용하는 경우
 
-Kestrel을 단독으로 사용하거나 [IIS(인터넷 정보 서비스)](https://www.iis.net/), [Nginx](https://nginx.org) 또는 [Apache](https://httpd.apache.org/)와 같은 *역방향 프록시 서버*와 함께 사용할 수 있습니다. 역방향 프록시 서버는 네트워크에서 HTTP 요청을 받아서 Kestrel에 전달합니다.
+Kestrel을 단독으로 사용하거나 [IIS(인터넷 정보 서비스)](https://www.iis.net/), [Nginx](https://nginx.org) 또는 [Apache](https://httpd.apache.org/)와 같은 *역방향 프록시 서버* 와 함께 사용할 수 있습니다. 역방향 프록시 서버는 네트워크에서 HTTP 요청을 받아서 Kestrel에 전달합니다.
 
 Kestrel은 에지(인터넷 연결) 웹 서버로 사용됩니다.
 
@@ -94,7 +94,7 @@ Kestrel은 역방향 프록시 구성에 사용됩니다.
 
 ## <a name="kestrel-in-aspnet-core-apps"></a>ASP.NET Core 앱의 Kestrel
 
-ASP.NET Core 프로젝트 템플릿은 기본적으로 Kestrel을 사용합니다. *Program.cs*에서 <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> 메서드는 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>를 호출합니다.
+ASP.NET Core 프로젝트 템플릿은 기본적으로 Kestrel을 사용합니다. *Program.cs* 에서 <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> 메서드는 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>를 호출합니다.
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=8)]
 
@@ -144,7 +144,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 > [!NOTE]
 > <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 및 [엔드포인트 구성](#endpoint-configuration)은 구성 공급자에서 구성할 수 있습니다. 나머지 Kestrel 구성은 C# 코드로 구성해야 합니다.
 
-다음 방법 중 **하나**를 사용합니다.
+다음 방법 중 **하나** 를 사용합니다.
 
 * `Startup.ConfigureServices`에서 Kestrel을 구성합니다.
 
@@ -178,7 +178,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 * 호스트를 빌드할 때 Kestrel을 구성합니다.
 
-  *Program.cs*에서 구성의 `Kestrel` 섹션을 Kestrel의 구성으로 로드합니다.
+  *Program.cs* 에서 구성의 `Kestrel` 섹션을 Kestrel의 구성으로 로드합니다.
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -257,7 +257,7 @@ Kestrel은 데이터가 지정된 속도(바이트/초)로 도착하는지 1초�
 
 최소 속도는 응답에도 적용됩니다. 요청 제한 및 응답 제한을 설정하는 코드는 속성 및 인터페이스 이름에 `RequestBody` 또는 `Response`를 갖는 것을 제외하고 동일합니다.
 
-*Program.cs*에서 최소 데이터 속도를 구성하는 방법을 보여 주는 예제는 다음과 같습니다.
+*Program.cs* 에서 최소 데이터 속도를 구성하는 방법을 보여 주는 예제는 다음과 같습니다.
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=6-11)]
 
@@ -265,7 +265,7 @@ Kestrel은 데이터가 지정된 속도(바이트/초)로 도착하는지 1초�
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Startup.cs?name=snippet_Limits&highlight=6-21)]
 
-요청 멀티플렉싱에 대한 프로토콜의 지원으로 인해 요청별 속도 제한을 수정하는 것이 HTTP/2에 대해 일반적으로 지원되지 않으므로, 이전 샘플에서 참조된 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinResponseDataRateFeature>는 HTTP/2 요청에 대해 `HttpContext.Features`에 존재하지 않습니다. 그러나 HTTP/2 요청에 대해서도 `IHttpMinRequestBodyDataRateFeature.MinDataRate`를 `null`로 설정하여 요청별 읽기 속도 제한을 *완전히 비활성화*할 수 있으므로 HTTP/2 요청에 대한 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinRequestBodyDataRateFeature>는 여전히 존재합니다`HttpContext.Features`. `IHttpMinRequestBodyDataRateFeature.MinDataRate` 읽기를 시도하거나 `null`이 아닌 값으로 설정하려고 하면 HTTP/2 요청이 있을 때 `NotSupportedException`이 throw됩니다.
+요청 멀티플렉싱에 대한 프로토콜의 지원으로 인해 요청별 속도 제한을 수정하는 것이 HTTP/2에 대해 일반적으로 지원되지 않으므로, 이전 샘플에서 참조된 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinResponseDataRateFeature>는 HTTP/2 요청에 대해 `HttpContext.Features`에 존재하지 않습니다. 그러나 HTTP/2 요청에 대해서도 `IHttpMinRequestBodyDataRateFeature.MinDataRate`를 `null`로 설정하여 요청별 읽기 속도 제한을 *완전히 비활성화* 할 수 있으므로 HTTP/2 요청에 대한 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinRequestBodyDataRateFeature>는 여전히 존재합니다`HttpContext.Features`. `IHttpMinRequestBodyDataRateFeature.MinDataRate` 읽기를 시도하거나 `null`이 아닌 값으로 설정하려고 하면 HTTP/2 요청이 있을 때 `NotSupportedException`이 throw됩니다.
 
 `KestrelServerOptions.Limits`를 통해 구성된 서버 전체 속도 제한은 여전히 HTTP/1.x 및 HTTP/2 연결 모두에 적용됩니다.
 
@@ -354,6 +354,34 @@ webBuilder.ConfigureKestrel(serverOptions =>
 ```
 
 기본값은 96KB(98,304)입니다.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+### <a name="http2-keep-alive-ping-configuration"></a>HTTP/2 연결 유지 ping 구성
+
+연결된 클라이언트로 HTTP/2 ping을 보내도록 Kestrel을 구성할 수 있습니다. HTTP/2 ping은 여러 가지 용도로 사용됩니다.
+
+* 유휴 연결을 활성 상태로 유지합니다. 일부 클라이언트 및 프록시 서버는 유휴 상태인 연결을 닫습니다. HTTP/2 ping은 연결에 대한 작업으로 간주하며 연결이 유휴 상태로 닫히지 않도록 합니다.
+* 비정상 연결을 닫습니다. 클라이언트가 구성된 시간에 연결 유지 ping에 응답하지 않는 연결은 서버에서 닫습니다.
+
+HTTP/2 연결 유지 ping과 관련된 두 가지 구성 옵션이 있습니다.
+
+* `Http2.KeepAlivePingInterval`은 ping 내부를 구성하는 `TimeSpan`입니다. 서버가 이 기간 동안 프레임을 받지 못하면 클라이언트로 연결 유지 ping을 보냅니다. 이 옵션을 `TimeSpan.MaxValue`로 설정하면 연결 유지 ping을 사용할 수 없습니다. 기본값은 `TimeSpan.MaxValue`입니다.
+* `Http2.KeepAlivePingTimeout`은 ping 시간 제한을 구성하는 `TimeSpan`입니다. 서버가 이 시간 제한 동안 응답 ping과 같은 프레임을 받지 못하면 연결이 닫힙니다. 이 옵션을 `TimeSpan.MaxValue`로 설정하면 연결 유지 시간 제한을 사용할 수 없습니다. 기본값은 20초입니다.
+
+```csharp
+webBuilder.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.Limits.Http2.KeepAlivePingInterval = TimeSpan.FromSeconds(30);
+    serverOptions.Limits.Http2.KeepAlivePingTimeout = TimeSpan.FromSeconds(60);
+});
+```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 
 ### <a name="trailers"></a>트레일러
 
@@ -501,8 +529,8 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 
 다음 *appsettings.json* 예제에서:
 
-* 잘못된 인증서 사용을 허가하려면 **AllowInvalid**를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
-* 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert**)는 **인증서** > **기본**에서 정의된 인증서 또는 개발 인증서로 대체합니다.
+* 잘못된 인증서 사용을 허가하려면 **AllowInvalid** 를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
+* 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert** )는 **인증서** > **기본** 에서 정의된 인증서 또는 개발 인증서로 대체합니다.
 
 ```json
 {
@@ -548,7 +576,7 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 }
 ```
 
-모든 인증서 노드에 대해 **경로** 및 **암호**를 사용하는 대신 인증서 저장소 필드를 지정합니다. 예를 들어, **인증서** > **기본** 인증서는 다음과 같이 지정될 수 있습니다.
+모든 인증서 노드에 대해 **경로** 및 **암호** 를 사용하는 대신 인증서 저장소 필드를 지정합니다. 예를 들어, **인증서** > **기본** 인증서는 다음과 같이 지정될 수 있습니다.
 
 ```json
 "Default": {
@@ -973,9 +1001,9 @@ Kestrel은 `http://example.com:5000`과 같은 접두사에 따라 구성을 지
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json*/*appsettings.\<EnvironmentName>.json*에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
+호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json*/*appsettings.\<EnvironmentName>.json* 에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
 
-*appsettings.json*:
+*appsettings.json* :
 
 ```json
 {
@@ -1027,7 +1055,7 @@ HTTP/2는 기본적으로 사용할 수 없습니다. 구성에 대한 자세한
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Kestrel을 역방향 프록시와 함께 사용하는 경우
 
-Kestrel을 단독으로 사용하거나 [IIS(인터넷 정보 서비스)](https://www.iis.net/), [Nginx](https://nginx.org) 또는 [Apache](https://httpd.apache.org/)와 같은 *역방향 프록시 서버*와 함께 사용할 수 있습니다. 역방향 프록시 서버는 네트워크에서 HTTP 요청을 받아서 Kestrel에 전달합니다.
+Kestrel을 단독으로 사용하거나 [IIS(인터넷 정보 서비스)](https://www.iis.net/), [Nginx](https://nginx.org) 또는 [Apache](https://httpd.apache.org/)와 같은 *역방향 프록시 서버* 와 함께 사용할 수 있습니다. 역방향 프록시 서버는 네트워크에서 HTTP 요청을 받아서 Kestrel에 전달합니다.
 
 Kestrel은 에지(인터넷 연결) 웹 서버로 사용됩니다.
 
@@ -1057,7 +1085,7 @@ Kestrel은 역방향 프록시 구성에 사용됩니다.
 
 [Microsoft.AspNetCore.Server.Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) 패키지는 [Microsoft.AspNetCore.App 메타패키지](xref:fundamentals/metapackage-app)에 포함되어 있습니다.
 
-ASP.NET Core 프로젝트 템플릿은 기본적으로 Kestrel을 사용합니다. *Program.cs*에서 템플릿 코드는 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> 숨은 기능을 호출하는 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>를 호출합니다.
+ASP.NET Core 프로젝트 템플릿은 기본적으로 Kestrel을 사용합니다. *Program.cs* 에서 템플릿 코드는 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> 숨은 기능을 호출하는 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>를 호출합니다.
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=7)]
 
@@ -1120,7 +1148,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 }
 ```
 
-다음 방법 중 **하나**를 사용합니다.
+다음 방법 중 **하나** 를 사용합니다.
 
 * `Startup.ConfigureServices`에서 Kestrel을 구성합니다.
 
@@ -1154,7 +1182,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 * 호스트를 빌드할 때 Kestrel을 구성합니다.
 
-  *Program.cs*에서 구성의 `Kestrel` 섹션을 Kestrel의 구성으로 로드합니다.
+  *Program.cs* 에서 구성의 `Kestrel` 섹션을 Kestrel의 구성으로 로드합니다.
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -1230,7 +1258,7 @@ Kestrel은 데이터가 지정된 속도(바이트/초)로 도착하는지 1초�
 
 최소 속도는 응답에도 적용됩니다. 요청 제한 및 응답 제한을 설정하는 코드는 속성 및 인터페이스 이름에 `RequestBody` 또는 `Response`를 갖는 것을 제외하고 동일합니다.
 
-*Program.cs*에서 최소 데이터 속도를 구성하는 방법을 보여 주는 예제는 다음과 같습니다.
+*Program.cs* 에서 최소 데이터 속도를 구성하는 방법을 보여 주는 예제는 다음과 같습니다.
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=6-9)]
 
@@ -1489,8 +1517,8 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 
 다음 *appsettings.json* 예제에서:
 
-* 잘못된 인증서 사용을 허가하려면 **AllowInvalid**를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
-* 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert**)는 **인증서** > **기본**에서 정의된 인증서 또는 개발 인증서로 대체합니다.
+* 잘못된 인증서 사용을 허가하려면 **AllowInvalid** 를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
+* 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert** )는 **인증서** > **기본** 에서 정의된 인증서 또는 개발 인증서로 대체합니다.
 
 ```json
 {
@@ -1540,7 +1568,7 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 }
 ```
 
-모든 인증서 노드에 대해 **경로** 및 **암호**를 사용하는 대신 인증서 저장소 필드를 지정합니다. 예를 들어, **인증서** > **기본** 인증서는 다음과 같이 지정될 수 있습니다.
+모든 인증서 노드에 대해 **경로** 및 **암호** 를 사용하는 대신 인증서 저장소 필드를 지정합니다. 예를 들어, **인증서** > **기본** 인증서는 다음과 같이 지정될 수 있습니다.
 
 ```json
 "Default": {
@@ -1924,9 +1952,9 @@ Kestrel은 `http://example.com:5000`과 같은 접두사에 따라 구성을 지
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json*/*appsettings.\<EnvironmentName>.json*에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
+호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json*/*appsettings.\<EnvironmentName>.json* 에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
 
-*appsettings.json*:
+*appsettings.json* :
 
 ```json
 {
@@ -1957,7 +1985,7 @@ Kestrel은 .NET Core에서 지원하는 모든 플랫폼 및 버전에서 지원
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Kestrel을 역방향 프록시와 함께 사용하는 경우
 
-Kestrel을 단독으로 사용하거나 [IIS(인터넷 정보 서비스)](https://www.iis.net/), [Nginx](https://nginx.org) 또는 [Apache](https://httpd.apache.org/)와 같은 *역방향 프록시 서버*와 함께 사용할 수 있습니다. 역방향 프록시 서버는 네트워크에서 HTTP 요청을 받아서 Kestrel에 전달합니다.
+Kestrel을 단독으로 사용하거나 [IIS(인터넷 정보 서비스)](https://www.iis.net/), [Nginx](https://nginx.org) 또는 [Apache](https://httpd.apache.org/)와 같은 *역방향 프록시 서버* 와 함께 사용할 수 있습니다. 역방향 프록시 서버는 네트워크에서 HTTP 요청을 받아서 Kestrel에 전달합니다.
 
 Kestrel은 에지(인터넷 연결) 웹 서버로 사용됩니다.
 
@@ -1987,7 +2015,7 @@ Kestrel은 역방향 프록시 구성에 사용됩니다.
 
 [Microsoft.AspNetCore.Server.Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) 패키지는 [Microsoft.AspNetCore.App 메타패키지](xref:fundamentals/metapackage-app)에 포함되어 있습니다.
 
-ASP.NET Core 프로젝트 템플릿은 기본적으로 Kestrel을 사용합니다. *Program.cs*에서 템플릿 코드는 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> 숨은 기능을 호출하는 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>를 호출합니다.
+ASP.NET Core 프로젝트 템플릿은 기본적으로 Kestrel을 사용합니다. *Program.cs* 에서 템플릿 코드는 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> 숨은 기능을 호출하는 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>를 호출합니다.
 
 `CreateDefaultBuilder`를 호출한 후 추가 구성을 제공하려면 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>을 호출합니다.
 
@@ -2028,7 +2056,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 }
 ```
 
-다음 방법 중 **하나**를 사용합니다.
+다음 방법 중 **하나** 를 사용합니다.
 
 * `Startup.ConfigureServices`에서 Kestrel을 구성합니다.
 
@@ -2062,7 +2090,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 * 호스트를 빌드할 때 Kestrel을 구성합니다.
 
-  *Program.cs*에서 구성의 `Kestrel` 섹션을 Kestrel의 구성으로 로드합니다.
+  *Program.cs* 에서 구성의 `Kestrel` 섹션을 Kestrel의 구성으로 로드합니다.
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -2170,7 +2198,7 @@ Kestrel은 데이터가 지정된 속도(바이트/초)로 도착하는지 1초�
 
 최소 속도는 응답에도 적용됩니다. 요청 제한 및 응답 제한을 설정하는 코드는 속성 및 인터페이스 이름에 `RequestBody` 또는 `Response`를 갖는 것을 제외하고 동일합니다.
 
-*Program.cs*에서 최소 데이터 속도를 구성하는 방법을 보여 주는 예제는 다음과 같습니다.
+*Program.cs* 에서 최소 데이터 속도를 구성하는 방법을 보여 주는 예제는 다음과 같습니다.
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -2353,8 +2381,8 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 
 다음 *appsettings.json* 예제에서:
 
-* 잘못된 인증서 사용을 허가하려면 **AllowInvalid**를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
-* 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert**)는 **인증서** > **기본**에서 정의된 인증서 또는 개발 인증서로 대체합니다.
+* 잘못된 인증서 사용을 허가하려면 **AllowInvalid** 를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
+* 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert** )는 **인증서** > **기본** 에서 정의된 인증서 또는 개발 인증서로 대체합니다.
 
 ```json
 {
@@ -2404,7 +2432,7 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 }
 ```
 
-모든 인증서 노드에 대해 **경로** 및 **암호**를 사용하는 대신 인증서 저장소 필드를 지정합니다. 예를 들어, **인증서** > **기본** 인증서는 다음과 같이 지정될 수 있습니다.
+모든 인증서 노드에 대해 **경로** 및 **암호** 를 사용하는 대신 인증서 저장소 필드를 지정합니다. 예를 들어, **인증서** > **기본** 인증서는 다음과 같이 지정될 수 있습니다.
 
 ```json
 "Default": {
@@ -2714,9 +2742,9 @@ Kestrel은 `http://example.com:5000`과 같은 접두사에 따라 구성을 지
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json*/*appsettings.\<EnvironmentName>.json*에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
+호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json*/*appsettings.\<EnvironmentName>.json* 에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
 
-*appsettings.json*:
+*appsettings.json* :
 
 ```json
 {

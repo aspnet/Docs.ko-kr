@@ -5,7 +5,7 @@ description: Azure Active Directory를 사용하여 ASP.NET Core Blazor WebAssem
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: devx-track-csharp, mvc
-ms.date: 10/08/2020
+ms.date: 10/27/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,16 +18,25 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory
-ms.openlocfilehash: b44c5372d694dcc16ff66e24233171e3320d7294
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: 46e5a422864dd8f6aef72afddb3b406bc99f9163
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900906"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690424"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory"></a>Azure Active Directory를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
 
 작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)
+
+이 문서에서는 AAD(Azure Active Directory)를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱을 보호하는 방법을 설명합니다.
+
+::: moniker range=">= aspnetcore-5.0"
+
+> [!NOTE]
+> AAD 조직 디렉터리에서 계정을 지원하도록 구성된 Visual Studio에서 만든 Blazor WebAssembly 앱에 대해 Visual Studio는 프로젝트 생성 시 앱을 올바르게 구성하지 않습니다. 이 문제는 Visual Studio의 이후 릴리스에서 해결될 예정입니다. 이 문서에서는 .NET Core CLI의 `dotnet new` 명령을 사용하여 앱을 만드는 방법을 보여 줍니다. ASP.NET Core 5.0의 최신 Blazor 템플릿에 대해 IDE를 업데이트하기 전에 Visual Studio를 사용하여 앱을 만들려는 경우 이 문서의 각 섹션을 참조하고 Visual Studio에서 앱을 만든 후 앱의 구성을 확인하거나 업데이트하세요.
+
+::: moniker-end
 
 인증을 위해 [AAD(Azure Active Directory)](https://azure.microsoft.com/services/active-directory/)를 사용하는 [독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만들려면:
 
@@ -37,11 +46,11 @@ Azure Portal의 **Azure Active Directory** > **앱 등록** 영역에서 AAD 앱
 
 ::: moniker range=">= aspnetcore-5.0"
 
-1. 앱의 **이름**을 지정합니다(예: **Blazor 독립 실행형 AAD**).
-1. **지원되는 계정 유형**을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만**을 선택합니다.
+1. 앱의 **이름** 을 지정합니다(예: **Blazor 독립 실행형 AAD** ).
+1. **지원되는 계정 유형** 을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만** 을 선택합니다.
 1. **리디렉션 URI** 드롭다운은 **SPA(단일 페이지 애플리케이션)** 으로 설정하고 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다. Kestrel에서 실행되는 앱의 기본 포트는 5001입니다. 앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다. IIS Express의 경우, 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 앱 속성에서 확인할 수 있습니다. 이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요. 이 항목의 뒷부분에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.
 1. **사용 권한**>**openid 및 offline_access 권한에 대한 관리자 동의 허용** 확인란을 선택 해제합니다.
-1. **등록**을 선택합니다.
+1. **등록** 을 선택합니다.
 
 다음과 같은 정보를 기록해 둡니다.
 
@@ -50,8 +59,8 @@ Azure Portal의 **Azure Active Directory** > **앱 등록** 영역에서 AAD 앱
 
 **인증** > **플랫폼 구성** > **SPA(단일 페이지 애플리케이션)** 에서 다음을 수행합니다.
 
-1. `https://localhost:{PORT}/authentication/login-callback`의 **리디렉션 URI**가 있는지 확인합니다.
-1. **암시적 허용**에서 **액세스 토큰** 및 **ID 토큰**의 확인란을 선택 **해제** 상태로 유지합니다.
+1. `https://localhost:{PORT}/authentication/login-callback`의 **리디렉션 URI** 가 있는지 확인합니다.
+1. **암시적 허용** 에서 **액세스 토큰** 및 **ID 토큰** 의 확인란을 선택 **해제** 상태로 유지합니다.
 1. 이 환경에서는 앱의 나머지 기본값을 그대로 사용해도 좋습니다.
 1. **저장** 단추를 선택합니다.
 
@@ -59,21 +68,21 @@ Azure Portal의 **Azure Active Directory** > **앱 등록** 영역에서 AAD 앱
 
 ::: moniker range="< aspnetcore-5.0"
 
-1. 앱의 **이름**을 지정합니다(예: **Blazor 독립 실행형 AAD**).
-1. **지원되는 계정 유형**을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만**을 선택합니다.
-1. **리디렉션 URI** 드롭다운은 **웹**으로 설정된 상태로 두고, 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다. Kestrel에서 실행되는 앱의 기본 포트는 5001입니다. 앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다. IIS Express의 경우, 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 앱 속성에서 확인할 수 있습니다. 이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요. 이 항목의 뒷부분에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.
+1. 앱의 **이름** 을 지정합니다(예: **Blazor 독립 실행형 AAD** ).
+1. **지원되는 계정 유형** 을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만** 을 선택합니다.
+1. **리디렉션 URI** 드롭다운은 **웹** 으로 설정된 상태로 두고, 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다. Kestrel에서 실행되는 앱의 기본 포트는 5001입니다. 앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다. IIS Express의 경우, 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 앱 속성에서 확인할 수 있습니다. 이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요. 이 항목의 뒷부분에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.
 1. **사용 권한**>**openid 및 offline_access 권한에 대한 관리자 동의 허용** 확인란을 선택 해제합니다.
-1. **등록**을 선택합니다.
+1. **등록** 을 선택합니다.
 
 다음과 같은 정보를 기록해 둡니다.
 
 * 애플리케이션(클라이언트) ID(예: `41451fa7-82d9-4673-8fa5-69eff5a761fd`)
 * 디렉터리(테넌트) ID(예: `e86c78e2-8bb4-4c41-aefd-918e0565a45e`)
 
-**인증** > **플랫폼 구성** > **웹**에서 다음을 수행합니다.
+**인증** > **플랫폼 구성** > **웹** 에서 다음을 수행합니다.
 
-1. `https://localhost:{PORT}/authentication/login-callback`의 **리디렉션 URI**가 있는지 확인합니다.
-1. **암시적 허용**에서는 **액세스 토큰** 및 **ID 토큰**의 확인란을 선택합니다.
+1. `https://localhost:{PORT}/authentication/login-callback`의 **리디렉션 URI** 가 있는지 확인합니다.
+1. **암시적 허용** 에서는 **액세스 토큰** 및 **ID 토큰** 의 확인란을 선택합니다.
 1. 이 환경에서는 앱의 나머지 기본값을 그대로 사용해도 좋습니다.
 1. **저장** 단추를 선택합니다.
 
@@ -94,7 +103,7 @@ dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" -o {APP NAME} --te
 `-o|--output` 옵션으로 지정된 출력 위치는 프로젝트 폴더가 없는 경우 폴더를 하나 만들고 앱 이름의 일부가 됩니다.
 
 > [!NOTE]
-> Azure Portal에서 앱의 플랫폼 구성 **리디렉션 URI**는 Kestrel 서버에서 기본 설정으로 실행되는 앱의 경우 포트 5001로 구성됩니다.
+> Azure Portal에서 앱의 플랫폼 구성 **리디렉션 URI** 는 Kestrel 서버에서 기본 설정으로 실행되는 앱의 경우 포트 5001로 구성됩니다.
 >
 > 앱이 임의의 IIS Express 포트에서 실행되는 경우 앱의 포트는 **디버그** 패널의 앱 속성에서 확인할 수 있습니다.
 >
@@ -124,7 +133,7 @@ dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" -o {APP NAME} --te
   Version="{VERSION}" />
 ```
 
-자리 표시자 `{VERSION}`의 경우 애플리케이션의 공유 프레임워크 버전과 일치하는 안정적인 최신 버전의 패키지를 [NuGet.org](https://www.nuget.org/packages/Microsoft.Authentication.WebAssembly.Msal)의 패키지 **버전 기록**에서 찾을 수 있습니다.
+자리 표시자 `{VERSION}`의 경우 애플리케이션의 공유 프레임워크 버전과 일치하는 안정적인 최신 버전의 패키지를 [NuGet.org](https://www.nuget.org/packages/Microsoft.Authentication.WebAssembly.Msal)의 패키지 **버전 기록** 에서 찾을 수 있습니다.
 
 [`Microsoft.Authentication.WebAssembly.Msal`](https://www.nuget.org/packages/Microsoft.Authentication.WebAssembly.Msal) 패키지는 타동적으로 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) 패키지를 앱에 추가합니다.
 

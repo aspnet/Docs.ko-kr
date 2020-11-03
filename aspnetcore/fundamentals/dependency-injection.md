@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 99e0109ea4c2526e9f91a8a4df23c4557e9be83a
-ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
+ms.openlocfilehash: 6f677cc4fc26eb9d50ab6e149b7363079ae756a9
+ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762310"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678560"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>ASP.NET Core에서 종속성 주입
 
@@ -32,6 +32,8 @@ ms.locfileid: "91762310"
 ASP.NET Core는 클래스와 해당 종속성 간의 [IoC(Inversion of Control)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion)를 실현하는 기술인 DI(종속성 주입) 소프트웨어 디자인 패턴을 지원합니다.
 
 MVC 컨트롤러 내의 종속성 주입에 대한 자세한 내용은 <xref:mvc/controllers/dependency-injection>을 참조하세요.
+
+콘솔 앱에서 종속성 삽입을 사용하는 방법에 관한 자세한 내용은 [.NET의 종속성 삽입](/dotnet/core/extensions/dependency-injection)을 참조하세요.
 
 옵션의 종속성 주입에 대한 자세한 내용은 <xref:fundamentals/configuration/options>를 참조하세요.
 
@@ -180,9 +182,9 @@ Scoped 수명 서비스는 클라이언트 요청(연결)당 한 번 생성됩�
 
 Entity Framework Core를 사용하는 경우 <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> 확장 메서드는 기본적으로 범위가 지정된 수명으로 `DbContext` 형식을 등록합니다.
 
-범위가 지정된 서비스를 싱글톤에서 해결하지 ***마세요***. 이 경우 후속 요청을 처리할 때 서비스가 잘못된 상태일 수 있습니다. 다음 작업은 괜찮습니다.
+singleton에서 범위가 지정된 서비스를 해결하지 * **마세요** ._ 예를 들어 임시 서비스를 통해 간접적으로 해결하지 않도록 주의해야 합니다. 이 경우 후속 요청을 처리할 때 서비스가 잘못된 상태일 수 있습니다. 다음 작업은 괜찮습니다.
 
-* 범위가 지정된 서비스 또는 임시 서비스에서 싱클톤 서비스를 해결합니다.
+_ 범위가 지정된 서비스 또는 임시 서비스에서 singleton 서비스를 해결합니다.
 * 다른 범위가 지정된 서비스 또는 임시 서비스에서 범위가 지정된 서비스를 해결합니다.
 
 기본적으로 개발 환경에서 수명이 더 긴 다른 서비스에서 서비스를 해결하면 예외가 throw됩니다. 자세한 내용은 [범위 유효성 검사](#sv)를 참조하세요.
@@ -208,7 +210,7 @@ Entity Framework Core를 사용하는 경우 <xref:Microsoft.Extensions.Dependen
 요청을 처리하는 앱에서 싱글톤 서비스는 애플리케이션 종료 시 <xref:Microsoft.Extensions.DependencyInjection.ServiceProvider>가 삭제될 때 삭제됩니다. 앱이 종료될 때까지 메모리가 해제되지 않으므로 싱글톤 서비스에서 메모리 사용을 고려합니다.
 
 > [!WARNING]
-> 범위가 지정된 서비스를 싱글톤에서 해결하지 ***마세요***. 이 경우 후속 요청을 처리할 때 서비스가 잘못된 상태일 수 있습니다. 범위가 지정된 서비스 또는 임시 서비스에서 싱글톤 서비스를 해결하는 것이 좋습니다.
+> singleton에서 범위가 지정된 서비스를 해결하지 * **마세요** ._ 이 경우 후속 요청을 처리할 때 서비스가 잘못된 상태일 수 있습니다. 범위가 지정된 서비스 또는 임시 서비스에서 싱글톤 서비스를 해결하는 것이 좋습니다.
 
 ## <a name="service-registration-methods"></a>서비스 등록 메서드
 
@@ -220,20 +222,52 @@ Entity Framework Core를 사용하는 경우 <xref:Microsoft.Extensions.Dependen
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------:|:---------------------------:|:---------:|
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<IMyDep, MyDep>();`                                                                             | 예                             | 예                         | 예        |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>예제:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep(99));` | 예                             | 예                         | 예       |
-| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<MyDep>();`                                                                                                | 예                             | 예                          | 아니요        |
+| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<MyDep>();`                                                                                                | 예                             | 아니요                          | 예        |
 | `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>예제:<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep(99));`                    | 예                              | 예                         | 예       |
 | `AddSingleton(new {IMPLEMENTATION})`<br>예제:<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep(99));`                                               | 예                              | 예                          | 예       |
 
 형식 삭제에 대한 자세한 내용은 [서비스의 삭제](#disposal-of-services) 섹션을 참조하세요. [테스트를 위한 형식을 모의할 때](xref:test/integration-tests#inject-mock-services) 여러 구현을 사용하는 것이 일반적입니다.
 
+구현 형식만으로 서비스를 등록하는 것은 동일한 구현 및 서비스 형식으로 해당 서비스를 등록하는 것과 같습니다. 따라서 명시적 서비스 형식을 사용하지 않는 메서드를 사용하여 서비스의 여러 구현을 등록할 수 없습니다. 이러한 메서드는 서비스의 여러 ‘인스턴스’를 등록할 수 있지만 모두 동일한 ‘구현’ 형식을 사용합니다.
+
+위의 서비스 등록 메서드 중 하나를 사용하여 동일한 서비스 형식의 여러 서비스 인스턴스를 등록할 수 있습니다. 다음 예제에서는 `IMyDependency`를 서비스 형식으로 사용하여 `AddSingleton`을 두 번 호출합니다. 두 번째 `AddSingleton` 호출은 `IMyDependency`로 확인되면 이전 호출을 재정의하고 `IEnumerable<IMyDependency>`를 통해 여러 서비스가 확인되면 이전 호출에 추가됩니다. 서비스는 `IEnumerable<{SERVICE}>`를 통해 해결될 때 등록된 순서로 나타납니다.
+
+```csharp
+services.AddSingleton<IMyDependency, MyDependency>();
+services.AddSingleton<IMyDependency, DifferentDependency>();
+
+public class MyService
+{
+    public MyService(IMyDependency myDependency, 
+       IEnumberable<IMyDependency> myDependencies)
+    {
+        Trace.Assert(myDependency is DifferentDependency);
+
+        var dependencyArray = myDependencies.ToArray();
+        Trace.Assert(dependencyArray[0] is MyDependency);
+        Trace.Assert(dependencyArray[1] is DifferentDependency);
+    }
+}
+```
+
 또한 프레임워크에서는 아직 등록된 구현이 없는 경우에만 서비스를 등록하는 `TryAdd{LIFETIME}` 확장 메서드를 제공합니다.
 
-다음 예제에서 `AddSingleton`을 호출하면 `MyDependency`가 `IMyDependency`에 대한 구현으로 등록됩니다. `TryAddSingleton`에 대한 호출은 `IMyDependency`에 이미 등록된 구현이 있으므로 아무런 효과가 없습니다.
+다음 예제에서 `AddSingleton`을 호출하면 `MyDependency`가 `IMyDependency`에 대한 구현으로 등록됩니다. `TryAddSingleton` 호출은 `IMyDependency`에 이미 등록된 구현이 있기 때문에 아무런 효과가 없습니다.
 
 ```csharp
 services.AddSingleton<IMyDependency, MyDependency>();
 // The following line has no effect:
 services.TryAddSingleton<IMyDependency, DifferentDependency>();
+
+public class MyService
+{
+    public MyService(IMyDependency myDependency, 
+        IEnumberable<IMyDependency> myDependencies)
+    {
+        Trace.Assert(myDependency is MyDependency);
+        Trace.Assert(myDependencies.Single() is MyDependency);
+    }
+}
 ```
 
 자세한 내용은 다음을 참조하세요.
@@ -480,7 +514,7 @@ ASP.NET Core 앱에서 사용할 수 있는 타사 컨테이너는 다음과 같
 
     ![잘못된 코드](dependency-injection/_static/bad.png)
 
-  **올바른 예**:
+  **올바른 예** :
 
   ```csharp
   public class MyClass
@@ -770,24 +804,56 @@ Scoped 수명 서비스(<xref:Microsoft.Extensions.DependencyInjection.ServiceCo
 
 서비스 등록 확장 메서드는 특정 시나리오에 유용한 오버로드를 제공합니다.
 
-| 방법 | 자동<br>개체<br>삭제 | 여러<br>구현 | 인수 전달 |
+| 메서드 | 자동<br>개체<br>삭제 | 여러<br>구현 | 인수 전달 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
-| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<IMyDep, MyDep>();` | 예 | 예 | 예 |
+| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<IMyDep, MyDep>();` | 예 | 예 | 아니요 |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>예제:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 예 | 예 | 예 |
-| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<MyDep>();` | 예 | 예 | 아니요 |
+| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<MyDep>();` | 예 | 예 | 예 |
 | `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>예제:<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 예 | 예 | 예 |
 | `AddSingleton(new {IMPLEMENTATION})`<br>예제:<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | 예 | 예 | 예 |
 
 형식 삭제에 대한 자세한 내용은 [서비스의 삭제](#disposal-of-services) 섹션을 참조하세요. 여러 구현에 대한 일반적인 시나리오는 [테스트용 모의 형식](xref:test/integration-tests#inject-mock-services)입니다.
 
-`TryAdd{LIFETIME}` 메서드는 등록된 구현이 아직 없는 경우에만 서비스를 등록합니다.
+구현 형식만으로 서비스를 등록하는 것은 동일한 구현 및 서비스 형식으로 해당 서비스를 등록하는 것과 같습니다. 따라서 명시적 서비스 형식을 사용하지 않는 메서드를 사용하여 서비스의 여러 구현을 등록할 수 없습니다. 이러한 메서드는 서비스의 여러 ‘인스턴스’를 등록할 수 있지만 모두 동일한 ‘구현’ 형식을 사용합니다. 
 
-다음 예제에서 첫 번째 줄은 `IMyDependency`에 대한 `MyDependency`를 등록합니다. 두 번째 줄은 `IMyDependency`에 이미 등록된 구현이 있으므로 아무런 효과가 없습니다.
+위의 서비스 등록 메서드 중 하나를 사용하여 동일한 서비스 형식의 여러 서비스 인스턴스를 등록할 수 있습니다. 다음 예제에서는 `IMyDependency`를 서비스 형식으로 사용하여 `AddSingleton`을 두 번 호출합니다. 두 번째 `AddSingleton` 호출은 `IMyDependency`로 확인되면 이전 호출을 재정의하고 `IEnumerable<IMyDependency>`를 통해 여러 서비스가 확인되면 이전 호출에 추가됩니다. 서비스는 `IEnumerable<{SERVICE}>`를 통해 해결될 때 등록된 순서로 나타납니다.
+
+```csharp
+services.AddSingleton<IMyDependency, MyDependency>();
+services.AddSingleton<IMyDependency, DifferentDependency>();
+
+public class MyService
+{
+    public MyService(IMyDependency myDependency, 
+       IEnumberable<IMyDependency> myDependencies)
+    {
+        Trace.Assert(myDependency is DifferentDependency);
+
+        var dependencyArray = myDependencies.ToArray();
+        Trace.Assert(dependencyArray[0] is MyDependency);
+        Trace.Assert(dependencyArray[1] is DifferentDependency);
+    }
+}
+```
+
+또한 프레임워크에서는 아직 등록된 구현이 없는 경우에만 서비스를 등록하는 `TryAdd{LIFETIME}` 확장 메서드를 제공합니다.
+
+다음 예제에서 `AddSingleton`을 호출하면 `MyDependency`가 `IMyDependency`에 대한 구현으로 등록됩니다. `TryAddSingleton` 호출은 `IMyDependency`에 이미 등록된 구현이 있기 때문에 아무런 효과가 없습니다.
 
 ```csharp
 services.AddSingleton<IMyDependency, MyDependency>();
 // The following line has no effect:
 services.TryAddSingleton<IMyDependency, DifferentDependency>();
+
+public class MyService
+{
+    public MyService(IMyDependency myDependency, 
+        IEnumberable<IMyDependency> myDependencies)
+    {
+        Trace.Assert(myDependency is MyDependency);
+        Trace.Assert(myDependencies.Single() is MyDependency);
+    }
+}
 ```
 
 자세한 내용은 다음을 참조하세요.
@@ -797,7 +863,7 @@ services.TryAddSingleton<IMyDependency, DifferentDependency>();
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddScoped*>
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddSingleton*>
 
-[TryAddEnumerable(ServiceDescriptor)](xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddEnumerable*) 메서드는 *동일한 형식*의 구현이 아직 없는 경우에만 서비스를 등록합니다. 여러 서비스가 `IEnumerable<{SERVICE}>`를 통해 해결됩니다. 서비스를 등록할 때 개발자는 동일한 유형 중 하나가 아직 추가되지 않은 경우에만 인스턴스를 추가하려고 합니다. 일반적으로 이 메서드는 라이브러리 작성자가 컨테이너에 두 개 복사본을 등록하지 않도록 하기 위해 사용됩니다.
+[TryAddEnumerable(ServiceDescriptor)](xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddEnumerable*) 메서드는 *동일한 형식* 의 구현이 아직 없는 경우에만 서비스를 등록합니다. 여러 서비스가 `IEnumerable<{SERVICE}>`를 통해 해결됩니다. 서비스를 등록할 때 개발자는 동일한 유형 중 하나가 아직 추가되지 않은 경우에만 인스턴스를 추가하려고 합니다. 일반적으로 이 메서드는 라이브러리 작성자가 컨테이너에 두 개 복사본을 등록하지 않도록 하기 위해 사용됩니다.
 
 다음 예제에서 첫 번째 줄은 `IMyDep1`에 대한 `MyDep`를 등록합니다. 두 번째 줄은 `IMyDep2`에 대한 `MyDep`를 등록합니다. 세 번째 줄은 `IMyDep1`에 이미 `MyDep`의 등록된 구현이 이미 있으므로 아무런 효과가 없습니다.
 
@@ -876,7 +942,7 @@ Scoped: 5d997e2d-55f5-4a64-8388-51c4e3a1ad19
 Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
 인스턴스: 00000000-0000-0000-0000-000000000000
 
-**두 번째 요청**:
+**두 번째 요청** :
 
 컨트롤러 작업:
 
@@ -1102,7 +1168,7 @@ ASP.NET Core 앱에서 사용할 수 있는 타사 컨테이너는 다음과 같
       }
       ```
    
-    **올바른 예**:
+    **올바른 예** :
 
     ```csharp
     public class MyClass
