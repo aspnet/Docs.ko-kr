@@ -5,7 +5,7 @@ description: Blazor WebAssembly에서 Azure Active Directory 그룹 및 역할�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: devx-track-csharp, mvc
-ms.date: 07/28/2020
+ms.date: 10/27/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: ac666a4c7493140d4ae93047e18202c3d8314c7b
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: 7a56f03f2c3acd08b009673ef7533186bf703604
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900702"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690466"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Azure Active Directory(AAD) 그룹, 관리자 역할, 사용자 정의 역할
 
@@ -45,17 +45,17 @@ AAD(Azure Active Directory)는 ASP.NET Core Identity와 결합할 수 있는 몇
 * [AAD를 사용하는 독립 실행형](xref:blazor/security/webassembly/standalone-with-azure-active-directory)
 * [AAD를 사용하는 호스트형](xref:blazor/security/webassembly/hosted-with-azure-active-directory)
 
-## <a name="microsoft-graph-api-permission"></a>Microsoft Graph API 권한
+## <a name="scopes"></a>범위
 
 5개 이상의 AAD 관리자 역할 및 보안 그룹 구성원 자격이 있는 앱 사용자에게는 [Microsoft Graph API](/graph/use-the-api) 호출이 필요합니다.
 
-Graph API 호출을 허용하려면 Azure Portal에서 호스트된 Blazor 솔루션의 독립 실행형 또는 *`Client`* 앱에 다음 [Graph API 권한](/graph/permissions-reference)을 제공합니다.
+Graph API 호출을 허용하려면 Azure Portal에서 호스트된 Blazor 솔루션의 독립 실행형 또는 *`Client`* 앱에 다음 [Graph API 권한(범위)](/graph/permissions-reference)을 지정합니다.
 
 * `Directory.Read.All`
 * `Directory.ReadWrite.All`
 * `Directory.AccessAsUser.All`
 
-`Directory.Read.All`은 최소 권한이며 이 문서에서 설명하는 예제에 사용되는 권한입니다.
+`Directory.Read.All`은 최소 권한 범위이며 이 문서에 설명된 예제에 사용되는 범위입니다.
 
 ## <a name="user-defined-groups-and-administrator-roles"></a>사용자 정의 그룹 및 관리자 역할
 
@@ -88,7 +88,145 @@ public class CustomUserAccount : RemoteUserAccount
 }
 ```
 
-호스트된 Blazor 솔루션의 독립 실행형 앱 또는 *`Client`* 앱에서 사용자 지정 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> 클래스를 만듭니다. 역할 및 그룹 정보를 가져오는 Graph API 호출에 올바른 범위(권한)를 사용합니다.
+::: moniker range=">= aspnetcore-5.0"
+
+다음 방법 중 **하나** 를 사용하여 AAD 그룹 및 역할에 대한 클레임을 만듭니다.
+
+* [Graph SDK 사용](#use-the-graph-sdk)
+* [명명된 `HttpClient` 사용](#use-a-named-httpclient)
+
+### <a name="use-the-graph-sdk"></a>Graph SDK 사용
+
+[`Microsoft.Graph`](https://www.nuget.org/packages/Microsoft.Graph)에 대해 호스트된 Blazor 솔루션의 독립 실행형 앱 또는 *`Client`* 앱에 패키지 참조를 추가합니다.
+
+<xref:blazor/security/webassembly/graph-api#graph-sdk> 문서의 *Graph SDK* 섹션에서 Graph SDK 유틸리티 클래스 및 구성을 추가합니다.
+
+호스트된 Blazor 솔루션(`CustomAccountFactory.cs`)의 독립 실행형 앱 또는 *`Client`* 앱에 다음 사용자 지정 사용자 계정 팩터리를 추가합니다. 사용자 지정 사용자 팩터리는 역할 및 그룹 클레임을 처리하는 데 사용됩니다. `roles` 클레임 배열은 [사용자 정의 역할](#user-defined-roles) 섹션에서 설명합니다. `hasgroups` 클레임이 있는 경우 Graph SDK를 사용하여 사용자의 역할 및 그룹을 가져올 수 있도록 Graph API에 권한 있는 요청을 합니다.
+
+```csharp
+using System;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication.Internal;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Graph;
+
+public class CustomAccountFactory
+    : AccountClaimsPrincipalFactory<CustomUserAccount>
+{
+    private readonly ILogger<CustomAccountFactory> logger;
+    private readonly IServiceProvider serviceProvider;
+
+    public CustomAccountFactory(IAccessTokenProviderAccessor accessor, 
+        IServiceProvider serviceProvider,
+        ILogger<CustomAccountFactory> logger)
+        : base(accessor)
+    {
+        this.serviceProvider = serviceProvider;
+        this.logger = logger;
+    }
+
+    public async override ValueTask<ClaimsPrincipal> CreateUserAsync(
+        CustomUserAccount account,
+        RemoteAuthenticationUserOptions options)
+    {
+        var initialUser = await base.CreateUserAsync(account, options);
+
+        if (initialUser.Identity.IsAuthenticated)
+        {
+            var userIdentity = (ClaimsIdentity)initialUser.Identity;
+
+            foreach (var role in account.Roles)
+            {
+                userIdentity.AddClaim(new Claim("role", role));
+            }
+
+            if (userIdentity.HasClaim(c => c.Type == "hasgroups"))
+            {
+                IUserMemberOfCollectionWithReferencesPage groupsAndAzureRoles = 
+                    null;
+
+                try
+                {
+                    var graphClient = ActivatorUtilities
+                        .CreateInstance<GraphServiceClient>(serviceProvider);
+                    var oid = userIdentity.Claims.FirstOrDefault(x => x.Type == "oid")?
+                        .Value;
+
+                    if (!string.IsNullOrEmpty(oid))
+                    {
+                        groupsAndAzureRoles = await graphClient.Users[oid].MemberOf
+                            .Request().GetAsync();
+                    }
+                }
+                catch (ServiceException serviceException)
+                {
+                    // Optional: Log the error
+                }
+
+                if (groupsAndAzureRoles != null)
+                {
+                    foreach (var entry in groupsAndAzureRoles)
+                    {
+                        userIdentity.AddClaim(new Claim("group", entry.Id));
+                    }
+                }
+
+                var claim = userIdentity.Claims.FirstOrDefault(
+                    c => c.Type == "hasgroups");
+
+                userIdentity.RemoveClaim(claim);
+            }
+            else
+            {
+                foreach (var group in account.Groups)
+                {
+                    userIdentity.AddClaim(new Claim("group", group));
+                }
+            }
+        }
+
+        return initialUser;
+    }
+}
+```
+
+위의 코드에는 전이적 멤버 자격이 포함되어 있지 않습니다. 앱에 직접 및 전이적 그룹 멤버 자격 클레임이 필요한 경우 다음을 수행합니다.
+
+* `groupsAndAzureRoles`에 대한 `IUserMemberOfCollectionWithReferencesPage` 형식을 `IUserTransitiveMemberOfCollectionWithReferencesPage`로 변경합니다.
+* 사용자의 그룹 및 역할을 요청하는 경우 `MemberOf` 속성을 `TransitiveMemberOf`로 바꿉니다.
+
+`Program.Main`(`Program.cs`)에서 사용자 지정 사용자 계정 팩터리를 사용하도록 MSAL 인증을 구성합니다. 앱에서 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount>를 확장하는 사용자 지정 사용자 계정 클래스를 사용하는 경우 다음 코드에서 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount>에 대한 사용자 지정 사용자 계정 클래스를 바꿉니다.
+
+```csharp
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using Microsoft.Extensions.Configuration;
+
+...
+
+builder.Services.AddMsalAuthentication<RemoteAuthenticationState, 
+    CustomUserAccount>(options =>
+{
+    builder.Configuration.Bind("AzureAd", 
+        options.ProviderOptions.Authentication);
+    options.ProviderOptions.DefaultAccessTokenScopes.Add("...");
+
+    options.ProviderOptions.AdditionalScopesToConsent.Add(
+        "https://graph.microsoft.com/Directory.Read.All");
+})
+.AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, CustomUserAccount, 
+    CustomUserFactory>();
+```
+
+### <a name="use-a-named-httpclient"></a>명명된 `HttpClient` 사용
+
+::: moniker-end
+
+호스트된 Blazor 솔루션의 독립 실행형 앱 또는 *`Client`* 앱에서 사용자 지정 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> 클래스를 만듭니다. 역할 및 그룹 정보를 가져오는 Graph API 호출에 올바른 범위를 사용합니다.
 
 `GraphAPIAuthorizationMessageHandler.cs`:
 
@@ -146,7 +284,7 @@ public class Value
 }
 ```
 
-역할 및 그룹 클레임을 처리하는 사용자 지정 사용자 팩터리를 만듭니다. 다음 예제 구현에서는 [사용자 정의 역할](#user-defined-roles) 섹션에서 설명하는 `roles` 클레임 배열도 처리합니다. `hasgroups` 클레임이 있는 경우 명명된 <xref:System.Net.Http.HttpClient>를 사용하여 사용자의 역할 및 그룹을 가져올 수 있도록 Graph API에 권한 있는 요청을 합니다. 이 구현에서는 Microsoft Identity Platform v1.0 엔드포인트`https://graph.microsoft.com/v1.0/me/memberOf`([API 설명서](/graph/api/user-list-memberof))를 사용합니다. 이 토픽의 지침은 MSAL 패키지가 v2.0으로 업그레이드될 때 Identity v2.0에 맞게 업데이트됩니다.
+역할 및 그룹 클레임을 처리하는 사용자 지정 사용자 팩터리를 만듭니다. 다음 예제 구현에서는 [사용자 정의 역할](#user-defined-roles) 섹션에서 설명하는 `roles` 클레임 배열도 처리합니다. `hasgroups` 클레임이 있는 경우 명명된 <xref:System.Net.Http.HttpClient>를 사용하여 사용자의 역할 및 그룹을 가져올 수 있도록 Graph API에 권한 있는 요청을 합니다. 이 구현에서는 Microsoft Identity Platform v1.0 엔드포인트`https://graph.microsoft.com/v1.0/me/memberOf`([API 설명서](/graph/api/user-list-memberof))를 사용합니다.
 
 `CustomAccountFactory.cs`:
 
@@ -221,7 +359,7 @@ public class CustomUserFactory
                 }
                 catch (AccessTokenNotAvailableException exception)
                 {
-                    logger.LogError("Graph API access token failure: {MESSAGE}", 
+                    logger.LogError("Graph API access token failure: {Message}", 
                         exception.Message);
                 }
             }
@@ -250,9 +388,14 @@ public class CustomUserFactory
 >
 > 이 방법에 대한 일반적인 설명은 <xref:blazor/security/webassembly/additional-scenarios#custom-authorizationmessagehandler-class> 문서에 있습니다.
 
-호스트된 Blazor 솔루션의 독립 실행형 앱 또는 *`Client`* 앱의 `Program.Main`(`Program.cs`)에 팩터리를 등록합니다. 앱의 추가 범위로 `Directory.Read.All` 권한 범위에 동의합니다.
+호스트된 Blazor 솔루션의 독립 실행형 앱 또는 *`Client`* 앱의 `Program.Main`(`Program.cs`)에 팩터리를 등록합니다. 앱의 추가 범위로 `Directory.Read.All` 범위에 동의합니다.
 
 ```csharp
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using Microsoft.Extensions.Configuration;
+
+...
+
 builder.Services.AddMsalAuthentication<RemoteAuthenticationState, 
     CustomUserAccount>(options =>
 {
@@ -266,6 +409,8 @@ builder.Services.AddMsalAuthentication<RemoteAuthenticationState,
 .AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, CustomUserAccount, 
     CustomUserFactory>();
 ```
+
+## <a name="authorization-configuration"></a>권한 부여 구성
 
 `Program.Main`의 그룹 또는 역할에 대해 [정책](xref:security/authorization/policies)을 만듭니다. 다음 예제에서는 AAD 대금 청구 관리자 역할에 대한 정책을 만듭니다.
 
@@ -352,24 +497,24 @@ AAD 역할 개체 ID의 전체 목록은 [AAD 관리자 역할 개체 ID](#aad-a
 
 서버 API는 클라이언트 쪽 WebAssembly 앱의 사용자에게 페이지와 리소스에 대한 액세스 권한을 부여하는 것 외에도 보안 API 엔드포인트에 대한 액세스 권한을 사용자에게 부여할 수 있습니다. 서버 앱이 사용자 액세스 토큰의 유효성을 검사한 후:
 
-* 앱은 JWT(`id_token`)에서 사용자의 변경 불가능한 [개체 식별자 클레임(`oid`)](/azure/active-directory/develop/id-tokens#payload-claims)을 사용하여 Graph API의 액세스 토큰을 얻습니다.
-* Graph API 호출은 사용자의 Azure 사용자 정의 보안 그룹 및 관리자 역할 멤버 자격을 얻습니다.
+* 서버 API 앱은 액세스 토큰에서 사용자의 변경 불가능한 [개체 식별자 클레임(`oid`)](/azure/active-directory/develop/id-tokens#payload-claims)을 사용하여 Graph API의 액세스 토큰을 가져옵니다.
+* Graph API 호출은 사용자에 대해 [`memberOf`](/graph/api/user-list-memberof)를 호출하여 사용자의 Azure 사용자 정의 보안 그룹 및 관리자 역할 멤버 자격을 가져옵니다.
 * 멤버 자격은 `group` 클레임을 설정하는 데 사용됩니다.
-* [권한 부여 정책](xref:security/authorization/policies)을 사용하여 서버 API 엔드포인트에 대한 사용자 액세스를 제한할 수 있습니다.
+* [권한 부여 정책](xref:security/authorization/policies)을 사용하여 앱 전체에서 서버 API 엔드포인트에 대한 사용자 액세스를 제한할 수 있습니다.
 
 > [!NOTE]
 > 이 지침에는 현재 [AAD 사용자 정의 역할](#user-defined-roles)을 기준으로 한 사용자 권한 부여가 포함되지 않습니다.
 
-### <a name="packages"></a>패키지
+이 섹션의 지침에서는 서버 API 앱을 Microsoft Graph API 호출에 대한 [‘디먼 앱’](/azure/active-directory/develop/scenario-daemon-overview)으로 구성합니다. 이 방법은 다음과 같은 특징이 있습니다.
 
-다음 패키지의 서버 앱에 패키지 참조를 추가합니다.
+* `access_as_user` 범위가 필요하지 않습니다.
+* API를 요청하는 사용자/클라이언트를 대신하여 Graph API에 액세스하지 않습니다.
 
-* [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)
-* [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages?q=Microsoft.IdentityModel.Clients.ActiveDirectory)
+서버 API 앱에서 Graph API를 호출하려면 Azure Portal의 `Directory.Read.All`에 대한 서버 API 앱 **애플리케이션** Graph API 범위만 필요합니다. 이 방법을 사용하면 클라이언트 앱이 서버 API에서 명시적으로 허용하지 않는 디렉터리 데이터에 액세스할 수 없습니다. 클라이언트 앱은 서버 API 앱의 컨트롤러 엔드포인트에만 액세스할 수 있습니다.
 
 ### <a name="azure-configuration"></a>Azure 구성
 
-* 서버 앱 등록에 `Directory.Read.All`(보안 그룹의 최소 권한 액세스 수준)을 위한 Graph API 권한에 대한 API 액세스 권한이 제공되었는지 확인합니다. 권한 할당을 수행한 후 관리자 동의가 권한에 적용되는지 확인합니다.
+* ‘서버’ 앱 등록에 보안 그룹의 최소 권한 액세스 수준인 `Directory.Read.All`에 대한 **애플리케이션** ( **위임** 이 아님) Graph API 범위가 지정되었는지 확인합니다. 범위 할당을 수행한 후 관리자 동의가 범위에 적용되는지 확인합니다.
 * 서버 앱에 새 클라이언트 암호를 할당합니다. [앱 설정](#app-settings) 섹션에서 앱 구성을 위한 암호를 확인합니다.
 
 ### <a name="app-settings"></a>앱 설정
@@ -397,6 +542,46 @@ AAD 역할 개체 ID의 전체 목록은 [AAD 관리자 역할 개체 ID](#aad-a
   "ClientSecret": "54uE~9a.-wW91fe8cRR25ag~-I5gEq_92~"
 },
 ```
+
+::: moniker range=">= aspnetcore-5.0"
+
+> [!NOTE]
+> 테넌트 게시자 도메인이 확인되지 않으면 사용자/클라이언트 액세스에 대한 서버 API 범위에서 `https://` 기반 URI를 사용합니다. 이 시나리오에서 서버 API 앱에는 `appsettings.json` 파일의 `Audience` 구성이 필요합니다. 다음 구성에서 `Audience` 값의 끝에는 기본 범위 `/{DEFAULT SCOPE}`가 포함되지 **않습니다**. 여기서 `{DEFAULT SCOPE}` 자리 표시자는 기본 범위입니다.
+>
+> ```json
+> {
+>   "AzureAd": {
+>     ...
+>
+>     "Audience": "https://{TENANT}.onmicrosoft.com/{SERVER API APP CLIENT ID OR CUSTOM VALUE}"
+>   }
+> }
+>
+> In the preceding configuration, the placeholder `{TENANT}` is the app's tenant, and the placeholder `{SERVER API APP CLIENT ID OR CUSTOM VALUE}` is the server API app's `ClientId` or custom value provided in the Azure portal's app registration.
+>
+> Example:
+>
+> ```json
+> {
+>   "AzureAd": {
+>     ...
+>
+>     "Audience": "https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd"
+>   }
+> }
+> ```
+>
+> 위의 예제 구성은 다음과 같습니다.
+>
+> * 테넌트 도메인은 `contoso.onmicrosoft.com`입니다.
+> * 서버 API 앱 `ClientId`는 `41451fa7-82d9-4673-8fa5-69eff5a761fd`입니다.
+>
+> > [!NOTE]
+> > 명시적으로 `Audience`를 구성하면 `api://` 기반 API 범위가 있는 확인된 게시자 도메인이 앱에 필요하지 **않습니다**.
+>
+> 자세한 내용은 <xref:blazor/security/webassembly/hosted-with-azure-active-directory#app-settings>를 참조하세요.
+
+::: moniker-end
 
 ### <a name="authorization-policies"></a>네임스페이스 수준에서 구성하는 권한 부여 정책도
 
@@ -430,12 +615,152 @@ public class BillingDataController : ControllerBase
 }
 ```
 
+::: moniker range=">= aspnetcore-5.0"
+
+### <a name="packages"></a>패키지
+
+다음 패키지의 서버 앱에 패키지 참조를 추가합니다.
+
+* [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)
+* [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)
+
+### <a name="services"></a>서비스
+
+‘서버’ 앱의 `Startup.ConfigureServices` 메서드에서, ‘서버’ 앱의 `Startup` 클래스에 있는 코드에는 추가 네임스페이스가 필요합니다.  다음 네임스페이스를 `Startup.cs`에 추가합니다.
+
+```csharp
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http.Headers;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.Graph;
+using Microsoft.Identity.Client;
+using Microsoft.IdentityModel.Logging;
+```
+
+<xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents>를 구성하는 경우:
+
+* 필요한 경우 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnAuthenticationFailed?displayProperty=nameWithType>에 대한 처리를 포함합니다. 예를 들어 앱은 실패한 인증을 로그할 수 있습니다.
+* <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated?displayProperty=nameWithType>에서 Graph API 호출을 실행하여 사용자의 그룹과 역할을 얻습니다.
+
+> [!WARNING]
+> <xref:Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII?displayProperty=nameWithType>는 로깅 메시지에 PII(개인 식별 정보)를 제공합니다. 테스트 사용자 계정을 사용하여 디버깅하는 경우에만 PII를 활성화하세요.
+
+`Startup.ConfigureServices`의 경우
+
+```csharp
+JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
+
+#if DEBUG
+IdentityModelEventSource.ShowPII = true;
+#endif
+
+var scopes = new string[] { "https://graph.microsoft.com/.default" };
+
+var app = ConfidentialClientApplicationBuilder.Create(Configuration["AzureAd:ClientId"])
+   .WithClientSecret(Configuration["AzureAd:ClientSecret"])
+   .WithAuthority(new Uri(Configuration["AzureAd:Instance"] + Configuration["AzureAd:Domain"]))
+   .Build();
+
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApi(options =>
+{
+    Configuration.Bind("AzureAd", options);
+
+    options.Events = new JwtBearerEvents()
+    {
+        OnTokenValidated = async context =>
+        {
+            var accessToken = context.SecurityToken as JwtSecurityToken;
+
+            var oid = accessToken.Claims.FirstOrDefault(x => x.Type == "oid")?
+                .Value;
+
+            if (!string.IsNullOrEmpty(oid))
+            {
+                var userIdentity = (ClaimsIdentity)context.Principal.Identity;
+
+                AuthenticationResult authResult = null;
+
+                try
+                {
+                    authResult = await app.AcquireTokenForClient(scopes)
+                        .ExecuteAsync();
+                }
+                catch (MsalUiRequiredException ex)
+                {
+                    // Optional: Log the exception
+                }
+                catch (MsalServiceException ex)
+                {
+                    // Optional: Log the exception
+                }
+
+                var graphClient = new GraphServiceClient(
+                    new DelegateAuthenticationProvider(async requestMessage => {
+                        requestMessage.Headers.Authorization =
+                            new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
+
+                        await Task.CompletedTask;
+                    }));
+
+                IUserMemberOfCollectionWithReferencesPage groupsAndAzureRoles = 
+                    null;
+
+                try
+                {
+                    groupsAndAzureRoles = await graphClient.Users[oid].MemberOf.Request()
+                        .GetAsync();
+                }
+                catch (ServiceException serviceException)
+                {
+                    // Optional: Log the exception
+                }
+
+                if (groupsAndAzureRoles != null)
+                {
+                    foreach (var entry in groupsAndAzureRoles)
+                    {
+                        userIdentity.AddClaim(new Claim("group", entry.Id));
+                    }
+                }
+            }
+
+            await Task.FromResult(0);
+        }
+    };
+}, 
+options =>
+{
+    Configuration.Bind("AzureAd", options);
+});
+```
+
+위의 코드에서 다음 토큰 오류 처리는 선택 사항입니다.
+
+* `MsalUiRequiredException`: 앱에 충분한 권한(범위)이 없습니다.
+  * Azure Portal의 서버 API 앱 범위에 `Directory.Read.All`에 대한 **애플리케이션** 권한이 포함되어 있는지 확인합니다.
+  * 테넌트 관리자가 앱에 대한 사용 권한을 부여했는지 확인합니다.
+* `MsalServiceException`(`AADSTS70011`): 범위가 `https://graph.microsoft.com/.default`인지 확인합니다.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+### <a name="packages"></a>패키지
+
+다음 패키지의 서버 앱에 패키지 참조를 추가합니다.
+
+* [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)
+* [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages?q=Microsoft.IdentityModel.Clients.ActiveDirectory)
+
 ### <a name="service-configuration"></a>서비스 구성
 
 서버 앱의 `Startup.ConfigureServices` 메서드는 Graph API 호출을 실행하는 논리를 추가하고 사용자의 보안 그룹 및 역할에 대한 사용자 `group` 클레임을 설정합니다.
 
 > [!NOTE]
-> 이 섹션의 예제 코드에서는 Microsoft Identity Platform v1.0을 기반으로 하는 ADAL(Active Directory 인증 라이브러리)을 사용합니다. .NET 5용 Identity v2.0의 경우 이 토픽이 업데이트될 예정입니다. [Blazor(dotnet/AspNetCore.Docs #19503)용 [RC1] Microsoft Identity Platform 2.0](https://github.com/dotnet/AspNetCore.Docs/issues/19503)을 모니터링하여 이 작업의 진행 상황을 추적하세요.
+> 이 섹션의 예제 코드에서는 Microsoft Identity Platform v1.0을 기반으로 하는 ADAL(Active Directory 인증 라이브러리)을 사용합니다.
 
 서버 앱의 `Startup` 클래스에 있는 코드에는 추가 네임스페이스가 필요합니다. 다음 `using` 문 집합에는 이 섹션 뒷부분에 나오는 코드의 필수 네임스페이스가 포함되어 있습니다.
 
@@ -483,16 +808,6 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 {
     options.Events = new JwtBearerEvents()
     {
-        OnAuthenticationFailed = context =>
-        {
-            // Optional: Log the exception
-
-#if DEBUG
-            Console.WriteLine($"OnAuthenticationFailed: {context.Exception}");
-#endif
-
-            return Task.FromResult(0);
-        },
         OnTokenValidated = async context =>
         {
             var accessToken = context.SecurityToken as JwtSecurityToken;
@@ -552,12 +867,6 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
                 catch (ServiceException serviceException)
                 {
                     // Optional: Log the error
-
-#if DEBUG
-                    Console.WriteLine(
-                        "OnTokenValidated: Service Exception: " +
-                        $"{serviceException.Message}");
-#endif
                 }
 
                 if (groupsAndAzureRoles != null)
@@ -567,15 +876,6 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
                         userIdentity.AddClaim(new Claim("group", entry.Id));
                     }
                 }
-            }
-            else
-            {
-                // Optional: Log missing OID claim
-
-#if DEBUG
-                Console.WriteLine($"OnTokenValidated: OID missing: " +
-                    $"{accessToken.RawData}");
-#endif
             }
 
             await Task.FromResult(0);
@@ -588,6 +888,8 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 * 액세스 토큰이 ADAL 토큰 캐시에 이미 저장되어 있을 수 있으므로 자동 토큰 획득(<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A>)이 먼저 시도됩니다. 새 토큰을 요청하는 것보다 캐시에서 토큰을 얻는 것이 더 빠릅니다.
 * 캐시에서 액세스 토큰을 획득하지 않는 경우(<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.FailedToAcquireTokenSilently?displayProperty=nameWithType> 또는 <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UserInteractionRequired?displayProperty=nameWithType>이 throw 됨) 클라이언트 자격 증명(<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential>)을 사용한 사용자 어설션(<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion>)을 통해 사용자를 대신하여 토큰을 얻습니다(<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync%2A>). 다음으로 `Microsoft.Graph.GraphServiceClient`가 토큰을 사용하여 Graph API 호출을 실행할 수 있습니다. 이 토큰은 ADAL 토큰 캐시에 저장됩니다. 향후 동일한 사용자에 대한 Graph API 호출의 경우 토큰은 <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A>와 함께 캐시에서 자동으로 획득됩니다.
+
+::: moniker-end
 
 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated>의 코드는 전이적 멤버 자격을 얻지 못합니다. 직접 및 전이적 멤버 자격을 얻도록 코드를 변경하려면 다음을 수행합니다.
 
