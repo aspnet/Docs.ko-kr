@@ -7,6 +7,7 @@ ms.author: shboyer
 ms.custom: mvc
 ms.date: 04/10/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: ac23f3f53bd7e200b843c10cd246ff16d4a12811
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0bae3f888a1b7a3c2860b85754779189c636d86f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634659"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057702"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Apache를 사용하여 Linux에서 ASP.NET Core 호스트
 
@@ -37,7 +38,7 @@ ms.locfileid: "88634659"
 * 서버에서 .NET Core 런타임을 설치합니다.
    1. [.NET Core 다운로드 페이지](https://dotnet.microsoft.com/download/dotnet-core)를 참조하세요.
    1. 미리 보기가 아닌 최신 .NET Core 버전을 선택합니다.
-   1. **앱 실행 - 런타임**에 있는 테이블에서 미리 보기가 아닌 최신 런타임을 다운로드합니다.
+   1. **앱 실행 - 런타임** 에 있는 테이블에서 미리 보기가 아닌 최신 런타임을 다운로드합니다.
    1. Linux **패키지 관리자 지침** 링크를 선택하고 CentOS 지침을 따릅니다.
 * 기존 ASP.NET Core 앱입니다.
 
@@ -52,7 +53,7 @@ ms.locfileid: "88634659"
 * 보안 로컬 연결을 처리하도록 앱을 구성합니다. 자세한 내용은 [HTTPS 구성](#https-configuration) 섹션을 참조하세요.
 * *Properties/launchSettings.json* 파일의 `applicationUrl` 속성에서 `https://localhost:5001`(있는 경우)을 제거합니다.
 
-서버에서 실행할 수 있는 디렉터리(예: *bin/Release/&lt;target_framework_moniker&gt;/publish*)로 앱을 패키징하기 위해 개발 환경에서 [dotnet publish](/dotnet/core/tools/dotnet-publish)를 실행합니다.
+서버에서 실행할 수 있는 디렉터리(예: *bin/Release/&lt;target_framework_moniker&gt;/publish* )로 앱을 패키징하기 위해 개발 환경에서 [dotnet publish](/dotnet/core/tools/dotnet-publish)를 실행합니다.
 
 ```dotnetcli
 dotnet publish --configuration Release
@@ -60,7 +61,7 @@ dotnet publish --configuration Release
 
 .NET Core 런타임을 서버에서 유지 관리하지 않으려는 경우 앱은 [자체 포함된 배포](/dotnet/core/deploying/#self-contained-deployments-scd)로 게시될 수도 있습니다.
 
-조직의 워크플로에 통합된 도구(예: SCP, SFTP)를 사용하여 ASP.NET Core 앱을 서버에 복사합니다. *var* 디렉터리(예: *var/www/helloapp*)에서 웹앱을 찾는 것이 일반적입니다.
+조직의 워크플로에 통합된 도구(예: SCP, SFTP)를 사용하여 ASP.NET Core 앱을 서버에 복사합니다. *var* 디렉터리(예: *var/www/helloapp* )에서 웹앱을 찾는 것이 일반적입니다.
 
 > [!NOTE]
 > 프로덕션 배포 시나리오에서 지속적인 통합 워크플로는 앱을 게시하고 자산을 서버로 복사하는 워크플로를 수행합니다.
@@ -144,7 +145,7 @@ Complete!
 
 Apache의 구성 파일은 `/etc/httpd/conf.d/` 디렉터리 내에 위치합니다. `/etc/httpd/conf.modules.d/`의 모듈 구성 파일 외에도 *.conf* 확장을 포함한 모든 파일은 알파벳순으로 처리됩니다. 여기에는 모듈을 로드하는 데 필요한 구성 파일도 포함됩니다.
 
-앱에 대해 *helloapp.conf*라는 구성 파일을 만듭니다.
+앱에 대해 *helloapp.conf* 라는 구성 파일을 만듭니다.
 
 ```
 <VirtualHost *:*>
@@ -184,7 +185,7 @@ sudo systemctl enable httpd
 
 ## <a name="monitor-the-app"></a>앱 모니터링
 
-이제 Apache는 `http://localhost:80`에 대해 실행된 요청을 `http://127.0.0.1:5000`의 Kestrel에서 실행되는 ASP.NET Core 앱에 전달하도록 설정됩니다. 그러나 Apache는 Kestrel 프로세스를 관리하도록 설정되지 않습니다. *systemd*를 사용하고 서비스 파일을 만들어 기본 웹앱을 시작하고 모니터링합니다. *systemd*는 프로세스를 시작, 중지 및 관리하기 위한 다양하고 강력한 기능을 제공하는 init 시스템입니다.
+이제 Apache는 `http://localhost:80`에 대해 실행된 요청을 `http://127.0.0.1:5000`의 Kestrel에서 실행되는 ASP.NET Core 앱에 전달하도록 설정됩니다. 그러나 Apache는 Kestrel 프로세스를 관리하도록 설정되지 않습니다. *systemd* 를 사용하고 서비스 파일을 만들어 기본 웹앱을 시작하고 모니터링합니다. *systemd* 는 프로세스를 시작, 중지 및 관리하기 위한 다양하고 강력한 기능을 제공하는 init 시스템입니다.
 
 ### <a name="create-the-service-file"></a>서비스 파일 만들기
 
@@ -217,7 +218,7 @@ WantedBy=multi-user.target
 
 앞의 예제에서 서비스를 관리하는 사용자는 `User` 옵션으로 지정됩니다. 사용자(`apache`)가 존재해야 하며 앱 파일에 대한 적절한 소유권이 있어야 합니다.
 
-`TimeoutStopSec`를 사용하여 초기 인터럽트 신호를 받은 후 앱이 종료되기를 기다리는 기간을 구성합니다. 이 기간 내에 앱이 종료되지 않으면 앱을 종료하기 위해 SIGKILL이 실행됩니다. 단위 없는 초로 된 값(예: `150`) 또는 시간 범위 값(예: `2min 30s`)으로 값을 입력하거나, 시간 제한을 사용하지 않으려면 `infinity`를 입력합니다. `TimeoutStopSec`의 기본값은 관리자 구성 파일(*systemd-system.conf*, *system.conf.d*, *systemd-user.conf*, *user.conf.d*)의 `DefaultTimeoutStopSec` 값입니다. 대부분의 배포에서 기본 시간 제한은 90초입니다.
+`TimeoutStopSec`를 사용하여 초기 인터럽트 신호를 받은 후 앱이 종료되기를 기다리는 기간을 구성합니다. 이 기간 내에 앱이 종료되지 않으면 앱을 종료하기 위해 SIGKILL이 실행됩니다. 단위 없는 초로 된 값(예: `150`) 또는 시간 범위 값(예: `2min 30s`)으로 값을 입력하거나, 시간 제한을 사용하지 않으려면 `infinity`를 입력합니다. `TimeoutStopSec`의 기본값은 관리자 구성 파일( *systemd-system.conf* , *system.conf.d* , *systemd-user.conf* , *user.conf.d* )의 `DefaultTimeoutStopSec` 값입니다. 대부분의 배포에서 기본 시간 제한은 90초입니다.
 
 ```
 # The default value is 90 seconds for most distributions.
@@ -265,7 +266,7 @@ Main PID: 9021 (dotnet)
             └─9021 /usr/local/bin/dotnet /var/www/helloapp/helloapp.dll
 ```
 
-역방향 프록시를 구성하고 *systemd*를 통해 Kestrel을 관리하면 웹앱이 완전히 구성되고 로컬 컴퓨터(`http://localhost`)의 브라우저에서 웹앱에 액세스할 수 있습니다. 응답 헤더를 검사하는 **Server** 헤더는 ASP.NET Core 앱이 Kestrel에서 제공됨을 나타냅니다.
+역방향 프록시를 구성하고 *systemd* 를 통해 Kestrel을 관리하면 웹앱이 완전히 구성되고 로컬 컴퓨터(`http://localhost`)의 브라우저에서 웹앱에 액세스할 수 있습니다. 응답 헤더를 검사하는 **Server** 헤더는 ASP.NET Core 앱이 Kestrel에서 제공됨을 나타냅니다.
 
 ```
 HTTP/1.1 200 OK
@@ -278,7 +279,7 @@ Transfer-Encoding: chunked
 
 ### <a name="view-logs"></a>로그 보기
 
-Kestrel을 사용하는 웹앱은 *systemd*를 사용하여 관리되므로 이벤트 및 프로세스가 중앙형 저널에 기록됩니다. 그러나 이 저널에는 *systemd*에서 관리하는 모든 서비스 및 프로세스에 대한 항목이 포함됩니다. `kestrel-helloapp.service` 관련 항목을 보려면 다음 명령을 사용합니다.
+Kestrel을 사용하는 웹앱은 *systemd* 를 사용하여 관리되므로 이벤트 및 프로세스가 중앙형 저널에 기록됩니다. 그러나 이 저널에는 *systemd* 에서 관리하는 모든 서비스 및 프로세스에 대한 항목이 포함됩니다. `kestrel-helloapp.service` 관련 항목을 보려면 다음 명령을 사용합니다.
 
 ```bash
 sudo journalctl -fu kestrel-helloapp.service
@@ -309,7 +310,7 @@ sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-
 
 ### <a name="configure-firewall"></a>방화벽 구성
 
-*Firewalld*는 네트워크 영역에 대한 지원을 통해 방화벽을 관리하는 동적 디먼입니다. 포트 및 패킷 필터링은 iptables로 계속 관리할 수 있습니다. *Firewalld*는 기본적으로 설치해야 합니다. `yum`을 사용하여 패키지를 설치하거나 설치되었는지 확인할 수 있습니다.
+*Firewalld* 는 네트워크 영역에 대한 지원을 통해 방화벽을 관리하는 동적 디먼입니다. 포트 및 패킷 필터링은 iptables로 계속 관리할 수 있습니다. *Firewalld* 는 기본적으로 설치해야 합니다. `yum`을 사용하여 패키지를 설치하거나 설치되었는지 확인할 수 있습니다.
 
 ```bash
 sudo yum install firewalld -y
@@ -349,7 +350,7 @@ rich rules:
 
 다음 방법 중 하나를 사용하여 `dotnet run` 명령 또는 개발 환경(Visual Studio Code의 F5 또는 Ctrl+F5)에 대해 개발 중인 인증서를 사용하도록 앱을 구성합니다.
 
-* [구성에서 기본 인증서를 바꿈](xref:fundamentals/servers/kestrel#configuration)(*권장*)
+* [구성에서 기본 인증서를 바꿈](xref:fundamentals/servers/kestrel#configuration)( *권장* )
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
 **보안 (HTTPS) 클라이언트 연결을 위해 역방향 프록시 구성**
@@ -394,7 +395,7 @@ sudo yum install mod_rewrite
 ```
 
 > [!NOTE]
-> 이 예제에서는 로컬로 생성된 인증서를 사용합니다. **SSLCertificateFile**은 도메인 이름에 대한 기본 인증서 파일이어야 합니다. **SSLCertificateKeyFile**은 CSR을 만들 때 생성된 키 파일이어야 합니다. **SSLCertificateChainFile**은 인증 기관에서 제공된 중간 인증서 파일(있는 경우)이어야 합니다.
+> 이 예제에서는 로컬로 생성된 인증서를 사용합니다. **SSLCertificateFile** 은 도메인 이름에 대한 기본 인증서 파일이어야 합니다. **SSLCertificateKeyFile** 은 CSR을 만들 때 생성된 키 파일이어야 합니다. **SSLCertificateChainFile** 은 인증 기관에서 제공된 중간 인증서 파일(있는 경우)이어야 합니다.
 
 파일을 저장하고 구성을 테스트합니다.
 
@@ -452,13 +453,13 @@ sudo nano /etc/httpd/conf/httpd.conf
 
 ### <a name="load-balancing"></a>부하 분산
 
-이 예제에서는 동일한 인스턴스 컴퓨터에서 CentOS 7와 Kestrel의 Apache를 설정하고 구성하는 방법을 보여줍니다. 단일 실패 지점이 없도록 하기 위해 *mod_proxy_balancer*를 사용하고 **VirtualHost**를 수정하면 Apache 프록시 서버 뒤에 있는 웹앱의 여러 인스턴스를 관리할 수 있습니다.
+이 예제에서는 동일한 인스턴스 컴퓨터에서 CentOS 7와 Kestrel의 Apache를 설정하고 구성하는 방법을 보여줍니다. 단일 실패 지점이 없도록 하기 위해 *mod_proxy_balancer* 를 사용하고 **VirtualHost** 를 수정하면 Apache 프록시 서버 뒤에 있는 웹앱의 여러 인스턴스를 관리할 수 있습니다.
 
 ```bash
 sudo yum install mod_proxy_balancer
 ```
 
-아래 표시된 구성 파일에서 `helloapp`의 추가 인스턴스는 포트 5001에서 실행되도록 설정됩니다. *Proxy* 섹션은 *byrequests*의 부하를 분산하는 두 개의 멤버가 있는 분산 장치 구성을 사용하여 설정됩니다.
+아래 표시된 구성 파일에서 `helloapp`의 추가 인스턴스는 포트 5001에서 실행되도록 설정됩니다. *Proxy* 섹션은 *byrequests* 의 부하를 분산하는 두 개의 멤버가 있는 분산 장치 구성을 사용하여 설정됩니다.
 
 ```
 <VirtualHost *:*>
@@ -498,7 +499,7 @@ sudo yum install mod_proxy_balancer
 
 ### <a name="rate-limits"></a>속도 제한
 
-*httpd* 모듈에 포함된 *mod_ratelimit*을 사용하여 클라이언트의 대역폭을 제한할 수 있습니다.
+*httpd* 모듈에 포함된 *mod_ratelimit* 을 사용하여 클라이언트의 대역폭을 제한할 수 있습니다.
 
 ```bash
 sudo nano /etc/httpd/conf.d/ratelimit.conf

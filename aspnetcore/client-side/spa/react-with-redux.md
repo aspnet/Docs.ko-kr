@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/13/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: spa/react-with-redux
-ms.openlocfilehash: ac5b5d7161e79f133a1f107251fa6707b752c568
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 9ae96b14f3f50d4079933bbd893ff95fa677d273
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628731"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054504"
 ---
 # <a name="use-the-react-with-redux-project-template-with-aspnet-core"></a>ASP.NET Core와 함께 React-with-Redux 프로젝트 템플릿 사용
 

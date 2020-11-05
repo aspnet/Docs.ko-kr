@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/configure-linker
-ms.openlocfilehash: 34582fdeb4951a110b03880887b978add07687f4
-ms.sourcegitcommit: 0cfada7cbcd8e76aba0ae70eb6bbbf4437f287cc
+ms.openlocfilehash: 0c99056053356133e901d6cf468fec8034dfb845
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90081639"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055830"
 ---
 # <a name="configure-the-linker-for-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor용 링커 구성
 

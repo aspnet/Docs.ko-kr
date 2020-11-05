@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: 68ecc4961401211f1304ac4a26fff1b31e4ad7eb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 2cfd200c44290a0931cdeb2f68e99b90c11aa612
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627340"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059821"
 ---
 # <a name="visual-studio-container-tools-with-aspnet-core"></a>ASP.NET Core를 포함한 Visual Studio 컨테이너 도구
 
@@ -39,18 +40,18 @@ Visual Studio 2017 이상 버전은 .NET Core를 대상으로 하는 컨테이�
 
 Docker를 설치하려면 우선 [Windows용 Docker 클라이언트에 있는 정보를 검토합니다. 설치하기 전에 알아야 할 사항](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)의 정보를 검토하세요. 다음으로 [Windows용 Docker](https://docs.docker.com/docker-for-windows/install/)를 설치합니다.
 
-Windows용 Docker에서 **[공유 드라이브](https://docs.docker.com/docker-for-windows/#shared-drives)** 는 볼륨 매핑 및 디버깅을 지원하도록 구성되어야 합니다. 시스템 트레이의 Docker 아이콘을 마우스 오른쪽 단추로 클릭하고 **설정**을 선택한 다음, **공유 드라이브**를 선택합니다. Docker에서 파일을 저장하는 드라이브를 선택합니다. **적용**을 클릭합니다.
+Windows용 Docker에서 **[공유 드라이브](https://docs.docker.com/docker-for-windows/#shared-drives)** 는 볼륨 매핑 및 디버깅을 지원하도록 구성되어야 합니다. 시스템 트레이의 Docker 아이콘을 마우스 오른쪽 단추로 클릭하고 **설정** 을 선택한 다음, **공유 드라이브** 를 선택합니다. Docker에서 파일을 저장하는 드라이브를 선택합니다. **적용** 을 클릭합니다.
 
 ![컨테이너에 로컬 C 드라이브 공유를 선택하는 대화 상자](visual-studio-tools-for-docker/_static/settings-shared-drives-win.png)
 
 > [!TIP]
-> Visual Studio 2017 버전 15.6 이상은 **공유 드라이브**가 구성되지 않은 경우 메시지를 표시합니다.
+> Visual Studio 2017 버전 15.6 이상은 **공유 드라이브** 가 구성되지 않은 경우 메시지를 표시합니다.
 
 ## <a name="add-a-project-to-a-docker-container"></a>Docker 컨테이너에 프로젝트 추가
 
 ASP.NET Core 프로젝트를 컨테이너화하려면 프로젝트가 .NET Core를 대상으로 해야 합니다. Linux 및 Windows 컨테이너가 둘 다 지원됩니다.
 
-프로젝트에 Docker 지원을 추가할 때 Windows 또는 Linux 컨테이너를 선택할 수 있습니다. Docker 호스트는 동일한 컨테이너 형식을 실행 중이어야 합니다. 실행 중인 Docker 인스턴스에서 컨테이너 형식을 변경하려면 시스템 트레이의 Docker 아이콘을 마우스 오른쪽 단추로 클릭하고 **Windows 컨테이너로 전환** 또는 **Linux 컨테이너로 전환**을 선택합니다.
+프로젝트에 Docker 지원을 추가할 때 Windows 또는 Linux 컨테이너를 선택할 수 있습니다. Docker 호스트는 동일한 컨테이너 형식을 실행 중이어야 합니다. 실행 중인 Docker 인스턴스에서 컨테이너 형식을 변경하려면 시스템 트레이의 Docker 아이콘을 마우스 오른쪽 단추로 클릭하고 **Windows 컨테이너로 전환** 또는 **Linux 컨테이너로 전환** 을 선택합니다.
 
 ### <a name="new-app"></a>새 앱
 
@@ -64,22 +65,22 @@ ASP.NET Core 프로젝트를 컨테이너화하려면 프로젝트가 .NET Core�
 
 .NET Core를 대상으로 하는 ASP.NET Core 프로젝트의 경우 도구를 통해 Docker 지원을 추가하는 두 가지 옵션이 있습니다. Visual Studio에서 프로젝트를 열고 다음 옵션 중 하나를 선택합니다.
 
-* **프로젝트** 메뉴에서 **Docker 지원**을 선택합니다.
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **Docker 지원**을 선택합니다.
+* **프로젝트** 메뉴에서 **Docker 지원** 을 선택합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **Docker 지원** 을 선택합니다.
 
 Visual Studio 컨테이너 도구는 .NET Framework를 대상으로 하는 기존 ASP.NET Core 프로젝트에 Docker 추가를 지원하지 않습니다.
 
 ## <a name="dockerfile-overview"></a>Dockerfile 개요
 
-최종 Docker 이미지를 만들기 위한 레시피인 *Dockerfile*은 프로젝트 루트에 추가됩니다. 그 안의 명령을 이해하려면 [Dockerfile 참조](https://docs.docker.com/engine/reference/builder/)를 참조하세요. 이 특정 *Dockerfile*은 빌드 단계라는 네 개의 단계를 통해 [다단계 빌드](https://docs.docker.com/engine/userguide/eng-image/multistage-build/)를 사용합니다.
+최종 Docker 이미지를 만들기 위한 레시피인 *Dockerfile* 은 프로젝트 루트에 추가됩니다. 그 안의 명령을 이해하려면 [Dockerfile 참조](https://docs.docker.com/engine/reference/builder/)를 참조하세요. 이 특정 *Dockerfile* 은 빌드 단계라는 네 개의 단계를 통해 [다단계 빌드](https://docs.docker.com/engine/userguide/eng-image/multistage-build/)를 사용합니다.
 
 ::: moniker range=">= aspnetcore-2.1"
 
 [!code-dockerfile[](visual-studio-tools-for-docker/samples/2.1/HelloDockerTools/Dockerfile.original?highlight=1,6,14,17)]
 
-앞의 *Dockerfile*은 [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) 이미지를 기반으로 합니다. 이 기본 이미지에는 ASP.NET Core 런타임 및 NuGet 패키지가 포함됩니다. 패키지는 시작 성능을 향상시키기 위해 JIT(Just-In-Time) 컴파일됩니다.
+앞의 *Dockerfile* 은 [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) 이미지를 기반으로 합니다. 이 기본 이미지에는 ASP.NET Core 런타임 및 NuGet 패키지가 포함됩니다. 패키지는 시작 성능을 향상시키기 위해 JIT(Just-In-Time) 컴파일됩니다.
 
-새 프로젝트 대화 상자의 **HTTPS에 대한 구성** 확인란이 선택되면 *Dockerfile*은 두 개의 포트를 노출합니다. 한 포트는 HTTP 트래픽에 사용되고 다른 포트는 HTTPS에 사용됩니다. 이 확인란을 선택하지 않으면 단일 포트(80)가 HTTP 트래픽에 노출됩니다.
+새 프로젝트 대화 상자의 **HTTPS에 대한 구성** 확인란이 선택되면 *Dockerfile* 은 두 개의 포트를 노출합니다. 한 포트는 HTTP 트래픽에 사용되고 다른 포트는 HTTPS에 사용됩니다. 이 확인란을 선택하지 않으면 단일 포트(80)가 HTTP 트래픽에 노출됩니다.
 
 ::: moniker-end
 
@@ -87,15 +88,15 @@ Visual Studio 컨테이너 도구는 .NET Framework를 대상으로 하는 기�
 
 [!code-dockerfile[](visual-studio-tools-for-docker/samples/2.0/HelloDockerTools/Dockerfile?highlight=1,5,13,16)]
 
-앞의 *Dockerfile*은 [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore/) 이미지를 기반으로 합니다. 이 기본 이미지는 시작 성능을 개선하기 위해 JIT(Just-In-Time) 컴파일된 ASP.NET Core NuGet 패키지를 포함합니다.
+앞의 *Dockerfile* 은 [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore/) 이미지를 기반으로 합니다. 이 기본 이미지는 시작 성능을 개선하기 위해 JIT(Just-In-Time) 컴파일된 ASP.NET Core NuGet 패키지를 포함합니다.
 
 ::: moniker-end
 
 ## <a name="add-container-orchestrator-support-to-an-app"></a>앱에 컨테이너 오케스트레이터 지원 추가
 
-Visual Studio 2017 버전 15.7 또는 이전 버전에서는 [Docker Compose](https://docs.docker.com/compose/overview/)를 단독 컨테이너 오케스트레이션 솔루션으로 지원합니다. Docker Compose 아티팩트는 **추가** > **Docker 지원**을 통해 추가됩니다.
+Visual Studio 2017 버전 15.7 또는 이전 버전에서는 [Docker Compose](https://docs.docker.com/compose/overview/)를 단독 컨테이너 오케스트레이션 솔루션으로 지원합니다. Docker Compose 아티팩트는 **추가** > **Docker 지원** 을 통해 추가됩니다.
 
-Visual Studio 2017 버전 15.8 또는 이후 버전에서는 지시하는 경우에만 오케스트레이션이 추가됩니다. **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **컨테이너 오케스트레이터 지원**을 선택합니다. 다음 중에서 선택할 수 있습니다. 
+Visual Studio 2017 버전 15.8 또는 이후 버전에서는 지시하는 경우에만 오케스트레이션이 추가됩니다. **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **컨테이너 오케스트레이터 지원** 을 선택합니다. 다음 중에서 선택할 수 있습니다. 
 
 * [Docker Compose](#docker-compose)
 * [Service Fabric](#service-fabric)
@@ -105,10 +106,10 @@ Visual Studio 2017 버전 15.8 또는 이후 버전에서는 지시하는 경우
 
 Visual Studio 컨테이너 도구는 다음 파일을 통해 솔루션에 *docker-compose* 프로젝트를 추가합니다.
 
-* *docker-compose.dcproj*: 프로젝트를 나타내는 파일입니다. 사용할 OS를 지정하는 `<DockerTargetOS>` 요소를 포함합니다.
-* *.dockerignore*: 빌드 컨텍스트를 생성할 때 제외할 파일 및 디렉터리 패턴을 나열합니다.
-* *docker-compose.yml*: `docker-compose build` 및 `docker-compose run`을 각각 사용하여 빌드하고 실행할 이미지 컬렉션을 정의하는 데 사용되는 기본 [Docker Compose](https://docs.docker.com/compose/overview/) 파일입니다.
-* *docker-compose.override.yml*: Docker Compose에서 읽은 선택적 파일로, 서비스에 대한 구성 재정의를 포함합니다. Visual Studio는 `docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml"`을 실행하여 이러한 파일을 병합합니다.
+* *docker-compose.dcproj* : 프로젝트를 나타내는 파일입니다. 사용할 OS를 지정하는 `<DockerTargetOS>` 요소를 포함합니다.
+* *.dockerignore* : 빌드 컨텍스트를 생성할 때 제외할 파일 및 디렉터리 패턴을 나열합니다.
+* *docker-compose.yml* : `docker-compose build` 및 `docker-compose run`을 각각 사용하여 빌드하고 실행할 이미지 컬렉션을 정의하는 데 사용되는 기본 [Docker Compose](https://docs.docker.com/compose/overview/) 파일입니다.
+* *docker-compose.override.yml* : Docker Compose에서 읽은 선택적 파일로, 서비스에 대한 구성 재정의를 포함합니다. Visual Studio는 `docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml"`을 실행하여 이러한 파일을 병합합니다.
 
 *docker-compose.yml* 파일에는 프로젝트를 실행할 때 생성되는 이미지의 이름을 참조합니다.
 
@@ -118,7 +119,7 @@ Visual Studio 컨테이너 도구는 다음 파일을 통해 솔루션에 *docke
 
 이미지가 레지스트리로 푸시되는 경우 이미지 이름 앞에 [Docker 허브](https://hub.docker.com/) 사용자 이름을 추가합니다(예: `dockerhubusername/hellodockertools`). 또는 구성에 따라 개인 레지스트리 URL을 포함하도록 이미지 이름을 변경합니다(예: `privateregistry.domain.com/hellodockertools`).
 
-빌드 구성(예: 디버그 또는 릴리스)에 따라 다른 동작을 원하는 경우 구성별 *docker-compose* 파일을 추가합니다. 파일은 빌드 구성에 따라 이름이 지정되어야(예: *docker-compose.vs.debug.yml* 및 *docker-compose.vs.release.yml*) 하며 *docker-compose-override.yml* 파일과 동일한 위치에 배치됩니다. 
+빌드 구성(예: 디버그 또는 릴리스)에 따라 다른 동작을 원하는 경우 구성별 *docker-compose* 파일을 추가합니다. 파일은 빌드 구성에 따라 이름이 지정되어야(예: *docker-compose.vs.debug.yml* 및 *docker-compose.vs.release.yml* ) 하며 *docker-compose-override.yml* 파일과 동일한 위치에 배치됩니다. 
 
 구성별 재정의 파일을 사용하여 디버그 및 릴리스 빌드 구성에 대해 서로 다른 구성 설정(예: 환경 변수 또는 진입점)을 지정할 수 있습니다.
 
@@ -136,7 +137,7 @@ Service Fabric은 Windows의 로컬 개발 클러스터에서 Linux 컨테이너
 Visual Studio 컨테이너 도구는 다음 작업을 수행합니다.
 
 * *&lt;project_name&gt;Application* **Service Fabric Application** 프로젝트를 솔루션에 추가합니다.
-* *Dockerfile* 및 *.dockerignore* 파일을 ASP.NET Core 프로젝트에 추가합니다. ASP.NET Core 프로젝트에 *Dockerfile*이 이미 있으면 *Dockerfile.original*로 이름이 변경됩니다. 다음과 유사한 새 *Dockerfile*이 만들어집니다.
+* *Dockerfile* 및 *.dockerignore* 파일을 ASP.NET Core 프로젝트에 추가합니다. ASP.NET Core 프로젝트에 *Dockerfile* 이 이미 있으면 *Dockerfile.original* 로 이름이 변경됩니다. 다음과 유사한 새 *Dockerfile* 이 만들어집니다.
 
     [!code-dockerfile[](visual-studio-tools-for-docker/samples/2.1/HelloDockerTools/Dockerfile)]
 
@@ -150,7 +151,7 @@ Visual Studio 컨테이너 도구는 다음 작업을 수행합니다.
 
 ## <a name="debug"></a>디버그
 
-도구 모음의 디버그 드롭다운에서 **Docker**를 선택하고 앱에서 디버깅을 시작합니다. **출력** 창의 **Docker** 뷰는 진행 중인 다음 작업을 표시합니다.
+도구 모음의 디버그 드롭다운에서 **Docker** 를 선택하고 앱에서 디버깅을 시작합니다. **출력** 창의 **Docker** 뷰는 진행 중인 다음 작업을 표시합니다.
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -160,7 +161,7 @@ Visual Studio 컨테이너 도구는 다음 작업을 수행합니다.
 * 앱이 컨테이너에 복사됩니다.
 * 컨테이너에 연결된 디버거와 함께 기본 브라우저가 시작되며 동적으로 할당된 포트를 사용합니다.
 
-앱의 최종 Docker 이미지는 *dev*로 태그가 지정됩니다. 이미지는 *microsoft/dotnet* 기본 이미지의 *2.1-aspnetcore-runtime* 태그를 기반으로 합니다. **패키지 관리자 콘솔**(PMC) 창에서 `docker images` 명령을 실행합니다. 컴퓨터의 이미지가 표시됩니다.
+앱의 최종 Docker 이미지는 *dev* 로 태그가 지정됩니다. 이미지는 *microsoft/dotnet* 기본 이미지의 *2.1-aspnetcore-runtime* 태그를 기반으로 합니다. **패키지 관리자 콘솔** (PMC) 창에서 `docker images` 명령을 실행합니다. 컴퓨터의 이미지가 표시됩니다.
 
 ```console
 REPOSITORY        TAG                     IMAGE ID      CREATED         SIZE
@@ -178,7 +179,7 @@ microsoft/dotnet  2.1-aspnetcore-runtime  fcc3887985bb  6 days ago      255MB
 * 앱이 컨테이너에 복사됩니다.
 * 컨테이너에 연결된 디버거와 함께 기본 브라우저가 시작되며 동적으로 할당된 포트를 사용합니다.
 
-앱의 최종 Docker 이미지는 *dev*로 태그가 지정됩니다. 이미지는 *microsoft/aspnetcore* 기본 이미지를 기반으로 합니다. **패키지 관리자 콘솔**(PMC) 창에서 `docker images` 명령을 실행합니다. 컴퓨터의 이미지가 표시됩니다.
+앱의 최종 Docker 이미지는 *dev* 로 태그가 지정됩니다. 이미지는 *microsoft/aspnetcore* 기본 이미지를 기반으로 합니다. **패키지 관리자 콘솔** (PMC) 창에서 `docker images` 명령을 실행합니다. 컴퓨터의 이미지가 표시됩니다.
 
 ```console
 REPOSITORY            TAG  IMAGE ID      CREATED        SIZE
@@ -211,7 +212,7 @@ baf9a678c88d        hellodockertools:dev   "C:\\remote_debugge..."   10 minutes 
 
 ## <a name="publish-docker-images"></a>Docker 이미지 게시
 
-앱의 개발 및 디버그 주기를 완료한 후 앱의 프로덕션 이미지를 만들 때 Visual Studio 컨테이너 도구를 사용할 수 있습니다. 구성 드롭다운을 **릴리스**로 변경하고 앱을 빌드합니다. 도구는 Docker 허브에서 compile/publish 이미지를 가져옵니다(캐시에 아직 없는 경우). ‘최신’ 태그로 이미지가 생성되면 이를 개인 레지스트리 또는 Docker 허브에 푸시할 수 있습니다.
+앱의 개발 및 디버그 주기를 완료한 후 앱의 프로덕션 이미지를 만들 때 Visual Studio 컨테이너 도구를 사용할 수 있습니다. 구성 드롭다운을 **릴리스** 로 변경하고 앱을 빌드합니다. 도구는 Docker 허브에서 compile/publish 이미지를 가져옵니다(캐시에 아직 없는 경우). ‘최신’ 태그로 이미지가 생성되면 이를 개인 레지스트리 또는 Docker 허브에 푸시할 수 있습니다.
 
 PMC에서 `docker images` 명령을 실행하여 이미지의 목록을 봅니다. 다음과 비슷한 출력이 표시됩니다.
 
@@ -242,7 +243,7 @@ microsoft/aspnetcore        2.0     c69d39472da9  13 days ago     347MB
 ::: moniker-end
 
 > [!NOTE]
-> `docker images` 명령은 *\<none>* (위에 나열되지 않음)으로 식별된 리포지토리 이름 및 태그로 매개자 이미지를 반환합니다. 이러한 이름이 지정되지 않는 이미지는 [다단계 빌드](https://docs.docker.com/engine/userguide/eng-image/multistage-build/) *Dockerfile*에 의해 생성됩니다. 최종 이미지 빌드의 효율성을 향상시키며&mdash;변경될 때 필요한 레이어만 다시 빌드됩니다. 더 이상 매개자 이미지가 필요하지 않은 경우 [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) 명령을 사용하여 삭제합니다.
+> `docker images` 명령은 *\<none>* (위에 나열되지 않음)으로 식별된 리포지토리 이름 및 태그로 매개자 이미지를 반환합니다. 이러한 이름이 지정되지 않는 이미지는 [다단계 빌드](https://docs.docker.com/engine/userguide/eng-image/multistage-build/) *Dockerfile* 에 의해 생성됩니다. 최종 이미지 빌드의 효율성을 향상시키며&mdash;변경될 때 필요한 레이어만 다시 빌드됩니다. 더 이상 매개자 이미지가 필요하지 않은 경우 [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) 명령을 사용하여 삭제합니다.
 
 *dev* 이미지와 비교하여 프로덕션 또는 릴리스 이미지의 크기가 작을 수 있습니다. 볼륨 매핑으로 인해 디버거 및 앱은 컨테이너 내부가 아닌 로컬 컴퓨터에서 실행되었습니다. *최신* 이미지는 호스트 컴퓨터에서 앱을 실행하는 데 필요한 앱 코드를 패키징했습니다. 따라서 델타는 앱 코드의 크기입니다.
 

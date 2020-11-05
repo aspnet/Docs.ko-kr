@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 16a0b264f8395670b02d091afd44e71d0dad4d0b
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 8e425d413471912c763c4892a90e9d12039efec4
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629355"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053984"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>자습서: 정렬, 필터링 및 페이징 추가 - ASP.NET MVC 및 EF Core 사용
 
@@ -52,7 +53,7 @@ Student 인덱스 페이지에 정렬을 추가하려면 Students 컨트롤러�
 
 ### <a name="add-sorting-functionality-to-the-index-method"></a>Index 메서드에 정렬 기능 추가
 
-*StudentsController.cs*에서 `Index` 메서드를 다음 코드로 바꿉니다.
+*StudentsController.cs* 에서 `Index` 메서드를 다음 코드로 바꿉니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly)]
 
@@ -79,7 +80,7 @@ Student 인덱스 페이지에 정렬을 추가하려면 Students 컨트롤러�
 
 ### <a name="add-column-heading-hyperlinks-to-the-student-index-view"></a>Student 인덱스 뷰에 열 제목 하이퍼링크 추가
 
-*Views/Students/Index.cshtml*에 있는 코드를 다음 코드로 바꾸어 열 제목 하이퍼링크를 추가합니다. 변경된 선이 강조 표시됩니다.
+*Views/Students/Index.cshtml* 에 있는 코드를 다음 코드로 바꾸어 열 제목 하이퍼링크를 추가합니다. 변경된 선이 강조 표시됩니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Index2.cshtml?highlight=16,22)]
 
@@ -95,7 +96,7 @@ Student 인덱스 페이지에 정렬을 추가하려면 Students 컨트롤러�
 
 ### <a name="add-filtering-functionality-to-the-index-method"></a>Index 메서드에 필터링 기능 추가
 
-*StudentsController.cs*에서 `Index` 메서드를 다음 코드로 바꿉니다(변경 내용이 강조 표시됨).
+*StudentsController.cs* 에서 `Index` 메서드를 다음 코드로 바꿉니다(변경 내용이 강조 표시됨).
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
 
@@ -108,7 +109,7 @@ Student 인덱스 페이지에 정렬을 추가하려면 Students 컨트롤러�
 
 ### <a name="add-a-search-box-to-the-student-index-view"></a>Students 인덱스 뷰에 검색 상자 추가
 
-*Views/Student/Index.cshtml*에서 캡션, 텍스트 상자 및 **검색** 단추를 만들기 위해 여는 테이블 태그 바로 앞에 강조 표시된 코드를 추가합니다.
+*Views/Student/Index.cshtml* 에서 캡션, 텍스트 상자 및 **검색** 단추를 만들기 위해 여는 테이블 태그 바로 앞에 강조 표시된 코드를 추가합니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
@@ -144,7 +145,7 @@ http://localhost:5813/Students?SearchString=an
 
 ## <a name="add-paging-to-index-method"></a>Index 메서드에 페이징 추가
 
-*StudentsController.cs*에서 `Index` 메서드를 다음 코드로 바꿉니다.
+*StudentsController.cs* 에서 `Index` 메서드를 다음 코드로 바꿉니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilterPage&highlight=1-5,7,11-18,45-46)]
 
@@ -187,7 +188,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 ## <a name="add-paging-links"></a>페이징 링크 추가
 
-*Views/Students/Index.cshtml*에서 기존 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
+*Views/Students/Index.cshtml* 에서 기존 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Index.cshtml?highlight=1,27,30,33,61-79)]
 
@@ -235,7 +236,7 @@ Contoso University 웹 사이트의 **정보** 페이지에는 각 등록 날짜
 
 ### <a name="modify-the-home-controller"></a>홈 컨트롤러 수정
 
-*HomeController.cs*에서 파일 맨 위에 다음 using 문을 추가합니다.
+*HomeController.cs* 에서 파일 맨 위에 다음 using 문을 추가합니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings1)]
 

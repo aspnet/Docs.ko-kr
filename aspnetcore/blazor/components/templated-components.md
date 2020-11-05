@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/18/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/templated-components
-ms.openlocfilehash: 74601905b7317ad8d9763fe0d747ba36bd0b1389
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: ee38040a1edc8db43b8d5bf0202fd519b153ea04
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393797"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056246"
 ---
 # <a name="aspnet-core-no-locblazor-templated-components"></a>ASP.NET Core Blazor 템플릿 기반 구성 요소
 

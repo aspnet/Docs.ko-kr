@@ -5,6 +5,7 @@ description: ASP.NET Core MVC를 시작하는 방법을 알아봅니다.
 ms.author: riande
 ms.date: 10/16/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 177112106d143a6826c1f927aac807da0aa9f2b4
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: cf17aaf8eff342c378536d4f635e09b936459bee
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113831"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052907"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 시작
 

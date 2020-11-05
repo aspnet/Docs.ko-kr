@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/css-isolation
-ms.openlocfilehash: c154e746c4c88fc919b2c0dddaea5fd585427a82
-ms.sourcegitcommit: d84a225ec3381355c343460deed50f2fa5722f60
+ms.openlocfilehash: 628e7dc897912beaae0df792b82958517ac70ca4
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92431827"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056324"
 ---
 # <a name="aspnet-core-no-locblazor-css-isolation"></a>ASP.NET Core Blazor CSS 격리
 
@@ -35,7 +36,7 @@ CSS 격리는 전역 스타일에 대한 종속성을 방지하여 앱의 CSS �
 
 구성 요소별 스타일을 정의하려면 구성 요소에 대한 `.razor` 파일의 이름과 일치하는 `razor.css` 파일을 만듭니다. 이 `razor.css` 파일은 ‘범위가 지정된 CSS 파일’입니다. 
 
-`MyComponent.razor` 파일이 있는 `MyComponent` 구성 요소에 대해서는 `MyComponent.razor.css`라는 구성 요소와 함께 파일을 만듭니다. `razor.css` 파일 이름의 `MyComponent` 값은 대/소문자를 구분하지 **않습니다** .
+`MyComponent.razor` 파일이 있는 `MyComponent` 구성 요소에 대해서는 `MyComponent.razor.css`라는 구성 요소와 함께 파일을 만듭니다. `razor.css` 파일 이름의 `MyComponent` 값은 대/소문자를 구분하지 **않습니다**.
 
 예를 들어 기본 Blazor 프로젝트 템플릿의 `Counter` 구성 요소에 CSS 격리를 추가하려면 `Counter.razor` 파일과 함께 `Counter.razor.css`라는 새 파일을 추가하고 다음 CSS를 추가합니다.
 
@@ -130,7 +131,7 @@ NuGet 패키지 또는 [Razor 클래스 라이브러리](xref:blazor/components/
 >
 > 이 시나리오에서 ASP.NET Core는 부모 구성 요소의 범위 식별자를 `div` 요소에 적용하므로 브라우저는 부모 구성 요소에서 스타일이 상속됨을 알고 있습니다.
 >
-> 그러나 `div` 요소를 제외하면 하위 항목 관계가 제거되고 스타일이 자식 구성 요소에 적용되지 **않습니다** .
+> 그러나 `div` 요소를 제외하면 하위 항목 관계가 제거되고 스타일이 자식 구성 요소에 적용되지 **않습니다**.
 >
 > ```razor
 > <h1>Parent</h1>

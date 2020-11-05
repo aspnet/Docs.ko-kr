@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: fabb0ed9c0f64a529b516d521d60a7d862e2654a
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 581a31bad4069523699fbbac63862c9dff12034d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754569"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054218"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>자습서: 상속 구현 - ASP.NET MVC 및 EF Core 사용
 
@@ -87,17 +88,17 @@ Models 폴더에서 Person.cs 만들고 템플릿 코드를 다음 코드로 바
 
 ## <a name="update-instructor-and-student"></a>강사 및 학생 업데이트
 
-*Instructor.cs*에서 Person 클래스에서 Instructor 클래스를 파생시키고 키 및 이름 필드를 제거합니다. 해당 코드는 다음 예제와 같이 나타납니다.
+*Instructor.cs* 에서 Person 클래스에서 Instructor 클래스를 파생시키고 키 및 이름 필드를 제거합니다. 해당 코드는 다음 예제와 같이 나타납니다.
 
 [!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_AfterInheritance&highlight=8)]
 
-*Student.cs*에서 동일하게 변경합니다.
+*Student.cs* 에서 동일하게 변경합니다.
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_AfterInheritance&highlight=8)]
 
 ## <a name="add-person-to-the-model"></a>모델에 개인 추가
 
-Person 엔터티 형식을 *SchoolContext.cs*에 추가합니다. 새 줄이 강조 표시됩니다.
+Person 엔터티 형식을 *SchoolContext.cs* 에 추가합니다. 새 줄이 강조 표시됩니다.
 
 [!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_AfterInheritance&highlight=19,30)]
 
@@ -113,7 +114,7 @@ dotnet ef migrations add Inheritance
 
 `database update` 명령을 아직 실행하지 마세요. 이 명령은 Instructor 테이블을 삭제하고 Student 테이블 이름을 Person으로 변경하므로 데이터가 손실됩니다. 기존 데이터를 유지하려면 사용자 지정 코드를 제공해야 합니다.
 
-*Migrations/\<timestamp>_Inheritance.cs*를 열고 `Up` 메서드를 다음 코드로 바꿉니다.
+*Migrations/\<timestamp>_Inheritance.cs* 를 열고 `Up` 메서드를 다음 코드로 바꿉니다.
 
 [!code-csharp[](intro/samples/cu/Migrations/20170216215525_Inheritance.cs?name=snippet_Up)]
 
@@ -154,11 +155,11 @@ dotnet ef database update
 
 앱을 실행하고 다양한 페이지를 시도해 봅니다. 모든 항목이 이전과 같이 작동합니다.
 
-**SQL Server 개체 탐색기**에서 **데이터 연결/SchoolContext**, **테이블**을 차례로 확장하면 Student 및 Instructor 테이블이 Person 테이블로 바뀐 것을 확인할 수 있습니다. Person 테이블 디자이너를 열면 Student 및 Instructor 테이블에 있던 모든 열이 나타나는 것을 알 수 있습니다.
+**SQL Server 개체 탐색기** 에서 **데이터 연결/SchoolContext** , **테이블** 을 차례로 확장하면 Student 및 Instructor 테이블이 Person 테이블로 바뀐 것을 확인할 수 있습니다. Person 테이블 디자이너를 열면 Student 및 Instructor 테이블에 있던 모든 열이 나타나는 것을 알 수 있습니다.
 
 ![SSOX에서 Person 테이블](inheritance/_static/ssox-person-table.png)
 
-Person 테이블을 마우스 오른쪽 단추로 클릭한 후 **테이블 데이터 표시**를 클릭하여 판별자 열을 표시합니다.
+Person 테이블을 마우스 오른쪽 단추로 클릭한 후 **테이블 데이터 표시** 를 클릭하여 판별자 열을 표시합니다.
 
 ![SSOX에서 Person 테이블 - 테이블 데이터](inheritance/_static/ssox-person-data.png)
 

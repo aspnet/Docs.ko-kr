@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/17/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 88c3ded79db65557d9426fde6f43aace4d9d8ae2
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: cd613b2b76b8e876786988fdcefc0e7275d3bf53
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606665"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056064"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>ASP.NET Core Blazor 양식 및 유효성 검사
 
@@ -224,7 +225,7 @@ public class Starship
 
 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>은 수정된 필드와 현재 유효성 검사 메시지를 포함하여 편집 프로세스에 대한 메타데이터를 추적하는 [계단식 값](xref:blazor/components/cascading-values-and-parameters)으로 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>를 만듭니다.
 
-****<xref:Microsoft.AspNetCore.Components.Forms.EditContext> **또는** <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType>을 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>에 할당합니다. 두 항목을 모두 할당할 수 없으며, 그러면 **런타임 오류**가 발생합니다.
+<xref:Microsoft.AspNetCore.Components.Forms.EditContext> **또는** <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType>을 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>에 할당합니다. 두 항목을 모두 할당할 수 없으며, 그러면 **런타임 오류** 가 발생합니다.
 
 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>은 유효한 양식 제출과 잘못된 양식 제출에 대한 편리한 이벤트를 제공합니다.
 
@@ -470,7 +471,7 @@ namespace BlazorSample.Client
 </ItemGroup>
 ```
 
-미리 보기가 아닌 최신 버전의 패키지를 확인하려면 [NuGet.org](https://www.nuget.org/packages/System.ComponentModel.Annotations)에서 패키지 **버전 기록**을 참조하세요.
+미리 보기가 아닌 최신 버전의 패키지를 확인하려면 [NuGet.org](https://www.nuget.org/packages/System.ComponentModel.Annotations)에서 패키지 **버전 기록** 을 참조하세요.
 
 서버 API 프로젝트에서 starship 유효성 검사 요청(`Controllers/StarshipValidation.cs`)을 처리하고 실패한 유효성 검사 메시지를 반환하는 컨트롤러를 추가합니다.
 
@@ -519,7 +520,7 @@ namespace BlazorSample.Server.Controllers
             }
             catch (Exception ex)
             {
-                logger.LogError("Validation Error: {MESSAGE}", ex.Message);
+                logger.LogError("Validation Error: {Message}", ex.Message);
             }
 
             return BadRequest(ModelState);
@@ -706,7 +707,7 @@ services.AddControllersWithViews()
         }
         catch (Exception ex)
         {
-            Logger.LogError("Form processing error: {MESSAGE}", ex.Message);
+            Logger.LogError("Form processing error: {Message}", ex.Message);
             disabled = true;
             messageStyles = "color:red";
             message = "There was an error processing the form.";
@@ -805,7 +806,7 @@ public Engine? Engine { get; set; } = null;
 앱에 다음 `enums`를 추가합니다. `enums`를 저장할 새 파일을 만들거나 `Starship.cs` 파일에 `enums`를 추가합니다. `Starship` 모델 및 ‘Starfleet Starship Database’ 양식에서 `enums`에 액세스할 수 있도록 만듭니다.
 
 ```csharp
-public enum Manufacturer { SpaceX, NASA, ULA, Virgin, Unknown }
+public enum Manufacturer { SpaceX, NASA, ULA, VirginGalactic, Unknown }
 public enum Color { ImperialRed, SpacecruiserGreen, StarshipBlue, VoyagerOrange }
 public enum Engine { Ion, Plasma, Fusion, Warp }
 ```

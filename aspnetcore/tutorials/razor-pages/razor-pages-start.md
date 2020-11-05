@@ -5,6 +5,7 @@ description: 이 자습서 시리즈는 ASP.NET Core에서 Razor Pages를 사용
 ms.author: riande
 ms.date: 11/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: db05b8243b91a936a6ed72b0445e0770d44df014
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ab890b956b1242f183054b7ab4575a59072b4f50
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634581"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060237"
 ---
 # <a name="tutorial-get-started-with-no-locrazor-pages-in-aspnet-core"></a>자습서: ASP.NET Core에서 Razor Pages 시작
 
@@ -67,13 +68,13 @@ ASP.NET Core Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설�
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트**를 선택합니다.
-* 새 ASP.NET Core 웹 애플리케이션을 만들고 **다음**을 선택합니다.
+* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트** 를 선택합니다.
+* 새 ASP.NET Core 웹 애플리케이션을 만들고 **다음** 을 선택합니다.
   ![새 ASP.NET Core 웹 애플리케이션](razor-pages-start/_static/np_2.1.png)
-* 프로젝트 이름을 **RazorPagesMovie**로 지정합니다. 코드를 복사하여 붙여 넣을 때 네임스페이스가 일치하도록 프로젝트 이름을 *RazorPagesMovie*로 지정해야 합니다.
+* 프로젝트 이름을 **RazorPagesMovie** 로 지정합니다. 코드를 복사하여 붙여 넣을 때 네임스페이스가 일치하도록 프로젝트 이름을 *RazorPagesMovie* 로 지정해야 합니다.
   ![새 ASP.NET Core 웹 애플리케이션](razor-pages-start/_static/config.png)
 
-* 드롭다운에서 **ASP.NET Core 3.1**을 선택하고 **웹 애플리케이션**을 선택한 다음, **만들기**를 선택합니다.
+* 드롭다운에서 **ASP.NET Core 3.1** 을 선택하고 **웹 애플리케이션** 을 선택한 다음, **만들기** 를 선택합니다.
 
 ![새 ASP.NET Core 웹 응용 프로그램](razor-pages-start/_static/3/npx.png)
 
@@ -97,28 +98,28 @@ ASP.NET Core Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설�
   * `dotnet new` 명령은 *RazorPagesMovie* 폴더에서 새 Razor Pages 프로젝트를 만듭니다.
   * `code` 명령은 Visual Studio Code의 현재 인스턴스에서 *RazorPagesMovie* 폴더를 엽니다.
 
-* 상태 표시줄의 OmniSharp 불꽃 아이콘이 녹색으로 바뀐 후 **빌드 및 디버그에 필요한 자산이 ‘RazorPagesMovie’에서 누락되었습니다. Add them?** 라는 대화 상자가 나타납니다. **Yes**를 선택합니다.
+* 상태 표시줄의 OmniSharp 불꽃 아이콘이 녹색으로 바뀐 후 **빌드 및 디버그에 필요한 자산이 ‘RazorPagesMovie’에서 누락되었습니다. Add them?** 라는 대화 상자가 나타납니다. **Yes** 를 선택합니다.
 
   *launch.json* 및 *tasks.json* 파일을 포함한 *.vscode* 디렉터리가 프로젝트의 루트 디렉터리에 추가됩니다.
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* **파일** > **새 솔루션**을 선택합니다.
+* **파일** > **새 솔루션** 을 선택합니다.
 
   ![macOS 새 솔루션](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-* Mac용 Visual Studio 버전 8.6 미만에서 **.NET Core** > **앱** > **웹 애플리케이션** > **다음**을 선택합니다. 버전 8.6 이상에서 **웹 및 콘솔** > **앱** > **웹 애플리케이션** > **다음**을 선택합니다.
+* Mac용 Visual Studio 버전 8.6 미만에서 **.NET Core** > **앱** > **웹 애플리케이션** > **다음** 을 선택합니다. 버전 8.6 이상에서 **웹 및 콘솔** > **앱** > **웹 애플리케이션** > **다음** 을 선택합니다.
 
   ![macOS 웹앱 템플릿 선택](razor-pages-start/_static/web_app_template_vsmac.png)
 
 * **새 웹 애플리케이션 구성** 대화 상자에서 다음을 수행합니다.
 
-  * **인증**이 **인증 없음**으로 설정되었는지 확인합니다.
-  * **대상 프레임워크**를 선택하는 옵션이 제공되는 경우 최신 3.x 버전을 선택합니다.
+  * **인증** 이 **인증 없음** 으로 설정되었는지 확인합니다.
+  * **대상 프레임워크** 를 선택하는 옵션이 제공되는 경우 최신 3.x 버전을 선택합니다.
 
-  **새로 만들기**를 선택합니다.
+  **새로 만들기** 를 선택합니다.
 
-* 프로젝트 이름을 **RazorPagesMovie**로 지정하고 **만들기**를 선택합니다.
+* 프로젝트 이름을 **RazorPagesMovie** 로 지정하고 **만들기** 를 선택합니다.
 
   ![macOS 프로젝트 이름 지정](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -211,17 +212,17 @@ HTML 파일, JavaScript 파일 및 CSS 파일과 같은 정적 파일을 포함�
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트**를 선택합니다.
+* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트** 를 선택합니다.
 
-* 새 ASP.NET Core 웹 애플리케이션을 만들고 **다음**을 선택합니다.
+* 새 ASP.NET Core 웹 애플리케이션을 만들고 **다음** 을 선택합니다.
 
   ![새 ASP.NET Core 웹 응용 프로그램](razor-pages-start/_static/np_2.1.png)
 
-* 프로젝트 이름을 **RazorPagesMovie**로 지정합니다. 코드를 복사하여 붙여 넣을 때 네임스페이스가 일치하도록 프로젝트 이름을 *RazorPagesMovie*로 지정해야 합니다.
+* 프로젝트 이름을 **RazorPagesMovie** 로 지정합니다. 코드를 복사하여 붙여 넣을 때 네임스페이스가 일치하도록 프로젝트 이름을 *RazorPagesMovie* 로 지정해야 합니다.
 
   ![새 ASP.NET Core 웹 응용 프로그램](razor-pages-start/_static/config.png)
 
-* 드롭다운에서 **ASP.NET Core 2.2**를 선택하고 **웹 애플리케이션**을 선택한 다음, **만들기**를 선택합니다.
+* 드롭다운에서 **ASP.NET Core 2.2** 를 선택하고 **웹 애플리케이션** 을 선택한 다음, **만들기** 를 선택합니다.
 
 ![새 ASP.NET Core 웹 응용 프로그램](razor-pages-start/_static/np_2_2.2.png)
 
@@ -245,26 +246,26 @@ HTML 파일, JavaScript 파일 및 CSS 파일과 같은 정적 파일을 포함�
   * `dotnet new` 명령은 *RazorPagesMovie* 폴더에서 새 Razor Pages 프로젝트를 만듭니다.
   * `code` 명령은 Visual Studio Code의 현재 인스턴스에서 *RazorPagesMovie* 폴더를 엽니다.
 
-* 상태 표시줄의 OmniSharp 불꽃 아이콘이 녹색으로 바뀐 후 **빌드 및 디버그에 필요한 자산이 ‘RazorPagesMovie’에서 누락되었습니다. Add them?** 라는 대화 상자가 나타납니다. **Yes**를 선택합니다.
+* 상태 표시줄의 OmniSharp 불꽃 아이콘이 녹색으로 바뀐 후 **빌드 및 디버그에 필요한 자산이 ‘RazorPagesMovie’에서 누락되었습니다. Add them?** 라는 대화 상자가 나타납니다. **Yes** 를 선택합니다.
 
   *launch.json* 및 *tasks.json* 파일을 포함한 *.vscode* 디렉터리가 프로젝트의 루트 디렉터리에 추가됩니다.
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* **파일** > **새 솔루션**을 선택합니다.
+* **파일** > **새 솔루션** 을 선택합니다.
 
 ![macOS 새 솔루션](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-* Mac용 Visual Studio 버전 8.6 미만에서 **.NET Core** > **앱** > **웹 애플리케이션** > **다음**을 선택합니다. 버전 8.6 이상에서 **웹 및 콘솔** > **앱** > **웹 애플리케이션** > **다음**을 선택합니다.
+* Mac용 Visual Studio 버전 8.6 미만에서 **.NET Core** > **앱** > **웹 애플리케이션** > **다음** 을 선택합니다. 버전 8.6 이상에서 **웹 및 콘솔** > **앱** > **웹 애플리케이션** > **다음** 을 선택합니다.
 
 * **새 웹 애플리케이션 구성** 대화 상자에서 다음을 수행합니다.
 
-  * **인증**이 **인증 없음**으로 설정되었는지 확인합니다.
-  * **대상 프레임워크**를 선택하는 옵션이 제공되는 경우 최신 2.x 버전을 선택합니다.
+  * **인증** 이 **인증 없음** 으로 설정되었는지 확인합니다.
+  * **대상 프레임워크** 를 선택하는 옵션이 제공되는 경우 최신 2.x 버전을 선택합니다.
 
-  **새로 만들기**를 선택합니다.
+  **새로 만들기** 를 선택합니다.
 
-* 프로젝트 이름을 **RazorPagesMovie**로 지정하고 **만들기**를 선택합니다.
+* 프로젝트 이름을 **RazorPagesMovie** 로 지정하고 **만들기** 를 선택합니다.
 
   ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -282,7 +283,7 @@ HTML 파일, JavaScript 파일 및 CSS 파일과 같은 정적 파일을 포함�
 
   Visual Studio가 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)를 시작하고 앱을 실행합니다. 주소 표시줄에는 `localhost:port#`이 표시되고 `example.com` 같은 주소는 표시되지 않습니다. `localhost`가 로컬 컴퓨터의 표준 호스트 이름이기 때문입니다. Localhost는 로컬 컴퓨터의 웹 요청만 지원합니다. Visual Studio에서 웹 프로젝트를 만들 경우 웹 서버에 임의 포트가 사용됩니다.
 
-* 앱의 홈페이지에서 **승인**을 선택하여 추적에 동의합니다.
+* 앱의 홈페이지에서 **승인** 을 선택하여 추적에 동의합니다.
 
   이 앱은 개인 정보를 추적하지 않지만 유럽 연합의 [GDPR(일반 데이터 보호 규정)](xref:security/gdpr)을 준수하기 위해 필요한 경우 프로젝트 템플릿에는 동의 기능이 포함됩니다.
 
@@ -300,7 +301,7 @@ HTML 파일, JavaScript 파일 및 CSS 파일과 같은 정적 파일을 포함�
 
   Visual Studio Code가 [Kestrel](xref:fundamentals/servers/kestrel)을 시작하고, 브라우저를 시작하고, `http://localhost:5001`로 이동합니다. 주소 표시줄에는 `localhost:port#`이 표시되고 `example.com` 같은 주소는 표시되지 않습니다. 그 이유는 `localhost`가 로컬 컴퓨터의 표준 이름이기 때문입니다. Localhost는 로컬 컴퓨터의 웹 요청만 지원합니다.
 
-* 앱의 홈페이지에서 **승인**을 선택하여 추적에 동의합니다.
+* 앱의 홈페이지에서 **승인** 을 선택하여 추적에 동의합니다.
 
   이 앱은 개인 정보를 추적하지 않지만 유럽 연합의 [GDPR(일반 데이터 보호 규정)](xref:security/gdpr)을 준수하기 위해 필요한 경우 프로젝트 템플릿에는 동의 기능이 포함됩니다.
 
@@ -314,11 +315,11 @@ HTML 파일, JavaScript 파일 및 CSS 파일과 같은 정적 파일을 포함�
 
   [!INCLUDE[](~/includes/trustCertMac.md)]
 
-* 디버거 없이 실행하려면 **Cmd-Opt-F5**를 누릅니다.
+* 디버거 없이 실행하려면 **Cmd-Opt-F5** 를 누릅니다.
 
   Visual Studio가 [Kestrel](xref:fundamentals/servers/kestrel)을 시작하고, 브라우저를 시작하고, `http://localhost:5001`으로 이동합니다.
 
-* 앱의 홈페이지에서 **승인**을 선택하여 추적에 동의합니다.
+* 앱의 홈페이지에서 **승인** 을 선택하여 추적에 동의합니다.
 
   이 앱은 개인 정보를 추적하지 않지만 유럽 연합의 [GDPR(일반 데이터 보호 규정)](xref:security/gdpr)을 준수하기 위해 필요한 경우 프로젝트 템플릿에는 동의 기능이 포함됩니다.
 

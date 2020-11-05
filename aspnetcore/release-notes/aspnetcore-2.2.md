@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.2
-ms.openlocfilehash: 085a26d508af5bdce506ab923a3256046b3894ab
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 67581904c686b0f8b6736b751c8e3f1545f6a286
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722490"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059704"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>ASP.NET Core 2.2의 새로운 기능
 
@@ -49,7 +50,7 @@ ASP.NET Core 2.2는 요청 디스패치를 향상시키기 위해 새로운 *엔
 자세한 내용은 다음 자료를 참조하세요.
 
 * [2.2의 엔드포인트 라우팅](https://blogs.msdn.microsoft.com/webdev/2018/08/27/asp-net-core-2-2-0-preview1-endpoint-routing/)
-* [경로 매개 변수 변환기](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx)(**라우팅** 섹션 참조)
+* [경로 매개 변수 변환기](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx)( **라우팅** 섹션 참조)
 * [IRouter 기반 라우팅과 엔드포인트 기반 라우팅의 차이점](xref:fundamentals/routing?view=aspnetcore-2.2#differences-from-earlier-versions-of-routing)
 
 ## <a name="health-checks"></a>상태 확인
@@ -86,7 +87,7 @@ HTTP/2는 HTTP의 의미 체계(예: HTTP 헤더 및 메서드)를 유지하지�
 
 ## <a name="iis-in-process-hosting"></a>IIS In-process 호스팅
 
-이전 버전의 ASP.NET Core에서 IIS는 역방향 프록시 역할을 합니다. 2\.2에서 ASP.NET Core 모듈은 CoreCLR을 부팅하고 IIS 작업자 프로세스(*w3wp.exe*) 내부에서 앱을 호스팅할 수 있습니다. In-process 호스팅은 IIS로 실행할 때 성능 및 진단 이득을 제공합니다.
+이전 버전의 ASP.NET Core에서 IIS는 역방향 프록시 역할을 합니다. 2\.2에서 ASP.NET Core 모듈은 CoreCLR을 부팅하고 IIS 작업자 프로세스( *w3wp.exe* ) 내부에서 앱을 호스팅할 수 있습니다. In-process 호스팅은 IIS로 실행할 때 성능 및 진단 이득을 제공합니다.
 
 자세한 내용은 [IIS에 대한 In-process 호스팅](xref:host-and-deploy/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model)을 참조하세요.
 

@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 08/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/test-tools
-ms.openlocfilehash: 800b320413552e73f05e0359e67eeb2caf4e0e2a
-ms.sourcegitcommit: 9c031530d2e652fe422e786bd43392bc500d622f
+ms.openlocfilehash: d8d12c34a54b278e0b116f964e120047b1d2d5d1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2020
-ms.locfileid: "90770170"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058794"
 ---
 # <a name="test-grpc-services-with-grpcurl-in-aspnet-core"></a>ASP.NET Core에서 gRPCurl을 사용하여 gRPC 서비스 테스트
 

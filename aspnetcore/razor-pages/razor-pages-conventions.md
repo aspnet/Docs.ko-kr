@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: fc639178fc29438e16ad0989e61bd8dd32cf7590
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 2947bf0b697ca01f17d260b9f31aa3cc79d457b6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625494"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059873"
 ---
 # <a name="no-locrazor-pages-route-and-app-conventions-in-aspnet-core"></a>ASP.NET Core에서 Razor Pages 경로 및 앱 규칙
 
@@ -127,7 +128,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Conventions/GlobalHeaderPageApplicationModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -141,7 +142,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Conventions/GlobalPageHandlerModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet10)]
 
@@ -185,7 +186,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 ASP.NET Core에서 생성된 페이지 경로는 매개 변수 변환기를 사용하여 사용자 지정할 수 있습니다. 매개 변수 변환기는 `IOutboundParameterTransformer`를 구현하며 매개 변수의 값을 변환합니다. 예를 들어 사용자 지정 `SlugifyParameterTransformer` 매개 변수 변환기는 `SubscriptionManagement` 경로 값을 `subscription-management`로 변경합니다.
 
-`PageRouteTransformerConvention` 페이지 경로 모델 규칙은 앱에서 자동으로 생성된 페이지 경로의 폴더 및 파일 이름 세그먼트에 매개 변수 변환기를 적용합니다. 예를 들어 */Pages/SubscriptionManagement/ViewAll.cshtml*의 Razor Pages 파일은 경로가 `/SubscriptionManagement/ViewAll`에서 `/subscription-management/view-all`로 다시 작성됩니다.
+`PageRouteTransformerConvention` 페이지 경로 모델 규칙은 앱에서 자동으로 생성된 페이지 경로의 폴더 및 파일 이름 세그먼트에 매개 변수 변환기를 적용합니다. 예를 들어 */Pages/SubscriptionManagement/ViewAll.cshtml* 의 Razor Pages 파일은 경로가 `/SubscriptionManagement/ViewAll`에서 `/subscription-management/view-all`로 다시 작성됩니다.
 
 `PageRouteTransformerConvention`은 Razor Pages 폴더 및 파일 이름에서 가져온 자동으로 생성된 페이지 경로 세그먼트만 변환합니다. `@page` 지시문을 사용하여 추가된 경로 세그먼트는 변환하지 않습니다. 또한 이 규칙은 <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>에 의해 추가된 경로를 변환하지 않습니다.
 
@@ -211,7 +212,7 @@ public void ConfigureServices(IServiceCollection services)
 
 <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>를 사용하여 지정된 페이지 경로에 페이지에 대한 경로를 구성합니다. 페이지에 생성된 링크는 지정된 경로를 사용합니다. `AddPageRoute`는 `AddPageRouteModelConvention`을 사용하여 경로를 설정합니다.
 
-샘플 앱은 *Contact.cshtml*의 `/TheContactPage`에 대한 경로를 만듭니다.
+샘플 앱은 *Contact.cshtml* 의 `/TheContactPage`에 대한 경로를 만듭니다.
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet5)]
 
@@ -287,7 +288,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet9)]
 
-*AddHeaderWithFactory.cs*:
+*AddHeaderWithFactory.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Factories/AddHeaderWithFactory.cs?name=snippet1)]
 
@@ -409,7 +410,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalHeaderPageApplicationModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -423,7 +424,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalPageHandlerModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet10)]
 
@@ -467,7 +468,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 ASP.NET Core에서 생성된 페이지 경로는 매개 변수 변환기를 사용하여 사용자 지정할 수 있습니다. 매개 변수 변환기는 `IOutboundParameterTransformer`를 구현하며 매개 변수의 값을 변환합니다. 예를 들어 사용자 지정 `SlugifyParameterTransformer` 매개 변수 변환기는 `SubscriptionManagement` 경로 값을 `subscription-management`로 변경합니다.
 
-`PageRouteTransformerConvention` 페이지 경로 모델 규칙은 앱에서 자동으로 생성된 페이지 경로의 폴더 및 파일 이름 세그먼트에 매개 변수 변환기를 적용합니다. 예를 들어 */Pages/SubscriptionManagement/ViewAll.cshtml*의 Razor Pages 파일은 경로가 `/SubscriptionManagement/ViewAll`에서 `/subscription-management/view-all`로 다시 작성됩니다.
+`PageRouteTransformerConvention` 페이지 경로 모델 규칙은 앱에서 자동으로 생성된 페이지 경로의 폴더 및 파일 이름 세그먼트에 매개 변수 변환기를 적용합니다. 예를 들어 */Pages/SubscriptionManagement/ViewAll.cshtml* 의 Razor Pages 파일은 경로가 `/SubscriptionManagement/ViewAll`에서 `/subscription-management/view-all`로 다시 작성됩니다.
 
 `PageRouteTransformerConvention`은 Razor Pages 폴더 및 파일 이름에서 가져온 자동으로 생성된 페이지 경로 세그먼트만 변환합니다. `@page` 지시문을 사용하여 추가된 경로 세그먼트는 변환하지 않습니다. 또한 이 규칙은 <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>에 의해 추가된 경로를 변환하지 않습니다.
 
@@ -501,7 +502,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>를 사용하여 지정된 페이지 경로에 페이지에 대한 경로를 구성합니다. 페이지에 생성된 링크는 지정된 경로를 사용합니다. `AddPageRoute`는 `AddPageRouteModelConvention`을 사용하여 경로를 설정합니다.
 
-샘플 앱은 *Contact.cshtml*의 `/TheContactPage`에 대한 경로를 만듭니다.
+샘플 앱은 *Contact.cshtml* 의 `/TheContactPage`에 대한 경로를 만듭니다.
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet5)]
 
@@ -577,7 +578,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet9)]
 
-*AddHeaderWithFactory.cs*:
+*AddHeaderWithFactory.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Factories/AddHeaderWithFactory.cs?name=snippet1)]
 
@@ -699,7 +700,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalHeaderPageApplicationModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -713,7 +714,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalPageHandlerModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet10)]
 
@@ -757,7 +758,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>를 사용하여 지정된 페이지 경로에 페이지에 대한 경로를 구성합니다. 페이지에 생성된 링크는 지정된 경로를 사용합니다. `AddPageRoute`는 `AddPageRouteModelConvention`을 사용하여 경로를 설정합니다.
 
-샘플 앱은 *Contact.cshtml*의 `/TheContactPage`에 대한 경로를 만듭니다.
+샘플 앱은 *Contact.cshtml* 의 `/TheContactPage`에 대한 경로를 만듭니다.
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet5)]
 
@@ -833,7 +834,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet9)]
 
-*AddHeaderWithFactory.cs*:
+*AddHeaderWithFactory.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Factories/AddHeaderWithFactory.cs?name=snippet1)]
 

@@ -5,6 +5,7 @@ description: Razor Pages에 대한 자습서 시리즈의 6부입니다.
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 5e899929372697f7a381cd493655309fa3f70f79
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 960f60198f5e65ed05d0374fd0704537376d27d6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633853"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058092"
 ---
 # <a name="part-6-add-search-to-aspnet-core-no-locrazor-pages"></a>6부. ASP.NET Core Razor Pages에 검색 추가
 
@@ -31,9 +32,9 @@ ms.locfileid: "88633853"
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-다음 섹션에서는 *장르* 또는 *이름*으로 영화 검색이 추가됩니다.
+다음 섹션에서는 *장르* 또는 *이름* 으로 영화 검색이 추가됩니다.
 
-*Pages/Movies/Index.cshtml.cs*에 강조 표시된 다음 속성을 추가합니다.
+*Pages/Movies/Index.cshtml.cs* 에 강조 표시된 다음 속성을 추가합니다.
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 
@@ -56,7 +57,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-이 시점에 쿼리는 정의*만* 되었으며 데이터베이스에 대해서 실행되지는 **않았습니다**.
+이 시점에 쿼리는 정의 *만* 되었으며 데이터베이스에 대해서 실행되지는 **않았습니다**.
 
 `SearchString` 속성이 Null 또는 비어 있는 경우 영화 쿼리는 검색 문자열에 대해 필터링하도록 수정됩니다.
 
@@ -114,7 +115,7 @@ HTML `<form>` 태그는 다음과 같은 [태그 도우미](xref:mvc/views/tag-h
 
 ### <a name="add-search-by-genre-to-the-no-locrazor-page"></a>Razor 페이지에 장르별 검색 추가
 
-다음과 같이 *Index.cshtml*을 업데이트합니다.
+다음과 같이 *Index.cshtml* 을 업데이트합니다.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/SnapShots/IndexFormGenreNoRating.cshtml?highlight=16-18&range=1-26)]
 
@@ -134,9 +135,9 @@ HTML `<form>` 태그는 다음과 같은 [태그 도우미](xref:mvc/views/tag-h
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-다음 섹션에서는 *장르* 또는 *이름*으로 영화 검색이 추가됩니다.
+다음 섹션에서는 *장르* 또는 *이름* 으로 영화 검색이 추가됩니다.
 
-*Pages/Movies/Index.cshtml.cs*에 강조 표시된 다음 속성을 추가합니다.
+*Pages/Movies/Index.cshtml.cs* 에 강조 표시된 다음 속성을 추가합니다.
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 
@@ -159,7 +160,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-이 시점에 쿼리는 정의*만* 되었으며 데이터베이스에 대해서 실행되지는 **않았습니다**.
+이 시점에 쿼리는 정의 *만* 되었으며 데이터베이스에 대해서 실행되지는 **않았습니다**.
 
 `SearchString` 속성이 Null 또는 비어 있는 경우 영화 쿼리는 검색 문자열에 대해 필터링하도록 수정됩니다.
 
@@ -216,7 +217,7 @@ HTML `<form>` 태그는 다음과 같은 [태그 도우미](xref:mvc/views/tag-h
 
 ### <a name="add-search-by-genre-to-the-no-locrazor-page"></a>Razor 페이지에 장르별 검색 추가
 
-다음과 같이 *Index.cshtml*을 업데이트합니다.
+다음과 같이 *Index.cshtml* 을 업데이트합니다.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/IndexFormGenreNoRating.cshtml?highlight=16-18&range=1-26)]
 

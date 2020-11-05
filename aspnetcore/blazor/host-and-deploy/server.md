@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/26/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: afbaad2f27359a4a1cac5c5fe1da16d3e80d038f
-ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
+ms.openlocfilehash: 74473eb5c0efcd8798d260b765c848d7e621e534
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89102655"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055765"
 ---
 # <a name="host-and-deploy-no-locblazor-server"></a>Blazor Server 호스트 및 배포
 
@@ -37,7 +38,7 @@ ms.locfileid: "89102655"
 
 [Blazor Server 호스팅 모델](xref:blazor/hosting-models#blazor-server)을 사용하면 Blazor가 서버의 ASP.NET Core 앱 내에서 실행됩니다. UI 업데이트, 이벤트 처리 및 JavaScript 호출은 [SignalR](xref:signalr/introduction) 연결을 통해 처리됩니다.
 
-ASP.NET Core 앱을 호스팅할 수 있는 웹 서버가 필요합니다. Visual Studio는 **Blazor Server 앱** 프로젝트 템플릿([`dotnet new`](/dotnet/core/tools/dotnet-new) 명령을 사용하는 경우 `blazorserverside` 템플릿)을 포함합니다.
+ASP.NET Core 앱을 호스팅할 수 있는 웹 서버가 필요합니다. Visual Studio는 **Blazor Server 앱** 프로젝트 템플릿( [`dotnet new`](/dotnet/core/tools/dotnet-new) 명령을 사용하는 경우 `blazorserverside` 템플릿)을 포함합니다.
 
 ## <a name="scalability"></a>확장성
 
@@ -55,7 +56,7 @@ Blazor Server 앱에 사용 가능한 인프라를 최대한 활용하도록 배
 
 안전하고 확장 가능한 Blazor 서버 앱을 빌드하는 방법에 대한 지침은 <xref:blazor/security/server/threat-mitigation>을 참조하세요.
 
-각 회로는 최소 *Hello World*와 같은 앱에 약 250KB의 메모리를 사용합니다. 회로의 크기는 앱의 코드 및 각 구성 요소와 연결된 상태 유지 관리 요구 사항에 따라 달라집니다. 애플리케이션 및 인프라를 개발하는 도중에 리소스 요구를 측정하는 것이 좋지만, 다음 기준은 배포 대상을 계획할 때 출발점으로 삼을 수 있습니다. 앱에서 5,000명의 동시 사용자를 지원할 것으로 예상되는 경우 앱에 최소 1.3GB(또는 사용자당 273KB)의 서버 메모리를 예산하는 것이 좋습니다.
+각 회로는 최소 *Hello World* 와 같은 앱에 약 250KB의 메모리를 사용합니다. 회로의 크기는 앱의 코드 및 각 구성 요소와 연결된 상태 유지 관리 요구 사항에 따라 달라집니다. 애플리케이션 및 인프라를 개발하는 도중에 리소스 요구를 측정하는 것이 좋지만, 다음 기준은 배포 대상을 계획할 때 출발점으로 삼을 수 있습니다. 앱에서 5,000명의 동시 사용자를 지원할 것으로 예상되는 경우 앱에 최소 1.3GB(또는 사용자당 273KB)의 서버 메모리를 예산하는 것이 좋습니다.
 
 ### <a name="no-locsignalr-configuration"></a>SignalR 구성
 
@@ -79,7 +80,7 @@ Blazor Server 앱에 [Azure SignalR Service](xref:signalr/scale#azure-signalr-se
 
 앱을 구성하고 원하는 경우 Azure SignalR Service를 프로비전하려면 다음 단계를 따릅니다.
 
-1. [사전 렌더링하는 경우 클라이언트를 동일한 서버로 다시 리디렉션하는](xref:blazor/hosting-models#connection-to-the-server)*고정 세션*을 지원하려면 해당 서비스를 사용하도록 설정합니다. `ServerStickyMode` 옵션 또는 구성 값을 `Required`(으)로 설정합니다. 일반적으로 앱은 다음 방법 중 **하나**를 사용하여 구성을 만듭니다.
+1. [사전 렌더링하는 경우 클라이언트를 동일한 서버로 다시 리디렉션하는](xref:blazor/hosting-models#connection-to-the-server)*고정 세션* 을 지원하려면 해당 서비스를 사용하도록 설정합니다. `ServerStickyMode` 옵션 또는 구성 값을 `Required`(으)로 설정합니다. 일반적으로 앱은 다음 방법 중 **하나** 를 사용하여 구성을 만듭니다.
 
    * `Startup.ConfigureServices`:
   
@@ -91,7 +92,7 @@ Blazor Server 앱에 [Azure SignalR Service](xref:signalr/scale#azure-signalr-se
      });
      ```
 
-   * 구성(다음 방법 중 **하나**를 사용):
+   * 구성(다음 방법 중 **하나** 를 사용):
   
      * `appsettings.json`:
 
@@ -99,10 +100,10 @@ Blazor Server 앱에 [Azure SignalR Service](xref:signalr/scale#azure-signalr-se
        "Azure:SignalR:ServerStickyMode": "Required"
        ```
 
-     * Azure Portal에서 앱 서비스의 **구성** > **애플리케이션 설정**(**이름**: `Azure:SignalR:ServerStickyMode`, **값**: `Required`).
+     * Azure Portal에서 앱 서비스의 **구성** > **애플리케이션 설정** ( **이름** : `Azure:SignalR:ServerStickyMode`, **값** : `Required`).
 
 1. Visual Studio에 Blazor Server 앱을 위한 Azure 앱 게시 프로필을 만듭니다.
-1. **Azure SignalR Service** 종속성을 프로필에 추가합니다. 앱에 할당할 기존 Azure SignalR Service 인스턴스가 Azure 구독에 없는 경우 **새 Azure SignalR Service 인스턴스 만들기**를 선택하여 새 서비스 인스턴스를 프로비전합니다.
+1. **Azure SignalR Service** 종속성을 프로필에 추가합니다. 앱에 할당할 기존 Azure SignalR Service 인스턴스가 Azure 구독에 없는 경우 **새 Azure SignalR Service 인스턴스 만들기** 를 선택하여 새 서비스 인스턴스를 프로비전합니다.
 1. Azure에 앱을 게시합니다.
 
 #### <a name="iis"></a>IIS

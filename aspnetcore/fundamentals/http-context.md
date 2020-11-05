@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/5/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/httpcontext
-ms.openlocfilehash: 0eade76f8cf0bdd81cc290218f36fe9276233104
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f51814d25d4e87d166c7b587306da6c77dbf047e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635283"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059977"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>ASP.NET Core에서 HttpContext에 액세스
 

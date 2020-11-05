@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 08/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: ea46e04bc4aa6269efbf8917d5f32194402a66ef
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: b70a5ee00405eecfce900b86dc631a54682dce1a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722698"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058898"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>.NET 앱에 대한 Protobuf 메시지 만들기
 

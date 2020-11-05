@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/11/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 0830214029d59d0820ed3c5806267c766314c74f
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: 1ec1f699d3beb5dbbc3851d9e3b6b1d3faf64cfd
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009676"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055674"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-models"></a>ASP.NET Core Blazor 호스팅 모델
 
@@ -37,9 +38,9 @@ Blazor의 주요 호스팅 모델은 WebAssembly의 브라우저에서 클라이
 
 ![Blazor WebAssembly: Blazor 앱은 브라우저 내의 UI 스레드에서 실행됩니다.](hosting-models/_static/blazor-webassembly.png)
 
-클라이언트 쪽 호스팅 모델을 사용하여 Blazor 앱을 만들려면 **Blazor WebAssembly 앱** 템플릿을 사용합니다([`dotnet new blazorwasm`](/dotnet/core/tools/dotnet-new)).
+클라이언트 쪽 호스팅 모델을 사용하여 Blazor 앱을 만들려면 **Blazor WebAssembly 앱** 템플릿을 사용합니다( [`dotnet new blazorwasm`](/dotnet/core/tools/dotnet-new)).
 
-**Blazor WebAssembly 앱** 템플릿을 선택한 후 **ASP.NET Core에서 호스트됨** 확인란을 선택하여 ASP.NET Core 백 엔드를 사용하도록 앱을 구성할 수 있습니다([`dotnet new blazorwasm --hosted`](/dotnet/core/tools/dotnet-new)). ASP.NET Core 앱은 클라이언트에 Blazor 앱을 제공합니다. ASP.NET Core 백 엔드를 사용하는 앱은 ‘호스트형 Blazor WebAssembly 앱’이라고 합니다. Blazor WebAssembly 앱은 웹 API 호출 또는 [SignalR](xref:signalr/introduction)(<xref:tutorials/signalr-blazor-webassembly>)을 사용하여 네트워크를 통해 서버와 상호 작용할 수 있습니다.
+**Blazor WebAssembly 앱** 템플릿을 선택한 후 **ASP.NET Core에서 호스트됨** 확인란을 선택하여 ASP.NET Core 백 엔드를 사용하도록 앱을 구성할 수 있습니다( [`dotnet new blazorwasm --hosted`](/dotnet/core/tools/dotnet-new)). ASP.NET Core 앱은 클라이언트에 Blazor 앱을 제공합니다. ASP.NET Core 백 엔드를 사용하는 앱은 ‘호스트형 Blazor WebAssembly 앱’이라고 합니다. Blazor WebAssembly 앱은 웹 API 호출 또는 [SignalR](xref:signalr/introduction)(<xref:tutorials/signalr-blazor-webassembly>)을 사용하여 네트워크를 통해 서버와 상호 작용할 수 있습니다.
 
 `blazor.webassembly.js` 스크립트는 프레임워크 및 핸들에서 제공됩니다.
 
@@ -60,7 +61,7 @@ Blazor WebAssembly 호스팅에는 다음과 같은 단점이 있습니다.
 * 다운로드 크기가 더 크고 앱 로드 시간이 더 깁니다.
 * .NET 런타임 및 도구 지원의 완성도가 더 낮습니다. 예를 들어 [.NET Standard](/dotnet/standard/net-standard) 지원 및 디버깅에 대한 제한 사항이 있습니다.
 
-호스트된 Blazor 앱 모델은 [Docker 컨테이너](/dotnet/standard/microservices-architecture/container-docker-introduction/index)를 지원합니다. Visual Studio에서 서버 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **Docker 지원**을 선택합니다.
+호스트된 Blazor 앱 모델은 [Docker 컨테이너](/dotnet/standard/microservices-architecture/container-docker-introduction/index)를 지원합니다. Visual Studio에서 서버 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **Docker 지원** 을 선택합니다.
 
 ## Blazor Server
 
@@ -68,7 +69,7 @@ Blazor Server 호스팅 모델을 사용하는 경우 서버의 ASP.NET Core 앱
 
 ![브라우저는 SignalR 연결을 통해 서버의 앱(ASP.NET Core 앱 내에서 호스트됨)과 상호 작용합니다.](hosting-models/_static/blazor-server.png)
 
-Blazor Server 호스팅 모델을 사용하여 Blazor 앱을 만들려면 ASP.NET Core **Blazor Server 앱** 템플릿을 사용합니다([`dotnet new blazorserver`](/dotnet/core/tools/dotnet-new)). ASP.NET Core 앱은 Blazor Server 앱을 호스트하고 클라이언트가 연결되는 SignalR 엔드포인트를 만듭니다.
+Blazor Server 호스팅 모델을 사용하여 Blazor 앱을 만들려면 ASP.NET Core **Blazor Server 앱** 템플릿을 사용합니다( [`dotnet new blazorserver`](/dotnet/core/tools/dotnet-new)). ASP.NET Core 앱은 Blazor Server 앱을 호스트하고 클라이언트가 연결되는 SignalR 엔드포인트를 만듭니다.
 
 ASP.NET Core 앱은 앱의 `Startup` 클래스를 참조하여 다음을 추가합니다.
 
@@ -95,7 +96,7 @@ Blazor Server 호스팅에는 다음과 같은 단점이 있습니다.
 * 여러 사용자가 있는 앱의 경우 확장성 구현이 어렵습니다. 서버에서 여러 개의 클라이언트 연결을 관리하고 클라이언트 상태를 처리해야 합니다.
 * 앱을 제공하려면 ASP.NET Core 서버가 필요합니다. 서버리스 배포 시나리오가 불가능합니다(예: CDN에서 앱 제공).
 
-Blazor Server 앱 모델은 [Docker 컨테이너](/dotnet/standard/microservices-architecture/container-docker-introduction/index)를 지원합니다. Visual Studio에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **Docker 지원**을 선택합니다.
+Blazor Server 앱 모델은 [Docker 컨테이너](/dotnet/standard/microservices-architecture/container-docker-introduction/index)를 지원합니다. Visual Studio에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **Docker 지원** 을 선택합니다.
 
 ### <a name="comparison-to-server-rendered-ui"></a>서버에서 렌더링된 UI와 비교
 
@@ -118,7 +119,7 @@ Blazor의 UI 업데이트는 다음을 통해 트리거됩니다.
 * 사용자 조작(예: 단추 선택)
 * 앱 트리거(예: 타이머)
 
-그래프가 다시 렌더링되고, UI *diff*(차이)가 계산됩니다. 이 diff는 클라이언트에서 UI를 업데이트하는 데 필요한 최소한의 DOM 편집 집합입니다. diff는 클라이언트에 이진 형식으로 전송되고 브라우저에서 적용됩니다.
+그래프가 다시 렌더링되고, UI *diff* (차이)가 계산됩니다. 이 diff는 클라이언트에서 UI를 업데이트하는 데 필요한 최소한의 DOM 편집 집합입니다. diff는 클라이언트에 이진 형식으로 전송되고 브라우저에서 적용됩니다.
 
 사용자가 클라이언트에서 구성 요소를 벗어나면 구성 요소가 삭제됩니다. 사용자가 구성 요소를 조작하는 동안에는 구성 요소 상태(서비스, 리소스)가 서버 메모리에 유지되어야 합니다. 서버에서 많은 구성 요소의 상태를 동시에 유지 관리할 수 있으므로 메모리 소모는 해결해야 하는 문제입니다. 서버 메모리 사용을 최적화하도록 Blazor Server 앱을 작성하는 방법에 관한 자세한 내용은 <xref:blazor/security/server/threat-mitigation>을 참조하세요.
 

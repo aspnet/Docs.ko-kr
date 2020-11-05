@@ -5,6 +5,7 @@ description: ASP.NET Core MVC에 대한 자습서 시리즈의 3부입니다.
 ms.author: riande
 ms.date: 8/04/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 970cc1fe6e0a0e0204ddafec09c15db6fed9aa66
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 078329d1e5dfe41a7713b1e53894a9b09886752d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629758"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052671"
 ---
 # <a name="part-3-add-a-view-to-an-aspnet-core-mvc-app"></a>3부. ASP.NET Core MVC 앱에 뷰 추가
 
@@ -31,7 +32,7 @@ ms.locfileid: "88629758"
 
 이 섹션에서는 [Razor](xref:mvc/views/razor) 뷰 파일을 사용하도록 `HelloWorldController` 클래스를 수정하여 클라이언트에 대한 HTML 응답을 생성하는 프로세스를 깔끔하게 캡슐화합니다.
 
-Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템플릿의 파일 확장명은 *.cshtml*입니다. C#으로 HTML 출력을 만드는 세련된 방법을 제공합니다.
+Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템플릿의 파일 확장명은 *.cshtml* 입니다. C#으로 HTML 출력을 만드는 세련된 방법을 제공합니다.
 
 현재 `Index` 메서드는 컨트롤러 클래스에서 하드 코딩된 메시지 문자열을 반환합니다. `HelloWorldController` 클래스에서 `Index` 메서드를 다음 코드로 바꿉니다.
 
@@ -43,19 +44,19 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 마우스 오른쪽 단추로 *Views* 폴더, **추가 > 새 폴더**를 차례로 클릭하고 폴더의 이름을 *HelloWorld*로 지정합니다.
+* 마우스 오른쪽 단추로 *Views* 폴더, **추가 > 새 폴더** 를 차례로 클릭하고 폴더의 이름을 *HelloWorld* 로 지정합니다.
 
-* 마우스 오른쪽 단추로 *Views/HelloWorld* 폴더, **추가 > 새 항목**을 차례로 클릭합니다.
+* 마우스 오른쪽 단추로 *Views/HelloWorld* 폴더, **추가 > 새 항목** 을 차례로 클릭합니다.
 
 * **새 항목 추가 - MvcMovie** 대화 상자에서
 
-  * 오른쪽 위의 검색 상자에 *뷰*를 입력합니다.
+  * 오른쪽 위의 검색 상자에 *뷰* 를 입력합니다.
 
   * **Razor 뷰** 선택
 
-  * *이름* 상자 값은 **Index.cshtml**을 유지하세요.
+  * *이름* 상자 값은 **Index.cshtml** 을 유지하세요.
 
-  * **추가**를 선택합니다.
+  * **추가** 를 선택합니다.
 
 ![새 항목 추가 대화 상자](adding-view/_static/add_view.png)
 
@@ -63,19 +64,19 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 `HelloWorldController`에 `Index` 보기를 추가합니다.
 
-* *Views/HelloWorld*라는 새 폴더를 추가합니다.
-* *Views/HelloWorld* 폴더에 *Index.cshtml*이라는 이름으로 새 파일을 추가합니다.
+* *Views/HelloWorld* 라는 새 폴더를 추가합니다.
+* *Views/HelloWorld* 폴더에 *Index.cshtml* 이라는 이름으로 새 파일을 추가합니다.
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 마우스 오른쪽 단추로 *Views* 폴더, **추가 > 새 폴더**를 차례로 클릭하고 폴더의 이름을 *HelloWorld*로 지정합니다.
-* 마우스 오른쪽 단추로 *Views/HelloWorld* 폴더, **추가 > 새 파일**을 차례로 클릭합니다.
+* 마우스 오른쪽 단추로 *Views* 폴더, **추가 > 새 폴더** 를 차례로 클릭하고 폴더의 이름을 *HelloWorld* 로 지정합니다.
+* 마우스 오른쪽 단추로 *Views/HelloWorld* 폴더, **추가 > 새 파일** 을 차례로 클릭합니다.
 * **새 파일** 대화 상자에서:
 
-  * 왼쪽 창에서 **ASP.NET Core**를 선택합니다.
-  * 가운데 창에서 **MVC 뷰 페이지**를 선택합니다.
-  * **이름** 상자에 *Index*를 입력합니다.
-  * **새로 만들기**를 선택합니다.
+  * 왼쪽 창에서 **ASP.NET Core** 를 선택합니다.
+  * 가운데 창에서 **MVC 뷰 페이지** 를 선택합니다.
+  * **이름** 상자에 *Index* 를 입력합니다.
+  * **새로 만들기** 를 선택합니다.
 
 ![새 항목 추가 대화 상자](adding-view/_static/add_view_mac.png)
 
@@ -85,13 +86,13 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
-`https://localhost:{PORT}/HelloWorld`로 이동합니다. `HelloWorldController`의 `Index` 메서드는 많은 작업을 수행하지 않았습니다. `return View();` 문만 실행합니다. 해당 문은 메서드가 브라우저에 대한 응답을 렌더링하기 위해 보기 템플릿 파일을 사용해야 함을 지정합니다. 보기 템플릿 파일 이름을 지정하지 않았기 때문에 MVC는 기본적으로 기본 보기 파일을 사용합니다. 기본 뷰 파일은 메서드(`Index`)와 이름이 같으므로 */Views/HelloWorld/Index.cshtml*의 뷰 템플릿이 사용됩니다. 아래 이미지는 보기에 하드 코딩된 “Hello from our View Template!” 문자열을 보여줍니다.
+`https://localhost:{PORT}/HelloWorld`로 이동합니다. `HelloWorldController`의 `Index` 메서드는 많은 작업을 수행하지 않았습니다. `return View();` 문만 실행합니다. 해당 문은 메서드가 브라우저에 대한 응답을 렌더링하기 위해 보기 템플릿 파일을 사용해야 함을 지정합니다. 보기 템플릿 파일 이름을 지정하지 않았기 때문에 MVC는 기본적으로 기본 보기 파일을 사용합니다. 기본 뷰 파일은 메서드(`Index`)와 이름이 같으므로 */Views/HelloWorld/Index.cshtml* 의 뷰 템플릿이 사용됩니다. 아래 이미지는 보기에 하드 코딩된 “Hello from our View Template!” 문자열을 보여줍니다.
 
 ![브라우저 창](~/tutorials/first-mvc-app/adding-view/_static/hell_template.png)
 
 ## <a name="change-views-and-layout-pages"></a>보기 및 레이아웃 페이지 변경
 
-메뉴 링크를 선택합니다(**MvcMovie**, **Home** 및 **Privacy**). 각 페이지는 동일한 메뉴 레이아웃을 보여줍니다. 메뉴 레이아웃은 *Views/Shared/_Layout.cshtml* 파일에서 구현됩니다. *Views/Shared/_Layout.cshtml* 파일을 엽니다.
+메뉴 링크를 선택합니다( **MvcMovie** , **Home** 및 **Privacy** ). 각 페이지는 동일한 메뉴 레이아웃을 보여줍니다. 메뉴 레이아웃은 *Views/Shared/_Layout.cshtml* 파일에서 구현됩니다. *Views/Shared/_Layout.cshtml* 파일을 엽니다.
 
 [레이아웃](xref:mvc/views/layout) 템플릿을 사용하면 한 곳에서 사이트의 HTML 컨테이너 레이아웃을 지정한 다음 사이트의 여러 페이지에 걸쳐 적용할 수 있습니다. `@RenderBody()` 줄을 찾습니다. `RenderBody`는 개발자가 만든 모든 보기 전용 페이지가 표시되는 자리 표시자이며 레이아웃 페이지으로 *래핑됩니다*. 예를 들어 **Privacy** 링크를 선택하는 경우 **Views/Home/Privacy.cshtml** 보기가 `RenderBody` 메서드 내부에 렌더링됩니다.
 
@@ -108,13 +109,13 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 이 앱은 [영역](xref:mvc/controllers/areas)을 사용하지 않기 때문에 위의 태그에서 `asp-area=""` [앵커 태그 도우미 특성](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) 및 특성 값이 생략되었습니다.
 
-**참고**: `Movies` 컨트롤러는 아직 구현되지 않았습니다. 이 시점에서 `Movie App` 링크는 작동하지 않습니다.
+**참고** : `Movies` 컨트롤러는 아직 구현되지 않았습니다. 이 시점에서 `Movie App` 링크는 작동하지 않습니다.
 
-변경 내용을 저장하고 **Privacy** 링크를 선택합니다. 브라우저 탭의 제목으로 **Privacy Policy - Mvc Movie** 대신 **Privacy Policy - Movie App**이 표시됨을 확인합니다.
+변경 내용을 저장하고 **Privacy** 링크를 선택합니다. 브라우저 탭의 제목으로 **Privacy Policy - Mvc Movie** 대신 **Privacy Policy - Movie App** 이 표시됨을 확인합니다.
 
 ![개인 정보 탭](~/tutorials/first-mvc-app/adding-view/_static/about2.png)
 
-**Home** 링크를 선택하고 제목 및 앵커 텍스트가 **Movie App**을 표시하는지도 확인합니다. 레이아웃 템플릿에서 변경 사항을 한 번만 적용하여 사이트의 모든 페이지에 새 링크 텍스트 및 새 제목을 반영할 수 있습니다.
+**Home** 링크를 선택하고 제목 및 앵커 텍스트가 **Movie App** 을 표시하는지도 확인합니다. 레이아웃 템플릿에서 변경 사항을 한 번만 적용하여 사이트의 모든 페이지에 새 링크 텍스트 및 새 제목을 반영할 수 있습니다.
 
 *Views/_ViewStart.cshtml* 파일을 살펴보세요.
 
@@ -154,15 +155,15 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 현재 `HelloWorldController` 클래스에서 `Welcome` 메서드는 `name` 및 `ID` 매개 변수를 가져온 다음 값을 브라우저로 직접 출력합니다. 컨트롤러가 이 응답을 문자열로 렌더링하게 하는 대신, 보기 템플릿을 사용하도록 컨트롤러를 변경합니다. 보기 템플릿은 동적으로 응답을 생성하는데, 이는 다시 말해서 응답을 생성하기 위해 컨트롤러에서 보기로 일부 적절한 데이터를 전달해야 한다는 뜻입니다. 컨트롤러가 보기 템플릿에 필요한 동적 데이터(매개 변수)를 보기 템플릿이 액세스 할 수 있는 `ViewData` 사전에 넣음으로써 이를 수행할 수 있습니다.
 
-*HelloWorldController.cs*에서 `Message` 및 `NumTimes` 값을 `ViewData` 사전에 추가하도록 `Welcome` 메서드를 변경합니다. `ViewData`사전은 동적 개체로, 이는 어떤 형식이든지 사용할 수 있음을 의미합니다. `ViewData` 개체에 무언가 넣을 때까지 이 개체에는 정의된 속성이 없습니다. [MVC 모델 바인딩 시스템](xref:mvc/models/model-binding)은 주소 표시줄의 쿼리 문자열에서 메서드의 매개 변수로 명명된 매개 변수(`name` 및 `numTimes`)를 자동으로 매핑합니다. 전체 *HelloWorldController.cs* 파일은 다음과 같습니다.
+*HelloWorldController.cs* 에서 `Message` 및 `NumTimes` 값을 `ViewData` 사전에 추가하도록 `Welcome` 메서드를 변경합니다. `ViewData`사전은 동적 개체로, 이는 어떤 형식이든지 사용할 수 있음을 의미합니다. `ViewData` 개체에 무언가 넣을 때까지 이 개체에는 정의된 속성이 없습니다. [MVC 모델 바인딩 시스템](xref:mvc/models/model-binding)은 주소 표시줄의 쿼리 문자열에서 메서드의 매개 변수로 명명된 매개 변수(`name` 및 `numTimes`)를 자동으로 매핑합니다. 전체 *HelloWorldController.cs* 파일은 다음과 같습니다.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 
 `ViewData` 사전 개체는 보기에 전달될 데이터를 담고 있습니다.
 
-*Views/HelloWorld/Welcome.cshtml*이라는 환영 보기 템플릿을 만듭니다.
+*Views/HelloWorld/Welcome.cshtml* 이라는 환영 보기 템플릿을 만듭니다.
 
-*Welcome.cshtml* 보기 템플릿에 "Hello" `NumTimes`를 표시하는 반복을 만듭니다. *Views/HelloWorld/Welcome.cshtml*의 콘텐츠를 다음으로 대체합니다.
+*Welcome.cshtml* 보기 템플릿에 "Hello" `NumTimes`를 표시하는 반복을 만듭니다. *Views/HelloWorld/Welcome.cshtml* 의 콘텐츠를 다음으로 대체합니다.
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
 
@@ -188,7 +189,7 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 이 섹션에서는 [Razor](xref:mvc/views/razor) 뷰 파일을 사용하도록 `HelloWorldController` 클래스를 수정하여 클라이언트에 대한 HTML 응답을 생성하는 프로세스를 깔끔하게 캡슐화합니다.
 
-Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템플릿의 파일 확장명은 *.cshtml*입니다. C#으로 HTML 출력을 만드는 세련된 방법을 제공합니다.
+Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템플릿의 파일 확장명은 *.cshtml* 입니다. C#으로 HTML 출력을 만드는 세련된 방법을 제공합니다.
 
 현재 `Index` 메서드는 컨트롤러 클래스에서 하드 코딩된 메시지 문자열을 반환합니다. `HelloWorldController` 클래스에서 `Index` 메서드를 다음 코드로 바꿉니다.
 
@@ -200,19 +201,19 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 마우스 오른쪽 단추로 *Views* 폴더, **추가 > 새 폴더**를 차례로 클릭하고 폴더의 이름을 *HelloWorld*로 지정합니다.
+* 마우스 오른쪽 단추로 *Views* 폴더, **추가 > 새 폴더** 를 차례로 클릭하고 폴더의 이름을 *HelloWorld* 로 지정합니다.
 
-* 마우스 오른쪽 단추로 *Views/HelloWorld* 폴더, **추가 > 새 항목**을 차례로 클릭합니다.
+* 마우스 오른쪽 단추로 *Views/HelloWorld* 폴더, **추가 > 새 항목** 을 차례로 클릭합니다.
 
 * **새 항목 추가 - MvcMovie** 대화 상자에서
 
-  * 오른쪽 위의 검색 상자에 *뷰*를 입력합니다.
+  * 오른쪽 위의 검색 상자에 *뷰* 를 입력합니다.
 
   * **Razor 뷰** 선택
 
-  * *이름* 상자 값은 **Index.cshtml**을 유지하세요.
+  * *이름* 상자 값은 **Index.cshtml** 을 유지하세요.
 
-  * **추가**를 선택합니다.
+  * **추가** 를 선택합니다.
 
 ![새 항목 추가 대화 상자](adding-view/_static/add_view.png)
 
@@ -220,19 +221,19 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 `HelloWorldController`에 `Index` 보기를 추가합니다.
 
-* *Views/HelloWorld*라는 새 폴더를 추가합니다.
-* *Views/HelloWorld* 폴더에 *Index.cshtml*이라는 이름으로 새 파일을 추가합니다.
+* *Views/HelloWorld* 라는 새 폴더를 추가합니다.
+* *Views/HelloWorld* 폴더에 *Index.cshtml* 이라는 이름으로 새 파일을 추가합니다.
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 마우스 오른쪽 단추로 *Views* 폴더, **추가 > 새 폴더**를 차례로 클릭하고 폴더의 이름을 *HelloWorld*로 지정합니다.
-* 마우스 오른쪽 단추로 *Views/HelloWorld* 폴더, **추가 > 새 파일**을 차례로 클릭합니다.
+* 마우스 오른쪽 단추로 *Views* 폴더, **추가 > 새 폴더** 를 차례로 클릭하고 폴더의 이름을 *HelloWorld* 로 지정합니다.
+* 마우스 오른쪽 단추로 *Views/HelloWorld* 폴더, **추가 > 새 파일** 을 차례로 클릭합니다.
 * **새 파일** 대화 상자에서:
 
-  * 왼쪽 창에서 **웹**을 선택합니다.
-  * 가운데 창에서 **빈 HTML 파일**을 선택합니다.
-  * **이름** 상자에 *Index.cshtml*을 입력합니다.
-  * **새로 만들기**를 선택합니다.
+  * 왼쪽 창에서 **웹** 을 선택합니다.
+  * 가운데 창에서 **빈 HTML 파일** 을 선택합니다.
+  * **이름** 상자에 *Index.cshtml* 을 입력합니다.
+  * **새로 만들기** 를 선택합니다.
 
 ![새 항목 추가 대화 상자](adding-view/_static/add_view_mac.png)
 
@@ -242,13 +243,13 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
-`https://localhost:{PORT}/HelloWorld`로 이동합니다. `HelloWorldController`의 `Index` 메서드는 많은 작업을 수행하지 않았습니다. `return View();` 문만 실행합니다. 해당 문은 메서드가 브라우저에 대한 응답을 렌더링하기 위해 보기 템플릿 파일을 사용해야 함을 지정합니다. 보기 템플릿 파일 이름을 지정하지 않았기 때문에 MVC는 기본적으로 기본 보기 파일을 사용합니다. 기본 보기 파일은 메서드(`Index`)와 이름이 같으므로 */Views/HelloWorld/Index.cshtml*이 사용됩니다. 아래 이미지는 보기에 하드 코딩된 “Hello from our View Template!” 문자열을 보여줍니다.
+`https://localhost:{PORT}/HelloWorld`로 이동합니다. `HelloWorldController`의 `Index` 메서드는 많은 작업을 수행하지 않았습니다. `return View();` 문만 실행합니다. 해당 문은 메서드가 브라우저에 대한 응답을 렌더링하기 위해 보기 템플릿 파일을 사용해야 함을 지정합니다. 보기 템플릿 파일 이름을 지정하지 않았기 때문에 MVC는 기본적으로 기본 보기 파일을 사용합니다. 기본 보기 파일은 메서드(`Index`)와 이름이 같으므로 */Views/HelloWorld/Index.cshtml* 이 사용됩니다. 아래 이미지는 보기에 하드 코딩된 “Hello from our View Template!” 문자열을 보여줍니다.
 
 ![브라우저 창](~/tutorials/first-mvc-app/adding-view/_static/hell_template.png)
 
 ## <a name="change-views-and-layout-pages"></a>보기 및 레이아웃 페이지 변경
 
-메뉴 링크를 선택합니다(**MvcMovie**, **Home** 및 **Privacy**). 각 페이지는 동일한 메뉴 레이아웃을 보여줍니다. 메뉴 레이아웃은 *Views/Shared/_Layout.cshtml* 파일에서 구현됩니다. *Views/Shared/_Layout.cshtml* 파일을 엽니다.
+메뉴 링크를 선택합니다( **MvcMovie** , **Home** 및 **Privacy** ). 각 페이지는 동일한 메뉴 레이아웃을 보여줍니다. 메뉴 레이아웃은 *Views/Shared/_Layout.cshtml* 파일에서 구현됩니다. *Views/Shared/_Layout.cshtml* 파일을 엽니다.
 
 [레이아웃](xref:mvc/views/layout) 템플릿을 사용하면 한 곳에서 사이트의 HTML 컨테이너 레이아웃을 지정한 다음 사이트의 여러 페이지에 걸쳐 적용할 수 있습니다. `@RenderBody()` 줄을 찾습니다. `RenderBody`는 개발자가 만든 모든 보기 전용 페이지가 표시되는 자리 표시자이며 레이아웃 페이지으로 *래핑됩니다*. 예를 들어 **Privacy** 링크를 선택하는 경우 **Views/Home/Privacy.cshtml** 보기가 `RenderBody` 메서드 내부에 렌더링됩니다.
 
@@ -268,13 +269,13 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 > We haven't implemented the `Movies` controller yet, so if you click the `Movie App` link, you get a 404 (Not found) error.
 -->
 
-**참고**: `Movies` 컨트롤러는 아직 구현되지 않았습니다. 이 시점에서 `Movie App` 링크는 작동하지 않습니다.
+**참고** : `Movies` 컨트롤러는 아직 구현되지 않았습니다. 이 시점에서 `Movie App` 링크는 작동하지 않습니다.
 
-변경 내용을 저장하고 **Privacy** 링크를 선택합니다. 브라우저 탭의 제목으로 **Privacy Policy - Mvc Movie** 대신 **Privacy Policy - Movie App**이 표시됨을 확인합니다.
+변경 내용을 저장하고 **Privacy** 링크를 선택합니다. 브라우저 탭의 제목으로 **Privacy Policy - Mvc Movie** 대신 **Privacy Policy - Movie App** 이 표시됨을 확인합니다.
 
 ![개인 정보 탭](~/tutorials/first-mvc-app/adding-view/_static/about2.png)
 
-**Home** 링크를 선택하고 제목 및 앵커 텍스트가 **Movie App**을 표시하는지도 확인합니다. 레이아웃 템플릿에서 변경 사항을 한 번만 적용하여 사이트의 모든 페이지에 새 링크 텍스트 및 새 제목을 반영할 수 있습니다.
+**Home** 링크를 선택하고 제목 및 앵커 텍스트가 **Movie App** 을 표시하는지도 확인합니다. 레이아웃 템플릿에서 변경 사항을 한 번만 적용하여 사이트의 모든 페이지에 새 링크 텍스트 및 새 제목을 반영할 수 있습니다.
 
 *Views/_ViewStart.cshtml* 파일을 살펴보세요.
 
@@ -314,15 +315,15 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 현재 `HelloWorldController` 클래스에서 `Welcome` 메서드는 `name` 및 `ID` 매개 변수를 가져온 다음 값을 브라우저로 직접 출력합니다. 컨트롤러가 이 응답을 문자열로 렌더링하게 하는 대신, 보기 템플릿을 사용하도록 컨트롤러를 변경합니다. 보기 템플릿은 동적으로 응답을 생성하는데, 이는 다시 말해서 응답을 생성하기 위해 컨트롤러에서 보기로 일부 적절한 데이터를 전달해야 한다는 뜻입니다. 컨트롤러가 보기 템플릿에 필요한 동적 데이터(매개 변수)를 보기 템플릿이 액세스 할 수 있는 `ViewData` 사전에 넣음으로써 이를 수행할 수 있습니다.
 
-*HelloWorldController.cs*에서 `Message` 및 `NumTimes` 값을 `ViewData` 사전에 추가하도록 `Welcome` 메서드를 변경합니다. `ViewData`사전은 동적 개체로, 이는 어떤 형식이든지 사용할 수 있음을 의미합니다. `ViewData` 개체에 무언가 넣을 때까지 이 개체에는 정의된 속성이 없습니다. [MVC 모델 바인딩 시스템](xref:mvc/models/model-binding)은 주소 표시줄의 쿼리 문자열에서 메서드의 매개 변수로 명명된 매개 변수(`name` 및 `numTimes`)를 자동으로 매핑합니다. 전체 *HelloWorldController.cs* 파일은 다음과 같습니다.
+*HelloWorldController.cs* 에서 `Message` 및 `NumTimes` 값을 `ViewData` 사전에 추가하도록 `Welcome` 메서드를 변경합니다. `ViewData`사전은 동적 개체로, 이는 어떤 형식이든지 사용할 수 있음을 의미합니다. `ViewData` 개체에 무언가 넣을 때까지 이 개체에는 정의된 속성이 없습니다. [MVC 모델 바인딩 시스템](xref:mvc/models/model-binding)은 주소 표시줄의 쿼리 문자열에서 메서드의 매개 변수로 명명된 매개 변수(`name` 및 `numTimes`)를 자동으로 매핑합니다. 전체 *HelloWorldController.cs* 파일은 다음과 같습니다.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 
 `ViewData` 사전 개체는 보기에 전달될 데이터를 담고 있습니다.
 
-*Views/HelloWorld/Welcome.cshtml*이라는 환영 보기 템플릿을 만듭니다.
+*Views/HelloWorld/Welcome.cshtml* 이라는 환영 보기 템플릿을 만듭니다.
 
-*Welcome.cshtml* 보기 템플릿에 "Hello" `NumTimes`를 표시하는 반복을 만듭니다. *Views/HelloWorld/Welcome.cshtml*의 콘텐츠를 다음으로 대체합니다.
+*Welcome.cshtml* 보기 템플릿에 "Hello" `NumTimes`를 표시하는 반복을 만듭니다. *Views/HelloWorld/Welcome.cshtml* 의 콘텐츠를 다음으로 대체합니다.
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
 

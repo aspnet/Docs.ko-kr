@@ -5,8 +5,9 @@ description: Blazor Server 앱에서 상태를 유지하는 방법을 알아봅�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/22/2020
+ms.date: 10/29/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -19,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: a74f056447839c4cf057948f26a9ece9b5799656
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 1769ddbb95c9ffe373e916c885e411adc3d4c65b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606712"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054998"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>ASP.NET Core Blazor 상태 관리
 
@@ -236,15 +237,6 @@ ASP.NET Core 보호된 브라우저 스토리지는 [ASP.NET Core 데이터 보�
 > [!NOTE]
 > 보호된 브라우저 스토리지는 ASP.NET Core 데이터 보호에 의존하며 Blazor Server 앱에 대해서만 지원됩니다.
 
-### <a name="configuration"></a>구성
-
-1. [`Microsoft.AspNetCore.Components.Web.Extensions`](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions)에 대한 패키지 참조를 추가합니다.
-1. `Startup.ConfigureServices`에서 `AddProtectedBrowserStorage`를 호출하여 서비스 컬렉션에 `localStorage` 및 `sessionStorage` 서비스를 추가합니다.
-
-   ```csharp
-   services.AddProtectedBrowserStorage();
-   ```
-
 ### <a name="save-and-load-data-within-a-component"></a>구성 요소 내에서 데이터 저장 및 로드
 
 브라우저 스토리지에 데이터를 로드하거나 저장해야 하는 구성 요소에서 [`@inject`](xref:mvc/views/razor#inject) 지시문을 사용하여 다음 중 하나의 인스턴스를 삽입합니다.
@@ -255,7 +247,7 @@ ASP.NET Core 보호된 브라우저 스토리지는 [ASP.NET Core 데이터 보�
 선택은 사용하려는 브라우저 스토리지 위치에 따라 달라집니다. 다음 예제에서는 `sessionStorage`를 사용합니다.
 
 ```razor
-@using Microsoft.AspNetCore.Components.Web.Extensions
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 ```
 
@@ -336,7 +328,7 @@ else
 `localStorage` 또는 `sessionStorage`를 사용하지 않는 다른 페이지에는 미리 렌더링이 유용할 수 있습니다. 미리 렌더링을 유지하려면 브라우저가 회로에 연결될 때까지 로드 작업을 연기합니다. 다음은 카운터 값을 저장하기 위한 예제입니다.
 
 ```razor
-@using Microsoft.AspNetCore.Components.Web.Extensions
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedLocalStorage ProtectedLocalStore
 
 @if (isConnected)
@@ -384,7 +376,7 @@ else
 다음 `CounterStateProvider` 구성 요소 예제에서는 카운터 데이터가 `sessionStorage`에 유지됩니다.
 
 ```razor
-@using Microsoft.AspNetCore.Components.Web.Extensions
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 
 @if (isLoaded)

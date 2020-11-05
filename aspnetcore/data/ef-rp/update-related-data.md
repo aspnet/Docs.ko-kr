@@ -5,6 +5,7 @@ description: Razor Pages 및 Entity Framework 자습서 시리즈의 7부입니�
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 17b200f0ba90035c417c96689798263af16551de
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 3ec88a862697c540a1a98e733c31d76922f81f7c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722821"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060536"
 ---
 # <a name="part-7-no-locrazor-pages-with-ef-core-in-aspnet-core---update-related-data"></a>7부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 관련 데이터 업데이트
 
@@ -56,7 +57,7 @@ ms.locfileid: "90722821"
 
 ![강좌 만들기](update-related-data/_static/ddl30.png)
 
-다음 코드로 *Pages/Courses/Create.cshtml.cs*를 업데이트합니다.
+다음 코드로 *Pages/Courses/Create.cshtml.cs* 를 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/Create.cshtml.cs?highlight=7,18,27-41)]
 
@@ -70,13 +71,13 @@ ms.locfileid: "90722821"
 
 ### <a name="update-the-course-create-no-locrazor-page"></a>과정 만들기 Razor 페이지 업데이트
 
-다음 코드로 *Pages/Courses/Create.cshtml*을 업데이트합니다.
+다음 코드로 *Pages/Courses/Create.cshtml* 을 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu30/Pages/Courses/Create.cshtml?highlight=29-34)]
 
 위의 코드로 다음이 변경됩니다.
 
-* 캡션을 **DepartmentID**에서 **Department**로 변경합니다.
+* 캡션을 **DepartmentID** 에서 **Department** 로 변경합니다.
 * `"ViewBag.DepartmentID"`를 `DepartmentNameSL`로 바꿉니다(기본 클래스에서).
 * "부서 선택" 옵션을 추가합니다. 이렇게 변경하면 아직 부서가 선택되지 않은 경우 첫 번째 부서가 아닌 “부서 선택”이 드롭다운에 렌더링됩니다.
 * 부서가 선택되지 않은 경우 유효성 검사 메시지를 추가합니다.
@@ -89,7 +90,7 @@ Razor 페이지는 [Select 태그 도우미](xref:mvc/views/working-with-forms#t
 
 ### <a name="update-the-course-edit-page-model"></a>과정 편집 페이지 모델 업데이트
 
-다음 코드로 *Pages/Courses/Edit.cshtml.cs*를 업데이트합니다.
+다음 코드로 *Pages/Courses/Edit.cshtml.cs* 를 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/Edit.cshtml.cs?highlight=8,28,35,36,40-66)]
 
@@ -97,17 +98,17 @@ Razor 페이지는 [Select 태그 도우미](xref:mvc/views/working-with-forms#t
 
 ### <a name="update-the-course-edit-no-locrazor-page"></a>과정 편집 Razor 페이지 업데이트
 
-다음 코드로 *Pages/Courses/Edit.cshtml*을 업데이트합니다.
+다음 코드로 *Pages/Courses/Edit.cshtml* 을 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu30/Pages/Courses/Edit.cshtml?highlight=17-20,32-35)]
 
 위의 코드로 다음이 변경됩니다.
 
 * 강좌 ID를 표시합니다. 일반적으로 엔터티의 PK(기본 키)는 표시되지 않습니다. PK는 일반적으로 사용자에게 아무런 의미가 없습니다. 이 경우 PK는 강좌 번호입니다.
-* 부서 드롭다운의 캡션을 **DepartmentID**에서 **Department**로 변경합니다.
+* 부서 드롭다운의 캡션을 **DepartmentID** 에서 **Department** 로 변경합니다.
 * `"ViewBag.DepartmentID"`를 `DepartmentNameSL`로 바꿉니다(기본 클래스에서).
 
-페이지는 강좌 번호에 대한 숨겨진 필드(`<input type="hidden">`)를 포함합니다. `asp-for="Course.CourseID"`로 `<label>` 태그 도우미를 추가하는 것은 숨겨진 필드에 대한 필요성을 제거하지 않습니다. `<input type="hidden">`은 사용자가 **저장**을 클릭할 때 게시된 데이터에 포함되도록 강좌 번호에 필요합니다.
+페이지는 강좌 번호에 대한 숨겨진 필드(`<input type="hidden">`)를 포함합니다. `asp-for="Course.CourseID"`로 `<label>` 태그 도우미를 추가하는 것은 숨겨진 필드에 대한 필요성을 제거하지 않습니다. `<input type="hidden">`은 사용자가 **저장** 을 클릭할 때 게시된 데이터에 포함되도록 강좌 번호에 필요합니다.
 
 ## <a name="update-the-course-details-and-delete-pages"></a>과정 세부 정보 및 삭제 페이지 업데이트
 
@@ -115,7 +116,7 @@ Razor 페이지는 [Select 태그 도우미](xref:mvc/views/working-with-forms#t
 
 ### <a name="update-the-course-page-models"></a>과정 페이지 모델 업데이트
 
-다음 코드로 *Pages/Courses/Delete.cshtml.cs*를 업데이트하여 `AsNoTracking`을 추가합니다.
+다음 코드로 *Pages/Courses/Delete.cshtml.cs* 를 업데이트하여 `AsNoTracking`을 추가합니다.
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/Delete.cshtml.cs?highlight=29)]
 
@@ -125,7 +126,7 @@ Razor 페이지는 [Select 태그 도우미](xref:mvc/views/working-with-forms#t
 
 ### <a name="update-the-course-no-locrazor-pages"></a>과정 Razor Pages 업데이트
 
-다음 코드로 *Pages/Courses/Delete.cshtml*을 업데이트합니다.
+다음 코드로 *Pages/Courses/Delete.cshtml* 을 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu30/Pages/Courses/Delete.cshtml?highlight=15-20,37)]
 
@@ -147,7 +148,7 @@ Razor 페이지는 [Select 태그 도우미](xref:mvc/views/working-with-forms#t
 
 ### <a name="create-a-class-for-assigned-courses-data"></a>할당된 과정 데이터에 대한 클래스 만들기
 
-다음 코드로 *SchoolViewModels/AssignedCourseData.cs*를 만듭니다.
+다음 코드로 *SchoolViewModels/AssignedCourseData.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu30/Models/SchoolViewModels/AssignedCourseData.cs)]
 
@@ -187,7 +188,7 @@ Razor 페이지에는 과정 엔터티의 컬렉션이 없으므로 모델 바�
 
 ### <a name="update-the-instructor-edit-page-model"></a>강사 편집 페이지 모델 업데이트
 
-다음 코드로 *Pages/Instructors/Edit.cshtml.cs*를 업데이트합니다.
+다음 코드로 *Pages/Instructors/Edit.cshtml.cs* 를 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu30/Pages/Instructors/Edit.cshtml.cs?name=snippet_All&highlight=9,28-32,38,42-77)]
 
@@ -202,7 +203,7 @@ Razor 페이지에는 과정 엔터티의 컬렉션이 없으므로 모델 바�
 
 ### <a name="update-the-instructor-edit-no-locrazor-page"></a>강사 편집 Razor 페이지 업데이트
 
-다음 코드로 *Pages/Instructors/Edit.cshtml*을 업데이트합니다.
+다음 코드로 *Pages/Instructors/Edit.cshtml* 을 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu30/Pages/Instructors/Edit.cshtml?highlight=29-59)]
 
@@ -226,7 +227,7 @@ Razor 페이지에는 과정 엔터티의 컬렉션이 없으므로 모델 바�
 
 ## <a name="update-the-instructor-delete-page"></a>강사 삭제 페이지 업데이트
 
-다음 코드로 *Pages/Instructors/Delete.cshtml.cs*를 업데이트합니다.
+다음 코드로 *Pages/Instructors/Delete.cshtml.cs* 를 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu30/Pages/Instructors/Delete.cshtml.cs?highlight=45-61)]
 
@@ -287,13 +288,13 @@ Razor 페이지에는 과정 엔터티의 컬렉션이 없으므로 모델 바�
 
 ### <a name="update-the-courses-create-page"></a>강좌 만들기 페이지 업데이트
 
-다음 코드로 *Pages/Courses/Create.cshtml*을 업데이트합니다.
+다음 코드로 *Pages/Courses/Create.cshtml* 을 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu/Pages/Courses/Create.cshtml?highlight=29-34)]
 
 위의 표시는 다음과 같이 변경합니다.
 
-* 캡션을 **DepartmentID**에서 **Department**로 변경합니다.
+* 캡션을 **DepartmentID** 에서 **Department** 로 변경합니다.
 * `"ViewBag.DepartmentID"`를 `DepartmentNameSL`로 바꿉니다(기본 클래스에서).
 * "부서 선택" 옵션을 추가합니다. 이 변경 내용은 첫 번째 부서 대신 "부서 선택"을 렌더링합니다.
 * 부서가 선택되지 않은 경우 유효성 검사 메시지를 추가합니다.
@@ -306,23 +307,23 @@ Razor 페이지는 [Select 태그 도우미](xref:mvc/views/working-with-forms#t
 
 ### <a name="update-the-courses-edit-page"></a>강좌 만들기 페이지를 업데이트합니다.
 
-*Pages/Courses/Edit.cshtml.cs*의 코드를 다음 코드로 바꿉니다.
+*Pages/Courses/Edit.cshtml.cs* 의 코드를 다음 코드로 바꿉니다.
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Edit.cshtml.cs?highlight=8,28,35,36,40,47-999)]
 
 변경 내용은 만들기 페이지 모델에서 만든 것과 비슷합니다. 위의 코드에서 `PopulateDepartmentsDropDownList`는 드롭다운 목록에 지정된 부서를 선택하는 부서 ID를 전달합니다.
 
-다음 표시로 *Pages/Courses/Edit.cshtml*을 업데이트합니다.
+다음 표시로 *Pages/Courses/Edit.cshtml* 을 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu/Pages/Courses/Edit.cshtml?highlight=17-20,32-35)]
 
 위의 표시는 다음과 같이 변경합니다.
 
 * 강좌 ID를 표시합니다. 일반적으로 엔터티의 PK(기본 키)는 표시되지 않습니다. PK는 일반적으로 사용자에게 아무런 의미가 없습니다. 이 경우 PK는 강좌 번호입니다.
-* 캡션을 **DepartmentID**에서 **Department**로 변경합니다.
+* 캡션을 **DepartmentID** 에서 **Department** 로 변경합니다.
 * `"ViewBag.DepartmentID"`를 `DepartmentNameSL`로 바꿉니다(기본 클래스에서).
 
-페이지는 강좌 번호에 대한 숨겨진 필드(`<input type="hidden">`)를 포함합니다. `asp-for="Course.CourseID"`로 `<label>` 태그 도우미를 추가하는 것은 숨겨진 필드에 대한 필요성을 제거하지 않습니다. `<input type="hidden">`은 사용자가 **저장**을 클릭할 때 게시된 데이터에 포함되도록 강좌 번호에 필요합니다.
+페이지는 강좌 번호에 대한 숨겨진 필드(`<input type="hidden">`)를 포함합니다. `asp-for="Course.CourseID"`로 `<label>` 태그 도우미를 추가하는 것은 숨겨진 필드에 대한 필요성을 제거하지 않습니다. `<input type="hidden">`은 사용자가 **저장** 을 클릭할 때 게시된 데이터에 포함되도록 강좌 번호에 필요합니다.
 
 업데이트된 코드를 테스트합니다. 강좌를 만들고, 편집하고, 삭제합니다.
 
@@ -372,7 +373,7 @@ Razor 페이지는 [Select 태그 도우미](xref:mvc/views/working-with-forms#t
 
 ### <a name="update-the-instructor-edit-page"></a>강사 편집 페이지 업데이트
 
-*Pages/Instructors/Edit.cshtml*을 사무실 위치로 업데이트합니다.
+*Pages/Instructors/Edit.cshtml* 을 사무실 위치로 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu/Pages/Instructors/Edit1.cshtml?highlight=29-33)]
 
@@ -393,7 +394,7 @@ Razor 페이지는 [Select 태그 도우미](xref:mvc/views/working-with-forms#t
 
 ### <a name="add-classes-to-support-create-and-edit-instructor-pages"></a>만들기 및 편집 강사 페이지를 지원하는 클래스 추가
 
-다음 코드로 *SchoolViewModels/AssignedCourseData.cs*를 만듭니다.
+다음 코드로 *SchoolViewModels/AssignedCourseData.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
 

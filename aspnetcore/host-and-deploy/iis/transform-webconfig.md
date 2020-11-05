@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: a2f26f32d2a282189b391aa9bb8c4637723dc60a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 259b5bf9bf2a6de987494b5771897355e3ea67db
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634633"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057315"
 ---
 # <a name="transform-webconfig"></a>web.config 변환
 
@@ -47,7 +48,7 @@ ms.locfileid: "88634633"
 
 *web.config* 변환이 필요한 각 [빌드 구성(Debug|Release)](/dotnet/core/tools/dotnet-publish#options)에 사용할 *web.{CONFIGURATION}.config* 파일을 포함합니다.
 
-다음 예제에서는 구성별 환경 변수가 *web.Release.config*에서 설정됩니다.
+다음 예제에서는 구성별 환경 변수가 *web.Release.config* 에서 설정됩니다.
 
 ```xml
 <?xml version="1.0"?>
@@ -67,7 +68,7 @@ ms.locfileid: "88634633"
 </configuration>
 ```
 
-구성이 *Release*로 설정되면 변환이 적용됩니다.
+구성이 *Release* 로 설정되면 변환이 적용됩니다.
 
 ```dotnetcli
 dotnet publish --configuration Release
@@ -81,7 +82,7 @@ dotnet publish --configuration Release
 
 *web.config* 변환이 필요한 각 프로필 구성에 사용할 *web.{PROFILE}.config* 파일을 포함합니다.
 
-다음 예제에서는 프로필별 환경 변수가 폴더 게시 프로필에 대한 *web.FolderProfile.config*에서 설정됩니다.
+다음 예제에서는 프로필별 환경 변수가 폴더 게시 프로필에 대한 *web.FolderProfile.config* 에서 설정됩니다.
 
 ```xml
 <?xml version="1.0"?>
@@ -101,7 +102,7 @@ dotnet publish --configuration Release
 </configuration>
 ```
 
-프로필이 *FolderProfile*인 경우 변환이 적용됩니다.
+프로필이 *FolderProfile* 인 경우 변환이 적용됩니다.
 
 ```dotnetcli
 dotnet publish --configuration Release /p:PublishProfile=FolderProfile
@@ -109,7 +110,7 @@ dotnet publish --configuration Release /p:PublishProfile=FolderProfile
 
 프로필 이름의 MSBuild 속성은 `$(PublishProfile)`입니다.
 
-프로필이 전달되지 않으면 기본 프로필 이름은 **FileSystem**이고, 파일이 앱의 콘텐츠 루트에 있으면 *web.FileSystem.config*가 적용됩니다.
+프로필이 전달되지 않으면 기본 프로필 이름은 **FileSystem** 이고, 파일이 앱의 콘텐츠 루트에 있으면 *web.FileSystem.config* 가 적용됩니다.
 
 ## <a name="environment"></a>환경
 
@@ -117,7 +118,7 @@ dotnet publish --configuration Release /p:PublishProfile=FolderProfile
 
 *web.config* 변환이 필요한 각 [환경](xref:fundamentals/environments)에 사용할 *web.{ENVIRONMENT}.config* 파일을 포함합니다.
 
-다음 예제에서는 환경별 환경 변수가 프로덕션 환경에 대한 *web.Production.config*에서 설정됩니다.
+다음 예제에서는 환경별 환경 변수가 프로덕션 환경에 대한 *web.Production.config* 에서 설정됩니다.
 
 ```xml
 <?xml version="1.0"?>
@@ -137,7 +138,7 @@ dotnet publish --configuration Release /p:PublishProfile=FolderProfile
 </configuration>
 ```
 
-환경이 *Production*인 경우 변환이 적용됩니다.
+환경이 *Production* 인 경우 변환이 적용됩니다.
 
 ```dotnetcli
 dotnet publish --configuration Release /p:EnvironmentName=Production
@@ -155,7 +156,7 @@ Visual Studio에서 게시하고 게시 프로필을 사용하는 경우 <xref:h
 
 *web.config* 변환이 필요한 각 사용자 지정 구성에 사용할 *{CUSTOM_NAME}.transform* 파일을 포함합니다.
 
-다음 예제에서는 사용자 지정 변환 환경 변수가 *custom.transform*에서 설정됩니다.
+다음 예제에서는 사용자 지정 변환 환경 변수가 *custom.transform* 에서 설정됩니다.
 
 ```xml
 <?xml version="1.0"?>

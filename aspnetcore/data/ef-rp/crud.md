@@ -5,6 +5,7 @@ description: Razor Pages 및 Entity Framework 자습서 시리즈의 2부입니�
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/crud
-ms.openlocfilehash: 083214c01dbec6c6f44d6b82f5b514a029e57cbe
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: c5b9be64ea30cce7a3178bfbb244ef893e9639d2
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606741"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053867"
 ---
 # <a name="part-2-no-locrazor-pages-with-ef-core-in-aspnet-core---crud"></a>2부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - CRUD
 
@@ -43,7 +44,7 @@ ms.locfileid: "91606741"
 
 ### <a name="read-enrollments"></a>등록 읽기
 
-학생의 등록 데이터를 페이지에 표시하려면 해당 데이터를 읽어야 합니다. *Pages/Students/Details.cshtml.cs*의 스캐폴드된 코드는 등록 데이터 없이 학생 데이터만 읽습니다.
+학생의 등록 데이터를 페이지에 표시하려면 해당 데이터를 읽어야 합니다. *Pages/Students/Details.cshtml.cs* 의 스캐폴드된 코드는 등록 데이터 없이 학생 데이터만 읽습니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/2-crud/Pages/Students/Details1.cshtml.cs?name=snippet_OnGetAsync&highlight=8)]
 
@@ -57,7 +58,7 @@ ms.locfileid: "91606741"
 
 ### <a name="display-enrollments"></a>등록 표시
 
-*Pages/Students/Details.cshtml*의 코드를 다음 코드로 바꿔서 등록 목록을 표시합니다. 변경 내용은 강조 표시되어 있습니다.
+*Pages/Students/Details.cshtml* 의 코드를 다음 코드로 바꿔서 등록 목록을 표시합니다. 변경 내용은 강조 표시되어 있습니다.
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Details.cshtml?highlight=32-53)]
 
@@ -78,7 +79,7 @@ ms.locfileid: "91606741"
 
 ## <a name="update-the-create-page"></a>만들기 페이지 업데이트
 
-만들기 페이지의 스캐폴드된 `OnPostAsync` 코드는 [초과 게시](#overposting)에 취약합니다. *Pages/Students/Create.cshtml.cs*의 `OnPostAsync` 메서드를 다음 코드로 바꿉니다.
+만들기 페이지의 스캐폴드된 `OnPostAsync` 코드는 [초과 게시](#overposting)에 취약합니다. *Pages/Students/Create.cshtml.cs* 의 `OnPostAsync` 메서드를 다음 코드로 바꿉니다.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Create.cshtml.cs?name=snippet_OnPostAsync)]
 
@@ -136,7 +137,7 @@ ms.locfileid: "91606741"
 
 ## <a name="update-the-edit-page"></a>편집 페이지 업데이트
 
-*Pages/Students/Edit.cshtml.cs*에서 `OnGetAsync` 및 `OnPostAsync` 메서드를 다음 코드로 바꿉니다.
+*Pages/Students/Edit.cshtml.cs* 에서 `OnGetAsync` 및 `OnPostAsync` 메서드를 다음 코드로 바꿉니다.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Edit.cshtml.cs?name=snippet_OnGetPost)]
 
@@ -172,7 +173,7 @@ ms.locfileid: "91606741"
 
 이 섹션에서는 `SaveChanges` 호출이 실패하는 경우의 사용자 지정 오류 메시지를 구현합니다.
 
-*Pages/Students/Delete.cshtml.cs*의 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
+*Pages/Students/Delete.cshtml.cs* 의 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
 
 [!code-csharp[Main](intro/samples/cu50/Pages/Students/Delete.cshtml.cs?name=snippet_All&highlight=12-14,22,30-33,45-99)]
 
@@ -183,7 +184,7 @@ ms.locfileid: "91606741"
 * 데이터베이스 예외가 catch되었습니다.
 * 삭제 페이지 `OnGetAsync` 메서드가 `saveChangesError=true`로 호출됩니다.
 
-*Pages/Students/Delete.cshtml*에 오류 메시지를 추가합니다.
+*Pages/Students/Delete.cshtml* 에 오류 메시지를 추가합니다.
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Delete.cshtml?highlight=10)]
 
@@ -211,7 +212,7 @@ ms.locfileid: "91606741"
 
 ### <a name="read-enrollments"></a>등록 읽기
 
-페이지에 학생의 등록 데이터를 표시하려면 등록 데이터를 읽어야 합니다. *Pages/Students/Details.cshtml.cs*의 스캐폴드된 코드는 등록 데이터 없이 학생 데이터만 읽습니다.
+페이지에 학생의 등록 데이터를 표시하려면 등록 데이터를 읽어야 합니다. *Pages/Students/Details.cshtml.cs* 의 스캐폴드된 코드는 등록 데이터 없이 학생 데이터만 읽습니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/2-crud/Pages/Students/Details1.cshtml.cs?name=snippet_OnGetAsync&highlight=8)]
 
@@ -225,7 +226,7 @@ ms.locfileid: "91606741"
 
 ### <a name="display-enrollments"></a>등록 표시
 
-*Pages/Students/Details.cshtml*의 코드를 다음 코드로 바꿔서 등록 목록을 표시합니다. 변경 내용은 강조 표시되어 있습니다.
+*Pages/Students/Details.cshtml* 의 코드를 다음 코드로 바꿔서 등록 목록을 표시합니다. 변경 내용은 강조 표시되어 있습니다.
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Details.cshtml?highlight=32-53)]
 
@@ -246,7 +247,7 @@ ms.locfileid: "91606741"
 
 ## <a name="update-the-create-page"></a>만들기 페이지 업데이트
 
-만들기 페이지의 스캐폴드된 `OnPostAsync` 코드는 [초과 게시](#overposting)에 취약합니다. *Pages/Students/Create.cshtml.cs*의 `OnPostAsync` 메서드를 다음 코드로 바꿉니다.
+만들기 페이지의 스캐폴드된 `OnPostAsync` 코드는 [초과 게시](#overposting)에 취약합니다. *Pages/Students/Create.cshtml.cs* 의 `OnPostAsync` 메서드를 다음 코드로 바꿉니다.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Create.cshtml.cs?name=snippet_OnPostAsync)]
 
@@ -299,7 +300,7 @@ ms.locfileid: "91606741"
 
 ## <a name="update-the-edit-page"></a>편집 페이지 업데이트
 
-*Pages/Students/Edit.cshtml.cs*에서 `OnGetAsync` 및 `OnPostAsync` 메서드를 다음 코드로 바꿉니다.
+*Pages/Students/Edit.cshtml.cs* 에서 `OnGetAsync` 및 `OnPostAsync` 메서드를 다음 코드로 바꿉니다.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Edit.cshtml.cs?name=snippet_OnGetPost)]
 
@@ -335,7 +336,7 @@ ms.locfileid: "91606741"
 
 이 섹션에서는 `SaveChanges` 호출이 실패하는 경우 사용자 지정 오류 메시지를 구현합니다.
 
-*Pages/Students/Delete.cshtml.cs*의 코드를 다음 코드로 바꿉니다. 변경 내용이 강조 표시됩니다(`using` 문도 정리됨).
+*Pages/Students/Delete.cshtml.cs* 의 코드를 다음 코드로 바꿉니다. 변경 내용이 강조 표시됩니다(`using` 문도 정리됨).
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Delete.cshtml.cs?name=snippet_All&highlight=20,22,30,38-41,53-71)]
 
@@ -346,7 +347,7 @@ ms.locfileid: "91606741"
 * 데이터베이스 예외가 catch되었습니다.
 * 삭제 페이지 `OnGetAsync` 메서드가 `saveChangesError=true`로 호출됩니다.
 
-삭제 Razor 페이지(*Pages/Students/Delete.cshtml*)에 오류 메시지를 추가합니다.
+삭제 Razor 페이지( *Pages/Students/Delete.cshtml* )에 오류 메시지를 추가합니다.
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Delete.cshtml?highlight=10)]
 
@@ -404,7 +405,7 @@ ms.locfileid: "91606741"
 
 ## <a name="customize-the-details-page"></a>세부 정보 사용자 지정 페이지
 
-`Pages/Students` 페이지로 이동합니다. **편집**, **세부 정보** 및 **삭제** 링크는 *Pages/Students/Index.cshtml* 파일에서 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.
+`Pages/Students` 페이지로 이동합니다. **편집** , **세부 정보** 및 **삭제** 링크는 *Pages/Students/Index.cshtml* 파일에서 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index1.cshtml?name=snippet)]
 
@@ -428,7 +429,7 @@ ms.locfileid: "91606741"
 
 학생 인덱스 페이지에 대한 스캐폴드된 코드는 `Enrollments` 속성을 포함하지 않습니다. 이 섹션에서 `Enrollments` 컬렉션의 콘텐츠는 세부 정보 페이지에 표시됩니다.
 
-*Pages/Students/Details.cshtml.cs*의 `OnGetAsync` 메서드는 `FirstOrDefaultAsync` 메서드를 사용하여 단일 `Student` 엔터티를 검색합니다. 다음 강조 표시된 코드를 추가합니다.
+*Pages/Students/Details.cshtml.cs* 의 `OnGetAsync` 메서드는 `FirstOrDefaultAsync` 메서드를 사용하여 단일 `Student` 엔터티를 검색합니다. 다음 강조 표시된 코드를 추가합니다.
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Details.cshtml.cs?name=snippet_Details&highlight=8-12)]
 
@@ -438,7 +439,7 @@ ms.locfileid: "91606741"
 
 ### <a name="display-related-enrollments-on-the-details-page"></a>세부 정보 페이지에 관련된 등록 표시
 
-*Pages/Students/Details.cshtml*을 엽니다. 등록의 목록을 표시하려면 다음 강조 표시된 코드를 추가합니다.
+*Pages/Students/Details.cshtml* 을 엽니다. 등록의 목록을 표시하려면 다음 강조 표시된 코드를 추가합니다.
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Details.cshtml?highlight=32-53)]
 
@@ -450,7 +451,7 @@ ms.locfileid: "91606741"
 
 ## <a name="update-the-create-page"></a>만들기 페이지 업데이트
 
-다음 코드로 *Pages/Students/Create.cshtml.cs*의 `OnPostAsync` 메서드를 업데이트합니다.
+다음 코드로 *Pages/Students/Create.cshtml.cs* 의 `OnPostAsync` 메서드를 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Create.cshtml.cs?name=snippet_OnPostAsync)]
 

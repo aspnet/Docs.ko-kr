@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/27/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: a6fd005e19f532089ac1a1914756fb03eabb24c4
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 147f1d6cdea0b9992b8be333db4cb06e30c7feaf
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690485"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055219"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Identity 서버를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호
 
@@ -471,11 +472,11 @@ services.AddTransient<IProfileService, ProfileService>();
 
 다음 지침에서는 Identity 서버와 함께 호스티드 Blazor WebAssembly 앱을 사용자 지정 도메인을 사용하는 [Azure App Service](https://azure.microsoft.com/services/app-service/)에 배포하는 방법을 설명합니다.
 
-이 호스팅 시나리오에서는 [Identity 서버의 토큰 서명 키](https://docs.identityserver.io/en/latest/topics/crypto.html#token-signing-and-validation) 및 브라우저에 대한 사이트의 HTTPS 보안 통신에 동일한 인증서를 사용하지 **않습니다** .
+이 호스팅 시나리오에서는 [Identity 서버의 토큰 서명 키](https://docs.identityserver.io/en/latest/topics/crypto.html#token-signing-and-validation) 및 브라우저에 대한 사이트의 HTTPS 보안 통신에 동일한 인증서를 사용하지 **않습니다**.
 
 * 두 가지 해당 요구 사항에 서로 다른 인증서를 사용하는 것은 각 목적에 맞게 프라이빗 키를 격리하기 때문에 좋은 보안 사례입니다.
 * 브라우저와 통신하기 위한 TLS 인증서는 Identity 서버의 토큰 서명에 영향을 주지 않고 독립적으로 관리됩니다.
-* [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)가 사용자 지정 도메인 바인딩을 위해 App Service 앱에 인증서를 제공하는 경우 Identity 서버는 토큰 서명을 위해 Azure Key Vault에서 동일한 인증서를 가져올 수 없습니다. 실제 경로에서 동일한 TLS 인증서를 사용하도록 Identity 서버를 구성할 수 있지만 보안 인증서를 소스 제어에 배치하는 것은 **좋지 않은 사례이며 대부분의 시나리오에서 피해야 합니다** .
+* [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)가 사용자 지정 도메인 바인딩을 위해 App Service 앱에 인증서를 제공하는 경우 Identity 서버는 토큰 서명을 위해 Azure Key Vault에서 동일한 인증서를 가져올 수 없습니다. 실제 경로에서 동일한 TLS 인증서를 사용하도록 Identity 서버를 구성할 수 있지만 보안 인증서를 소스 제어에 배치하는 것은 **좋지 않은 사례이며 대부분의 시나리오에서 피해야 합니다**.
 
 다음 지침에서 자체 서명된 인증서는 Identity 서버 토큰 서명을 위해서만 Azure Key Vault에 생성됩니다. Identity 서버 구성은 앱의 `My` > `CurrentUser` 인증서 저장소를 통해 키 자격 증명 모음 인증서를 사용합니다. 사용자 지정 도메인을 사용하는 HTTPS 트래픽에 사용되는 기타 인증서는 Identity 서버 서명 인증서와 별도로 생성 및 구성됩니다.
 
@@ -513,8 +514,8 @@ services.AddTransient<IProfileService, ProfileService>();
    Azure Portal에서 앱 설정을 저장하는 작업은 2단계 프로세스입니다. `WEBSITE_LOAD_CERTIFICATES` 키-값 설정을 저장한 다음, 블레이드 위쪽에서 **저장** 단추를 선택합니다.
 1. 앱의 **TLS/SSL 설정** 을 선택합니다. **프라이빗 키 인증서(.pfx)** 를 선택합니다. **키 자격 증명 모음 인증서 가져오기** 프로세스를 두 번 사용하여 HTTPS 통신용 사이트 인증서 및 사이트의 자체 서명된 Identity 서버 토큰 서명 인증서를 둘 다 가져옵니다.
 1. **사용자 지정 도메인** 블레이드로 이동합니다. 도메인 등록 기관의 웹 사이트에서 **IP 주소** 및 **사용자 지정 도메인 확인 ID** 를 사용하여 도메인을 구성합니다. 일반적인 도메인 구성에는 다음이 포함됩니다.
-   * `@`의 **호스트** 및 Azure Portal의 IP 주소 값이 포함된 **A 레코드** .
-   * `asuid`의 **호스트** 및 Azure에서 생성하고 Azure Portal에서 제공하는 확인 ID 값이 포함된 **TXT 레코드** .
+   * `@`의 **호스트** 및 Azure Portal의 IP 주소 값이 포함된 **A 레코드**.
+   * `asuid`의 **호스트** 및 Azure에서 생성하고 Azure Portal에서 제공하는 확인 ID 값이 포함된 **TXT 레코드**.
 
    도메인 등록 기관의 웹 사이트에서 변경 내용을 올바르게 저장해야 합니다. 일부 등록 기관 웹 사이트에서는 도메인 레코드를 저장하려면 2단계 프로세스가 필요합니다. 하나 이상의 레코드를 개별적으로 저장한 다음, 별도 단추를 사용하여 도메인 등록을 업데이트합니다.
 1. Azure Portal에서 **사용자 지정 도메인** 블레이드로 돌아갑니다. **사용자 지정 도메인 추가** 를 선택합니다. **A 레코드** 옵션을 선택합니다. 도메인을 제공하고 **유효성 검사** 를 선택합니다. 도메인 레코드가 올바르고 인터넷에서 전파되는 경우 포털에서 **사용자 지정 도메인 추가** 단추를 선택할 수 있습니다.

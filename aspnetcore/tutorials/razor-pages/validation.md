@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 86c523c69d3ee85f56bf1a51719a0bd93cbe97fc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 991a0f29c0edc5a220dfde69bd22dc4ed758394d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633554"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060731"
 ---
 # <a name="part-8-add-validation-to-an-aspnet-core-no-locrazor-page"></a>8부. ASP.NET Core Razor Page에 유효성 검사 추가
 
@@ -82,7 +83,7 @@ ASP.NET Core가 자동으로 적용하는 유효성 검사 규칙을 사용하�
 
 양식 데이터는 클라이언트 쪽 유효성 검사 오류가 없을 때까지 서버에 게시되지 않습니다. 양식 데이터가 다음 방법 중 하나 이상으로 게시되지 않았는지 확인합니다.
 
-* `OnPostAsync` 메서드에 중단점을 배치합니다. 양식을 제출합니다(**만들기** 또는 **저장** 선택). 중단점은 적중되지 않습니다.
+* `OnPostAsync` 메서드에 중단점을 배치합니다. 양식을 제출합니다( **만들기** 또는 **저장** 선택). 중단점은 적중되지 않습니다.
 * [Fiddler 도구](https://www.telerik.com/fiddler)를 사용합니다.
 * 브라우저 개발자 도구를 사용하여 네트워크 트래픽을 모니터링합니다.
 
@@ -186,7 +187,7 @@ CREATE TABLE [dbo].[Movie] (
 
 위의 스키마 변경으로 인해 EF가 예외를 throw하지 않습니다. 그러나 스키마가 모델과 일치하도록 마이그레이션을 만듭니다.
 
-**도구** 메뉴에서 **NuGet 패키지 관리자 > 패키지 관리자 콘솔**을 선택합니다.
+**도구** 메뉴에서 **NuGet 패키지 관리자 > 패키지 관리자 콘솔** 을 선택합니다.
 PMC에서 다음 명령을 입력합니다.
 
 ```powershell

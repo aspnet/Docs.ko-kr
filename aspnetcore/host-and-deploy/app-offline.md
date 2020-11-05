@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/app-offline
-ms.openlocfilehash: 95dfadd084af5909fee754308ad5d65f54d4875d
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 4d71b95680a9b160ebb25116e35096495a2eaf93
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91755188"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058651"
 ---
 # <a name="app-offline-file-app_offlinehtm"></a>앱 오프라인 파일(`app_offline.htm`)
 

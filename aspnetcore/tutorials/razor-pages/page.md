@@ -5,6 +5,7 @@ description: Razor Pages에 대한 자습서 시리즈의 3부입니다.
 ms.author: riande
 ms.date: 08/17/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 03febbd71df19cd3524d26e229a8bd8798a874b5
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 7d0085e1d444de30ca124ef544668122ab350c93
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865118"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060055"
 ---
 # <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>3부. ASP.NET Core의 스캐폴드된 Razor Pages
 
@@ -75,14 +76,14 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 ### <a name="the-layout-page"></a>레이아웃 페이지
 
-메뉴 링크를 선택합니다( **RazorPagesMovie**, **홈** 및 **개인 정보**). 각 페이지는 동일한 메뉴 레이아웃을 보여줍니다. 메뉴 레이아웃은 *Pages/Shared/_Layout.cshtml* 파일에서 구현됩니다. *Pages/Shared/_Layout.cshtml* 파일을 엽니다.
+메뉴 링크를 선택합니다( **RazorPagesMovie** , **홈** 및 **개인 정보** ). 각 페이지는 동일한 메뉴 레이아웃을 보여줍니다. 메뉴 레이아웃은 *Pages/Shared/_Layout.cshtml* 파일에서 구현됩니다. *Pages/Shared/_Layout.cshtml* 파일을 엽니다.
 
 [레이아웃](xref:mvc/views/layout) 템플릿을 사용하여 HTML 컨테이너 레이아웃을 다음과 같이 지정할 수 있습니다.
 
 * 한 위치에 지정됩니다.
 * 사이트의 여러 페이지에 적용됩니다.
 
-`@RenderBody()` 줄을 찾습니다. `RenderBody`는 사용자가 만드는 모든 페이지 특정 보기가 표시되는 자리 표시자이며 레이아웃 페이지에서 *래핑*됩니다. 예를 들어, **개인 정보** 링크를 선택하는 경우 *Pages/Privacy.cshtml* 보기는 `RenderBody` 메서드 내에서 렌더링됩니다.
+`@RenderBody()` 줄을 찾습니다. `RenderBody`는 사용자가 만드는 모든 페이지 특정 보기가 표시되는 자리 표시자이며 레이아웃 페이지에서 *래핑* 됩니다. 예를 들어, **개인 정보** 링크를 선택하는 경우 *Pages/Privacy.cshtml* 보기는 `RenderBody` 메서드 내에서 렌더링됩니다.
 
 <a name="vd"></a>
 
@@ -106,7 +107,7 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 ### <a name="update-the-layout"></a>레이아웃 업데이트
 
-*Pages/Shared/_Layout.cshtml* 파일의 `<title>` 요소를 변경하여 **RazorPagesMovie** 대신 **Movie**를 표시합니다.
+*Pages/Shared/_Layout.cshtml* 파일의 `<title>` 요소를 변경하여 **RazorPagesMovie** 대신 **Movie** 를 표시합니다.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 
@@ -126,7 +127,7 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 변경 내용을 저장하고 **RpMovie** 링크를 클릭하여 앱을 테스트합니다. 문제가 있는 경우 GitHub에서 [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml) 파일을 참조하세요.
 
-다른 링크(**홈**, **RpMovie**, **만들기**, **편집** 및 **삭제**)를 테스트합니다. 각 페이지에서 설정되는 제목은 브라우저 탭에서 확인할 수 있습니다. 페이지의 책갈피를 지정하면 제목이 책갈피에 사용됩니다.
+다른 링크( **홈** , **RpMovie** , **만들기** , **편집** 및 **삭제** )를 테스트합니다. 각 페이지에서 설정되는 제목은 브라우저 탭에서 확인할 수 있습니다. 페이지의 책갈피를 지정하면 제목이 책갈피에 사용됩니다.
 
 > [!NOTE]
 > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(“,”)를 사용하는 영어가 아닌 로캘 및 미국 영어가 아닌 날짜 형식에 대해 [jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 전역화하는 단계를 수행해야 합니다. 소수점 추가에 대한 지침은 이 [GitHub 문제 4076](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)을 참조하세요.
@@ -135,7 +136,7 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/Pages/_ViewStart.cshtml)]
 
-이전 태그는 *Pages* 폴더 아래에 있는 모든 Razor 파일에 대한 레이아웃 파일을 *Pages/Shared/_Layout.cshtml*로 설정합니다. 자세한 내용은 [레이아웃](xref:razor-pages/index#layout)을 참조하세요.
+이전 태그는 *Pages* 폴더 아래에 있는 모든 Razor 파일에 대한 레이아웃 파일을 *Pages/Shared/_Layout.cshtml* 로 설정합니다. 자세한 내용은 [레이아웃](xref:razor-pages/index#layout)을 참조하세요.
 
 ### <a name="the-create-page-model"></a>Create 페이지 모델
 
@@ -265,7 +266,7 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 ### <a name="the-layout-page"></a>레이아웃 페이지
 
-메뉴 링크를 선택합니다( **RazorPagesMovie**, **홈** 및 **개인 정보**). 각 페이지는 동일한 메뉴 레이아웃을 보여줍니다. 메뉴 레이아웃은 *Pages/Shared/_Layout.cshtml* 파일에서 구현됩니다. *Pages/Shared/_Layout.cshtml* 파일을 엽니다.
+메뉴 링크를 선택합니다( **RazorPagesMovie** , **홈** 및 **개인 정보** ). 각 페이지는 동일한 메뉴 레이아웃을 보여줍니다. 메뉴 레이아웃은 *Pages/Shared/_Layout.cshtml* 파일에서 구현됩니다. *Pages/Shared/_Layout.cshtml* 파일을 엽니다.
 
 [레이아웃](xref:mvc/views/layout) 템플릿을 사용하면 한 곳에서 사이트의 HTML 컨테이너 레이아웃을 지정한 다음 사이트의 여러 페이지에 걸쳐 적용할 수 있습니다. `@RenderBody()` 줄을 찾습니다. `RenderBody`는 사용자가 만드는 모든 페이지 특정 보기가 표시되는 자리 표시자이며 레이아웃 페이지에서 ‘래핑됩니다’. 예를 들어 **개인 정보** 링크를 선택하는 경우 **Pages/Privacy.cshtml** 보기는 `RenderBody` 메서드 내에서 렌더링됩니다.
 
@@ -291,7 +292,7 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 ### <a name="update-the-layout"></a>레이아웃 업데이트
 
-*Pages/Shared/_Layout.cshtml* 파일의 `<title>` 요소를 변경하여 **RazorPagesMovie** 대신 **Movie**를 표시합니다.
+*Pages/Shared/_Layout.cshtml* 파일의 `<title>` 요소를 변경하여 **RazorPagesMovie** 대신 **Movie** 를 표시합니다.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 
@@ -311,7 +312,7 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 변경 내용을 저장하고 **RpMovie** 링크를 클릭하여 앱을 테스트합니다. 문제가 있는 경우 GitHub에서 [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml) 파일을 참조하세요.
 
-다른 링크(**홈**, **RpMovie**, **만들기**, **편집** 및 **삭제**)를 테스트합니다. 각 페이지에서 설정되는 제목은 브라우저 탭에서 확인할 수 있습니다. 페이지의 책갈피를 지정하면 제목이 책갈피에 사용됩니다.
+다른 링크( **홈** , **RpMovie** , **만들기** , **편집** 및 **삭제** )를 테스트합니다. 각 페이지에서 설정되는 제목은 브라우저 탭에서 확인할 수 있습니다. 페이지의 책갈피를 지정하면 제목이 책갈피에 사용됩니다.
 
 > [!NOTE]
 > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(“,”)를 사용하는 영어가 아닌 로캘 및 미국 영어가 아닌 날짜 형식에 대해 [jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 전역화하는 단계를 수행해야 합니다. 소수점 추가에 대한 지침은 이 [GitHub 문제 4076](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)에 나와 있습니다.
@@ -320,7 +321,7 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/_ViewStart.cshtml)]
 
-이전 태그는 *Pages* 폴더 아래에 있는 모든 Razor 파일에 대한 레이아웃 파일을 *Pages/Shared/_Layout.cshtml*로 설정합니다. 자세한 내용은 [레이아웃](xref:razor-pages/index#layout)을 참조하세요.
+이전 태그는 *Pages* 폴더 아래에 있는 모든 Razor 파일에 대한 레이아웃 파일을 *Pages/Shared/_Layout.cshtml* 로 설정합니다. 자세한 내용은 [레이아웃](xref:razor-pages/index#layout)을 참조하세요.
 
 ### <a name="the-create-page-model"></a>Create 페이지 모델
 

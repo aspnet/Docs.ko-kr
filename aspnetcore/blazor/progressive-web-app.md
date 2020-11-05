@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 4f184a1264614b16ce98ba5474aacd60f175bd8a
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: c8ff2fc0f2f4d4e75f535f379ec94ea9de2e3ecb
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865218"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055700"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly를 사용하여 프로그레시브 웹 애플리케이션 빌드
 
@@ -46,7 +47,7 @@ ms.locfileid: "88865218"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-**새 프로젝트 만들기** 대화 상자에서 새 **Blazor WebAssembly 앱**을 만들 때 **프로그레시브 웹 애플리케이션** 확인란을 선택합니다.
+**새 프로젝트 만들기** 대화 상자에서 새 **Blazor WebAssembly 앱** 을 만들 때 **프로그레시브 웹 애플리케이션** 확인란을 선택합니다.
 
 ![‘프로그레시브 웹 애플리케이션’ 확인란은 Visual Studio 새 프로젝트 대화 상자에서 선택합니다.](progressive-web-app/_static/image1.png)
 
@@ -74,7 +75,7 @@ PWA 템플릿을 사용하여 만든 앱을 방문하는 사용자에게는 해�
 
 ![Google Chrome의 확인 대화 상자는 사용자에게 ‘MyBlazorPwa’ 앱의 설치 단추를 제공합니다.](progressive-web-app/_static/image2.png)
 
-iOS에서 방문자는 Safari의 **‘공유’** 단추 및 **‘홈 화면에 추가’** 옵션을 사용하여 PWA를 설치할 수 있습니다. Android용 Chrome에서 사용자는 오른쪽 위에 있는 **메뉴** 단추를 탭한 다음 **홈 화면에 추가**를 선택해야 합니다.
+iOS에서 방문자는 Safari의 **‘공유’** 단추 및 **‘홈 화면에 추가’** 옵션을 사용하여 PWA를 설치할 수 있습니다. Android용 Chrome에서 사용자는 오른쪽 위에 있는 **메뉴** 단추를 탭한 다음 **홈 화면에 추가** 를 선택해야 합니다.
 
 설치된 앱은 주소 표시줄 없이 자체 창에 표시됩니다.
 
@@ -100,7 +101,7 @@ iOS에서 방문자는 Safari의 **‘공유’** 단추 및 **‘홈 화면에 
 
    ![Google Chrome 개발자 도구 ‘애플리케이션’ 탭에서는 활성화되고 실행 중인 서비스 작업자를 표시합니다.](progressive-web-app/_static/image4.png)
 
-1. 페이지를 다시 로드하고 **네트워크** 탭을 검토합니다. **서비스 작업자** 또는 **메모리 캐시**는 모든 페이지 자산의 원본으로 나열됩니다.
+1. 페이지를 다시 로드하고 **네트워크** 탭을 검토합니다. **서비스 작업자** 또는 **메모리 캐시** 는 모든 페이지 자산의 원본으로 나열됩니다.
 
    ![모든 페이지 자산의 원본을 나타내는 Google Chrome 개발자 도구 ‘네트워크’ 탭](progressive-web-app/_static/image5.png)
 
@@ -243,7 +244,7 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
 
 사용자가 모든 탭에서 앱을 닫을 때까지는 업데이트가 완료되지 않습니다. [백그라운드 업데이트](#background-updates) 단원에 설명된 대로 업데이트를 앱에 배포한 후 브라우저에서 업데이트된 서비스 작업자 파일을 페치하여 업데이트 프로세스를 시작합니다.
 
-많은 개발자가 놀라워하는 부분은 이 업데이트가 완료되는 경우에도 사용자가 모든 탭에서 나갈 때까지 업데이트가 적용되지 **않는다**는 점입니다. 앱을 표시하는 유일한 탭인 경우에도 앱을 표시하는 탭을 새로 고치는 것으로 충분하지 **않습니다**. 앱이 완전히 닫힐 때까지 새 서비스 작업자는 ‘활성화 대기’ 상태로 유지됩니다. **이는 Blazor에 한정되지 않는 표준 웹 플랫폼 동작입니다.**
+많은 개발자가 놀라워하는 부분은 이 업데이트가 완료되는 경우에도 사용자가 모든 탭에서 나갈 때까지 업데이트가 적용되지 **않는다** 는 점입니다. 앱을 표시하는 유일한 탭인 경우에도 앱을 표시하는 탭을 새로 고치는 것으로 충분하지 **않습니다**. 앱이 완전히 닫힐 때까지 새 서비스 작업자는 ‘활성화 대기’ 상태로 유지됩니다. **이는 Blazor에 한정되지 않는 표준 웹 플랫폼 동작입니다.**
 
 이는 서비스 작업자 또는 오프라인으로 캐시된 리소스에 대한 업데이트를 테스트하려는 개발자를 난감하게 만듭니다. 브라우저의 개발자 도구를 체크 인하면 다음과 같은 내용이 표시될 수 있습니다.
 

@@ -7,6 +7,7 @@ ms.author: stevesa
 ms.custom: mvc
 ms.date: 02/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: spa/angular
-ms.openlocfilehash: c4afddca1d0c2428371c90013f5dbd5c1afb5108
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 2fff0d60b71bbbab9347dbe74cad023264247388
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628783"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054569"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>ASP.NET Core에서 Angular 프로젝트 템플릿 사용
 
@@ -120,7 +121,7 @@ npm install --save <package_name>
     ```
 
     > [!IMPORTANT]
-    > `ng serve`가 아니라 `npm start`를 사용하여 Angular CLI 개발 서버를 시작하면 *package.json*의 구성이 적용됩니다. 추가 매개 변수를 Angular CLI 서버에 전달하려면 *package.json* 파일의 관련 `scripts` 줄에 매개 변수를 추가합니다.
+    > `ng serve`가 아니라 `npm start`를 사용하여 Angular CLI 개발 서버를 시작하면 *package.json* 의 구성이 적용됩니다. 추가 매개 변수를 Angular CLI 서버에 전달하려면 *package.json* 파일의 관련 `scripts` 줄에 매개 변수를 추가합니다.
 
 2. 자체 인스턴스 중 하나를 시작하지 않고 외부 Angular CLI 인스턴스를 사용하도록 ASP.NET Core 앱을 수정합니다. *Startup* 클래스에서 `spa.UseAngularCliServer` 호출을 다음으로 바꿉니다.
 
@@ -142,7 +143,7 @@ options.SupplyData = (context, data) =>
 };
 ```
 
-`SupplyData` 콜백을 사용하면 임의, 요청별, JSON serialize 가능 데이터(예: 문자열, 부울 또는 숫자)를 전달할 수 있습니다. *main.server.ts* 코드는 이 데이터를 `params.data`로 수신합니다. 예를 들어 앞의 코드 샘플은 부울 값을 `params.data.isHttpsRequest`로 `createServerRenderer` 콜백에 전달합니다. Angular에서 지원되는 모든 방법으로 앱의 다른 파트에 이 값을 전달할 수 있습니다. 예를 들어 *main.server.ts*에서 생성자가 `BASE_URL` 값을 수신하도록 선언된 모든 구성 요소에 이 값을 전달하는 방법을 참조하세요.
+`SupplyData` 콜백을 사용하면 임의, 요청별, JSON serialize 가능 데이터(예: 문자열, 부울 또는 숫자)를 전달할 수 있습니다. *main.server.ts* 코드는 이 데이터를 `params.data`로 수신합니다. 예를 들어 앞의 코드 샘플은 부울 값을 `params.data.isHttpsRequest`로 `createServerRenderer` 콜백에 전달합니다. Angular에서 지원되는 모든 방법으로 앱의 다른 파트에 이 값을 전달할 수 있습니다. 예를 들어 *main.server.ts* 에서 생성자가 `BASE_URL` 값을 수신하도록 선언된 모든 구성 요소에 이 값을 전달하는 방법을 참조하세요.
 
 ### <a name="drawbacks-of-ssr"></a>SSR의 단점
 

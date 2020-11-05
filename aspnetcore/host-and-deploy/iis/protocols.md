@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/protocols
-ms.openlocfilehash: 1c3748eeead1b8cccdb6112150cf90fb5597b689
-ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
+ms.openlocfilehash: 4d0dc1239467e92c4127f631709c2ffd6098bfc5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91654353"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057416"
 ---
 # <a name="use-aspnet-core-with-http2-on-iis"></a>IIS의 HTTP/2에서 ASP.NET Core 사용
 

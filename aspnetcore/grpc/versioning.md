@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 01/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/versioning
-ms.openlocfilehash: 0d8c5d953c9d703788a1686bbc800248c46efa48
-ms.sourcegitcommit: 47c9a59ff8a359baa6bca2637d3af87ddca1245b
+ms.openlocfilehash: 38204b16d041f21221862c566b90a6a9571d26a1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88945404"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058703"
 ---
 # <a name="versioning-grpc-services"></a>gRPC 서비스 버전 관리
 
@@ -58,7 +59,7 @@ GRPC 프로토콜은 시간이 지남에 따라 변경되는 서비스를 지원
 다음 변경 내용은 gRPC 프로토콜 수준에서 호환성이 손상되지 않는 변경이지만 최신 *.proto* 계약 또는 클라이언트 .NET 어셈블리로 업그레이드하는 경우 클라이언트를 업데이트해야 합니다. gRPC 라이브러리를 NuGet에 게시하려는 경우 이진 호환성이 중요합니다.
 
 * **필드 제거** - 제거된 필드의 값은 메시지의 [알 수 없는 필드](https://developers.google.com/protocol-buffers/docs/proto3#unknowns)로 deserialize됩니다. 이것은 gRPC 로토콜 관련 호환성이 손상되는 변경이 아니며 최신 계약으로 업그레이드하는 경우 클라이언트를 업데이트해야 합니다. 제거된 필드 번호를 나중에 실수로 다시 사용하지 않는 것이 중요합니다. 이 문제가 발생하지 않도록 하려면 Protobuf의 [reserved](https://developers.google.com/protocol-buffers/docs/proto3#reserved) 키워드를 사용하여 메시지에 삭제된 필드 번호 및 이름을 지정합니다.
-* **메시지 이름 바꾸기** - 메시지 이름은 일반적으로 네트워크에서 전송되지 않으므로 gRPC 프로토콜 관련 호환성이 손상되는 변경이 아닙니다. 최신 계약으로 업그레이드하는 경우에는 클라이언트를 업데이트해야 합니다. 메시지 이름이 메시지 유형을 식별하는 데 사용되는 경우 메시지 이름이 네트워크에서 전송**되는** 한 가지 경우는 [모든](https://developers.google.com/protocol-buffers/docs/proto3#any) 필드를 사용하는 경우입니다.
+* **메시지 이름 바꾸기** - 메시지 이름은 일반적으로 네트워크에서 전송되지 않으므로 gRPC 프로토콜 관련 호환성이 손상되는 변경이 아닙니다. 최신 계약으로 업그레이드하는 경우에는 클라이언트를 업데이트해야 합니다. 메시지 이름이 메시지 유형을 식별하는 데 사용되는 경우 메시지 이름이 네트워크에서 전송 **되는** 한 가지 경우는 [모든](https://developers.google.com/protocol-buffers/docs/proto3#any) 필드를 사용하는 경우입니다.
 * **csharp_namespace 변경** - `csharp_namespace`를 변경하면 생성된 .NET 형식의 네임스페이스가 변경됩니다. 이것은 gRPC 프로토콜 관련 호환성이 손상되는 변경이 아니며 최신 계약으로 업그레이드하는 경우 클라이언트를 업데이트해야 합니다.
 
 ### <a name="protocol-breaking-changes"></a>프로토콜 관련 호환성이 손상되는 변경
@@ -93,7 +94,7 @@ gRPC는 .NET 네임스페이스와 유사하게 작동 하는 선택적 [package
 * `greet.v1.Greeter`
 * `greet.v2.Greeter`
 
-버전이 지정된 서비스의 구현은 *Startup.cs*에 등록됩니다.
+버전이 지정된 서비스의 구현은 *Startup.cs* 에 등록됩니다.
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -116,7 +117,7 @@ app.UseEndpoints(endpoints =>
 
 [!code-csharp[](versioning/sample/GreeterServiceV1.cs?highlight=10,19)]
 
-서로 다른 패키지 이름을 사용하여 생성된 서비스와 메시지는 **다른 .NET 형식**이 됩니다. 비즈니스 논리를 중앙 위치에 이동하려면 메시지를 공통 형식으로 매핑해야 합니다.
+서로 다른 패키지 이름을 사용하여 생성된 서비스와 메시지는 **다른 .NET 형식** 이 됩니다. 비즈니스 논리를 중앙 위치에 이동하려면 메시지를 공통 형식으로 매핑해야 합니다.
 
 ## <a name="additional-resources"></a>추가 리소스
 

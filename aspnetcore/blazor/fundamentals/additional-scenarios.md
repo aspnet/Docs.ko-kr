@@ -5,8 +5,9 @@ description: ASP.NET Core Blazor 호스팅 모델 구성의 추가 시나리오�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/12/2020
+ms.date: 10/27/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: 075bcc68fd2dff0ebf2cfceacec24fde8c818603
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: f8b6e65424948aaa7b28023497bbbf2a1ceb47dd
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326534"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056051"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>ASP.NET Core Blazor 호스팅 모델 구성
 
@@ -300,11 +301,13 @@ window.addEventListener('pagehide', () => {
 });
 ```
 
-## <a name="influence-html-head-tag-elements"></a>HTML `<head>` 태그 요소에 영향
+<!-- HOLD for reactivation at 5x
 
-‘이 섹션은 Blazor WebAssembly 및 Blazor Server의 예정된 ASP.NET Core 5.0 릴리스에 적용됩니다.’
+## Influence HTML `<head>` tag elements
 
-렌더링된 `Title`, `Link` 및 `Meta` 구성 요소는 HTML `<head>` 태그 요소에서 데이터를 추가하거나 업데이트합니다.
+*This section applies to the upcoming ASP.NET Core 5.0 release of Blazor WebAssembly and Blazor Server.*
+
+When rendered, the `Title`, `Link`, and `Meta` components add or update data in the HTML `<head>` tag elements:
 
 ```razor
 @using Microsoft.AspNetCore.Components.Web.Extensions.Head
@@ -314,22 +317,24 @@ window.addEventListener('pagehide', () => {
 <Meta content="{DESCRIPTION}" name="description" />
 ```
 
-앞의 예제에서 `{TITLE}`, `{URL}` 및 `{DESCRIPTION}`의 자리 표시자는 문자열 값, Razor 변수 또는 Razor 식입니다.
+In the preceding example, placeholders for `{TITLE}`, `{URL}`, and `{DESCRIPTION}` are string values, Razor variables, or Razor expressions.
 
-다음 특성이 적용됩니다.
+The following characteristics apply:
 
-* 서버 쪽 사전 렌더링이 지원됩니다.
-* `Value` 매개 변수는 `Title` 구성 요소의 유일하게 유효한 매개 변수입니다.
-* `Meta` 및 `Link` 구성 요소에 제공되는 HTML 특성은 [추가 특성](xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters)에서 캡처되고 렌더링된 HTML 태그로 전달됩니다.
-* 여러 `Title` 구성 요소의 경우 페이지 제목은 렌더링된 마지막 `Title` 구성 요소의 `Value`를 반영합니다.
-* 특성이 동일한 여러 `Meta` 또는 `Link` 구성 요소가 포함된 경우 `Meta` 또는 `Link` 구성 요소마다 정확히 하나의 HTML 태그가 렌더링됩니다. 두 개의 `Meta` 또는 `Link` 구성 요소는 렌더링된 동일한 HTML 태그를 참조할 수 없습니다.
-* 기존 `Meta` 또는 `Link` 구성 요소의 매개 변수에 대한 변경 내용은 렌더링된 HTML 태그에 반영됩니다.
-* `Link` 또는 `Meta` 구성 요소가 더 이상 렌더링되지 않아 프레임워크에서 삭제되는 경우 렌더링된 HTML 태그가 제거됩니다.
+* Server-side prerendering is supported.
+* The `Value` parameter is the only valid parameter for the `Title` component.
+* HTML attributes provided to the `Meta` and `Link` components are captured in [additional attributes](xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters) and passed through to the rendered HTML tag.
+* For multiple `Title` components, the title of the page reflects the `Value` of the last `Title` component rendered.
+* If multiple `Meta` or `Link` components are included with identical attributes, there's exactly one HTML tag rendered per `Meta` or `Link` component. Two `Meta` or `Link` components can't refer to the same rendered HTML tag.
+* Changes to the parameters of existing `Meta` or `Link` components are reflected in their rendered HTML tags.
+* When the `Link` or `Meta` components are no longer rendered and thus disposed by the framework, their rendered HTML tags are removed.
 
-프레임워크 구성 요소 중 하나가 자식 구성 요소에서 사용되는 경우 렌더링된 HTML 태그는 프레임워크 구성 요소를 포함하는 자식 구성 요소가 렌더링되는 한 부모 구성 요소의 다른 모든 자식 구성 요소에 영향을 미칩니다. 자식 구성 요소에서 이러한 프레임워크 구성 요소 중 하나를 사용하는 것과 `wwwroot/index.html` 또는 `Pages/_Host.cshtml`에 HTML 태그를 배치하는 것의 차이는 프레임워크 구성 요소의 렌더링된 HTML 태그입니다.
+When one of the framework components is used in a child component, the rendered HTML tag influences any other child component of the parent component as long as the child component containing the framework component is rendered. The distinction between using the one of these framework components in a child component and placing a an HTML tag in `wwwroot/index.html` or `Pages/_Host.cshtml` is that a framework component's rendered HTML tag:
 
-* 애플리케이션 상태에 의해 수정될 수 있습니다. 하드 코드된 HTML 태그는 애플리케이션 상태에 의해 수정될 수 없습니다.
-* 부모 구성 요소가 더 이상 렌더링되지 않으면 HTML `<head>`에서 제거됩니다.
+* Can be modified by application state. A hard-coded HTML tag can't be modified by application state.
+* Is removed from the HTML `<head>` when the parent component is no longer rendered.
+
+-->
 
 ::: moniker-end
 

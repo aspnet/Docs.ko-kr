@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/18/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: 295e5dd025afc486be08ecadbf661bf765c2745f
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: 95714b3c0d21d3b348a9a8a984e2a42e7708499e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113610"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056558"
 ---
 # <a name="aspnet-core-no-locblazor-advanced-scenarios"></a>ASP.NET Core Blazor 고급 시나리오
 
@@ -177,7 +178,7 @@ builder.AddContent(1, "Second");
 | :------: | ---------- | :----: |
 | 1        | 텍스트 노드  | Second |
 
-런타임은 diff를 통해 시퀀스 `0`의 항목이 제거된 것을 확인하고 다음과 같은 간단한 *편집 스크립트*를 생성합니다.
+런타임은 diff를 통해 시퀀스 `0`의 항목이 제거된 것을 확인하고 다음과 같은 간단한 *편집 스크립트* 를 생성합니다.
 
 * 첫 번째 텍스트 노드를 제거합니다.
 
@@ -214,7 +215,7 @@ builder.AddContent(seq++, "Second");
 * 첫 번째 텍스트 노드의 값을 `Second`로 변경합니다.
 * 두 번째 텍스트 노드를 제거합니다.
 
-시퀀스 번호를 생성하면 원본 코드에서 `if/else` 분기 및 루프가 있던 위치에 대한 유용한 정보가 모두 손실됩니다. 이로 인해 diff의 길이가 이전보다 **두 배**가 됩니다.
+시퀀스 번호를 생성하면 원본 코드에서 `if/else` 분기 및 루프가 있던 위치에 대한 유용한 정보가 모두 손실됩니다. 이로 인해 diff의 길이가 이전보다 **두 배** 가 됩니다.
 
 여기서는 간단한 예제를 사용했지만, 복잡하고 깊이 중첩된 구조와 특히 루프를 사용하는 보다 현실적인 사례에서는 일반적으로 성능 비용이 더 높습니다. 삽입 또는 제거된 루프 블록이나 분기를 즉시 확인하는 대신, diff 알고리즘은 렌더링 트리를 재귀적으로 깊이 반복해야 합니다. 이로 인해 이전 구조와 새 구조 간의 관계에 대한 잘못된 정보가 diff 알고리즘에 제공되기 때문에 일반적으로 긴 편집 스크립트를 작성해야 합니다.
 

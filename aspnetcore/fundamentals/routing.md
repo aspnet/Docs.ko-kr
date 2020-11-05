@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/1/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: e3dd7168e6974f63fa963d3732bc5df41814c70e
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: 5b07a2839daf190d99b2787db70998373d34cd44
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491624"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060003"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core에서 라우팅
 
@@ -209,7 +210,7 @@ ASP.NET Core 엔드포인트는 다음과 같습니다.
 
 위의 코드에서는 엔드포인트별 정책을 지원하는 사용자 지정 미들웨어의 예를 보여 줍니다. 이 미들웨어는 중요한 데이터에 대한 액세스의 ‘감사 로그’를 콘솔에 기록합니다. `AuditPolicyAttribute` 메타데이터를 사용하여 엔드포인트를 ‘감사’하도록 미들웨어를 구성할 수 있습니다. 이 샘플에서는 중요함으로 표시된 엔드포인트만 감사되는 ‘옵트인 패턴’을 보여 줍니다. 예를 들어 이 논리를 역으로 정의하여 안전한 것으로 표시되지 않은 모든 항목을 감사할 수 있습니다. 엔드포인트 메타데이터 시스템은 유연합니다. 이 논리는 사용 사례에 적합한 방식으로 설계할 수 있습니다.
 
-앞의 샘플 코드는 엔드포인트의 기본 개념을 보여 주기 위한 것입니다. **프로덕션 용도로는 사용하지 않아야 합니다** . ‘감사 로그’ 미들웨어의 전체 버전은 다음과 같습니다.
+앞의 샘플 코드는 엔드포인트의 기본 개념을 보여 주기 위한 것입니다. **프로덕션 용도로는 사용하지 않아야 합니다**. ‘감사 로그’ 미들웨어의 전체 버전은 다음과 같습니다.
 
 * 파일이나 데이터베이스에 기록합니다.
 * 사용자, IP 주소, 중요한 엔드포인트의 이름 등과 같은 세부 정보를 포함합니다.
@@ -914,7 +915,7 @@ ASP.NET Core 3.0에서는 성능 향상을 위해 대부분의 라우팅이 업�
 
 URL 일치를 위해 라우팅을 사용하는 프레임워크를 만들려면 먼저 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>를 기반으로 빌드되는 사용자 환경을 정의합니다.
 
-<xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder>를 기반으로 **빌드하세요** . 이렇게 하면 사용자는 혼동하지 않고 다른 ASP.NET Core 기능을 사용하여 프레임워크를 작성할 수 있습니다. 모든 ASP.NET Core 템플릿에는 라우팅이 포함됩니다. 라우팅이 있고 사용자에게 친숙하다고 간주합니다.
+<xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder>를 기반으로 **빌드하세요**. 이렇게 하면 사용자는 혼동하지 않고 다른 ASP.NET Core 기능을 사용하여 프레임워크를 작성할 수 있습니다. 모든 ASP.NET Core 템플릿에는 라우팅이 포함됩니다. 라우팅이 있고 사용자에게 친숙하다고 간주합니다.
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -926,7 +927,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-<xref:Microsoft.AspNetCore.Builder.IEndpointConventionBuilder>를 구현하는 `MapMyFramework(...)` 호출에서 봉인된 구체적인 형식을 반환 **하세요** . 대부분의 프레임워크 `Map...` 메서드는 이 패턴을 따릅니다. `IEndpointConventionBuilder` 인터페이스:
+<xref:Microsoft.AspNetCore.Builder.IEndpointConventionBuilder>를 구현하는 `MapMyFramework(...)` 호출에서 봉인된 구체적인 형식을 반환 **하세요**. 대부분의 프레임워크 `Map...` 메서드는 이 패턴을 따릅니다. `IEndpointConventionBuilder` 인터페이스:
 
 * 메타데이터를 작성 가능하게 합니다.
 * 다양한 확장 메서드의 대상으로 지정됩니다.
@@ -944,17 +945,17 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-사용자 고유의 <xref:Microsoft.AspNetCore.Routing.EndpointDataSource>를 작성하는 것이 **좋습니다** . `EndpointDataSource`는 엔드포인트 컬렉션을 선언하고 업데이트하기 위한 하위 수준 기본 형식입니다. `EndpointDataSource`는 컨트롤러 및 Razor Pages에서 사용되는 강력한 API입니다.
+사용자 고유의 <xref:Microsoft.AspNetCore.Routing.EndpointDataSource>를 작성하는 것이 **좋습니다**. `EndpointDataSource`는 엔드포인트 컬렉션을 선언하고 업데이트하기 위한 하위 수준 기본 형식입니다. `EndpointDataSource`는 컨트롤러 및 Razor Pages에서 사용되는 강력한 API입니다.
 
 라우팅 테스트에는 업데이트되지 않는 데이터 원본의 [기본 예제](https://github.com/aspnet/AspNetCore/blob/master/src/Http/Routing/test/testassets/RoutingSandbox/Framework/FrameworkEndpointDataSource.cs#L17)가 있습니다.
 
-기본적으로 `EndpointDataSource`를 등록하지 **마세요** . 프레임워크를 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>에 등록하도록 사용자에게 요구하세요. 라우팅의 원리에 따르면 기본적으로 아무것도 포함되지 않으며 `UseEndpoints`가 엔드포인트를 등록하는 위치입니다.
+기본적으로 `EndpointDataSource`를 등록하지 **마세요**. 프레임워크를 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>에 등록하도록 사용자에게 요구하세요. 라우팅의 원리에 따르면 기본적으로 아무것도 포함되지 않으며 `UseEndpoints`가 엔드포인트를 등록하는 위치입니다.
 
 ### <a name="creating-routing-integrated-middleware"></a>라우팅 통합 미들웨어 만들기
 
-메타데이터 형식을 인터페이스로 정의하는 것이 **좋습니다** .
+메타데이터 형식을 인터페이스로 정의하는 것이 **좋습니다**.
 
-메타데이터 형식을 클래스 및 메서드의 특성으로 사용할 수 있게 **하세요** .
+메타데이터 형식을 클래스 및 메서드의 특성으로 사용할 수 있게 **하세요**.
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/ICoolMetadata.cs?name=snippet2)]
 
@@ -968,7 +969,7 @@ app.UseEndpoints(endpoints =>
 * 인터페이스는 구성할 수 있습니다.
 * 개발자가 여러 정책을 결합하여 고유한 형식을 선언할 수 있습니다.
 
-다음 예제와 같이 메타데이터를 재정의할 수 있게 **하세요** .
+다음 예제와 같이 메타데이터를 재정의할 수 있게 **하세요**.
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/ICoolMetadata.cs?name=snippet)]
 
@@ -979,7 +980,7 @@ app.UseEndpoints(endpoints =>
 
 메타데이터 컬렉션은 순서 지정되며 우선 순위별로 재정의할 수 있습니다. 컨트롤러의 경우 작업 메서드의 메타데이터가 가장 구체적입니다.
 
-라우팅이 있는지와 관계없이 미들웨어를 유용하게 사용할 수 있게 **하세요** .
+라우팅이 있는지와 관계없이 미들웨어를 유용하게 사용할 수 있게 **하세요**.
 
 ```csharp
 app.UseRouting();
@@ -1079,7 +1080,7 @@ URL 일치는 라우팅이 들어오는 요청을 *엔드포인트* 로 디스�
 
 [RouteData.Values](xref:Microsoft.AspNetCore.Routing.RouteData.Values*)는 경로에서 생성된 *경로 값* 의 사전입니다. 이러한 값은 일반적으로 URL을 토큰화하여 결정되고, 사용자 입력을 수락하거나 앱 내부의 추가 디스패치 결정을 내리는 데 사용될 수 있습니다.
 
-[RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*)는 일치하는 경로와 관련된 추가 데이터의 속성 모음입니다. <xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*>는 앱에서 일치된 경로에 따라 결정할 수 있도록 각 경로와 상태 데이터의 연결을 지원하기 위해 제공됩니다. 이러한 값은 개발자 정의되고 어떤 방식으로든 라우팅의 동작에 영향을 주지 **않습니다** . 또한 [RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*)에 안전하게 배치되는(stashed) 값은 [RouteData.Values](xref:Microsoft.AspNetCore.Routing.RouteData.Values)와는 달리 문자열 간에 변환될 수 있어야 하는 모든 형식일 수 있습니다.
+[RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*)는 일치하는 경로와 관련된 추가 데이터의 속성 모음입니다. <xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*>는 앱에서 일치된 경로에 따라 결정할 수 있도록 각 경로와 상태 데이터의 연결을 지원하기 위해 제공됩니다. 이러한 값은 개발자 정의되고 어떤 방식으로든 라우팅의 동작에 영향을 주지 **않습니다**. 또한 [RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*)에 안전하게 배치되는(stashed) 값은 [RouteData.Values](xref:Microsoft.AspNetCore.Routing.RouteData.Values)와는 달리 문자열 간에 변환될 수 있어야 하는 모든 형식일 수 있습니다.
 
 [RouteData.Routers](xref:Microsoft.AspNetCore.Routing.RouteData.Routers)는 요청을 성공적으로 일치하는 데 참여한 경로의 목록입니다. 경로는 서로 중첩될 수 있습니다. <xref:Microsoft.AspNetCore.Routing.RouteData.Routers> 속성은 일치한 경로의 논리 트리를 통해 경로를 반영합니다. 일반적으로 <xref:Microsoft.AspNetCore.Routing.RouteData.Routers>의 첫 번째 항목은 경로 컬렉션이며 URL 생성을 위해 사용되어야 합니다. <xref:Microsoft.AspNetCore.Routing.RouteData.Routers>의 마지막 항목은 일치한 경로 처리기입니다.
 
@@ -1657,7 +1658,7 @@ URL 일치는 라우팅이 들어오는 요청을 *처리기* 로 디스패치�
 
 [RouteData.Values](xref:Microsoft.AspNetCore.Routing.RouteData.Values*)는 경로에서 생성된 *경로 값* 의 사전입니다. 이러한 값은 일반적으로 URL을 토큰화하여 결정되고, 사용자 입력을 수락하거나 앱 내부의 추가 디스패치 결정을 내리는 데 사용될 수 있습니다.
 
-[RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*)는 일치하는 경로와 관련된 추가 데이터의 속성 모음입니다. <xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*>는 앱에서 일치된 경로에 따라 결정할 수 있도록 각 경로와 상태 데이터의 연결을 지원하기 위해 제공됩니다. 이러한 값은 개발자 정의되고 어떤 방식으로든 라우팅의 동작에 영향을 주지 **않습니다** . 또한 [RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*)에 안전하게 배치되는(stashed) 값은 [RouteData.Values](xref:Microsoft.AspNetCore.Routing.RouteData.Values)와는 달리 문자열 간에 변환될 수 있어야 하는 모든 형식일 수 있습니다.
+[RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*)는 일치하는 경로와 관련된 추가 데이터의 속성 모음입니다. <xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*>는 앱에서 일치된 경로에 따라 결정할 수 있도록 각 경로와 상태 데이터의 연결을 지원하기 위해 제공됩니다. 이러한 값은 개발자 정의되고 어떤 방식으로든 라우팅의 동작에 영향을 주지 **않습니다**. 또한 [RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*)에 안전하게 배치되는(stashed) 값은 [RouteData.Values](xref:Microsoft.AspNetCore.Routing.RouteData.Values)와는 달리 문자열 간에 변환될 수 있어야 하는 모든 형식일 수 있습니다.
 
 [RouteData.Routers](xref:Microsoft.AspNetCore.Routing.RouteData.Routers)는 요청을 성공적으로 일치하는 데 참여한 경로의 목록입니다. 경로는 서로 중첩될 수 있습니다. <xref:Microsoft.AspNetCore.Routing.RouteData.Routers> 속성은 일치한 경로의 논리 트리를 통해 경로를 반영합니다. 일반적으로 <xref:Microsoft.AspNetCore.Routing.RouteData.Routers>의 첫 번째 항목은 경로 컬렉션이며 URL 생성을 위해 사용되어야 합니다. <xref:Microsoft.AspNetCore.Routing.RouteData.Routers>의 마지막 항목은 일치한 경로 처리기입니다.
 

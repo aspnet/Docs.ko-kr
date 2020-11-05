@@ -5,6 +5,7 @@ description: ASP.NET Core에서 다른 언어와 문화권으로의 콘텐츠 �
 ms.author: riande
 ms.date: 11/30/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: fcf69bdaaed5cf0283ae27440c28061857d2cbcb
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 07e2f561b0e9db58780d6e8a271e32b00132b1b5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606770"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059522"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core에서 세계화 및 지역화
 
@@ -33,7 +34,7 @@ ms.locfileid: "91606770"
 
 국제화는 [전역화](/dotnet/api/system.globalization) 및 [지역화](/dotnet/standard/globalization-localization/localization)를 포함합니다. 세계화는 서로 다른 문화권을 지원하는 앱을 설계하는 프로세스입니다. 세계화는 특정 지역과 관련이 있는 정의된 언어 스크립트 집합의 입력, 표시 및 출력에 대한 지원을 추가합니다.
 
-지역화는 이미 특정 문화권/로캘로 지역화 가능성을 위해 처리한 세계화된 앱을 조정하는 프로세스입니다. 자세한 내용은 이 문서의 끝 부분에서 **세계화 및 지역화 용어**를 참조하세요.
+지역화는 이미 특정 문화권/로캘로 지역화 가능성을 위해 처리한 세계화된 앱을 조정하는 프로세스입니다. 자세한 내용은 이 문서의 끝 부분에서 **세계화 및 지역화 용어** 를 참조하세요.
 
 앱 지역화 과정은 다음과 같습니다.
 
@@ -137,9 +138,9 @@ ASP.NET Core를 사용하면 두 문화권 값 `SupportedCultures` 및 `Supporte
 
 ## <a name="resource-files"></a>리소스 파일
 
-리소스 파일은 코드에서 지역화 가능한 문자열을 구분하는 데 유용한 메커니즘입니다. 기본이 아닌 언어에 대한 번역된 문자열은 *.resx* 리소스 파일에서 격리됩니다. 예를 들어 번역된 문자열을 포함하는 *Welcome.es.resx*라는 스페인어 리소스 파일을 만들 수 있습니다. "es"는 스페인어 언어 코드입니다. Visual Studio에서 이 리소스 파일을 만들려면:
+리소스 파일은 코드에서 지역화 가능한 문자열을 구분하는 데 유용한 메커니즘입니다. 기본이 아닌 언어에 대한 번역된 문자열은 *.resx* 리소스 파일에서 격리됩니다. 예를 들어 번역된 문자열을 포함하는 *Welcome.es.resx* 라는 스페인어 리소스 파일을 만들 수 있습니다. "es"는 스페인어 언어 코드입니다. Visual Studio에서 이 리소스 파일을 만들려면:
 
-1. **솔루션 탐색기**에서 리소스 파일을 포함하는 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 항목**을 클릭합니다.
+1. **솔루션 탐색기** 에서 리소스 파일을 포함하는 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 항목** 을 클릭합니다.
 
    ![중첩된 바로 가기 메뉴: 솔루션 탐색기에서 바로 가기 메뉴가 리소스에 대해 열려 있습니다. 두 번째 바로 가기 메뉴는 강조 표시된 새 항목 명령을 보여 주는 추가에 대해 열려 있습니다.](localization/_static/newi.png)
 
@@ -157,9 +158,9 @@ ASP.NET Core를 사용하면 두 문화권 값 `SupportedCultures` 및 `Supporte
 
 ## <a name="resource-file-naming"></a>리소스 파일 이름 지정
 
-리소스의 이름은 해당 클래스의 전체 형식 이름에서 어셈블리 이름을 빼서 지정됩니다. 예를 들어 주 어셈블리가 `LocalizationWebsite.Web.Startup` 클래스에 대해 `LocalizationWebsite.Web.dll`인 프로젝트에서 프랑스어 리소스는 *Startup.fr.resx*로 이름이 지정됩니다. `LocalizationWebsite.Web.Controllers.HomeController` 클래스에 대한 리소스는 *Controllers.HomeController.fr.resx*로 이름이 지정됩니다. 대상 클래스의 네임스페이스가 어셈블리 이름과 동일하지 않은 경우 전체 형식 이름이 필요합니다. 예를 들어 샘플 프로젝트에서 `ExtraNamespace.Tools` 형식에 대한 리소스는 *ExtraNamespace.Tools.fr.resx*로 이름이 지정됩니다.
+리소스의 이름은 해당 클래스의 전체 형식 이름에서 어셈블리 이름을 빼서 지정됩니다. 예를 들어 주 어셈블리가 `LocalizationWebsite.Web.Startup` 클래스에 대해 `LocalizationWebsite.Web.dll`인 프로젝트에서 프랑스어 리소스는 *Startup.fr.resx* 로 이름이 지정됩니다. `LocalizationWebsite.Web.Controllers.HomeController` 클래스에 대한 리소스는 *Controllers.HomeController.fr.resx* 로 이름이 지정됩니다. 대상 클래스의 네임스페이스가 어셈블리 이름과 동일하지 않은 경우 전체 형식 이름이 필요합니다. 예를 들어 샘플 프로젝트에서 `ExtraNamespace.Tools` 형식에 대한 리소스는 *ExtraNamespace.Tools.fr.resx* 로 이름이 지정됩니다.
 
-샘플 프로젝트에서 `ConfigureServices` 메서드는 `ResourcesPath`를 "리소스"로 설정하므로 홈 컨트롤러의 프랑스어 리소스 파일에 대한 프로젝트 상대 경로는 *Resources/Controllers.HomeController.fr.resx*입니다. 또는 폴더를 사용하여 리소스 파일을 구성할 수 있습니다. 홈 컨트롤러의 경우 경로는 *Resources/Controllers/HomeController.fr.resx*입니다. `ResourcesPath` 옵션을 사용하지 않는 경우 *.resx* 파일은 프로젝트 기본 디렉터리로 이동합니다. `HomeController`에 대한 리소스 파일은 *Controllers.HomeController.fr.resx*로 이름이 지정됩니다. 점 또는 경로 명명 규칙을 사용하도록 선택하는 것은 리소스 파일을 구성하려는 방법에 따라 다릅니다.
+샘플 프로젝트에서 `ConfigureServices` 메서드는 `ResourcesPath`를 "리소스"로 설정하므로 홈 컨트롤러의 프랑스어 리소스 파일에 대한 프로젝트 상대 경로는 *Resources/Controllers.HomeController.fr.resx* 입니다. 또는 폴더를 사용하여 리소스 파일을 구성할 수 있습니다. 홈 컨트롤러의 경우 경로는 *Resources/Controllers/HomeController.fr.resx* 입니다. `ResourcesPath` 옵션을 사용하지 않는 경우 *.resx* 파일은 프로젝트 기본 디렉터리로 이동합니다. `HomeController`에 대한 리소스 파일은 *Controllers.HomeController.fr.resx* 로 이름이 지정됩니다. 점 또는 경로 명명 규칙을 사용하도록 선택하는 것은 리소스 파일을 구성하려는 방법에 따라 다릅니다.
 
 | 리소스 이름 | 점 또는 경로 명명 |
 | ------------   | ------------- |
@@ -186,7 +187,7 @@ Razor 뷰에서 `@inject IViewLocalizer`를 사용하는 리소스 파일은 유
 * 지역화는 기본적으로 작동하지 않습니다.
 * 지역화는 리소스가 어셈블리 내에서 검색되는 방식으로 인해 실패합니다. `RootNamespace`는 실행 중인 프로세스에 사용할 수 없는 빌드 시간 값입니다. 
 
-`RootNamespace`가 `AssemblyName`과 다른 경우, 다음을 *AssemblyInfo.cs*에 포함합니다(매개 변수 값을 실제 값으로 대체하여 사용).
+`RootNamespace`가 `AssemblyName`과 다른 경우, 다음을 *AssemblyInfo.cs* 에 포함합니다(매개 변수 값을 실제 값으로 대체하여 사용).
 
 ```csharp
 using System.Reflection;
@@ -206,17 +207,17 @@ using Microsoft.Extensions.Localization;
 
 * *Welcome.fr-CA.resx*
 * *Welcome.fr.resx*
-* *Welcome.resx*(`NeutralResourcesLanguage`가 "fr-CA"인 경우)
+* *Welcome.resx* (`NeutralResourcesLanguage`가 "fr-CA"인 경우)
 
 예를 들어 ".fr" 문화권 지정자를 제거하고 프랑스어로 설정된 문화권이 있는 경우 기본 리소스 파일이 읽혀지고 문자열이 지역화됩니다. 리소스 관리자는 요청된 문화권에 맞지 않는 경우에 대한 기본 또는 대체 리소스를 지정합니다. 요청된 문화권에 대한 리소스가 없을 때 키를 반환하려는 경우 기본 리소스 파일이 없어야 합니다.
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Visual Studio를 사용하여 리소스 파일 생성
 
-파일 이름에 문화권이 없이(예: *Welcome.resx*) Visual Studio에서 리소스 파일을 만드는 경우 Visual Studio는 각 문자열에 대한 속성이 있는 C# 클래스를 만듭니다. 일반적으로 이는 사용자가 ASP.NET Core에서 원하는 것은 아닙니다. 일반적으로 기본 *.resx* 리소스 파일(문화권 이름이 없는 *.resx* 파일)은 없습니다. 문화권 이름으로 *.resx* 파일을 만드는 것이 좋습니다(예: *Welcome.fr.resx*). 문화권 이름으로 *.resx* 파일을 만드는 경우 Visual Studio는 클래스 파일을 생성하지 않습니다.
+파일 이름에 문화권이 없이(예: *Welcome.resx* ) Visual Studio에서 리소스 파일을 만드는 경우 Visual Studio는 각 문자열에 대한 속성이 있는 C# 클래스를 만듭니다. 일반적으로 이는 사용자가 ASP.NET Core에서 원하는 것은 아닙니다. 일반적으로 기본 *.resx* 리소스 파일(문화권 이름이 없는 *.resx* 파일)은 없습니다. 문화권 이름으로 *.resx* 파일을 만드는 것이 좋습니다(예: *Welcome.fr.resx* ). 문화권 이름으로 *.resx* 파일을 만드는 경우 Visual Studio는 클래스 파일을 생성하지 않습니다.
 
 ### <a name="add-other-cultures"></a>다른 문화권 추가
 
-각 언어 및 문화권 조합(기본 언어 이외)에는 고유한 리소스 파일이 필요합니다. ISO 언어 코드가 파일 이름의 일부인 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대한 리소스 파일을 만듭니다(예: **en-us**, **fr-ca** 및 **en-gb**). 이러한 ISO 코드는 *Welcome.es-MX.resx*(스페인어/멕시코)처럼 파일 이름과 *.resx* 파일 확장명 사이에 위치합니다.
+각 언어 및 문화권 조합(기본 언어 이외)에는 고유한 리소스 파일이 필요합니다. ISO 언어 코드가 파일 이름의 일부인 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대한 리소스 파일을 만듭니다(예: **en-us** , **fr-ca** 및 **en-gb** ). 이러한 ISO 코드는 *Welcome.es-MX.resx* (스페인어/멕시코)처럼 파일 이름과 *.resx* 파일 확장명 사이에 위치합니다.
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>각 요청에 대한 언어/문화권을 선택하는 전략 구현
 
@@ -280,19 +281,19 @@ c=en-UK|uic=en-US
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>IE에서 수용-언어 HTTP 헤더 설정
 
-1. 기어 아이콘에서 **인터넷 옵션**을 누릅니다.
+1. 기어 아이콘에서 **인터넷 옵션** 을 누릅니다.
 
-1. **언어**를 누릅니다.
+1. **언어** 를 누릅니다.
 
    ![인터넷 옵션](localization/_static/lang.png)
 
-1. **언어 기본 설정 설정**을 누릅니다.
+1. **언어 기본 설정 설정** 을 누릅니다.
 
-1. **언어 추가**를 누릅니다.
+1. **언어 추가** 를 누릅니다.
 
 1. 언어를 추가합니다.
 
-1. 언어를 누른 다음, **위로 이동**을 누릅니다.
+1. 언어를 누른 다음, **위로 이동** 을 누릅니다.
 
 ### <a name="use-a-custom-provider"></a>사용자 지정 공급자 사용
 
@@ -337,7 +338,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 [!code-csharp[](localization/sample/3.x/Localization/Controllers/HomeController.cs?range=57-67)]
 
-*_SelectLanguagePartial.cshtml*을 이 프로젝트에 대한 샘플 코드에 플러그 인할 수 없습니다. [GitHub](https://github.com/aspnet/entropy)의 **Localization.StarterWeb** 프로젝트에는 [종속성 주입](dependency-injection.md) 컨테이너를 통해 Razor 부분에 `RequestLocalizationOptions`를 흐르도록 하는 코드가 있습니다.
+*_SelectLanguagePartial.cshtml* 을 이 프로젝트에 대한 샘플 코드에 플러그 인할 수 없습니다. [GitHub](https://github.com/aspnet/entropy)의 **Localization.StarterWeb** 프로젝트에는 [종속성 주입](dependency-injection.md) 컨테이너를 통해 Razor 부분에 `RequestLocalizationOptions`를 흐르도록 하는 코드가 있습니다.
 
 ## <a name="model-binding-route-data-and-query-strings"></a>모델 바인딩 경로 데이터 및 쿼리 문자열
 
@@ -387,7 +388,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 국제화는 [전역화](/dotnet/api/system.globalization) 및 [지역화](/dotnet/standard/globalization-localization/localization)를 포함합니다. 세계화는 서로 다른 문화권을 지원하는 앱을 설계하는 프로세스입니다. 세계화는 특정 지역과 관련이 있는 정의된 언어 스크립트 집합의 입력, 표시 및 출력에 대한 지원을 추가합니다.
 
-지역화는 이미 특정 문화권/로캘로 지역화 가능성을 위해 처리한 세계화된 앱을 조정하는 프로세스입니다. 자세한 내용은 이 문서의 끝 부분에서 **세계화 및 지역화 용어**를 참조하세요.
+지역화는 이미 특정 문화권/로캘로 지역화 가능성을 위해 처리한 세계화된 앱을 조정하는 프로세스입니다. 자세한 내용은 이 문서의 끝 부분에서 **세계화 및 지역화 용어** 를 참조하세요.
 
 앱 지역화 과정은 다음과 같습니다.
 
@@ -491,9 +492,9 @@ ASP.NET Core를 사용하면 두 문화권 값 `SupportedCultures` 및 `Supporte
 
 ## <a name="resource-files"></a>리소스 파일
 
-리소스 파일은 코드에서 지역화 가능한 문자열을 구분하는 데 유용한 메커니즘입니다. 기본이 아닌 언어에 대한 번역된 문자열은 *.resx* 리소스 파일에서 격리됩니다. 예를 들어 번역된 문자열을 포함하는 *Welcome.es.resx*라는 스페인어 리소스 파일을 만들 수 있습니다. "es"는 스페인어 언어 코드입니다. Visual Studio에서 이 리소스 파일을 만들려면:
+리소스 파일은 코드에서 지역화 가능한 문자열을 구분하는 데 유용한 메커니즘입니다. 기본이 아닌 언어에 대한 번역된 문자열은 *.resx* 리소스 파일에서 격리됩니다. 예를 들어 번역된 문자열을 포함하는 *Welcome.es.resx* 라는 스페인어 리소스 파일을 만들 수 있습니다. "es"는 스페인어 언어 코드입니다. Visual Studio에서 이 리소스 파일을 만들려면:
 
-1. **솔루션 탐색기**에서 리소스 파일을 포함하는 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 항목**을 클릭합니다.
+1. **솔루션 탐색기** 에서 리소스 파일을 포함하는 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 항목** 을 클릭합니다.
 
    ![중첩된 바로 가기 메뉴: 솔루션 탐색기에서 바로 가기 메뉴가 리소스에 대해 열려 있습니다. 두 번째 바로 가기 메뉴는 강조 표시된 새 항목 명령을 보여 주는 추가에 대해 열려 있습니다.](localization/_static/newi.png)
 
@@ -511,9 +512,9 @@ ASP.NET Core를 사용하면 두 문화권 값 `SupportedCultures` 및 `Supporte
 
 ## <a name="resource-file-naming"></a>리소스 파일 이름 지정
 
-리소스의 이름은 해당 클래스의 전체 형식 이름에서 어셈블리 이름을 빼서 지정됩니다. 예를 들어 주 어셈블리가 `LocalizationWebsite.Web.Startup` 클래스에 대해 `LocalizationWebsite.Web.dll`인 프로젝트에서 프랑스어 리소스는 *Startup.fr.resx*로 이름이 지정됩니다. `LocalizationWebsite.Web.Controllers.HomeController` 클래스에 대한 리소스는 *Controllers.HomeController.fr.resx*로 이름이 지정됩니다. 대상 클래스의 네임스페이스가 어셈블리 이름과 동일하지 않은 경우 전체 형식 이름이 필요합니다. 예를 들어 샘플 프로젝트에서 `ExtraNamespace.Tools` 형식에 대한 리소스는 *ExtraNamespace.Tools.fr.resx*로 이름이 지정됩니다.
+리소스의 이름은 해당 클래스의 전체 형식 이름에서 어셈블리 이름을 빼서 지정됩니다. 예를 들어 주 어셈블리가 `LocalizationWebsite.Web.Startup` 클래스에 대해 `LocalizationWebsite.Web.dll`인 프로젝트에서 프랑스어 리소스는 *Startup.fr.resx* 로 이름이 지정됩니다. `LocalizationWebsite.Web.Controllers.HomeController` 클래스에 대한 리소스는 *Controllers.HomeController.fr.resx* 로 이름이 지정됩니다. 대상 클래스의 네임스페이스가 어셈블리 이름과 동일하지 않은 경우 전체 형식 이름이 필요합니다. 예를 들어 샘플 프로젝트에서 `ExtraNamespace.Tools` 형식에 대한 리소스는 *ExtraNamespace.Tools.fr.resx* 로 이름이 지정됩니다.
 
-샘플 프로젝트에서 `ConfigureServices` 메서드는 `ResourcesPath`를 "리소스"로 설정하므로 홈 컨트롤러의 프랑스어 리소스 파일에 대한 프로젝트 상대 경로는 *Resources/Controllers.HomeController.fr.resx*입니다. 또는 폴더를 사용하여 리소스 파일을 구성할 수 있습니다. 홈 컨트롤러의 경우 경로는 *Resources/Controllers/HomeController.fr.resx*입니다. `ResourcesPath` 옵션을 사용하지 않는 경우 *.resx* 파일은 프로젝트 기본 디렉터리로 이동합니다. `HomeController`에 대한 리소스 파일은 *Controllers.HomeController.fr.resx*로 이름이 지정됩니다. 점 또는 경로 명명 규칙을 사용하도록 선택하는 것은 리소스 파일을 구성하려는 방법에 따라 다릅니다.
+샘플 프로젝트에서 `ConfigureServices` 메서드는 `ResourcesPath`를 "리소스"로 설정하므로 홈 컨트롤러의 프랑스어 리소스 파일에 대한 프로젝트 상대 경로는 *Resources/Controllers.HomeController.fr.resx* 입니다. 또는 폴더를 사용하여 리소스 파일을 구성할 수 있습니다. 홈 컨트롤러의 경우 경로는 *Resources/Controllers/HomeController.fr.resx* 입니다. `ResourcesPath` 옵션을 사용하지 않는 경우 *.resx* 파일은 프로젝트 기본 디렉터리로 이동합니다. `HomeController`에 대한 리소스 파일은 *Controllers.HomeController.fr.resx* 로 이름이 지정됩니다. 점 또는 경로 명명 규칙을 사용하도록 선택하는 것은 리소스 파일을 구성하려는 방법에 따라 다릅니다.
 
 | 리소스 이름 | 점 또는 경로 명명 |
 | ------------   | ------------- |
@@ -540,7 +541,7 @@ Razor 뷰에서 `@inject IViewLocalizer`를 사용하는 리소스 파일은 유
 * 지역화는 기본적으로 작동하지 않습니다.
 * 지역화는 리소스가 어셈블리 내에서 검색되는 방식으로 인해 실패합니다. `RootNamespace`는 실행 중인 프로세스에 사용할 수 없는 빌드 시간 값입니다. 
 
-`RootNamespace`가 `AssemblyName`과 다른 경우, 다음을 *AssemblyInfo.cs*에 포함합니다(매개 변수 값을 실제 값으로 대체하여 사용).
+`RootNamespace`가 `AssemblyName`과 다른 경우, 다음을 *AssemblyInfo.cs* 에 포함합니다(매개 변수 값을 실제 값으로 대체하여 사용).
 
 ```csharp
 using System.Reflection;
@@ -560,17 +561,17 @@ using Microsoft.Extensions.Localization;
 
 * *Welcome.fr-CA.resx*
 * *Welcome.fr.resx*
-* *Welcome.resx*(`NeutralResourcesLanguage`가 "fr-CA"인 경우)
+* *Welcome.resx* (`NeutralResourcesLanguage`가 "fr-CA"인 경우)
 
 예를 들어 ".fr" 문화권 지정자를 제거하고 프랑스어로 설정된 문화권이 있는 경우 기본 리소스 파일이 읽혀지고 문자열이 지역화됩니다. 리소스 관리자는 요청된 문화권에 맞지 않는 경우에 대한 기본 또는 대체 리소스를 지정합니다. 요청된 문화권에 대한 리소스가 없을 때 키를 반환하려는 경우 기본 리소스 파일이 없어야 합니다.
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Visual Studio를 사용하여 리소스 파일 생성
 
-파일 이름에 문화권이 없이(예: *Welcome.resx*) Visual Studio에서 리소스 파일을 만드는 경우 Visual Studio는 각 문자열에 대한 속성이 있는 C# 클래스를 만듭니다. 일반적으로 이는 사용자가 ASP.NET Core에서 원하는 것은 아닙니다. 일반적으로 기본 *.resx* 리소스 파일(문화권 이름이 없는 *.resx* 파일)은 없습니다. 문화권 이름으로 *.resx* 파일을 만드는 것이 좋습니다(예: *Welcome.fr.resx*). 문화권 이름으로 *.resx* 파일을 만드는 경우 Visual Studio는 클래스 파일을 생성하지 않습니다.
+파일 이름에 문화권이 없이(예: *Welcome.resx* ) Visual Studio에서 리소스 파일을 만드는 경우 Visual Studio는 각 문자열에 대한 속성이 있는 C# 클래스를 만듭니다. 일반적으로 이는 사용자가 ASP.NET Core에서 원하는 것은 아닙니다. 일반적으로 기본 *.resx* 리소스 파일(문화권 이름이 없는 *.resx* 파일)은 없습니다. 문화권 이름으로 *.resx* 파일을 만드는 것이 좋습니다(예: *Welcome.fr.resx* ). 문화권 이름으로 *.resx* 파일을 만드는 경우 Visual Studio는 클래스 파일을 생성하지 않습니다.
 
 ### <a name="add-other-cultures"></a>다른 문화권 추가
 
-각 언어 및 문화권 조합(기본 언어 이외)에는 고유한 리소스 파일이 필요합니다. ISO 언어 코드가 파일 이름의 일부인 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대한 리소스 파일을 만듭니다(예: **en-us**, **fr-ca** 및 **en-gb**). 이러한 ISO 코드는 *Welcome.es-MX.resx*(스페인어/멕시코)처럼 파일 이름과 *.resx* 파일 확장명 사이에 위치합니다.
+각 언어 및 문화권 조합(기본 언어 이외)에는 고유한 리소스 파일이 필요합니다. ISO 언어 코드가 파일 이름의 일부인 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대한 리소스 파일을 만듭니다(예: **en-us** , **fr-ca** 및 **en-gb** ). 이러한 ISO 코드는 *Welcome.es-MX.resx* (스페인어/멕시코)처럼 파일 이름과 *.resx* 파일 확장명 사이에 위치합니다.
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>각 요청에 대한 언어/문화권을 선택하는 전략 구현
 
@@ -636,19 +637,19 @@ c=en-UK|uic=en-US
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>IE에서 수용-언어 HTTP 헤더 설정
 
-1. 기어 아이콘에서 **인터넷 옵션**을 누릅니다.
+1. 기어 아이콘에서 **인터넷 옵션** 을 누릅니다.
 
-1. **언어**를 누릅니다.
+1. **언어** 를 누릅니다.
 
    ![인터넷 옵션](localization/_static/lang.png)
 
-1. **언어 기본 설정 설정**을 누릅니다.
+1. **언어 기본 설정 설정** 을 누릅니다.
 
-1. **언어 추가**를 누릅니다.
+1. **언어 추가** 를 누릅니다.
 
 1. 언어를 추가합니다.
 
-1. 언어를 누른 다음, **위로 이동**을 누릅니다.
+1. 언어를 누른 다음, **위로 이동** 을 누릅니다.
 
 ### <a name="use-a-custom-provider"></a>사용자 지정 공급자 사용
 
@@ -693,7 +694,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 [!code-csharp[](localization/sample/3.x/Localization/Controllers/HomeController.cs?range=57-67)]
 
-*_SelectLanguagePartial.cshtml*을 이 프로젝트에 대한 샘플 코드에 플러그 인할 수 없습니다. [GitHub](https://github.com/aspnet/entropy)의 **Localization.StarterWeb** 프로젝트에는 [종속성 주입](dependency-injection.md) 컨테이너를 통해 Razor 부분에 `RequestLocalizationOptions`를 흐르도록 하는 코드가 있습니다.
+*_SelectLanguagePartial.cshtml* 을 이 프로젝트에 대한 샘플 코드에 플러그 인할 수 없습니다. [GitHub](https://github.com/aspnet/entropy)의 **Localization.StarterWeb** 프로젝트에는 [종속성 주입](dependency-injection.md) 컨테이너를 통해 Razor 부분에 `RequestLocalizationOptions`를 흐르도록 하는 코드가 있습니다.
 
 ## <a name="model-binding-route-data-and-query-strings"></a>모델 바인딩 경로 데이터 및 쿼리 문자열
 
@@ -742,7 +743,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 국제화는 [전역화](/dotnet/api/system.globalization) 및 [지역화](/dotnet/standard/globalization-localization/localization)를 포함합니다. 세계화는 서로 다른 문화권을 지원하는 앱을 설계하는 프로세스입니다. 세계화는 특정 지역과 관련이 있는 정의된 언어 스크립트 집합의 입력, 표시 및 출력에 대한 지원을 추가합니다.
 
-지역화는 이미 특정 문화권/로캘로 지역화 가능성을 위해 처리한 세계화된 앱을 조정하는 프로세스입니다. 자세한 내용은 이 문서의 끝 부분에서 **세계화 및 지역화 용어**를 참조하세요.
+지역화는 이미 특정 문화권/로캘로 지역화 가능성을 위해 처리한 세계화된 앱을 조정하는 프로세스입니다. 자세한 내용은 이 문서의 끝 부분에서 **세계화 및 지역화 용어** 를 참조하세요.
 
 앱 지역화 과정은 다음과 같습니다.
 
@@ -846,9 +847,9 @@ ASP.NET Core를 사용하면 두 문화권 값 `SupportedCultures` 및 `Supporte
 
 ## <a name="resource-files"></a>리소스 파일
 
-리소스 파일은 코드에서 지역화 가능한 문자열을 구분하는 데 유용한 메커니즘입니다. 기본이 아닌 언어에 대한 번역된 문자열은 *.resx* 리소스 파일에서 격리됩니다. 예를 들어 번역된 문자열을 포함하는 *Welcome.es.resx*라는 스페인어 리소스 파일을 만들 수 있습니다. "es"는 스페인어 언어 코드입니다. Visual Studio에서 이 리소스 파일을 만들려면:
+리소스 파일은 코드에서 지역화 가능한 문자열을 구분하는 데 유용한 메커니즘입니다. 기본이 아닌 언어에 대한 번역된 문자열은 *.resx* 리소스 파일에서 격리됩니다. 예를 들어 번역된 문자열을 포함하는 *Welcome.es.resx* 라는 스페인어 리소스 파일을 만들 수 있습니다. "es"는 스페인어 언어 코드입니다. Visual Studio에서 이 리소스 파일을 만들려면:
 
-1. **솔루션 탐색기**에서 리소스 파일을 포함하는 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 항목**을 클릭합니다.
+1. **솔루션 탐색기** 에서 리소스 파일을 포함하는 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 항목** 을 클릭합니다.
 
    ![중첩된 바로 가기 메뉴: 솔루션 탐색기에서 바로 가기 메뉴가 리소스에 대해 열려 있습니다. 두 번째 바로 가기 메뉴는 강조 표시된 새 항목 명령을 보여 주는 추가에 대해 열려 있습니다.](localization/_static/newi.png)
 
@@ -866,9 +867,9 @@ ASP.NET Core를 사용하면 두 문화권 값 `SupportedCultures` 및 `Supporte
 
 ## <a name="resource-file-naming"></a>리소스 파일 이름 지정
 
-리소스의 이름은 해당 클래스의 전체 형식 이름에서 어셈블리 이름을 빼서 지정됩니다. 예를 들어 주 어셈블리가 `LocalizationWebsite.Web.Startup` 클래스에 대해 `LocalizationWebsite.Web.dll`인 프로젝트에서 프랑스어 리소스는 *Startup.fr.resx*로 이름이 지정됩니다. `LocalizationWebsite.Web.Controllers.HomeController` 클래스에 대한 리소스는 *Controllers.HomeController.fr.resx*로 이름이 지정됩니다. 대상 클래스의 네임스페이스가 어셈블리 이름과 동일하지 않은 경우 전체 형식 이름이 필요합니다. 예를 들어 샘플 프로젝트에서 `ExtraNamespace.Tools` 형식에 대한 리소스는 *ExtraNamespace.Tools.fr.resx*로 이름이 지정됩니다.
+리소스의 이름은 해당 클래스의 전체 형식 이름에서 어셈블리 이름을 빼서 지정됩니다. 예를 들어 주 어셈블리가 `LocalizationWebsite.Web.Startup` 클래스에 대해 `LocalizationWebsite.Web.dll`인 프로젝트에서 프랑스어 리소스는 *Startup.fr.resx* 로 이름이 지정됩니다. `LocalizationWebsite.Web.Controllers.HomeController` 클래스에 대한 리소스는 *Controllers.HomeController.fr.resx* 로 이름이 지정됩니다. 대상 클래스의 네임스페이스가 어셈블리 이름과 동일하지 않은 경우 전체 형식 이름이 필요합니다. 예를 들어 샘플 프로젝트에서 `ExtraNamespace.Tools` 형식에 대한 리소스는 *ExtraNamespace.Tools.fr.resx* 로 이름이 지정됩니다.
 
-샘플 프로젝트에서 `ConfigureServices` 메서드는 `ResourcesPath`를 "리소스"로 설정하므로 홈 컨트롤러의 프랑스어 리소스 파일에 대한 프로젝트 상대 경로는 *Resources/Controllers.HomeController.fr.resx*입니다. 또는 폴더를 사용하여 리소스 파일을 구성할 수 있습니다. 홈 컨트롤러의 경우 경로는 *Resources/Controllers/HomeController.fr.resx*입니다. `ResourcesPath` 옵션을 사용하지 않는 경우 *.resx* 파일은 프로젝트 기본 디렉터리로 이동합니다. `HomeController`에 대한 리소스 파일은 *Controllers.HomeController.fr.resx*로 이름이 지정됩니다. 점 또는 경로 명명 규칙을 사용하도록 선택하는 것은 리소스 파일을 구성하려는 방법에 따라 다릅니다.
+샘플 프로젝트에서 `ConfigureServices` 메서드는 `ResourcesPath`를 "리소스"로 설정하므로 홈 컨트롤러의 프랑스어 리소스 파일에 대한 프로젝트 상대 경로는 *Resources/Controllers.HomeController.fr.resx* 입니다. 또는 폴더를 사용하여 리소스 파일을 구성할 수 있습니다. 홈 컨트롤러의 경우 경로는 *Resources/Controllers/HomeController.fr.resx* 입니다. `ResourcesPath` 옵션을 사용하지 않는 경우 *.resx* 파일은 프로젝트 기본 디렉터리로 이동합니다. `HomeController`에 대한 리소스 파일은 *Controllers.HomeController.fr.resx* 로 이름이 지정됩니다. 점 또는 경로 명명 규칙을 사용하도록 선택하는 것은 리소스 파일을 구성하려는 방법에 따라 다릅니다.
 
 | 리소스 이름 | 점 또는 경로 명명 |
 | ------------   | ------------- |
@@ -895,7 +896,7 @@ Razor 뷰에서 `@inject IViewLocalizer`를 사용하는 리소스 파일은 유
 * 지역화는 기본적으로 작동하지 않습니다.
 * 지역화는 리소스가 어셈블리 내에서 검색되는 방식으로 인해 실패합니다. `RootNamespace`는 실행 중인 프로세스에 사용할 수 없는 빌드 시간 값입니다. 
 
-`RootNamespace`가 `AssemblyName`과 다른 경우, 다음을 *AssemblyInfo.cs*에 포함합니다(매개 변수 값을 실제 값으로 대체하여 사용).
+`RootNamespace`가 `AssemblyName`과 다른 경우, 다음을 *AssemblyInfo.cs* 에 포함합니다(매개 변수 값을 실제 값으로 대체하여 사용).
 
 ```csharp
 using System.Reflection;
@@ -915,17 +916,17 @@ using Microsoft.Extensions.Localization;
 
 * *Welcome.fr-CA.resx*
 * *Welcome.fr.resx*
-* *Welcome.resx*(`NeutralResourcesLanguage`가 "fr-CA"인 경우)
+* *Welcome.resx* (`NeutralResourcesLanguage`가 "fr-CA"인 경우)
 
 예를 들어 ".fr" 문화권 지정자를 제거하고 프랑스어로 설정된 문화권이 있는 경우 기본 리소스 파일이 읽혀지고 문자열이 지역화됩니다. 리소스 관리자는 요청된 문화권에 맞지 않는 경우에 대한 기본 또는 대체 리소스를 지정합니다. 요청된 문화권에 대한 리소스가 없을 때 키를 반환하려는 경우 기본 리소스 파일이 없어야 합니다.
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Visual Studio를 사용하여 리소스 파일 생성
 
-파일 이름에 문화권이 없이(예: *Welcome.resx*) Visual Studio에서 리소스 파일을 만드는 경우 Visual Studio는 각 문자열에 대한 속성이 있는 C# 클래스를 만듭니다. 일반적으로 이는 사용자가 ASP.NET Core에서 원하는 것은 아닙니다. 일반적으로 기본 *.resx* 리소스 파일(문화권 이름이 없는 *.resx* 파일)은 없습니다. 문화권 이름으로 *.resx* 파일을 만드는 것이 좋습니다(예: *Welcome.fr.resx*). 문화권 이름으로 *.resx* 파일을 만드는 경우 Visual Studio는 클래스 파일을 생성하지 않습니다.
+파일 이름에 문화권이 없이(예: *Welcome.resx* ) Visual Studio에서 리소스 파일을 만드는 경우 Visual Studio는 각 문자열에 대한 속성이 있는 C# 클래스를 만듭니다. 일반적으로 이는 사용자가 ASP.NET Core에서 원하는 것은 아닙니다. 일반적으로 기본 *.resx* 리소스 파일(문화권 이름이 없는 *.resx* 파일)은 없습니다. 문화권 이름으로 *.resx* 파일을 만드는 것이 좋습니다(예: *Welcome.fr.resx* ). 문화권 이름으로 *.resx* 파일을 만드는 경우 Visual Studio는 클래스 파일을 생성하지 않습니다.
 
 ### <a name="add-other-cultures"></a>다른 문화권 추가
 
-각 언어 및 문화권 조합(기본 언어 이외)에는 고유한 리소스 파일이 필요합니다. ISO 언어 코드가 파일 이름의 일부인 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대한 리소스 파일을 만듭니다(예: **en-us**, **fr-ca** 및 **en-gb**). 이러한 ISO 코드는 *Welcome.es-MX.resx*(스페인어/멕시코)처럼 파일 이름과 *.resx* 파일 확장명 사이에 위치합니다.
+각 언어 및 문화권 조합(기본 언어 이외)에는 고유한 리소스 파일이 필요합니다. ISO 언어 코드가 파일 이름의 일부인 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대한 리소스 파일을 만듭니다(예: **en-us** , **fr-ca** 및 **en-gb** ). 이러한 ISO 코드는 *Welcome.es-MX.resx* (스페인어/멕시코)처럼 파일 이름과 *.resx* 파일 확장명 사이에 위치합니다.
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>각 요청에 대한 언어/문화권을 선택하는 전략 구현
 
@@ -991,19 +992,19 @@ c=en-UK|uic=en-US
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>IE에서 수용-언어 HTTP 헤더 설정
 
-1. 기어 아이콘에서 **인터넷 옵션**을 누릅니다.
+1. 기어 아이콘에서 **인터넷 옵션** 을 누릅니다.
 
-1. **언어**를 누릅니다.
+1. **언어** 를 누릅니다.
 
    ![인터넷 옵션](localization/_static/lang.png)
 
-1. **언어 기본 설정 설정**을 누릅니다.
+1. **언어 기본 설정 설정** 을 누릅니다.
 
-1. **언어 추가**를 누릅니다.
+1. **언어 추가** 를 누릅니다.
 
 1. 언어를 추가합니다.
 
-1. 언어를 누른 다음, **위로 이동**을 누릅니다.
+1. 언어를 누른 다음, **위로 이동** 을 누릅니다.
 
 ### <a name="the-content-language-http-header"></a>콘텐츠-언어 HTTP 헤더
 
@@ -1071,7 +1072,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 [!code-csharp[](localization/sample/3.x/Localization/Controllers/HomeController.cs?range=57-67)]
 
-*_SelectLanguagePartial.cshtml*을 이 프로젝트에 대한 샘플 코드에 플러그 인할 수 없습니다. [GitHub](https://github.com/aspnet/entropy)의 **Localization.StarterWeb** 프로젝트에는 [종속성 주입](dependency-injection.md) 컨테이너를 통해 Razor 부분에 `RequestLocalizationOptions`를 흐르도록 하는 코드가 있습니다.
+*_SelectLanguagePartial.cshtml* 을 이 프로젝트에 대한 샘플 코드에 플러그 인할 수 없습니다. [GitHub](https://github.com/aspnet/entropy)의 **Localization.StarterWeb** 프로젝트에는 [종속성 주입](dependency-injection.md) 컨테이너를 통해 Razor 부분에 `RequestLocalizationOptions`를 흐르도록 하는 코드가 있습니다.
 
 ## <a name="model-binding-route-data-and-query-strings"></a>모델 바인딩 경로 데이터 및 쿼리 문자열
 

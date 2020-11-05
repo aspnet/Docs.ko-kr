@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: c3f537ff3b55f295db478cb097bc99023cc71a87
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: 0912b3fbcd0b891deb4985eaa18841c22f4f3264
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326506"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055752"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core 호스트 및 배포 Blazor WebAssembly
 
@@ -289,22 +290,30 @@ Azure App Service 배포에 대한 자세한 내용은 <xref:tutorials/publish-t
   <img alt="..." src="_content/{LIBRARY NAME}/{ASSET FILE NAME}" />
   ```
 
+<!-- HOLD for reactivation at 5.x
+
 ::: moniker range=">= aspnetcore-5.0"
 
-클래스 라이브러리에 의해 클라이언트 앱에 제공된 구성 요소는 정상적으로 참조됩니다. 구성 요소에 스타일시트 또는 JavaScript 파일이 필요한 경우 다음 방법 중 하나를 사용하여 정적 자산을 가져옵니다.
+Components provided to a client app by a class library are referenced normally. If any components require stylesheets or JavaScript files, use either of the following approaches to obtain the static assets:
 
-* 클라이언트 앱의 `wwwroot/index.html` 파일은 정적 자산에 연결(`<link>`)할 수 있습니다.
-* 구성 요소는 프레임워크의 [`Link` 구성 요소](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements)를 사용하여 정적 자산을 가져올 수 있습니다.
+* The client app's `wwwroot/index.html` file can link (`<link>`) to the static assets.
+* The component can use the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) to obtain the static assets.
 
-다음 예제에서는 앞의 방법을 보여 줍니다.
+The preceding approaches are demonstrated in the following examples.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
+-->
+
 클래스 라이브러리에 의해 클라이언트 앱에 제공된 구성 요소는 정상적으로 참조됩니다. 구성 요소에 스타일시트 또는 JavaScript 파일이 필요한 경우 클라이언트 앱의 `wwwroot/index.html` 파일은 올바른 정적 자산 링크를 포함해야 합니다. 다음 예제에서는 이러한 방법을 보여 줍니다.
 
+<!-- HOLD for reactivation at 5.x
+
 ::: moniker-end
+
+-->
 
 클라이언트 앱 중 하나에 다음 `Jeep` 구성 요소를 추가합니다. `Jeep` 구성 요소는 다음을 사용합니다.
 
@@ -336,11 +345,13 @@ Azure App Service 배포에 대한 자세한 내용은 <xref:tutorials/publish-t
 ```
 
 > [!WARNING]
-> 이미지를 소유하고 있지 않다면 차량 이미지를 공개적으로 게시하지 **마세요** . 게시할 경우 저작권 침해의 위험이 있습니다.
+> 이미지를 소유하고 있지 않다면 차량 이미지를 공개적으로 게시하지 **마세요**. 게시할 경우 저작권 침해의 위험이 있습니다.
+
+<!-- HOLD for reactivation at 5.x
 
 ::: moniker range=">= aspnetcore-5.0"
 
-라이브러리의 `jeep-yj.png` 이미지를 라이브러리의 `Component1` 구성 요소(`Component1.razor`)에 추가할 수도 있습니다. 클라이언트 앱의 페이지에 `my-component` CSS 클래스를 제공하려면 프레임워크의 [`Link` 구성 요소](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements)를 사용하여 라이브러리의 스타일시트에 연결합니다.
+The library's `jeep-yj.png` image can also be added to the library's `Component1` component (`Component1.razor`). To provide the `my-component` CSS class to the client app's page, link to the library's stylesheet using the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements):
 
 ```razor
 <div class="my-component">
@@ -358,7 +369,7 @@ Azure App Service 배포에 대한 자세한 내용은 <xref:tutorials/publish-t
 </div>
 ```
 
-[`Link` 구성 요소](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements)를 사용하는 대신 클라이언트 앱의 `wwwroot/index.html` 파일에서 스타일시트를 로드할 수 있습니다. 이 방법을 사용하면 클라이언트 앱의 모든 구성 요소에서 스타일시트를 사용할 수 있습니다.
+An alternative to using the [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) is to load the stylesheet from the client app's `wwwroot/index.html` file. This approach makes the stylesheet available to all of the components in the client app:
 
 ```html
 <head>
@@ -370,6 +381,8 @@ Azure App Service 배포에 대한 자세한 내용은 <xref:tutorials/publish-t
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
+
+-->
 
 라이브러리의 `jeep-yj.png` 이미지를 라이브러리의 `Component1` 구성 요소(`Component1.razor`)에 추가할 수도 있습니다.
 
@@ -396,7 +409,11 @@ Azure App Service 배포에 대한 자세한 내용은 <xref:tutorials/publish-t
 </head>
 ```
 
+<!-- HOLD for reactivation at 5.x
+
 ::: moniker-end
+
+-->
 
 클라이언트 앱의 `NavMenu` 구성 요소(`Shared/NavMenu.razor`)에 `Jeep` 구성 요소에 대한 탐색을 추가합니다.
 

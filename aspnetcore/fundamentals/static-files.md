@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 6/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: 36eeb3532ed5ea6f5f75c20cbe14331ed840a788
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 2e25af03a8a6aaff5b343885711c6ebb68340fac
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393940"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057858"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core의 정적 파일
 
@@ -57,7 +58,7 @@ HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 기본적으로 A
 
 [!code-csharp[](~/fundamentals/static-files/samples/3.x/StaticFilesSample/Startup.cs?name=snippet_Configure&highlight=15)]
 
-매개 변수가 없는 `UseStaticFiles` 메서드 오버로드는 [웹 루트](xref:fundamentals/index#web-root)에 있는 파일을 제공 가능으로 표시합니다. 다음 태그는 *wwwroot/images/MyImage.jpg*를 참조합니다.
+매개 변수가 없는 `UseStaticFiles` 메서드 오버로드는 [웹 루트](xref:fundamentals/index#web-root)에 있는 파일을 제공 가능으로 표시합니다. 다음 태그는 *wwwroot/images/MyImage.jpg* 를 참조합니다.
 
 ```html
 <img src="~/images/MyImage.jpg" class="img" alt="My image" />
@@ -83,7 +84,7 @@ HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 기본적으로 A
 
 위의 코드에서 *MyStaticFiles* 디렉터리 계층 구조는 *StaticFiles* URI 세그먼트를 통해 공개적으로 노출됩니다. `https://<hostname>/StaticFiles/images/red-rose.jpg`에 대한 요청은 *red-rose.jpg* 파일에 사용됩니다.
 
-다음 태그는 *MyStaticFiles/images/red-rose.jpg*를 참조합니다.
+다음 태그는 *MyStaticFiles/images/red-rose.jpg* 를 참조합니다.
 
 ```html
 <img src="~/StaticFiles/images/red-rose.jpg" class="img" alt="A red rose" />
@@ -157,7 +158,7 @@ HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 기본적으로 A
 
 목록에서 찾은 첫 번째 파일이 마치 요청이 정규화된 URI인 것처럼 제공됩니다. 브라우저 URL은 요청된 URI를 계속 반영합니다.
 
-다음 코드는 기본 파일 이름을 *mydefault.html*로 변경합니다.
+다음 코드는 기본 파일 이름을 *mydefault.html* 로 변경합니다.
 
 [!code-csharp[](~/fundamentals/static-files/samples/3.x/StaticFilesSample/StartupDefault.cs?name=snippet_DefaultFiles)]
 
@@ -215,7 +216,7 @@ URL은 파일 계층 구조 및 이전 코드를 사용하여 다음과 같이 �
 
 ## <a name="fileextensioncontenttypeprovider"></a>FileExtensionContentTypeProvider
 
-<xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> 클래스에는 MIME 콘텐츠 형식에 대한 파일 확장명 매핑 역할을 하는 `Mappings` 속성이 포함되어 있습니다. 다음 샘플에서는 여러 파일 확장명이 알려진 MIME 형식에 매핑됩니다. *.rtf* 확장명은 대체되며 *.mp4*는 제거됩니다.
+<xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> 클래스에는 MIME 콘텐츠 형식에 대한 파일 확장명 매핑 역할을 하는 `Mappings` 속성이 포함되어 있습니다. 다음 샘플에서는 여러 파일 확장명이 알려진 MIME 형식에 매핑됩니다. *.rtf* 확장명은 대체되며 *.mp4* 는 제거됩니다.
 
 [!code-csharp[](~/fundamentals/static-files/samples/3.x/StaticFilesSample/StartupFileExtensionContentTypeProvider.cs?name=snippet_Provider)]
 
@@ -259,13 +260,13 @@ URL은 파일 계층 구조 및 이전 코드를 사용하여 다음과 같이 �
 
 * 서버 또는 웹 사이트 수준에서 IIS 정적 파일 처리기를 제거하려면 IIS 관리자에서 다음 단계를 완료합니다.
     1. **모듈** 기능으로 이동합니다.
-    1. 목록에서 **StaticFileModule**을 선택합니다.
-    1. **동작** 사이드바에서 **제거**를 클릭합니다.
+    1. 목록에서 **StaticFileModule** 을 선택합니다.
+    1. **동작** 사이드바에서 **제거** 를 클릭합니다.
 
 > [!WARNING]
 > IIS 정적 파일 처리기를 사용하도록 설정되었으며 **그리고** ASP.NET Core 모듈이 올바르게 구성되지 않은 경우, 정적 파일이 제공됩니다. 예를 들어 *web.config* 파일이 배포되지 않았을 수 있습니다.
 
-* *.cs* 및 *.cshtml*을 포함한 코드 파일을 앱 프로젝트의 [웹 루트](xref:fundamentals/index#web-root) 외부에 배치합니다. 따라서 논리적 분리가 앱의 클라이언트 쪽 콘텐츠 및 서버 기반 코드 사이에 만들어집니다. 그러면 서버 쪽 코드가 유출되지 않습니다.
+* *.cs* 및 *.cshtml* 을 포함한 코드 파일을 앱 프로젝트의 [웹 루트](xref:fundamentals/index#web-root) 외부에 배치합니다. 따라서 논리적 분리가 앱의 클라이언트 쪽 콘텐츠 및 서버 기반 코드 사이에 만들어집니다. 그러면 서버 쪽 코드가 유출되지 않습니다.
 
 ## <a name="additional-resources"></a>추가 자료
 
@@ -284,7 +285,7 @@ HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 ASP.NET Core 앱�
 
 ## <a name="serve-static-files"></a>정적 파일 제공
 
-정적 파일은 프로젝트의 [웹 루트](xref:fundamentals/index#web-root) 디렉터리 내에 저장됩니다. 기본 디렉터리는 *{content root}/wwwroot*이지만, <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseWebRoot%2A> 메서드를 통해 변경할 수 있습니다. 자세한 정보는 [콘텐츠 루트](xref:fundamentals/index#content-root) 및 [웹 루트](xref:fundamentals/index#web-root)를 참조하세요.
+정적 파일은 프로젝트의 [웹 루트](xref:fundamentals/index#web-root) 디렉터리 내에 저장됩니다. 기본 디렉터리는 *{content root}/wwwroot* 이지만, <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseWebRoot%2A> 메서드를 통해 변경할 수 있습니다. 자세한 정보는 [콘텐츠 루트](xref:fundamentals/index#content-root) 및 [웹 루트](xref:fundamentals/index#web-root)를 참조하세요.
 
 앱의 웹 호스트에서 콘텐츠 루트 디렉터리를 인식하도록 해야 합니다.
 
@@ -311,7 +312,7 @@ HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 ASP.NET Core 앱�
 
 [!code-csharp[](static-files/samples/1.x/StaticFilesSample/StartupStaticFiles.cs?name=snippet_ConfigureMethod&highlight=3)]
 
-매개 변수가 없는 `UseStaticFiles` 메서드 오버로드는 [웹 루트](xref:fundamentals/index#web-root)에 있는 파일을 제공 가능으로 표시합니다. 다음 표시는 *wwwroot/images/banner1.svg*를 참조합니다.
+매개 변수가 없는 `UseStaticFiles` 메서드 오버로드는 [웹 루트](xref:fundamentals/index#web-root)에 있는 파일을 제공 가능으로 표시합니다. 다음 표시는 *wwwroot/images/banner1.svg* 를 참조합니다.
 
 [!code-cshtml[](static-files/samples/1.x/StaticFilesSample/Views/Home/Index.cshtml?name=snippet_static_file_wwwroot)]
 
@@ -333,9 +334,9 @@ HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 ASP.NET Core 앱�
 
 [!code-csharp[](static-files/samples/1.x/StaticFilesSample/StartupTwoStaticFiles.cs?name=snippet_ConfigureMethod&highlight=5-10)]
 
-위의 코드에서 *MyStaticFiles* 디렉터리 계층 구조는 *StaticFiles* URI 세그먼트를 통해 공개적으로 노출됩니다. *http://\<server_address>/StaticFiles/images/banner1.svg*에 대한 요청은 *banner1.svg* 파일을 제공합니다.
+위의 코드에서 *MyStaticFiles* 디렉터리 계층 구조는 *StaticFiles* URI 세그먼트를 통해 공개적으로 노출됩니다. *http://\<server_address>/StaticFiles/images/banner1.svg* 에 대한 요청은 *banner1.svg* 파일을 제공합니다.
 
-다음 태그는 *MyStaticFiles/images/banner1.svg*를 참조합니다.
+다음 태그는 *MyStaticFiles/images/banner1.svg* 를 참조합니다.
 
 [!code-cshtml[](static-files/samples/1.x/StaticFilesSample/Views/Home/Index.cshtml?name=snippet_static_file_outside)]
 
@@ -371,13 +372,13 @@ HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 ASP.NET Core 앱�
 
 [!code-csharp[](static-files/samples/1.x/StaticFilesSample/StartupBrowse.cs?name=snippet_ConfigureServicesMethod&highlight=3)]
 
-위의 코드를 통해 URL *http://\<server_address>/MyImages*를 사용하여 각 파일 및 폴더에 대한 링크가 제공되는 *wwwroot/images* 폴더의 디렉터리 검색을 사용할 수 있습니다.
+위의 코드를 통해 URL *http://\<server_address>/MyImages* 를 사용하여 각 파일 및 폴더에 대한 링크가 제공되는 *wwwroot/images* 폴더의 디렉터리 검색을 사용할 수 있습니다.
 
 ![디렉터리 검색](static-files/_static/dir-browse.png)
 
 검색을 활성화하는 경우의 보안 위험에 대한 [고려할 사항](#considerations)을 참조하세요.
 
-다음 예제에서 두 `UseStaticFiles` 호출을 참고하세요. 첫 번째 호출은 *wwwroot* 폴더에서 정적 파일 제공을 사용하도록 설정합니다. 두 번째 호출은 URL *http://\<server_address>/MyImages*를 사용하여 *wwwroot/images* 폴더의 디렉터리 검색을 사용하도록 설정합니다.
+다음 예제에서 두 `UseStaticFiles` 호출을 참고하세요. 첫 번째 호출은 *wwwroot* 폴더에서 정적 파일 제공을 사용하도록 설정합니다. 두 번째 호출은 URL *http://\<server_address>/MyImages* 를 사용하여 *wwwroot/images* 폴더의 디렉터리 검색을 사용하도록 설정합니다.
 
 [!code-csharp[](static-files/samples/1.x/StaticFilesSample/StartupBrowse.cs?name=snippet_ConfigureMethod&highlight=3,5)]
 
@@ -399,7 +400,7 @@ HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 ASP.NET Core 앱�
 
 목록에서 찾은 첫 번째 파일이 마치 요청이 정규화된 URI인 것처럼 제공됩니다. 브라우저 URL은 요청된 URI를 계속 반영합니다.
 
-다음 코드는 기본 파일 이름을 *mydefault.html*로 변경합니다.
+다음 코드는 기본 파일 이름을 *mydefault.html* 로 변경합니다.
 
 [!code-csharp[](static-files/samples/1.x/StaticFilesSample/StartupDefault.cs?name=snippet_ConfigureMethod)]
 
@@ -445,7 +446,7 @@ URL은 파일 계층 구조 및 이전 코드를 사용하여 다음과 같이 �
 | *http://\<server_address>/StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
 | *http://\<server_address>/StaticFiles*             |     MyStaticFiles/default.html |
 
-*MyStaticFiles* 디렉터리에 기본 이름이 지정된 파일이 없는 경우 *http://\<server_address>/StaticFiles*는 클릭 가능한 링크와 함께 디렉터리 목록을 반환합니다.
+*MyStaticFiles* 디렉터리에 기본 이름이 지정된 파일이 없는 경우 *http://\<server_address>/StaticFiles* 는 클릭 가능한 링크와 함께 디렉터리 목록을 반환합니다.
 
 ![정적 파일 목록](static-files/_static/db2.png)
 
@@ -454,7 +455,7 @@ URL은 파일 계층 구조 및 이전 코드를 사용하여 다음과 같이 �
 
 ## <a name="fileextensioncontenttypeprovider"></a>FileExtensionContentTypeProvider
 
-<xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> 클래스에는 MIME 콘텐츠 형식에 대한 파일 확장명 매핑 역할을 하는 `Mappings` 속성이 포함되어 있습니다. 다음 샘플에서는 여러 파일 확장명이 알려진 MIME 형식에 등록됩니다. *.rtf* 확장은 대체되며 *.mp4*는 제거됩니다.
+<xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> 클래스에는 MIME 콘텐츠 형식에 대한 파일 확장명 매핑 역할을 하는 `Mappings` 속성이 포함되어 있습니다. 다음 샘플에서는 여러 파일 확장명이 알려진 MIME 형식에 등록됩니다. *.rtf* 확장은 대체되며 *.mp4* 는 제거됩니다.
 
 [!code-csharp[](static-files/samples/1.x/StaticFilesSample/StartupFileExtensionContentTypeProvider.cs?name=snippet_ConfigureMethod&highlight=3-12,19)]
 
@@ -477,12 +478,12 @@ URL은 파일 계층 구조 및 이전 코드를 사용하여 다음과 같이 �
 
 ## <a name="serve-files-from-multiple-locations"></a>여러 위치에서 파일 제공
 
-`UseStaticFiles` 및 `UseFileServer`은(는) *wwwroot*를 가리키는 파일 공급자를 기본값으로 설정합니다. 다른 위치에서 파일을 제공하기 위해 다른 파일 공급자와 `UseStaticFiles` 및 `UseFileServer`의 추가 인스턴스를 제공할 수 있습니다. 자세한 내용은 [이 GitHub 이슈](https://github.com/dotnet/AspNetCore.Docs/issues/15578)를 참조하세요.
+`UseStaticFiles` 및 `UseFileServer`은(는) *wwwroot* 를 가리키는 파일 공급자를 기본값으로 설정합니다. 다른 위치에서 파일을 제공하기 위해 다른 파일 공급자와 `UseStaticFiles` 및 `UseFileServer`의 추가 인스턴스를 제공할 수 있습니다. 자세한 내용은 [이 GitHub 이슈](https://github.com/dotnet/AspNetCore.Docs/issues/15578)를 참조하세요.
 
 ### <a name="considerations"></a>고려 사항
 
 > [!WARNING]
-> `UseDirectoryBrowser` 및 `UseStaticFiles`는 비밀 정보를 누출할 수 있습니다. 프로덕션 환경에서는 디렉터리 검색을 비활성화하는 것이 좋습니다. `UseStaticFiles` 또는 `UseDirectoryBrowser`를 통해 어떤 디렉터리가 활성화되었는지 주의 깊게 검토하세요. 전체 디렉터리와 해당 하위 디렉터리는 공개적으로 액세스할 수 있습니다. *\<content_root>/wwwroot*와 같은 전용 디렉터리에 공개적으로 제공하는 데 적합한 파일을 저장하세요. MVC 뷰, Razor Pages(2.x에만 해당), 구성 파일 등과 해당 파일을 분리하세요.
+> `UseDirectoryBrowser` 및 `UseStaticFiles`는 비밀 정보를 누출할 수 있습니다. 프로덕션 환경에서는 디렉터리 검색을 비활성화하는 것이 좋습니다. `UseStaticFiles` 또는 `UseDirectoryBrowser`를 통해 어떤 디렉터리가 활성화되었는지 주의 깊게 검토하세요. 전체 디렉터리와 해당 하위 디렉터리는 공개적으로 액세스할 수 있습니다. *\<content_root>/wwwroot* 와 같은 전용 디렉터리에 공개적으로 제공하는 데 적합한 파일을 저장하세요. MVC 뷰, Razor Pages(2.x에만 해당), 구성 파일 등과 해당 파일을 분리하세요.
 
 * `UseDirectoryBrowser` 및 `UseStaticFiles`로 노출된 콘텐츠에 대한 URL은 기본 파일 시스템의 대/소문자 구분 및 문자 제한이 적용됩니다. 예를 들어 Windows는 대/소문자를 구분하지 않는 반면 macOS 및 Linux는 그렇지 않습니다.
 
@@ -490,8 +491,8 @@ URL은 파일 계층 구조 및 이전 코드를 사용하여 다음과 같이 �
 
 * 서버 또는 웹 사이트 수준에서 IIS 정적 파일 처리기를 제거하려면 IIS 관리자에서 다음 단계를 완료합니다.
     1. **모듈** 기능으로 이동합니다.
-    1. 목록에서 **StaticFileModule**을 선택합니다.
-    1. **동작** 사이드바에서 **제거**를 클릭합니다.
+    1. 목록에서 **StaticFileModule** 을 선택합니다.
+    1. **동작** 사이드바에서 **제거** 를 클릭합니다.
 
 > [!WARNING]
 > IIS 정적 파일 처리기를 사용하도록 설정되었으며 **그리고** ASP.NET Core 모듈이 올바르게 구성되지 않은 경우, 정적 파일이 제공됩니다. 예를 들어 *web.config* 파일이 배포되지 않았을 수 있습니다.

@@ -5,6 +5,7 @@ description: 이 문서는 이식 가능 개체 파일을 소개하고 ASP.NET C
 ms.author: scaddie
 ms.date: 09/26/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: f471c5b7511434cf42717e52ef271663c2e36647
-ms.sourcegitcommit: 6ecdc481d5b9a10d2c6e091217f017b36bdba957
+ms.openlocfilehash: 2e28ebaf1962ebd834c43f1cfbc28929b1937c40
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90456051"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053724"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>ASP.NET Core에서 이식 가능 개체 지역화 구성
 
@@ -88,15 +89,15 @@ PO 파일 사양은 [여기](https://www.gnu.org/savannah-checkouts/gnu/gettext/
 
 ### <a name="registering-the-service"></a>서비스 등록
 
-*Startup.cs*의 `ConfigureServices` 메서드에 필요한 서비스를 추가합니다.
+*Startup.cs* 의 `ConfigureServices` 메서드에 필요한 서비스를 추가합니다.
 
 [!code-csharp[](localization/sample/3.x/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
-*Startup.cs*의 `Configure` 메서드에 필요한 미들웨어를 추가합니다.
+*Startup.cs* 의 `Configure` 메서드에 필요한 미들웨어를 추가합니다.
 
 [!code-csharp[](localization/sample/3.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
-선택한 Razor 뷰에 다음 코드를 추가합니다. 이 예제에서는 *About.cshtml*이 사용됩니다.
+선택한 Razor 뷰에 다음 코드를 추가합니다. 이 예제에서는 *About.cshtml* 이 사용됩니다.
 
 [!code-cshtml[](localization/sample/3.x/POLocalization/Views/Home/About.cshtml)]
 
@@ -104,7 +105,7 @@ PO 파일 사양은 [여기](https://www.gnu.org/savannah-checkouts/gnu/gettext/
 
 ### <a name="creating-a-po-file"></a>PO 파일 만들기
 
-애플리케이션 루트 폴더에 *\<culture code>.po*라는 파일을 만듭니다. 이 예제에서는 프랑스어가 사용되므로 파일 이름은 *fr.po*입니다.
+애플리케이션 루트 폴더에 *\<culture code>.po* 라는 파일을 만듭니다. 이 예제에서는 프랑스어가 사용되므로 파일 이름은 *fr.po* 입니다.
 
 [!code-text[](localization/sample/3.x/POLocalization/fr.po)]
 
@@ -204,7 +205,7 @@ Existuje 5 položek.
 
 PO 지역화 서비스는 전체 클래스 또는 문자열을 변역할 때 사용되는 뷰의 이름을 사용합니다. `msgctxt` 항목의 값을 설정하여 수행됩니다.
 
-이전 *fr.po* 예제에 대한 최소 추가를 고려합니다. *Views/Home/About.cshtml*에 있는 Razor 뷰는 예약된 `msgctxt` 항목의 값을 설정하여 파일 컨텍스트로 정의될 수 있습니다.
+이전 *fr.po* 예제에 대한 최소 추가를 고려합니다. *Views/Home/About.cshtml* 에 있는 Razor 뷰는 예약된 `msgctxt` 항목의 값을 설정하여 파일 컨텍스트로 정의될 수 있습니다.
 
 ```text
 msgctxt "Views.Home.About"
@@ -214,7 +215,7 @@ msgstr "Bonjour le monde!"
 
 `msgctxt`를 이와 같이 설정하면 텍스트 번역은 `/Home/About?culture=fr-FR`로 이동할 때 발생합니다. 번역은 `/Home/Contact?culture=fr-FR`로 이동할 때 발생하지 않습니다.
 
-특정 항목이 지정된 파일 컨텍스트와 일치하지 않는 경우 Orchard Core의 대체 메커니즘은 컨텍스트 없이 적절한 PO 파일을 찾습니다. *Views/Home/Contact.cshtml*에 대해 정의된 특정 파일 컨텍스트가 없다고 가정하는 경우 `/Home/Contact?culture=fr-FR`로 이동하면 다음과 같은 PO 파일이 로드됩니다.
+특정 항목이 지정된 파일 컨텍스트와 일치하지 않는 경우 Orchard Core의 대체 메커니즘은 컨텍스트 없이 적절한 PO 파일을 찾습니다. *Views/Home/Contact.cshtml* 에 대해 정의된 특정 파일 컨텍스트가 없다고 가정하는 경우 `/Home/Contact?culture=fr-FR`로 이동하면 다음과 같은 PO 파일이 로드됩니다.
 
 [!code-text[](localization/sample/3.x/POLocalization/fr.po)]
 
@@ -303,15 +304,15 @@ PO 파일 사양은 [여기](https://www.gnu.org/savannah-checkouts/gnu/gettext/
 
 ### <a name="registering-the-service"></a>서비스 등록
 
-*Startup.cs*의 `ConfigureServices` 메서드에 필요한 서비스를 추가합니다.
+*Startup.cs* 의 `ConfigureServices` 메서드에 필요한 서비스를 추가합니다.
 
 [!code-csharp[](localization/sample/2.x/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
-*Startup.cs*의 `Configure` 메서드에 필요한 미들웨어를 추가합니다.
+*Startup.cs* 의 `Configure` 메서드에 필요한 미들웨어를 추가합니다.
 
 [!code-csharp[](localization/sample/2.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
-선택한 Razor 뷰에 다음 코드를 추가합니다. 이 예제에서는 *About.cshtml*이 사용됩니다.
+선택한 Razor 뷰에 다음 코드를 추가합니다. 이 예제에서는 *About.cshtml* 이 사용됩니다.
 
 [!code-cshtml[](localization/sample/2.x/POLocalization/Views/Home/About.cshtml)]
 
@@ -319,7 +320,7 @@ PO 파일 사양은 [여기](https://www.gnu.org/savannah-checkouts/gnu/gettext/
 
 ### <a name="creating-a-po-file"></a>PO 파일 만들기
 
-애플리케이션 루트 폴더에 *\<culture code>.po*라는 파일을 만듭니다. 이 예제에서는 프랑스어가 사용되므로 파일 이름은 *fr.po*입니다.
+애플리케이션 루트 폴더에 *\<culture code>.po* 라는 파일을 만듭니다. 이 예제에서는 프랑스어가 사용되므로 파일 이름은 *fr.po* 입니다.
 
 [!code-text[](localization/sample/2.x/POLocalization/fr.po)]
 
@@ -419,7 +420,7 @@ Existuje 5 položek.
 
 PO 지역화 서비스는 전체 클래스 또는 문자열을 변역할 때 사용되는 뷰의 이름을 사용합니다. `msgctxt` 항목의 값을 설정하여 수행됩니다.
 
-이전 *fr.po* 예제에 대한 최소 추가를 고려합니다. *Views/Home/About.cshtml*에 있는 Razor 뷰는 예약된 `msgctxt` 항목의 값을 설정하여 파일 컨텍스트로 정의될 수 있습니다.
+이전 *fr.po* 예제에 대한 최소 추가를 고려합니다. *Views/Home/About.cshtml* 에 있는 Razor 뷰는 예약된 `msgctxt` 항목의 값을 설정하여 파일 컨텍스트로 정의될 수 있습니다.
 
 ```text
 msgctxt "Views.Home.About"
@@ -429,7 +430,7 @@ msgstr "Bonjour le monde!"
 
 `msgctxt`를 이와 같이 설정하면 텍스트 번역은 `/Home/About?culture=fr-FR`로 이동할 때 발생합니다. 번역은 `/Home/Contact?culture=fr-FR`로 이동할 때 발생하지 않습니다.
 
-특정 항목이 지정된 파일 컨텍스트와 일치하지 않는 경우 Orchard Core의 대체 메커니즘은 컨텍스트 없이 적절한 PO 파일을 찾습니다. *Views/Home/Contact.cshtml*에 대해 정의된 특정 파일 컨텍스트가 없다고 가정하는 경우 `/Home/Contact?culture=fr-FR`로 이동하면 다음과 같은 PO 파일이 로드됩니다.
+특정 항목이 지정된 파일 컨텍스트와 일치하지 않는 경우 Orchard Core의 대체 메커니즘은 컨텍스트 없이 적절한 PO 파일을 찾습니다. *Views/Home/Contact.cshtml* 에 대해 정의된 특정 파일 컨텍스트가 없다고 가정하는 경우 `/Home/Contact?culture=fr-FR`로 이동하면 다음과 같은 PO 파일이 로드됩니다.
 
 [!code-text[](localization/sample/2.x/POLocalization/fr.po)]
 

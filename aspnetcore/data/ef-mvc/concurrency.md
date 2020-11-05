@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 629baeba545142e156e1a51107b470c932dae3cb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d476c836e8d497ca1291992dda38da1fc9f59ed2
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629277"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054374"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>자습서: 동시성 처리 - ASP.NET MVC 및 EF Core 사용
 
@@ -68,15 +69,15 @@ ms.locfileid: "88629277"
 
 ![예산을 0으로 변경](concurrency/_static/change-budget.png)
 
-Jane이 **저장**을 클릭하기 전에, John이 동일한 페이지를 방문하여 시작 날짜 필드를 2007년 9월 1일에서 2013년 9월 1일로 변경합니다.
+Jane이 **저장** 을 클릭하기 전에, John이 동일한 페이지를 방문하여 시작 날짜 필드를 2007년 9월 1일에서 2013년 9월 1일로 변경합니다.
 
 ![시작 날짜를 2013으로 변경](concurrency/_static/change-date.png)
 
-Jane이 먼저 **저장**을 클릭하여 브라우저가 인덱스 페이지로 반환될 때 변경 사항을 확인합니다.
+Jane이 먼저 **저장** 을 클릭하여 브라우저가 인덱스 페이지로 반환될 때 변경 사항을 확인합니다.
 
 ![0으로 변경된 예산](concurrency/_static/budget-zero.png)
 
-그런 다음, John이 예산이 여전히 $350,000.00인 편집 페이지에서 **저장**을 클릭합니다. 다음 작업은 동시성 충돌을 처리하는 방법에 따라 결정됩니다.
+그런 다음, John이 예산이 여전히 $350,000.00인 편집 페이지에서 **저장** 을 클릭합니다. 다음 작업은 동시성 충돌을 처리하는 방법에 따라 결정됩니다.
 
 몇 가지 옵션에는 다음이 포함됩니다.
 
@@ -110,13 +111,13 @@ Entity Framework에서 throw하는 `DbConcurrencyException` 예외를 처리하�
 
 ## <a name="add-a-tracking-property"></a>추적 속성 추가
 
-*Models/Department.cs*에서 RowVersion으로 명명된 추적 속성을 추가합니다.
+*Models/Department.cs* 에서 RowVersion으로 명명된 추적 속성을 추가합니다.
 
 [!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
 `Timestamp` 특성은 데이터베이스에 전송된 Update 및 Delete 명령의 Where 절에 이 열이 포함되도록 지정합니다. SQL `rowversion`이 대체하기 전에 이전 버전의 SQL Server가 SQL `timestamp` 데이터 형식을 사용했으므로 특성을 `Timestamp`라고 합니다. `rowversion`에 대한 .NET 유형은 바이트 배열입니다.
 
-Fluent API를 사용하는 것을 선호하는 경우 `IsConcurrencyToken` 메서드(*Data/SchoolContext.cs*에서)를 사용하여 다음 예제와 같이 추적 속성을 지정할 수 있습니다.
+Fluent API를 사용하는 것을 선호하는 경우 `IsConcurrencyToken` 메서드( *Data/SchoolContext.cs* 에서)를 사용하여 다음 예제와 같이 추적 속성을 지정할 수 있습니다.
 
 ```csharp
 modelBuilder.Entity<Department>()
@@ -149,7 +150,7 @@ dotnet ef database update
 
 스캐폴딩 엔진은 인덱스 보기에 RowVersion 열을 만들었지만 해당 필드는 표시되지 않아야 합니다.
 
-*Views/Departments/Index.cshtml*의 코드를 다음 코드로 바꿉니다.
+*Views/Departments/Index.cshtml* 의 코드를 다음 코드로 바꿉니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Departments/Index.cshtml?highlight=4,7,44)]
 
@@ -187,7 +188,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=174-178)]
 
-마지막으로 코드는 `departmentToUpdate`의 `RowVersion` 값을 데이터베이스에서 검색된 새 값으로 설정합니다. 이 새로운 `RowVersion` 값은 편집 페이지가 다시 표시되고, 다음 번에 사용자가 **저장**을 클릭할 때 숨겨진 필드에 저장되고, 편집 페이지의 다시 표시로 인해 발생하는 동시성 오류만 catch됩니다.
+마지막으로 코드는 `departmentToUpdate`의 `RowVersion` 값을 데이터베이스에서 검색된 새 값으로 설정합니다. 이 새로운 `RowVersion` 값은 편집 페이지가 다시 표시되고, 다음 번에 사용자가 **저장** 을 클릭할 때 숨겨진 필드에 저장되고, 편집 페이지의 다시 표시로 인해 발생하는 동시성 오류만 catch됩니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=199-200)]
 
@@ -195,7 +196,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 ## <a name="update-edit-view"></a>편집 뷰 업데이트
 
-*Views/Departments/Edit.cshtml*에서 다음과 같이 변경합니다.
+*Views/Departments/Edit.cshtml* 에서 다음과 같이 변경합니다.
 
 * 숨겨진 필드를 추가하여 `DepartmentID` 속성에 대한 숨겨진 필드 바로 다음에 `RowVersion` 속성 값을 저장합니다.
 
@@ -205,9 +206,9 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 ## <a name="test-concurrency-conflicts"></a>동시성 충돌 테스트
 
-앱을 실행하고 부서 인덱스 페이지로 이동합니다. 영어 부서에 대한 **편집** 하이퍼링크를 마우스 오른쪽 단추로 클릭하고 **새 탭에서 열기**를 선택한 다음, 영어 부서에 대한 **편집** 하이퍼링크를 클릭합니다. 이제 두 개의 브라우저 탭에 동일한 정보가 표시됩니다.
+앱을 실행하고 부서 인덱스 페이지로 이동합니다. 영어 부서에 대한 **편집** 하이퍼링크를 마우스 오른쪽 단추로 클릭하고 **새 탭에서 열기** 를 선택한 다음, 영어 부서에 대한 **편집** 하이퍼링크를 클릭합니다. 이제 두 개의 브라우저 탭에 동일한 정보가 표시됩니다.
 
-첫 번째 브라우저 탭의 필드를 변경하고 **저장**을 클릭합니다.
+첫 번째 브라우저 탭의 필드를 변경하고 **저장** 을 클릭합니다.
 
 ![변경 후 부서 편집 페이지 1](concurrency/_static/edit-after-change-1.png)
 
@@ -217,11 +218,11 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 ![변경 후 부서 편집 페이지 2](concurrency/_static/edit-after-change-2.png)
 
-**저장**을 클릭합니다. 오류 메시지가 표시됩니다.
+**저장** 을 클릭합니다. 오류 메시지가 표시됩니다.
 
 ![부서 편집 페이지 오류 메시지](concurrency/_static/edit-error.png)
 
-**저장**을 다시 클릭합니다. 두 번째 브라우저 탭에 입력한 값이 저장됩니다. 인덱스 페이지가 나타날 때 저장된 값이 표시됩니다.
+**저장** 을 다시 클릭합니다. 두 번째 브라우저 탭에 입력한 값이 저장됩니다. 인덱스 페이지가 나타날 때 저장된 값이 표시됩니다.
 
 ## <a name="update-the-delete-page"></a>삭제 페이지 업데이트
 
@@ -229,7 +230,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 ### <a name="update-the-delete-methods-in-the-departments-controller"></a>부서 컨트롤러의 Delete 메서드 업데이트
 
-*DepartmentsController.cs*에서 HttpGet `Delete` 메서드를 다음 코드로 바꿉니다.
+*DepartmentsController.cs* 에서 HttpGet `Delete` 메서드를 다음 코드로 바꿉니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeleteGet&highlight=1,10,14-17,21-29)]
 
@@ -259,7 +260,7 @@ public async Task<IActionResult> Delete(Department department)
 
 ### <a name="update-the-delete-view"></a>삭제 보기 업데이트
 
-*Views/Departments/Delete.cshtml*에서 스캐폴드된 코드를 DepartmentID 및 RowVersion 속성에 대해 오류 메시지 필드와 숨겨진 필드를 추가하는 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
+*Views/Departments/Delete.cshtml* 에서 스캐폴드된 코드를 DepartmentID 및 RowVersion 속성에 대해 오류 메시지 필드와 숨겨진 필드를 추가하는 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
 
@@ -273,27 +274,27 @@ public async Task<IActionResult> Delete(Department department)
 
 * `RowVersion` 속성에 대해 숨겨진 필드를 추가합니다.
 
-앱을 실행하고 부서 인덱스 페이지로 이동합니다. 영어 부서에 대한 **삭제** 하이퍼링크를 마우스 오른쪽 단추로 클릭하고 **새 탭에서 열기**를 선택한 다음, 첫 번째 탭에서 영어 부서에 대한 **편집** 하이퍼링크를 클릭합니다.
+앱을 실행하고 부서 인덱스 페이지로 이동합니다. 영어 부서에 대한 **삭제** 하이퍼링크를 마우스 오른쪽 단추로 클릭하고 **새 탭에서 열기** 를 선택한 다음, 첫 번째 탭에서 영어 부서에 대한 **편집** 하이퍼링크를 클릭합니다.
 
-첫 번째 창에서 값 중 하나를 변경하고, **저장**을 클릭합니다.
+첫 번째 창에서 값 중 하나를 변경하고, **저장** 을 클릭합니다.
 
 ![삭제 전 변경 후 부서 편집 페이지](concurrency/_static/edit-after-change-for-delete.png)
 
-두 번째 탭에서 **삭제**를 클릭합니다. 동시성 오류 메시지가 표시되며 부서 값은 데이터베이스의 현재 값으로 새로 고쳐집니다.
+두 번째 탭에서 **삭제** 를 클릭합니다. 동시성 오류 메시지가 표시되며 부서 값은 데이터베이스의 현재 값으로 새로 고쳐집니다.
 
 ![동시성 오류가 있는 부서 삭제 확인 페이지](concurrency/_static/delete-error.png)
 
-**삭제**를 다시 클릭하면 부서가 삭제되었음을 보여 주는 인덱스 페이지로 리디렉션됩니다.
+**삭제** 를 다시 클릭하면 부서가 삭제되었음을 보여 주는 인덱스 페이지로 리디렉션됩니다.
 
 ## <a name="update-details-and-create-views"></a>세부 정보 및 만들기 보기 업데이트
 
 세부 정보 및 만들기 보기에서 스캐폴드된 코드를 필요에 따라 정리할 수 있습니다.
 
-*Views/Departments/Details.cshtml*의 코드를 바꿔 RowVersion 열을 삭제하고 관리자의 전체 이름을 표시합니다.
+*Views/Departments/Details.cshtml* 의 코드를 바꿔 RowVersion 열을 삭제하고 관리자의 전체 이름을 표시합니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Departments/Details.cshtml?highlight=35)]
 
-*Views/Departments/Create.cshtml*의 코드를 바꿔 드롭다운 목록에 선택 옵션을 추가합니다.
+*Views/Departments/Create.cshtml* 의 코드를 바꿔 드롭다운 목록에 선택 옵션을 추가합니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
 

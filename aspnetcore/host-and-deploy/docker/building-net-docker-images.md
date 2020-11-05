@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 6f94323873937d1428d6cfa1b0ef15e44611fd47
-ms.sourcegitcommit: b3ec60f7682e43211c2b40c60eab3d4e45a48ab1
+ms.openlocfilehash: 81daa1d4a996519f44e513b4f61c27cdf2b6ef5e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92153641"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059808"
 ---
 # <a name="docker-images-for-aspnet-core"></a>ASP.NET Core의 Docker 이미지
 

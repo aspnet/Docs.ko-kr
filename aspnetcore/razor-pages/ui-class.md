@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 01/25/2020
 ms.custom: mvc, seodec18
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/ui-class
-ms.openlocfilehash: 95399246df954549cb76139a66d6998fd05a051a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e87e74533fe6900d8e0a73708ad24b765a968493
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634828"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056805"
 ---
 # <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a>ASP.NET Core에서 Razor 클래스 라이브러리 프로젝트를 사용하여 재사용 가능한 UI 만들기
 
@@ -38,10 +39,10 @@ RCL(Razor 클래스 라이브러리)에 Razor 뷰, 페이지, 컨트롤러, 페�
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Visual Studio에서 **새 프로젝트 만들기**를 선택합니다.
-* **Razor 클래스 라이브러리** > **다음**을 선택합니다.
-* 라이브러리 이름을 지정하고(예: “RazorClassLib”), **만들기**를 선택합니다. 생성된 보기 라이브러리와 파일 이름 충돌을 방지하려면 라이브러리 이름이 `.Views`로 끝나지 않도록 합니다.
-* 뷰를 지원해야 하는 경우 **페이지 및 뷰 지원**을 선택합니다. 기본적으로 Razor Pages만 지원됩니다. **만들기**를 선택합니다.
+* Visual Studio에서 **새 프로젝트 만들기** 를 선택합니다.
+* **Razor 클래스 라이브러리** > **다음** 을 선택합니다.
+* 라이브러리 이름을 지정하고(예: “RazorClassLib”), **만들기** 를 선택합니다. 생성된 보기 라이브러리와 파일 이름 충돌을 방지하려면 라이브러리 이름이 `.Views`로 끝나지 않도록 합니다.
+* 뷰를 지원해야 하는 경우 **페이지 및 뷰 지원** 을 선택합니다. 기본적으로 Razor Pages만 지원됩니다. **만들기** 를 선택합니다.
 
 RCL(Razor 클래스 라이브러리) 템플릿은 기본적으로 Razor 구성 요소 개발로 설정됩니다. **페이지 및 뷰 지원** 옵션은 페이지와 뷰를 지원합니다.
 
@@ -72,11 +73,11 @@ RCL은 다음에서 참조할 수 있습니다.
 
 ## <a name="override-views-partial-views-and-pages"></a>보기, 부분 보기 및 페이지 재정의
 
-뷰, 부분 뷰 또는 Razor 페이지가 웹앱 및 RCL 모두에 있는 경우 웹앱에서 Razor 태그( *.cshtml* 파일)가 우선으로 적용됩니다. 예를 들어 *WebApp1/Areas/MyFeature/Pages/Page1.cshtml*을 WebApp1에 추가하면, WebApp1의 Page1이 RCL의 Page1보다 우선 적용됩니다.
+뷰, 부분 뷰 또는 Razor 페이지가 웹앱 및 RCL 모두에 있는 경우 웹앱에서 Razor 태그( *.cshtml* 파일)가 우선으로 적용됩니다. 예를 들어 *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* 을 WebApp1에 추가하면, WebApp1의 Page1이 RCL의 Page1보다 우선 적용됩니다.
 
-샘플 다운로드에서 *WebApp1/Areas/MyFeature2*를 *WebApp1/Areas/MyFeature*로 이름을 바꾸어 우선적으로 테스트합니다.
+샘플 다운로드에서 *WebApp1/Areas/MyFeature2* 를 *WebApp1/Areas/MyFeature* 로 이름을 바꾸어 우선적으로 테스트합니다.
 
-*RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* 부분 뷰를 *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml*에 복사합니다. 새 위치를 나타내기 위해 태그를 업데이트합니다. 해당 부분의 앱 버전이 사용되고 있는지 확인하려면 앱을 빌드하고 실행합니다.
+*RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* 부분 뷰를 *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml* 에 복사합니다. 새 위치를 나타내기 위해 태그를 업데이트합니다. 해당 부분의 앱 버전이 사용되고 있는지 확인하려면 앱을 빌드하고 실행합니다.
 
 ### <a name="rcl-pages-layout"></a>RCL 페이지 레이아웃
 
@@ -85,7 +86,7 @@ RCL은 다음에서 참조할 수 있습니다.
 * *RazorUIClassLib/Pages*
 * *RazorUIClassLib/Pages/Shared*
 
-*RazorUIClassLib/Pages/Shared*에 *_Header.cshtml* 및 *_Footer.cshtml*이라는 두 개의 부분 파일이 들어 있다고 가정합니다. *_Layout.cshtml* 파일에 `<partial>` 태그를 추가할 수 있습니다.
+*RazorUIClassLib/Pages/Shared* 에 *_Header.cshtml* 및 *_Footer.cshtml* 이라는 두 개의 부분 파일이 들어 있다고 가정합니다. *_Layout.cshtml* 파일에 `<partial>` 태그를 추가할 수 있습니다.
 
 ```cshtml
 <body>
@@ -121,7 +122,7 @@ NuGet.exe 버전 `nuget pack` 대신 `dotnet pack` 명령을 사용합니다.
 
 RCL에 TypeScript 파일을 포함하려면 다음을 수행합니다.
 
-1. *wwwroot* 폴더 외부에 TypeScript 파일( *.ts*)을 배치합니다. 예를 들어 *Client* 폴더에 파일을 배치합니다.
+1. *wwwroot* 폴더 외부에 TypeScript 파일( *.ts* )을 배치합니다. 예를 들어 *Client* 폴더에 파일을 배치합니다.
 
 1. *wwwroot* 폴더에 대한 TypeScript 빌드 출력을 구성합니다. 프로젝트 파일의 `PropertyGroup` 내부에 `TypescriptOutDir` 속성을 설정합니다.
 
@@ -140,7 +141,7 @@ RCL에 TypeScript 파일을 포함하려면 다음을 수행합니다.
 
 ### <a name="consume-content-from-a-referenced-rcl"></a>참조된 RCL의 콘텐츠 사용
 
-RCL의 *wwwroot* 폴더에 포함된 파일은 접두사 `_content/{LIBRARY NAME}/` 아래에서 RCL 또는 사용 앱에 공개됩니다. 예를 들어 *Razor.Class.Lib*라는 라이브러리의 정적 콘텐츠 경로는 `_content/Razor.Class.Lib/`가 됩니다. NuGet 패키지를 생성할 때 어셈블리 이름이 패키지 ID와 다른 경우 `{LIBRARY NAME}`에 패키지 ID를 사용합니다.
+RCL의 *wwwroot* 폴더에 포함된 파일은 접두사 `_content/{LIBRARY NAME}/` 아래에서 RCL 또는 사용 앱에 공개됩니다. 예를 들어 *Razor.Class.Lib* 라는 라이브러리의 정적 콘텐츠 경로는 `_content/Razor.Class.Lib/`가 됩니다. NuGet 패키지를 생성할 때 어셈블리 이름이 패키지 ID와 다른 경우 `{LIBRARY NAME}`에 패키지 ID를 사용합니다.
 
 사용 앱은 `<script>`, `<style>`, `<img>` 및 기타 HTML 태그를 사용하여 라이브러리에서 제공하는 정적 자산을 참조합니다. `Startup.Configure`에서 사용 앱에 대해 [정적 파일 지원](xref:fundamentals/static-files)이 사용하도록 설정되어 있어야 합니다.
 
@@ -155,7 +156,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-빌드 출력(`dotnet run`)에서 사용 앱을 실행하는 경우, 개발 환경에서는 정적 웹 자산이 기본적으로 사용됩니다. 빌드 출력에서 실행할 때 다른 환경의 자산을 지원하려면 호스트 작성기의 *Program.cs*에서 `UseStaticWebAssets`를 호출합니다.
+빌드 출력(`dotnet run`)에서 사용 앱을 실행하는 경우, 개발 환경에서는 정적 웹 자산이 기본적으로 사용됩니다. 빌드 출력에서 실행할 때 다른 환경의 자산을 지원하려면 호스트 작성기의 *Program.cs* 에서 `UseStaticWebAssets`를 호출합니다.
 
 ```csharp
 using Microsoft.AspNetCore.Hosting;
@@ -205,11 +206,11 @@ RCL(Razor 클래스 라이브러리)에 Razor 뷰, 페이지, 컨트롤러, 페�
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트**를 선택합니다.
-* **새 ASP.NET Core 웹 애플리케이션**을 선택합니다.
-* 라이브러리 이름 지정을 지정하고(예: “RazorClassLib”), **확인**을 선택합니다. 생성된 보기 라이브러리와 파일 이름 충돌을 방지하려면 라이브러리 이름이 `.Views`로 끝나지 않도록 합니다.
+* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트** 를 선택합니다.
+* **새 ASP.NET Core 웹 애플리케이션** 을 선택합니다.
+* 라이브러리 이름 지정을 지정하고(예: “RazorClassLib”), **확인** 을 선택합니다. 생성된 보기 라이브러리와 파일 이름 충돌을 방지하려면 라이브러리 이름이 `.Views`로 끝나지 않도록 합니다.
 * **ASP.NET Core 2.1** 이상이 선택됐는지 확인합니다.
-* **Razor 클래스 라이브러리** > **확인**을 선택합니다.
+* **Razor 클래스 라이브러리** > **확인** 을 선택합니다.
 
 RCL에는 다음과 같은 프로젝트 파일이 있습니다.
 
@@ -276,12 +277,12 @@ dotnet run
 
 RCL 프로젝트를 만듭니다.
 
-* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트**를 선택합니다.
-* **새 ASP.NET Core 웹 애플리케이션**을 선택합니다.
-* 앱 이름을 **RazorUIClassLib**로 지정하고, **확인**을 선택합니다.
+* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트** 를 선택합니다.
+* **새 ASP.NET Core 웹 애플리케이션** 을 선택합니다.
+* 앱 이름을 **RazorUIClassLib** 로 지정하고, **확인** 을 선택합니다.
 * **ASP.NET Core 2.1** 이상이 선택됐는지 확인합니다.
-* **Razor 클래스 라이브러리** > **확인**을 선택합니다.
-* *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml*이라는 Razor 부분 뷰 파일을 추가합니다.
+* **Razor 클래스 라이브러리** > **확인** 을 선택합니다.
+* *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* 이라는 Razor 부분 뷰 파일을 추가합니다.
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -305,11 +306,11 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 ### <a name="add-no-locrazor-files-and-folders-to-the-project"></a>프로젝트에 Razor 파일 및 폴더 추가
 
-* *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml*에서 태그를 다음 코드로 바꿉니다.
+* *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* 에서 태그를 다음 코드로 바꿉니다.
 
   [!code-cshtml[](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml)]
 
-* *RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml*에서 태그를 다음 코드로 바꿉니다.
+* *RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml* 에서 태그를 다음 코드로 바꿉니다.
 
   [!code-cshtml[](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml)]
 
@@ -319,7 +320,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
   dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
   ```
 
-  *_ViewImports.cshtml*에 대한 자세한 내용은 [공유 지시문 가져오기](xref:mvc/views/layout#importing-shared-directives)를 참조하세요.
+  *_ViewImports.cshtml* 에 대한 자세한 내용은 [공유 지시문 가져오기](xref:mvc/views/layout#importing-shared-directives)를 참조하세요.
 
 * 컴파일러 오류가 없는지 확인하려면 클래스 라이브러리를 빌드하십시오.
 
@@ -327,7 +328,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
   dotnet build RazorUIClassLib
   ```
 
-빌드 출력은 *RazorUIClassLib.dll* 및 *RazorUIClassLib.Views.dll*을 포함합니다. *RazorUIClassLib.Views.dll*은 컴파일된 Razor 콘텐츠를 포함합니다.
+빌드 출력은 *RazorUIClassLib.dll* 및 *RazorUIClassLib.Views.dll* 을 포함합니다. *RazorUIClassLib.Views.dll* 은 컴파일된 Razor 콘텐츠를 포함합니다.
 
 ### <a name="use-the-no-locrazor-ui-library-from-a-no-locrazor-pages-project"></a>Razor Pages 프로젝트에서 Razor UI 라이브러리 사용
 
@@ -335,17 +336,17 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 Razor Pages 웹앱을 만듭니다.
 
-* **솔루션 탐색기**에서 솔루션을 마우스 오른쪽 단추로 클릭하고 > **추가** > **새 프로젝트**를 선택합니다.
-* **새 ASP.NET Core 웹 애플리케이션**을 선택합니다.
+* **솔루션 탐색기** 에서 솔루션을 마우스 오른쪽 단추로 클릭하고 > **추가** > **새 프로젝트** 를 선택합니다.
+* **새 ASP.NET Core 웹 애플리케이션** 을 선택합니다.
 * **WebApp1** 앱 이름을 지정합니다.
 * **ASP.NET Core 2.1** 이상이 선택됐는지 확인합니다.
-* **웹 애플리케이션** > **확인**을 선택합니다.
+* **웹 애플리케이션** > **확인** 을 선택합니다.
 
-* **솔루션 탐색기**에서 **WebApp1**를 마우스 오른쪽 단추로 클릭하고 **스타트업 프로젝트로 설정**을 선택합니다.
-* **솔루션 탐색기**에서 **WebApp1**을 마우스 오른쪽 단추로 클릭하고 **빌드 종속성** > **프로젝트 종속성**을 선택합니다.
-* **RazorUIClassLib**를 **WebApp1**의 종속성으로 확인합니다.
-* **솔루션 탐색기**에서 **WebApp1**을 마우스 오른쪽 단추로 클릭하고 **추가** > **참조**를 선택합니다.
-* **참조 관리자** 대화 상자에서 **RazorUIClassLib** > **확인**을 선택합니다.
+* **솔루션 탐색기** 에서 **WebApp1** 를 마우스 오른쪽 단추로 클릭하고 **스타트업 프로젝트로 설정** 을 선택합니다.
+* **솔루션 탐색기** 에서 **WebApp1** 을 마우스 오른쪽 단추로 클릭하고 **빌드 종속성** > **프로젝트 종속성** 을 선택합니다.
+* **RazorUIClassLib** 를 **WebApp1** 의 종속성으로 확인합니다.
+* **솔루션 탐색기** 에서 **WebApp1** 을 마우스 오른쪽 단추로 클릭하고 **추가** > **참조** 를 선택합니다.
+* **참조 관리자** 대화 상자에서 **RazorUIClassLib** > **확인** 을 선택합니다.
 
 앱을 실행합니다.
 
@@ -376,11 +377,11 @@ dotnet run
 
 ## <a name="override-views-partial-views-and-pages"></a>보기, 부분 보기 및 페이지 재정의
 
-뷰, 부분 뷰 또는 Razor 페이지가 웹앱 및 RCL 모두에 있는 경우 웹앱에서 Razor 태그( *.cshtml* 파일)가 우선으로 적용됩니다. 예를 들어 *WebApp1/Areas/MyFeature/Pages/Page1.cshtml*을 WebApp1에 추가하면, WebApp1의 Page1이 RCL의 Page1보다 우선 적용됩니다.
+뷰, 부분 뷰 또는 Razor 페이지가 웹앱 및 RCL 모두에 있는 경우 웹앱에서 Razor 태그( *.cshtml* 파일)가 우선으로 적용됩니다. 예를 들어 *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* 을 WebApp1에 추가하면, WebApp1의 Page1이 RCL의 Page1보다 우선 적용됩니다.
 
-샘플 다운로드에서 *WebApp1/Areas/MyFeature2*를 *WebApp1/Areas/MyFeature*로 이름을 바꾸어 우선적으로 테스트합니다.
+샘플 다운로드에서 *WebApp1/Areas/MyFeature2* 를 *WebApp1/Areas/MyFeature* 로 이름을 바꾸어 우선적으로 테스트합니다.
 
-*RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* 부분 뷰를 *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml*에 복사합니다. 새 위치를 나타내기 위해 태그를 업데이트합니다. 해당 부분의 앱 버전이 사용되고 있는지 확인하려면 앱을 빌드하고 실행합니다.
+*RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* 부분 뷰를 *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml* 에 복사합니다. 새 위치를 나타내기 위해 태그를 업데이트합니다. 해당 부분의 앱 버전이 사용되고 있는지 확인하려면 앱을 빌드하고 실행합니다.
 
 ### <a name="rcl-pages-layout"></a>RCL 페이지 레이아웃
 
@@ -389,7 +390,7 @@ dotnet run
 * *RazorUIClassLib/Pages*
 * *RazorUIClassLib/Pages/Shared*
 
-*RazorUIClassLib/Pages/Shared*에 *_Header.cshtml* 및 *_Footer.cshtml*이라는 두 개의 부분 파일이 들어 있다고 가정합니다. *_Layout.cshtml* 파일에 `<partial>` 태그를 추가할 수 있습니다.
+*RazorUIClassLib/Pages/Shared* 에 *_Header.cshtml* 및 *_Footer.cshtml* 이라는 두 개의 부분 파일이 들어 있다고 가정합니다. *_Layout.cshtml* 파일에 `<partial>` 태그를 추가할 수 있습니다.
 
 ```cshtml
 <body>

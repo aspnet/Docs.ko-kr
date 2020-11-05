@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 09/28/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: f2b4fd9fb1e328882583536b704d516955343417
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 610a9e9b0007fb468ea9cdae6fadd2e756de4290
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629459"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054062"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>자습서: 관련 데이터 읽기 - ASP.NET MVC 및 EF Core 사용
 
@@ -78,13 +79,13 @@ Entity Framework와 같은 ORM(개체-관계형 매핑) 소프트웨어에서 �
 
 ![강좌 컨트롤러 추가](read-related-data/_static/add-courses-controller.png)
 
-*CoursesController.cs*를 열고 `Index` 메서드를 검사합니다. 자동 스캐폴딩은 `Include` 메서드를 사용하여 `Department` 탐색 속성에 대해 즉시 로드를 지정했습니다.
+*CoursesController.cs* 를 열고 `Index` 메서드를 검사합니다. 자동 스캐폴딩은 `Include` 메서드를 사용하여 `Department` 탐색 속성에 대해 즉시 로드를 지정했습니다.
 
 `Index` 메서드를 강좌 엔터티를 반환하는 `IQueryable`에 대해 더욱 적절한 이름을 사용하는 다음 코드로 바꿉니다(`schoolContext` 대신 `courses`).
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_RevisedIndexMethod)]
 
-*Views/Courses/Index.cshtml*을 열고 템플릿 코드를 다음 코드로 바꿉니다. 변경 내용이 강조 표시되어 있습니다.
+*Views/Courses/Index.cshtml* 을 열고 템플릿 코드를 다음 코드로 바꿉니다. 변경 내용이 강조 표시되어 있습니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
 
@@ -122,7 +123,7 @@ Entity Framework와 같은 ORM(개체-관계형 매핑) 소프트웨어에서 �
 
 강사 페이지는 서로 다른 세 테이블에서 데이터를 표시합니다. 따라서 각각이 테이블 중 하나에 대한 데이터를 보유하는 세 가지 속성을 포함하는 보기 모델을 만듭니다.
 
-*SchoolViewModels* 폴더에서 *InstructorIndexData.cs*를 만들고 기존 코드를 다음 코드로 바꿉니다.
+*SchoolViewModels* 폴더에서 *InstructorIndexData.cs* 를 만들고 기존 코드를 다음 코드로 바꿉니다.
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
@@ -132,7 +133,7 @@ Entity Framework와 같은 ORM(개체-관계형 매핑) 소프트웨어에서 �
 
 ![강사 컨트롤러 추가](read-related-data/_static/add-instructors-controller.png)
 
-*InstructorsController.cs*를 열고 ViewModels 네임스페이스에 대해 using 문을 추가합니다.
+*InstructorsController.cs* 를 열고 ViewModels 네임스페이스에 대해 using 문을 추가합니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Using)]
 
@@ -180,7 +181,7 @@ Entity Framework와 같은 ORM(개체-관계형 매핑) 소프트웨어에서 �
 
 ### <a name="modify-the-instructor-index-view"></a>강사 인덱스 뷰 수정
 
-*Views/Instructors/Index.cshtml*에서 템플릿 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
+*Views/Instructors/Index.cshtml* 에서 템플릿 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
 
@@ -188,7 +189,7 @@ Entity Framework와 같은 ORM(개체-관계형 매핑) 소프트웨어에서 �
 
 * 모델 클래스를 `InstructorIndexData`로 변경했습니다.
 
-* 페이지 제목을 **인덱스**에서 **강사**로 변경했습니다.
+* 페이지 제목을 **인덱스** 에서 **강사** 로 변경했습니다.
 
 * `item.OfficeAssignment`가 Null이 아닌 경우에만 `item.OfficeAssignment.Location`을 표시하는 **사무실** 열을 추가했습니다. (이는 일대영 또는 일 관계이기 때문에 관련된 OfficeAssignment 엔터티가 있을 수 없습니다.)
 
@@ -212,7 +213,7 @@ Entity Framework와 같은 ORM(개체-관계형 매핑) 소프트웨어에서 �
   <tr class="@selectedRow">
   ```
 
-* 선택된 강사의 ID가 `Index` 메서드에 전송되도록 하는 각 행의 다른 링크 앞에 새 하이퍼링크 레이블이 지정된 **Select**를 즉시 추가했습니다.
+* 선택된 강사의 ID가 `Index` 메서드에 전송되도록 하는 각 행의 다른 링크 앞에 새 하이퍼링크 레이블이 지정된 **Select** 를 즉시 추가했습니다.
 
   ```html
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
@@ -244,7 +245,7 @@ Entity Framework와 같은 ORM(개체-관계형 매핑) 소프트웨어에서 �
 
 ## <a name="about-explicit-loading"></a>명시적 로드 정보
 
-*InstructorsController.cs*에서 강사 목록을 검색한 경우 `CourseAssignments` 탐색 속성에 대한 즉시 로드를 지정했습니다.
+*InstructorsController.cs* 에서 강사 목록을 검색한 경우 `CourseAssignments` 탐색 속성에 대한 즉시 로드를 지정했습니다.
 
 사용자가 선택된 강사 및 강좌에서 등록을 드물게 확인하려고 한다는 것을 예상했다고 가정합니다. 이 경우 요청된 경우에만 등록 데이터를 로드할 수 있습니다. 명시적 로드를 수행하는 방법의 예를 보려면 `Index` 메서드를 등록에 대한 즉시 로드를 제거하고 해당 속성을 명시적으로 로드하는 다음 코드로 바꿉니다. 코드 변경 내용은 강조 표시되어 있습니다.
 

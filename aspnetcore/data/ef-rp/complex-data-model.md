@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 55269c6985534b49cc2567b2d197e46d9b7b1fd7
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 1ac9d6303daac82f3973c5d027fe1f453dc32e02
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722529"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054101"
 ---
 # <a name="part-5-no-locrazor-pages-with-ef-core-in-aspnet-core---data-model"></a>5부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 데이터 모델
 
@@ -45,7 +46,7 @@ ms.locfileid: "90722529"
 
 ![학생 엔터티](complex-data-model/_static/student-entity.png)
 
-*Models/Student.cs*에 있는 코드를 다음 코드로 바꿉니다.
+*Models/Student.cs* 에 있는 코드를 다음 코드로 바꿉니다.
 
 [!code-csharp[](intro/samples/cu30/Models/Student.cs)]
 
@@ -112,7 +113,7 @@ ms.locfileid: "90722529"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-**SQL Server 개체 탐색기**(SSOX)에서 **학생** 테이블을 두 번 클릭하여 학생 테이블 디자이너를 엽니다.
+**SQL Server 개체 탐색기** (SSOX)에서 **학생** 테이블을 두 번 클릭하여 학생 테이블 디자이너를 엽니다.
 
 ![마이그레이션 전 SSOX의 학생 테이블](complex-data-model/_static/ssox-before-migration.png)
 
@@ -236,7 +237,7 @@ SqliteException: SQLite Error 1: 'no such column: s.FirstName'.
 
 * 앱을 실행하고 [학생] 페이지로 이동합니다.
 * 시간이 날짜와 함께 입력되거나 표시되지 않는 것을 알 수 있습니다.
-* **새로 만들기**를 선택하고, 50자보다 긴 이름을 입력해 보세요.
+* **새로 만들기** 를 선택하고, 50자보다 긴 이름을 입력해 보세요.
 
 > [!Note]
 > 다음 섹션의 일부 단계에서 앱 빌드는 컴파일러 오류를 생성합니다. 지침은 앱을 빌드하는 시기를 지정합니다.
@@ -245,7 +246,7 @@ SqliteException: SQLite Error 1: 'no such column: s.FirstName'.
 
 ![강사 엔터티](complex-data-model/_static/instructor-entity.png)
 
-다음 코드로 *Models/Instructor.cs*를 만듭니다.
+다음 코드로 *Models/Instructor.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu30/Models/Instructor.cs)]
 
@@ -275,7 +276,7 @@ public OfficeAssignment OfficeAssignment { get; set; }
 
 ![OfficeAssignment 엔터티](complex-data-model/_static/officeassignment-entity.png)
 
-다음 코드로 *Models/OfficeAssignment.cs*를 만듭니다.
+다음 코드로 *Models/OfficeAssignment.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu30/Models/OfficeAssignment.cs)]
 
@@ -306,7 +307,7 @@ public int InstructorID { get; set; }
 
 ![강좌 엔터티](complex-data-model/_static/course-entity.png)
 
-*Models/Course.cs*를 다음 코드로 업데이트합니다.
+*Models/Course.cs* 를 다음 코드로 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu30/Models/Course.cs?highlight=2,10,13,16,19,21,23)]
 
@@ -362,7 +363,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ![부서 엔터티](complex-data-model/_static/department-entity.png)
 
-다음 코드로 *Models/Department.cs*를 만듭니다.
+다음 코드로 *Models/Department.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu30snapshots/5-complex/Models/Department1.cs)]
 
@@ -416,7 +417,7 @@ public ICollection<Course> Courses { get; set; }
 
 ![등록 엔터티](complex-data-model/_static/enrollment-entity.png)
 
-*Models/Enrollment.cs*를 다음 코드로 업데이트합니다.
+*Models/Enrollment.cs* 를 다음 코드로 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu30/Models/Enrollment.cs?highlight=1-2,16)]
 
@@ -458,7 +459,7 @@ public Student Student { get; set; }
 
 ![CourseAssignment 엔터티](complex-data-model/_static/courseassignment-entity.png)
 
-다음 코드로 *Models/CourseAssignment.cs*를 만듭니다.
+다음 코드로 *Models/CourseAssignment.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu30/Models/CourseAssignment.cs)]
 
@@ -472,7 +473,7 @@ public Student Student { get; set; }
 
 ### <a name="composite-key"></a>복합 키
 
-`CourseAssignment`에서 두 개의 FK(`InstructorID` 및 `CourseID`)는 함께 `CourseAssignment` 테이블의 각 행을 고유하게 식별합니다. `CourseAssignment`는 전용 PK가 필요하지 않습니다. `InstructorID` 및 `CourseID` 속성은 복합 PK로 작동합니다. 복합 PK를 EF Core로 지정하는 유일한 방법은 *흐름 API*를 사용하는 것입니다. 다음 섹션에서는 복합 PK를 구성하는 방법을 보여 줍니다.
+`CourseAssignment`에서 두 개의 FK(`InstructorID` 및 `CourseID`)는 함께 `CourseAssignment` 테이블의 각 행을 고유하게 식별합니다. `CourseAssignment`는 전용 PK가 필요하지 않습니다. `InstructorID` 및 `CourseID` 속성은 복합 PK로 작동합니다. 복합 PK를 EF Core로 지정하는 유일한 방법은 *흐름 API* 를 사용하는 것입니다. 다음 섹션에서는 복합 PK를 구성하는 방법을 보여 줍니다.
 
 복합 키를 사용하면 다음이 적용됩니다.
 
@@ -487,7 +488,7 @@ public Student Student { get; set; }
 
 ## <a name="update-the-database-context"></a>데이터베이스 컨텍스트 업데이트
 
-다음 코드로 *Data/SchoolContext.cs*를 업데이트합니다.
+다음 코드로 *Data/SchoolContext.cs* 를 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu30/Data/SchoolContext.cs?highlight=15-18,25-31)]
 
@@ -495,7 +496,7 @@ public Student Student { get; set; }
 
 ## <a name="fluent-api-alternative-to-attributes"></a>특성에 대한 흐름 API 대안
 
-위의 코드에서 `OnModelCreating` 메서드는 *흐름 API*를 사용하여 EF Core 동작을 구성합니다. API는 종종 일련의 메서드 호출을 단일 명령문으로 함께 연결하여 사용되기 때문에 “흐름”이라고 부릅니다. [다음 코드](/ef/core/modeling/#use-fluent-api-to-configure-a-model)는 흐름 API의 예제입니다.
+위의 코드에서 `OnModelCreating` 메서드는 *흐름 API* 를 사용하여 EF Core 동작을 구성합니다. API는 종종 일련의 메서드 호출을 단일 명령문으로 함께 연결하여 사용되기 때문에 “흐름”이라고 부릅니다. [다음 코드](/ef/core/modeling/#use-fluent-api-to-configure-a-model)는 흐름 API의 예제입니다.
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -537,7 +538,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ## <a name="seed-the-database"></a>데이터베이스 시드
 
-*Data/DbInitializer.cs*에서 코드를 업데이트합니다.
+*Data/DbInitializer.cs* 에서 코드를 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu30/Data/DbInitializer.cs)]
 
@@ -604,7 +605,7 @@ EF Core가 새로운 데이터베이스를 만들도록 강제하려면 데이�
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* PMC(**패키지 관리자 콘솔**)에서 다음 명령을 입력합니다.
+* PMC( **패키지 관리자 콘솔** )에서 다음 명령을 입력합니다.
 
   ```powershell
   Drop-Database
@@ -649,7 +650,7 @@ SSOX에서 데이터베이스를 선택합니다.
 
 * **CourseAssignment** 테이블을 검사합니다.
 
-  * **CourseAssignment** 테이블을 마우스 오른쪽 단추로 클릭하고 **데이터 보기**를 선택합니다.
+  * **CourseAssignment** 테이블을 마우스 오른쪽 단추로 클릭하고 **데이터 보기** 를 선택합니다.
   * **CourseAssignment** 테이블에 데이터가 포함되어 있는지 확인합니다.
 
   ![SSOX의 CourseAssignment 데이터](complex-data-model/_static/ssox-ci-data.png)
@@ -704,7 +705,7 @@ SQLite 도구를 사용하여 데이터베이스를 검사합니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* PMC(**패키지 관리자 콘솔**)에서 다음 명령을 입력합니다.
+* PMC( **패키지 관리자 콘솔** )에서 다음 명령을 입력합니다.
 
   ```powershell
   Update-Database
@@ -756,7 +757,7 @@ https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 
 학생 페이지는 현재 등록 날짜의 시간을 표시합니다. 일반적으로 날짜 필드는 시간이 아닌 날짜만을 표시합니다.
 
-*Models/Student.cs*를 다음 강조 표시된 코드로 업데이트합니다.
+*Models/Student.cs* 를 다음 강조 표시된 코드로 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
@@ -805,12 +806,12 @@ https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 앱을 실행합니다.
 
 * 학생 페이지로 이동합니다.
-* **새로 만들기**를 선택하고, 50자보다 긴 이름을 입력합니다.
-* **만들기**를 선택하면 클라이언트 쪽 유효성 검사가 오류 메시지를 표시합니다.
+* **새로 만들기** 를 선택하고, 50자보다 긴 이름을 입력합니다.
+* **만들기** 를 선택하면 클라이언트 쪽 유효성 검사가 오류 메시지를 표시합니다.
 
 ![문자열 길이 오류를 보여 주는 학생 인덱스 페이지](complex-data-model/_static/string-length-errors.png)
 
-**SQL Server 개체 탐색기**(SSOX)에서 **학생** 테이블을 두 번 클릭하여 학생 테이블 디자이너를 엽니다.
+**SQL Server 개체 탐색기** (SSOX)에서 **학생** 테이블을 두 번 클릭하여 학생 테이블 디자이너를 엽니다.
 
 ![마이그레이션 전 SSOX의 학생 테이블](complex-data-model/_static/ssox-before-migration.png)
 
@@ -881,7 +882,7 @@ SSOX에서 학생 테이블을 엽니다.
 
 ![학생 엔터티](complex-data-model/_static/student-entity.png)
 
-*Models/Student.cs*를 다음 코드로 업데이트합니다.
+*Models/Student.cs* 를 다음 코드로 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
 
@@ -909,7 +910,7 @@ public string LastName { get; set; }
 
 ![강사 엔터티](complex-data-model/_static/instructor-entity.png)
 
-다음 코드로 *Models/Instructor.cs*를 만듭니다.
+다음 코드로 *Models/Instructor.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu21/Models/Instructor.cs)]
 
@@ -953,7 +954,7 @@ public OfficeAssignment OfficeAssignment { get; set; }
 
 ![OfficeAssignment 엔터티](complex-data-model/_static/officeassignment-entity.png)
 
-다음 코드로 *Models/OfficeAssignment.cs*를 만듭니다.
+다음 코드로 *Models/OfficeAssignment.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu21/Models/OfficeAssignment.cs)]
 
@@ -1001,7 +1002,7 @@ public Instructor Instructor { get; set; }
 
 ![강좌 엔터티](complex-data-model/_static/course-entity.png)
 
-*Models/Course.cs*를 다음 코드로 업데이트합니다.
+*Models/Course.cs* 를 다음 코드로 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu21/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
 
@@ -1059,7 +1060,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ![부서 엔터티](complex-data-model/_static/department-entity.png)
 
-다음 코드로 *Models/Department.cs*를 만듭니다.
+다음 코드로 *Models/Department.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu21/Models/Department.cs?name=snippet_Begin)]
 
@@ -1119,7 +1120,7 @@ public ICollection<Course> Courses { get; set; }
 
 ![등록 엔터티](complex-data-model/_static/enrollment-entity.png)
 
-*Models/Enrollment.cs*를 다음 코드로 업데이트합니다.
+*Models/Enrollment.cs* 를 다음 코드로 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu21/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
 
@@ -1161,7 +1162,7 @@ public Student Student { get; set; }
 
 ![CourseAssignment 엔터티](complex-data-model/_static/courseassignment-entity.png)
 
-다음 코드로 *Models/CourseAssignment.cs*를 만듭니다.
+다음 코드로 *Models/CourseAssignment.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu21/Models/CourseAssignment.cs)]
 
@@ -1180,7 +1181,7 @@ public Student Student { get; set; }
 
 ### <a name="composite-key"></a>복합 키
 
-FK는 Null을 허용하지 않습니다. `CourseAssignment`에서 두 개의 FK(`InstructorID` 및 `CourseID`)는 함께 `CourseAssignment` 테이블의 각 행을 고유하게 식별합니다. `CourseAssignment`는 전용 PK가 필요하지 않습니다. `InstructorID` 및 `CourseID` 속성은 복합 PK로 작동합니다. 복합 PK를 EF Core로 지정하는 유일한 방법은 *흐름 API*를 사용하는 것입니다. 다음 섹션에서는 복합 PK를 구성하는 방법을 보여 줍니다.
+FK는 Null을 허용하지 않습니다. `CourseAssignment`에서 두 개의 FK(`InstructorID` 및 `CourseID`)는 함께 `CourseAssignment` 테이블의 각 행을 고유하게 식별합니다. `CourseAssignment`는 전용 PK가 필요하지 않습니다. `InstructorID` 및 `CourseID` 속성은 복합 PK로 작동합니다. 복합 PK를 EF Core로 지정하는 유일한 방법은 *흐름 API* 를 사용하는 것입니다. 다음 섹션에서는 복합 PK를 구성하는 방법을 보여 줍니다.
 
 복합 키는 다음을 확인합니다.
 
@@ -1195,7 +1196,7 @@ FK는 Null을 허용하지 않습니다. `CourseAssignment`에서 두 개의 FK(
 
 ## <a name="update-the-db-context"></a>DB 컨텍스트 업데이트
 
-다음 강조 표시된 코드를 *Data/SchoolContext.cs*에 추가합니다.
+다음 강조 표시된 코드를 *Data/SchoolContext.cs* 에 추가합니다.
 
 [!code-csharp[](intro/samples/cu21/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
 
@@ -1203,7 +1204,7 @@ FK는 Null을 허용하지 않습니다. `CourseAssignment`에서 두 개의 FK(
 
 ## <a name="fluent-api-alternative-to-attributes"></a>특성에 대한 흐름 API 대안
 
-위의 코드에서 `OnModelCreating` 메서드는 *흐름 API*를 사용하여 EF Core 동작을 구성합니다. API는 종종 일련의 메서드 호출을 단일 명령문으로 함께 연결하여 사용되기 때문에 “흐름”이라고 부릅니다. [다음 코드](/ef/core/modeling/#use-fluent-api-to-configure-a-model)는 흐름 API의 예제입니다.
+위의 코드에서 `OnModelCreating` 메서드는 *흐름 API* 를 사용하여 EF Core 동작을 구성합니다. API는 종종 일련의 메서드 호출을 단일 명령문으로 함께 연결하여 사용되기 때문에 “흐름”이라고 부릅니다. [다음 코드](/ef/core/modeling/#use-fluent-api-to-configure-a-model)는 흐름 API의 예제입니다.
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -1245,7 +1246,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ## <a name="seed-the-db-with-test-data"></a>테스트 데이터로 DB 시드
 
-*Data/DbInitializer.cs*에서 코드를 업데이트합니다.
+*Data/DbInitializer.cs* 에서 코드를 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Final)]
 
@@ -1289,7 +1290,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 기존 데이터베이스가 있으므로 향후 변경 내용을 적용하는 방법을 고려해야 합니다. 이 자습서에서는 두 가지 방법을 보여 줍니다.
 
 * [데이터베이스를 삭제하고 다시 만들기](#drop)
-* [기존 데이터베이스에 마이그레이션 적용](#applyexisting). 이 방법은 더 복잡하고 시간이 오래 걸리지만 실제 프로덕션 환경에 권장되는 방법입니다. **참고**: 이는 자습서의 선택적 섹션입니다. 삭제하고 다시 만들기 단계를 수행하고 이 섹션을 건너뛸 수 있습니다. 이 섹션의 단계를 수행하지 않으려면 삭제하고 다시 만들기 단계를 수행하지 마세요. 
+* [기존 데이터베이스에 마이그레이션 적용](#applyexisting). 이 방법은 더 복잡하고 시간이 오래 걸리지만 실제 프로덕션 환경에 권장되는 방법입니다. **참고** : 이는 자습서의 선택적 섹션입니다. 삭제하고 다시 만들기 단계를 수행하고 이 섹션을 건너뛸 수 있습니다. 이 섹션의 단계를 수행하지 않으려면 삭제하고 다시 만들기 단계를 수행하지 마세요. 
 
 <a name="drop"></a>
 
@@ -1299,7 +1300,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-PMC(**패키지 관리자 콘솔**)에서 다음 명령을 입력합니다.
+PMC( **패키지 관리자 콘솔** )에서 다음 명령을 입력합니다.
 
 ```powershell
 Drop-Database
@@ -1332,7 +1333,7 @@ SSOX에서 DB를 엽니다.
 
 **CourseAssignment** 테이블을 검사합니다.
 
-* **CourseAssignment** 테이블을 마우스 오른쪽 단추로 클릭하고 **데이터 보기**를 선택합니다.
+* **CourseAssignment** 테이블을 마우스 오른쪽 단추로 클릭하고 **데이터 보기** 를 선택합니다.
 * **CourseAssignment** 테이블에 데이터가 포함되어 있는지 확인합니다.
 
 ![SSOX의 CourseAssignment 데이터](complex-data-model/_static/ssox-ci-data.png)

@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: c17461f8d1d43335230a967a4b62943c055c06b9
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 043fe513f370cf63637733b66ca195e7887faab0
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629212"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054296"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>자습서: CRUD 기능 구현 - ASP.NET MVC 및 EF Core 사용
 
@@ -49,7 +50,7 @@ ms.locfileid: "88629212"
 
 속성은 컬렉션을 보유하기 때문에 학생 인덱스 페이지에 대한 스캐폴드 코드는 `Enrollments` 속성을 제외합니다. **세부 정보** 페이지에서 HTML 테이블에 컬렉션의 콘텐츠를 표시합니다.
 
-*Controllers/StudentsController.cs*에서 세부 정보 보기에 대한 작업 메서드는 `SingleOrDefaultAsync` 메서드를 사용하여 단일 `Student` 엔터티를 검색합니다. `Include`를 호출하는 코드를 추가합니다. 다음 강조 표시된 코드에 표시된 것처럼 `ThenInclude` 및 `AsNoTracking` 메서드입니다.
+*Controllers/StudentsController.cs* 에서 세부 정보 보기에 대한 작업 메서드는 `SingleOrDefaultAsync` 메서드를 사용하여 단일 `Student` 엔터티를 검색합니다. `Include`를 호출하는 코드를 추가합니다. 다음 강조 표시된 코드에 표시된 것처럼 `ThenInclude` 및 `AsNoTracking` 메서드입니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Details&highlight=8-12)]
 
@@ -59,7 +60,7 @@ ms.locfileid: "88629212"
 
 ### <a name="route-data"></a>경로 데이터
 
-`Details` 메서드에 전달되는 키 값은 *경로 데이터*에서 제공됩니다. 경로 데이터는 모델 바인더가 URL의 세그먼트에서 찾은 데이터입니다. 예를 들어 기본 경로는 컨트롤러, 작업 및 ID 세그먼트를 지정합니다.
+`Details` 메서드에 전달되는 키 값은 *경로 데이터* 에서 제공됩니다. 경로 데이터는 모델 바인더가 URL의 세그먼트에서 찾은 데이터입니다. 예를 들어 기본 경로는 컨트롤러, 작업 및 ID 세그먼트를 지정합니다.
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Route&highlight=5)]
 
@@ -103,7 +104,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 ### <a name="add-enrollments-to-the-details-view"></a>세부 정보 보기에 등록 추가
 
-*Views/Students/Details.cshtml*을 엽니다. 각 필드는 다음 예제와 같이 `DisplayNameFor` 및 `DisplayFor` 도우미를 사용하여 표시됩니다.
+*Views/Students/Details.cshtml* 을 엽니다. 각 필드는 다음 예제와 같이 `DisplayNameFor` 및 `DisplayFor` 도우미를 사용하여 표시됩니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Details.cshtml?range=13-18&highlight=2,5)]
 
@@ -121,7 +122,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 ## <a name="update-the-create-page"></a>만들기 페이지 업데이트
 
-*StudentsController.cs*에서 try-catch 블록을 추가하고 `Bind` 특성에서 ID를 제거하여 HttpPost `Create` 메서드를 수정합니다.
+*StudentsController.cs* 에서 try-catch 블록을 추가하고 `Bind` 특성에서 ID를 제거하여 HttpPost `Create` 메서드를 수정합니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
 
@@ -162,11 +163,11 @@ public class Student
 
 ### <a name="test-the-create-page"></a>만들기 페이지 테스트
 
-*Views/Students/Create.cshtml*에서 코드는 각 필드에 대해 `label`, `input` 및 `span`(유효성 검사 메시지의 경우) 태그 도우미를 사용합니다.
+*Views/Students/Create.cshtml* 에서 코드는 각 필드에 대해 `label`, `input` 및 `span`(유효성 검사 메시지의 경우) 태그 도우미를 사용합니다.
 
-앱을 실행하고, **학생** 탭을 선택하고, **새로 만들기**를 클릭합니다.
+앱을 실행하고, **학생** 탭을 선택하고, **새로 만들기** 를 클릭합니다.
 
-이름 및 날짜를 입력합니다. 브라우저가 그렇게 수행하도록 하는 경우 잘못된 날짜를 입력합니다. (일부 브라우저는 강제로 날짜 선택을 사용하도록 합니다.) 그런 다음, **만들기**를 클릭하여 오류 메시지를 확인합니다.
+이름 및 날짜를 입력합니다. 브라우저가 그렇게 수행하도록 하는 경우 잘못된 날짜를 입력합니다. (일부 브라우저는 강제로 날짜 선택을 사용하도록 합니다.) 그런 다음, **만들기** 를 클릭하여 오류 메시지를 확인합니다.
 
 ![날자 유효성 검사 오류](crud/_static/date-error.png)
 
@@ -174,11 +175,11 @@ public class Student
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=8)]
 
-유효한 값으로 날짜를 변경하고 **만들기**를 클릭하여 **인덱스** 페이지에 표시되는 새 학생을 봅니다.
+유효한 값으로 날짜를 변경하고 **만들기** 를 클릭하여 **인덱스** 페이지에 표시되는 새 학생을 봅니다.
 
 ## <a name="update-the-edit-page"></a>편집 페이지 업데이트
 
-*StudentController.cs*에서 HttpGet `Edit` 메서드(`HttpPost` 특성이 없는 것)는 `SingleOrDefaultAsync` 메서드를 사용하여 `Details` 메서드에서 본 것처럼 선택한 학생 엔터티를 검색합니다. 이 메서드를 변경할 필요가 없습니다.
+*StudentController.cs* 에서 HttpGet `Edit` 메서드(`HttpPost` 특성이 없는 것)는 `SingleOrDefaultAsync` 메서드를 사용하여 `Details` 메서드에서 본 것처럼 선택한 학생 엔터티를 검색합니다. 이 메서드를 변경할 필요가 없습니다.
 
 ### <a name="recommended-httppost-edit-code-read-and-update"></a>권장되는 HttpPost 편집 코드: 읽기 및 업데이트
 
@@ -234,11 +235,11 @@ HttpPost 편집 작업 메서드를 다음 코드로 바꿉니다.
 
 ![학생 편집 페이지](crud/_static/student-edit.png)
 
-데이터의 일부를 변경하고 **저장**을 클릭합니다. **인덱스** 페이지가 열리고 변경된 데이터가 표시됩니다.
+데이터의 일부를 변경하고 **저장** 을 클릭합니다. **인덱스** 페이지가 열리고 변경된 데이터가 표시됩니다.
 
 ## <a name="update-the-delete-page"></a>삭제 페이지 업데이트
 
-*StudentController.cs*에서 HttpGet `Delete` 메서드에 대한 템플릿 코드는 `SingleOrDefaultAsync` 메서드를 사용하여 세부 정보 및 편집 메서드에서 본 것처럼 선택한 학생 엔터티를 검색합니다. 그러나 `SaveChanges`에 대한 호출이 실패하는 경우 사용자 지정 오류 메시지를 구현하려면 이 메서드 및 해당 보기에 일부 기능을 추가합니다.
+*StudentController.cs* 에서 HttpGet `Delete` 메서드에 대한 템플릿 코드는 `SingleOrDefaultAsync` 메서드를 사용하여 세부 정보 및 편집 메서드에서 본 것처럼 선택한 학생 엔터티를 검색합니다. 그러나 `SaveChanges`에 대한 호출이 실패하는 경우 사용자 지정 오류 메시지를 구현하려면 이 메서드 및 해당 보기에 일부 기능을 추가합니다.
 
 업데이트 및 만들기 작업에 대해 본 것과 같이 삭제 작업에는 두 개의 작업 메서드가 필요합니다. GET 요청에 대한 응답에서 호출되는 메서드는 사용자에게 삭제 작업을 승인 또는 취소하는 기회를 제공하는 보기를 표시합니다. 사용자가 승인하는 경우 POST 요청이 생성됩니다. 이 경우 HttpPost `Delete` 메서드가 호출되고 해당 메서드는 삭제 작업을 실제로 수행합니다.
 
@@ -268,7 +269,7 @@ HttpPost `Delete` 작업 메서드(`DeleteConfirmed`라는)를 실제 삭제 작
 
 ### <a name="update-the-delete-view"></a>삭제 보기 업데이트
 
-*Views/Student/Delete.cshtml*에서 다음 예제와 같이 h2 제목과 h3 제목 사이에 오류 메시지를 추가합니다.
+*Views/Student/Delete.cshtml* 에서 다음 예제와 같이 h2 제목과 h3 제목 사이에 오류 메시지를 추가합니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
 
@@ -276,13 +277,13 @@ HttpPost `Delete` 작업 메서드(`DeleteConfirmed`라는)를 실제 삭제 작
 
 ![삭제 확인 페이지](crud/_static/student-delete.png)
 
-**삭제**를 클릭합니다. 삭제된 학생 없이 인덱스 페이지가 표시됩니다. (동시성 자습서의 작업에서 오류 처리 코드의 예를 볼 수 있습니다.)
+**삭제** 를 클릭합니다. 삭제된 학생 없이 인덱스 페이지가 표시됩니다. (동시성 자습서의 작업에서 오류 처리 코드의 예를 볼 수 있습니다.)
 
 ## <a name="close-database-connections"></a>데이터베이스 연결 닫기
 
 데이터베이스 연결이 유지하는 리소스를 해제하려면 컨텍스트 인스턴스는 작업을 완료했을 때 가능한 빨리 삭제되어야 합니다. ASP.NET Core 기본 제공 [종속성 주입](../../fundamentals/dependency-injection.md)은 해당 작업을 담당합니다.
 
-*Startup.cs*에서 [AddDbContext 확장 메서드](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs)를 호출하여 ASP.NET Core DI 컨테이너에서 `DbContext` 클래스를 프로비전합니다. 해당 메서드는 서비스 수명을 기본적으로 `Scoped`로 설정합니다. `Scoped`는 웹 요청 수명과 일치하는 컨텍스트 개체 수명을 의미하며, `Dispose` 메서드는 웹 요청이 끝날 때 자동으로 호출됩니다.
+*Startup.cs* 에서 [AddDbContext 확장 메서드](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs)를 호출하여 ASP.NET Core DI 컨테이너에서 `DbContext` 클래스를 프로비전합니다. 해당 메서드는 서비스 수명을 기본적으로 `Scoped`로 설정합니다. `Scoped`는 웹 요청 수명과 일치하는 컨텍스트 개체 수명을 의미하며, `Dispose` 메서드는 웹 요청이 끝날 때 자동으로 호출됩니다.
 
 ## <a name="handle-transactions"></a>트랜잭션 처리
 

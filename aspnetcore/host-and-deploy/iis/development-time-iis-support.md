@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 5636abef928ed8a8122ec907ef025d55baa65127
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ab892b2cdfa61378ac7328c0380c8a6cffc6d376
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635361"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058456"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>ASP.NET Core용 Visual Studio의 개발 시간 IIS 지원
 
@@ -42,8 +43,8 @@ ms.locfileid: "88635361"
 
 ## <a name="enable-iis"></a>IIS 활성화
 
-1. Windows에서 **제어판** > **프로그램** > **프로그램 및 기능** > **Windows 기능 사용/사용 안 함**(화면 왼쪽)으로 차례로 이동합니다.
-1. **인터넷 정보 서비스** 확인란을 선택합니다. **확인**을 선택합니다.
+1. Windows에서 **제어판** > **프로그램** > **프로그램 및 기능** > **Windows 기능 사용/사용 안 함** (화면 왼쪽)으로 차례로 이동합니다.
+1. **인터넷 정보 서비스** 확인란을 선택합니다. **확인** 을 선택합니다.
 
 IIS를 설치하려면 시스템을 다시 시작해야 할 수 있습니다.
 
@@ -51,16 +52,16 @@ IIS를 설치하려면 시스템을 다시 시작해야 할 수 있습니다.
 
 IIS에서 웹 사이트는 다음과 같이 구성되어야 합니다.
 
-* **호스트 이름**: 일반적으로 **기본 웹 사이트**는 `localhost`의 **호스트 이름**과 함께 사용됩니다. 그러나 고유한 호스트 이름이 있는 모든 유효한 IIS 웹 사이트가 작동합니다.
+* **호스트 이름** : 일반적으로 **기본 웹 사이트** 는 `localhost`의 **호스트 이름** 과 함께 사용됩니다. 그러나 고유한 호스트 이름이 있는 모든 유효한 IIS 웹 사이트가 작동합니다.
 * **사이트 바인딩**
-  * HTTPS가 필요한 앱의 경우 인증서를 사용하여 포트 443에 대한 바인딩을 만듭니다. 일반적으로 **IIS Express 개발 인증서**가 사용되지만 모든 유효한 인증서가 작동합니다.
+  * HTTPS가 필요한 앱의 경우 인증서를 사용하여 포트 443에 대한 바인딩을 만듭니다. 일반적으로 **IIS Express 개발 인증서** 가 사용되지만 모든 유효한 인증서가 작동합니다.
   * HTTP를 사용하는 앱의 경우 포트 80에 대한 바인딩이 있는지 확인하거나 새 사이트에 대해 포트 80에 대한 바인딩을 만듭니다.
   * HTTP 또는 HTTPS에 단일 바인딩을 사용합니다. **HTTP 및 HTTPS 포트에 대한 바인딩은 동시에 지원되지 않습니다.**
 
 ## <a name="enable-development-time-iis-support-in-visual-studio"></a>Visual Studio에서 개발 시간 IIS 지원 사용
 
 1. Visual Studio 설치 관리자를 시작합니다.
-1. IIS 개발 시 지원에 사용할 Visual Studio 설치에 대해 **수정**을 선택합니다.
+1. IIS 개발 시 지원에 사용할 Visual Studio 설치에 대해 **수정** 을 선택합니다.
 1. **ASP.NET 및 웹 개발** 워크로드의 경우 **개발 시 IIS 지원** 구성 요소를 찾고 설치합니다.
 
    구성 요소는 워크로드 오른쪽 **설치 세부 정보** 패널의 **개발 시 IIS 지원** 아래 **선택 사항** 섹션에 나열됩니다. 이 구성 요소는 IIS를 사용하여 ASP.NET Core 앱을 실행하는 데 필요한 네이티브 IIS 모듈인 [ASP.NET Core 모듈](xref:host-and-deploy/aspnet-core-module)을 설치합니다.
@@ -79,9 +80,9 @@ HTTP를 사용하는 프로젝트의 경우 [HTTPS 리디렉션 및 HSTS 미들�
 
 새 시작 프로필을 만들어 개발 시간 IIS 지원을 추가합니다.
 
-1. **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **속성**을 선택합니다. **디버그** 탭을 엽니다.
-1. **프로필**의 경우 **새로 만들기** 단추를 선택합니다. 팝업 창에서 프로필 이름을 “IIS”로 지정합니다. **확인**을 선택하여 프로필을 만듭니다.
-1. **시작** 설정의 경우 목록에서 **IIS**를 선택합니다.
+1. **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **속성** 을 선택합니다. **디버그** 탭을 엽니다.
+1. **프로필** 의 경우 **새로 만들기** 단추를 선택합니다. 팝업 창에서 프로필 이름을 “IIS”로 지정합니다. **확인** 을 선택하여 프로필을 만듭니다.
+1. **시작** 설정의 경우 목록에서 **IIS** 를 선택합니다.
 1. **브라우저 시작** 확인란을 선택하고 엔드포인트 URL을 제공합니다.
 
    앱에 HTTPS가 필요한 경우 HTTPS 엔드포인트(`https://`)를 사용합니다. HTTP의 경우 HTTP(`http://`) 엔드포인트를 사용합니다.
@@ -92,8 +93,8 @@ HTTP를 사용하는 프로젝트의 경우 [HTTPS 리디렉션 및 HSTS 미들�
 
    예를 들어 `https://localhost/WebApplication1`(HTTPS) 또는 `http://localhost/WebApplication1`(HTTP)은 유효한 엔드포인트 URL입니다.
 1. **환경 변수** 섹션에서 **추가** 단추를 선택합니다. **이름**`ASPNETCORE_ENVIRONMENT` 및 **값**`Development`를 사용하여 환경 변수를 제공합니다.
-1. **웹 서버 설정** 영역에서 **앱 URL**을 **브라우저 시작** 엔드포인트 URL에 사용된 동일한 값으로 설정합니다.
-1. Visual Studio 2019 이상에 있는 **호스팅 모델** 설정의 경우 **기본값**을 선택하여 프로젝트에서 사용되는 호스팅 모델을 사용합니다. 프로젝트가 프로젝트 파일에서 `<AspNetCoreHostingModel>` 속성을 설정하면 해당 속성 값(`InProcess` 또는 `OutOfProcess`)이 사용됩니다. 속성이 없으면 앱의 기본 호스팅 모델인 in-process가 사용됩니다. 앱의 일반 호스팅 모델과 다른 명시적 호스팅 모델 설정이 앱에 필요한 경우에는 필요에 따라 **호스팅 모델**을 `In Process` 또는 `Out Of Process`로 설정합니다.
+1. **웹 서버 설정** 영역에서 **앱 URL** 을 **브라우저 시작** 엔드포인트 URL에 사용된 동일한 값으로 설정합니다.
+1. Visual Studio 2019 이상에 있는 **호스팅 모델** 설정의 경우 **기본값** 을 선택하여 프로젝트에서 사용되는 호스팅 모델을 사용합니다. 프로젝트가 프로젝트 파일에서 `<AspNetCoreHostingModel>` 속성을 설정하면 해당 속성 값(`InProcess` 또는 `OutOfProcess`)이 사용됩니다. 속성이 없으면 앱의 기본 호스팅 모델인 in-process가 사용됩니다. 앱의 일반 호스팅 모델과 다른 명시적 호스팅 모델 설정이 앱에 필요한 경우에는 필요에 따라 **호스팅 모델** 을 `In Process` 또는 `Out Of Process`로 설정합니다.
 1. 프로필을 저장합니다.
 
 Visual Studio를 사용하지 않는 경우에는 *속성* 폴더의 [launchSettings.json](https://json.schemastore.org/launchsettings) 파일에 시작 프로필을 수동으로 추가합니다. 다음 예제에서는 HTTPS 프로토콜을 사용하도록 프로필을 구성합니다.
@@ -127,7 +128,7 @@ Visual Studio를 사용하지 않는 경우에는 *속성* 폴더의 [launchSett
 
 관리자 권한으로 Visual Studio를 실행합니다.
 
-* 빌드 구성 드롭다운 목록이 **디버그**로 설정되었는지 확인합니다.
+* 빌드 구성 드롭다운 목록이 **디버그** 로 설정되었는지 확인합니다.
 * [디버깅 시작 단추](/visualstudio/debugger/debugger-feature-tour)를 **IIS** 프로필로 설정하고 단추를 선택하여 앱을 시작합니다.
 
 관리자로 실행하고 있지 않으면 Visual Studio에서 다시 시작하라는 메시지가 표시될 수 있습니다. 메시지가 표시되면 Visual Studio를 다시 시작합니다.
@@ -157,8 +158,8 @@ Visual Studio를 사용하지 않는 경우에는 *속성* 폴더의 [launchSett
 
 ## <a name="enable-iis"></a>IIS 활성화
 
-1. Windows에서 **제어판** > **프로그램** > **프로그램 및 기능** > **Windows 기능 사용/사용 안 함**(화면 왼쪽)으로 차례로 이동합니다.
-1. **인터넷 정보 서비스** 확인란을 선택합니다. **확인**을 선택합니다.
+1. Windows에서 **제어판** > **프로그램** > **프로그램 및 기능** > **Windows 기능 사용/사용 안 함** (화면 왼쪽)으로 차례로 이동합니다.
+1. **인터넷 정보 서비스** 확인란을 선택합니다. **확인** 을 선택합니다.
 
 IIS를 설치하려면 시스템을 다시 시작해야 할 수 있습니다.
 
@@ -166,16 +167,16 @@ IIS를 설치하려면 시스템을 다시 시작해야 할 수 있습니다.
 
 IIS에서 웹 사이트는 다음과 같이 구성되어야 합니다.
 
-* **호스트 이름**: 일반적으로 **기본 웹 사이트**는 `localhost`의 **호스트 이름**과 함께 사용됩니다. 그러나 고유한 호스트 이름이 있는 모든 유효한 IIS 웹 사이트가 작동합니다.
+* **호스트 이름** : 일반적으로 **기본 웹 사이트** 는 `localhost`의 **호스트 이름** 과 함께 사용됩니다. 그러나 고유한 호스트 이름이 있는 모든 유효한 IIS 웹 사이트가 작동합니다.
 * **사이트 바인딩**
-  * HTTPS가 필요한 앱의 경우 인증서를 사용하여 포트 443에 대한 바인딩을 만듭니다. 일반적으로 **IIS Express 개발 인증서**가 사용되지만 모든 유효한 인증서가 작동합니다.
+  * HTTPS가 필요한 앱의 경우 인증서를 사용하여 포트 443에 대한 바인딩을 만듭니다. 일반적으로 **IIS Express 개발 인증서** 가 사용되지만 모든 유효한 인증서가 작동합니다.
   * HTTP를 사용하는 앱의 경우 포트 80에 대한 바인딩이 있는지 확인하거나 새 사이트에 대해 포트 80에 대한 바인딩을 만듭니다.
   * HTTP 또는 HTTPS에 단일 바인딩을 사용합니다. **HTTP 및 HTTPS 포트에 대한 바인딩은 동시에 지원되지 않습니다.**
 
 ## <a name="enable-development-time-iis-support-in-visual-studio"></a>Visual Studio에서 개발 시간 IIS 지원 사용
 
 1. Visual Studio 설치 관리자를 시작합니다.
-1. IIS 개발 시 지원에 사용할 Visual Studio 설치에 대해 **수정**을 선택합니다.
+1. IIS 개발 시 지원에 사용할 Visual Studio 설치에 대해 **수정** 을 선택합니다.
 1. **ASP.NET 및 웹 개발** 워크로드의 경우 **개발 시 IIS 지원** 구성 요소를 찾고 설치합니다.
 
    구성 요소는 워크로드 오른쪽 **설치 세부 정보** 패널의 **개발 시 IIS 지원** 아래 **선택 사항** 섹션에 나열됩니다. 이 구성 요소는 IIS를 사용하여 ASP.NET Core 앱을 실행하는 데 필요한 네이티브 IIS 모듈인 [ASP.NET Core 모듈](xref:host-and-deploy/aspnet-core-module)을 설치합니다.
@@ -194,9 +195,9 @@ HTTP를 사용하는 프로젝트의 경우 [HTTPS 리디렉션 및 HSTS 미들�
 
 새 시작 프로필을 만들어 개발 시간 IIS 지원을 추가합니다.
 
-1. **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **속성**을 선택합니다. **디버그** 탭을 엽니다.
-1. **프로필**의 경우 **새로 만들기** 단추를 선택합니다. 팝업 창에서 프로필 이름을 “IIS”로 지정합니다. **확인**을 선택하여 프로필을 만듭니다.
-1. **시작** 설정의 경우 목록에서 **IIS**를 선택합니다.
+1. **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **속성** 을 선택합니다. **디버그** 탭을 엽니다.
+1. **프로필** 의 경우 **새로 만들기** 단추를 선택합니다. 팝업 창에서 프로필 이름을 “IIS”로 지정합니다. **확인** 을 선택하여 프로필을 만듭니다.
+1. **시작** 설정의 경우 목록에서 **IIS** 를 선택합니다.
 1. **브라우저 시작** 확인란을 선택하고 엔드포인트 URL을 제공합니다.
 
    앱에 HTTPS가 필요한 경우 HTTPS 엔드포인트(`https://`)를 사용합니다. HTTP의 경우 HTTP(`http://`) 엔드포인트를 사용합니다.
@@ -207,8 +208,8 @@ HTTP를 사용하는 프로젝트의 경우 [HTTPS 리디렉션 및 HSTS 미들�
 
    예를 들어 `https://localhost/WebApplication1`(HTTPS) 또는 `http://localhost/WebApplication1`(HTTP)은 유효한 엔드포인트 URL입니다.
 1. **환경 변수** 섹션에서 **추가** 단추를 선택합니다. **이름**`ASPNETCORE_ENVIRONMENT` 및 **값**`Development`를 사용하여 환경 변수를 제공합니다.
-1. **웹 서버 설정** 영역에서 **앱 URL**을 **브라우저 시작** 엔드포인트 URL에 사용된 동일한 값으로 설정합니다.
-1. Visual Studio 2019 이상에 있는 **호스팅 모델** 설정의 경우 **기본값**을 선택하여 프로젝트에서 사용되는 호스팅 모델을 사용합니다. 프로젝트가 프로젝트 파일에서 `<AspNetCoreHostingModel>` 속성을 설정하면 해당 속성 값(`InProcess` 또는 `OutOfProcess`)이 사용됩니다. 속성이 없으면 앱의 기본 호스팅 모델인 out-of-process가 사용됩니다. 앱의 일반 호스팅 모델과 다른 명시적 호스팅 모델 설정이 앱에 필요한 경우에는 필요에 따라 **호스팅 모델**을 `In Process` 또는 `Out Of Process`로 설정합니다.
+1. **웹 서버 설정** 영역에서 **앱 URL** 을 **브라우저 시작** 엔드포인트 URL에 사용된 동일한 값으로 설정합니다.
+1. Visual Studio 2019 이상에 있는 **호스팅 모델** 설정의 경우 **기본값** 을 선택하여 프로젝트에서 사용되는 호스팅 모델을 사용합니다. 프로젝트가 프로젝트 파일에서 `<AspNetCoreHostingModel>` 속성을 설정하면 해당 속성 값(`InProcess` 또는 `OutOfProcess`)이 사용됩니다. 속성이 없으면 앱의 기본 호스팅 모델인 out-of-process가 사용됩니다. 앱의 일반 호스팅 모델과 다른 명시적 호스팅 모델 설정이 앱에 필요한 경우에는 필요에 따라 **호스팅 모델** 을 `In Process` 또는 `Out Of Process`로 설정합니다.
 1. 프로필을 저장합니다.
 
 Visual Studio를 사용하지 않는 경우에는 *속성* 폴더의 [launchSettings.json](https://json.schemastore.org/launchsettings) 파일에 시작 프로필을 수동으로 추가합니다. 다음 예제에서는 HTTPS 프로토콜을 사용하도록 프로필을 구성합니다.
@@ -242,7 +243,7 @@ Visual Studio를 사용하지 않는 경우에는 *속성* 폴더의 [launchSett
 
 관리자 권한으로 Visual Studio를 실행합니다.
 
-* 빌드 구성 드롭다운 목록이 **디버그**로 설정되었는지 확인합니다.
+* 빌드 구성 드롭다운 목록이 **디버그** 로 설정되었는지 확인합니다.
 * [디버깅 시작 단추](/visualstudio/debugger/debugger-feature-tour)를 **IIS** 프로필로 설정하고 단추를 선택하여 앱을 시작합니다.
 
 관리자로 실행하고 있지 않으면 Visual Studio에서 다시 시작하라는 메시지가 표시될 수 있습니다. 메시지가 표시되면 Visual Studio를 다시 시작합니다.

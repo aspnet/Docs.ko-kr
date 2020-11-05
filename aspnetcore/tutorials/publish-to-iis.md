@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/03/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: 40c47da472257862414ba33be582eb19d3f0b29c
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: b3c714ea8e741430df1f70b2df258f1e8f1c7ad5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754556"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060510"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>IIS에 ASP.NET Core 앱 게시
 
@@ -52,7 +53,7 @@ ms.locfileid: "91754556"
 
 ## <a name="install-the-net-core-hosting-bundle"></a>.NET Core 호스팅 번들 설치
 
-IIS 서버에 *.NET Core 호스팅 번들*을 설치합니다. 번들은 .NET Core 런타임, .NET Core 라이브러리 및 [ASP.NET Core 모듈](xref:host-and-deploy/aspnet-core-module)을 설치합니다. 이 모듈을 통해 ASP.NET Core 앱을 IIS 배후에서 실행할 수 있습니다.
+IIS 서버에 *.NET Core 호스팅 번들* 을 설치합니다. 번들은 .NET Core 런타임, .NET Core 라이브러리 및 [ASP.NET Core 모듈](xref:host-and-deploy/aspnet-core-module)을 설치합니다. 이 모듈을 통해 ASP.NET Core 앱을 IIS 배후에서 실행할 수 있습니다.
 
 다음 링크를 사용하여 설치 관리자를 다운로드합니다.
 
@@ -66,16 +67,16 @@ IIS 서버에 *.NET Core 호스팅 번들*을 설치합니다. 번들은 .NET Co
 
 1. IIS 서버에서 앱의 게시된 폴더 및 파일을 포함할 폴더를 만듭니다. 다음 단계에서는 폴더의 경로가 앱의 실제 경로로 IIS에 제공됩니다. 앱의 배포 폴더 및 파일 레이아웃에 대한 자세한 내용은 <xref:host-and-deploy/directory-structure>를 참조하세요.
 
-1. IIS 관리자의 **연결** 패널에서 서버 노드를 엽니다. **사이트** 폴더를 마우스 오른쪽 단추로 클릭합니다. 상황에 맞는 메뉴에서 **웹 사이트 추가**를 선택합니다.
+1. IIS 관리자의 **연결** 패널에서 서버 노드를 엽니다. **사이트** 폴더를 마우스 오른쪽 단추로 클릭합니다. 상황에 맞는 메뉴에서 **웹 사이트 추가** 를 선택합니다.
 
-1. **사이트 이름**을 입력하고 **실제 경로**를 만든 앱의 배포 폴더로 설정합니다. **바인딩** 구성을 제공하고 **확인**을 선택하여 웹 사이트를 만듭니다.
+1. **사이트 이름** 을 입력하고 **실제 경로** 를 만든 앱의 배포 폴더로 설정합니다. **바인딩** 구성을 제공하고 **확인** 을 선택하여 웹 사이트를 만듭니다.
 
    > [!WARNING]
    > 최상위 와일드카드 바인딩(`http://*:80/` 및 `http://+:80`)을 사용하지 **않아야** 합니다. 최상위 와일드카드 바인딩은 보안 취약점에 앱을 노출시킬 수 있습니다. 강력한 와일드카드와 약한 와일드카드 모두에 적용됩니다. 와일드카드보다는 명시적 호스트 이름을 사용합니다. 전체 부모 도메인을 제어하는 경우 하위 도메인 와일드카드 바인딩(예: `*.mysub.com`)에는 이러한 보안 위험이 없습니다(취약한 `*.com`과 반대임). 자세한 내용은 [rfc7230 섹션-5.4](https://tools.ietf.org/html/rfc7230#section-5.4)를 참조하세요.
 
 1. 프로세스 모델 ID에 적절한 권한이 있는지 확인합니다.
 
-   앱 풀의 기본 ID(**프로세스 모델** >  **Identity** )가 `ApplicationPoolIdentity`에서 다른 ID로 변경되면, 새 ID에 앱의 폴더, 데이터베이스 및 기타 필요한 리소스에 액세스하는 데 필요한 권한이 있는지 확인합니다. 예를 들어 앱 풀에는 앱이 파일을 읽고 쓰는 폴더에 대한 읽기 및 쓰기 권한이 필요합니다.
+   앱 풀의 기본 ID( **프로세스 모델** >  **Identity** )가 `ApplicationPoolIdentity`에서 다른 ID로 변경되면, 새 ID에 앱의 폴더, 데이터베이스 및 기타 필요한 리소스에 액세스하는 데 필요한 권한이 있는지 확인합니다. 예를 들어 앱 풀에는 앱이 파일을 읽고 쓰는 폴더에 대한 읽기 및 쓰기 권한이 필요합니다.
 
 ## <a name="create-an-aspnet-core-no-locrazor-pages-app"></a>ASP.NET Core Razor Pages 앱 만들기
 
@@ -86,15 +87,15 @@ IIS 서버에 *.NET Core 호스팅 번들*을 설치합니다. 번들은 .NET Co
 ‘앱 게시’는 서버에서 호스트할 수 있는 컴파일된 앱을 생성하는 것을 의미합니다. ‘앱 배포’는 게시된 앱을 호스팅 시스템으로 이동하는 것을 의미합니다. 게시 단계는 [.NET Core SDK](/dotnet/core/sdk)에서 처리되지만, 배포 단계는 다양한 방법으로 처리될 수 있습니다. 이 자습서에서는 다음과 같은 ‘폴더’ 배포 방법을 채택합니다.
  
 * 앱은 폴더에 게시됩니다.
-* 폴더의 콘텐츠는 IIS 사이트의 폴더(IIS 관리자에 있는 사이트의 **실제 경로**)로 이동됩니다.
+* 폴더의 콘텐츠는 IIS 사이트의 폴더(IIS 관리자에 있는 사이트의 **실제 경로** )로 이동됩니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **게시**를 선택합니다.
+1. **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **게시** 를 선택합니다.
 1. **게시 대상 선택** 대화 상자에서 **폴더** 게시 옵션을 선택합니다.
 1. **폴더 또는 파일 공유** 경로를 설정합니다.
    * 개발 머신에서 네트워크 공유로 사용할 수 있는 IIS 사이트의 폴더를 만든 경우 공유 경로를 제공합니다. 공유에 게시하려면 현재 사용자에게 쓰기 권한이 있어야 합니다.
-   * IIS 서버의 IIS 사이트 폴더에 직접 배포할 수 없는 경우 이동식 미디어의 폴더에 게시하고 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로**)로 게시된 앱을 실제로 이동합니다. `bin/Release/{TARGET FRAMEWORK}/publish` 폴더의 콘텐츠를 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로**)로 이동합니다.
+   * IIS 서버의 IIS 사이트 폴더에 직접 배포할 수 없는 경우 이동식 미디어의 폴더에 게시하고 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로** )로 게시된 앱을 실제로 이동합니다. `bin/Release/{TARGET FRAMEWORK}/publish` 폴더의 콘텐츠를 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로** )로 이동합니다.
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -104,14 +105,14 @@ IIS 서버에 *.NET Core 호스팅 번들*을 설치합니다. 번들은 .NET Co
    dotnet publish --configuration Release
    ```
 
-1. `bin/Release/{TARGET FRAMEWORK}/publish` 폴더의 콘텐츠를 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로**)로 이동합니다.
+1. `bin/Release/{TARGET FRAMEWORK}/publish` 폴더의 콘텐츠를 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로** )로 이동합니다.
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-1. **솔루션**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **게시** > **폴더에 게시**를 선택합니다.
+1. **솔루션** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **게시** > **폴더에 게시** 를 선택합니다.
 1. **폴더 선택** 경로를 설정합니다.
    * 개발 머신에서 네트워크 공유로 사용할 수 있는 IIS 사이트의 폴더를 만든 경우 공유 경로를 제공합니다. 공유에 게시하려면 현재 사용자에게 쓰기 권한이 있어야 합니다.
-   * IIS 서버의 IIS 사이트 폴더에 직접 배포할 수 없는 경우 이동식 미디어의 폴더에 게시하고 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로**)로 게시된 앱을 실제로 이동합니다. `bin/Release/{TARGET FRAMEWORK}/publish` 폴더의 콘텐츠를 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로**)로 이동합니다.
+   * IIS 서버의 IIS 사이트 폴더에 직접 배포할 수 없는 경우 이동식 미디어의 폴더에 게시하고 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로** )로 게시된 앱을 실제로 이동합니다. `bin/Release/{TARGET FRAMEWORK}/publish` 폴더의 콘텐츠를 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로** )로 이동합니다.
 
 ---
 

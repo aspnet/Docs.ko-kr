@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: d10fd89a3eac34e855ba92673033edc541aa6393
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 62fc9d866adcf05ff024501db68cce8bb8b11a98
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632410"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059717"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>ASP.NET Core 2.1의 새로운 기능
 
@@ -92,7 +93,7 @@ ASP.NET Core에서는 [EU GDPR(일반 데이터 보호 규정)](https://www.eugd
 
 테스트 생성 및 실행을 간소화하는 새 패키지가 도입되었습니다. [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/) 패키지는 다음과 같은 작업을 처리합니다.
 
-* 종속성 파일( *\*.deps*)을 테스트된 앱에서 테스트 프로젝트의 *bin* 폴더로 복사합니다.
+* 종속성 파일( *\*.deps* )을 테스트된 앱에서 테스트 프로젝트의 *bin* 폴더로 복사합니다.
 * 테스트를 실행하면 고정 파일 및 페이지/보기를 찾을 수 있도록 루트 콘텐츠를 테스트된 앱의 프로젝트 루트로 설정합니다.
 * [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver)를 사용하여 테스트된 앱의 부트스트랩을 간소화하기 위해 [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) 클래스를 제공합니다.
 
@@ -172,7 +173,7 @@ Angular 템플릿은 Angular CLI에 기반하고 React 템플릿은 create-react
 
 ## <a name="no-locrazor-pages-in-an-area"></a>영역의 Razor Pages
 
-이제 Razor Pages는 [영역](xref:mvc/controllers/areas)을 지원합니다. 영역의 예제를 보려면 개별 사용자 계정을 사용하여 새 Razor Pages 웹앱을 만듭니다. 개별 사용자 계정을 사용하는 Razor Pages 웹앱에는 */Areas/Identity/Pages*가 포함됩니다.
+이제 Razor Pages는 [영역](xref:mvc/controllers/areas)을 지원합니다. 영역의 예제를 보려면 개별 사용자 계정을 사용하여 새 Razor Pages 웹앱을 만듭니다. 개별 사용자 계정을 사용하는 Razor Pages 웹앱에는 */Areas/Identity/Pages* 가 포함됩니다.
 
 ## <a name="mvc-compatibility-version"></a>MVC 호환성 버전
 

@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/26/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 84094dce306e10470ec7b7be3efe6da024470330
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 9fbd4bc5e91d8f05afc99a4f04c706399f83a518
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628848"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057611"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 및 ASP.NET Core 시작
 
@@ -45,7 +46,7 @@ Swashbuckle에 대한 세 가지 주 구성 요소는 다음과 같습니다.
 ### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * **패키지 관리자 콘솔** 창에서:
-  * **보기** > **다른 창** > **패키지 관리자 콘솔**로 이동
+  * **보기** > **다른 창** > **패키지 관리자 콘솔** 로 이동
   * *TodoApi.csproj* 파일이 위치한 디렉터리로 이동
   * 다음 명령을 실행합니다.
 
@@ -54,15 +55,15 @@ Swashbuckle에 대한 세 가지 주 구성 요소는 다음과 같습니다.
     ```
 
 * **NuGet 패키지 관리** 대화 상자에서:
-  * **솔루션 탐색기** > **NuGet 패키지 관리**에서 프로젝트를 마우스 오른쪽 단추로 클릭
-  * **패키지 소스**를 “nuget.org”로 설정
+  * **솔루션 탐색기** > **NuGet 패키지 관리** 에서 프로젝트를 마우스 오른쪽 단추로 클릭
+  * **패키지 소스** 를 “nuget.org”로 설정
   * "시험판 포함" 옵션을 사용하도록 설정했는지 확인
   * 검색 상자에 “Swashbuckle.AspNetCore” 입력
   * **찾아보기** 탭에서 최신 “Swashbuckle.AspNetCore” 패키지를 선택하고 **설치** 클릭
 
 ### <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* **Solution Pad**에서 *Packages* 폴더를 마우스 오른쪽 단추로 클릭 > **패키지 추가...** 선택
+* **Solution Pad** 에서 *Packages* 폴더를 마우스 오른쪽 단추로 클릭 > **패키지 추가...** 선택
 * **패키지 추가** 창의 **소스** 드롭다운을 “nuget.org”로 설정
 * "시험판 패키지 표시" 옵션을 사용하도록 설정했는지 확인
 * 검색 상자에 “Swashbuckle.AspNetCore” 입력
@@ -70,7 +71,7 @@ Swashbuckle에 대한 세 가지 주 구성 요소는 다음과 같습니다.
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-**통합 터미널**에서 다음 명령을 실행합니다.
+**통합 터미널** 에서 다음 명령을 실행합니다.
 
 ```dotnetcli
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
@@ -179,7 +180,7 @@ XML 주석은 다음 방법으로 사용하도록 설정할 수 있습니다.
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **<project_name>.csproj 편집**을 선택합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **<project_name>.csproj 편집** 을 선택합니다.
 * 강조 표시된 줄을 *.csproj* 파일에 수동으로 추가합니다.
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
@@ -188,7 +189,7 @@ XML 주석은 다음 방법으로 사용하도록 설정할 수 있습니다.
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **속성**을 선택합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **속성** 을 선택합니다.
 * **빌드** 탭의 **출력** 섹션에서 **XML 설명서 파일** 상자를 선택합니다.
 
 ::: moniker-end
@@ -197,7 +198,7 @@ XML 주석은 다음 방법으로 사용하도록 설정할 수 있습니다.
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* *Solution Pad*에서 **control** 키를 누르고 프로젝트 이름을 클릭합니다. **도구** > **파일 편집**으로 이동합니다.
+* *Solution Pad* 에서 **control** 키를 누르고 프로젝트 이름을 클릭합니다. **도구** > **파일 편집** 으로 이동합니다.
 * 강조 표시된 줄을 *.csproj* 파일에 수동으로 추가합니다.
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
@@ -206,7 +207,7 @@ XML 주석은 다음 방법으로 사용하도록 설정할 수 있습니다.
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* **프로젝트 옵션** 대화 상자 > **빌드** > **컴파일러**를 엽니다.
+* **프로젝트 옵션** 대화 상자 > **빌드** > **컴파일러** 를 엽니다.
 * **일반 옵션** 섹션에서 **XML 문서 생성** 상자 선택
 
 ::: moniker-end
@@ -408,7 +409,7 @@ UI는 생성된 JSON 스키마에 의해 구동됩니다.
 },
 ```
 
-API 컨트롤러에 `[Produces("application/json")]` 특성을 추가합니다. 이 특성은 컨트롤러 동작이 *application/json*의 응답 콘텐츠 형식을 지원함을 선언하는 데 사용됩니다.
+API 컨트롤러에 `[Produces("application/json")]` 특성을 추가합니다. 이 특성은 컨트롤러 동작이 *application/json* 의 응답 콘텐츠 형식을 지원함을 선언하는 데 사용됩니다.
 
 ::: moniker range="<= aspnetcore-2.0"
 

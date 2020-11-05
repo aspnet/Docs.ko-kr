@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: b557f1d1650b3deadcda679f300b1bc45a6202e7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 918bc11e06b8f2bea5506d3b61f462e15998efa0
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627379"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059860"
 ---
 # <a name="aspnet-core-directory-structure"></a>ASP.NET Core 디렉터리 구조
 
@@ -44,7 +45,7 @@ ms.locfileid: "88627379"
 
 &dagger;디렉터리를 나타냄
 
-*publish* 디렉터리는 배포의 *애플리케이션 기본 경로*라고도 하는 *콘텐츠 루트 경로*를 나타냅니다. 서버에 배포된 앱의 *publish* 디렉터리에 어떤 이름을 지정하더라도 해당 위치는 호스트된 앱에 대한 서버의 실제 경로로 사용됩니다.
+*publish* 디렉터리는 배포의 *애플리케이션 기본 경로* 라고도 하는 *콘텐츠 루트 경로* 를 나타냅니다. 서버에 배포된 앱의 *publish* 디렉터리에 어떤 이름을 지정하더라도 해당 위치는 호스트된 앱에 대한 서버의 실제 경로로 사용됩니다.
 
 *wwwroot* 디렉터리(있는 경우)에는 정적 자산만 포함됩니다.
 
@@ -74,7 +75,7 @@ ms.locfileid: "88627379"
 
 &dagger;디렉터리를 나타냄
 
-*publish* 디렉터리는 배포의 *애플리케이션 기본 경로*라고도 하는 *콘텐츠 루트 경로*를 나타냅니다. 서버에 배포된 앱의 *publish* 디렉터리에 어떤 이름을 지정하더라도 해당 위치는 호스트된 앱에 대한 서버의 실제 경로로 사용됩니다.
+*publish* 디렉터리는 배포의 *애플리케이션 기본 경로* 라고도 하는 *콘텐츠 루트 경로* 를 나타냅니다. 서버에 배포된 앱의 *publish* 디렉터리에 어떤 이름을 지정하더라도 해당 위치는 호스트된 앱에 대한 서버의 실제 경로로 사용됩니다.
 
 *wwwroot* 디렉터리(있는 경우)에는 정적 자산만 포함됩니다.
 

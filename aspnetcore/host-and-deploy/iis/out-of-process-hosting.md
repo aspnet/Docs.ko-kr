@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/out-of-process-hosting
-ms.openlocfilehash: 048a18349de4d784ae4abb33bd86a2d9c08c609d
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 78ead27bd1373237d1c0a48655d73a41a0a72279
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91755191"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060419"
 ---
 # <a name="out-of-process-hosting-with-iis-and-aspnet-core"></a>IIS 및 ASP.NET Core를 사용하는 Out of Process 호스팅 
 

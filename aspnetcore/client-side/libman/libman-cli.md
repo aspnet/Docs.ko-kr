@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/libman/libman-cli
-ms.openlocfilehash: 8b883269a82a1a6e55bf04bd40bfcbab28ae1fb3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: dad9136439b61ad98523061d181fe44d3bf1273d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625702"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054751"
 ---
 # <a name="use-the-libman-cli-with-aspnet-core"></a>ASP.NET Core에서 LibMan CLI 사용
 
@@ -118,11 +119,11 @@ libman init [-h|--help]
 
 * `-d|--default-destination <PATH>`
 
-  현재 폴더에 상대적인 경로입니다. *libman.json*의 라이브러리에 대해 `destination` 속성이 정의되지 않으면 라이브러리 파일이 이 위치에 설치됩니다. `<PATH>` 값은 *libman.json*의 `defaultDestination` 속성에 기록됩니다.
+  현재 폴더에 상대적인 경로입니다. *libman.json* 의 라이브러리에 대해 `destination` 속성이 정의되지 않으면 라이브러리 파일이 이 위치에 설치됩니다. `<PATH>` 값은 *libman.json* 의 `defaultDestination` 속성에 기록됩니다.
 
 * `-p|--default-provider <PROVIDER>`
 
-  지정된 라이브러리에 대해 공급자를 지정하지 않은 경우 사용할 공급자입니다. `<PROVIDER>` 값은 *libman.json*의 `defaultProvider` 속성에 기록됩니다. `<PROVIDER>`을 다음 값 중 하나로 바꿉니다.
+  지정된 라이브러리에 대해 공급자를 지정하지 않은 경우 사용할 공급자입니다. `<PROVIDER>` 값은 *libman.json* 의 `defaultProvider` 속성에 기록됩니다. `<PROVIDER>`을 다음 값 중 하나로 바꿉니다.
 
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
@@ -178,7 +179,7 @@ libman install [-h|--help]
 
 * `-d|--destination <PATH>`
 
-  라이브러리를 설치할 위치입니다. 이 값을 지정하지 않으면 기본 위치가 사용됩니다. *libman.json*에 `defaultDestination` 속성이 지정되지 않은 경우 이 옵션은 필수입니다.
+  라이브러리를 설치할 위치입니다. 이 값을 지정하지 않으면 기본 위치가 사용됩니다. *libman.json* 에 `defaultDestination` 속성이 지정되지 않은 경우 이 옵션은 필수입니다.
 
 * `--files <FILE>`
 
@@ -190,7 +191,7 @@ libman install [-h|--help]
   
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
-  지정하지 않으면 *libman.json*의 `defaultProvider` 속성이 사용됩니다. *libman.json*에 `defaultProvider` 속성이 지정되지 않은 경우 이 옵션은 필수입니다.
+  지정하지 않으면 *libman.json* 의 `defaultProvider` 속성이 사용됩니다. *libman.json* 에 `defaultProvider` 속성이 지정되지 않은 경우 이 옵션은 필수입니다.
 
 [!INCLUDE [standard-cli-options](../../includes/libman-cli/standard-cli-options.md)]
 
@@ -272,11 +273,11 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquer
 
 ## <a name="restore-library-files"></a>라이브러리 파일 복원
 
-`libman restore` 명령은 *libman.json*에 정의된 라이브러리 파일을 설치합니다. 이 때 적용되는 규칙은 다음과 같습니다.
+`libman restore` 명령은 *libman.json* 에 정의된 라이브러리 파일을 설치합니다. 이 때 적용되는 규칙은 다음과 같습니다.
 
 * 프로젝트 루트에 *libman.json* 파일이 없으면 오류가 반환됩니다.
-* 라이브러리가 공급자를 지정하는 경우 *libman.json*의 `defaultProvider` 속성이 무시됩니다.
-* 라이브러리가 대상을 지정하는 경우 *libman.json*의 `defaultDestination` 속성이 무시됩니다.
+* 라이브러리가 공급자를 지정하는 경우 *libman.json* 의 `defaultProvider` 속성이 무시됩니다.
+* 라이브러리가 대상을 지정하는 경우 *libman.json* 의 `defaultDestination` 속성이 무시됩니다.
 
 ### <a name="synopsis"></a>개요
 
@@ -301,7 +302,7 @@ libman restore
 
 ## <a name="delete-library-files"></a>라이브러리 폴더 삭제
 
-`libman clean` 명령은 LibMan을 통해 이전에 복원한 라이브러리 파일을 삭제합니다. 이 작업 후 삭제된 후에 비어 있게 되는 폴더입니다. *libman.json*의 `libraries` 속성에 있는 라이브러리 파일의 연결된 구성은 제거되지 않습니다.
+`libman clean` 명령은 LibMan을 통해 이전에 복원한 라이브러리 파일을 삭제합니다. 이 작업 후 삭제된 후에 비어 있게 되는 폴더입니다. *libman.json* 의 `libraries` 속성에 있는 라이브러리 파일의 연결된 구성은 제거되지 않습니다.
 
 ### <a name="synopsis"></a>개요
 
@@ -328,8 +329,8 @@ libman clean
 
 `libman uninstall` 명령은 다음을 수행합니다.
 
-* 지정된 라이브러리와 연결된 모든 파일을 *libman.json*의 대상에서 삭제합니다.
-* 연결된 라이브러리 구성을 *libman.json*에서 제거합니다.
+* 지정된 라이브러리와 연결된 모든 파일을 *libman.json* 의 대상에서 삭제합니다.
+* 연결된 라이브러리 구성을 *libman.json* 에서 제거합니다.
 
 다음 경우에 오류가 발생합니다.
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/10/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/test
-ms.openlocfilehash: 572b9a293e2fd6f51431cd1de6ada737addf5efa
-ms.sourcegitcommit: dd0e87abf2bb50ee992d9185bb256ed79d48f545
+ms.openlocfilehash: cd4aee66fd6df6cc0ce520d8ca66e0a2cf130eff
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88746535"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054868"
 ---
 # <a name="test-components-in-aspnet-core-no-locblazor"></a>ASP.NET Core에서 구성 요소 테스트Blazor
 
@@ -41,7 +42,7 @@ Blazor 구성 요소를 테스트하기 위해 CUT(‘테스트 중인 구성 �
 
 Blazor 구성 요소를 테스트하는 두 가지 일반적인 접근 방식은 E2E(엔드투엔드) 테스트와 유닛 테스트입니다.
 
-* **유닛 테스트**: [단위 테스트](/dotnet/core/testing/)는 다음을 제공하는 유닛 테스트 라이브러리를 사용하여 작성됩니다.
+* **유닛 테스트** : [단위 테스트](/dotnet/core/testing/)는 다음을 제공하는 유닛 테스트 라이브러리를 사용하여 작성됩니다.
   * 구성 요소 렌더링
   * 구성 요소 출력 및 상태 검사
   * 이벤트 처리기 및 수명 주기 메서드 트리거
@@ -49,7 +50,7 @@ Blazor 구성 요소를 테스트하는 두 가지 일반적인 접근 방식은
 
   [bUnit](https://github.com/egil/bUnit)은 Razor 구성 요소 유닛 테스트를 사용하도록 지정하는 라이브러리의 예입니다.
 
-* **E2E 테스트**: Test Runner는 CUT를 포함하는 Blazor 앱을 실행하고 브라우저 인스턴스를 자동화합니다. 테스트 도구는 브라우저를 통해 CUT를 검사하고 상호 작용합니다. [Selenium](https://github.com/SeleniumHQ/selenium)은 Blazor 앱에서 사용할 수 있는 E2E 테스트 프레임워크의 예입니다.
+* **E2E 테스트** : Test Runner는 CUT를 포함하는 Blazor 앱을 실행하고 브라우저 인스턴스를 자동화합니다. 테스트 도구는 브라우저를 통해 CUT를 검사하고 상호 작용합니다. [Selenium](https://github.com/SeleniumHQ/selenium)은 Blazor 앱에서 사용할 수 있는 E2E 테스트 프레임워크의 예입니다.
 
 유닛 테스트에는 Blazor 구성 요소(Razor/C#)만 포함됩니다. 서비스 및 JS interop과 같은 외부 종속성은 모의되어야 합니다. E2E 테스트에서 Blazor 구성 요소와 모든 보조 인프라는 CSS, JS, DOM, 브라우저 API를 비롯한 테스트의 일부입니다.
 

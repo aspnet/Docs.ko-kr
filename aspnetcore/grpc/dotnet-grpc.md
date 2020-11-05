@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 10/17/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/dotnet-grpc
-ms.openlocfilehash: 18d504d7a130aeaa9f8ab6cca6c92dab5febfae6
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f34e1543d9695e138a85db3b79e013cf5fb6d138
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633242"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059912"
 ---
 # <a name="manage-protobuf-references-with-dotnet-grpc"></a>dotnet-grpc를 사용하여 Protobuf 참조를 관리하세요.
 
 작성자: [John Luo](https://github.com/juntaoluo)
 
-`dotnet-grpc`는 .NET gRPC 프로젝트 내에서 [Protobuf( *.proto*)](xref:grpc/basics#proto-file) 참조를 관리하기 위한 .NET Core 전역 도구입니다. 이 도구를 사용하여 Protobuf 참조를 추가, 새로 고침, 제거 및 나열할 수 있습니다.
+`dotnet-grpc`는 .NET gRPC 프로젝트 내에서 [Protobuf( *.proto* )](xref:grpc/basics#proto-file) 참조를 관리하기 위한 .NET Core 전역 도구입니다. 이 도구를 사용하여 Protobuf 참조를 추가, 새로 고침, 제거 및 나열할 수 있습니다.
 
 ## <a name="installation"></a>설치
 

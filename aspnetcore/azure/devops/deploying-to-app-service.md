@@ -6,6 +6,7 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-azurecli
 ms.date: 10/24/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: e6d8b4bcbbbe909fde971a8c706287654fcc98ba
-ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
+ms.openlocfilehash: 52c4905ecb3a76f1dd10629f834b2b541b698774
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90847626"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052359"
 ---
 # <a name="deploy-an-app-to-app-service"></a>App Service에 앱 배포
 
@@ -78,7 +79,7 @@ ms.locfileid: "90847626"
 
      ![RSS 피드 콘텐츠를 표시하는 앱](./media/deploying-to-app-service/app-in-browser.png)
 
-6. 앱이 제대로 작동하는 것을 확인했으면 명령 셸에서 **Ctrl**+**C**를 눌러 종료합니다.
+6. 앱이 제대로 작동하는 것을 확인했으면 명령 셸에서 **Ctrl**+**C** 를 눌러 종료합니다.
 
 ## <a name="create-the-azure-app-service-web-app"></a>Azure App Service 웹앱 만들기
 
@@ -148,7 +149,7 @@ ms.locfileid: "90847626"
 
     앞에서 만든 배포 자격 증명을 입력하라는 메시지가 표시됩니다. 명령 셸의 출력을 확인합니다. Azure에서 ASP.NET Core 앱을 원격으로 빌드합니다.
 
-4. 브라우저에서 *웹앱 URL*로 이동한 다음, 앱이 빌드되어 배포되었는지 확인합니다. `git commit`을 사용하여 추가 변경 내용을 로컬 Git 리포지토리로 커밋할 수 있습니다. 해당 변경 내용은 위의 `git push` 명령을 사용하여 Azure로 푸시됩니다.
+4. 브라우저에서 *웹앱 URL* 로 이동한 다음, 앱이 빌드되어 배포되었는지 확인합니다. `git commit`을 사용하여 추가 변경 내용을 로컬 Git 리포지토리로 커밋할 수 있습니다. 해당 변경 내용은 위의 `git push` 명령을 사용하여 Azure로 푸시됩니다.
 
 ## <a name="deployment-with-visual-studio"></a>Visual Studio를 사용한 배포
 
@@ -156,15 +157,15 @@ ms.locfileid: "90847626"
 
 앱이 명령 셸에서 이미 배포되었습니다. Visual Studio의 통합 도구를 사용하여 앱의 업데이트를 배포해 봅시다. Visual Studio는 내부적으로 명령줄 도구와 동일한 작업을 수행하지만, Visual Studio의 친숙한 UI 내에서 수행합니다.
 
-1. Visual Studio에서 *SimpleFeedReader.sln*을 엽니다.
-2. 솔루션 탐색기에서 *Pages\Index.cshtml*을 엽니다. `<h2>Simple Feed Reader</h2>`을 `<h2>Simple Feed Reader - V2</h2>`으로 변경합니다.
-3. **Ctrl**+**Shift**+**B**를 눌러 앱을 빌드합니다.
-4. 솔루션 탐색기에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **게시**를 클릭합니다.
+1. Visual Studio에서 *SimpleFeedReader.sln* 을 엽니다.
+2. 솔루션 탐색기에서 *Pages\Index.cshtml* 을 엽니다. `<h2>Simple Feed Reader</h2>`을 `<h2>Simple Feed Reader - V2</h2>`으로 변경합니다.
+3. **Ctrl**+**Shift**+**B** 를 눌러 앱을 빌드합니다.
+4. 솔루션 탐색기에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **게시** 를 클릭합니다.
 
     ![마우스 오른쪽 단추 클릭, 게시를 보여 주는 스크린샷](./media/deploying-to-app-service/publish.png)
-5. Visual Studio에서 새 App Service 리소스를 만들 수도 있지만, 이 업데이트는 기존 배포에 게시됩니다. **게시 대상 선택** 대화 상자의 왼쪽 목록에서 **App Service**를 선택한 다음, **기존 항목 선택**을 선택합니다. **게시**를 클릭합니다.
+5. Visual Studio에서 새 App Service 리소스를 만들 수도 있지만, 이 업데이트는 기존 배포에 게시됩니다. **게시 대상 선택** 대화 상자의 왼쪽 목록에서 **App Service** 를 선택한 다음, **기존 항목 선택** 을 선택합니다. **게시** 를 클릭합니다.
 6. **App Service** 대화 상자에서 Azure 구독을 만드는 데 사용된 Microsoft 또는 조직 계정이 오른쪽 위에 표시되는지 확인합니다. 표시되지 않는 경우, 드롭다운을 클릭하고 추가합니다.
-7. 올바른 Azure **구독**이 선택되었는지 확인합니다. **보기**에서 **리소스 그룹**을 선택합니다. **AzureTutorial** 리소스 그룹을 펼치고 기존 웹앱을 선택합니다. **확인**을 클릭합니다.
+7. 올바른 Azure **구독** 이 선택되었는지 확인합니다. **보기** 에서 **리소스 그룹** 을 선택합니다. **AzureTutorial** 리소스 그룹을 펼치고 기존 웹앱을 선택합니다. **확인** 을 클릭합니다.
 
     ![App Service 게시 대화 상자를 보여 주는 스크린샷](./media/deploying-to-app-service/publish-dialog.png)
 
@@ -179,7 +180,7 @@ Visual Studio에서 앱을 빌드하고 Azure에 배포합니다. 웹앱 URL로 
 1. 아직 로그인하지 않은 경우 [Azure Cloud Shell](https://shell.azure.com/bash)에 로그인합니다.
 2. 스테이징 슬롯을 만듭니다.
 
-    a. 이름을 *staging*으로 지정하여 배포 슬롯을 만듭니다.
+    a. 이름을 *staging* 으로 지정하여 배포 슬롯을 만듭니다.
 
     ```azurecli
     az webapp deployment slot create --name $webappname --resource-group AzureTutorial --slot staging
@@ -197,7 +198,7 @@ Visual Studio에서 앱을 빌드하고 Azure에 배포합니다. 웹앱 URL로 
     echo Staging web app URL: http://$webappname-staging.azurewebsites.net
     ```
 
-3. 텍스트 편집기 또는 Visual Studio에서 `<h2>` 요소가 `<h2>Simple Feed Reader - V3</h2>`으로 표시되도록 *Pages/Index.cshtml*을 다시 수정한 다음, 파일을 저장합니다.
+3. 텍스트 편집기 또는 Visual Studio에서 `<h2>` 요소가 `<h2>Simple Feed Reader - V3</h2>`으로 표시되도록 *Pages/Index.cshtml* 을 다시 수정한 다음, 파일을 저장합니다.
 
 4. Visual Studio *팀 탐색기* 탭의 **변경 내용** 페이지를 사용하거나 로컬 컴퓨터의 명령 셸을 통해 다음을 입력하여 파일을 로컬 Git 리포지토리로 커밋합니다.
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 0f0f1a9c70a2d6725cbb68ac62850cf6aa332d36
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 573a509041bfb34faf50a227c451824db03f92ee
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90721842"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053997"
 ---
 # <a name="part-8-no-locrazor-pages-with-ef-core-in-aspnet-core---concurrency"></a>8부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 동시성
 
@@ -55,13 +56,13 @@ ms.locfileid: "90721842"
 
 ![예산을 0으로 변경](concurrency/_static/change-budget30.png)
 
-Jane이 **저장**을 클릭하기 전에, John이 동일한 페이지를 방문하여 시작 날짜 필드를 2007년 9월 1일에서 2013년 9월 1일로 변경합니다.
+Jane이 **저장** 을 클릭하기 전에, John이 동일한 페이지를 방문하여 시작 날짜 필드를 2007년 9월 1일에서 2013년 9월 1일로 변경합니다.
 
 ![시작 날짜를 2013으로 변경](concurrency/_static/change-date30.png)
 
-Jane이 먼저 **저장**을 클릭하고 변경 내용이 적용되는 것을 확인합니다. 브라우저에는 예산 금액이 0인 인덱스 페이지가 표시되기 때문입니다.
+Jane이 먼저 **저장** 을 클릭하고 변경 내용이 적용되는 것을 확인합니다. 브라우저에는 예산 금액이 0인 인덱스 페이지가 표시되기 때문입니다.
 
-John이 예산이 여전히 $350,000.00인 편집 페이지에서 **저장**을 클릭합니다. 다음 작업은 동시성 충돌을 처리하는 방법에 따라 결정됩니다.
+John이 예산이 여전히 $350,000.00인 편집 페이지에서 **저장** 을 클릭합니다. 다음 작업은 동시성 충돌을 처리하는 방법에 따라 결정됩니다.
 
 * 사용자가 수정한 속성의 추적을 유지하고 데이터베이스에서 해당하는 열만 업데이트할 수 있습니다.
 
@@ -97,7 +98,7 @@ EF Core는 충돌을 검색할 때 `DbConcurrencyException` 예외를 throw합�
 
 ## <a name="add-a-tracking-property"></a>추적 속성 추가
 
-*Models/Department.cs*에서 RowVersion으로 명명된 추적 속성을 추가합니다.
+*Models/Department.cs* 에서 RowVersion으로 명명된 추적 속성을 추가합니다.
 
 [!code-csharp[](intro/samples/cu30/Models/Department.cs?highlight=26,27)]
 
@@ -257,7 +258,7 @@ SQLite 데이터베이스의 경우 엔터티 속성의 `[Timestamp]` 특성은 
 
 ## <a name="update-the-edit-page-model"></a>편집 페이지 모델 업데이트
 
-*Pages\Departments\Edit.cshtml.cs*를 다음 코드로 업데이트합니다.
+*Pages\Departments\Edit.cshtml.cs* 를 다음 코드로 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_All)]
 
@@ -279,7 +280,7 @@ SQLite 데이터베이스의 경우 엔터티 속성의 `[Timestamp]` 특성은 
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_Error)]
 
-다음 강조 표시된 코드는 `RowVersion` 값을 데이터베이스에서 검색된 새 값으로 설정합니다. 다음에 사용자가 **저장**을 클릭하면, 편집 페이지의 마지막 표시 이후 발생한 동시성 오류만 catch됩니다.
+다음 강조 표시된 코드는 `RowVersion` 값을 데이터베이스에서 검색된 새 값으로 설정합니다. 다음에 사용자가 **저장** 을 클릭하면, 편집 페이지의 마지막 표시 이후 발생한 동시성 오류만 catch됩니다.
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_TryUpdateModel&highlight=28)]
 
@@ -287,7 +288,7 @@ SQLite 데이터베이스의 경우 엔터티 속성의 `[Timestamp]` 특성은 
 
 ### <a name="update-the-edit-page"></a>편집 페이지 업데이트
 
-다음 코드로 *Pages/Departments/Edit.cshtml*을 업데이트합니다.
+다음 코드로 *Pages/Departments/Edit.cshtml* 을 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu30/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
 
@@ -303,12 +304,12 @@ SQLite 데이터베이스의 경우 엔터티 속성의 `[Timestamp]` 특성은 
 영어 부서에 있는 편집의 두 브라우저 인스턴스를 엽니다.
 
 * 앱을 실행하고 부서를 선택합니다.
-* 영어 부서에 대한 **편집** 하이퍼링크를 마우스 오른쪽 단추로 클릭하고 **새 탭에서 열기**를 선택합니다.
+* 영어 부서에 대한 **편집** 하이퍼링크를 마우스 오른쪽 단추로 클릭하고 **새 탭에서 열기** 를 선택합니다.
 * 첫 번째 탭에서 영어 부서에 대한 **편집** 하이퍼링크를 클릭합니다.
 
 두 개의 브라우저 탭에 동일한 정보가 표시됩니다.
 
-첫 번째 브라우저 탭의 이름을 변경하고 **저장**을 클릭합니다.
+첫 번째 브라우저 탭의 이름을 변경하고 **저장** 을 클릭합니다.
 
 ![변경 후 부서 편집 페이지 1](concurrency/_static/edit-after-change-130.png)
 
@@ -318,17 +319,17 @@ SQLite 데이터베이스의 경우 엔터티 속성의 `[Timestamp]` 특성은 
 
 ![변경 후 부서 편집 페이지 2](concurrency/_static/edit-after-change-230.png)
 
-**저장**을 클릭합니다. 데이터베이스 값과 일치하지 않는 모든 필드에 대한 오류 메시지가 표시됩니다.
+**저장** 을 클릭합니다. 데이터베이스 값과 일치하지 않는 모든 필드에 대한 오류 메시지가 표시됩니다.
 
 ![부서 편집 페이지 오류 메시지](concurrency/_static/edit-error30.png)
 
 이 브라우저 창은 Name 필드 변경용으로 의도되지 않았습니다. 현재 값(Languages)을 복사하여 Name 필드에 붙여넣습니다. 필드 밖을 탭합니다. 클라이언트 쪽 유효성 검사가 오류 메시지를 제거합니다.
 
-**저장**을 다시 클릭합니다. 두 번째 브라우저 탭에 입력한 값이 저장됩니다. 인덱스 페이지에 저장된 값이 표시됩니다.
+**저장** 을 다시 클릭합니다. 두 번째 브라우저 탭에 입력한 값이 저장됩니다. 인덱스 페이지에 저장된 값이 표시됩니다.
 
 ## <a name="update-the-delete-page-model"></a>삭제 페이지 업데이트 모델
 
-다음 코드로 *Pages/Departments/Delete.cshtml.cs*를 업데이트합니다.
+다음 코드로 *Pages/Departments/Delete.cshtml.cs* 를 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Delete.cshtml.cs)]
 
@@ -340,7 +341,7 @@ SQLite 데이터베이스의 경우 엔터티 속성의 `[Timestamp]` 특성은 
 
 ### <a name="update-the-delete-page"></a>삭제 페이지 업데이트
 
-*Pages/Departments/Delete.cshtml*을 다음 코드로 업데이트합니다.
+*Pages/Departments/Delete.cshtml* 을 다음 코드로 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu30/Pages/Departments/Delete.cshtml?highlight=1,10,39,42,51)]
 
@@ -359,16 +360,16 @@ SQLite 데이터베이스의 경우 엔터티 속성의 `[Timestamp]` 특성은 
 테스트 부서에 있는 삭제의 두 브라우저 인스턴스를 엽니다.
 
 * 앱을 실행하고 부서를 선택합니다.
-* 테스트 부서에 대한 **삭제** 하이퍼링크를 마우스 오른쪽 단추로 클릭하고 **새 탭에서 열기**를 선택합니다.
+* 테스트 부서에 대한 **삭제** 하이퍼링크를 마우스 오른쪽 단추로 클릭하고 **새 탭에서 열기** 를 선택합니다.
 * 테스트 부서에 대한 **편집** 하이퍼링크를 클릭합니다.
 
 두 개의 브라우저 탭에 동일한 정보가 표시됩니다.
 
-첫 번째 브라우저 탭의 예산을 변경하고 **저장**을 클릭합니다.
+첫 번째 브라우저 탭의 예산을 변경하고 **저장** 을 클릭합니다.
 
 브라우저에 변경된 값과 업데이트된 rowVersion 표시기가 있는 인덱스 페이지가 표시됩니다. 업데이트된 rowVersion 표시기는 다른 탭의 두 번째 포스트백에 표시됩니다.
 
-두 번째 탭에서 테스트 부서를 삭제합니다. 동시성 오류는 데이터베이스의 현재 값으로 표시됩니다. `RowVersion`이 업데이트되지 않았다면 **삭제**를 클릭하면 엔터티가 삭제됩니다.
+두 번째 탭에서 테스트 부서를 삭제합니다. 동시성 오류는 데이터베이스의 현재 값으로 표시됩니다. `RowVersion`이 업데이트되지 않았다면 **삭제** 를 클릭하면 엔터티가 삭제됩니다.
 
 ## <a name="additional-resources"></a>추가 자료
 
@@ -407,15 +408,15 @@ SQLite 데이터베이스의 경우 엔터티 속성의 `[Timestamp]` 특성은 
 
 ![예산을 0으로 변경](concurrency/_static/change-budget.png)
 
-Jane이 **저장**을 클릭하기 전에, John이 동일한 페이지를 방문하여 시작 날짜 필드를 2007년 9월 1일에서 2013년 9월 1일로 변경합니다.
+Jane이 **저장** 을 클릭하기 전에, John이 동일한 페이지를 방문하여 시작 날짜 필드를 2007년 9월 1일에서 2013년 9월 1일로 변경합니다.
 
 ![시작 날짜를 2013으로 변경](concurrency/_static/change-date.png)
 
-Jane이 먼저 **저장**을 클릭하여 브라우저에 인덱스 페이지가 표시될 때 변경 사항을 확인합니다.
+Jane이 먼저 **저장** 을 클릭하여 브라우저에 인덱스 페이지가 표시될 때 변경 사항을 확인합니다.
 
 ![0으로 변경된 예산](concurrency/_static/budget-zero.png)
 
-John이 예산이 여전히 $350,000.00인 편집 페이지에서 **저장**을 클릭합니다. 다음 작업은 동시성 충돌을 처리하는 방법에 따라 결정됩니다.
+John이 예산이 여전히 $350,000.00인 편집 페이지에서 **저장** 을 클릭합니다. 다음 작업은 동시성 충돌을 처리하는 방법에 따라 결정됩니다.
 
 낙관적 동시성에는 다음과 같은 옵션이 포함됩니다.
 
@@ -471,7 +472,7 @@ EF Core에서 `Update` 또는 `Delete` 명령에 의해 업데이트된 행이 �
 
 ### <a name="add-a-tracking-property-to-the-department-entity"></a>추적 속성을 부서 엔터티에 추가
 
-*Models/Department.cs*에서 RowVersion으로 명명된 추적 속성을 추가합니다.
+*Models/Department.cs* 에서 RowVersion으로 명명된 추적 속성을 추가합니다.
 
 [!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
@@ -557,7 +558,7 @@ dotnet ef database update
 
 ### <a name="update-the-edit-page-model"></a>편집 페이지 모델 업데이트
 
-*Pages\Departments\Edit.cshtml.cs*를 다음 코드로 업데이트합니다.
+*Pages\Departments\Edit.cshtml.cs* 를 다음 코드로 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet)]
 
@@ -575,7 +576,7 @@ dotnet ef database update
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_err)]
 
-다음 강조 표시된 코드는 `RowVersion` 값을 DB에서 검색된 새 값으로 설정합니다. 다음에 사용자가 **저장**을 클릭하면, 편집 페이지의 마지막 표시 이후 발생한 동시성 오류만 catch됩니다.
+다음 강조 표시된 코드는 `RowVersion` 값을 DB에서 검색된 새 값으로 설정합니다. 다음에 사용자가 **저장** 을 클릭하면, 편집 페이지의 마지막 표시 이후 발생한 동시성 오류만 catch됩니다.
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=23)]
 
@@ -583,7 +584,7 @@ dotnet ef database update
 
 ## <a name="update-the-edit-page"></a>편집 페이지 업데이트
 
-*Pages/Departments/Edit.cshtml*을 다음 표시로 업데이트합니다.
+*Pages/Departments/Edit.cshtml* 을 다음 표시로 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
 
@@ -599,12 +600,12 @@ dotnet ef database update
 영어 부서에 있는 편집의 두 브라우저 인스턴스를 엽니다.
 
 * 앱을 실행하고 부서를 선택합니다.
-* 영어 부서에 대한 **편집** 하이퍼링크를 마우스 오른쪽 단추로 클릭하고 **새 탭에서 열기**를 선택합니다.
+* 영어 부서에 대한 **편집** 하이퍼링크를 마우스 오른쪽 단추로 클릭하고 **새 탭에서 열기** 를 선택합니다.
 * 첫 번째 탭에서 영어 부서에 대한 **편집** 하이퍼링크를 클릭합니다.
 
 두 개의 브라우저 탭에 동일한 정보가 표시됩니다.
 
-첫 번째 브라우저 탭의 이름을 변경하고 **저장**을 클릭합니다.
+첫 번째 브라우저 탭의 이름을 변경하고 **저장** 을 클릭합니다.
 
 ![변경 후 부서 편집 페이지 1](concurrency/_static/edit-after-change-1.png)
 
@@ -614,7 +615,7 @@ dotnet ef database update
 
 ![변경 후 부서 편집 페이지 2](concurrency/_static/edit-after-change-2.png)
 
-**저장**을 클릭합니다. DB 값과 일치하지 않는 모든 필드에 대한 오류 메시지가 표시됩니다.
+**저장** 을 클릭합니다. DB 값과 일치하지 않는 모든 필드에 대한 오류 메시지가 표시됩니다.
 
 ![부서 편집 페이지 오류 메시지](concurrency/_static/edit-error.png)
 
@@ -622,7 +623,7 @@ dotnet ef database update
 
 ![부서 편집 페이지 오류 메시지](concurrency/_static/cv.png)
 
-**저장**을 다시 클릭합니다. 두 번째 브라우저 탭에 입력한 값이 저장됩니다. 인덱스 페이지에 저장된 값이 표시됩니다.
+**저장** 을 다시 클릭합니다. 두 번째 브라우저 탭에 입력한 값이 저장됩니다. 인덱스 페이지에 저장된 값이 표시됩니다.
 
 ## <a name="update-the-delete-page"></a>삭제 페이지 업데이트
 
@@ -638,7 +639,7 @@ dotnet ef database update
 
 ### <a name="update-the-delete-page"></a>삭제 페이지 업데이트
 
-*Pages/Departments/Delete.cshtml*을 다음 코드로 업데이트합니다.
+*Pages/Departments/Delete.cshtml* 을 다음 코드로 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
 
@@ -657,16 +658,16 @@ dotnet ef database update
 테스트 부서에 있는 삭제의 두 브라우저 인스턴스를 엽니다.
 
 * 앱을 실행하고 부서를 선택합니다.
-* 테스트 부서에 대한 **삭제** 하이퍼링크를 마우스 오른쪽 단추로 클릭하고 **새 탭에서 열기**를 선택합니다.
+* 테스트 부서에 대한 **삭제** 하이퍼링크를 마우스 오른쪽 단추로 클릭하고 **새 탭에서 열기** 를 선택합니다.
 * 테스트 부서에 대한 **편집** 하이퍼링크를 클릭합니다.
 
 두 개의 브라우저 탭에 동일한 정보가 표시됩니다.
 
-첫 번째 브라우저 탭의 예산을 변경하고 **저장**을 클릭합니다.
+첫 번째 브라우저 탭의 예산을 변경하고 **저장** 을 클릭합니다.
 
 브라우저에 변경된 값과 업데이트된 rowVersion 표시기가 있는 인덱스 페이지가 표시됩니다. 업데이트된 rowVersion 표시기는 다른 탭의 두 번째 포스트백에 표시됩니다.
 
-두 번째 탭에서 테스트 부서를 삭제합니다. 동시성 오류는 DB의 현재 값으로 표시됩니다. `RowVersion`이 업데이트되지 않았다면 **삭제**를 클릭하면 엔터티가 삭제됩니다.
+두 번째 탭에서 테스트 부서를 삭제합니다. 동시성 오류는 DB의 현재 값으로 표시됩니다. `RowVersion`이 업데이트되지 않았다면 **삭제** 를 클릭하면 엔터티가 삭제됩니다.
 
 데이터 모델을 상속하는 방법은 [상속](xref:data/ef-mvc/inheritance)을 참조하세요.
 

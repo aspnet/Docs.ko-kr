@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/startup
-ms.openlocfilehash: b10ddf52ea7d22ea98c295da61c09da8c87fc7a7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 747b13abb0ce3fed2d1dc018c6dbf82db1ae7130
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633749"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052242"
 ---
 # <a name="app-startup-in-aspnet-core"></a>ASP.NET Core에서 앱 시작
 
@@ -37,7 +38,7 @@ ms.locfileid: "88633749"
 
 ASP.NET Core 앱은 규칙에 따라 `Startup`으로 이름이 지정된 `Startup` 클래스를 사용합니다. `Startup` 클래스는:
 
-* 선택적으로 앱의 *서비스*를 구성하는 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 메서드를 포함합니다. 서비스는 앱 기능을 제공하는 재사용 가능한 구성 요소입니다. 서비스는 `ConfigureServices`에서 *등록*되며 [DI(종속성 주입)](xref:fundamentals/dependency-injection) 또는 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>를 통해 앱 전체에서 사용됩니다.
+* 선택적으로 앱의 *서비스* 를 구성하는 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 메서드를 포함합니다. 서비스는 앱 기능을 제공하는 재사용 가능한 구성 요소입니다. 서비스는 `ConfigureServices`에서 *등록* 되며 [DI(종속성 주입)](xref:fundamentals/dependency-injection) 또는 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>를 통해 앱 전체에서 사용됩니다.
 * 앱의 요청 처리 파이프라인을 만드는 <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> 메서드가 포함되어 있습니다.
 
 `ConfigureServices` 및 `Configure`는 앱 시작 시 ASP.NET Core 런타임에 의해 호출됩니다.
@@ -79,7 +80,7 @@ ASP.NET Core 앱은 규칙에 따라 `Startup`으로 이름이 지정된 `Startu
 
 호스트는 `Startup` 메서드가 호출되기 전에 일부 서비스를 구성할 수 있습니다. 자세한 내용은 [호스트](xref:fundamentals/index#host)를 참조하세요.
 
-실질적인 설정이 필요한 기능의 경우 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>에 `Add{Service}` 확장 메서드가 있습니다. 예를 들어 **Add**DbContext, **Add**DefaultIdentity, **Add**EntityFrameworkStores 및 **Add**RazorPages가 있습니다.
+실질적인 설정이 필요한 기능의 경우 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>에 `Add{Service}` 확장 메서드가 있습니다. 예를 들어 **Add** DbContext, **Add** DefaultIdentity, **Add** EntityFrameworkStores 및 **Add**RazorPages가 있습니다.
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/StartupIdentity.cs?name=snippet)]
 
@@ -172,7 +173,7 @@ ASP.NET Core 앱은 규칙에 따라 `Startup`으로 이름이 지정된 `Startu
 
 ASP.NET Core 앱은 규칙에 따라 `Startup`으로 이름이 지정된 `Startup` 클래스를 사용합니다. `Startup` 클래스는:
 
-* 선택적으로 앱의 *서비스*를 구성하는 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 메서드를 포함합니다. 서비스는 앱 기능을 제공하는 재사용 가능한 구성 요소입니다. 서비스는 `ConfigureServices`에서 *등록*되며 [DI(종속성 주입)](xref:fundamentals/dependency-injection) 또는 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>를 통해 앱 전체에서 사용됩니다.
+* 선택적으로 앱의 *서비스* 를 구성하는 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 메서드를 포함합니다. 서비스는 앱 기능을 제공하는 재사용 가능한 구성 요소입니다. 서비스는 `ConfigureServices`에서 *등록* 되며 [DI(종속성 주입)](xref:fundamentals/dependency-injection) 또는 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>를 통해 앱 전체에서 사용됩니다.
 * 앱의 요청 처리 파이프라인을 만드는 <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> 메서드가 포함되어 있습니다.
 
 `ConfigureServices` 및 `Configure`는 앱 시작 시 ASP.NET Core 런타임에 의해 호출됩니다.
@@ -211,7 +212,7 @@ ASP.NET Core 앱은 규칙에 따라 `Startup`으로 이름이 지정된 `Startu
 
 호스트는 `Startup` 메서드가 호출되기 전에 일부 서비스를 구성할 수 있습니다. 자세한 내용은 [호스트](xref:fundamentals/index#host)를 참조하세요.
 
-실질적인 설정이 필요한 기능의 경우 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>에 `Add{Service}` 확장 메서드가 있습니다. 예를 들어 **Add**DbContext, **Add**DefaultIdentity, **Add**EntityFrameworkStores 및 **Add**RazorPages가 있습니다.
+실질적인 설정이 필요한 기능의 경우 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>에 `Add{Service}` 확장 메서드가 있습니다. 예를 들어 **Add** DbContext, **Add** DefaultIdentity, **Add** EntityFrameworkStores 및 **Add**RazorPages가 있습니다.
 
 [!code-csharp[](startup/sample_snapshot/Startup3.cs)]
 

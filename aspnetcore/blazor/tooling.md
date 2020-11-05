@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -19,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: d1626fe753782d524bf75c398c11235c3110633a
-ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
+ms.openlocfilehash: 500342ac979efdee824ac0d4b5757ca9804f3b30
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762154"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054816"
 ---
 # <a name="tooling-for-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor용 도구
 
@@ -36,11 +37,11 @@ ms.locfileid: "91762154"
 
 1. 새 프로젝트를 만듭니다.
 
-1. **Blazor 앱**을 선택합니다. **새로 만들기**를 선택합니다.
+1. **Blazor 앱** 을 선택합니다. **새로 만들기** 를 선택합니다.
 
-1. **프로젝트 이름** 필드에 프로젝트 이름을 제공하거나 기본 프로젝트 이름을 수락합니다. **위치** 항목이 올바른지 확인하거나 프로젝트의 위치를 제공합니다. **만들기**를 선택합니다.
+1. **프로젝트 이름** 필드에 프로젝트 이름을 제공하거나 기본 프로젝트 이름을 수락합니다. **위치** 항목이 올바른지 확인하거나 프로젝트의 위치를 제공합니다. **만들기** 를 선택합니다.
 
-1. Blazor WebAssembly 환경의 경우 **Blazor WebAssembly 앱** 템플릿을 선택합니다. Blazor Server 환경의 경우 **Blazor Server 앱** 템플릿을 선택합니다. **만들기**를 선택합니다.
+1. Blazor WebAssembly 환경의 경우 **Blazor WebAssembly 앱** 템플릿을 선택합니다. Blazor Server 환경의 경우 **Blazor Server 앱** 템플릿을 선택합니다. **만들기** 를 선택합니다.
 
    두 가지 Blazor 호스팅 모델인 *Blazor WebAssembly* 및 *Blazor Server* 에 관한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.
 
@@ -78,7 +79,7 @@ ASP.NET Core HTTPS 개발 인증서 신뢰에 대한 자세한 내용은 <xref:s
 
 1. Visual Studio Code에서 `WebApplication1` 폴더를 엽니다.
 
-1. IDE에서 프로젝트를 빌드 및 디버그하기 위한 자산을 추가하도록 요청합니다. **Yes**를 선택합니다.
+1. IDE에서 프로젝트를 빌드 및 디버그하기 위한 자산을 추가하도록 요청합니다. **Yes** 를 선택합니다.
 
 1. <kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 앱을 실행합니다.
 
@@ -98,19 +99,19 @@ Linux에서 인증서를 신뢰할 수 있는 중앙 집중식 방법은 없습�
 
 1. [Mac용 Visual Studio](https://visualstudio.microsoft.com/vs/mac/)를 설치합니다.
 
-1. **파일** > **새 솔루션**을 선택하거나 **시작 창**에서 **새** 프로젝트를 만듭니다.
+1. **파일** > **새 솔루션** 을 선택하거나 **시작 창** 에서 **새** 프로젝트를 만듭니다.
 
-1. 사이드바에서 **웹 및 콘솔** > **앱**을 선택합니다.
+1. 사이드바에서 **웹 및 콘솔** > **앱** 을 선택합니다.
 
-   Blazor WebAssembly 환경의 경우 **Blazor WebAssembly 앱** 템플릿을 선택합니다. Blazor Server 환경의 경우 **Blazor Server 앱** 템플릿을 선택합니다. **새로 만들기**를 선택합니다.
+   Blazor WebAssembly 환경의 경우 **Blazor WebAssembly 앱** 템플릿을 선택합니다. Blazor Server 환경의 경우 **Blazor Server 앱** 템플릿을 선택합니다. **새로 만들기** 를 선택합니다.
 
    두 가지 Blazor 호스팅 모델인 *Blazor WebAssembly* 및 *Blazor Server* 에 관한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.
 
-1. **인증**이 **인증 없음**으로 설정되었는지 확인합니다. **새로 만들기**를 선택합니다.
+1. **인증** 이 **인증 없음** 으로 설정되었는지 확인합니다. **새로 만들기** 를 선택합니다.
 
-1. **프로젝트 이름** 필드에서 앱 이름을 `WebApplication1`로 지정합니다. **만들기**를 선택합니다.
+1. **프로젝트 이름** 필드에서 앱 이름을 `WebApplication1`로 지정합니다. **만들기** 를 선택합니다.
 
-1. **실행** > **디버깅하지 않고 시작**을 선택하여 ‘디버거 없이’ 앱을 실행합니다. **실행** > **디버깅 시작**으로 앱을 실행하거나 실행(&#9654;) 단추를 사용하여 ‘디버거 없이’ 앱을 실행합니다.
+1. **실행** > **디버깅하지 않고 시작** 을 선택하여 ‘디버거 없이’ 앱을 실행합니다. **실행** > **디버깅 시작** 으로 앱을 실행하거나 실행(&#9654;) 단추를 사용하여 ‘디버거 없이’ 앱을 실행합니다.
 
 개발 인증서를 신뢰하라는 메시지가 표시되면 인증서를 신뢰하고 계속합니다. 인증서를 신뢰하려면 사용자 및 키 집합 암호가 필요합니다. ASP.NET Core HTTPS 개발 인증서 신뢰에 대한 자세한 내용은 <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos>를 참조하세요.
 

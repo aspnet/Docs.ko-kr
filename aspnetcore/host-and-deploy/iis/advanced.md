@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/7/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/advanced
-ms.openlocfilehash: ad2480faeea2f07e51585f5bc6a1c63b3a0b1668
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 9f14929a7d298d6f4d66abcc88665db34fc072bf
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91755175"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058618"
 ---
 # <a name="advanced-configuration-of-the-aspnet-core-module-and-iis"></a>ASP.NET Core 모듈 및 IIS의 고급 구성
 
@@ -82,7 +83,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 * 사용자는 다음 요청에서 다시 로그인해야 합니다. 
 * 키 링으로 보호된 데이터의 암호를 더 이상 해독할 수 없습니다. 여기에는 [CSRF 토큰](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) 및 [ASP.NET Core MVC TempData cookie](xref:fundamentals/app-state#tempdata)가 포함될 수 있습니다.
 
-IIS에서 키 링을 저장하도록 데이터 보호를 구성하려면 다음 방법 중 **하나**를 사용합니다.
+IIS에서 키 링을 저장하도록 데이터 보호를 구성하려면 다음 방법 중 **하나** 를 사용합니다.
 
 * **데이터 보호 레지스트리 키 만들기**
 
@@ -94,7 +95,7 @@ IIS에서 키 링을 저장하도록 데이터 보호를 구성하려면 다음 
 
 * **사용자 프로필을 로드하도록 IIS 애플리케이션 풀 구성**
 
-  이 설정은 앱 풀에 대한 **고급 설정** 아래의 **프로세스 모델** 섹션에 있습니다. **사용자 프로필**을 `True`로 설정합니다. `True`로 설정하면 키가 사용자 프로필 디렉터리에 저장되고, 사용자 계정에 관련된 키가 있는 DPAPI를 사용하여 보호됩니다. 키는 `%LOCALAPPDATA%/ASP.NET/DataProtection-Keys` 폴더에 저장됩니다.
+  이 설정은 앱 풀에 대한 **고급 설정** 아래의 **프로세스 모델** 섹션에 있습니다. **사용자 프로필** 을 `True`로 설정합니다. `True`로 설정하면 키가 사용자 프로필 디렉터리에 저장되고, 사용자 계정에 관련된 키가 있는 DPAPI를 사용하여 보호됩니다. 키는 `%LOCALAPPDATA%/ASP.NET/DataProtection-Keys` 폴더에 저장됩니다.
 
   앱 풀의 [`setProfileEnvironment` 특성](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)도 사용하도록 설정해야 합니다. `setProfileEnvironment` 의 기본값은 `true`입니다. Windows OS와 같은 일부 시나리오에서는 `setProfileEnvironment`가 `false`로 설정됩니다. 키가 예상대로 사용자 프로필 디렉터리에 저장되지 않는 경우 다음을 수행합니다.
 
@@ -122,7 +123,7 @@ IIS에서 키 링을 저장하도록 데이터 보호를 구성하려면 다음 
 
 **웹 서버(IIS)** 서버 역할을 사용하도록 설정하고 역할 서비스를 설정합니다.
 
-1. **관리** 메뉴 또는 **서버 관리자**의 링크를 통해 **역할 및 기능 추가** 마법사를 사용합니다. **서버 역할** 단계에서 **웹 서버(IIS)** 확인란을 선택합니다.
+1. **관리** 메뉴 또는 **서버 관리자** 의 링크를 통해 **역할 및 기능 추가** 마법사를 사용합니다. **서버 역할** 단계에서 **웹 서버(IIS)** 확인란을 선택합니다.
 
    ![서버 역할 선택 단계에서 선택된 웹 서버 IIS 역할](index/_static/server-roles-ws2016.png)
 
@@ -140,9 +141,9 @@ IIS에서 키 링을 저장하도록 데이터 보호를 구성하려면 다음 
 
 **Windows 데스크톱 운영 체제**
 
-**IIS 관리 콘솔** 및 **World Wide Web 서비스**를 사용하도록 설정합니다.
+**IIS 관리 콘솔** 및 **World Wide Web 서비스** 를 사용하도록 설정합니다.
 
-1. **제어판** > **프로그램** > **프로그램 및 기능** > **Windows 기능 사용/사용 안 함**(화면 왼쪽)으로 이동합니다.
+1. **제어판** > **프로그램** > **프로그램 및 기능** > **Windows 기능 사용/사용 안 함** (화면 왼쪽)으로 이동합니다.
 
 1. **인터넷 정보 서비스** 노드를 엽니다. **웹 관리 도구** 노드를 엽니다.
 
@@ -150,7 +151,7 @@ IIS에서 키 링을 저장하도록 데이터 보호를 구성하려면 다음 
 
 1. **World Wide Web 서비스** 확인란을 선택합니다.
 
-1. **World Wide Web 서비스**의 기본 기능을 그대로 사용하거나 IIS 기능을 사용자 지정합니다.
+1. **World Wide Web 서비스** 의 기본 기능을 그대로 사용하거나 IIS 기능을 사용자 지정합니다.
 
    **Windows 인증(선택 사항)**  
    Windows 인증을 사용하도록 설정하려면 **World Wide Web 서비스** > **보안** 노드를 확장합니다. **Windows 인증** 기능을 선택합니다. 자세한 내용은 [Windows 인증 `<windowsAuthentication>`](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 및 [Windows 인증 구성](xref:security/authentication/windowsauth)을 참조하세요.
@@ -176,13 +177,13 @@ ASP.NET Core 앱은 [IIS 하위 애플리케이션(하위 앱)](/iis/get-started
 
 ASP.NET Core 앱을 다른 ASP.NET Core 앱에서 하위 앱으로 호스팅하려면 다음을 수행합니다.
 
-1. 하위 앱에 대한 앱 풀을 설정합니다. 데스크톱 CLR(.NET CLR)이 아닌 .NET Core용 CoreCLR(Core 공용 언어 런타임)이 부팅되어 작업자 프로세스의 앱을 호스트하기 때문에 **.NET CLR 버전**을 **관리 코드 없음**으로 설정합니다.
+1. 하위 앱에 대한 앱 풀을 설정합니다. 데스크톱 CLR(.NET CLR)이 아닌 .NET Core용 CoreCLR(Core 공용 언어 런타임)이 부팅되어 작업자 프로세스의 앱을 호스트하기 때문에 **.NET CLR 버전** 을 **관리 코드 없음** 으로 설정합니다.
 
 1. 루트 사이트 아래의 폴더에 하위 앱을 사용하여 IIS 관리자에 루트 사이트를 추가합니다.
 
-1. IIS 관리자에서 하위 앱 폴더를 마우스 오른쪽 단추로 클릭하고 **Convert to Application**(애플리케이션으로 변환)을 선택합니다.
+1. IIS 관리자에서 하위 앱 폴더를 마우스 오른쪽 단추로 클릭하고 **Convert to Application** (애플리케이션으로 변환)을 선택합니다.
 
-1. **Add Application**(애플리케이션 추가) 대화 상자에서 **애플리케이션 풀**에 대한 **선택** 단추를 사용하여 하위 앱에 대해 만든 앱 풀을 할당합니다. **확인**을 선택합니다.
+1. **Add Application** (애플리케이션 추가) 대화 상자에서 **애플리케이션 풀** 에 대한 **선택** 단추를 사용하여 하위 앱에 대해 만든 앱 풀을 할당합니다. **확인** 을 선택합니다.
 
 하위 앱에 대한 별도의 앱 풀 할당은 In-process 호스팅 모델을 사용할 때 필요합니다.
 
@@ -195,7 +196,7 @@ In-process 호스팅 모델 및 ASP.NET Core 모듈 구성에 대한 자세한 �
 * In-process 호스팅: 앱은 별도의 앱 풀에서 실행해야 합니다.
 * Out-of-process 호스팅: 각 앱을 자체 앱 풀에서 실행하여 앱을 서로 격리하는 것이 좋습니다.
 
-IIS **웹 사이트 추가** 대화 상자는 기본적으로 앱당 단일 앱 풀로 구성됩니다. **사이트 이름**을 제공하면 텍스트가 자동으로 **애플리케이션 풀** 텍스트 상자로 전송됩니다. 사이트를 추가할 때 이 사이트 이름을 사용하여 새로운 앱 풀이 생성됩니다.
+IIS **웹 사이트 추가** 대화 상자는 기본적으로 앱당 단일 앱 풀로 구성됩니다. **사이트 이름** 을 제공하면 텍스트가 자동으로 **애플리케이션 풀** 텍스트 상자로 전송됩니다. 사이트를 추가할 때 이 사이트 이름을 사용하여 새로운 앱 풀이 생성됩니다.
 
 ## <a name="application-pool-no-locidentity"></a>애플리케이션 풀 Identity
 
@@ -209,23 +210,23 @@ IIS 작업자 프로세스에서 앱에 대한 높은 액세스 권한이 필요
 
 1. [Windows 탐색기]를 열고 해당 하위 디렉터리로 이동합니다.
 
-1. 디렉터리를 마우스 오른쪽 단추로 클릭하고 **속성**을 선택합니다.
+1. 디렉터리를 마우스 오른쪽 단추로 클릭하고 **속성** 을 선택합니다.
 
 1. **보안** 탭 아래에서 **편집** 단추, **추가** 단추를 차례로 선택합니다.
 
 1. **위치** 단추를 선택하고 시스템이 선택되어 있는지 확인합니다.
 
-1. **선택할 개체 이름 입력** 영역에 자리 표시자 `{APP POOL NAME}`이 앱 풀 이름인 `IIS AppPool\{APP POOL NAME}` 형식을 입력합니다. **이름 확인** 단추를 선택합니다. *DefaultAppPool*의 경우 `IIS AppPool\DefaultAppPool`을 사용하는 이름을 확인합니다. **이름 확인** 단추를 선택하면 개체 이름 영역에 `DefaultAppPool` 값이 표시됩니다. 개체 이름 영역에 앱 풀 이름을 직접 입력할 수는 없습니다. 개체 이름을 확인할 때 자리 표시자 `{APP POOL NAME}`이 앱 풀 이름인 `IIS AppPool\{APP POOL NAME}` 형식을 사용합니다.
+1. **선택할 개체 이름 입력** 영역에 자리 표시자 `{APP POOL NAME}`이 앱 풀 이름인 `IIS AppPool\{APP POOL NAME}` 형식을 입력합니다. **이름 확인** 단추를 선택합니다. *DefaultAppPool* 의 경우 `IIS AppPool\DefaultAppPool`을 사용하는 이름을 확인합니다. **이름 확인** 단추를 선택하면 개체 이름 영역에 `DefaultAppPool` 값이 표시됩니다. 개체 이름 영역에 앱 풀 이름을 직접 입력할 수는 없습니다. 개체 이름을 확인할 때 자리 표시자 `{APP POOL NAME}`이 앱 풀 이름인 `IIS AppPool\{APP POOL NAME}` 형식을 사용합니다.
 
    ![앱 폴더에 대한 사용자 또는 그룹 선택 대화 상자: “이름 확인”을 선택하기 전에 개체 이름 영역의 “IIS AppPool\"에 앱 풀 이름 “DefaultAppPool”이 추가됩니다.](index/_static/select-users-or-groups-1.png)
 
-1. **확인**을 선택합니다.
+1. **확인** 을 선택합니다.
 
    ![앱 폴더에 대한 사용자 또는 그룹 선택 대화 상자: “이름 확인”을 선택하면 개체 이름 영역에 개체 이름 “DefaultAppPool”이 표시됩니다.](index/_static/select-users-or-groups-2.png)
 
 1. 읽기 및 실행 권한은 기본적으로 부여됩니다. 필요에 따라 추가 권한을 제공합니다.
 
-**ICACLS** 도구를 사용하여 명령 프롬프트에서 액세스 권한을 부여할 수도 있습니다. *DefaultAppPool*을 예로 들면, 다음 명령이 사용됩니다.
+**ICACLS** 도구를 사용하여 명령 프롬프트에서 액세스 권한을 부여할 수도 있습니다. *DefaultAppPool* 을 예로 들면, 다음 명령이 사용됩니다.
 
 ```console
 ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
@@ -274,13 +275,13 @@ IIS 애플리케이션 초기화 역할 기능이 사용하도록 설정되었�
 
 Windows 7 이상 데스크톱 시스템에서 IIS를 로컬로 사용하는 경우
 
-1. **제어판** > **프로그램** > **프로그램 및 기능** > **Windows 기능 사용/사용 안 함**(화면 왼쪽)으로 이동합니다.
-1. **인터넷 정보 서비스** > **World Wide Web 서비스** > **애플리케이션 개발 기능**을 엽니다.
+1. **제어판** > **프로그램** > **프로그램 및 기능** > **Windows 기능 사용/사용 안 함** (화면 왼쪽)으로 이동합니다.
+1. **인터넷 정보 서비스** > **World Wide Web 서비스** > **애플리케이션 개발 기능** 을 엽니다.
 1. **애플리케이션 초기화** 확인란을 선택합니다.
 
 Windows Server 2008 R2 이상
 
-1. **역할 및 기능 추가 마법사**를 엽니다.
+1. **역할 및 기능 추가 마법사** 를 엽니다.
 1. **역할 서비스 선택** 패널에서 **애플리케이션 개발** 노드를 엽니다.
 1. **애플리케이션 초기화** 확인란을 선택합니다.
 
@@ -288,12 +289,12 @@ Windows Server 2008 R2 이상
 
 * IIS 관리자 사용
 
-  1. **연결** 패널에서 **애플리케이션 풀**을 선택합니다.
-  1. 목록에서 앱의 앱 풀을 마우스 오른쪽 단추로 클릭하고 **고급 설정**을 선택합니다.
-  1. 기본 **시작 모드**는 `OnDemand`입니다. **시작 모드**를 `AlwaysRunning`으로 설정합니다. **확인**을 선택합니다.
+  1. **연결** 패널에서 **애플리케이션 풀** 을 선택합니다.
+  1. 목록에서 앱의 앱 풀을 마우스 오른쪽 단추로 클릭하고 **고급 설정** 을 선택합니다.
+  1. 기본 **시작 모드** 는 `OnDemand`입니다. **시작 모드** 를 `AlwaysRunning`으로 설정합니다. **확인** 을 선택합니다.
   1. **연결** 패널에서 **사이트** 노드를 엽니다.
-  1. 앱을 마우스 오른쪽 단추로 클릭하고 **웹 사이트 관리** > **고급 설정**을 선택합니다.
-  1. 기본 **미리 로드 사용** 설정은 `False`입니다. **미리 로드 사용**을 `True`로 설정합니다. **확인**을 선택합니다.
+  1. 앱을 마우스 오른쪽 단추로 클릭하고 **웹 사이트 관리** > **고급 설정** 을 선택합니다.
+  1. 기본 **미리 로드 사용** 설정은 `False`입니다. **미리 로드 사용** 을 `True`로 설정합니다. **확인** 을 선택합니다.
 
 * `web.config`를 사용하여 `doAppInitAfterRestart`가 `true`로 설정된 `<applicationInitialization>` 요소를 앱의 `web.config` 파일에 있는 `<system.webServer>` 요소에 추가합니다.
 
@@ -314,9 +315,9 @@ Windows Server 2008 R2 이상
 
 앱의 유휴 상태를 방지하려면 IIS 관리자를 사용하여 앱 풀의 유휴 시간 제한을 설정합니다.
 
-1. **연결** 패널에서 **애플리케이션 풀**을 선택합니다.
-1. 목록에서 앱의 앱 풀을 마우스 오른쪽 단추로 클릭하고 **고급 설정**을 선택합니다.
-1. 기본 **유휴 시간 제한(분)** 은 `20`분입니다. **유휴 시간 제한(분)** 을 `0`으로 설정합니다. **확인**을 선택합니다.
+1. **연결** 패널에서 **애플리케이션 풀** 을 선택합니다.
+1. 목록에서 앱의 앱 풀을 마우스 오른쪽 단추로 클릭하고 **고급 설정** 을 선택합니다.
+1. 기본 **유휴 시간 제한(분)** 은 `20`분입니다. **유휴 시간 제한(분)** 을 `0`으로 설정합니다. **확인** 을 선택합니다.
 1. 작업자 프로세스를 재순환합니다.
 
 앱 호스팅 [Out of Process](xref:host-and-deploy/iis/out-of-process-hosting)가 시간 초과되지 않도록 하려면 다음 방법 중 하나를 사용합니다.

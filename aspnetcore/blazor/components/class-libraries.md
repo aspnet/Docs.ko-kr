@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/27/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/class-libraries
-ms.openlocfilehash: afd1bfffae11520a5d9abccc1d2ee4cf3a46a4bf
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: f8e36cbe905b5ec2e674123c0f2ab6db99683c7c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722464"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056415"
 ---
 # <a name="aspnet-core-no-locrazor-components-class-libraries"></a>ASP.NET Core Razor 구성 요소 클래스 라이브러리
 
@@ -42,16 +43,16 @@ ms.locfileid: "90722464"
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 새 프로젝트를 만듭니다.
-1. **Razor 클래스 라이브러리**를 선택합니다. **새로 만들기**를 선택합니다.
-1. **새 Razor 클래스 라이브러리 만들기** 대화 상자에서 **만들기**를 선택합니다.
-1. **프로젝트 이름** 필드에 프로젝트 이름을 제공하거나 기본 프로젝트 이름을 수락합니다. 이 항목의 예제에서는 프로젝트 이름으로 `ComponentLibrary`을 사용합니다. **만들기**를 선택합니다.
+1. **Razor 클래스 라이브러리** 를 선택합니다. **새로 만들기** 를 선택합니다.
+1. **새 Razor 클래스 라이브러리 만들기** 대화 상자에서 **만들기** 를 선택합니다.
+1. **프로젝트 이름** 필드에 프로젝트 이름을 제공하거나 기본 프로젝트 이름을 수락합니다. 이 항목의 예제에서는 프로젝트 이름으로 `ComponentLibrary`을 사용합니다. **만들기** 를 선택합니다.
 1. 솔루션에 RCL을 추가합니다.
-   1. 솔루션을 마우스 오른쪽 단추로 클릭합니다. **추가** > **기존 프로젝트**를 선택합니다.
+   1. 솔루션을 마우스 오른쪽 단추로 클릭합니다. **추가** > **기존 프로젝트** 를 선택합니다.
    1. RCL의 프로젝트 파일로 이동합니다.
    1. RCL의 프로젝트 파일(`.csproj`)을 선택합니다.
 1. 앱에서 RCL 참조를 추가합니다.
-   1. 앱 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **참조**를 선택합니다.
-   1. RCL 프로젝트를 선택합니다. **확인**을 선택합니다.
+   1. 앱 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **참조** 를 선택합니다.
+   1. RCL 프로젝트를 선택합니다. **확인** 을 선택합니다.
 
 > [!NOTE]
 > 템플릿에서 RCL을 생성할 때 **페이지 및 뷰 지원** 확인란을 선택한 경우 다음 내용을 포함하는 `_Imports.razor` 파일을 생성된 프로젝트 루트에 추가하여 Razor 구성 요소 작성을 사용하도록 설정합니다.
@@ -120,9 +121,11 @@ Welcome to your new app.
 
 원하는 경우 최상위 `_Import.razor` 파일에 `@using ComponentLibrary` 지시문을 포함하여 전체 프로젝트에서 라이브러리 구성 요소를 사용할 수 있게 합니다. 임의 수준의 `_Import.razor` 파일에 지시문을 추가하여 폴더 내의 단일 구성 요소 또는 구성 요소 집합에 네임스페이스를 적용합니다.
 
+<!-- HOLD for reactivation at 5.x
+
 ::: moniker range=">= aspnetcore-5.0"
 
-`Component1`의 `my-component` CSS 클래스를 구성 요소에 제공하려면 `Component1.razor`에서 프레임워크의 [`Link` 구성 요소](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements)를 사용하여 라이브러리의 스타일시트에 연결합니다.
+To provide `Component1`'s `my-component` CSS class to the component, link to the library's stylesheet using the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) in `Component1.razor`:
 
 ```razor
 <div class="my-component">
@@ -134,7 +137,7 @@ Welcome to your new app.
 </div>
 ```
 
-앱에서 스타일시트를 제공하려면 앱의 `wwwroot/index.html` 파일(Blazor WebAssembly) 또는 `Pages/_Host.cshtml` 파일(Blazor Server)에서 라이브러리의 스타일시트에 연결할 수 있습니다.
+To provide the stylesheet across the app, you can alternatively link to the library's stylesheet in the app's `wwwroot/index.html` file (Blazor WebAssembly) or `Pages/_Host.cshtml` file (Blazor Server):
 
 ```html
 <head>
@@ -143,14 +146,16 @@ Welcome to your new app.
 </head>
 ```
 
-자식 구성 요소에서 `Link` 구성 요소가 사용되는 경우 `Link` 구성 요소가 있는 자식이 렌더링되는 한 부모 구성 요소의 다른 모든 자식 구성 요소에서도 연결된 자산을 사용할 수 있습니다. 자식 구성 요소에서 `Link` 구성 요소를 사용하는 것과 `wwwroot/index.html` 또는 `Pages/_Host.cshtml`에 `<link>` HTML 태그를 배치하는 것의 차이는 프레임워크 구성 요소의 렌더링된 HTML 태그입니다.
+When the `Link` component is used in a child component, the linked asset is also available to any other child component of the parent component as long as the child with the `Link` component is rendered. The distinction between using the `Link` component in a child component and placing a `<link>` HTML tag in `wwwroot/index.html` or `Pages/_Host.cshtml` is that a framework component's rendered HTML tag:
 
-* 애플리케이션 상태에 의해 수정될 수 있습니다. 하드 코드된 `<link>` HTML 태그는 애플리케이션 상태에 의해 수정될 수 없습니다.
-* 부모 구성 요소가 더 이상 렌더링되지 않으면 HTML `<head>`에서 제거됩니다.
+* Can be modified by application state. A hard-coded `<link>` HTML tag can't be modified by application state.
+* Is removed from the HTML `<head>` when the parent component is no longer rendered.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
+
+-->
 
 `Component1`의 `my-component` CSS 클래스를 제공하려면 앱의 `wwwroot/index.html` 파일(Blazor WebAssembly) 또는 `Pages/_Host.cshtml` 파일(Blazor Server)에서 라이브러리의 스타일시트에 연결합니다.
 
@@ -161,7 +166,11 @@ Welcome to your new app.
 </head>
 ```
 
+<!-- HOLD for reactivation at 5.x
+
 ::: moniker-end
+
+-->
 
 ## <a name="create-a-no-locrazor-components-class-library-with-static-assets"></a>정적 자산을 사용하여 Razor 구성 요소 클래스 라이브러리 만들기
 

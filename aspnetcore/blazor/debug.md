@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/26/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: b8dd272d673e84b45a39272531385ebfd1d06175
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: 669ebaf6dcd05561340aefda4a75b6fe1068d207
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900988"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056194"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly 디버그
 
@@ -58,7 +59,7 @@ Blazor WebAssembly 앱은 Chromium 기반 브라우저(Edge/Chrome)의 브라우
 
 Mac용 Visual Studio에는 버전 8.8(빌드 1532) 이상이 필요합니다.
 
-1. **Mac용 Visual Studio 다운로드** 단추([Microsoft: Mac용 Visual Studio](https://visualstudio.microsoft.com/vs/mac/) 페이지)를 선택하여 Mac용 Visual Studio 최신 릴리스를 설치합니다.
+1. **Mac용 Visual Studio 다운로드** 단추( [Microsoft: Mac용 Visual Studio](https://visualstudio.microsoft.com/vs/mac/) 페이지)를 선택하여 Mac용 Visual Studio 최신 릴리스를 설치합니다.
 1. Visual Studio 내에서 ‘미리 보기’ 채널을 선택합니다. 자세한 내용은 [Mac용 Visual Studio의 미리 보기 버전 설치](/visualstudio/mac/install-preview)를 참조하세요.
 
 > [!NOTE]
@@ -91,10 +92,10 @@ Visual Studio에서 Blazor WebAssembly 앱을 디버그하려면:
 1. <kbd>F5</kbd> 키를 눌러 디버거에서 앱을 실행합니다.
 
    > [!NOTE]
-   > **디버깅하지 않고 시작**(<kbd>Ctrl</kbd>+<kbd>F5</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
+   > **디버깅하지 않고 시작** ( <kbd>Ctrl</kbd>+<kbd>F5</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
 
 1. `*Client*` 앱에서 `Pages/Counter.razor`의 `currentCount++;` 줄에 중단점을 설정합니다.
-1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me**(여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
+1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me** (여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
 1. Visual Studio에서 **지역** 창에 있는 `currentCount` 필드의 값을 검사합니다.
 1. <kbd>F5</kbd> 키를 눌러 실행을 계속합니다.
 
@@ -167,14 +168,14 @@ Blazor WebAssembly 앱에서의 사용자 지정 앱 기본 경로 사용에 대
 
    이러한 알림이 표시되면 다음을 수행합니다.
 
-   * 최신 [Visual Studio Code용 C# 확장](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)이 설치되어 있는지 확인합니다. 설치된 확장을 검사하려면 메뉴 모음에서 **보기** > **확장**을 열거나 **작업** 사이드바에서 **확장** 아이콘을 선택합니다.
-   * JavaScript 미리 보기 디버깅이 사용되는지 확인합니다. 메뉴 모음에서 설정을 엽니다(**파일** > **기본 설정** > **설정**). `debug preview` 키워드를 사용하여 검색합니다. 검색 결과에서 **디버그 > JavaScript: 미리 보기 사용** 확인란이 선택되어 있는지 확인합니다. 미리 보기 디버깅을 사용하도록 설정하는 옵션이 없는 경우 최신 버전의 VS Code로 업그레이드하거나 [JavaScript 디버거 확장](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)(VS Code 버전 1.46 이전)을 설치합니다.
+   * 최신 [Visual Studio Code용 C# 확장](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)이 설치되어 있는지 확인합니다. 설치된 확장을 검사하려면 메뉴 모음에서 **보기** > **확장** 을 열거나 **작업** 사이드바에서 **확장** 아이콘을 선택합니다.
+   * JavaScript 미리 보기 디버깅이 사용되는지 확인합니다. 메뉴 모음에서 설정을 엽니다( **파일** > **기본 설정** > **설정** ). `debug preview` 키워드를 사용하여 검색합니다. 검색 결과에서 **디버그 > JavaScript: 미리 보기 사용** 확인란이 선택되어 있는지 확인합니다. 미리 보기 디버깅을 사용하도록 설정하는 옵션이 없는 경우 최신 버전의 VS Code로 업그레이드하거나 [JavaScript 디버거 확장](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)(VS Code 버전 1.46 이전)을 설치합니다.
    * 윈도우를 다시 로드합니다.
 
 1. <kbd>F5</kbd> 바로 가기 키 또는 메뉴 항목을 사용하여 디버깅을 시작합니다.
 
    > [!NOTE]
-   > **디버깅하지 않고 시작**(<kbd>Ctrl</kbd>+<kbd>F5</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
+   > **디버깅하지 않고 시작** ( <kbd>Ctrl</kbd>+<kbd>F5</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
 
 1. 메시지가 표시되면 **Blazor WebAssembly 디버그** 옵션을 선택하여 디버깅을 시작합니다.
 
@@ -182,7 +183,7 @@ Blazor WebAssembly 앱에서의 사용자 지정 앱 기본 경로 사용에 대
 
 1. `*Client*` 앱에서 `Pages/Counter.razor`의 `currentCount++;` 줄에 중단점을 설정합니다.
 
-1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me**(여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
+1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me** (여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
 
 > [!NOTE]
 > 앱 시작 도중 디버그 프록시가 실행되기 전에 중단점이 적중되지 **않습니다**. 여기에는 `Program.Main`(`Program.cs`)의 중단점과 애플리케이션에서 요청하는 첫 페이지에서 로드되는 구성 요소의 [`OnInitialized{Async}` 메서드](xref:blazor/components/lifecycle#component-initialization-methods)의 중단점이 포함됩니다.
@@ -191,7 +192,7 @@ Blazor WebAssembly 앱에서의 사용자 지정 앱 기본 경로 사용에 대
 
 1. VS Code에서 호스트된 Blazor WebAssembly 앱의 솔루션 폴더를 엽니다.
 
-1. 프로젝트에 대한 시작 구성 집합이 없는 경우 다음과 같은 알림이 나타납니다. **예**를 선택합니다.
+1. 프로젝트에 대한 시작 구성 집합이 없는 경우 다음과 같은 알림이 나타납니다. **예** 를 선택합니다.
 
    > 빌드 및 디버그에 필요한 자산이 ‘{APPLICATION NAME}’에서 누락되었습니다. 추가할까요?
 
@@ -280,13 +281,13 @@ Mac용 Visual Studio에서 Blazor WebAssembly 앱을 디버그하려면 다음�
 1. <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd>을 눌러 디버거에서 앱을 실행합니다.
 
    > [!NOTE]
-   > **디버깅하지 않고 시작**(<kbd>&#8997;</kbd>+<kbd>&#8984;</kbd>+<kbd>&#8617;</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
+   > **디버깅하지 않고 시작** ( <kbd>&#8997;</kbd>+<kbd>&#8984;</kbd>+<kbd>&#8617;</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
 
    > [!IMPORTANT]
    > 디버깅 세션용으로 Google Chrome 또는 Microsoft Edge 브라우저를 선택해야 합니다.
 
 1. `*Client*` 앱에서 `Pages/Counter.razor`의 `currentCount++;` 줄에 중단점을 설정합니다.
-1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me**(여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
+1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me** (여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
 1. Visual Studio에서 **지역** 창에 있는 `currentCount` 필드의 값을 검사합니다.
 1. <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd>을 눌러 실행을 계속합니다.
 
@@ -344,7 +345,7 @@ Blazor에서는 [Chrome DevTools 프로토콜](https://chromedevtools.github.io/
 
 * **디버거** 탭에서 브라우저의 개발자 도구를 엽니다. 콘솔에서 `localStorage.clear()`를 실행하여 중단점을 모두 제거합니다.
 * ASP.NET Core HTTPS 개발 인증서를 설치하고 신뢰할 수 있는지 확인합니다. 자세한 내용은 <xref:security/enforcing-ssl#troubleshoot-certificate-problems>를 참조하세요.
-* Visual Studio를 사용하려면 **도구** > **옵션** > **디버깅** > **일반**에서 **ASP.NET에 대해 JavaScript 디버깅 사용(Chrome, Edge 및 IE)** 옵션이 필요합니다. 이것은 Visual Studio의 기본 설정입니다. 디버깅이 작동하지 않는 경우 옵션이 선택되어 있는지 확인합니다.
+* Visual Studio를 사용하려면 **도구** > **옵션** > **디버깅** > **일반** 에서 **ASP.NET에 대해 JavaScript 디버깅 사용(Chrome, Edge 및 IE)** 옵션이 필요합니다. 이것은 Visual Studio의 기본 설정입니다. 디버깅이 작동하지 않는 경우 옵션이 선택되어 있는지 확인합니다.
 * 사용자 환경에서 HTTP 프록시를 사용하는 경우 `localhost`가 프록시 바이패스 설정에 포함되는지 확인합니다. 이 작업을 수행하려면 다음 중 하나에서 `NO_PROXY` 환경 변수를 설정합니다.
   * 프로젝트의 `launchSettings.json` 파일에서.
   * 모든 앱에 적용할 사용자 또는 시스템 환경 변수 수준에서. 환경 변수를 사용하는 경우 변경을 적용하려면 Visual Studio를 다시 시작합니다.

@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: 77cfced18edd9db5be21265469b42f32e3de274d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1c97f5d7fbf64c5043e6d2277091b9a477833bf1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625676"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054712"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>Visual Studio에서 ASP.NET Core와 함께 LibMan 사용
 
@@ -33,7 +34,7 @@ Visual Studio에는 ASP.NET Core 프로젝트의 [LibMan](xref:client-side/libma
 * 빌드에서 LibMan 복원 작업 구성 및 실행 지원
 * LibMan 복원 및 정리 작업을 트리거하기 위한 메뉴 항목
 * 라이브러리를 찾고 프로젝트에 파일을 추가하기 위한 검색 대화 상자
-* *libman.json*(LibMan 매니페스트 파일) 편집 지원
+* *libman.json* (LibMan 매니페스트 파일) 편집 지원
 
 [샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/client-side/libman/samples/)([다운로드 방법](xref:index#how-to-download-a-sample))
 
@@ -52,7 +53,7 @@ Visual Studio에는 ASP.NET Core 프로젝트의 [LibMan](xref:client-side/libma
 
 클라이언트 쪽 라이브러리를 설치하려면 다음 단계를 수행합니다.
 
-* **솔루션 탐색기**에서 파일을 추가해야 하는 프로젝트 폴더를 마우스 오른쪽 단추로 클릭합니다. **추가** > **클라이언트 쪽 라이브러리**를 선택합니다. **클라이언트 쪽 라이브러리 추가** 대화 상자가 나타납니다.
+* **솔루션 탐색기** 에서 파일을 추가해야 하는 프로젝트 폴더를 마우스 오른쪽 단추로 클릭합니다. **추가** > **클라이언트 쪽 라이브러리** 를 선택합니다. **클라이언트 쪽 라이브러리 추가** 대화 상자가 나타납니다.
 
   ![클라이언트 쪽 라이브러리 추가 대화 상자](_static/add-library-dialog.png)
 
@@ -67,19 +68,19 @@ Visual Studio에는 ASP.NET Core 프로젝트의 [LibMan](xref:client-side/libma
   제안된 **대상 위치** 폴더는 대화 상자가 시작된 위치를 기반으로 합니다.
 
   * 프로젝트 루트에서 시작한 경우
-    * *wwwroot*가 있으면 *wwwroot/lib*가 사용됩니다.
-    * *wwwroot*가 없으면 *lib*가 사용됩니다.
+    * *wwwroot* 가 있으면 *wwwroot/lib* 가 사용됩니다.
+    * *wwwroot* 가 없으면 *lib* 가 사용됩니다.
   * 프로젝트 폴더에서 시작한 경우 해당 폴더 이름이 사용됩니다.
 
   폴더 제안에 라이브러리 이름이 접미사로 추가됩니다. 다음 표에는 Razor Pages 프로젝트에 jQuery를 설치하는 경우의 폴더 제안이 나와 있습니다.
   
   |시작 위치                           |제안된 폴더      |
   |------------------------------------------|----------------------|
-  |프로젝트 루트(*wwwroot*가 있는 경우)        |*wwwroot/lib/jquery/* |
-  |프로젝트 루트(*wwwroot*가 없는 경우) |*lib/jquery/*         |
+  |프로젝트 루트( *wwwroot* 가 있는 경우)        |*wwwroot/lib/jquery/* |
+  |프로젝트 루트( *wwwroot* 가 없는 경우) |*lib/jquery/*         |
   |프로젝트의 *Pages* 폴더                 |*Pages/jquery/*       |
 
-* **설치** 단추를 클릭하여 *libman.json*의 구성에 따라 파일을 다운로드합니다.
+* **설치** 단추를 클릭하여 *libman.json* 의 구성에 따라 파일을 다운로드합니다.
 * **출력** 창의 **라이브러리 관리자** 피드에서 설치 정보를 검토합니다. 예를 들어:
 
   ```console
@@ -95,13 +96,13 @@ Visual Studio에는 ASP.NET Core 프로젝트의 [LibMan](xref:client-side/libma
 
 ### <a name="manually-configure-libman-manifest-file-entries"></a>수동으로 LibMan 매니페스트 파일 항목 구성
 
-Visual Studio의 모든 LibMan 작업은 프로젝트 루트의 LibMan 매니페스트(*libman.json*) 콘텐츠를 기반으로 합니다. *libman.json*을 수동으로 편집하여 프로젝트의 라이브러리 파일을 구성할 수 있습니다. *libman.json*을 저장하면 Visual Studio에서 모든 라이브러리 파일을 복원합니다.
+Visual Studio의 모든 LibMan 작업은 프로젝트 루트의 LibMan 매니페스트( *libman.json* ) 콘텐츠를 기반으로 합니다. *libman.json* 을 수동으로 편집하여 프로젝트의 라이브러리 파일을 구성할 수 있습니다. *libman.json* 을 저장하면 Visual Studio에서 모든 라이브러리 파일을 복원합니다.
 
-편집을 위해 *libman.json*을 열려는 경우 다음과 같은 옵션이 있습니다.
+편집을 위해 *libman.json* 을 열려는 경우 다음과 같은 옵션이 있습니다.
 
-* **솔루션 탐색기**에서 *libman.json* 파일을 두 번 클릭합니다.
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **클라이언트 쪽 라이브러리 관리**를 선택합니다. **&#8224;**
-* Visual Studio **프로젝트** 메뉴에서 **클라이언트 쪽 라이브러리 관리**를 선택합니다. **&#8224;**
+* **솔루션 탐색기** 에서 *libman.json* 파일을 두 번 클릭합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **클라이언트 쪽 라이브러리 관리** 를 선택합니다. **&#8224;**
+* Visual Studio **프로젝트** 메뉴에서 **클라이언트 쪽 라이브러리 관리** 를 선택합니다. **&#8224;**
 
 **&#8224;** 프로젝트 루트에 *libman.json* 파일이 아직 없는 경우, 기본 항목 템플릿 콘텐츠를 사용하여 생성됩니다.
 
@@ -109,7 +110,7 @@ Visual Studio는 색 지정, 서식 지정, IntelliSense, 스키마 유효성 �
 
 다음 매니페스트 파일을 사용할 경우 LibMan은 `libraries` 속성에서 정의된 구성에 따라 파일을 검색합니다. `libraries` 내에서 정의된 개체 리터럴에 대한 설명은 다음과 같습니다.
 
-* [jQuery](https://jquery.com/) 버전 3.3.1의 하위 집합이 CDNJS 공급자에서 검색됩니다. 하위 집합은 `files` 속성(*jquery.min.js*, *jquery.js*, *jquery.min.map*)에서 정의됩니다. 파일은 프로젝트의 *wwwroot/lib/jquery* 폴더에 배치됩니다.
+* [jQuery](https://jquery.com/) 버전 3.3.1의 하위 집합이 CDNJS 공급자에서 검색됩니다. 하위 집합은 `files` 속성( *jquery.min.js* , *jquery.js* , *jquery.min.map* )에서 정의됩니다. 파일은 프로젝트의 *wwwroot/lib/jquery* 폴더에 배치됩니다.
 * [부트스트랩](https://getbootstrap.com/) 버전 4.1.3 전체가 검색되어 *wwwroot/lib/bootstrap* 폴더에 배치됩니다. 개체 리터럴의 `provider` 속성이 `defaultProvider` 속성 값을 재정의합니다. LibMan은 unpkg 공급자에서 부트스트랩 파일을 검색합니다.
 * 조직 내의 규제 기관이 [Lodash](https://lodash.com/)의 하위 집합을 승인했습니다. *lodash.js* 및 *lodash.min.js* 파일은 로컬 파일 시스템의 *C:\\temp\\lodash\\* 에서 검색됩니다. 프로젝트의 *wwwroot/lib/lodash* 폴더에 파일이 복사됩니다.
 
@@ -133,7 +134,7 @@ LibMan은 빌드 프로세스의 일부로, 정의된 라이브러리 파일을 
 
 빌드 시 복원 동작을 사용하도록 설정하고 테스트하려면 다음을 수행합니다.
 
-* **솔루션 탐색기**에서 *libman.json*을 마우스 오른쪽 단추로 클릭하고 상황에 맞는 메뉴에서 **빌드에서 클라이언트 쪽 라이브러리 복원 사용**을 선택합니다.
+* **솔루션 탐색기** 에서 *libman.json* 을 마우스 오른쪽 단추로 클릭하고 상황에 맞는 메뉴에서 **빌드에서 클라이언트 쪽 라이브러리 복원 사용** 을 선택합니다.
 * NuGet 패키지를 설치하라는 메시지가 표시되 면 **예** 단추를 클릭합니다. [Microsoft.Web.LibraryManager.Build](https://www.nuget.org/packages/Microsoft.Web.LibraryManager.Build/) NuGet 패키지가 프로젝트에 추가됩니다.
 
   [!code-xml[](samples/LibManSample/LibManSample.csproj?name=snippet_RestoreOnBuildPackage)]
@@ -162,10 +163,10 @@ LibMan은 빌드 프로세스의 일부로, 정의된 라이브러리 파일을 
 라이브러리 파일을 수동으로 복원하려면 다음을 수행합니다.
 
 * 솔루션에 있는 모든 프로젝트의 경우
-  * **솔루션 탐색기**에서 솔루션 이름을 마우스 오른쪽 단추로 클릭합니다.
+  * **솔루션 탐색기** 에서 솔루션 이름을 마우스 오른쪽 단추로 클릭합니다.
   * **클라이언트 쪽 라이브러리 복원** 옵션을 선택합니다.
 * 특정 프로젝트의 경우
-  * **솔루션 탐색기**에서 *libman.json* 파일을 마우스 오른쪽 단추로 클릭합니다.
+  * **솔루션 탐색기** 에서 *libman.json* 파일을 마우스 오른쪽 단추로 클릭합니다.
   * **클라이언트 쪽 라이브러리 복원** 옵션을 선택합니다.
 
 복원 작업이 실행되는 동안
@@ -188,7 +189,7 @@ LibMan은 빌드 프로세스의 일부로, 정의된 라이브러리 파일을 
 
 Visual Studio에서 이전에 복원된 라이브러리 파일을 삭제하는 ‘정리’ 작업을 수행하려면 다음을 수행합니다.
 
-* **솔루션 탐색기**에서 *libman.json* 파일을 마우스 오른쪽 단추로 클릭합니다.
+* **솔루션 탐색기** 에서 *libman.json* 파일을 마우스 오른쪽 단추로 클릭합니다.
 * **클라이언트 쪽 라이브러리 정리** 옵션을 선택합니다.
 
 비라이브러리 파일이 실수로 제거되는 것을 방지하기 위해 정리 작업은 전체 디렉터리를 삭제하지 않습니다. 이전 복원에 포함된 파일만 제거합니다.
@@ -210,21 +211,21 @@ Clean libraries operation completed
 
 라이브러리 파일을 제거하려면 다음을 수행합니다.
 
-* *libman.json*을 엽니다.
+* *libman.json* 을 엽니다.
 * 해당 `libraries` 개체 리터럴 안에 캐럿을 배치합니다.
 * 왼쪽 여백에 표시되는 전구 아이콘을 클릭하고 **제거\<library_name>@\<library_version>** 를 선택합니다.
 
   ![라이브러리 제거 상황에 맞는 메뉴 옵션](_static/uninstall-menu-option.png)
 
-또는 수동으로 LibMan 매니페스트(*libman.json*)를 편집하고 저장할 수 있습니다. 파일을 저장하면 [복원 작업](#restore-library-files)이 실행됩니다. *libman.json*에서 더는 정의되지 않은 라이브러리 파일은 프로젝트에서 제거됩니다.
+또는 수동으로 LibMan 매니페스트( *libman.json* )를 편집하고 저장할 수 있습니다. 파일을 저장하면 [복원 작업](#restore-library-files)이 실행됩니다. *libman.json* 에서 더는 정의되지 않은 라이브러리 파일은 프로젝트에서 제거됩니다.
 
 ## <a name="update-library-version"></a>라이브러리 버전 업데이트
 
 업데이트된 라이브러리 버전을 확인하려면 다음을 수행합니다.
 
-* *libman.json*을 엽니다.
+* *libman.json* 을 엽니다.
 * 해당 `libraries` 개체 리터럴 안에 캐럿을 배치합니다.
-* 왼쪽 여백에 표시되는 전구 아이콘을 클릭합니다. **업데이트 확인**을 마우스로 가리킵니다.
+* 왼쪽 여백에 표시되는 전구 아이콘을 클릭합니다. **업데이트 확인** 을 마우스로 가리킵니다.
 
 LibMan은 설치된 버전보다 최신 라이브러리 버전이 있는지 확인합니다. 다음과 같은 결과가 발생할 수 있습니다.
 

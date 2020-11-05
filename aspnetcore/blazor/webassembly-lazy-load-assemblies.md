@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: e874ec6f24d8b03fc6c7133013147498cbbc293a
-ms.sourcegitcommit: 4febe4efaf6e1a7be65d772b500c00fca0af216a
+ms.openlocfilehash: 6a1feffb5341d432d6d1949a9e26b9537b85ba03
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91451160"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054790"
 ---
 # <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly의 어셈블리 지연 로드
 

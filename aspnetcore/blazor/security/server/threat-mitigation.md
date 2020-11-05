@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/05/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: a9bdf68e30d2688d4d7836410a7913794a73fe01
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 5c3a002a8e3df030d53c8625597342a68ca0d4b5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626430"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055414"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-no-locblazor-server"></a>ASP.NET Core Blazor Server를 위한 위협 완화 지침
 
@@ -248,7 +249,7 @@ Blazor Server 이벤트는 비동기적이므로 앱이 새 렌더링을 생성�
 
 ### <a name="cancel-early-and-avoid-use-after-dispose"></a>조기에 취소하여 use-after-dispose 방지
 
-[여러 디스패치를 방지하는 가드](#guard-against-multiple-dispatches) 섹션에서 설명한 것과 같이 가드를 사용하는 것 외에도, 구성 요소가 폐기된 경우 <xref:System.Threading.CancellationToken>을 사용하여 장기 작업을 취소하는 방안을 고려할 수 있습니다. 이 접근 방식에는 구성 요소에서 *use-after-dispose*를 방지할 수 있다는 이점도 있습니다.
+[여러 디스패치를 방지하는 가드](#guard-against-multiple-dispatches) 섹션에서 설명한 것과 같이 가드를 사용하는 것 외에도, 구성 요소가 폐기된 경우 <xref:System.Threading.CancellationToken>을 사용하여 장기 작업을 취소하는 방안을 고려할 수 있습니다. 이 접근 방식에는 구성 요소에서 *use-after-dispose* 를 방지할 수 있다는 이점도 있습니다.
 
 ```razor
 @implements IDisposable

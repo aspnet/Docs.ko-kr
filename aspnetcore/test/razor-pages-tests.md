@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/22/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/razor-pages-tests
-ms.openlocfilehash: bb376412daafd49b307c3c13ea7c88f34628f1c3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 2486eb8c9fd0fc33ea77b0fedd99795218d7f4ca
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634841"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058040"
 ---
 # <a name="no-locrazor-pages-unit-tests-in-aspnet-core"></a>ASP.NET Core의 Razor Pages 단위 테스트
 
@@ -61,11 +62,11 @@ dotnet test
 
 메시지 앱은 다음과 같은 특징을 가진 Razor Pages 메시지 시스템입니다.
 
-* 앱의 인덱스 페이지(*Pages/Index.cshtml* 및 *Pages/Index.cshtml.cs*)는 메시지의 추가, 삭제 및 분석을 제어하기 위한 UI 및 페이지 모델 메서드를 제공합니다(메시지당 평균 단어 수 확인).
-* 메시지는 `Id`(키) 및 `Text`(메시지)의 두 가지 속성을 사용하여 `Message` 클래스(*Data/Message.cs*)에서 설명됩니다. `Text` 속성은 필수이며 200자로 제한됩니다.
+* 앱의 인덱스 페이지( *Pages/Index.cshtml* 및 *Pages/Index.cshtml.cs* )는 메시지의 추가, 삭제 및 분석을 제어하기 위한 UI 및 페이지 모델 메서드를 제공합니다(메시지당 평균 단어 수 확인).
+* 메시지는 `Id`(키) 및 `Text`(메시지)의 두 가지 속성을 사용하여 `Message` 클래스( *Data/Message.cs* )에서 설명됩니다. `Text` 속성은 필수이며 200자로 제한됩니다.
 * 메시지는 [Entity Framework의 메모리 내 데이터베이스](/ef/core/providers/in-memory/)를 사용하여 저장됩니다.
-* 앱은 데이터베이스 컨텍스트 클래스 `AppDbContext`(*Data/AppDbContext*)에 DAL을 포함합니다. DAL 메서드는 `virtual`로 표시되므로 테스트에서 메서드를 모의로 사용해볼 수 있습니다.
-* 앱 시작 시 데이터베이스가 비어 있는 경우 메시지 저장소는 세 개의 메시지로 초기화됩니다. 이러한 *시드된 메시지*는 테스트에서도 사용됩니다.
+* 앱은 데이터베이스 컨텍스트 클래스 `AppDbContext`( *Data/AppDbContext* )에 DAL을 포함합니다. DAL 메서드는 `virtual`로 표시되므로 테스트에서 메서드를 모의로 사용해볼 수 있습니다.
+* 앱 시작 시 데이터베이스가 비어 있는 경우 메시지 저장소는 세 개의 메시지로 초기화됩니다. 이러한 *시드된 메시지* 는 테스트에서도 사용됩니다.
 
 EF 항목 [InMemory로 테스트](/ef/core/miscellaneous/testing/in-memory)에서는 MSTest를 사용하여 테스트에 메모리 내 데이터베이스를 사용하는 방법을 설명합니다. 이 항목에서는 [xUnit](https://xunit.github.io/) 테스트 프레임워크를 사용합니다. 여러 테스트 프레임워크의 테스트 개념 및 테스트 구현은 비슷하지만 동일하지는 않습니다.
 
@@ -77,14 +78,14 @@ EF 항목 [InMemory로 테스트](/ef/core/miscellaneous/testing/in-memory)에�
 
 | 테스트 앱 폴더 | 설명 |
 | --------------- | ----------- |
-| *UnitTests*     | <ul><li>*DataAccessLayerTest.cs*에는 DAL에 대한 단위 테스트가 포함되어 있습니다.</li><li>*IndexPageTests.cs*에는 인덱스 페이지 모델에 대한 단위 테스트가 포함되어 있습니다.</li></ul> |
+| *UnitTests*     | <ul><li>*DataAccessLayerTest.cs* 에는 DAL에 대한 단위 테스트가 포함되어 있습니다.</li><li>*IndexPageTests.cs* 에는 인덱스 페이지 모델에 대한 단위 테스트가 포함되어 있습니다.</li></ul> |
 | *유틸리티*     | 데이터베이스가 각 테스트에 대한 기준 조건으로 다시 설정되도록 하기 위해 각 DAL 단위 테스트에 대한 새 데이터베이스 컨텍스트 옵션을 만드는 데 사용되는 `TestDbContextOptions` 메서드가 포함되어 있습니다. |
 
 테스트 프레임워크는 [xUnit](https://xunit.github.io/)입니다. 개체 모의 프레임워크는 [Moq](https://github.com/moq/moq4)입니다.
 
 ## <a name="unit-tests-of-the-data-access-layer-dal"></a>DAL(데이터 액세스 계층)의 단위 테스트
 
-메시지 앱의 `AppDbContext` 클래스(*src/RazorPagesTestSample/Data/AppDbContext.cs*)에는 4가지 메서드를 포함하는 DAL이 있습니다. 테스트 앱의 각 메서드에는 하나 또는 두 개의 단위 테스트가 있습니다.
+메시지 앱의 `AppDbContext` 클래스( *src/RazorPagesTestSample/Data/AppDbContext.cs* )에는 4가지 메서드를 포함하는 DAL이 있습니다. 테스트 앱의 각 메서드에는 하나 또는 두 개의 단위 테스트가 있습니다.
 
 | DAL 메서드               | 기능                                                                   |
 | ------------------------ | -------------------------------------------------------------------------- |
@@ -105,7 +106,7 @@ using (var db = new AppDbContext(optionsBuilder.Options))
 }
 ```
 
-이 방법의 문제는 이전 테스트가 어떤 상태이든 관계없이 각 테스트가 데이터베이스를 수신한다는 것입니다. 서로 방해하지 않는 원자 단위 테스트를 작성하려고 할 때 문제가 될 수 있습니다. `AppDbContext`에서 각 테스트에 대해 강제로 새 데이터베이스 컨텍스트를 사용하도록 하려면 새 서비스 공급자를 기준으로 하는 `DbContextOptions` 인스턴스를 제공합니다. 테스트 앱은 해당 `Utilities` 클래스 메서드 `TestDbContextOptions`(*tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs*)를 사용하여 이 작업을 수행하는 방법을 보여 줍니다.
+이 방법의 문제는 이전 테스트가 어떤 상태이든 관계없이 각 테스트가 데이터베이스를 수신한다는 것입니다. 서로 방해하지 않는 원자 단위 테스트를 작성하려고 할 때 문제가 될 수 있습니다. `AppDbContext`에서 각 테스트에 대해 강제로 새 데이터베이스 컨텍스트를 사용하도록 하려면 새 서비스 공급자를 기준으로 하는 `DbContextOptions` 인스턴스를 제공합니다. 테스트 앱은 해당 `Utilities` 클래스 메서드 `TestDbContextOptions`( *tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs* )를 사용하여 이 작업을 수행하는 방법을 보여 줍니다.
 
 [!code-csharp[](razor-pages-tests/samples/3.x/tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs?name=snippet1)]
 
@@ -118,13 +119,13 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 }
 ```
 
-`DataAccessLayerTest` 클래스(*UnitTests/DataAccessLayerTest.cs*)의 각 테스트 메서드는 비슷한 정렬-실행-어설션 패턴을 따릅니다.
+`DataAccessLayerTest` 클래스( *UnitTests/DataAccessLayerTest.cs* )의 각 테스트 메서드는 비슷한 정렬-실행-어설션 패턴을 따릅니다.
 
 1. 정렬: 데이터베이스는 테스트를 위해 구성되고 예상된 결과가 정의됩니다.
 1. 실행: 테스트가 실행됩니다.
 1. 어설션: 테스트 결과가 성공인지 여부를 확인하기 위해 어설션이 수행됩니다.
 
-예를 들어, `DeleteMessageAsync` 메서드는 해당 `Id`(*src/RazorPagesTestSample/Data/AppDbContext.cs*)로 식별되는 단일 메시지를 제거하는 일을 담당합니다.
+예를 들어, `DeleteMessageAsync` 메서드는 해당 `Id`( *src/RazorPagesTestSample/Data/AppDbContext.cs* )로 식별되는 단일 메시지를 제거하는 일을 담당합니다.
 
 [!code-csharp[](razor-pages-tests/samples/3.x/src/RazorPagesTestSample/Data/AppDbContext.cs?name=snippet4)]
 
@@ -155,7 +156,7 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 
 ## <a name="unit-tests-of-the-page-model-methods"></a>페이지 모델 메서드의 단위 테스트
 
-다른 단위 테스트 세트는 페이지 모델 메서드의 테스트를 담당합니다. 메시지 앱에서 인덱스 페이지 모델은 *src/RazorPagesTestSample/Pages/Index.cshtml.cs*의 `IndexModel` 클래스에 있습니다.
+다른 단위 테스트 세트는 페이지 모델 메서드의 테스트를 담당합니다. 메시지 앱에서 인덱스 페이지 모델은 *src/RazorPagesTestSample/Pages/Index.cshtml.cs* 의 `IndexModel` 클래스에 있습니다.
 
 | 페이지 모델 메서드 | 기능 |
 | ----------------- | -------- |
@@ -165,7 +166,7 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 | `OnPostDeleteMessageAsync` | `DeleteMessageAsync`를 실행하여 지정된 `Id`의 메시지를 삭제합니다. |
 | `OnPostAnalyzeMessagesAsync` | 하나 이상의 메시지가 데이터베이스에 있으면 메시지당 평균 단어 수를 계산합니다. |
 
-페이지 모델 메서드는 `IndexPageTests` 클래스(*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs*)의 7가지 테스트를 사용하여 테스트됩니다. 테스트는 친숙한 정렬-어셜선-실행 패턴을 사용합니다. 이러한 테스트는 다음에 중점을 둡니다.
+페이지 모델 메서드는 `IndexPageTests` 클래스( *tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs* )의 7가지 테스트를 사용하여 테스트됩니다. 테스트는 친숙한 정렬-어셜선-실행 패턴을 사용합니다. 이러한 테스트는 다음에 중점을 둡니다.
 
 * [ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)가 잘못된 경우 메서드가 올바른 동작을 따르는지 확인합니다.
 * 메서드를 확인하면 올바른 <xref:Microsoft.AspNetCore.Mvc.IActionResult>가 생성됩니다.
@@ -179,11 +180,11 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 
 실행 단계에서 `OnGetAsync` 메서드를 수행하면 페이지 모델의 `GetMessagesAsync` 메서드가 호출됩니다.
 
-단위 테스트 실행 단계(*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs*):
+단위 테스트 실행 단계( *tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs* ):
 
 [!code-csharp[](razor-pages-tests/samples/3.x/tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs?name=snippet2)]
 
-`IndexPage` 페이지 모델의 `OnGetAsync` 메서드(*src/RazorPagesTestSample/Pages/Index.cshtml.cs*):
+`IndexPage` 페이지 모델의 `OnGetAsync` 메서드( *src/RazorPagesTestSample/Pages/Index.cshtml.cs* ):
 
 [!code-csharp[](razor-pages-tests/samples/3.x/src/RazorPagesTestSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3)]
 
@@ -245,11 +246,11 @@ dotnet test
 
 메시지 앱은 다음과 같은 특징을 가진 Razor Pages 메시지 시스템입니다.
 
-* 앱의 인덱스 페이지(*Pages/Index.cshtml* 및 *Pages/Index.cshtml.cs*)는 메시지의 추가, 삭제 및 분석을 제어하기 위한 UI 및 페이지 모델 메서드를 제공합니다(메시지당 평균 단어 수 확인).
-* 메시지는 `Id`(키) 및 `Text`(메시지)의 두 가지 속성을 사용하여 `Message` 클래스(*Data/Message.cs*)에서 설명됩니다. `Text` 속성은 필수이며 200자로 제한됩니다.
+* 앱의 인덱스 페이지( *Pages/Index.cshtml* 및 *Pages/Index.cshtml.cs* )는 메시지의 추가, 삭제 및 분석을 제어하기 위한 UI 및 페이지 모델 메서드를 제공합니다(메시지당 평균 단어 수 확인).
+* 메시지는 `Id`(키) 및 `Text`(메시지)의 두 가지 속성을 사용하여 `Message` 클래스( *Data/Message.cs* )에서 설명됩니다. `Text` 속성은 필수이며 200자로 제한됩니다.
 * 메시지는 [Entity Framework의 메모리 내 데이터베이스](/ef/core/providers/in-memory/)를 사용하여 저장됩니다.
-* 앱은 데이터베이스 컨텍스트 클래스 `AppDbContext`(*Data/AppDbContext*)에 DAL을 포함합니다. DAL 메서드는 `virtual`로 표시되므로 테스트에서 메서드를 모의로 사용해볼 수 있습니다.
-* 앱 시작 시 데이터베이스가 비어 있는 경우 메시지 저장소는 세 개의 메시지로 초기화됩니다. 이러한 *시드된 메시지*는 테스트에서도 사용됩니다.
+* 앱은 데이터베이스 컨텍스트 클래스 `AppDbContext`( *Data/AppDbContext* )에 DAL을 포함합니다. DAL 메서드는 `virtual`로 표시되므로 테스트에서 메서드를 모의로 사용해볼 수 있습니다.
+* 앱 시작 시 데이터베이스가 비어 있는 경우 메시지 저장소는 세 개의 메시지로 초기화됩니다. 이러한 *시드된 메시지* 는 테스트에서도 사용됩니다.
 
 EF 항목 [InMemory로 테스트](/ef/core/miscellaneous/testing/in-memory)에서는 MSTest를 사용하여 테스트에 메모리 내 데이터베이스를 사용하는 방법을 설명합니다. 이 항목에서는 [xUnit](https://xunit.github.io/) 테스트 프레임워크를 사용합니다. 여러 테스트 프레임워크의 테스트 개념 및 테스트 구현은 비슷하지만 동일하지는 않습니다.
 
@@ -261,14 +262,14 @@ EF 항목 [InMemory로 테스트](/ef/core/miscellaneous/testing/in-memory)에�
 
 | 테스트 앱 폴더 | 설명 |
 | --------------- | ----------- |
-| *UnitTests*     | <ul><li>*DataAccessLayerTest.cs*에는 DAL에 대한 단위 테스트가 포함되어 있습니다.</li><li>*IndexPageTests.cs*에는 인덱스 페이지 모델에 대한 단위 테스트가 포함되어 있습니다.</li></ul> |
+| *UnitTests*     | <ul><li>*DataAccessLayerTest.cs* 에는 DAL에 대한 단위 테스트가 포함되어 있습니다.</li><li>*IndexPageTests.cs* 에는 인덱스 페이지 모델에 대한 단위 테스트가 포함되어 있습니다.</li></ul> |
 | *유틸리티*     | 데이터베이스가 각 테스트에 대한 기준 조건으로 다시 설정되도록 하기 위해 각 DAL 단위 테스트에 대한 새 데이터베이스 컨텍스트 옵션을 만드는 데 사용되는 `TestDbContextOptions` 메서드가 포함되어 있습니다. |
 
 테스트 프레임워크는 [xUnit](https://xunit.github.io/)입니다. 개체 모의 프레임워크는 [Moq](https://github.com/moq/moq4)입니다.
 
 ## <a name="unit-tests-of-the-data-access-layer-dal"></a>DAL(데이터 액세스 계층)의 단위 테스트
 
-메시지 앱의 `AppDbContext` 클래스(*src/RazorPagesTestSample/Data/AppDbContext.cs*)에는 4가지 메서드를 포함하는 DAL이 있습니다. 테스트 앱의 각 메서드에는 하나 또는 두 개의 단위 테스트가 있습니다.
+메시지 앱의 `AppDbContext` 클래스( *src/RazorPagesTestSample/Data/AppDbContext.cs* )에는 4가지 메서드를 포함하는 DAL이 있습니다. 테스트 앱의 각 메서드에는 하나 또는 두 개의 단위 테스트가 있습니다.
 
 | DAL 메서드               | 기능                                                                   |
 | ------------------------ | -------------------------------------------------------------------------- |
@@ -289,7 +290,7 @@ using (var db = new AppDbContext(optionsBuilder.Options))
 }
 ```
 
-이 방법의 문제는 이전 테스트가 어떤 상태이든 관계없이 각 테스트가 데이터베이스를 수신한다는 것입니다. 서로 방해하지 않는 원자 단위 테스트를 작성하려고 할 때 문제가 될 수 있습니다. `AppDbContext`에서 각 테스트에 대해 강제로 새 데이터베이스 컨텍스트를 사용하도록 하려면 새 서비스 공급자를 기준으로 하는 `DbContextOptions` 인스턴스를 제공합니다. 테스트 앱은 해당 `Utilities` 클래스 메서드 `TestDbContextOptions`(*tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs*)를 사용하여 이 작업을 수행하는 방법을 보여 줍니다.
+이 방법의 문제는 이전 테스트가 어떤 상태이든 관계없이 각 테스트가 데이터베이스를 수신한다는 것입니다. 서로 방해하지 않는 원자 단위 테스트를 작성하려고 할 때 문제가 될 수 있습니다. `AppDbContext`에서 각 테스트에 대해 강제로 새 데이터베이스 컨텍스트를 사용하도록 하려면 새 서비스 공급자를 기준으로 하는 `DbContextOptions` 인스턴스를 제공합니다. 테스트 앱은 해당 `Utilities` 클래스 메서드 `TestDbContextOptions`( *tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs* )를 사용하여 이 작업을 수행하는 방법을 보여 줍니다.
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs?name=snippet1)]
 
@@ -302,13 +303,13 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 }
 ```
 
-`DataAccessLayerTest` 클래스(*UnitTests/DataAccessLayerTest.cs*)의 각 테스트 메서드는 비슷한 정렬-실행-어설션 패턴을 따릅니다.
+`DataAccessLayerTest` 클래스( *UnitTests/DataAccessLayerTest.cs* )의 각 테스트 메서드는 비슷한 정렬-실행-어설션 패턴을 따릅니다.
 
 1. 정렬: 데이터베이스는 테스트를 위해 구성되고 예상된 결과가 정의됩니다.
 1. 실행: 테스트가 실행됩니다.
 1. 어설션: 테스트 결과가 성공인지 여부를 확인하기 위해 어설션이 수행됩니다.
 
-예를 들어, `DeleteMessageAsync` 메서드는 해당 `Id`(*src/RazorPagesTestSample/Data/AppDbContext.cs*)로 식별되는 단일 메시지를 제거하는 일을 담당합니다.
+예를 들어, `DeleteMessageAsync` 메서드는 해당 `Id`( *src/RazorPagesTestSample/Data/AppDbContext.cs* )로 식별되는 단일 메시지를 제거하는 일을 담당합니다.
 
 [!code-csharp[](razor-pages-tests/samples/2.x/src/RazorPagesTestSample/Data/AppDbContext.cs?name=snippet4)]
 
@@ -339,7 +340,7 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 
 ## <a name="unit-tests-of-the-page-model-methods"></a>페이지 모델 메서드의 단위 테스트
 
-다른 단위 테스트 세트는 페이지 모델 메서드의 테스트를 담당합니다. 메시지 앱에서 인덱스 페이지 모델은 *src/RazorPagesTestSample/Pages/Index.cshtml.cs*의 `IndexModel` 클래스에 있습니다.
+다른 단위 테스트 세트는 페이지 모델 메서드의 테스트를 담당합니다. 메시지 앱에서 인덱스 페이지 모델은 *src/RazorPagesTestSample/Pages/Index.cshtml.cs* 의 `IndexModel` 클래스에 있습니다.
 
 | 페이지 모델 메서드 | 기능 |
 | ----------------- | -------- |
@@ -349,7 +350,7 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 | `OnPostDeleteMessageAsync` | `DeleteMessageAsync`를 실행하여 지정된 `Id`의 메시지를 삭제합니다. |
 | `OnPostAnalyzeMessagesAsync` | 하나 이상의 메시지가 데이터베이스에 있으면 메시지당 평균 단어 수를 계산합니다. |
 
-페이지 모델 메서드는 `IndexPageTests` 클래스(*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs*)의 7가지 테스트를 사용하여 테스트됩니다. 테스트는 친숙한 정렬-어셜선-실행 패턴을 사용합니다. 이러한 테스트는 다음에 중점을 둡니다.
+페이지 모델 메서드는 `IndexPageTests` 클래스( *tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs* )의 7가지 테스트를 사용하여 테스트됩니다. 테스트는 친숙한 정렬-어셜선-실행 패턴을 사용합니다. 이러한 테스트는 다음에 중점을 둡니다.
 
 * [ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)가 잘못된 경우 메서드가 올바른 동작을 따르는지 확인합니다.
 * 메서드를 확인하면 올바른 <xref:Microsoft.AspNetCore.Mvc.IActionResult>가 생성됩니다.
@@ -363,11 +364,11 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 
 실행 단계에서 `OnGetAsync` 메서드를 수행하면 페이지 모델의 `GetMessagesAsync` 메서드가 호출됩니다.
 
-단위 테스트 실행 단계(*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs*):
+단위 테스트 실행 단계( *tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs* ):
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs?name=snippet2)]
 
-`IndexPage` 페이지 모델의 `OnGetAsync` 메서드(*src/RazorPagesTestSample/Pages/Index.cshtml.cs*):
+`IndexPage` 페이지 모델의 `OnGetAsync` 메서드( *src/RazorPagesTestSample/Pages/Index.cshtml.cs* ):
 
 [!code-csharp[](razor-pages-tests/samples/2.x/src/RazorPagesTestSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3)]
 
@@ -392,6 +393,6 @@ DAL의 `GetMessagesAsync` 메서드는 이 메서드 호출에 대한 결과를 
 * [xUnit.net 시작: .NET SDK 명령줄에서 .NET Core 사용](https://xunit.github.io/docs/getting-started-dotnet-core)
 * [Moq](https://github.com/moq/moq4)
 * [Moq 빠른 시작](https://github.com/Moq/moq4/wiki/Quickstart)
-* [JustMockLite](https://github.com/telerik/JustMockLite): .NET 개발자를 위한 모의 프레임워크입니다. (*Microsoft에서 유지 관리하거나 지원하지 않습니다.* )
+* [JustMockLite](https://github.com/telerik/JustMockLite): .NET 개발자를 위한 모의 프레임워크입니다. ( *Microsoft에서 유지 관리하거나 지원하지 않습니다.* )
 
 ::: moniker-end

@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017, devx-track-js
 ms.date: 09/06/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/spa-services
-ms.openlocfilehash: 33ae16c033142aa1c0f4cea53ca746e8a6aaf052
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 1b9f5b4b4e066cdd3dd5fbfa666c7a087949979f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690663"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054647"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>JavaScript Services를 사용하여 ASP.NET Core에서 단일 페이지 애플리케이션 만들기
 

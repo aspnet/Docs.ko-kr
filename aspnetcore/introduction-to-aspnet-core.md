@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/17/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: index
-ms.openlocfilehash: f1235337748bacdb6eaa775a5853238bf729e605
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 4301e0d59364573767ab4cae25a4818ff84b9abc
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634555"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052229"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 소개
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: f5efb121b95d84876c9029cf06a96f827137e660
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 951a8ada57ae523f362313426c0279556eb8339b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631450"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050617"
 ---
 # <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>7부. ASP.NET Core의 Razor Page에 새 필드 추가
 
@@ -52,7 +53,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 앱을 빌드합니다.
 
-*Pages/Movies/Index.cshtml*를 편집하고 `Rating` 필드를 추가합니다.
+*Pages/Movies/Index.cshtml* 를 편집하고 `Rating` 필드를 추가합니다.
 
 <a name="addrat"></a>
 
@@ -94,7 +95,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 ### <a name="add-a-migration-for-the-rating-field"></a>등급 필드에 대한 마이그레이션을 추가합니다.
 
-**도구** 메뉴에서 **NuGet 패키지 관리자 > 패키지 관리자 콘솔**을 선택합니다.
+**도구** 메뉴에서 **NuGet 패키지 관리자 > 패키지 관리자 콘솔** 을 선택합니다.
 PMC에서 다음 명령을 입력합니다.
 
 ```powershell
@@ -118,9 +119,9 @@ DB의 모든 레코드를 삭제하는 경우 이니셜라이저에서 DB를 시
 다른 옵션은 데이터베이스를 삭제하고 마이그레이션을 사용하여 데이터베이스를 다시 만드는 것입니다. SSOX에서 데이터베이스를 삭제하려면:
 
 * SSOX에서 데이터베이스를 선택합니다.
-* 데이터베이스를 마우스 오른쪽 단추로 클릭하고 *삭제*를 선택합니다.
-* **기존 연결 닫기**를 선택합니다.
-* **확인**을 선택합니다.
+* 데이터베이스를 마우스 오른쪽 단추로 클릭하고 *삭제* 를 선택합니다.
+* **기존 연결 닫기** 를 선택합니다.
+* **확인** 을 선택합니다.
 * [PMC](xref:tutorials/razor-pages/new-field#pmc)에서 데이터베이스를 업데이트합니다.
 
   ```powershell
@@ -179,7 +180,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 앱을 빌드합니다.
 
-*Pages/Movies/Index.cshtml*를 편집하고 `Rating` 필드를 추가합니다.
+*Pages/Movies/Index.cshtml* 를 편집하고 `Rating` 필드를 추가합니다.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/IndexRating.cshtml?highlight=40-42,61-63)]
 
@@ -219,7 +220,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 ### <a name="add-a-migration-for-the-rating-field"></a>등급 필드에 대한 마이그레이션을 추가합니다.
 
-**도구** 메뉴에서 **NuGet 패키지 관리자 > 패키지 관리자 콘솔**을 선택합니다.
+**도구** 메뉴에서 **NuGet 패키지 관리자 > 패키지 관리자 콘솔** 을 선택합니다.
 PMC에서 다음 명령을 입력합니다.
 
 ```powershell
@@ -243,9 +244,9 @@ DB의 모든 레코드를 삭제하는 경우 이니셜라이저에서 DB를 시
 다른 옵션은 데이터베이스를 삭제하고 마이그레이션을 사용하여 데이터베이스를 다시 만드는 것입니다. SSOX에서 데이터베이스를 삭제하려면:
 
 * SSOX에서 데이터베이스를 선택합니다.
-* 데이터베이스를 마우스 오른쪽 단추로 클릭하고 *삭제*를 선택합니다.
-* **기존 연결 닫기**를 선택합니다.
-* **확인**을 선택합니다.
+* 데이터베이스를 마우스 오른쪽 단추로 클릭하고 *삭제* 를 선택합니다.
+* **기존 연결 닫기** 를 선택합니다.
+* **확인** 을 선택합니다.
 * [PMC](xref:tutorials/razor-pages/new-field#pmc)에서 데이터베이스를 업데이트합니다.
 
   ```powershell
@@ -258,7 +259,7 @@ DB의 모든 레코드를 삭제하는 경우 이니셜라이저에서 DB를 시
 
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-데이터베이스를 삭제하고 마이그레이션을 사용하여 데이터베이스를 다시 만듭니다. 데이터베이스를 삭제하려면 데이터베이스 파일(*MvcMovie.db*)을 삭제합니다. 그런 다음, `ef database update` 명령을 실행합니다.
+데이터베이스를 삭제하고 마이그레이션을 사용하여 데이터베이스를 다시 만듭니다. 데이터베이스를 삭제하려면 데이터베이스 파일( *MvcMovie.db* )을 삭제합니다. 그런 다음, `ef database update` 명령을 실행합니다.
 
 ```dotnetcli
 dotnet ef database update

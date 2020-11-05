@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/22/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 7335b68ad06b9d2b8d7e056cfc1a6d8214119b21
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 68a38b82f5a89365e4f345a60f1f34b697c027ed
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865421"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060094"
 ---
 # <a name="build-a-no-locblazor-todo-list-app"></a>Blazor 할 일 목록 앱 빌드
 

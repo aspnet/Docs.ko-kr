@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/1/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/websockets
-ms.openlocfilehash: 11cd1c266516c696859c4116c940400e90d09ab4
-ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
+ms.openlocfilehash: 83a41d503b2d56bca3f1bac14eeb9d54a8257642
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678541"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057780"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core에서 WebSocket 지원
 
@@ -92,7 +93,7 @@ ms.locfileid: "92678541"
 
 WebSocket 요청은 모든 URL을 통해서 전달될 수 있지만, 이 예제 코드에서는 `/ws` 에 대한 요청만 수락합니다.
 
-WebSocket을 사용하는 경우 연결 기간 동안 미들웨어 파이프라인이 계속 실행되도록 **해야 합니다** . 미들웨어 파이프라인 종료 후 WebSocket 메시지를 보내거나 받으려고 하면 다음과 같은 예외가 발생할 수 있습니다.
+WebSocket을 사용하는 경우 연결 기간 동안 미들웨어 파이프라인이 계속 실행되도록 **해야 합니다**. 미들웨어 파이프라인 종료 후 WebSocket 메시지를 보내거나 받으려고 하면 다음과 같은 예외가 발생할 수 있습니다.
 
 ```
 System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed the WebSocket connection without completing the close handshake. ---> System.ObjectDisposedException: Cannot write to the response body, the response has completed.
@@ -127,7 +128,7 @@ Object name: 'HttpResponseStream'.
 
 ## <a name="websocket-origin-restriction"></a>WebSocket 원본 제한
 
-CORS에서 제공하는 보호 기능은 WebSocket에 적용되지 않습니다. 브라우저는 다음을 수행하지 **않습니다** .
+CORS에서 제공하는 보호 기능은 WebSocket에 적용되지 않습니다. 브라우저는 다음을 수행하지 **않습니다**.
 
 * CORS pre-flight 요청을 수행합니다.
 * WebSocket 요청을 생성할 때 `Access-Control` 헤더에 지정된 제한 사항을 준수합니다.
@@ -139,7 +140,7 @@ CORS에서 제공하는 보호 기능은 WebSocket에 적용되지 않습니다.
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSocketsOptionsAO&highlight=6-7)]
 
 > [!NOTE]
-> `Origin` 헤더는 클라이언트에 의해 제어되며 `Referer` 헤더와 마찬가지로 위조될 수 있습니다. 이러한 헤더를 인증 메커니즘으로 사용하지 **마세요** .
+> `Origin` 헤더는 클라이언트에 의해 제어되며 `Referer` 헤더와 마찬가지로 위조될 수 있습니다. 이러한 헤더를 인증 메커니즘으로 사용하지 **마세요**.
 
 ::: moniker-end
 
@@ -172,7 +173,7 @@ Windows 8 이상에서 WebSocket 프로토콜을 지원하려면:
 > IIS Express를 사용할 때 이러한 단계가 필요하지 않습니다.
 
 1. **제어판** > **프로그램** > **프로그램 및 기능** > **Windows 기능 사용/사용 안 함** (화면 왼쪽)으로 이동합니다.
-1. 다음 노드를 엽니다. **인터넷 정보 서비스** > **World Wide Web 서비스** > **애플리케이션 개발 기능** .
+1. 다음 노드를 엽니다. **인터넷 정보 서비스** > **World Wide Web 서비스** > **애플리케이션 개발 기능**.
 1. **WebSocket 프로토콜** 기능을 선택합니다. **확인** 을 선택합니다.
 
 ### <a name="disable-websocket-when-using-socketio-on-nodejs"></a>Node.js에서 socket.io를 사용할 때 WebSocket 비활성화

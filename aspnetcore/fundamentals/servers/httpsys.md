@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 8ed9ec3447205107194ffa5c329c0e5ae0fc5553
-ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
+ms.openlocfilehash: ca8aa126a44ea417017f0be0372e818a95ad8413
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653973"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053750"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core에서 HTTP.sys 웹 서버 구현
 
@@ -150,8 +151,8 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
 
 1. 앱이 [프레임워크 종속 배포](/dotnet/core/deploying/#framework-dependent-deployments-fdd)인 경우 .NET Core, .NET Framework 또는 둘 다(앱이 NET Framework를 대상으로 하는 .NET Core 앱인 경우)를 설치합니다.
 
-   * **.NET Core**: 앱에 .NET Core가 필요한 경우 [.NET Core 다운로드](https://dotnet.microsoft.com/download)에서 **.NET Core 런타임** 설치 관리자를 가져와 실행합니다. 서버에 전체 SDK를 설치하지 마세요.
-   * **.NET Framework**: 앱에 .NET Framework가 필요한 경우 [.NET Framework 설치 가이드](/dotnet/framework/install/)를 참조하세요. 필수 .NET Framework를 설치합니다. 최신 .NET Framework의 설치 관리자는 [.NET Core 다운로드](https://dotnet.microsoft.com/download) 페이지에서 사용할 수 있습니다.
+   * **.NET Core** : 앱에 .NET Core가 필요한 경우 [.NET Core 다운로드](https://dotnet.microsoft.com/download)에서 **.NET Core 런타임** 설치 관리자를 가져와 실행합니다. 서버에 전체 SDK를 설치하지 마세요.
+   * **.NET Framework** : 앱에 .NET Framework가 필요한 경우 [.NET Framework 설치 가이드](/dotnet/framework/install/)를 참조하세요. 필수 .NET Framework를 설치합니다. 최신 .NET Framework의 설치 관리자는 [.NET Core 다운로드](https://dotnet.microsoft.com/download) 페이지에서 사용할 수 있습니다.
 
    앱이 [자체 포함 배포](/dotnet/core/deploying/#self-contained-deployments-scd)인 경우 앱의 배포에 런타임이 포함됩니다. 서버에 프레임워크를 설치할 필요가 없습니다.
 
@@ -179,7 +180,7 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
 
 1. 서버에 URL 접두사를 미리 등록합니다.
 
-   HTTP.sys 구성에 대한 기본 제공 도구는 *netsh.exe*입니다. *netsh.exe*는 URL 접두사를 예약하고 X.509 인증서를 할당하는 데 사용됩니다. 도구를 사용하려면 관리자 권한이 필요합니다.
+   HTTP.sys 구성에 대한 기본 제공 도구는 *netsh.exe* 입니다. *netsh.exe* 는 URL 접두사를 예약하고 X.509 인증서를 할당하는 데 사용됩니다. 도구를 사용하려면 관리자 권한이 필요합니다.
 
    *netsh.exe* 도구를 사용하여 앱의 URL을 등록합니다.
 
@@ -220,7 +221,7 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
    참조용으로 GUID를 패키지 태그로 앱에 저장합니다.
 
    * Visual Studio에서 다음을 수행합니다.
-     * **솔루션 탐색기**에서 앱을 마우스 오른쪽 단추로 클릭하고 **속성**을 선택하여 앱의 프로젝트 속성을 엽니다.
+     * **솔루션 탐색기** 에서 앱을 마우스 오른쪽 단추로 클릭하고 **속성** 을 선택하여 앱의 프로젝트 속성을 엽니다.
      * **패키지** 탭을 선택합니다.
      * **태그** 필드에 직접 만든 GUID를 입력합니다.
    * Visual Studio를 사용하지 않는 경우:
@@ -253,7 +254,7 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
    netsh http delete sslcert ipport=<IP>:<PORT>
    ```
 
-   *netsh.exe*에 대한 참조 문서입니다.
+   *netsh.exe* 에 대한 참조 문서입니다.
 
    * [HTTP(Hypertext Transfer Protocol)에 대한 Netsh 명령](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725882(v=ws.10))
    * [UrlPrefix 문자열](/windows/win32/http/urlprefix-strings)
@@ -418,8 +419,8 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
 
 1. 앱이 [프레임워크 종속 배포](/dotnet/core/deploying/#framework-dependent-deployments-fdd)인 경우 .NET Core, .NET Framework 또는 둘 다(앱이 NET Framework를 대상으로 하는 .NET Core 앱인 경우)를 설치합니다.
 
-   * **.NET Core**: 앱에 .NET Core가 필요한 경우 [.NET Core 다운로드](https://dotnet.microsoft.com/download)에서 **.NET Core 런타임** 설치 관리자를 가져와 실행합니다. 서버에 전체 SDK를 설치하지 마세요.
-   * **.NET Framework**: 앱에 .NET Framework가 필요한 경우 [.NET Framework 설치 가이드](/dotnet/framework/install/)를 참조하세요. 필수 .NET Framework를 설치합니다. 최신 .NET Framework의 설치 관리자는 [.NET Core 다운로드](https://dotnet.microsoft.com/download) 페이지에서 사용할 수 있습니다.
+   * **.NET Core** : 앱에 .NET Core가 필요한 경우 [.NET Core 다운로드](https://dotnet.microsoft.com/download)에서 **.NET Core 런타임** 설치 관리자를 가져와 실행합니다. 서버에 전체 SDK를 설치하지 마세요.
+   * **.NET Framework** : 앱에 .NET Framework가 필요한 경우 [.NET Framework 설치 가이드](/dotnet/framework/install/)를 참조하세요. 필수 .NET Framework를 설치합니다. 최신 .NET Framework의 설치 관리자는 [.NET Core 다운로드](https://dotnet.microsoft.com/download) 페이지에서 사용할 수 있습니다.
 
    앱이 [자체 포함 배포](/dotnet/core/deploying/#self-contained-deployments-scd)인 경우 앱의 배포에 런타임이 포함됩니다. 서버에 프레임워크를 설치할 필요가 없습니다.
 
@@ -447,7 +448,7 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
 
 1. 서버에 URL 접두사를 미리 등록합니다.
 
-   HTTP.sys 구성에 대한 기본 제공 도구는 *netsh.exe*입니다. *netsh.exe*는 URL 접두사를 예약하고 X.509 인증서를 할당하는 데 사용됩니다. 도구를 사용하려면 관리자 권한이 필요합니다.
+   HTTP.sys 구성에 대한 기본 제공 도구는 *netsh.exe* 입니다. *netsh.exe* 는 URL 접두사를 예약하고 X.509 인증서를 할당하는 데 사용됩니다. 도구를 사용하려면 관리자 권한이 필요합니다.
 
    *netsh.exe* 도구를 사용하여 앱의 URL을 등록합니다.
 
@@ -488,7 +489,7 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
    참조용으로 GUID를 패키지 태그로 앱에 저장합니다.
 
    * Visual Studio에서 다음을 수행합니다.
-     * **솔루션 탐색기**에서 앱을 마우스 오른쪽 단추로 클릭하고 **속성**을 선택하여 앱의 프로젝트 속성을 엽니다.
+     * **솔루션 탐색기** 에서 앱을 마우스 오른쪽 단추로 클릭하고 **속성** 을 선택하여 앱의 프로젝트 속성을 엽니다.
      * **패키지** 탭을 선택합니다.
      * **태그** 필드에 직접 만든 GUID를 입력합니다.
    * Visual Studio를 사용하지 않는 경우:
@@ -521,7 +522,7 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
    netsh http delete sslcert ipport=<IP>:<PORT>
    ```
 
-   *netsh.exe*에 대한 참조 문서입니다.
+   *netsh.exe* 에 대한 참조 문서입니다.
 
    * [HTTP(Hypertext Transfer Protocol)에 대한 Netsh 명령](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725882(v=ws.10))
    * [UrlPrefix 문자열](/windows/win32/http/urlprefix-strings)
@@ -671,8 +672,8 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
 
 1. 앱이 [프레임워크 종속 배포](/dotnet/core/deploying/#framework-dependent-deployments-fdd)인 경우 .NET Core, .NET Framework 또는 둘 다(앱이 NET Framework를 대상으로 하는 .NET Core 앱인 경우)를 설치합니다.
 
-   * **.NET Core**: 앱에 .NET Core가 필요한 경우 [.NET Core 다운로드](https://dotnet.microsoft.com/download)에서 **.NET Core 런타임** 설치 관리자를 가져와 실행합니다. 서버에 전체 SDK를 설치하지 마세요.
-   * **.NET Framework**: 앱에 .NET Framework가 필요한 경우 [.NET Framework 설치 가이드](/dotnet/framework/install/)를 참조하세요. 필수 .NET Framework를 설치합니다. 최신 .NET Framework의 설치 관리자는 [.NET Core 다운로드](https://dotnet.microsoft.com/download) 페이지에서 사용할 수 있습니다.
+   * **.NET Core** : 앱에 .NET Core가 필요한 경우 [.NET Core 다운로드](https://dotnet.microsoft.com/download)에서 **.NET Core 런타임** 설치 관리자를 가져와 실행합니다. 서버에 전체 SDK를 설치하지 마세요.
+   * **.NET Framework** : 앱에 .NET Framework가 필요한 경우 [.NET Framework 설치 가이드](/dotnet/framework/install/)를 참조하세요. 필수 .NET Framework를 설치합니다. 최신 .NET Framework의 설치 관리자는 [.NET Core 다운로드](https://dotnet.microsoft.com/download) 페이지에서 사용할 수 있습니다.
 
    앱이 [자체 포함 배포](/dotnet/core/deploying/#self-contained-deployments-scd)인 경우 앱의 배포에 런타임이 포함됩니다. 서버에 프레임워크를 설치할 필요가 없습니다.
 
@@ -700,7 +701,7 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
 
 1. 서버에 URL 접두사를 미리 등록합니다.
 
-   HTTP.sys 구성에 대한 기본 제공 도구는 *netsh.exe*입니다. *netsh.exe*는 URL 접두사를 예약하고 X.509 인증서를 할당하는 데 사용됩니다. 도구를 사용하려면 관리자 권한이 필요합니다.
+   HTTP.sys 구성에 대한 기본 제공 도구는 *netsh.exe* 입니다. *netsh.exe* 는 URL 접두사를 예약하고 X.509 인증서를 할당하는 데 사용됩니다. 도구를 사용하려면 관리자 권한이 필요합니다.
 
    *netsh.exe* 도구를 사용하여 앱의 URL을 등록합니다.
 
@@ -741,7 +742,7 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
    참조용으로 GUID를 패키지 태그로 앱에 저장합니다.
 
    * Visual Studio에서 다음을 수행합니다.
-     * **솔루션 탐색기**에서 앱을 마우스 오른쪽 단추로 클릭하고 **속성**을 선택하여 앱의 프로젝트 속성을 엽니다.
+     * **솔루션 탐색기** 에서 앱을 마우스 오른쪽 단추로 클릭하고 **속성** 을 선택하여 앱의 프로젝트 속성을 엽니다.
      * **패키지** 탭을 선택합니다.
      * **태그** 필드에 직접 만든 GUID를 입력합니다.
    * Visual Studio를 사용하지 않는 경우:
@@ -774,7 +775,7 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
    netsh http delete sslcert ipport=<IP>:<PORT>
    ```
 
-   *netsh.exe*에 대한 참조 문서입니다.
+   *netsh.exe* 에 대한 참조 문서입니다.
 
    * [HTTP(Hypertext Transfer Protocol)에 대한 Netsh 명령](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725882(v=ws.10))
    * [UrlPrefix 문자열](/windows/win32/http/urlprefix-strings)
@@ -924,8 +925,8 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
 
 1. 앱이 [프레임워크 종속 배포](/dotnet/core/deploying/#framework-dependent-deployments-fdd)인 경우 .NET Core, .NET Framework 또는 둘 다(앱이 NET Framework를 대상으로 하는 .NET Core 앱인 경우)를 설치합니다.
 
-   * **.NET Core**: 앱에 .NET Core가 필요한 경우 [.NET Core 다운로드](https://dotnet.microsoft.com/download)에서 **.NET Core 런타임** 설치 관리자를 가져와 실행합니다. 서버에 전체 SDK를 설치하지 마세요.
-   * **.NET Framework**: 앱에 .NET Framework가 필요한 경우 [.NET Framework 설치 가이드](/dotnet/framework/install/)를 참조하세요. 필수 .NET Framework를 설치합니다. 최신 .NET Framework의 설치 관리자는 [.NET Core 다운로드](https://dotnet.microsoft.com/download) 페이지에서 사용할 수 있습니다.
+   * **.NET Core** : 앱에 .NET Core가 필요한 경우 [.NET Core 다운로드](https://dotnet.microsoft.com/download)에서 **.NET Core 런타임** 설치 관리자를 가져와 실행합니다. 서버에 전체 SDK를 설치하지 마세요.
+   * **.NET Framework** : 앱에 .NET Framework가 필요한 경우 [.NET Framework 설치 가이드](/dotnet/framework/install/)를 참조하세요. 필수 .NET Framework를 설치합니다. 최신 .NET Framework의 설치 관리자는 [.NET Core 다운로드](https://dotnet.microsoft.com/download) 페이지에서 사용할 수 있습니다.
 
    앱이 [자체 포함 배포](/dotnet/core/deploying/#self-contained-deployments-scd)인 경우 앱의 배포에 런타임이 포함됩니다. 서버에 프레임워크를 설치할 필요가 없습니다.
 
@@ -953,7 +954,7 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
 
 1. 서버에 URL 접두사를 미리 등록합니다.
 
-   HTTP.sys 구성에 대한 기본 제공 도구는 *netsh.exe*입니다. *netsh.exe*는 URL 접두사를 예약하고 X.509 인증서를 할당하는 데 사용됩니다. 도구를 사용하려면 관리자 권한이 필요합니다.
+   HTTP.sys 구성에 대한 기본 제공 도구는 *netsh.exe* 입니다. *netsh.exe* 는 URL 접두사를 예약하고 X.509 인증서를 할당하는 데 사용됩니다. 도구를 사용하려면 관리자 권한이 필요합니다.
 
    *netsh.exe* 도구를 사용하여 앱의 URL을 등록합니다.
 
@@ -994,7 +995,7 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
    참조용으로 GUID를 패키지 태그로 앱에 저장합니다.
 
    * Visual Studio에서 다음을 수행합니다.
-     * **솔루션 탐색기**에서 앱을 마우스 오른쪽 단추로 클릭하고 **속성**을 선택하여 앱의 프로젝트 속성을 엽니다.
+     * **솔루션 탐색기** 에서 앱을 마우스 오른쪽 단추로 클릭하고 **속성** 을 선택하여 앱의 프로젝트 속성을 엽니다.
      * **패키지** 탭을 선택합니다.
      * **태그** 필드에 직접 만든 GUID를 입력합니다.
    * Visual Studio를 사용하지 않는 경우:
@@ -1027,7 +1028,7 @@ Visual Studio에서 기본 실행 프로필은 IIS Express용입니다. 프로�
    netsh http delete sslcert ipport=<IP>:<PORT>
    ```
 
-   *netsh.exe*에 대한 참조 문서입니다.
+   *netsh.exe* 에 대한 참조 문서입니다.
 
    * [HTTP(Hypertext Transfer Protocol)에 대한 Netsh 명령](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725882(v=ws.10))
    * [UrlPrefix 문자열](/windows/win32/http/urlprefix-strings)

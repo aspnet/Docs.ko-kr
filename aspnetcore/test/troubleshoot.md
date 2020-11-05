@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/troubleshoot
-ms.openlocfilehash: 24781e7689a1a238e9d2fa9666fa61a8642135c3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 8e6c640cd775e5d4cbe6e34c1cecc391baf57344
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632137"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059574"
 ---
 # <a name="troubleshoot-and-debug-aspnet-core-projects"></a>ASP.NET Core 프로젝트 문제 해결 및 디버깅
 
@@ -49,7 +50,7 @@ ASP.NET Core에 대한 **새 프로젝트** 대화 상자에서 다음과 같은
 * 32비트 .NET Core SDK가 다른 애플리케이션에 의해 설치되었습니다.
 * 잘못된 버전이 다운로드 및 설치되었습니다.
 
-이 경고를 피하려면 32비트 .NET Core SDK를 제거합니다. **제어판** > **프로그램 및 기능** > **프로그램 제거 또는 변경**에서 제거합니다. 경고가 발생하는 이유와 그 영향을 이해하는 경우 경고를 무시해도 됩니다.
+이 경고를 피하려면 32비트 .NET Core SDK를 제거합니다. **제어판** > **프로그램 및 기능** > **프로그램 제거 또는 변경** 에서 제거합니다. 경고가 발생하는 이유와 그 영향을 이해하는 경우 경고를 무시해도 됩니다.
 
 ### <a name="the-net-core-sdk-is-installed-in-multiple-locations"></a>.NET Core SDK는 여러 위치에 설치됩니다.
 
@@ -59,7 +60,7 @@ ASP.NET Core에 대한 **새 프로젝트** 대화 상자에서 다음과 같은
 
 *C:\\Program Files\\dotnet\\sdk\\* 외부의 디렉터리에 .NET Core SDK를 하나 이상 설치하는 경우 이 메시지가 표시됩니다. 일반적으로 이 문제는 .NET Core SDK가 MSI 설치 관리자 대신 복사/붙여넣기를 사용하여 컴퓨터에 배포된 경우에 발생합니다.
 
-이 경고를 방지하려면 모든 32비트 .NET Core SDK 및 런타임을 제거합니다. **제어판** > **프로그램 및 기능** > **프로그램 제거 또는 변경**에서 제거합니다. 경고가 발생하는 이유와 그 영향을 이해하는 경우 경고를 무시해도 됩니다.
+이 경고를 방지하려면 모든 32비트 .NET Core SDK 및 런타임을 제거합니다. **제어판** > **프로그램 및 기능** > **프로그램 제거 또는 변경** 에서 제거합니다. 경고가 발생하는 이유와 그 영향을 이해하는 경우 경고를 무시해도 됩니다.
 
 ### <a name="no-net-core-sdks-were-detected"></a>.NET Core SDK가 검색되지 않았습니다.
 

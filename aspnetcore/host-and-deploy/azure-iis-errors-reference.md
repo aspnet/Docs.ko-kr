@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: 46fa3138e3fbcc4ed5e4497ec017a5873a4cdb13
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: b009cc61a94e618a48d96ecbd770ef6371308f6a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754660"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059847"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>ASP.NET Core를 사용하는 Azure App Service 및 IIS에 대한 일반적인 오류 참조
 
@@ -39,8 +40,8 @@ ms.locfileid: "91754660"
 * 애플리케이션 이벤트 로그 항목
   * Azure App Service: <xref:test/troubleshoot-azure-iis>을 참조하세요.
   * IIS
-    1. **Windows** 메뉴에서 **시작**을 선택하고, *이벤트 뷰어*를 입력하고, **Enter**를 누릅니다.
-    1. **이벤트 뷰어**가 열리면 사이드바에서 **Windows 로그** > **애플리케이션**을 확장합니다.
+    1. **Windows** 메뉴에서 **시작** 을 선택하고, *이벤트 뷰어* 를 입력하고, **Enter** 를 누릅니다.
+    1. **이벤트 뷰어** 가 열리면 사이드바에서 **Windows 로그** > **애플리케이션** 을 확장합니다.
 * ASP.NET Core 모듈 stdout 및 디버그 로그 항목
   * Azure App Service: <xref:test/troubleshoot-azure-iis>을 참조하세요.
   * IIS: ASP.NET Core 모듈 항목의 [로그 생성 및 리디렉션](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection) 및 [향상된 진단 로그](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) 섹션의 지침을 따릅니다.
@@ -53,11 +54,11 @@ ms.locfileid: "91754660"
 
 ## <a name="os-upgrade-removed-the-32-bit-aspnet-core-module"></a>OS 업그레이드에서 32비트 ASP.NET Core 모듈이 제거됨
 
-**애플리케이션 로그:** 모듈 DLL **C:\WINDOWS\system32\inetsrv\aspnetcore.dll**을 로드하지 못했습니다. 데이터 오류입니다.
+**애플리케이션 로그:** 모듈 DLL **C:\WINDOWS\system32\inetsrv\aspnetcore.dll** 을 로드하지 못했습니다. 데이터 오류입니다.
 
 문제 해결:
 
-OS를 업그레이드하는 동안 **C:\Windows\SysWOW64\inetsrv** 디렉터리에 있는 비OS 파일은 보존되지 않습니다. OS를 업그레이드하기 전에 ASP.NET Core 모듈을 설치한 다음, OS를 업그레이드한 후에 32비트 모드에서 앱 풀을 실행하면 이 문제가 발생합니다. OS를 업그레이드한 후에 ASP.NET Core 모듈을 복구합니다. [.NET Core 호스팅 번들 설치](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)를 참조하세요. 설치 관리자가 실행될 때 **복구**를 선택합니다.
+OS를 업그레이드하는 동안 **C:\Windows\SysWOW64\inetsrv** 디렉터리에 있는 비OS 파일은 보존되지 않습니다. OS를 업그레이드하기 전에 ASP.NET Core 모듈을 설치한 다음, OS를 업그레이드한 후에 32비트 모드에서 앱 풀을 실행하면 이 문제가 발생합니다. OS를 업그레이드한 후에 ASP.NET Core 모듈을 복구합니다. [.NET Core 호스팅 번들 설치](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)를 참조하세요. 설치 관리자가 실행될 때 **복구** 를 선택합니다.
 
 ## <a name="missing-site-extension-32-bit-x86-and-64-bit-x64-site-extensions-installed-or-wrong-process-bitness-set"></a>사이트 확장 누락, 32비트(x86) 및 64비트(x64) 사이트 확장이 설치됨 또는 잘못된 프로세스 비트 수가 설정됨
 
@@ -84,7 +85,7 @@ Azure App Services에서 호스트하는 앱에 적용됩니다.
 
 * 미리 보기 런타임에서 앱을 실행 중이며 사이트 확장의 비트 수가 앱의 비트 수와 일치하는 경우 미리 보기 사이트 확장의 ‘런타임 버전’이 앱의 런타임 버전과 일치하는지 확인합니다.
 
-* **애플리케이션 설정**에 있는 앱의 **플랫폼**이 앱의 비트 수와 일치하는지 확인합니다.
+* **애플리케이션 설정** 에 있는 앱의 **플랫폼** 이 앱의 비트 수와 일치하는지 확인합니다.
 
 자세한 내용은 <xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>를 참조하세요.
 
@@ -102,7 +103,7 @@ Azure App Services에서 호스트하는 앱에 적용됩니다.
 
 문제 해결:
 
-x86 프레임워크 종속 배포(`<PlatformTarget>x86</PlatformTarget>`)의 경우 32비트 앱용 IIS 앱 풀을 사용하도록 설정합니다. IIS 관리자에서 앱 풀의 **고급 설정**을 열고 **32비트 앱 사용**을 **True**로 설정합니다.
+x86 프레임워크 종속 배포(`<PlatformTarget>x86</PlatformTarget>`)의 경우 32비트 앱용 IIS 앱 풀을 사용하도록 설정합니다. IIS 관리자에서 앱 풀의 **고급 설정** 을 열고 **32비트 앱 사용** 을 **True** 로 설정합니다.
 
 ## <a name="platform-conflicts-with-rid"></a>플랫폼이 RID와 충돌함
 
@@ -154,7 +155,7 @@ x86 프레임워크 종속 배포(`<PlatformTarget>x86</PlatformTarget>`)의 경
 
 문제 해결:
 
-IIS 웹 사이트 **기본 설정**과 실제 앱 폴더를 확인합니다. 앱이 IIS 웹 사이트 **실제 경로**의 폴더에 있는지 확인합니다.
+IIS 웹 사이트 **기본 설정** 과 실제 앱 폴더를 확인합니다. 앱이 IIS 웹 사이트 **실제 경로** 의 폴더에 있는지 확인합니다.
 
 ## <a name="incorrect-role-aspnet-core-module-not-installed-or-incorrect-permissions"></a>잘못된 역할, 설치되지 않은 ASP.NET Core 모듈 또는 잘못된 권한
 
@@ -170,7 +171,7 @@ IIS 웹 사이트 **기본 설정**과 실제 앱 폴더를 확인합니다. 앱
 
 * 적절한 역할을 사용할 수 있는지 확인합니다. [IIS 구성](xref:host-and-deploy/iis/index#iis-configuration)을 참조하세요.
 
-* **프로그램 및 기능** 또는 **앱 및 기능**을 열고 **Windows Server 호스팅**이 설치되어 있는지 확인합니다. **Windows Server 호스팅**이 설치된 프로그램 목록에 없는 경우 .NET Core 호스팅 번들을 다운로드하여 설치합니다.
+* **프로그램 및 기능** 또는 **앱 및 기능** 을 열고 **Windows Server 호스팅** 이 설치되어 있는지 확인합니다. **Windows Server 호스팅** 이 설치된 프로그램 목록에 없는 경우 .NET Core 호스팅 번들을 다운로드하여 설치합니다.
 
   [현재 .NET Core 호스팅 번들 설치 관리자(직접 다운로드)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
@@ -178,7 +179,7 @@ IIS 웹 사이트 **기본 설정**과 실제 앱 폴더를 확인합니다. 앱
 
 * **애플리케이션 풀** > **프로세스 모델** > **Identity** 가 **ApplicationPoolIdentity** 로 설정되어 있는지 또는 사용자 지정 ID에 앱의 배포 폴더에 액세스할 수 있는 올바른 권한이 있는지를 확인합니다.
 
-* ASP.NET Core 호스팅 번들을 제거하고 이전 버전의 호스팅 번들을 설치하는 경우 *applicationHost.config* 파일에는 ASP.NET Core 모듈에 대한 섹션이 포함되지 않습니다. *%windir%/System32/inetsrv/config*에서 *applicationHost.config*를 열고 `<configuration><configSections><sectionGroup name="system.webServer">` 섹션 그룹을 찾습니다. ASP.NET Core 모듈에 대한 섹션이 섹션 그룹에서 누락된 경우 섹션 요소를 추가합니다.
+* ASP.NET Core 호스팅 번들을 제거하고 이전 버전의 호스팅 번들을 설치하는 경우 *applicationHost.config* 파일에는 ASP.NET Core 모듈에 대한 섹션이 포함되지 않습니다. *%windir%/System32/inetsrv/config* 에서 *applicationHost.config* 를 열고 `<configuration><configSections><sectionGroup name="system.webServer">` 섹션 그룹을 찾습니다. ASP.NET Core 모듈에 대한 섹션이 섹션 그룹에서 누락된 경우 섹션 요소를 추가합니다.
 
   ```xml
   <section name="aspNetCore" overrideModeDefault="Allow" />
@@ -200,21 +201,21 @@ IIS 웹 사이트 **기본 설정**과 실제 앱 폴더를 확인합니다. 앱
 
 * 앱이 Kestrel에서 로컬로 실행되는지 확인합니다. 프로세스 오류는 앱 내의 문제 때문일 수 있습니다. 자세한 내용은 <xref:test/troubleshoot-azure-iis>를 참조하세요.
 
-* *web.config*의 `<aspNetCore>` 요소에서 *processPath* 특성을 확인하여 FDD(프레임워크 종속 배포)에 대한 `dotnet`인지 또는 [SCD(자체 포함 배포)](/dotnet/core/deploying/#self-contained-deployments-scd)에 대한 `.\{ASSEMBLY}.exe`인지 확인합니다.
+* *web.config* 의 `<aspNetCore>` 요소에서 *processPath* 특성을 확인하여 FDD(프레임워크 종속 배포)에 대한 `dotnet`인지 또는 [SCD(자체 포함 배포)](/dotnet/core/deploying/#self-contained-deployments-scd)에 대한 `.\{ASSEMBLY}.exe`인지 확인합니다.
 
-* FDD의 경우 *dotnet.exe*에서 PATH 설정을 통해 액세스하지 못할 수 있습니다. 시스템 PATH 설정에 *C:\Program Files\dotnet\\* 이 있는지 확인합니다.
+* FDD의 경우 *dotnet.exe* 에서 PATH 설정을 통해 액세스하지 못할 수 있습니다. 시스템 PATH 설정에 *C:\Program Files\dotnet\\* 이 있는지 확인합니다.
 
-* FDD의 경우 *dotnet.exe*에서 앱 풀의 사용자 ID에 액세스하지 못할 수 있습니다. 앱 풀 사용자 ID에 *C:\Program Files\dotnet* 디렉터리에 대한 액세스 권한이 있는지 확인합니다. *C:\Program Files\dotnet* 및 앱 디렉터리에 앱 풀 사용자 ID에 대해 구성된 거부 규칙이 없는지 확인합니다.
+* FDD의 경우 *dotnet.exe* 에서 앱 풀의 사용자 ID에 액세스하지 못할 수 있습니다. 앱 풀 사용자 ID에 *C:\Program Files\dotnet* 디렉터리에 대한 액세스 권한이 있는지 확인합니다. *C:\Program Files\dotnet* 및 앱 디렉터리에 앱 풀 사용자 ID에 대해 구성된 거부 규칙이 없는지 확인합니다.
 
-* IIS를 다시 시작하지 않은 상태로 FDD를 배포하고 .NET Core를 설치했을 수 있습니다. 서버를 다시 시작하거나 명령 프롬프트에서 **net stop was /y**에 이어 **net start w3svc**를 실행하여 IIS를 다시 시작합니다.
+* IIS를 다시 시작하지 않은 상태로 FDD를 배포하고 .NET Core를 설치했을 수 있습니다. 서버를 다시 시작하거나 명령 프롬프트에서 **net stop was /y** 에 이어 **net start w3svc** 를 실행하여 IIS를 다시 시작합니다.
 
-* 호스팅 시스템에 .NET Core 런타임을 설치하지 않고 FDD를 배포했을 수 있습니다. .NET Core 런타임이 설치되어 있지 않으면 시스템에서 **.NET Core 호스팅 번들 설치 관리자**를 실행합니다.
+* 호스팅 시스템에 .NET Core 런타임을 설치하지 않고 FDD를 배포했을 수 있습니다. .NET Core 런타임이 설치되어 있지 않으면 시스템에서 **.NET Core 호스팅 번들 설치 관리자** 를 실행합니다.
 
   [현재 .NET Core 호스팅 번들 설치 관리자(직접 다운로드)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
   자세한 내용은 [.NET Core 호스팅 번들 설치](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)를 참조하세요.
 
-  특정 런타임이 필요한 경우 [.NET Download Archives](https://dotnet.microsoft.com/download/archives)에서 런타임을 다운로드하여 시스템에 설치합니다. 설치를 완료하려면 시스템을 다시 시작하거나 명령 프롬프트에서 **net stop was /y**에 이어 **net start w3svc**를 실행하여 IIS를 다시 시작합니다.
+  특정 런타임이 필요한 경우 [.NET Download Archives](https://dotnet.microsoft.com/download/archives)에서 런타임을 다운로드하여 시스템에 설치합니다. 설치를 완료하려면 시스템을 다시 시작하거나 명령 프롬프트에서 **net stop was /y** 에 이어 **net start w3svc** 를 실행하여 IIS를 다시 시작합니다.
 
 ## <a name="incorrect-arguments-of-aspnetcore-element"></a>\<aspNetCore> 요소의 인수가 잘못됨
 
@@ -230,7 +231,7 @@ IIS 웹 사이트 **기본 설정**과 실제 앱 폴더를 확인합니다. 앱
 
 * 앱이 Kestrel에서 로컬로 실행되는지 확인합니다. 프로세스 오류는 앱 내의 문제 때문일 수 있습니다. 자세한 내용은 <xref:test/troubleshoot-azure-iis>를 참조하세요.
 
-* *web.config*의 `<aspNetCore>` 요소에서 *인수* 특성을 검사하여 (a) FDD(프레임워크 종속 배포)에 대한 `.\{ASSEMBLY}.dll`인지, 또는 (b) 없는 경우 빈 문자열(`arguments=""`)이거나 SCD(자체 포함 배포)에 대한 앱의 인수(`arguments="{ARGUMENT_1}, {ARGUMENT_2}, ... {ARGUMENT_X}"`) 목록인지 확인합니다.
+* *web.config* 의 `<aspNetCore>` 요소에서 *인수* 특성을 검사하여 (a) FDD(프레임워크 종속 배포)에 대한 `.\{ASSEMBLY}.dll`인지, 또는 (b) 없는 경우 빈 문자열(`arguments=""`)이거나 SCD(자체 포함 배포)에 대한 앱의 인수(`arguments="{ARGUMENT_1}, {ARGUMENT_2}, ... {ARGUMENT_X}"`) 목록인지 확인합니다.
 
 ## <a name="missing-net-core-shared-framework"></a>.NET Core 공유 프레임워크 누락
 
@@ -276,7 +277,7 @@ FDD(프레임워크 종속 배포)의 경우 시스템에 올바른 런타임이
 
 하위 앱의 *web.config* 파일에 `<handlers>` 섹션이 포함되어 있지 않거나 하위 앱이 부모 앱의 처리기를 상속하지 않았는지 확인합니다.
 
-*web.config*의 부모 앱 `<system.webServer>` 섹션은 `<location>` 요소 내부에 배치되어 있습니다. <xref:System.Configuration.SectionInformation.InheritInChildApplications*> 속성이 `false`로 설정되어 [\<location>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location) 요소 내에서 지정된 설정이 부모 앱의 하위 디렉터리에 있는 앱에 상속되지 않음을 나타냅니다. 자세한 내용은 <xref:host-and-deploy/aspnet-core-module>를 참조하세요.
+*web.config* 의 부모 앱 `<system.webServer>` 섹션은 `<location>` 요소 내부에 배치되어 있습니다. <xref:System.Configuration.SectionInformation.InheritInChildApplications*> 속성이 `false`로 설정되어 [\<location>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location) 요소 내에서 지정된 설정이 부모 앱의 하위 디렉터리에 있는 앱에 상속되지 않음을 나타냅니다. 자세한 내용은 <xref:host-and-deploy/aspnet-core-module>를 참조하세요.
 
 ## <a name="stdout-log-path-incorrect"></a>stdout 로그 경로가 올바르지 않음
 
@@ -290,7 +291,7 @@ FDD(프레임워크 종속 배포)의 경우 시스템에 올바른 런타임이
 
 문제 해결:
 
-* *web.config*의 `<aspNetCore>` 요소에 지정된 `stdoutLogFile` 경로가 없습니다. 자세한 내용은 [ASP.NET Core 모듈: 로그 만들기 및 리디렉션](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)을 참조하세요.
+* *web.config* 의 `<aspNetCore>` 요소에 지정된 `stdoutLogFile` 경로가 없습니다. 자세한 내용은 [ASP.NET Core 모듈: 로그 만들기 및 리디렉션](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)을 참조하세요.
 
 * 앱 풀 사용자는 stdout 로그 경로에 대한 쓰기 액세스 권한이 없습니다.
 
@@ -327,8 +328,8 @@ FDD(프레임워크 종속 배포)의 경우 시스템에 올바른 런타임이
 * 애플리케이션 이벤트 로그 항목
   * Azure App Service: <xref:test/troubleshoot-azure-iis>을 참조하세요.
   * IIS
-    1. **Windows** 메뉴에서 **시작**을 선택하고, *이벤트 뷰어*를 입력하고, **Enter**를 누릅니다.
-    1. **이벤트 뷰어**가 열리면 사이드바에서 **Windows 로그** > **애플리케이션**을 확장합니다.
+    1. **Windows** 메뉴에서 **시작** 을 선택하고, *이벤트 뷰어* 를 입력하고, **Enter** 를 누릅니다.
+    1. **이벤트 뷰어** 가 열리면 사이드바에서 **Windows 로그** > **애플리케이션** 을 확장합니다.
 * ASP.NET Core 모듈 stdout 및 디버그 로그 항목
   * Azure App Service: <xref:test/troubleshoot-azure-iis>을 참조하세요.
   * IIS: ASP.NET Core 모듈 항목의 [로그 생성 및 리디렉션](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection) 및 [향상된 진단 로그](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) 섹션의 지침을 따릅니다.
@@ -341,11 +342,11 @@ FDD(프레임워크 종속 배포)의 경우 시스템에 올바른 런타임이
 
 ## <a name="os-upgrade-removed-the-32-bit-aspnet-core-module"></a>OS 업그레이드에서 32비트 ASP.NET Core 모듈이 제거됨
 
-**애플리케이션 로그:** 모듈 DLL **C:\WINDOWS\system32\inetsrv\aspnetcore.dll**을 로드하지 못했습니다. 데이터 오류입니다.
+**애플리케이션 로그:** 모듈 DLL **C:\WINDOWS\system32\inetsrv\aspnetcore.dll** 을 로드하지 못했습니다. 데이터 오류입니다.
 
 문제 해결:
 
-OS를 업그레이드하는 동안 **C:\Windows\SysWOW64\inetsrv** 디렉터리에 있는 비OS 파일은 보존되지 않습니다. OS를 업그레이드하기 전에 ASP.NET Core 모듈을 설치한 다음, OS를 업그레이드한 후에 32비트 모드에서 앱 풀을 실행하면 이 문제가 발생합니다. OS를 업그레이드한 후에 ASP.NET Core 모듈을 복구합니다. [.NET Core 호스팅 번들 설치](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)를 참조하세요. 설치 관리자가 실행될 때 **복구**를 선택합니다.
+OS를 업그레이드하는 동안 **C:\Windows\SysWOW64\inetsrv** 디렉터리에 있는 비OS 파일은 보존되지 않습니다. OS를 업그레이드하기 전에 ASP.NET Core 모듈을 설치한 다음, OS를 업그레이드한 후에 32비트 모드에서 앱 풀을 실행하면 이 문제가 발생합니다. OS를 업그레이드한 후에 ASP.NET Core 모듈을 복구합니다. [.NET Core 호스팅 번들 설치](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)를 참조하세요. 설치 관리자가 실행될 때 **복구** 를 선택합니다.
 
 ## <a name="missing-site-extension-32-bit-x86-and-64-bit-x64-site-extensions-installed-or-wrong-process-bitness-set"></a>사이트 확장 누락, 32비트(x86) 및 64비트(x64) 사이트 확장이 설치됨 또는 잘못된 프로세스 비트 수가 설정됨
 
@@ -370,7 +371,7 @@ Azure App Services에서 호스트하는 앱에 적용됩니다.
 
 * 미리 보기 런타임에서 앱을 실행 중이며 사이트 확장의 비트 수가 앱의 비트 수와 일치하는 경우 미리 보기 사이트 확장의 ‘런타임 버전’이 앱의 런타임 버전과 일치하는지 확인합니다.
 
-* **애플리케이션 설정**에 있는 앱의 **플랫폼**이 앱의 비트 수와 일치하는지 확인합니다.
+* **애플리케이션 설정** 에 있는 앱의 **플랫폼** 이 앱의 비트 수와 일치하는지 확인합니다.
 
 자세한 내용은 <xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>를 참조하세요.
 
@@ -386,7 +387,7 @@ Azure App Services에서 호스트하는 앱에 적용됩니다.
 
 문제 해결:
 
-x86 프레임워크 종속 배포(`<PlatformTarget>x86</PlatformTarget>`)의 경우 32비트 앱용 IIS 앱 풀을 사용하도록 설정합니다. IIS 관리자에서 앱 풀의 **고급 설정**을 열고 **32비트 앱 사용**을 **True**로 설정합니다.
+x86 프레임워크 종속 배포(`<PlatformTarget>x86</PlatformTarget>`)의 경우 32비트 앱용 IIS 앱 풀을 사용하도록 설정합니다. IIS 관리자에서 앱 풀의 **고급 설정** 을 열고 **32비트 앱 사용** 을 **True** 로 설정합니다.
 
 ## <a name="platform-conflicts-with-rid"></a>플랫폼이 RID와 충돌함
 
@@ -434,7 +435,7 @@ x86 프레임워크 종속 배포(`<PlatformTarget>x86</PlatformTarget>`)의 경
 
 문제 해결:
 
-IIS 웹 사이트 **기본 설정**과 실제 앱 폴더를 확인합니다. 앱이 IIS 웹 사이트 **실제 경로**의 폴더에 있는지 확인합니다.
+IIS 웹 사이트 **기본 설정** 과 실제 앱 폴더를 확인합니다. 앱이 IIS 웹 사이트 **실제 경로** 의 폴더에 있는지 확인합니다.
 
 ## <a name="incorrect-role-aspnet-core-module-not-installed-or-incorrect-permissions"></a>잘못된 역할, 설치되지 않은 ASP.NET Core 모듈 또는 잘못된 권한
 
@@ -448,7 +449,7 @@ IIS 웹 사이트 **기본 설정**과 실제 앱 폴더를 확인합니다. 앱
 
 * 적절한 역할을 사용할 수 있는지 확인합니다. [IIS 구성](xref:host-and-deploy/iis/index#iis-configuration)을 참조하세요.
 
-* **프로그램 및 기능** 또는 **앱 및 기능**을 열고 **Windows Server 호스팅**이 설치되어 있는지 확인합니다. **Windows Server 호스팅**이 설치된 프로그램 목록에 없는 경우 .NET Core 호스팅 번들을 다운로드하여 설치합니다.
+* **프로그램 및 기능** 또는 **앱 및 기능** 을 열고 **Windows Server 호스팅** 이 설치되어 있는지 확인합니다. **Windows Server 호스팅** 이 설치된 프로그램 목록에 없는 경우 .NET Core 호스팅 번들을 다운로드하여 설치합니다.
 
   [현재 .NET Core 호스팅 번들 설치 관리자(직접 다운로드)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
@@ -456,7 +457,7 @@ IIS 웹 사이트 **기본 설정**과 실제 앱 폴더를 확인합니다. 앱
 
 * **애플리케이션 풀** > **프로세스 모델** > **Identity** 가 **ApplicationPoolIdentity** 로 설정되어 있는지 또는 사용자 지정 ID에 앱의 배포 폴더에 액세스할 수 있는 올바른 권한이 있는지를 확인합니다.
 
-* ASP.NET Core 호스팅 번들을 제거하고 이전 버전의 호스팅 번들을 설치하는 경우 *applicationHost.config* 파일에는 ASP.NET Core 모듈에 대한 섹션이 포함되지 않습니다. *%windir%/System32/inetsrv/config*에서 *applicationHost.config*를 열고 `<configuration><configSections><sectionGroup name="system.webServer">` 섹션 그룹을 찾습니다. ASP.NET Core 모듈에 대한 섹션이 섹션 그룹에서 누락된 경우 섹션 요소를 추가합니다.
+* ASP.NET Core 호스팅 번들을 제거하고 이전 버전의 호스팅 번들을 설치하는 경우 *applicationHost.config* 파일에는 ASP.NET Core 모듈에 대한 섹션이 포함되지 않습니다. *%windir%/System32/inetsrv/config* 에서 *applicationHost.config* 를 열고 `<configuration><configSections><sectionGroup name="system.webServer">` 섹션 그룹을 찾습니다. ASP.NET Core 모듈에 대한 섹션이 섹션 그룹에서 누락된 경우 섹션 요소를 추가합니다.
 
   ```xml
   <section name="aspNetCore" overrideModeDefault="Allow" />
@@ -476,21 +477,21 @@ IIS 웹 사이트 **기본 설정**과 실제 앱 폴더를 확인합니다. 앱
 
 * 앱이 Kestrel에서 로컬로 실행되는지 확인합니다. 프로세스 오류는 앱 내의 문제 때문일 수 있습니다. 자세한 내용은 <xref:test/troubleshoot-azure-iis>를 참조하세요.
 
-* *web.config*의 `<aspNetCore>` 요소에서 *processPath* 특성을 확인하여 FDD(프레임워크 종속 배포)에 대한 `dotnet`인지 또는 [SCD(자체 포함 배포)](/dotnet/core/deploying/#self-contained-deployments-scd)에 대한 `.\{ASSEMBLY}.exe`인지 확인합니다.
+* *web.config* 의 `<aspNetCore>` 요소에서 *processPath* 특성을 확인하여 FDD(프레임워크 종속 배포)에 대한 `dotnet`인지 또는 [SCD(자체 포함 배포)](/dotnet/core/deploying/#self-contained-deployments-scd)에 대한 `.\{ASSEMBLY}.exe`인지 확인합니다.
 
-* FDD의 경우 *dotnet.exe*에서 PATH 설정을 통해 액세스하지 못할 수 있습니다. 시스템 PATH 설정에 *C:\Program Files\dotnet\\* 이 있는지 확인합니다.
+* FDD의 경우 *dotnet.exe* 에서 PATH 설정을 통해 액세스하지 못할 수 있습니다. 시스템 PATH 설정에 *C:\Program Files\dotnet\\* 이 있는지 확인합니다.
 
-* FDD의 경우 *dotnet.exe*에서 앱 풀의 사용자 ID에 액세스하지 못할 수 있습니다. 앱 풀 사용자 ID에 *C:\Program Files\dotnet* 디렉터리에 대한 액세스 권한이 있는지 확인합니다. *C:\Program Files\dotnet* 및 앱 디렉터리에 앱 풀 사용자 ID에 대해 구성된 거부 규칙이 없는지 확인합니다.
+* FDD의 경우 *dotnet.exe* 에서 앱 풀의 사용자 ID에 액세스하지 못할 수 있습니다. 앱 풀 사용자 ID에 *C:\Program Files\dotnet* 디렉터리에 대한 액세스 권한이 있는지 확인합니다. *C:\Program Files\dotnet* 및 앱 디렉터리에 앱 풀 사용자 ID에 대해 구성된 거부 규칙이 없는지 확인합니다.
 
-* IIS를 다시 시작하지 않은 상태로 FDD를 배포하고 .NET Core를 설치했을 수 있습니다. 서버를 다시 시작하거나 명령 프롬프트에서 **net stop was /y**에 이어 **net start w3svc**를 실행하여 IIS를 다시 시작합니다.
+* IIS를 다시 시작하지 않은 상태로 FDD를 배포하고 .NET Core를 설치했을 수 있습니다. 서버를 다시 시작하거나 명령 프롬프트에서 **net stop was /y** 에 이어 **net start w3svc** 를 실행하여 IIS를 다시 시작합니다.
 
-* 호스팅 시스템에 .NET Core 런타임을 설치하지 않고 FDD를 배포했을 수 있습니다. .NET Core 런타임이 설치되어 있지 않으면 시스템에서 **.NET Core 호스팅 번들 설치 관리자**를 실행합니다.
+* 호스팅 시스템에 .NET Core 런타임을 설치하지 않고 FDD를 배포했을 수 있습니다. .NET Core 런타임이 설치되어 있지 않으면 시스템에서 **.NET Core 호스팅 번들 설치 관리자** 를 실행합니다.
 
   [현재 .NET Core 호스팅 번들 설치 관리자(직접 다운로드)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
   자세한 내용은 [.NET Core 호스팅 번들 설치](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)를 참조하세요.
 
-  특정 런타임이 필요한 경우 [.NET Download Archives](https://dotnet.microsoft.com/download/archives)에서 런타임을 다운로드하여 시스템에 설치합니다. 설치를 완료하려면 시스템을 다시 시작하거나 명령 프롬프트에서 **net stop was /y**에 이어 **net start w3svc**를 실행하여 IIS를 다시 시작합니다.
+  특정 런타임이 필요한 경우 [.NET Download Archives](https://dotnet.microsoft.com/download/archives)에서 런타임을 다운로드하여 시스템에 설치합니다. 설치를 완료하려면 시스템을 다시 시작하거나 명령 프롬프트에서 **net stop was /y** 에 이어 **net start w3svc** 를 실행하여 IIS를 다시 시작합니다.
 
 ## <a name="incorrect-arguments-of-aspnetcore-element"></a>\<aspNetCore> 요소의 인수가 잘못됨
 
@@ -504,7 +505,7 @@ IIS 웹 사이트 **기본 설정**과 실제 앱 폴더를 확인합니다. 앱
 
 * 앱이 Kestrel에서 로컬로 실행되는지 확인합니다. 프로세스 오류는 앱 내의 문제 때문일 수 있습니다. 자세한 내용은 <xref:test/troubleshoot-azure-iis>를 참조하세요.
 
-* *web.config*의 `<aspNetCore>` 요소에서 *인수* 특성을 검사하여 (a) FDD(프레임워크 종속 배포)에 대한 `.\{ASSEMBLY}.dll`인지, 또는 (b) 없는 경우 빈 문자열(`arguments=""`)이거나 SCD(자체 포함 배포)에 대한 앱의 인수(`arguments="{ARGUMENT_1}, {ARGUMENT_2}, ... {ARGUMENT_X}"`) 목록인지 확인합니다.
+* *web.config* 의 `<aspNetCore>` 요소에서 *인수* 특성을 검사하여 (a) FDD(프레임워크 종속 배포)에 대한 `.\{ASSEMBLY}.dll`인지, 또는 (b) 없는 경우 빈 문자열(`arguments=""`)이거나 SCD(자체 포함 배포)에 대한 앱의 인수(`arguments="{ARGUMENT_1}, {ARGUMENT_2}, ... {ARGUMENT_X}"`) 목록인지 확인합니다.
 
 문제 해결:
 
@@ -544,7 +545,7 @@ FDD(프레임워크 종속 배포)의 경우 시스템에 올바른 런타임이
 
 문제 해결:
 
-* *web.config*의 `<aspNetCore>` 요소에 지정된 `stdoutLogFile` 경로가 없습니다. 자세한 내용은 [ASP.NET Core 모듈: 로그 만들기 및 리디렉션](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)을 참조하세요.
+* *web.config* 의 `<aspNetCore>` 요소에 지정된 `stdoutLogFile` 경로가 없습니다. 자세한 내용은 [ASP.NET Core 모듈: 로그 만들기 및 리디렉션](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)을 참조하세요.
 
 * 앱 풀 사용자는 stdout 로그 경로에 대한 쓰기 액세스 권한이 없습니다.
 

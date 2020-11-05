@@ -5,6 +5,7 @@ description: ASP.NET Core MVC에 대한 자습서 시리즈의 7부입니다.
 ms.author: riande
 ms.date: 12/13/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,20 +17,20 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: fcb96300c08d9f985cbfe4d3bf055036be7d2eb0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 657072803f59feb99de8b31ddb3a6433d832aa30
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629576"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059626"
 ---
 # <a name="part-7-add-search-to-an-aspnet-core-mvc-app"></a>7부. ASP.NET Core MVC 앱에 검색 추가
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-이 섹션에서는 `Index` 작업 메서드에 *장르* 또는 *이름*으로 영화를 검색할 수 있는 검색 기능을 추가합니다.
+이 섹션에서는 `Index` 작업 메서드에 *장르* 또는 *이름* 으로 영화를 검색할 수 있는 검색 기능을 추가합니다.
 
-*Controllers/MoviesController.cs*에 있는 `Index` 메서드를 다음 코드로 수정합니다.
+*Controllers/MoviesController.cs* 에 있는 `Index` 메서드를 다음 코드로 수정합니다.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_1stSearch)]
 
@@ -40,7 +41,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-이 시점에 쿼리는 정의*만* 되었으며 데이터베이스에 대해서 실행되지는 **않았습니다**.
+이 시점에 쿼리는 정의 *만* 되었으며 데이터베이스에 대해서 실행되지는 **않았습니다**.
 
 `searchString` 매개 변수에 문자열이 담겨 있으면 해당 검색 문자열의 값으로 필터링하도록 영화 쿼리가 수정됩니다.
 
@@ -54,7 +55,7 @@ var movies = from m in _context.Movie
 
 ![Index 보기](~/tutorials/first-mvc-app/search/_static/ghost.png)
 
-`id`라는 매개 변수를 포함하도록 `Index` 메서드의 서명을 변경하면 해당 `id` 매개 변수는 *Startup.cs*에서 설정된 기본 경로의 선택적 `{id}` 자리 표시자와 일치합니다.
+`id`라는 매개 변수를 포함하도록 `Index` 메서드의 서명을 변경하면 해당 `id` 매개 변수는 *Startup.cs* 에서 설정된 기본 경로의 선택적 `{id}` 자리 표시자와 일치합니다.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
 

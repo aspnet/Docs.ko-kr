@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 09/24/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/metapackage-app
-ms.openlocfilehash: d9753a43bdc47b467dcf781c97069edfaa693a8f
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 225bb1f55c099a476319191726c5a661f9a4893a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630512"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057806"
 ---
 # <a name="microsoftaspnetcoreapp-for-aspnet-core"></a>ASP.NET Core용 Microsoft.AspNetCore.App
 
 ::: moniker range=">= aspnetcore-3.0"
 
- ASP.NET Core 공유 프레임워크(`Microsoft.AspNetCore.App`)에는 Microsoft에서 개발하고 지원하는 어셈블리가 포함되어 있습니다. `Microsoft.AspNetCore.App`은 [.NET Core 3.0 이상의 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0)가 설치된 경우에 설치됩니다. *공유 프레임워크*는 머신에 설치된 어셈블리( *.dll* 파일) 세트이며 런타임 구성 요소 및 타기팅 팩을 포함합니다. 자세한 내용은 [공유 프레임워크](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/)를 참조하세요.
+ ASP.NET Core 공유 프레임워크(`Microsoft.AspNetCore.App`)에는 Microsoft에서 개발하고 지원하는 어셈블리가 포함되어 있습니다. `Microsoft.AspNetCore.App`은 [.NET Core 3.0 이상의 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0)가 설치된 경우에 설치됩니다. *공유 프레임워크* 는 머신에 설치된 어셈블리( *.dll* 파일) 세트이며 런타임 구성 요소 및 타기팅 팩을 포함합니다. 자세한 내용은 [공유 프레임워크](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/)를 참조하세요.
 
 * `Microsoft.NET.Sdk.Web` SDK를 대상으로 하는 프로젝트는 `Microsoft.AspNetCore.App` 프레임워크를 암시적으로 참조합니다.
 

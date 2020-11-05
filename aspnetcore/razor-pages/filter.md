@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 2/18/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/filter
-ms.openlocfilehash: 436d640130b378e2c770322186020c6e252872ef
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: a6d25c1b88e09560c1aad9aefd9148f7fe293909
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722516"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056831"
 ---
 # <a name="filter-methods-for-no-locrazor-pages-in-aspnet-core"></a>ASP.NET Core에서 Razor Pages를 위한 필터 메서드
 
@@ -58,7 +59,7 @@ Razor 페이지 필터는 전역 또는 페이지 수준에서 적용할 수 있
   * [OnPageHandlerSelectionAsync](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter.onpagehandlerselectionasync?view=aspnetcore-2.0): 처리기 메서드를 선택한 후 모델 바인딩이 발생하기 전에 비동기적으로 호출됩니다.
   * [OnPageHandlerExecutionAsync](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter.onpagehandlerexecutionasync?view=aspnetcore-2.0): 모델 바인딩이 완료된 후 처리기 메서드가 호출되기 전에 비동기적으로 호출됩니다.
 
-필터 인터페이스의 동기 또는 비동기 버전을 모두 구현하지 **말고** 그 중 **한 가지**만 구현하세요. 프레임워크는 먼저 필터가 비동기 인터페이스를 구현하는지를 확인하고 그렇다면 이를 호출합니다. 그렇지 않으면 동기 인터페이스의 메서드를 호출합니다. 두 인터페이스가 구현되는 경우 비동기 메서드만 호출됩니다. 페이지의 재정의에 동일한 규칙이 적용되며, 재정의의 동기 또는 비동기 버전 중 하나만 구현합니다.
+필터 인터페이스의 동기 또는 비동기 버전을 모두 구현하지 **말고** 그 중 **한 가지** 만 구현하세요. 프레임워크는 먼저 필터가 비동기 인터페이스를 구현하는지를 확인하고 그렇다면 이를 호출합니다. 그렇지 않으면 동기 인터페이스의 메서드를 호출합니다. 두 인터페이스가 구현되는 경우 비동기 메서드만 호출됩니다. 페이지의 재정의에 동일한 규칙이 적용되며, 재정의의 동기 또는 비동기 버전 중 하나만 구현합니다.
 
 ## <a name="implement-no-locrazor-page-filters-globally"></a>Razor 페이지 필터를 전역으로 구현
 
@@ -72,7 +73,7 @@ Razor 페이지 필터는 전역 또는 페이지 수준에서 적용할 수 있
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Startup.cs?name=snippet2)]
 
-다음 코드는 <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderApplicationModelConvention*>을 호출하여 `SampleAsyncPageFilter`를 */Movies*의 페이지에만 적용합니다.
+다음 코드는 <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderApplicationModelConvention*>을 호출하여 `SampleAsyncPageFilter`를 */Movies* 의 페이지에만 적용합니다.
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Startup2.cs?name=snippet2)]
 
@@ -102,7 +103,7 @@ Razor 페이지 필터는 전역 또는 페이지 수준에서 적용할 수 있
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Pages/Movies/Test.cshtml.cs)]
 
-브라우저 개발자 도구와 같은 도구를 사용하여 헤더를 검사합니다. **응답 헤더**에 `author: Rick`이 표시됩니다.
+브라우저 개발자 도구와 같은 도구를 사용하여 헤더를 검사합니다. **응답 헤더** 에 `author: Rick`이 표시됩니다.
 
 순서 재정의에 대한 지침은 [기본 순서 재정의](xref:mvc/controllers/filters#overriding-the-default-order)를 참조하세요.
 
@@ -150,7 +151,7 @@ Razor 페이지 필터는 전역 또는 페이지 수준에서 적용할 수 있
   * [OnPageHandlerExecutionAsync](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter.onpagehandlerexecutionasync?view=aspnetcore-2.0): 모델 바인딩이 완료된 후 처리기 메서드가 호출되기 전에 비동기적으로 호출됩니다.
 
 > [!NOTE]
-> 필터 인터페이스의 동기 또는 비동기 버전 중 **하나**를 구현합니다. 프레임워크는 먼저 필터가 비동기 인터페이스를 구현하는지를 확인하고 그렇다면 이를 호출합니다. 그렇지 않으면 동기 인터페이스의 메서드를 호출합니다. 두 인터페이스가 구현되는 경우 비동기 메서드만 호출됩니다. 페이지의 재정의에 동일한 규칙이 적용되며, 재정의의 동기 또는 비동기 버전 중 하나만 구현합니다.
+> 필터 인터페이스의 동기 또는 비동기 버전 중 **하나** 를 구현합니다. 프레임워크는 먼저 필터가 비동기 인터페이스를 구현하는지를 확인하고 그렇다면 이를 호출합니다. 그렇지 않으면 동기 인터페이스의 메서드를 호출합니다. 두 인터페이스가 구현되는 경우 비동기 메서드만 호출됩니다. 페이지의 재정의에 동일한 규칙이 적용되며, 재정의의 동기 또는 비동기 버전 중 하나만 구현합니다.
 
 ## <a name="implement-no-locrazor-page-filters-globally"></a>Razor 페이지 필터를 전역으로 구현
 
@@ -168,7 +169,7 @@ Razor 페이지 필터는 전역 또는 페이지 수준에서 적용할 수 있
 
 [!code-csharp[Main](filter/sample/PageFilter/Startup.cs?name=snippet1)]
 
-다음 코드는 `AddFolderApplicationModelConvention`을 호출하여 `SampleAsyncPageFilter`를 */subFolder*의 페이지에만 적용합니다.
+다음 코드는 `AddFolderApplicationModelConvention`을 호출하여 `SampleAsyncPageFilter`를 */subFolder* 의 페이지에만 적용합니다.
 
 [!code-csharp[Main](filter/sample/PageFilter/Startup2.cs?name=snippet2)]
 

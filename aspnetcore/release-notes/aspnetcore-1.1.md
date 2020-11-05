@@ -5,6 +5,7 @@ description: ASP.NET Core 1.1의 새로운 기능에 대해 알아봅니다.
 ms.author: riande
 ms.date: 12/18/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-1.1
-ms.openlocfilehash: 1068307dc792ffb8def4f0652de497f666d4318d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cc891280a6314dbc4c0838d5b4a8d2a20698eab6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634789"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059743"
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>ASP.NET Core 1.1의 새로운 기능
 

@@ -5,6 +5,7 @@ description: ASP.NET Core 앱에서 지역화 관련 문제를 진단하는 방�
 ms.author: riande
 ms.date: 01/24/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/troubleshoot-aspnet-core-localization
-ms.openlocfilehash: 1cb7fb61063bf888819e940476f27c3adafa24de
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 995db4c8c9d0c0f1f77b1fd3665e707975406a7f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629927"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053620"
 ---
 # <a name="troubleshoot-aspnet-core-localization"></a>ASP.NET Core 지역화 문제 해결
 
@@ -117,4 +118,4 @@ options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async 
 
 ## <a name="resources--build-action"></a>리소스 및 빌드 작업
 
-지역화에 대해 리소스 파일을 사용하는 경우 적절한 빌드 작업이 포함되어야 합니다. 해당 리소스 파일이 **포함 리소스**여야 하며, 그렇지 않으면 `ResourceStringLocalizer`가 이러한 리소스를 찾을 수 없습니다.
+지역화에 대해 리소스 파일을 사용하는 경우 적절한 빌드 작업이 포함되어야 합니다. 해당 리소스 파일이 **포함 리소스** 여야 하며, 그렇지 않으면 `ResourceStringLocalizer`가 이러한 리소스를 찾을 수 없습니다.

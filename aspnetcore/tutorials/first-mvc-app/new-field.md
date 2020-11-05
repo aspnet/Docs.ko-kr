@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: 2a80a9c4848703802b15348a30f2564f9580a24b
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: d2b3b22a94e3119712e331565cc74ffa60ada726
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113883"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050708"
 ---
 # <a name="part-8-add-a-new-field-to-an-aspnet-core-mvc-app"></a>8부. ASP.NET Core MVC 앱에 새 필드 추가
 

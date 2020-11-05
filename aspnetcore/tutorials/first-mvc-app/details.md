@@ -5,6 +5,7 @@ description: ASP.NET Core MVC에 대한 자습서 시리즈의 10부입니다.
 ms.author: riande
 ms.date: 12/13/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: 4683f106b3372a2f14f289b39c8a0b8b6c8b5aa1
-ms.sourcegitcommit: c9b03d8a6a4dcc59e4aacb30a691f349235a74c8
+ms.openlocfilehash: 9ceb6c3c8a6622d6e203641c2ce97a483d3d4325
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379369"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050747"
 ---
 # <a name="part-10-examine-the-details-and-delete-methods-of-an-aspnet-core-app"></a>10부. ASP.NET Core 앱의 Details 및 Delete 메서드 검토
 
@@ -31,7 +32,7 @@ Movie 컨트롤러를 열고 `Details` 메서드를 검토합니다.
 
 [!code-csharp[](start-mvc/sample/MvcMovie22/Controllers/MoviesController.cs?name=snippet_details)]
 
-이 작업 메서드를 만든 MVC 스캐폴딩 엔진은 메서드를 호출하는 HTTP 요청을 보여주는 주석을 추가합니다. 이 경우 `Movies` 컨트롤러, `Details` 메서드 및 `id` 값의 세 가지 URL 세그먼트를 가진 GET 요청입니다. 이러한 세그먼트는 *Startup.cs*에서 정의되었다는 점을 기억하세요.
+이 작업 메서드를 만든 MVC 스캐폴딩 엔진은 메서드를 호출하는 HTTP 요청을 보여주는 주석을 추가합니다. 이 경우 `Movies` 컨트롤러, `Details` 메서드 및 `id` 값의 세 가지 URL 세그먼트를 가진 GET 요청입니다. 이러한 세그먼트는 *Startup.cs* 에서 정의되었다는 점을 기억하세요.
 
 [!code-csharp[](start-mvc/sample/MvcMovie3/Startup.cs?highlight=5&name=snippet_1)]
 

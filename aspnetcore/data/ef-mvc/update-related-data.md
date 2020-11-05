@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 356536a22f11ca5db6cfa9cda79598ec8aa03e18
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f41d0b1d7ba46ef4867e0d160dc61f21042ce403
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625273"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053945"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>자습서: 관련 데이터 업데이트 - ASP.NET MVC 및 EF Core 사용
 
@@ -52,7 +53,7 @@ ms.locfileid: "88625273"
 
 새 강좌 엔터티가 만들어질 때 기존 부서에 대한 관계가 있어야 합니다. 이를 수행하기 위해 스캐폴드 코드는 컨트롤러 메서드 및 부서를 선택하기 위한 드롭다운 목록을 포함하는 만들기 및 편집 보기를 포함합니다. 드롭다운 목록은 `Course.DepartmentID` 외래 키 속성을 설정하고, 이는 적절한 부서 엔터티로 `Department` 탐색 속성을 로드하기 위해 필요한 모든 Entity Framework입니다. 스캐폴드 코드를 사용하지만 오류 처리를 추가하고 드롭다운 목록을 정렬하도록 약간 변경합니다.
 
-*CoursesController.cs*에서 4개의 만들기 및 편집 메서드를 삭제하고 다음 코드로 바꿉니다.
+*CoursesController.cs* 에서 4개의 만들기 및 편집 메서드를 삭제하고 다음 코드로 바꿉니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_CreateGet)]
 
@@ -88,37 +89,37 @@ HttpGet `Edit` 메서드는 편집 중인 강좌에 이미 할당되어 있는 �
 
 ### <a name="modify-the-course-views"></a>강좌 보기 수정
 
-*Views/Courses/Create.cshtml*에서 **부서** 드롭다운 목록에 "부서 선택" 옵션을 추가하고, **DepartmentID**에서  **부서**로 캡션을 변경하고, 유효성 검사 메시지를 추가합니다.
+*Views/Courses/Create.cshtml* 에서 **부서** 드롭다운 목록에 "부서 선택" 옵션을 추가하고, **DepartmentID** 에서  **부서** 로 캡션을 변경하고, 유효성 검사 메시지를 추가합니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
 
-*Views/Courses/Edit.cshtml*에서 부서 필드에 대해 *Create.cshtml*에서 수행한 동일한 변경 내용을 만듭니다.
+*Views/Courses/Edit.cshtml* 에서 부서 필드에 대해 *Create.cshtml* 에서 수행한 동일한 변경 내용을 만듭니다.
 
-또한 *Views/Courses/Edit.cshtml*에서 **제목** 필드 전에 강좌 번호 필드를 추가합니다. 강좌 번호는 기본 키이기 때문에 표시되지만 변경될 수 없습니다.
+또한 *Views/Courses/Edit.cshtml* 에서 **제목** 필드 전에 강좌 번호 필드를 추가합니다. 강좌 번호는 기본 키이기 때문에 표시되지만 변경될 수 없습니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
 
-편집 보기에 강좌 번호에 대해 이미 숨겨진 필드(`<input type="hidden">`)가 있습니다. 사용자가 **편집** 페이지에서 **저장**을 클릭할 때 강좌 번호가 게시된 데이터에 삽입되도록 하지 않으므로 `<label>` 태그 도우미를 추가하는 것은 숨겨진 필드에 대한 필요성을 없애지 않습니다.
+편집 보기에 강좌 번호에 대해 이미 숨겨진 필드(`<input type="hidden">`)가 있습니다. 사용자가 **편집** 페이지에서 **저장** 을 클릭할 때 강좌 번호가 게시된 데이터에 삽입되도록 하지 않으므로 `<label>` 태그 도우미를 추가하는 것은 숨겨진 필드에 대한 필요성을 없애지 않습니다.
 
-*Views/Courses/Delete.cshtml*에서 위쪽에 강좌 번호 필드를 추가하고 부서 ID를 부서 이름으로 변경합니다.
+*Views/Courses/Delete.cshtml* 에서 위쪽에 강좌 번호 필드를 추가하고 부서 ID를 부서 이름으로 변경합니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
 
-*Views/Courses/Details.cshtml*에서 *Delete.cshtml*에 대해 수행한 동일한 변경 내용을 만듭니다.
+*Views/Courses/Details.cshtml* 에서 *Delete.cshtml* 에 대해 수행한 동일한 변경 내용을 만듭니다.
 
 ### <a name="test-the-course-pages"></a>강좌 페이지 테스트
 
-앱을 실행하고, **강좌** 탭을 선택하고, **새로 만들기**를 클릭하고, 새 강좌에 대한 데이터를 입력합니다.
+앱을 실행하고, **강좌** 탭을 선택하고, **새로 만들기** 를 클릭하고, 새 강좌에 대한 데이터를 입력합니다.
 
 ![강좌 만들기 페이지](update-related-data/_static/course-create.png)
 
-**만들기**를 클릭합니다. 강좌 인덱스 페이지가 목록에 추가된 새 강좌로 표시됩니다. 인덱스 페이지 목록의 부서 이름은 관계가 올바르게 설정되었음을 표시하는 탐색 속성에서 제공됩니다.
+**만들기** 를 클릭합니다. 강좌 인덱스 페이지가 목록에 추가된 새 강좌로 표시됩니다. 인덱스 페이지 목록의 부서 이름은 관계가 올바르게 설정되었음을 표시하는 탐색 속성에서 제공됩니다.
 
-강좌 인덱스 페이지의 강좌에서 **편집**을 클릭합니다.
+강좌 인덱스 페이지의 강좌에서 **편집** 을 클릭합니다.
 
 ![강좌 편집 페이지](update-related-data/_static/course-edit.png)
 
-페이지에서 데이터를 변경하고 **저장**을 클릭합니다. 강좌 인덱스 페이지가 업데이트된 강좌 데이터로 표시됩니다.
+페이지에서 데이터를 변경하고 **저장** 을 클릭합니다. 강좌 인덱스 페이지가 업데이트된 강좌 데이터로 표시됩니다.
 
 ## <a name="add-instructors-edit-page"></a>강사 편집 페이지 추가
 
@@ -132,7 +133,7 @@ HttpGet `Edit` 메서드는 편집 중인 강좌에 이미 할당되어 있는 �
 
 ### <a name="update-the-instructors-controller"></a>강사 컨트롤러 업데이트
 
-*InstructorsController.cs*에서 강사 엔터티의 `OfficeAssignment` 탐색 속성을 로드하고 `AsNoTracking`을 호출하도록 HttpGet `Edit` 메서드에서 코드를 변경합니다.
+*InstructorsController.cs* 에서 강사 엔터티의 `OfficeAssignment` 탐색 속성을 로드하고 `AsNoTracking`을 호출하도록 HttpGet `Edit` 메서드에서 코드를 변경합니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=8-11&name=snippet_EditGetOA)]
 
@@ -172,11 +173,11 @@ HttpPost `Edit` 메서드를 다음 코드로 바꿔 사무실 할당 업데이�
 
 ### <a name="update-the-instructor-edit-view"></a>강사 편집 보기 업데이트
 
-*Views/Instructors/Edit.cshtml*에서 **저장** 단추 앞의 끝에 사무실 위치를 편집하기 위해 새 필드를 추가합니다.
+*Views/Instructors/Edit.cshtml* 에서 **저장** 단추 앞의 끝에 사무실 위치를 편집하기 위해 새 필드를 추가합니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
 
-앱을 실행하고, **강사** 탭을 선택한 다음, 강사에서 **편집**을 클릭합니다. **사무실 위치**를 변경하고 **저장**을 클릭합니다.
+앱을 실행하고, **강사** 탭을 선택한 다음, 강사에서 **편집** 을 클릭합니다. **사무실 위치** 를 변경하고 **저장** 을 클릭합니다.
 
 ![강사 편집 페이지](update-related-data/_static/instructor-edit-office.png)
 
@@ -194,11 +195,11 @@ HttpPost `Edit` 메서드를 다음 코드로 바꿔 사무실 할당 업데이�
 
 확인란의 목록에 대한 보기에 데이터를 제공하려면 보기 모델 클래스를 사용합니다.
 
-*SchoolViewModels* 폴더에서 *AssignedCourseData.cs*를 만들고 기존 코드를 다음 코드로 바꿉니다.
+*SchoolViewModels* 폴더에서 *AssignedCourseData.cs* 를 만들고 기존 코드를 다음 코드로 바꿉니다.
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
 
-*InstructorsController.cs*에서 HttpGet `Edit` 메서드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
+*InstructorsController.cs* 에서 HttpGet `Edit` 메서드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=10,17,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36&name=snippet_EditGetCourses)]
 
@@ -206,7 +207,7 @@ HttpPost `Edit` 메서드를 다음 코드로 바꿔 사무실 할당 업데이�
 
 `PopulateAssignedCourseData` 메서드의 코드는 보기 모델 클래스를 사용하는 강좌의 목록을 로드하기 위해 모든 강좌 엔터티를 통해 읽습니다. 각 강좌의 경우 코드는 강좌가 강사의 `Courses` 탐색 속성에 있는지 여부를 확인합니다. 강좌가 강사에게 할당되었는지 여부를 확인할 때 효율적인 조회를 만들기 위해 강사에게 할당된 강좌는 `HashSet` 컬렉션에 배치됩니다. `Assigned` 속성은 강사에게 할당된 강좌에 대해 true로 설정됩니다. 보기는 이 속성을 사용하여 선택된 것으로 표시되어야 하는 확인란을 결정합니다. 마지막으로 목록은 `ViewData`의 보기에 전달됩니다.
 
-다음으로 사용자가 **저장**을 클릭할 때 실행되는 코드를 추가합니다. `EditPost` 메서드를 다음 코드를 바꾸고, 강사 엔터티의 `Courses` 탐색 속성을 업데이트하는 새 메서드를 추가합니다.
+다음으로 사용자가 **저장** 을 클릭할 때 실행되는 코드를 추가합니다. `EditPost` 메서드를 다음 코드를 바꾸고, 강사 엔터티의 `Courses` 탐색 속성을 업데이트하는 새 메서드를 추가합니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=1,3,12,13,25,39-40&name=snippet_EditPostCourses)]
 
@@ -232,7 +233,7 @@ HttpPost `Edit` 메서드를 다음 코드로 바꿔 사무실 할당 업데이�
 
 ### <a name="update-the-instructor-views"></a>강사 보기 업데이트
 
-*Views/Instructors/Edit.cshtml*에서 **사무실** 필드에 대한 `div` 요소 후와 **저장** 단추에 대한 `div` 요소 전에 다음 코드를 즉시 추가하여 확인란의 배열로 **강좌** 필드를 추가합니다.
+*Views/Instructors/Edit.cshtml* 에서 **사무실** 필드에 대한 `div` 요소 후와 **저장** 단추에 대한 `div` 요소 전에 다음 코드를 즉시 추가하여 확인란의 배열로 **강좌** 필드를 추가합니다.
 
 <a id="notepad"></a>
 > [!NOTE]
@@ -244,7 +245,7 @@ HttpPost `Edit` 메서드를 다음 코드로 바꿔 사무실 할당 업데이�
 
 확인란이 처음으로 렌더링될 때 강사에게 할당된 강좌에 대한 것은 해당 항목을 선택하는 특성을 선택했습니다(선택된 것으로 표시).
 
-앱을 실행하고, **강사** 탭을 선택하고, 강사에서 **편집**을 클릭하여 **편집** 페이지를 봅니다.
+앱을 실행하고, **강사** 탭을 선택하고, 강사에서 **편집** 을 클릭하여 **편집** 페이지를 봅니다.
 
 ![강좌가 있는 강사 편집 페이지](update-related-data/_static/instructor-edit-courses.png)
 
@@ -255,7 +256,7 @@ HttpPost `Edit` 메서드를 다음 코드로 바꿔 사무실 할당 업데이�
 
 ## <a name="update-delete-page"></a>삭제 페이지 업데이트
 
-*InstructorsController.cs*에서 `DeleteConfirmed` 메서드를 삭제하고 해당 위치에 다음 코드를 삽입합니다.
+*InstructorsController.cs* 에서 `DeleteConfirmed` 메서드를 삭제하고 해당 위치에 다음 코드를 삽입합니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=5-7,9-12&name=snippet_DeleteConfirmed)]
 
@@ -267,7 +268,7 @@ HttpPost `Edit` 메서드를 다음 코드로 바꿔 사무실 할당 업데이�
 
 ## <a name="add-office-location-and-courses-to-create-page"></a>만들기 페이지에 사무실 위치 및 강좌 추가
 
-*InstructorsController.cs*에서 HttpGet 및 HttpPost `Create` 메서드를 삭제한 다음, 해당 위치에 다음 코드를 추가합니다.
+*InstructorsController.cs* 에서 HttpGet 및 HttpPost `Create` 메서드를 삭제한 다음, 해당 위치에 다음 코드를 추가합니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Create&highlight=3-5,12,14-22,29)]
 
@@ -300,7 +301,7 @@ public ICollection<CourseAssignment> CourseAssignments
 
 이러한 방식으로 `CourseAssignments` 속성을 수정하는 경우 컨트롤러에서 명시적 속성 초기화 코드를 제거할 수 있습니다.
 
-*Views/Instructor/Create.cshtml*에서 사무실 위치 텍스트 상자와 제출 단추 전에 강좌에 대한 확인란을 추가합니다. 편집 페이지의 경우와 같이 [Visual Studio에서 붙여넣을 때 코드의 서식을 다시 지정하는 경우 서식 지정을 수정합니다](#notepad).
+*Views/Instructor/Create.cshtml* 에서 사무실 위치 텍스트 상자와 제출 단추 전에 강좌에 대한 확인란을 추가합니다. 편집 페이지의 경우와 같이 [Visual Studio에서 붙여넣을 때 코드의 서식을 다시 지정하는 경우 서식 지정을 수정합니다](#notepad).
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 

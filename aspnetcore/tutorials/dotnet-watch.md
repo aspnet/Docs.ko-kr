@@ -5,6 +5,7 @@ description: 이 자습서에서는 ASP.NET Core 앱에서 .NET Core CLI 파일 
 ms.author: riande
 ms.date: 05/31/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 3569e9440b8e431ec0e5357e548af2e3783481ac
-ms.sourcegitcommit: 422e02bad384775bfe19a90910737340ad106c5b
+ms.openlocfilehash: 27420fe00ba6375e15b67fb359be06df055eff1f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90083455"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060042"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>파일 감시자를 사용하여 ASP.NET Core 앱 개발
 
@@ -31,7 +32,7 @@ ms.locfileid: "90083455"
 
 이 자습서에서는 합계를 반환하는 엔드포인트 및 제품을 반환하는 엔드포인트 등 두 개의 엔드포인트에서 기존 Web API를 사용합니다. 제품 메서드에는 버그가 있습니다. 이 문제가 이 자습서에서 해결되었습니다.
 
-[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)을 다운로드합니다. 다음 두 프로젝트로 구성되어 있습니다. *WebApp*(ASP.NET Core 웹 API) 및 *WebAppTests*(웹 API의 단위 테스트).
+[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)을 다운로드합니다. 다음 두 프로젝트로 구성되어 있습니다. *WebApp* (ASP.NET Core 웹 API) 및 *WebAppTests* (웹 API의 단위 테스트).
 
 명령 셸에서 *WebApp* 폴더로 이동합니다. 다음 명령을 실행합니다.
 
@@ -112,7 +113,7 @@ API 제품으로 이동합니다(`http://localhost:<port number>/api/math/produc
 
 `dotnet watch`가 실행되고 있는지 확인합니다.
 
-합계가 아닌 제품을 반환하도록 *MathController.cs*의 `Product` 메서드에서 버그를 수정합니다.
+합계가 아닌 제품을 반환하도록 *MathController.cs* 의 `Product` 메서드에서 버그를 수정합니다.
 
 ```csharp
 public static int Product(int a, int b)
@@ -127,7 +128,7 @@ public static int Product(int a, int b)
 
 ## <a name="run-tests-using-dotnet-watch"></a>`dotnet watch`를 사용하여 테스트 실행
 
-1. *MathController.cs*의 `Product` 메서드가 합계를 반환하도록 변경합니다. 파일을 저장합니다.
+1. *MathController.cs* 의 `Product` 메서드가 합계를 반환하도록 변경합니다. 파일을 저장합니다.
 1. 명령 셸에서 *WebAppTests* 폴더로 이동합니다.
 1. [dotnet restore](/dotnet/core/tools/dotnet-restore)를 실행합니다.
 1. `dotnet watch test`를 실행합니다. 이 출력은 테스트에 실패했으며 감시자가 파일 변경을 대기 중임을 나타냅니다.
@@ -216,7 +217,7 @@ dotnet watch msbuild /t:Test
 | ------------- | ------------- |
 | `DOTNET_USE_POLLING_FILE_WATCHER`                | “1” 또는 “true”로 설정하면 `dotnet watch`에서 CoreFx의 `FileSystemWatcher` 대신 폴링 파일 감시자를 사용합니다. 네트워크 공유 또는 Docker 탑재 볼륨에서 파일을 감시할 때 사용됩니다.                       |
 | `DOTNET_WATCH_SUPPRESS_MSBUILD_INCREMENTALISM`   | 기본적으로 `dotnet watch`는 파일이 변경될 때마다 복원 실행이나 감시된 파일 집합 다시 평가와 같은 특정 작업이 수행되지 않도록 하여 빌드를 최적화합니다. “1” 또는 “true”로 설정하면 이러한 최적화를 사용할 수 없습니다. |
-| `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER`   | `dotnet watch run`은 *launchSettings.json*에서 `launchBrowser`가 구성된 웹앱에 대해 브라우저를 시작하려고 합니다. “1” 또는 “true”로 설정하면 이 동작이 무시됩니다. |
+| `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER`   | `dotnet watch run`은 *launchSettings.json* 에서 `launchBrowser`가 구성된 웹앱에 대해 브라우저를 시작하려고 합니다. “1” 또는 “true”로 설정하면 이 동작이 무시됩니다. |
 | `DOTNET_WATCH_SUPPRESS_BROWSER_REFRESH`   | `dotnet watch run`은 파일 변경 내용을 검색할 때 브라우저를 새로 고치려고 합니다. “1” 또는 “true”로 설정하면 이 동작이 무시됩니다. 이 동작은 `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER`가 설정된 경우에도 무시됩니다. |
 
 ## <a name="dotnet-watch-in-github"></a>GitHub의 `dotnet-watch`

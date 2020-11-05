@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, devx-track-js
 ms.date: 08/13/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 17f04dc9a0bdcf8ff016d83b915c017ff485cb36
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: fc41dd13e7d027d9630cd596162f9b5fd2ef9e2b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690701"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058495"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>자습서: ASP.NET Core를 사용하여 웹 API 만들기
 
@@ -1100,7 +1101,7 @@ DTO 모델을 만듭니다.
 * **파일 메뉴** 에서 **새로 만들기** > **프로젝트** 를 선택합니다.
 * **ASP.NET Core 웹 애플리케이션** 템플릿을 선택하고 **다음** 을 클릭합니다.
 * 프로젝트 이름을 *TodoApi* 로 지정하고 **만들기** 를 클릭합니다.
-* **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 2.2** 가 선택되었는지 확인합니다. **API** 템플릿을 선택하고 **만들기** 를 클릭합니다. **Docker 지원 사용** 을 선택하지 **마세요** .
+* **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 2.2** 가 선택되었는지 확인합니다. **API** 템플릿을 선택하고 **만들기** 를 클릭합니다. **Docker 지원 사용** 을 선택하지 **마세요**.
 
 ![VS 새 프로젝트 대화 상자](first-web-api/_static/vs.png)
 

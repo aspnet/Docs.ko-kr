@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 52810cb5a5961ffe932a7f5ac2a3a03033781cc9
-ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
+ms.openlocfilehash: f8f261f25d854a9bf36ad3299f4af392d5c4fafd
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678492"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055882"
 ---
 # <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>ASP.NET Core Blazor 세계화 및 지역화
 
@@ -37,7 +38,7 @@ ms.locfileid: "92678492"
 다음과 같은 제한된 ASP.NET Core의 지역화 시나리오가 현재 지원됩니다.
 
 * <xref:Microsoft.Extensions.Localization.IStringLocalizer> 및 <xref:Microsoft.Extensions.Localization.IStringLocalizer%601>는 Blazor 앱에서 지원됩니다.
-* <xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>, <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer> 및 데이터 주석 지역화는 ASP.NET Core MVC 시나리오로, Blazor 앱에서 **지원되지 않습니다** .
+* <xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>, <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer> 및 데이터 주석 지역화는 ASP.NET Core MVC 시나리오로, Blazor 앱에서 **지원되지 않습니다**.
 
 자세한 내용은 <xref:fundamentals/localization>를 참조하세요.
 

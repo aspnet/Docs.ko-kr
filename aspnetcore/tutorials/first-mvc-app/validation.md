@@ -5,6 +5,7 @@ description: ASP.NET Core MVC에 대한 자습서 시리즈의 9부입니다.
 ms.author: riande
 ms.date: 04/13/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: c6904606cfe82a6c3a375667b2b2fcae0ab31d26
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 340a66c4a561c6e00bf6f38bcf51abc795aa649c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628640"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059093"
 ---
 # <a name="part-9-add-validation-to-an-aspnet-core-mvc-app"></a>9부. ASP.NET Core MVC 앱에 유효성 검사 추가
 
@@ -52,7 +53,7 @@ MVC 및 Entity Framework Core Code First가 제공하는 유효성 검사 지원
 
 양식에서 잘못된 값을 포함하고 있는 각 필드에 적절한 유효성 검사 오류 메시지가 자동으로 렌더링되는 방법을 확인합니다. 오류는 클라이언트 쪽(JavaScript 및 jQuery 사용 시) 및 서버 쪽(사용자가 JavaScript를 사용하지 않도록 설정한 경우) 모두에서 발생합니다.
 
-가장 큰 이점은 이 유효성 검사 UI를 사용하기 위해 `MoviesController` 클래스 또는 *Create.cshtml*의 코드를 한 줄도 변경할 필요가 없다는 점입니다. 이 자습서에서 이전에 만든 컨트롤러 및 보기는 `Movie` 모델 클래스의 속성에 유효성 검사 특성을 사용하여 지정한 유효성 검사 규칙을 자동으로 가져옵니다. `Edit` 작업 메서드로 유효성 검사를 테스트하여 동일한 유효성 검사가 적용되는지 확인해보세요.
+가장 큰 이점은 이 유효성 검사 UI를 사용하기 위해 `MoviesController` 클래스 또는 *Create.cshtml* 의 코드를 한 줄도 변경할 필요가 없다는 점입니다. 이 자습서에서 이전에 만든 컨트롤러 및 보기는 `Movie` 모델 클래스의 속성에 유효성 검사 특성을 사용하여 지정한 유효성 검사 규칙을 자동으로 가져옵니다. `Edit` 작업 메서드로 유효성 검사를 테스트하여 동일한 유효성 검사가 적용되는지 확인해보세요.
 
 양식 데이터는 클라이언트 쪽 유효성 검사 오류가 없을 때까지 서버에 전송되지 않습니다. [Fiddler 도구](https://www.telerik.com/fiddler) 또는 [F12 개발자 도구](/microsoft-edge/devtools-guide)를 사용하여 `HTTP Post` 메서드에 중단점을 넣어 이를 확인할 수 있습니다.
 

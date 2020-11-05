@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: a1cbd8f434214ce488fc3febe63d8aaf54db71a3
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 235daac5c08248ca2052de6b44e66a8162ce23ad
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722789"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051241"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>ASP.NET Core 3.0의 새로운 기능
 
@@ -218,7 +219,7 @@ public class ChatHub : Hub
 
 `DomainRestricted` 정책을 생성하려면 다음이 필요할 수 있습니다.
 
-* *Startup.cs*에서 새 정책 추가
+* *Startup.cs* 에서 새 정책 추가
 * 사용자 지정 `DomainRestrictedRequirement` 요구 사항을 매개 변수로 제공합니다.
 * 권한 부여 미들웨어로 `DomainRestricted` 등록
 

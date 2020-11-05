@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/25/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/migration
-ms.openlocfilehash: 387714c1e6d120697c13445e507879a8ab7bca98
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1a230e470fa666b2aa6761b4d5dabd09264d2aae
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632670"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059834"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>C Core에서 ASP.NET Core로 gRPC 서비스 마이그레이션
 

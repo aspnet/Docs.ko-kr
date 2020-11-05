@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: dfe6f1ac79732d158e31fb5250645d4ff98d1c0b
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c789928252417ef1cf95c60deb7edef24d58126e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628341"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055999"
 ---
 # <a name="handle-errors-in-aspnet-core-no-locblazor-apps"></a>ASP.NET Core Blazor 앱에서 오류 처리
 
@@ -90,7 +91,7 @@ Blazor Server 앱에서 `Pages/_Host.cshtml` 파일의 환경을 사용자 지�
 
 ## <a name="how-a-no-locblazor-server-app-reacts-to-unhandled-exceptions"></a>Blazor Server 앱이 처리되지 않은 예외에 반응하는 방법
 
-Blazor Server는 상태 저장 프레임워크입니다. 사용자가 앱과 상호 작용하는 동안 *회로*라는 서버에 대한 연결이 유지됩니다. 회로는 활성 구성 요소 인스턴스와 다음과 같은 상태의 여러 다양한 측면을 포함합니다.
+Blazor Server는 상태 저장 프레임워크입니다. 사용자가 앱과 상호 작용하는 동안 *회로* 라는 서버에 대한 연결이 유지됩니다. 회로는 활성 구성 요소 인스턴스와 다음과 같은 상태의 여러 다양한 측면을 포함합니다.
 
 * 구성 요소의 가장 최근에 렌더링된 출력
 * 클라이언트 쪽 이벤트에 의해 트리거될 수 있는 현재 이벤트 처리 대리자 세트

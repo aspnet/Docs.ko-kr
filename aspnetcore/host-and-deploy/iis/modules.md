@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: 6936071339786262fa8eeb669a59225a695d7488
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 47ba04f199f9b77cf6032de9f80f2410f5c69424
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722808"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057403"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>IIS 모듈 및 ASP.NET Core
 
@@ -59,7 +60,7 @@ ms.locfileid: "90722808"
 | **프로토콜 지원**<br>`ProtocolSupportModule`                                                  | 예 | |
 | **요청 필터링**<br>`RequestFilteringModule`                                                | 예 | [URL 재작성 미들웨어`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **요청 모니터**<br>`RequestMonitorModule`                                                    | 예 | |
-| **URL 재작성**&#8224;<br>`RewriteModule`                                                      | 예 | [URL 재작성 미들웨어](xref:fundamentals/url-rewriting) |
+| **URL 재작성** &#8224;<br>`RewriteModule`                                                      | 예 | [URL 재작성 미들웨어](xref:fundamentals/url-rewriting) |
 | **서버 쪽 포함**<br>`ServerSideIncludeModule`                                            | 아니요  | |
 | **정적 압축**<br>`StaticCompressionModule`                                              | 아니요  | [응답 압축 미들웨어](xref:performance/response-compression) |
 | **정적 콘텐츠**<br>`StaticFileModule`                                                         | 아니요  | [정적 파일 미들웨어](xref:fundamentals/static-files) |
@@ -72,7 +73,7 @@ ms.locfileid: "90722808"
 
 ## <a name="managed-modules"></a>관리 모듈
 
-앱 풀의 .NET CLR 버전이 **관리 코드 없음**으로 설정된 경우 관리 모듈은 호스트된 ASP.NET Core 앱에서 작동하지 ‘않습니다’. ASP.NET Core는 여러 경우에 미들웨어 대체 방법을 제공합니다.
+앱 풀의 .NET CLR 버전이 **관리 코드 없음** 으로 설정된 경우 관리 모듈은 호스트된 ASP.NET Core 앱에서 작동하지 ‘않습니다’. ASP.NET Core는 여러 경우에 미들웨어 대체 방법을 제공합니다.
 
 | Module                  | ASP.NET Core 옵션 |
 | ----------------------- | ------------------- |
@@ -92,7 +93,7 @@ ms.locfileid: "90722808"
 
 ## <a name="iis-manager-application-changes"></a>IIS 관리자 애플리케이션 변경 내용
 
-IIS 관리자를 사용하여 설정을 구성하는 경우 앱의 *web.config* 파일이 변경됩니다. 앱을 배포하고 *web.config*를 포함하는 경우 IIS 관리자를 사용하여 변경한 모든 내용을 배포된 *web.config* 파일이 덮어씁니다. 서버의 *web.config* 파일을 변경하는 경우 서버의 업데이트된 *web.config* 파일을 로컬 프로젝트에 즉시 복사합니다.
+IIS 관리자를 사용하여 설정을 구성하는 경우 앱의 *web.config* 파일이 변경됩니다. 앱을 배포하고 *web.config* 를 포함하는 경우 IIS 관리자를 사용하여 변경한 모든 내용을 배포된 *web.config* 파일이 덮어씁니다. 서버의 *web.config* 파일을 변경하는 경우 서버의 업데이트된 *web.config* 파일을 로컬 프로젝트에 즉시 복사합니다.
 
 ## <a name="disabling-iis-modules"></a>IIS 모듈 사용 안 함
 
@@ -100,7 +101,7 @@ IIS 모듈이 앱에 대해 사용되지 않아야 하는 서버 수준에서 �
 
 ### <a name="module-deactivation"></a>모듈 비활성화
 
-많은 모듈에서는 앱에서 모듈을 제거하지 않고도 사용하지 않도록 설정할 수 있는 구성 설정을 제공합니다. 이는 모듈을 비활성화하는 가장 간단하고 가장 빠른 방법입니다. 예를 들어 HTTP 리디렉션 모듈은 *web.config*의 `<httpRedirect>` 요소로 사용하지 않도록 설정할 수 있습니다.
+많은 모듈에서는 앱에서 모듈을 제거하지 않고도 사용하지 않도록 설정할 수 있는 구성 설정을 제공합니다. 이는 모듈을 비활성화하는 가장 간단하고 가장 빠른 방법입니다. 예를 들어 HTTP 리디렉션 모듈은 *web.config* 의 `<httpRedirect>` 요소로 사용하지 않도록 설정할 수 있습니다.
 
 ```xml
 <configuration>
@@ -114,15 +115,15 @@ IIS 모듈이 앱에 대해 사용되지 않아야 하는 서버 수준에서 �
 
 ### <a name="module-removal"></a>모듈 제거
 
-*web.config*에서 설정과 함께 모듈을 제거하도록 선택한 경우 먼저 모듈을 잠금 해제하고 *web.config*의 `<modules>` 섹션을 작금 해제합니다.
+*web.config* 에서 설정과 함께 모듈을 제거하도록 선택한 경우 먼저 모듈을 잠금 해제하고 *web.config* 의 `<modules>` 섹션을 작금 해제합니다.
 
-1. 서버 수준에서 모듈의 잠금을 해제합니다. IIS 관리자 **연결** 사이드바에서 IIS 서버를 선택합니다. **IIS** 영역에서 **모듈**을 엽니다. 목록에서 모듈을 선택합니다. 오른쪽의 **작업** 사이드바에서 **잠금 해제**를 선택합니다. 모듈에 대한 작업 항목이 **잠금**으로 나타나면 모듈이 이미 잠금 해제되어 있으며 작업이 필요하지 않습니다. 나중에 *web.config*에서 제거하려고 계획한 만큼 모듈을 잠금 해제합니다.
+1. 서버 수준에서 모듈의 잠금을 해제합니다. IIS 관리자 **연결** 사이드바에서 IIS 서버를 선택합니다. **IIS** 영역에서 **모듈** 을 엽니다. 목록에서 모듈을 선택합니다. 오른쪽의 **작업** 사이드바에서 **잠금 해제** 를 선택합니다. 모듈에 대한 작업 항목이 **잠금** 으로 나타나면 모듈이 이미 잠금 해제되어 있으며 작업이 필요하지 않습니다. 나중에 *web.config* 에서 제거하려고 계획한 만큼 모듈을 잠금 해제합니다.
 
-2. *web.config*의 `<modules>` 섹션 없이 앱을 배포합니다. IIS 관리자에서 먼저 섹션을 잠금 해제하지 않고 `<modules>` 섹션이 포함된 *web.config*를 사용하여 앱을 배포하면 Configuration Manager에서 섹션을 잠금 해제하려고 할 때 예외가 throw됩니다. 따라서 `<modules>` 섹션 없이 앱을 배포합니다.
+2. *web.config* 의 `<modules>` 섹션 없이 앱을 배포합니다. IIS 관리자에서 먼저 섹션을 잠금 해제하지 않고 `<modules>` 섹션이 포함된 *web.config* 를 사용하여 앱을 배포하면 Configuration Manager에서 섹션을 잠금 해제하려고 할 때 예외가 throw됩니다. 따라서 `<modules>` 섹션 없이 앱을 배포합니다.
 
-3. *web.config*의 `<modules>` 섹션을 잠금 해제합니다. **연결** 사이드바의 **사이트**에서 웹 사이트를 선택합니다. **관리** 영역에서 **구성 편집기**를 엽니다. 탐색 컨트롤을 사용하여 `system.webServer/modules` 섹션을 선택합니다. 오른쪽의 **작업** 사이드바에서 섹션을 **잠금 해제**하도록 선택합니다. 모듈 섹션에 대한 작업 항목이 **섹션 잠금**으로 나타나면 모듈 섹션이 이미 잠금 해제되어 있으며 작업이 필요하지 않습니다.
+3. *web.config* 의 `<modules>` 섹션을 잠금 해제합니다. **연결** 사이드바의 **사이트** 에서 웹 사이트를 선택합니다. **관리** 영역에서 **구성 편집기** 를 엽니다. 탐색 컨트롤을 사용하여 `system.webServer/modules` 섹션을 선택합니다. 오른쪽의 **작업** 사이드바에서 섹션을 **잠금 해제** 하도록 선택합니다. 모듈 섹션에 대한 작업 항목이 **섹션 잠금** 으로 나타나면 모듈 섹션이 이미 잠금 해제되어 있으며 작업이 필요하지 않습니다.
 
-4. `<modules>` 섹션을 `<remove>` 요소가 포함된 앱의 로컬 *web.config* 파일에 추가하여 앱에서 모듈을 제거합니다. 여러 `<remove>` 요소를 추가하여 여러 모듈을 제거합니다. 서버에서 *web.config*가 변경되면 로컬에서 프로젝트의 *web.config* 파일에 동일한 변경 내용이 즉시 적용됩니다. 이 방법을 사용하여 모듈을 제거해도 서버의 다른 앱과 함께 모듈을 사용하는 데 영향을 주지 않습니다.
+4. `<modules>` 섹션을 `<remove>` 요소가 포함된 앱의 로컬 *web.config* 파일에 추가하여 앱에서 모듈을 제거합니다. 여러 `<remove>` 요소를 추가하여 여러 모듈을 제거합니다. 서버에서 *web.config* 가 변경되면 로컬에서 프로젝트의 *web.config* 파일에 동일한 변경 내용이 즉시 적용됩니다. 이 방법을 사용하여 모듈을 제거해도 서버의 다른 앱과 함께 모듈을 사용하는 데 영향을 주지 않습니다.
 
    ```xml
    <configuration>
@@ -134,9 +135,9 @@ IIS 모듈이 앱에 대해 사용되지 않아야 하는 서버 수준에서 �
    </configuration>
    ```
 
-*web.config*를 사용하여 IIS Express용 모듈을 추가 또는 제거하려면 *applicationHost.config*를 수정하여 `<modules>` 섹션을 잠금 해제합니다.
+*web.config* 를 사용하여 IIS Express용 모듈을 추가 또는 제거하려면 *applicationHost.config* 를 수정하여 `<modules>` 섹션을 잠금 해제합니다.
 
-1. *{APPLICATION ROOT}\\.vs\config\applicationhost.config*를 엽니다.
+1. *{APPLICATION ROOT}\\.vs\config\applicationhost.config* 를 엽니다.
 
 1. IIS 모듈에 대한 `<section>` 요소를 찾고 `overrideModeDefault`를 `Deny`에서 `Allow`로 변경합니다.
 
@@ -154,7 +155,7 @@ IIS 모듈이 앱에 대해 사용되지 않아야 하는 서버 수준에서 �
 
 1. `<modules>` 섹션과 개별 모듈의 잠금이 해제된 후에는 IIS Express에서 앱을 실행하기 위한 앱의 *web.config* 파일을 사용하여 IIS 모듈을 추가하거나 제거할 수 있습니다.
 
-IIS 모듈을 *Appcmd.exe*를 사용하여 제거할 수도 있습니다. 다음 명령에 `MODULE_NAME` 및 `APPLICATION_NAME`을 제공합니다.
+IIS 모듈을 *Appcmd.exe* 를 사용하여 제거할 수도 있습니다. 다음 명령에 `MODULE_NAME` 및 `APPLICATION_NAME`을 제공합니다.
 
 ```console
 Appcmd.exe delete module MODULE_NAME /app.name:APPLICATION_NAME

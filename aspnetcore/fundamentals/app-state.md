@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: 95035ec372ab6adb5bafb40f2b939c549ac6f839
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c11b748f9d79235b14c9541019da6e1fb3428af6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633814"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051410"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>ASP.NET Core의 세션 및 상태 관리
 
@@ -87,7 +88,7 @@ ASP.NET Core는 세션 ID를 포함하는 cookie를 클라이언트에 제공하
 
 메모리 내 캐시 공급자는 앱이 있는 서버의 메모리에 세션 데이터를 저장합니다. 서버 팜 시나리오:
 
-* *고정 세션*을 사용하여 각 세션을 개별 서버의 특정 앱 인스턴스에 연결합니다. [Azure App Service](https://azure.microsoft.com/services/app-service/)는 [ARR(애플리케이션 요청 라우팅)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module)을 사용하여 기본적으로 고정 세션을 적용합니다. 그러나 고정 세션은 확장성에 영향을 주고 웹앱 업데이트를 복잡하게 만들 수 있습니다. 더 나은 방법은 고정 세션이 필요 없는 Redis 또는 SQL Server 분산 캐시를 사용하는 것입니다. 자세한 내용은 <xref:performance/caching/distributed>를 참조하세요.
+* *고정 세션* 을 사용하여 각 세션을 개별 서버의 특정 앱 인스턴스에 연결합니다. [Azure App Service](https://azure.microsoft.com/services/app-service/)는 [ARR(애플리케이션 요청 라우팅)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module)을 사용하여 기본적으로 고정 세션을 적용합니다. 그러나 고정 세션은 확장성에 영향을 주고 웹앱 업데이트를 복잡하게 만들 수 있습니다. 더 나은 방법은 고정 세션이 필요 없는 Redis 또는 SQL Server 분산 캐시를 사용하는 것입니다. 자세한 내용은 <xref:performance/caching/distributed>를 참조하세요.
 * 세션 cookie는 <xref:Microsoft.AspNetCore.DataProtection.IDataProtector>를 통해 암호화됩니다. 데이터 보호는 각 머신에서 세션 cookie를 읽을 수 있도록 올바르게 구성되어야 합니다. 자세한 내용은 <xref:security/data-protection/introduction> 및 [키 스토리지 공급자](xref:security/data-protection/implementation/key-storage-providers)를 참조하세요.
 
 ### <a name="configure-session-state"></a>세션 상태 구성
@@ -141,7 +142,7 @@ cookie 세션 기본값을 재정의하려면 <xref:Microsoft.AspNetCore.Builder
 
 앱은 <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> 속성을 사용하여 서버 캐시의 콘텐츠가 중단되기 전에 유휴 상태일 수 있는 세션의 기간을 결정합니다. 이 속성은 cookie 만료와 무관합니다. [세션 미들웨어](xref:Microsoft.AspNetCore.Session.SessionMiddleware)를 통해 전달되는 각 요청은 시간 제한을 다시 설정합니다.
 
-세션 상태는 *잠그지 않음*입니다. 두 요청이 동시에 세션의 콘텐츠를 수정하려고 하는 경우 마지막 요청이 첫 번째 요청을 재정의합니다. `Session`은 *일관된 세션*으로 구현됩니다. 즉, 모든 콘텐츠는 함께 저장됩니다. 두 요청이 서로 다른 세션 값을 수정하려고 할 때 마지막 요청이 첫 번째 요청에 의해 수행된 세션 변경 내용을 재정의할 수 있습니다.
+세션 상태는 *잠그지 않음* 입니다. 두 요청이 동시에 세션의 콘텐츠를 수정하려고 하는 경우 마지막 요청이 첫 번째 요청을 재정의합니다. `Session`은 *일관된 세션* 으로 구현됩니다. 즉, 모든 콘텐츠는 함께 저장됩니다. 두 요청이 서로 다른 세션 값을 수정하려고 할 때 마지막 요청이 첫 번째 요청에 의해 수행된 세션 변경 내용을 재정의할 수 있습니다.
 
 ### <a name="set-and-get-session-values"></a>세션 값 설정 및 가져오기
 
@@ -354,7 +355,7 @@ ASP.NET Core는 각 요청과 함께 앱으로 전송되는 세션 ID를 포함�
 
 메모리 내 캐시 공급자는 앱이 있는 서버의 메모리에 세션 데이터를 저장합니다. 서버 팜 시나리오:
 
-* *고정 세션*을 사용하여 각 세션을 개별 서버의 특정 앱 인스턴스에 연결합니다. [Azure App Service](https://azure.microsoft.com/services/app-service/)는 [ARR(애플리케이션 요청 라우팅)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module)을 사용하여 기본적으로 고정 세션을 적용합니다. 그러나 고정 세션은 확장성에 영향을 주고 웹앱 업데이트를 복잡하게 만들 수 있습니다. 더 나은 방법은 고정 세션이 필요 없는 Redis 또는 SQL Server 분산 캐시를 사용하는 것입니다. 자세한 내용은 <xref:performance/caching/distributed>를 참조하세요.
+* *고정 세션* 을 사용하여 각 세션을 개별 서버의 특정 앱 인스턴스에 연결합니다. [Azure App Service](https://azure.microsoft.com/services/app-service/)는 [ARR(애플리케이션 요청 라우팅)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module)을 사용하여 기본적으로 고정 세션을 적용합니다. 그러나 고정 세션은 확장성에 영향을 주고 웹앱 업데이트를 복잡하게 만들 수 있습니다. 더 나은 방법은 고정 세션이 필요 없는 Redis 또는 SQL Server 분산 캐시를 사용하는 것입니다. 자세한 내용은 <xref:performance/caching/distributed>를 참조하세요.
 * 세션 cookie는 <xref:Microsoft.AspNetCore.DataProtection.IDataProtector>를 통해 암호화됩니다. 데이터 보호는 각 머신에서 세션 cookie를 읽을 수 있도록 올바르게 구성되어야 합니다. 자세한 내용은 <xref:security/data-protection/introduction> 및 [키 스토리지 공급자](xref:security/data-protection/implementation/key-storage-providers)를 참조하세요.
 
 ### <a name="configure-session-state"></a>세션 상태 구성
@@ -401,7 +402,7 @@ cookie 세션 기본값을 재정의하려면 `SessionOptions`를 사용합니�
 
 앱은 <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> 속성을 사용하여 서버 캐시의 콘텐츠가 중단되기 전에 유휴 상태일 수 있는 세션의 기간을 결정합니다. 이 속성은 cookie 만료와 무관합니다. [세션 미들웨어](xref:Microsoft.AspNetCore.Session.SessionMiddleware)를 통해 전달되는 각 요청은 시간 제한을 다시 설정합니다.
 
-세션 상태는 *잠그지 않음*입니다. 두 요청이 동시에 세션의 콘텐츠를 수정하려고 하는 경우 마지막 요청이 첫 번째 요청을 재정의합니다. `Session`은 *일관된 세션*으로 구현됩니다. 즉, 모든 콘텐츠는 함께 저장됩니다. 두 요청이 서로 다른 세션 값을 수정하려고 할 때 마지막 요청이 첫 번째 요청에 의해 수행된 세션 변경 내용을 재정의할 수 있습니다.
+세션 상태는 *잠그지 않음* 입니다. 두 요청이 동시에 세션의 콘텐츠를 수정하려고 하는 경우 마지막 요청이 첫 번째 요청을 재정의합니다. `Session`은 *일관된 세션* 으로 구현됩니다. 즉, 모든 콘텐츠는 함께 저장됩니다. 두 요청이 서로 다른 세션 값을 수정하려고 할 때 마지막 요청이 첫 번째 요청에 의해 수행된 세션 변경 내용을 재정의할 수 있습니다.
 
 ### <a name="set-and-get-session-values"></a>세션 값 설정 및 가져오기
 

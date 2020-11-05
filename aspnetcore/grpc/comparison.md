@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: 3f0e44bb374214328f589c6ca3952c6d7aab88d8
-ms.sourcegitcommit: 9c031530d2e652fe422e786bd43392bc500d622f
+ms.openlocfilehash: 0fb50f07153f5f9953b667fe32062ad24b2bd66d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2020
-ms.locfileid: "90770131"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059951"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>gRPC 서비스와 HTTP API 비교
 
@@ -36,7 +37,7 @@ ms.locfileid: "90770131"
 
 | 기능          | gRPC                                               | JSON을 사용하는 HTTP API           |
 | ---------------- | -------------------------------------------------- | ----------------------------- |
-| 계약         | 필수( *.proto*)                                | 선택 사항(OpenAPI)            |
+| 계약         | 필수( *.proto* )                                | 선택 사항(OpenAPI)            |
 | 프로토콜         | HTTP/2                                             | HTTP                          |
 | Payload          | [Protobuf](#performance)(소형, 이진)           | JSON(대형, 사람이 읽을 수 있음)  |
 | 규범 | [엄격한 사양](#strict-specification)      | 느슨함. 모든 HTTP가 유효합니다.     |
@@ -91,10 +92,10 @@ gRPC는 클라이언트가 RPC가 완료될 때까지 대기하는 기간을 지
 
 gRPC는 다음과 같은 시나리오에 적합합니다.
 
-* **마이크로 서비스**: gRPC는 대기 시간이 짧고 처리량이 높은 통신을 위해 설계되었습니다. gRPC는 효율성이 중요한 경량 마이크로 서비스에 적합합니다.
-* **지점 간 실시간 통신**: 양방향 스트리밍을 위한 뛰어난 지원 기능을 제공합니다. gRPC 서비스는 폴링을 사용하지 않고 실시간으로 메시지를 푸시할 수 있습니다.
-* **Polyglot 환경**: gRPC 도구는 널리 사용되는 모든 개발 언어를 지원하며, 따라서 gRPC는 다중 언어 환경에 적합합니다.
-* **네트워크 제한 환경**: gRPC 메시지는 경량 메시지 형식인 Protobuf를 사용하여 직렬화됩니다. gRPC 메시지는 항상 해당하는 JSON 메시지보다 작습니다.
+* **마이크로 서비스** : gRPC는 대기 시간이 짧고 처리량이 높은 통신을 위해 설계되었습니다. gRPC는 효율성이 중요한 경량 마이크로 서비스에 적합합니다.
+* **지점 간 실시간 통신** : 양방향 스트리밍을 위한 뛰어난 지원 기능을 제공합니다. gRPC 서비스는 폴링을 사용하지 않고 실시간으로 메시지를 푸시할 수 있습니다.
+* **Polyglot 환경** : gRPC 도구는 널리 사용되는 모든 개발 언어를 지원하며, 따라서 gRPC는 다중 언어 환경에 적합합니다.
+* **네트워크 제한 환경** : gRPC 메시지는 경량 메시지 형식인 Protobuf를 사용하여 직렬화됩니다. gRPC 메시지는 항상 해당하는 JSON 메시지보다 작습니다.
 * **IPC(프로세스 간 통신)** : Unix 도메인 소켓 및 명명된 파이프와 같은 IPC 전송은 gRPC에서 동일한 머신에 있는 앱 간에 통신하는 데 사용할 수 있습니다. 자세한 내용은 <xref:grpc/interprocess>를 참조하세요.
 
 ## <a name="grpc-weaknesses"></a>gRPC 약점
@@ -125,8 +126,8 @@ gRPC 메시지는 기본적으로 Protobuf로 인코딩됩니다. Protobuf는 �
 
 다음과 같은 시나리오에서는 gRPC보다 다른 프레임워크가 권장됩니다.
 
-* **브라우저에서 액세스 가능한 API**: gRPC는 브라우저에서 완전히 지원되지는 않습니다. gRPC-웹은 브라우저 지원을 제공할 수 있지만 제한 사항이 있으며 서버 프록시를 도입합니다.
-* **브로드캐스트 실시간 통신**: gRPC는 스트리밍을 통해 실시간 통신을 지원하지만 등록된 연결에 메시지를 브로드캐스트하는 개념이 없습니다. 예를 들어 대화방의 모든 클라이언트에 새 채팅 메시지를 보내야 하는 대화방 시나리오에서 각 gRPC 호출은 클라이언트에 새 채팅 메시지를 개별적으로 스트리밍하는 데 필요합니다. [SignalR](xref:signalr/introduction)은 이 시나리오에 유용한 프레임워크입니다. SignalR에는 영구 연결 개념과 메시지 브로드캐스트에 대한 기본 제공 지원이 있습니다.
+* **브라우저에서 액세스 가능한 API** : gRPC는 브라우저에서 완전히 지원되지는 않습니다. gRPC-웹은 브라우저 지원을 제공할 수 있지만 제한 사항이 있으며 서버 프록시를 도입합니다.
+* **브로드캐스트 실시간 통신** : gRPC는 스트리밍을 통해 실시간 통신을 지원하지만 등록된 연결에 메시지를 브로드캐스트하는 개념이 없습니다. 예를 들어 대화방의 모든 클라이언트에 새 채팅 메시지를 보내야 하는 대화방 시나리오에서 각 gRPC 호출은 클라이언트에 새 채팅 메시지를 개별적으로 스트리밍하는 데 필요합니다. [SignalR](xref:signalr/introduction)은 이 시나리오에 유용한 프레임워크입니다. SignalR에는 영구 연결 개념과 메시지 브로드캐스트에 대한 기본 제공 지원이 있습니다.
 
 ## <a name="additional-resources"></a>추가 리소스
 

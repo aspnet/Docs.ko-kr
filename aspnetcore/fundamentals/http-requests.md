@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/http-requests
-ms.openlocfilehash: ca52b6cf8646bced3a228341717f8ccb1edff582
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 34c35daac3da845bac9156fe96078df7902a4cd0
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634204"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059496"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>ASP.NET Core에서 IHttpClientFactory를 사용하여 HTTP 요청 만들기
 
@@ -33,7 +34,7 @@ ms.locfileid: "88634204"
 
 앱에서 <xref:System.Net.Http.IHttpClientFactory>를 등록하여 <xref:System.Net.Http.HttpClient> 인스턴스를 구성하고 만드는 데 사용할 수 있습니다. `IHttpClientFactory`는 다음과 같은 이점을 제공합니다.
 
-* 논리적 `HttpClient` 인스턴스를 구성하고 이름을 지정하기 위한 중앙 위치를 제공합니다. 예를 들어, *github*라는 클라이언트를 [GitHub](https://github.com/)에 액세스하도록 등록 및 구성할 수 있습니다. 일반적인 액세스를 위한 기본 클라이언트를 등록할 수 있습니다.
+* 논리적 `HttpClient` 인스턴스를 구성하고 이름을 지정하기 위한 중앙 위치를 제공합니다. 예를 들어, *github* 라는 클라이언트를 [GitHub](https://github.com/)에 액세스하도록 등록 및 구성할 수 있습니다. 일반적인 액세스를 위한 기본 클라이언트를 등록할 수 있습니다.
 * `HttpClient`에서 위임 처리기를 통해 나가는 미들웨어의 개념을 체계화합니다. Polly 기반 미들웨어에 대한 확장을 제공하여 `HttpClient`에서의 핸들러 위임을 활용합니다.
 * 기본 `HttpClientMessageHandler` 인스턴스의 풀링 및 수명을 관리합니다. 자동 관리가 `HttpClient` 수명을 수동으로 관리할 때 발생하는 일반적인 DNS(Domain Name System) 문제를 방지해 줍니다.
 * 팩터리에서 만든 클라이언트를 통해 전송된 모든 요청에 대해 구성 가능한 로깅 경험(`ILogger`을 통해)을 추가합니다.
@@ -377,9 +378,9 @@ DI 지원 앱에서 `IHttpClientFactory`을(를) 사용하면 다음이 방지�
 
 `IHttpClientFactory`을 통해 만든 클라이언트는 모든 요청에 대한 로그 메시지를 기록합니다. 기본 로그 메시지를 보려면 로깅 구성에서 적절한 정보 수준을 사용하도록 설정합니다. 요청 헤더의 로깅 등과 같은 추가 로깅은 추적 수준에서만 포함됩니다.
 
-각 클라이언트에 사용되는 로그 범주는 클라이언트의 이름을 포함합니다. 예를 들어, *MyNamedClient*라는 클라이언트는 “System.Net.Http.HttpClient.**MyNamedClient**.LogicalHandler”의 범주를 사용하여 메시지를 기록합니다. *LogicalHandler*라는 접미사가 붙은 메시지는 요청 처리기 파이프라인 외부에서 발생합니다. 요청 시 파이프라인의 다른 모든 처리기에서 이를 처리하기 전에 메시지가 기록됩니다. 응답 시 다른 모든 파이프라인 처리기가 응답을 받은 후에 메시지가 기록됩니다.
+각 클라이언트에 사용되는 로그 범주는 클라이언트의 이름을 포함합니다. 예를 들어, *MyNamedClient* 라는 클라이언트는 “System.Net.Http.HttpClient. **MyNamedClient**.LogicalHandler”의 범주를 사용하여 메시지를 기록합니다. *LogicalHandler* 라는 접미사가 붙은 메시지는 요청 처리기 파이프라인 외부에서 발생합니다. 요청 시 파이프라인의 다른 모든 처리기에서 이를 처리하기 전에 메시지가 기록됩니다. 응답 시 다른 모든 파이프라인 처리기가 응답을 받은 후에 메시지가 기록됩니다.
 
-로깅은 요청 처리기 파이프라인 내부에서도 발생합니다. *MyNamedClient* 예제에서 해당 메시지는 로그 범주 “System.Net.Http.HttpClient.**MyNamedClient**.ClientHandler”에 대해 기록됩니다. 요청의 경우 이는 요청이 전송되기 직전 및 다른 모든 처리기가 실행된 후에 발생합니다. 응답 시 이 로깅은 처리기 파이프라인을 통해 응답이 다시 전달되기 전의 응답 상태를 포함합니다.
+로깅은 요청 처리기 파이프라인 내부에서도 발생합니다. *MyNamedClient* 예제에서 해당 메시지는 로그 범주 “System.Net.Http.HttpClient. **MyNamedClient**.ClientHandler”에 대해 기록됩니다. 요청의 경우 이는 요청이 전송되기 직전 및 다른 모든 처리기가 실행된 후에 발생합니다. 응답 시 이 로깅은 처리기 파이프라인을 통해 응답이 다시 전달되기 전의 응답 상태를 포함합니다.
 
 파이프라인 외부 및 내부에서 로깅을 사용하도록 설정하면 다른 파이프라인 처리기가 수행한 변경 내용을 검사할 수 있습니다. 여기에는 요청 헤더 또는 응답 상태 코드에 대한 변경이 포함될 수 있습니다.
 
@@ -471,11 +472,11 @@ DI 지원 앱에서 `IHttpClientFactory`을(를) 사용하면 다음이 방지�
 
 ### <a name="named-clients"></a>명명된 클라이언트
 
-앱이 각각 다른 구성을 사용하는 많은 개별적인 `HttpClient`의 사용을 필요로 하는 경우 선택할 수 있는 방법은 **명명된 클라이언트**를 사용하는 것입니다. 명명된 `HttpClient`에 대한 구성은 `Startup.ConfigureServices`에서 등록하는 동안 지정할 수 있습니다.
+앱이 각각 다른 구성을 사용하는 많은 개별적인 `HttpClient`의 사용을 필요로 하는 경우 선택할 수 있는 방법은 **명명된 클라이언트** 를 사용하는 것입니다. 명명된 `HttpClient`에 대한 구성은 `Startup.ConfigureServices`에서 등록하는 동안 지정할 수 있습니다.
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet2)]
 
-위의 코드에서는 `AddHttpClient`를 호출하여 *github*이라는 이름을 제공합니다. 이 클라이언트에는 일부 기본 구성&mdash;즉 GitHub API를 작동하는 데 필요한 기준 주소 및 두 개의 헤더가 적용되어 있습니다.
+위의 코드에서는 `AddHttpClient`를 호출하여 *github* 이라는 이름을 제공합니다. 이 클라이언트에는 일부 기본 구성&mdash;즉 GitHub API를 작동하는 데 필요한 기준 주소 및 두 개의 헤더가 적용되어 있습니다.
 
 `CreateClient`를 호출할 때마다 `HttpClient`의 새 인스턴스를 만들고 구성 작업을 호출합니다.
 
@@ -695,7 +696,7 @@ DI 지원 앱에서 `IHttpClientFactory`을(를) 사용하면 다음이 방지�
 
 `IHttpClientFactory`을 통해 만든 클라이언트는 모든 요청에 대한 로그 메시지를 기록합니다. 기본 로그 메시지를 보려면 로깅 구성에서 적절한 정보 수준을 사용하도록 설정합니다. 요청 헤더의 로깅 등과 같은 추가 로깅은 추적 수준에서만 포함됩니다.
 
-각 클라이언트에 사용되는 로그 범주는 클라이언트의 이름을 포함합니다. 예를 들어, *MyNamedClient*라는 클라이언트는 `System.Net.Http.HttpClient.MyNamedClient.LogicalHandler`의 범주를 사용하여 메시지를 기록합니다. *LogicalHandler*라는 접미사가 붙은 메시지는 요청 처리기 파이프라인 외부에서 발생합니다. 요청 시 파이프라인의 다른 모든 처리기에서 이를 처리하기 전에 메시지가 기록됩니다. 응답 시 다른 모든 파이프라인 처리기가 응답을 받은 후에 메시지가 기록됩니다.
+각 클라이언트에 사용되는 로그 범주는 클라이언트의 이름을 포함합니다. 예를 들어, *MyNamedClient* 라는 클라이언트는 `System.Net.Http.HttpClient.MyNamedClient.LogicalHandler`의 범주를 사용하여 메시지를 기록합니다. *LogicalHandler* 라는 접미사가 붙은 메시지는 요청 처리기 파이프라인 외부에서 발생합니다. 요청 시 파이프라인의 다른 모든 처리기에서 이를 처리하기 전에 메시지가 기록됩니다. 응답 시 다른 모든 파이프라인 처리기가 응답을 받은 후에 메시지가 기록됩니다.
 
 로깅은 요청 처리기 파이프라인 내부에서도 발생합니다. *MyNamedClient* 예제에서 해당 메시지는 로그 범주 `System.Net.Http.HttpClient.MyNamedClient.ClientHandler`에 대해 기록됩니다. 요청의 경우 이는 요청이 네트워크에서 전송되기 직전 및 다른 모든 처리기가 실행된 후에 발생합니다. 응답 시 이 로깅은 처리기 파이프라인을 통해 응답이 다시 전달되기 전의 응답 상태를 포함합니다.
 
@@ -776,11 +777,11 @@ DI 지원 앱에서 `IHttpClientFactory`을(를) 사용하면 다음이 방지�
 
 ### <a name="named-clients"></a>명명된 클라이언트
 
-앱이 각각 다른 구성을 사용하는 많은 개별적인 `HttpClient`의 사용을 필요로 하는 경우 선택할 수 있는 방법은 **명명된 클라이언트**를 사용하는 것입니다. 명명된 `HttpClient`에 대한 구성은 `Startup.ConfigureServices`에서 등록하는 동안 지정할 수 있습니다.
+앱이 각각 다른 구성을 사용하는 많은 개별적인 `HttpClient`의 사용을 필요로 하는 경우 선택할 수 있는 방법은 **명명된 클라이언트** 를 사용하는 것입니다. 명명된 `HttpClient`에 대한 구성은 `Startup.ConfigureServices`에서 등록하는 동안 지정할 수 있습니다.
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet2)]
 
-위의 코드에서는 `AddHttpClient`를 호출하여 *github*이라는 이름을 제공합니다. 이 클라이언트에는 일부 기본 구성&mdash;즉 GitHub API를 작동하는 데 필요한 기준 주소 및 두 개의 헤더가 적용되어 있습니다.
+위의 코드에서는 `AddHttpClient`를 호출하여 *github* 이라는 이름을 제공합니다. 이 클라이언트에는 일부 기본 구성&mdash;즉 GitHub API를 작동하는 데 필요한 기준 주소 및 두 개의 헤더가 적용되어 있습니다.
 
 `CreateClient`를 호출할 때마다 `HttpClient`의 새 인스턴스를 만들고 구성 작업을 호출합니다.
 
@@ -892,7 +893,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet5)]
 
-위의 코드에서 `ValidateHeaderHandler`는 DI에 등록됩니다. 처리기는 범위가 지정되지 않은, 임시 서비스로 DI에 등록**되어야** 합니다. 처리기가 범위 지정 서비스로 등록되고 처리기가 종속된 모든 서비스는 삭제 가능합니다.
+위의 코드에서 `ValidateHeaderHandler`는 DI에 등록됩니다. 처리기는 범위가 지정되지 않은, 임시 서비스로 DI에 등록 **되어야** 합니다. 처리기가 범위 지정 서비스로 등록되고 처리기가 종속된 모든 서비스는 삭제 가능합니다.
 
 * 처리기가 범위를 벗어나기 전에 처리기의 서비스를 삭제할 수 있습니다.
 * 처리기 서비스를 삭제하면 처리기가 실패합니다.
@@ -1003,7 +1004,7 @@ DI 지원 앱에서 `IHttpClientFactory`을(를) 사용하면 다음이 방지�
 
 `IHttpClientFactory`을 통해 만든 클라이언트는 모든 요청에 대한 로그 메시지를 기록합니다. 기본 로그 메시지를 보려면 로깅 구성에서 적절한 정보 수준을 사용하도록 설정합니다. 요청 헤더의 로깅 등과 같은 추가 로깅은 추적 수준에서만 포함됩니다.
 
-각 클라이언트에 사용되는 로그 범주는 클라이언트의 이름을 포함합니다. 예를 들어, *MyNamedClient*라는 클라이언트는 `System.Net.Http.HttpClient.MyNamedClient.LogicalHandler`의 범주를 사용하여 메시지를 기록합니다. *LogicalHandler*라는 접미사가 붙은 메시지는 요청 처리기 파이프라인 외부에서 발생합니다. 요청 시 파이프라인의 다른 모든 처리기에서 이를 처리하기 전에 메시지가 기록됩니다. 응답 시 다른 모든 파이프라인 처리기가 응답을 받은 후에 메시지가 기록됩니다.
+각 클라이언트에 사용되는 로그 범주는 클라이언트의 이름을 포함합니다. 예를 들어, *MyNamedClient* 라는 클라이언트는 `System.Net.Http.HttpClient.MyNamedClient.LogicalHandler`의 범주를 사용하여 메시지를 기록합니다. *LogicalHandler* 라는 접미사가 붙은 메시지는 요청 처리기 파이프라인 외부에서 발생합니다. 요청 시 파이프라인의 다른 모든 처리기에서 이를 처리하기 전에 메시지가 기록됩니다. 응답 시 다른 모든 파이프라인 처리기가 응답을 받은 후에 메시지가 기록됩니다.
 
 로깅은 요청 처리기 파이프라인 내부에서도 발생합니다. *MyNamedClient* 예제에서 해당 메시지는 로그 범주 `System.Net.Http.HttpClient.MyNamedClient.ClientHandler`에 대해 기록됩니다. 요청의 경우 이는 요청이 네트워크에서 전송되기 직전 및 다른 모든 처리기가 실행된 후에 발생합니다. 응답 시 이 로깅은 처리기 파이프라인을 통해 응답이 다시 전달되기 전의 응답 상태를 포함합니다.
 

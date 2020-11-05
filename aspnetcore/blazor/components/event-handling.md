@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: e8c3d6a9f2c6b50fc18da59b8e0b5475360673c7
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: d17547e7fb8a628a4864209d9857ac828f77c701
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491467"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056285"
 ---
 # <a name="aspnet-core-no-locblazor-event-handling"></a>ASP.NET Core Blazor 이벤트 처리
 
@@ -167,7 +168,7 @@ private void ShowMessage(MouseEventArgs e)
 ```
 
 > [!NOTE]
-> 위 `for` 루프 예제의 `i`와 같이 람다 식에서 직접 루프 변수를 사용하지 **않습니다** . 직접 사용하는 경우 모든 람다 식에서 동일한 변수가 사용되어 모든 람다에서 동일한 값이 사용됩니다. 변수 값을 항상 지역 변수에 캡처한 다음에 사용합니다. 위의 예제에서는 루프 변수 `i`가 `buttonNumber`에 할당됩니다.
+> 위 `for` 루프 예제의 `i`와 같이 람다 식에서 직접 루프 변수를 사용하지 **않습니다**. 직접 사용하는 경우 모든 람다 식에서 동일한 변수가 사용되어 모든 람다에서 동일한 값이 사용됩니다. 변수 값을 항상 지역 변수에 캡처한 다음에 사용합니다. 위의 예제에서는 루프 변수 `i`가 `buttonNumber`에 할당됩니다.
 
 ## <a name="eventcallback"></a>EventCallback
 

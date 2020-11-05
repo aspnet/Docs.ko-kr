@@ -6,6 +6,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/21/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: b69d60e7d0e24f6d3c8032b391c98a6cd1589305
-ms.sourcegitcommit: 9c031530d2e652fe422e786bd43392bc500d622f
+ms.openlocfilehash: 59c296f3388e71254badb02fa3ae4279005c359c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2020
-ms.locfileid: "90770183"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056883"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-no-locsignalr"></a>자습서: ASP.NET Core SignalR 시작하기
 
@@ -61,15 +62,15 @@ ms.locfileid: "90770183"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* 메뉴에서 **파일 > 새 프로젝트**를 선택합니다.
+* 메뉴에서 **파일 > 새 프로젝트** 를 선택합니다.
 
-* **새 프로젝트 만들기** 대화 상자에서 **ASP.NET Core 웹 애플리케이션**을 선택한 후, **다음**을 선택합니다.
+* **새 프로젝트 만들기** 대화 상자에서 **ASP.NET Core 웹 애플리케이션** 을 선택한 후, **다음** 을 선택합니다.
 
-* **새 프로젝트 구성** 대화 상자에서 *SignalRChat* 프로젝트 이름을 지정한 다음, **만들기**를 선택합니다.
+* **새 프로젝트 구성** 대화 상자에서 *SignalRChat* 프로젝트 이름을 지정한 다음, **만들기** 를 선택합니다.
 
-* **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 3.1**을 선택합니다. 
+* **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 3.1** 을 선택합니다. 
 
-* Razor Pages를 사용하는 프로젝트를 생성하려면 **웹 애플리케이션**을 선택한 다음, **만들기**를 선택합니다.
+* Razor Pages를 사용하는 프로젝트를 생성하려면 **웹 애플리케이션** 을 선택한 다음, **만들기** 를 선택합니다.
 
   ![Visual Studio의 새 프로젝트 대화 상자](signalr/_static/3.x/signalr-new-project-dialog.png)
 
@@ -86,31 +87,31 @@ ms.locfileid: "90770183"
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 메뉴에서 **파일 > 새 솔루션**을 선택합니다.
+* 메뉴에서 **파일 > 새 솔루션** 을 선택합니다.
 
-* **.NET Core > 앱 > 웹 애플리케이션** (**웹 애플리케이션(Model-View-Controller)** 선택 안 함)을 선택한 후, **다음**을 선택합니다.
+* **.NET Core > 앱 > 웹 애플리케이션** ( **웹 애플리케이션(Model-View-Controller)** 선택 안 함)을 선택한 후, **다음** 을 선택합니다.
 
-* **대상 프레임워크**가 **.NET Core 3.1**로 설정되어 있는지 확인한 후 **다음**을 선택합니다.
+* **대상 프레임워크** 가 **.NET Core 3.1** 로 설정되어 있는지 확인한 후 **다음** 을 선택합니다.
 
-* 프로젝트 이름을 *SignalRChat*으로 지정한 다음, **만들기**를 선택합니다.
+* 프로젝트 이름을 *SignalRChat* 으로 지정한 다음, **만들기** 를 선택합니다.
 
 ---
 
 ## <a name="add-the-no-locsignalr-client-library"></a>SignalR 클라이언트 라이브러리 추가
 
-SignalR 서버 라이브러리는 ASP.NET Core 3.1 공유 프레임워크에 포함되어 있습니다. JavaScript 클라이언트 라이브러리는 프로젝트에 자동으로 포함되지 않습니다. 본 자습서에서는 라이브러리 관리자(LibMan)를 사용하여 *unpkg*에서 클라이언트 라이브러리를 가져옵니다. unpkg는 Node.js의 패키지 관리자인 npm에서 찾은 모든 내용을 전달할 수 있는 CDN(콘텐츠 배달 네트워크)입니다.
+SignalR 서버 라이브러리는 ASP.NET Core 3.1 공유 프레임워크에 포함되어 있습니다. JavaScript 클라이언트 라이브러리는 프로젝트에 자동으로 포함되지 않습니다. 본 자습서에서는 라이브러리 관리자(LibMan)를 사용하여 *unpkg* 에서 클라이언트 라이브러리를 가져옵니다. unpkg는 Node.js의 패키지 관리자인 npm에서 찾은 모든 내용을 전달할 수 있는 CDN(콘텐츠 배달 네트워크)입니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **클라이언트 쪽 라이브러리**를 선택합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **클라이언트 쪽 라이브러리** 를 선택합니다.
 
-* **클라이언트 쪽 라이브러리 추가** 대화 상자에서 **공급자**로 **unpkg**를 선택합니다.
+* **클라이언트 쪽 라이브러리 추가** 대화 상자에서 **공급자** 로 **unpkg** 를 선택합니다.
 
-* **라이브러리**인 경우 `@microsoft/signalr@latest`를 입력합니다.
+* **라이브러리** 인 경우 `@microsoft/signalr@latest`를 입력합니다.
 
-* **특정 파일 선택**을 선택하고 *dist/browser* 폴더를 확장한 다음 *signalr.js* 및 *signalr.min.js*를 선택합니다.
+* **특정 파일 선택** 을 선택하고 *dist/browser* 폴더를 확장한 다음 *signalr.js* 및 *signalr.min.js* 를 선택합니다.
 
-* **대상 위치**를 *wwwroot/js/signalr/* 로 설정하고 **설치**를 선택합니다.
+* **대상 위치** 를 *wwwroot/js/signalr/* 로 설정하고 **설치** 를 선택합니다.
 
   ![클라이언트 쪽 라이브러리 추가 대화 상자 - 라이브러리 선택](signalr/_static/3.x/find-signalr-client-libs-select-files.png)
 
@@ -145,7 +146,7 @@ SignalR 서버 라이브러리는 ASP.NET Core 3.1 공유 프레임워크에 포
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* **터미널**에서 다음 명령을 실행하여 LibMan을 설치합니다.
+* **터미널** 에서 다음 명령을 실행하여 LibMan을 설치합니다.
 
   ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
@@ -176,7 +177,7 @@ SignalR 서버 라이브러리는 ASP.NET Core 3.1 공유 프레임워크에 포
 
 ## <a name="create-a-no-locsignalr-hub"></a>SignalR 허브 만들기
 
-*허브*는 클라이언트-서버 통신을 처리하는 높은 수준의 파이프라인으로 제공되는 클래스입니다.
+*허브* 는 클라이언트-서버 통신을 처리하는 높은 수준의 파이프라인으로 제공되는 클래스입니다.
 
 * SignalRChat 프로젝트 폴더에 *Hubs* 폴더를 만듭니다.
 
@@ -200,7 +201,7 @@ SignalR에 SignalR 요청을 전달하도록 SignalR 서버를 구성해야 합�
 
 ## <a name="add-no-locsignalr-client-code"></a>SignalR 클라이언트 코드 추가
 
-* *Pages\Index.cshtml*의 콘텐츠를 다음 코드로 바꿉니다.
+* *Pages\Index.cshtml* 의 콘텐츠를 다음 코드로 바꿉니다.
 
   [!code-cshtml[Index](signalr/sample-snapshot/3.x/Index.cshtml)]
 
@@ -236,7 +237,7 @@ SignalR에 SignalR 요청을 전달하도록 SignalR 서버를 구성해야 합�
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 메뉴에서 **실행 > 디버깅하지 않고 시작**을 선택합니다.
+* 메뉴에서 **실행 > 디버깅하지 않고 시작** 을 선택합니다.
 
 ---
 
@@ -249,7 +250,7 @@ SignalR에 SignalR 요청을 전달하도록 SignalR 서버를 구성해야 합�
   ![SignalR 샘플 앱](signalr/_static/3.x/signalr-get-started-finished.png)
 
 > [!TIP]
-> * 앱이 작동하지 않는 경우 브라우저 개발자 도구(F12)를 열고 콘솔로 이동합니다. HTML 및 JavaScript 코드와 관련된 오류를 볼 수 있습니다. 예를 들어 지정되지 않은 다른 폴더에 *signalr.js*를 넣었다고 가정합니다. 이 경우 해당 파일에 대한 참조는 작동하지 않으며 콘솔에 404 오류가 표시됩니다.
+> * 앱이 작동하지 않는 경우 브라우저 개발자 도구(F12)를 열고 콘솔로 이동합니다. HTML 및 JavaScript 코드와 관련된 오류를 볼 수 있습니다. 예를 들어 지정되지 않은 다른 폴더에 *signalr.js* 를 넣었다고 가정합니다. 이 경우 해당 파일에 대한 참조는 작동하지 않으며 콘솔에 404 오류가 표시됩니다.
 >   ![signalr.js 찾을 수 없음 오류](signalr/_static/3.x/f12-console.png)
 > * Chrome에서 ERR_SPDY_INADEQUATE_TRANSPORT_SECURITY 오류가 발생하는 경우, 다음 명령을 실행하여 개발 인증서를 업데이트합니다.
 >
@@ -292,15 +293,15 @@ SignalR에 SignalR 요청을 전달하도록 SignalR 서버를 구성해야 합�
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)  
 
-* 메뉴에서 **파일 > 새 프로젝트**를 선택합니다. 
+* 메뉴에서 **파일 > 새 프로젝트** 를 선택합니다. 
 
-* **새 프로젝트** 대화 상자에서 **설치됨 &gt; Visual C# &gt; 웹 &gt; ASP.NET Core 웹 애플리케이션**을 선택합니다. 프로젝트 이름을 *SignalRChat*으로 지정합니다.   
+* **새 프로젝트** 대화 상자에서 **설치됨 &gt; Visual C# &gt; 웹 &gt; ASP.NET Core 웹 애플리케이션** 을 선택합니다. 프로젝트 이름을 *SignalRChat* 으로 지정합니다.   
 
   ![Visual Studio의 새 프로젝트 대화 상자](signalr/_static/2.x/signalr-new-project-dialog.png)    
 
-* Razor Pages를 사용하는 프로젝트를 생성하려면 **웹 애플리케이션**을 선택합니다.   
+* Razor Pages를 사용하는 프로젝트를 생성하려면 **웹 애플리케이션** 을 선택합니다.   
 
-* **.NET Core**의 대상 프레임워크를 선택하고, **ASP.NET Core 2.2**를 선택하고, **확인**을 클릭합니다.    
+* **.NET Core** 의 대상 프레임워크를 선택하고, **ASP.NET Core 2.2** 를 선택하고, **확인** 을 클릭합니다.    
 
   ![Visual Studio의 새 프로젝트 대화 상자](signalr/_static/2.x/signalr-new-project-choose-type.png)   
 
@@ -317,33 +318,33 @@ SignalR에 SignalR 요청을 전달하도록 SignalR 서버를 구성해야 합�
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)   
 
-* 메뉴에서 **파일 > 새 솔루션**을 선택합니다.    
+* 메뉴에서 **파일 > 새 솔루션** 을 선택합니다.    
 
-* **.NET Core > 앱 > ASP.NET Core 웹앱**(**ASP.NET Core 웹앱(MVC) 선택 안 함**)을 선택합니다.  
+* **.NET Core > 앱 > ASP.NET Core 웹앱** ( **ASP.NET Core 웹앱(MVC) 선택 안 함** )을 선택합니다.  
 
-* **새로 만들기**를 선택합니다.  
+* **새로 만들기** 를 선택합니다.  
 
-* 프로젝트 이름을 *SignalRChat*으로 지정한 다음, **만들기**를 선택합니다. 
+* 프로젝트 이름을 *SignalRChat* 으로 지정한 다음, **만들기** 를 선택합니다. 
 
 --- 
 
 ## <a name="add-the-no-locsignalr-client-library"></a>SignalR 클라이언트 라이브러리 추가 
 
-SignalR 서버 라이브러리는 `Microsoft.AspNetCore.App` 메타패키지에 포함되어 있습니다. JavaScript 클라이언트 라이브러리는 프로젝트에 자동으로 포함되지 않습니다. 본 자습서에서는 라이브러리 관리자(LibMan)를 사용하여 *unpkg*에서 클라이언트 라이브러리를 가져옵니다. unpkg는 Node.js의 패키지 관리자인 npm에서 찾은 모든 내용을 전달할 수 있는 CDN(콘텐츠 배달 네트워크)입니다.   
+SignalR 서버 라이브러리는 `Microsoft.AspNetCore.App` 메타패키지에 포함되어 있습니다. JavaScript 클라이언트 라이브러리는 프로젝트에 자동으로 포함되지 않습니다. 본 자습서에서는 라이브러리 관리자(LibMan)를 사용하여 *unpkg* 에서 클라이언트 라이브러리를 가져옵니다. unpkg는 Node.js의 패키지 관리자인 npm에서 찾은 모든 내용을 전달할 수 있는 CDN(콘텐츠 배달 네트워크)입니다.   
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)  
 
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **클라이언트 쪽 라이브러리**를 선택합니다.  
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **클라이언트 쪽 라이브러리** 를 선택합니다.  
 
-* **클라이언트 쪽 라이브러리 추가** 대화 상자에서 **공급자**로 **unpkg**를 선택합니다. 
+* **클라이언트 쪽 라이브러리 추가** 대화 상자에서 **공급자** 로 **unpkg** 를 선택합니다. 
 
-* **라이브러리**에 `@microsoft/signalr@3`을 입력하고 미리 보기가 아닌 최신 버전을 선택합니다.  
+* **라이브러리** 에 `@microsoft/signalr@3`을 입력하고 미리 보기가 아닌 최신 버전을 선택합니다.  
 
   ![클라이언트 쪽 라이브러리 추가 대화 상자 - 라이브러리 선택](signalr/_static/2.x/libman1.png)   
 
-* **Choose specific files**(특정 파일 선택)를 선택하고 *dist/browser* 폴더를 확장한 후 *signalr.js* 및 *signalr.min.js*를 선택합니다. 
+* **Choose specific files** (특정 파일 선택)를 선택하고 *dist/browser* 폴더를 확장한 후 *signalr.js* 및 *signalr.min.js* 를 선택합니다. 
 
-* **대상 위치**를 *wwwroot/lib/signalr/* 로 설정하고 **설치**를 선택합니다.    
+* **대상 위치** 를 *wwwroot/lib/signalr/* 로 설정하고 **설치** 를 선택합니다.    
 
   ![클라이언트 쪽 라이브러리 추가 대화 상자 - 파일 및 대상 선택](signalr/_static/2.x/libman2.png) 
 
@@ -378,7 +379,7 @@ SignalR 서버 라이브러리는 `Microsoft.AspNetCore.App` 메타패키지에 
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)   
 
-* **터미널**에서 다음 명령을 실행하여 LibMan을 설치합니다. 
+* **터미널** 에서 다음 명령을 실행하여 LibMan을 설치합니다. 
 
   ```dotnetcli  
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli   
@@ -409,7 +410,7 @@ SignalR 서버 라이브러리는 `Microsoft.AspNetCore.App` 메타패키지에 
 
 ## <a name="create-a-no-locsignalr-hub"></a>SignalR 허브 만들기   
 
-*허브*는 클라이언트-서버 통신을 처리하는 높은 수준의 파이프라인으로 제공되는 클래스입니다.   
+*허브* 는 클라이언트-서버 통신을 처리하는 높은 수준의 파이프라인으로 제공되는 클래스입니다.   
 
 * SignalRChat 프로젝트 폴더에 *Hubs* 폴더를 만듭니다.  
 
@@ -433,7 +434,7 @@ SignalR에 SignalR 요청을 전달하도록 SignalR 서버를 구성해야 합�
 
 ## <a name="add-no-locsignalr-client-code"></a>SignalR 클라이언트 코드 추가    
 
-* *Pages\Index.cshtml*의 콘텐츠를 다음 코드로 바꿉니다.  
+* *Pages\Index.cshtml* 의 콘텐츠를 다음 코드로 바꿉니다.  
 
   [!code-cshtml[Index](signalr/sample-snapshot/2.x/Index.cshtml)]   
 
@@ -469,7 +470,7 @@ SignalR에 SignalR 요청을 전달하도록 SignalR 서버를 구성해야 합�
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 메뉴에서 **실행 > 디버깅하지 않고 시작**을 선택합니다.
+* 메뉴에서 **실행 > 디버깅하지 않고 시작** 을 선택합니다.
 
 ---
 
@@ -482,7 +483,7 @@ SignalR에 SignalR 요청을 전달하도록 SignalR 서버를 구성해야 합�
   ![SignalR 샘플 앱](signalr/_static/2.x/signalr-get-started-finished.png) 
 
 > [!TIP]    
-> 앱이 작동하지 않는 경우 브라우저 개발자 도구(F12)를 열고 콘솔로 이동합니다. HTML 및 JavaScript 코드와 관련된 오류를 볼 수 있습니다. 예를 들어 지정되지 않은 다른 폴더에 *signalr.js*를 넣었다고 가정합니다. 이 경우 해당 파일에 대한 참조는 작동하지 않으며 콘솔에 404 오류가 표시됩니다.   
+> 앱이 작동하지 않는 경우 브라우저 개발자 도구(F12)를 열고 콘솔로 이동합니다. HTML 및 JavaScript 코드와 관련된 오류를 볼 수 있습니다. 예를 들어 지정되지 않은 다른 폴더에 *signalr.js* 를 넣었다고 가정합니다. 이 경우 해당 파일에 대한 참조는 작동하지 않으며 콘솔에 404 오류가 표시됩니다.   
 > ![signalr.js 찾을 수 없음 오류](signalr/_static/2.x/f12-console.png)    
 ## <a name="additional-resources"></a>추가 자료 
 * [이 자습서의 YouTube 버전](https://www.youtube.com/watch?v=iKlVmu-r0JQ)   

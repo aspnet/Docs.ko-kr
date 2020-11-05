@@ -6,6 +6,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 02/10/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 912f6f5d20add99cd0173b6d1ebcf06161c448f5
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 949276bf4aae33c3af3fd1b8219a83868095f378
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629680"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056844"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-typescript-and-webpack"></a>TypeScript 및 WebPack과 함께 ASP.NET Core SignalR 사용
 
@@ -66,27 +67,27 @@ ms.locfileid: "88629680"
 
 *PATH* 환경 변수에서 npm을 찾도록 Visual Studio를 구성합니다. 기본적으로 Visual Studio는 설치 디렉터리에 있는 npm의 버전을 사용합니다. Visual Studio에서 다음 지침을 따릅니다.
 
-1. Visual Studio를 실행합니다. 시작 창에서 **코드를 사용하지 않고 계속**을 선택합니다.
-1. **도구** > **옵션** > **프로젝트 및 솔루션** > **웹 패키지 관리** > **외부 웹 도구**로 이동합니다.
-1. 목록에서 *$(PATH)* 항목을 선택합니다. 위쪽 화살표를 클릭하여 이 항목을 목록의 두 번째 위치로 이동한 후 **확인**을 선택합니다.
+1. Visual Studio를 실행합니다. 시작 창에서 **코드를 사용하지 않고 계속** 을 선택합니다.
+1. **도구** > **옵션** > **프로젝트 및 솔루션** > **웹 패키지 관리** > **외부 웹 도구** 로 이동합니다.
+1. 목록에서 *$(PATH)* 항목을 선택합니다. 위쪽 화살표를 클릭하여 이 항목을 목록의 두 번째 위치로 이동한 후 **확인** 을 선택합니다.
 
     ![Visual Studio 구성](signalr-typescript-webpack/_static/signalr-configure-path-visual-studio.png)
 
 Visual Studio의 구성이 완료되었습니다.
 
-1. **파일** > **새로 만들기** > **프로젝트** 메뉴 옵션에서 **ASP.NET Core 웹 애플리케이션** 템플릿을 선택합니다. **새로 만들기**를 선택합니다.
-1. 프로젝트 이름을 *SignalRWebPack*으로 지정하고 **만들기**를 선택합니다.
-1. 대상 프레임워크 드롭다운에서 *.NET Core*를 선택하고, 프레임워크 선택기 드롭다운에서 *ASP.NET Core 3.1*을 선택합니다. **빈** 템플릿을 선택하고 **만들기**를 선택합니다.
+1. **파일** > **새로 만들기** > **프로젝트** 메뉴 옵션에서 **ASP.NET Core 웹 애플리케이션** 템플릿을 선택합니다. **새로 만들기** 를 선택합니다.
+1. 프로젝트 이름을 *SignalRWebPack* 으로 지정하고 **만들기** 를 선택합니다.
+1. 대상 프레임워크 드롭다운에서 *.NET Core* 를 선택하고, 프레임워크 선택기 드롭다운에서 *ASP.NET Core 3.1* 을 선택합니다. **빈** 템플릿을 선택하고 **만들기** 를 선택합니다.
 
 프로젝트에 `Microsoft.TypeScript.MSBuild` 패키지를 추가:
 
-1. **솔루션 탐색기**(오른쪽 창)에서 프로젝트 노드를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리**를 선택합니다. **찾아보기** 탭에서 `Microsoft.TypeScript.MSBuild`를 검색한 다음 오른쪽에 있는 **설치**를 클릭하여 패키지를 설치합니다.
+1. **솔루션 탐색기** (오른쪽 창)에서 프로젝트 노드를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다. **찾아보기** 탭에서 `Microsoft.TypeScript.MSBuild`를 검색한 다음 오른쪽에 있는 **설치** 를 클릭하여 패키지를 설치합니다.
 
-Visual Studio가 **솔루션 탐색기**의 **종속성** 노드에 NuGet 패키지를 추가하여 프로젝트의 TypeScript 컴파일을 사용 설정합니다.
+Visual Studio가 **솔루션 탐색기** 의 **종속성** 노드에 NuGet 패키지를 추가하여 프로젝트의 TypeScript 컴파일을 사용 설정합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-**통합 터미널**에서 다음 명령을 실행합니다.
+**통합 터미널** 에서 다음 명령을 실행합니다.
 
 ```dotnetcli
 dotnet new web -o SignalRWebPack
@@ -96,7 +97,7 @@ code -r SignalRWebPack
 * `dotnet new` 명령은 *SignalRWebPack* 디렉터리에 빈 ASP.NET Core 웹앱을 만듭니다.
 * `code` 명령은 Visual Studio Code의 현재 인스턴스에서 *SignalRWebPack* 폴더를 엽니다.
 
-**통합 터미널**에서 다음 .NET Core CLI 명령을 실행합니다.
+**통합 터미널** 에서 다음 .NET Core CLI 명령을 실행합니다.
 
 ```dotnetcli
 dotnet add package Microsoft.TypeScript.MSBuild
@@ -131,7 +132,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
     참고할 몇몇 명령 세부 정보:
 
     * 버전 번호는 각 패키지 이름에 대해 `@` 부호 뒤에 옵니다. npm은 해당 특정 패키지 버전을 설치합니다.
-    * `-E` 옵션은 [유의적 버전](https://semver.org/) 범위 연산자를 *package.json*에 쓰는 npm의 기본 동작을 비활성화합니다. 예를 들어 `"webpack": "^4.41.5"` 대신 `"webpack": "4.41.5"`을 사용합니다. 이 옵션은 최신 패키지 버전으로 의도하지 않은 업그레이드를 방지합니다.
+    * `-E` 옵션은 [유의적 버전](https://semver.org/) 범위 연산자를 *package.json* 에 쓰는 npm의 기본 동작을 비활성화합니다. 예를 들어 `"webpack": "^4.41.5"` 대신 `"webpack": "4.41.5"`을 사용합니다. 이 옵션은 최신 패키지 버전으로 의도하지 않은 업그레이드를 방지합니다.
 
     자세한 내용은 [npm-install](https://docs.npmjs.com/cli/install) 문서를 참조하세요.
 
@@ -151,18 +152,18 @@ dotnet add package Microsoft.TypeScript.MSBuild
     * `release`: 프로덕션 모드에서 클라이언트 쪽 리소스를 번들링합니다.
     * `publish`: 프로덕션 모드에서 `release` 스크립트를 실행하여 클라이언트 쪽 리소스를 번들링합니다. 이는 .NET Core CLI의 [publish](/dotnet/core/tools/dotnet-publish) 명령을 호출하여 앱을 게시합니다.
 
-1. 프로젝트 루트에 다음 코드를 포함한 *webpack.config.js*라는 파일을 생성합니다.
+1. 프로젝트 루트에 다음 코드를 포함한 *webpack.config.js* 라는 파일을 생성합니다.
 
     [!code-javascript[webpack.config.js](signalr-typescript-webpack/sample/3.x/webpack.config.js)]
 
     앞의 파일은 WebPack 컴파일을 구성합니다. 참고할 일부 구성 세부 정보:
 
-    * `output` 속성은 *dist*의 기본값을 재정의합니다. 번들은 *wwwroot* 디렉터리에 대신 내보내집니다.
-    * `resolve.extensions` 배열은 SignalR 클라이언트 JavaScript를 가져오기 위한 *.js*를 포함합니다.
+    * `output` 속성은 *dist* 의 기본값을 재정의합니다. 번들은 *wwwroot* 디렉터리에 대신 내보내집니다.
+    * `resolve.extensions` 배열은 SignalR 클라이언트 JavaScript를 가져오기 위한 *.js* 를 포함합니다.
 
 1. 프로젝트 루트에 새 *src* 디렉터리를 만들어 프로젝트의 클라이언트 쪽 자산을 저장합니다.
 
-1. 다음 마크업을 포함한 *src/index.html*을 생성합니다.
+1. 다음 마크업을 포함한 *src/index.html* 을 생성합니다.
 
     [!code-html[index.html](signalr-typescript-webpack/sample/3.x/src/index.html)]
 
@@ -170,19 +171,19 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
 1. 새 *src/css* 디렉터리를 생성합니다. 그 목적은 프로젝트의 *.css* 파일을 저장하는 것입니다.
 
-1. 다음 CSS를 포함한 *src/css/main.css*를 생성합니다.
+1. 다음 CSS를 포함한 *src/css/main.css* 를 생성합니다.
 
     [!code-css[main.css](signalr-typescript-webpack/sample/3.x/src/css/main.css)]
 
     이 *main.css* 파일은 앱의 스타일을 설정합니다.
 
-1. 다음 JSON을 포함한 *src/tsconfig.json*을 생성합니다.
+1. 다음 JSON을 포함한 *src/tsconfig.json* 을 생성합니다.
 
     [!code-json[tsconfig.json](signalr-typescript-webpack/sample/3.x/src/tsconfig.json)]
 
     이 코드는 [ECMAScript](https://wikipedia.org/wiki/ECMAScript) 5 호환 JavaScript를 생성하도록 TypeScript 컴파일러를 구성합니다.
 
-1. 다음 코드를 포함한 *src/index.ts*를 생성합니다.
+1. 다음 코드를 포함한 *src/index.ts* 를 생성합니다.
 
     [!code-typescript[index.ts](signalr-typescript-webpack/sample/3.x/snippets/index1.ts?name=snippet_IndexTsPhase1File)]
 
@@ -207,7 +208,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
    [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_AddSignalR)]
 
-1. 프로젝트 루트 *SignalRWebPack/* 에 *Hubs*라는 새 디렉터리를 만들어 SignalR 허브를 저장합니다.
+1. 프로젝트 루트 *SignalRWebPack/* 에 *Hubs* 라는 새 디렉터리를 만들어 SignalR 허브를 저장합니다.
 
 1. 다음 내용을 포함한 *Hubs/ChatHub.cs* 허브를 생성합니다.
 
@@ -264,7 +265,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
     [!INCLUDE [npm-run-release](../includes/signalr-typescript-webpack/npm-run-release.md)]
 
-1. **디버그** > **디버그하지 않고 시작**을 선택하여 디버거를 연결하지 않고 브라우저에서 앱을 시작합니다. `http://localhost:<port_number>`에서 *wwwroot/index.html* 파일이 제공됩니다.
+1. **디버그** > **디버그하지 않고 시작** 을 선택하여 디버거를 연결하지 않고 브라우저에서 앱을 시작합니다. `http://localhost:<port_number>`에서 *wwwroot/index.html* 파일이 제공됩니다.
 
    컴파일 오류가 발생하면 솔루션을 닫았다가 다시 열어 보세요. 
 
@@ -323,7 +324,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
 *PATH* 환경 변수에서 npm을 찾도록 Visual Studio를 구성합니다. 기본적으로 Visual Studio는 설치 디렉터리에 있는 npm의 버전을 사용합니다. Visual Studio에서 다음 지침을 따릅니다.
 
-1. **도구** > **옵션** > **프로젝트 및 솔루션** > **웹 패키지 관리** > **외부 웹 도구**로 이동합니다.
+1. **도구** > **옵션** > **프로젝트 및 솔루션** > **웹 패키지 관리** > **외부 웹 도구** 로 이동합니다.
 1. 목록에서 *$(PATH)* 항목을 선택합니다. 위쪽 화살표를 클릭하여 이 항목을 목록의 두 번째 위치로 이동합니다.
 
     ![Visual Studio 구성](signalr-typescript-webpack/_static/signalr-configure-path-visual-studio.png)
@@ -331,12 +332,12 @@ dotnet add package Microsoft.TypeScript.MSBuild
 Visual Studio 구성이 완료되었습니다. 이제 프로젝트를 만들어야 합니다.
 
 1. **파일** > **새로 만들기** > **프로젝트** 메뉴 옵션에서 **ASP.NET Core 웹 애플리케이션** 템플릿을 선택합니다.
-1. 프로젝트 이름을 *SignalRWebPack*으로 지정하고 **만들기**를 선택합니다.
-1. 대상 프레임워크 드롭다운에서 *.NET Core*를 선택하고, 프레임워크 선택기 드롭다운에서 *ASP.NET Core 2.2*를 선택합니다. **빈** 템플릿을 선택하고 **만들기**를 선택합니다.
+1. 프로젝트 이름을 *SignalRWebPack* 으로 지정하고 **만들기** 를 선택합니다.
+1. 대상 프레임워크 드롭다운에서 *.NET Core* 를 선택하고, 프레임워크 선택기 드롭다운에서 *ASP.NET Core 2.2* 를 선택합니다. **빈** 템플릿을 선택하고 **만들기** 를 선택합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-**통합 터미널**에서 다음 명령을 실행합니다.
+**통합 터미널** 에서 다음 명령을 실행합니다.
 
 ```dotnetcli
 dotnet new web -o SignalRWebPack
@@ -371,7 +372,7 @@ dotnet new web -o SignalRWebPack
     참고할 몇몇 명령 세부 정보:
 
     * 버전 번호는 각 패키지 이름에 대해 `@` 부호 뒤에 옵니다. npm은 해당 특정 패키지 버전을 설치합니다.
-    * `-E` 옵션은 [유의적 버전](https://semver.org/) 범위 연산자를 *package.json*에 쓰는 npm의 기본 동작을 비활성화합니다. 예를 들어 `"webpack": "^4.29.3"` 대신 `"webpack": "4.29.3"`을 사용합니다. 이 옵션은 최신 패키지 버전으로 의도하지 않은 업그레이드를 방지합니다.
+    * `-E` 옵션은 [유의적 버전](https://semver.org/) 범위 연산자를 *package.json* 에 쓰는 npm의 기본 동작을 비활성화합니다. 예를 들어 `"webpack": "^4.29.3"` 대신 `"webpack": "4.29.3"`을 사용합니다. 이 옵션은 최신 패키지 버전으로 의도하지 않은 업그레이드를 방지합니다.
 
     자세한 내용은 [npm-install](https://docs.npmjs.com/cli/install) 문서를 참조하세요.
 
@@ -391,18 +392,18 @@ dotnet new web -o SignalRWebPack
     * `release`: 프로덕션 모드에서 클라이언트 쪽 리소스를 번들링합니다.
     * `publish`: 프로덕션 모드에서 `release` 스크립트를 실행하여 클라이언트 쪽 리소스를 번들링합니다. 이는 .NET Core CLI의 [publish](/dotnet/core/tools/dotnet-publish) 명령을 호출하여 앱을 게시합니다.
 
-1. 프로젝트 루트에 다음 내용을 포함한 *webpack.config.js*라는 파일을 생성합니다.
+1. 프로젝트 루트에 다음 내용을 포함한 *webpack.config.js* 라는 파일을 생성합니다.
 
     [!code-javascript[webpack.config.js](signalr-typescript-webpack/sample/2.x/webpack.config.js)]
 
     앞의 파일은 WebPack 컴파일을 구성합니다. 참고할 일부 구성 세부 정보:
 
-    * `output` 속성은 *dist*의 기본값을 재정의합니다. 번들은 *wwwroot* 디렉터리에 대신 내보내집니다.
-    * `resolve.extensions` 배열은 SignalR 클라이언트 JavaScript를 가져오기 위한 *.js*를 포함합니다.
+    * `output` 속성은 *dist* 의 기본값을 재정의합니다. 번들은 *wwwroot* 디렉터리에 대신 내보내집니다.
+    * `resolve.extensions` 배열은 SignalR 클라이언트 JavaScript를 가져오기 위한 *.js* 를 포함합니다.
 
 1. 프로젝트 루트에 새 *src* 디렉터리를 만들어 프로젝트의 클라이언트 쪽 자산을 저장합니다.
 
-1. 다음 마크업을 포함한 *src/index.html*을 생성합니다.
+1. 다음 마크업을 포함한 *src/index.html* 을 생성합니다.
 
     [!code-html[index.html](signalr-typescript-webpack/sample/2.x/src/index.html)]
 
@@ -410,19 +411,19 @@ dotnet new web -o SignalRWebPack
 
 1. 새 *src/css* 디렉터리를 생성합니다. 그 목적은 프로젝트의 *.css* 파일을 저장하는 것입니다.
 
-1. 다음 마크업을 포함한 *src/css/main.css*를 생성합니다.
+1. 다음 마크업을 포함한 *src/css/main.css* 를 생성합니다.
 
     [!code-css[main.css](signalr-typescript-webpack/sample/2.x/src/css/main.css)]
 
     이 *main.css* 파일은 앱의 스타일을 설정합니다.
 
-1. 다음 JSON을 포함한 *src/tsconfig.json*을 생성합니다.
+1. 다음 JSON을 포함한 *src/tsconfig.json* 을 생성합니다.
 
     [!code-json[tsconfig.json](signalr-typescript-webpack/sample/2.x/src/tsconfig.json)]
 
     이 코드는 [ECMAScript](https://wikipedia.org/wiki/ECMAScript) 5 호환 JavaScript를 생성하도록 TypeScript 컴파일러를 구성합니다.
 
-1. 다음 코드를 포함한 *src/index.ts*를 생성합니다.
+1. 다음 코드를 포함한 *src/index.ts* 를 생성합니다.
 
     [!code-typescript[index.ts](signalr-typescript-webpack/sample/2.x/snippets/index1.ts?name=snippet_IndexTsPhase1File)]
 
@@ -447,7 +448,7 @@ dotnet new web -o SignalRWebPack
 
     [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_UseSignalR)]
 
-1. 프로젝트 루트에 *Hubs*라는 새 디렉터리를 생성합니다. 그 목적은 다음 단계에서 생성되는 SignalR 허브를 저장하는 것입니다.
+1. 프로젝트 루트에 *Hubs* 라는 새 디렉터리를 생성합니다. 그 목적은 다음 단계에서 생성되는 SignalR 허브를 저장하는 것입니다.
 
 1. 다음 내용을 포함한 *Hubs/ChatHub.cs* 허브를 생성합니다.
 
@@ -501,7 +502,7 @@ dotnet new web -o SignalRWebPack
 
     [!INCLUDE [npm-run-release](../includes/signalr-typescript-webpack/npm-run-release.md)]
 
-1. **디버그** > **디버그하지 않고 시작**을 선택하여 디버거를 연결하지 않고 브라우저에서 앱을 시작합니다. *wwwroot/index.html* 파일은 `http://localhost:<port_number>`에 제공됩니다.
+1. **디버그** > **디버그하지 않고 시작** 을 선택하여 디버거를 연결하지 않고 브라우저에서 앱을 시작합니다. *wwwroot/index.html* 파일은 `http://localhost:<port_number>`에 제공됩니다.
 
 1. 다른 브라우저 인스턴스(임의 브라우저)를 엽니다. URL을 주소 표시줄에 붙여넣습니다.
 

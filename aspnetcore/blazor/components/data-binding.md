@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/22/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: fd337a6fb54c418ff08af18014073a6b3f07bb8c
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: f1730ed366fc81444ffe54e88bcd33147efb0aa7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491468"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056298"
 ---
 # <a name="aspnet-core-no-locblazor-data-binding"></a>ASP.NET Core Blazor 데이터 바인딩
 
@@ -331,8 +332,8 @@ Password:
 
 중첩된 구성 요소는 개수에 관계없이 바인딩할 수 있지만 데이터의 단방향 흐름을 준수해야 합니다.
 
-* 변경 알림은 *계층 구조를 따라 올라갑니다* .
-* 새 매개 변수 값은 *계층 구조를 따라 내려옵니다* .
+* 변경 알림은 *계층 구조를 따라 올라갑니다*.
+* 새 매개 변수 값은 *계층 구조를 따라 내려옵니다*.
 
 일반적이고 권장되는 방법은 업데이트할 상태에 대한 혼동을 방지할 수 있게, 부모 구성 요소에 기본 데이터만 저장하는 것입니다.
 
