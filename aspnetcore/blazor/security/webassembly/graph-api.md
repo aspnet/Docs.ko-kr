@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/27/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/graph-api
-ms.openlocfilehash: 3c77a8b39562c0145d1441cfdfe1dcf57aa3a613
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 569a88630f7b75e866d8ecda99605ebe3bc58db8
+ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92692073"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234433"
 ---
 # <a name="use-graph-api-with-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly에서 Graph API 사용
 
@@ -99,11 +100,11 @@ internal static class GraphClientExtensions
             Provider = provider;
         }
 
-        public IAccessTokenProvider Provider { get; }
+        public IAccessTokenProvider TokenProvider { get; }
 
         public async Task AuthenticateRequestAsync(HttpRequestMessage request)
         {
-            var result = await Provider.RequestAccessToken(
+            var result = await TokenProvider.RequestAccessToken(
                 new AccessTokenRequestOptions()
                 {
                     Scopes = {STRING ARRAY OF SCOPES}
@@ -119,11 +120,11 @@ internal static class GraphClientExtensions
 
     private class HttpClientHttpProvider : IHttpProvider
     {
-        private readonly HttpClient client;
+        private readonly HttpClient http;
 
-        public HttpClientHttpProvider(HttpClient client)
+        public HttpClientHttpProvider(HttpClient http)
         {
-            this.client = client;
+            this.http = http;
         }
 
         public ISerializer Serializer { get; } = new Serializer();
@@ -136,14 +137,14 @@ internal static class GraphClientExtensions
 
         public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
         {
-            return client.SendAsync(request);
+            return http.SendAsync(request);
         }
 
         public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, 
             HttpCompletionOption completionOption, 
             CancellationToken cancellationToken)
         {
-            return client.SendAsync(request, completionOption, cancellationToken);
+            return http.SendAsync(request, completionOption, cancellationToken);
         }
     }
 }

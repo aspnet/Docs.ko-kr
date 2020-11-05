@@ -5,6 +5,7 @@ description: Razor Pages 및 Entity Framework 자습서 시리즈의 4부입니�
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 78eb466fcfeb130e411df490f033114b3fdebeef
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: e6d1b9f041e892aaa37840c28fdb3153bf098b0d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722633"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061108"
 ---
 # <a name="part-4-no-locrazor-pages-with-ef-core-migrations-in-aspnet-core"></a>4부. ASP.NET Core에서 EF Core 마이그레이션을 사용한 Razor Pages
 
@@ -45,7 +46,7 @@ ms.locfileid: "90722633"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-SSOX(**SQL Server 개체 탐색기**)를 사용하여 데이터베이스를 삭제하거나, PMC(**패키지 관리자 콘솔**)에서 다음 명령을 실행합니다.
+SSOX( **SQL Server 개체 탐색기** )를 사용하여 데이터베이스를 삭제하거나, PMC( **패키지 관리자 콘솔** )에서 다음 명령을 실행합니다.
 
 ```powershell
 Drop-Database
@@ -113,7 +114,7 @@ EF Core `migrations add` 명령은 데이터베이스를 만드는 코드를 생
 
 ## <a name="the-data-model-snapshot"></a>데이터 모델 스냅샷
 
-마이그레이션에서는 현재 데이터 모델의 ‘스냅샷’을 *Migrations/SchoolContextModelSnapshot.cs*에 만듭니다. 마이그레이션을 추가하면 EF가 현재 데이터 모델을 스냅샷 파일과 비교하여 변경 내용을 확인합니다.
+마이그레이션에서는 현재 데이터 모델의 ‘스냅샷’을 *Migrations/SchoolContextModelSnapshot.cs* 에 만듭니다. 마이그레이션을 추가하면 EF가 현재 데이터 모델을 스냅샷 파일과 비교하여 변경 내용을 확인합니다.
 
 스냅샷 파일이 데이터 모델의 상태를 추적하므로 `<timestamp>_<migrationname>.cs` 파일을 삭제하여 마이그레이션을 삭제할 수 없습니다. 가장 최근 마이그레이션을 백업하려면 `migrations remove` 명령을 사용해야 합니다. 이 명령은 마이그레이션을 삭제하고 스냅샷이 올바르게 다시 설정되도록 합니다. 자세한 내용은 [dotnet ef migrations remove](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)를 참조하세요.
 
@@ -123,7 +124,7 @@ EF Core `migrations add` 명령은 데이터베이스를 만드는 코드를 생
 
 이 지점부터 자습서에서는 마이그레이션을 사용합니다.
 
-*Data/DBInitializer.cs*에서 다음 줄을 주석으로 처리합니다.
+*Data/DBInitializer.cs* 에서 다음 줄을 주석으로 처리합니다.
 
 ```csharp
 context.Database.EnsureCreated();
@@ -185,11 +186,11 @@ DB를 데이터 모델과 동기화된 상태로 유지하는 이 접근 방식�
 
 ## <a name="drop-the-database"></a>데이터베이스 삭제
 
-SSOX(**SQL Server 개체 탐색기**) 또는 `database drop` 명령을 사용합니다.
+SSOX( **SQL Server 개체 탐색기** ) 또는 `database drop` 명령을 사용합니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-PMC(**패키지 관리자 콘솔**)에서 다음 명령을 입력합니다.
+PMC( **패키지 관리자 콘솔** )에서 다음 명령을 입력합니다.
 
 ```powershell
 Drop-Database
@@ -250,7 +251,7 @@ EF Core `migrations add` 명령은 DB를 생성하는 코드를 생성했습니�
 
 ### <a name="the-data-model-snapshot"></a>데이터 모델 스냅샷
 
-마이그레이션은 *Migrations/SchoolContextModelSnapshot.cs*에 현재 데이터베이스 스키마의 *스냅숏*을 만듭니다. 마이그레이션을 추가하면 EF가 데이터 모델을 스냅샷 파일과 비교하여 변경 내용을 확인합니다.
+마이그레이션은 *Migrations/SchoolContextModelSnapshot.cs* 에 현재 데이터베이스 스키마의 *스냅숏* 을 만듭니다. 마이그레이션을 추가하면 EF가 데이터 모델을 스냅샷 파일과 비교하여 변경 내용을 확인합니다.
 
 마이그레이션을 삭제하려면 다음 명령을 사용합니다.
 
@@ -289,7 +290,7 @@ context.Database.EnsureCreated();
 
 ### <a name="inspect-the-database"></a>데이터베이스 검사
 
-**SQL Server 개체 탐색기**를 사용하여 DB를 검사합니다. `__EFMigrationsHistory` 테이블이 추가된 것을 볼 수 있습니다. `__EFMigrationsHistory` 테이블은 DB에 적용된 마이그레이션을 추적합니다. `__EFMigrationsHistory` 테이블의 데이터를 보면 첫 번째 마이그레이션에 대해 한 행이 표시됩니다. 앞의 CLI 출력 예제의 마지막 로그는 이 행을 만드는 INSERT 문을 보여 줍니다.
+**SQL Server 개체 탐색기** 를 사용하여 DB를 검사합니다. `__EFMigrationsHistory` 테이블이 추가된 것을 볼 수 있습니다. `__EFMigrationsHistory` 테이블은 DB에 적용된 마이그레이션을 추적합니다. `__EFMigrationsHistory` 테이블의 데이터를 보면 첫 번째 마이그레이션에 대해 한 행이 표시됩니다. 앞의 CLI 출력 예제의 마지막 로그는 이 행을 만드는 INSERT 문을 보여 줍니다.
 
 앱을 실행하고 모든 항목이 작동하는지 확인합니다.
 

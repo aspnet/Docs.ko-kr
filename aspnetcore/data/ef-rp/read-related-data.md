@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: dd00b9d7faf467857ec1e47f4cfb0296d84e5d3f
-ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
+ms.openlocfilehash: e52e4aefc18b84f85bea28a9724894eed50ca54a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90847704"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061069"
 ---
 # <a name="part-6-no-locrazor-pages-with-ef-core-in-aspnet-core---read-related-data"></a>6부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 관련 데이터 읽기
 
@@ -108,7 +109,7 @@ ms.locfileid: "90847704"
 
 ---
 
-* *Pages/Courses/Index.cshtml.cs*를 열고 `OnGetAsync` 메서드를 검사합니다. 스캐폴딩 엔진은 `Department` 탐색 속성에 대한 즉시 로드를 지정했습니다. `Include` 메서드가 즉시 로드를 지정합니다.
+* *Pages/Courses/Index.cshtml.cs* 를 열고 `OnGetAsync` 메서드를 검사합니다. 스캐폴딩 엔진은 `Department` 탐색 속성에 대한 즉시 로드를 지정했습니다. `Include` 메서드가 즉시 로드를 지정합니다.
 
 * 앱을 실행하고 **과정** 링크를 선택합니다. Department 열에 도움이 되지 않는 `DepartmentID`가 표시됩니다.
 
@@ -120,7 +121,7 @@ ms.locfileid: "90847704"
 
 앞의 코드는 `Course` 속성을 `Courses`로 변경하고 `AsNoTracking`을 추가합니다. 반환된 엔터티는 추적되지 않으므로 `AsNoTracking`이 성능을 개선합니다. 현재 컨텍스트에서 업데이트되지 않으므로 엔터티를 추적할 필요가 없습니다.
 
-다음 코드로 *Pages/Courses/Index.cshtml*을 업데이트합니다.
+다음 코드로 *Pages/Courses/Index.cshtml* 을 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu30/Pages/Courses/Index.cshtml?highlight=5,8,16-18,20,23,26,32,35-37,45)]
 
@@ -173,7 +174,7 @@ ms.locfileid: "90847704"
 
 강사 페이지는 서로 다른 세 테이블의 데이터를 표시합니다. 세 개의 테이블을 나타내는 세 개의 속성을 포함하는 뷰 모델이 필요합니다.
 
-다음 코드로 *SchoolViewModels/InstructorIndexData.cs*를 만듭니다.
+다음 코드로 *SchoolViewModels/InstructorIndexData.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu30/Models/SchoolViewModels/InstructorIndexData.cs)]
 
@@ -209,7 +210,7 @@ ms.locfileid: "90847704"
 
 업데이트하기 전에 스캐폴드된 페이지의 모양을 확인하려면 앱을 실행하고 강사 페이지로 이동합니다.
 
-다음 코드로 *Pages/Instructors/Index.cshtml.cs*를 업데이트합니다.
+다음 코드로 *Pages/Instructors/Index.cshtml.cs* 를 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu30snapshots/6-related/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,19-53)]
 
@@ -248,7 +249,7 @@ ms.locfileid: "90847704"
 
 ### <a name="update-the-instructors-index-page"></a>강사 인덱스 페이지 업데이트
 
-다음 코드로 *Pages/Instructors/Index.cshtml*을 업데이트합니다.
+다음 코드로 *Pages/Instructors/Index.cshtml* 을 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu30/Pages/Instructors/Index.cshtml?highlight=1,5,8,16-21,25-32,43-57,67-102,104-126)]
 
@@ -284,7 +285,7 @@ ms.locfileid: "90847704"
   <tr class="@selectedRow">
   ```
 
-* **Select**로 레이블 지정된 새 하이퍼링크를 추가합니다. 이 링크는 선택한 강사의 ID를 `Index` 메서드에 보내고 배경색을 설정합니다.
+* **Select** 로 레이블 지정된 새 하이퍼링크를 추가합니다. 이 링크는 선택한 강사의 ID를 `Index` 메서드에 보내고 배경색을 설정합니다.
 
   ```html
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
@@ -318,7 +319,7 @@ Where 조건과 함께 `Single`을 사용하는 것은 개인적으로 선호하
 
 사용자가 과정에 등록된 내용을 거의 보지 않는다고 가정해 보겠습니다. 이 경우 최적화는 요청된 경우에만 등록 데이터를 로드합니다. 이 섹션에서는 `Enrollments` 및 `Students`의 명시적 로드를 사용하도록 `OnGetAsync`가 업데이트됩니다.
 
-다음 코드로 *Pages/Instructors/Index.cshtml.cs*를 업데이트합니다.
+다음 코드로 *Pages/Instructors/Index.cshtml.cs* 를 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu30/Pages/Instructors/Index.cshtml.cs?highlight=31-35,52-56)]
 
@@ -411,7 +412,7 @@ Where 조건과 함께 `Single`을 사용하는 것은 개인적으로 선호하
 
 위의 명령은 `Course` 모델을 스캐폴드합니다. Visual Studio에서 프로젝트를 엽니다.
 
-*Pages/Courses/Index.cshtml.cs*를 열고 `OnGetAsync` 메서드를 검사합니다. 스캐폴딩 엔진은 `Department` 탐색 속성에 대한 즉시 로드를 지정했습니다. `Include` 메서드가 즉시 로드를 지정합니다.
+*Pages/Courses/Index.cshtml.cs* 를 열고 `OnGetAsync` 메서드를 검사합니다. 스캐폴딩 엔진은 `Department` 탐색 속성에 대한 즉시 로드를 지정했습니다. `Include` 메서드가 즉시 로드를 지정합니다.
 
 앱을 실행하고 **과정** 링크를 선택합니다. Department 열에 도움이 되지 않는 `DepartmentID`가 표시됩니다.
 
@@ -421,7 +422,7 @@ Where 조건과 함께 `Single`을 사용하는 것은 개인적으로 선호하
 
 위의 코드는 `AsNoTracking`을 추가합니다. 반환된 엔터티는 추적되지 않으므로 `AsNoTracking`이 성능을 개선합니다. 현재 컨텍스트에서 업데이트되지 않으므로 엔터티가 추적되지 않습니다.
 
-*Pages/Courses/Index.cshtml*을 다음 강조 표시된 내용으로 업데이트합니다.
+*Pages/Courses/Index.cshtml* 을 다음 강조 표시된 내용으로 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu/Pages/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
 
@@ -476,7 +477,7 @@ Where 조건과 함께 `Single`을 사용하는 것은 개인적으로 선호하
 
 강사 페이지는 서로 다른 세 테이블의 데이터를 표시합니다. 세 개 테이블을 나타내는 세 개 엔터티가 포함된 뷰 모델이 생성됩니다.
 
-다음 코드로 *SchoolViewModels* 폴더에서 *InstructorIndexData.cs*를 만듭니다.
+다음 코드로 *SchoolViewModels* 폴더에서 *InstructorIndexData.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
@@ -499,7 +500,7 @@ Where 조건과 함께 `Single`을 사용하는 것은 개인적으로 선호하
 위의 명령은 `Instructor` 모델을 스캐폴드합니다. 
 앱을 실행하고 강사 페이지로 이동합니다.
 
-*Pages/Instructors/Index.cshtml.cs*를 다음 코드로 바꿉니다.
+*Pages/Instructors/Index.cshtml.cs* 를 다음 코드로 바꿉니다.
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,18-99)]
 
@@ -516,7 +517,7 @@ Where 조건과 함께 `Single`을 사용하는 것은 개인적으로 선호하
 
 ### <a name="update-the-instructors-index-page"></a>강사 인덱스 페이지 업데이트
 
-*Pages/Instructors/Index.cshtml*을 다음 표시로 업데이트합니다.
+*Pages/Instructors/Index.cshtml* 을 다음 표시로 업데이트합니다.
 
 [!code-cshtml[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=1-65&highlight=1,5,8,16-21,25-32,43-57)]
 
@@ -553,7 +554,7 @@ Where 조건과 함께 `Single`을 사용하는 것은 개인적으로 선호하
   <tr class="@selectedRow">
   ```
 
-* **Select**로 레이블 지정된 새 하이퍼링크를 추가했습니다. 이 링크는 선택한 강사의 ID를 `Index` 메서드에 보내고 배경색을 설정합니다.
+* **Select** 로 레이블 지정된 새 하이퍼링크를 추가했습니다. 이 링크는 선택한 강사의 ID를 `Index` 메서드에 보내고 배경색을 설정합니다.
 
   ```html
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
@@ -565,7 +566,7 @@ Where 조건과 함께 `Single`을 사용하는 것은 개인적으로 선호하
 
 ### <a name="add-courses-taught-by-selected-instructor"></a>선택한 강사가 가르친 과정 추가
 
-*Pages/Instructors/Index.cshtml.cs*에서 `OnGetAsync` 메서드를 다음 코드로 업데이트합니다.
+*Pages/Instructors/Index.cshtml.cs* 에서 `OnGetAsync` 메서드를 다음 코드로 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_OnGetAsync&highlight=1,8,16-999)]
 
@@ -608,11 +609,11 @@ Where 조건과 함께 `Single`을 사용하는 것은 개인적으로 선호하
 
 이 섹션에서는 선택한 과정에 대한 학생 데이터를 표시하도록 앱이 업데이트됩니다.
 
-*Pages/Instructors/Index.cshtml.cs*에서 `OnGetAsync` 메서드의 쿼리를 다음 코드로 업데이트합니다.
+*Pages/Instructors/Index.cshtml.cs* 에서 `OnGetAsync` 메서드의 쿼리를 다음 코드로 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
 
-*Pages/Instructors/Index.cshtml*을 업데이트합니다. 다음 표시를 파일 끝에 추가합니다.
+*Pages/Instructors/Index.cshtml* 을 업데이트합니다. 다음 표시를 파일 끝에 추가합니다.
 
 [!code-cshtml[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=103-)]
 

@@ -5,6 +5,7 @@ description: ASP.NET Core MVC에 대한 자습서 시리즈의 2부입니다.
 ms.author: riande
 ms.date: 08/05/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: b5ef99d5645e0bbd453d09809a446bf4af38a975
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 11832efa6715f96856665f174d65b094806d2810
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634048"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061290"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>2부. ASP.NET Core MVC 앱에 컨트롤러 추가
 
@@ -29,17 +30,17 @@ ms.locfileid: "88634048"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-MVC( Model-View-Controller) 아키텍처 패턴은 다음 세 가지 주요 구성 요소로 앱을 구분합니다. **M**odel, **V**iew 및 **C**ontroller. MVC 패턴을 통해 기존 모놀리식 응용 프로그램보다 쉽게 테스트 가능하고 업데이트할 수 있는 앱을 만들 수 있습니다. MVC 기반 앱에는 다음이 포함됩니다.
+MVC( Model-View-Controller) 아키텍처 패턴은 다음 세 가지 주요 구성 요소로 앱을 구분합니다. **M** odel, **V** iew 및 **C** ontroller. MVC 패턴을 통해 기존 모놀리식 응용 프로그램보다 쉽게 테스트 가능하고 업데이트할 수 있는 앱을 만들 수 있습니다. MVC 기반 앱에는 다음이 포함됩니다.
 
-* **M**odels: 앱의 데이터를 나타내는 클래스입니다. 모델 클래스는 유효성 검사 논리를 사용하여 해당 데이터에 대한 비즈니스 규칙을 적용합니다. 일반적으로 모델 개체는 데이터베이스에서 모델 상태를 검색하고 저장합니다. 이 자습서에서 `Movie` 모델은 데이터베이스에서 영화 데이터를 검색하고 이를 뷰에 제공하거나 수정합니다. 수정된 데이터는 데이터베이스에 기록됩니다.
+* **M** odels: 앱의 데이터를 나타내는 클래스입니다. 모델 클래스는 유효성 검사 논리를 사용하여 해당 데이터에 대한 비즈니스 규칙을 적용합니다. 일반적으로 모델 개체는 데이터베이스에서 모델 상태를 검색하고 저장합니다. 이 자습서에서 `Movie` 모델은 데이터베이스에서 영화 데이터를 검색하고 이를 뷰에 제공하거나 수정합니다. 수정된 데이터는 데이터베이스에 기록됩니다.
 
-* **V**iews: 보기는 앱의 UI(사용자 인터페이스)를 표시하는 구성 요소입니다. 일반적으로 UI는 모델 데이터를 표시합니다.
+* **V** iews: 보기는 앱의 UI(사용자 인터페이스)를 표시하는 구성 요소입니다. 일반적으로 UI는 모델 데이터를 표시합니다.
 
-* **C**ontrollers: 브라우저 요청을 처리하는 클래스입니다. 모델 데이터를 검색하고 응답을 반환하는 보기 템플릿을 호출합니다. MVC 앱에서 보기는 단지 정보만 표시하며, 사용자 입력 및 상호 작용은 컨트롤러가 처리하고 응답합니다. 예를 들어 컨트롤러는 경로 데이터 및 쿼리 문자열 값을 처리하고 모델에 이러한 값을 전달합니다. 모델은 이러한 값을 사용하여 데이터베이스를 쿼리할 수 있습니다. 예를 들어 `https://localhost:5001/Home/Privacy`에는 `Home`(컨트롤러) 및 `Privacy`(호출할 홈 컨트롤러의 작업 메서드)라는 경로 데이터가 있습니다. `https://localhost:5001/Movies/Edit/5`는 영화 컨트롤러를 사용하여 ID=5인 영화를 편집하기 위한 요청입니다. 경로 데이터는 자습서의 뒷 부분에서 설명합니다.
+* **C** ontrollers: 브라우저 요청을 처리하는 클래스입니다. 모델 데이터를 검색하고 응답을 반환하는 보기 템플릿을 호출합니다. MVC 앱에서 보기는 단지 정보만 표시하며, 사용자 입력 및 상호 작용은 컨트롤러가 처리하고 응답합니다. 예를 들어 컨트롤러는 경로 데이터 및 쿼리 문자열 값을 처리하고 모델에 이러한 값을 전달합니다. 모델은 이러한 값을 사용하여 데이터베이스를 쿼리할 수 있습니다. 예를 들어 `https://localhost:5001/Home/Privacy`에는 `Home`(컨트롤러) 및 `Privacy`(호출할 홈 컨트롤러의 작업 메서드)라는 경로 데이터가 있습니다. `https://localhost:5001/Movies/Edit/5`는 영화 컨트롤러를 사용하여 ID=5인 영화를 편집하기 위한 요청입니다. 경로 데이터는 자습서의 뒷 부분에서 설명합니다.
 
 MVC 패턴을 사용하면 앱의 다양한 측면(입력 논리, 비즈니스 논리 및 UI 논리)을 분리하면서 이러한 요소 간에 느슨한 결합을 제공하는 앱을 만들 수 있습니다. 이 패턴은 각 종류의 논리가 앱에 있어야 하는 위치를 지정합니다. UI 논리는 보기에 속합니다. 입력 논리는 컨트롤러에 속합니다. 비즈니스 논리는 모델에 속합니다. 이렇게 분리하면 다른 코드에 영향을 주지 않고 한 번에 한 구현 측면에서 작업할 수 있기 때문에 앱을 만들 때 복잡성을 관리하는 데 도움이 됩니다. 예를 들어 비즈니스 논리 코드와 무관하게 보기 코드를 작업할 수 있습니다.
 
-이 자습서 시리즈에서는 이러한 개념을 설명하고 영화 앱을 만들기 위해 사용하는 방법을 보여줍니다. MVC 프로젝트는 *컨트롤러* 및 *보기*를 위한 폴더를 포함하고 있습니다.
+이 자습서 시리즈에서는 이러한 개념을 설명하고 영화 앱을 만들기 위해 사용하는 방법을 보여줍니다. MVC 프로젝트는 *컨트롤러* 및 *보기* 를 위한 폴더를 포함하고 있습니다.
 
 ## <a name="add-a-controller"></a>컨트롤러 추가
 
@@ -48,15 +49,15 @@ MVC 패턴을 사용하면 앱의 다양한 측면(입력 논리, 비즈니스 �
 * **솔루션 탐색기** 에서 **컨트롤러 > 추가 > 컨트롤러**
   ![바로 가기 메뉴](adding-controller/_static/add_controller.png)를 오른쪽 단추로 클릭
 
-* **스캐폴드 추가** 대화 상자에서 **컨트롤러 클래스 - 비어 있음**을 선택합니다.
+* **스캐폴드 추가** 대화 상자에서 **컨트롤러 클래스 - 비어 있음** 을 선택합니다.
 
   ![MVC 컨트롤러 추가 및 이름 지정](adding-controller/_static/ac.png)
 
-* **빈 MVC 컨트롤러 추가 대화 상자**에 **HelloWorldController**를 입력하고 **추가**를 선택합니다.
+* **빈 MVC 컨트롤러 추가 대화 상자** 에 **HelloWorldController** 를 입력하고 **추가** 를 선택합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-**탐색기** 아이콘을 선택한 다음, **컨트롤러 > 새 파일**을 컨트롤 클릭(마우스 오른쪽 단추로 클릭)하고 새 파일의 이름을 *HelloWorldController.cs*로 지정합니다.
+**탐색기** 아이콘을 선택한 다음, **컨트롤러 > 새 파일** 을 컨트롤 클릭(마우스 오른쪽 단추로 클릭)하고 새 파일의 이름을 *HelloWorldController.cs* 로 지정합니다.
 
   ![상황에 맞는 메뉴](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
@@ -65,15 +66,15 @@ MVC 패턴을 사용하면 앱의 다양한 측면(입력 논리, 비즈니스 �
 **솔루션 탐색기** 에서 **컨트롤러 > 추가 > 새 파일** 을 마우스 오른쪽 단추로 클릭합니다.
 ![상황에 맞는 메뉴](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-**ASP.NET Core** 및 **컨트롤러 클래스**를 선택합니다.
+**ASP.NET Core** 및 **컨트롤러 클래스** 를 선택합니다.
 
-컨트롤러의 이름을 **HelloWorldController**로 지정합니다.
+컨트롤러의 이름을 **HelloWorldController** 로 지정합니다.
 
 ![MVC 컨트롤러 추가 및 이름 지정](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
 ---
 
-*Controllers/HelloWorldController.cs*의 내용을 다음으로 바꿉니다.
+*Controllers/HelloWorldController.cs* 의 내용을 다음으로 바꿉니다.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_1)]
 
@@ -97,7 +98,7 @@ MVC는 들어오는 URL에 따라 컨트롤러 클래스(및 해당 클래스의
 
 앱으로 이동할 때 URL 세그먼트를 제공하지 않으면 위에 강조 표시된 템플릿 줄에 지정된 "Home" 컨트롤러 및 "Index" 메서드가 기본값으로 사용됩니다.
 
-첫 번째 URL 세그먼트는 실행할 컨트롤러 클래스를 결정합니다. 따라서 `localhost:{PORT}/HelloWorld`는 **HelloWorld**Controller 클래스에 매핑됩니다. URL 세그먼트의 두 번째 부분은 클래스의 작업 메서드를 결정합니다. 따라서 `localhost:{PORT}/HelloWorld/Index`는 `HelloWorldController` 클래스의 `Index` 메서드를 실행합니다. `localhost:{PORT}/HelloWorld`로만 이동했음에도 기본적으로 `Index` 메서드가 호출되었음에 주의하세요. 이는 `Index`가 메서드 이름이 명시적으로 지정되지 않으면 컨트롤러에서 호출되는 기본 메서드이기 때문입니다. URL 세그먼트의 세 번째 부분(`id`)은 경로 데이터입니다. 경로 데이터는 자습서의 뒷 부분에서 설명합니다.
+첫 번째 URL 세그먼트는 실행할 컨트롤러 클래스를 결정합니다. 따라서 `localhost:{PORT}/HelloWorld`는 **HelloWorld** Controller 클래스에 매핑됩니다. URL 세그먼트의 두 번째 부분은 클래스의 작업 메서드를 결정합니다. 따라서 `localhost:{PORT}/HelloWorld/Index`는 `HelloWorldController` 클래스의 `Index` 메서드를 실행합니다. `localhost:{PORT}/HelloWorld`로만 이동했음에도 기본적으로 `Index` 메서드가 호출되었음에 주의하세요. 이는 `Index`가 메서드 이름이 명시적으로 지정되지 않으면 컨트롤러에서 호출되는 기본 메서드이기 때문입니다. URL 세그먼트의 세 번째 부분(`id`)은 경로 데이터입니다. 경로 데이터는 자습서의 뒷 부분에서 설명합니다.
 
 `https://localhost:{PORT}/HelloWorld/Welcome`으로 이동합니다. `Welcome` 메서드가 실행되고 문자열 `This is the Welcome action method...`를 반환합니다. 이 URL의 경우 컨트롤러는 `HelloWorld`이고 `Welcome`이 작업 메서드입니다. 아직 URL의 `[Parameters]` 부분을 사용하지 않았습니다.
 
@@ -133,7 +134,7 @@ URL에서 컨트롤러에 일부 매개 변수 정보를 전달하도록 코드�
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
-지금까지의 예제에서는 컨트롤러가 MVC의 “VC” 부분, 즉 **V**iew(보기) 및 **C**ontroller(컨트롤러) 작업을 수행합니다. 컨트롤러가 HTML을 직접 반환하고 있습니다. 코드 및 유지 관리가 매우 복잡해지므로 일반적으로 컨트롤러에서 직접 HTML을 반환하지 않습니다. 대신 일반적으로 별도의 Razor 뷰 템플릿 파일을 사용하여 HTML 응답을 생성합니다. 다음 자습서에서는 해당 작업을 수행합니다.
+지금까지의 예제에서는 컨트롤러가 MVC의 “VC” 부분, 즉 **V** iew(보기) 및 **C** ontroller(컨트롤러) 작업을 수행합니다. 컨트롤러가 HTML을 직접 반환하고 있습니다. 코드 및 유지 관리가 매우 복잡해지므로 일반적으로 컨트롤러에서 직접 HTML을 반환하지 않습니다. 대신 일반적으로 별도의 Razor 뷰 템플릿 파일을 사용하여 HTML 응답을 생성합니다. 다음 자습서에서는 해당 작업을 수행합니다.
 
 > [!div class="step-by-step"]
 > [이전](start-mvc.md)
@@ -143,17 +144,17 @@ URL에서 컨트롤러에 일부 매개 변수 정보를 전달하도록 코드�
 
 ::: moniker range="< aspnetcore-3.0"
 
-MVC( Model-View-Controller) 아키텍처 패턴은 다음 세 가지 주요 구성 요소로 앱을 구분합니다. **M**odel, **V**iew 및 **C**ontroller. MVC 패턴을 통해 기존 모놀리식 응용 프로그램보다 쉽게 테스트 가능하고 업데이트할 수 있는 앱을 만들 수 있습니다. MVC 기반 앱에는 다음이 포함됩니다.
+MVC( Model-View-Controller) 아키텍처 패턴은 다음 세 가지 주요 구성 요소로 앱을 구분합니다. **M** odel, **V** iew 및 **C** ontroller. MVC 패턴을 통해 기존 모놀리식 응용 프로그램보다 쉽게 테스트 가능하고 업데이트할 수 있는 앱을 만들 수 있습니다. MVC 기반 앱에는 다음이 포함됩니다.
 
-* **M**odels: 앱의 데이터를 나타내는 클래스입니다. 모델 클래스는 유효성 검사 논리를 사용하여 해당 데이터에 대한 비즈니스 규칙을 적용합니다. 일반적으로 모델 개체는 데이터베이스에서 모델 상태를 검색하고 저장합니다. 이 자습서에서 `Movie` 모델은 데이터베이스에서 영화 데이터를 검색하고 이를 뷰에 제공하거나 수정합니다. 수정된 데이터는 데이터베이스에 기록됩니다.
+* **M** odels: 앱의 데이터를 나타내는 클래스입니다. 모델 클래스는 유효성 검사 논리를 사용하여 해당 데이터에 대한 비즈니스 규칙을 적용합니다. 일반적으로 모델 개체는 데이터베이스에서 모델 상태를 검색하고 저장합니다. 이 자습서에서 `Movie` 모델은 데이터베이스에서 영화 데이터를 검색하고 이를 뷰에 제공하거나 수정합니다. 수정된 데이터는 데이터베이스에 기록됩니다.
 
-* **V**iews: 보기는 앱의 UI(사용자 인터페이스)를 표시하는 구성 요소입니다. 일반적으로 UI는 모델 데이터를 표시합니다.
+* **V** iews: 보기는 앱의 UI(사용자 인터페이스)를 표시하는 구성 요소입니다. 일반적으로 UI는 모델 데이터를 표시합니다.
 
-* **C**ontrollers: 브라우저 요청을 처리하는 클래스입니다. 모델 데이터를 검색하고 응답을 반환하는 보기 템플릿을 호출합니다. MVC 앱에서 보기는 단지 정보만 표시하며, 사용자 입력 및 상호 작용은 컨트롤러가 처리하고 응답합니다. 예를 들어 컨트롤러는 경로 데이터 및 쿼리 문자열 값을 처리하고 모델에 이러한 값을 전달합니다. 모델은 이러한 값을 사용하여 데이터베이스를 쿼리할 수 있습니다. 예를 들어 `https://localhost:5001/Home/About`에는 `Home`(컨트롤러) 및 `About`(호출할 홈 컨트롤러의 작업 메서드)라는 경로 데이터가 있습니다. `https://localhost:5001/Movies/Edit/5`는 영화 컨트롤러를 사용하여 ID=5인 영화를 편집하기 위한 요청입니다. 경로 데이터는 자습서의 뒷 부분에서 설명합니다.
+* **C** ontrollers: 브라우저 요청을 처리하는 클래스입니다. 모델 데이터를 검색하고 응답을 반환하는 보기 템플릿을 호출합니다. MVC 앱에서 보기는 단지 정보만 표시하며, 사용자 입력 및 상호 작용은 컨트롤러가 처리하고 응답합니다. 예를 들어 컨트롤러는 경로 데이터 및 쿼리 문자열 값을 처리하고 모델에 이러한 값을 전달합니다. 모델은 이러한 값을 사용하여 데이터베이스를 쿼리할 수 있습니다. 예를 들어 `https://localhost:5001/Home/About`에는 `Home`(컨트롤러) 및 `About`(호출할 홈 컨트롤러의 작업 메서드)라는 경로 데이터가 있습니다. `https://localhost:5001/Movies/Edit/5`는 영화 컨트롤러를 사용하여 ID=5인 영화를 편집하기 위한 요청입니다. 경로 데이터는 자습서의 뒷 부분에서 설명합니다.
 
 MVC 패턴을 사용하면 앱의 다양한 측면(입력 논리, 비즈니스 논리 및 UI 논리)을 분리하면서 이러한 요소 간에 느슨한 결합을 제공하는 앱을 만들 수 있습니다. 이 패턴은 각 종류의 논리가 앱에 있어야 하는 위치를 지정합니다. UI 논리는 보기에 속합니다. 입력 논리는 컨트롤러에 속합니다. 비즈니스 논리는 모델에 속합니다. 이렇게 분리하면 다른 코드에 영향을 주지 않고 한 번에 한 구현 측면에서 작업할 수 있기 때문에 앱을 만들 때 복잡성을 관리하는 데 도움이 됩니다. 예를 들어 비즈니스 논리 코드와 무관하게 보기 코드를 작업할 수 있습니다.
 
-이 자습서 시리즈에서는 이러한 개념을 설명하고 영화 앱을 만들기 위해 사용하는 방법을 보여줍니다. MVC 프로젝트는 *컨트롤러* 및 *보기*를 위한 폴더를 포함하고 있습니다.
+이 자습서 시리즈에서는 이러한 개념을 설명하고 영화 앱을 만들기 위해 사용하는 방법을 보여줍니다. MVC 프로젝트는 *컨트롤러* 및 *보기* 를 위한 폴더를 포함하고 있습니다.
 
 ## <a name="add-a-controller"></a>컨트롤러 추가
 
@@ -162,15 +163,15 @@ MVC 패턴을 사용하면 앱의 다양한 측면(입력 논리, 비즈니스 �
 * **솔루션 탐색기** 에서 **컨트롤러 > 추가 > 컨트롤러**
   ![바로 가기 메뉴](adding-controller/_static/add_controller.png)를 오른쪽 단추로 클릭
 
-* **스캐폴드 추가** 대화 상자에서 **MVC 컨트롤러 - 비어 있음**을 선택합니다.
+* **스캐폴드 추가** 대화 상자에서 **MVC 컨트롤러 - 비어 있음** 을 선택합니다.
 
   ![MVC 컨트롤러 추가 및 이름 지정](adding-controller/_static/ac.png)
 
-* **빈 MVC 컨트롤러 추가 대화 상자**에 **HelloWorldController**를 입력하고 **추가**를 선택합니다.
+* **빈 MVC 컨트롤러 추가 대화 상자** 에 **HelloWorldController** 를 입력하고 **추가** 를 선택합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-**탐색기** 아이콘을 선택한 다음, **컨트롤러 > 새 파일**을 컨트롤 클릭(마우스 오른쪽 단추로 클릭)하고 새 파일의 이름을 *HelloWorldController.cs*로 지정합니다.
+**탐색기** 아이콘을 선택한 다음, **컨트롤러 > 새 파일** 을 컨트롤 클릭(마우스 오른쪽 단추로 클릭)하고 새 파일의 이름을 *HelloWorldController.cs* 로 지정합니다.
 
   ![상황에 맞는 메뉴](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
@@ -179,15 +180,15 @@ MVC 패턴을 사용하면 앱의 다양한 측면(입력 논리, 비즈니스 �
 **솔루션 탐색기** 에서 **컨트롤러 > 추가 > 새 파일** 을 마우스 오른쪽 단추로 클릭합니다.
 ![상황에 맞는 메뉴](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-**ASP.NET Core** 및 **MVC 컨트롤러 클래스**를 선택합니다.
+**ASP.NET Core** 및 **MVC 컨트롤러 클래스** 를 선택합니다.
 
-컨트롤러의 이름을 **HelloWorldController**로 지정합니다.
+컨트롤러의 이름을 **HelloWorldController** 로 지정합니다.
 
 ![MVC 컨트롤러 추가 및 이름 지정](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
 ---
 
-*Controllers/HelloWorldController.cs*의 내용을 다음으로 바꿉니다.
+*Controllers/HelloWorldController.cs* 의 내용을 다음으로 바꿉니다.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_1)]
 

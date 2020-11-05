@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/29/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/configuration
-ms.openlocfilehash: 1607a80ea12cedd82b5996cf1b09e02e1aada2fd
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f8b1c49ab29bb8a88ca6d9785cd7ee151315e065
+ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628809"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234376"
 ---
 # <a name="aspnet-core-no-locblazor-configuration"></a>ASP.NET Core Blazor 구성
 
@@ -166,14 +167,14 @@ using Microsoft.Extensions.Configuration;
 
 ...
 
-var client = new HttpClient()
+var http = new HttpClient()
 {
     BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
 };
 
-builder.Services.AddScoped(sp => client);
+builder.Services.AddScoped(sp => http);
 
-using var response = await client.GetAsync("cars.json");
+using var response = await http.GetAsync("cars.json");
 using var stream = await response.Content.ReadAsStreamAsync();
 
 builder.Configuration.AddJsonStream(stream);
@@ -207,7 +208,7 @@ builder.Services.AddOidcAuthentication(options =>
 <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="{VERSION}" />
 ```
 
-자리 표시자 `{VERSION}`의 경우 애플리케이션의 공유 프레임워크 버전과 일치하는 안정적인 최신 버전의 패키지를 [NuGet.org](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Configuration)의 패키지 **버전 기록**에서 찾을 수 있습니다.
+자리 표시자 `{VERSION}`의 경우 애플리케이션의 공유 프레임워크 버전과 일치하는 안정적인 최신 버전의 패키지를 [NuGet.org](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Configuration)의 패키지 **버전 기록** 에서 찾을 수 있습니다.
 
 `wwwroot/appsettings.json`:
 
