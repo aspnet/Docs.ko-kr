@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: aspnetcore-3.0
 ms.openlocfilehash: 235daac5c08248ca2052de6b44e66a8162ce23ad
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -29,39 +29,39 @@ ms.locfileid: "93051241"
 
 <span data-ttu-id="4bead-104">이 문서에서는 ASP.NET Core 3.0의 가장 큰 변경 내용을 중점적으로 설명하고 관련 문서의 링크를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-104">This article highlights the most significant changes in ASP.NET Core 3.0 with links to relevant documentation.</span></span>
 
-## :::no-loc(Blazor):::
+## Blazor
 
-<span data-ttu-id="4bead-105">:::no-loc(Blazor):::는 .NET을 사용하여 대화형 클라이언트 쪽 웹 UI를 빌드하기 위한 ASP.NET Core 내의 새로운 프레임워크입니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-105">:::no-loc(Blazor)::: is a new framework in ASP.NET Core for building interactive client-side web UI with .NET:</span></span>
+<span data-ttu-id="4bead-105">Blazor는 .NET을 사용하여 대화형 클라이언트 쪽 웹 UI를 빌드하기 위한 ASP.NET Core 내의 새로운 프레임워크입니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-105">Blazor is a new framework in ASP.NET Core for building interactive client-side web UI with .NET:</span></span>
 
 * <span data-ttu-id="4bead-106">JavaScript 대신 C#을 사용하여 풍부한 대화형 UI를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-106">Create rich interactive UIs using C# instead of JavaScript.</span></span>
 * <span data-ttu-id="4bead-107">.NET에서 작성된 서버 쪽 및 클라이언트 쪽 앱 논리를 공유합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-107">Share server-side and client-side app logic written in .NET.</span></span>
 * <span data-ttu-id="4bead-108">모바일 브라우저를 포함한 광범위한 브라우저 지원을 위해 UI를 HTML 및 CSS로 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-108">Render the UI as HTML and CSS for wide browser support, including mobile browsers.</span></span>
 
-<span data-ttu-id="4bead-109">:::no-loc(Blazor)::: 프레임워크 지원 시나리오:</span><span class="sxs-lookup"><span data-stu-id="4bead-109">:::no-loc(Blazor)::: framework supported scenarios:</span></span>
+<span data-ttu-id="4bead-109">Blazor 프레임워크 지원 시나리오:</span><span class="sxs-lookup"><span data-stu-id="4bead-109">Blazor framework supported scenarios:</span></span>
 
-* <span data-ttu-id="4bead-110">재사용 가능한 UI 구성 요소(:::no-loc(Razor)::: 구성 요소)</span><span class="sxs-lookup"><span data-stu-id="4bead-110">Reusable UI components (:::no-loc(Razor)::: components)</span></span>
+* <span data-ttu-id="4bead-110">재사용 가능한 UI 구성 요소(Razor 구성 요소)</span><span class="sxs-lookup"><span data-stu-id="4bead-110">Reusable UI components (Razor components)</span></span>
 * <span data-ttu-id="4bead-111">클라이언트 쪽 라우팅</span><span class="sxs-lookup"><span data-stu-id="4bead-111">Client-side routing</span></span>
 * <span data-ttu-id="4bead-112">구성 요소 레이아웃</span><span class="sxs-lookup"><span data-stu-id="4bead-112">Component layouts</span></span>
 * <span data-ttu-id="4bead-113">종속성 주입을 위한 지원</span><span class="sxs-lookup"><span data-stu-id="4bead-113">Support for dependency injection</span></span>
 * <span data-ttu-id="4bead-114">양식 및 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="4bead-114">Forms and validation</span></span>
-* <span data-ttu-id="4bead-115">:::no-loc(Razor)::: 클래스 라이브러리를 사용하여 구성 요소 라이브러리 빌드</span><span class="sxs-lookup"><span data-stu-id="4bead-115">Build component libraries with :::no-loc(Razor)::: class libraries</span></span>
+* <span data-ttu-id="4bead-115">Razor 클래스 라이브러리를 사용하여 구성 요소 라이브러리 빌드</span><span class="sxs-lookup"><span data-stu-id="4bead-115">Build component libraries with Razor class libraries</span></span>
 * <span data-ttu-id="4bead-116">JavaScript interop</span><span class="sxs-lookup"><span data-stu-id="4bead-116">JavaScript interop</span></span>
 
 <span data-ttu-id="4bead-117">자세한 내용은 <xref:blazor/index>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4bead-117">For more information, see <xref:blazor/index>.</span></span>
 
-### :::no-loc(Blazor Server):::
+### Blazor Server
 
-<span data-ttu-id="4bead-118">:::no-loc(Blazor):::는 UI 업데이트 적용 방법에서 구성 요소 렌더링 논리를 분리합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-118">:::no-loc(Blazor)::: decouples component rendering logic from how UI updates are applied.</span></span> <span data-ttu-id="4bead-119">:::no-loc(Blazor Server):::에서는 ASP.NET Core 앱의 서버에서 :::no-loc(Razor)::: 구성 요소를 호스팅할 수 있도록 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-119">:::no-loc(Blazor Server)::: provides support for hosting :::no-loc(Razor)::: components on the server in an ASP.NET Core app.</span></span> <span data-ttu-id="4bead-120">UI 업데이트는 :::no-loc(SignalR)::: 연결을 통해 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-120">UI updates are handled over a :::no-loc(SignalR)::: connection.</span></span> <span data-ttu-id="4bead-121">:::no-loc(Blazor Server):::는 ASP.NET Core 3.0에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-121">:::no-loc(Blazor Server)::: is supported in ASP.NET Core 3.0.</span></span>
+<span data-ttu-id="4bead-118">Blazor는 UI 업데이트 적용 방법에서 구성 요소 렌더링 논리를 분리합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-118">Blazor decouples component rendering logic from how UI updates are applied.</span></span> <span data-ttu-id="4bead-119">Blazor Server에서는 ASP.NET Core 앱의 서버에서 Razor 구성 요소를 호스팅할 수 있도록 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-119">Blazor Server provides support for hosting Razor components on the server in an ASP.NET Core app.</span></span> <span data-ttu-id="4bead-120">UI 업데이트는 SignalR 연결을 통해 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-120">UI updates are handled over a SignalR connection.</span></span> <span data-ttu-id="4bead-121">Blazor Server는 ASP.NET Core 3.0에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-121">Blazor Server is supported in ASP.NET Core 3.0.</span></span>
 
-### <a name="no-locblazor-webassembly-preview"></a><span data-ttu-id="4bead-122">:::no-loc(Blazor WebAssembly):::(미리 보기)</span><span class="sxs-lookup"><span data-stu-id="4bead-122">:::no-loc(Blazor WebAssembly)::: (Preview)</span></span>
+### <a name="no-locblazor-webassembly-preview"></a><span data-ttu-id="4bead-122">Blazor WebAssembly(미리 보기)</span><span class="sxs-lookup"><span data-stu-id="4bead-122">Blazor WebAssembly (Preview)</span></span>
 
-<span data-ttu-id="4bead-123">:::no-loc(Blazor)::: 앱은 WebAssembly 기반 .NET 런타임을 사용하여 브라우저에서 직접 실행할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-123">:::no-loc(Blazor)::: apps can also be run directly in the browser using a WebAssembly-based .NET runtime.</span></span> <span data-ttu-id="4bead-124">:::no-loc(Blazor WebAssembly):::는 미리 보기로 제공되며, ASP.NET Core 3.0에서 지원되지 ‘않습니다’.</span><span class="sxs-lookup"><span data-stu-id="4bead-124">:::no-loc(Blazor WebAssembly)::: is in preview and *not* supported in ASP.NET Core 3.0.</span></span> <span data-ttu-id="4bead-125">:::no-loc(Blazor WebAssembly):::는 ASP.NET Core의 이후 릴리스에서 지원될 예정입니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-125">:::no-loc(Blazor WebAssembly)::: will be supported in a future release of ASP.NET Core.</span></span>
+<span data-ttu-id="4bead-123">Blazor 앱은 WebAssembly 기반 .NET 런타임을 사용하여 브라우저에서 직접 실행할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-123">Blazor apps can also be run directly in the browser using a WebAssembly-based .NET runtime.</span></span> <span data-ttu-id="4bead-124">Blazor WebAssembly는 미리 보기로 제공되며, ASP.NET Core 3.0에서 지원되지 ‘않습니다’.</span><span class="sxs-lookup"><span data-stu-id="4bead-124">Blazor WebAssembly is in preview and *not* supported in ASP.NET Core 3.0.</span></span> <span data-ttu-id="4bead-125">Blazor WebAssembly는 ASP.NET Core의 이후 릴리스에서 지원될 예정입니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-125">Blazor WebAssembly will be supported in a future release of ASP.NET Core.</span></span>
 
-### <a name="no-locrazor-components"></a><span data-ttu-id="4bead-126">:::no-loc(Razor)::: 구성 요소</span><span class="sxs-lookup"><span data-stu-id="4bead-126">:::no-loc(Razor)::: components</span></span>
+### <a name="no-locrazor-components"></a><span data-ttu-id="4bead-126">Razor 구성 요소</span><span class="sxs-lookup"><span data-stu-id="4bead-126">Razor components</span></span>
 
-<span data-ttu-id="4bead-127">:::no-loc(Blazor)::: 앱은 구성 요소에서 빌드됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-127">:::no-loc(Blazor)::: apps are built from components.</span></span> <span data-ttu-id="4bead-128">구성 요소는 페이지, 대화 상자 또는 양식과 같은 UI(사용자 인터페이스)의 자체 포함 청크입니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-128">Components are self-contained chunks of user interface (UI), such as a page, dialog, or form.</span></span> <span data-ttu-id="4bead-129">구성 요소는 UI 렌더링 논리 및 클라이언트 쪽 이벤트 처리기를 정의하는 일반적인 .NET 클래스입니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-129">Components are normal .NET classes that define UI rendering logic and client-side event handlers.</span></span> <span data-ttu-id="4bead-130">JavaScript 없이 풍부한 대화형 웹앱을 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-130">You can create rich interactive web apps without JavaScript.</span></span>
+<span data-ttu-id="4bead-127">Blazor 앱은 구성 요소에서 빌드됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-127">Blazor apps are built from components.</span></span> <span data-ttu-id="4bead-128">구성 요소는 페이지, 대화 상자 또는 양식과 같은 UI(사용자 인터페이스)의 자체 포함 청크입니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-128">Components are self-contained chunks of user interface (UI), such as a page, dialog, or form.</span></span> <span data-ttu-id="4bead-129">구성 요소는 UI 렌더링 논리 및 클라이언트 쪽 이벤트 처리기를 정의하는 일반적인 .NET 클래스입니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-129">Components are normal .NET classes that define UI rendering logic and client-side event handlers.</span></span> <span data-ttu-id="4bead-130">JavaScript 없이 풍부한 대화형 웹앱을 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-130">You can create rich interactive web apps without JavaScript.</span></span>
 
-<span data-ttu-id="4bead-131">:::no-loc(Blazor):::의 구성 요소는 일반적으로 HTML과 C#의 자연 혼합인 :::no-loc(Razor)::: 구문을 사용하여 작성됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-131">Components in :::no-loc(Blazor)::: are typically authored using :::no-loc(Razor)::: syntax, a natural blend of HTML and C#.</span></span> <span data-ttu-id="4bead-132">:::no-loc(Razor)::: 구성 요소는 둘 다 :::no-loc(Razor):::를 사용한다는 점에서 :::no-loc(Razor)::: Pages 및 MVC 뷰와 비슷합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-132">:::no-loc(Razor)::: components are similar to :::no-loc(Razor)::: Pages and MVC views in that they both use :::no-loc(Razor):::.</span></span> <span data-ttu-id="4bead-133">요청-응답 모델 기반의 페이지와 보기와는 달리, 구성 요소는 특별히 UI 컴퍼지션을 처리하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-133">Unlike pages and views, which are based on a request-response model, components are used specifically for handling UI composition.</span></span>
+<span data-ttu-id="4bead-131">Blazor의 구성 요소는 일반적으로 HTML과 C#의 자연 혼합인 Razor 구문을 사용하여 작성됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-131">Components in Blazor are typically authored using Razor syntax, a natural blend of HTML and C#.</span></span> <span data-ttu-id="4bead-132">Razor 구성 요소는 둘 다 Razor를 사용한다는 점에서 Razor Pages 및 MVC 뷰와 비슷합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-132">Razor components are similar to Razor Pages and MVC views in that they both use Razor.</span></span> <span data-ttu-id="4bead-133">요청-응답 모델 기반의 페이지와 보기와는 달리, 구성 요소는 특별히 UI 컴퍼지션을 처리하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-133">Unlike pages and views, which are based on a request-response model, components are used specifically for handling UI composition.</span></span>
 
 ## <a name="grpc"></a><span data-ttu-id="4bead-134">gRPC</span><span class="sxs-lookup"><span data-stu-id="4bead-134">gRPC</span></span>
 
@@ -88,11 +88,11 @@ ms.locfileid: "93051241"
 
 <span data-ttu-id="4bead-151">자세한 내용은 <xref:grpc/index>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4bead-151">For more information, see <xref:grpc/index>.</span></span>
 
-## :::no-loc(SignalR):::
+## SignalR
 
-<span data-ttu-id="4bead-152">마이그레이션 지침은 [:::no-loc(SignalR)::: 코드 업데이트](xref:migration/22-to-30#signalr)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4bead-152">See [Update :::no-loc(SignalR)::: code](xref:migration/22-to-30#signalr) for migration instructions.</span></span> <span data-ttu-id="4bead-153">이제 :::no-loc(SignalR):::이 `System.Text.Json`을 사용하여 JSON 메시지를 직렬화 및 역직렬화합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-153">:::no-loc(SignalR)::: now uses `System.Text.Json` to serialize/deserialize JSON messages.</span></span> <span data-ttu-id="4bead-154">`Newtonsoft.Json` 기반 직렬 변환기를 복원하려면 [Newtonsoft.Json으로 전환](xref:migration/22-to-30#switch-to-newtonsoftjson)에서 지침을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4bead-154">See [Switch to Newtonsoft.Json](xref:migration/22-to-30#switch-to-newtonsoftjson) for instructions to restore the `Newtonsoft.Json`-based serializer.</span></span>
+<span data-ttu-id="4bead-152">마이그레이션 지침은 [SignalR 코드 업데이트](xref:migration/22-to-30#signalr)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4bead-152">See [Update SignalR code](xref:migration/22-to-30#signalr) for migration instructions.</span></span> <span data-ttu-id="4bead-153">이제 SignalR이 `System.Text.Json`을 사용하여 JSON 메시지를 직렬화 및 역직렬화합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-153">SignalR now uses `System.Text.Json` to serialize/deserialize JSON messages.</span></span> <span data-ttu-id="4bead-154">`Newtonsoft.Json` 기반 직렬 변환기를 복원하려면 [Newtonsoft.Json으로 전환](xref:migration/22-to-30#switch-to-newtonsoftjson)에서 지침을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4bead-154">See [Switch to Newtonsoft.Json](xref:migration/22-to-30#switch-to-newtonsoftjson) for instructions to restore the `Newtonsoft.Json`-based serializer.</span></span>
 
-<span data-ttu-id="4bead-155">:::no-loc(SignalR):::용 JavaScript 및 .NET Clients에서 자동 다시 연결을 위해 지원이 추가되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-155">In the JavaScript and .NET Clients for :::no-loc(SignalR):::, support was added for automatic reconnection.</span></span> <span data-ttu-id="4bead-156">기본적으로 클라이언트는 즉시 다시 연결을 시도하고 필요한 경우 2, 10, 30초 후에 다시 시도합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-156">By default, the client tries to reconnect immediately and retry after 2, 10, and 30 seconds if necessary.</span></span> <span data-ttu-id="4bead-157">클라이언트는 다시 연결되면 새로운 연결 ID를 수신합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-157">If the client successfully reconnects, it receives a new connection ID.</span></span> <span data-ttu-id="4bead-158">자동 다시 연결 옵트인(opt-in:):</span><span class="sxs-lookup"><span data-stu-id="4bead-158">Automatic reconnect is opt-in:</span></span>
+<span data-ttu-id="4bead-155">SignalR용 JavaScript 및 .NET Clients에서 자동 다시 연결을 위해 지원이 추가되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-155">In the JavaScript and .NET Clients for SignalR, support was added for automatic reconnection.</span></span> <span data-ttu-id="4bead-156">기본적으로 클라이언트는 즉시 다시 연결을 시도하고 필요한 경우 2, 10, 30초 후에 다시 시도합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-156">By default, the client tries to reconnect immediately and retry after 2, 10, and 30 seconds if necessary.</span></span> <span data-ttu-id="4bead-157">클라이언트는 다시 연결되면 새로운 연결 ID를 수신합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-157">If the client successfully reconnects, it receives a new connection ID.</span></span> <span data-ttu-id="4bead-158">자동 다시 연결 옵트인(opt-in:):</span><span class="sxs-lookup"><span data-stu-id="4bead-158">Automatic reconnect is opt-in:</span></span>
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -117,7 +117,7 @@ const connection = new signalR.HubConnectionBuilder()
 
 <span data-ttu-id="4bead-164">다시 연결을 시도하는 동안 다시 연결을 시도하고 있음을 사용자에게 알리기 위해 앱 UI를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-164">During reconnection attempts, update the app UI to notify the user that the reconnection is being attempted.</span></span>
 
-<span data-ttu-id="4bead-165">연결이 중단될 때 UI 피드백을 제공하기 위해 :::no-loc(SignalR)::: 클라이언트 API는 다음과 같은 이벤트 처리기를 포함하도록 확장되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-165">To provide UI feedback when the connection is interrupted, the :::no-loc(SignalR)::: client API has been expanded to include the following event handlers:</span></span>
+<span data-ttu-id="4bead-165">연결이 중단될 때 UI 피드백을 제공하기 위해 SignalR 클라이언트 API는 다음과 같은 이벤트 처리기를 포함하도록 확장되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-165">To provide UI feedback when the connection is interrupted, the SignalR client API has been expanded to include the following event handlers:</span></span>
 
 * <span data-ttu-id="4bead-166">`onreconnecting`:  개발자에게 UI를 사용하지 않도록 설정하거나 사용자에게 해당 앱이 오프라인 상태임을 알릴 수 있는 기회를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-166">`onreconnecting`:  Gives developers an opportunity to disable UI or to let users know the app is offline.</span></span>
 * <span data-ttu-id="4bead-167">`onreconnected`: 개발자에게 연결이 다시 구축되면 UI를 업데이트할 수 있는 기회를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-167">`onreconnected`: Gives developers an opportunity to update the UI once the connection is reestablished.</span></span>
@@ -144,7 +144,7 @@ connection.onreconnected((connectionId) => {
 });
 ```
 
-<span data-ttu-id="4bead-170">:::no-loc(SignalR)::: 3.0 이상에서는 허브 메서드에 권한 부여가 필요할 때 권한 부여 처리기에 사용자 지정 리소스를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-170">:::no-loc(SignalR)::: 3.0 and later provides a custom resource to authorization handlers when a hub method requires authorization.</span></span> <span data-ttu-id="4bead-171">리소스가 `HubInvocationContext`의 인스턴스인 경우</span><span class="sxs-lookup"><span data-stu-id="4bead-171">The resource is an instance of `HubInvocationContext`.</span></span> <span data-ttu-id="4bead-172">`HubInvocationContext`는 다음을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-172">The `HubInvocationContext` includes the:</span></span>
+<span data-ttu-id="4bead-170">SignalR 3.0 이상에서는 허브 메서드에 권한 부여가 필요할 때 권한 부여 처리기에 사용자 지정 리소스를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-170">SignalR 3.0 and later provides a custom resource to authorization handlers when a hub method requires authorization.</span></span> <span data-ttu-id="4bead-171">리소스가 `HubInvocationContext`의 인스턴스인 경우</span><span class="sxs-lookup"><span data-stu-id="4bead-171">The resource is an instance of `HubInvocationContext`.</span></span> <span data-ttu-id="4bead-172">`HubInvocationContext`는 다음을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-172">The `HubInvocationContext` includes the:</span></span>
 
 * `HubCallerContext`
 * <span data-ttu-id="4bead-173">호출되는 허브 메서드의 이름</span><span class="sxs-lookup"><span data-stu-id="4bead-173">Name of the hub method being invoked.</span></span>
@@ -161,12 +161,12 @@ public class DomainRestrictedRequirement :
         DomainRestrictedRequirement requirement,
         HubInvocationContext resource)
     {
-        if (context.User?.:::no-loc(Identity):::?.Name == null)
+        if (context.User?.Identity?.Name == null)
         {
             return Task.CompletedTask;
         }
 
-        if (IsUserAllowedToDoThis(resource.HubMethodName, context.User.:::no-loc(Identity):::.Name))
+        if (IsUserAllowedToDoThis(resource.HubMethodName, context.User.Identity.Name))
         {
             context.Succeed(requirement);
         }
@@ -234,40 +234,40 @@ services
     });
 ```
 
-<span data-ttu-id="4bead-192">:::no-loc(SignalR)::: 허브는 [엔드포인트 라우팅](xref:fundamentals/routing)을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-192">:::no-loc(SignalR)::: hubs use [Endpoint Routing](xref:fundamentals/routing).</span></span> <span data-ttu-id="4bead-193">:::no-loc(SignalR)::: 허브 연결은 이전에 명시적으로 수행되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-193">:::no-loc(SignalR)::: hub connection was previously done explicitly:</span></span>
+<span data-ttu-id="4bead-192">SignalR 허브는 [엔드포인트 라우팅](xref:fundamentals/routing)을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-192">SignalR hubs use [Endpoint Routing](xref:fundamentals/routing).</span></span> <span data-ttu-id="4bead-193">SignalR 허브 연결은 이전에 명시적으로 수행되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-193">SignalR hub connection was previously done explicitly:</span></span>
 
 ```csharp
-app.Use:::no-loc(SignalR):::(routes =>
+app.UseSignalR(routes =>
 {
     routes.MapHub<ChatHub>("hubs/chat");
 });
 ```
 
-<span data-ttu-id="4bead-194">이전 버전에서는 개발자가 다양한 위치에서 컨트롤러, :::no-loc(Razor)::: Pages 및 허브를 연결해야 했습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-194">In the previous version, developers needed to wire up controllers, :::no-loc(Razor)::: pages, and hubs in a variety of places.</span></span> <span data-ttu-id="4bead-195">명시적 연결로 인해 다음과 같이 거의 동일한 일련의 라우팅 세그먼트가 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-195">Explicit connection results in a series of nearly-identical routing segments:</span></span>
+<span data-ttu-id="4bead-194">이전 버전에서는 개발자가 다양한 위치에서 컨트롤러, Razor Pages 및 허브를 연결해야 했습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-194">In the previous version, developers needed to wire up controllers, Razor pages, and hubs in a variety of places.</span></span> <span data-ttu-id="4bead-195">명시적 연결로 인해 다음과 같이 거의 동일한 일련의 라우팅 세그먼트가 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-195">Explicit connection results in a series of nearly-identical routing segments:</span></span>
 
 ```csharp
-app.Use:::no-loc(SignalR):::(routes =>
+app.UseSignalR(routes =>
 {
     routes.MapHub<ChatHub>("hubs/chat");
 });
 
 app.UseRouting(routes =>
 {
-    routes.Map:::no-loc(Razor):::Pages();
+    routes.MapRazorPages();
 });
 ```
 
-<span data-ttu-id="4bead-196">:::no-loc(SignalR)::: 3.0 허브는 엔드포인트 라우팅을 통해 라우팅할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-196">:::no-loc(SignalR)::: 3.0 hubs can be routed via endpoint routing.</span></span> <span data-ttu-id="4bead-197">엔드포인트 라우팅을 사용하면 일반적으로 모든 라우팅을 `UseRouting`에서 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-197">With endpoint routing, typically all routing can be configured in `UseRouting`:</span></span>
+<span data-ttu-id="4bead-196">SignalR 3.0 허브는 엔드포인트 라우팅을 통해 라우팅할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-196">SignalR 3.0 hubs can be routed via endpoint routing.</span></span> <span data-ttu-id="4bead-197">엔드포인트 라우팅을 사용하면 일반적으로 모든 라우팅을 `UseRouting`에서 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-197">With endpoint routing, typically all routing can be configured in `UseRouting`:</span></span>
 
 ```csharp
 app.UseRouting(routes =>
 {
-    routes.Map:::no-loc(Razor):::Pages();
+    routes.MapRazorPages();
     routes.MapHub<ChatHub>("hubs/chat");
 });
 ```
 
-<span data-ttu-id="4bead-198">ASP.NET Core 3.0 :::no-loc(SignalR):::에는 다음 기능이 추가되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-198">ASP.NET Core 3.0 :::no-loc(SignalR)::: added:</span></span>
+<span data-ttu-id="4bead-198">ASP.NET Core 3.0 SignalR에는 다음 기능이 추가되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-198">ASP.NET Core 3.0 SignalR added:</span></span>
 
 <span data-ttu-id="4bead-199">클라이언트-서버 스트리밍</span><span class="sxs-lookup"><span data-stu-id="4bead-199">Client-to-server streaming.</span></span> <span data-ttu-id="4bead-200">클라이언트-서버 스트리밍을 사용하는 경우 서버 쪽 메서드는 `IAsyncEnumerable<T>` 또는 `ChannelReader<T>`의 인스턴스를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-200">With client-to-server streaming, server-side methods can take instances of either an `IAsyncEnumerable<T>` or `ChannelReader<T>`.</span></span> <span data-ttu-id="4bead-201">다음 C# 샘플에서 허브에 있는 `UploadStream` 메서드는 다음 클라이언트로부터 문자열 스트림을 받게 됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-201">In the following C# sample, the `UploadStream` method on the Hub will receive a stream of strings from the client:</span></span>
 
@@ -298,7 +298,7 @@ async IAsyncEnumerable<string> clientStreamData()
 await connection.SendAsync("UploadStream", clientStreamData());
 ```
 
-<span data-ttu-id="4bead-204">JavaScript 클라이언트 앱은 위의 `UploadStream` 허브 메서드의 `stream` 인수에 대해 :::no-loc(SignalR)::: `Subject`(또는 [RxJS Subject](https://rxjs.dev/api/index/class/Subject))를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-204">JavaScript client apps use the :::no-loc(SignalR)::: `Subject` (or an [RxJS Subject](https://rxjs.dev/api/index/class/Subject)) for the `stream` argument of the `UploadStream` Hub method above.</span></span>
+<span data-ttu-id="4bead-204">JavaScript 클라이언트 앱은 위의 `UploadStream` 허브 메서드의 `stream` 인수에 대해 SignalR `Subject`(또는 [RxJS Subject](https://rxjs.dev/api/index/class/Subject))를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-204">JavaScript client apps use the SignalR `Subject` (or an [RxJS Subject](https://rxjs.dev/api/index/class/Subject)) for the `stream` argument of the `UploadStream` Hub method above.</span></span>
 
 ```javascript
 let subject = new signalR.Subject();
@@ -324,25 +324,25 @@ subject.complete();
 
 <span data-ttu-id="4bead-212">Json.NET을 ASP.NET Core 3.0에 추가하려면 [Newtonsoft.Json 기반 JSON 형식 지원](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4bead-212">To add Json.NET to ASP.NET Core 3.0, see [Add Newtonsoft.Json-based JSON format support](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support).</span></span>
 
-## <a name="new-no-locrazor-directives"></a><span data-ttu-id="4bead-213">새 :::no-loc(Razor)::: 지시문</span><span class="sxs-lookup"><span data-stu-id="4bead-213">New :::no-loc(Razor)::: directives</span></span>
+## <a name="new-no-locrazor-directives"></a><span data-ttu-id="4bead-213">새 Razor 지시문</span><span class="sxs-lookup"><span data-stu-id="4bead-213">New Razor directives</span></span>
 
-<span data-ttu-id="4bead-214">다음 목록에는 새 :::no-loc(Razor)::: 지시문이 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-214">The following list contains new :::no-loc(Razor)::: directives:</span></span>
+<span data-ttu-id="4bead-214">다음 목록에는 새 Razor 지시문이 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-214">The following list contains new Razor directives:</span></span>
 
 * <span data-ttu-id="4bead-215">[`@attribute`](xref:mvc/views/razor#attribute): `@attribute` 지시문은 지정된 특성을 생성된 페이지 또는 보기의 클래스에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-215">[`@attribute`](xref:mvc/views/razor#attribute): The `@attribute` directive applies the given attribute to the class of the generated page or view.</span></span> <span data-ttu-id="4bead-216">예: `@attribute [Authorize]`.</span><span class="sxs-lookup"><span data-stu-id="4bead-216">For example, `@attribute [Authorize]`.</span></span>
 * <span data-ttu-id="4bead-217">[`@implements`](xref:mvc/views/razor#implements): `@implements` 지시문은 생성된 클래스의 인터페이스를 구현합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-217">[`@implements`](xref:mvc/views/razor#implements): The `@implements` directive implements an interface for the generated class.</span></span> <span data-ttu-id="4bead-218">예: `@implements IDisposable`.</span><span class="sxs-lookup"><span data-stu-id="4bead-218">For example, `@implements IDisposable`.</span></span>
 
-## <a name="no-locidentityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a><span data-ttu-id="4bead-219">:::no-loc(Identity):::Server4의 웹 API 및 SPA에 대한 인증 및 권한 부여 지원</span><span class="sxs-lookup"><span data-stu-id="4bead-219">:::no-loc(Identity):::Server4 supports authentication and authorization for web APIs and SPAs</span></span>
+## <a name="no-locidentityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a><span data-ttu-id="4bead-219">IdentityServer4의 웹 API 및 SPA에 대한 인증 및 권한 부여 지원</span><span class="sxs-lookup"><span data-stu-id="4bead-219">IdentityServer4 supports authentication and authorization for web APIs and SPAs</span></span>
 
-<span data-ttu-id="4bead-220">ASP.NET Core 3.0에서는 웹 API 권한 부여에 대한 지원을 사용하여 SPA(단일 페이지 앱)의 인증을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-220">ASP.NET Core 3.0 offers authentication in Single Page Apps (SPAs) using the support for web API authorization.</span></span> <span data-ttu-id="4bead-221">사용자를 인증하고 저장하기 위한 :::no-loc(ASP.NET Core Identity):::는 OpenID Connect 구현을 위해 [:::no-loc(Identity):::Server4](https://identityserver.io/)와 통합됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-221">:::no-loc(ASP.NET Core Identity)::: for authenticating and storing users is combined with [:::no-loc(Identity):::Server4](https://identityserver.io/) for implementing OpenID Connect.</span></span>
+<span data-ttu-id="4bead-220">ASP.NET Core 3.0에서는 웹 API 권한 부여에 대한 지원을 사용하여 SPA(단일 페이지 앱)의 인증을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-220">ASP.NET Core 3.0 offers authentication in Single Page Apps (SPAs) using the support for web API authorization.</span></span> <span data-ttu-id="4bead-221">사용자를 인증하고 저장하기 위한 ASP.NET Core Identity는 OpenID Connect 구현을 위해 [IdentityServer4](https://identityserver.io/)와 통합됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-221">ASP.NET Core Identity for authenticating and storing users is combined with [IdentityServer4](https://identityserver.io/) for implementing OpenID Connect.</span></span>
 
-<span data-ttu-id="4bead-222">:::no-loc(Identity):::Server4는 ASP.NET Core 3.0용 OpenID Connect 및 OAuth 2.0 프레임워크입니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-222">:::no-loc(Identity):::Server4 is an OpenID Connect and OAuth 2.0 framework for ASP.NET Core 3.0.</span></span> <span data-ttu-id="4bead-223">다음과 같은 보안 기능을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-223">It enables the following security features:</span></span>
+<span data-ttu-id="4bead-222">IdentityServer4는 ASP.NET Core 3.0용 OpenID Connect 및 OAuth 2.0 프레임워크입니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-222">IdentityServer4 is an OpenID Connect and OAuth 2.0 framework for ASP.NET Core 3.0.</span></span> <span data-ttu-id="4bead-223">다음과 같은 보안 기능을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-223">It enables the following security features:</span></span>
 
 * <span data-ttu-id="4bead-224">AaaS(Authentication as a Service)</span><span class="sxs-lookup"><span data-stu-id="4bead-224">Authentication as a Service (AaaS)</span></span>
 * <span data-ttu-id="4bead-225">여러 응용 프로그램 유형에 대한 SSO(Single Sign-On/Off)</span><span class="sxs-lookup"><span data-stu-id="4bead-225">Single sign-on/off (SSO) over multiple application types</span></span>
 * <span data-ttu-id="4bead-226">API에 대한 액세스 제어</span><span class="sxs-lookup"><span data-stu-id="4bead-226">Access control for APIs</span></span>
 * <span data-ttu-id="4bead-227">페더레이션 게이트웨이</span><span class="sxs-lookup"><span data-stu-id="4bead-227">Federation Gateway</span></span>
 
-<span data-ttu-id="4bead-228">자세한 내용은 [:::no-loc(Identity):::Server4 설명서](http://docs.identityserver.io/en/latest/index.html) 또는 [SPA에 대한 인증 및 권한 부여](xref:security/authentication/identity/spa)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4bead-228">For more information, see [the :::no-loc(Identity):::Server4 documentation](http://docs.identityserver.io/en/latest/index.html) or [Authentication and authorization for SPAs](xref:security/authentication/identity/spa).</span></span>
+<span data-ttu-id="4bead-228">자세한 내용은 [IdentityServer4 설명서](http://docs.identityserver.io/en/latest/index.html) 또는 [SPA에 대한 인증 및 권한 부여](xref:security/authentication/identity/spa)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4bead-228">For more information, see [the IdentityServer4 documentation](http://docs.identityserver.io/en/latest/index.html) or [Authentication and authorization for SPAs](xref:security/authentication/identity/spa).</span></span>
 
 ## <a name="certificate-and-kerberos-authentication"></a><span data-ttu-id="4bead-229">인증서 및 Kerberos 인증</span><span class="sxs-lookup"><span data-stu-id="4bead-229">Certificate and Kerberos authentication</span></span>
 
@@ -404,14 +404,14 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ## <a name="template-changes"></a><span data-ttu-id="4bead-252">템플릿 변경 사항</span><span class="sxs-lookup"><span data-stu-id="4bead-252">Template changes</span></span>
 
-<span data-ttu-id="4bead-253">웹 UI 템플릿(컨트롤러 및 뷰를 사용하는 :::no-loc(Razor)::: Pages, MVC)에서 다음이 제거되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-253">The web UI templates (:::no-loc(Razor)::: Pages, MVC with controller and views) have the following removed:</span></span>
+<span data-ttu-id="4bead-253">웹 UI 템플릿(컨트롤러 및 뷰를 사용하는 Razor Pages, MVC)에서 다음이 제거되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-253">The web UI templates (Razor Pages, MVC with controller and views) have the following removed:</span></span>
 
-* <span data-ttu-id="4bead-254">:::no-loc(cookie)::: 동의 UI가 더 이상 포함되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-254">The :::no-loc(cookie)::: consent UI is no longer included.</span></span> <span data-ttu-id="4bead-255">ASP.NET Core 3.0 템플릿에서 생성한 앱에서 :::no-loc(cookie)::: 동의 기능을 사용하려면 <xref:security/gdpr>을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4bead-255">To enable the :::no-loc(cookie)::: consent feature in an ASP.NET Core 3.0 template-generated app, see <xref:security/gdpr>.</span></span>
+* <span data-ttu-id="4bead-254">cookie 동의 UI가 더 이상 포함되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-254">The cookie consent UI is no longer included.</span></span> <span data-ttu-id="4bead-255">ASP.NET Core 3.0 템플릿에서 생성한 앱에서 cookie 동의 기능을 사용하려면 <xref:security/gdpr>을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4bead-255">To enable the cookie consent feature in an ASP.NET Core 3.0 template-generated app, see <xref:security/gdpr>.</span></span>
 * <span data-ttu-id="4bead-256">스크립트 및 관련 정적 자산은 이제 CDN을 사용하는 대신 로컬 파일로 참조됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-256">Scripts and related static assets are now referenced as local files instead of using CDNs.</span></span> <span data-ttu-id="4bead-257">자세한 내용은 [스크립트 및 관련 정적 자산은 현재 환경을 기반으로 CDN을 사용하는 대신 로컬 파일로 참조됩니다(aspnet/AspNetCore.Docs #14350)](https://github.com/dotnet/AspNetCore.Docs/issues/14350)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4bead-257">For more information, see [Scripts and related static assets are now referenced as local files instead of using CDNs based on the current environment (aspnet/AspNetCore.Docs #14350)](https://github.com/dotnet/AspNetCore.Docs/issues/14350).</span></span>
 
 <span data-ttu-id="4bead-258">Angular 템플릿은 Angular 8을 사용하는 것으로 업데이트되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-258">The Angular template updated to use Angular 8.</span></span>
 
-<span data-ttu-id="4bead-259">RCL(:::no-loc(Razor)::: 클래스 라이브러리) 템플릿은 기본적으로 :::no-loc(Razor)::: 구성 요소 개발로 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-259">The :::no-loc(Razor)::: class library (RCL) template defaults to :::no-loc(Razor)::: component development by default.</span></span> <span data-ttu-id="4bead-260">Visual Studio의 새 템플릿 옵션은 페이지 및 보기에 대한 템플릿 지원을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-260">A new template option in Visual Studio provides template support for pages and views.</span></span> <span data-ttu-id="4bead-261">명령 셸의 템플릿으로부터 RCL을 생성할 때 `--support-pages-and-views` 옵션(`dotnet new razorclasslib --support-pages-and-views`)을 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-261">When creating an RCL from the template in a command shell, pass the `--support-pages-and-views` option (`dotnet new razorclasslib --support-pages-and-views`).</span></span>
+<span data-ttu-id="4bead-259">RCL(Razor 클래스 라이브러리) 템플릿은 기본적으로 Razor 구성 요소 개발로 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-259">The Razor class library (RCL) template defaults to Razor component development by default.</span></span> <span data-ttu-id="4bead-260">Visual Studio의 새 템플릿 옵션은 페이지 및 보기에 대한 템플릿 지원을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-260">A new template option in Visual Studio provides template support for pages and views.</span></span> <span data-ttu-id="4bead-261">명령 셸의 템플릿으로부터 RCL을 생성할 때 `--support-pages-and-views` 옵션(`dotnet new razorclasslib --support-pages-and-views`)을 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="4bead-261">When creating an RCL from the template in a command shell, pass the `--support-pages-and-views` option (`dotnet new razorclasslib --support-pages-and-views`).</span></span>
 
 ## <a name="generic-host"></a><span data-ttu-id="4bead-262">제네릭 호스트</span><span class="sxs-lookup"><span data-stu-id="4bead-262">Generic Host</span></span>
 

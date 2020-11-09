@@ -1,23 +1,23 @@
 ---
-title: :::no-loc(SignalR):::백그라운드 서비스의 호스트 ASP.NET Core
+title: SignalR백그라운드 서비스의 호스트 ASP.NET Core
 author: bradygaster
-description: :::no-loc(SignalR):::.Net Core BackgroundService 클래스에서 클라이언트에 메시지를 보내는 방법에 대해 알아봅니다.
+description: SignalR.Net Core BackgroundService 클래스에서 클라이언트에 메시지를 보내는 방법에 대해 알아봅니다.
 monikerRange: '>= aspnetcore-2.2'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: signalr/background-services
 ms.openlocfilehash: 810eff7ccb08ecc22ea255bf0a9fe3d22637179f
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,13 +26,13 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93060107"
 ---
-# <a name="host-aspnet-core-no-locsignalr-in-background-services"></a><span data-ttu-id="f46f4-103">:::no-loc(SignalR):::백그라운드 서비스의 호스트 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="f46f4-103">Host ASP.NET Core :::no-loc(SignalR)::: in background services</span></span>
+# <a name="host-aspnet-core-no-locsignalr-in-background-services"></a><span data-ttu-id="f46f4-103">SignalR백그라운드 서비스의 호스트 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="f46f4-103">Host ASP.NET Core SignalR in background services</span></span>
 
 <span data-ttu-id="f46f4-104">[Brady Gaster](https://twitter.com/bradygaster)</span><span class="sxs-lookup"><span data-stu-id="f46f4-104">By [Brady Gaster](https://twitter.com/bradygaster)</span></span>
 
 <span data-ttu-id="f46f4-105">이 문서에서는 다음에 대 한 지침을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-105">This article provides guidance for:</span></span>
 
-* <span data-ttu-id="f46f4-106">:::no-loc(SignalR):::ASP.NET Core로 호스트 된 백그라운드 작업자 프로세스를 사용 하 여 허브를 호스팅합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-106">Hosting :::no-loc(SignalR)::: Hubs using a background worker process hosted with ASP.NET Core.</span></span>
+* <span data-ttu-id="f46f4-106">SignalRASP.NET Core로 호스트 된 백그라운드 작업자 프로세스를 사용 하 여 허브를 호스팅합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-106">Hosting SignalR Hubs using a background worker process hosted with ASP.NET Core.</span></span>
 * <span data-ttu-id="f46f4-107">.NET Core [BackgroundService](xref:Microsoft.Extensions.Hosting.BackgroundService)내에서 연결 된 클라이언트에 메시지를 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-107">Sending messages to connected clients from within a .NET Core [BackgroundService](xref:Microsoft.Extensions.Hosting.BackgroundService).</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
@@ -46,18 +46,18 @@ ms.locfileid: "93060107"
 
 ::: moniker-end
 
-## <a name="enable-no-locsignalr-in-startup"></a><span data-ttu-id="f46f4-110">:::no-loc(SignalR):::시작 시 사용</span><span class="sxs-lookup"><span data-stu-id="f46f4-110">Enable :::no-loc(SignalR)::: in startup</span></span>
+## <a name="enable-no-locsignalr-in-startup"></a><span data-ttu-id="f46f4-110">SignalR시작 시 사용</span><span class="sxs-lookup"><span data-stu-id="f46f4-110">Enable SignalR in startup</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="f46f4-111">:::no-loc(SignalR):::백그라운드 작업자 프로세스의 컨텍스트에서 ASP.NET Core 허브를 호스트 하는 것은 ASP.NET Core 웹 앱에서 허브를 호스트 하는 것과 동일 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-111">Hosting ASP.NET Core :::no-loc(SignalR)::: Hubs in the context of a background worker process is identical to hosting a Hub in an ASP.NET Core web app.</span></span> <span data-ttu-id="f46f4-112">메서드에서는 `Startup.ConfigureServices` 를 호출 `services.Add:::no-loc(SignalR):::` 하 여 지원 되는 DI (ASP.NET Core 종속성 주입) 계층에 필요한 서비스를 추가 :::no-loc(SignalR)::: 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-112">In the `Startup.ConfigureServices` method, calling `services.Add:::no-loc(SignalR):::` adds the required services to the ASP.NET Core Dependency Injection (DI) layer to support :::no-loc(SignalR):::.</span></span> <span data-ttu-id="f46f4-113">에서 `Startup.Configure` 메서드는 `MapHub` `UseEndpoints` ASP.NET Core 요청 파이프라인의 허브 끝점을 연결 하기 위해 콜백에서 호출 됩니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-113">In `Startup.Configure`, the `MapHub` method is called in the `UseEndpoints` callback to connect the Hub endpoints in the ASP.NET Core request pipeline.</span></span>
+<span data-ttu-id="f46f4-111">SignalR백그라운드 작업자 프로세스의 컨텍스트에서 ASP.NET Core 허브를 호스트 하는 것은 ASP.NET Core 웹 앱에서 허브를 호스트 하는 것과 동일 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-111">Hosting ASP.NET Core SignalR Hubs in the context of a background worker process is identical to hosting a Hub in an ASP.NET Core web app.</span></span> <span data-ttu-id="f46f4-112">메서드에서는 `Startup.ConfigureServices` 를 호출 `services.AddSignalR` 하 여 지원 되는 DI (ASP.NET Core 종속성 주입) 계층에 필요한 서비스를 추가 SignalR 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-112">In the `Startup.ConfigureServices` method, calling `services.AddSignalR` adds the required services to the ASP.NET Core Dependency Injection (DI) layer to support SignalR.</span></span> <span data-ttu-id="f46f4-113">에서 `Startup.Configure` 메서드는 `MapHub` `UseEndpoints` ASP.NET Core 요청 파이프라인의 허브 끝점을 연결 하기 위해 콜백에서 호출 됩니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-113">In `Startup.Configure`, the `MapHub` method is called in the `UseEndpoints` callback to connect the Hub endpoints in the ASP.NET Core request pipeline.</span></span>
 
 [!code-csharp[Startup](background-service/samples/3.x/Server/Startup.cs?name=Startup)]
 
 ::: moniker-end
 ::: moniker range="<= aspnetcore-2.2"
 
-<span data-ttu-id="f46f4-114">:::no-loc(SignalR):::백그라운드 작업자 프로세스의 컨텍스트에서 ASP.NET Core 허브를 호스트 하는 것은 ASP.NET Core 웹 앱에서 허브를 호스트 하는 것과 동일 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-114">Hosting ASP.NET Core :::no-loc(SignalR)::: Hubs in the context of a background worker process is identical to hosting a Hub in an ASP.NET Core web app.</span></span> <span data-ttu-id="f46f4-115">메서드에서는 `Startup.ConfigureServices` 를 호출 `services.Add:::no-loc(SignalR):::` 하 여 지원 되는 DI (ASP.NET Core 종속성 주입) 계층에 필요한 서비스를 추가 :::no-loc(SignalR)::: 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-115">In the `Startup.ConfigureServices` method, calling `services.Add:::no-loc(SignalR):::` adds the required services to the ASP.NET Core Dependency Injection (DI) layer to support :::no-loc(SignalR):::.</span></span> <span data-ttu-id="f46f4-116">에서 `Startup.Configure` 메서드를 `Use:::no-loc(SignalR):::` 호출 하 여 ASP.NET Core 요청 파이프라인의 허브 끝점을 연결 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-116">In `Startup.Configure`, the `Use:::no-loc(SignalR):::` method is called to connect the Hub endpoint(s) in the ASP.NET Core request pipeline.</span></span>
+<span data-ttu-id="f46f4-114">SignalR백그라운드 작업자 프로세스의 컨텍스트에서 ASP.NET Core 허브를 호스트 하는 것은 ASP.NET Core 웹 앱에서 허브를 호스트 하는 것과 동일 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-114">Hosting ASP.NET Core SignalR Hubs in the context of a background worker process is identical to hosting a Hub in an ASP.NET Core web app.</span></span> <span data-ttu-id="f46f4-115">메서드에서는 `Startup.ConfigureServices` 를 호출 `services.AddSignalR` 하 여 지원 되는 DI (ASP.NET Core 종속성 주입) 계층에 필요한 서비스를 추가 SignalR 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-115">In the `Startup.ConfigureServices` method, calling `services.AddSignalR` adds the required services to the ASP.NET Core Dependency Injection (DI) layer to support SignalR.</span></span> <span data-ttu-id="f46f4-116">에서 `Startup.Configure` 메서드를 `UseSignalR` 호출 하 여 ASP.NET Core 요청 파이프라인의 허브 끝점을 연결 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-116">In `Startup.Configure`, the `UseSignalR` method is called to connect the Hub endpoint(s) in the ASP.NET Core request pipeline.</span></span>
 
 [!code-csharp[Startup](background-service/samples/2.2/Server/Startup.cs?name=Startup)]
 
@@ -65,10 +65,10 @@ ms.locfileid: "93060107"
 
 <span data-ttu-id="f46f4-117">앞의 예제에서 클래스는 `ClockHub` 클래스를 구현 `Hub<T>` 하 여 강력한 형식의 허브를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-117">In the preceding example, the `ClockHub` class implements the `Hub<T>` class to create a strongly typed Hub.</span></span> <span data-ttu-id="f46f4-118">는 `ClockHub` `Startup` 끝점에서 요청에 응답 하도록 클래스에서 구성 되었습니다 `/hubs/clock` .</span><span class="sxs-lookup"><span data-stu-id="f46f4-118">The `ClockHub` has been configured in the `Startup` class to respond to requests at the endpoint `/hubs/clock`.</span></span>
 
-<span data-ttu-id="f46f4-119">강력한 형식의 허브에 대 한 자세한 내용은 [ :::no-loc(SignalR)::: ASP.NET Core에 대해 허브 사용](xref:signalr/hubs#strongly-typed-hubs)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="f46f4-119">For more information on strongly typed Hubs, see [Use hubs in :::no-loc(SignalR)::: for ASP.NET Core](xref:signalr/hubs#strongly-typed-hubs).</span></span>
+<span data-ttu-id="f46f4-119">강력한 형식의 허브에 대 한 자세한 내용은 [ SignalR ASP.NET Core에 대해 허브 사용](xref:signalr/hubs#strongly-typed-hubs)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="f46f4-119">For more information on strongly typed Hubs, see [Use hubs in SignalR for ASP.NET Core](xref:signalr/hubs#strongly-typed-hubs).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="f46f4-120">이 기능은 [허브 \<T> ](xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Hub`1) 클래스로 제한 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-120">This functionality isn't limited to the [Hub\<T>](xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Hub`1) class.</span></span> <span data-ttu-id="f46f4-121">[Dynamichub](xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.DynamicHub)와 같이 [허브](xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Hub)에서 상속 되는 모든 클래스는 작동 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-121">Any class that inherits from [Hub](xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Hub), such as [DynamicHub](xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.DynamicHub), works.</span></span>
+> <span data-ttu-id="f46f4-120">이 기능은 [허브 \<T> ](xref:Microsoft.AspNetCore.SignalR.Hub`1) 클래스로 제한 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-120">This functionality isn't limited to the [Hub\<T>](xref:Microsoft.AspNetCore.SignalR.Hub`1) class.</span></span> <span data-ttu-id="f46f4-121">[Dynamichub](xref:Microsoft.AspNetCore.SignalR.DynamicHub)와 같이 [허브](xref:Microsoft.AspNetCore.SignalR.Hub)에서 상속 되는 모든 클래스는 작동 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-121">Any class that inherits from [Hub](xref:Microsoft.AspNetCore.SignalR.Hub), such as [DynamicHub](xref:Microsoft.AspNetCore.SignalR.DynamicHub), works.</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -94,7 +94,7 @@ ms.locfileid: "93060107"
 
 ::: moniker-end
 
-## <a name="call-a-no-locsignalr-hub-from-a-background-service"></a><span data-ttu-id="f46f4-123">:::no-loc(SignalR):::백그라운드 서비스에서 허브 호출</span><span class="sxs-lookup"><span data-stu-id="f46f4-123">Call a :::no-loc(SignalR)::: Hub from a background service</span></span>
+## <a name="call-a-no-locsignalr-hub-from-a-background-service"></a><span data-ttu-id="f46f4-123">SignalR백그라운드 서비스에서 허브 호출</span><span class="sxs-lookup"><span data-stu-id="f46f4-123">Call a SignalR Hub from a background service</span></span>
 
 <span data-ttu-id="f46f4-124">시작 중에 `Worker` 는를 `BackgroundService` 사용 하 여 클래스를 사용할 수 `AddHostedService` 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-124">During startup, the `Worker` class, a `BackgroundService`, is enabled using `AddHostedService`.</span></span>
 
@@ -102,7 +102,7 @@ ms.locfileid: "93060107"
 services.AddHostedService<Worker>();
 ```
 
-<span data-ttu-id="f46f4-125">:::no-loc(SignalR):::는 단계 중에도 활성화 되므로 `Startup` 각 허브는 ASP.NET CORE의 HTTP 요청 파이프라인에서 개별 끝점에 연결 됩니다. 각 허브는 서버에서로 표시 됩니다 `IHubContext<T>` .</span><span class="sxs-lookup"><span data-stu-id="f46f4-125">Since :::no-loc(SignalR)::: is also enabled up during the `Startup` phase, in which each Hub is attached to an individual endpoint in ASP.NET Core's HTTP request pipeline, each Hub is represented by an `IHubContext<T>` on the server.</span></span> <span data-ttu-id="f46f4-126">ASP.NET Core의 DI 기능을 사용 하 여 클래스, MVC 컨트롤러 클래스 또는 페이지 모델과 같이 호스팅 계층에 의해 인스턴스화된 다른 클래스는 `BackgroundService` :::no-loc(Razor)::: 생성 중의 인스턴스를 허용 하 여 서버 쪽 허브에 대 한 참조를 가져올 수 있습니다 `IHubContext<ClockHub, IClock>` .</span><span class="sxs-lookup"><span data-stu-id="f46f4-126">Using ASP.NET Core's DI features, other classes instantiated by the hosting layer, like `BackgroundService` classes, MVC Controller classes, or :::no-loc(Razor)::: page models, can get references to server-side Hubs by accepting instances of `IHubContext<ClockHub, IClock>` during construction.</span></span>
+<span data-ttu-id="f46f4-125">SignalR는 단계 중에도 활성화 되므로 `Startup` 각 허브는 ASP.NET CORE의 HTTP 요청 파이프라인에서 개별 끝점에 연결 됩니다. 각 허브는 서버에서로 표시 됩니다 `IHubContext<T>` .</span><span class="sxs-lookup"><span data-stu-id="f46f4-125">Since SignalR is also enabled up during the `Startup` phase, in which each Hub is attached to an individual endpoint in ASP.NET Core's HTTP request pipeline, each Hub is represented by an `IHubContext<T>` on the server.</span></span> <span data-ttu-id="f46f4-126">ASP.NET Core의 DI 기능을 사용 하 여 클래스, MVC 컨트롤러 클래스 또는 페이지 모델과 같이 호스팅 계층에 의해 인스턴스화된 다른 클래스는 `BackgroundService` Razor 생성 중의 인스턴스를 허용 하 여 서버 쪽 허브에 대 한 참조를 가져올 수 있습니다 `IHubContext<ClockHub, IClock>` .</span><span class="sxs-lookup"><span data-stu-id="f46f4-126">Using ASP.NET Core's DI features, other classes instantiated by the hosting layer, like `BackgroundService` classes, MVC Controller classes, or Razor page models, can get references to server-side Hubs by accepting instances of `IHubContext<ClockHub, IClock>` during construction.</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -117,9 +117,9 @@ services.AddHostedService<Worker>();
 
 <span data-ttu-id="f46f4-127">`ExecuteAsync`메서드가 백그라운드 서비스에서 반복적으로 호출 되 면 서버의 현재 날짜 및 시간이를 사용 하 여 연결 된 클라이언트에 전송 됩니다 `ClockHub` .</span><span class="sxs-lookup"><span data-stu-id="f46f4-127">As the `ExecuteAsync` method is called iteratively in the background service, the server's current date and time are sent to the connected clients using the `ClockHub`.</span></span>
 
-## <a name="react-to-no-locsignalr-events-with-background-services"></a><span data-ttu-id="f46f4-128">:::no-loc(SignalR):::백그라운드 서비스를 사용 하 여 이벤트에 대응</span><span class="sxs-lookup"><span data-stu-id="f46f4-128">React to :::no-loc(SignalR)::: events with background services</span></span>
+## <a name="react-to-no-locsignalr-events-with-background-services"></a><span data-ttu-id="f46f4-128">SignalR백그라운드 서비스를 사용 하 여 이벤트에 대응</span><span class="sxs-lookup"><span data-stu-id="f46f4-128">React to SignalR events with background services</span></span>
 
-<span data-ttu-id="f46f4-129">또는 .NET 데스크톱 응용 프로그램에서 JavaScript 클라이언트를 사용 하는 단일 페이지 앱과 마찬가지로를 사용 하 여를 사용할 :::no-loc(SignalR)::: 수 있습니다 <xref:signalr/dotnet-client> `BackgroundService` . 또는 구현을 사용 하 여 `IHostedService` 허브에 연결 하 :::no-loc(SignalR)::: 고 이벤트에 응답할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-129">Like a Single Page App using the JavaScript client for :::no-loc(SignalR)::: or a .NET desktop app can do using the using the <xref:signalr/dotnet-client>, a `BackgroundService` or `IHostedService` implementation can also be used to connect to :::no-loc(SignalR)::: Hubs and respond to events.</span></span>
+<span data-ttu-id="f46f4-129">또는 .NET 데스크톱 응용 프로그램에서 JavaScript 클라이언트를 사용 하는 단일 페이지 앱과 마찬가지로를 사용 하 여를 사용할 SignalR 수 있습니다 <xref:signalr/dotnet-client> `BackgroundService` . 또는 구현을 사용 하 여 `IHostedService` 허브에 연결 하 SignalR 고 이벤트에 응답할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-129">Like a Single Page App using the JavaScript client for SignalR or a .NET desktop app can do using the using the <xref:signalr/dotnet-client>, a `BackgroundService` or `IHostedService` implementation can also be used to connect to SignalR Hubs and respond to events.</span></span>
 
 <span data-ttu-id="f46f4-130">`ClockHubClient`클래스는 인터페이스와 인터페이스를 둘 다 구현 `IClock` `IHostedService` 합니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-130">The `ClockHubClient` class implements both the `IClock` interface and the `IHostedService` interface.</span></span> <span data-ttu-id="f46f4-131">이러한 방식으로 `Startup` 에서 계속 실행 하 고 서버에서 허브 이벤트에 응답 하는 데 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f46f4-131">This way it can be enabled during `Startup` to run continuously and respond to Hub events from the server.</span></span>
 

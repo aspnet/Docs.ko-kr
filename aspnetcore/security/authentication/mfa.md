@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/17/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/mfa
 ms.openlocfilehash: 873f7d113df84c931ad7fbf2c72aa292e4e87c48
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -37,7 +37,7 @@ ms.locfileid: "93060393"
 <span data-ttu-id="2df63-110">이 문서에서는 다음 영역에 대해 설명 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-110">This article covers the following areas:</span></span>
 
 * <span data-ttu-id="2df63-111">MFA 정의 및 권장 되는 MFA 흐름</span><span class="sxs-lookup"><span data-stu-id="2df63-111">What is MFA and what MFA flows are recommended</span></span>
-* <span data-ttu-id="2df63-112">를 사용 하 여 관리 페이지에 대 한 MFA 구성 :::no-loc(ASP.NET Core Identity):::</span><span class="sxs-lookup"><span data-stu-id="2df63-112">Configure MFA for administration pages using :::no-loc(ASP.NET Core Identity):::</span></span>
+* <span data-ttu-id="2df63-112">를 사용 하 여 관리 페이지에 대 한 MFA 구성 ASP.NET Core Identity</span><span class="sxs-lookup"><span data-stu-id="2df63-112">Configure MFA for administration pages using ASP.NET Core Identity</span></span>
 * <span data-ttu-id="2df63-113">Openid connect Connect 서버에 MFA 로그인 요구 사항 보내기</span><span class="sxs-lookup"><span data-stu-id="2df63-113">Send MFA sign-in requirement to OpenID Connect server</span></span>
 * <span data-ttu-id="2df63-114">강제로 ASP.NET Core Openid connect Connect 클라이언트에 MFA를 요구 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-114">Force ASP.NET Core OpenID Connect client to require MFA</span></span>
 
@@ -49,7 +49,7 @@ ms.locfileid: "93060393"
 
 ### <a name="mfa-totp-time-based-one-time-password-algorithm"></a><span data-ttu-id="2df63-118">MFA TOTP (시간 기반 일회용 암호 알고리즘)</span><span class="sxs-lookup"><span data-stu-id="2df63-118">MFA TOTP (Time-based One-time Password Algorithm)</span></span>
 
-<span data-ttu-id="2df63-119">TOTP를 사용 하는 MFA는를 사용 하 여 지원 되는 구현입니다 :::no-loc(ASP.NET Core Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2df63-119">MFA using TOTP is a supported implementation using :::no-loc(ASP.NET Core Identity):::.</span></span> <span data-ttu-id="2df63-120">다음을 포함 하 여 모든 규격 인증자 앱과 함께 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-120">This can be used together with any compliant authenticator app, including:</span></span>
+<span data-ttu-id="2df63-119">TOTP를 사용 하는 MFA는를 사용 하 여 지원 되는 구현입니다 ASP.NET Core Identity .</span><span class="sxs-lookup"><span data-stu-id="2df63-119">MFA using TOTP is a supported implementation using ASP.NET Core Identity.</span></span> <span data-ttu-id="2df63-120">다음을 포함 하 여 모든 규격 인증자 앱과 함께 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-120">This can be used together with any compliant authenticator app, including:</span></span>
 
 * <span data-ttu-id="2df63-121">Microsoft Authenticator 앱</span><span class="sxs-lookup"><span data-stu-id="2df63-121">Microsoft Authenticator App</span></span>
 * <span data-ttu-id="2df63-122">Google Authenticator 앱</span><span class="sxs-lookup"><span data-stu-id="2df63-122">Google Authenticator App</span></span>
@@ -75,13 +75,13 @@ ms.locfileid: "93060393"
 
 [<span data-ttu-id="2df63-137">NIST 지침</span><span class="sxs-lookup"><span data-stu-id="2df63-137">NIST guidelines</span></span>](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
-## <a name="configure-mfa-for-administration-pages-using-no-locaspnet-core-identity"></a><span data-ttu-id="2df63-138">를 사용 하 여 관리 페이지에 대 한 MFA 구성 :::no-loc(ASP.NET Core Identity):::</span><span class="sxs-lookup"><span data-stu-id="2df63-138">Configure MFA for administration pages using :::no-loc(ASP.NET Core Identity):::</span></span>
+## <a name="configure-mfa-for-administration-pages-using-no-locaspnet-core-identity"></a><span data-ttu-id="2df63-138">를 사용 하 여 관리 페이지에 대 한 MFA 구성 ASP.NET Core Identity</span><span class="sxs-lookup"><span data-stu-id="2df63-138">Configure MFA for administration pages using ASP.NET Core Identity</span></span>
 
-<span data-ttu-id="2df63-139">사용자는 MFA를 사용 하 여 앱 내의 중요 한 페이지에 액세스할 수 있습니다 :::no-loc(ASP.NET Core Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2df63-139">MFA could be forced on users to access sensitive pages within an :::no-loc(ASP.NET Core Identity)::: app.</span></span> <span data-ttu-id="2df63-140">이는 다양 한 id에 대해 서로 다른 수준의 액세스 권한이 있는 앱에 유용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-140">This could be useful for apps where different levels of access exist for the different identities.</span></span> <span data-ttu-id="2df63-141">예를 들어 사용자가 암호 로그인을 사용 하 여 프로필 데이터를 볼 수 있지만 관리자가 MFA를 사용 하 여 관리 페이지에 액세스 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-141">For example, users might be able to view the profile data using a password login, but an administrator would be required to use MFA to access the administrative pages.</span></span>
+<span data-ttu-id="2df63-139">사용자는 MFA를 사용 하 여 앱 내의 중요 한 페이지에 액세스할 수 있습니다 ASP.NET Core Identity .</span><span class="sxs-lookup"><span data-stu-id="2df63-139">MFA could be forced on users to access sensitive pages within an ASP.NET Core Identity app.</span></span> <span data-ttu-id="2df63-140">이는 다양 한 id에 대해 서로 다른 수준의 액세스 권한이 있는 앱에 유용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-140">This could be useful for apps where different levels of access exist for the different identities.</span></span> <span data-ttu-id="2df63-141">예를 들어 사용자가 암호 로그인을 사용 하 여 프로필 데이터를 볼 수 있지만 관리자가 MFA를 사용 하 여 관리 페이지에 액세스 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-141">For example, users might be able to view the profile data using a password login, but an administrator would be required to use MFA to access the administrative pages.</span></span>
 
 ### <a name="extend-the-login-with-an-mfa-claim"></a><span data-ttu-id="2df63-142">MFA 클레임을 사용 하 여 로그인 확장</span><span class="sxs-lookup"><span data-stu-id="2df63-142">Extend the login with an MFA claim</span></span>
 
-<span data-ttu-id="2df63-143">데모 코드는 및 페이지와 ASP.NET Core를 사용 하 여 설정 :::no-loc(Identity)::: :::no-loc(Razor)::: 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-143">The demo code is setup using ASP.NET Core with :::no-loc(Identity)::: and :::no-loc(Razor)::: Pages.</span></span> <span data-ttu-id="2df63-144">`Add:::no-loc(Identity):::`메서드는 하나 대신 사용 `AddDefault:::no-loc(Identity):::` 되므로 `IUserClaimsPrincipalFactory` 성공적인 로그인 후에는 구현을 사용 하 여 클레임을 id에 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-144">The `Add:::no-loc(Identity):::` method is used instead of `AddDefault:::no-loc(Identity):::` one, so an `IUserClaimsPrincipalFactory` implementation can be used to add claims to the identity after a successful login.</span></span>
+<span data-ttu-id="2df63-143">데모 코드는 및 페이지와 ASP.NET Core를 사용 하 여 설정 Identity Razor 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-143">The demo code is setup using ASP.NET Core with Identity and Razor Pages.</span></span> <span data-ttu-id="2df63-144">`AddIdentity`메서드는 하나 대신 사용 `AddDefaultIdentity` 되므로 `IUserClaimsPrincipalFactory` 성공적인 로그인 후에는 구현을 사용 하 여 클레임을 id에 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-144">The `AddIdentity` method is used instead of `AddDefaultIdentity` one, so an `IUserClaimsPrincipalFactory` implementation can be used to add claims to the identity after a successful login.</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -90,49 +90,49 @@ public void ConfigureServices(IServiceCollection services)
         options.UseSqlite(
             Configuration.GetConnectionString("DefaultConnection")));
     
-    services.Add:::no-loc(Identity):::<:::no-loc(Identity):::User, :::no-loc(Identity):::Role>(
+    services.AddIdentity<IdentityUser, IdentityRole>(
             options => options.SignIn.RequireConfirmedAccount = false)
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
 
     services.AddSingleton<IEmailSender, EmailSender>();
-    services.AddScoped<IUserClaimsPrincipalFactory<:::no-loc(Identity):::User>, 
+    services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, 
         AdditionalUserClaimsPrincipalFactory>();
 
     services.AddAuthorization(options =>
         options.AddPolicy("TwoFactorEnabled",
             x => x.RequireClaim("amr", "mfa")));
 
-    services.Add:::no-loc(Razor):::Pages();
+    services.AddRazorPages();
 }
 ```
 
 <span data-ttu-id="2df63-145">`AdditionalUserClaimsPrincipalFactory`클래스는 로그인에 `amr` 성공한 후에만 사용자 클레임에 클레임을 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-145">The `AdditionalUserClaimsPrincipalFactory` class adds the `amr` claim to the user claims only after a successful login.</span></span> <span data-ttu-id="2df63-146">클레임의 값을 데이터베이스에서 읽습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-146">The claim's value is read from the database.</span></span> <span data-ttu-id="2df63-147">Id가 MFA로 로그인 한 경우에는 사용자가 더 높은 수준의 보호 된 보기에만 액세스 해야 하므로 클레임은 여기에 추가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-147">The claim is added here because the user should only access the higher protected view if the identity has logged in with MFA.</span></span> <span data-ttu-id="2df63-148">클레임을 사용 하는 대신 데이터베이스에서 직접 데이터베이스 뷰를 읽는 경우 MFA를 활성화 한 후 MFA를 사용 하지 않고 보기에 직접 액세스할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-148">If the database view is read from the database directly instead of using the claim, it's possible to access the view without MFA directly after activating the MFA.</span></span>
 
 ```csharp
-using Microsoft.AspNetCore.:::no-loc(Identity):::;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace :::no-loc(Identity):::StandaloneMfa
+namespace IdentityStandaloneMfa
 {
     public class AdditionalUserClaimsPrincipalFactory : 
-        UserClaimsPrincipalFactory<:::no-loc(Identity):::User, :::no-loc(Identity):::Role>
+        UserClaimsPrincipalFactory<IdentityUser, IdentityRole>
     {
         public AdditionalUserClaimsPrincipalFactory( 
-            UserManager<:::no-loc(Identity):::User> userManager,
-            RoleManager<:::no-loc(Identity):::Role> roleManager, 
-            IOptions<:::no-loc(Identity):::Options> optionsAccessor) 
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager, 
+            IOptions<IdentityOptions> optionsAccessor) 
             : base(userManager, roleManager, optionsAccessor)
         {
         }
 
-        public async override Task<ClaimsPrincipal> CreateAsync(:::no-loc(Identity):::User user)
+        public async override Task<ClaimsPrincipal> CreateAsync(IdentityUser user)
         {
             var principal = await base.CreateAsync(user);
-            var identity = (Claims:::no-loc(Identity):::)principal.:::no-loc(Identity):::;
+            var identity = (ClaimsIdentity)principal.Identity;
 
             var claims = new List<Claim>();
 
@@ -152,7 +152,7 @@ namespace :::no-loc(Identity):::StandaloneMfa
 }
 ```
 
-<span data-ttu-id="2df63-149">:::no-loc(Identity):::클래스에서 서비스 설정이 변경 되었으므로의 `Startup` 레이아웃을 :::no-loc(Identity)::: 업데이트 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-149">Because the :::no-loc(Identity)::: service setup changed in the `Startup` class, the layouts of the :::no-loc(Identity)::: need to be updated.</span></span> <span data-ttu-id="2df63-150">페이지를 :::no-loc(Identity)::: 앱으로 스 캐 폴드.</span><span class="sxs-lookup"><span data-stu-id="2df63-150">Scaffold the :::no-loc(Identity)::: pages into the app.</span></span> <span data-ttu-id="2df63-151">*:::no-loc(Identity)::: /Account/Manage/_Layout. cshtml* 파일에 레이아웃을 정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-151">Define the layout in the *:::no-loc(Identity):::/Account/Manage/_Layout.cshtml* file.</span></span>
+<span data-ttu-id="2df63-149">Identity클래스에서 서비스 설정이 변경 되었으므로의 `Startup` 레이아웃을 Identity 업데이트 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-149">Because the Identity service setup changed in the `Startup` class, the layouts of the Identity need to be updated.</span></span> <span data-ttu-id="2df63-150">페이지를 Identity 앱으로 스 캐 폴드.</span><span class="sxs-lookup"><span data-stu-id="2df63-150">Scaffold the Identity pages into the app.</span></span> <span data-ttu-id="2df63-151">*Identity /Account/Manage/_Layout. cshtml* 파일에 레이아웃을 정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-151">Define the layout in the *Identity/Account/Manage/_Layout.cshtml* file.</span></span>
 
 ```cshtml
 @{
@@ -160,7 +160,7 @@ namespace :::no-loc(Identity):::StandaloneMfa
 }
 ```
 
-<span data-ttu-id="2df63-152">또한 페이지에서 모든 관리 페이지에 대 한 레이아웃을 할당 합니다 :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2df63-152">Also assign the layout for all the manage pages from the :::no-loc(Identity)::: pages:</span></span>
+<span data-ttu-id="2df63-152">또한 페이지에서 모든 관리 페이지에 대 한 레이아웃을 할당 합니다 Identity .</span><span class="sxs-lookup"><span data-stu-id="2df63-152">Also assign the layout for all the manage pages from the Identity pages:</span></span>
 
 ```cshtml
 @{
@@ -170,7 +170,7 @@ namespace :::no-loc(Identity):::StandaloneMfa
 
 ### <a name="validate-the-mfa-requirement-in-the-administration-page"></a><span data-ttu-id="2df63-153">관리 페이지에서 MFA 요구 사항의 유효성을 검사 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-153">Validate the MFA requirement in the administration page</span></span>
 
-<span data-ttu-id="2df63-154">관리 :::no-loc(Razor)::: 페이지에서는 사용자가 MFA를 사용 하 여 로그인 했는지 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-154">The administration :::no-loc(Razor)::: Page validates that the user has logged in using MFA.</span></span> <span data-ttu-id="2df63-155">`OnGet`메서드에서 id는 사용자 클레임에 액세스 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-155">In the `OnGet` method, the identity is used to access the user claims.</span></span> <span data-ttu-id="2df63-156">`amr`값에 대 한 클레임을 확인 합니다 `mfa` .</span><span class="sxs-lookup"><span data-stu-id="2df63-156">The `amr` claim is checked for the value `mfa`.</span></span> <span data-ttu-id="2df63-157">Id가이 클레임을 누락 하거나 인 경우 `false` 페이지는 MFA 사용 페이지로 리디렉션됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-157">If the identity is missing this claim or is `false`, the page redirects to the Enable MFA page.</span></span> <span data-ttu-id="2df63-158">사용자가 이미 로그인 했지만 MFA를 사용 하지 않았기 때문에이를 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-158">This is possible because the user has logged in already, but without MFA.</span></span>
+<span data-ttu-id="2df63-154">관리 Razor 페이지에서는 사용자가 MFA를 사용 하 여 로그인 했는지 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-154">The administration Razor Page validates that the user has logged in using MFA.</span></span> <span data-ttu-id="2df63-155">`OnGet`메서드에서 id는 사용자 클레임에 액세스 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-155">In the `OnGet` method, the identity is used to access the user claims.</span></span> <span data-ttu-id="2df63-156">`amr`값에 대 한 클레임을 확인 합니다 `mfa` .</span><span class="sxs-lookup"><span data-stu-id="2df63-156">The `amr` claim is checked for the value `mfa`.</span></span> <span data-ttu-id="2df63-157">Id가이 클레임을 누락 하거나 인 경우 `false` 페이지는 MFA 사용 페이지로 리디렉션됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-157">If the identity is missing this claim or is `false`, the page redirects to the Enable MFA page.</span></span> <span data-ttu-id="2df63-158">사용자가 이미 로그인 했지만 MFA를 사용 하지 않았기 때문에이를 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-158">This is possible because the user has logged in already, but without MFA.</span></span>
 
 ```csharp
 using System;
@@ -178,9 +178,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace :::no-loc(Identity):::StandaloneMfa
+namespace IdentityStandaloneMfa
 {
     public class AdminModel : PageModel
     {
@@ -197,7 +197,7 @@ namespace :::no-loc(Identity):::StandaloneMfa
             else
             {
                 return Redirect(
-                    "/:::no-loc(Identity):::/Account/Manage/TwoFactorAuthentication");
+                    "/Identity/Account/Manage/TwoFactorAuthentication");
             }
 
             return Page();
@@ -220,9 +220,9 @@ services.AddAuthorization(options =>
 
 ```cshtml
 @using Microsoft.AspNetCore.Authorization
-@using Microsoft.AspNetCore.:::no-loc(Identity):::
-@inject SignInManager<:::no-loc(Identity):::User> SignInManager
-@inject UserManager<:::no-loc(Identity):::User> UserManager
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @inject IAuthorizationService AuthorizationService
 ```
 
@@ -269,7 +269,7 @@ services.AddAuthorization(options =>
 
 ### <a name="openid-connect-aspnet-core-client"></a><span data-ttu-id="2df63-172">Openid connect Connect ASP.NET Core 클라이언트</span><span class="sxs-lookup"><span data-stu-id="2df63-172">OpenID Connect ASP.NET Core client</span></span>
 
-<span data-ttu-id="2df63-173">ASP.NET Core :::no-loc(Razor)::: Pages Openid connect connect 클라이언트 앱은 메서드를 사용 하 여 `AddOpenIdConnect` openid connect connect 서버에 로그인 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-173">The ASP.NET Core :::no-loc(Razor)::: Pages OpenID Connect client app uses the `AddOpenIdConnect` method to login to the OpenID Connect server.</span></span> <span data-ttu-id="2df63-174">`acr_values`매개 변수는 값으로 설정 되 `mfa` 고 인증 요청과 함께 전송 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-174">The `acr_values` parameter is set with the `mfa` value and sent with the authentication request.</span></span> <span data-ttu-id="2df63-175">는 `OpenIdConnectEvents` 이를 추가 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-175">The `OpenIdConnectEvents` is used to add this.</span></span>
+<span data-ttu-id="2df63-173">ASP.NET Core Razor Pages Openid connect connect 클라이언트 앱은 메서드를 사용 하 여 `AddOpenIdConnect` openid connect connect 서버에 로그인 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-173">The ASP.NET Core Razor Pages OpenID Connect client app uses the `AddOpenIdConnect` method to login to the OpenID Connect server.</span></span> <span data-ttu-id="2df63-174">`acr_values`매개 변수는 값으로 설정 되 `mfa` 고 인증 요청과 함께 전송 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-174">The `acr_values` parameter is set with the `mfa` value and sent with the authentication request.</span></span> <span data-ttu-id="2df63-175">는 `OpenIdConnectEvents` 이를 추가 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-175">The `OpenIdConnectEvents` is used to add this.</span></span>
 
 <span data-ttu-id="2df63-176">권장 `acr_values` 매개 변수 값은 [인증 방법 참조 값](https://tools.ietf.org/html/draft-ietf-oauth-amr-values-08)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="2df63-176">For recommended `acr_values` parameter values, see [Authentication Method Reference Values](https://tools.ietf.org/html/draft-ietf-oauth-amr-values-08).</span></span>
 
@@ -279,15 +279,15 @@ public void ConfigureServices(IServiceCollection services)
     services.AddAuthentication(options =>
     {
         options.DefaultScheme =
-            :::no-loc(Cookie):::AuthenticationDefaults.AuthenticationScheme;
+            CookieAuthenticationDefaults.AuthenticationScheme;
         options.DefaultChallengeScheme =
             OpenIdConnectDefaults.AuthenticationScheme;
     })
-    .Add:::no-loc(Cookie):::()
+    .AddCookie()
     .AddOpenIdConnect(options =>
     {
         options.SignInScheme =
-            :::no-loc(Cookie):::AuthenticationDefaults.AuthenticationScheme;
+            CookieAuthenticationDefaults.AuthenticationScheme;
         options.Authority = "<OpenID Connect server URL>";
         options.RequireHttpsMetadata = true;
         options.ClientId = "<OpenID Connect client ID>";
@@ -299,7 +299,7 @@ public void ConfigureServices(IServiceCollection services)
         options.SaveTokens = true;
         options.Events = new OpenIdConnectEvents
         {
-            OnRedirectTo:::no-loc(Identity):::Provider = context =>
+            OnRedirectToIdentityProvider = context =>
             {
                 context.ProtocolMessage.SetParameter("acr_values", "mfa");
                 return Task.FromResult(0);
@@ -308,11 +308,11 @@ public void ConfigureServices(IServiceCollection services)
     });
 ```
 
-### <a name="example-openid-connect-no-locidentityserver-4-server-with-no-locaspnet-core-identity"></a><span data-ttu-id="2df63-177">예 Openid connect :::no-loc(Identity)::: 서버 4 서버 연결 :::no-loc(ASP.NET Core Identity):::</span><span class="sxs-lookup"><span data-stu-id="2df63-177">Example OpenID Connect :::no-loc(Identity):::Server 4 server with :::no-loc(ASP.NET Core Identity):::</span></span>
+### <a name="example-openid-connect-no-locidentityserver-4-server-with-no-locaspnet-core-identity"></a><span data-ttu-id="2df63-177">예 Openid connect Identity 서버 4 서버 연결 ASP.NET Core Identity</span><span class="sxs-lookup"><span data-stu-id="2df63-177">Example OpenID Connect IdentityServer 4 server with ASP.NET Core Identity</span></span>
 
-<span data-ttu-id="2df63-178">MVC 뷰를 사용 하 여 구현 되는 Openid connect Connect 서버에서 :::no-loc(ASP.NET Core Identity)::: *ErrorEnable2FA* 라는 새 보기가 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-178">On the OpenID Connect server, which is implemented using :::no-loc(ASP.NET Core Identity)::: with MVC views, a new view named *ErrorEnable2FA.cshtml* is created.</span></span> <span data-ttu-id="2df63-179">보기:</span><span class="sxs-lookup"><span data-stu-id="2df63-179">The view:</span></span>
+<span data-ttu-id="2df63-178">MVC 뷰를 사용 하 여 구현 되는 Openid connect Connect 서버에서 ASP.NET Core Identity *ErrorEnable2FA* 라는 새 보기가 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-178">On the OpenID Connect server, which is implemented using ASP.NET Core Identity with MVC views, a new view named *ErrorEnable2FA.cshtml* is created.</span></span> <span data-ttu-id="2df63-179">보기:</span><span class="sxs-lookup"><span data-stu-id="2df63-179">The view:</span></span>
 
-* <span data-ttu-id="2df63-180">:::no-loc(Identity):::가 MFA를 필요로 하는 앱에서 제공 되지만 사용자가에서이를 활성화 하지 않은 경우를 표시 :::no-loc(Identity)::: 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-180">Displays if the :::no-loc(Identity)::: comes from an app that requires MFA but the user hasn't activated this in :::no-loc(Identity):::.</span></span>
+* <span data-ttu-id="2df63-180">Identity가 MFA를 필요로 하는 앱에서 제공 되지만 사용자가에서이를 활성화 하지 않은 경우를 표시 Identity 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-180">Displays if the Identity comes from an app that requires MFA but the user hasn't activated this in Identity.</span></span>
 * <span data-ttu-id="2df63-181">사용자에 게 알리고이를 활성화 하는 링크를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-181">Informs the user and adds a link to activate this.</span></span>
 
 ```cshtml
@@ -331,9 +331,9 @@ You can enable MFA to login here:
 <a asp-controller="Manage" asp-action="TwoFactorAuthentication">Enable MFA</a>
 ```
 
-<span data-ttu-id="2df63-182">`Login`메서드에서 `I:::no-loc(Identity):::ServerInteractionService` 인터페이스 구현은 `_interaction` openid connect Connect 요청 매개 변수에 액세스 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-182">In the `Login` method, the `I:::no-loc(Identity):::ServerInteractionService` interface implementation `_interaction` is used to access the OpenID Connect request parameters.</span></span> <span data-ttu-id="2df63-183">`acr_values`매개 변수는 속성을 사용 하 여 액세스 됩니다 `AcrValues` .</span><span class="sxs-lookup"><span data-stu-id="2df63-183">The `acr_values` parameter is accessed using the `AcrValues` property.</span></span> <span data-ttu-id="2df63-184">클라이언트에서 set를 사용 하 여이 `mfa` 를 보내면이를 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-184">As the client sent this with `mfa` set, this can then be checked.</span></span>
+<span data-ttu-id="2df63-182">`Login`메서드에서 `IIdentityServerInteractionService` 인터페이스 구현은 `_interaction` openid connect Connect 요청 매개 변수에 액세스 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-182">In the `Login` method, the `IIdentityServerInteractionService` interface implementation `_interaction` is used to access the OpenID Connect request parameters.</span></span> <span data-ttu-id="2df63-183">`acr_values`매개 변수는 속성을 사용 하 여 액세스 됩니다 `AcrValues` .</span><span class="sxs-lookup"><span data-stu-id="2df63-183">The `acr_values` parameter is accessed using the `AcrValues` property.</span></span> <span data-ttu-id="2df63-184">클라이언트에서 set를 사용 하 여이 `mfa` 를 보내면이를 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-184">As the client sent this with `mfa` set, this can then be checked.</span></span>
 
-<span data-ttu-id="2df63-185">MFA가 필요 하 고의 사용자에 게 :::no-loc(ASP.NET Core Identity)::: mfa를 사용 하도록 설정한 경우 로그인은 계속 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-185">If MFA is required, and the user in :::no-loc(ASP.NET Core Identity)::: has MFA enabled, then the login continues.</span></span> <span data-ttu-id="2df63-186">사용자가 MFA를 사용 하도록 설정 하지 않은 경우 사용자는 사용자 지정 보기 *ErrorEnable2FA* 리디렉션됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-186">When the user has no MFA enabled, the user is redirected to the custom view *ErrorEnable2FA.cshtml* .</span></span> <span data-ttu-id="2df63-187">그런 다음 :::no-loc(ASP.NET Core Identity)::: 에서 사용자에 게 서명 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-187">Then :::no-loc(ASP.NET Core Identity)::: signs the user in.</span></span>
+<span data-ttu-id="2df63-185">MFA가 필요 하 고의 사용자에 게 ASP.NET Core Identity mfa를 사용 하도록 설정한 경우 로그인은 계속 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-185">If MFA is required, and the user in ASP.NET Core Identity has MFA enabled, then the login continues.</span></span> <span data-ttu-id="2df63-186">사용자가 MFA를 사용 하도록 설정 하지 않은 경우 사용자는 사용자 지정 보기 *ErrorEnable2FA* 리디렉션됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-186">When the user has no MFA enabled, the user is redirected to the custom view *ErrorEnable2FA.cshtml* .</span></span> <span data-ttu-id="2df63-187">그런 다음 ASP.NET Core Identity 에서 사용자에 게 서명 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-187">Then ASP.NET Core Identity signs the user in.</span></span>
 
 ```csharp
 //
@@ -358,7 +358,7 @@ public async Task<IActionResult> Login(LoginInputModel model)
     // code omitted for brevity
 ```
 
-<span data-ttu-id="2df63-188">`ExternalLoginCallback`메서드는 로컬 로그인과 유사 하 게 작동 합니다 :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2df63-188">The `ExternalLoginCallback` method works like the local :::no-loc(Identity)::: login.</span></span> <span data-ttu-id="2df63-189">`AcrValues`속성은 값을 확인 `mfa` 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-189">The `AcrValues` property is checked for the `mfa` value.</span></span> <span data-ttu-id="2df63-190">`mfa`이 값이 있는 경우 로그인이 완료 되기 전에 MFA가 강제로 수행 됩니다 (예: 뷰로 리디렉션 됨 `ErrorEnable2FA` ).</span><span class="sxs-lookup"><span data-stu-id="2df63-190">If the `mfa` value is present, MFA is forced before the login completes (for example, redirected to the `ErrorEnable2FA` view).</span></span>
+<span data-ttu-id="2df63-188">`ExternalLoginCallback`메서드는 로컬 로그인과 유사 하 게 작동 합니다 Identity .</span><span class="sxs-lookup"><span data-stu-id="2df63-188">The `ExternalLoginCallback` method works like the local Identity login.</span></span> <span data-ttu-id="2df63-189">`AcrValues`속성은 값을 확인 `mfa` 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-189">The `AcrValues` property is checked for the `mfa` value.</span></span> <span data-ttu-id="2df63-190">`mfa`이 값이 있는 경우 로그인이 완료 되기 전에 MFA가 강제로 수행 됩니다 (예: 뷰로 리디렉션 됨 `ErrorEnable2FA` ).</span><span class="sxs-lookup"><span data-stu-id="2df63-190">If the `mfa` value is present, MFA is forced before the login completes (for example, redirected to the `ErrorEnable2FA` view).</span></span>
 
 ```csharp
 //
@@ -414,13 +414,13 @@ public async Task<IActionResult> ExternalLoginCallback(
 <span data-ttu-id="2df63-191">사용자가 이미 로그인 한 경우 클라이언트 앱은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-191">If the user is already logged in, the client app:</span></span>
 
 * <span data-ttu-id="2df63-192">여전히 클레임의 유효성을 검사 `amr` 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-192">Still validates the `amr` claim.</span></span>
-* <span data-ttu-id="2df63-193">보기에 대 한 링크를 사용 하 여 MFA를 설정할 수 있습니다 :::no-loc(ASP.NET Core Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2df63-193">Can set up the MFA with a link to the :::no-loc(ASP.NET Core Identity)::: view.</span></span>
+* <span data-ttu-id="2df63-193">보기에 대 한 링크를 사용 하 여 MFA를 설정할 수 있습니다 ASP.NET Core Identity .</span><span class="sxs-lookup"><span data-stu-id="2df63-193">Can set up the MFA with a link to the ASP.NET Core Identity view.</span></span>
 
 ![acr_values-1](mfa/_static/acr_values-1.png)
 
 ## <a name="force-aspnet-core-openid-connect-client-to-require-mfa"></a><span data-ttu-id="2df63-195">강제로 ASP.NET Core Openid connect Connect 클라이언트에 MFA를 요구 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-195">Force ASP.NET Core OpenID Connect client to require MFA</span></span>
 
-<span data-ttu-id="2df63-196">이 예제에서는 :::no-loc(Razor)::: Openid connect Connect를 사용 하 여 로그인 하는 ASP.NET Core 페이지 앱이 사용자에 게 MFA를 사용 하 여 인증 되도록 요구할 수 있는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-196">This example shows how an ASP.NET Core :::no-loc(Razor)::: Page app, which uses OpenID Connect to sign in, can require that users have authenticated using MFA.</span></span>
+<span data-ttu-id="2df63-196">이 예제에서는 Razor Openid connect Connect를 사용 하 여 로그인 하는 ASP.NET Core 페이지 앱이 사용자에 게 MFA를 사용 하 여 인증 되도록 요구할 수 있는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-196">This example shows how an ASP.NET Core Razor Page app, which uses OpenID Connect to sign in, can require that users have authenticated using MFA.</span></span>
 
 <span data-ttu-id="2df63-197">MFA 요구 사항의 유효성을 검사 하기 위해 `IAuthorizationRequirement` 요구 사항이 생성 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-197">To validate the MFA requirement, an `IAuthorizationRequirement` requirement is created.</span></span> <span data-ttu-id="2df63-198">MFA를 요구 하는 정책을 사용 하 여 페이지에 추가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-198">This will be added to the pages using a policy that requires MFA.</span></span>
 
@@ -437,7 +437,7 @@ namespace AspNetCoreRequireMfaOidc
 
 <span data-ttu-id="2df63-201">반환 되는 값은 id가 인증 되는 방법 및 Openid connect Connect 서버 구현에 따라 달라 집니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-201">The returned value depends on how the identity authenticated and on the OpenID Connect server implementation.</span></span>
 
-<span data-ttu-id="2df63-202">는 `AuthorizationHandler` `RequireMfa` 요구 사항을 사용 하 고 클레임의 유효성을 검사 `amr` 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-202">The `AuthorizationHandler` uses the `RequireMfa` requirement and validates the `amr` claim.</span></span> <span data-ttu-id="2df63-203">Openid connect Connect 서버는 Server4를 사용 하 여 구현할 수 있습니다 :::no-loc(Identity)::: :::no-loc(ASP.NET Core Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2df63-203">The OpenID Connect server can be implemented using :::no-loc(Identity):::Server4 with :::no-loc(ASP.NET Core Identity):::.</span></span> <span data-ttu-id="2df63-204">사용자가 TOTP를 사용 하 여 로그인 하는 경우에는 `amr` MFA 값을 사용 하 여 클레임이 반환 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-204">When a user logs in using TOTP, the `amr` claim is returned with an MFA value.</span></span> <span data-ttu-id="2df63-205">다른 Openid connect Connect 서버 구현 또는 다른 MFA 유형을 사용 하는 경우 클레임은 `amr` 다른 값을 가질 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-205">If using a different OpenID Connect server implementation or a different MFA type, the `amr` claim will, or can, have a different value.</span></span> <span data-ttu-id="2df63-206">또한이를 허용 하려면 코드를 확장 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-206">The code must be extended to accept this as well.</span></span>
+<span data-ttu-id="2df63-202">는 `AuthorizationHandler` `RequireMfa` 요구 사항을 사용 하 고 클레임의 유효성을 검사 `amr` 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-202">The `AuthorizationHandler` uses the `RequireMfa` requirement and validates the `amr` claim.</span></span> <span data-ttu-id="2df63-203">Openid connect Connect 서버는 Server4를 사용 하 여 구현할 수 있습니다 Identity ASP.NET Core Identity .</span><span class="sxs-lookup"><span data-stu-id="2df63-203">The OpenID Connect server can be implemented using IdentityServer4 with ASP.NET Core Identity.</span></span> <span data-ttu-id="2df63-204">사용자가 TOTP를 사용 하 여 로그인 하는 경우에는 `amr` MFA 값을 사용 하 여 클레임이 반환 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-204">When a user logs in using TOTP, the `amr` claim is returned with an MFA value.</span></span> <span data-ttu-id="2df63-205">다른 Openid connect Connect 서버 구현 또는 다른 MFA 유형을 사용 하는 경우 클레임은 `amr` 다른 값을 가질 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-205">If using a different OpenID Connect server implementation or a different MFA type, the `amr` claim will, or can, have a different value.</span></span> <span data-ttu-id="2df63-206">또한이를 허용 하려면 코드를 확장 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-206">The code must be extended to accept this as well.</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Authorization;
@@ -477,24 +477,24 @@ namespace AspNetCoreRequireMfaOidc
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.ConfigureApplication:::no-loc(Cookie):::(options =>
-        options.:::no-loc(Cookie):::.SecurePolicy =
-            :::no-loc(Cookie):::SecurePolicy.Always);
+    services.ConfigureApplicationCookie(options =>
+        options.Cookie.SecurePolicy =
+            CookieSecurePolicy.Always);
 
     services.AddSingleton<IAuthorizationHandler, RequireMfaHandler>();
 
     services.AddAuthentication(options =>
     {
         options.DefaultScheme =
-            :::no-loc(Cookie):::AuthenticationDefaults.AuthenticationScheme;
+            CookieAuthenticationDefaults.AuthenticationScheme;
         options.DefaultChallengeScheme =
             OpenIdConnectDefaults.AuthenticationScheme;
     })
-    .Add:::no-loc(Cookie):::()
+    .AddCookie()
     .AddOpenIdConnect(options =>
     {
         options.SignInScheme =
-            :::no-loc(Cookie):::AuthenticationDefaults.AuthenticationScheme;
+            CookieAuthenticationDefaults.AuthenticationScheme;
         options.Authority = "https://localhost:44352";
         options.RequireHttpsMetadata = true;
         options.ClientId = "AspNetCoreRequireMfaOidc";
@@ -513,11 +513,11 @@ public void ConfigureServices(IServiceCollection services)
         });
     });
 
-    services.Add:::no-loc(Razor):::Pages();
+    services.AddRazorPages();
 }
 ```
 
-<span data-ttu-id="2df63-210">이 정책은 필요에 따라 페이지에서 사용 됩니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="2df63-210">This policy is then used in the :::no-loc(Razor)::: page as required.</span></span> <span data-ttu-id="2df63-211">정책은 전체 앱에 대해서도 전역적으로 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-211">The policy could be added globally for the entire app as well.</span></span>
+<span data-ttu-id="2df63-210">이 정책은 필요에 따라 페이지에서 사용 됩니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="2df63-210">This policy is then used in the Razor page as required.</span></span> <span data-ttu-id="2df63-211">정책은 전체 앱에 대해서도 전역적으로 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2df63-211">The policy could be added globally for the entire app as well.</span></span>
 
 ```csharp
 using System;
@@ -526,7 +526,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
 namespace AspNetCoreRequireMfaOidc.Pages
@@ -577,7 +577,7 @@ You require MFA to login here
 
     ![require_mfa_oidc_03.png](mfa/_static/require_mfa_oidc_03.png)
 
-<span data-ttu-id="2df63-225">또는 다음을 사용 하 여 OTP를 사용 하 여 로그인 합니다 :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2df63-225">Alternatively, logging in using OTP with :::no-loc(Identity)::::</span></span>
+<span data-ttu-id="2df63-225">또는 다음을 사용 하 여 OTP를 사용 하 여 로그인 합니다 Identity .</span><span class="sxs-lookup"><span data-stu-id="2df63-225">Alternatively, logging in using OTP with Identity:</span></span>
 
 ![require_mfa_oidc_01.png](mfa/_static/require_mfa_oidc_01.png)
 

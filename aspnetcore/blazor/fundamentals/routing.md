@@ -1,5 +1,5 @@
 ---
-title: 'ASP.NET Core :::no-loc(Blazor)::: 라우팅'
+title: 'ASP.NET Core Blazor 라우팅'
 author: guardrex
 description: 앱에서 요청을 라우팅하는 방법과 NavLink 구성 요소를 알아봅니다.
 monikerRange: '>= aspnetcore-3.1'
@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/02/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/fundamentals/routing
 ms.openlocfilehash: 5898059d83576cd0d2af15ad61bc399cbfbe0e99
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,21 +26,21 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93055856"
 ---
-# <a name="aspnet-core-no-locblazor-routing"></a><span data-ttu-id="03a30-103">ASP.NET Core :::no-loc(Blazor)::: 라우팅</span><span class="sxs-lookup"><span data-stu-id="03a30-103">ASP.NET Core :::no-loc(Blazor)::: routing</span></span>
+# <a name="aspnet-core-no-locblazor-routing"></a><span data-ttu-id="03a30-103">ASP.NET Core Blazor 라우팅</span><span class="sxs-lookup"><span data-stu-id="03a30-103">ASP.NET Core Blazor routing</span></span>
 
 <span data-ttu-id="03a30-104">[Luke Latham](https://github.com/guardrex)으로</span><span class="sxs-lookup"><span data-stu-id="03a30-104">By [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="03a30-105">요청을 라우팅하는 방법과 :::no-loc(Blazor)::: 앱에서 <xref:Microsoft.AspNetCore.Components.Routing.NavLink> 구성 요소를 사용하여 탐색 링크를 만드는 방법을 알아봅니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-105">Learn how to route requests and how to use the <xref:Microsoft.AspNetCore.Components.Routing.NavLink> component to create navigation links in :::no-loc(Blazor)::: apps.</span></span>
+<span data-ttu-id="03a30-105">요청을 라우팅하는 방법과 Blazor 앱에서 <xref:Microsoft.AspNetCore.Components.Routing.NavLink> 구성 요소를 사용하여 탐색 링크를 만드는 방법을 알아봅니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-105">Learn how to route requests and how to use the <xref:Microsoft.AspNetCore.Components.Routing.NavLink> component to create navigation links in Blazor apps.</span></span>
 
 ## <a name="aspnet-core-endpoint-routing-integration"></a><span data-ttu-id="03a30-106">ASP.NET Core 엔드포인트 라우팅 통합</span><span class="sxs-lookup"><span data-stu-id="03a30-106">ASP.NET Core endpoint routing integration</span></span>
 
-<span data-ttu-id="03a30-107">:::no-loc(Blazor Server):::는 [ASP.NET Core 엔드포인트 라우팅](xref:fundamentals/routing)에 통합됩니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-107">:::no-loc(Blazor Server)::: is integrated into [ASP.NET Core Endpoint Routing](xref:fundamentals/routing).</span></span> <span data-ttu-id="03a30-108">`Startup.Configure`의 <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.Map:::no-loc(Blazor):::Hub%2A>를 사용하여 대화형 구성 요소에 대해 들어오는 연결을 허용하도록 ASP.NET Core 앱을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-108">An ASP.NET Core app is configured to accept incoming connections for interactive components with <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.Map:::no-loc(Blazor):::Hub%2A> in `Startup.Configure`:</span></span>
+<span data-ttu-id="03a30-107">Blazor Server는 [ASP.NET Core 엔드포인트 라우팅](xref:fundamentals/routing)에 통합됩니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-107">Blazor Server is integrated into [ASP.NET Core Endpoint Routing](xref:fundamentals/routing).</span></span> <span data-ttu-id="03a30-108">`Startup.Configure`의 <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A>를 사용하여 대화형 구성 요소에 대해 들어오는 연결을 허용하도록 ASP.NET Core 앱을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-108">An ASP.NET Core app is configured to accept incoming connections for interactive components with <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A> in `Startup.Configure`:</span></span>
 
 [!code-csharp[](routing/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
-<span data-ttu-id="03a30-109">가장 일반적인 구성은 :::no-loc(Blazor Server)::: 앱의 서버 쪽 호스트 역할을 하는 :::no-loc(Razor)::: 페이지로 모든 요청을 라우팅하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-109">The most typical configuration is to route all requests to a :::no-loc(Razor)::: page, which acts as the host for the server-side part of the :::no-loc(Blazor Server)::: app.</span></span> <span data-ttu-id="03a30-110">규칙에 따라 ‘호스트’ 페이지의 이름은 일반적으로 `_Host.cshtml`입니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-110">By convention, the *host* page is usually named `_Host.cshtml`.</span></span> <span data-ttu-id="03a30-111">호스트 파일에 지정된 경로는 경로 일치 시 낮은 우선순위로 작동하기 때문에 ‘대체 경로’라고 합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-111">The route specified in the host file is called a *fallback route* because it operates with a low priority in route matching.</span></span> <span data-ttu-id="03a30-112">일치하는 다른 경로가 없는 경우 대체(fallback) 경로가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-112">The fallback route is considered when other routes don't match.</span></span> <span data-ttu-id="03a30-113">이렇게 하면 앱이 :::no-loc(Blazor Server)::: 앱을 방해하지 않고 다른 컨트롤러와 페이지를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-113">This allows the app to use others controllers and pages without interfering with the :::no-loc(Blazor Server)::: app.</span></span>
+<span data-ttu-id="03a30-109">가장 일반적인 구성은 Blazor Server 앱의 서버 쪽 호스트 역할을 하는 Razor 페이지로 모든 요청을 라우팅하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-109">The most typical configuration is to route all requests to a Razor page, which acts as the host for the server-side part of the Blazor Server app.</span></span> <span data-ttu-id="03a30-110">규칙에 따라 ‘호스트’ 페이지의 이름은 일반적으로 `_Host.cshtml`입니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-110">By convention, the *host* page is usually named `_Host.cshtml`.</span></span> <span data-ttu-id="03a30-111">호스트 파일에 지정된 경로는 경로 일치 시 낮은 우선순위로 작동하기 때문에 ‘대체 경로’라고 합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-111">The route specified in the host file is called a *fallback route* because it operates with a low priority in route matching.</span></span> <span data-ttu-id="03a30-112">일치하는 다른 경로가 없는 경우 대체(fallback) 경로가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-112">The fallback route is considered when other routes don't match.</span></span> <span data-ttu-id="03a30-113">이렇게 하면 앱이 Blazor Server 앱을 방해하지 않고 다른 컨트롤러와 페이지를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-113">This allows the app to use others controllers and pages without interfering with the Blazor Server app.</span></span>
 
-<span data-ttu-id="03a30-114">루트가 아닌 URL 서버 호스팅을 위한 <xref:Microsoft.AspNetCore.Builder.:::no-loc(Razor):::PagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A> 구성에 대한 자세한 내용은 <xref:blazor/host-and-deploy/index#app-base-path>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="03a30-114">For information on configuring <xref:Microsoft.AspNetCore.Builder.:::no-loc(Razor):::PagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A> for non-root URL server hosting, see <xref:blazor/host-and-deploy/index#app-base-path>.</span></span>
+<span data-ttu-id="03a30-114">루트가 아닌 URL 서버 호스팅을 위한 <xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A> 구성에 대한 자세한 내용은 <xref:blazor/host-and-deploy/index#app-base-path>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="03a30-114">For information on configuring <xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A> for non-root URL server hosting, see <xref:blazor/host-and-deploy/index#app-base-path>.</span></span>
 
 ## <a name="route-templates"></a><span data-ttu-id="03a30-115">경로 템플릿</span><span class="sxs-lookup"><span data-stu-id="03a30-115">Route templates</span></span>
 
@@ -64,19 +64,19 @@ ms.locfileid: "93055856"
 * <span data-ttu-id="03a30-120">원하는 매개 변수와 함께 <xref:Microsoft.AspNetCore.Components.Routing.Router>에서 <xref:Microsoft.AspNetCore.Components.RouteData>를 받습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-120">Receives the <xref:Microsoft.AspNetCore.Components.RouteData> from the <xref:Microsoft.AspNetCore.Components.Routing.Router> along with any desired parameters.</span></span>
 * <span data-ttu-id="03a30-121">지정된 매개 변수를 사용하여 지정된 구성 요소를 해당 레이아웃(또는 선택적 기본 레이아웃)으로 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-121">Renders the specified component with its layout (or an optional default layout) using the specified parameters.</span></span>
 
-<span data-ttu-id="03a30-122">필요한 경우, 레이아웃을 지정하지 않는 구성 요소에 사용할 <xref:Microsoft.AspNetCore.Components.RouteView.DefaultLayout> 매개 변수를 레이아웃 클래스로 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-122">You can optionally specify a <xref:Microsoft.AspNetCore.Components.RouteView.DefaultLayout> parameter with a layout class to use for components that don't specify a layout.</span></span> <span data-ttu-id="03a30-123">기본 :::no-loc(Blazor)::: 템플릿은 `MainLayout` 구성 요소를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-123">The default :::no-loc(Blazor)::: templates specify the `MainLayout` component.</span></span> <span data-ttu-id="03a30-124">`MainLayout.razor`는 템플릿 프로젝트의 `Shared` 폴더에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-124">`MainLayout.razor` is in the template project's `Shared` folder.</span></span> <span data-ttu-id="03a30-125">레이아웃에 대한 자세한 내용은 <xref:blazor/layouts>을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="03a30-125">For more information on layouts, see <xref:blazor/layouts>.</span></span>
+<span data-ttu-id="03a30-122">필요한 경우, 레이아웃을 지정하지 않는 구성 요소에 사용할 <xref:Microsoft.AspNetCore.Components.RouteView.DefaultLayout> 매개 변수를 레이아웃 클래스로 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-122">You can optionally specify a <xref:Microsoft.AspNetCore.Components.RouteView.DefaultLayout> parameter with a layout class to use for components that don't specify a layout.</span></span> <span data-ttu-id="03a30-123">기본 Blazor 템플릿은 `MainLayout` 구성 요소를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-123">The default Blazor templates specify the `MainLayout` component.</span></span> <span data-ttu-id="03a30-124">`MainLayout.razor`는 템플릿 프로젝트의 `Shared` 폴더에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-124">`MainLayout.razor` is in the template project's `Shared` folder.</span></span> <span data-ttu-id="03a30-125">레이아웃에 대한 자세한 내용은 <xref:blazor/layouts>을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="03a30-125">For more information on layouts, see <xref:blazor/layouts>.</span></span>
 
-<span data-ttu-id="03a30-126">한 구성 요소에 여러 개의 경로 템플릿을 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-126">Multiple route templates can be applied to a component.</span></span> <span data-ttu-id="03a30-127">다음 구성 요소는 `/:::no-loc(Blazor):::Route` 및 `/Different:::no-loc(Blazor):::Route`에 대한 요청에 응답합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-127">The following component responds to requests for `/:::no-loc(Blazor):::Route` and `/Different:::no-loc(Blazor):::Route`:</span></span>
+<span data-ttu-id="03a30-126">한 구성 요소에 여러 개의 경로 템플릿을 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-126">Multiple route templates can be applied to a component.</span></span> <span data-ttu-id="03a30-127">다음 구성 요소는 `/BlazorRoute` 및 `/DifferentBlazorRoute`에 대한 요청에 응답합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-127">The following component responds to requests for `/BlazorRoute` and `/DifferentBlazorRoute`:</span></span>
 
 ```razor
-@page "/:::no-loc(Blazor):::Route"
-@page "/Different:::no-loc(Blazor):::Route"
+@page "/BlazorRoute"
+@page "/DifferentBlazorRoute"
 
-<h1>:::no-loc(Blazor)::: routing</h1>
+<h1>Blazor routing</h1>
 ```
 
 > [!IMPORTANT]
-> <span data-ttu-id="03a30-128">URL을 올바르게 확인하려면 앱의 `wwwroot/index.html` 파일(:::no-loc(Blazor WebAssembly):::) 또는 `Pages/_Host.cshtml` 파일(:::no-loc(Blazor Server):::)에 `<base>` 태그가 있어야 하고, 앱 기본 경로가 `href` 특성에 지정되어 있어야 합니다(`<base href="/">`).</span><span class="sxs-lookup"><span data-stu-id="03a30-128">For URLs to resolve correctly, the app must include a `<base>` tag in its `wwwroot/index.html` file (:::no-loc(Blazor WebAssembly):::) or `Pages/_Host.cshtml` file (:::no-loc(Blazor Server):::) with the app base path specified in the `href` attribute (`<base href="/">`).</span></span> <span data-ttu-id="03a30-129">자세한 내용은 <xref:blazor/host-and-deploy/index#app-base-path>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="03a30-129">For more information, see <xref:blazor/host-and-deploy/index#app-base-path>.</span></span>
+> <span data-ttu-id="03a30-128">URL을 올바르게 확인하려면 앱의 `wwwroot/index.html` 파일(Blazor WebAssembly) 또는 `Pages/_Host.cshtml` 파일(Blazor Server)에 `<base>` 태그가 있어야 하고, 앱 기본 경로가 `href` 특성에 지정되어 있어야 합니다(`<base href="/">`).</span><span class="sxs-lookup"><span data-stu-id="03a30-128">For URLs to resolve correctly, the app must include a `<base>` tag in its `wwwroot/index.html` file (Blazor WebAssembly) or `Pages/_Host.cshtml` file (Blazor Server) with the app base path specified in the `href` attribute (`<base href="/">`).</span></span> <span data-ttu-id="03a30-129">자세한 내용은 <xref:blazor/host-and-deploy/index#app-base-path>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="03a30-129">For more information, see <xref:blazor/host-and-deploy/index#app-base-path>.</span></span>
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a><span data-ttu-id="03a30-130">콘텐츠를 찾을 수 없는 경우 사용자 지정 콘텐츠 제공</span><span class="sxs-lookup"><span data-stu-id="03a30-130">Provide custom content when content isn't found</span></span>
 
@@ -118,7 +118,7 @@ ms.locfileid: "93055856"
 @page "/RouteParameter"
 @page "/RouteParameter/{text}"
 
-<h1>:::no-loc(Blazor)::: is @Text!</h1>
+<h1>Blazor is @Text!</h1>
 
 @code {
     [Parameter]
@@ -162,7 +162,7 @@ ms.locfileid: "93055856"
 
 ### <a name="routing-with-urls-that-contain-dots"></a><span data-ttu-id="03a30-177">점이 포함된 URL을 사용한 라우팅</span><span class="sxs-lookup"><span data-stu-id="03a30-177">Routing with URLs that contain dots</span></span>
 
-<span data-ttu-id="03a30-178">호스트된 :::no-loc(Blazor WebAssembly)::: 및 :::no-loc(Blazor Server)::: 앱의 경우 서버 쪽 기본 경로 템플릿에서 요청 URL의 마지막 세그먼트에 파일을 요청하는 점(`.`)이 포함되어 있다고 가정합니다(예: `https://localhost.com:5001/example/some.thing`).</span><span class="sxs-lookup"><span data-stu-id="03a30-178">For hosted :::no-loc(Blazor WebAssembly)::: and :::no-loc(Blazor Server)::: apps, the server-side default route template assumes that if the last segment of a request URL contains a dot (`.`) that a file is requested (for example, `https://localhost.com:5001/example/some.thing`).</span></span> <span data-ttu-id="03a30-179">추가 구성이 없는 앱은 ‘404 - 찾을 수 없음’ 응답을 반환하여 구성 요소로 라우팅되도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-179">Without additional configuration, an app returns a *404 - Not Found* response if this was meant to route to a component.</span></span> <span data-ttu-id="03a30-180">점이 포함된 하나 이상의 매개 변수가 있는 경로를 사용하려면 앱에서 사용자 지정 템플릿을 사용하여 경로를 구성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-180">To use a route with one or more parameters that contains a dot, the app must configure the route with a custom template.</span></span>
+<span data-ttu-id="03a30-178">호스트된 Blazor WebAssembly 및 Blazor Server 앱의 경우 서버 쪽 기본 경로 템플릿에서 요청 URL의 마지막 세그먼트에 파일을 요청하는 점(`.`)이 포함되어 있다고 가정합니다(예: `https://localhost.com:5001/example/some.thing`).</span><span class="sxs-lookup"><span data-stu-id="03a30-178">For hosted Blazor WebAssembly and Blazor Server apps, the server-side default route template assumes that if the last segment of a request URL contains a dot (`.`) that a file is requested (for example, `https://localhost.com:5001/example/some.thing`).</span></span> <span data-ttu-id="03a30-179">추가 구성이 없는 앱은 ‘404 - 찾을 수 없음’ 응답을 반환하여 구성 요소로 라우팅되도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-179">Without additional configuration, an app returns a *404 - Not Found* response if this was meant to route to a component.</span></span> <span data-ttu-id="03a30-180">점이 포함된 하나 이상의 매개 변수가 있는 경로를 사용하려면 앱에서 사용자 지정 템플릿을 사용하여 경로를 구성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-180">To use a route with one or more parameters that contains a dot, the app must configure the route with a custom template.</span></span>
 
 <span data-ttu-id="03a30-181">URL의 마지막 세그먼트에서 경로 매개 변수를 받을 수 있는 다음 `Example` 구성 요소를 고려합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-181">Consider the following `Example` component that can receive a route parameter from the last segment of the URL:</span></span>
 
@@ -180,13 +180,13 @@ ms.locfileid: "93055856"
 }
 ```
 
-<span data-ttu-id="03a30-182">호스트된 :::no-loc(Blazor WebAssembly)::: 솔루션의 *Server* 앱이 `param` 매개 변수의 점으로 요청을 라우팅하도록 허용하려면 `Startup.Configure`(`Startup.cs`)에서 선택적 매개 변수를 사용하여 대체 파일 경로 템플릿을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-182">To permit the *Server* app of a hosted :::no-loc(Blazor WebAssembly)::: solution to route the request with a dot in the `param` parameter, add a fallback file route template with the optional parameter in `Startup.Configure` (`Startup.cs`):</span></span>
+<span data-ttu-id="03a30-182">호스트된 Blazor WebAssembly 솔루션의 *Server* 앱이 `param` 매개 변수의 점으로 요청을 라우팅하도록 허용하려면 `Startup.Configure`(`Startup.cs`)에서 선택적 매개 변수를 사용하여 대체 파일 경로 템플릿을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-182">To permit the *Server* app of a hosted Blazor WebAssembly solution to route the request with a dot in the `param` parameter, add a fallback file route template with the optional parameter in `Startup.Configure` (`Startup.cs`):</span></span>
 
 ```csharp
 endpoints.MapFallbackToFile("/example/{param?}", "index.html");
 ```
 
-<span data-ttu-id="03a30-183">`param` 매개 변수에서 점을 사용하여 요청을 라우팅하도록 :::no-loc(Blazor Server)::: 앱을 구성하려면 `Startup.Configure`(`Startup.cs`)에서 선택적 매개 변수를 사용하여 대체 페이지 경로 템플릿을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-183">To configure a :::no-loc(Blazor Server)::: app to route the request with a dot in the `param` parameter, add a fallback page route template with the optional parameter in `Startup.Configure` (`Startup.cs`):</span></span>
+<span data-ttu-id="03a30-183">`param` 매개 변수에서 점을 사용하여 요청을 라우팅하도록 Blazor Server 앱을 구성하려면 `Startup.Configure`(`Startup.cs`)에서 선택적 매개 변수를 사용하여 대체 페이지 경로 템플릿을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-183">To configure a Blazor Server app to route the request with a dot in the `param` parameter, add a fallback page route template with the optional parameter in `Startup.Configure` (`Startup.cs`):</span></span>
 
 ```csharp
 endpoints.MapFallbackToPage("/example/{param?}", "/_Host");
@@ -255,7 +255,7 @@ endpoints.MapFallbackToPage("/example/{param?}", "/_Host");
 ```
 
 > [!WARNING]
-> <span data-ttu-id="03a30-212">:::no-loc(Blazor):::가 자식 콘텐츠를 렌더링하는 방식 때문에 `for` 루프 내에서 `NavLink` 구성 요소를 렌더링하려면 `NavLink`(자식) 구성 요소 콘텐츠에서 증분 루프 변수를 사용할 경우 로컬 인덱스 변수가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-212">Due to the way that :::no-loc(Blazor)::: renders child content, rendering `NavLink` components inside a `for` loop requires a local index variable if the incrementing loop variable is used in the `NavLink` (child) component's content:</span></span>
+> <span data-ttu-id="03a30-212">Blazor가 자식 콘텐츠를 렌더링하는 방식 때문에 `for` 루프 내에서 `NavLink` 구성 요소를 렌더링하려면 `NavLink`(자식) 구성 요소 콘텐츠에서 증분 루프 변수를 사용할 경우 로컬 인덱스 변수가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-212">Due to the way that Blazor renders child content, rendering `NavLink` components inside a `for` loop requires a local index variable if the incrementing loop variable is used in the `NavLink` (child) component's content:</span></span>
 >
 > ```razor
 > @for (int c = 0; c < 10; c++)
@@ -291,7 +291,7 @@ endpoints.MapFallbackToPage("/example/{param?}", "/_Host");
 | <span data-ttu-id="03a30-218">멤버</span><span class="sxs-lookup"><span data-stu-id="03a30-218">Member</span></span> | <span data-ttu-id="03a30-219">설명</span><span class="sxs-lookup"><span data-stu-id="03a30-219">Description</span></span> |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager.Uri> | <span data-ttu-id="03a30-220">현재 절대 URI를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-220">Gets the current absolute URI.</span></span> |
-| <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> | <span data-ttu-id="03a30-221">절대 URI를 생성하기 위해 상대 URI 경로 앞에 추가할 수 있는 기본 URI(후행 슬래시 포함)를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-221">Gets the base URI (with a trailing slash) that can be prepended to relative URI paths to produce an absolute URI.</span></span> <span data-ttu-id="03a30-222">일반적으로 <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri>는 `wwwroot/index.html`(:::no-loc(Blazor WebAssembly):::) 또는 `Pages/_Host.cshtml`(:::no-loc(Blazor Server):::)에 있는 문서 `<base>` 요소의 `href` 특성에 해당합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-222">Typically, <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> corresponds to the `href` attribute on the document's `<base>` element in `wwwroot/index.html` (:::no-loc(Blazor WebAssembly):::) or `Pages/_Host.cshtml` (:::no-loc(Blazor Server):::).</span></span> |
+| <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> | <span data-ttu-id="03a30-221">절대 URI를 생성하기 위해 상대 URI 경로 앞에 추가할 수 있는 기본 URI(후행 슬래시 포함)를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-221">Gets the base URI (with a trailing slash) that can be prepended to relative URI paths to produce an absolute URI.</span></span> <span data-ttu-id="03a30-222">일반적으로 <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri>는 `wwwroot/index.html`(Blazor WebAssembly) 또는 `Pages/_Host.cshtml`(Blazor Server)에 있는 문서 `<base>` 요소의 `href` 특성에 해당합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-222">Typically, <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> corresponds to the `href` attribute on the document's `<base>` element in `wwwroot/index.html` (Blazor WebAssembly) or `Pages/_Host.cshtml` (Blazor Server).</span></span> |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager.NavigateTo%2A> | <span data-ttu-id="03a30-223">지정한 URI로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-223">Navigates to the specified URI.</span></span> <span data-ttu-id="03a30-224">`forceLoad`가 `true`인 경우</span><span class="sxs-lookup"><span data-stu-id="03a30-224">If `forceLoad` is `true`:</span></span><ul><li><span data-ttu-id="03a30-225">클라이언트 쪽 라우팅이 무시됩니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-225">Client-side routing is bypassed.</span></span></li><li><span data-ttu-id="03a30-226">클라이언트 쪽 라우터에서 URI를 정상적으로 처리했는지와 상관없이 브라우저에서 서버의 새 페이지를 강제로 로드합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-226">The browser is forced to load the new page from the server, whether or not the URI is normally handled by the client-side router.</span></span></li></ul> |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager.LocationChanged> | <span data-ttu-id="03a30-227">탐색 위치가 변경된 경우에 발생하는 이벤트입니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-227">An event that fires when the navigation location has changed.</span></span> |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager.ToAbsoluteUri%2A> | <span data-ttu-id="03a30-228">상대 URI를 절대 URI로 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-228">Converts a relative URI into an absolute URI.</span></span> |
@@ -344,7 +344,7 @@ public void Dispose()
 <span data-ttu-id="03a30-234"><xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs>는 이벤트에 대해 다음과 같은 정보를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-234"><xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs> provides the following information about the event:</span></span>
 
 * <span data-ttu-id="03a30-235"><xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs.Location>: 새 위치의 URL입니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-235"><xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs.Location>: The URL of the new location.</span></span>
-* <span data-ttu-id="03a30-236"><xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs.IsNavigationIntercepted>: `true`인 경우 :::no-loc(Blazor):::는 브라우저에서 탐색을 가로챘습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-236"><xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs.IsNavigationIntercepted>: If `true`, :::no-loc(Blazor)::: intercepted the navigation from the browser.</span></span> <span data-ttu-id="03a30-237">`false`인 경우 <xref:Microsoft.AspNetCore.Components.NavigationManager.NavigateTo%2A?displayProperty=nameWithType>에서 탐색이 발생했습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-237">If `false`, <xref:Microsoft.AspNetCore.Components.NavigationManager.NavigateTo%2A?displayProperty=nameWithType> caused the navigation to occur.</span></span>
+* <span data-ttu-id="03a30-236"><xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs.IsNavigationIntercepted>: `true`인 경우 Blazor는 브라우저에서 탐색을 가로챘습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-236"><xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs.IsNavigationIntercepted>: If `true`, Blazor intercepted the navigation from the browser.</span></span> <span data-ttu-id="03a30-237">`false`인 경우 <xref:Microsoft.AspNetCore.Components.NavigationManager.NavigateTo%2A?displayProperty=nameWithType>에서 탐색이 발생했습니다.</span><span class="sxs-lookup"><span data-stu-id="03a30-237">If `false`, <xref:Microsoft.AspNetCore.Components.NavigationManager.NavigateTo%2A?displayProperty=nameWithType> caused the navigation to occur.</span></span>
 
 <span data-ttu-id="03a30-238">구성 요소 삭제에 대한 자세한 내용은 <xref:blazor/components/lifecycle#component-disposal-with-idisposable>을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="03a30-238">For more information on component disposal, see <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.</span></span>
 

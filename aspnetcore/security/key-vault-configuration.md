@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc, devx-track-azurecli
 ms.date: 02/07/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/key-vault-configuration
 ms.openlocfilehash: 10a949831c180f51bc6bb9b8294150a558f9343c
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -135,7 +135,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
    1. <span data-ttu-id="6352c-167">Azure AD에서 앱을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-167">Select the app in Azure AD.</span></span>
    1. <span data-ttu-id="6352c-168">**인증서 & 암호** 로 이동 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-168">Navigate to **Certificates & secrets** .</span></span>
    1. <span data-ttu-id="6352c-169">**인증서 업로드** 를 선택 하 여 공개 키가 포함 된 인증서를 업로드 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-169">Select **Upload certificate** to upload the certificate, which contains the public key.</span></span> <span data-ttu-id="6352c-170">*.Cer* , *pem* 또는 *.crt* 인증서를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-170">A *.cer* , *.pem* , or *.crt* certificate is acceptable.</span></span>
-1. <span data-ttu-id="6352c-171">키 자격 증명 모음 이름, 응용 프로그램 ID 및 인증서 지문을 앱의 파일에 저장 *:::no-loc(appsettings.json):::* 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-171">Store the key vault name, Application ID, and certificate thumbprint in the app's *:::no-loc(appsettings.json):::* file.</span></span>
+1. <span data-ttu-id="6352c-171">키 자격 증명 모음 이름, 응용 프로그램 ID 및 인증서 지문을 앱의 파일에 저장 *appsettings.json* 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-171">Store the key vault name, Application ID, and certificate thumbprint in the app's *appsettings.json* file.</span></span>
 1. <span data-ttu-id="6352c-172">Azure Portal에서 **키 자격 증명 모음** 으로 이동 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-172">Navigate to **Key vaults** in the Azure portal.</span></span>
 1. <span data-ttu-id="6352c-173">[Azure Key Vault를 사용 하 여 프로덕션 환경에서 암호 저장소](#secret-storage-in-the-production-environment-with-azure-key-vault) 에 만든 key vault를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-173">Select the key vault that you created in the [Secret storage in the Production environment with Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault) section.</span></span>
 1. <span data-ttu-id="6352c-174">**액세스 정책** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-174">Select **Access policies** .</span></span>
@@ -153,7 +153,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
-<span data-ttu-id="6352c-186">X.509 인증서는 OS를 통해 관리 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-186">The X.509 certificate is managed by the OS.</span></span> <span data-ttu-id="6352c-187">응용 프로그램은 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 파일에서 제공 하는 값을 사용 하 여를 호출 합니다 *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="6352c-187">The app calls <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> with values supplied by the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="6352c-186">X.509 인증서는 OS를 통해 관리 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-186">The X.509 certificate is managed by the OS.</span></span> <span data-ttu-id="6352c-187">응용 프로그램은 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 파일에서 제공 하는 값을 사용 하 여를 호출 합니다 *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="6352c-187">The app calls <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> with values supplied by the *appsettings.json* file:</span></span>
 
 [!code-csharp[](key-vault-configuration/samples/3.x/SampleApp/Program.cs?name=snippet1&highlight=20-23)]
 
@@ -163,9 +163,9 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 * <span data-ttu-id="6352c-190">응용 프로그램 ID: `627e911e-43cc-61d4-992e-12db9c81b413`</span><span class="sxs-lookup"><span data-stu-id="6352c-190">Application ID: `627e911e-43cc-61d4-992e-12db9c81b413`</span></span>
 * <span data-ttu-id="6352c-191">인증서 지문: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`</span><span class="sxs-lookup"><span data-stu-id="6352c-191">Certificate thumbprint: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`</span></span>
 
-<span data-ttu-id="6352c-192">*:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="6352c-192">*:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="6352c-192">*appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="6352c-192">*appsettings.json* :</span></span>
 
-[!code-json[](key-vault-configuration/samples/3.x/SampleApp/:::no-loc(appsettings.json):::?highlight=10-12)]
+[!code-json[](key-vault-configuration/samples/3.x/SampleApp/appsettings.json?highlight=10-12)]
 
 <span data-ttu-id="6352c-193">앱을 실행 하면 웹 페이지에 로드 된 비밀 값이 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-193">When you run the app, a webpage shows the loaded secret values.</span></span> <span data-ttu-id="6352c-194">개발 환경에서 비밀 값은 `_dev` 접미사로 로드 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-194">In the Development environment, secret values load with the `_dev` suffix.</span></span> <span data-ttu-id="6352c-195">프로덕션 환경에서 값은 `_prod` 접미사로 로드 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-195">In the Production environment, the values load with the `_prod` suffix.</span></span>
 
@@ -175,11 +175,11 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 <span data-ttu-id="6352c-198">샘플 앱은 `#define` *Program.cs* 파일의 맨 위에 있는 문이로 설정 된 경우 Azure 리소스에 대해 관리 id를 사용 `Managed` 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-198">The sample app uses Managed identities for Azure resources when the `#define` statement at the top of the *Program.cs* file is set to `Managed`.</span></span>
 
-<span data-ttu-id="6352c-199">앱의 파일에 자격 증명 모음 이름을 입력 합니다 *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="6352c-199">Enter the vault name into the app's *:::no-loc(appsettings.json):::* file.</span></span> <span data-ttu-id="6352c-200">샘플 앱에는 버전으로 설정 된 경우 응용 프로그램 ID 및 암호 (클라이언트 암호)가 필요 하지 `Managed` 않으므로 이러한 구성 항목을 무시할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-200">The sample app doesn't require an Application ID and Password (Client Secret) when set to the `Managed` version, so you can ignore those configuration entries.</span></span> <span data-ttu-id="6352c-201">앱이 Azure에 배포 되 고 Azure는 파일에 저장 된 자격 증명 모음 이름을 사용 하 여 Azure Key Vault에만 액세스 하도록 앱을 인증 합니다 *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="6352c-201">The app is deployed to Azure, and Azure authenticates the app to access Azure Key Vault only using the vault name stored in the *:::no-loc(appsettings.json):::* file.</span></span>
+<span data-ttu-id="6352c-199">앱의 파일에 자격 증명 모음 이름을 입력 합니다 *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="6352c-199">Enter the vault name into the app's *appsettings.json* file.</span></span> <span data-ttu-id="6352c-200">샘플 앱에는 버전으로 설정 된 경우 응용 프로그램 ID 및 암호 (클라이언트 암호)가 필요 하지 `Managed` 않으므로 이러한 구성 항목을 무시할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-200">The sample app doesn't require an Application ID and Password (Client Secret) when set to the `Managed` version, so you can ignore those configuration entries.</span></span> <span data-ttu-id="6352c-201">앱이 Azure에 배포 되 고 Azure는 파일에 저장 된 자격 증명 모음 이름을 사용 하 여 Azure Key Vault에만 액세스 하도록 앱을 인증 합니다 *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="6352c-201">The app is deployed to Azure, and Azure authenticates the app to access Azure Key Vault only using the vault name stored in the *appsettings.json* file.</span></span>
 
 <span data-ttu-id="6352c-202">Azure App Service에 샘플 앱을 배포 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-202">Deploy the sample app to Azure App Service.</span></span>
 
-<span data-ttu-id="6352c-203">Azure App Service에 배포 된 앱은 서비스를 만들 때 Azure AD에 자동으로 등록 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-203">An app deployed to Azure App Service is automatically registered with Azure AD when the service is created.</span></span> <span data-ttu-id="6352c-204">다음 명령에서 사용할 개체 ID를 배포에서 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-204">Obtain the Object ID from the deployment for use in the following command.</span></span> <span data-ttu-id="6352c-205">개체 ID는 App Service 패널의 Azure Portal에 표시 됩니다 **:::no-loc(Identity):::** .</span><span class="sxs-lookup"><span data-stu-id="6352c-205">The Object ID is shown in the Azure portal on the **:::no-loc(Identity):::** panel of the App Service.</span></span>
+<span data-ttu-id="6352c-203">Azure App Service에 배포 된 앱은 서비스를 만들 때 Azure AD에 자동으로 등록 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-203">An app deployed to Azure App Service is automatically registered with Azure AD when the service is created.</span></span> <span data-ttu-id="6352c-204">다음 명령에서 사용할 개체 ID를 배포에서 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-204">Obtain the Object ID from the deployment for use in the following command.</span></span> <span data-ttu-id="6352c-205">개체 ID는 App Service 패널의 Azure Portal에 표시 됩니다 **Identity** .</span><span class="sxs-lookup"><span data-stu-id="6352c-205">The Object ID is shown in the Azure portal on the **Identity** panel of the App Service.</span></span>
 
 <span data-ttu-id="6352c-206">Azure CLI 및 응용 프로그램의 개체 ID를 사용 하 여 앱에 `list` `get` 키 자격 증명 모음에 액세스할 수 있는 및 권한을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-206">Using Azure CLI and the app's Object ID, provide the app with `list` and `get` permissions to access the key vault:</span></span>
 
@@ -199,7 +199,7 @@ az keyvault set-policy --name {KEY VAULT NAME} --object-id {OBJECT ID} --secret-
 
 <span data-ttu-id="6352c-213">Key vault 이름 예 값: `contosovault`</span><span class="sxs-lookup"><span data-stu-id="6352c-213">Key vault name example value: `contosovault`</span></span>
     
-<span data-ttu-id="6352c-214">*:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="6352c-214">*:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="6352c-214">*appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="6352c-214">*appsettings.json* :</span></span>
 
 ```json
 {
@@ -481,7 +481,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
    1. <span data-ttu-id="6352c-362">Azure AD에서 앱을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-362">Select the app in Azure AD.</span></span>
    1. <span data-ttu-id="6352c-363">**인증서 & 암호** 로 이동 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-363">Navigate to **Certificates & secrets** .</span></span>
    1. <span data-ttu-id="6352c-364">**인증서 업로드** 를 선택 하 여 공개 키가 포함 된 인증서를 업로드 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-364">Select **Upload certificate** to upload the certificate, which contains the public key.</span></span> <span data-ttu-id="6352c-365">*.Cer* , *pem* 또는 *.crt* 인증서를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-365">A *.cer* , *.pem* , or *.crt* certificate is acceptable.</span></span>
-1. <span data-ttu-id="6352c-366">키 자격 증명 모음 이름, 응용 프로그램 ID 및 인증서 지문을 앱의 파일에 저장 *:::no-loc(appsettings.json):::* 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-366">Store the key vault name, Application ID, and certificate thumbprint in the app's *:::no-loc(appsettings.json):::* file.</span></span>
+1. <span data-ttu-id="6352c-366">키 자격 증명 모음 이름, 응용 프로그램 ID 및 인증서 지문을 앱의 파일에 저장 *appsettings.json* 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-366">Store the key vault name, Application ID, and certificate thumbprint in the app's *appsettings.json* file.</span></span>
 1. <span data-ttu-id="6352c-367">Azure Portal에서 **키 자격 증명 모음** 으로 이동 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-367">Navigate to **Key vaults** in the Azure portal.</span></span>
 1. <span data-ttu-id="6352c-368">[Azure Key Vault를 사용 하 여 프로덕션 환경에서 암호 저장소](#secret-storage-in-the-production-environment-with-azure-key-vault) 에 만든 key vault를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-368">Select the key vault that you created in the [Secret storage in the Production environment with Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault) section.</span></span>
 1. <span data-ttu-id="6352c-369">**액세스 정책** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-369">Select **Access policies** .</span></span>
@@ -499,7 +499,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
-<span data-ttu-id="6352c-381">X.509 인증서는 OS를 통해 관리 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-381">The X.509 certificate is managed by the OS.</span></span> <span data-ttu-id="6352c-382">응용 프로그램은 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 파일에서 제공 하는 값을 사용 하 여를 호출 합니다 *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="6352c-382">The app calls <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> with values supplied by the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="6352c-381">X.509 인증서는 OS를 통해 관리 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-381">The X.509 certificate is managed by the OS.</span></span> <span data-ttu-id="6352c-382">응용 프로그램은 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 파일에서 제공 하는 값을 사용 하 여를 호출 합니다 *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="6352c-382">The app calls <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> with values supplied by the *appsettings.json* file:</span></span>
 
 [!code-csharp[](key-vault-configuration/samples/2.x/SampleApp/Program.cs?name=snippet1&highlight=20-23)]
 
@@ -509,9 +509,9 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 * <span data-ttu-id="6352c-385">응용 프로그램 ID: `627e911e-43cc-61d4-992e-12db9c81b413`</span><span class="sxs-lookup"><span data-stu-id="6352c-385">Application ID: `627e911e-43cc-61d4-992e-12db9c81b413`</span></span>
 * <span data-ttu-id="6352c-386">인증서 지문: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`</span><span class="sxs-lookup"><span data-stu-id="6352c-386">Certificate thumbprint: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`</span></span>
 
-<span data-ttu-id="6352c-387">*:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="6352c-387">*:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="6352c-387">*appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="6352c-387">*appsettings.json* :</span></span>
 
-[!code-json[](key-vault-configuration/samples/2.x/SampleApp/:::no-loc(appsettings.json):::?highlight=10-12)]
+[!code-json[](key-vault-configuration/samples/2.x/SampleApp/appsettings.json?highlight=10-12)]
 
 <span data-ttu-id="6352c-388">앱을 실행 하면 웹 페이지에 로드 된 비밀 값이 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-388">When you run the app, a webpage shows the loaded secret values.</span></span> <span data-ttu-id="6352c-389">개발 환경에서 비밀 값은 `_dev` 접미사로 로드 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-389">In the Development environment, secret values load with the `_dev` suffix.</span></span> <span data-ttu-id="6352c-390">프로덕션 환경에서 값은 `_prod` 접미사로 로드 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-390">In the Production environment, the values load with the `_prod` suffix.</span></span>
 
@@ -521,11 +521,11 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 <span data-ttu-id="6352c-393">샘플 앱은 `#define` *Program.cs* 파일의 맨 위에 있는 문이로 설정 된 경우 Azure 리소스에 대해 관리 id를 사용 `Managed` 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-393">The sample app uses Managed identities for Azure resources when the `#define` statement at the top of the *Program.cs* file is set to `Managed`.</span></span>
 
-<span data-ttu-id="6352c-394">앱의 파일에 자격 증명 모음 이름을 입력 합니다 *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="6352c-394">Enter the vault name into the app's *:::no-loc(appsettings.json):::* file.</span></span> <span data-ttu-id="6352c-395">샘플 앱에는 버전으로 설정 된 경우 응용 프로그램 ID 및 암호 (클라이언트 암호)가 필요 하지 `Managed` 않으므로 이러한 구성 항목을 무시할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-395">The sample app doesn't require an Application ID and Password (Client Secret) when set to the `Managed` version, so you can ignore those configuration entries.</span></span> <span data-ttu-id="6352c-396">앱이 Azure에 배포 되 고 Azure는 파일에 저장 된 자격 증명 모음 이름을 사용 하 여 Azure Key Vault에만 액세스 하도록 앱을 인증 합니다 *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="6352c-396">The app is deployed to Azure, and Azure authenticates the app to access Azure Key Vault only using the vault name stored in the *:::no-loc(appsettings.json):::* file.</span></span>
+<span data-ttu-id="6352c-394">앱의 파일에 자격 증명 모음 이름을 입력 합니다 *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="6352c-394">Enter the vault name into the app's *appsettings.json* file.</span></span> <span data-ttu-id="6352c-395">샘플 앱에는 버전으로 설정 된 경우 응용 프로그램 ID 및 암호 (클라이언트 암호)가 필요 하지 `Managed` 않으므로 이러한 구성 항목을 무시할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-395">The sample app doesn't require an Application ID and Password (Client Secret) when set to the `Managed` version, so you can ignore those configuration entries.</span></span> <span data-ttu-id="6352c-396">앱이 Azure에 배포 되 고 Azure는 파일에 저장 된 자격 증명 모음 이름을 사용 하 여 Azure Key Vault에만 액세스 하도록 앱을 인증 합니다 *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="6352c-396">The app is deployed to Azure, and Azure authenticates the app to access Azure Key Vault only using the vault name stored in the *appsettings.json* file.</span></span>
 
 <span data-ttu-id="6352c-397">Azure App Service에 샘플 앱을 배포 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-397">Deploy the sample app to Azure App Service.</span></span>
 
-<span data-ttu-id="6352c-398">Azure App Service에 배포 된 앱은 서비스를 만들 때 Azure AD에 자동으로 등록 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-398">An app deployed to Azure App Service is automatically registered with Azure AD when the service is created.</span></span> <span data-ttu-id="6352c-399">다음 명령에서 사용할 개체 ID를 배포에서 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-399">Obtain the Object ID from the deployment for use in the following command.</span></span> <span data-ttu-id="6352c-400">개체 ID는 App Service 패널의 Azure Portal에 표시 됩니다 **:::no-loc(Identity):::** .</span><span class="sxs-lookup"><span data-stu-id="6352c-400">The Object ID is shown in the Azure portal on the **:::no-loc(Identity):::** panel of the App Service.</span></span>
+<span data-ttu-id="6352c-398">Azure App Service에 배포 된 앱은 서비스를 만들 때 Azure AD에 자동으로 등록 됩니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-398">An app deployed to Azure App Service is automatically registered with Azure AD when the service is created.</span></span> <span data-ttu-id="6352c-399">다음 명령에서 사용할 개체 ID를 배포에서 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-399">Obtain the Object ID from the deployment for use in the following command.</span></span> <span data-ttu-id="6352c-400">개체 ID는 App Service 패널의 Azure Portal에 표시 됩니다 **Identity** .</span><span class="sxs-lookup"><span data-stu-id="6352c-400">The Object ID is shown in the Azure portal on the **Identity** panel of the App Service.</span></span>
 
 <span data-ttu-id="6352c-401">Azure CLI 및 응용 프로그램의 개체 ID를 사용 하 여 앱에 `list` `get` 키 자격 증명 모음에 액세스할 수 있는 및 권한을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="6352c-401">Using Azure CLI and the app's Object ID, provide the app with `list` and `get` permissions to access the key vault:</span></span>
 
@@ -545,7 +545,7 @@ az keyvault set-policy --name {KEY VAULT NAME} --object-id {OBJECT ID} --secret-
 
 <span data-ttu-id="6352c-408">Key vault 이름 예 값: `contosovault`</span><span class="sxs-lookup"><span data-stu-id="6352c-408">Key vault name example value: `contosovault`</span></span>
     
-<span data-ttu-id="6352c-409">*:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="6352c-409">*:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="6352c-409">*appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="6352c-409">*appsettings.json* :</span></span>
 
 ```json
 {

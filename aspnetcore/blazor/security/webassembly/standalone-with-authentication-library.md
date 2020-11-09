@@ -1,23 +1,23 @@
 ---
-title: '인증 라이브러리를 사용하여 ASP.NET Core :::no-loc(Blazor WebAssembly)::: 독립 실행형 앱 보호'
+title: '인증 라이브러리를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호'
 author: guardrex
-description: '인증 라이브러리를 사용하여 ASP.NET Core :::no-loc(Blazor WebAssembly)::: 독립 실행형 앱을 보호하는 방법을 알아봅니다.'
+description: '인증 라이브러리를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱을 보호하는 방법을 알아봅니다.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/27/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/security/webassembly/standalone-with-authentication-library
 ms.openlocfilehash: d030e97a3adc17f53b42b98a53f04f155ea93bb6
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,25 +26,25 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93055115"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a><span data-ttu-id="316af-103">인증 라이브러리를 사용하여 ASP.NET Core :::no-loc(Blazor WebAssembly)::: 독립 실행형 앱 보호</span><span class="sxs-lookup"><span data-stu-id="316af-103">Secure an ASP.NET Core :::no-loc(Blazor WebAssembly)::: standalone app with the Authentication library</span></span>
+# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a><span data-ttu-id="316af-103">인증 라이브러리를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호</span><span class="sxs-lookup"><span data-stu-id="316af-103">Secure an ASP.NET Core Blazor WebAssembly standalone app with the Authentication library</span></span>
 
 <span data-ttu-id="316af-104">작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="316af-104">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
 
 <span data-ttu-id="316af-105">‘AAD(Azure Active Directory) 및 AAD B2C(Azure Active Directory B2C)의 경우에는 이 항목의 지침을 따르지 않습니다. 목차 노드 테이블에서 AAD 및 AAD B2C 항목을 참조하세요.’</span><span class="sxs-lookup"><span data-stu-id="316af-105">*For Azure Active Directory (AAD) and Azure Active Directory B2C (AAD B2C), don't follow the guidance in this topic. See the AAD and AAD B2C topics in this table of contents node.*</span></span>
 
-<span data-ttu-id="316af-106">[`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) 라이브러리를 사용하는 [독립 실행형 :::no-loc(Blazor WebAssembly)::: 앱](xref:blazor/hosting-models#blazor-webassembly)을 만들려면 선택한 도구에 대한 지침을 따르세요.</span><span class="sxs-lookup"><span data-stu-id="316af-106">To create a [standalone :::no-loc(Blazor WebAssembly)::: app](xref:blazor/hosting-models#blazor-webassembly) that uses [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) library, follow the guidance for your choice of tooling.</span></span>
+<span data-ttu-id="316af-106">[`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) 라이브러리를 사용하는 [독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만들려면 선택한 도구에 대한 지침을 따르세요.</span><span class="sxs-lookup"><span data-stu-id="316af-106">To create a [standalone Blazor WebAssembly app](xref:blazor/hosting-models#blazor-webassembly) that uses [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) library, follow the guidance for your choice of tooling.</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="316af-107">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="316af-107">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="316af-108">인증 메커니즘을 사용하여 새 :::no-loc(Blazor WebAssembly)::: 프로젝트를 만들려면</span><span class="sxs-lookup"><span data-stu-id="316af-108">To create a new :::no-loc(Blazor WebAssembly)::: project with an authentication mechanism:</span></span>
+<span data-ttu-id="316af-108">인증 메커니즘을 사용하여 새 Blazor WebAssembly 프로젝트를 만들려면</span><span class="sxs-lookup"><span data-stu-id="316af-108">To create a new Blazor WebAssembly project with an authentication mechanism:</span></span>
 
-1. <span data-ttu-id="316af-109">**새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **:::no-loc(Blazor WebAssembly)::: 앱** 템플릿을 선택한 후 **인증** 에서 **변경** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-109">After choosing the **:::no-loc(Blazor WebAssembly)::: App** template in the **Create a new ASP.NET Core Web Application** dialog, select **Change** under **Authentication**.</span></span>
+1. <span data-ttu-id="316af-109">**새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **Blazor WebAssembly 앱** 템플릿을 선택한 후 **인증** 에서 **변경** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-109">After choosing the **Blazor WebAssembly App** template in the **Create a new ASP.NET Core Web Application** dialog, select **Change** under **Authentication**.</span></span>
 
-1. <span data-ttu-id="316af-110">**개별 사용자 계정** 을 **사용자 계정 앱 내 저장** 옵션과 함께 선택하여 ASP.NET Core의 [:::no-loc(Identity):::](xref:security/authentication/identity) 시스템을 사용해 앱 내에 사용자를 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-110">Select **Individual User Accounts** with the **Store user accounts in-app** option to store users within the app using ASP.NET Core's [:::no-loc(Identity):::](xref:security/authentication/identity) system.</span></span>
+1. <span data-ttu-id="316af-110">**개별 사용자 계정** 을 **사용자 계정 앱 내 저장** 옵션과 함께 선택하여 ASP.NET Core의 [Identity](xref:security/authentication/identity) 시스템을 사용해 앱 내에 사용자를 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-110">Select **Individual User Accounts** with the **Store user accounts in-app** option to store users within the app using ASP.NET Core's [Identity](xref:security/authentication/identity) system.</span></span>
 
 # <a name="visual-studio-code--net-core-cli"></a>[<span data-ttu-id="316af-111">Visual Studio Code/.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="316af-111">Visual Studio Code / .NET Core CLI</span></span>](#tab/visual-studio-code+netcore-cli)
 
-<span data-ttu-id="316af-112">인증 메커니즘을 사용하여 빈 폴더에 새 :::no-loc(Blazor WebAssembly)::: 프로젝트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="316af-112">Create a new :::no-loc(Blazor WebAssembly)::: project with an authentication mechanism in an empty folder.</span></span> <span data-ttu-id="316af-113">ASP.NET Core의 [:::no-loc(Identity):::](xref:security/authentication/identity) 시스템을 사용하여 앱 내에 사용자를 저장하려면 `-au|--auth` 옵션을 사용하여 `Individual` 인증 메커니즘을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-113">Specify the `Individual` authentication mechanism with the `-au|--auth` option to store users within the app using ASP.NET Core's [:::no-loc(Identity):::](xref:security/authentication/identity) system:</span></span>
+<span data-ttu-id="316af-112">인증 메커니즘을 사용하여 빈 폴더에 새 Blazor WebAssembly 프로젝트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="316af-112">Create a new Blazor WebAssembly project with an authentication mechanism in an empty folder.</span></span> <span data-ttu-id="316af-113">ASP.NET Core의 [Identity](xref:security/authentication/identity) 시스템을 사용하여 앱 내에 사용자를 저장하려면 `-au|--auth` 옵션을 사용하여 `Individual` 인증 메커니즘을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-113">Specify the `Individual` authentication mechanism with the `-au|--auth` option to store users within the app using ASP.NET Core's [Identity](xref:security/authentication/identity) system:</span></span>
 
 ```dotnetcli
 dotnet new blazorwasm -au Individual -o {APP NAME}
@@ -52,7 +52,7 @@ dotnet new blazorwasm -au Individual -o {APP NAME}
 
 | <span data-ttu-id="316af-114">자리표시자</span><span class="sxs-lookup"><span data-stu-id="316af-114">Placeholder</span></span>  | <span data-ttu-id="316af-115">예제</span><span class="sxs-lookup"><span data-stu-id="316af-115">Example</span></span>        |
 | ------------ | -------------- |
-| `{APP NAME}` | `:::no-loc(Blazor):::Sample` |
+| `{APP NAME}` | `BlazorSample` |
 
 <span data-ttu-id="316af-116">`-o|--output` 옵션으로 지정된 출력 위치는 프로젝트 폴더가 없는 경우 폴더를 하나 만들고 앱 이름의 일부가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="316af-116">The output location specified with the `-o|--output` option creates a project folder if it doesn't exist and becomes part of the app's name.</span></span>
 
@@ -60,11 +60,11 @@ dotnet new blazorwasm -au Individual -o {APP NAME}
 
 # <a name="visual-studio-for-mac"></a>[<span data-ttu-id="316af-118">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="316af-118">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-<span data-ttu-id="316af-119">인증 메커니즘을 사용하여 새 :::no-loc(Blazor WebAssembly)::: 프로젝트를 만들려면</span><span class="sxs-lookup"><span data-stu-id="316af-119">To create a new :::no-loc(Blazor WebAssembly)::: project with an authentication mechanism:</span></span>
+<span data-ttu-id="316af-119">인증 메커니즘을 사용하여 새 Blazor WebAssembly 프로젝트를 만들려면</span><span class="sxs-lookup"><span data-stu-id="316af-119">To create a new Blazor WebAssembly project with an authentication mechanism:</span></span>
 
-1. <span data-ttu-id="316af-120">**새 :::no-loc(Blazor WebAssembly)::: 앱 구성** 단계의 **인증** 드롭다운에서 **개별 인증(앱 내)** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-120">On the **Configure your new :::no-loc(Blazor WebAssembly)::: App** step, select **Individual Authentication (in-app)** from the **Authentication** drop down.</span></span>
+1. <span data-ttu-id="316af-120">**새 Blazor WebAssembly 앱 구성** 단계의 **인증** 드롭다운에서 **개별 인증(앱 내)** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-120">On the **Configure your new Blazor WebAssembly App** step, select **Individual Authentication (in-app)** from the **Authentication** drop down.</span></span>
 
-1. <span data-ttu-id="316af-121">ASP.NET Core [:::no-loc(Identity):::](xref:security/authentication/identity)를 사용하여 앱에 저장된 개별 사용자에 대한 앱이 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="316af-121">The app is created for individual users stored in the app with ASP.NET Core [:::no-loc(Identity):::](xref:security/authentication/identity).</span></span>
+1. <span data-ttu-id="316af-121">ASP.NET Core [Identity](xref:security/authentication/identity)를 사용하여 앱에 저장된 개별 사용자에 대한 앱이 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="316af-121">The app is created for individual users stored in the app with ASP.NET Core [Identity](xref:security/authentication/identity).</span></span>
 
 ---
 
@@ -84,7 +84,7 @@ dotnet new blazorwasm -au Individual -o {APP NAME}
 
 ## <a name="authentication-service-support"></a><span data-ttu-id="316af-127">인증 서비스 지원</span><span class="sxs-lookup"><span data-stu-id="316af-127">Authentication service support</span></span>
 
-<span data-ttu-id="316af-128">사용자 인증에 대한 지원은 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) 패키지에서 제공하는 <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> 확장 메서드를 통해 서비스 컨테이너에 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="316af-128">Support for authenticating users is registered in the service container with the <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> extension method provided by the [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) package.</span></span> <span data-ttu-id="316af-129">이 메서드는 앱이 IP(:::no-loc(Identity)::: 공급자)와 상호 작용하는 데 필요한 서비스를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-129">This method sets up the services required for the app to interact with the :::no-loc(Identity)::: Provider (IP).</span></span>
+<span data-ttu-id="316af-128">사용자 인증에 대한 지원은 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) 패키지에서 제공하는 <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> 확장 메서드를 통해 서비스 컨테이너에 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="316af-128">Support for authenticating users is registered in the service container with the <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> extension method provided by the [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) package.</span></span> <span data-ttu-id="316af-129">이 메서드는 앱이 IP(Identity 공급자)와 상호 작용하는 데 필요한 서비스를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-129">This method sets up the services required for the app to interact with the Identity Provider (IP).</span></span>
 
 <span data-ttu-id="316af-130">`Program.cs`:</span><span class="sxs-lookup"><span data-stu-id="316af-130">`Program.cs`:</span></span>
 
@@ -95,7 +95,7 @@ builder.Services.AddOidcAuthentication(options =>
 });
 ```
 
-<span data-ttu-id="316af-131">구성은 `wwwroot/:::no-loc(appsettings.json):::` 파일에서 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-131">Configuration is supplied by the `wwwroot/:::no-loc(appsettings.json):::` file:</span></span>
+<span data-ttu-id="316af-131">구성은 `wwwroot/appsettings.json` 파일에서 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-131">Configuration is supplied by the `wwwroot/appsettings.json` file:</span></span>
 
 ```json
 {
@@ -110,9 +110,9 @@ builder.Services.AddOidcAuthentication(options =>
 
 ## <a name="access-token-scopes"></a><span data-ttu-id="316af-136">액세스 토큰 범위</span><span class="sxs-lookup"><span data-stu-id="316af-136">Access token scopes</span></span>
 
-<span data-ttu-id="316af-137">:::no-loc(Blazor WebAssembly)::: 템플릿은 `openid` 및 `profile`의 기본 범위를 자동으로 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-137">The :::no-loc(Blazor WebAssembly)::: template automatically configures default scopes for `openid` and `profile`.</span></span>
+<span data-ttu-id="316af-137">Blazor WebAssembly 템플릿은 `openid` 및 `profile`의 기본 범위를 자동으로 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-137">The Blazor WebAssembly template automatically configures default scopes for `openid` and `profile`.</span></span>
 
-<span data-ttu-id="316af-138">:::no-loc(Blazor WebAssembly)::: 템플릿은 앱이 보안 API에 대한 액세스 토큰을 요청하도록 자동으로 구성하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="316af-138">The :::no-loc(Blazor WebAssembly)::: template doesn't automatically configure the app to request an access token for a secure API.</span></span> <span data-ttu-id="316af-139">로그인 흐름의 일부로 액세스 토큰을 프로비저닝하려면 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>의 기본 토큰 범위에 해당 범위를 추가해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-139">To provision an access token as part of the sign-in flow, add the scope to the default token scopes of the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>:</span></span>
+<span data-ttu-id="316af-138">Blazor WebAssembly 템플릿은 앱이 보안 API에 대한 액세스 토큰을 요청하도록 자동으로 구성하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="316af-138">The Blazor WebAssembly template doesn't automatically configure the app to request an access token for a secure API.</span></span> <span data-ttu-id="316af-139">로그인 흐름의 일부로 액세스 토큰을 프로비저닝하려면 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>의 기본 토큰 범위에 해당 범위를 추가해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="316af-139">To provision an access token as part of the sign-in flow, add the scope to the default token scopes of the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>:</span></span>
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>
@@ -160,7 +160,7 @@ builder.Services.AddOidcAuthentication(options =>
 
 <AuthorizeView>
     <Authorized>
-        Hello, @context.User.:::no-loc(Identity):::.Name!
+        Hello, @context.User.Identity.Name!
         <button class="nav-link btn btn-link" @onclick="BeginSignOut">
             Log out
         </button>

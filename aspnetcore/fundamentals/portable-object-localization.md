@@ -5,17 +5,17 @@ description: 이 문서는 이식 가능 개체 파일을 소개하고 ASP.NET C
 ms.author: scaddie
 ms.date: 09/26/2017
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/portable-object-localization
 ms.openlocfilehash: 2e28ebaf1962ebd834c43f1cfbc28929b1937c40
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -97,7 +97,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 [!code-csharp[](localization/sample/3.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
-<span data-ttu-id="f1f03-138">선택한 :::no-loc(Razor)::: 뷰에 다음 코드를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-138">Add the following code to your :::no-loc(Razor)::: view of choice.</span></span> <span data-ttu-id="f1f03-139">이 예제에서는 *About.cshtml* 이 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-139">*About.cshtml* is used in this example.</span></span>
+<span data-ttu-id="f1f03-138">선택한 Razor 뷰에 다음 코드를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-138">Add the following code to your Razor view of choice.</span></span> <span data-ttu-id="f1f03-139">이 예제에서는 *About.cshtml* 이 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-139">*About.cshtml* is used in this example.</span></span>
 
 [!code-cshtml[](localization/sample/3.x/POLocalization/Views/Home/About.cshtml)]
 
@@ -201,11 +201,11 @@ Existuje 5 položek.
 
 ### <a name="contextualizing-strings"></a><span data-ttu-id="f1f03-179">문자열 맥락화</span><span class="sxs-lookup"><span data-stu-id="f1f03-179">Contextualizing strings</span></span>
 
-<span data-ttu-id="f1f03-180">애플리케이션은 종종 여러 위치에서 번역되는 문자열을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-180">Applications often contain the strings to be translated in several places.</span></span> <span data-ttu-id="f1f03-181">동일한 문자열은 앱 내의 특정 위치에서 다른 번역을 가질 수 있습니다(:::no-loc(Razor)::: 뷰 또는 클래스 파일).</span><span class="sxs-lookup"><span data-stu-id="f1f03-181">The same string may have a different translation in certain locations within an app (:::no-loc(Razor)::: views or class files).</span></span> <span data-ttu-id="f1f03-182">PO 파일은 표시되는 문자열을 분류하는 데 사용될 수 있는 파일 컨텍스트의 개념을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-182">A PO file supports the notion of a file context, which can be used to categorize the string being represented.</span></span> <span data-ttu-id="f1f03-183">파일 컨텍스트를 사용하여 문자열은 파일 컨텍스트(또는 파일 컨텍스트 부족)에 따라 다르게 번역될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-183">Using a file context, a string can be translated differently, depending on the file context (or lack of a file context).</span></span>
+<span data-ttu-id="f1f03-180">애플리케이션은 종종 여러 위치에서 번역되는 문자열을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-180">Applications often contain the strings to be translated in several places.</span></span> <span data-ttu-id="f1f03-181">동일한 문자열은 앱 내의 특정 위치에서 다른 번역을 가질 수 있습니다(Razor 뷰 또는 클래스 파일).</span><span class="sxs-lookup"><span data-stu-id="f1f03-181">The same string may have a different translation in certain locations within an app (Razor views or class files).</span></span> <span data-ttu-id="f1f03-182">PO 파일은 표시되는 문자열을 분류하는 데 사용될 수 있는 파일 컨텍스트의 개념을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-182">A PO file supports the notion of a file context, which can be used to categorize the string being represented.</span></span> <span data-ttu-id="f1f03-183">파일 컨텍스트를 사용하여 문자열은 파일 컨텍스트(또는 파일 컨텍스트 부족)에 따라 다르게 번역될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-183">Using a file context, a string can be translated differently, depending on the file context (or lack of a file context).</span></span>
 
 <span data-ttu-id="f1f03-184">PO 지역화 서비스는 전체 클래스 또는 문자열을 변역할 때 사용되는 뷰의 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-184">The PO localization services use the name of the full class or the view that's used when translating a string.</span></span> <span data-ttu-id="f1f03-185">`msgctxt` 항목의 값을 설정하여 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-185">This is accomplished by setting the value on the `msgctxt` entry.</span></span>
 
-<span data-ttu-id="f1f03-186">이전 *fr.po* 예제에 대한 최소 추가를 고려합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-186">Consider a minor addition to the previous *fr.po* example.</span></span> <span data-ttu-id="f1f03-187">*Views/Home/About.cshtml* 에 있는 :::no-loc(Razor)::: 뷰는 예약된 `msgctxt` 항목의 값을 설정하여 파일 컨텍스트로 정의될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-187">A :::no-loc(Razor)::: view located at *Views/Home/About.cshtml* can be defined as the file context by setting the reserved `msgctxt` entry's value:</span></span>
+<span data-ttu-id="f1f03-186">이전 *fr.po* 예제에 대한 최소 추가를 고려합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-186">Consider a minor addition to the previous *fr.po* example.</span></span> <span data-ttu-id="f1f03-187">*Views/Home/About.cshtml* 에 있는 Razor 뷰는 예약된 `msgctxt` 항목의 값을 설정하여 파일 컨텍스트로 정의될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-187">A Razor view located at *Views/Home/About.cshtml* can be defined as the file context by setting the reserved `msgctxt` entry's value:</span></span>
 
 ```text
 msgctxt "Views.Home.About"
@@ -312,7 +312,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 [!code-csharp[](localization/sample/2.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
-<span data-ttu-id="f1f03-237">선택한 :::no-loc(Razor)::: 뷰에 다음 코드를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-237">Add the following code to your :::no-loc(Razor)::: view of choice.</span></span> <span data-ttu-id="f1f03-238">이 예제에서는 *About.cshtml* 이 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-238">*About.cshtml* is used in this example.</span></span>
+<span data-ttu-id="f1f03-237">선택한 Razor 뷰에 다음 코드를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-237">Add the following code to your Razor view of choice.</span></span> <span data-ttu-id="f1f03-238">이 예제에서는 *About.cshtml* 이 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-238">*About.cshtml* is used in this example.</span></span>
 
 [!code-cshtml[](localization/sample/2.x/POLocalization/Views/Home/About.cshtml)]
 
@@ -416,11 +416,11 @@ Existuje 5 položek.
 
 ### <a name="contextualizing-strings"></a><span data-ttu-id="f1f03-278">문자열 맥락화</span><span class="sxs-lookup"><span data-stu-id="f1f03-278">Contextualizing strings</span></span>
 
-<span data-ttu-id="f1f03-279">애플리케이션은 종종 여러 위치에서 번역되는 문자열을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-279">Applications often contain the strings to be translated in several places.</span></span> <span data-ttu-id="f1f03-280">동일한 문자열은 앱 내의 특정 위치에서 다른 번역을 가질 수 있습니다(:::no-loc(Razor)::: 뷰 또는 클래스 파일).</span><span class="sxs-lookup"><span data-stu-id="f1f03-280">The same string may have a different translation in certain locations within an app (:::no-loc(Razor)::: views or class files).</span></span> <span data-ttu-id="f1f03-281">PO 파일은 표시되는 문자열을 분류하는 데 사용될 수 있는 파일 컨텍스트의 개념을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-281">A PO file supports the notion of a file context, which can be used to categorize the string being represented.</span></span> <span data-ttu-id="f1f03-282">파일 컨텍스트를 사용하여 문자열은 파일 컨텍스트(또는 파일 컨텍스트 부족)에 따라 다르게 번역될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-282">Using a file context, a string can be translated differently, depending on the file context (or lack of a file context).</span></span>
+<span data-ttu-id="f1f03-279">애플리케이션은 종종 여러 위치에서 번역되는 문자열을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-279">Applications often contain the strings to be translated in several places.</span></span> <span data-ttu-id="f1f03-280">동일한 문자열은 앱 내의 특정 위치에서 다른 번역을 가질 수 있습니다(Razor 뷰 또는 클래스 파일).</span><span class="sxs-lookup"><span data-stu-id="f1f03-280">The same string may have a different translation in certain locations within an app (Razor views or class files).</span></span> <span data-ttu-id="f1f03-281">PO 파일은 표시되는 문자열을 분류하는 데 사용될 수 있는 파일 컨텍스트의 개념을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-281">A PO file supports the notion of a file context, which can be used to categorize the string being represented.</span></span> <span data-ttu-id="f1f03-282">파일 컨텍스트를 사용하여 문자열은 파일 컨텍스트(또는 파일 컨텍스트 부족)에 따라 다르게 번역될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-282">Using a file context, a string can be translated differently, depending on the file context (or lack of a file context).</span></span>
 
 <span data-ttu-id="f1f03-283">PO 지역화 서비스는 전체 클래스 또는 문자열을 변역할 때 사용되는 뷰의 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-283">The PO localization services use the name of the full class or the view that's used when translating a string.</span></span> <span data-ttu-id="f1f03-284">`msgctxt` 항목의 값을 설정하여 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-284">This is accomplished by setting the value on the `msgctxt` entry.</span></span>
 
-<span data-ttu-id="f1f03-285">이전 *fr.po* 예제에 대한 최소 추가를 고려합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-285">Consider a minor addition to the previous *fr.po* example.</span></span> <span data-ttu-id="f1f03-286">*Views/Home/About.cshtml* 에 있는 :::no-loc(Razor)::: 뷰는 예약된 `msgctxt` 항목의 값을 설정하여 파일 컨텍스트로 정의될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-286">A :::no-loc(Razor)::: view located at *Views/Home/About.cshtml* can be defined as the file context by setting the reserved `msgctxt` entry's value:</span></span>
+<span data-ttu-id="f1f03-285">이전 *fr.po* 예제에 대한 최소 추가를 고려합니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-285">Consider a minor addition to the previous *fr.po* example.</span></span> <span data-ttu-id="f1f03-286">*Views/Home/About.cshtml* 에 있는 Razor 뷰는 예약된 `msgctxt` 항목의 값을 설정하여 파일 컨텍스트로 정의될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f1f03-286">A Razor view located at *Views/Home/About.cshtml* can be defined as the file context by setting the reserved `msgctxt` entry's value:</span></span>
 
 ```text
 msgctxt "Views.Home.About"

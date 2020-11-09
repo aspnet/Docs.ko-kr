@@ -6,15 +6,15 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 6/23/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/static-files
 ms.openlocfilehash: 2e25af03a8a6aaff5b343885711c6ebb68340fac
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -252,7 +252,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 ### <a name="security-considerations-for-static-files"></a><span data-ttu-id="37c19-208">정적 파일의 보안 고려 사항</span><span class="sxs-lookup"><span data-stu-id="37c19-208">Security considerations for static files</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="37c19-209">`UseDirectoryBrowser` 및 `UseStaticFiles`는 비밀 정보를 누출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-209">`UseDirectoryBrowser` and `UseStaticFiles` can leak secrets.</span></span> <span data-ttu-id="37c19-210">프로덕션 환경에서는 디렉터리 검색을 비활성화하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-210">Disabling directory browsing in production is highly recommended.</span></span> <span data-ttu-id="37c19-211">`UseStaticFiles` 또는 `UseDirectoryBrowser`를 통해 어떤 디렉터리가 활성화되었는지 주의 깊게 검토하세요.</span><span class="sxs-lookup"><span data-stu-id="37c19-211">Carefully review which directories are enabled via `UseStaticFiles` or `UseDirectoryBrowser`.</span></span> <span data-ttu-id="37c19-212">전체 디렉터리와 해당 하위 디렉터리는 공개적으로 액세스할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-212">The entire directory and its sub-directories become publicly accessible.</span></span> <span data-ttu-id="37c19-213">`<content_root>/wwwroot`와 같은 전용 디렉터리에 공개적으로 제공하는 데 적합한 파일을 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-213">Store files suitable for serving to the public in a dedicated directory, such as `<content_root>/wwwroot`.</span></span> <span data-ttu-id="37c19-214">MVC 뷰, :::no-loc(Razor)::: Pages, 구성 파일 등과 해당 파일을 분리합니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-214">Separate these files from MVC views, :::no-loc(Razor)::: Pages, configuration files, etc.</span></span>
+> <span data-ttu-id="37c19-209">`UseDirectoryBrowser` 및 `UseStaticFiles`는 비밀 정보를 누출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-209">`UseDirectoryBrowser` and `UseStaticFiles` can leak secrets.</span></span> <span data-ttu-id="37c19-210">프로덕션 환경에서는 디렉터리 검색을 비활성화하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-210">Disabling directory browsing in production is highly recommended.</span></span> <span data-ttu-id="37c19-211">`UseStaticFiles` 또는 `UseDirectoryBrowser`를 통해 어떤 디렉터리가 활성화되었는지 주의 깊게 검토하세요.</span><span class="sxs-lookup"><span data-stu-id="37c19-211">Carefully review which directories are enabled via `UseStaticFiles` or `UseDirectoryBrowser`.</span></span> <span data-ttu-id="37c19-212">전체 디렉터리와 해당 하위 디렉터리는 공개적으로 액세스할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-212">The entire directory and its sub-directories become publicly accessible.</span></span> <span data-ttu-id="37c19-213">`<content_root>/wwwroot`와 같은 전용 디렉터리에 공개적으로 제공하는 데 적합한 파일을 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-213">Store files suitable for serving to the public in a dedicated directory, such as `<content_root>/wwwroot`.</span></span> <span data-ttu-id="37c19-214">MVC 뷰, Razor Pages, 구성 파일 등과 해당 파일을 분리합니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-214">Separate these files from MVC views, Razor Pages, configuration files, etc.</span></span>
 
 * <span data-ttu-id="37c19-215">`UseDirectoryBrowser` 및 `UseStaticFiles`로 노출된 콘텐츠에 대한 URL은 기본 파일 시스템의 대/소문자 구분 및 문자 제한이 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-215">The URLs for content exposed with `UseDirectoryBrowser` and `UseStaticFiles` are subject to the case sensitivity and character restrictions of the underlying file system.</span></span> <span data-ttu-id="37c19-216">예를 들어 Windows는 대/소문자를 구분하지 않지만 macOS 및 Linux는 대/소문자를 구분합니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-216">For example, Windows is case insensitive, but macOS and Linux aren't.</span></span>
 
@@ -461,7 +461,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 <span data-ttu-id="37c19-328">[MIME 콘텐츠 형식](https://www.iana.org/assignments/media-types/media-types.xhtml)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="37c19-328">See [MIME content types](https://www.iana.org/assignments/media-types/media-types.xhtml).</span></span>
 
-<span data-ttu-id="37c19-329">사용자 지정 <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider>를 사용하거나 :::no-loc(Blazor)::: Server 앱에서 다른 <xref:Microsoft.AspNetCore.Builder.StaticFileOptions>를 구성하는 방법에 대한 자세한 내용은 <xref:blazor/fundamentals/additional-scenarios#static-files>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="37c19-329">For information on using a custom <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> or to configure other <xref:Microsoft.AspNetCore.Builder.StaticFileOptions> in :::no-loc(Blazor)::: Server apps, see <xref:blazor/fundamentals/additional-scenarios#static-files>.</span></span>
+<span data-ttu-id="37c19-329">사용자 지정 <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider>를 사용하거나 Blazor Server 앱에서 다른 <xref:Microsoft.AspNetCore.Builder.StaticFileOptions>를 구성하는 방법에 대한 자세한 내용은 <xref:blazor/fundamentals/additional-scenarios#static-files>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="37c19-329">For information on using a custom <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> or to configure other <xref:Microsoft.AspNetCore.Builder.StaticFileOptions> in Blazor Server apps, see <xref:blazor/fundamentals/additional-scenarios#static-files>.</span></span>
 
 ## <a name="non-standard-content-types"></a><span data-ttu-id="37c19-330">비표준 콘텐츠 형식</span><span class="sxs-lookup"><span data-stu-id="37c19-330">Non-standard content types</span></span>
 
@@ -483,7 +483,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 ### <a name="considerations"></a><span data-ttu-id="37c19-344">고려 사항</span><span class="sxs-lookup"><span data-stu-id="37c19-344">Considerations</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="37c19-345">`UseDirectoryBrowser` 및 `UseStaticFiles`는 비밀 정보를 누출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-345">`UseDirectoryBrowser` and `UseStaticFiles` can leak secrets.</span></span> <span data-ttu-id="37c19-346">프로덕션 환경에서는 디렉터리 검색을 비활성화하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-346">Disabling directory browsing in production is highly recommended.</span></span> <span data-ttu-id="37c19-347">`UseStaticFiles` 또는 `UseDirectoryBrowser`를 통해 어떤 디렉터리가 활성화되었는지 주의 깊게 검토하세요.</span><span class="sxs-lookup"><span data-stu-id="37c19-347">Carefully review which directories are enabled via `UseStaticFiles` or `UseDirectoryBrowser`.</span></span> <span data-ttu-id="37c19-348">전체 디렉터리와 해당 하위 디렉터리는 공개적으로 액세스할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-348">The entire directory and its sub-directories become publicly accessible.</span></span> <span data-ttu-id="37c19-349">*\<content_root>/wwwroot* 와 같은 전용 디렉터리에 공개적으로 제공하는 데 적합한 파일을 저장하세요.</span><span class="sxs-lookup"><span data-stu-id="37c19-349">Store files suitable for serving to the public in a dedicated directory, such as *\<content_root>/wwwroot*.</span></span> <span data-ttu-id="37c19-350">MVC 뷰, :::no-loc(Razor)::: Pages(2.x에만 해당), 구성 파일 등과 해당 파일을 분리하세요.</span><span class="sxs-lookup"><span data-stu-id="37c19-350">Separate these files from MVC views, :::no-loc(Razor)::: Pages (2.x only), configuration files, etc.</span></span>
+> <span data-ttu-id="37c19-345">`UseDirectoryBrowser` 및 `UseStaticFiles`는 비밀 정보를 누출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-345">`UseDirectoryBrowser` and `UseStaticFiles` can leak secrets.</span></span> <span data-ttu-id="37c19-346">프로덕션 환경에서는 디렉터리 검색을 비활성화하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-346">Disabling directory browsing in production is highly recommended.</span></span> <span data-ttu-id="37c19-347">`UseStaticFiles` 또는 `UseDirectoryBrowser`를 통해 어떤 디렉터리가 활성화되었는지 주의 깊게 검토하세요.</span><span class="sxs-lookup"><span data-stu-id="37c19-347">Carefully review which directories are enabled via `UseStaticFiles` or `UseDirectoryBrowser`.</span></span> <span data-ttu-id="37c19-348">전체 디렉터리와 해당 하위 디렉터리는 공개적으로 액세스할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-348">The entire directory and its sub-directories become publicly accessible.</span></span> <span data-ttu-id="37c19-349">*\<content_root>/wwwroot* 와 같은 전용 디렉터리에 공개적으로 제공하는 데 적합한 파일을 저장하세요.</span><span class="sxs-lookup"><span data-stu-id="37c19-349">Store files suitable for serving to the public in a dedicated directory, such as *\<content_root>/wwwroot*.</span></span> <span data-ttu-id="37c19-350">MVC 뷰, Razor Pages(2.x에만 해당), 구성 파일 등과 해당 파일을 분리하세요.</span><span class="sxs-lookup"><span data-stu-id="37c19-350">Separate these files from MVC views, Razor Pages (2.x only), configuration files, etc.</span></span>
 
 * <span data-ttu-id="37c19-351">`UseDirectoryBrowser` 및 `UseStaticFiles`로 노출된 콘텐츠에 대한 URL은 기본 파일 시스템의 대/소문자 구분 및 문자 제한이 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-351">The URLs for content exposed with `UseDirectoryBrowser` and `UseStaticFiles` are subject to the case sensitivity and character restrictions of the underlying file system.</span></span> <span data-ttu-id="37c19-352">예를 들어 Windows는 대/소문자를 구분하지 않는 반면 macOS 및 Linux는 그렇지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="37c19-352">For example, Windows is case insensitive&mdash;macOS and Linux aren't.</span></span>
 

@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/12/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/partial
 ms.openlocfilehash: 01fb87205f7855f0995cbcd135b6b01f15835e3b
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -29,11 +29,11 @@ ms.locfileid: "93060601"
 
 <span data-ttu-id="7c34f-104">작성자: [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Scott Sauber](https://twitter.com/scottsauber)</span><span class="sxs-lookup"><span data-stu-id="7c34f-104">By [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT), and [Scott Sauber](https://twitter.com/scottsauber)</span></span>
 
-<span data-ttu-id="7c34f-105">부분 뷰는 [:::no-loc(Razor):::](xref:mvc/views/razor) *.cshtml* [`@page`](xref:mvc/views/razor#page) 다른 태그 파일의 렌더링 된 출력 *내에서* HTML 출력을 렌더링 하는 지시문이 없는 태그 파일 (cshtml)입니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-105">A partial view is a [:::no-loc(Razor):::](xref:mvc/views/razor) markup file ( *.cshtml* ) without an [`@page`](xref:mvc/views/razor#page) directive that renders HTML output *within* another markup file's rendered output.</span></span>
+<span data-ttu-id="7c34f-105">부분 뷰는 [Razor](xref:mvc/views/razor) *.cshtml* [`@page`](xref:mvc/views/razor#page) 다른 태그 파일의 렌더링 된 출력 *내에서* HTML 출력을 렌더링 하는 지시문이 없는 태그 파일 (cshtml)입니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-105">A partial view is a [Razor](xref:mvc/views/razor) markup file ( *.cshtml* ) without an [`@page`](xref:mvc/views/razor#page) directive that renders HTML output *within* another markup file's rendered output.</span></span>
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="7c34f-106">용어 *부분 보기* 는 태그 파일을 *뷰* 라고 하는 MVC 앱 이나 :::no-loc(Razor)::: 태그 파일을 *페이지* 라고 하는 pages 앱을 개발할 때 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-106">The term *partial view* is used when developing either an MVC app, where markup files are called *views* , or a :::no-loc(Razor)::: Pages app, where markup files are called *pages* .</span></span> <span data-ttu-id="7c34f-107">이 항목에서는 일반적으로 MVC 뷰 및 :::no-loc(Razor)::: 페이지 페이지를 *태그 파일로* 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-107">This topic generically refers to MVC views and :::no-loc(Razor)::: Pages pages as *markup files* .</span></span>
+<span data-ttu-id="7c34f-106">용어 *부분 보기* 는 태그 파일을 *뷰* 라고 하는 MVC 앱 이나 Razor 태그 파일을 *페이지* 라고 하는 pages 앱을 개발할 때 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-106">The term *partial view* is used when developing either an MVC app, where markup files are called *views* , or a Razor Pages app, where markup files are called *pages* .</span></span> <span data-ttu-id="7c34f-107">이 항목에서는 일반적으로 MVC 뷰 및 Razor 페이지 페이지를 *태그 파일로* 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-107">This topic generically refers to MVC views and Razor Pages pages as *markup files* .</span></span>
 
 ::: moniker-end
 
@@ -58,9 +58,9 @@ ms.locfileid: "93060601"
 
 ::: moniker range=">= aspnetcore-2.0"
 
-<span data-ttu-id="7c34f-122">부분 뷰는 *.cshtml* [`@page`](xref:mvc/views/razor#page) *Views* 폴더 (MVC) 또는 *pages* 폴더 (페이지) 내에서 지시문을 유지 하지 않고. s t a t 마크업 파일입니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="7c34f-122">A partial view is a *.cshtml* markup file without an [`@page`](xref:mvc/views/razor#page) directive maintained within the *Views* folder (MVC) or *Pages* folder (:::no-loc(Razor)::: Pages).</span></span>
+<span data-ttu-id="7c34f-122">부분 뷰는 *.cshtml* [`@page`](xref:mvc/views/razor#page) *Views* 폴더 (MVC) 또는 *pages* 폴더 (페이지) 내에서 지시문을 유지 하지 않고. s t a t 마크업 파일입니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="7c34f-122">A partial view is a *.cshtml* markup file without an [`@page`](xref:mvc/views/razor#page) directive maintained within the *Views* folder (MVC) or *Pages* folder (Razor Pages).</span></span>
 
-<span data-ttu-id="7c34f-123">ASP.NET Core MVC에서 컨트롤러의 <xref:Microsoft.AspNetCore.Mvc.ViewResult>는 보기 또는 부분 보기를 반환할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-123">In ASP.NET Core MVC, a controller's <xref:Microsoft.AspNetCore.Mvc.ViewResult> is capable of returning either a view or a partial view.</span></span> <span data-ttu-id="7c34f-124">:::no-loc(Razor):::페이지에서는 <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages.PageModel> 개체로 표시 된 부분 뷰를 반환할 수 있습니다 <xref:Microsoft.AspNetCore.Mvc.PartialViewResult> .</span><span class="sxs-lookup"><span data-stu-id="7c34f-124">In :::no-loc(Razor)::: Pages, a <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages.PageModel> can return a partial view represented as a <xref:Microsoft.AspNetCore.Mvc.PartialViewResult> object.</span></span> <span data-ttu-id="7c34f-125">부분 보기 참조 및 렌더링은 [부분 보기 참조](#reference-a-partial-view) 섹션에 설명되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-125">Referencing and rendering partial views is described in the [Reference a partial view](#reference-a-partial-view) section.</span></span>
+<span data-ttu-id="7c34f-123">ASP.NET Core MVC에서 컨트롤러의 <xref:Microsoft.AspNetCore.Mvc.ViewResult>는 보기 또는 부분 보기를 반환할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-123">In ASP.NET Core MVC, a controller's <xref:Microsoft.AspNetCore.Mvc.ViewResult> is capable of returning either a view or a partial view.</span></span> <span data-ttu-id="7c34f-124">Razor페이지에서는 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 개체로 표시 된 부분 뷰를 반환할 수 있습니다 <xref:Microsoft.AspNetCore.Mvc.PartialViewResult> .</span><span class="sxs-lookup"><span data-stu-id="7c34f-124">In Razor Pages, a <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> can return a partial view represented as a <xref:Microsoft.AspNetCore.Mvc.PartialViewResult> object.</span></span> <span data-ttu-id="7c34f-125">부분 보기 참조 및 렌더링은 [부분 보기 참조](#reference-a-partial-view) 섹션에 설명되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-125">Referencing and rendering partial views is described in the [Reference a partial view](#reference-a-partial-view) section.</span></span>
 
 <span data-ttu-id="7c34f-126">MVC 보기 또는 페이지 렌더링과 달리 부분 보기는 *_ViewStart.cshtml* 을 실행하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-126">Unlike MVC view or page rendering, a partial view doesn't run *_ViewStart.cshtml* .</span></span> <span data-ttu-id="7c34f-127">*_ViewStart.cshtml* 에 대한 자세한 내용은 <xref:mvc/views/layout>을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="7c34f-127">For more information on *_ViewStart.cshtml* , see <xref:mvc/views/layout>.</span></span>
 
@@ -84,7 +84,7 @@ ms.locfileid: "93060601"
 
 ::: moniker range=">= aspnetcore-2.0"
 
-### <a name="use-a-partial-view-in-a-no-locrazor-pages-pagemodel"></a><span data-ttu-id="7c34f-138">PageModel 페이지에서 부분 보기 사용 :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="7c34f-138">Use a partial view in a :::no-loc(Razor)::: Pages PageModel</span></span>
+### <a name="use-a-partial-view-in-a-no-locrazor-pages-pagemodel"></a><span data-ttu-id="7c34f-138">PageModel 페이지에서 부분 보기 사용 Razor</span><span class="sxs-lookup"><span data-stu-id="7c34f-138">Use a partial view in a Razor Pages PageModel</span></span>
 
 <span data-ttu-id="7c34f-139">ASP.NET Core 2.0 또는 2.1에서 다음 처리기 메서드는 응답에 대 한 다음과 같은 작업을 수행 *\_ 합니다.*</span><span class="sxs-lookup"><span data-stu-id="7c34f-139">In ASP.NET Core 2.0 or 2.1, the following handler method renders the *\_AuthorPartialRP.cshtml* partial view to the response:</span></span>
 
@@ -101,7 +101,7 @@ public IActionResult OnGetPartial() =>
 
 ::: moniker range=">= aspnetcore-2.2"
 
-<span data-ttu-id="7c34f-140">ASP.NET Core 2.2 이상에서 처리기 메서드는 <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages.PageBase.Partial*> 메서드를 대신 호출하여 `PartialViewResult` 개체를 생성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-140">In ASP.NET Core 2.2 or later, a handler method can alternatively call the <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages.PageBase.Partial*> method to produce a `PartialViewResult` object:</span></span>
+<span data-ttu-id="7c34f-140">ASP.NET Core 2.2 이상에서 처리기 메서드는 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageBase.Partial*> 메서드를 대신 호출하여 `PartialViewResult` 개체를 생성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-140">In ASP.NET Core 2.2 or later, a handler method can alternatively call the <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageBase.Partial*> method to produce a `PartialViewResult` object:</span></span>
 
 [!code-csharp[](partial/sample/PartialViewsSample/Pages/DiscoveryRP.cshtml.cs?name=snippet_OnGetPartial)]
 
@@ -149,7 +149,7 @@ public IActionResult OnGetPartial() =>
 
 <span data-ttu-id="7c34f-154">다음 예제에서는 앱 루트의 부분 보기를 참조합니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-154">The following example references a partial view from the app root.</span></span> <span data-ttu-id="7c34f-155">물결표-슬래시(`~/`) 또는 슬래시(`/`)로 시작되는 경로는 앱 루트를 참조합니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-155">Paths that start with a tilde-slash (`~/`) or a slash (`/`) refer to the app root:</span></span>
 
-<span data-ttu-id="7c34f-156">**:::no-loc(Razor)::: 마주보**</span><span class="sxs-lookup"><span data-stu-id="7c34f-156">**:::no-loc(Razor)::: Pages**</span></span>
+<span data-ttu-id="7c34f-156">**Razor 마주보**</span><span class="sxs-lookup"><span data-stu-id="7c34f-156">**Razor Pages**</span></span>
 
 ```cshtml
 <partial name="~/Pages/Folder/_PartialName.cshtml" />
@@ -191,7 +191,7 @@ public IActionResult OnGetPartial() =>
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="7c34f-167">**:::no-loc(Razor)::: 마주보**</span><span class="sxs-lookup"><span data-stu-id="7c34f-167">**:::no-loc(Razor)::: Pages**</span></span>
+<span data-ttu-id="7c34f-167">**Razor 마주보**</span><span class="sxs-lookup"><span data-stu-id="7c34f-167">**Razor Pages**</span></span>
 
 ```cshtml
 @await Html.PartialAsync("~/Pages/Folder/_PartialName.cshtml")
@@ -213,7 +213,7 @@ public IActionResult OnGetPartial() =>
 @await Html.PartialAsync("../Account/_LoginPartial.cshtml")
 ```
 
-<span data-ttu-id="7c34f-170">또는 <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartialAsync*>를 사용하여 부분 보기를 렌더링할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-170">Alternatively, you can render a partial view with <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartialAsync*>.</span></span> <span data-ttu-id="7c34f-171">이 메서드는 <xref:Microsoft.AspNetCore.Html.IHtmlContent>를 반환하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-171">This method doesn't return an <xref:Microsoft.AspNetCore.Html.IHtmlContent>.</span></span> <span data-ttu-id="7c34f-172">렌더링된 출력을 응답에 직접 스트리밍합니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-172">It streams the rendered output directly to the response.</span></span> <span data-ttu-id="7c34f-173">이 메서드는 결과를 반환 하지 않으므로 코드 블록 내에서 호출 해야 합니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="7c34f-173">Because the method doesn't return a result, it must be called within a :::no-loc(Razor)::: code block:</span></span>
+<span data-ttu-id="7c34f-170">또는 <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartialAsync*>를 사용하여 부분 보기를 렌더링할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-170">Alternatively, you can render a partial view with <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartialAsync*>.</span></span> <span data-ttu-id="7c34f-171">이 메서드는 <xref:Microsoft.AspNetCore.Html.IHtmlContent>를 반환하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-171">This method doesn't return an <xref:Microsoft.AspNetCore.Html.IHtmlContent>.</span></span> <span data-ttu-id="7c34f-172">렌더링된 출력을 응답에 직접 스트리밍합니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-172">It streams the rendered output directly to the response.</span></span> <span data-ttu-id="7c34f-173">이 메서드는 결과를 반환 하지 않으므로 코드 블록 내에서 호출 해야 합니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="7c34f-173">Because the method doesn't return a result, it must be called within a Razor code block:</span></span>
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_RenderPartialAsync)]
 
@@ -242,7 +242,7 @@ public IActionResult OnGetPartial() =>
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="7c34f-189">**:::no-loc(Razor)::: 마주보**</span><span class="sxs-lookup"><span data-stu-id="7c34f-189">**:::no-loc(Razor)::: Pages**</span></span>
+<span data-ttu-id="7c34f-189">**Razor 마주보**</span><span class="sxs-lookup"><span data-stu-id="7c34f-189">**Razor Pages**</span></span>
 
 1. <span data-ttu-id="7c34f-190">현재 페이지의 폴더를 실행 중</span><span class="sxs-lookup"><span data-stu-id="7c34f-190">Currently executing page's folder</span></span>
 1. <span data-ttu-id="7c34f-191">페이지의 폴더 위에 있는 디렉터리 그래프</span><span class="sxs-lookup"><span data-stu-id="7c34f-191">Directory graph above the page's folder</span></span>
@@ -278,7 +278,7 @@ public IActionResult OnGetPartial() =>
 * <span data-ttu-id="7c34f-198">부분 뷰를 연결할 *수* 있습니다 &mdash; . 순환 참조가 호출로 구성 되지 않은 경우 부분 보기는 다른 부분 뷰를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-198">Partial views can be *chained*&mdash;a partial view can call another partial view if a circular reference isn't formed by the calls.</span></span> <span data-ttu-id="7c34f-199">상대 경로는 항상, 파일의 루트 또는 부모가 아닌 현재 파일에 상대적입니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-199">Relative paths are always relative to the current file, not to the root or parent of the file.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="7c34f-200">[:::no-loc(Razor):::](xref:mvc/views/razor) `section` 부분 보기에 정의 된는 부모 태그 파일에 표시 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-200">A [:::no-loc(Razor):::](xref:mvc/views/razor) `section` defined in a partial view is invisible to parent markup files.</span></span> <span data-ttu-id="7c34f-201">`section`만 정의되어 있는 부분 보기에 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-201">The `section` is only visible to the partial view in which it's defined.</span></span>
+> <span data-ttu-id="7c34f-200">[Razor](xref:mvc/views/razor) `section` 부분 보기에 정의 된는 부모 태그 파일에 표시 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-200">A [Razor](xref:mvc/views/razor) `section` defined in a partial view is invisible to parent markup files.</span></span> <span data-ttu-id="7c34f-201">`section`만 정의되어 있는 부분 보기에 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-201">The `section` is only visible to the partial view in which it's defined.</span></span>
 
 ## <a name="access-data-from-partial-views"></a><span data-ttu-id="7c34f-202">부분 보기에서 데이터 액세스</span><span class="sxs-lookup"><span data-stu-id="7c34f-202">Access data from partial views</span></span>
 
@@ -298,7 +298,7 @@ public IActionResult OnGetPartial() =>
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="7c34f-210">**:::no-loc(Razor)::: 마주보**</span><span class="sxs-lookup"><span data-stu-id="7c34f-210">**:::no-loc(Razor)::: Pages**</span></span>
+<span data-ttu-id="7c34f-210">**Razor 마주보**</span><span class="sxs-lookup"><span data-stu-id="7c34f-210">**Razor Pages**</span></span>
 
 <span data-ttu-id="7c34f-211">샘플 앱의 다음 태그는 *Pages/ArticlesRP/ReadRP.cshtml* 페이지에서 가져온 것입니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-211">The following markup in the sample app is from the *Pages/ArticlesRP/ReadRP.cshtml* page.</span></span> <span data-ttu-id="7c34f-212">페이지에는 두 개의 부분 보기가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-212">The page contains two partial views.</span></span> <span data-ttu-id="7c34f-213">두 번째 부분 보기는 모델 및 `ViewData`를 부분 보기에 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-213">The second partial view passes in a model and `ViewData` to the partial view.</span></span> <span data-ttu-id="7c34f-214">`ViewDataDictionary` 생성자 오버로드를 사용하여 기존 `ViewData` 사전을 유지하면서 새로운 `ViewData` 사전을 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="7c34f-214">The `ViewDataDictionary` constructor overload is used to pass a new `ViewData` dictionary while retaining the existing `ViewData` dictionary.</span></span>
 

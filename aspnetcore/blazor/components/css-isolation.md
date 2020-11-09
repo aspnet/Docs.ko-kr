@@ -1,5 +1,5 @@
 ---
-title: 'ASP.NET Core :::no-loc(Blazor)::: CSS 격리'
+title: 'ASP.NET Core Blazor CSS 격리'
 author: daveabrock
 description: CSS 격리를 통해 CSS의 범위를 구성 요소로 지정하여 CSS를 간소화하고 다른 구성 요소나 라이브러리와의 충돌을 방지할 수 있는 방법을 알아봅니다.
 monikerRange: '>= aspnetcore-5.0'
@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/20/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/components/css-isolation
 ms.openlocfilehash: 628e7dc897912beaae0df792b82958517ac70ca4
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,7 +26,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056324"
 ---
-# <a name="aspnet-core-no-locblazor-css-isolation"></a><span data-ttu-id="96886-103">ASP.NET Core :::no-loc(Blazor)::: CSS 격리</span><span class="sxs-lookup"><span data-stu-id="96886-103">ASP.NET Core :::no-loc(Blazor)::: CSS isolation</span></span>
+# <a name="aspnet-core-no-locblazor-css-isolation"></a><span data-ttu-id="96886-103">ASP.NET Core Blazor CSS 격리</span><span class="sxs-lookup"><span data-stu-id="96886-103">ASP.NET Core Blazor CSS isolation</span></span>
 
 <span data-ttu-id="96886-104">작성자: [Dave Brock](https://twitter.com/daveabrock)</span><span class="sxs-lookup"><span data-stu-id="96886-104">By [Dave Brock](https://twitter.com/daveabrock)</span></span>
 
@@ -38,7 +38,7 @@ ms.locfileid: "93056324"
 
 <span data-ttu-id="96886-109">`MyComponent.razor` 파일이 있는 `MyComponent` 구성 요소에 대해서는 `MyComponent.razor.css`라는 구성 요소와 함께 파일을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="96886-109">For a `MyComponent` component that has a `MyComponent.razor` file, create a file alongside the component called `MyComponent.razor.css`.</span></span> <span data-ttu-id="96886-110">`razor.css` 파일 이름의 `MyComponent` 값은 대/소문자를 구분하지 **않습니다**.</span><span class="sxs-lookup"><span data-stu-id="96886-110">The `MyComponent` value in the `razor.css` filename is **not** case-sensitive.</span></span>
 
-<span data-ttu-id="96886-111">예를 들어 기본 :::no-loc(Blazor)::: 프로젝트 템플릿의 `Counter` 구성 요소에 CSS 격리를 추가하려면 `Counter.razor` 파일과 함께 `Counter.razor.css`라는 새 파일을 추가하고 다음 CSS를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-111">For example to add CSS isolation to the `Counter` component in the default :::no-loc(Blazor)::: project template, add a new file named `Counter.razor.css` alongside the `Counter.razor` file, then add the following CSS:</span></span>
+<span data-ttu-id="96886-111">예를 들어 기본 Blazor 프로젝트 템플릿의 `Counter` 구성 요소에 CSS 격리를 추가하려면 `Counter.razor` 파일과 함께 `Counter.razor.css`라는 새 파일을 추가하고 다음 CSS를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-111">For example to add CSS isolation to the `Counter` component in the default Blazor project template, add a new file named `Counter.razor.css` alongside the `Counter.razor` file, then add the following CSS:</span></span>
 
 ```css
 h1 { 
@@ -50,11 +50,11 @@ h1 {
 <span data-ttu-id="96886-112">`Counter.razor.css`에 정의된 스타일은 `Counter` 구성 요소의 렌더링된 출력에만 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="96886-112">The styles defined in `Counter.razor.css` are only applied to the rendered output of the `Counter` component.</span></span> <span data-ttu-id="96886-113">앱의 다른 위치에 정의된 모든 `h1` CSS 선언이 `Counter` 스타일과 충돌하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="96886-113">Any `h1` CSS declarations defined elsewhere in the app don't conflict with `Counter` styles.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="96886-114">묶음이 발생할 때 스타일 격리를 보장하기 위해 범위가 지정된 CSS 파일에서는 `@import` :::no-loc(Razor)::: 블록이 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="96886-114">In order to guarantee style isolation when bundling occurs, `@import` :::no-loc(Razor)::: blocks aren't supported with scoped CSS files.</span></span>
+> <span data-ttu-id="96886-114">묶음이 발생할 때 스타일 격리를 보장하기 위해 범위가 지정된 CSS 파일에서는 `@import` Razor 블록이 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="96886-114">In order to guarantee style isolation when bundling occurs, `@import` Razor blocks aren't supported with scoped CSS files.</span></span>
 
 ## <a name="css-isolation-bundling"></a><span data-ttu-id="96886-115">CSS 격리 묶음</span><span class="sxs-lookup"><span data-stu-id="96886-115">CSS isolation bundling</span></span>
 
-<span data-ttu-id="96886-116">CSS 격리는 빌드 시간에 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-116">CSS isolation occurs at build time.</span></span> <span data-ttu-id="96886-117">이 프로세스 중에 :::no-loc(Blazor):::는 구성 요소에 의해 렌더링된 태그와 일치하도록 CSS 선택기를 다시 작성합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-117">During this process, :::no-loc(Blazor)::: rewrites CSS selectors to match markup rendered by the component.</span></span> <span data-ttu-id="96886-118">이렇게 다시 작성된 CSS 스타일은 `{PROJECT NAME}.styles.css`에서 정적 자산으로 묶여 생성됩니다. 여기서 `{PROJECT NAME}` 자리 표시자는 참조된 패키지 또는 제품 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="96886-118">These rewritten CSS styles are bundled and produced as a static asset at `{PROJECT NAME}.styles.css`, where the placeholder `{PROJECT NAME}` is the referenced package or product name.</span></span>
+<span data-ttu-id="96886-116">CSS 격리는 빌드 시간에 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-116">CSS isolation occurs at build time.</span></span> <span data-ttu-id="96886-117">이 프로세스 중에 Blazor는 구성 요소에 의해 렌더링된 태그와 일치하도록 CSS 선택기를 다시 작성합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-117">During this process, Blazor rewrites CSS selectors to match markup rendered by the component.</span></span> <span data-ttu-id="96886-118">이렇게 다시 작성된 CSS 스타일은 `{PROJECT NAME}.styles.css`에서 정적 자산으로 묶여 생성됩니다. 여기서 `{PROJECT NAME}` 자리 표시자는 참조된 패키지 또는 제품 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="96886-118">These rewritten CSS styles are bundled and produced as a static asset at `{PROJECT NAME}.styles.css`, where the placeholder `{PROJECT NAME}` is the referenced package or product name.</span></span>
 
 <span data-ttu-id="96886-119">이러한 정적 파일은 기본적으로 앱의 루트 경로에서 참조됩니다.</span><span class="sxs-lookup"><span data-stu-id="96886-119">These static files are referenced from the root path of the app by default.</span></span> <span data-ttu-id="96886-120">앱에서 생성된 HTML의 `<head>` 태그 내에서 참조를 검사하여 묶은 파일을 참조합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-120">In the app, reference the bundled file by inspecting the reference inside the `<head>` tag of the generated HTML:</span></span>
 
@@ -62,7 +62,7 @@ h1 {
 <link href="MyProjectName.styles.css" rel="stylesheet">
 ```
 
-<span data-ttu-id="96886-121">묶은 파일 내에서 각 구성 요소는 범위 식별자와 연결됩니다.</span><span class="sxs-lookup"><span data-stu-id="96886-121">Within the bundled file, each component is associated with a scope identifier.</span></span> <span data-ttu-id="96886-122">스타일이 지정된 각 구성 요소에 대해 `b-<10-character-string>` 형식으로 HTML 특성이 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="96886-122">For each styled component, an HTML attribute is appended with the format `b-<10-character-string>`.</span></span> <span data-ttu-id="96886-123">식별자는 각 앱에 대해 고유하고 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="96886-123">The identifier is unique and different for each app.</span></span> <span data-ttu-id="96886-124">렌더링된 `Counter` 구성 요소에서 :::no-loc(Blazor):::는 `h1` 요소에 범위 식별자를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-124">In the rendered `Counter` component, :::no-loc(Blazor)::: appends a scope identifier to the `h1` element:</span></span>
+<span data-ttu-id="96886-121">묶은 파일 내에서 각 구성 요소는 범위 식별자와 연결됩니다.</span><span class="sxs-lookup"><span data-stu-id="96886-121">Within the bundled file, each component is associated with a scope identifier.</span></span> <span data-ttu-id="96886-122">스타일이 지정된 각 구성 요소에 대해 `b-<10-character-string>` 형식으로 HTML 특성이 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="96886-122">For each styled component, an HTML attribute is appended with the format `b-<10-character-string>`.</span></span> <span data-ttu-id="96886-123">식별자는 각 앱에 대해 고유하고 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="96886-123">The identifier is unique and different for each app.</span></span> <span data-ttu-id="96886-124">렌더링된 `Counter` 구성 요소에서 Blazor는 `h1` 요소에 범위 식별자를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-124">In the rendered `Counter` component, Blazor appends a scope identifier to the `h1` element:</span></span>
 
 ```html
 <h1 b-3xxtam6d07>
@@ -79,7 +79,7 @@ h1[b-3xxtam6d07] {
 
 <span data-ttu-id="96886-127">빌드 시간에 `{STATIC WEB ASSETS BASE PATH}/MyProject.lib.scp.css` 규칙을 사용하여 프로젝트 번들을 만듭니다. 여기서 `{STATIC WEB ASSETS BASE PATH}` 자리 표시자는 정적 웹 자산 기본 경로입니다.</span><span class="sxs-lookup"><span data-stu-id="96886-127">At build time, a project bundle is created with the convention `{STATIC WEB ASSETS BASE PATH}/MyProject.lib.scp.css`, where the placeholder `{STATIC WEB ASSETS BASE PATH}` is the static web assets base path.</span></span>
 
-<span data-ttu-id="96886-128">NuGet 패키지 또는 [:::no-loc(Razor)::: 클래스 라이브러리](xref:blazor/components/class-libraries) 같은 다른 프로젝트를 활용하는 경우 묶은 파일은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="96886-128">If other projects are utilized, such as NuGet packages or [:::no-loc(Razor)::: class libraries](xref:blazor/components/class-libraries), the bundled file:</span></span>
+<span data-ttu-id="96886-128">NuGet 패키지 또는 [Razor 클래스 라이브러리](xref:blazor/components/class-libraries) 같은 다른 프로젝트를 활용하는 경우 묶은 파일은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="96886-128">If other projects are utilized, such as NuGet packages or [Razor class libraries](xref:blazor/components/class-libraries), the bundled file:</span></span>
 
 * <span data-ttu-id="96886-129">CSS 가져오기를 사용하여 스타일을 참조합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-129">References the styles using CSS imports.</span></span>
 * <span data-ttu-id="96886-130">스타일을 사용하는 앱의 정적 웹 자산으로 게시되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="96886-130">Isn't published as a static web asset of the app that consumes the styles.</span></span>
@@ -141,7 +141,7 @@ h1[b-3xxtam6d07] {
 
 ## <a name="css-preprocessor-support"></a><span data-ttu-id="96886-144">CSS 전처리기 지원</span><span class="sxs-lookup"><span data-stu-id="96886-144">CSS preprocessor support</span></span>
 
-<span data-ttu-id="96886-145">CSS 전처리기는 변수, 중첩, 모듈, 믹스인 및 상속과 같은 기능을 활용하여 CSS 개발을 개선하는 데 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-145">CSS preprocessors are useful for improving CSS development by utilizing features such as variables, nesting, modules, mixins, and inheritance.</span></span> <span data-ttu-id="96886-146">CSS 격리는 Sass 또는 Less 같은 CSS 전처리기를 기본적으로 지원하지 않지만 :::no-loc(Blazor):::가 빌드 프로세스 중 CSS 선택기를 다시 작성하기 전에 전처리기 컴파일이 수행되는 한 CSS 전처리기를 원활하게 통합할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="96886-146">While CSS isolation doesn't natively support CSS preprocessors such as Sass or Less, integrating CSS preprocessors is seamless as long as preprocessor compilation occurs before :::no-loc(Blazor)::: rewrites the CSS selectors during the build process.</span></span> <span data-ttu-id="96886-147">예를 들어 Visual Studio를 사용하여 Visual Studio 작업 실행기 탐색기에서 **빌드 전** 작업으로 기존 전처리기 컴파일을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-147">Using Visual Studio for example, configure existing preprocessor compilation as a **Before Build** task in the Visual Studio Task Runner Explorer.</span></span>
+<span data-ttu-id="96886-145">CSS 전처리기는 변수, 중첩, 모듈, 믹스인 및 상속과 같은 기능을 활용하여 CSS 개발을 개선하는 데 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-145">CSS preprocessors are useful for improving CSS development by utilizing features such as variables, nesting, modules, mixins, and inheritance.</span></span> <span data-ttu-id="96886-146">CSS 격리는 Sass 또는 Less 같은 CSS 전처리기를 기본적으로 지원하지 않지만 Blazor가 빌드 프로세스 중 CSS 선택기를 다시 작성하기 전에 전처리기 컴파일이 수행되는 한 CSS 전처리기를 원활하게 통합할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="96886-146">While CSS isolation doesn't natively support CSS preprocessors such as Sass or Less, integrating CSS preprocessors is seamless as long as preprocessor compilation occurs before Blazor rewrites the CSS selectors during the build process.</span></span> <span data-ttu-id="96886-147">예를 들어 Visual Studio를 사용하여 Visual Studio 작업 실행기 탐색기에서 **빌드 전** 작업으로 기존 전처리기 컴파일을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-147">Using Visual Studio for example, configure existing preprocessor compilation as a **Before Build** task in the Visual Studio Task Runner Explorer.</span></span>
 
 <span data-ttu-id="96886-148">[Delegate.SassBuilder](https://www.nuget.org/packages/Delegate.SassBuilder)와 같은 많은 타사 NuGet 패키지는 CSS 격리가 발생하기 전 빌드 프로세스 시작 부분에서 SASS/SCSS 파일을 컴파일할 수 있으며, 추가 구성이 필요하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="96886-148">Many third-party NuGet packages, such as [Delegate.SassBuilder](https://www.nuget.org/packages/Delegate.SassBuilder), can compile SASS/SCSS files at the beginning of the build process before CSS isolation occurs, and no additional additional configuration is required.</span></span>
 
@@ -159,7 +159,7 @@ h1[b-3xxtam6d07] {
 </ItemGroup>
 ```
 
-<span data-ttu-id="96886-154">위의 예제에서 `MyComponent.:::no-loc(Razor):::.css`에 대해 생성된 CSS는 범위 식별자를 `b-<10-character-string>`에서 `my-custom-scope-identifier`로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-154">In the preceding example, the CSS generated for `MyComponent.:::no-loc(Razor):::.css` changes its scope identifier from `b-<10-character-string>` to `my-custom-scope-identifier`.</span></span>
+<span data-ttu-id="96886-154">위의 예제에서 `MyComponent.Razor.css`에 대해 생성된 CSS는 범위 식별자를 `b-<10-character-string>`에서 `my-custom-scope-identifier`로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-154">In the preceding example, the CSS generated for `MyComponent.Razor.css` changes its scope identifier from `b-<10-character-string>` to `my-custom-scope-identifier`.</span></span>
 
 ### <a name="change-base-path-for-static-web-assets"></a><span data-ttu-id="96886-155">정적 웹 자산에 대한 기본 경로 변경</span><span class="sxs-lookup"><span data-stu-id="96886-155">Change base path for static web assets</span></span>
 
@@ -173,7 +173,7 @@ h1[b-3xxtam6d07] {
 
 ### <a name="disable-automatic-bundling"></a><span data-ttu-id="96886-159">자동 묶음 사용 안 함</span><span class="sxs-lookup"><span data-stu-id="96886-159">Disable automatic bundling</span></span>
 
-<span data-ttu-id="96886-160">:::no-loc(Blazor):::가 런타임에 범위가 지정된 파일을 게시하고 로드하는 방법을 옵트아웃하려면 `DisableScopedCssBundling` 속성을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-160">To opt out of how :::no-loc(Blazor)::: publishes and loads scoped files at runtime, use the `DisableScopedCssBundling` property.</span></span> <span data-ttu-id="96886-161">이 속성을 사용하면 다른 도구나 프로세스가 `obj` 디렉터리에서 격리된 CSS 파일을 가져와 런타임에 게시하고 로드한다는 의미입니다.</span><span class="sxs-lookup"><span data-stu-id="96886-161">When using this property, it means other tools or processes are responsible for taking the isolated CSS files from the `obj` directory and publishing and loading them at runtime:</span></span>
+<span data-ttu-id="96886-160">Blazor가 런타임에 범위가 지정된 파일을 게시하고 로드하는 방법을 옵트아웃하려면 `DisableScopedCssBundling` 속성을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="96886-160">To opt out of how Blazor publishes and loads scoped files at runtime, use the `DisableScopedCssBundling` property.</span></span> <span data-ttu-id="96886-161">이 속성을 사용하면 다른 도구나 프로세스가 `obj` 디렉터리에서 격리된 CSS 파일을 가져와 런타임에 게시하고 로드한다는 의미입니다.</span><span class="sxs-lookup"><span data-stu-id="96886-161">When using this property, it means other tools or processes are responsible for taking the isolated CSS files from the `obj` directory and publishing and loading them at runtime:</span></span>
 
 ```xml
 <PropertyGroup>

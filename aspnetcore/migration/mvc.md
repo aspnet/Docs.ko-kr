@@ -5,17 +5,17 @@ description: ASP.NET MVC 프로젝트를 ASP.NET Core MVC로 마이그레이션�
 ms.author: wpickett
 ms.date: 06/18/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: migration/mvc
 ms.openlocfilehash: 226ac6da508378c7b3c81779d38dd2e0840f1fed
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -37,7 +37,7 @@ ms.locfileid: "93051515"
 * <span data-ttu-id="58fc6-110">정적 콘텐츠.</span><span class="sxs-lookup"><span data-stu-id="58fc6-110">Static content.</span></span>
 * <span data-ttu-id="58fc6-111">클라이언트 쪽 종속성.</span><span class="sxs-lookup"><span data-stu-id="58fc6-111">Client-side dependencies.</span></span>
 
-<span data-ttu-id="58fc6-112">구성 및 코드 마이그레이션에 대 한 자세한 :::no-loc(Identity)::: 내용은 [ASP.NET Core 구성 마이그레이션](xref:migration/configuration) 및 [인증 및 :::no-loc(Identity)::: ASP.NET Core 마이그레이션](xref:migration/identity)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="58fc6-112">For migrating configuration and :::no-loc(Identity)::: code, see [Migrate configuration to ASP.NET Core](xref:migration/configuration) and [Migrate Authentication and :::no-loc(Identity)::: to ASP.NET Core](xref:migration/identity).</span></span>
+<span data-ttu-id="58fc6-112">구성 및 코드 마이그레이션에 대 한 자세한 Identity 내용은 [ASP.NET Core 구성 마이그레이션](xref:migration/configuration) 및 [인증 및 Identity ASP.NET Core 마이그레이션](xref:migration/identity)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="58fc6-112">For migrating configuration and Identity code, see [Migrate configuration to ASP.NET Core](xref:migration/configuration) and [Migrate Authentication and Identity to ASP.NET Core](xref:migration/identity).</span></span>
 
 ## <a name="prerequisites"></a><span data-ttu-id="58fc6-113">필수 구성 요소</span><span class="sxs-lookup"><span data-stu-id="58fc6-113">Prerequisites</span></span>
 
@@ -101,7 +101,7 @@ ms.locfileid: "93051515"
 1. <span data-ttu-id="58fc6-158">ASP.NET MVC에서 메서드를 복사 `HomeController` 하 여 새 ASP.NET Core 메서드를 `HomeController` 대체 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-158">Copy the methods from the ASP.NET MVC `HomeController` to replace the new ASP.NET Core `HomeController` methods.</span></span> <span data-ttu-id="58fc6-159">작업 메서드의 반환 형식을 변경할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-159">There's no need to change the return type of the action methods.</span></span> <span data-ttu-id="58fc6-160">ASP.NET MVC 기본 제공 템플릿의 컨트롤러 동작 메서드 반환 형식은입니다 <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2> . MVC ASP.NET Core 작업 메서드는 대신을 반환 합니다 `IActionResult` .</span><span class="sxs-lookup"><span data-stu-id="58fc6-160">The ASP.NET MVC built-in template's controller action method return type is <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2>; in ASP.NET Core MVC, the action methods return `IActionResult` instead.</span></span> <span data-ttu-id="58fc6-161">`ActionResult`는 `IActionResult`를 구현합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-161">`ActionResult` implements `IActionResult`.</span></span>
 1. <span data-ttu-id="58fc6-162">ASP.NET Core 프로젝트에서 *Views/Home* 디렉터리를 마우스 오른쪽 단추로 클릭 하 고 **Add** > **기존 항목** 추가를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-162">In the ASP.NET Core project, right-click the *Views/Home* directory, select **Add** > **Existing Item** .</span></span>
 1. <span data-ttu-id="58fc6-163">**기존 항목 추가** 대화 상자에서 ASP.NET MVC *WebApp1* 프로젝트의 *Views/Home* 디렉터리로 이동 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-163">In the **Add Existing Item** dialog, navigate to the ASP.NET MVC *WebApp1* project's *Views/Home* directory.</span></span>
-1. <span data-ttu-id="58fc6-164">*About. cshtml* 및 *Contact* 를 선택 하 고,이 파일을 *인덱스* 를 선택 하 고, :::no-loc(Razor)::: **추가** 를 선택 하 고 기존 파일을 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-164">Select the *About.cshtml* , *Contact.cshtml* , and *Index.cshtml* :::no-loc(Razor)::: view files, then select **Add** , replacing the existing files.</span></span>
+1. <span data-ttu-id="58fc6-164">*About. cshtml* 및 *Contact* 를 선택 하 고,이 파일을 *인덱스* 를 선택 하 고, Razor **추가** 를 선택 하 고 기존 파일을 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-164">Select the *About.cshtml* , *Contact.cshtml* , and *Index.cshtml* Razor view files, then select **Add** , replacing the existing files.</span></span>
 
 <span data-ttu-id="58fc6-165">자세한 내용은 <xref:mvc/controllers/actions> 및 <xref:mvc/views/overview>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="58fc6-165">For more information, see <xref:mvc/controllers/actions> and <xref:mvc/views/overview>.</span></span>
 
@@ -203,7 +203,7 @@ ms.locfileid: "93051515"
 * <span data-ttu-id="58fc6-222">정적 콘텐츠</span><span class="sxs-lookup"><span data-stu-id="58fc6-222">Static content</span></span>
 * <span data-ttu-id="58fc6-223">클라이언트 쪽 종속성.</span><span class="sxs-lookup"><span data-stu-id="58fc6-223">Client-side dependencies.</span></span>
 
-<span data-ttu-id="58fc6-224">구성 및 코드 마이그레이션에 대 한 자세한 :::no-loc(Identity)::: 내용은 및을 참조 하십시오 <xref:migration/configuration> <xref:migration/identity> .</span><span class="sxs-lookup"><span data-stu-id="58fc6-224">For migrating configuration and :::no-loc(Identity)::: code, see <xref:migration/configuration> and <xref:migration/identity>.</span></span>
+<span data-ttu-id="58fc6-224">구성 및 코드 마이그레이션에 대 한 자세한 Identity 내용은 및을 참조 하십시오 <xref:migration/configuration> <xref:migration/identity> .</span><span class="sxs-lookup"><span data-stu-id="58fc6-224">For migrating configuration and Identity code, see <xref:migration/configuration> and <xref:migration/identity>.</span></span>
 
 > [!NOTE]
 > <span data-ttu-id="58fc6-225">샘플의 버전 번호가 최신이 아닐 수 있습니다. 프로젝트를 적절 하 게 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-225">The version numbers in the samples might not be current, update the projects accordingly.</span></span>
@@ -254,7 +254,7 @@ ms.locfileid: "93051515"
 
 * <span data-ttu-id="58fc6-261">*뷰/홈* 디렉터리를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-261">Add a *Views/Home* directory.</span></span>
 
-* <span data-ttu-id="58fc6-262">뷰 */홈* 디렉터리에 *Index. cshtml* 이라는 **:::no-loc(Razor)::: 뷰** 를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-262">Add a **:::no-loc(Razor)::: View** named *Index.cshtml* to the *Views/Home* directory.</span></span>
+* <span data-ttu-id="58fc6-262">뷰 */홈* 디렉터리에 *Index. cshtml* 이라는 **Razor 뷰** 를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-262">Add a **Razor View** named *Index.cshtml* to the *Views/Home* directory.</span></span>
 
 ![새 항목 추가 대화 상자](mvc/_static/view.png)
 
@@ -288,13 +288,13 @@ ms.locfileid: "93051515"
 
 * <span data-ttu-id="58fc6-276">filters</span><span class="sxs-lookup"><span data-stu-id="58fc6-276">filters</span></span>
 
-* <span data-ttu-id="58fc6-277">로그인/로그 아웃 합니다 :::no-loc(Identity)::: (다음 자습서에서 수행 됨).</span><span class="sxs-lookup"><span data-stu-id="58fc6-277">Log in/out, :::no-loc(Identity)::: (This is done in the next tutorial.)</span></span>
+* <span data-ttu-id="58fc6-277">로그인/로그 아웃 합니다 Identity (다음 자습서에서 수행 됨).</span><span class="sxs-lookup"><span data-stu-id="58fc6-277">Log in/out, Identity (This is done in the next tutorial.)</span></span>
 
 ## <a name="controllers-and-views"></a><span data-ttu-id="58fc6-278">컨트롤러 및 뷰</span><span class="sxs-lookup"><span data-stu-id="58fc6-278">Controllers and views</span></span>
 
 * <span data-ttu-id="58fc6-279">ASP.NET MVC의 각 메서드 `HomeController` 를 새로 복사 `HomeController` 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-279">Copy each of the methods from the ASP.NET MVC `HomeController` to the new `HomeController`.</span></span> <span data-ttu-id="58fc6-280">ASP.NET MVC에서 기본 제공 템플릿의 컨트롤러 동작 메서드 반환 형식은입니다. <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2> ASP.NET CORE mvc에서는 작업 메서드가 대신을 반환 합니다 `IActionResult` .</span><span class="sxs-lookup"><span data-stu-id="58fc6-280">In ASP.NET MVC, the built-in template's controller action method return type is <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2>; in ASP.NET Core MVC, the action methods return `IActionResult` instead.</span></span> <span data-ttu-id="58fc6-281">`ActionResult` 는 `IActionResult` 를 구현 하므로 작업 메서드의 반환 형식을 변경할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-281">`ActionResult` implements `IActionResult`, so there's no need to change the return type of the action methods.</span></span>
 
-* <span data-ttu-id="58fc6-282">*Contact.cshtml* ASP.NET MVC 프로젝트에서 MVC ASP.NET Core 프로젝트에 *대 한* 파일을 *복사 합니다.* :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="58fc6-282">Copy the *About.cshtml* , *Contact.cshtml* , and *Index.cshtml* :::no-loc(Razor)::: view files from the ASP.NET MVC project to the ASP.NET Core project.</span></span>
+* <span data-ttu-id="58fc6-282">*Contact.cshtml* ASP.NET MVC 프로젝트에서 MVC ASP.NET Core 프로젝트에 *대 한* 파일을 *복사 합니다.* Razor</span><span class="sxs-lookup"><span data-stu-id="58fc6-282">Copy the *About.cshtml* , *Contact.cshtml* , and *Index.cshtml* Razor view files from the ASP.NET MVC project to the ASP.NET Core project.</span></span>
 
 ## <a name="test-each-method"></a><span data-ttu-id="58fc6-283">각 메서드 테스트</span><span class="sxs-lookup"><span data-stu-id="58fc6-283">Test each method</span></span>
 
@@ -330,7 +330,7 @@ ms.locfileid: "93051515"
 
 * <span data-ttu-id="58fc6-313">`@Scripts.Render("~/bundles/modernizr")`를 제거합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-313">Remove `@Scripts.Render("~/bundles/modernizr")`.</span></span>
 
-* <span data-ttu-id="58fc6-314">줄을 주석 `@Html.Partial("_LoginPartial")` 으로 처리 `@*...*@` 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-314">Comment out the `@Html.Partial("_LoginPartial")` line (surround the line with `@*...*@`).</span></span> <span data-ttu-id="58fc6-315">자세한 내용은 [인증 및 :::no-loc(Identity)::: ASP.NET Core 마이그레이션](xref:migration/identity) 을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="58fc6-315">For more information, see [Migrate Authentication and :::no-loc(Identity)::: to ASP.NET Core](xref:migration/identity)</span></span>
+* <span data-ttu-id="58fc6-314">줄을 주석 `@Html.Partial("_LoginPartial")` 으로 처리 `@*...*@` 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-314">Comment out the `@Html.Partial("_LoginPartial")` line (surround the line with `@*...*@`).</span></span> <span data-ttu-id="58fc6-315">자세한 내용은 [인증 및 Identity ASP.NET Core 마이그레이션](xref:migration/identity) 을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="58fc6-315">For more information, see [Migrate Authentication and Identity to ASP.NET Core](xref:migration/identity)</span></span>
 
 * <span data-ttu-id="58fc6-316">`@Scripts.Render("~/bundles/jquery")` `<script>` 요소로 대체 합니다 (아래 참조).</span><span class="sxs-lookup"><span data-stu-id="58fc6-316">Replace `@Scripts.Render("~/bundles/jquery")` with a `<script>` element (see below).</span></span>
 
@@ -389,7 +389,7 @@ ms.locfileid: "93051515"
 * <span data-ttu-id="58fc6-343">정적 콘텐츠</span><span class="sxs-lookup"><span data-stu-id="58fc6-343">Static content</span></span>
 * <span data-ttu-id="58fc6-344">클라이언트 쪽 종속성.</span><span class="sxs-lookup"><span data-stu-id="58fc6-344">Client-side dependencies.</span></span>
 
-<span data-ttu-id="58fc6-345">구성 및 코드 마이그레이션에 대 한 자세한 :::no-loc(Identity)::: 내용은 [ASP.NET Core 구성 마이그레이션](xref:migration/configuration) 및 [인증 및 :::no-loc(Identity)::: ASP.NET Core 마이그레이션](xref:migration/identity)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="58fc6-345">For migrating configuration and :::no-loc(Identity)::: code, see [Migrate configuration to ASP.NET Core](xref:migration/configuration) and [Migrate Authentication and :::no-loc(Identity)::: to ASP.NET Core](xref:migration/identity).</span></span>
+<span data-ttu-id="58fc6-345">구성 및 코드 마이그레이션에 대 한 자세한 Identity 내용은 [ASP.NET Core 구성 마이그레이션](xref:migration/configuration) 및 [인증 및 Identity ASP.NET Core 마이그레이션](xref:migration/identity)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="58fc6-345">For migrating configuration and Identity code, see [Migrate configuration to ASP.NET Core](xref:migration/configuration) and [Migrate Authentication and Identity to ASP.NET Core](xref:migration/identity).</span></span>
 
 > [!NOTE]
 > <span data-ttu-id="58fc6-346">샘플의 버전 번호가 최신이 아닐 수 있습니다. 프로젝트를 적절 하 게 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-346">The version numbers in the samples might not be current, update the projects accordingly.</span></span>
@@ -440,7 +440,7 @@ ms.locfileid: "93051515"
 
 * <span data-ttu-id="58fc6-383">*뷰/홈* 디렉터리를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-383">Add a *Views/Home* directory.</span></span>
 
-* <span data-ttu-id="58fc6-384">뷰 */홈* 디렉터리에 *Index. cshtml* 이라는 **:::no-loc(Razor)::: 뷰** 를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-384">Add a **:::no-loc(Razor)::: View** named *Index.cshtml* to the *Views/Home* directory.</span></span>
+* <span data-ttu-id="58fc6-384">뷰 */홈* 디렉터리에 *Index. cshtml* 이라는 **Razor 뷰** 를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-384">Add a **Razor View** named *Index.cshtml* to the *Views/Home* directory.</span></span>
 
 ![새 항목 추가 대화 상자](mvc/_static/view.png)
 
@@ -474,13 +474,13 @@ ms.locfileid: "93051515"
 
 * <span data-ttu-id="58fc6-398">filters</span><span class="sxs-lookup"><span data-stu-id="58fc6-398">filters</span></span>
 
-* <span data-ttu-id="58fc6-399">로그인/로그 아웃 합니다 :::no-loc(Identity)::: (다음 자습서에서 수행 됨).</span><span class="sxs-lookup"><span data-stu-id="58fc6-399">Log in/out, :::no-loc(Identity)::: (This is done in the next tutorial.)</span></span>
+* <span data-ttu-id="58fc6-399">로그인/로그 아웃 합니다 Identity (다음 자습서에서 수행 됨).</span><span class="sxs-lookup"><span data-stu-id="58fc6-399">Log in/out, Identity (This is done in the next tutorial.)</span></span>
 
 ## <a name="controllers-and-views"></a><span data-ttu-id="58fc6-400">컨트롤러 및 뷰</span><span class="sxs-lookup"><span data-stu-id="58fc6-400">Controllers and views</span></span>
 
 * <span data-ttu-id="58fc6-401">ASP.NET MVC의 각 메서드 `HomeController` 를 새로 복사 `HomeController` 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-401">Copy each of the methods from the ASP.NET MVC `HomeController` to the new `HomeController`.</span></span> <span data-ttu-id="58fc6-402">ASP.NET MVC에서 기본 제공 템플릿의 컨트롤러 동작 메서드 반환 형식은입니다. <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2> ASP.NET CORE mvc에서는 작업 메서드가 대신을 반환 합니다 `IActionResult` .</span><span class="sxs-lookup"><span data-stu-id="58fc6-402">In ASP.NET MVC, the built-in template's controller action method return type is <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2>; in ASP.NET Core MVC, the action methods return `IActionResult` instead.</span></span> <span data-ttu-id="58fc6-403">`ActionResult` 는 `IActionResult` 를 구현 하므로 작업 메서드의 반환 형식을 변경할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-403">`ActionResult` implements `IActionResult`, so there's no need to change the return type of the action methods.</span></span>
 
-* <span data-ttu-id="58fc6-404">*Contact.cshtml* ASP.NET MVC 프로젝트에서 MVC ASP.NET Core 프로젝트에 *대 한* 파일을 *복사 합니다.* :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="58fc6-404">Copy the *About.cshtml* , *Contact.cshtml* , and *Index.cshtml* :::no-loc(Razor)::: view files from the ASP.NET MVC project to the ASP.NET Core project.</span></span>
+* <span data-ttu-id="58fc6-404">*Contact.cshtml* ASP.NET MVC 프로젝트에서 MVC ASP.NET Core 프로젝트에 *대 한* 파일을 *복사 합니다.* Razor</span><span class="sxs-lookup"><span data-stu-id="58fc6-404">Copy the *About.cshtml* , *Contact.cshtml* , and *Index.cshtml* Razor view files from the ASP.NET MVC project to the ASP.NET Core project.</span></span>
 
 ## <a name="test-each-method"></a><span data-ttu-id="58fc6-405">각 메서드 테스트</span><span class="sxs-lookup"><span data-stu-id="58fc6-405">Test each method</span></span>
 
@@ -516,7 +516,7 @@ ms.locfileid: "93051515"
 
 * <span data-ttu-id="58fc6-435">`@Scripts.Render("~/bundles/modernizr")`를 제거합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-435">Remove `@Scripts.Render("~/bundles/modernizr")`.</span></span>
 
-* <span data-ttu-id="58fc6-436">줄을 주석 `@Html.Partial("_LoginPartial")` 으로 처리 `@*...*@` 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-436">Comment out the `@Html.Partial("_LoginPartial")` line (surround the line with `@*...*@`).</span></span> <span data-ttu-id="58fc6-437">자세한 내용은 [인증 및 :::no-loc(Identity)::: ASP.NET Core 마이그레이션](xref:migration/identity) 을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="58fc6-437">For more information, see [Migrate Authentication and :::no-loc(Identity)::: to ASP.NET Core](xref:migration/identity)</span></span>
+* <span data-ttu-id="58fc6-436">줄을 주석 `@Html.Partial("_LoginPartial")` 으로 처리 `@*...*@` 합니다.</span><span class="sxs-lookup"><span data-stu-id="58fc6-436">Comment out the `@Html.Partial("_LoginPartial")` line (surround the line with `@*...*@`).</span></span> <span data-ttu-id="58fc6-437">자세한 내용은 [인증 및 Identity ASP.NET Core 마이그레이션](xref:migration/identity) 을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="58fc6-437">For more information, see [Migrate Authentication and Identity to ASP.NET Core](xref:migration/identity)</span></span>
 
 * <span data-ttu-id="58fc6-438">`@Scripts.Render("~/bundles/jquery")` `<script>` 요소로 대체 합니다 (아래 참조).</span><span class="sxs-lookup"><span data-stu-id="58fc6-438">Replace `@Scripts.Render("~/bundles/jquery")` with a `<script>` element (see below).</span></span>
 

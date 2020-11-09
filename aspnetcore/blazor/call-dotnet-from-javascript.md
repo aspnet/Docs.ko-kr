@@ -1,23 +1,23 @@
 ---
-title: ASP.NET Core :::no-loc(Blazor):::의 JavaScript 함수에서 .NET 메서드 호출
+title: ASP.NET Core Blazor의 JavaScript 함수에서 .NET 메서드 호출
 author: guardrex
-description: ':::no-loc(Blazor)::: 앱의 JavaScript 함수에서 .NET 메서드를 호출하는 방법을 알아봅니다.'
+description: 'Blazor 앱의 JavaScript 함수에서 .NET 메서드를 호출하는 방법을 알아봅니다.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc, devx-track-js
 ms.date: 08/12/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/call-dotnet-from-javascript
 ms.openlocfilehash: 456339d46cf2991baaa27ae2a3a97a5c221fd3b0
 ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
@@ -26,11 +26,11 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 11/03/2020
 ms.locfileid: "93234402"
 ---
-# <a name="call-net-methods-from-javascript-functions-in-aspnet-core-no-locblazor"></a><span data-ttu-id="7a799-103">ASP.NET Core :::no-loc(Blazor):::의 JavaScript 함수에서 .NET 메서드 호출</span><span class="sxs-lookup"><span data-stu-id="7a799-103">Call .NET methods from JavaScript functions in ASP.NET Core :::no-loc(Blazor):::</span></span>
+# <a name="call-net-methods-from-javascript-functions-in-aspnet-core-no-locblazor"></a><span data-ttu-id="7a799-103">ASP.NET Core Blazor의 JavaScript 함수에서 .NET 메서드 호출</span><span class="sxs-lookup"><span data-stu-id="7a799-103">Call .NET methods from JavaScript functions in ASP.NET Core Blazor</span></span>
 
 <span data-ttu-id="7a799-104">작성자: [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Shashikant Rudrawadi](http://wisne.co) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="7a799-104">By [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Shashikant Rudrawadi](http://wisne.co), and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="7a799-105">:::no-loc(Blazor)::: 앱은 .NET 메서드에서 JavaScript 함수를 호출하고 JavaScript 함수에서 .NET 메서드를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-105">A :::no-loc(Blazor)::: app can invoke JavaScript functions from .NET methods and .NET methods from JavaScript functions.</span></span> <span data-ttu-id="7a799-106">이러한 시나리오를 *JavaScript 상호 운용성* ( *JS interop* )이라고 합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-106">These scenarios are called *JavaScript interoperability* ( *JS interop* ).</span></span>
+<span data-ttu-id="7a799-105">Blazor 앱은 .NET 메서드에서 JavaScript 함수를 호출하고 JavaScript 함수에서 .NET 메서드를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-105">A Blazor app can invoke JavaScript functions from .NET methods and .NET methods from JavaScript functions.</span></span> <span data-ttu-id="7a799-106">이러한 시나리오를 *JavaScript 상호 운용성* ( *JS interop* )이라고 합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-106">These scenarios are called *JavaScript interoperability* ( *JS interop* ).</span></span>
 
 <span data-ttu-id="7a799-107">이 문서에서는 JavaScript에서 .NET 메서드를 호출하는 방법을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-107">This article covers invoking .NET methods from JavaScript.</span></span> <span data-ttu-id="7a799-108">.NET에서 JavaScript 함수를 호출하는 방법에 대한 내용은 <xref:blazor/call-javascript-from-dotnet>을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="7a799-108">For information on how to call JavaScript functions from .NET, see <xref:blazor/call-javascript-from-dotnet>.</span></span>
 
@@ -38,7 +38,7 @@ ms.locfileid: "93234402"
 
 ## <a name="static-net-method-call"></a><span data-ttu-id="7a799-110">정적 .NET 메서드 호출</span><span class="sxs-lookup"><span data-stu-id="7a799-110">Static .NET method call</span></span>
 
-<span data-ttu-id="7a799-111">JavaScript에서 정적 .NET 메서드를 호출하려면 `DotNet.invokeMethod` 또는 `DotNet.invokeMethodAsync` 함수를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-111">To invoke a static .NET method from JavaScript, use the `DotNet.invokeMethod` or `DotNet.invokeMethodAsync` functions.</span></span> <span data-ttu-id="7a799-112">호출할 정적 메서드의 식별자, 함수를 포함하는 어셈블리의 이름 및 인수를 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-112">Pass in the identifier of the static method you wish to call, the name of the assembly containing the function, and any arguments.</span></span> <span data-ttu-id="7a799-113">비동기 버전은 :::no-loc(Blazor Server)::: 시나리오를 지원하는 데 선호됩니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-113">The asynchronous version is preferred to support :::no-loc(Blazor Server)::: scenarios.</span></span> <span data-ttu-id="7a799-114">.NET 메서드는 공용, 정적이며 [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) 특성이 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-114">The .NET method must be public, static, and have the [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) attribute.</span></span> <span data-ttu-id="7a799-115">개방형 제네릭 메서드를 호출하는 것은 현재 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-115">Calling open generic methods isn't currently supported.</span></span>
+<span data-ttu-id="7a799-111">JavaScript에서 정적 .NET 메서드를 호출하려면 `DotNet.invokeMethod` 또는 `DotNet.invokeMethodAsync` 함수를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-111">To invoke a static .NET method from JavaScript, use the `DotNet.invokeMethod` or `DotNet.invokeMethodAsync` functions.</span></span> <span data-ttu-id="7a799-112">호출할 정적 메서드의 식별자, 함수를 포함하는 어셈블리의 이름 및 인수를 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-112">Pass in the identifier of the static method you wish to call, the name of the assembly containing the function, and any arguments.</span></span> <span data-ttu-id="7a799-113">비동기 버전은 Blazor Server 시나리오를 지원하는 데 선호됩니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-113">The asynchronous version is preferred to support Blazor Server scenarios.</span></span> <span data-ttu-id="7a799-114">.NET 메서드는 공용, 정적이며 [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) 특성이 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-114">The .NET method must be public, static, and have the [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) attribute.</span></span> <span data-ttu-id="7a799-115">개방형 제네릭 메서드를 호출하는 것은 현재 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-115">Calling open generic methods isn't currently supported.</span></span>
 
 <span data-ttu-id="7a799-116">샘플 앱에는 `int` 배열을 반환하기 위한 C# 메서드가 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-116">The sample app includes a C# method to return an `int` array.</span></span> <span data-ttu-id="7a799-117">[`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) 특성이 메서드에 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-117">The [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) attribute is applied to the method.</span></span>
 
@@ -63,7 +63,7 @@ ms.locfileid: "93234402"
 
 <span data-ttu-id="7a799-120">`wwwroot/exampleJsInterop.js`:</span><span class="sxs-lookup"><span data-stu-id="7a799-120">`wwwroot/exampleJsInterop.js`:</span></span>
 
-[!code-javascript[](./common/samples/3.x/:::no-loc(Blazor):::WebAssemblySample/wwwroot/exampleJsInterop.js?highlight=8-14)]
+[!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=8-14)]
 
 <span data-ttu-id="7a799-121">**`Trigger .NET static method ReturnArrayAsync`** 단추를 선택한 경우 브라우저의 웹 개발자 도구에서 콘솔 출력을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-121">When the **`Trigger .NET static method ReturnArrayAsync`** button is selected, examine the console output in the browser's web developer tools.</span></span>
 
@@ -99,7 +99,7 @@ returnArrayAsyncJs: function () {
 }
 ```
 
-<span data-ttu-id="7a799-126">자리 표시자 `{APP ASSEMBLY}`는 앱의 앱 어셈블리 이름입니다(예: `:::no-loc(Blazor):::Sample`).</span><span class="sxs-lookup"><span data-stu-id="7a799-126">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `:::no-loc(Blazor):::Sample`).</span></span>
+<span data-ttu-id="7a799-126">자리 표시자 `{APP ASSEMBLY}`는 앱의 앱 어셈블리 이름입니다(예: `BlazorSample`).</span><span class="sxs-lookup"><span data-stu-id="7a799-126">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `BlazorSample`).</span></span>
 
 ## <a name="instance-method-call"></a><span data-ttu-id="7a799-127">인스턴스 메서드 호출</span><span class="sxs-lookup"><span data-stu-id="7a799-127">Instance method call</span></span>
 
@@ -113,7 +113,7 @@ returnArrayAsyncJs: function () {
 > [!NOTE]
 > <span data-ttu-id="7a799-136">샘플 앱은 클라이언트 쪽 콘솔에 메시지를 로깅합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-136">The sample app logs messages to the client-side console.</span></span> <span data-ttu-id="7a799-137">샘플 앱에서 보여 주는 다음 예제에서는 브라우저의 개발자 도구에서 브라우저의 콘솔 출력을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-137">For the following examples demonstrated by the sample app, examine the browser's console output in the browser's developer tools.</span></span>
 
-<span data-ttu-id="7a799-138">**`Trigger .NET instance method HelloHelper.SayHello`** 단추를 선택하면 `ExampleJsInterop.CallHelloHelperSayHello`를 호출하고 `:::no-loc(Blazor):::` 이름을 메서드에 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-138">When the **`Trigger .NET instance method HelloHelper.SayHello`** button is selected, `ExampleJsInterop.CallHelloHelperSayHello` is called and passes a name, `:::no-loc(Blazor):::`, to the method.</span></span>
+<span data-ttu-id="7a799-138">**`Trigger .NET instance method HelloHelper.SayHello`** 단추를 선택하면 `ExampleJsInterop.CallHelloHelperSayHello`를 호출하고 `Blazor` 이름을 메서드에 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-138">When the **`Trigger .NET instance method HelloHelper.SayHello`** button is selected, `ExampleJsInterop.CallHelloHelperSayHello` is called and passes a name, `Blazor`, to the method.</span></span>
 
 <span data-ttu-id="7a799-139">`Pages/JsInterop.razor`:</span><span class="sxs-lookup"><span data-stu-id="7a799-139">`Pages/JsInterop.razor`:</span></span>
 
@@ -126,7 +126,7 @@ returnArrayAsyncJs: function () {
     public async Task TriggerNetInstanceMethod()
     {
         var exampleJsInterop = new ExampleJsInterop(JS);
-        await exampleJsInterop.CallHelloHelperSayHello(":::no-loc(Blazor):::");
+        await exampleJsInterop.CallHelloHelperSayHello("Blazor");
     }
 }
 ```
@@ -135,22 +135,22 @@ returnArrayAsyncJs: function () {
 
 <span data-ttu-id="7a799-141">`JsInteropClasses/ExampleJsInterop.cs`:</span><span class="sxs-lookup"><span data-stu-id="7a799-141">`JsInteropClasses/ExampleJsInterop.cs`:</span></span>
 
-[!code-csharp[](./common/samples/3.x/:::no-loc(Blazor):::WebAssemblySample/JsInteropClasses/ExampleJsInterop.cs?name=snippet1&highlight=11-18)]
+[!code-csharp[](./common/samples/3.x/BlazorWebAssemblySample/JsInteropClasses/ExampleJsInterop.cs?name=snippet1&highlight=11-18)]
 
 <span data-ttu-id="7a799-142">`wwwroot/exampleJsInterop.js`:</span><span class="sxs-lookup"><span data-stu-id="7a799-142">`wwwroot/exampleJsInterop.js`:</span></span>
 
-[!code-javascript[](./common/samples/3.x/:::no-loc(Blazor):::WebAssemblySample/wwwroot/exampleJsInterop.js?highlight=15-18)]
+[!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=15-18)]
 
 <span data-ttu-id="7a799-143">이 이름은 `HelloHelper.Name` 속성을 설정하는 `HelloHelper`의 생성자에 전달됩니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-143">The name is passed to `HelloHelper`'s constructor, which sets the `HelloHelper.Name` property.</span></span> <span data-ttu-id="7a799-144">JavaScript 함수 `sayHello`가 실행되면 `HelloHelper.SayHello`는 JavaScript 함수를 통해 콘솔에 기록되는 `Hello, {Name}!` 메시지를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-144">When the JavaScript function `sayHello` is executed, `HelloHelper.SayHello` returns the `Hello, {Name}!` message, which is written to the console by the JavaScript function.</span></span>
 
 <span data-ttu-id="7a799-145">`JsInteropClasses/HelloHelper.cs`:</span><span class="sxs-lookup"><span data-stu-id="7a799-145">`JsInteropClasses/HelloHelper.cs`:</span></span>
 
-[!code-csharp[](./common/samples/3.x/:::no-loc(Blazor):::WebAssemblySample/JsInteropClasses/HelloHelper.cs?name=snippet1&highlight=5,10-11)]
+[!code-csharp[](./common/samples/3.x/BlazorWebAssemblySample/JsInteropClasses/HelloHelper.cs?name=snippet1&highlight=5,10-11)]
 
 <span data-ttu-id="7a799-146">브라우저의 웹 개발자 도구에 있는 콘솔 출력:</span><span class="sxs-lookup"><span data-stu-id="7a799-146">Console output in the browser's web developer tools:</span></span>
 
 ```console
-Hello, :::no-loc(Blazor):::!
+Hello, Blazor!
 ```
 
 <span data-ttu-id="7a799-147">메모리 누수를 방지하고 <xref:Microsoft.JSInterop.DotNetObjectReference>를 만드는 구성 요소에서 가비지 수집을 허용하려면 다음 방법 중 하나를 채택합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-147">To avoid a memory leak and allow garbage collection on a component that creates a <xref:Microsoft.JSInterop.DotNetObjectReference>, adopt one of the following approaches:</span></span>
@@ -203,7 +203,7 @@ Hello, :::no-loc(Blazor):::!
 
       public async Task TriggerNetInstanceMethod()
       {
-          objRef = DotNetObjectReference.Create(new HelloHelper(":::no-loc(Blazor):::"));
+          objRef = DotNetObjectReference.Create(new HelloHelper("Blazor"));
 
           await JS.InvokeAsync<string>(
               "exampleJsFunctions.sayHello",
@@ -217,7 +217,7 @@ Hello, :::no-loc(Blazor):::!
   }
   ```
   
-  <span data-ttu-id="7a799-150">자리 표시자 `{APP ASSEMBLY}`는 앱의 앱 어셈블리 이름입니다(예: `:::no-loc(Blazor):::Sample`).</span><span class="sxs-lookup"><span data-stu-id="7a799-150">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `:::no-loc(Blazor):::Sample`).</span></span>
+  <span data-ttu-id="7a799-150">자리 표시자 `{APP ASSEMBLY}`는 앱의 앱 어셈블리 이름입니다(예: `BlazorSample`).</span><span class="sxs-lookup"><span data-stu-id="7a799-150">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `BlazorSample`).</span></span>
 
 * <span data-ttu-id="7a799-151">구성 요소나 클래스가 <xref:Microsoft.JSInterop.DotNetObjectReference>를 삭제하지 않는 경우 `.dispose()`를 호출하여 클라이언트에서 개체를 삭제합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-151">When the component or class doesn't dispose of the <xref:Microsoft.JSInterop.DotNetObjectReference>, dispose of the object on the client by calling `.dispose()`:</span></span>
 
@@ -236,7 +236,7 @@ Hello, :::no-loc(Blazor):::!
 * <span data-ttu-id="7a799-155">구성 요소의 정적 메서드는 인스턴스 메서드 호출을 호출되는 <xref:System.Action>으로 래핑합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-155">The component's static method wraps the call to its instance method as an invoked <xref:System.Action>.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="7a799-156">여러 사용자가 동일한 구성 요소를 동시에 사용할 수 있는 :::no-loc(Blazor Server)::: 앱의 경우 도우미 클래스를 사용하여 인스턴스 메서드를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-156">For :::no-loc(Blazor Server)::: apps, where several users might be concurrently using the same component, use a helper class to invoke instance methods.</span></span>
+> <span data-ttu-id="7a799-156">여러 사용자가 동일한 구성 요소를 동시에 사용할 수 있는 Blazor Server 앱의 경우 도우미 클래스를 사용하여 인스턴스 메서드를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-156">For Blazor Server apps, where several users might be concurrently using the same component, use a helper class to invoke instance methods.</span></span>
 >
 > <span data-ttu-id="7a799-157">자세한 내용은 [구성 요소 인스턴스 메서드 도우미 클래스](#component-instance-method-helper-class) 섹션을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="7a799-157">For more information, see the [Component instance method helper class](#component-instance-method-helper-class) section.</span></span>
 
@@ -248,7 +248,7 @@ function updateMessageCallerJS() {
 }
 ```
 
-<span data-ttu-id="7a799-159">자리 표시자 `{APP ASSEMBLY}`는 앱의 앱 어셈블리 이름입니다(예: `:::no-loc(Blazor):::Sample`).</span><span class="sxs-lookup"><span data-stu-id="7a799-159">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `:::no-loc(Blazor):::Sample`).</span></span>
+<span data-ttu-id="7a799-159">자리 표시자 `{APP ASSEMBLY}`는 앱의 앱 어셈블리 이름입니다(예: `BlazorSample`).</span><span class="sxs-lookup"><span data-stu-id="7a799-159">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `BlazorSample`).</span></span>
 
 <span data-ttu-id="7a799-160">`Pages/JSInteropComponent.razor`:</span><span class="sxs-lookup"><span data-stu-id="7a799-160">`Pages/JSInteropComponent.razor`:</span></span>
 
@@ -296,7 +296,7 @@ function updateMessageCallerJS() {
   }
   ```
   
-  <span data-ttu-id="7a799-165">자리 표시자 `{APP ASSEMBLY}`는 앱의 앱 어셈블리 이름입니다(예: `:::no-loc(Blazor):::Sample`).</span><span class="sxs-lookup"><span data-stu-id="7a799-165">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `:::no-loc(Blazor):::Sample`).</span></span>
+  <span data-ttu-id="7a799-165">자리 표시자 `{APP ASSEMBLY}`는 앱의 앱 어셈블리 이름입니다(예: `BlazorSample`).</span><span class="sxs-lookup"><span data-stu-id="7a799-165">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `BlazorSample`).</span></span>
 
 * <span data-ttu-id="7a799-166">매개 변수에 대한 <xref:System.Action>에 올바른 형식을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-166">Provide the correct types to the <xref:System.Action> for the parameters.</span></span> <span data-ttu-id="7a799-167">C# 메서드에 매개 변수 목록을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-167">Provide the parameter list to the C# methods.</span></span> <span data-ttu-id="7a799-168">매개 변수(`action.Invoke(name)`)를 사용하여 <xref:System.Action>(`UpdateMessage`)을 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-168">Invoke the <xref:System.Action> (`UpdateMessage`) with the parameters (`action.Invoke(name)`).</span></span>
 
@@ -349,7 +349,7 @@ function updateMessageCallerJS() {
 <span data-ttu-id="7a799-172">도우미 클래스는 인스턴스 메서드를 <xref:System.Action>으로 호출하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-172">The helper class is used to invoke an instance method as an <xref:System.Action>.</span></span> <span data-ttu-id="7a799-173">도우미 클래스는 다음과 같은 경우에 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-173">Helper classes are useful when:</span></span>
 
 * <span data-ttu-id="7a799-174">동일한 형식의 여러 구성 요소가 동일한 페이지에 렌더링되는 경우</span><span class="sxs-lookup"><span data-stu-id="7a799-174">Several components of the same type are rendered on the same page.</span></span>
-* <span data-ttu-id="7a799-175">여러 사용자가 구성 요소를 동시에 사용할 수 있는 :::no-loc(Blazor Server)::: 앱을 사용하는 경우</span><span class="sxs-lookup"><span data-stu-id="7a799-175">A :::no-loc(Blazor Server)::: app is used, where multiple users might be using a component concurrently.</span></span>
+* <span data-ttu-id="7a799-175">여러 사용자가 구성 요소를 동시에 사용할 수 있는 Blazor Server 앱을 사용하는 경우</span><span class="sxs-lookup"><span data-stu-id="7a799-175">A Blazor Server app is used, where multiple users might be using a component concurrently.</span></span>
 
 <span data-ttu-id="7a799-176">다음 예제에서는</span><span class="sxs-lookup"><span data-stu-id="7a799-176">In the following example:</span></span>
 
@@ -380,7 +380,7 @@ public class MessageUpdateInvokeHelper
 }
 ```
 
-<span data-ttu-id="7a799-181">자리 표시자 `{APP ASSEMBLY}`는 앱의 앱 어셈블리 이름입니다(예: `:::no-loc(Blazor):::Sample`).</span><span class="sxs-lookup"><span data-stu-id="7a799-181">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `:::no-loc(Blazor):::Sample`).</span></span>
+<span data-ttu-id="7a799-181">자리 표시자 `{APP ASSEMBLY}`는 앱의 앱 어셈블리 이름입니다(예: `BlazorSample`).</span><span class="sxs-lookup"><span data-stu-id="7a799-181">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `BlazorSample`).</span></span>
 
 <span data-ttu-id="7a799-182">클라이언트 쪽 JavaScript에서 다음을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="7a799-182">In the client-side JavaScript:</span></span>
 
@@ -391,7 +391,7 @@ window.updateMessageCallerJS = (dotnetHelper) => {
 }
 ```
 
-<span data-ttu-id="7a799-183">자리 표시자 `{APP ASSEMBLY}`는 앱의 앱 어셈블리 이름입니다(예: `:::no-loc(Blazor):::Sample`).</span><span class="sxs-lookup"><span data-stu-id="7a799-183">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `:::no-loc(Blazor):::Sample`).</span></span>
+<span data-ttu-id="7a799-183">자리 표시자 `{APP ASSEMBLY}`는 앱의 앱 어셈블리 이름입니다(예: `BlazorSample`).</span><span class="sxs-lookup"><span data-stu-id="7a799-183">The placeholder `{APP ASSEMBLY}` is the app's app assembly name (for example, `BlazorSample`).</span></span>
 
 <span data-ttu-id="7a799-184">`Shared/ListItem.razor`:</span><span class="sxs-lookup"><span data-stu-id="7a799-184">`Shared/ListItem.razor`:</span></span>
 
@@ -461,4 +461,4 @@ window.updateMessageCallerJS = (dotnetHelper) => {
 
 * <xref:blazor/call-javascript-from-dotnet>
 * [<span data-ttu-id="7a799-194">`InteropComponent.razor` 예제(dotnet/AspNetCore GitHub 리포지토리, 3.1 릴리스 분기)</span><span class="sxs-lookup"><span data-stu-id="7a799-194">`InteropComponent.razor` example (dotnet/AspNetCore GitHub repository, 3.1 release branch)</span></span>](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)
-* [<span data-ttu-id="7a799-195">:::no-loc(Blazor Server)::: 앱에서 대량 데이터 전송 수행</span><span class="sxs-lookup"><span data-stu-id="7a799-195">Perform large data transfers in :::no-loc(Blazor Server)::: apps</span></span>](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)
+* [<span data-ttu-id="7a799-195">Blazor Server 앱에서 대량 데이터 전송 수행</span><span class="sxs-lookup"><span data-stu-id="7a799-195">Perform large data transfers in Blazor Server apps</span></span>](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)

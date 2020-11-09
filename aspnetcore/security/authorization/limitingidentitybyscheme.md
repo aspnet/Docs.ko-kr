@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/08/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authorization/limitingidentitybyscheme
 ms.openlocfilehash: 4dc86480d40d8ee40b3c03aa7fd2994e6c15b105
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -27,7 +27,7 @@ ms.locfileid: "93053126"
 ---
 # <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a><span data-ttu-id="c80b1-103">ASP.NET Core에서 특정 체계를 사용 하 여 권한 부여</span><span class="sxs-lookup"><span data-stu-id="c80b1-103">Authorize with a specific scheme in ASP.NET Core</span></span>
 
-<span data-ttu-id="c80b1-104">SPAs (단일 페이지 응용 프로그램)와 같은 일부 시나리오에서는 여러 인증 방법을 사용 하는 것이 일반적입니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-104">In some scenarios, such as Single Page Applications (SPAs), it's common to use multiple authentication methods.</span></span> <span data-ttu-id="c80b1-105">예를 들어 앱은 :::no-loc(cookie)::: 기반 인증을 사용 하 여 JavaScript 요청에 대 한 JWT 전달자 인증 및 로그인을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-105">For example, the app may use :::no-loc(cookie):::-based authentication to log in and JWT bearer authentication for JavaScript requests.</span></span> <span data-ttu-id="c80b1-106">경우에 따라 앱에 인증 처리기의 인스턴스가 여러 개 있을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-106">In some cases, the app may have multiple instances of an authentication handler.</span></span> <span data-ttu-id="c80b1-107">예를 들어, :::no-loc(cookie)::: 하나는 기본 id를 포함 하 고 다른 하나는 MFA (multi-factor authentication)가 트리거될 때 생성 되는 두 개의 처리기입니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-107">For example, two :::no-loc(cookie)::: handlers where one contains a basic identity and one is created when a multi-factor authentication (MFA) has been triggered.</span></span> <span data-ttu-id="c80b1-108">사용자가 추가 보안이 필요한 작업을 요청 하 여 MFA를 트리거할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-108">MFA may be triggered because the user requested an operation that requires extra security.</span></span> <span data-ttu-id="c80b1-109">사용자가 MFA를 요구 하는 리소스를 요청할 때 MFA를 적용 하는 방법에 대 한 자세한 내용은 MFA를 사용 하 여 GitHub 문제 [보호 섹션](https://github.com/dotnet/AspNetCore.Docs/issues/15791#issuecomment-580464195)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="c80b1-109">For more information on enforcing MFA when a user requests a resource that requires MFA, see the GitHub issue [Protect section with MFA](https://github.com/dotnet/AspNetCore.Docs/issues/15791#issuecomment-580464195).</span></span>
+<span data-ttu-id="c80b1-104">SPAs (단일 페이지 응용 프로그램)와 같은 일부 시나리오에서는 여러 인증 방법을 사용 하는 것이 일반적입니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-104">In some scenarios, such as Single Page Applications (SPAs), it's common to use multiple authentication methods.</span></span> <span data-ttu-id="c80b1-105">예를 들어 앱은 cookie 기반 인증을 사용 하 여 JavaScript 요청에 대 한 JWT 전달자 인증 및 로그인을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-105">For example, the app may use cookie-based authentication to log in and JWT bearer authentication for JavaScript requests.</span></span> <span data-ttu-id="c80b1-106">경우에 따라 앱에 인증 처리기의 인스턴스가 여러 개 있을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-106">In some cases, the app may have multiple instances of an authentication handler.</span></span> <span data-ttu-id="c80b1-107">예를 들어, cookie 하나는 기본 id를 포함 하 고 다른 하나는 MFA (multi-factor authentication)가 트리거될 때 생성 되는 두 개의 처리기입니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-107">For example, two cookie handlers where one contains a basic identity and one is created when a multi-factor authentication (MFA) has been triggered.</span></span> <span data-ttu-id="c80b1-108">사용자가 추가 보안이 필요한 작업을 요청 하 여 MFA를 트리거할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-108">MFA may be triggered because the user requested an operation that requires extra security.</span></span> <span data-ttu-id="c80b1-109">사용자가 MFA를 요구 하는 리소스를 요청할 때 MFA를 적용 하는 방법에 대 한 자세한 내용은 MFA를 사용 하 여 GitHub 문제 [보호 섹션](https://github.com/dotnet/AspNetCore.Docs/issues/15791#issuecomment-580464195)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="c80b1-109">For more information on enforcing MFA when a user requests a resource that requires MFA, see the GitHub issue [Protect section with MFA](https://github.com/dotnet/AspNetCore.Docs/issues/15791#issuecomment-580464195).</span></span>
 
 <span data-ttu-id="c80b1-110">인증 체계는 인증 중에 인증 서비스가 구성 될 때 이름이 지정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-110">An authentication scheme is named when the authentication service is configured during authentication.</span></span> <span data-ttu-id="c80b1-111">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-111">For example:</span></span>
 
@@ -37,7 +37,7 @@ public void ConfigureServices(IServiceCollection services)
     // Code omitted for brevity
 
     services.AddAuthentication()
-        .Add:::no-loc(Cookie):::(options => {
+        .AddCookie(options => {
             options.LoginPath = "/Account/Unauthorized/";
             options.AccessDeniedPath = "/Account/Forbidden/";
         })
@@ -47,7 +47,7 @@ public void ConfigureServices(IServiceCollection services)
         });
 ```
 
-<span data-ttu-id="c80b1-112">위의 코드에서 두 개의 인증 처리기가 추가 되었습니다. 하나는 하나이 :::no-loc(cookie)::: 고 다른 하나는 전달자 용입니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-112">In the preceding code, two authentication handlers have been added: one for :::no-loc(cookie):::s and one for bearer.</span></span>
+<span data-ttu-id="c80b1-112">위의 코드에서 두 개의 인증 처리기가 추가 되었습니다. 하나는 하나이 cookie 고 다른 하나는 전달자 용입니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-112">In the preceding code, two authentication handlers have been added: one for cookies and one for bearer.</span></span>
 
 >[!NOTE]
 ><span data-ttu-id="c80b1-113">기본 스키마를 지정 하면 `HttpContext.User` 속성이 해당 id로 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-113">Specifying the default scheme results in the `HttpContext.User` property being set to that identity.</span></span> <span data-ttu-id="c80b1-114">해당 동작이 필요 하지 않은 경우에는 매개 변수가 없는 형식을 호출 하 여 사용 하지 않도록 설정 `AddAuthentication` 합니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-114">If that behavior isn't desired, disable it by invoking the parameterless form of `AddAuthentication`.</span></span>
@@ -60,14 +60,14 @@ public void ConfigureServices(IServiceCollection services)
 [Authorize(AuthenticationSchemes = AuthSchemes)]
 public class MixedController : Controller
     // Requires the following imports:
-    // using Microsoft.AspNetCore.Authentication.:::no-loc(Cookie):::s;
+    // using Microsoft.AspNetCore.Authentication.Cookies;
     // using Microsoft.AspNetCore.Authentication.JwtBearer;
     private const string AuthSchemes =
-        :::no-loc(Cookie):::AuthenticationDefaults.AuthenticationScheme + "," +
+        CookieAuthenticationDefaults.AuthenticationScheme + "," +
         JwtBearerDefaults.AuthenticationScheme;
 ```
 
-<span data-ttu-id="c80b1-120">앞의 예제에서는 :::no-loc(cookie)::: 및 전달자 처리기를 실행 하 고 현재 사용자에 대 한 id를 만들고 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-120">In the preceding example, both the :::no-loc(cookie)::: and bearer handlers run and have a chance to create and append an identity for the current user.</span></span> <span data-ttu-id="c80b1-121">단일 스키마만 지정 하면 해당 처리기가 실행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-121">By specifying a single scheme only, the corresponding handler runs.</span></span>
+<span data-ttu-id="c80b1-120">앞의 예제에서는 cookie 및 전달자 처리기를 실행 하 고 현재 사용자에 대 한 id를 만들고 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-120">In the preceding example, both the cookie and bearer handlers run and have a chance to create and append an identity for the current user.</span></span> <span data-ttu-id="c80b1-121">단일 스키마만 지정 하면 해당 처리기가 실행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-121">By specifying a single scheme only, the corresponding handler runs.</span></span>
 
 ```csharp
 [Authorize(AuthenticationSchemes = 
@@ -75,7 +75,7 @@ public class MixedController : Controller
 public class MixedController : Controller
 ```
 
-<span data-ttu-id="c80b1-122">위의 코드에서는 "전달자" 체계가 있는 처리기만 실행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-122">In the preceding code, only the handler with the "Bearer" scheme runs.</span></span> <span data-ttu-id="c80b1-123">모든 :::no-loc(cookie)::: 기반 id는 무시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-123">Any :::no-loc(cookie):::-based identities are ignored.</span></span>
+<span data-ttu-id="c80b1-122">위의 코드에서는 "전달자" 체계가 있는 처리기만 실행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-122">In the preceding code, only the handler with the "Bearer" scheme runs.</span></span> <span data-ttu-id="c80b1-123">모든 cookie 기반 id는 무시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c80b1-123">Any cookie-based identities are ignored.</span></span>
 
 ## <a name="selecting-the-scheme-with-policies"></a><span data-ttu-id="c80b1-124">정책을 사용 하 여 체계 선택</span><span class="sxs-lookup"><span data-stu-id="c80b1-124">Selecting the scheme with policies</span></span>
 

@@ -1,22 +1,22 @@
 ---
-title: 'ASP.NET Core :::no-loc(SignalR)::: 클라이언트'
+title: 'ASP.NET Core SignalR 클라이언트'
 author: bradygaster
-description: '다양 한 ASP.NET Core 클라이언트에서 지 원하는 기능에 대해 알아봅니다 :::no-loc(SignalR)::: .'
+description: '다양 한 ASP.NET Core 클라이언트에서 지 원하는 기능에 대해 알아봅니다 SignalR .'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: signalr/client-features
 ms.openlocfilehash: 1d1778f95c53179ca05eaced3d1913f208220df4
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,21 +25,21 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93050981"
 ---
-# <a name="aspnet-core-no-locsignalr-clients"></a><span data-ttu-id="68cb7-103">ASP.NET Core :::no-loc(SignalR)::: 클라이언트</span><span class="sxs-lookup"><span data-stu-id="68cb7-103">ASP.NET Core :::no-loc(SignalR)::: clients</span></span>
+# <a name="aspnet-core-no-locsignalr-clients"></a><span data-ttu-id="68cb7-103">ASP.NET Core SignalR 클라이언트</span><span class="sxs-lookup"><span data-stu-id="68cb7-103">ASP.NET Core SignalR clients</span></span>
 
 ## <a name="versioning-support-and-compatibility"></a><span data-ttu-id="68cb7-104">버전 관리, 지원 및 호환성</span><span class="sxs-lookup"><span data-stu-id="68cb7-104">Versioning, support, and compatibility</span></span>
 
-<span data-ttu-id="68cb7-105">:::no-loc(SignalR):::클라이언트는 서버 구성 요소와 함께 제공 되며 일치 하도록 버전이 지정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="68cb7-105">The :::no-loc(SignalR)::: clients ship alongside the server components and are versioned to match.</span></span> <span data-ttu-id="68cb7-106">지원 되는 모든 클라이언트는 지원 되는 모든 서버에 안전 하 게 연결할 수 있으며, 모든 호환성 문제는 버그를 수정 하는 것으로 간주 됩니다.</span><span class="sxs-lookup"><span data-stu-id="68cb7-106">Any supported client can safely connect to any supported server, and any compatibility issues would be considered bugs to be fixed.</span></span> <span data-ttu-id="68cb7-107">:::no-loc(SignalR)::: 클라이언트는 .NET Core의 나머지 부분과 동일한 지원 수명 주기에서 지원 됩니다.</span><span class="sxs-lookup"><span data-stu-id="68cb7-107">:::no-loc(SignalR)::: clients are supported in the same support lifecycle as the rest of .NET Core.</span></span> <span data-ttu-id="68cb7-108">자세한 내용은 [.Net Core 지원 정책을](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="68cb7-108">See [the .NET Core Support Policy](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) for details.</span></span>
+<span data-ttu-id="68cb7-105">SignalR클라이언트는 서버 구성 요소와 함께 제공 되며 일치 하도록 버전이 지정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="68cb7-105">The SignalR clients ship alongside the server components and are versioned to match.</span></span> <span data-ttu-id="68cb7-106">지원 되는 모든 클라이언트는 지원 되는 모든 서버에 안전 하 게 연결할 수 있으며, 모든 호환성 문제는 버그를 수정 하는 것으로 간주 됩니다.</span><span class="sxs-lookup"><span data-stu-id="68cb7-106">Any supported client can safely connect to any supported server, and any compatibility issues would be considered bugs to be fixed.</span></span> <span data-ttu-id="68cb7-107">SignalR 클라이언트는 .NET Core의 나머지 부분과 동일한 지원 수명 주기에서 지원 됩니다.</span><span class="sxs-lookup"><span data-stu-id="68cb7-107">SignalR clients are supported in the same support lifecycle as the rest of .NET Core.</span></span> <span data-ttu-id="68cb7-108">자세한 내용은 [.Net Core 지원 정책을](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="68cb7-108">See [the .NET Core Support Policy](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) for details.</span></span>
 
 <span data-ttu-id="68cb7-109">많은 기능에는 호환 되는 클라이언트 **와** 서버가 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="68cb7-109">Many features require a compatible client **and** server.</span></span> <span data-ttu-id="68cb7-110">다양 한 기능에 대 한 최소 버전을 보여 주는 표는 아래를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="68cb7-110">See below for a table showing the minimum versions for various features.</span></span>
 
-<span data-ttu-id="68cb7-111">1.x 버전의는 :::no-loc(SignalR)::: 2.1 및 2.2 .Net Core 릴리스에 매핑되고 수명이 동일 합니다.</span><span class="sxs-lookup"><span data-stu-id="68cb7-111">The 1.x versions of :::no-loc(SignalR)::: map to the 2.1 and 2.2 .NET Core releases and have the same lifetime.</span></span> <span data-ttu-id="68cb7-112">버전 3.x 이상에서 :::no-loc(SignalR)::: 버전은 .net의 나머지 부분과 정확 하 게 일치 하며 동일한 지원 수명 주기를 가집니다.</span><span class="sxs-lookup"><span data-stu-id="68cb7-112">For version 3.x and above, the :::no-loc(SignalR)::: version exactly matches the rest of .NET and has the same support lifecycle.</span></span>
+<span data-ttu-id="68cb7-111">1.x 버전의는 SignalR 2.1 및 2.2 .Net Core 릴리스에 매핑되고 수명이 동일 합니다.</span><span class="sxs-lookup"><span data-stu-id="68cb7-111">The 1.x versions of SignalR map to the 2.1 and 2.2 .NET Core releases and have the same lifetime.</span></span> <span data-ttu-id="68cb7-112">버전 3.x 이상에서 SignalR 버전은 .net의 나머지 부분과 정확 하 게 일치 하며 동일한 지원 수명 주기를 가집니다.</span><span class="sxs-lookup"><span data-stu-id="68cb7-112">For version 3.x and above, the SignalR version exactly matches the rest of .NET and has the same support lifecycle.</span></span>
 
-| <span data-ttu-id="68cb7-113">:::no-loc(SignalR)::: 버전</span><span class="sxs-lookup"><span data-stu-id="68cb7-113">:::no-loc(SignalR)::: version</span></span> | <span data-ttu-id="68cb7-114">.NET Core 버전</span><span class="sxs-lookup"><span data-stu-id="68cb7-114">.NET Core version</span></span> | <span data-ttu-id="68cb7-115">지원 수준</span><span class="sxs-lookup"><span data-stu-id="68cb7-115">Support level</span></span> | <span data-ttu-id="68cb7-116">지원 종료</span><span class="sxs-lookup"><span data-stu-id="68cb7-116">End of support</span></span> |
+| <span data-ttu-id="68cb7-113">SignalR 버전</span><span class="sxs-lookup"><span data-stu-id="68cb7-113">SignalR version</span></span> | <span data-ttu-id="68cb7-114">.NET Core 버전</span><span class="sxs-lookup"><span data-stu-id="68cb7-114">.NET Core version</span></span> | <span data-ttu-id="68cb7-115">지원 수준</span><span class="sxs-lookup"><span data-stu-id="68cb7-115">Support level</span></span> | <span data-ttu-id="68cb7-116">지원 종료</span><span class="sxs-lookup"><span data-stu-id="68cb7-116">End of support</span></span> |
 | - | - | - | - |
 | <span data-ttu-id="68cb7-117">1.0. x</span><span class="sxs-lookup"><span data-stu-id="68cb7-117">1.0.x</span></span> | <span data-ttu-id="68cb7-118">2.1.x</span><span class="sxs-lookup"><span data-stu-id="68cb7-118">2.1.x</span></span> | <span data-ttu-id="68cb7-119">장기적 지원</span><span class="sxs-lookup"><span data-stu-id="68cb7-119">Long Term Support</span></span> | <span data-ttu-id="68cb7-120">2021 년 8 월 21 일</span><span class="sxs-lookup"><span data-stu-id="68cb7-120">August 21, 2021</span></span> |
 | <span data-ttu-id="68cb7-121">1.1. x</span><span class="sxs-lookup"><span data-stu-id="68cb7-121">1.1.x</span></span> | <span data-ttu-id="68cb7-122">2.2. x</span><span class="sxs-lookup"><span data-stu-id="68cb7-122">2.2.x</span></span> | <span data-ttu-id="68cb7-123">수명 종료</span><span class="sxs-lookup"><span data-stu-id="68cb7-123">End Of Life</span></span> | <span data-ttu-id="68cb7-124">2019 년 12 월 23 일</span><span class="sxs-lookup"><span data-stu-id="68cb7-124">December 23, 2019</span></span> |
-| <span data-ttu-id="68cb7-125">3(sp3) 이상</span><span class="sxs-lookup"><span data-stu-id="68cb7-125">3.x or higher</span></span> | <span data-ttu-id="68cb7-126">*버전과 동일 :::no-loc(SignalR):::*</span><span class="sxs-lookup"><span data-stu-id="68cb7-126">*same as :::no-loc(SignalR)::: version*</span></span> | <span data-ttu-id="68cb7-127">[.Net Core 지원 정책](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) 을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="68cb7-127">See the [the .NET Core Support Policy](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)</span></span> |
+| <span data-ttu-id="68cb7-125">3(sp3) 이상</span><span class="sxs-lookup"><span data-stu-id="68cb7-125">3.x or higher</span></span> | <span data-ttu-id="68cb7-126">*버전과 동일 SignalR*</span><span class="sxs-lookup"><span data-stu-id="68cb7-126">*same as SignalR version*</span></span> | <span data-ttu-id="68cb7-127">[.Net Core 지원 정책](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) 을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="68cb7-127">See the [the .NET Core Support Policy](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)</span></span> |
 
 <span data-ttu-id="68cb7-128">**참고:** ASP.NET Core 3.0에서 JavaScript 클라이언트는 *moved* `@microsoft/signalr` npm 패키지로 이동 했습니다.</span><span class="sxs-lookup"><span data-stu-id="68cb7-128">**NOTE:** In ASP.NET Core 3.0, the JavaScript client *moved* to the `@microsoft/signalr` npm package.</span></span>
 
@@ -49,7 +49,7 @@ ms.locfileid: "93050981"
 
 | <span data-ttu-id="68cb7-133">기능</span><span class="sxs-lookup"><span data-stu-id="68cb7-133">Feature</span></span> | <span data-ttu-id="68cb7-134">서버</span><span class="sxs-lookup"><span data-stu-id="68cb7-134">Server</span></span> | <span data-ttu-id="68cb7-135">.NET 클라이언트</span><span class="sxs-lookup"><span data-stu-id="68cb7-135">.NET client</span></span> | <span data-ttu-id="68cb7-136">JavaScript 클라이언트</span><span class="sxs-lookup"><span data-stu-id="68cb7-136">JavaScript client</span></span> | <span data-ttu-id="68cb7-137">Java 클라이언트</span><span class="sxs-lookup"><span data-stu-id="68cb7-137">Java client</span></span> |
 | ---- | :-: | :-: | :-: | :-: |
-| <span data-ttu-id="68cb7-138">Azure :::no-loc(SignalR)::: 서비스 지원</span><span class="sxs-lookup"><span data-stu-id="68cb7-138">Azure :::no-loc(SignalR)::: Service Support</span></span> |<span data-ttu-id="68cb7-139">2.1.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-139">2.1.0</span></span>|<span data-ttu-id="68cb7-140">1.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-140">1.0.0</span></span>|<span data-ttu-id="68cb7-141">1.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-141">1.0.0</span></span>|<span data-ttu-id="68cb7-142">1.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-142">1.0.0</span></span>|
+| <span data-ttu-id="68cb7-138">Azure SignalR 서비스 지원</span><span class="sxs-lookup"><span data-stu-id="68cb7-138">Azure SignalR Service Support</span></span> |<span data-ttu-id="68cb7-139">2.1.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-139">2.1.0</span></span>|<span data-ttu-id="68cb7-140">1.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-140">1.0.0</span></span>|<span data-ttu-id="68cb7-141">1.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-141">1.0.0</span></span>|<span data-ttu-id="68cb7-142">1.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-142">1.0.0</span></span>|
 | [<span data-ttu-id="68cb7-143">서버-클라이언트 스트리밍</span><span class="sxs-lookup"><span data-stu-id="68cb7-143">Server-to-client Streaming</span></span>](xref:signalr/streaming)          |<span data-ttu-id="68cb7-144">2.1.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-144">2.1.0</span></span>|<span data-ttu-id="68cb7-145">1.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-145">1.0.0</span></span>|<span data-ttu-id="68cb7-146">1.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-146">1.0.0</span></span>|<span data-ttu-id="68cb7-147">1.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-147">1.0.0</span></span>|
 | [<span data-ttu-id="68cb7-148">클라이언트와 서버 간 스트리밍</span><span class="sxs-lookup"><span data-stu-id="68cb7-148">Client-to-server Streaming</span></span>](xref:signalr/streaming)          |<span data-ttu-id="68cb7-149">3.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-149">3.0.0</span></span>|<span data-ttu-id="68cb7-150">3.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-150">3.0.0</span></span>|<span data-ttu-id="68cb7-151">3.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-151">3.0.0</span></span>|<span data-ttu-id="68cb7-152">3.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-152">3.0.0</span></span>|
 | <span data-ttu-id="68cb7-153">자동 다시 연결 ([.net](./dotnet-client.md?tabs=visual-studio&view=aspnetcore-3.0#handle-lost-connection), [JavaScript](./javascript-client.md?view=aspnetcore-3.0#reconnect-clients))</span><span class="sxs-lookup"><span data-stu-id="68cb7-153">Automatic Reconnection ([.NET](./dotnet-client.md?tabs=visual-studio&view=aspnetcore-3.0#handle-lost-connection), [JavaScript](./javascript-client.md?view=aspnetcore-3.0#reconnect-clients))</span></span>          |<span data-ttu-id="68cb7-154">3.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-154">3.0.0</span></span>|<span data-ttu-id="68cb7-155">3.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-155">3.0.0</span></span>|<span data-ttu-id="68cb7-156">3.0.0</span><span class="sxs-lookup"><span data-stu-id="68cb7-156">3.0.0</span></span>|❌|
@@ -63,7 +63,7 @@ ms.locfileid: "93050981"
 
 ## <a name="additional-resources"></a><span data-ttu-id="68cb7-181">추가 리소스</span><span class="sxs-lookup"><span data-stu-id="68cb7-181">Additional resources</span></span>
 
-* [<span data-ttu-id="68cb7-182">:::no-loc(SignalR):::ASP.NET Core에 대 한 시작</span><span class="sxs-lookup"><span data-stu-id="68cb7-182">Get started with :::no-loc(SignalR)::: for ASP.NET Core</span></span>](xref:tutorials/signalr)
+* [<span data-ttu-id="68cb7-182">SignalRASP.NET Core에 대 한 시작</span><span class="sxs-lookup"><span data-stu-id="68cb7-182">Get started with SignalR for ASP.NET Core</span></span>](xref:tutorials/signalr)
 * [<span data-ttu-id="68cb7-183">지원되는 플랫폼</span><span class="sxs-lookup"><span data-stu-id="68cb7-183">Supported platforms</span></span>](xref:signalr/supported-platforms)
 * [<span data-ttu-id="68cb7-184">허브</span><span class="sxs-lookup"><span data-stu-id="68cb7-184">Hubs</span></span>](xref:signalr/hubs)
 * [<span data-ttu-id="68cb7-185">JavaScript 클라이언트</span><span class="sxs-lookup"><span data-stu-id="68cb7-185">JavaScript client</span></span>](xref:signalr/javascript-client)

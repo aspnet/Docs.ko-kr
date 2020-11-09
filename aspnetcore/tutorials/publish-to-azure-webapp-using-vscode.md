@@ -6,17 +6,17 @@ ms.author: riserrad
 ms.custom: devx-track-csharp, mvc
 ms.date: 07/10/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/publish-to-azure-webapp-using-vscode
 ms.openlocfilehash: a5a863682655517e27f6540af76342f95d4ecae0
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -57,7 +57,7 @@ dotnet new mvc
 
 ```cmd
       appsettings.Development.json
-      :::no-loc(appsettings.json):::
+      appsettings.json
 <DIR> Controllers
 <DIR> Models
       netcore-vscode.csproj

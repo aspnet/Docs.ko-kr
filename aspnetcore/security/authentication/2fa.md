@@ -7,17 +7,17 @@ ms.author: riande
 ms.date: 09/22/2018
 ms.custom: mvc, seodec18
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/2fa
 ms.openlocfilehash: 1ee9e656c2e631c9b5588149e0a75e07108baff1
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -106,7 +106,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ### <a name="enable-two-factor-authentication"></a><span data-ttu-id="d1c95-145">2단계 인증 사용</span><span class="sxs-lookup"><span data-stu-id="d1c95-145">Enable two-factor authentication</span></span>
 
-<span data-ttu-id="d1c95-146">*Views/Manage/* :::no-loc(Razor)::: indexview 파일을 열고 주석 문자를 제거 합니다. 태그는 주석 처리 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="d1c95-146">Open the *Views/Manage/Index.cshtml* :::no-loc(Razor)::: view file and remove the comment characters (so no markup is commented out).</span></span>
+<span data-ttu-id="d1c95-146">*Views/Manage/* Razor indexview 파일을 열고 주석 문자를 제거 합니다. 태그는 주석 처리 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="d1c95-146">Open the *Views/Manage/Index.cshtml* Razor view file and remove the comment characters (so no markup is commented out).</span></span>
 
 ## <a name="log-in-with-two-factor-authentication"></a><span data-ttu-id="d1c95-147">2 단계 인증을 사용 하 여 로그인</span><span class="sxs-lookup"><span data-stu-id="d1c95-147">Log in with two-factor authentication</span></span>
 

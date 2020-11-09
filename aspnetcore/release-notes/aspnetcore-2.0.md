@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: aspnetcore-2.0
 ms.openlocfilehash: f9fad5a63c76a3b21341a12fd40baafcdf2c9dac
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -29,14 +29,14 @@ ms.locfileid: "93059730"
 
 <span data-ttu-id="3cec9-104">이 문서에서는 ASP.NET Core 2.0의 가장 큰 변경 내용을 중점적으로 설명하고 관련 문서의 링크를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-104">This article highlights the most significant changes in ASP.NET Core 2.0, with links to relevant documentation.</span></span>
 
-## <a name="no-locrazor-pages"></a><span data-ttu-id="3cec9-105">:::no-loc(Razor)::: Pages</span><span class="sxs-lookup"><span data-stu-id="3cec9-105">:::no-loc(Razor)::: Pages</span></span>
+## <a name="no-locrazor-pages"></a><span data-ttu-id="3cec9-105">Razor Pages</span><span class="sxs-lookup"><span data-stu-id="3cec9-105">Razor Pages</span></span>
 
-<span data-ttu-id="3cec9-106">:::no-loc(Razor)::: Pages는 더 쉽고 더 생산적으로 코딩 페이지에 초점을 맞춘 시나리오를 만드는 ASP.NET Core MVC의 새로운 기능입니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-106">:::no-loc(Razor)::: Pages is a new feature of ASP.NET Core MVC that makes coding page-focused scenarios easier and more productive.</span></span>
+<span data-ttu-id="3cec9-106">Razor Pages는 더 쉽고 더 생산적으로 코딩 페이지에 초점을 맞춘 시나리오를 만드는 ASP.NET Core MVC의 새로운 기능입니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-106">Razor Pages is a new feature of ASP.NET Core MVC that makes coding page-focused scenarios easier and more productive.</span></span>
 
 <span data-ttu-id="3cec9-107">자세한 내용은 소개 및 자습서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="3cec9-107">For more information, see the introduction and tutorial:</span></span>
 
-* [<span data-ttu-id="3cec9-108">:::no-loc(Razor)::: Pages 소개</span><span class="sxs-lookup"><span data-stu-id="3cec9-108">Introduction to :::no-loc(Razor)::: Pages</span></span>](xref:razor-pages/index)
-* [<span data-ttu-id="3cec9-109">:::no-loc(Razor)::: Pages 시작</span><span class="sxs-lookup"><span data-stu-id="3cec9-109">Get started with :::no-loc(Razor)::: Pages</span></span>](xref:tutorials/razor-pages/razor-pages-start)
+* [<span data-ttu-id="3cec9-108">Razor Pages 소개</span><span class="sxs-lookup"><span data-stu-id="3cec9-108">Introduction to Razor Pages</span></span>](xref:razor-pages/index)
+* [<span data-ttu-id="3cec9-109">Razor Pages 시작</span><span class="sxs-lookup"><span data-stu-id="3cec9-109">Get started with Razor Pages</span></span>](xref:tutorials/razor-pages/razor-pages-start)
 
 ## <a name="aspnet-core-metapackage"></a><span data-ttu-id="3cec9-110">ASP.NET Core 메타패키지</span><span class="sxs-lookup"><span data-stu-id="3cec9-110">ASP.NET Core metapackage</span></span>
 
@@ -76,15 +76,15 @@ ms.locfileid: "93059730"
 
 <span data-ttu-id="3cec9-138">계획된 문서의 상태에 대한 자세한 내용은 [GitHub issue](https://github.com/dotnet/AspNetCore.Docs/issues/3054)(GitHub 문제)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="3cec9-138">For information about the status of planned documentation, see the [GitHub issue](https://github.com/dotnet/AspNetCore.Docs/issues/3054).</span></span>
 
-## <a name="no-locidentity-update"></a><span data-ttu-id="3cec9-139">:::no-loc(Identity)::: 업데이트</span><span class="sxs-lookup"><span data-stu-id="3cec9-139">:::no-loc(Identity)::: update</span></span>
+## <a name="no-locidentity-update"></a><span data-ttu-id="3cec9-139">Identity 업데이트</span><span class="sxs-lookup"><span data-stu-id="3cec9-139">Identity update</span></span>
 
-<span data-ttu-id="3cec9-140">ASP.NET Core 2.0에서는 :::no-loc(Identity):::를 사용하여 보안 Web API를 더 쉽게 빌드할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-140">We've made it easier to build secure web APIs using :::no-loc(Identity)::: in ASP.NET Core 2.0.</span></span> <span data-ttu-id="3cec9-141">[MSAL(Microsoft Authentication Library)](https://www.nuget.org/packages/Microsoft.:::no-loc(Identity):::.Client)을 사용하여 Web API에 액세스하기 위해 액세스 토큰을 얻을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-141">You can acquire access tokens for accessing your web APIs using the [Microsoft Authentication Library (MSAL)](https://www.nuget.org/packages/Microsoft.:::no-loc(Identity):::.Client).</span></span>
+<span data-ttu-id="3cec9-140">ASP.NET Core 2.0에서는 Identity를 사용하여 보안 Web API를 더 쉽게 빌드할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-140">We've made it easier to build secure web APIs using Identity in ASP.NET Core 2.0.</span></span> <span data-ttu-id="3cec9-141">[MSAL(Microsoft Authentication Library)](https://www.nuget.org/packages/Microsoft.Identity.Client)을 사용하여 Web API에 액세스하기 위해 액세스 토큰을 얻을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-141">You can acquire access tokens for accessing your web APIs using the [Microsoft Authentication Library (MSAL)](https://www.nuget.org/packages/Microsoft.Identity.Client).</span></span>
 
 <span data-ttu-id="3cec9-142">2\.0의 인증 변경에 대한 자세한 내용은 다음 리소스를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="3cec9-142">For more information on authentication changes in 2.0, see the following resources:</span></span>
 
 * [<span data-ttu-id="3cec9-143">ASP.NET Core의 계정 확인 및 암호 복구</span><span class="sxs-lookup"><span data-stu-id="3cec9-143">Account confirmation and password recovery in ASP.NET Core</span></span>](xref:security/authentication/accconfirm)
 * [<span data-ttu-id="3cec9-144">ASP.NET Core에서 인증자 앱에 QR 코드 생성 사용</span><span class="sxs-lookup"><span data-stu-id="3cec9-144">Enable QR Code generation for authenticator apps in ASP.NET Core</span></span>](xref:security/authentication/identity-enable-qrcodes)
-* [<span data-ttu-id="3cec9-145">ASP.NET Core 2.0으로 인증 및 :::no-loc(Identity)::: 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="3cec9-145">Migrate Authentication and :::no-loc(Identity)::: to ASP.NET Core 2.0</span></span>](xref:migration/1x-to-2x/identity-2x)
+* [<span data-ttu-id="3cec9-145">ASP.NET Core 2.0으로 인증 및 Identity 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="3cec9-145">Migrate Authentication and Identity to ASP.NET Core 2.0</span></span>](xref:migration/1x-to-2x/identity-2x)
 
 ## <a name="spa-templates"></a><span data-ttu-id="3cec9-146">SPA 템플릿</span><span class="sxs-lookup"><span data-stu-id="3cec9-146">SPA templates</span></span>
 
@@ -136,13 +136,13 @@ return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNo
 
 ## <a name="automatic-precompilation"></a><span data-ttu-id="3cec9-180">자동으로 미리 컴파일</span><span class="sxs-lookup"><span data-stu-id="3cec9-180">Automatic precompilation</span></span>
 
-<span data-ttu-id="3cec9-181">:::no-loc(Razor)::: 뷰 미리 컴파일이 기본적으로 게시 중에 사용하도록 설정되므로 게시 출력 크기와 애플리케이션 시작 시간이 감소합니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-181">:::no-loc(Razor)::: view pre-compilation is enabled during publish by default, reducing the publish output size and application startup time.</span></span>
+<span data-ttu-id="3cec9-181">Razor 뷰 미리 컴파일이 기본적으로 게시 중에 사용하도록 설정되므로 게시 출력 크기와 애플리케이션 시작 시간이 감소합니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-181">Razor view pre-compilation is enabled during publish by default, reducing the publish output size and application startup time.</span></span>
 
-<span data-ttu-id="3cec9-182">자세한 내용은 [ASP.NET Core에서 :::no-loc(Razor)::: 뷰 컴파일 및 미리 컴파일](xref:mvc/views/view-compilation)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="3cec9-182">For more information, see [:::no-loc(Razor)::: view compilation and precompilation in ASP.NET Core](xref:mvc/views/view-compilation).</span></span>
+<span data-ttu-id="3cec9-182">자세한 내용은 [ASP.NET Core에서 Razor 뷰 컴파일 및 미리 컴파일](xref:mvc/views/view-compilation)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="3cec9-182">For more information, see [Razor view compilation and precompilation in ASP.NET Core](xref:mvc/views/view-compilation).</span></span>
 
-## <a name="no-locrazor-support-for-c-71"></a><span data-ttu-id="3cec9-183">C# 7.1의 :::no-loc(Razor)::: 지원</span><span class="sxs-lookup"><span data-stu-id="3cec9-183">:::no-loc(Razor)::: support for C# 7.1</span></span>
+## <a name="no-locrazor-support-for-c-71"></a><span data-ttu-id="3cec9-183">C# 7.1의 Razor 지원</span><span class="sxs-lookup"><span data-stu-id="3cec9-183">Razor support for C# 7.1</span></span>
 
-<span data-ttu-id="3cec9-184">:::no-loc(Razor)::: 뷰 엔진이 새 Roslyn 컴파일러를 사용하도록 업데이트되었습니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-184">The :::no-loc(Razor)::: view engine has been updated to work with the new Roslyn compiler.</span></span> <span data-ttu-id="3cec9-185">여기에는 기본 식, 유추된 튜플 이름 및 제네릭 패턴 일치 같은 C# 7.1 기능에 대한 지원이 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-185">That includes support for C# 7.1 features like Default Expressions, Inferred Tuple Names, and Pattern-Matching with Generics.</span></span> <span data-ttu-id="3cec9-186">프로젝트에서 C# 7.1을 사용하려면 프로젝트 파일에 다음 속성을 추가하고 나서 솔루션을 다시 로드합니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-186">To use C# 7.1 in your project, add the following property in your project file and then reload the solution:</span></span>
+<span data-ttu-id="3cec9-184">Razor 뷰 엔진이 새 Roslyn 컴파일러를 사용하도록 업데이트되었습니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-184">The Razor view engine has been updated to work with the new Roslyn compiler.</span></span> <span data-ttu-id="3cec9-185">여기에는 기본 식, 유추된 튜플 이름 및 제네릭 패턴 일치 같은 C# 7.1 기능에 대한 지원이 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-185">That includes support for C# 7.1 features like Default Expressions, Inferred Tuple Names, and Pattern-Matching with Generics.</span></span> <span data-ttu-id="3cec9-186">프로젝트에서 C# 7.1을 사용하려면 프로젝트 파일에 다음 속성을 추가하고 나서 솔루션을 다시 로드합니다.</span><span class="sxs-lookup"><span data-stu-id="3cec9-186">To use C# 7.1 in your project, add the following property in your project file and then reload the solution:</span></span>
 
 ```xml
 <LangVersion>latest</LangVersion>
@@ -164,7 +164,7 @@ return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNo
 <span data-ttu-id="3cec9-196">ASP.NET Core 1.x 애플리케이션을 ASP.NET Core 2.0으로 마이그레이션하는 방법에 대한 자세한 내용은 다음 리소스를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="3cec9-196">For guidance on how to migrate ASP.NET Core 1.x applications to ASP.NET Core 2.0, see the following resources:</span></span>
 
 * [<span data-ttu-id="3cec9-197">ASP.NET Core 1.x에서 ASP.NET Core 2.0으로 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="3cec9-197">Migrate from ASP.NET Core 1.x to ASP.NET Core 2.0</span></span>](xref:migration/1x-to-2x/index)
-* [<span data-ttu-id="3cec9-198">ASP.NET Core 2.0으로 인증 및 :::no-loc(Identity)::: 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="3cec9-198">Migrate Authentication and :::no-loc(Identity)::: to ASP.NET Core 2.0</span></span>](xref:migration/1x-to-2x/identity-2x)
+* [<span data-ttu-id="3cec9-198">ASP.NET Core 2.0으로 인증 및 Identity 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="3cec9-198">Migrate Authentication and Identity to ASP.NET Core 2.0</span></span>](xref:migration/1x-to-2x/identity-2x)
 
 ## <a name="additional-information"></a><span data-ttu-id="3cec9-199">추가 정보</span><span class="sxs-lookup"><span data-stu-id="3cec9-199">Additional Information</span></span>
 

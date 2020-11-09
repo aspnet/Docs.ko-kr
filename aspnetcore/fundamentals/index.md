@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/30/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/index
 ms.openlocfilehash: 25348f8486ec6ccb53ebf527ad4519638dd5f73e
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -55,7 +55,7 @@ ms.locfileid: "93059379"
 
 <span data-ttu-id="d98ac-116">서비스는 일반적으로 DI로부터 생성자 주입을 사용하여 확인됩니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-116">Services are typically resolved from DI using constructor injection.</span></span> <span data-ttu-id="d98ac-117">생성자 주입에서는 클래스가 필요한 형식 또는 인터페이스의 생성자 매개 변수를 선언합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-117">With constructor injection, a class declares a constructor parameter of either the required type or an interface.</span></span> <span data-ttu-id="d98ac-118">DI 프레임워크가 런타임에 이 서비스의 인스턴스를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-118">The DI framework provides an instance of this service at runtime.</span></span>
 
-<span data-ttu-id="d98ac-119">다음 예제에서는 생성자 주입을 사용하여 DI로부터 `:::no-loc(Razor):::PagesMovieContext`를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-119">The following example uses constructor injection to resolve a `:::no-loc(Razor):::PagesMovieContext` from DI:</span></span>
+<span data-ttu-id="d98ac-119">다음 예제에서는 생성자 주입을 사용하여 DI로부터 `RazorPagesMovieContext`를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-119">The following example uses constructor injection to resolve a `RazorPagesMovieContext` from DI:</span></span>
 
 [!code-csharp[](index/samples_snapshot/3.x/Index.cshtml.cs?highlight=5)]
 
@@ -101,7 +101,7 @@ ms.locfileid: "93059379"
 <span data-ttu-id="d98ac-145">`CreateDefaultBuilder` 및 `ConfigureWebHostDefaults` 메서드는 다음과 같은 기본 옵션으로 호스트를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-145">The `CreateDefaultBuilder` and `ConfigureWebHostDefaults` methods configure a host with a set of default options, such as:</span></span>
 
 * <span data-ttu-id="d98ac-146">[Kestrel](#servers)을 웹 서버로 사용하고 IIS 통합을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-146">Use [Kestrel](#servers) as the web server and enable IIS integration.</span></span>
-* <span data-ttu-id="d98ac-147">*:::no-loc(appsettings.json):::* , *appsettings.{Environment Name}.json* , 환경 변수, 명령줄 인수 및 기타 구성 소스의 구성을 로드합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-147">Load configuration from *:::no-loc(appsettings.json):::* , *appsettings.{Environment Name}.json* , environment variables, command line arguments, and other configuration sources.</span></span>
+* <span data-ttu-id="d98ac-147">*appsettings.json* , *appsettings.{Environment Name}.json* , 환경 변수, 명령줄 인수 및 기타 구성 소스의 구성을 로드합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-147">Load configuration from *appsettings.json* , *appsettings.{Environment Name}.json* , environment variables, command line arguments, and other configuration sources.</span></span>
 * <span data-ttu-id="d98ac-148">콘솔 및 디버그 공급자에게 로깅 출력을 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-148">Send logging output to the console and debug providers.</span></span>
 
 <span data-ttu-id="d98ac-149">자세한 내용은 <xref:fundamentals/host/generic-host>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d98ac-149">For more information, see <xref:fundamentals/host/generic-host>.</span></span>
@@ -138,7 +138,7 @@ ms.locfileid: "93059379"
 
 <span data-ttu-id="d98ac-174">ASP.NET Core는 정렬된 일련의 구성 공급 기업에서 이름-값 쌍으로 설정을 가져오는 구성 프레임워크를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-174">ASP.NET Core provides a configuration framework that gets settings as name-value pairs from an ordered set of configuration providers.</span></span> <span data-ttu-id="d98ac-175">*.json* 파일, *.xml* 파일, 환경 변수 및 명령줄 인수와 같은 다양한 소스에서 기본 제공 구성 공급자를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-175">Built-in configuration providers are available for a variety of sources, such as *.json* files, *.xml* files, environment variables, and command-line arguments.</span></span> <span data-ttu-id="d98ac-176">다른 소스를 지원하려면 사용자 지정 구성 공급자를 작성하세요.</span><span class="sxs-lookup"><span data-stu-id="d98ac-176">Write custom configuration providers to support other sources.</span></span>
 
-<span data-ttu-id="d98ac-177">[기본적으로](xref:fundamentals/configuration/index#default) ASP.NET Core 앱은 *:::no-loc(appsettings.json):::* , 환경 변수, 명령줄 등에서 읽도록 구성되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-177">By [default](xref:fundamentals/configuration/index#default), ASP.NET Core apps are configured to read from *:::no-loc(appsettings.json):::* , environment variables, the command line, and more.</span></span> <span data-ttu-id="d98ac-178">앱의 구성이 로드되면 환경 변수의 값이 *:::no-loc(appsettings.json):::* 의 값을 재정의합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-178">When the app's configuration is loaded, values from environment variables override values from *:::no-loc(appsettings.json):::* .</span></span>
+<span data-ttu-id="d98ac-177">[기본적으로](xref:fundamentals/configuration/index#default) ASP.NET Core 앱은 *appsettings.json* , 환경 변수, 명령줄 등에서 읽도록 구성되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-177">By [default](xref:fundamentals/configuration/index#default), ASP.NET Core apps are configured to read from *appsettings.json* , environment variables, the command line, and more.</span></span> <span data-ttu-id="d98ac-178">앱의 구성이 로드되면 환경 변수의 값이 *appsettings.json* 의 값을 재정의합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-178">When the app's configuration is loaded, values from environment variables override values from *appsettings.json* .</span></span>
 
 <span data-ttu-id="d98ac-179">관련 구성 값을 읽는 기본 방법은 [옵션 패턴](xref:fundamentals/configuration/options)를 사용하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-179">The preferred way to read related configuration values is using the [options pattern](xref:fundamentals/configuration/options).</span></span> <span data-ttu-id="d98ac-180">자세한 내용은 [Bind hierarchical configuration data using the options pattern](xref:fundamentals/configuration/index#optpat)(옵션 패턴을 사용하여 계층적 구성 데이터 바인딩)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d98ac-180">For more information, see [Bind hierarchical configuration data using the options pattern](xref:fundamentals/configuration/index#optpat).</span></span>
 
@@ -178,7 +178,7 @@ ms.locfileid: "93059379"
 
 ## <a name="routing"></a><span data-ttu-id="d98ac-207">라우팅</span><span class="sxs-lookup"><span data-stu-id="d98ac-207">Routing</span></span>
 
-<span data-ttu-id="d98ac-208">*경로* 는 처리기에 매핑되는 URL 패턴입니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-208">A *route* is a URL pattern that is mapped to a handler.</span></span> <span data-ttu-id="d98ac-209">처리기는 일반적으로 :::no-loc(Razor)::: Page, MVC 컨트롤러의 작업 메서드 또는 미들웨어와 같습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-209">The handler is typically a :::no-loc(Razor)::: page, an action method in an MVC controller, or a middleware.</span></span> <span data-ttu-id="d98ac-210">ASP.NET Core 라우팅을 사용하면 앱에서 사용되는 URL을 제어할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-210">ASP.NET Core routing gives you control over the URLs used by your app.</span></span>
+<span data-ttu-id="d98ac-208">*경로* 는 처리기에 매핑되는 URL 패턴입니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-208">A *route* is a URL pattern that is mapped to a handler.</span></span> <span data-ttu-id="d98ac-209">처리기는 일반적으로 Razor Page, MVC 컨트롤러의 작업 메서드 또는 미들웨어와 같습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-209">The handler is typically a Razor page, an action method in an MVC controller, or a middleware.</span></span> <span data-ttu-id="d98ac-210">ASP.NET Core 라우팅을 사용하면 앱에서 사용되는 URL을 제어할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-210">ASP.NET Core routing gives you control over the URLs used by your app.</span></span>
 
 <span data-ttu-id="d98ac-211">자세한 내용은 <xref:fundamentals/routing>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d98ac-211">For more information, see <xref:fundamentals/routing>.</span></span>
 
@@ -212,7 +212,7 @@ ms.locfileid: "93059379"
 * <span data-ttu-id="d98ac-234">앱을 호스트하는 실행 파일( *.exe* )</span><span class="sxs-lookup"><span data-stu-id="d98ac-234">The executable hosting the app ( *.exe* ).</span></span>
 * <span data-ttu-id="d98ac-235">앱을 구성하는 컴파일된 어셈블리( *.dll* )</span><span class="sxs-lookup"><span data-stu-id="d98ac-235">Compiled assemblies that make up the app ( *.dll* ).</span></span>
 * <span data-ttu-id="d98ac-236">앱에서 사용하는 다음과 같은 콘텐츠 파일:</span><span class="sxs-lookup"><span data-stu-id="d98ac-236">Content files used by the app, such as:</span></span>
-  * <span data-ttu-id="d98ac-237">:::no-loc(Razor)::: 파일( *.cshtml* , *.razor* )</span><span class="sxs-lookup"><span data-stu-id="d98ac-237">:::no-loc(Razor)::: files ( *.cshtml* , *.razor* )</span></span>
+  * <span data-ttu-id="d98ac-237">Razor 파일( *.cshtml* , *.razor* )</span><span class="sxs-lookup"><span data-stu-id="d98ac-237">Razor files ( *.cshtml* , *.razor* )</span></span>
   * <span data-ttu-id="d98ac-238">구성 파일( *.json* , *.xml* )</span><span class="sxs-lookup"><span data-stu-id="d98ac-238">Configuration files ( *.json* , *.xml* )</span></span>
   * <span data-ttu-id="d98ac-239">데이터 파일( *.db* )</span><span class="sxs-lookup"><span data-stu-id="d98ac-239">Data files ( *.db* )</span></span>
 * <span data-ttu-id="d98ac-240">[웹 루트](#web-root)(일반적으로 *wwwroot* 폴더)</span><span class="sxs-lookup"><span data-stu-id="d98ac-240">The [Web root](#web-root), typically the *wwwroot* folder.</span></span>
@@ -237,7 +237,7 @@ ms.locfileid: "93059379"
 </ItemGroup>
 ```
 
-<span data-ttu-id="d98ac-256">:::no-loc(Razor)::: *.cshtml* 파일에서는 물결표 슬래시(`~/`)가 웹 루트를 가리킵니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-256">In :::no-loc(Razor)::: *.cshtml* files, tilde-slash (`~/`) points to the web root.</span></span> <span data-ttu-id="d98ac-257">`~/`(으)로 시작하는 경로를 *가상 경로* 라고 합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-257">A path beginning with `~/` is referred to as a *virtual path* .</span></span>
+<span data-ttu-id="d98ac-256">Razor *.cshtml* 파일에서는 물결표 슬래시(`~/`)가 웹 루트를 가리킵니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-256">In Razor *.cshtml* files, tilde-slash (`~/`) points to the web root.</span></span> <span data-ttu-id="d98ac-257">`~/`(으)로 시작하는 경로를 *가상 경로* 라고 합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-257">A path beginning with `~/` is referred to as a *virtual path* .</span></span>
 
 <span data-ttu-id="d98ac-258">자세한 내용은 <xref:fundamentals/static-files>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d98ac-258">For more information, see <xref:fundamentals/static-files>.</span></span>
 
@@ -311,7 +311,7 @@ ms.locfileid: "93059379"
 <span data-ttu-id="d98ac-302">`CreateDefaultBuilder` 메서드는 다음과 같이 일반적으로 사용되는 옵션으로 호스트를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-302">The `CreateDefaultBuilder` method configures a host with commonly used options, such as the following:</span></span>
 
 * <span data-ttu-id="d98ac-303">[Kestrel](#servers)을 웹 서버로 사용하고 IIS 통합을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-303">Use [Kestrel](#servers) as the web server and enable IIS integration.</span></span>
-* <span data-ttu-id="d98ac-304">*:::no-loc(appsettings.json):::* , *appsettings.{Environment Name}.json* , 환경 변수, 명령줄 인수 및 기타 구성 소스의 구성을 로드합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-304">Load configuration from *:::no-loc(appsettings.json):::* , *appsettings.{Environment Name}.json* , environment variables, command line arguments, and other configuration sources.</span></span>
+* <span data-ttu-id="d98ac-304">*appsettings.json* , *appsettings.{Environment Name}.json* , 환경 변수, 명령줄 인수 및 기타 구성 소스의 구성을 로드합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-304">Load configuration from *appsettings.json* , *appsettings.{Environment Name}.json* , environment variables, command line arguments, and other configuration sources.</span></span>
 * <span data-ttu-id="d98ac-305">콘솔 및 디버그 공급자에게 로깅 출력을 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-305">Send logging output to the console and debug providers.</span></span>
 
 <span data-ttu-id="d98ac-306">자세한 내용은 <xref:fundamentals/host/web-host>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d98ac-306">For more information, see <xref:fundamentals/host/web-host>.</span></span>
@@ -377,7 +377,7 @@ ms.locfileid: "93059379"
 
 <span data-ttu-id="d98ac-345">ASP.NET Core는 정렬된 일련의 구성 공급 기업에서 이름-값 쌍으로 설정을 가져오는 구성 프레임워크를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-345">ASP.NET Core provides a configuration framework that gets settings as name-value pairs from an ordered set of configuration providers.</span></span> <span data-ttu-id="d98ac-346">*.json* 파일, *.xml* 파일, 환경 변수 및 명령줄 인수와 같은 다양한 원본의 기본 제공 구성 공급 기업이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-346">There are built-in configuration providers for a variety of sources, such as *.json* files, *.xml* files, environment variables, and command-line arguments.</span></span> <span data-ttu-id="d98ac-347">또는 사용자 지정 구성 공급 기업을 작성할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-347">You can also write custom configuration providers.</span></span>
 
-<span data-ttu-id="d98ac-348">예를 들어 구성이 *:::no-loc(appsettings.json):::* 및 환경 변수에서 제공되도록 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-348">For example, you could specify that configuration comes from *:::no-loc(appsettings.json):::* and environment variables.</span></span> <span data-ttu-id="d98ac-349">그런 다음, *ConnectionString* 값이 요청되면 프레임워크는 먼저 *:::no-loc(appsettings.json):::* 파일을 찾습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-349">Then when the value of *ConnectionString* is requested, the framework looks first in the *:::no-loc(appsettings.json):::* file.</span></span> <span data-ttu-id="d98ac-350">값을 찾았지만 환경 변수에서도 값을 찾을 수 있다면 환경 변수의 값이 우선 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-350">If the value is found there but also in an environment variable, the value from the environment variable would take precedence.</span></span>
+<span data-ttu-id="d98ac-348">예를 들어 구성이 *appsettings.json* 및 환경 변수에서 제공되도록 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-348">For example, you could specify that configuration comes from *appsettings.json* and environment variables.</span></span> <span data-ttu-id="d98ac-349">그런 다음, *ConnectionString* 값이 요청되면 프레임워크는 먼저 *appsettings.json* 파일을 찾습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-349">Then when the value of *ConnectionString* is requested, the framework looks first in the *appsettings.json* file.</span></span> <span data-ttu-id="d98ac-350">값을 찾았지만 환경 변수에서도 값을 찾을 수 있다면 환경 변수의 값이 우선 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-350">If the value is found there but also in an environment variable, the value from the environment variable would take precedence.</span></span>
 
 <span data-ttu-id="d98ac-351">ASP.NET Core는 암호와 같은 기밀 구성 데이터를 관리하기 위해 [비밀 관리자 도구](xref:security/app-secrets)를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-351">For managing confidential configuration data such as passwords, ASP.NET Core provides a [Secret Manager tool](xref:security/app-secrets).</span></span> <span data-ttu-id="d98ac-352">프로덕션 비밀의 경우 [Azure Key Vault](xref:security/key-vault-configuration)를 사용하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-352">For production secrets, we recommend [Azure Key Vault](xref:security/key-vault-configuration).</span></span>
 
@@ -427,7 +427,7 @@ ms.locfileid: "93059379"
 
 ## <a name="routing"></a><span data-ttu-id="d98ac-382">라우팅</span><span class="sxs-lookup"><span data-stu-id="d98ac-382">Routing</span></span>
 
-<span data-ttu-id="d98ac-383">*경로* 는 처리기에 매핑되는 URL 패턴입니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-383">A *route* is a URL pattern that is mapped to a handler.</span></span> <span data-ttu-id="d98ac-384">처리기는 일반적으로 :::no-loc(Razor)::: Page, MVC 컨트롤러의 작업 메서드 또는 미들웨어와 같습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-384">The handler is typically a :::no-loc(Razor)::: page, an action method in an MVC controller, or a middleware.</span></span> <span data-ttu-id="d98ac-385">ASP.NET Core 라우팅을 사용하면 앱에서 사용되는 URL을 제어할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-385">ASP.NET Core routing gives you control over the URLs used by your app.</span></span>
+<span data-ttu-id="d98ac-383">*경로* 는 처리기에 매핑되는 URL 패턴입니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-383">A *route* is a URL pattern that is mapped to a handler.</span></span> <span data-ttu-id="d98ac-384">처리기는 일반적으로 Razor Page, MVC 컨트롤러의 작업 메서드 또는 미들웨어와 같습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-384">The handler is typically a Razor page, an action method in an MVC controller, or a middleware.</span></span> <span data-ttu-id="d98ac-385">ASP.NET Core 라우팅을 사용하면 앱에서 사용되는 URL을 제어할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-385">ASP.NET Core routing gives you control over the URLs used by your app.</span></span>
 
 <span data-ttu-id="d98ac-386">자세한 내용은 <xref:fundamentals/routing>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d98ac-386">For more information, see <xref:fundamentals/routing>.</span></span>
 
@@ -461,7 +461,7 @@ ms.locfileid: "93059379"
 * <span data-ttu-id="d98ac-409">앱을 호스트하는 실행 파일( *.exe* )</span><span class="sxs-lookup"><span data-stu-id="d98ac-409">Executable hosting the app ( *.exe* ).</span></span>
 * <span data-ttu-id="d98ac-410">앱을 구성하는 컴파일된 어셈블리( *.dll* )</span><span class="sxs-lookup"><span data-stu-id="d98ac-410">Compiled assemblies that make up the app ( *.dll* ).</span></span>
 * <span data-ttu-id="d98ac-411">다음과 같은 앱에서 사용하는 비코드 콘텐츠 파일:</span><span class="sxs-lookup"><span data-stu-id="d98ac-411">Non-code content files used by the app, such as:</span></span>
-  * <span data-ttu-id="d98ac-412">:::no-loc(Razor)::: 파일( *.cshtml* , *.razor* )</span><span class="sxs-lookup"><span data-stu-id="d98ac-412">:::no-loc(Razor)::: files ( *.cshtml* , *.razor* )</span></span>
+  * <span data-ttu-id="d98ac-412">Razor 파일( *.cshtml* , *.razor* )</span><span class="sxs-lookup"><span data-stu-id="d98ac-412">Razor files ( *.cshtml* , *.razor* )</span></span>
   * <span data-ttu-id="d98ac-413">구성 파일( *.json* , *.xml* )</span><span class="sxs-lookup"><span data-stu-id="d98ac-413">Configuration files ( *.json* , *.xml* )</span></span>
   * <span data-ttu-id="d98ac-414">데이터 파일( *.db* )</span><span class="sxs-lookup"><span data-stu-id="d98ac-414">Data files ( *.db* )</span></span>
 * <span data-ttu-id="d98ac-415">[웹 루트](#web-root)(일반적으로 *wwwroot* 폴더에 게시됨)</span><span class="sxs-lookup"><span data-stu-id="d98ac-415">[Web root](#web-root), typically the published *wwwroot* folder.</span></span>
@@ -495,7 +495,7 @@ ms.locfileid: "93059379"
 </ItemGroup>
 ```
 
-<span data-ttu-id="d98ac-433">:::no-loc(Razor):::( *.cshtml* ) 파일에서는 물결표 슬래시(`~/`)가 웹 루트를 가리킵니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-433">In :::no-loc(Razor)::: ( *.cshtml* ) files, the tilde-slash (`~/`) points to the web root.</span></span> <span data-ttu-id="d98ac-434">`~/`(으)로 시작하는 경로를 *가상 경로* 라고 합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-434">A path beginning with `~/` is referred to as a *virtual path* .</span></span>
+<span data-ttu-id="d98ac-433">Razor( *.cshtml* ) 파일에서는 물결표 슬래시(`~/`)가 웹 루트를 가리킵니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-433">In Razor ( *.cshtml* ) files, the tilde-slash (`~/`) points to the web root.</span></span> <span data-ttu-id="d98ac-434">`~/`(으)로 시작하는 경로를 *가상 경로* 라고 합니다.</span><span class="sxs-lookup"><span data-stu-id="d98ac-434">A path beginning with `~/` is referred to as a *virtual path* .</span></span>
 
 <span data-ttu-id="d98ac-435">자세한 내용은 <xref:fundamentals/static-files>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d98ac-435">For more information, see <xref:fundamentals/static-files>.</span></span>
 

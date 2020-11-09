@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/07/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: getting-started
 ms.openlocfilehash: fef5ae525a7c01d0ea7733e990233f413aac61a7
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -35,7 +35,7 @@ ms.locfileid: "93057793"
 > * <span data-ttu-id="89b2c-106">웹앱 프로젝트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="89b2c-106">Create a web app project.</span></span>
 > * <span data-ttu-id="89b2c-107">개발 인증서를 신뢰합니다.</span><span class="sxs-lookup"><span data-stu-id="89b2c-107">Trust the development certificate.</span></span>
 > * <span data-ttu-id="89b2c-108">앱을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="89b2c-108">Run the app.</span></span>
-> * <span data-ttu-id="89b2c-109">:::no-loc(Razor)::: 페이지를 편집합니다.</span><span class="sxs-lookup"><span data-stu-id="89b2c-109">Edit a :::no-loc(Razor)::: page.</span></span>
+> * <span data-ttu-id="89b2c-109">Razor 페이지를 편집합니다.</span><span class="sxs-lookup"><span data-stu-id="89b2c-109">Edit a Razor page.</span></span>
 
 <span data-ttu-id="89b2c-110">최종적으로 로컬 머신에서 구동되는 웹앱을 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="89b2c-110">At the end, you'll have a working web app running on your local machine.</span></span>
 
@@ -105,7 +105,7 @@ dotnet watch run
 
 <span data-ttu-id="89b2c-134">명령 셸에서 앱이 시작되었음을 확인했으면 `https://localhost:5001`로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="89b2c-134">After the command shell indicates that the app has started, browse to `https://localhost:5001`.</span></span>
 
-## <a name="edit-a-no-locrazor-page"></a><span data-ttu-id="89b2c-135">:::no-loc(Razor)::: 페이지 편집</span><span class="sxs-lookup"><span data-stu-id="89b2c-135">Edit a :::no-loc(Razor)::: page</span></span>
+## <a name="edit-a-no-locrazor-page"></a><span data-ttu-id="89b2c-135">Razor 페이지 편집</span><span class="sxs-lookup"><span data-stu-id="89b2c-135">Edit a Razor page</span></span>
 
 <span data-ttu-id="89b2c-136">*Pages/Index.cshtml* 을 열고 다음에서 강조 표시된 영역처럼 페이지를 수정하고 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="89b2c-136">Open *Pages/Index.cshtml* and modify and save the page with the following highlighted markup:</span></span>
 

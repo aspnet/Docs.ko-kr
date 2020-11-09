@@ -5,17 +5,17 @@ description: 전자 메일 확인 및 암호 재설정을 사용 하 여 ASP.NET
 ms.author: riande
 ms.date: 03/11/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/accconfirm
 ms.openlocfilehash: 91148c67d5dc0bf97e2f926f50dcff5dd0708f4b
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -52,11 +52,11 @@ cd WebPWrecover
 dotnet run
 ```
 
-<span data-ttu-id="54540-115">앱을 실행 하 고, **등록** 링크를 선택 하 고, 사용자를 등록 합니다.</span><span class="sxs-lookup"><span data-stu-id="54540-115">Run the app, select the **Register** link, and register a user.</span></span> <span data-ttu-id="54540-116">등록 되 면 `/:::no-loc(Identity):::/Account/RegisterConfirmation` 전자 메일 확인을 시뮬레이트하는 링크를 포함 하는 to 페이지로 리디렉션됩니다.</span><span class="sxs-lookup"><span data-stu-id="54540-116">Once registered, you are redirected to the to `/:::no-loc(Identity):::/Account/RegisterConfirmation` page which contains a link to simulate email confirmation:</span></span>
+<span data-ttu-id="54540-115">앱을 실행 하 고, **등록** 링크를 선택 하 고, 사용자를 등록 합니다.</span><span class="sxs-lookup"><span data-stu-id="54540-115">Run the app, select the **Register** link, and register a user.</span></span> <span data-ttu-id="54540-116">등록 되 면 `/Identity/Account/RegisterConfirmation` 전자 메일 확인을 시뮬레이트하는 링크를 포함 하는 to 페이지로 리디렉션됩니다.</span><span class="sxs-lookup"><span data-stu-id="54540-116">Once registered, you are redirected to the to `/Identity/Account/RegisterConfirmation` page which contains a link to simulate email confirmation:</span></span>
 
 * <span data-ttu-id="54540-117">링크를 선택 `Click here to confirm your account` 합니다.</span><span class="sxs-lookup"><span data-stu-id="54540-117">Select the `Click here to confirm your account` link.</span></span>
 * <span data-ttu-id="54540-118">**로그인** 링크를 선택 하 고 동일한 자격 증명을 사용 하 여 로그인 합니다.</span><span class="sxs-lookup"><span data-stu-id="54540-118">Select the **Login** link and sign-in with the same credentials.</span></span>
-* <span data-ttu-id="54540-119">`Hello YourEmail@provider.com!`페이지로 리디렉션되는 링크를 선택 합니다 `/:::no-loc(Identity):::/Account/Manage/PersonalData` .</span><span class="sxs-lookup"><span data-stu-id="54540-119">Select the `Hello YourEmail@provider.com!` link, which redirects you to the `/:::no-loc(Identity):::/Account/Manage/PersonalData` page.</span></span>
+* <span data-ttu-id="54540-119">`Hello YourEmail@provider.com!`페이지로 리디렉션되는 링크를 선택 합니다 `/Identity/Account/Manage/PersonalData` .</span><span class="sxs-lookup"><span data-stu-id="54540-119">Select the `Hello YourEmail@provider.com!` link, which redirects you to the `/Identity/Account/Manage/PersonalData` page.</span></span>
 * <span data-ttu-id="54540-120">왼쪽에서 **개인 데이터** 탭을 선택 하 고 **삭제** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="54540-120">Select the **Personal data** tab on the left, and then select **Delete** .</span></span>
 
 ### <a name="configure-an-email-provider"></a><span data-ttu-id="54540-121">전자 메일 공급자 구성</span><span class="sxs-lookup"><span data-stu-id="54540-121">Configure an email provider</span></span>
@@ -136,10 +136,10 @@ dotnet add package SendGrid
 
 ## <a name="scaffold-registerconfirmation"></a><span data-ttu-id="54540-152">스 캐 폴드 RegisterConfirmation</span><span class="sxs-lookup"><span data-stu-id="54540-152">Scaffold RegisterConfirmation</span></span>
 
-<span data-ttu-id="54540-153">[스 캐 폴드 :::no-loc(Identity)::: ](xref:security/authentication/scaffold-identity) 및 스 캐 폴드에 대 한 지침을 따릅니다 `RegisterConfirmation` .</span><span class="sxs-lookup"><span data-stu-id="54540-153">Follow the instructions for [Scaffold :::no-loc(Identity):::](xref:security/authentication/scaffold-identity) and scaffold `RegisterConfirmation`.</span></span>
+<span data-ttu-id="54540-153">[스 캐 폴드 Identity ](xref:security/authentication/scaffold-identity) 및 스 캐 폴드에 대 한 지침을 따릅니다 `RegisterConfirmation` .</span><span class="sxs-lookup"><span data-stu-id="54540-153">Follow the instructions for [Scaffold Identity](xref:security/authentication/scaffold-identity) and scaffold `RegisterConfirmation`.</span></span>
 
 <!-- .NET 5 fixes this, see
-https://github.com/dotnet/aspnetcore/blob/master/src/:::no-loc(Identity):::/UI/src/Areas/:::no-loc(Identity):::/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
+https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
 -->
 
 [!INCLUDE[](~/includes/disableVer.md)]
@@ -171,7 +171,7 @@ https://github.com/dotnet/aspnetcore/blob/master/src/:::no-loc(Identity):::/UI/s
 
 <span data-ttu-id="54540-172">기본 비활성 시간 제한은 14 일입니다.</span><span class="sxs-lookup"><span data-stu-id="54540-172">The default inactivity timeout is 14 days.</span></span> <span data-ttu-id="54540-173">다음 코드는 비활성 시간 제한을 5 일로 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="54540-173">The following code sets the inactivity timeout to 5 days:</span></span>
 
-[!code-csharp[](accconfirm/sample/WebPWrecover30/StartupApp:::no-loc(Cookie):::.cs?name=snippet1)]
+[!code-csharp[](accconfirm/sample/WebPWrecover30/StartupAppCookie.cs?name=snippet1)]
 
 ### <a name="change-all-data-protection-token-lifespans"></a><span data-ttu-id="54540-174">모든 데이터 보호 토큰 변경 lifespans</span><span class="sxs-lookup"><span data-stu-id="54540-174">Change all data protection token lifespans</span></span>
 
@@ -179,13 +179,13 @@ https://github.com/dotnet/aspnetcore/blob/master/src/:::no-loc(Identity):::/UI/s
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/StartupAllTokens.cs?name=snippet1&highlight=11-12)]
 
-<span data-ttu-id="54540-176">기본 제공 :::no-loc(Identity)::: 사용자 토큰 ( [AspNetCore/src/ :::no-loc(Identity)::: /Extensions.Core/src/TokenOptions.cs](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Extensions.Core/src/TokenOptions.cs) 참조)에는 [1 일 시간 제한이](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Core/src/DataProtectionTokenProviderOptions.cs)있습니다.</span><span class="sxs-lookup"><span data-stu-id="54540-176">The built in :::no-loc(Identity)::: user tokens (see [AspNetCore/src/:::no-loc(Identity):::/Extensions.Core/src/TokenOptions.cs](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Extensions.Core/src/TokenOptions.cs) )have a [one day timeout](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Core/src/DataProtectionTokenProviderOptions.cs).</span></span>
+<span data-ttu-id="54540-176">기본 제공 Identity 사용자 토큰 ( [AspNetCore/src/ Identity /Extensions.Core/src/TokenOptions.cs](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) 참조)에는 [1 일 시간 제한이](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)있습니다.</span><span class="sxs-lookup"><span data-stu-id="54540-176">The built in Identity user tokens (see [AspNetCore/src/Identity/Extensions.Core/src/TokenOptions.cs](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) )have a [one day timeout](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs).</span></span>
 
 ### <a name="change-the-email-token-lifespan"></a><span data-ttu-id="54540-177">전자 메일 토큰 수명 변경</span><span class="sxs-lookup"><span data-stu-id="54540-177">Change the email token lifespan</span></span>
 
-<span data-ttu-id="54540-178">[ :::no-loc(Identity)::: 사용자 토큰](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Extensions.Core/src/TokenOptions.cs) 의 기본 토큰 수명은 [1 일](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Core/src/DataProtectionTokenProviderOptions.cs)입니다.</span><span class="sxs-lookup"><span data-stu-id="54540-178">The default token lifespan of [the :::no-loc(Identity)::: user tokens](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Extensions.Core/src/TokenOptions.cs) is [one day](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Core/src/DataProtectionTokenProviderOptions.cs).</span></span> <span data-ttu-id="54540-179">이 섹션에서는 전자 메일 토큰 수명을 변경 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="54540-179">This section shows how to change the email token lifespan.</span></span>
+<span data-ttu-id="54540-178">[ Identity 사용자 토큰](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) 의 기본 토큰 수명은 [1 일](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)입니다.</span><span class="sxs-lookup"><span data-stu-id="54540-178">The default token lifespan of [the Identity user tokens](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) is [one day](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs).</span></span> <span data-ttu-id="54540-179">이 섹션에서는 전자 메일 토큰 수명을 변경 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="54540-179">This section shows how to change the email token lifespan.</span></span>
 
-<span data-ttu-id="54540-180">사용자 지정 [DataProtectorTokenProvider \<TUser> ](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) 및를 추가 합니다 <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.DataProtectionTokenProviderOptions> .</span><span class="sxs-lookup"><span data-stu-id="54540-180">Add a custom [DataProtectorTokenProvider\<TUser>](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) and <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.DataProtectionTokenProviderOptions>:</span></span>
+<span data-ttu-id="54540-180">사용자 지정 [DataProtectorTokenProvider \<TUser> ](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) 및를 추가 합니다 <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions> .</span><span class="sxs-lookup"><span data-stu-id="54540-180">Add a custom [DataProtectorTokenProvider\<TUser>](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) and <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>:</span></span>
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/TokenProviders/CustomTokenProvider.cs?name=snippet1)]
 
@@ -241,7 +241,7 @@ https://github.com/dotnet/aspnetcore/blob/master/src/:::no-loc(Identity):::/UI/s
 
 [<span data-ttu-id="54540-216">.NET Core 2.2 SDK 이상</span><span class="sxs-lookup"><span data-stu-id="54540-216">.NET Core 2.2 SDK or later</span></span>](https://dotnet.microsoft.com/download/dotnet-core)
 
-## <a name="create-a-web--app-and-scaffold-no-locidentity"></a><span data-ttu-id="54540-217">웹 앱 및 스 캐 폴드 만들기 :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="54540-217">Create a web  app and scaffold :::no-loc(Identity):::</span></span>
+## <a name="create-a-web--app-and-scaffold-no-locidentity"></a><span data-ttu-id="54540-217">웹 앱 및 스 캐 폴드 만들기 Identity</span><span class="sxs-lookup"><span data-stu-id="54540-217">Create a web  app and scaffold Identity</span></span>
 
 <span data-ttu-id="54540-218">다음 명령을 실행 하 여 인증을 사용 하는 웹 앱을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="54540-218">Run the following commands to create a web app with authentication.</span></span>
 
@@ -257,7 +257,7 @@ dotnet run
 ```
 
 > [!NOTE]
-> <span data-ttu-id="54540-219"><xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordOptions>이에서 구성 된 경우 `Startup.ConfigureServices` 스 캐 폴드 pages의 속성에 대 한 [ `[StringLength]` 특성](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute) 구성이 필요할 수 있습니다 `Password` :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="54540-219">If <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordOptions> are configured in `Startup.ConfigureServices`, [`[StringLength]` attribute](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute) configuration might be required for the `Password` property in scaffolded :::no-loc(Identity)::: pages.</span></span> <span data-ttu-id="54540-220">`InputModel` `Password` 속성은 `Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml.cs` 스 캐 폴딩 후 파일에 있습니다 :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="54540-220">An `InputModel` `Password` property is found in the `Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml.cs` file after scaffolding :::no-loc(Identity):::.</span></span>
+> <span data-ttu-id="54540-219"><xref:Microsoft.AspNetCore.Identity.PasswordOptions>이에서 구성 된 경우 `Startup.ConfigureServices` 스 캐 폴드 pages의 속성에 대 한 [ `[StringLength]` 특성](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute) 구성이 필요할 수 있습니다 `Password` Identity .</span><span class="sxs-lookup"><span data-stu-id="54540-219">If <xref:Microsoft.AspNetCore.Identity.PasswordOptions> are configured in `Startup.ConfigureServices`, [`[StringLength]` attribute](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute) configuration might be required for the `Password` property in scaffolded Identity pages.</span></span> <span data-ttu-id="54540-220">`InputModel` `Password` 속성은 `Areas/Identity/Pages/Account/Register.cshtml.cs` 스 캐 폴딩 후 파일에 있습니다 Identity .</span><span class="sxs-lookup"><span data-stu-id="54540-220">An `InputModel` `Password` property is found in the `Areas/Identity/Pages/Account/Register.cshtml.cs` file after scaffolding Identity.</span></span>
 
 ## <a name="test-new-user-registration"></a><span data-ttu-id="54540-221">새 사용자 등록 테스트</span><span class="sxs-lookup"><span data-stu-id="54540-221">Test new user registration</span></span>
 
@@ -356,7 +356,7 @@ dotnet add package SendGrid
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a><span data-ttu-id="54540-273">계정 확인 및 암호 복구 사용</span><span class="sxs-lookup"><span data-stu-id="54540-273">Enable account confirmation and password recovery</span></span>
 
-<span data-ttu-id="54540-274">템플릿에는 계정 확인 및 암호 복구를 위한 코드가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="54540-274">The template has the code for account confirmation and password recovery.</span></span> <span data-ttu-id="54540-275">`OnPostAsync` *영역/ :::no-loc(Identity)::: /Pages/Account/Register.cshtml.cs* 에서 메서드를 찾습니다.</span><span class="sxs-lookup"><span data-stu-id="54540-275">Find the `OnPostAsync` method in *Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml.cs* .</span></span>
+<span data-ttu-id="54540-274">템플릿에는 계정 확인 및 암호 복구를 위한 코드가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="54540-274">The template has the code for account confirmation and password recovery.</span></span> <span data-ttu-id="54540-275">`OnPostAsync` *영역/ Identity /Pages/Account/Register.cshtml.cs* 에서 메서드를 찾습니다.</span><span class="sxs-lookup"><span data-stu-id="54540-275">Find the `OnPostAsync` method in *Areas/Identity/Pages/Account/Register.cshtml.cs* .</span></span>
 
 <span data-ttu-id="54540-276">다음 줄을 주석으로 처리 하 여 새로 등록 된 사용자가 자동으로 로그인 하지 않도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="54540-276">Prevent newly registered users from being automatically signed in by commenting out the following line:</span></span>
 
@@ -366,7 +366,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 <span data-ttu-id="54540-277">전체 메서드는 변경 된 줄이 강조 표시 된 상태로 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="54540-277">The complete method is shown with the changed line highlighted:</span></span>
 
-[!code-csharp[](accconfirm/sample/WebPWrecover22/Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml.cs?highlight=22&name=snippet_Register)]
+[!code-csharp[](accconfirm/sample/WebPWrecover22/Areas/Identity/Pages/Account/Register.cshtml.cs?highlight=22&name=snippet_Register)]
 
 ## <a name="register-confirm-email-and-reset-password"></a><span data-ttu-id="54540-278">등록, 전자 메일 확인 및 암호 재설정</span><span class="sxs-lookup"><span data-stu-id="54540-278">Register, confirm email, and reset password</span></span>
 
@@ -395,7 +395,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 <span data-ttu-id="54540-298">기본 비활성 시간 제한은 14 일입니다.</span><span class="sxs-lookup"><span data-stu-id="54540-298">The default inactivity timeout is 14 days.</span></span> <span data-ttu-id="54540-299">다음 코드는 비활성 시간 제한을 5 일로 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="54540-299">The following code sets the inactivity timeout to 5 days:</span></span>
 
-[!code-csharp[](accconfirm/sample/WebPWrecover22/StartupApp:::no-loc(Cookie):::.cs?name=snippet1)]
+[!code-csharp[](accconfirm/sample/WebPWrecover22/StartupAppCookie.cs?name=snippet1)]
 
 ### <a name="change-all-data-protection-token-lifespans"></a><span data-ttu-id="54540-300">모든 데이터 보호 토큰 변경 lifespans</span><span class="sxs-lookup"><span data-stu-id="54540-300">Change all data protection token lifespans</span></span>
 
@@ -403,13 +403,13 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/StartupAllTokens.cs?name=snippet1&highlight=15-16)]
 
-<span data-ttu-id="54540-302">기본 제공 :::no-loc(Identity)::: 사용자 토큰 ( [AspNetCore/src/ :::no-loc(Identity)::: /Extensions.Core/src/TokenOptions.cs](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Extensions.Core/src/TokenOptions.cs) 참조)에는 [1 일 시간 제한이](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Core/src/DataProtectionTokenProviderOptions.cs)있습니다.</span><span class="sxs-lookup"><span data-stu-id="54540-302">The built in :::no-loc(Identity)::: user tokens (see [AspNetCore/src/:::no-loc(Identity):::/Extensions.Core/src/TokenOptions.cs](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Extensions.Core/src/TokenOptions.cs) )have a [one day timeout](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Core/src/DataProtectionTokenProviderOptions.cs).</span></span>
+<span data-ttu-id="54540-302">기본 제공 Identity 사용자 토큰 ( [AspNetCore/src/ Identity /Extensions.Core/src/TokenOptions.cs](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) 참조)에는 [1 일 시간 제한이](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)있습니다.</span><span class="sxs-lookup"><span data-stu-id="54540-302">The built in Identity user tokens (see [AspNetCore/src/Identity/Extensions.Core/src/TokenOptions.cs](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) )have a [one day timeout](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs).</span></span>
 
 ### <a name="change-the-email-token-lifespan"></a><span data-ttu-id="54540-303">전자 메일 토큰 수명 변경</span><span class="sxs-lookup"><span data-stu-id="54540-303">Change the email token lifespan</span></span>
 
-<span data-ttu-id="54540-304">[ :::no-loc(Identity)::: 사용자 토큰](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Extensions.Core/src/TokenOptions.cs) 의 기본 토큰 수명은 [1 일](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Core/src/DataProtectionTokenProviderOptions.cs)입니다.</span><span class="sxs-lookup"><span data-stu-id="54540-304">The default token lifespan of [the :::no-loc(Identity)::: user tokens](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Extensions.Core/src/TokenOptions.cs) is [one day](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/:::no-loc(Identity):::/Core/src/DataProtectionTokenProviderOptions.cs).</span></span> <span data-ttu-id="54540-305">이 섹션에서는 전자 메일 토큰 수명을 변경 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="54540-305">This section shows how to change the email token lifespan.</span></span>
+<span data-ttu-id="54540-304">[ Identity 사용자 토큰](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) 의 기본 토큰 수명은 [1 일](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)입니다.</span><span class="sxs-lookup"><span data-stu-id="54540-304">The default token lifespan of [the Identity user tokens](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) is [one day](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs).</span></span> <span data-ttu-id="54540-305">이 섹션에서는 전자 메일 토큰 수명을 변경 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="54540-305">This section shows how to change the email token lifespan.</span></span>
 
-<span data-ttu-id="54540-306">사용자 지정 [DataProtectorTokenProvider \<TUser> ](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) 및를 추가 합니다 <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.DataProtectionTokenProviderOptions> .</span><span class="sxs-lookup"><span data-stu-id="54540-306">Add a custom [DataProtectorTokenProvider\<TUser>](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) and <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.DataProtectionTokenProviderOptions>:</span></span>
+<span data-ttu-id="54540-306">사용자 지정 [DataProtectorTokenProvider \<TUser> ](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) 및를 추가 합니다 <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions> .</span><span class="sxs-lookup"><span data-stu-id="54540-306">Add a custom [DataProtectorTokenProvider\<TUser>](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) and <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>:</span></span>
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/TokenProviders/CustomTokenProvider.cs?name=snippet1)]
 

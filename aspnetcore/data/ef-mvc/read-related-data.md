@@ -6,17 +6,17 @@ ms.author: riande
 ms.date: 09/28/2019
 ms.topic: tutorial
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/ef-mvc/read-related-data
 ms.openlocfilehash: 610a9e9b0007fb468ea9cdae6fadd2e756de4290
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -200,7 +200,7 @@ ms.locfileid: "93054062"
   }
   ```
 
-* <span data-ttu-id="f957a-228">각 강사가 가르치는 과정을 표시하는 **Courses** 열을 추가했습니다.</span><span class="sxs-lookup"><span data-stu-id="f957a-228">Added a **Courses** column that displays courses taught by each instructor.</span></span> <span data-ttu-id="f957a-229">자세한 내용은 :::no-loc(Razor)::: 구문 문서의 [명시적 줄 전환](xref:mvc/views/razor#explicit-line-transition) 섹션을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="f957a-229">For more information, see the [Explicit line transition](xref:mvc/views/razor#explicit-line-transition) section of the :::no-loc(Razor)::: syntax article.</span></span>
+* <span data-ttu-id="f957a-228">각 강사가 가르치는 과정을 표시하는 **Courses** 열을 추가했습니다.</span><span class="sxs-lookup"><span data-stu-id="f957a-228">Added a **Courses** column that displays courses taught by each instructor.</span></span> <span data-ttu-id="f957a-229">자세한 내용은 Razor 구문 문서의 [명시적 줄 전환](xref:mvc/views/razor#explicit-line-transition) 섹션을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="f957a-229">For more information, see the [Explicit line transition](xref:mvc/views/razor#explicit-line-transition) section of the Razor syntax article.</span></span>
 
 * <span data-ttu-id="f957a-230">선택된 강사의 `tr` 요소에 `class="success"`를 동적으로 추가하는 코드를 추가했습니다.</span><span class="sxs-lookup"><span data-stu-id="f957a-230">Added code that dynamically adds `class="success"` to the `tr` element of the selected instructor.</span></span> <span data-ttu-id="f957a-231">부트스트랩 클래스를 사용하여 선택된 행에 대한 배경색을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="f957a-231">This sets a background color for the selected row using a Bootstrap class.</span></span>
 

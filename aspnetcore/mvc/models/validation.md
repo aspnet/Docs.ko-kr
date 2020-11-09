@@ -1,22 +1,22 @@
 ---
 title: ASP.NET Core MVC의 모델 유효성 검사
 author: rick-anderson
-description: 'MVC 및 페이지 ASP.NET Core의 모델 유효성 검사에 대해 알아봅니다 :::no-loc(Razor)::: .'
+description: 'MVC 및 페이지 ASP.NET Core의 모델 유효성 검사에 대해 알아봅니다 Razor .'
 ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/models/validation
 ms.openlocfilehash: 77d49710b9d69f6fbbe92970f1c455de32489444
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,13 +25,13 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056961"
 ---
-# <a name="model-validation-in-aspnet-core-mvc-and-no-locrazor-pages"></a><span data-ttu-id="0d2a6-103">MVC 및 페이지 ASP.NET Core의 모델 유효성 검사 :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="0d2a6-103">Model validation in ASP.NET Core MVC and :::no-loc(Razor)::: Pages</span></span>
+# <a name="model-validation-in-aspnet-core-mvc-and-no-locrazor-pages"></a><span data-ttu-id="0d2a6-103">MVC 및 페이지 ASP.NET Core의 모델 유효성 검사 Razor</span><span class="sxs-lookup"><span data-stu-id="0d2a6-103">Model validation in ASP.NET Core MVC and Razor Pages</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
 <span data-ttu-id="0d2a6-104">[Kirk Larkin](https://github.com/serpent5)</span><span class="sxs-lookup"><span data-stu-id="0d2a6-104">By [Kirk Larkin](https://github.com/serpent5)</span></span>
 
-<span data-ttu-id="0d2a6-105">이 문서에서는 ASP.NET Core MVC 또는 Pages 앱에서 사용자 입력의 유효성을 검사 하는 방법을 설명 합니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="0d2a6-105">This article explains how to validate user input in an ASP.NET Core MVC or :::no-loc(Razor)::: Pages app.</span></span>
+<span data-ttu-id="0d2a6-105">이 문서에서는 ASP.NET Core MVC 또는 Pages 앱에서 사용자 입력의 유효성을 검사 하는 방법을 설명 합니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="0d2a6-105">This article explains how to validate user input in an ASP.NET Core MVC or Razor Pages app.</span></span>
 
 <span data-ttu-id="0d2a6-106">[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-106">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
@@ -39,7 +39,7 @@ ms.locfileid: "93056961"
 
 <span data-ttu-id="0d2a6-108">모델 상태는 모델 바인딩 및 모델 유효성 검사 두 하위 시스템에서 발생하는 오류를 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-108">Model state represents errors that come from two subsystems: model binding and model validation.</span></span> <span data-ttu-id="0d2a6-109">[모델 바인딩](model-binding.md)에서 발생하는 오류는 일반적으로 데이터 변환 오류입니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-109">Errors that originate from [model binding](model-binding.md) are generally data conversion errors.</span></span> <span data-ttu-id="0d2a6-110">예를 들어 정수 필드에 “x”가 입력됩니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-110">For example, an "x" is entered in an integer field.</span></span> <span data-ttu-id="0d2a6-111">모델 유효성 검사는 모델 바인딩 후에 발생하며 데이터가 비즈니스 규칙에 맞지 않으면 오류를 보고합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-111">Model validation occurs after model binding and reports errors where data doesn't conform to business rules.</span></span> <span data-ttu-id="0d2a6-112">예를 들어 1에서 5 사이의 등급을 필요한 필드에 0이 입력됩니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-112">For example, a 0 is entered in a field that expects a rating between 1 and 5.</span></span>
 
-<span data-ttu-id="0d2a6-113">모델 바인딩 및 모델 유효성 검사는 모두 컨트롤러 작업 또는 페이지 처리기 메서드를 실행 하기 전에 수행 :::no-loc(Razor)::: 됩니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-113">Both model binding and model validation occur before the execution of a controller action or a :::no-loc(Razor)::: Pages handler method.</span></span> <span data-ttu-id="0d2a6-114">웹앱의 경우 `ModelState.IsValid`를 검사하고 적절히 반응하는 기능은 앱에서 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-114">For web apps, it's the app's responsibility to inspect `ModelState.IsValid` and react appropriately.</span></span> <span data-ttu-id="0d2a6-115">일반적으로 웹앱은 페이지를 오류 메시지와 함께 다시 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-115">Web apps typically redisplay the page with an error message:</span></span>
+<span data-ttu-id="0d2a6-113">모델 바인딩 및 모델 유효성 검사는 모두 컨트롤러 작업 또는 페이지 처리기 메서드를 실행 하기 전에 수행 Razor 됩니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-113">Both model binding and model validation occur before the execution of a controller action or a Razor Pages handler method.</span></span> <span data-ttu-id="0d2a6-114">웹앱의 경우 `ModelState.IsValid`를 검사하고 적절히 반응하는 기능은 앱에서 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-114">For web apps, it's the app's responsibility to inspect `ModelState.IsValid` and react appropriately.</span></span> <span data-ttu-id="0d2a6-115">일반적으로 웹앱은 페이지를 오류 메시지와 함께 다시 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-115">Web apps typically redisplay the page with an error message:</span></span>
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Pages/Movies/Create.cshtml.cs?name=snippet_OnPostAsync&highlight=3-6)]
 
@@ -379,7 +379,7 @@ $.get({
 
 ## <a name="disable-client-side-validation"></a><span data-ttu-id="0d2a6-310">클라이언트 쪽 유효성 검사를 사용하지 않도록 설정</span><span class="sxs-lookup"><span data-stu-id="0d2a6-310">Disable client-side validation</span></span>
 
-<span data-ttu-id="0d2a6-311">다음 코드에서는 페이지에서 클라이언트 유효성 검사를 사용 하지 않도록 설정 합니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="0d2a6-311">The following code disables client validation in :::no-loc(Razor)::: Pages:</span></span>
+<span data-ttu-id="0d2a6-311">다음 코드에서는 페이지에서 클라이언트 유효성 검사를 사용 하지 않도록 설정 합니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="0d2a6-311">The following code disables client validation in Razor Pages:</span></span>
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Startup.cs?name=snippet_DisableClientValidation&highlight=2-5)]
 
@@ -388,7 +388,7 @@ $.get({
 * <span data-ttu-id="0d2a6-313">모든 *.cshtml* 파일의 `_ValidationScriptsPartial`에 대한 참조를 주석으로 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-313">Comment out the reference to `_ValidationScriptsPartial` in all the *.cshtml* files.</span></span>
 * <span data-ttu-id="0d2a6-314">*Pages\Shared\_ValidationScriptsPartial* 파일의 콘텐츠를 제거합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-314">Remove the contents of the *Pages\Shared\_ValidationScriptsPartial.cshtml* file.</span></span>
 
-<span data-ttu-id="0d2a6-315">위의 방법으로는 클래스 라이브러리의 클라이언트 쪽 유효성 검사를 수행할 수 없습니다 :::no-loc(ASP.NET Core Identity)::: :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="0d2a6-315">The preceding approach won't prevent client side validation of :::no-loc(ASP.NET Core Identity)::: :::no-loc(Razor)::: Class Library.</span></span> <span data-ttu-id="0d2a6-316">자세한 내용은 <xref:security/authentication/scaffold-identity>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-316">For more information, see <xref:security/authentication/scaffold-identity>.</span></span>
+<span data-ttu-id="0d2a6-315">위의 방법으로는 클래스 라이브러리의 클라이언트 쪽 유효성 검사를 수행할 수 없습니다 ASP.NET Core Identity Razor .</span><span class="sxs-lookup"><span data-stu-id="0d2a6-315">The preceding approach won't prevent client side validation of ASP.NET Core Identity Razor Class Library.</span></span> <span data-ttu-id="0d2a6-316">자세한 내용은 <xref:security/authentication/scaffold-identity>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-316">For more information, see <xref:security/authentication/scaffold-identity>.</span></span>
 
 ## <a name="additional-resources"></a><span data-ttu-id="0d2a6-317">추가 자료</span><span class="sxs-lookup"><span data-stu-id="0d2a6-317">Additional resources</span></span>
 
@@ -399,7 +399,7 @@ $.get({
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="0d2a6-320">이 문서에서는 ASP.NET Core MVC 또는 Pages 앱에서 사용자 입력의 유효성을 검사 하는 방법을 설명 합니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="0d2a6-320">This article explains how to validate user input in an ASP.NET Core MVC or :::no-loc(Razor)::: Pages app.</span></span>
+<span data-ttu-id="0d2a6-320">이 문서에서는 ASP.NET Core MVC 또는 Pages 앱에서 사용자 입력의 유효성을 검사 하는 방법을 설명 합니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="0d2a6-320">This article explains how to validate user input in an ASP.NET Core MVC or Razor Pages app.</span></span>
 
 <span data-ttu-id="0d2a6-321">[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-321">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
@@ -407,7 +407,7 @@ $.get({
 
 <span data-ttu-id="0d2a6-323">모델 상태는 모델 바인딩 및 모델 유효성 검사 두 하위 시스템에서 발생하는 오류를 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-323">Model state represents errors that come from two subsystems: model binding and model validation.</span></span> <span data-ttu-id="0d2a6-324">[모델 바인딩](model-binding.md)에서 발생하는 오류는 일반적으로 데이터 변환 오류입니다(예를 들어 정수를 입력해야 하는 필드에 "x"를 입력하는 오류).</span><span class="sxs-lookup"><span data-stu-id="0d2a6-324">Errors that originate from [model binding](model-binding.md) are generally data conversion errors (for example, an "x" is entered in a field that expects an integer).</span></span> <span data-ttu-id="0d2a6-325">모델 유효성 검사는 모델 바인딩 후에 실행되며 데이터가 비즈니스 규칙을 준수하지 않는 경우(예를 들어 1에서 5 사이의등급을 입력해야 하는 필드에 0을 입력) 오류를 보고합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-325">Model validation occurs after model binding and reports errors where the data doesn't conform to business rules (for example, a 0 is entered in a field that expects a rating between 1 and 5).</span></span>
 
-<span data-ttu-id="0d2a6-326">모델 바인딩 및 유효성 검사는 모두 컨트롤러 작업 또는 페이지 처리기 메서드를 실행 하기 전에 수행 :::no-loc(Razor)::: 됩니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-326">Both model binding and validation occur before the execution of a controller action or a :::no-loc(Razor)::: Pages handler method.</span></span> <span data-ttu-id="0d2a6-327">웹앱의 경우 `ModelState.IsValid`를 검사하고 적절히 반응하는 기능은 앱에서 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-327">For web apps, it's the app's responsibility to inspect `ModelState.IsValid` and react appropriately.</span></span> <span data-ttu-id="0d2a6-328">일반적으로 웹앱은 페이지를 오류 메시지와 함께 다시 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-328">Web apps typically redisplay the page with an error message:</span></span>
+<span data-ttu-id="0d2a6-326">모델 바인딩 및 유효성 검사는 모두 컨트롤러 작업 또는 페이지 처리기 메서드를 실행 하기 전에 수행 Razor 됩니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-326">Both model binding and validation occur before the execution of a controller action or a Razor Pages handler method.</span></span> <span data-ttu-id="0d2a6-327">웹앱의 경우 `ModelState.IsValid`를 검사하고 적절히 반응하는 기능은 앱에서 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-327">For web apps, it's the app's responsibility to inspect `ModelState.IsValid` and react appropriately.</span></span> <span data-ttu-id="0d2a6-328">일반적으로 웹앱은 페이지를 오류 메시지와 함께 다시 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-328">Web apps typically redisplay the page with an error message:</span></span>
 
 [!code-csharp[](validation/samples_snapshot/2.x/Create.cshtml.cs?name=snippet&highlight=3-6)]
 
@@ -430,7 +430,7 @@ $.get({
 <span data-ttu-id="0d2a6-342">기본 제공 유효성 검사 특성은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-342">Built-in validation attributes include:</span></span>
 
 * <span data-ttu-id="0d2a6-343">`[CreditCard]`: 속성에 신용 카드 형식이 있는지 유효성을 검사 합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-343">`[CreditCard]`: Validates that the property has a credit card format.</span></span>
-* <span data-ttu-id="0d2a6-344">`[Compare]`: 모델의 두 속성이 일치 하는지 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-344">`[Compare]`: Validates that two properties in a model match.</span></span> <span data-ttu-id="0d2a6-345">예를 들어 *Register.cshtml.cs* 파일은 `[Compare]`를 사용하여 입력된 두 암호가 일치하는지 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-345">For example, the *Register.cshtml.cs* file uses `[Compare]` to validate the two entered passwords match.</span></span> <span data-ttu-id="0d2a6-346">[스 캐 폴드 :::no-loc(Identity)::: ](xref:security/authentication/scaffold-identity) 등록 코드를 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-346">[Scaffold :::no-loc(Identity):::](xref:security/authentication/scaffold-identity) to see the Register code.</span></span>
+* <span data-ttu-id="0d2a6-344">`[Compare]`: 모델의 두 속성이 일치 하는지 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-344">`[Compare]`: Validates that two properties in a model match.</span></span> <span data-ttu-id="0d2a6-345">예를 들어 *Register.cshtml.cs* 파일은 `[Compare]`를 사용하여 입력된 두 암호가 일치하는지 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-345">For example, the *Register.cshtml.cs* file uses `[Compare]` to validate the two entered passwords match.</span></span> <span data-ttu-id="0d2a6-346">[스 캐 폴드 Identity ](xref:security/authentication/scaffold-identity) 등록 코드를 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-346">[Scaffold Identity](xref:security/authentication/scaffold-identity) to see the Register code.</span></span>
 * <span data-ttu-id="0d2a6-347">`[EmailAddress]`: 속성에 전자 메일 형식이 있는지 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-347">`[EmailAddress]`: Validates that the property has an email format.</span></span>
 * <span data-ttu-id="0d2a6-348">`[Phone]`: 속성에 전화 번호 형식이 있는지 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-348">`[Phone]`: Validates that the property has a telephone number format.</span></span>
 * <span data-ttu-id="0d2a6-349">`[Range]`: 속성 값이 지정 된 범위 내에 속하는지 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="0d2a6-349">`[Range]`: Validates that the property value falls within a specified range.</span></span>
@@ -754,7 +754,7 @@ $.get({
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup2.cs?name=snippet_DisableClientValidation)]
 
-<span data-ttu-id="0d2a6-531">및 :::no-loc(Razor)::: 페이지:</span><span class="sxs-lookup"><span data-stu-id="0d2a6-531">And in :::no-loc(Razor)::: Pages:</span></span>
+<span data-ttu-id="0d2a6-531">및 Razor 페이지:</span><span class="sxs-lookup"><span data-stu-id="0d2a6-531">And in Razor Pages:</span></span>
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup3.cs?name=snippet_DisableClientValidation)]
 

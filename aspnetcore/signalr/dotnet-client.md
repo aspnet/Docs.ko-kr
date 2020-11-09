@@ -1,23 +1,23 @@
 ---
-title: 'ASP.NET Core :::no-loc(SignalR)::: .Net 클라이언트'
+title: 'ASP.NET Core SignalR .Net 클라이언트'
 author: bradygaster
-description: 'ASP.NET Core .Net 클라이언트에 대 한 정보 :::no-loc(SignalR):::'
+description: 'ASP.NET Core .Net 클라이언트에 대 한 정보 SignalR'
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/14/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: signalr/dotnet-client
 ms.openlocfilehash: 7849322e50aeceda0850d94f9c9bcda79a6051c8
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,24 +26,24 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93061225"
 ---
-# <a name="aspnet-core-no-locsignalr-net-client"></a><span data-ttu-id="4e715-103">ASP.NET Core :::no-loc(SignalR)::: .Net 클라이언트</span><span class="sxs-lookup"><span data-stu-id="4e715-103">ASP.NET Core :::no-loc(SignalR)::: .NET Client</span></span>
+# <a name="aspnet-core-no-locsignalr-net-client"></a><span data-ttu-id="4e715-103">ASP.NET Core SignalR .Net 클라이언트</span><span class="sxs-lookup"><span data-stu-id="4e715-103">ASP.NET Core SignalR .NET Client</span></span>
 
-<span data-ttu-id="4e715-104">ASP.NET Core :::no-loc(SignalR)::: .net 클라이언트 라이브러리를 사용 하면 :::no-loc(SignalR)::: .net 앱에서 허브와 통신할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-104">The ASP.NET Core :::no-loc(SignalR)::: .NET client library lets you communicate with :::no-loc(SignalR)::: hubs from .NET apps.</span></span>
+<span data-ttu-id="4e715-104">ASP.NET Core SignalR .net 클라이언트 라이브러리를 사용 하면 SignalR .net 앱에서 허브와 통신할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-104">The ASP.NET Core SignalR .NET client library lets you communicate with SignalR hubs from .NET apps.</span></span>
 
 <span data-ttu-id="4e715-105">[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="4e715-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="4e715-106">이 문서의 코드 샘플은 ASP.NET Core .Net 클라이언트를 사용 하는 WPF 앱입니다 :::no-loc(SignalR)::: .</span><span class="sxs-lookup"><span data-stu-id="4e715-106">The code sample in this article is a WPF app that uses the ASP.NET Core :::no-loc(SignalR)::: .NET client.</span></span>
+<span data-ttu-id="4e715-106">이 문서의 코드 샘플은 ASP.NET Core .Net 클라이언트를 사용 하는 WPF 앱입니다 SignalR .</span><span class="sxs-lookup"><span data-stu-id="4e715-106">The code sample in this article is a WPF app that uses the ASP.NET Core SignalR .NET client.</span></span>
 
-## <a name="install-the-no-locsignalr-net-client-package"></a><span data-ttu-id="4e715-107">.Net 클라이언트 패키지를 설치 합니다. :::no-loc(SignalR):::</span><span class="sxs-lookup"><span data-stu-id="4e715-107">Install the :::no-loc(SignalR)::: .NET client package</span></span>
+## <a name="install-the-no-locsignalr-net-client-package"></a><span data-ttu-id="4e715-107">.Net 클라이언트 패키지를 설치 합니다. SignalR</span><span class="sxs-lookup"><span data-stu-id="4e715-107">Install the SignalR .NET client package</span></span>
 
-<span data-ttu-id="4e715-108">[AspNetCore. :::no-loc(SignalR)::: 클라이언트](https://www.nuget.org/packages/Microsoft.AspNetCore.:::no-loc(SignalR):::.Client) 패키지는 .net 클라이언트에서 허브에 연결 하는 데 필요 :::no-loc(SignalR)::: 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-108">The [Microsoft.AspNetCore.:::no-loc(SignalR):::.Client](https://www.nuget.org/packages/Microsoft.AspNetCore.:::no-loc(SignalR):::.Client) package is required for .NET clients to connect to :::no-loc(SignalR)::: hubs.</span></span>
+<span data-ttu-id="4e715-108">[AspNetCore. SignalR 클라이언트](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) 패키지는 .net 클라이언트에서 허브에 연결 하는 데 필요 SignalR 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-108">The [Microsoft.AspNetCore.SignalR.Client](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) package is required for .NET clients to connect to SignalR hubs.</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="4e715-109">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="4e715-109">Visual Studio</span></span>](#tab/visual-studio)
 
 <span data-ttu-id="4e715-110">클라이언트 라이브러리를 설치 하려면 **패키지 관리자 콘솔** 창에서 다음 명령을 실행 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-110">To install the client library, run the following command in the **Package Manager Console** window:</span></span>
 
 ```powershell
-Install-Package Microsoft.AspNetCore.:::no-loc(SignalR):::.Client
+Install-Package Microsoft.AspNetCore.SignalR.Client
 ```
 
 # <a name="net-core-cli"></a>[<span data-ttu-id="4e715-111">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="4e715-111">.NET Core CLI</span></span>](#tab/netcore-cli)
@@ -51,7 +51,7 @@ Install-Package Microsoft.AspNetCore.:::no-loc(SignalR):::.Client
 <span data-ttu-id="4e715-112">클라이언트 라이브러리를 설치 하려면 명령 셸에서 다음 명령을 실행 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-112">To install the client library, run the following command in a command shell:</span></span>
 
 ```dotnetcli
-dotnet add package Microsoft.AspNetCore.:::no-loc(SignalR):::.Client
+dotnet add package Microsoft.AspNetCore.SignalR.Client
 ```
 
 ---
@@ -68,7 +68,7 @@ dotnet add package Microsoft.AspNetCore.:::no-loc(SignalR):::.Client
 
 ### <a name="automatically-reconnect"></a><span data-ttu-id="4e715-119">자동으로 다시 연결</span><span class="sxs-lookup"><span data-stu-id="4e715-119">Automatically reconnect</span></span>
 
-<span data-ttu-id="4e715-120">는의 <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnection> 메서드를 사용 하 여 자동으로 다시 연결 되도록 구성할 수 있습니다 `WithAutomaticReconnect` <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnectionBuilder> .</span><span class="sxs-lookup"><span data-stu-id="4e715-120">The <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnection> can be configured to automatically reconnect using the `WithAutomaticReconnect` method on the <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnectionBuilder>.</span></span> <span data-ttu-id="4e715-121">기본적으로 자동으로 다시 연결 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-121">It won't automatically reconnect by default.</span></span>
+<span data-ttu-id="4e715-120">는의 <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection> 메서드를 사용 하 여 자동으로 다시 연결 되도록 구성할 수 있습니다 `WithAutomaticReconnect` <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder> .</span><span class="sxs-lookup"><span data-stu-id="4e715-120">The <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection> can be configured to automatically reconnect using the `WithAutomaticReconnect` method on the <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder>.</span></span> <span data-ttu-id="4e715-121">기본적으로 자동으로 다시 연결 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-121">It won't automatically reconnect by default.</span></span>
 
 ```csharp
 HubConnection connection= new HubConnectionBuilder()
@@ -140,7 +140,7 @@ public static async Task<bool> ConnectWithRetryAsync(HubConnection connection, C
 }
 ```
 
-<span data-ttu-id="4e715-131">클라이언트가 처음 네 번의 시도 내에서 성공적으로 다시 연결 되지 않으면 `HubConnection` 이 상태로 전환 되 `Disconnected` 고 이벤트를 발생 시킵니다 <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnection.Closed> .</span><span class="sxs-lookup"><span data-stu-id="4e715-131">If the client doesn't successfully reconnect within its first four attempts, the `HubConnection` will transition to the `Disconnected` state and fire the <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnection.Closed> event.</span></span> <span data-ttu-id="4e715-132">이를 통해 연결을 수동으로 다시 시작 하거나 연결이 영구적으로 손실 되었음을 사용자에 게 알릴 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-132">This provides an opportunity to attempt to restart the connection manually or inform users the connection has been permanently lost.</span></span>
+<span data-ttu-id="4e715-131">클라이언트가 처음 네 번의 시도 내에서 성공적으로 다시 연결 되지 않으면 `HubConnection` 이 상태로 전환 되 `Disconnected` 고 이벤트를 발생 시킵니다 <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> .</span><span class="sxs-lookup"><span data-stu-id="4e715-131">If the client doesn't successfully reconnect within its first four attempts, the `HubConnection` will transition to the `Disconnected` state and fire the <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> event.</span></span> <span data-ttu-id="4e715-132">이를 통해 연결을 수동으로 다시 시작 하거나 연결이 영구적으로 손실 되었음을 사용자에 게 알릴 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-132">This provides an opportunity to attempt to restart the connection manually or inform users the connection has been permanently lost.</span></span>
 
 ```csharp
 connection.Closed += error =>
@@ -216,11 +216,11 @@ HubConnection connection = new HubConnectionBuilder()
 ::: moniker range="< aspnetcore-3.0"
 
 > [!WARNING]
-> <span data-ttu-id="4e715-148">3.0 이전 버전의에 대 한 .NET 클라이언트는 :::no-loc(SignalR)::: 자동으로 다시 연결 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-148">Prior to 3.0, the .NET client for :::no-loc(SignalR)::: doesn't automatically reconnect.</span></span> <span data-ttu-id="4e715-149">클라이언트를 수동으로 다시 연결 하는 코드를 작성 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-149">You must write code that will reconnect your client manually.</span></span>
+> <span data-ttu-id="4e715-148">3.0 이전 버전의에 대 한 .NET 클라이언트는 SignalR 자동으로 다시 연결 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-148">Prior to 3.0, the .NET client for SignalR doesn't automatically reconnect.</span></span> <span data-ttu-id="4e715-149">클라이언트를 수동으로 다시 연결 하는 코드를 작성 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-149">You must write code that will reconnect your client manually.</span></span>
 
 ::: moniker-end
 
-<span data-ttu-id="4e715-150">이벤트를 사용 하 여 <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnection.Closed> 손실 된 연결에 응답 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-150">Use the <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Client.HubConnection.Closed> event to respond to a lost connection.</span></span> <span data-ttu-id="4e715-151">예를 들어 다시 연결을 자동화할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-151">For example, you might want to automate reconnection.</span></span>
+<span data-ttu-id="4e715-150">이벤트를 사용 하 여 <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> 손실 된 연결에 응답 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-150">Use the <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> event to respond to a lost connection.</span></span> <span data-ttu-id="4e715-151">예를 들어 다시 연결을 자동화할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-151">For example, you might want to automate reconnection.</span></span>
 
 <span data-ttu-id="4e715-152">`Closed`이벤트에는를 반환 하는 대리자가 필요 합니다 .이 메서드를 `Task` 사용 하지 않고 비동기 코드를 실행할 수 있습니다 `async void` .</span><span class="sxs-lookup"><span data-stu-id="4e715-152">The `Closed` event requires a delegate that returns a `Task`, which allows async code to run without using `async void`.</span></span> <span data-ttu-id="4e715-153">`Closed`동기적으로 실행 되는 이벤트 처리기에서 대리자 시그니처를 만족 시키려면 다음을 반환 합니다 `Task.CompletedTask` .</span><span class="sxs-lookup"><span data-stu-id="4e715-153">To satisfy the delegate signature in a `Closed` event handler that runs synchronously, return `Task.CompletedTask`:</span></span>
 
@@ -239,7 +239,7 @@ connection.Closed += (error) => {
 
 ## <a name="call-hub-methods-from-client"></a><span data-ttu-id="4e715-157">클라이언트에서 허브 메서드 호출</span><span class="sxs-lookup"><span data-stu-id="4e715-157">Call hub methods from client</span></span>
 
-<span data-ttu-id="4e715-158">`InvokeAsync` 허브에서 메서드를 호출 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-158">`InvokeAsync` calls methods on the hub.</span></span> <span data-ttu-id="4e715-159">허브 메서드 이름 및 허브 메서드에 정의 된 모든 인수를에 전달 `InvokeAsync` 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-159">Pass the hub method name and any arguments defined in the hub method to `InvokeAsync`.</span></span> <span data-ttu-id="4e715-160">:::no-loc(SignalR)::: 는 비동기 이므로를 `async` 호출 하 `await` 는 경우 및를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-160">:::no-loc(SignalR)::: is asynchronous, so use `async` and `await` when making the calls.</span></span>
+<span data-ttu-id="4e715-158">`InvokeAsync` 허브에서 메서드를 호출 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-158">`InvokeAsync` calls methods on the hub.</span></span> <span data-ttu-id="4e715-159">허브 메서드 이름 및 허브 메서드에 정의 된 모든 인수를에 전달 `InvokeAsync` 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-159">Pass the hub method name and any arguments defined in the hub method to `InvokeAsync`.</span></span> <span data-ttu-id="4e715-160">SignalR 는 비동기 이므로를 `async` 호출 하 `await` 는 경우 및를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-160">SignalR is asynchronous, so use `async` and `await` when making the calls.</span></span>
 
 [!code-csharp[InvokeAsync method](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_InvokeAsync)]
 
@@ -248,7 +248,7 @@ connection.Closed += (error) => {
 <span data-ttu-id="4e715-165">`SendAsync`메서드는 `Task` 메시지가 서버로 전송 될 때 완료 되는를 반환 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-165">The `SendAsync` method returns a `Task` which completes when the message has been sent to the server.</span></span> <span data-ttu-id="4e715-166">`Task`서버 메서드가 완료 될 때까지 기다리지 않으므로 반환 값이 제공 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-166">No return value is provided since this `Task` doesn't wait until the server method completes.</span></span> <span data-ttu-id="4e715-167">메시지를 보내는 동안 클라이언트에서 throw 되는 모든 예외에 오류가 발생 `Task` 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-167">Any exceptions thrown on the client while sending the message produce a faulted `Task`.</span></span> <span data-ttu-id="4e715-168">`await`및 `try...catch` 구문을 사용 하 여 보내기 오류를 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-168">Use `await` and `try...catch` syntax to handle send errors.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="4e715-169">클라이언트에서 허브 메서드를 호출 하는 것은 :::no-loc(SignalR)::: *기본* 모드에서 Azure 서비스를 사용 하는 경우에만 지원 됩니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-169">Calling hub methods from a client is only supported when using the Azure :::no-loc(SignalR)::: Service in *Default* mode.</span></span> <span data-ttu-id="4e715-170">자세한 내용은 질문과 [대답 (azure-Signalr GitHub 리포지토리)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="4e715-170">For more information, see [Frequently Asked Questions (azure-signalr GitHub repository)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span></span>
+> <span data-ttu-id="4e715-169">클라이언트에서 허브 메서드를 호출 하는 것은 SignalR *기본* 모드에서 Azure 서비스를 사용 하는 경우에만 지원 됩니다.</span><span class="sxs-lookup"><span data-stu-id="4e715-169">Calling hub methods from a client is only supported when using the Azure SignalR Service in *Default* mode.</span></span> <span data-ttu-id="4e715-170">자세한 내용은 질문과 [대답 (azure-Signalr GitHub 리포지토리)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="4e715-170">For more information, see [Frequently Asked Questions (azure-signalr GitHub repository)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span></span>
 
 ## <a name="call-client-methods-from-hub"></a><span data-ttu-id="4e715-171">허브에서 클라이언트 메서드 호출</span><span class="sxs-lookup"><span data-stu-id="4e715-171">Call client methods from hub</span></span>
 
@@ -271,4 +271,4 @@ connection.Closed += (error) => {
 * [<span data-ttu-id="4e715-178">허브</span><span class="sxs-lookup"><span data-stu-id="4e715-178">Hubs</span></span>](xref:signalr/hubs)
 * [<span data-ttu-id="4e715-179">JavaScript 클라이언트</span><span class="sxs-lookup"><span data-stu-id="4e715-179">JavaScript client</span></span>](xref:signalr/javascript-client)
 * [<span data-ttu-id="4e715-180">Azure에 게시</span><span class="sxs-lookup"><span data-stu-id="4e715-180">Publish to Azure</span></span>](xref:signalr/publish-to-azure-web-app)
-* [<span data-ttu-id="4e715-181">Azure :::no-loc(SignalR)::: 서비스 서버 리스 설명서</span><span class="sxs-lookup"><span data-stu-id="4e715-181">Azure :::no-loc(SignalR)::: Service serverless documentation</span></span>](/azure/azure-signalr/signalr-concept-serverless-development-config)
+* [<span data-ttu-id="4e715-181">Azure SignalR 서비스 서버 리스 설명서</span><span class="sxs-lookup"><span data-stu-id="4e715-181">Azure SignalR Service serverless documentation</span></span>](/azure/azure-signalr/signalr-concept-serverless-development-config)

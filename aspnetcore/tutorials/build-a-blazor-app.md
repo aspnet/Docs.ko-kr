@@ -1,23 +1,23 @@
 ---
-title: ':::no-loc(Blazor)::: 할 일 목록 앱 빌드'
+title: 'Blazor 할 일 목록 앱 빌드'
 author: guardrex
-description: ':::no-loc(Blazor)::: 앱을 단계별로 빌드합니다.'
+description: 'Blazor 앱을 단계별로 빌드합니다.'
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/22/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/build-a-blazor-app
 ms.openlocfilehash: 68a38b82f5a89365e4f345a60f1f34b697c027ed
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,17 +26,17 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93060094"
 ---
-# <a name="build-a-no-locblazor-todo-list-app"></a><span data-ttu-id="e3a59-103">:::no-loc(Blazor)::: 할 일 목록 앱 빌드</span><span class="sxs-lookup"><span data-stu-id="e3a59-103">Build a :::no-loc(Blazor)::: todo list app</span></span>
+# <a name="build-a-no-locblazor-todo-list-app"></a><span data-ttu-id="e3a59-103">Blazor 할 일 목록 앱 빌드</span><span class="sxs-lookup"><span data-stu-id="e3a59-103">Build a Blazor todo list app</span></span>
 
 <span data-ttu-id="e3a59-104">작성자: [Daniel Roth](https://github.com/danroth27) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="e3a59-104">By [Daniel Roth](https://github.com/danroth27) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="e3a59-105">이 자습서에서는 :::no-loc(Blazor)::: 앱을 만들고 수정하는 방법을 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-105">This tutorial shows you how to build and modify a :::no-loc(Blazor)::: app.</span></span> <span data-ttu-id="e3a59-106">다음과 같은 작업을 수행하는 방법을 살펴봅니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-106">You learn how to:</span></span>
+<span data-ttu-id="e3a59-105">이 자습서에서는 Blazor 앱을 만들고 수정하는 방법을 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-105">This tutorial shows you how to build and modify a Blazor app.</span></span> <span data-ttu-id="e3a59-106">다음과 같은 작업을 수행하는 방법을 살펴봅니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-106">You learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="e3a59-107">할 일 목록 :::no-loc(Blazor)::: 앱 프로젝트 만들기</span><span class="sxs-lookup"><span data-stu-id="e3a59-107">Create a todo list :::no-loc(Blazor)::: app project</span></span>
-> * <span data-ttu-id="e3a59-108">:::no-loc(Razor)::: 구성 요소 수정</span><span class="sxs-lookup"><span data-stu-id="e3a59-108">Modify :::no-loc(Razor)::: components</span></span>
+> * <span data-ttu-id="e3a59-107">할 일 목록 Blazor 앱 프로젝트 만들기</span><span class="sxs-lookup"><span data-stu-id="e3a59-107">Create a todo list Blazor app project</span></span>
+> * <span data-ttu-id="e3a59-108">Razor 구성 요소 수정</span><span class="sxs-lookup"><span data-stu-id="e3a59-108">Modify Razor components</span></span>
 > * <span data-ttu-id="e3a59-109">구성 요소에서 이벤트 처리 및 데이터 바인딩 사용</span><span class="sxs-lookup"><span data-stu-id="e3a59-109">Use event handling and data binding in components</span></span>
-> * <span data-ttu-id="e3a59-110">:::no-loc(Blazor)::: 앱에서 라우팅 사용</span><span class="sxs-lookup"><span data-stu-id="e3a59-110">Use routing in a :::no-loc(Blazor)::: app</span></span>
+> * <span data-ttu-id="e3a59-110">Blazor 앱에서 라우팅 사용</span><span class="sxs-lookup"><span data-stu-id="e3a59-110">Use routing in a Blazor app</span></span>
 
 <span data-ttu-id="e3a59-111">이 자습서의 내용을 마치면 할 일 목록 앱을 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-111">At the end of this tutorial, you'll have a working todo list app.</span></span>
 
@@ -44,9 +44,9 @@ ms.locfileid: "93060094"
 
 [!INCLUDE[](~/includes/3.1-SDK.md)]
 
-## <a name="create-a-todo-list-no-locblazor-app"></a><span data-ttu-id="e3a59-113">할 일 목록 :::no-loc(Blazor)::: 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="e3a59-113">Create a todo list :::no-loc(Blazor)::: app</span></span>
+## <a name="create-a-todo-list-no-locblazor-app"></a><span data-ttu-id="e3a59-113">할 일 목록 Blazor 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="e3a59-113">Create a todo list Blazor app</span></span>
 
-1. <span data-ttu-id="e3a59-114">명령 셸에서 `TodoList`라는 새 :::no-loc(Blazor)::: 앱을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-114">Create a new :::no-loc(Blazor)::: app named `TodoList` in a command shell:</span></span>
+1. <span data-ttu-id="e3a59-114">명령 셸에서 `TodoList`라는 새 Blazor 앱을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-114">Create a new Blazor app named `TodoList` in a command shell:</span></span>
 
    ```dotnetcli
    dotnet new blazorserver -o TodoList
@@ -58,14 +58,14 @@ ms.locfileid: "93060094"
    cd TodoList
    ```
 
-1. <span data-ttu-id="e3a59-118">다음 명령을 사용하여 `Pages` 폴더의 앱에 새 `Todo` :::no-loc(Razor)::: 구성 요소를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-118">Add a new `Todo` :::no-loc(Razor)::: component to the app in the `Pages` folder using the following command:</span></span>
+1. <span data-ttu-id="e3a59-118">다음 명령을 사용하여 `Pages` 폴더의 앱에 새 `Todo` Razor 구성 요소를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-118">Add a new `Todo` Razor component to the app in the `Pages` folder using the following command:</span></span>
 
    ```dotnetcli
    dotnet new razorcomponent -n Todo -o Pages
    ```
 
    > [!IMPORTANT]
-   > <span data-ttu-id="e3a59-119">:::no-loc(Razor)::: 구성 요소 파일 이름에는 첫 글자를 대문자로 사용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-119">:::no-loc(Razor)::: component file names require a capitalized first letter.</span></span> <span data-ttu-id="e3a59-120">`Pages` 폴더를 열고 `Todo` 구성 요소 파일 이름이 대문자 `T`로 시작하는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-120">Open the `Pages` folder and confirm that the `Todo` component file name starts with a capital letter `T`.</span></span> <span data-ttu-id="e3a59-121">파일 이름이 `Todo.razor`여야 합니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-121">The file name should be `Todo.razor`.</span></span>
+   > <span data-ttu-id="e3a59-119">Razor 구성 요소 파일 이름에는 첫 글자를 대문자로 사용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-119">Razor component file names require a capitalized first letter.</span></span> <span data-ttu-id="e3a59-120">`Pages` 폴더를 열고 `Todo` 구성 요소 파일 이름이 대문자 `T`로 시작하는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-120">Open the `Pages` folder and confirm that the `Todo` component file name starts with a capital letter `T`.</span></span> <span data-ttu-id="e3a59-121">파일 이름이 `Todo.razor`여야 합니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-121">The file name should be `Todo.razor`.</span></span>
 
 1. <span data-ttu-id="e3a59-122">`Pages/Todo.razor`에서 구성 요소에 초기 태그를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-122">In `Pages/Todo.razor` provide the initial markup for the component:</span></span>
 
@@ -147,12 +147,12 @@ ms.locfileid: "93060094"
 <span data-ttu-id="e3a59-158">이 자습서에서는 다음 작업 방법을 알아보았습니다.</span><span class="sxs-lookup"><span data-stu-id="e3a59-158">In this tutorial, you learned how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="e3a59-159">할 일 목록 :::no-loc(Blazor)::: 앱 프로젝트 만들기</span><span class="sxs-lookup"><span data-stu-id="e3a59-159">Create a todo list :::no-loc(Blazor)::: app project</span></span>
-> * <span data-ttu-id="e3a59-160">:::no-loc(Razor)::: 구성 요소 수정</span><span class="sxs-lookup"><span data-stu-id="e3a59-160">Modify :::no-loc(Razor)::: components</span></span>
+> * <span data-ttu-id="e3a59-159">할 일 목록 Blazor 앱 프로젝트 만들기</span><span class="sxs-lookup"><span data-stu-id="e3a59-159">Create a todo list Blazor app project</span></span>
+> * <span data-ttu-id="e3a59-160">Razor 구성 요소 수정</span><span class="sxs-lookup"><span data-stu-id="e3a59-160">Modify Razor components</span></span>
 > * <span data-ttu-id="e3a59-161">구성 요소에서 이벤트 처리 및 데이터 바인딩 사용</span><span class="sxs-lookup"><span data-stu-id="e3a59-161">Use event handling and data binding in components</span></span>
-> * <span data-ttu-id="e3a59-162">:::no-loc(Blazor)::: 앱에서 라우팅 사용</span><span class="sxs-lookup"><span data-stu-id="e3a59-162">Use routing in a :::no-loc(Blazor)::: app</span></span>
+> * <span data-ttu-id="e3a59-162">Blazor 앱에서 라우팅 사용</span><span class="sxs-lookup"><span data-stu-id="e3a59-162">Use routing in a Blazor app</span></span>
 
-<span data-ttu-id="e3a59-163">ASP.NET Core :::no-loc(Blazor):::용 도구에 대해 알아보기</span><span class="sxs-lookup"><span data-stu-id="e3a59-163">Learn about tooling for ASP.NET Core :::no-loc(Blazor)::::</span></span>
+<span data-ttu-id="e3a59-163">ASP.NET Core Blazor용 도구에 대해 알아보기</span><span class="sxs-lookup"><span data-stu-id="e3a59-163">Learn about tooling for ASP.NET Core Blazor:</span></span>
 
 > [!div class="nextstepaction"]
 > <xref:blazor/tooling>

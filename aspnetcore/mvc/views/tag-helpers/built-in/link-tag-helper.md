@@ -6,17 +6,17 @@ description: ASP.NET Core 링크 태그 도우미 특성 및 HTML 링크 태그�
 ms.custom: mvc
 ms.date: 09/24/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/tag-helpers/builtin-th/link-tag-helper
 ms.openlocfilehash: 7998cec94ebb56cbe6dbc321f7cb499260d6fe74
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -35,7 +35,7 @@ ms.locfileid: "93059119"
 
 <span data-ttu-id="f0d87-107">링크 태그 도우미를 사용하면 CSS 파일에 CDN 및 CDN을 사용할 수 없는 경우를 대비한 대체를 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f0d87-107">The Link Tag Helper allows you to specify a CDN for the CSS file and a fallback when the CDN is not available.</span></span> <span data-ttu-id="f0d87-108">링크 태그 도우미는 로컬 호스팅의 견고성과 함께 CDN의 성능 이점을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f0d87-108">The Link Tag Helper provides the performance advantage of a CDN with the robustness of local hosting.</span></span>
 
-<span data-ttu-id="f0d87-109">다음 :::no-loc(Razor)::: 태그는 `head` ASP.NET Core 웹 앱 템플릿으로 만든 레이아웃 파일의 요소를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="f0d87-109">The following :::no-loc(Razor)::: markup shows the `head` element of a layout file created with the ASP.NET Core web app template:</span></span>
+<span data-ttu-id="f0d87-109">다음 Razor 태그는 `head` ASP.NET Core 웹 앱 템플릿으로 만든 레이아웃 파일의 요소를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="f0d87-109">The following Razor markup shows the `head` element of a layout file created with the ASP.NET Core web app template:</span></span>
 
 [!code-cshtml[](link-tag-helper/sample/_Layout.cshtml?name=snippet)]
 

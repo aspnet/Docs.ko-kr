@@ -6,17 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
 ms.openlocfilehash: 2cfd200c44290a0931cdeb2f68e99b90c11aa612
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -201,7 +201,7 @@ baf9a678c88d        hellodockertools:dev   "C:\\remote_debugge..."   21 seconds 
 
 ## <a name="edit-and-continue"></a><span data-ttu-id="8cbbe-217">편집하며 계속하기</span><span class="sxs-lookup"><span data-stu-id="8cbbe-217">Edit and continue</span></span>
 
-<span data-ttu-id="8cbbe-218">정적 파일 및 :::no-loc(Razor)::: 뷰에 대한 변경 사항은 자동 업데이트되므로 컴파일 단계가 필요하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="8cbbe-218">Changes to static files and :::no-loc(Razor)::: views are automatically updated without the need for a compilation step.</span></span> <span data-ttu-id="8cbbe-219">내용을 변경 및 저장하고 브라우저를 새로 고쳐 업데이트를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="8cbbe-219">Make the change, save, and refresh the browser to view the update.</span></span>
+<span data-ttu-id="8cbbe-218">정적 파일 및 Razor 뷰에 대한 변경 사항은 자동 업데이트되므로 컴파일 단계가 필요하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="8cbbe-218">Changes to static files and Razor views are automatically updated without the need for a compilation step.</span></span> <span data-ttu-id="8cbbe-219">내용을 변경 및 저장하고 브라우저를 새로 고쳐 업데이트를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="8cbbe-219">Make the change, save, and refresh the browser to view the update.</span></span>
 
 <span data-ttu-id="8cbbe-220">코드 파일을 수정하려면 컨테이너 내에서 컴파일하고 Kestrel을 다시 시작해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="8cbbe-220">Code file modifications require compilation and a restart of Kestrel within the container.</span></span> <span data-ttu-id="8cbbe-221">변경 후 컨테이너 내에서 `CTRL+F5`를 사용하여 프로세스를 수행하고 앱을 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="8cbbe-221">After making the change, use `CTRL+F5` to perform the process and start the app within the container.</span></span> <span data-ttu-id="8cbbe-222">Docker 컨테이너는 다시 빌드되거나 중지되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="8cbbe-222">The Docker container isn't rebuilt or stopped.</span></span> <span data-ttu-id="8cbbe-223">PMC에서 `docker ps` 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="8cbbe-223">Run the `docker ps` command in PMC.</span></span> <span data-ttu-id="8cbbe-224">원래 컨테이너는 10분 이전을 기준으로 여전히 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="8cbbe-224">Notice the original container is still running as of 10 minutes ago:</span></span>
 

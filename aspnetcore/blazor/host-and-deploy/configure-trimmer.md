@@ -1,23 +1,23 @@
 ---
-title: ASP.NET Core :::no-loc(Blazor):::용 트리머 구성
+title: ASP.NET Core Blazor용 트리머 구성
 author: guardrex
-description: ':::no-loc(Blazor)::: 앱을 빌드할 때 IL(중간 언어) 링커(트리머)를 제어하는 방법을 알아봅니다.'
+description: 'Blazor 앱을 빌드할 때 IL(중간 언어) 링커(트리머)를 제어하는 방법을 알아봅니다.'
 monikerRange: '>= aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/14/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/host-and-deploy/configure-trimmer
 ms.openlocfilehash: 337b188d3c0aeac9c5c635ebca265b9a35c6904d
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,11 +26,11 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93055804"
 ---
-# <a name="configure-the-trimmer-for-aspnet-core-no-locblazor"></a><span data-ttu-id="178f2-103">ASP.NET Core :::no-loc(Blazor):::용 트리머 구성</span><span class="sxs-lookup"><span data-stu-id="178f2-103">Configure the Trimmer for ASP.NET Core :::no-loc(Blazor):::</span></span>
+# <a name="configure-the-trimmer-for-aspnet-core-no-locblazor"></a><span data-ttu-id="178f2-103">ASP.NET Core Blazor용 트리머 구성</span><span class="sxs-lookup"><span data-stu-id="178f2-103">Configure the Trimmer for ASP.NET Core Blazor</span></span>
 
 <span data-ttu-id="178f2-104">작성자: [Pranav Krishnamoorthy](https://github.com/pranavkm)</span><span class="sxs-lookup"><span data-stu-id="178f2-104">By [Pranav Krishnamoorthy](https://github.com/pranavkm)</span></span>
 
-<span data-ttu-id="178f2-105">:::no-loc(Blazor WebAssembly):::에서 [IL(중간 언어)](/dotnet/standard/managed-code#intermediate-language--execution) 트리밍을 수행하여 게시된 출력값의 크기를 줄입니다.</span><span class="sxs-lookup"><span data-stu-id="178f2-105">:::no-loc(Blazor WebAssembly)::: performs [Intermediate Language (IL)](/dotnet/standard/managed-code#intermediate-language--execution) trimming to reduce the size of the published output.</span></span>
+<span data-ttu-id="178f2-105">Blazor WebAssembly에서 [IL(중간 언어)](/dotnet/standard/managed-code#intermediate-language--execution) 트리밍을 수행하여 게시된 출력값의 크기를 줄입니다.</span><span class="sxs-lookup"><span data-stu-id="178f2-105">Blazor WebAssembly performs [Intermediate Language (IL)](/dotnet/standard/managed-code#intermediate-language--execution) trimming to reduce the size of the published output.</span></span>
 
 <span data-ttu-id="178f2-106">앱 트리밍은 크기에 맞게 최적화되지만 부작용이 발생할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="178f2-106">Trimming an app optimizes for size but may have detrimental effects.</span></span> <span data-ttu-id="178f2-107">트리머는 동적 동작에 대한 정보를 알지 못하고 일반적으로 런타임에서 리플렉션에 필요한 형식을 결정할 수 없기 때문에, 리플렉션 또는 관련 동적 기능을 사용하는 앱은 잘린 경우 중단될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="178f2-107">Apps that use reflection or related dynamic features may break when trimmed because the trimmer doesn't know about dynamic behavior and can't determine in general which types are required for reflection at runtime.</span></span> <span data-ttu-id="178f2-108">이러한 앱을 자르려면 앱이 의존하는 코드 및 패키지 또는 프레임워크의 리플렉션에서 필요로 하는 형식에 대해 트리머가 알고 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="178f2-108">To trim such apps, the trimmer must be informed about any types required by reflection in the code and in packages or frameworks that the app depends on.</span></span>
 

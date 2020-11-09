@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/startup
 ms.openlocfilehash: 747b13abb0ce3fed2d1dc018c6dbf82db1ae7130
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -45,7 +45,7 @@ ms.locfileid: "93052242"
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-<span data-ttu-id="17e59-114">앞의 샘플은 [:::no-loc(Razor)::: Pages](xref:razor-pages/index)에 해당하며 MVC 버전도 비슷합니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-114">The preceding sample is for [:::no-loc(Razor)::: Pages](xref:razor-pages/index); the MVC version is similar.</span></span>
+<span data-ttu-id="17e59-114">앞의 샘플은 [Razor Pages](xref:razor-pages/index)에 해당하며 MVC 버전도 비슷합니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-114">The preceding sample is for [Razor Pages](xref:razor-pages/index); the MVC version is similar.</span></span>
 
 
 <span data-ttu-id="17e59-115">앱의 [호스트](xref:fundamentals/index#host)가 빌드될 때 `Startup` 클래스가 지정됩니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-115">The `Startup` class is specified when the app's [host](xref:fundamentals/index#host) is built.</span></span> <span data-ttu-id="17e59-116">`Startup` 클래스는 일반적으로 호스트 작성기에서 [WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) 메서드를 호출하여 지정됩니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-116">The `Startup` class is typically specified by calling the [WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) method on the host builder:</span></span>
@@ -80,9 +80,9 @@ ms.locfileid: "93052242"
 
 <span data-ttu-id="17e59-134">호스트는 `Startup` 메서드가 호출되기 전에 일부 서비스를 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-134">The host may configure some services before `Startup` methods are called.</span></span> <span data-ttu-id="17e59-135">자세한 내용은 [호스트](xref:fundamentals/index#host)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="17e59-135">For more information, see [The host](xref:fundamentals/index#host).</span></span>
 
-<span data-ttu-id="17e59-136">실질적인 설정이 필요한 기능의 경우 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>에 `Add{Service}` 확장 메서드가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-136">For features that require substantial setup, there are `Add{Service}` extension methods on <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>.</span></span> <span data-ttu-id="17e59-137">예를 들어 **Add** DbContext, **Add** Default:::no-loc(Identity):::, **Add** EntityFrameworkStores 및 **Add**:::no-loc(Razor):::Pages가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-137">For example, **Add** DbContext, **Add** Default:::no-loc(Identity):::, **Add** EntityFrameworkStores, and **Add**:::no-loc(Razor):::Pages:</span></span>
+<span data-ttu-id="17e59-136">실질적인 설정이 필요한 기능의 경우 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>에 `Add{Service}` 확장 메서드가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-136">For features that require substantial setup, there are `Add{Service}` extension methods on <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>.</span></span> <span data-ttu-id="17e59-137">예를 들어 **Add** DbContext, **Add** DefaultIdentity, **Add** EntityFrameworkStores 및 **Add**RazorPages가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-137">For example, **Add** DbContext, **Add** DefaultIdentity, **Add** EntityFrameworkStores, and **Add**RazorPages:</span></span>
 
-[!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup:::no-loc(Identity):::.cs?name=snippet)]
+[!code-csharp[](startup/3.0_samples/StartupFilterSample/StartupIdentity.cs?name=snippet)]
 
 <span data-ttu-id="17e59-138">서비스 컨테이너에 서비스를 추가하면 앱 내 및 `Configure` 메서드에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-138">Adding services to the service container makes them available within the app and in the `Configure` method.</span></span> <span data-ttu-id="17e59-139">서비스는 [종속성 주입](xref:fundamentals/dependency-injection) 또는 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>를 통해 해결됩니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-139">The services are resolved via [dependency injection](xref:fundamentals/dependency-injection) or from <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>.</span></span>
 
@@ -97,12 +97,12 @@ ms.locfileid: "93052242"
 * [<span data-ttu-id="17e59-148">HSTS(HTTP 엄격한 전송 보안)</span><span class="sxs-lookup"><span data-stu-id="17e59-148">HTTP Strict Transport Security (HSTS)</span></span>](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [<span data-ttu-id="17e59-149">HTTPS 리디렉션</span><span class="sxs-lookup"><span data-stu-id="17e59-149">HTTPS redirection</span></span>](xref:security/enforcing-ssl)
 * [<span data-ttu-id="17e59-150">정적 파일</span><span class="sxs-lookup"><span data-stu-id="17e59-150">Static files</span></span>](xref:fundamentals/static-files)
-* <span data-ttu-id="17e59-151">ASP.NET Core [MVC](xref:mvc/overview) 및 [:::no-loc(Razor)::: Pages](xref:razor-pages/index)</span><span class="sxs-lookup"><span data-stu-id="17e59-151">ASP.NET Core [MVC](xref:mvc/overview) and [:::no-loc(Razor)::: Pages](xref:razor-pages/index)</span></span>
+* <span data-ttu-id="17e59-151">ASP.NET Core [MVC](xref:mvc/overview) 및 [Razor Pages](xref:razor-pages/index)</span><span class="sxs-lookup"><span data-stu-id="17e59-151">ASP.NET Core [MVC](xref:mvc/overview) and [Razor Pages](xref:razor-pages/index)</span></span>
 
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-<span data-ttu-id="17e59-152">앞의 샘플은 [:::no-loc(Razor)::: Pages](xref:razor-pages/index)에 해당하며 MVC 버전도 비슷합니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-152">The preceding sample is for [:::no-loc(Razor)::: Pages](xref:razor-pages/index); the MVC version is similar.</span></span>
+<span data-ttu-id="17e59-152">앞의 샘플은 [Razor Pages](xref:razor-pages/index)에 해당하며 MVC 버전도 비슷합니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-152">The preceding sample is for [Razor Pages](xref:razor-pages/index); the MVC version is similar.</span></span>
 
 <span data-ttu-id="17e59-153">각 `Use` 확장 메서드는 요청 파이프라인에 하나 이상의 미들웨어 구성 요소를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-153">Each `Use` extension method adds one or more middleware components to the request pipeline.</span></span> <span data-ttu-id="17e59-154">예를 들어 <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*>는 [정적 파일](xref:fundamentals/static-files)을 제공하도록 [미들웨어](xref:fundamentals/middleware/index)를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-154">For instance, <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*> configures [middleware](xref:fundamentals/middleware/index) to serve [static files](xref:fundamentals/static-files).</span></span>
 
@@ -212,7 +212,7 @@ ms.locfileid: "93052242"
 
 <span data-ttu-id="17e59-223">호스트는 `Startup` 메서드가 호출되기 전에 일부 서비스를 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-223">The host may configure some services before `Startup` methods are called.</span></span> <span data-ttu-id="17e59-224">자세한 내용은 [호스트](xref:fundamentals/index#host)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="17e59-224">For more information, see [The host](xref:fundamentals/index#host).</span></span>
 
-<span data-ttu-id="17e59-225">실질적인 설정이 필요한 기능의 경우 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>에 `Add{Service}` 확장 메서드가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-225">For features that require substantial setup, there are `Add{Service}` extension methods on <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>.</span></span> <span data-ttu-id="17e59-226">예를 들어 **Add** DbContext, **Add** Default:::no-loc(Identity):::, **Add** EntityFrameworkStores 및 **Add**:::no-loc(Razor):::Pages가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-226">For example, **Add** DbContext, **Add** Default:::no-loc(Identity):::, **Add** EntityFrameworkStores, and **Add**:::no-loc(Razor):::Pages:</span></span>
+<span data-ttu-id="17e59-225">실질적인 설정이 필요한 기능의 경우 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>에 `Add{Service}` 확장 메서드가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-225">For features that require substantial setup, there are `Add{Service}` extension methods on <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>.</span></span> <span data-ttu-id="17e59-226">예를 들어 **Add** DbContext, **Add** DefaultIdentity, **Add** EntityFrameworkStores 및 **Add**RazorPages가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="17e59-226">For example, **Add** DbContext, **Add** DefaultIdentity, **Add** EntityFrameworkStores, and **Add**RazorPages:</span></span>
 
 [!code-csharp[](startup/sample_snapshot/Startup3.cs)]
 
@@ -231,7 +231,7 @@ ms.locfileid: "93052242"
 * [<span data-ttu-id="17e59-238">HSTS(HTTP 엄격한 전송 보안)</span><span class="sxs-lookup"><span data-stu-id="17e59-238">HTTP Strict Transport Security (HSTS)</span></span>](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [<span data-ttu-id="17e59-239">HTTPS 리디렉션</span><span class="sxs-lookup"><span data-stu-id="17e59-239">HTTPS redirection</span></span>](xref:security/enforcing-ssl)
 * [<span data-ttu-id="17e59-240">정적 파일</span><span class="sxs-lookup"><span data-stu-id="17e59-240">Static files</span></span>](xref:fundamentals/static-files)
-* <span data-ttu-id="17e59-241">ASP.NET Core [MVC](xref:mvc/overview) 및 [:::no-loc(Razor)::: Pages](xref:razor-pages/index)</span><span class="sxs-lookup"><span data-stu-id="17e59-241">ASP.NET Core [MVC](xref:mvc/overview) and [:::no-loc(Razor)::: Pages](xref:razor-pages/index)</span></span>
+* <span data-ttu-id="17e59-241">ASP.NET Core [MVC](xref:mvc/overview) 및 [Razor Pages](xref:razor-pages/index)</span><span class="sxs-lookup"><span data-stu-id="17e59-241">ASP.NET Core [MVC](xref:mvc/overview) and [Razor Pages](xref:razor-pages/index)</span></span>
 * [<span data-ttu-id="17e59-242">GDPR(일반 데이터 보호 규정)</span><span class="sxs-lookup"><span data-stu-id="17e59-242">General Data Protection Regulation (GDPR)</span></span>](xref:security/gdpr)
 
 [!code-csharp[](startup/sample_snapshot/Startup4.cs)]

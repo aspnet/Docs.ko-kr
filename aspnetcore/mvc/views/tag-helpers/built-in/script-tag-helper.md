@@ -6,16 +6,16 @@ description: ASP.NET Core 스크립트 태그 도우미 특성 및 HTML 스크�
 ms.custom: mvc
 ms.date: 12/02/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/tag-helpers/builtin-th/script-tag-helper
 ms.openlocfilehash: f5856bf19681a42551f82bb15c769f192f338b4a
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -34,7 +34,7 @@ ms.locfileid: "93053503"
 
 <span data-ttu-id="e2645-107">스크립트 태그 도우미를 사용하면 스크립트 파일에 CDN 및 CDN을 사용할 수 없는 경우를 대비한 대체를 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2645-107">The Script Tag Helper allows you to specify a CDN for the script file and a fallback when the CDN is not available.</span></span> <span data-ttu-id="e2645-108">스크립트 태그 도우미는 로컬 호스팅의 견고성과 함께 CDN의 성능 이점을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="e2645-108">The Script Tag Helper provides the performance advantage of a CDN with the robustness of local hosting.</span></span>
 
-<span data-ttu-id="e2645-109">다음 :::no-loc(Razor)::: 태그는 대체 ( `script` fallback)가 있는 요소를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="e2645-109">The following :::no-loc(Razor)::: markup shows a `script` element with a fallback:</span></span>
+<span data-ttu-id="e2645-109">다음 Razor 태그는 대체 ( `script` fallback)가 있는 요소를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="e2645-109">The following Razor markup shows a `script` element with a fallback:</span></span>
 
 ```html
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"

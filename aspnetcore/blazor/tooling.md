@@ -1,23 +1,23 @@
 ---
-title: ASP.NET Core :::no-loc(Blazor):::용 도구
+title: ASP.NET Core Blazor용 도구
 author: guardrex
-description: ':::no-loc(Blazor)::: 앱을 빌드하는 데 사용할 수 있는 도구에 대해 알아봅니다.'
+description: 'Blazor 앱을 빌드하는 데 사용할 수 있는 도구에 대해 알아봅니다.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
 ms.openlocfilehash: 500342ac979efdee824ac0d4b5757ca9804f3b30
@@ -27,7 +27,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93054816"
 ---
-# <a name="tooling-for-aspnet-core-no-locblazor"></a><span data-ttu-id="d5c27-103">ASP.NET Core :::no-loc(Blazor):::용 도구</span><span class="sxs-lookup"><span data-stu-id="d5c27-103">Tooling for ASP.NET Core :::no-loc(Blazor):::</span></span>
+# <a name="tooling-for-aspnet-core-no-locblazor"></a><span data-ttu-id="d5c27-103">ASP.NET Core Blazor용 도구</span><span class="sxs-lookup"><span data-stu-id="d5c27-103">Tooling for ASP.NET Core Blazor</span></span>
 
 <span data-ttu-id="d5c27-104">작성자: [Daniel Roth](https://github.com/danroth27) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="d5c27-104">By [Daniel Roth](https://github.com/danroth27) and [Luke Latham](https://github.com/guardrex)</span></span>
 
@@ -37,13 +37,13 @@ ms.locfileid: "93054816"
 
 1. <span data-ttu-id="d5c27-106">새 프로젝트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-106">Create a new project.</span></span>
 
-1. <span data-ttu-id="d5c27-107">**:::no-loc(Blazor)::: 앱** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-107">Select **:::no-loc(Blazor)::: App**.</span></span> <span data-ttu-id="d5c27-108">**새로 만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-108">Select **Next**.</span></span>
+1. <span data-ttu-id="d5c27-107">**Blazor 앱** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-107">Select **Blazor App**.</span></span> <span data-ttu-id="d5c27-108">**새로 만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-108">Select **Next**.</span></span>
 
 1. <span data-ttu-id="d5c27-109">**프로젝트 이름** 필드에 프로젝트 이름을 제공하거나 기본 프로젝트 이름을 수락합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-109">Provide a project name in the **Project name** field or accept the default project name.</span></span> <span data-ttu-id="d5c27-110">**위치** 항목이 올바른지 확인하거나 프로젝트의 위치를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-110">Confirm the **Location** entry is correct or provide a location for the project.</span></span> <span data-ttu-id="d5c27-111">**만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-111">Select **Create**.</span></span>
 
-1. <span data-ttu-id="d5c27-112">:::no-loc(Blazor WebAssembly)::: 환경의 경우 **:::no-loc(Blazor WebAssembly)::: 앱** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-112">For a :::no-loc(Blazor WebAssembly)::: experience, choose the **:::no-loc(Blazor WebAssembly)::: App** template.</span></span> <span data-ttu-id="d5c27-113">:::no-loc(Blazor Server)::: 환경의 경우 **:::no-loc(Blazor Server)::: 앱** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-113">For a :::no-loc(Blazor Server)::: experience, choose the **:::no-loc(Blazor Server)::: App** template.</span></span> <span data-ttu-id="d5c27-114">**만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-114">Select **Create**.</span></span>
+1. <span data-ttu-id="d5c27-112">Blazor WebAssembly 환경의 경우 **Blazor WebAssembly 앱** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-112">For a Blazor WebAssembly experience, choose the **Blazor WebAssembly App** template.</span></span> <span data-ttu-id="d5c27-113">Blazor Server 환경의 경우 **Blazor Server 앱** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-113">For a Blazor Server experience, choose the **Blazor Server App** template.</span></span> <span data-ttu-id="d5c27-114">**만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-114">Select **Create**.</span></span>
 
-   <span data-ttu-id="d5c27-115">두 가지 :::no-loc(Blazor)::: 호스팅 모델인 *:::no-loc(Blazor WebAssembly):::* 및 *:::no-loc(Blazor Server):::* 에 관한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d5c27-115">For information on the two :::no-loc(Blazor)::: hosting models, *:::no-loc(Blazor WebAssembly):::* and *:::no-loc(Blazor Server):::* , see <xref:blazor/hosting-models>.</span></span>
+   <span data-ttu-id="d5c27-115">두 가지 Blazor 호스팅 모델인 *Blazor WebAssembly* 및 *Blazor Server* 에 관한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d5c27-115">For information on the two Blazor hosting models, *Blazor WebAssembly* and *Blazor Server* , see <xref:blazor/hosting-models>.</span></span>
 
 1. <span data-ttu-id="d5c27-116"><kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 앱을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-116">Press <kbd>Ctrl</kbd>+<kbd>F5</kbd> to run the app.</span></span>
 
@@ -63,19 +63,19 @@ ms.locfileid: "93054816"
 
 1. <span data-ttu-id="d5c27-121">최신 [Visual Studio Code용 C# 확장](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)을 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-121">Install the latest [C# for Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).</span></span>
 
-1. <span data-ttu-id="d5c27-122">:::no-loc(Blazor WebAssembly)::: 환경의 경우 명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-122">For a :::no-loc(Blazor WebAssembly)::: experience, execute the following command in a command shell:</span></span>
+1. <span data-ttu-id="d5c27-122">Blazor WebAssembly 환경의 경우 명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-122">For a Blazor WebAssembly experience, execute the following command in a command shell:</span></span>
 
    ```dotnetcli
    dotnet new blazorwasm -o WebApplication1
    ```
 
-   <span data-ttu-id="d5c27-123">:::no-loc(Blazor Server)::: 환경의 경우 명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-123">For a :::no-loc(Blazor Server)::: experience, execute the following command in a command shell:</span></span>
+   <span data-ttu-id="d5c27-123">Blazor Server 환경의 경우 명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-123">For a Blazor Server experience, execute the following command in a command shell:</span></span>
 
    ```dotnetcli
    dotnet new blazorserver -o WebApplication1
    ```
 
-   <span data-ttu-id="d5c27-124">두 가지 :::no-loc(Blazor)::: 호스팅 모델인 *:::no-loc(Blazor WebAssembly):::* 및 *:::no-loc(Blazor Server):::* 에 관한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d5c27-124">For information on the two :::no-loc(Blazor)::: hosting models, *:::no-loc(Blazor WebAssembly):::* and *:::no-loc(Blazor Server):::* , see <xref:blazor/hosting-models>.</span></span>
+   <span data-ttu-id="d5c27-124">두 가지 Blazor 호스팅 모델인 *Blazor WebAssembly* 및 *Blazor Server* 에 관한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d5c27-124">For information on the two Blazor hosting models, *Blazor WebAssembly* and *Blazor Server* , see <xref:blazor/hosting-models>.</span></span>
 
 1. <span data-ttu-id="d5c27-125">Visual Studio Code에서 `WebApplication1` 폴더를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-125">Open the `WebApplication1` folder in Visual Studio Code.</span></span>
 
@@ -103,9 +103,9 @@ ms.locfileid: "93054816"
 
 1. <span data-ttu-id="d5c27-138">사이드바에서 **웹 및 콘솔** > **앱** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-138">In the sidebar, select **Web and Console** > **App**.</span></span>
 
-   <span data-ttu-id="d5c27-139">:::no-loc(Blazor WebAssembly)::: 환경의 경우 **:::no-loc(Blazor WebAssembly)::: 앱** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-139">For a :::no-loc(Blazor WebAssembly)::: experience, choose the **:::no-loc(Blazor WebAssembly)::: App** template.</span></span> <span data-ttu-id="d5c27-140">:::no-loc(Blazor Server)::: 환경의 경우 **:::no-loc(Blazor Server)::: 앱** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-140">For a :::no-loc(Blazor Server)::: experience, choose the **:::no-loc(Blazor Server)::: App** template.</span></span> <span data-ttu-id="d5c27-141">**새로 만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-141">Select **Next**.</span></span>
+   <span data-ttu-id="d5c27-139">Blazor WebAssembly 환경의 경우 **Blazor WebAssembly 앱** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-139">For a Blazor WebAssembly experience, choose the **Blazor WebAssembly App** template.</span></span> <span data-ttu-id="d5c27-140">Blazor Server 환경의 경우 **Blazor Server 앱** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-140">For a Blazor Server experience, choose the **Blazor Server App** template.</span></span> <span data-ttu-id="d5c27-141">**새로 만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-141">Select **Next**.</span></span>
 
-   <span data-ttu-id="d5c27-142">두 가지 :::no-loc(Blazor)::: 호스팅 모델인 *:::no-loc(Blazor WebAssembly):::* 및 *:::no-loc(Blazor Server):::* 에 관한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d5c27-142">For information on the two :::no-loc(Blazor)::: hosting models, *:::no-loc(Blazor WebAssembly):::* and *:::no-loc(Blazor Server):::* , see <xref:blazor/hosting-models>.</span></span>
+   <span data-ttu-id="d5c27-142">두 가지 Blazor 호스팅 모델인 *Blazor WebAssembly* 및 *Blazor Server* 에 관한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d5c27-142">For information on the two Blazor hosting models, *Blazor WebAssembly* and *Blazor Server* , see <xref:blazor/hosting-models>.</span></span>
 
 1. <span data-ttu-id="d5c27-143">**인증** 이 **인증 없음** 으로 설정되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-143">Confirm that **Authentication** is set to **No Authentication**.</span></span> <span data-ttu-id="d5c27-144">**새로 만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d5c27-144">Select **Next**.</span></span>
 

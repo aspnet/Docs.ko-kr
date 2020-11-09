@@ -5,17 +5,17 @@ description: ASP.NET Core 앱에서이 취약점을 해결 하는 데 필요한 
 ms.author: riande
 ms.date: 10/02/2018
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/cross-site-scripting
 ms.openlocfilehash: 1c90a786efe8c3c205a729a2da9d3a99d0222012
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -28,7 +28,7 @@ ms.locfileid: "93053087"
 
 <span data-ttu-id="69af2-104">작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="69af2-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="69af2-105">XSS (교차 사이트 스크립팅)는 공격자가 클라이언트 쪽 스크립트 (일반적으로 JavaScript)를 웹 페이지에 넣을 수 있도록 하는 보안 취약점입니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-105">Cross-Site Scripting (XSS) is a security vulnerability which enables an attacker to place client side scripts (usually JavaScript) into web pages.</span></span> <span data-ttu-id="69af2-106">다른 사용자가 영향을 받는 페이지를 로드 하면 공격자의 스크립트가 실행 되어 공격자가 :::no-loc(cookie)::: 및 세션 토큰을 도용 하거나 DOM 조작을 통해 웹 페이지의 내용을 변경 하거나 브라우저를 다른 페이지로 리디렉션할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-106">When other users load affected pages the attacker's scripts will run, enabling the attacker to steal :::no-loc(cookie):::s and session tokens, change the contents of the web page through DOM manipulation or redirect the browser to another page.</span></span> <span data-ttu-id="69af2-107">XSS 취약점은 일반적으로 응용 프로그램에서 사용자 입력을 가져와 유효성 검사, 인코딩 또는 이스케이프 하지 않고 페이지에 출력할 때 발생 합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-107">XSS vulnerabilities generally occur when an application takes user input and outputs it to a page without validating, encoding or escaping it.</span></span>
+<span data-ttu-id="69af2-105">XSS (교차 사이트 스크립팅)는 공격자가 클라이언트 쪽 스크립트 (일반적으로 JavaScript)를 웹 페이지에 넣을 수 있도록 하는 보안 취약점입니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-105">Cross-Site Scripting (XSS) is a security vulnerability which enables an attacker to place client side scripts (usually JavaScript) into web pages.</span></span> <span data-ttu-id="69af2-106">다른 사용자가 영향을 받는 페이지를 로드 하면 공격자의 스크립트가 실행 되어 공격자가 cookie 및 세션 토큰을 도용 하거나 DOM 조작을 통해 웹 페이지의 내용을 변경 하거나 브라우저를 다른 페이지로 리디렉션할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-106">When other users load affected pages the attacker's scripts will run, enabling the attacker to steal cookies and session tokens, change the contents of the web page through DOM manipulation or redirect the browser to another page.</span></span> <span data-ttu-id="69af2-107">XSS 취약점은 일반적으로 응용 프로그램에서 사용자 입력을 가져와 유효성 검사, 인코딩 또는 이스케이프 하지 않고 페이지에 출력할 때 발생 합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-107">XSS vulnerabilities generally occur when an application takes user input and outputs it to a page without validating, encoding or escaping it.</span></span>
 
 ## <a name="protecting-your-application-against-xss"></a><span data-ttu-id="69af2-108">XSS 로부터 응용 프로그램 보호</span><span class="sxs-lookup"><span data-stu-id="69af2-108">Protecting your application against XSS</span></span>
 
@@ -44,11 +44,11 @@ ms.locfileid: "93053087"
 
 5. <span data-ttu-id="69af2-120">신뢰할 수 없는 데이터를 URL 쿼리 문자열에 배치 하기 전에 URL이 인코딩 되는지 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-120">Before putting untrusted data into a URL query string ensure it's URL encoded.</span></span>
 
-## <a name="html-encoding-using-no-locrazor"></a><span data-ttu-id="69af2-121">HTML 인코딩 사용 :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="69af2-121">HTML Encoding using :::no-loc(Razor):::</span></span>
+## <a name="html-encoding-using-no-locrazor"></a><span data-ttu-id="69af2-121">HTML 인코딩 사용 Razor</span><span class="sxs-lookup"><span data-stu-id="69af2-121">HTML Encoding using Razor</span></span>
 
-<span data-ttu-id="69af2-122">:::no-loc(Razor):::MVC에서 사용 하는 엔진은이를 방지 하기 위해 정말로 작업 하지 않는 한 변수에서 모든 출력을 자동으로 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-122">The :::no-loc(Razor)::: engine used in MVC automatically encodes all output sourced from variables, unless you work really hard to prevent it doing so.</span></span> <span data-ttu-id="69af2-123">지시문을 사용할 때마다 HTML 특성 인코딩 규칙을 사용 *@* 합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-123">It uses HTML attribute encoding rules whenever you use the *@* directive.</span></span> <span data-ttu-id="69af2-124">Html 특성 인코딩은 HTML 인코딩의 상위 집합 이기 때문에 HTML 인코딩 또는 HTML 특성 인코딩을 사용 해야 하는지 여부를 걱정 하지 않아도 됩니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-124">As HTML attribute encoding is a superset of HTML encoding this means you don't have to concern yourself with whether you should use HTML encoding or HTML attribute encoding.</span></span> <span data-ttu-id="69af2-125">신뢰할 수 없는 입력을 JavaScript에 직접 삽입 하려고 할 때가 아니라 HTML 컨텍스트에서만 @를 사용 하도록 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-125">You must ensure that you only use @ in an HTML context, not when attempting to insert untrusted input directly into JavaScript.</span></span> <span data-ttu-id="69af2-126">태그 도우미는 태그 매개 변수에서 사용 하는 입력도 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-126">Tag helpers will also encode input you use in tag parameters.</span></span>
+<span data-ttu-id="69af2-122">RazorMVC에서 사용 하는 엔진은이를 방지 하기 위해 정말로 작업 하지 않는 한 변수에서 모든 출력을 자동으로 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-122">The Razor engine used in MVC automatically encodes all output sourced from variables, unless you work really hard to prevent it doing so.</span></span> <span data-ttu-id="69af2-123">지시문을 사용할 때마다 HTML 특성 인코딩 규칙을 사용 *@* 합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-123">It uses HTML attribute encoding rules whenever you use the *@* directive.</span></span> <span data-ttu-id="69af2-124">Html 특성 인코딩은 HTML 인코딩의 상위 집합 이기 때문에 HTML 인코딩 또는 HTML 특성 인코딩을 사용 해야 하는지 여부를 걱정 하지 않아도 됩니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-124">As HTML attribute encoding is a superset of HTML encoding this means you don't have to concern yourself with whether you should use HTML encoding or HTML attribute encoding.</span></span> <span data-ttu-id="69af2-125">신뢰할 수 없는 입력을 JavaScript에 직접 삽입 하려고 할 때가 아니라 HTML 컨텍스트에서만 @를 사용 하도록 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-125">You must ensure that you only use @ in an HTML context, not when attempting to insert untrusted input directly into JavaScript.</span></span> <span data-ttu-id="69af2-126">태그 도우미는 태그 매개 변수에서 사용 하는 입력도 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-126">Tag helpers will also encode input you use in tag parameters.</span></span>
 
-<span data-ttu-id="69af2-127">다음 뷰를 사용 합니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="69af2-127">Take the following :::no-loc(Razor)::: view:</span></span>
+<span data-ttu-id="69af2-127">다음 뷰를 사용 합니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="69af2-127">Take the following Razor view:</span></span>
 
 ```cshtml
 @{
@@ -67,7 +67,7 @@ ms.locfileid: "93053087"
 >[!WARNING]
 > <span data-ttu-id="69af2-131">ASP.NET Core MVC는 `HtmlString` 출력 시 자동으로 인코딩되지 않는 클래스를 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-131">ASP.NET Core MVC provides an `HtmlString` class which isn't automatically encoded upon output.</span></span> <span data-ttu-id="69af2-132">이는 XSS 취약성을 노출 하므로 신뢰할 수 없는 입력과 함께 사용 하면 안 됩니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-132">This should never be used in combination with untrusted input as this will expose an XSS vulnerability.</span></span>
 
-## <a name="javascript-encoding-using-no-locrazor"></a><span data-ttu-id="69af2-133">JavaScript Encoding 사용 :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="69af2-133">JavaScript Encoding using :::no-loc(Razor):::</span></span>
+## <a name="javascript-encoding-using-no-locrazor"></a><span data-ttu-id="69af2-133">JavaScript Encoding 사용 Razor</span><span class="sxs-lookup"><span data-stu-id="69af2-133">JavaScript Encoding using Razor</span></span>
 
 <span data-ttu-id="69af2-134">JavaScript에 값을 삽입 하 여 보기에서 처리할 수 있는 경우가 있을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-134">There may be times you want to insert a value into JavaScript to process in your view.</span></span> <span data-ttu-id="69af2-135">두 가지 방법으로 이 작업을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-135">There are two ways to do this.</span></span> <span data-ttu-id="69af2-136">값을 삽입 하는 가장 안전한 방법은 태그의 데이터 특성에 값을 추가 하 고 JavaScript에서 검색 하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-136">The safest way to insert values is to place the value in a data attribute of a tag and retrieve it in your JavaScript.</span></span> <span data-ttu-id="69af2-137">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-137">For example:</span></span>
 
@@ -211,13 +211,13 @@ var example = "\"Quoted Value with spaces and &\"";
 
 ## <a name="customizing-the-encoders"></a><span data-ttu-id="69af2-155">인코더 사용자 지정</span><span class="sxs-lookup"><span data-stu-id="69af2-155">Customizing the Encoders</span></span>
 
-<span data-ttu-id="69af2-156">기본적으로 인코더는 기본 라틴어 유니코드 범위로 제한 된 안전 목록을 사용 하 고 해당 범위 밖의 모든 문자를 해당 문자 코드로 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-156">By default encoders use a safe list limited to the Basic Latin Unicode range and encode all characters outside of that range as their character code equivalents.</span></span> <span data-ttu-id="69af2-157">이 동작은 :::no-loc(Razor)::: 인코더를 사용 하 여 문자열을 출력 하는 TagHelper 및 HtmlHelper 렌더링에도 영향을 줍니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-157">This behavior also affects :::no-loc(Razor)::: TagHelper and HtmlHelper rendering as it will use the encoders to output your strings.</span></span>
+<span data-ttu-id="69af2-156">기본적으로 인코더는 기본 라틴어 유니코드 범위로 제한 된 안전 목록을 사용 하 고 해당 범위 밖의 모든 문자를 해당 문자 코드로 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-156">By default encoders use a safe list limited to the Basic Latin Unicode range and encode all characters outside of that range as their character code equivalents.</span></span> <span data-ttu-id="69af2-157">이 동작은 Razor 인코더를 사용 하 여 문자열을 출력 하는 TagHelper 및 HtmlHelper 렌더링에도 영향을 줍니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-157">This behavior also affects Razor TagHelper and HtmlHelper rendering as it will use the encoders to output your strings.</span></span>
 
 <span data-ttu-id="69af2-158">이를 바탕으로 하는 이유는 알려지지 않은 또는 향후 브라우저 버그를 방지 하는 것입니다 (이전 브라우저 버그는 영어가 아닌 문자 처리를 기반으로 구문 분석을 수행 함).</span><span class="sxs-lookup"><span data-stu-id="69af2-158">The reasoning behind this is to protect against unknown or future browser bugs (previous browser bugs have tripped up parsing based on the processing of non-English characters).</span></span> <span data-ttu-id="69af2-159">웹 사이트에서 중국어, 키릴 자모 또는 다른 사용자와 같은 라틴 문자가 아닌 문자를 많이 사용 하는 경우이는 원하는 동작이 아닐 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-159">If your web site makes heavy use of non-Latin characters, such as Chinese, Cyrillic or others this is probably not the behavior you want.</span></span>
 
 <span data-ttu-id="69af2-160">에서 시작 하는 동안 응용 프로그램에 적합 한 유니코드 범위를 포함 하도록 인코더 안전 목록을 사용자 지정할 수 있습니다 `ConfigureServices()` .</span><span class="sxs-lookup"><span data-stu-id="69af2-160">You can customize the encoder safe lists to include Unicode ranges appropriate to your application during startup, in `ConfigureServices()`.</span></span>
 
-<span data-ttu-id="69af2-161">예를 들어 기본 구성을 사용 하는 경우 :::no-loc(Razor)::: 와 같은 htmlhelper를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-161">For example, using the default configuration you might use a :::no-loc(Razor)::: HtmlHelper like so;</span></span>
+<span data-ttu-id="69af2-161">예를 들어 기본 구성을 사용 하는 경우 Razor 와 같은 htmlhelper를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="69af2-161">For example, using the default configuration you might use a Razor HtmlHelper like so;</span></span>
 
 ```html
 <p>This link text is in Chinese: @Html.ActionLink("汉语/漢語", "Index")</p>

@@ -1,5 +1,5 @@
 ---
-title: 'ASP.NET Core에서 스트리밍 사용 :::no-loc(SignalR):::'
+title: 'ASP.NET Core에서 스트리밍 사용 SignalR'
 author: bradygaster
 description: 클라이언트와 서버 간에 데이터를 스트리밍하는 방법에 대해 알아봅니다.
 monikerRange: '>= aspnetcore-2.1'
@@ -7,17 +7,17 @@ ms.author: bradyg
 ms.custom: mvc, devx-track-js
 ms.date: 10/29/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: signalr/streaming
 ms.openlocfilehash: b07c280f271ccdd525128b973da065001a5cf0ed
 ms.sourcegitcommit: 0d40fc4932531ce13fc4ee9432144584e03c2f1c
@@ -26,19 +26,19 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93062443"
 ---
-# <a name="use-streaming-in-aspnet-core-no-locsignalr"></a><span data-ttu-id="fcdd0-103">ASP.NET Core에서 스트리밍 사용 :::no-loc(SignalR):::</span><span class="sxs-lookup"><span data-stu-id="fcdd0-103">Use streaming in ASP.NET Core :::no-loc(SignalR):::</span></span>
+# <a name="use-streaming-in-aspnet-core-no-locsignalr"></a><span data-ttu-id="fcdd0-103">ASP.NET Core에서 스트리밍 사용 SignalR</span><span class="sxs-lookup"><span data-stu-id="fcdd0-103">Use streaming in ASP.NET Core SignalR</span></span>
 
 <span data-ttu-id="fcdd0-104">만든 사람 [Brennan Conroy](https://github.com/BrennanConroy)</span><span class="sxs-lookup"><span data-stu-id="fcdd0-104">By [Brennan Conroy](https://github.com/BrennanConroy)</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="fcdd0-105">ASP.NET Core는 :::no-loc(SignalR)::: 클라이언트에서 서버로 및 서버에서 클라이언트로의 스트리밍을 지원 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-105">ASP.NET Core :::no-loc(SignalR)::: supports streaming from client to server and from server to client.</span></span> <span data-ttu-id="fcdd0-106">이는 시간이 지남에 따라 데이터 조각이 도착 하는 시나리오에 유용 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-106">This is useful for scenarios where fragments of data arrive over time.</span></span> <span data-ttu-id="fcdd0-107">스트리밍할 때 모든 데이터를 사용할 수 있을 때까지 기다리지 않고 각 조각이 사용할 수 있게 되는 즉시 클라이언트 또는 서버로 전송 됩니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-107">When streaming, each fragment is sent to the client or server as soon as it becomes available, rather than waiting for all of the data to become available.</span></span>
+<span data-ttu-id="fcdd0-105">ASP.NET Core는 SignalR 클라이언트에서 서버로 및 서버에서 클라이언트로의 스트리밍을 지원 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-105">ASP.NET Core SignalR supports streaming from client to server and from server to client.</span></span> <span data-ttu-id="fcdd0-106">이는 시간이 지남에 따라 데이터 조각이 도착 하는 시나리오에 유용 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-106">This is useful for scenarios where fragments of data arrive over time.</span></span> <span data-ttu-id="fcdd0-107">스트리밍할 때 모든 데이터를 사용할 수 있을 때까지 기다리지 않고 각 조각이 사용할 수 있게 되는 즉시 클라이언트 또는 서버로 전송 됩니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-107">When streaming, each fragment is sent to the client or server as soon as it becomes available, rather than waiting for all of the data to become available.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="fcdd0-108">ASP.NET Core :::no-loc(SignalR)::: 는 서버 메서드의 스트리밍 반환 값을 지원 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-108">ASP.NET Core :::no-loc(SignalR)::: supports streaming return values of server methods.</span></span> <span data-ttu-id="fcdd0-109">이는 시간이 지남에 따라 데이터 조각이 도착 하는 시나리오에 유용 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-109">This is useful for scenarios where fragments of data arrive over time.</span></span> <span data-ttu-id="fcdd0-110">반환 값이 클라이언트로 스트리밍되는 경우 모든 데이터를 사용할 수 있을 때까지 기다리지 않고 각 조각이 사용할 수 있게 되는 즉시 클라이언트에 전송 됩니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-110">When a return value is streamed to the client, each fragment is sent to the client as soon as it becomes available, rather than waiting for all the data to become available.</span></span>
+<span data-ttu-id="fcdd0-108">ASP.NET Core SignalR 는 서버 메서드의 스트리밍 반환 값을 지원 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-108">ASP.NET Core SignalR supports streaming return values of server methods.</span></span> <span data-ttu-id="fcdd0-109">이는 시간이 지남에 따라 데이터 조각이 도착 하는 시나리오에 유용 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-109">This is useful for scenarios where fragments of data arrive over time.</span></span> <span data-ttu-id="fcdd0-110">반환 값이 클라이언트로 스트리밍되는 경우 모든 데이터를 사용할 수 있을 때까지 기다리지 않고 각 조각이 사용할 수 있게 되는 즉시 클라이언트에 전송 됩니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-110">When a return value is streamed to the client, each fragment is sent to the client as soon as it becomes available, rather than waiting for all the data to become available.</span></span>
 
 ::: moniker-end
 
@@ -305,7 +305,7 @@ channel.Writer.Complete();
 
 ### <a name="server-to-client-streaming"></a><span data-ttu-id="fcdd0-177">서버-클라이언트 스트리밍</span><span class="sxs-lookup"><span data-stu-id="fcdd0-177">Server-to-client streaming</span></span>
 
-<span data-ttu-id="fcdd0-178">:::no-loc(SignalR):::Java 클라이언트는 메서드를 사용 하 여 `stream` 스트리밍 메서드를 호출 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-178">The :::no-loc(SignalR)::: Java client uses the `stream` method to invoke streaming methods.</span></span> <span data-ttu-id="fcdd0-179">`stream` 세 개 이상의 인수를 허용 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-179">`stream` accepts three or more arguments:</span></span>
+<span data-ttu-id="fcdd0-178">SignalRJava 클라이언트는 메서드를 사용 하 여 `stream` 스트리밍 메서드를 호출 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-178">The SignalR Java client uses the `stream` method to invoke streaming methods.</span></span> <span data-ttu-id="fcdd0-179">`stream` 세 개 이상의 인수를 허용 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-179">`stream` accepts three or more arguments:</span></span>
 
 * <span data-ttu-id="fcdd0-180">예상 되는 스트림 항목 유형입니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-180">The expected type of the stream items.</span></span>
 * <span data-ttu-id="fcdd0-181">허브 메서드의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-181">The name of the hub method.</span></span>
@@ -323,7 +323,7 @@ hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
 
 ### <a name="client-to-server-streaming"></a><span data-ttu-id="fcdd0-185">클라이언트와 서버 간 스트리밍</span><span class="sxs-lookup"><span data-stu-id="fcdd0-185">Client-to-server streaming</span></span>
 
-<span data-ttu-id="fcdd0-186">:::no-loc(SignalR):::Java 클라이언트는 [Observable](https://rxjs-dev.firebaseapp.com/api/index/class/Observable) `send` `invoke` `stream` 호출 된 허브 메서드에 따라 관찰 가능 개체를, 또는에 인수로 전달 하 여 허브에서 클라이언트-서버 스트리밍 메서드를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-186">The :::no-loc(SignalR)::: Java client can call client-to-server streaming methods on hubs by passing in an [Observable](https://rxjs-dev.firebaseapp.com/api/index/class/Observable) as an argument to `send`, `invoke`, or `stream`, depending on the hub method invoked.</span></span>
+<span data-ttu-id="fcdd0-186">SignalRJava 클라이언트는 [Observable](https://rxjs-dev.firebaseapp.com/api/index/class/Observable) `send` `invoke` `stream` 호출 된 허브 메서드에 따라 관찰 가능 개체를, 또는에 인수로 전달 하 여 허브에서 클라이언트-서버 스트리밍 메서드를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fcdd0-186">The SignalR Java client can call client-to-server streaming methods on hubs by passing in an [Observable](https://rxjs-dev.firebaseapp.com/api/index/class/Observable) as an argument to `send`, `invoke`, or `stream`, depending on the hub method invoked.</span></span>
 
 ```java
 ReplaySubject<String> stream = ReplaySubject.create();

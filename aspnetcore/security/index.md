@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/index
 ms.openlocfilehash: 3c86c66bebe8a5ce1c195ebf931193e7e2a73fef
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -48,4 +48,4 @@ ms.locfileid: "93051631"
 * [<span data-ttu-id="24d71-120">XSRF/CSRF(교차 사이트 요청 위조) 공격</span><span class="sxs-lookup"><span data-stu-id="24d71-120">Cross-Site Request Forgery (XSRF/CSRF) attacks</span></span>](xref:security/anti-request-forgery)
 * [<span data-ttu-id="24d71-121">오픈 리디렉션 공격</span><span class="sxs-lookup"><span data-stu-id="24d71-121">Open redirect attacks</span></span>](xref:security/preventing-open-redirects)
 
-<span data-ttu-id="24d71-122">그 외에도 알고 계셔야 하는 취약점이 더 있습니다.</span><span class="sxs-lookup"><span data-stu-id="24d71-122">There are more vulnerabilities that you should be aware of.</span></span> <span data-ttu-id="24d71-123">자세한 내용은 목차의 **보안 및 :::no-loc(Identity):::** 섹션에 있는 다른 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="24d71-123">For more information, see the other articles in the **Security and :::no-loc(Identity):::** section of the table of contents.</span></span>
+<span data-ttu-id="24d71-122">그 외에도 알고 계셔야 하는 취약점이 더 있습니다.</span><span class="sxs-lookup"><span data-stu-id="24d71-122">There are more vulnerabilities that you should be aware of.</span></span> <span data-ttu-id="24d71-123">자세한 내용은 목차의 **보안 및 Identity** 섹션에 있는 다른 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="24d71-123">For more information, see the other articles in the **Security and Identity** section of the table of contents.</span></span>

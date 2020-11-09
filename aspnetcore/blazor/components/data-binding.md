@@ -1,23 +1,23 @@
 ---
-title: 'ASP.NET Core :::no-loc(Blazor)::: 데이터 바인딩'
+title: 'ASP.NET Core Blazor 데이터 바인딩'
 author: guardrex
-description: ':::no-loc(Blazor)::: 앱의 구성 요소 및 DOM 요소에 대한 데이터 바인딩 기능에 대해 알아봅니다.'
+description: 'Blazor 앱의 구성 요소 및 DOM 요소에 대한 데이터 바인딩 기능에 대해 알아봅니다.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/22/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/components/data-binding
 ms.openlocfilehash: f1730ed366fc81444ffe54e88bcd33147efb0aa7
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,11 +26,11 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056298"
 ---
-# <a name="aspnet-core-no-locblazor-data-binding"></a><span data-ttu-id="c1eb5-103">ASP.NET Core :::no-loc(Blazor)::: 데이터 바인딩</span><span class="sxs-lookup"><span data-stu-id="c1eb5-103">ASP.NET Core :::no-loc(Blazor)::: data binding</span></span>
+# <a name="aspnet-core-no-locblazor-data-binding"></a><span data-ttu-id="c1eb5-103">ASP.NET Core Blazor 데이터 바인딩</span><span class="sxs-lookup"><span data-stu-id="c1eb5-103">ASP.NET Core Blazor data binding</span></span>
 
 <span data-ttu-id="c1eb5-104">작성자: [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), [Steve Sanderson](https://github.com/SteveSandersonMS)</span><span class="sxs-lookup"><span data-stu-id="c1eb5-104">By [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), and [Steve Sanderson](https://github.com/SteveSandersonMS)</span></span>
 
-<span data-ttu-id="c1eb5-105">:::no-loc(Razor)::: 구성 요소는 필드, 속성 또는 :::no-loc(Razor)::: 식 값을 사용하여 [`@bind`](xref:mvc/views/razor#bind)라는 HTML 요소 특성을 통해 데이터 바인딩 기능을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="c1eb5-105">:::no-loc(Razor)::: components provide data binding features via an HTML element attribute named [`@bind`](xref:mvc/views/razor#bind) with a field, property, or :::no-loc(Razor)::: expression value.</span></span>
+<span data-ttu-id="c1eb5-105">Razor 구성 요소는 필드, 속성 또는 Razor 식 값을 사용하여 [`@bind`](xref:mvc/views/razor#bind)라는 HTML 요소 특성을 통해 데이터 바인딩 기능을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="c1eb5-105">Razor components provide data binding features via an HTML element attribute named [`@bind`](xref:mvc/views/razor#bind) with a field, property, or Razor expression value.</span></span>
 
 <span data-ttu-id="c1eb5-106">다음 예제에서는 `<input>` 요소를 `currentValue` 필드에 바인딩하고 `<input>` 요소를 `CurrentValue` 속성에 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="c1eb5-106">The following example binds an `<input>` element to the `currentValue` field and an `<input>` element to the `CurrentValue` property:</span></span>
 
@@ -136,7 +136,7 @@ ms.locfileid: "93056298"
 
 <span data-ttu-id="c1eb5-151">`@bind:format` 특성은 `<input>` 요소의 `value`에 적용할 날짜 형식을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="c1eb5-151">The `@bind:format` attribute specifies the date format to apply to the `value` of the `<input>` element.</span></span> <span data-ttu-id="c1eb5-152">이 형식은 `onchange` 이벤트가 발생할 때 값을 구문 분석하는 데도 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="c1eb5-152">The format is also used to parse the value when an `onchange` event occurs.</span></span>
 
-<span data-ttu-id="c1eb5-153">:::no-loc(Blazor):::에서는 기본적으로 날짜 형식을 지정할 수 있도록 지원하므로 `date` 필드의 형식을 지정하는 것은 권장되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="c1eb5-153">Specifying a format for the `date` field type isn't recommended because :::no-loc(Blazor)::: has built-in support to format dates.</span></span> <span data-ttu-id="c1eb5-154">권장 사항에도 불구하고 `date` 필드의 형식이 제공된 경우 바인딩이 올바르게 작동하려면 `yyyy-MM-dd` 날짜 형식만 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="c1eb5-154">In spite of the recommendation, only use the `yyyy-MM-dd` date format for binding to function correctly if a format is supplied with the `date` field type:</span></span>
+<span data-ttu-id="c1eb5-153">Blazor에서는 기본적으로 날짜 형식을 지정할 수 있도록 지원하므로 `date` 필드의 형식을 지정하는 것은 권장되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="c1eb5-153">Specifying a format for the `date` field type isn't recommended because Blazor has built-in support to format dates.</span></span> <span data-ttu-id="c1eb5-154">권장 사항에도 불구하고 `date` 필드의 형식이 제공된 경우 바인딩이 올바르게 작동하려면 `yyyy-MM-dd` 날짜 형식만 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="c1eb5-154">In spite of the recommendation, only use the `yyyy-MM-dd` date format for binding to function correctly if a format is supplied with the `date` field type:</span></span>
 
 ```razor
 <input type="date" @bind="startDate" @bind:format="yyyy-MM-dd">

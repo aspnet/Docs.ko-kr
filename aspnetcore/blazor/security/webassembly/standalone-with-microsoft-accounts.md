@@ -1,22 +1,22 @@
 ---
-title: 'Microsoft 계정을 사용하여 ASP.NET Core :::no-loc(Blazor WebAssembly)::: 독립 실행형 앱 보호'
+title: 'Microsoft 계정을 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호'
 author: guardrex
-description: 'Microsoft 계정을 사용하여 ASP.NET Core :::no-loc(Blazor WebAssembly)::: 독립 실행형 앱을 보호하는 방법을 알아봅니다.'
+description: 'Microsoft 계정을 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱을 보호하는 방법을 알아봅니다.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/27/2020
 no-loc:
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/security/webassembly/standalone-with-microsoft-accounts
 ms.openlocfilehash: 6defd8c1ab7b99f69efe6e9ef3ba4da4e0e8d8fb
 ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
@@ -25,11 +25,11 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2020
 ms.locfileid: "92690390"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-microsoft-accounts"></a><span data-ttu-id="b01ff-103">Microsoft 계정을 사용하여 ASP.NET Core :::no-loc(Blazor WebAssembly)::: 독립 실행형 앱 보호</span><span class="sxs-lookup"><span data-stu-id="b01ff-103">Secure an ASP.NET Core :::no-loc(Blazor WebAssembly)::: standalone app with Microsoft Accounts</span></span>
+# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-microsoft-accounts"></a><span data-ttu-id="b01ff-103">Microsoft 계정을 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호</span><span class="sxs-lookup"><span data-stu-id="b01ff-103">Secure an ASP.NET Core Blazor WebAssembly standalone app with Microsoft Accounts</span></span>
 
 <span data-ttu-id="b01ff-104">작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="b01ff-104">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="b01ff-105">인증을 위해 [Microsoft 계정과 AAD(Azure Active Directory)](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)를 사용하는 [독립 실행형 :::no-loc(Blazor WebAssembly)::: 앱](xref:blazor/hosting-models#blazor-webassembly)을 만들려면:</span><span class="sxs-lookup"><span data-stu-id="b01ff-105">To create a [standalone :::no-loc(Blazor WebAssembly)::: app](xref:blazor/hosting-models#blazor-webassembly) that uses [Microsoft Accounts with Azure Active Directory (AAD)](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal) for authentication:</span></span>
+<span data-ttu-id="b01ff-105">인증을 위해 [Microsoft 계정과 AAD(Azure Active Directory)](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)를 사용하는 [독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만들려면:</span><span class="sxs-lookup"><span data-stu-id="b01ff-105">To create a [standalone Blazor WebAssembly app](xref:blazor/hosting-models#blazor-webassembly) that uses [Microsoft Accounts with Azure Active Directory (AAD)](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal) for authentication:</span></span>
 
 [<span data-ttu-id="b01ff-106">AAD 테넌트 및 웹 애플리케이션 만들기</span><span class="sxs-lookup"><span data-stu-id="b01ff-106">Create an AAD tenant and web application</span></span>](/azure/active-directory/develop/v2-overview)
 
@@ -37,7 +37,7 @@ ms.locfileid: "92690390"
 
 ::: moniker range=">= aspnetcore-5.0"
 
-1. <span data-ttu-id="b01ff-108">앱의 **이름** 을 지정합니다(예: **:::no-loc(Blazor)::: 독립 실행형 AAD Microsoft 계정** ).</span><span class="sxs-lookup"><span data-stu-id="b01ff-108">Provide a **Name** for the app (for example, **:::no-loc(Blazor)::: Standalone AAD Microsoft Accounts** ).</span></span>
+1. <span data-ttu-id="b01ff-108">앱의 **이름** 을 지정합니다(예: **Blazor 독립 실행형 AAD Microsoft 계정** ).</span><span class="sxs-lookup"><span data-stu-id="b01ff-108">Provide a **Name** for the app (for example, **Blazor Standalone AAD Microsoft Accounts** ).</span></span>
 1. <span data-ttu-id="b01ff-109">**지원되는 계정 유형** 에서 **모든 조직 디렉터리의 계정** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-109">In **Supported account types** , select **Accounts in any organizational directory** .</span></span>
 1. <span data-ttu-id="b01ff-110">**리디렉션 URI** 드롭다운은 **SPA(단일 페이지 애플리케이션)** 으로 설정하고 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-110">Set the **Redirect URI** drop down to **Single-page application (SPA)** and provide the following redirect URI: `https://localhost:{PORT}/authentication/login-callback`.</span></span> <span data-ttu-id="b01ff-111">Kestrel에서 실행되는 앱의 기본 포트는 5001입니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-111">The default port for an app running on Kestrel is 5001.</span></span> <span data-ttu-id="b01ff-112">앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-112">If the app is run on a different Kestrel port, use the app's port.</span></span> <span data-ttu-id="b01ff-113">IIS Express의 경우, 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 앱 속성에서 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-113">For IIS Express, the randomly generated port for the app can be found in the app's properties in the **Debug** panel.</span></span> <span data-ttu-id="b01ff-114">이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요.</span><span class="sxs-lookup"><span data-stu-id="b01ff-114">Since the app doesn't exist at this point and the IIS Express port isn't known, return to this step after the app is created and update the redirect URI.</span></span> <span data-ttu-id="b01ff-115">이 항목의 뒷부분에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-115">A remark appears later in this topic to remind IIS Express users to update the redirect URI.</span></span>
 1. <span data-ttu-id="b01ff-116">**사용 권한**>**openid 및 offline_access 권한에 대한 관리자 동의 허용** 확인란을 선택 해제합니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-116">Clear the **Permissions** > **Grant admin consent to openid and offline_access permissions** check box.</span></span>
@@ -56,7 +56,7 @@ ms.locfileid: "92690390"
 
 ::: moniker range="< aspnetcore-5.0"
 
-1. <span data-ttu-id="b01ff-124">앱의 **이름** 을 지정합니다(예: **:::no-loc(Blazor)::: 독립 실행형 AAD Microsoft 계정** ).</span><span class="sxs-lookup"><span data-stu-id="b01ff-124">Provide a **Name** for the app (for example, **:::no-loc(Blazor)::: Standalone AAD Microsoft Accounts** ).</span></span>
+1. <span data-ttu-id="b01ff-124">앱의 **이름** 을 지정합니다(예: **Blazor 독립 실행형 AAD Microsoft 계정** ).</span><span class="sxs-lookup"><span data-stu-id="b01ff-124">Provide a **Name** for the app (for example, **Blazor Standalone AAD Microsoft Accounts** ).</span></span>
 1. <span data-ttu-id="b01ff-125">**지원되는 계정 유형** 에서 **모든 조직 디렉터리의 계정** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-125">In **Supported account types** , select **Accounts in any organizational directory** .</span></span>
 1. <span data-ttu-id="b01ff-126">**리디렉션 URI** 드롭다운은 **웹** 으로 설정된 상태로 두고, 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-126">Leave the **Redirect URI** drop down set to **Web** and provide the following redirect URI: `https://localhost:{PORT}/authentication/login-callback`.</span></span> <span data-ttu-id="b01ff-127">Kestrel에서 실행되는 앱의 기본 포트는 5001입니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-127">The default port for an app running on Kestrel is 5001.</span></span> <span data-ttu-id="b01ff-128">앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-128">If the app is run on a different Kestrel port, use the app's port.</span></span> <span data-ttu-id="b01ff-129">IIS Express의 경우, 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 앱 속성에서 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-129">For IIS Express, the randomly generated port for the app can be found in the app's properties in the **Debug** panel.</span></span> <span data-ttu-id="b01ff-130">이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요.</span><span class="sxs-lookup"><span data-stu-id="b01ff-130">Since the app doesn't exist at this point and the IIS Express port isn't known, return to this step after the app is created and update the redirect URI.</span></span> <span data-ttu-id="b01ff-131">이 항목의 뒷부분에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-131">A remark appears later in this topic to remind IIS Express users to update the redirect URI.</span></span>
 1. <span data-ttu-id="b01ff-132">**사용 권한**>**openid 및 offline_access 권한에 대한 관리자 동의 허용** 확인란을 선택 해제합니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-132">Clear the **Permissions** > **Grant admin consent to openid and offline_access permissions** check box.</span></span>
@@ -81,7 +81,7 @@ dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" --tenant-id "commo
 
 | <span data-ttu-id="b01ff-142">자리표시자</span><span class="sxs-lookup"><span data-stu-id="b01ff-142">Placeholder</span></span>   | <span data-ttu-id="b01ff-143">Azure Portal 이름</span><span class="sxs-lookup"><span data-stu-id="b01ff-143">Azure portal name</span></span>       | <span data-ttu-id="b01ff-144">예제</span><span class="sxs-lookup"><span data-stu-id="b01ff-144">Example</span></span>                                |
 | ------------- | ----------------------- | -------------------------------------- |
-| `{APP NAME}`  | &mdash;                 | `:::no-loc(Blazor):::Sample`                         |
+| `{APP NAME}`  | &mdash;                 | `BlazorSample`                         |
 | `{CLIENT ID}` | <span data-ttu-id="b01ff-145">애플리케이션(클라이언트) ID</span><span class="sxs-lookup"><span data-stu-id="b01ff-145">Application (client) ID</span></span> | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
 
 <span data-ttu-id="b01ff-146">`-o|--output` 옵션으로 지정된 출력 위치는 프로젝트 폴더가 없는 경우 폴더를 하나 만들고 앱 이름의 일부가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-146">The output location specified with the `-o|--output` option creates a project folder if it doesn't exist and becomes part of the app's name.</span></span>
@@ -123,7 +123,7 @@ dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" --tenant-id "commo
 
 ## <a name="authentication-service-support"></a><span data-ttu-id="b01ff-162">인증 서비스 지원</span><span class="sxs-lookup"><span data-stu-id="b01ff-162">Authentication service support</span></span>
 
-<span data-ttu-id="b01ff-163">사용자 인증에 대한 지원은 [`Microsoft.Authentication.WebAssembly.Msal`](https://www.nuget.org/packages/Microsoft.Authentication.WebAssembly.Msal) 패키지에서 제공하는 <xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A> 확장 메서드를 통해 서비스 컨테이너에 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-163">Support for authenticating users is registered in the service container with the <xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A> extension method provided by the [`Microsoft.Authentication.WebAssembly.Msal`](https://www.nuget.org/packages/Microsoft.Authentication.WebAssembly.Msal) package.</span></span> <span data-ttu-id="b01ff-164">이 메서드는 앱이 IP(:::no-loc(Identity)::: 공급자)와 상호 작용하는 데 필요한 모든 서비스를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-164">This method sets up all of the services required for the app to interact with the :::no-loc(Identity)::: Provider (IP).</span></span>
+<span data-ttu-id="b01ff-163">사용자 인증에 대한 지원은 [`Microsoft.Authentication.WebAssembly.Msal`](https://www.nuget.org/packages/Microsoft.Authentication.WebAssembly.Msal) 패키지에서 제공하는 <xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A> 확장 메서드를 통해 서비스 컨테이너에 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-163">Support for authenticating users is registered in the service container with the <xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A> extension method provided by the [`Microsoft.Authentication.WebAssembly.Msal`](https://www.nuget.org/packages/Microsoft.Authentication.WebAssembly.Msal) package.</span></span> <span data-ttu-id="b01ff-164">이 메서드는 앱이 IP(Identity 공급자)와 상호 작용하는 데 필요한 모든 서비스를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-164">This method sets up all of the services required for the app to interact with the Identity Provider (IP).</span></span>
 
 <span data-ttu-id="b01ff-165">`Program.cs`:</span><span class="sxs-lookup"><span data-stu-id="b01ff-165">`Program.cs`:</span></span>
 
@@ -162,7 +162,7 @@ builder.Services.AddMsalAuthentication(options =>
 
 ## <a name="access-token-scopes"></a><span data-ttu-id="b01ff-170">액세스 토큰 범위</span><span class="sxs-lookup"><span data-stu-id="b01ff-170">Access token scopes</span></span>
 
-<span data-ttu-id="b01ff-171">:::no-loc(Blazor WebAssembly)::: 템플릿은 앱이 보안 API에 대한 액세스 토큰을 요청하도록 자동으로 구성하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-171">The :::no-loc(Blazor WebAssembly)::: template doesn't automatically configure the app to request an access token for a secure API.</span></span> <span data-ttu-id="b01ff-172">로그인 흐름의 일부로 액세스 토큰을 프로비저닝하려면 <xref:Microsoft.Authentication.WebAssembly.Msal.Models.MsalProviderOptions>의 기본 액세스 토큰 범위에 해당 범위를 추가해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-172">To provision an access token as part of the sign-in flow, add the scope to the default access token scopes of the <xref:Microsoft.Authentication.WebAssembly.Msal.Models.MsalProviderOptions>:</span></span>
+<span data-ttu-id="b01ff-171">Blazor WebAssembly 템플릿은 앱이 보안 API에 대한 액세스 토큰을 요청하도록 자동으로 구성하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-171">The Blazor WebAssembly template doesn't automatically configure the app to request an access token for a secure API.</span></span> <span data-ttu-id="b01ff-172">로그인 흐름의 일부로 액세스 토큰을 프로비저닝하려면 <xref:Microsoft.Authentication.WebAssembly.Msal.Models.MsalProviderOptions>의 기본 액세스 토큰 범위에 해당 범위를 추가해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="b01ff-172">To provision an access token as part of the sign-in flow, add the scope to the default access token scopes of the <xref:Microsoft.Authentication.WebAssembly.Msal.Models.MsalProviderOptions>:</span></span>
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>

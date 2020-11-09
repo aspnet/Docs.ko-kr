@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/17/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/cors
 ms.openlocfilehash: 03008f40fc1c4b323535d08a1bb4c4007bc145f7
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -131,7 +131,7 @@ ms.locfileid: "93060822"
 
 * <span data-ttu-id="88479-166">`app.UseCors` CORS 미들웨어를 사용 하도록 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-166">`app.UseCors` enables the CORS middleware.</span></span> <span data-ttu-id="88479-167">기본 정책은 구성 되지 않았기 때문에 `app.UseCors()` CORS를 사용 하도록 설정 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-167">Because a default policy hasn't been configured, `app.UseCors()` alone doesn't enable CORS.</span></span>
 * <span data-ttu-id="88479-168">`/echo`및 컨트롤러 끝점은 지정 된 정책을 사용 하 여 원본 간 요청을 허용 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-168">The `/echo` and controller endpoints allow cross-origin requests using the specified policy.</span></span>
-* <span data-ttu-id="88479-169">`/echo2` :::no-loc(Razor)::: 기본 정책을 지정 하지 않았으므로 및 페이지 끝점에서 원본 간 요청을 허용 **하지 않습니다** .</span><span class="sxs-lookup"><span data-stu-id="88479-169">The `/echo2` and :::no-loc(Razor)::: Pages endpoints do **not** allow cross-origin requests because no default policy was specified.</span></span>
+* <span data-ttu-id="88479-169">`/echo2` Razor 기본 정책을 지정 하지 않았으므로 및 페이지 끝점에서 원본 간 요청을 허용 **하지 않습니다** .</span><span class="sxs-lookup"><span data-stu-id="88479-169">The `/echo2` and Razor Pages endpoints do **not** allow cross-origin requests because no default policy was specified.</span></span>
 
 <span data-ttu-id="88479-170">[[DisableCors]](#dc) 특성은를 **사용 하** 여 끝점 라우팅을 통해 설정 된 CORS를 사용 하지 않도록 설정 `RequireCors` 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-170">The [[DisableCors]](#dc) attribute does **not**  disable CORS that has been enabled by endpoint routing with `RequireCors`.</span></span>
 
@@ -150,7 +150,7 @@ ms.locfileid: "93060822"
 
 <span data-ttu-id="88479-178">`[EnableCors]`특성은 다음에 적용 될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-178">The `[EnableCors]` attribute can be applied to:</span></span>
 
-* <span data-ttu-id="88479-179">:::no-loc(Razor)::: 페이지 `PageModel`</span><span class="sxs-lookup"><span data-stu-id="88479-179">:::no-loc(Razor)::: Page `PageModel`</span></span>
+* <span data-ttu-id="88479-179">Razor 페이지 `PageModel`</span><span class="sxs-lookup"><span data-stu-id="88479-179">Razor Page `PageModel`</span></span>
 * <span data-ttu-id="88479-180">컨트롤러</span><span class="sxs-lookup"><span data-stu-id="88479-180">Controller</span></span>
 * <span data-ttu-id="88479-181">컨트롤러 동작 방법</span><span class="sxs-lookup"><span data-stu-id="88479-181">Controller action method</span></span>
 
@@ -276,7 +276,7 @@ Access-Control-Request-Headers: Cache-Control, Content-Language
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupAllowSubdomain.cs?name=snippet5)]
 ### <a name="credentials-in-cross-origin-requests"></a><span data-ttu-id="88479-242">원본 간 요청에 대 한 자격 증명</span><span class="sxs-lookup"><span data-stu-id="88479-242">Credentials in cross-origin requests</span></span>
 
-<span data-ttu-id="88479-243">자격 증명을 CORS 요청에서 특수 하 게 처리 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-243">Credentials require special handling in a CORS request.</span></span> <span data-ttu-id="88479-244">기본적으로 브라우저는 원본 간 요청과 함께 자격 증명을 보내지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-244">By default, the browser doesn't send credentials with a cross-origin request.</span></span> <span data-ttu-id="88479-245">자격 증명 :::no-loc(cookie)::: 에는 및 HTTP 인증 스키마가 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="88479-245">Credentials include :::no-loc(cookie):::s and HTTP authentication schemes.</span></span> <span data-ttu-id="88479-246">원본 간 요청을 사용 하 여 자격 증명을 보내려면 클라이언트는를로 설정 해야 합니다 `XMLHttpRequest.withCredentials` `true` .</span><span class="sxs-lookup"><span data-stu-id="88479-246">To send credentials with a cross-origin request, the client must set `XMLHttpRequest.withCredentials` to `true`.</span></span>
+<span data-ttu-id="88479-243">자격 증명을 CORS 요청에서 특수 하 게 처리 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-243">Credentials require special handling in a CORS request.</span></span> <span data-ttu-id="88479-244">기본적으로 브라우저는 원본 간 요청과 함께 자격 증명을 보내지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-244">By default, the browser doesn't send credentials with a cross-origin request.</span></span> <span data-ttu-id="88479-245">자격 증명 cookie 에는 및 HTTP 인증 스키마가 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="88479-245">Credentials include cookies and HTTP authentication schemes.</span></span> <span data-ttu-id="88479-246">원본 간 요청을 사용 하 여 자격 증명을 보내려면 클라이언트는를로 설정 해야 합니다 `XMLHttpRequest.withCredentials` `true` .</span><span class="sxs-lookup"><span data-stu-id="88479-246">To send credentials with a cross-origin request, the client must set `XMLHttpRequest.withCredentials` to `true`.</span></span>
 
 <span data-ttu-id="88479-247">`XMLHttpRequest`직접 사용:</span><span class="sxs-lookup"><span data-stu-id="88479-247">Using `XMLHttpRequest` directly:</span></span>
 
@@ -346,7 +346,7 @@ Response Headers:
 Access-Control-Allow-Methods: PUT,DELETE,GET
 Access-Control-Allow-Origin: https://cors1.azurewebsites.net
 Server: Microsoft-IIS/10.0
-Set-:::no-loc(Cookie):::: ARRAffinity=8f8...8;Path=/;HttpOnly;Domain=cors1.azurewebsites.net
+Set-Cookie: ARRAffinity=8f8...8;Path=/;HttpOnly;Domain=cors1.azurewebsites.net
 Vary: Origin
 
 Request Headers:
@@ -462,7 +462,7 @@ Status Code: 200 OK
 Content-Encoding: gzip
 Content-Type: text/plain; charset=utf-8
 Server: Microsoft-IIS/10.0
-Set-:::no-loc(Cookie):::: ARRAffinity=8f...;Path=/;HttpOnly;Domain=cors1.azurewebsites.net
+Set-Cookie: ARRAffinity=8f...;Path=/;HttpOnly;Domain=cors1.azurewebsites.net
 Transfer-Encoding: chunked
 Vary: Accept-Encoding
 X-Powered-By: ASP.NET
@@ -501,7 +501,7 @@ Access-Control-Allow-Headers: Content-Type,x-custom-header
 Access-Control-Allow-Methods: PUT,DELETE,GET,OPTIONS
 Access-Control-Allow-Origin: https://cors1.azurewebsites.net
 Server: Microsoft-IIS/10.0
-Set-:::no-loc(Cookie):::: ARRAffinity=8f...;Path=/;HttpOnly;Domain=cors3.azurewebsites.net
+Set-Cookie: ARRAffinity=8f...;Path=/;HttpOnly;Domain=cors3.azurewebsites.net
 Vary: Origin
 X-Powered-By: ASP.NET
 ```
@@ -550,7 +550,7 @@ User-Agent: Mozilla/5.0
 
 ## <a name="test-cors"></a><span data-ttu-id="88479-356">CORS 테스트</span><span class="sxs-lookup"><span data-stu-id="88479-356">Test CORS</span></span>
 
-<span data-ttu-id="88479-357">[샘플 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI) 에는 CORS를 테스트 하는 코드가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-357">The [sample download](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI) has code to test CORS.</span></span> <span data-ttu-id="88479-358">[다운로드하는 방법](xref:index#how-to-download-a-sample)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="88479-358">See [how to download](xref:index#how-to-download-a-sample).</span></span> <span data-ttu-id="88479-359">이 샘플은 페이지가 추가 된 API 프로젝트입니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="88479-359">The sample is an API project with :::no-loc(Razor)::: Pages added:</span></span>
+<span data-ttu-id="88479-357">[샘플 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI) 에는 CORS를 테스트 하는 코드가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-357">The [sample download](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI) has code to test CORS.</span></span> <span data-ttu-id="88479-358">[다운로드하는 방법](xref:index#how-to-download-a-sample)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="88479-358">See [how to download](xref:index#how-to-download-a-sample).</span></span> <span data-ttu-id="88479-359">이 샘플은 페이지가 추가 된 API 프로젝트입니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="88479-359">The sample is an API project with Razor Pages added:</span></span>
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupTest2.cs?name=snippet2)]
 
@@ -708,7 +708,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ```
 <span data-ttu-id="88479-440">참고: `UseCors` 이전에를 호출 해야 합니다 `UseMvc` .</span><span class="sxs-lookup"><span data-stu-id="88479-440">Note: `UseCors` must be called before `UseMvc`.</span></span>
 
-<span data-ttu-id="88479-441">페이지 [ :::no-loc(Razor)::: , 컨트롤러 및 작업 메서드에서 Cors를 사용](#ecors) 하 여 페이지/컨트롤러/동작 수준에서 cors 정책 적용을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="88479-441">See [Enable CORS in :::no-loc(Razor)::: Pages, controllers, and action methods](#ecors) to apply CORS policy at the page/controller/action level.</span></span>
+<span data-ttu-id="88479-441">페이지 [ Razor , 컨트롤러 및 작업 메서드에서 Cors를 사용](#ecors) 하 여 페이지/컨트롤러/동작 수준에서 cors 정책 적용을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="88479-441">See [Enable CORS in Razor Pages, controllers, and action methods](#ecors) to apply CORS policy at the page/controller/action level.</span></span>
 
 <span data-ttu-id="88479-442">이전 코드와 유사한 코드 테스트에 대 한 지침은 [CORS 테스트](#test) 를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="88479-442">See [Test CORS](#test) for instructions on testing code similar to the preceding code.</span></span>
 
@@ -720,7 +720,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 <span data-ttu-id="88479-447">`[EnableCors]`특성은 다음에 적용 될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-447">The `[EnableCors]` attribute can be applied to:</span></span>
 
-* <span data-ttu-id="88479-448">:::no-loc(Razor)::: 페이지 `PageModel`</span><span class="sxs-lookup"><span data-stu-id="88479-448">:::no-loc(Razor)::: Page `PageModel`</span></span>
+* <span data-ttu-id="88479-448">Razor 페이지 `PageModel`</span><span class="sxs-lookup"><span data-stu-id="88479-448">Razor Page `PageModel`</span></span>
 * <span data-ttu-id="88479-449">컨트롤러</span><span class="sxs-lookup"><span data-stu-id="88479-449">Controller</span></span>
 * <span data-ttu-id="88479-450">컨트롤러 동작 방법</span><span class="sxs-lookup"><span data-stu-id="88479-450">Controller action method</span></span>
 
@@ -823,7 +823,7 @@ Access-Control-Request-Headers: Cache-Control, Content-Language
 
 ### <a name="credentials-in-cross-origin-requests"></a><span data-ttu-id="88479-498">원본 간 요청에 대 한 자격 증명</span><span class="sxs-lookup"><span data-stu-id="88479-498">Credentials in cross-origin requests</span></span>
 
-<span data-ttu-id="88479-499">자격 증명을 CORS 요청에서 특수 하 게 처리 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-499">Credentials require special handling in a CORS request.</span></span> <span data-ttu-id="88479-500">기본적으로 브라우저는 원본 간 요청과 함께 자격 증명을 보내지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-500">By default, the browser doesn't send credentials with a cross-origin request.</span></span> <span data-ttu-id="88479-501">자격 증명 :::no-loc(cookie)::: 에는 및 HTTP 인증 스키마가 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="88479-501">Credentials include :::no-loc(cookie):::s and HTTP authentication schemes.</span></span> <span data-ttu-id="88479-502">원본 간 요청을 사용 하 여 자격 증명을 보내려면 클라이언트는를로 설정 해야 합니다 `XMLHttpRequest.withCredentials` `true` .</span><span class="sxs-lookup"><span data-stu-id="88479-502">To send credentials with a cross-origin request, the client must set `XMLHttpRequest.withCredentials` to `true`.</span></span>
+<span data-ttu-id="88479-499">자격 증명을 CORS 요청에서 특수 하 게 처리 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-499">Credentials require special handling in a CORS request.</span></span> <span data-ttu-id="88479-500">기본적으로 브라우저는 원본 간 요청과 함께 자격 증명을 보내지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-500">By default, the browser doesn't send credentials with a cross-origin request.</span></span> <span data-ttu-id="88479-501">자격 증명 cookie 에는 및 HTTP 인증 스키마가 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="88479-501">Credentials include cookies and HTTP authentication schemes.</span></span> <span data-ttu-id="88479-502">원본 간 요청을 사용 하 여 자격 증명을 보내려면 클라이언트는를로 설정 해야 합니다 `XMLHttpRequest.withCredentials` `true` .</span><span class="sxs-lookup"><span data-stu-id="88479-502">To send credentials with a cross-origin request, the client must set `XMLHttpRequest.withCredentials` to `true`.</span></span>
 
 <span data-ttu-id="88479-503">`XMLHttpRequest`직접 사용:</span><span class="sxs-lookup"><span data-stu-id="88479-503">Using `XMLHttpRequest` directly:</span></span>
 
@@ -999,14 +999,14 @@ Test message
   > [!WARNING]
   > <span data-ttu-id="88479-579">`WithOrigins("https://localhost:<port>");`[다운로드 샘플 코드](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/cors/sample/Cors)와 유사한 샘플 앱을 테스트 하는 데만 사용 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-579">`WithOrigins("https://localhost:<port>");` should only be used for testing a sample app similar to the [download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/cors/sample/Cors).</span></span>
 
-1. <span data-ttu-id="88479-580">웹 앱 프로젝트 ( :::no-loc(Razor)::: 페이지 또는 MVC)를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="88479-580">Create a web app project (:::no-loc(Razor)::: Pages or MVC).</span></span> <span data-ttu-id="88479-581">이 샘플에서는 :::no-loc(Razor)::: 페이지를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-581">The sample uses :::no-loc(Razor)::: Pages.</span></span> <span data-ttu-id="88479-582">API 프로젝트와 동일한 솔루션에서 웹 앱을 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-582">You can create the web app in the same solution as the API project.</span></span>
+1. <span data-ttu-id="88479-580">웹 앱 프로젝트 ( Razor 페이지 또는 MVC)를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="88479-580">Create a web app project (Razor Pages or MVC).</span></span> <span data-ttu-id="88479-581">이 샘플에서는 Razor 페이지를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-581">The sample uses Razor Pages.</span></span> <span data-ttu-id="88479-582">API 프로젝트와 동일한 솔루션에서 웹 앱을 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-582">You can create the web app in the same solution as the API project.</span></span>
 1. <span data-ttu-id="88479-583">다음 강조 표시 된 코드를 *Index. cshtml* 파일에 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-583">Add the following highlighted code to the *Index.cshtml* file:</span></span>
 
   [!code-cshtml[](cors/sample/Cors/ClientApp/Pages/Index2.cshtml?highlight=7-99)]
 
 1. <span data-ttu-id="88479-584">위의 코드에서를 배포 된 `url: 'https://<web app>.azurewebsites.net/api/values/1',` 앱의 URL로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="88479-584">In the preceding code, replace `url: 'https://<web app>.azurewebsites.net/api/values/1',` with the URL to the deployed app.</span></span>
 1. <span data-ttu-id="88479-585">API 프로젝트를 배포 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-585">Deploy the API project.</span></span> <span data-ttu-id="88479-586">예를 들어 [Azure에 배포할 수](xref:host-and-deploy/azure-apps/index)있습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-586">For example, [deploy to Azure](xref:host-and-deploy/azure-apps/index).</span></span>
-1. <span data-ttu-id="88479-587">:::no-loc(Razor):::바탕 화면에서 페이지 또는 MVC 앱을 실행 하 고 **테스트** 단추를 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-587">Run the :::no-loc(Razor)::: Pages or MVC app from the desktop and click on the **Test** button.</span></span> <span data-ttu-id="88479-588">F12 도구를 사용 하 여 오류 메시지를 검토 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-588">Use the F12 tools to review error messages.</span></span>
+1. <span data-ttu-id="88479-587">Razor바탕 화면에서 페이지 또는 MVC 앱을 실행 하 고 **테스트** 단추를 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-587">Run the Razor Pages or MVC app from the desktop and click on the **Test** button.</span></span> <span data-ttu-id="88479-588">F12 도구를 사용 하 여 오류 메시지를 검토 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-588">Use the F12 tools to review error messages.</span></span>
 1. <span data-ttu-id="88479-589">에서 localhost 원본을 제거 `WithOrigins` 하 고 앱을 배포 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-589">Remove the localhost origin from `WithOrigins` and deploy the app.</span></span> <span data-ttu-id="88479-590">또는 다른 포트를 사용 하 여 클라이언트 앱을 실행 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-590">Alternatively, run the client app with a different port.</span></span> <span data-ttu-id="88479-591">예를 들어 Visual Studio에서를 실행 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-591">For example, run from Visual Studio.</span></span>
 1. <span data-ttu-id="88479-592">클라이언트 앱을 사용 하 여 테스트 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-592">Test with the client app.</span></span> <span data-ttu-id="88479-593">CORS 오류는 오류를 반환 하지만 JavaScript에는 오류 메시지를 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="88479-593">CORS failures return an error, but the error message isn't available to JavaScript.</span></span> <span data-ttu-id="88479-594">F12 도구에서 콘솔 탭을 사용 하 여 오류를 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="88479-594">Use the console tab in the F12 tools to see the error.</span></span> <span data-ttu-id="88479-595">브라우저에 따라 다음과 비슷한 오류가 표시 됩니다 (F12 도구 콘솔).</span><span class="sxs-lookup"><span data-stu-id="88479-595">Depending on the browser, you get an error (in the F12 tools console) similar to the following:</span></span>
 

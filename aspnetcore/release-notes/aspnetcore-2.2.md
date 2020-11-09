@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: aspnetcore-2.2
 ms.openlocfilehash: 67581904c686b0f8b6736b751c8e3f1545f6a286
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -50,7 +50,7 @@ ms.locfileid: "93059704"
 <span data-ttu-id="ace2f-122">자세한 내용은 다음 자료를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ace2f-122">For more information, see the following resources:</span></span>
 
 * [<span data-ttu-id="ace2f-123">2.2의 엔드포인트 라우팅</span><span class="sxs-lookup"><span data-stu-id="ace2f-123">Endpoint routing in 2.2</span></span>](https://blogs.msdn.microsoft.com/webdev/2018/08/27/asp-net-core-2-2-0-preview1-endpoint-routing/)
-* <span data-ttu-id="ace2f-124">[경로 매개 변수 변환기](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsIn:::no-loc(Razor):::PagesOrMVC.aspx)( **라우팅** 섹션 참조)</span><span class="sxs-lookup"><span data-stu-id="ace2f-124">[Route parameter transformers](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsIn:::no-loc(Razor):::PagesOrMVC.aspx) (see **Routing** section)</span></span>
+* <span data-ttu-id="ace2f-124">[경로 매개 변수 변환기](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx)( **라우팅** 섹션 참조)</span><span class="sxs-lookup"><span data-stu-id="ace2f-124">[Route parameter transformers](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (see **Routing** section)</span></span>
 * [<span data-ttu-id="ace2f-125">IRouter 기반 라우팅과 엔드포인트 기반 라우팅의 차이점</span><span class="sxs-lookup"><span data-stu-id="ace2f-125">Differences between IRouter- and endpoint-based routing</span></span>](xref:fundamentals/routing?view=aspnetcore-2.2#differences-from-earlier-versions-of-routing)
 
 ## <a name="health-checks"></a><span data-ttu-id="ace2f-126">상태 확인</span><span class="sxs-lookup"><span data-stu-id="ace2f-126">Health checks</span></span>
@@ -91,11 +91,11 @@ ms.locfileid: "93059704"
 
 <span data-ttu-id="ace2f-159">자세한 내용은 [IIS에 대한 In-process 호스팅](xref:host-and-deploy/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ace2f-159">For more information, see [in-process hosting for IIS](xref:host-and-deploy/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model).</span></span>
 
-## <a name="no-locsignalr-java-client"></a><span data-ttu-id="ace2f-160">:::no-loc(SignalR)::: Java 클라이언트</span><span class="sxs-lookup"><span data-stu-id="ace2f-160">:::no-loc(SignalR)::: Java client</span></span>
+## <a name="no-locsignalr-java-client"></a><span data-ttu-id="ace2f-160">SignalR Java 클라이언트</span><span class="sxs-lookup"><span data-stu-id="ace2f-160">SignalR Java client</span></span>
 
-<span data-ttu-id="ace2f-161">ASP.NET Core 2.2는 :::no-loc(SignalR):::용 Java 클라이언트를 도입합니다.</span><span class="sxs-lookup"><span data-stu-id="ace2f-161">ASP.NET Core 2.2 introduces a Java Client for :::no-loc(SignalR):::.</span></span> <span data-ttu-id="ace2f-162">이 클라이언트는 Android 앱을 포함하여 Java 코드에서 ASP.NET Core :::no-loc(SignalR)::: 서버에 연결할 수 있도록 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="ace2f-162">This client supports connecting to an ASP.NET Core :::no-loc(SignalR)::: Server from Java code, including Android apps.</span></span>
+<span data-ttu-id="ace2f-161">ASP.NET Core 2.2는 SignalR용 Java 클라이언트를 도입합니다.</span><span class="sxs-lookup"><span data-stu-id="ace2f-161">ASP.NET Core 2.2 introduces a Java Client for SignalR.</span></span> <span data-ttu-id="ace2f-162">이 클라이언트는 Android 앱을 포함하여 Java 코드에서 ASP.NET Core SignalR 서버에 연결할 수 있도록 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="ace2f-162">This client supports connecting to an ASP.NET Core SignalR Server from Java code, including Android apps.</span></span>
 
-<span data-ttu-id="ace2f-163">자세한 내용은 [ASP.NET Core :::no-loc(SignalR)::: Java 클라이언트](../signalr/java-client.md?view=aspnetcore-2.2)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ace2f-163">For more information, see [ASP.NET Core :::no-loc(SignalR)::: Java client](../signalr/java-client.md?view=aspnetcore-2.2).</span></span>
+<span data-ttu-id="ace2f-163">자세한 내용은 [ASP.NET Core SignalR Java 클라이언트](../signalr/java-client.md?view=aspnetcore-2.2)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ace2f-163">For more information, see [ASP.NET Core SignalR Java client](../signalr/java-client.md?view=aspnetcore-2.2).</span></span>
 
 ## <a name="cors-improvements"></a><span data-ttu-id="ace2f-164">CORS 기능 향상</span><span class="sxs-lookup"><span data-stu-id="ace2f-164">CORS improvements</span></span>
 

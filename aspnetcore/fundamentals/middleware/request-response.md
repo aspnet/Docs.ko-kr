@@ -7,17 +7,17 @@ ms.author: jukotali
 ms.custom: mvc
 ms.date: 5/29/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/middleware/request-response
 ms.openlocfilehash: cc701343cb3859f0f76ebc62bd54aa2e4431d522
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -30,7 +30,7 @@ ms.locfileid: "93061030"
 
 <span data-ttu-id="1a4c6-104">작성자 [Justin Kotalik](https://github.com/jkotalik)</span><span class="sxs-lookup"><span data-stu-id="1a4c6-104">By [Justin Kotalik](https://github.com/jkotalik)</span></span>
 
-<span data-ttu-id="1a4c6-105">이 문서에서는 요청 본문을 읽고 응답 본문을 쓰는 방법을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="1a4c6-105">This article explains how to read from the request body and write to the response body.</span></span> <span data-ttu-id="1a4c6-106">미들웨어를 작성할 때 이러한 작업에 대한 코드가 필요할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1a4c6-106">Code for these operations might be required when writing middleware.</span></span> <span data-ttu-id="1a4c6-107">미들웨어 작성 외에, MVC 및 :::no-loc(Razor)::: Pages에서 작업이 처리되기 때문에 사용자 지정 코드는 일반적으로 필요하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="1a4c6-107">Outside of writing middleware, custom code isn't generally required because the operations are handled by MVC and :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="1a4c6-105">이 문서에서는 요청 본문을 읽고 응답 본문을 쓰는 방법을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="1a4c6-105">This article explains how to read from the request body and write to the response body.</span></span> <span data-ttu-id="1a4c6-106">미들웨어를 작성할 때 이러한 작업에 대한 코드가 필요할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1a4c6-106">Code for these operations might be required when writing middleware.</span></span> <span data-ttu-id="1a4c6-107">미들웨어 작성 외에, MVC 및 Razor Pages에서 작업이 처리되기 때문에 사용자 지정 코드는 일반적으로 필요하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="1a4c6-107">Outside of writing middleware, custom code isn't generally required because the operations are handled by MVC and Razor Pages.</span></span>
 
 <span data-ttu-id="1a4c6-108">요청 및 응답 본문에 대한 두 가지 추상(<xref:System.IO.Stream> 및 <xref:System.IO.Pipelines.Pipe>)이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1a4c6-108">There are two abstractions for the request and response bodies: <xref:System.IO.Stream> and <xref:System.IO.Pipelines.Pipe>.</span></span> <span data-ttu-id="1a4c6-109">요청 읽기의 경우 <xref:Microsoft.AspNetCore.Http.HttpRequest.Body?displayProperty=nameWithType>은 <xref:System.IO.Stream>이고 `HttpRequest.BodyReader`는 <xref:System.IO.Pipelines.PipeReader>입니다.</span><span class="sxs-lookup"><span data-stu-id="1a4c6-109">For request reading, <xref:Microsoft.AspNetCore.Http.HttpRequest.Body?displayProperty=nameWithType> is a <xref:System.IO.Stream>, and `HttpRequest.BodyReader` is a <xref:System.IO.Pipelines.PipeReader>.</span></span> <span data-ttu-id="1a4c6-110">응답 작성의 경우 <xref:Microsoft.AspNetCore.Http.HttpResponse.Body?displayProperty=nameWithType>은 <xref:System.IO.Stream>이고 `HttpResponse.BodyWriter`는 <xref:System.IO.Pipelines.PipeWriter>입니다.</span><span class="sxs-lookup"><span data-stu-id="1a4c6-110">For response writing, <xref:Microsoft.AspNetCore.Http.HttpResponse.Body?displayProperty=nameWithType> is a <xref:System.IO.Stream>, and `HttpResponse.BodyWriter` is a <xref:System.IO.Pipelines.PipeWriter>.</span></span>
 

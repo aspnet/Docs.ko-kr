@@ -1,23 +1,23 @@
 ---
-title: 'ASP.NET Core :::no-loc(Blazor)::: 호스팅 모델 구성'
+title: 'ASP.NET Core Blazor 호스팅 모델 구성'
 author: guardrex
-description: 'ASP.NET Core :::no-loc(Blazor)::: 호스팅 모델 구성의 추가 시나리오에 대해 알아봅니다.'
+description: 'ASP.NET Core Blazor 호스팅 모델 구성의 추가 시나리오에 대해 알아봅니다.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/27/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/fundamentals/additional-scenarios
 ms.openlocfilehash: f8b6e65424948aaa7b28023497bbbf2a1ceb47dd
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,17 +26,17 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056051"
 ---
-# <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a><span data-ttu-id="bc54e-103">ASP.NET Core :::no-loc(Blazor)::: 호스팅 모델 구성</span><span class="sxs-lookup"><span data-stu-id="bc54e-103">ASP.NET Core :::no-loc(Blazor)::: hosting model configuration</span></span>
+# <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a><span data-ttu-id="bc54e-103">ASP.NET Core Blazor 호스팅 모델 구성</span><span class="sxs-lookup"><span data-stu-id="bc54e-103">ASP.NET Core Blazor hosting model configuration</span></span>
 
 <span data-ttu-id="bc54e-104">[Daniel Roth](https://github.com/danroth27), [Mackinnon Buck](https://github.com/MackinnonBuck) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="bc54e-104">By [Daniel Roth](https://github.com/danroth27), [Mackinnon Buck](https://github.com/MackinnonBuck), and [Luke Latham](https://github.com/guardrex)</span></span>
 
 <span data-ttu-id="bc54e-105">이 문서에서는 호스팅 모델 구성에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-105">This article covers hosting model configuration.</span></span>
 
-### <a name="no-locsignalr-cross-origin-negotiation-for-authentication"></a><span data-ttu-id="bc54e-106">:::no-loc(SignalR)::: 인증에 대한 원본 간 협상</span><span class="sxs-lookup"><span data-stu-id="bc54e-106">:::no-loc(SignalR)::: cross-origin negotiation for authentication</span></span>
+### <a name="no-locsignalr-cross-origin-negotiation-for-authentication"></a><span data-ttu-id="bc54e-106">SignalR 인증에 대한 원본 간 협상</span><span class="sxs-lookup"><span data-stu-id="bc54e-106">SignalR cross-origin negotiation for authentication</span></span>
 
-<span data-ttu-id="bc54e-107">‘이 섹션은 :::no-loc(Blazor WebAssembly):::에 적용됩니다.’</span><span class="sxs-lookup"><span data-stu-id="bc54e-107">*This section applies to :::no-loc(Blazor WebAssembly):::.*</span></span>
+<span data-ttu-id="bc54e-107">‘이 섹션은 Blazor WebAssembly에 적용됩니다.’</span><span class="sxs-lookup"><span data-stu-id="bc54e-107">*This section applies to Blazor WebAssembly.*</span></span>
 
-<span data-ttu-id="bc54e-108">:::no-loc(cookie)::: 또는 HTTP 인증 헤더와 같은 자격 증명을 보내도록 :::no-loc(SignalR):::의 기본 클라이언트를 구성하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-108">To configure :::no-loc(SignalR):::'s underlying client to send credentials, such as :::no-loc(cookie):::s or HTTP authentication headers:</span></span>
+<span data-ttu-id="bc54e-108">cookie 또는 HTTP 인증 헤더와 같은 자격 증명을 보내도록 SignalR의 기본 클라이언트를 구성하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-108">To configure SignalR's underlying client to send credentials, such as cookies or HTTP authentication headers:</span></span>
 
 * <span data-ttu-id="bc54e-109"><xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserRequestCredentials%2A>를 사용하여 원본 간 [`fetch`](https://developer.mozilla.org/docs/Web/API/Fetch_API/Using_Fetch) 요청에 <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.BrowserRequestCredentials.Include>를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-109">Use <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserRequestCredentials%2A> to set <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.BrowserRequestCredentials.Include> on cross-origin [`fetch`](https://developer.mozilla.org/docs/Web/API/Fetch_API/Using_Fetch) requests:</span></span>
 
@@ -67,11 +67,11 @@ ms.locfileid: "93056051"
 
 ## <a name="reflect-the-connection-state-in-the-ui"></a><span data-ttu-id="bc54e-112">UI에 연결 상태 반영</span><span class="sxs-lookup"><span data-stu-id="bc54e-112">Reflect the connection state in the UI</span></span>
 
-<span data-ttu-id="bc54e-113">‘이 섹션은 :::no-loc(Blazor Server):::에 적용됩니다.’</span><span class="sxs-lookup"><span data-stu-id="bc54e-113">*This section applies to :::no-loc(Blazor Server):::.*</span></span>
+<span data-ttu-id="bc54e-113">‘이 섹션은 Blazor Server에 적용됩니다.’</span><span class="sxs-lookup"><span data-stu-id="bc54e-113">*This section applies to Blazor Server.*</span></span>
 
 <span data-ttu-id="bc54e-114">클라이언트에서 연결이 끊어진 것을 감지하면, 클라이언트가 다시 연결하는 동안 기본 UI가 사용자에게 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-114">When the client detects that the connection has been lost, a default UI is displayed to the user while the client attempts to reconnect.</span></span> <span data-ttu-id="bc54e-115">다시 연결하지 못한 경우 사용자에게 다시 시도 옵션이 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-115">If reconnection fails, the user is provided the option to retry.</span></span>
 
-<span data-ttu-id="bc54e-116">UI를 사용자 지정하려면 `_Host.cshtml` :::no-loc(Razor)::: 페이지의 `<body>`에서 `components-reconnect-modal`의 `id`를 사용하여 요소를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-116">To customize the UI, define an element with an `id` of `components-reconnect-modal` in the `<body>` of the `_Host.cshtml` :::no-loc(Razor)::: page:</span></span>
+<span data-ttu-id="bc54e-116">UI를 사용자 지정하려면 `_Host.cshtml` Razor 페이지의 `<body>`에서 `components-reconnect-modal`의 `id`를 사용하여 요소를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-116">To customize the UI, define an element with an `id` of `components-reconnect-modal` in the `<body>` of the `_Host.cshtml` Razor page:</span></span>
 
 ```cshtml
 <div id="components-reconnect-modal">
@@ -97,14 +97,14 @@ ms.locfileid: "93056051"
 | ------------------------------- | ----------------- |
 | `components-reconnect-show`     | <span data-ttu-id="bc54e-121">연결이 끊어졌습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-121">A lost connection.</span></span> <span data-ttu-id="bc54e-122">클라이언트가 다시 연결하는 중입니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-122">The client is attempting to reconnect.</span></span> <span data-ttu-id="bc54e-123">모달을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-123">Show the modal.</span></span> |
 | `components-reconnect-hide`     | <span data-ttu-id="bc54e-124">서버에 대해 활성 연결이 다시 설정되었습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-124">An active connection is re-established to the server.</span></span> <span data-ttu-id="bc54e-125">모달을 숨깁니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-125">Hide the modal.</span></span> |
-| `components-reconnect-failed`   | <span data-ttu-id="bc54e-126">네트워크 오류로 인해 다시 연결하지 못했습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-126">Reconnection failed, probably due to a network failure.</span></span> <span data-ttu-id="bc54e-127">다시 연결하려면 `window.:::no-loc(Blazor):::.reconnect()`를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-127">To attempt reconnection, call `window.:::no-loc(Blazor):::.reconnect()`.</span></span> |
+| `components-reconnect-failed`   | <span data-ttu-id="bc54e-126">네트워크 오류로 인해 다시 연결하지 못했습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-126">Reconnection failed, probably due to a network failure.</span></span> <span data-ttu-id="bc54e-127">다시 연결하려면 `window.Blazor.reconnect()`를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-127">To attempt reconnection, call `window.Blazor.reconnect()`.</span></span> |
 | `components-reconnect-rejected` | <span data-ttu-id="bc54e-128">다시 연결이 거부되었습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-128">Reconnection rejected.</span></span> <span data-ttu-id="bc54e-129">서버에 접근했지만 연결이 거부되었으며, 서버의 사용자 상태가 손실되었습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-129">The server was reached but refused the connection, and the user's state on the server is lost.</span></span> <span data-ttu-id="bc54e-130">앱을 다시 로드하려면 `location.reload()`를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-130">To reload the app, call `location.reload()`.</span></span> <span data-ttu-id="bc54e-131">이 연결 상태는 다음과 같은 경우에 발생할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-131">This connection state may result when:</span></span><ul><li><span data-ttu-id="bc54e-132">서버 쪽 회로에서 크래시가 발생한 경우</span><span class="sxs-lookup"><span data-stu-id="bc54e-132">A crash in the server-side circuit occurs.</span></span></li><li><span data-ttu-id="bc54e-133">서버에서 사용자 상태를 삭제하기에 충분한 기간에 클라이언트 연결이 끊긴 경우.</span><span class="sxs-lookup"><span data-stu-id="bc54e-133">The client is disconnected long enough for the server to drop the user's state.</span></span> <span data-ttu-id="bc54e-134">사용자가 조작 중인 구성 요소 인스턴스가 삭제됩니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-134">Instances of the components that the user is interacting with are disposed.</span></span></li><li><span data-ttu-id="bc54e-135">서버가 다시 시작되었거나, 앱의 작업자 프로세스가 재활용된 경우</span><span class="sxs-lookup"><span data-stu-id="bc54e-135">The server is restarted, or the app's worker process is recycled.</span></span></li></ul> |
 
 ## <a name="render-mode"></a><span data-ttu-id="bc54e-136">렌더링 모드</span><span class="sxs-lookup"><span data-stu-id="bc54e-136">Render mode</span></span>
 
-<span data-ttu-id="bc54e-137">‘이 섹션은 :::no-loc(Blazor Server):::에 적용됩니다.’</span><span class="sxs-lookup"><span data-stu-id="bc54e-137">*This section applies to :::no-loc(Blazor Server):::.*</span></span>
+<span data-ttu-id="bc54e-137">‘이 섹션은 Blazor Server에 적용됩니다.’</span><span class="sxs-lookup"><span data-stu-id="bc54e-137">*This section applies to Blazor Server.*</span></span>
 
-<span data-ttu-id="bc54e-138">:::no-loc(Blazor Server)::: 앱은 기본적으로 클라이언트가 서버에 연결되기 전에 서버에서 UI를 미리 렌더링하도록 설정되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-138">:::no-loc(Blazor Server)::: apps are set up by default to prerender the UI on the server before the client connection to the server is established.</span></span> <span data-ttu-id="bc54e-139">이는 `_Host.cshtml` :::no-loc(Razor)::: 페이지에서 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-139">This is set up in the `_Host.cshtml` :::no-loc(Razor)::: page:</span></span>
+<span data-ttu-id="bc54e-138">Blazor Server 앱은 기본적으로 클라이언트가 서버에 연결되기 전에 서버에서 UI를 미리 렌더링하도록 설정되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-138">Blazor Server apps are set up by default to prerender the UI on the server before the client connection to the server is established.</span></span> <span data-ttu-id="bc54e-139">이는 `_Host.cshtml` Razor 페이지에서 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-139">This is set up in the `_Host.cshtml` Razor page:</span></span>
 
 ```cshtml
 <body>
@@ -119,30 +119,30 @@ ms.locfileid: "93056051"
 <span data-ttu-id="bc54e-140"><xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode>는 구성 요소에 대해 다음을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-140"><xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> configures whether the component:</span></span>
 
 * <span data-ttu-id="bc54e-141">페이지에 미리 렌더링할지 여부</span><span class="sxs-lookup"><span data-stu-id="bc54e-141">Is prerendered into the page.</span></span>
-* <span data-ttu-id="bc54e-142">페이지에 정적 HTML로 렌더링할지 여부 또는 사용자 에이전트에서 :::no-loc(Blazor)::: 앱을 부트스트랩하는 데 필요한 정보를 포함할지 여부</span><span class="sxs-lookup"><span data-stu-id="bc54e-142">Is rendered as static HTML on the page or if it includes the necessary information to bootstrap a :::no-loc(Blazor)::: app from the user agent.</span></span>
+* <span data-ttu-id="bc54e-142">페이지에 정적 HTML로 렌더링할지 여부 또는 사용자 에이전트에서 Blazor 앱을 부트스트랩하는 데 필요한 정보를 포함할지 여부</span><span class="sxs-lookup"><span data-stu-id="bc54e-142">Is rendered as static HTML on the page or if it includes the necessary information to bootstrap a Blazor app from the user agent.</span></span>
 
 | <span data-ttu-id="bc54e-143">렌더링 모드</span><span class="sxs-lookup"><span data-stu-id="bc54e-143">Render mode</span></span> | <span data-ttu-id="bc54e-144">설명</span><span class="sxs-lookup"><span data-stu-id="bc54e-144">Description</span></span> |
 | --- | --- |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | <span data-ttu-id="bc54e-145">구성 요소를 정적 HTML에 렌더링하고 :::no-loc(Blazor Server)::: 앱의 마커를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-145">Renders the component into static HTML and includes a marker for a :::no-loc(Blazor Server)::: app.</span></span> <span data-ttu-id="bc54e-146">사용자 에이전트를 시작할 때 이 표식은 :::no-loc(Blazor)::: 앱을 부트스트랩하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-146">When the user-agent starts, this marker is used to bootstrap a :::no-loc(Blazor)::: app.</span></span> |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | <span data-ttu-id="bc54e-147">:::no-loc(Blazor Server)::: 앱의 마커를 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-147">Renders a marker for a :::no-loc(Blazor Server)::: app.</span></span> <span data-ttu-id="bc54e-148">구성 요소의 출력은 포함되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-148">Output from the component isn't included.</span></span> <span data-ttu-id="bc54e-149">사용자 에이전트를 시작할 때 이 표식은 :::no-loc(Blazor)::: 앱을 부트스트랩하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-149">When the user-agent starts, this marker is used to bootstrap a :::no-loc(Blazor)::: app.</span></span> |
+| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | <span data-ttu-id="bc54e-145">구성 요소를 정적 HTML에 렌더링하고 Blazor Server 앱의 마커를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-145">Renders the component into static HTML and includes a marker for a Blazor Server app.</span></span> <span data-ttu-id="bc54e-146">사용자 에이전트를 시작할 때 이 표식은 Blazor 앱을 부트스트랩하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-146">When the user-agent starts, this marker is used to bootstrap a Blazor app.</span></span> |
+| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | <span data-ttu-id="bc54e-147">Blazor Server 앱의 마커를 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-147">Renders a marker for a Blazor Server app.</span></span> <span data-ttu-id="bc54e-148">구성 요소의 출력은 포함되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-148">Output from the component isn't included.</span></span> <span data-ttu-id="bc54e-149">사용자 에이전트를 시작할 때 이 표식은 Blazor 앱을 부트스트랩하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-149">When the user-agent starts, this marker is used to bootstrap a Blazor app.</span></span> |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | <span data-ttu-id="bc54e-150">구성 요소를 정적 HTML에 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-150">Renders the component into static HTML.</span></span> |
 
 <span data-ttu-id="bc54e-151">정적 HTML 페이지에서 서버 구성 요소를 렌더링할 수는 없습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-151">Rendering server components from a static HTML page isn't supported.</span></span>
 
-## <a name="initialize-the-no-locblazor-circuit"></a><span data-ttu-id="bc54e-152">:::no-loc(Blazor)::: 회로 초기화</span><span class="sxs-lookup"><span data-stu-id="bc54e-152">Initialize the :::no-loc(Blazor)::: circuit</span></span>
+## <a name="initialize-the-no-locblazor-circuit"></a><span data-ttu-id="bc54e-152">Blazor 회로 초기화</span><span class="sxs-lookup"><span data-stu-id="bc54e-152">Initialize the Blazor circuit</span></span>
 
-<span data-ttu-id="bc54e-153">‘이 섹션은 :::no-loc(Blazor Server):::에 적용됩니다.’</span><span class="sxs-lookup"><span data-stu-id="bc54e-153">*This section applies to :::no-loc(Blazor Server):::.*</span></span>
+<span data-ttu-id="bc54e-153">‘이 섹션은 Blazor Server에 적용됩니다.’</span><span class="sxs-lookup"><span data-stu-id="bc54e-153">*This section applies to Blazor Server.*</span></span>
 
-<span data-ttu-id="bc54e-154">`Pages/_Host.cshtml` 파일에서 :::no-loc(Blazor Server)::: 앱의 [:::no-loc(SignalR)::: 회로](xref:blazor/hosting-models#circuits)의 수동 시작을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-154">Configure the manual start of a :::no-loc(Blazor Server)::: app's [:::no-loc(SignalR)::: circuit](xref:blazor/hosting-models#circuits) in the `Pages/_Host.cshtml` file:</span></span>
+<span data-ttu-id="bc54e-154">`Pages/_Host.cshtml` 파일에서 Blazor Server 앱의 [SignalR 회로](xref:blazor/hosting-models#circuits)의 수동 시작을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-154">Configure the manual start of a Blazor Server app's [SignalR circuit](xref:blazor/hosting-models#circuits) in the `Pages/_Host.cshtml` file:</span></span>
 
 * <span data-ttu-id="bc54e-155">`blazor.server.js` 스크립트의 `<script>` 태그에 `autostart="false"` 특성을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-155">Add an `autostart="false"` attribute to the `<script>` tag for the `blazor.server.js` script.</span></span>
-* <span data-ttu-id="bc54e-156">`:::no-loc(Blazor):::.start`를 호출하는 스크립트를 `blazor.server.js` 스크립트의 태그 뒤, 닫는 `</body>` 태그 안에 넣습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-156">Place a script that calls `:::no-loc(Blazor):::.start` after the `blazor.server.js` script's tag and inside the closing `</body>` tag.</span></span>
+* <span data-ttu-id="bc54e-156">`Blazor.start`를 호출하는 스크립트를 `blazor.server.js` 스크립트의 태그 뒤, 닫는 `</body>` 태그 안에 넣습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-156">Place a script that calls `Blazor.start` after the `blazor.server.js` script's tag and inside the closing `</body>` tag.</span></span>
 
-<span data-ttu-id="bc54e-157">`autostart`를 사용하지 않도록 설정하면 회로에 종속되지 않는 앱의 일부분도 정상적으로 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-157">When `autostart` is disabled, any aspect of the app that doesn't depend on the circuit works normally.</span></span> <span data-ttu-id="bc54e-158">예를 들어 클라이언트 쪽 라우팅이 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-158">For example, client-side routing is operational.</span></span> <span data-ttu-id="bc54e-159">그러나 회로에 종속되는 모든 측면은 `:::no-loc(Blazor):::.start`가 호출된 다음에야 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-159">However, any aspect that depends on the circuit isn't operational until `:::no-loc(Blazor):::.start` is called.</span></span> <span data-ttu-id="bc54e-160">설정된 회로가 없으면 앱 동작을 예측할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-160">App behavior is unpredictable without an established circuit.</span></span> <span data-ttu-id="bc54e-161">예를 들어 회로의 연결이 끊어지면 구성 요소 메서드가 실행되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-161">For example, component methods fail to execute while the circuit is disconnected.</span></span>
+<span data-ttu-id="bc54e-157">`autostart`를 사용하지 않도록 설정하면 회로에 종속되지 않는 앱의 일부분도 정상적으로 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-157">When `autostart` is disabled, any aspect of the app that doesn't depend on the circuit works normally.</span></span> <span data-ttu-id="bc54e-158">예를 들어 클라이언트 쪽 라우팅이 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-158">For example, client-side routing is operational.</span></span> <span data-ttu-id="bc54e-159">그러나 회로에 종속되는 모든 측면은 `Blazor.start`가 호출된 다음에야 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-159">However, any aspect that depends on the circuit isn't operational until `Blazor.start` is called.</span></span> <span data-ttu-id="bc54e-160">설정된 회로가 없으면 앱 동작을 예측할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-160">App behavior is unpredictable without an established circuit.</span></span> <span data-ttu-id="bc54e-161">예를 들어 회로의 연결이 끊어지면 구성 요소 메서드가 실행되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-161">For example, component methods fail to execute while the circuit is disconnected.</span></span>
 
-### <a name="initialize-no-locblazor-when-the-document-is-ready"></a><span data-ttu-id="bc54e-162">문서가 준비되면 :::no-loc(Blazor)::: 초기화</span><span class="sxs-lookup"><span data-stu-id="bc54e-162">Initialize :::no-loc(Blazor)::: when the document is ready</span></span>
+### <a name="initialize-no-locblazor-when-the-document-is-ready"></a><span data-ttu-id="bc54e-162">문서가 준비되면 Blazor 초기화</span><span class="sxs-lookup"><span data-stu-id="bc54e-162">Initialize Blazor when the document is ready</span></span>
 
-<span data-ttu-id="bc54e-163">문서가 준비되었을 때 :::no-loc(Blazor)::: 앱을 초기화하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-163">To initialize the :::no-loc(Blazor)::: app when the document is ready:</span></span>
+<span data-ttu-id="bc54e-163">문서가 준비되었을 때 Blazor 앱을 초기화하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-163">To initialize the Blazor app when the document is ready:</span></span>
 
 ```cshtml
 <body>
@@ -152,7 +152,7 @@ ms.locfileid: "93056051"
     <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
-        :::no-loc(Blazor):::.start();
+        Blazor.start();
       });
     </script>
 </body>
@@ -160,7 +160,7 @@ ms.locfileid: "93056051"
 
 ### <a name="chain-to-the-promise-that-results-from-a-manual-start"></a><span data-ttu-id="bc54e-164">수동 시작의 결과로 생성되는 `Promise`에 연결</span><span class="sxs-lookup"><span data-stu-id="bc54e-164">Chain to the `Promise` that results from a manual start</span></span>
 
-<span data-ttu-id="bc54e-165">JS interop 초기화와 같은 추가 작업을 수행하려면 `then`을 사용하여 수동 :::no-loc(Blazor)::: 앱 시작의 결과로 생성되는 `Promise`에 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-165">To perform additional tasks, such as JS interop initialization, use `then` to chain to the `Promise` that results from a manual :::no-loc(Blazor)::: app start:</span></span>
+<span data-ttu-id="bc54e-165">JS interop 초기화와 같은 추가 작업을 수행하려면 `then`을 사용하여 수동 Blazor 앱 시작의 결과로 생성되는 `Promise`에 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-165">To perform additional tasks, such as JS interop initialization, use `then` to chain to the `Promise` that results from a manual Blazor app start:</span></span>
 
 ```cshtml
 <body>
@@ -169,18 +169,18 @@ ms.locfileid: "93056051"
 
     <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
-      :::no-loc(Blazor):::.start().then(function () {
+      Blazor.start().then(function () {
         ...
       });
     </script>
 </body>
 ```
 
-### <a name="configure-the-no-locsignalr-client"></a><span data-ttu-id="bc54e-166">:::no-loc(SignalR)::: 클라이언트 구성</span><span class="sxs-lookup"><span data-stu-id="bc54e-166">Configure the :::no-loc(SignalR)::: client</span></span>
+### <a name="configure-the-no-locsignalr-client"></a><span data-ttu-id="bc54e-166">SignalR 클라이언트 구성</span><span class="sxs-lookup"><span data-stu-id="bc54e-166">Configure the SignalR client</span></span>
 
 #### <a name="logging"></a><span data-ttu-id="bc54e-167">로깅</span><span class="sxs-lookup"><span data-stu-id="bc54e-167">Logging</span></span>
 
-<span data-ttu-id="bc54e-168">:::no-loc(SignalR)::: 클라이언트 로깅을 구성하려면 클라이언트 작성기의 로그 수준으로 `configureLogging`을 호출하는 구성 개체(`configure:::no-loc(SignalR):::`)를 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-168">To configure :::no-loc(SignalR)::: client logging, pass in a configuration object (`configure:::no-loc(SignalR):::`) that calls `configureLogging` with the log level on the client builder:</span></span>
+<span data-ttu-id="bc54e-168">SignalR 클라이언트 로깅을 구성하려면 클라이언트 작성기의 로그 수준으로 `configureLogging`을 호출하는 구성 개체(`configureSignalR`)를 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-168">To configure SignalR client logging, pass in a configuration object (`configureSignalR`) that calls `configureLogging` with the log level on the client builder:</span></span>
 
 ```cshtml
 <body>
@@ -189,8 +189,8 @@ ms.locfileid: "93056051"
 
     <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
-      :::no-loc(Blazor):::.start({
-        configure:::no-loc(SignalR):::: function (builder) {
+      Blazor.start({
+        configureSignalR: function (builder) {
           builder.configureLogging("information");
         }
       });
@@ -221,7 +221,7 @@ ms.locfileid: "93056051"
 
     <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
-      :::no-loc(Blazor):::.start({
+      Blazor.start({
         reconnectionHandler: {
           onConnectionDown: (options, error) => console.error(error);
           onConnectionUp: () => console.log("Up, up, and away!");
@@ -242,7 +242,7 @@ ms.locfileid: "93056051"
 
     <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
-      :::no-loc(Blazor):::.start({
+      Blazor.start({
         reconnectionOptions: {
           maxRetries: 3,
           retryIntervalMilliseconds: 2000
@@ -264,10 +264,10 @@ ms.locfileid: "93056051"
     <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
       window.addEventListener('beforeunload', function () {
-        :::no-loc(Blazor):::.defaultReconnectionHandler._reconnectionDisplay = {};
+        Blazor.defaultReconnectionHandler._reconnectionDisplay = {};
       });
 
-      :::no-loc(Blazor):::.start();
+      Blazor.start();
     </script>
 </body>
 ```
@@ -275,7 +275,7 @@ ms.locfileid: "93056051"
 <span data-ttu-id="bc54e-182">다시 연결 표시를 바꾸려면 앞의 예에서 `_reconnectionDisplay`를 표시할 요소로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-182">To replace the reconnection display, set `_reconnectionDisplay` in the preceding example to the element for display:</span></span>
 
 ```javascript
-:::no-loc(Blazor):::.defaultReconnectionHandler._reconnectionDisplay = 
+Blazor.defaultReconnectionHandler._reconnectionDisplay = 
   document.getElementById("{ELEMENT ID}");
 ```
 
@@ -291,13 +291,13 @@ ms.locfileid: "93056051"
 }
 ```
 
-## <a name="disconnect-the-no-locblazor-circuit-from-the-client"></a><span data-ttu-id="bc54e-186">클라이언트에서 :::no-loc(Blazor)::: 회로 연결 끊기</span><span class="sxs-lookup"><span data-stu-id="bc54e-186">Disconnect the :::no-loc(Blazor)::: circuit from the client</span></span>
+## <a name="disconnect-the-no-locblazor-circuit-from-the-client"></a><span data-ttu-id="bc54e-186">클라이언트에서 Blazor 회로 연결 끊기</span><span class="sxs-lookup"><span data-stu-id="bc54e-186">Disconnect the Blazor circuit from the client</span></span>
 
-<span data-ttu-id="bc54e-187">기본적으로 [`unload` 페이지 이벤트](https://developer.mozilla.org/docs/Web/API/Window/unload_event)가 트리거될 때 :::no-loc(Blazor)::: 회로의 연결이 끊깁니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-187">By default, a :::no-loc(Blazor)::: circuit is disconnected when the [`unload` page event](https://developer.mozilla.org/docs/Web/API/Window/unload_event) is triggered.</span></span> <span data-ttu-id="bc54e-188">클라이언트에서 다른 시나리오에 대한 회로의 연결을 끊으려면 적절한 이벤트 처리기에서 `:::no-loc(Blazor):::.disconnect`를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-188">To disconnect the circuit for other scenarios on the client, invoke `:::no-loc(Blazor):::.disconnect` in the appropriate event handler.</span></span> <span data-ttu-id="bc54e-189">다음 예제에서는 페이지가 숨겨질 때([`pagehide` 이벤트](https://developer.mozilla.org/docs/Web/API/Window/pagehide_event)) 회로의 연결이 끊깁니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-189">In the following example, the circuit is disconnected when the page is hidden ([`pagehide` event](https://developer.mozilla.org/docs/Web/API/Window/pagehide_event)):</span></span>
+<span data-ttu-id="bc54e-187">기본적으로 [`unload` 페이지 이벤트](https://developer.mozilla.org/docs/Web/API/Window/unload_event)가 트리거될 때 Blazor 회로의 연결이 끊깁니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-187">By default, a Blazor circuit is disconnected when the [`unload` page event](https://developer.mozilla.org/docs/Web/API/Window/unload_event) is triggered.</span></span> <span data-ttu-id="bc54e-188">클라이언트에서 다른 시나리오에 대한 회로의 연결을 끊으려면 적절한 이벤트 처리기에서 `Blazor.disconnect`를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-188">To disconnect the circuit for other scenarios on the client, invoke `Blazor.disconnect` in the appropriate event handler.</span></span> <span data-ttu-id="bc54e-189">다음 예제에서는 페이지가 숨겨질 때([`pagehide` 이벤트](https://developer.mozilla.org/docs/Web/API/Window/pagehide_event)) 회로의 연결이 끊깁니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-189">In the following example, the circuit is disconnected when the page is hidden ([`pagehide` event](https://developer.mozilla.org/docs/Web/API/Window/pagehide_event)):</span></span>
 
 ```javascript
 window.addEventListener('pagehide', () => {
-  :::no-loc(Blazor):::.disconnect();
+  Blazor.disconnect();
 });
 ```
 
@@ -305,7 +305,7 @@ window.addEventListener('pagehide', () => {
 
 ## Influence HTML `<head>` tag elements
 
-*This section applies to the upcoming ASP.NET Core 5.0 release of :::no-loc(Blazor WebAssembly)::: and :::no-loc(Blazor Server):::.*
+*This section applies to the upcoming ASP.NET Core 5.0 release of Blazor WebAssembly and Blazor Server.*
 
 When rendered, the `Title`, `Link`, and `Meta` components add or update data in the HTML `<head>` tag elements:
 
@@ -317,7 +317,7 @@ When rendered, the `Title`, `Link`, and `Meta` components add or update data in 
 <Meta content="{DESCRIPTION}" name="description" />
 ```
 
-In the preceding example, placeholders for `{TITLE}`, `{URL}`, and `{DESCRIPTION}` are string values, :::no-loc(Razor)::: variables, or :::no-loc(Razor)::: expressions.
+In the preceding example, placeholders for `{TITLE}`, `{URL}`, and `{DESCRIPTION}` are string values, Razor variables, or Razor expressions.
 
 The following characteristics apply:
 
@@ -340,7 +340,7 @@ When one of the framework components is used in a child component, the rendered 
 
 ## <a name="static-files"></a><span data-ttu-id="bc54e-190">정적 파일</span><span class="sxs-lookup"><span data-stu-id="bc54e-190">Static files</span></span>
 
-<span data-ttu-id="bc54e-191">‘이 섹션은 :::no-loc(Blazor Server):::에 적용됩니다.’</span><span class="sxs-lookup"><span data-stu-id="bc54e-191">*This section applies to :::no-loc(Blazor Server):::.*</span></span>
+<span data-ttu-id="bc54e-191">‘이 섹션은 Blazor Server에 적용됩니다.’</span><span class="sxs-lookup"><span data-stu-id="bc54e-191">*This section applies to Blazor Server.*</span></span>
 
 <span data-ttu-id="bc54e-192"><xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider>를 사용하여 추가 파일 매핑을 만들거나 다른 <xref:Microsoft.AspNetCore.Builder.StaticFileOptions>를 구성하려면 다음 방법 중 **하나** 를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-192">To create additional file mappings with a <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> or configure other <xref:Microsoft.AspNetCore.Builder.StaticFileOptions>, use **one** of the following approaches.</span></span> <span data-ttu-id="bc54e-193">다음 예제에서 `{EXTENSION}` 자리 표시자는 파일 확장명이고 `{CONTENT TYPE}` 자리 표시자는 콘텐츠 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-193">In the following examples, the `{EXTENSION}` placeholder is the file extension, and the `{CONTENT TYPE}` placeholder is the content type.</span></span>
 
@@ -364,7 +364,7 @@ When one of the framework components is used in a child component, the rendered 
 
 * <span data-ttu-id="bc54e-197">`Startup.Configure`(`Startup.cs`)에서 <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A>에 대한 두 호출을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-197">Use two calls to <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> in `Startup.Configure` (`Startup.cs`):</span></span>
   * <span data-ttu-id="bc54e-198"><xref:Microsoft.AspNetCore.Builder.StaticFileOptions>를 사용하여 첫 번째 호출에서 사용자 지정 파일 공급자를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-198">Configure the custom file provider in the first call with <xref:Microsoft.AspNetCore.Builder.StaticFileOptions>.</span></span>
-  * <span data-ttu-id="bc54e-199">두 번째 미들웨어는 :::no-loc(Blazor)::: 프레임워크에서 제공하는 기본 정적 파일 구성을 사용하는 `blazor.server.js`를 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-199">The second middleware serves `blazor.server.js`, which uses the default static files configuration provided by the :::no-loc(Blazor)::: framework.</span></span>
+  * <span data-ttu-id="bc54e-199">두 번째 미들웨어는 Blazor 프레임워크에서 제공하는 기본 정적 파일 구성을 사용하는 `blazor.server.js`를 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="bc54e-199">The second middleware serves `blazor.server.js`, which uses the default static files configuration provided by the Blazor framework.</span></span>
 
   ```csharp
   using Microsoft.AspNetCore.StaticFiles;

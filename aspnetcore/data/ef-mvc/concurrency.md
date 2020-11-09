@@ -7,17 +7,17 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/ef-mvc/concurrency
 ms.openlocfilehash: d476c836e8d497ca1291992dda38da1fc9f59ed2
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -83,7 +83,7 @@ ms.locfileid: "93054374"
 
 * <span data-ttu-id="f0c17-150">사용자가 수정한 속성의 추적을 유지하고 데이터베이스에서 해당하는 열만 업데이트할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f0c17-150">You can keep track of which property a user has modified and update only the corresponding columns in the database.</span></span>
 
-     <span data-ttu-id="f0c17-151">예제 시나리오에서 서로 다른 속성이 두 사용자에 의해 업데이트되었기 때문에 데이터가 손실되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="f0c17-151">In the example scenario, no data would be lost, because different properties were updated by the two users.</span></span> <span data-ttu-id="f0c17-152">다음에 누군가가 영어 부서를 찾아볼 때는 Jane과 John의 변경 내용을 모두 볼 수 있습니다. - 2013년 9월 1일의 시작 날짜 및 0달러의 예산</span><span class="sxs-lookup"><span data-stu-id="f0c17-152">The next time someone browses the English department, they will see both Jane's and John's changes -- a start date of 9/1/2013 and a budget of zero dollars.</span></span> <span data-ttu-id="f0c17-153">이 업데이트의 메서드는 데이터 손실이 발생할 수 있는 충돌 수를 줄일 수 있지만 경쟁하는 변경 내용이 동일한 엔터티의 속성에 만들어지는 경우 데이터 손실을 방지할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="f0c17-153">This method of updating can reduce the number of conflicts that could result in data loss, but it can't avoid data loss if competing changes are made to the same property of an entity.</span></span> <span data-ttu-id="f0c17-154">Entity Framework가 이 방식으로 작동하는지 여부는 업데이트 코드를 구현하는 방법에 따라 달라집니다.</span><span class="sxs-lookup"><span data-stu-id="f0c17-154">Whether the Entity Framework works this way depends on how you implement your update code.</span></span> <span data-ttu-id="f0c17-155">엔터티에 대한 모든 기존 속성 값 뿐만 아니라 새 값의 추적을 유지하기 위해 많은 양의 상태를 유지 관리해야 하므로 웹 애플리케이션에서는 종종 실용적이지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="f0c17-155">It's often not practical in a web application, because it can require that you maintain large amounts of state in order to keep track of all original property values for an entity as well as new values.</span></span> <span data-ttu-id="f0c17-156">서버 리소스가 필요하거나 웹 페이지 자체(예: 숨겨진 필드에) 또는 :::no-loc(cookie):::에 포함되어야 하기 때문에 많은 양의 상태를 유지 관리하는 것은 애플리케이션 성능에 영향을 줄 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f0c17-156">Maintaining large amounts of state can affect application performance because it either requires server resources or must be included in the web page itself (for example, in hidden fields) or in a :::no-loc(cookie):::.</span></span>
+     <span data-ttu-id="f0c17-151">예제 시나리오에서 서로 다른 속성이 두 사용자에 의해 업데이트되었기 때문에 데이터가 손실되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="f0c17-151">In the example scenario, no data would be lost, because different properties were updated by the two users.</span></span> <span data-ttu-id="f0c17-152">다음에 누군가가 영어 부서를 찾아볼 때는 Jane과 John의 변경 내용을 모두 볼 수 있습니다. - 2013년 9월 1일의 시작 날짜 및 0달러의 예산</span><span class="sxs-lookup"><span data-stu-id="f0c17-152">The next time someone browses the English department, they will see both Jane's and John's changes -- a start date of 9/1/2013 and a budget of zero dollars.</span></span> <span data-ttu-id="f0c17-153">이 업데이트의 메서드는 데이터 손실이 발생할 수 있는 충돌 수를 줄일 수 있지만 경쟁하는 변경 내용이 동일한 엔터티의 속성에 만들어지는 경우 데이터 손실을 방지할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="f0c17-153">This method of updating can reduce the number of conflicts that could result in data loss, but it can't avoid data loss if competing changes are made to the same property of an entity.</span></span> <span data-ttu-id="f0c17-154">Entity Framework가 이 방식으로 작동하는지 여부는 업데이트 코드를 구현하는 방법에 따라 달라집니다.</span><span class="sxs-lookup"><span data-stu-id="f0c17-154">Whether the Entity Framework works this way depends on how you implement your update code.</span></span> <span data-ttu-id="f0c17-155">엔터티에 대한 모든 기존 속성 값 뿐만 아니라 새 값의 추적을 유지하기 위해 많은 양의 상태를 유지 관리해야 하므로 웹 애플리케이션에서는 종종 실용적이지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="f0c17-155">It's often not practical in a web application, because it can require that you maintain large amounts of state in order to keep track of all original property values for an entity as well as new values.</span></span> <span data-ttu-id="f0c17-156">서버 리소스가 필요하거나 웹 페이지 자체(예: 숨겨진 필드에) 또는 cookie에 포함되어야 하기 때문에 많은 양의 상태를 유지 관리하는 것은 애플리케이션 성능에 영향을 줄 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f0c17-156">Maintaining large amounts of state can affect application performance because it either requires server resources or must be included in the web page itself (for example, in hidden fields) or in a cookie.</span></span>
 
 * <span data-ttu-id="f0c17-157">Jane의 변경 사항을 John의 변경 사항으로 덮어쓸 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f0c17-157">You can let John's change overwrite Jane's change.</span></span>
 

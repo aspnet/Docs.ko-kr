@@ -5,17 +5,17 @@ description: ASP.NET Core 데이터 보호 라이브러리에서 사용할 수 �
 ms.author: riande
 ms.date: 06/11/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/data-protection/consumer-apis/overview
 ms.openlocfilehash: 485ea3f669b518f2979d04493b281bd116b05f65
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -64,4 +64,4 @@ ms.locfileid: "93051878"
 [!code-csharp[](./overview/samples/getdataprotector.cs?highlight=15)]
 
 >[!TIP]
-> <span data-ttu-id="5b8d2-133">및 인스턴스 `IDataProtectionProvider` `IDataProtector` 는 여러 호출자가 스레드로부터 안전 하 게 보호 됩니다.</span><span class="sxs-lookup"><span data-stu-id="5b8d2-133">Instances of `IDataProtectionProvider` and `IDataProtector` are thread-safe for multiple callers.</span></span> <span data-ttu-id="5b8d2-134">구성 요소가 호출을 통해에 대 한 참조를 가져온 후에 `IDataProtector` `CreateProtector` 는 및에 대 한 여러 호출에 해당 참조를 사용 합니다 `Protect` `Unprotect` .</span><span class="sxs-lookup"><span data-stu-id="5b8d2-134">It's intended that once a component gets a reference to an `IDataProtector` via a call to `CreateProtector`, it will use that reference for multiple calls to `Protect` and `Unprotect`.</span></span> <span data-ttu-id="5b8d2-135">`Unprotect`보호 된 페이로드를 확인 하거나 해독할 수 없는 경우에 대 한 호출은 system.security.cryptography.cryptographicexception을 throw 합니다.</span><span class="sxs-lookup"><span data-stu-id="5b8d2-135">A call to `Unprotect` will throw CryptographicException if the protected payload cannot be verified or deciphered.</span></span> <span data-ttu-id="5b8d2-136">일부 구성 요소는 보호 되지 않는 작업 중에 오류를 무시 하려고 할 수 있습니다. 인증을 읽는 구성 요소가 :::no-loc(cookie)::: 이 오류를 처리 하 고 요청을 완전히 실패 하는 것이 아닌 모든 요청을 처리 하는 것 처럼 처리할 수 있습니다 :::no-loc(cookie)::: .</span><span class="sxs-lookup"><span data-stu-id="5b8d2-136">Some components may wish to ignore errors during unprotect operations; a component which reads authentication :::no-loc(cookie):::s might handle this error and treat the request as if it had no :::no-loc(cookie)::: at all rather than fail the request outright.</span></span> <span data-ttu-id="5b8d2-137">이 동작을 원하는 구성 요소는 모든 예외를 swallowing 하는 대신 System.security.cryptography.cryptographicexception를 명확 하 게 catch 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="5b8d2-137">Components which want this behavior should specifically catch CryptographicException instead of swallowing all exceptions.</span></span>
+> <span data-ttu-id="5b8d2-133">및 인스턴스 `IDataProtectionProvider` `IDataProtector` 는 여러 호출자가 스레드로부터 안전 하 게 보호 됩니다.</span><span class="sxs-lookup"><span data-stu-id="5b8d2-133">Instances of `IDataProtectionProvider` and `IDataProtector` are thread-safe for multiple callers.</span></span> <span data-ttu-id="5b8d2-134">구성 요소가 호출을 통해에 대 한 참조를 가져온 후에 `IDataProtector` `CreateProtector` 는 및에 대 한 여러 호출에 해당 참조를 사용 합니다 `Protect` `Unprotect` .</span><span class="sxs-lookup"><span data-stu-id="5b8d2-134">It's intended that once a component gets a reference to an `IDataProtector` via a call to `CreateProtector`, it will use that reference for multiple calls to `Protect` and `Unprotect`.</span></span> <span data-ttu-id="5b8d2-135">`Unprotect`보호 된 페이로드를 확인 하거나 해독할 수 없는 경우에 대 한 호출은 system.security.cryptography.cryptographicexception을 throw 합니다.</span><span class="sxs-lookup"><span data-stu-id="5b8d2-135">A call to `Unprotect` will throw CryptographicException if the protected payload cannot be verified or deciphered.</span></span> <span data-ttu-id="5b8d2-136">일부 구성 요소는 보호 되지 않는 작업 중에 오류를 무시 하려고 할 수 있습니다. 인증을 읽는 구성 요소가 cookie 이 오류를 처리 하 고 요청을 완전히 실패 하는 것이 아닌 모든 요청을 처리 하는 것 처럼 처리할 수 있습니다 cookie .</span><span class="sxs-lookup"><span data-stu-id="5b8d2-136">Some components may wish to ignore errors during unprotect operations; a component which reads authentication cookies might handle this error and treat the request as if it had no cookie at all rather than fail the request outright.</span></span> <span data-ttu-id="5b8d2-137">이 동작을 원하는 구성 요소는 모든 예외를 swallowing 하는 대신 System.security.cryptography.cryptographicexception를 명확 하 게 catch 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="5b8d2-137">Components which want this behavior should specifically catch CryptographicException instead of swallowing all exceptions.</span></span>

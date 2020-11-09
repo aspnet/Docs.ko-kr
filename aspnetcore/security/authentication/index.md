@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/03/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/index
 ms.openlocfilehash: eb8c5b3c66f9a0d845d6a1d58c69e6fddefa5b0b
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -38,22 +38,22 @@ ms.locfileid: "93053386"
 
 <span data-ttu-id="255bd-113">인증 체계는 `Startup.ConfigureServices`에 인증 서비스를 등록하여 지정됩니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-113">Authentication schemes are specified by registering authentication services in `Startup.ConfigureServices`:</span></span>
 
-* <span data-ttu-id="255bd-114">`services.AddAuthentication`(예: `AddJwtBearer` 또는 `Add:::no-loc(Cookie):::`)를 호출한 후에 스키마별 확장 메서드를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-114">By calling a scheme-specific extension method after a call to `services.AddAuthentication` (such as `AddJwtBearer` or `Add:::no-loc(Cookie):::`, for example).</span></span> <span data-ttu-id="255bd-115">이 확장 메서드는 [AuthenticationBuilder. AddScheme](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*)을 사용하여 적절한 설정으로 체계를 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-115">These extension methods use [AuthenticationBuilder.AddScheme](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*) to register schemes with appropriate settings.</span></span>
+* <span data-ttu-id="255bd-114">`services.AddAuthentication`(예: `AddJwtBearer` 또는 `AddCookie`)를 호출한 후에 스키마별 확장 메서드를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-114">By calling a scheme-specific extension method after a call to `services.AddAuthentication` (such as `AddJwtBearer` or `AddCookie`, for example).</span></span> <span data-ttu-id="255bd-115">이 확장 메서드는 [AuthenticationBuilder. AddScheme](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*)을 사용하여 적절한 설정으로 체계를 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-115">These extension methods use [AuthenticationBuilder.AddScheme](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*) to register schemes with appropriate settings.</span></span>
 * <span data-ttu-id="255bd-116">드물게 [AuthenticationBuilder.AddScheme](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*)을 직접 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-116">Less commonly, by calling [AuthenticationBuilder.AddScheme](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*) directly.</span></span>
 
-<span data-ttu-id="255bd-117">예를 들어, 다음 코드는 :::no-loc(cookie)::: 및 JWT 전달자 인증 체계의 인증 서비스와 처리기를 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-117">For example, the following code registers authentication services and handlers for :::no-loc(cookie)::: and JWT bearer authentication schemes:</span></span>
+<span data-ttu-id="255bd-117">예를 들어, 다음 코드는 cookie 및 JWT 전달자 인증 체계의 인증 서비스와 처리기를 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-117">For example, the following code registers authentication services and handlers for cookie and JWT bearer authentication schemes:</span></span>
 
 ```csharp
 services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options => Configuration.Bind("JwtSettings", options))
-    .Add:::no-loc(Cookie):::(:::no-loc(Cookie):::AuthenticationDefaults.AuthenticationScheme, options => Configuration.Bind(":::no-loc(Cookie):::Settings", options));
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options => Configuration.Bind("CookieSettings", options));
 ```
 
 <span data-ttu-id="255bd-118">`AddAuthentication` 매개 변수 `JwtBearerDefaults.AuthenticationScheme`는 특정 체계가 요청되지 않은 경우 기본적으로 사용할 체계의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-118">The `AddAuthentication` parameter `JwtBearerDefaults.AuthenticationScheme` is the name of the scheme to use by default when a specific scheme isn't requested.</span></span>
 
-<span data-ttu-id="255bd-119">여러 스키마를 사용하는 경우, 권한 부여 정책(또는 권한 부여 특성)은 사용자를 인증하기 위해 사용해야 하는 [인증 체계(또는 체계)를 지정](xref:security/authorization/limitingidentitybyscheme)할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-119">If multiple schemes are used, authorization policies (or authorization attributes) can [specify the authentication scheme (or schemes)](xref:security/authorization/limitingidentitybyscheme) they depend on to authenticate the user.</span></span> <span data-ttu-id="255bd-120">위의 예제에서, :::no-loc(cookie)::: 인증 체계는 이름을 지정하여 사용할 수 있습니다(`Add:::no-loc(Cookie):::`를 호출할 때 다른 이름을 제공할 수 있지만 기본적으로 `:::no-loc(Cookie):::AuthenticationDefaults.AuthenticationScheme`).</span><span class="sxs-lookup"><span data-stu-id="255bd-120">In the example above, the :::no-loc(cookie)::: authentication scheme could be used by specifying its name (`:::no-loc(Cookie):::AuthenticationDefaults.AuthenticationScheme` by default, though a different name could be provided when calling `Add:::no-loc(Cookie):::`).</span></span>
+<span data-ttu-id="255bd-119">여러 스키마를 사용하는 경우, 권한 부여 정책(또는 권한 부여 특성)은 사용자를 인증하기 위해 사용해야 하는 [인증 체계(또는 체계)를 지정](xref:security/authorization/limitingidentitybyscheme)할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-119">If multiple schemes are used, authorization policies (or authorization attributes) can [specify the authentication scheme (or schemes)](xref:security/authorization/limitingidentitybyscheme) they depend on to authenticate the user.</span></span> <span data-ttu-id="255bd-120">위의 예제에서, cookie 인증 체계는 이름을 지정하여 사용할 수 있습니다(`AddCookie`를 호출할 때 다른 이름을 제공할 수 있지만 기본적으로 `CookieAuthenticationDefaults.AuthenticationScheme`).</span><span class="sxs-lookup"><span data-stu-id="255bd-120">In the example above, the cookie authentication scheme could be used by specifying its name (`CookieAuthenticationDefaults.AuthenticationScheme` by default, though a different name could be provided when calling `AddCookie`).</span></span>
 
-<span data-ttu-id="255bd-121">경우에 따라, `AddAuthentication`에 대한 호출은 다른 확장 메서드에서 자동으로 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-121">In some cases, the call to `AddAuthentication` is automatically made by other extension methods.</span></span> <span data-ttu-id="255bd-122">예를 들어, [:::no-loc(ASP.NET Core Identity):::](xref:security/authentication/identity)를 사용하는 경우 `AddAuthentication`이 내부적으로 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-122">For example, when using [:::no-loc(ASP.NET Core Identity):::](xref:security/authentication/identity), `AddAuthentication` is called internally.</span></span>
+<span data-ttu-id="255bd-121">경우에 따라, `AddAuthentication`에 대한 호출은 다른 확장 메서드에서 자동으로 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-121">In some cases, the call to `AddAuthentication` is automatically made by other extension methods.</span></span> <span data-ttu-id="255bd-122">예를 들어, [ASP.NET Core Identity](xref:security/authentication/identity)를 사용하는 경우 `AddAuthentication`이 내부적으로 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-122">For example, when using [ASP.NET Core Identity](xref:security/authentication/identity), `AddAuthentication` is called internally.</span></span>
 
 <span data-ttu-id="255bd-123">인증 미들웨어는 앱의 `IApplicationBuilder`에서 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 확장 메서드를 호출하여 `Startup.Configure`에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-123">The Authentication middleware is added in `Startup.Configure` by calling the <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> extension method on the app's `IApplicationBuilder`.</span></span> <span data-ttu-id="255bd-124">`UseAuthentication`을(를) 호출하면 이전에 등록된 인증 체계를 사용하는 미들웨어가 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-124">Calling `UseAuthentication` registers the middleware which uses the previously registered authentication schemes.</span></span> <span data-ttu-id="255bd-125">인증되는 사용자에 따라 달라지는 미들웨어 이전에 `UseAuthentication`을(를) 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-125">Call `UseAuthentication` before any middleware that depends on users being authenticated.</span></span> <span data-ttu-id="255bd-126">엔드포인트 라우팅을 사용하는 경우 `UseAuthentication`에 대한 호출이 다음과 같이 이동해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-126">When using endpoint routing, the call to `UseAuthentication` must go:</span></span>
 
@@ -94,14 +94,14 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 <span data-ttu-id="255bd-153">인증 체계의 인증 작업은 요청 컨텍스트를 기반으로 사용자의 id를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-153">An authentication scheme's authenticate action is responsible for constructing the user's identity based on request context.</span></span> <span data-ttu-id="255bd-154">인증에 성공했는지와 그런 경우 인증 티켓의 사용자 ID를 나타내는 <xref:Microsoft.AspNetCore.Authentication.AuthenticateResult>을(를) 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-154">It returns an <xref:Microsoft.AspNetCore.Authentication.AuthenticateResult> indicating whether authentication was successful and, if so, the user's identity in an authentication ticket.</span></span> <span data-ttu-id="255bd-155"><xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.AuthenticateAsync%2A>을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="255bd-155">See <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.AuthenticateAsync%2A>.</span></span> <span data-ttu-id="255bd-156">인증 예는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-156">Authenticate examples include:</span></span>
 
-* <span data-ttu-id="255bd-157">:::no-loc(cookie):::에서 사용자 ID를 생성하는 :::no-loc(cookie)::: 인증 체계입니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-157">A :::no-loc(cookie)::: authentication scheme constructing the user's identity from :::no-loc(cookie):::s.</span></span>
+* <span data-ttu-id="255bd-157">cookie에서 사용자 ID를 생성하는 cookie 인증 체계입니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-157">A cookie authentication scheme constructing the user's identity from cookies.</span></span>
 * <span data-ttu-id="255bd-158">JWT 전달자 체계는 JWT 전달자 토큰을 역직렬화하고 유효성을 검사하여 사용자 ID를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-158">A JWT bearer scheme deserializing and validating a JWT bearer token to construct the user's identity.</span></span>
 
 ### <a name="challenge"></a><span data-ttu-id="255bd-159">과제</span><span class="sxs-lookup"><span data-stu-id="255bd-159">Challenge</span></span>
 
 <span data-ttu-id="255bd-160">인증 챌린지는 인증되지 않은 사용자가 인증을 요구하는 엔드포인트를 요청하는 경우 권한 부여를 수행하여 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-160">An authentication challenge is invoked by Authorization when an unauthenticated user requests an endpoint that requires authentication.</span></span> <span data-ttu-id="255bd-161">인증 챌린지를 발행합니다(예를 들어, 익명 사용자가 제한된 리소스를 요청하거나 로그인 링크를 클릭하는 경우).</span><span class="sxs-lookup"><span data-stu-id="255bd-161">An authentication challenge is issued, for example, when an anonymous user requests a restricted resource or clicks on a login link.</span></span> <span data-ttu-id="255bd-162">권한 부여는 지정된 인증 체계를 사용하여 챌린지를 호출하거나, 기본값(지정되지 않은 경우)을 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-162">Authorization invokes a challenge using the specified authentication scheme(s), or the default if none is specified.</span></span> <span data-ttu-id="255bd-163"><xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ChallengeAsync%2A>을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="255bd-163">See <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ChallengeAsync%2A>.</span></span> <span data-ttu-id="255bd-164">인증 챌린지 예는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-164">Authentication challenge examples include:</span></span>
 
-* <span data-ttu-id="255bd-165">사용자를 로그인 페이지로 리디렉션하는 :::no-loc(cookie)::: 인증 체계입니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-165">A :::no-loc(cookie)::: authentication scheme redirecting the user to a login page.</span></span>
+* <span data-ttu-id="255bd-165">사용자를 로그인 페이지로 리디렉션하는 cookie 인증 체계입니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-165">A cookie authentication scheme redirecting the user to a login page.</span></span>
 * <span data-ttu-id="255bd-166">`www-authenticate: bearer` 헤더를 사용하여 401 결과를 반환하는 JWT 전달자 체계입니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-166">A JWT bearer scheme returning a 401 result with a `www-authenticate: bearer` header.</span></span>
 
 <span data-ttu-id="255bd-167">챌린지 작업을 통해 요청된 리소스에 액세스하는 데 사용할 인증 메커니즘을 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-167">A challenge action should let the user know what authentication mechanism to use to access the requested resource.</span></span>
@@ -109,7 +109,7 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 ### <a name="forbid"></a><span data-ttu-id="255bd-168">금지</span><span class="sxs-lookup"><span data-stu-id="255bd-168">Forbid</span></span>
 
 <span data-ttu-id="255bd-169">인증된 사용자가 액세스를 허용하지 않는 리소스에 액세스를 시도할 때 인증 체계의 금지 작업이 권한 부여에 의해 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-169">An authentication scheme's forbid action is called by Authorization when an authenticated user attempts to access a resource they are not permitted to access.</span></span> <span data-ttu-id="255bd-170"><xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ForbidAsync%2A>을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="255bd-170">See <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ForbidAsync%2A>.</span></span> <span data-ttu-id="255bd-171">인증 금지 예는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-171">Authentication forbid examples include:</span></span>
-* <span data-ttu-id="255bd-172">액세스를 사용할 수 없음을 나타내는 페이지로 리디렉션하는 :::no-loc(cookie)::: 인증 체계입니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-172">A :::no-loc(cookie)::: authentication scheme redirecting the user to a page indicating access was forbidden.</span></span>
+* <span data-ttu-id="255bd-172">액세스를 사용할 수 없음을 나타내는 페이지로 리디렉션하는 cookie 인증 체계입니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-172">A cookie authentication scheme redirecting the user to a page indicating access was forbidden.</span></span>
 * <span data-ttu-id="255bd-173">403 결과를 반환하는 JWT 전달자 체계입니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-173">A JWT bearer scheme returning a 403 result.</span></span>
 * <span data-ttu-id="255bd-174">사용자가 리소스에 대한 액세스 권한을 요청할 수 있는 페이지로 리디렉션하는 사용자 지정 인증 체계입니다.</span><span class="sxs-lookup"><span data-stu-id="255bd-174">A custom authentication scheme redirecting to a page where the user can request access to the resource.</span></span>
 

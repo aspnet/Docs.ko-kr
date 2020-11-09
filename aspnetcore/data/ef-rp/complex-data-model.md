@@ -1,22 +1,22 @@
 ---
-title: '5부. ASP.NET Core에서 EF Core를 사용한 :::no-loc(Razor)::: Pages - 데이터 모델'
+title: '5부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 데이터 모델'
 author: rick-anderson
-description: ':::no-loc(Razor)::: Pages 및 Entity Framework 자습서 시리즈의 5부입니다.'
+description: 'Razor Pages 및 Entity Framework 자습서 시리즈의 5부입니다.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/ef-rp/complex-data-model
 ms.openlocfilehash: 1ac9d6303daac82f3973c5d027fe1f453dc32e02
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,7 +25,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93054101"
 ---
-# <a name="part-5-no-locrazor-pages-with-ef-core-in-aspnet-core---data-model"></a><span data-ttu-id="1e42b-103">5부. ASP.NET Core에서 EF Core를 사용한 :::no-loc(Razor)::: Pages - 데이터 모델</span><span class="sxs-lookup"><span data-stu-id="1e42b-103">Part 5, :::no-loc(Razor)::: Pages with EF Core in ASP.NET Core - Data Model</span></span>
+# <a name="part-5-no-locrazor-pages-with-ef-core-in-aspnet-core---data-model"></a><span data-ttu-id="1e42b-103">5부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 데이터 모델</span><span class="sxs-lookup"><span data-stu-id="1e42b-103">Part 5, Razor Pages with EF Core in ASP.NET Core - Data Model</span></span>
 
 <span data-ttu-id="1e42b-104">작성자: [Tom Dykstra](https://github.com/tdykstra) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="1e42b-104">By [Tom Dykstra](https://github.com/tdykstra) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 

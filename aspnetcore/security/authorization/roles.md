@@ -5,17 +5,17 @@ description: 권한 부여 특성에 역할을 전달 하 여 ASP.NET Core 컨�
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authorization/roles
 ms.openlocfilehash: 0a2e62afebbcda9710ef82857c87cae8af0375fe
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -102,7 +102,7 @@ public class ControlPanelController : Controller
 
 ::: moniker range=">= aspnetcore-2.0"
 
-<span data-ttu-id="3e54e-117">페이지의 경우 :::no-loc(Razor)::: `AuthorizeAttribute` 다음 중 하나를 수행 하 여을 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3e54e-117">For :::no-loc(Razor)::: Pages, the `AuthorizeAttribute` can be applied by either:</span></span>
+<span data-ttu-id="3e54e-117">페이지의 경우 Razor `AuthorizeAttribute` 다음 중 하나를 수행 하 여을 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3e54e-117">For Razor Pages, the `AuthorizeAttribute` can be applied by either:</span></span>
 
 * <span data-ttu-id="3e54e-118">[규칙](xref:razor-pages/razor-pages-conventions#page-model-action-conventions)사용 또는</span><span class="sxs-lookup"><span data-stu-id="3e54e-118">Using a [convention](xref:razor-pages/razor-pages-conventions#page-model-action-conventions), or</span></span>
 * <span data-ttu-id="3e54e-119">인스턴스에를 적용 `AuthorizeAttribute` 하는 `PageModel` 중입니다.</span><span class="sxs-lookup"><span data-stu-id="3e54e-119">Applying the `AuthorizeAttribute` to the `PageModel` instance:</span></span>
@@ -132,7 +132,7 @@ public class UpdateModel : PageModel
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddControllersWithViews();
-    services.Add:::no-loc(Razor):::Pages();
+    services.AddRazorPages();
 
     services.AddAuthorization(options =>
     {
@@ -177,9 +177,9 @@ options.AddPolicy("ElevatedRights", policy =>
 
 <span data-ttu-id="3e54e-126">이 예제에서는 또는 역할에 속한 사용자에 게 권한을 부여 `Administrator` `PowerUser` `BackupAdministrator` 합니다.</span><span class="sxs-lookup"><span data-stu-id="3e54e-126">This example authorizes users who belong to the `Administrator`, `PowerUser` or `BackupAdministrator` roles.</span></span>
 
-### <a name="add-role-services-to-no-locidentity"></a><span data-ttu-id="3e54e-127">역할 서비스 추가 :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="3e54e-127">Add Role services to :::no-loc(Identity):::</span></span>
+### <a name="add-role-services-to-no-locidentity"></a><span data-ttu-id="3e54e-127">역할 서비스 추가 Identity</span><span class="sxs-lookup"><span data-stu-id="3e54e-127">Add Role services to Identity</span></span>
 
-<span data-ttu-id="3e54e-128">역할 서비스를 추가 하려면 [Addroles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_:::no-loc(Identity):::_:::no-loc(Identity):::Builder_AddRoles__1) 를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="3e54e-128">Append [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_:::no-loc(Identity):::_:::no-loc(Identity):::Builder_AddRoles__1) to add Role services:</span></span>
+<span data-ttu-id="3e54e-128">역할 서비스를 추가 하려면 [Addroles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) 를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="3e54e-128">Append [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) to add Role services:</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 [!code-csharp[](roles/samples/3_0/Startup.cs?name=snippet&highlight=7)]

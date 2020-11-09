@@ -5,17 +5,17 @@ description: 기존 ASP.NET MVC 또는 Web API 앱을 ASP.NET Core.web으로 마
 ms.author: scaddie
 ms.date: 10/18/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: migration/proper-to-2x/index
 ms.openlocfilehash: 059ddc18d0c531efaba8aab916ddbb27b42b5e2c
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -100,7 +100,7 @@ ms.locfileid: "93053555"
 
 [!code-csharp[](samples/read-webconfig.cs)]
 
-<span data-ttu-id="8f15c-158">ASP.NET Core는 애플리케이션에 대한 구성 데이터를 파일에 저장하고 미들웨어 부트스트래핑의 일부로 로드할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8f15c-158">ASP.NET Core can store configuration data for the application in any file and load them as part of middleware bootstrapping.</span></span> <span data-ttu-id="8f15c-159">프로젝트 템플릿에 사용되는 기본 파일은 *:::no-loc(appsettings.json):::* 입니다.</span><span class="sxs-lookup"><span data-stu-id="8f15c-159">The default file used in the project templates is *:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="8f15c-158">ASP.NET Core는 애플리케이션에 대한 구성 데이터를 파일에 저장하고 미들웨어 부트스트래핑의 일부로 로드할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8f15c-158">ASP.NET Core can store configuration data for the application in any file and load them as part of middleware bootstrapping.</span></span> <span data-ttu-id="8f15c-159">프로젝트 템플릿에 사용되는 기본 파일은 *appsettings.json* 입니다.</span><span class="sxs-lookup"><span data-stu-id="8f15c-159">The default file used in the project templates is *appsettings.json* :</span></span>
 
 [!code-json[](samples/appsettings-sample.json)]
 
@@ -167,9 +167,9 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 > [!NOTE]
 > <span data-ttu-id="8f15c-186">ASP.NET Core의 정적 파일 지원에 대한 자세한 내용은 [정적 파일](xref:fundamentals/static-files)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="8f15c-186">For a more in-depth reference to serving static files in ASP.NET Core, see [Static files](xref:fundamentals/static-files).</span></span>
 
-## <a name="multi-value-no-loccookies"></a><span data-ttu-id="8f15c-187">다중 값 :::no-loc(cookie)::: 여부</span><span class="sxs-lookup"><span data-stu-id="8f15c-187">Multi-value :::no-loc(cookie):::s</span></span>
+## <a name="multi-value-no-loccookies"></a><span data-ttu-id="8f15c-187">다중 값 cookie 여부</span><span class="sxs-lookup"><span data-stu-id="8f15c-187">Multi-value cookies</span></span>
 
-<span data-ttu-id="8f15c-188">[다중 값 :::no-loc(cookie):::](xref:System.Web.Http:::no-loc(Cookie):::.Values)는 ASP.NET Core에서 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="8f15c-188">[Multi-value :::no-loc(cookie):::s](xref:System.Web.Http:::no-loc(Cookie):::.Values) aren't supported in ASP.NET Core.</span></span> <span data-ttu-id="8f15c-189">값마다 하나의 :::no-loc(cookie):::를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="8f15c-189">Create one :::no-loc(cookie)::: per value.</span></span>
+<span data-ttu-id="8f15c-188">[다중 값 cookie](xref:System.Web.HttpCookie.Values)는 ASP.NET Core에서 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="8f15c-188">[Multi-value cookies](xref:System.Web.HttpCookie.Values) aren't supported in ASP.NET Core.</span></span> <span data-ttu-id="8f15c-189">값마다 하나의 cookie를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="8f15c-189">Create one cookie per value.</span></span>
 
 ## <a name="partial-app-migration"></a><span data-ttu-id="8f15c-190">부분 앱 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="8f15c-190">Partial app migration</span></span>
 

@@ -1,23 +1,23 @@
 ---
-title: :::no-loc(SignalR):::JavaScript 클라이언트 ASP.NET Core
+title: SignalRJavaScript 클라이언트 ASP.NET Core
 author: bradygaster
-description: :::no-loc(SignalR):::JavaScript 클라이언트 ASP.NET Core 개요
+description: SignalRJavaScript 클라이언트 ASP.NET Core 개요
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc, devx-track-js
 ms.date: 04/08/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: signalr/javascript-client
 ms.openlocfilehash: b4b1bc6131a6676710adbf2503efe3f304d89a58
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,19 +26,19 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93050851"
 ---
-# <a name="aspnet-core-no-locsignalr-javascript-client"></a><span data-ttu-id="b27e2-103">:::no-loc(SignalR):::JavaScript 클라이언트 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="b27e2-103">ASP.NET Core :::no-loc(SignalR)::: JavaScript client</span></span>
+# <a name="aspnet-core-no-locsignalr-javascript-client"></a><span data-ttu-id="b27e2-103">SignalRJavaScript 클라이언트 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="b27e2-103">ASP.NET Core SignalR JavaScript client</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
 <span data-ttu-id="b27e2-104">작성자: [Rachel Appel](https://twitter.com/rachelappel)</span><span class="sxs-lookup"><span data-stu-id="b27e2-104">By [Rachel Appel](https://twitter.com/rachelappel)</span></span>
 
-<span data-ttu-id="b27e2-105">개발자는 ASP.NET Core :::no-loc(SignalR)::: JavaScript 클라이언트 라이브러리를 사용 하 여 서버 쪽 허브 코드를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-105">The ASP.NET Core :::no-loc(SignalR)::: JavaScript client library enables developers to call server-side hub code.</span></span>
+<span data-ttu-id="b27e2-105">개발자는 ASP.NET Core SignalR JavaScript 클라이언트 라이브러리를 사용 하 여 서버 쪽 허브 코드를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-105">The ASP.NET Core SignalR JavaScript client library enables developers to call server-side hub code.</span></span>
 
 <span data-ttu-id="b27e2-106">[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="b27e2-106">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="install-the-no-locsignalr-client-package"></a><span data-ttu-id="b27e2-107">클라이언트 패키지를 설치 합니다. :::no-loc(SignalR):::</span><span class="sxs-lookup"><span data-stu-id="b27e2-107">Install the :::no-loc(SignalR)::: client package</span></span>
+## <a name="install-the-no-locsignalr-client-package"></a><span data-ttu-id="b27e2-107">클라이언트 패키지를 설치 합니다. SignalR</span><span class="sxs-lookup"><span data-stu-id="b27e2-107">Install the SignalR client package</span></span>
 
-<span data-ttu-id="b27e2-108">:::no-loc(SignalR):::JavaScript 클라이언트 라이브러리는 [npm](https://www.npmjs.com/) 패키지로 제공 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-108">The :::no-loc(SignalR)::: JavaScript client library is delivered as an [npm](https://www.npmjs.com/) package.</span></span> <span data-ttu-id="b27e2-109">다음 섹션에서는 클라이언트 라이브러리를 설치 하는 다양 한 방법에 대해 간략하게 설명 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-109">The following sections outline different ways to install the client library.</span></span>
+<span data-ttu-id="b27e2-108">SignalRJavaScript 클라이언트 라이브러리는 [npm](https://www.npmjs.com/) 패키지로 제공 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-108">The SignalR JavaScript client library is delivered as an [npm](https://www.npmjs.com/) package.</span></span> <span data-ttu-id="b27e2-109">다음 섹션에서는 클라이언트 라이브러리를 설치 하는 다양 한 방법에 대해 간략하게 설명 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-109">The following sections outline different ways to install the client library.</span></span>
 
 ### <a name="install-with-npm"></a><span data-ttu-id="b27e2-110">Npm를 사용 하 여 설치</span><span class="sxs-lookup"><span data-stu-id="b27e2-110">Install with npm</span></span>
 
@@ -51,7 +51,7 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b27e2-113">npm 패키지 콘텐츠를 *node_modules \\ @microsoft\signalr\dist\browser* 폴더에 설치 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-113">npm installs the package contents in the *node_modules\\@microsoft\signalr\dist\browser* folder.</span></span> <span data-ttu-id="b27e2-114">*Wwwroot \\ lib* 폴더 아래에 *signalr* 라는 새 폴더를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-114">Create a new folder named *signalr* under the *wwwroot\\lib* folder.</span></span> <span data-ttu-id="b27e2-115">*signalr.js* 파일을 *wwwroot\lib\signalr* 폴더에 복사 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-115">Copy the *signalr.js* file to the *wwwroot\lib\signalr* folder.</span></span>
 
-<span data-ttu-id="b27e2-116">:::no-loc(SignalR):::요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-116">Reference the :::no-loc(SignalR)::: JavaScript client in the `<script>` element.</span></span> <span data-ttu-id="b27e2-117">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-117">For example:</span></span>
+<span data-ttu-id="b27e2-116">SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-116">Reference the SignalR JavaScript client in the `<script>` element.</span></span> <span data-ttu-id="b27e2-117">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-117">For example:</span></span>
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -61,7 +61,7 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b27e2-119">Npm 필수 구성 요소 없이 클라이언트 라이브러리를 사용 하려면 클라이언트 라이브러리의 CDN 호스트 복사본을 참조 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-119">To use the client library without the npm prerequisite, reference a CDN-hosted copy of the client library.</span></span> <span data-ttu-id="b27e2-120">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-120">For example:</span></span>
 
-[!code-html[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/Pages/Index.cshtml?name=snippet_CDN)]
+[!code-html[](javascript-client/samples/3.x/SignalRChat/Pages/Index.cshtml?name=snippet_CDN)]
 
 <span data-ttu-id="b27e2-121">클라이언트 라이브러리는 다음의 CDNs에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-121">The client library is available on the following CDNs:</span></span>
 
@@ -71,13 +71,13 @@ npm install @microsoft/signalr
 
 ### <a name="install-with-libman"></a><span data-ttu-id="b27e2-125">을 사용 하 여 설치</span><span class="sxs-lookup"><span data-stu-id="b27e2-125">Install with LibMan</span></span>
 
-<span data-ttu-id="b27e2-126">라이브러리 라이브러리에서 특정 클라이언트 라이브러리 파일을 설치 하는 데 [사용 될 수 있습니다.](xref:client-side/libman/index)</span><span class="sxs-lookup"><span data-stu-id="b27e2-126">[LibMan](xref:client-side/libman/index) can be used to install specific client library files from the CDN-hosted client library.</span></span> <span data-ttu-id="b27e2-127">예를 들어 프로젝트에는 축소 된 JavaScript 파일만 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-127">For example, only add the minified JavaScript file to the project.</span></span> <span data-ttu-id="b27e2-128">이 방법에 대 한 자세한 내용은 [ :::no-loc(SignalR)::: 클라이언트 라이브러리 추가](xref:tutorials/signalr#add-the-signalr-client-library)를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="b27e2-128">For details on that approach, see [Add the :::no-loc(SignalR)::: client library](xref:tutorials/signalr#add-the-signalr-client-library).</span></span>
+<span data-ttu-id="b27e2-126">라이브러리 라이브러리에서 특정 클라이언트 라이브러리 파일을 설치 하는 데 [사용 될 수 있습니다.](xref:client-side/libman/index)</span><span class="sxs-lookup"><span data-stu-id="b27e2-126">[LibMan](xref:client-side/libman/index) can be used to install specific client library files from the CDN-hosted client library.</span></span> <span data-ttu-id="b27e2-127">예를 들어 프로젝트에는 축소 된 JavaScript 파일만 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-127">For example, only add the minified JavaScript file to the project.</span></span> <span data-ttu-id="b27e2-128">이 방법에 대 한 자세한 내용은 [ SignalR 클라이언트 라이브러리 추가](xref:tutorials/signalr#add-the-signalr-client-library)를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="b27e2-128">For details on that approach, see [Add the SignalR client library](xref:tutorials/signalr#add-the-signalr-client-library).</span></span>
 
 ## <a name="connect-to-a-hub"></a><span data-ttu-id="b27e2-129">허브에 연결</span><span class="sxs-lookup"><span data-stu-id="b27e2-129">Connect to a hub</span></span>
 
 <span data-ttu-id="b27e2-130">다음 코드에서는 연결을 만들고 시작 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-130">The following code creates and starts a connection.</span></span> <span data-ttu-id="b27e2-131">허브 이름은 대/소문자를 구분 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-131">The hub's name is case insensitive:</span></span>
 
-[!code-javascript[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/wwwroot/chat.js?range=3-6,29-43)]
+[!code-javascript[](javascript-client/samples/3.x/SignalRChat/wwwroot/chat.js?range=3-6,29-43)]
 
 ### <a name="cross-origin-connections"></a><span data-ttu-id="b27e2-132">크로스-원본 연결</span><span class="sxs-lookup"><span data-stu-id="b27e2-132">Cross-origin connections</span></span>
 
@@ -88,7 +88,7 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b27e2-137">악의적인 사이트에서 다른 사이트의 중요 한 데이터를 읽지 못하도록 하기 위해 [교차 원본 연결은](xref:security/cors) 기본적으로 사용 하지 않도록 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-137">To prevent a malicious site from reading sensitive data from another site, [cross-origin connections](xref:security/cors) are disabled by default.</span></span> <span data-ttu-id="b27e2-138">원본 간 요청을 허용 하려면 클래스에서 사용 하도록 설정 합니다 `Startup` .</span><span class="sxs-lookup"><span data-stu-id="b27e2-138">To allow a cross-origin request, enable it in the `Startup` class:</span></span>
 
-[!code-csharp[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/Startup.cs?highlight=16-23,40)]
+[!code-csharp[](javascript-client/samples/3.x/SignalRChat/Startup.cs?highlight=16-23,40)]
 
 ## <a name="call-hub-methods-from-the-client"></a><span data-ttu-id="b27e2-139">클라이언트에서 허브 메서드 호출</span><span class="sxs-lookup"><span data-stu-id="b27e2-139">Call hub methods from the client</span></span>
 
@@ -99,10 +99,10 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b27e2-144">다음 예제에서 허브의 메서드 이름은 `SendMessage` 입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-144">In the following example, the method name on the hub is `SendMessage`.</span></span> <span data-ttu-id="b27e2-145">허브 메서드의 및 인수에 매핑하기 위해 전달 되는 두 번째 및 세 번째 인수는 `invoke` `user` `message` 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-145">The second and third arguments passed to `invoke` map to the hub method's `user` and `message` arguments:</span></span>
 
-[!code-javascript[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/wwwroot/chat.js?name=snippet_Invoke&highlight=2)]
+[!code-javascript[](javascript-client/samples/3.x/SignalRChat/wwwroot/chat.js?name=snippet_Invoke&highlight=2)]
 
 > [!NOTE]
-> <span data-ttu-id="b27e2-146">클라이언트에서 허브 메서드를 호출 하는 것은 :::no-loc(SignalR)::: *기본* 모드에서 Azure 서비스를 사용 하는 경우에만 지원 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-146">Calling hub methods from a client is only supported when using the Azure :::no-loc(SignalR)::: Service in *Default* mode.</span></span> <span data-ttu-id="b27e2-147">자세한 내용은 질문과 [대답 (azure-Signalr GitHub 리포지토리)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="b27e2-147">For more information, see [Frequently Asked Questions (azure-signalr GitHub repository)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span></span>
+> <span data-ttu-id="b27e2-146">클라이언트에서 허브 메서드를 호출 하는 것은 SignalR *기본* 모드에서 Azure 서비스를 사용 하는 경우에만 지원 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-146">Calling hub methods from a client is only supported when using the Azure SignalR Service in *Default* mode.</span></span> <span data-ttu-id="b27e2-147">자세한 내용은 질문과 [대답 (azure-Signalr GitHub 리포지토리)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="b27e2-147">For more information, see [Frequently Asked Questions (azure-signalr GitHub repository)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span></span>
 
 <span data-ttu-id="b27e2-148">`invoke`메서드는 JavaScript [약속](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)을 반환 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-148">The `invoke` method returns a JavaScript [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise).</span></span> <span data-ttu-id="b27e2-149">는 `Promise` 서버의 메서드가 반환 될 때 반환 값 (있는 경우)으로 확인 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-149">The `Promise` is resolved with the return value (if any) when the method on the server returns.</span></span> <span data-ttu-id="b27e2-150">서버에서 메서드가 오류를 throw 하는 경우 `Promise` 오류 메시지와 함께이 거부 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-150">If the method on the server throws an error, the `Promise` is rejected with the error message.</span></span> <span data-ttu-id="b27e2-151">`async`및 `await` 또는 `Promise` 의 `then` 및 `catch` 메서드를 사용 하 여 이러한 경우를 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-151">Use `async` and `await` or the `Promise`'s `then` and `catch` methods to handle these cases.</span></span>
 
@@ -120,13 +120,13 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b27e2-164">다음 예제에서 메서드 이름은 `ReceiveMessage` 입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-164">In the following example, the method name is `ReceiveMessage`.</span></span> <span data-ttu-id="b27e2-165">인수 이름은 및입니다 `user` `message` .</span><span class="sxs-lookup"><span data-stu-id="b27e2-165">The argument names are `user` and `message`:</span></span>
 
-[!code-javascript[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/wwwroot/chat.js?name=snippet_ReceiveMessage)]
+[!code-javascript[](javascript-client/samples/3.x/SignalRChat/wwwroot/chat.js?name=snippet_ReceiveMessage)]
 
-<span data-ttu-id="b27e2-166">에서 위의 코드는 `connection.on` 메서드를 사용 하 여 서버 쪽 코드가 호출 하는 경우 실행 됩니다 <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.ClientProxyExtensions.SendAsync%2A> .</span><span class="sxs-lookup"><span data-stu-id="b27e2-166">The preceding code in `connection.on` runs when server-side code calls it using the <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.ClientProxyExtensions.SendAsync%2A> method:</span></span>
+<span data-ttu-id="b27e2-166">에서 위의 코드는 `connection.on` 메서드를 사용 하 여 서버 쪽 코드가 호출 하는 경우 실행 됩니다 <xref:Microsoft.AspNetCore.SignalR.ClientProxyExtensions.SendAsync%2A> .</span><span class="sxs-lookup"><span data-stu-id="b27e2-166">The preceding code in `connection.on` runs when server-side code calls it using the <xref:Microsoft.AspNetCore.SignalR.ClientProxyExtensions.SendAsync%2A> method:</span></span>
 
-[!code-csharp[Call client-side](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/Hubs/ChatHub.cs?name=snippet_SendMessage)]
+[!code-csharp[Call client-side](javascript-client/samples/3.x/SignalRChat/Hubs/ChatHub.cs?name=snippet_SendMessage)]
 
-<span data-ttu-id="b27e2-167">:::no-loc(SignalR)::: 및에 정의 된 메서드 이름과 인수를 일치 시켜 호출할 클라이언트 메서드를 결정 `SendAsync` 합니다 `connection.on` .</span><span class="sxs-lookup"><span data-stu-id="b27e2-167">:::no-loc(SignalR)::: determines which client method to call by matching the method name and arguments defined in `SendAsync` and `connection.on`.</span></span>
+<span data-ttu-id="b27e2-167">SignalR 및에 정의 된 메서드 이름과 인수를 일치 시켜 호출할 클라이언트 메서드를 결정 `SendAsync` 합니다 `connection.on` .</span><span class="sxs-lookup"><span data-stu-id="b27e2-167">SignalR determines which client method to call by matching the method name and arguments defined in `SendAsync` and `connection.on`.</span></span>
 
 > [!NOTE]
 > <span data-ttu-id="b27e2-168">모범 사례에 따라 이후에서 [start](/javascript/api/%40aspnet/signalr/hubconnection#start) 메서드를 호출 합니다 `HubConnection` `on` .</span><span class="sxs-lookup"><span data-stu-id="b27e2-168">As a best practice, call the [start](/javascript/api/%40aspnet/signalr/hubconnection#start) method on the `HubConnection` after `on`.</span></span> <span data-ttu-id="b27e2-169">이렇게 하면 메시지를 받기 전에 처리기가 등록 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-169">Doing so ensures your handlers are registered before any messages are received.</span></span>
@@ -135,7 +135,7 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b27e2-171">및 `try` `catch` `async` `await` 또는의 메서드를 사용 `Promise` `catch` 하 여 클라이언트 쪽 오류를 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-171">Use `try` and `catch` with `async` and `await` or the `Promise`'s `catch` method to handle client-side errors.</span></span> <span data-ttu-id="b27e2-172">`console.error`를 사용 하 여 브라우저의 콘솔에 오류를 출력 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-172">Use `console.error` to output errors to the browser's console:</span></span>
 
-[!code-javascript[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/wwwroot/chat.js?name=snippet_Invoke&highlight=1,3-5)]
+[!code-javascript[](javascript-client/samples/3.x/SignalRChat/wwwroot/chat.js?name=snippet_Invoke&highlight=1,3-5)]
 
 <span data-ttu-id="b27e2-173">연결이 설정 될 때 기록할 이벤트의로 거와 유형을 전달 하 여 클라이언트 쪽 로그 추적을 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-173">Set up client-side log tracing by passing a logger and type of event to log when the connection is made.</span></span> <span data-ttu-id="b27e2-174">메시지는 지정 된 로그 수준 이상으로 기록 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-174">Messages are logged with the specified log level and higher.</span></span> <span data-ttu-id="b27e2-175">사용 가능한 로그 수준은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-175">Available log levels are as follows:</span></span>
 
@@ -146,13 +146,13 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b27e2-184">[HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) 에서 [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging) 메서드를 사용 하 여 로그 수준을 구성 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-184">Use the [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging) method on [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) to configure the log level.</span></span> <span data-ttu-id="b27e2-185">메시지는 브라우저 콘솔에 기록 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-185">Messages are logged to the browser console:</span></span>
 
-[!code-javascript[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/wwwroot/chat.js?name=snippet_Connection&highlight=3)]
+[!code-javascript[](javascript-client/samples/3.x/SignalRChat/wwwroot/chat.js?name=snippet_Connection&highlight=3)]
 
 ## <a name="reconnect-clients"></a><span data-ttu-id="b27e2-186">클라이언트 다시 연결</span><span class="sxs-lookup"><span data-stu-id="b27e2-186">Reconnect clients</span></span>
 
 ### <a name="automatically-reconnect"></a><span data-ttu-id="b27e2-187">자동으로 다시 연결</span><span class="sxs-lookup"><span data-stu-id="b27e2-187">Automatically reconnect</span></span>
 
-<span data-ttu-id="b27e2-188">:::no-loc(SignalR)::: `withAutomaticReconnect` [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder)에서 메서드를 사용 하 여 자동으로 다시 연결 되도록에 대 한 JavaScript 클라이언트를 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-188">The JavaScript client for :::no-loc(SignalR)::: can be configured to automatically reconnect using the `withAutomaticReconnect` method on [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder).</span></span> <span data-ttu-id="b27e2-189">기본적으로 자동으로 다시 연결 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-189">It won't automatically reconnect by default.</span></span>
+<span data-ttu-id="b27e2-188">SignalR `withAutomaticReconnect` [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder)에서 메서드를 사용 하 여 자동으로 다시 연결 되도록에 대 한 JavaScript 클라이언트를 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-188">The JavaScript client for SignalR can be configured to automatically reconnect using the `withAutomaticReconnect` method on [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder).</span></span> <span data-ttu-id="b27e2-189">기본적으로 자동으로 다시 연결 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-189">It won't automatically reconnect by default.</span></span>
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -203,7 +203,7 @@ async function start() {
     try {
         await connection.start();
         console.assert(connection.state === signalR.HubConnectionState.Connected);
-        console.log(":::no-loc(SignalR)::: Connected.");
+        console.log("SignalR Connected.");
     } catch (err) {
         console.assert(connection.state === signalR.HubConnectionState.Disconnected);
         console.log(err);
@@ -278,7 +278,7 @@ const connection = new signalR.HubConnectionBuilder()
 1. <span data-ttu-id="b27e2-215">함수 (이 경우 `start` 함수)가 생성 되어 연결을 시작 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-215">A function (in this case, the `start` function) is created to start the connection.</span></span>
 1. <span data-ttu-id="b27e2-216">`start`연결의 이벤트 처리기에서 함수를 호출 합니다 `onclose` .</span><span class="sxs-lookup"><span data-stu-id="b27e2-216">Call the `start` function in the connection's `onclose` event handler.</span></span>
 
-[!code-javascript[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/wwwroot/chat.js?range=30-40)]
+[!code-javascript[](javascript-client/samples/3.x/SignalRChat/wwwroot/chat.js?range=30-40)]
 
 <span data-ttu-id="b27e2-217">실제 구현에서는 지 수 백오프를 사용 하거나 지정 된 횟수 만큼 다시 시도 하 여 포기 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-217">A real-world implementation would use an exponential back-off or retry a specified number of times before giving up.</span></span>
 
@@ -291,7 +291,7 @@ const connection = new signalR.HubConnectionBuilder()
 * [<span data-ttu-id="b27e2-223">.NET 클라이언트</span><span class="sxs-lookup"><span data-stu-id="b27e2-223">.NET client</span></span>](xref:signalr/dotnet-client)
 * [<span data-ttu-id="b27e2-224">Azure에 게시</span><span class="sxs-lookup"><span data-stu-id="b27e2-224">Publish to Azure</span></span>](xref:signalr/publish-to-azure-web-app)
 * [<span data-ttu-id="b27e2-225">원본 간 요청 (CORS)</span><span class="sxs-lookup"><span data-stu-id="b27e2-225">Cross-Origin Requests (CORS)</span></span>](xref:security/cors)
-* [<span data-ttu-id="b27e2-226">Azure :::no-loc(SignalR)::: 서비스 서버 리스 설명서</span><span class="sxs-lookup"><span data-stu-id="b27e2-226">Azure :::no-loc(SignalR)::: Service serverless documentation</span></span>](/azure/azure-signalr/signalr-concept-serverless-development-config)
+* [<span data-ttu-id="b27e2-226">Azure SignalR 서비스 서버 리스 설명서</span><span class="sxs-lookup"><span data-stu-id="b27e2-226">Azure SignalR Service serverless documentation</span></span>](/azure/azure-signalr/signalr-concept-serverless-development-config)
 * [<span data-ttu-id="b27e2-227">연결 오류 문제 해결</span><span class="sxs-lookup"><span data-stu-id="b27e2-227">Troubleshoot connection errors</span></span>](xref:signalr/troubleshoot)
 
 ::: moniker-end
@@ -300,13 +300,13 @@ const connection = new signalR.HubConnectionBuilder()
 
 <span data-ttu-id="b27e2-228">작성자: [Rachel Appel](https://twitter.com/rachelappel)</span><span class="sxs-lookup"><span data-stu-id="b27e2-228">By [Rachel Appel](https://twitter.com/rachelappel)</span></span>
 
-<span data-ttu-id="b27e2-229">개발자는 ASP.NET Core :::no-loc(SignalR)::: JavaScript 클라이언트 라이브러리를 사용 하 여 서버 쪽 허브 코드를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-229">The ASP.NET Core :::no-loc(SignalR)::: JavaScript client library enables developers to call server-side hub code.</span></span>
+<span data-ttu-id="b27e2-229">개발자는 ASP.NET Core SignalR JavaScript 클라이언트 라이브러리를 사용 하 여 서버 쪽 허브 코드를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-229">The ASP.NET Core SignalR JavaScript client library enables developers to call server-side hub code.</span></span>
 
 <span data-ttu-id="b27e2-230">[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="b27e2-230">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="install-the-no-locsignalr-client-package"></a><span data-ttu-id="b27e2-231">클라이언트 패키지를 설치 합니다. :::no-loc(SignalR):::</span><span class="sxs-lookup"><span data-stu-id="b27e2-231">Install the :::no-loc(SignalR)::: client package</span></span>
+## <a name="install-the-no-locsignalr-client-package"></a><span data-ttu-id="b27e2-231">클라이언트 패키지를 설치 합니다. SignalR</span><span class="sxs-lookup"><span data-stu-id="b27e2-231">Install the SignalR client package</span></span>
 
-<span data-ttu-id="b27e2-232">:::no-loc(SignalR):::JavaScript 클라이언트 라이브러리는 [npm](https://www.npmjs.com/) 패키지로 제공 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-232">The :::no-loc(SignalR)::: JavaScript client library is delivered as an [npm](https://www.npmjs.com/) package.</span></span> <span data-ttu-id="b27e2-233">다음 섹션에서는 클라이언트 라이브러리를 설치 하는 다양 한 방법에 대해 간략하게 설명 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-233">The following sections outline different ways to install the client library.</span></span>
+<span data-ttu-id="b27e2-232">SignalRJavaScript 클라이언트 라이브러리는 [npm](https://www.npmjs.com/) 패키지로 제공 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-232">The SignalR JavaScript client library is delivered as an [npm](https://www.npmjs.com/) package.</span></span> <span data-ttu-id="b27e2-233">다음 섹션에서는 클라이언트 라이브러리를 설치 하는 다양 한 방법에 대해 간략하게 설명 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-233">The following sections outline different ways to install the client library.</span></span>
 
 ### <a name="install-with-npm"></a><span data-ttu-id="b27e2-234">Npm를 사용 하 여 설치</span><span class="sxs-lookup"><span data-stu-id="b27e2-234">Install with npm</span></span>
 
@@ -319,7 +319,7 @@ npm install @aspnet/signalr
 
 <span data-ttu-id="b27e2-237">npm 패키지 콘텐츠를 *node_modules \\ @aspnet\signalr\dist\browser* 폴더에 설치 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-237">npm installs the package contents in the *node_modules\\@aspnet\signalr\dist\browser* folder.</span></span> <span data-ttu-id="b27e2-238">*Wwwroot \\ lib* 폴더 아래에 *signalr* 라는 새 폴더를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-238">Create a new folder named *signalr* under the *wwwroot\\lib* folder.</span></span> <span data-ttu-id="b27e2-239">*signalr.js* 파일을 *wwwroot\lib\signalr* 폴더에 복사 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-239">Copy the *signalr.js* file to the *wwwroot\lib\signalr* folder.</span></span>
 
-<span data-ttu-id="b27e2-240">:::no-loc(SignalR):::요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-240">Reference the :::no-loc(SignalR)::: JavaScript client in the `<script>` element.</span></span> <span data-ttu-id="b27e2-241">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-241">For example:</span></span>
+<span data-ttu-id="b27e2-240">SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-240">Reference the SignalR JavaScript client in the `<script>` element.</span></span> <span data-ttu-id="b27e2-241">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-241">For example:</span></span>
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -341,13 +341,13 @@ npm install @aspnet/signalr
 
 ### <a name="install-with-libman"></a><span data-ttu-id="b27e2-249">을 사용 하 여 설치</span><span class="sxs-lookup"><span data-stu-id="b27e2-249">Install with LibMan</span></span>
 
-<span data-ttu-id="b27e2-250">라이브러리 라이브러리에서 특정 클라이언트 라이브러리 파일을 설치 하는 데 [사용 될 수 있습니다.](xref:client-side/libman/index)</span><span class="sxs-lookup"><span data-stu-id="b27e2-250">[LibMan](xref:client-side/libman/index) can be used to install specific client library files from the CDN-hosted client library.</span></span> <span data-ttu-id="b27e2-251">예를 들어 프로젝트에는 축소 된 JavaScript 파일만 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-251">For example, only add the minified JavaScript file to the project.</span></span> <span data-ttu-id="b27e2-252">이 방법에 대 한 자세한 내용은 [ :::no-loc(SignalR)::: 클라이언트 라이브러리 추가](xref:tutorials/signalr#add-the-signalr-client-library)를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="b27e2-252">For details on that approach, see [Add the :::no-loc(SignalR)::: client library](xref:tutorials/signalr#add-the-signalr-client-library).</span></span>
+<span data-ttu-id="b27e2-250">라이브러리 라이브러리에서 특정 클라이언트 라이브러리 파일을 설치 하는 데 [사용 될 수 있습니다.](xref:client-side/libman/index)</span><span class="sxs-lookup"><span data-stu-id="b27e2-250">[LibMan](xref:client-side/libman/index) can be used to install specific client library files from the CDN-hosted client library.</span></span> <span data-ttu-id="b27e2-251">예를 들어 프로젝트에는 축소 된 JavaScript 파일만 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-251">For example, only add the minified JavaScript file to the project.</span></span> <span data-ttu-id="b27e2-252">이 방법에 대 한 자세한 내용은 [ SignalR 클라이언트 라이브러리 추가](xref:tutorials/signalr#add-the-signalr-client-library)를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="b27e2-252">For details on that approach, see [Add the SignalR client library](xref:tutorials/signalr#add-the-signalr-client-library).</span></span>
 
 ## <a name="connect-to-a-hub"></a><span data-ttu-id="b27e2-253">허브에 연결</span><span class="sxs-lookup"><span data-stu-id="b27e2-253">Connect to a hub</span></span>
 
 <span data-ttu-id="b27e2-254">다음 코드에서는 연결을 만들고 시작 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-254">The following code creates and starts a connection.</span></span> <span data-ttu-id="b27e2-255">허브 이름은 대/소문자를 구분 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-255">The hub's name is case insensitive.</span></span>
 
-[!code-javascript[Call hub methods](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/wwwroot/js/chat.js?range=9-13,28-51)]
+[!code-javascript[Call hub methods](javascript-client/samples/2.x/SignalRChat/wwwroot/js/chat.js?range=9-13,28-51)]
 
 ### <a name="cross-origin-connections"></a><span data-ttu-id="b27e2-256">크로스-원본 연결</span><span class="sxs-lookup"><span data-stu-id="b27e2-256">Cross-origin connections</span></span>
 
@@ -355,7 +355,7 @@ npm install @aspnet/signalr
 
 <span data-ttu-id="b27e2-259">악의적인 사이트에서 다른 사이트의 중요 한 데이터를 읽지 못하도록 하기 위해 [교차 원본 연결은](xref:security/cors) 기본적으로 사용 하지 않도록 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-259">To prevent a malicious site from reading sensitive data from another site, [cross-origin connections](xref:security/cors) are disabled by default.</span></span> <span data-ttu-id="b27e2-260">원본 간 요청을 허용 하려면 클래스에서 해당 요청을 사용 하도록 설정 `Startup` 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-260">To allow a cross-origin request, enable it in the `Startup` class.</span></span>
 
-[!code-csharp[Cross-origin connections](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/Startup.cs?highlight=29-35,56)]
+[!code-csharp[Cross-origin connections](javascript-client/samples/2.x/SignalRChat/Startup.cs?highlight=29-35,56)]
 
 ## <a name="call-hub-methods-from-client"></a><span data-ttu-id="b27e2-261">클라이언트에서 허브 메서드 호출</span><span class="sxs-lookup"><span data-stu-id="b27e2-261">Call hub methods from client</span></span>
 
@@ -364,10 +364,10 @@ npm install @aspnet/signalr
 * <span data-ttu-id="b27e2-264">허브 메서드의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-264">The name of the hub method.</span></span> <span data-ttu-id="b27e2-265">다음 예제에서 허브의 메서드 이름은 `SendMessage` 입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-265">In the following example, the method name on the hub is `SendMessage`.</span></span>
 * <span data-ttu-id="b27e2-266">허브 메서드에 정의 된 모든 인수입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-266">Any arguments defined in the hub method.</span></span> <span data-ttu-id="b27e2-267">다음 예에서는 인수 이름이 `message` 입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-267">In the following example, the argument name is `message`.</span></span> <span data-ttu-id="b27e2-268">예제 코드는 Internet Explorer를 제외한 모든 주요 브라우저의 현재 버전에서 지원 되는 화살표 함수 구문을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-268">The example code uses arrow function syntax that is supported in current versions of all major browsers except Internet Explorer.</span></span>
 
-  [!code-javascript[Call hub methods](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/wwwroot/js/chat.js?range=24)]
+  [!code-javascript[Call hub methods](javascript-client/samples/2.x/SignalRChat/wwwroot/js/chat.js?range=24)]
 
 > [!NOTE]
-> <span data-ttu-id="b27e2-269">클라이언트에서 허브 메서드를 호출 하는 것은 :::no-loc(SignalR)::: *기본* 모드에서 Azure 서비스를 사용 하는 경우에만 지원 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-269">Calling hub methods from a client is only supported when using the Azure :::no-loc(SignalR)::: Service in *Default* mode.</span></span> <span data-ttu-id="b27e2-270">자세한 내용은 질문과 [대답 (azure-Signalr GitHub 리포지토리)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="b27e2-270">For more information, see [Frequently Asked Questions (azure-signalr GitHub repository)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span></span>
+> <span data-ttu-id="b27e2-269">클라이언트에서 허브 메서드를 호출 하는 것은 SignalR *기본* 모드에서 Azure 서비스를 사용 하는 경우에만 지원 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-269">Calling hub methods from a client is only supported when using the Azure SignalR Service in *Default* mode.</span></span> <span data-ttu-id="b27e2-270">자세한 내용은 질문과 [대답 (azure-Signalr GitHub 리포지토리)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="b27e2-270">For more information, see [Frequently Asked Questions (azure-signalr GitHub repository)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span></span>
 
 <span data-ttu-id="b27e2-271">`invoke`메서드는 JavaScript [약속](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)을 반환 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-271">The `invoke` method returns a JavaScript [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise).</span></span> <span data-ttu-id="b27e2-272">는 `Promise` 서버의 메서드가 반환 될 때 반환 값 (있는 경우)으로 확인 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-272">The `Promise` is resolved with the return value (if any) when the method on the server returns.</span></span> <span data-ttu-id="b27e2-273">서버에서 메서드가 오류를 throw 하는 경우 `Promise` 오류 메시지와 함께이 거부 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-273">If the method on the server throws an error, the `Promise` is rejected with the error message.</span></span> <span data-ttu-id="b27e2-274">`then` `catch` `Promise` 이러한 경우 또는 구문을 처리 하려면 자체에서 및 메서드를 사용 `await` 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-274">Use the `then` and `catch` methods on the `Promise` itself to handle these cases (or `await` syntax).</span></span>
 
@@ -383,13 +383,13 @@ npm install @aspnet/signalr
 * <span data-ttu-id="b27e2-283">JavaScript 클라이언트 메서드의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-283">The name of the JavaScript client method.</span></span> <span data-ttu-id="b27e2-284">다음 예제에서 메서드 이름은 `ReceiveMessage` 입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-284">In the following example, the method name is `ReceiveMessage`.</span></span>
 * <span data-ttu-id="b27e2-285">허브가 메서드에 전달 하는 인수입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-285">Arguments the hub passes to the method.</span></span> <span data-ttu-id="b27e2-286">다음 예제에서 인수 값은 `message` 입니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-286">In the following example, the argument value is `message`.</span></span>
 
-[!code-javascript[Receive calls from hub](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/wwwroot/js/chat.js?range=14-19)]
+[!code-javascript[Receive calls from hub](javascript-client/samples/2.x/SignalRChat/wwwroot/js/chat.js?range=14-19)]
 
-<span data-ttu-id="b27e2-287">에서 위의 코드는 `connection.on` 서버 쪽 코드가 메서드를 사용 하 여 호출 하는 경우 실행 됩니다 <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.ClientProxyExtensions.SendAsync%2A> .</span><span class="sxs-lookup"><span data-stu-id="b27e2-287">The preceding code in `connection.on` runs when server-side code calls it using the <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.ClientProxyExtensions.SendAsync%2A> method.</span></span>
+<span data-ttu-id="b27e2-287">에서 위의 코드는 `connection.on` 서버 쪽 코드가 메서드를 사용 하 여 호출 하는 경우 실행 됩니다 <xref:Microsoft.AspNetCore.SignalR.ClientProxyExtensions.SendAsync%2A> .</span><span class="sxs-lookup"><span data-stu-id="b27e2-287">The preceding code in `connection.on` runs when server-side code calls it using the <xref:Microsoft.AspNetCore.SignalR.ClientProxyExtensions.SendAsync%2A> method.</span></span>
 
-[!code-csharp[Call client-side](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/hubs/chathub.cs?range=8-11)]
+[!code-csharp[Call client-side](javascript-client/samples/2.x/SignalRChat/hubs/chathub.cs?range=8-11)]
 
-<span data-ttu-id="b27e2-288">:::no-loc(SignalR)::: 및에 정의 된 메서드 이름과 인수를 일치 시켜 호출할 클라이언트 메서드를 결정 `SendAsync` 합니다 `connection.on` .</span><span class="sxs-lookup"><span data-stu-id="b27e2-288">:::no-loc(SignalR)::: determines which client method to call by matching the method name and arguments defined in `SendAsync` and `connection.on`.</span></span>
+<span data-ttu-id="b27e2-288">SignalR 및에 정의 된 메서드 이름과 인수를 일치 시켜 호출할 클라이언트 메서드를 결정 `SendAsync` 합니다 `connection.on` .</span><span class="sxs-lookup"><span data-stu-id="b27e2-288">SignalR determines which client method to call by matching the method name and arguments defined in `SendAsync` and `connection.on`.</span></span>
 
 > [!NOTE]
 > <span data-ttu-id="b27e2-289">모범 사례에 따라 이후에서 [start](/javascript/api/%40aspnet/signalr/hubconnection#start) 메서드를 호출 합니다 `HubConnection` `on` .</span><span class="sxs-lookup"><span data-stu-id="b27e2-289">As a best practice, call the [start](/javascript/api/%40aspnet/signalr/hubconnection#start) method on the `HubConnection` after `on`.</span></span> <span data-ttu-id="b27e2-290">이렇게 하면 메시지를 받기 전에 처리기가 등록 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-290">Doing so ensures your handlers are registered before any messages are received.</span></span>
@@ -398,7 +398,7 @@ npm install @aspnet/signalr
 
 <span data-ttu-id="b27e2-292">메서드를 `catch` 메서드의 끝에 연결 하 여 `start` 클라이언트 쪽 오류를 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-292">Chain a `catch` method to the end of the `start` method to handle client-side errors.</span></span> <span data-ttu-id="b27e2-293">`console.error`를 사용 하 여 브라우저의 콘솔에 오류를 출력 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-293">Use `console.error` to output errors to the browser's console.</span></span>
 
-[!code-javascript[Error handling](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/wwwroot/js/chat.js?range=50)]
+[!code-javascript[Error handling](javascript-client/samples/2.x/SignalRChat/wwwroot/js/chat.js?range=50)]
 
 <span data-ttu-id="b27e2-294">연결이 설정 될 때 기록할 이벤트의로 거와 유형을 전달 하 여 클라이언트 쪽 로그 추적을 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-294">Set up client-side log tracing by passing a logger and type of event to log when the connection is made.</span></span> <span data-ttu-id="b27e2-295">메시지는 지정 된 로그 수준 이상으로 기록 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-295">Messages are logged with the specified log level and higher.</span></span> <span data-ttu-id="b27e2-296">사용 가능한 로그 수준은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-296">Available log levels are as follows:</span></span>
 
@@ -409,21 +409,21 @@ npm install @aspnet/signalr
 
 <span data-ttu-id="b27e2-305">[HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) 에서 [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging) 메서드를 사용 하 여 로그 수준을 구성 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-305">Use the [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging) method on [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) to configure the log level.</span></span> <span data-ttu-id="b27e2-306">메시지는 브라우저 콘솔에 기록 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-306">Messages are logged to the browser console.</span></span>
 
-[!code-javascript[Logging levels](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/wwwroot/js/chat.js?range=9-12)]
+[!code-javascript[Logging levels](javascript-client/samples/2.x/SignalRChat/wwwroot/js/chat.js?range=9-12)]
 
 ## <a name="reconnect-clients"></a><span data-ttu-id="b27e2-307">클라이언트 다시 연결</span><span class="sxs-lookup"><span data-stu-id="b27e2-307">Reconnect clients</span></span>
 
 ### <a name="manually-reconnect"></a><span data-ttu-id="b27e2-308">수동으로 다시 연결</span><span class="sxs-lookup"><span data-stu-id="b27e2-308">Manually reconnect</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="b27e2-309">3.0 이전 버전의에 대 한 JavaScript 클라이언트는 :::no-loc(SignalR)::: 자동으로 다시 연결 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-309">Prior to 3.0, the JavaScript client for :::no-loc(SignalR)::: doesn't automatically reconnect.</span></span> <span data-ttu-id="b27e2-310">클라이언트를 수동으로 다시 연결 하는 코드를 작성 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-310">You must write code that will reconnect your client manually.</span></span>
+> <span data-ttu-id="b27e2-309">3.0 이전 버전의에 대 한 JavaScript 클라이언트는 SignalR 자동으로 다시 연결 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-309">Prior to 3.0, the JavaScript client for SignalR doesn't automatically reconnect.</span></span> <span data-ttu-id="b27e2-310">클라이언트를 수동으로 다시 연결 하는 코드를 작성 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-310">You must write code that will reconnect your client manually.</span></span>
 
 <span data-ttu-id="b27e2-311">다음 코드에서는 일반적인 수동 다시 연결 방식을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-311">The following code demonstrates a typical manual reconnection approach:</span></span>
 
 1. <span data-ttu-id="b27e2-312">함수 (이 경우 `start` 함수)가 생성 되어 연결을 시작 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-312">A function (in this case, the `start` function) is created to start the connection.</span></span>
 1. <span data-ttu-id="b27e2-313">`start`연결의 이벤트 처리기에서 함수를 호출 합니다 `onclose` .</span><span class="sxs-lookup"><span data-stu-id="b27e2-313">Call the `start` function in the connection's `onclose` event handler.</span></span>
 
-[!code-javascript[Reconnect the JavaScript client](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/wwwroot/js/chat.js?range=28-40)]
+[!code-javascript[Reconnect the JavaScript client](javascript-client/samples/2.x/SignalRChat/wwwroot/js/chat.js?range=28-40)]
 
 <span data-ttu-id="b27e2-314">실제 구현에서는 지 수 백오프를 사용 하거나 지정 된 횟수 만큼 다시 시도 하 여 포기 합니다.</span><span class="sxs-lookup"><span data-stu-id="b27e2-314">A real-world implementation would use an exponential back-off or retry a specified number of times before giving up.</span></span>
 
@@ -436,6 +436,6 @@ npm install @aspnet/signalr
 * [<span data-ttu-id="b27e2-320">.NET 클라이언트</span><span class="sxs-lookup"><span data-stu-id="b27e2-320">.NET client</span></span>](xref:signalr/dotnet-client)
 * [<span data-ttu-id="b27e2-321">Azure에 게시</span><span class="sxs-lookup"><span data-stu-id="b27e2-321">Publish to Azure</span></span>](xref:signalr/publish-to-azure-web-app)
 * [<span data-ttu-id="b27e2-322">원본 간 요청 (CORS)</span><span class="sxs-lookup"><span data-stu-id="b27e2-322">Cross-Origin Requests (CORS)</span></span>](xref:security/cors)
-* [<span data-ttu-id="b27e2-323">Azure :::no-loc(SignalR)::: 서비스 서버 리스 설명서</span><span class="sxs-lookup"><span data-stu-id="b27e2-323">Azure :::no-loc(SignalR)::: Service serverless documentation</span></span>](/azure/azure-signalr/signalr-concept-serverless-development-config)
+* [<span data-ttu-id="b27e2-323">Azure SignalR 서비스 서버 리스 설명서</span><span class="sxs-lookup"><span data-stu-id="b27e2-323">Azure SignalR Service serverless documentation</span></span>](/azure/azure-signalr/signalr-concept-serverless-development-config)
 
 ::: moniker-end

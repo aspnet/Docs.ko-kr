@@ -1,21 +1,21 @@
 ---
-title: '7부. ASP.NET Core에서 EF Core를 사용한 :::no-loc(Razor)::: Pages - 관련 데이터 업데이트'
+title: '7부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 관련 데이터 업데이트'
 author: rick-anderson
-description: ':::no-loc(Razor)::: Pages 및 Entity Framework 자습서 시리즈의 7부입니다.'
+description: 'Razor Pages 및 Entity Framework 자습서 시리즈의 7부입니다.'
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/ef-rp/update-related-data
 ms.openlocfilehash: 3ec88a862697c540a1a98e733c31d76922f81f7c
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -24,7 +24,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93060536"
 ---
-# <a name="part-7-no-locrazor-pages-with-ef-core-in-aspnet-core---update-related-data"></a><span data-ttu-id="fcbdb-103">7부. ASP.NET Core에서 EF Core를 사용한 :::no-loc(Razor)::: Pages - 관련 데이터 업데이트</span><span class="sxs-lookup"><span data-stu-id="fcbdb-103">Part 7, :::no-loc(Razor)::: Pages with EF Core in ASP.NET Core - Update Related Data</span></span>
+# <a name="part-7-no-locrazor-pages-with-ef-core-in-aspnet-core---update-related-data"></a><span data-ttu-id="fcbdb-103">7부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 관련 데이터 업데이트</span><span class="sxs-lookup"><span data-stu-id="fcbdb-103">Part 7, Razor Pages with EF Core in ASP.NET Core - Update Related Data</span></span>
 
 <span data-ttu-id="fcbdb-104">작성자: [Tom Dykstra](https://github.com/tdykstra) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="fcbdb-104">By [Tom Dykstra](https://github.com/tdykstra), and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
@@ -68,9 +68,9 @@ ms.locfileid: "93060536"
 
 * <span data-ttu-id="fcbdb-125">`DepartmentNamePageModel`에서 파생됩니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-125">Derives from `DepartmentNamePageModel`.</span></span>
 * <span data-ttu-id="fcbdb-126">[초과 게시](xref:data/ef-rp/crud#overposting)를 방지하도록 `TryUpdateModelAsync`를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-126">Uses `TryUpdateModelAsync` to prevent [overposting](xref:data/ef-rp/crud#overposting).</span></span>
-* <span data-ttu-id="fcbdb-127">`ViewData["DepartmentID"]`을 제거합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-127">Removes `ViewData["DepartmentID"]`.</span></span> <span data-ttu-id="fcbdb-128">기본 클래스의 `DepartmentNameSL`은 강력한 형식의 모델이며 :::no-loc(Razor)::: 페이지에서 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-128">`DepartmentNameSL` from the base class is a strongly typed model and will be used by the :::no-loc(Razor)::: page.</span></span> <span data-ttu-id="fcbdb-129">강력한 형식의 모델은 약한 형식보다 선호됩니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-129">Strongly typed models are preferred over weakly typed.</span></span> <span data-ttu-id="fcbdb-130">자세한 내용은 [약한 형식의 데이터(ViewData 및 ViewBag)](xref:mvc/views/overview#VD_VB)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-130">For more information, see [Weakly typed data (ViewData and ViewBag)](xref:mvc/views/overview#VD_VB).</span></span>
+* <span data-ttu-id="fcbdb-127">`ViewData["DepartmentID"]`을 제거합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-127">Removes `ViewData["DepartmentID"]`.</span></span> <span data-ttu-id="fcbdb-128">기본 클래스의 `DepartmentNameSL`은 강력한 형식의 모델이며 Razor 페이지에서 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-128">`DepartmentNameSL` from the base class is a strongly typed model and will be used by the Razor page.</span></span> <span data-ttu-id="fcbdb-129">강력한 형식의 모델은 약한 형식보다 선호됩니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-129">Strongly typed models are preferred over weakly typed.</span></span> <span data-ttu-id="fcbdb-130">자세한 내용은 [약한 형식의 데이터(ViewData 및 ViewBag)](xref:mvc/views/overview#VD_VB)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-130">For more information, see [Weakly typed data (ViewData and ViewBag)](xref:mvc/views/overview#VD_VB).</span></span>
 
-### <a name="update-the-course-create-no-locrazor-page"></a><span data-ttu-id="fcbdb-131">과정 만들기 :::no-loc(Razor)::: 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="fcbdb-131">Update the Course Create :::no-loc(Razor)::: page</span></span>
+### <a name="update-the-course-create-no-locrazor-page"></a><span data-ttu-id="fcbdb-131">과정 만들기 Razor 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="fcbdb-131">Update the Course Create Razor page</span></span>
 
 <span data-ttu-id="fcbdb-132">다음 코드로 *Pages/Courses/Create.cshtml* 을 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-132">Update *Pages/Courses/Create.cshtml* with the following code:</span></span>
 
@@ -83,7 +83,7 @@ ms.locfileid: "93060536"
 * <span data-ttu-id="fcbdb-136">"부서 선택" 옵션을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-136">Adds the "Select Department" option.</span></span> <span data-ttu-id="fcbdb-137">이렇게 변경하면 아직 부서가 선택되지 않은 경우 첫 번째 부서가 아닌 “부서 선택”이 드롭다운에 렌더링됩니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-137">This change renders "Select Department" in the drop-down when no department has been selected yet, rather than the first department.</span></span>
 * <span data-ttu-id="fcbdb-138">부서가 선택되지 않은 경우 유효성 검사 메시지를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-138">Adds a validation message when the department isn't selected.</span></span>
 
-<span data-ttu-id="fcbdb-139">:::no-loc(Razor)::: 페이지는 [Select 태그 도우미](xref:mvc/views/working-with-forms#the-select-tag-helper)를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-139">The :::no-loc(Razor)::: Page uses the [Select Tag Helper](xref:mvc/views/working-with-forms#the-select-tag-helper):</span></span>
+<span data-ttu-id="fcbdb-139">Razor 페이지는 [Select 태그 도우미](xref:mvc/views/working-with-forms#the-select-tag-helper)를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-139">The Razor Page uses the [Select Tag Helper](xref:mvc/views/working-with-forms#the-select-tag-helper):</span></span>
 
 [!code-cshtml[](intro/samples/cu/Pages/Courses/Create.cshtml?range=28-35&highlight=3-6)]
 
@@ -97,7 +97,7 @@ ms.locfileid: "93060536"
 
 <span data-ttu-id="fcbdb-144">변경 내용은 만들기 페이지 모델에서 만든 것과 비슷합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-144">The changes are similar to those made in the Create page model.</span></span> <span data-ttu-id="fcbdb-145">앞의 코드에서 `PopulateDepartmentsDropDownList`는 드롭다운 목록에서 부서를 선택하는 부서 ID를 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-145">In the preceding code, `PopulateDepartmentsDropDownList` passes in the department ID, which selects that department in the drop-down list.</span></span>
 
-### <a name="update-the-course-edit-no-locrazor-page"></a><span data-ttu-id="fcbdb-146">과정 편집 :::no-loc(Razor)::: 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="fcbdb-146">Update the Course Edit :::no-loc(Razor)::: page</span></span>
+### <a name="update-the-course-edit-no-locrazor-page"></a><span data-ttu-id="fcbdb-146">과정 편집 Razor 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="fcbdb-146">Update the Course Edit Razor page</span></span>
 
 <span data-ttu-id="fcbdb-147">다음 코드로 *Pages/Courses/Edit.cshtml* 을 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-147">Update *Pages/Courses/Edit.cshtml* with the following code:</span></span>
 
@@ -125,7 +125,7 @@ ms.locfileid: "93060536"
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/Details.cshtml.cs?highlight=28)]
 
-### <a name="update-the-course-no-locrazor-pages"></a><span data-ttu-id="fcbdb-163">과정 :::no-loc(Razor)::: Pages 업데이트</span><span class="sxs-lookup"><span data-stu-id="fcbdb-163">Update the Course :::no-loc(Razor)::: pages</span></span>
+### <a name="update-the-course-no-locrazor-pages"></a><span data-ttu-id="fcbdb-163">과정 Razor Pages 업데이트</span><span class="sxs-lookup"><span data-stu-id="fcbdb-163">Update the Course Razor pages</span></span>
 
 <span data-ttu-id="fcbdb-164">다음 코드로 *Pages/Courses/Delete.cshtml* 을 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-164">Update *Pages/Courses/Delete.cshtml* with the following code:</span></span>
 
@@ -163,7 +163,7 @@ ms.locfileid: "93060536"
 
 <span data-ttu-id="fcbdb-184">`InstructorCoursesPageModel`은 편집 및 만들기 페이지 모델에 사용하는 기본 클래스입니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-184">The `InstructorCoursesPageModel` is the base class you will use for the Edit and Create page models.</span></span> <span data-ttu-id="fcbdb-185">`PopulateAssignedCourseData`는 `AssignedCourseDataList`를 채우도록 모든 `Course` 엔터티를 읽습니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-185">`PopulateAssignedCourseData` reads all `Course` entities to populate `AssignedCourseDataList`.</span></span> <span data-ttu-id="fcbdb-186">각 강좌의 경우 코드는 `CourseID`, 제목 및 강사가 강좌에 할당되었는지 여부를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-186">For each course, the code sets the `CourseID`, title, and whether or not the instructor is assigned to the course.</span></span> <span data-ttu-id="fcbdb-187">[HashSet](/dotnet/api/system.collections.generic.hashset-1)는 효율적인 조회를 위해 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-187">A [HashSet](/dotnet/api/system.collections.generic.hashset-1) is used for efficient lookups.</span></span>
 
-<span data-ttu-id="fcbdb-188">:::no-loc(Razor)::: 페이지에는 과정 엔터티의 컬렉션이 없으므로 모델 바인더는 `CourseAssignments` 탐색 속성을 자동으로 업데이트할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-188">Since the :::no-loc(Razor)::: page doesn't have a collection of Course entities, the model binder can't automatically update the `CourseAssignments` navigation property.</span></span> <span data-ttu-id="fcbdb-189">`CourseAssignments` 탐색 속성을 업데이트하는 데 모델 바인더를 사용하는 대신 새 `UpdateInstructorCourses` 메서드에서 해당 작업을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-189">Instead of using the model binder to update the `CourseAssignments` navigation property, you do that in the new `UpdateInstructorCourses` method.</span></span> <span data-ttu-id="fcbdb-190">따라서 모델 바인딩에서 `CourseAssignments` 속성을 제외해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-190">Therefore you need to exclude the `CourseAssignments` property from model binding.</span></span> <span data-ttu-id="fcbdb-191">선언된 속성을 포함하는 오버로드를 사용 중이고 `CourseAssignments`가 포함 목록에 있지 않으므로 `TryUpdateModel`을 호출하는 코드를 변경할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-191">This doesn't require any change to the code that calls `TryUpdateModel` because you're using the overload with declared properties and `CourseAssignments` isn't in the include list.</span></span>
+<span data-ttu-id="fcbdb-188">Razor 페이지에는 과정 엔터티의 컬렉션이 없으므로 모델 바인더는 `CourseAssignments` 탐색 속성을 자동으로 업데이트할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-188">Since the Razor page doesn't have a collection of Course entities, the model binder can't automatically update the `CourseAssignments` navigation property.</span></span> <span data-ttu-id="fcbdb-189">`CourseAssignments` 탐색 속성을 업데이트하는 데 모델 바인더를 사용하는 대신 새 `UpdateInstructorCourses` 메서드에서 해당 작업을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-189">Instead of using the model binder to update the `CourseAssignments` navigation property, you do that in the new `UpdateInstructorCourses` method.</span></span> <span data-ttu-id="fcbdb-190">따라서 모델 바인딩에서 `CourseAssignments` 속성을 제외해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-190">Therefore you need to exclude the `CourseAssignments` property from model binding.</span></span> <span data-ttu-id="fcbdb-191">선언된 속성을 포함하는 오버로드를 사용 중이고 `CourseAssignments`가 포함 목록에 있지 않으므로 `TryUpdateModel`을 호출하는 코드를 변경할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-191">This doesn't require any change to the code that calls `TryUpdateModel` because you're using the overload with declared properties and `CourseAssignments` isn't in the include list.</span></span>
 
 <span data-ttu-id="fcbdb-192">확인란이 선택되지 않은 경우 `UpdateInstructorCourses`의 코드는 빈 컬렉션으로 `CourseAssignments` 탐색 속성을 초기화하고 다음을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-192">If no check boxes were selected, the code in `UpdateInstructorCourses` initializes the `CourseAssignments` navigation property with an empty collection and returns:</span></span>
 
@@ -202,7 +202,7 @@ ms.locfileid: "93060536"
 * <span data-ttu-id="fcbdb-212">`OnPostAsync`에서 `UpdateInstructorCourses`를 호출하여 확인란의 정보를 편집 중인 Instructor 엔터티에 적용합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-212">Calls `UpdateInstructorCourses` in `OnPostAsync` to apply information from the checkboxes to the Instructor entity being edited.</span></span>
 * <span data-ttu-id="fcbdb-213">`TryUpdateModel`이 실패하는 경우 `OnPostAsync`에서 `PopulateAssignedCourseData` 및 `UpdateInstructorCourses`를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-213">Calls `PopulateAssignedCourseData` and `UpdateInstructorCourses` in `OnPostAsync` if `TryUpdateModel` fails.</span></span> <span data-ttu-id="fcbdb-214">이 메서드 호출은 오류 메시지와 함께 다시 표시될 때 페이지에 입력된 할당된 과정 데이터를 복원합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-214">These method calls restore the assigned course data entered on the page when it is redisplayed with an error message.</span></span>
 
-### <a name="update-the-instructor-edit-no-locrazor-page"></a><span data-ttu-id="fcbdb-215">강사 편집 :::no-loc(Razor)::: 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="fcbdb-215">Update the Instructor Edit :::no-loc(Razor)::: page</span></span>
+### <a name="update-the-instructor-edit-no-locrazor-page"></a><span data-ttu-id="fcbdb-215">강사 편집 Razor 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="fcbdb-215">Update the Instructor Edit Razor page</span></span>
 
 <span data-ttu-id="fcbdb-216">다음 코드로 *Pages/Instructors/Edit.cshtml* 을 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-216">Update *Pages/Instructors/Edit.cshtml* with the following code:</span></span>
 
@@ -218,7 +218,7 @@ ms.locfileid: "93060536"
 
 ### <a name="update-the-instructor-create-page"></a><span data-ttu-id="fcbdb-229">강사 만들기 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="fcbdb-229">Update the Instructor Create page</span></span>
 
-<span data-ttu-id="fcbdb-230">편집 페이지와 유사한 코드를 사용하여 강사 만들기 페이지 모델 및 :::no-loc(Razor)::: 페이지를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-230">Update the Instructor Create page model and :::no-loc(Razor)::: page with code similar to the Edit page:</span></span>
+<span data-ttu-id="fcbdb-230">편집 페이지와 유사한 코드를 사용하여 강사 만들기 페이지 모델 및 Razor 페이지를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-230">Update the Instructor Create page model and Razor page with code similar to the Edit page:</span></span>
 
 [!code-csharp[](intro/samples/cu30/Pages/Instructors/Create.cshtml.cs)]
 
@@ -302,7 +302,7 @@ ms.locfileid: "93060536"
 * <span data-ttu-id="fcbdb-277">"부서 선택" 옵션을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-277">Adds the "Select Department" option.</span></span> <span data-ttu-id="fcbdb-278">이 변경 내용은 첫 번째 부서 대신 "부서 선택"을 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-278">This change renders "Select Department" rather than the first department.</span></span>
 * <span data-ttu-id="fcbdb-279">부서가 선택되지 않은 경우 유효성 검사 메시지를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-279">Adds a validation message when the department isn't selected.</span></span>
 
-<span data-ttu-id="fcbdb-280">:::no-loc(Razor)::: 페이지는 [Select 태그 도우미](xref:mvc/views/working-with-forms#the-select-tag-helper)를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-280">The :::no-loc(Razor)::: Page uses the [Select Tag Helper](xref:mvc/views/working-with-forms#the-select-tag-helper):</span></span>
+<span data-ttu-id="fcbdb-280">Razor 페이지는 [Select 태그 도우미](xref:mvc/views/working-with-forms#the-select-tag-helper)를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-280">The Razor Page uses the [Select Tag Helper](xref:mvc/views/working-with-forms#the-select-tag-helper):</span></span>
 
 [!code-cshtml[](intro/samples/cu/Pages/Courses/Create.cshtml?range=28-35&highlight=3-6)]
 
@@ -342,7 +342,7 @@ ms.locfileid: "93060536"
 
 ### <a name="modify-the-delete-and-details-pages"></a><span data-ttu-id="fcbdb-305">삭제 및 세부 정보 페이지 수정</span><span class="sxs-lookup"><span data-stu-id="fcbdb-305">Modify the Delete and Details pages</span></span>
 
-<span data-ttu-id="fcbdb-306">다음 표시로 삭제 :::no-loc(Razor)::: 페이지를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-306">Update the Delete :::no-loc(Razor)::: page with the following markup:</span></span>
+<span data-ttu-id="fcbdb-306">다음 표시로 삭제 Razor 페이지를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-306">Update the Delete Razor page with the following markup:</span></span>
 
 [!code-cshtml[](intro/samples/cu/Pages/Courses/Delete.cshtml?highlight=15-20)]
 
@@ -417,7 +417,7 @@ ms.locfileid: "93060536"
 
 <span data-ttu-id="fcbdb-353">위의 코드는 사무실 할당 변경을 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-353">The preceding code handles office assignment changes.</span></span>
 
-<span data-ttu-id="fcbdb-354">강사 :::no-loc(Razor)::: 뷰를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-354">Update the instructor :::no-loc(Razor)::: View:</span></span>
+<span data-ttu-id="fcbdb-354">강사 Razor 뷰를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-354">Update the instructor Razor View:</span></span>
 
 [!code-cshtml[](intro/samples/cu/Pages/Instructors/Edit.cshtml?highlight=34-59)]
 
@@ -441,7 +441,7 @@ ms.locfileid: "93060536"
 
 <span data-ttu-id="fcbdb-375">위의 코드는 *Pages/Instructors/Edit.cshtml.cs* 코드와 비슷합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-375">The preceding code is similar to the *Pages/Instructors/Edit.cshtml.cs* code.</span></span>
 
-<span data-ttu-id="fcbdb-376">다음 변경 내용으로 강사 만들기 :::no-loc(Razor)::: 페이지를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-376">Update the instructor Create :::no-loc(Razor)::: page with the following markup:</span></span>
+<span data-ttu-id="fcbdb-376">다음 변경 내용으로 강사 만들기 Razor 페이지를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fcbdb-376">Update the instructor Create Razor page with the following markup:</span></span>
 
 [!code-cshtml[](intro/samples/cu/Pages/Instructors/Create.cshtml?highlight=32-62)]
 

@@ -5,17 +5,17 @@ description: 모델-보기-컨트롤러 디자인 패턴을 사용하여 웹앱 
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/overview
 ms.openlocfilehash: c55421efa1fd559f462549bfaceb794d4a9c35b8
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -49,7 +49,7 @@ ms.locfileid: "93059314"
 
 ### <a name="view-responsibilities"></a><span data-ttu-id="51fb2-127">보기의 책임</span><span class="sxs-lookup"><span data-stu-id="51fb2-127">View Responsibilities</span></span>
 
-<span data-ttu-id="51fb2-128">보기는 사용자 인터페이스를 통해 콘텐츠를 제공할 책임이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-128">Views are responsible for presenting content through the user interface.</span></span> <span data-ttu-id="51fb2-129">[ :::no-loc(Razor)::: 뷰 엔진](#razor-view-engine) 을 사용 하 여 .NET 코드를 HTML 태그에 포함 합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-129">They use the [:::no-loc(Razor)::: view engine](#razor-view-engine) to embed .NET code in HTML markup.</span></span> <span data-ttu-id="51fb2-130">보기 내부의 논리를 최소화해야 하며, 보기의 모든 논리는 콘텐츠 제공과 관련되어 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-130">There should be minimal logic within views, and any logic in them should relate to presenting content.</span></span> <span data-ttu-id="51fb2-131">복잡한 모델의 데이터를 표시하기 위해 보기에서 다량의 논리를 수행해야 하는 경우 [보기 구성 요소](views/view-components.md), ViewModel 또는 보기 템플릿을 사용하여 보기를 간소화하는 방안을 고려해 보세요.</span><span class="sxs-lookup"><span data-stu-id="51fb2-131">If you find the need to perform a great deal of logic in view files in order to display data from a complex model, consider using a [View Component](views/view-components.md), ViewModel, or view template to simplify the view.</span></span>
+<span data-ttu-id="51fb2-128">보기는 사용자 인터페이스를 통해 콘텐츠를 제공할 책임이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-128">Views are responsible for presenting content through the user interface.</span></span> <span data-ttu-id="51fb2-129">[ Razor 뷰 엔진](#razor-view-engine) 을 사용 하 여 .NET 코드를 HTML 태그에 포함 합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-129">They use the [Razor view engine](#razor-view-engine) to embed .NET code in HTML markup.</span></span> <span data-ttu-id="51fb2-130">보기 내부의 논리를 최소화해야 하며, 보기의 모든 논리는 콘텐츠 제공과 관련되어 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-130">There should be minimal logic within views, and any logic in them should relate to presenting content.</span></span> <span data-ttu-id="51fb2-131">복잡한 모델의 데이터를 표시하기 위해 보기에서 다량의 논리를 수행해야 하는 경우 [보기 구성 요소](views/view-components.md), ViewModel 또는 보기 템플릿을 사용하여 보기를 간소화하는 방안을 고려해 보세요.</span><span class="sxs-lookup"><span data-stu-id="51fb2-131">If you find the need to perform a great deal of logic in view files in order to display data from a complex model, consider using a [View Component](views/view-components.md), ViewModel, or view template to simplify the view.</span></span>
 
 ### <a name="controller-responsibilities"></a><span data-ttu-id="51fb2-132">컨트롤러의 책임</span><span class="sxs-lookup"><span data-stu-id="51fb2-132">Controller Responsibilities</span></span>
 
@@ -79,7 +79,7 @@ ms.locfileid: "93059314"
 * [<span data-ttu-id="51fb2-150">Areas</span><span class="sxs-lookup"><span data-stu-id="51fb2-150">Areas</span></span>](#areas)
 * [<span data-ttu-id="51fb2-151">Web API</span><span class="sxs-lookup"><span data-stu-id="51fb2-151">Web APIs</span></span>](#web-apis)
 * [<span data-ttu-id="51fb2-152">테스트 가능성</span><span class="sxs-lookup"><span data-stu-id="51fb2-152">Testability</span></span>](#testability)
-* [<span data-ttu-id="51fb2-153">:::no-loc(Razor)::: 뷰 엔진</span><span class="sxs-lookup"><span data-stu-id="51fb2-153">:::no-loc(Razor)::: view engine</span></span>](#razor-view-engine)
+* [<span data-ttu-id="51fb2-153">Razor 뷰 엔진</span><span class="sxs-lookup"><span data-stu-id="51fb2-153">Razor view engine</span></span>](#razor-view-engine)
 * [<span data-ttu-id="51fb2-154">강력한 형식의 뷰</span><span class="sxs-lookup"><span data-stu-id="51fb2-154">Strongly typed views</span></span>](#strongly-typed-views)
 * [<span data-ttu-id="51fb2-155">태그 도우미</span><span class="sxs-lookup"><span data-stu-id="51fb2-155">Tag Helpers</span></span>](#tag-helpers)
 * [<span data-ttu-id="51fb2-156">구성 요소 보기</span><span class="sxs-lookup"><span data-stu-id="51fb2-156">View Components</span></span>](#view-components)
@@ -198,9 +198,9 @@ public class AccountController : Controller
 
 <span data-ttu-id="51fb2-198">이 프레임워크의 인터페이스 및 종속성 주입 사용은 단위 테스트에 적합하며, [통합 테스트](xref:test/integration-tests)를 쉽고 빠르게 수행할 수 있는 기능(예: Entity Framework용 TestHost 및 InMemory 공급자)을 포함하고 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-198">The framework's use of interfaces and dependency injection make it well-suited to unit testing, and the framework includes features (like a TestHost and InMemory provider for Entity Framework) that make [integration tests](xref:test/integration-tests) quick and easy as well.</span></span> <span data-ttu-id="51fb2-199">[컨트롤러 논리를 테스트하는 방법](controllers/testing.md)에 대해 자세히 알아보세요.</span><span class="sxs-lookup"><span data-stu-id="51fb2-199">Learn more about [how to test controller logic](controllers/testing.md).</span></span>
 
-### <a name="no-locrazor-view-engine"></a><span data-ttu-id="51fb2-200">:::no-loc(Razor)::: 뷰 엔진</span><span class="sxs-lookup"><span data-stu-id="51fb2-200">:::no-loc(Razor)::: view engine</span></span>
+### <a name="no-locrazor-view-engine"></a><span data-ttu-id="51fb2-200">Razor 뷰 엔진</span><span class="sxs-lookup"><span data-stu-id="51fb2-200">Razor view engine</span></span>
 
-<span data-ttu-id="51fb2-201">[MVC 뷰 ASP.NET Core](views/overview.md) 뷰 [ :::no-loc(Razor)::: 엔진](views/razor.md) 을 사용 하 여 뷰를 렌더링 합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-201">[ASP.NET Core MVC views](views/overview.md) use the [:::no-loc(Razor)::: view engine](views/razor.md) to render views.</span></span> <span data-ttu-id="51fb2-202">:::no-loc(Razor)::: 는 포함 된 c # 코드를 사용 하 여 뷰를 정의 하기 위한 간결 하 고, 표현 하기 위한 유체 템플릿 태그 언어입니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-202">:::no-loc(Razor)::: is a compact, expressive and fluid template markup language for defining views using embedded C# code.</span></span> <span data-ttu-id="51fb2-203">:::no-loc(Razor)::: 는 서버에서 웹 콘텐츠를 동적으로 생성 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-203">:::no-loc(Razor)::: is used to dynamically generate web content on the server.</span></span> <span data-ttu-id="51fb2-204">서버 코드를 클라이언트 쪽 콘텐츠 및 코드와 깔끔하게 혼합할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-204">You can cleanly mix server code with client side content and code.</span></span>
+<span data-ttu-id="51fb2-201">[MVC 뷰 ASP.NET Core](views/overview.md) 뷰 [ Razor 엔진](views/razor.md) 을 사용 하 여 뷰를 렌더링 합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-201">[ASP.NET Core MVC views](views/overview.md) use the [Razor view engine](views/razor.md) to render views.</span></span> <span data-ttu-id="51fb2-202">Razor 는 포함 된 c # 코드를 사용 하 여 뷰를 정의 하기 위한 간결 하 고, 표현 하기 위한 유체 템플릿 태그 언어입니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-202">Razor is a compact, expressive and fluid template markup language for defining views using embedded C# code.</span></span> <span data-ttu-id="51fb2-203">Razor 는 서버에서 웹 콘텐츠를 동적으로 생성 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-203">Razor is used to dynamically generate web content on the server.</span></span> <span data-ttu-id="51fb2-204">서버 코드를 클라이언트 쪽 콘텐츠 및 코드와 깔끔하게 혼합할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-204">You can cleanly mix server code with client side content and code.</span></span>
 
 ```cshtml
 <ul>
@@ -210,11 +210,11 @@ public class AccountController : Controller
 </ul>
 ```
 
-<span data-ttu-id="51fb2-205">:::no-loc(Razor):::뷰 엔진을 사용 하 여 [레이아웃](views/layout.md), [부분 뷰](views/partial.md) 및 대체 가능 섹션을 정의할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-205">Using the :::no-loc(Razor)::: view engine you can define [layouts](views/layout.md), [partial views](views/partial.md) and replaceable sections.</span></span>
+<span data-ttu-id="51fb2-205">Razor뷰 엔진을 사용 하 여 [레이아웃](views/layout.md), [부분 뷰](views/partial.md) 및 대체 가능 섹션을 정의할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-205">Using the Razor view engine you can define [layouts](views/layout.md), [partial views](views/partial.md) and replaceable sections.</span></span>
 
 ### <a name="strongly-typed-views"></a><span data-ttu-id="51fb2-206">강력한 형식의 보기</span><span class="sxs-lookup"><span data-stu-id="51fb2-206">Strongly typed views</span></span>
 
-<span data-ttu-id="51fb2-207">:::no-loc(Razor)::: MVC의 뷰는 모델을 기반으로 강력 하 게 형식화 될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-207">:::no-loc(Razor)::: views in MVC can be strongly typed based on your model.</span></span> <span data-ttu-id="51fb2-208">컨트롤러는 강력한 형식의 모델을 보기에 전달하여 보기에서 형식을 검사하고 IntelliSense를 지원할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-208">Controllers can pass a strongly typed model to views enabling your views to have type checking and IntelliSense support.</span></span>
+<span data-ttu-id="51fb2-207">Razor MVC의 뷰는 모델을 기반으로 강력 하 게 형식화 될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-207">Razor views in MVC can be strongly typed based on your model.</span></span> <span data-ttu-id="51fb2-208">컨트롤러는 강력한 형식의 모델을 보기에 전달하여 보기에서 형식을 검사하고 IntelliSense를 지원할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-208">Controllers can pass a strongly typed model to views enabling your views to have type checking and IntelliSense support.</span></span>
 
 <span data-ttu-id="51fb2-209">예를 들어 다음 보기는 `IEnumerable<Product>` 형식의 모델을 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-209">For example, the following view renders a model of type `IEnumerable<Product>`:</span></span>
 
@@ -230,7 +230,7 @@ public class AccountController : Controller
 
 ### <a name="tag-helpers"></a><span data-ttu-id="51fb2-210">태그 도우미</span><span class="sxs-lookup"><span data-stu-id="51fb2-210">Tag Helpers</span></span>
 
-<span data-ttu-id="51fb2-211">[태그 도우미](views/tag-helpers/intro.md) 를 사용 하면 서버 쪽 코드에서 파일에 HTML 요소를 만들고 렌더링 하는 데 참여할 수 :::no-loc(Razor)::: 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-211">[Tag Helpers](views/tag-helpers/intro.md) enable server side code to participate in creating and rendering HTML elements in :::no-loc(Razor)::: files.</span></span> <span data-ttu-id="51fb2-212">태그 도우미를 사용하여 사용자 지정 태그를 정의하거나(예: `<environment>`) 기존 태그의 동작을 수정할 수 있습니다(예: `<label>`).</span><span class="sxs-lookup"><span data-stu-id="51fb2-212">You can use tag helpers to define custom tags (for example, `<environment>`) or to modify the behavior of existing tags (for example, `<label>`).</span></span> <span data-ttu-id="51fb2-213">태그 도우미는 요소 이름 및 해당 특성에 따라 특정 요소에 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-213">Tag Helpers bind to specific elements based on the element name and its attributes.</span></span> <span data-ttu-id="51fb2-214">서버 쪽 렌더링의 이점을 제공하면서도 HTML 편집 환경을 유지합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-214">They provide the benefits of server-side rendering while still preserving an HTML editing experience.</span></span>
+<span data-ttu-id="51fb2-211">[태그 도우미](views/tag-helpers/intro.md) 를 사용 하면 서버 쪽 코드에서 파일에 HTML 요소를 만들고 렌더링 하는 데 참여할 수 Razor 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-211">[Tag Helpers](views/tag-helpers/intro.md) enable server side code to participate in creating and rendering HTML elements in Razor files.</span></span> <span data-ttu-id="51fb2-212">태그 도우미를 사용하여 사용자 지정 태그를 정의하거나(예: `<environment>`) 기존 태그의 동작을 수정할 수 있습니다(예: `<label>`).</span><span class="sxs-lookup"><span data-stu-id="51fb2-212">You can use tag helpers to define custom tags (for example, `<environment>`) or to modify the behavior of existing tags (for example, `<label>`).</span></span> <span data-ttu-id="51fb2-213">태그 도우미는 요소 이름 및 해당 특성에 따라 특정 요소에 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-213">Tag Helpers bind to specific elements based on the element name and its attributes.</span></span> <span data-ttu-id="51fb2-214">서버 쪽 렌더링의 이점을 제공하면서도 HTML 편집 환경을 유지합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-214">They provide the benefits of server-side rendering while still preserving an HTML editing experience.</span></span>
 
 <span data-ttu-id="51fb2-215">양식 작성, 링크, 자산 로드 등의 일반적인 작업을 위한 여러 가지 기본 제공 태그 도우미가 있으며, 공용 GitHub 리포지토리 및 NuGet 패키지로도 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-215">There are many built-in Tag Helpers for common tasks - such as creating forms, links, loading assets and more - and even more available in public GitHub repositories and as NuGet packages.</span></span> <span data-ttu-id="51fb2-216">태그 도우미는 C#에서 작성되며 요소 이름, 특성 이름 또는 부모 태그 기반의 HTML 요소를 대상으로 합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-216">Tag Helpers are authored in C#, and they target HTML elements based on element name, attribute name, or parent tag.</span></span> <span data-ttu-id="51fb2-217">예를 들어 기본 제공 LinkTagHelper를 사용하여 `AccountsController`의 `Login` 작업에 대한 링크를 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-217">For example, the built-in LinkTagHelper can be used to create a link to the `Login` action of the `AccountsController`:</span></span>
 
@@ -255,7 +255,7 @@ public class AccountController : Controller
 </environment>
 ```
 
-<span data-ttu-id="51fb2-219">태그 도우미는 html 기반의 개발 환경과 HTML 및 태그를 만들기 위한 풍부한 IntelliSense 환경을 제공 :::no-loc(Razor)::: 합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-219">Tag Helpers provide an HTML-friendly development experience and a rich IntelliSense environment for creating HTML and :::no-loc(Razor)::: markup.</span></span> <span data-ttu-id="51fb2-220">대부분의 기본 제공 태그 도우미는 기존 HTML 요소를 대상으로 하며 요소에 대한 서버 쪽 특성을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-220">Most of the built-in Tag Helpers target existing HTML elements and provide server-side attributes for the element.</span></span>
+<span data-ttu-id="51fb2-219">태그 도우미는 html 기반의 개발 환경과 HTML 및 태그를 만들기 위한 풍부한 IntelliSense 환경을 제공 Razor 합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-219">Tag Helpers provide an HTML-friendly development experience and a rich IntelliSense environment for creating HTML and Razor markup.</span></span> <span data-ttu-id="51fb2-220">대부분의 기본 제공 태그 도우미는 기존 HTML 요소를 대상으로 하며 요소에 대한 서버 쪽 특성을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="51fb2-220">Most of the built-in Tag Helpers target existing HTML elements and provide server-side attributes for the element.</span></span>
 
 ### <a name="view-components"></a><span data-ttu-id="51fb2-221">보기 구성 요소</span><span class="sxs-lookup"><span data-stu-id="51fb2-221">View Components</span></span>
 

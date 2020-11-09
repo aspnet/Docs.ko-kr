@@ -5,17 +5,17 @@ description: ASP.NET Core 2 단계 인증을 사용 하는 TOTP authenticator �
 ms.author: riande
 ms.date: 08/14/2018
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/identity-enable-qrcodes
 ms.openlocfilehash: b778e7238911ec9966edf7f0f7becd113b1e197a
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -50,14 +50,14 @@ ms.locfileid: "93060835"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-* <span data-ttu-id="0a07c-120">[스 캐 폴드 :::no-loc(Identity):::](xref:security/authentication/scaffold-identity) 의 지침에 따라 */Areas/ :::no-loc(Identity)::: /Pages/Account/Manage/EnableAuthenticator.cshtml* 을 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="0a07c-120">Follow the instructions in [Scaffold :::no-loc(Identity):::](xref:security/authentication/scaffold-identity) to generate */Areas/:::no-loc(Identity):::/Pages/Account/Manage/EnableAuthenticator.cshtml* .</span></span>
-* <span data-ttu-id="0a07c-121">*/Areas/ :::no-loc(Identity)::: /Pages/Account/Manage/EnableAuthenticator.cshtml* 에서 파일 끝에 있는 섹션을 찾습니다 `Scripts` .</span><span class="sxs-lookup"><span data-stu-id="0a07c-121">In */Areas/:::no-loc(Identity):::/Pages/Account/Manage/EnableAuthenticator.cshtml* , locate the `Scripts` section at the end of the file:</span></span>
+* <span data-ttu-id="0a07c-120">[스 캐 폴드 Identity](xref:security/authentication/scaffold-identity) 의 지침에 따라 */Areas/ Identity /Pages/Account/Manage/EnableAuthenticator.cshtml* 을 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="0a07c-120">Follow the instructions in [Scaffold Identity](xref:security/authentication/scaffold-identity) to generate */Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml* .</span></span>
+* <span data-ttu-id="0a07c-121">*/Areas/ Identity /Pages/Account/Manage/EnableAuthenticator.cshtml* 에서 파일 끝에 있는 섹션을 찾습니다 `Scripts` .</span><span class="sxs-lookup"><span data-stu-id="0a07c-121">In */Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml* , locate the `Scripts` section at the end of the file:</span></span>
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-* <span data-ttu-id="0a07c-122">*페이지/계정/관리/* o s s. cshtml ( :::no-loc(Razor)::: 페이지) 또는 *Views/manage/enableauthenticator* (MVC)에서 파일의 끝 부분에 있는 섹션을 찾습니다 `Scripts` .</span><span class="sxs-lookup"><span data-stu-id="0a07c-122">In *Pages/Account/Manage/EnableAuthenticator.cshtml* (:::no-loc(Razor)::: Pages) or *Views/Manage/EnableAuthenticator.cshtml* (MVC), locate the `Scripts` section at the end of the file:</span></span>
+* <span data-ttu-id="0a07c-122">*페이지/계정/관리/* o s s. cshtml ( Razor 페이지) 또는 *Views/manage/enableauthenticator* (MVC)에서 파일의 끝 부분에 있는 섹션을 찾습니다 `Scripts` .</span><span class="sxs-lookup"><span data-stu-id="0a07c-122">In *Pages/Account/Manage/EnableAuthenticator.cshtml* (Razor Pages) or *Views/Manage/EnableAuthenticator.cshtml* (MVC), locate the `Scripts` section at the end of the file:</span></span>
 
 ::: moniker-end
 
@@ -97,13 +97,13 @@ ms.locfileid: "93060835"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="0a07c-128">QR 코드의 사이트 이름은 처음 프로젝트를 만들 때 선택한 프로젝트 이름에서 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="0a07c-128">The site name in the QR Code is taken from the project name you choose when initially creating your project.</span></span> <span data-ttu-id="0a07c-129">`GenerateQrCodeUri(string email, string unformattedKey)` */Areas/ :::no-loc(Identity)::: /Pages/Account/Manage/EnableAuthenticator.cshtml.cs* 에서 메서드를 검색 하 여 변경할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0a07c-129">You can change it by looking for the `GenerateQrCodeUri(string email, string unformattedKey)` method in the */Areas/:::no-loc(Identity):::/Pages/Account/Manage/EnableAuthenticator.cshtml.cs* .</span></span>
+<span data-ttu-id="0a07c-128">QR 코드의 사이트 이름은 처음 프로젝트를 만들 때 선택한 프로젝트 이름에서 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="0a07c-128">The site name in the QR Code is taken from the project name you choose when initially creating your project.</span></span> <span data-ttu-id="0a07c-129">`GenerateQrCodeUri(string email, string unformattedKey)` */Areas/ Identity /Pages/Account/Manage/EnableAuthenticator.cshtml.cs* 에서 메서드를 검색 하 여 변경할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0a07c-129">You can change it by looking for the `GenerateQrCodeUri(string email, string unformattedKey)` method in the */Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml.cs* .</span></span>
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-<span data-ttu-id="0a07c-130">QR 코드의 사이트 이름은 처음 프로젝트를 만들 때 선택한 프로젝트 이름에서 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="0a07c-130">The site name in the QR Code is taken from the project name you choose when initially creating your project.</span></span> <span data-ttu-id="0a07c-131">`GenerateQrCodeUri(string email, string unformattedKey)` *Pages/Account/Manage/enableauthenticator. cshtml* ( :::no-loc(Razor)::: Pages) 파일 또는 *Controllers/ManageController* (MVC) 파일에서 메서드를 검색 하 여이를 변경할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0a07c-131">You can change it by looking for the `GenerateQrCodeUri(string email, string unformattedKey)` method in the *Pages/Account/Manage/EnableAuthenticator.cshtml.cs* (:::no-loc(Razor)::: Pages) file or the *Controllers/ManageController.cs* (MVC) file.</span></span>
+<span data-ttu-id="0a07c-130">QR 코드의 사이트 이름은 처음 프로젝트를 만들 때 선택한 프로젝트 이름에서 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="0a07c-130">The site name in the QR Code is taken from the project name you choose when initially creating your project.</span></span> <span data-ttu-id="0a07c-131">`GenerateQrCodeUri(string email, string unformattedKey)` *Pages/Account/Manage/enableauthenticator. cshtml* ( Razor Pages) 파일 또는 *Controllers/ManageController* (MVC) 파일에서 메서드를 검색 하 여이를 변경할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0a07c-131">You can change it by looking for the `GenerateQrCodeUri(string email, string unformattedKey)` method in the *Pages/Account/Manage/EnableAuthenticator.cshtml.cs* (Razor Pages) file or the *Controllers/ManageController.cs* (MVC) file.</span></span>
 
 ::: moniker-end
 
@@ -116,7 +116,7 @@ private string GenerateQrCodeUri(string email, string unformattedKey)
 {
     return string.Format(
         AuthenticatorUriFormat,
-        _urlEncoder.Encode(":::no-loc(Razor)::: Pages"),
+        _urlEncoder.Encode("Razor Pages"),
         _urlEncoder.Encode(email),
         unformattedKey);
 }

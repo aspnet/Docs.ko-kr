@@ -1,23 +1,23 @@
 ---
-title: 'ASP.NET Core에서 허브 사용 :::no-loc(SignalR):::'
+title: 'ASP.NET Core에서 허브 사용 SignalR'
 author: bradygaster
-description: 'ASP.NET Core에서 허브를 사용 하는 방법을 알아봅니다 :::no-loc(SignalR)::: .'
+description: 'ASP.NET Core에서 허브를 사용 하는 방법을 알아봅니다 SignalR .'
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/16/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: signalr/hubs
 ms.openlocfilehash: 4a31c16eb44e2244574d0df49c30e7a44b2bba6e
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,25 +26,25 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93050942"
 ---
-# <a name="use-hubs-in-no-locsignalr-for-aspnet-core"></a><span data-ttu-id="0f032-103">:::no-loc(SignalR):::ASP.NET Core 용 허브 사용</span><span class="sxs-lookup"><span data-stu-id="0f032-103">Use hubs in :::no-loc(SignalR)::: for ASP.NET Core</span></span>
+# <a name="use-hubs-in-no-locsignalr-for-aspnet-core"></a><span data-ttu-id="0f032-103">SignalRASP.NET Core 용 허브 사용</span><span class="sxs-lookup"><span data-stu-id="0f032-103">Use hubs in SignalR for ASP.NET Core</span></span>
 
 <span data-ttu-id="0f032-104">만든 사람 [Rachel Appel](https://twitter.com/rachelappel) 및 [Kevin Griffin](https://twitter.com/1kevgriff)</span><span class="sxs-lookup"><span data-stu-id="0f032-104">By [Rachel Appel](https://twitter.com/rachelappel) and [Kevin Griffin](https://twitter.com/1kevgriff)</span></span>
 
 <span data-ttu-id="0f032-105">[샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubs/sample/ )[(다운로드 방법)](xref:index#how-to-download-a-sample)</span><span class="sxs-lookup"><span data-stu-id="0f032-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [(how to download)](xref:index#how-to-download-a-sample)</span></span>
 
-## <a name="what-is-a-no-locsignalr-hub"></a><span data-ttu-id="0f032-106">:::no-loc(SignalR):::허브 정의</span><span class="sxs-lookup"><span data-stu-id="0f032-106">What is a :::no-loc(SignalR)::: hub</span></span>
+## <a name="what-is-a-no-locsignalr-hub"></a><span data-ttu-id="0f032-106">SignalR허브 정의</span><span class="sxs-lookup"><span data-stu-id="0f032-106">What is a SignalR hub</span></span>
 
-<span data-ttu-id="0f032-107">:::no-loc(SignalR):::허브 API를 사용 하면 서버에서 연결 된 클라이언트의 메서드를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-107">The :::no-loc(SignalR)::: Hubs API enables you to call methods on connected clients from the server.</span></span> <span data-ttu-id="0f032-108">서버 코드에서 클라이언트에 의해 호출 되는 메서드를 정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-108">In the server code, you define methods that are called by client.</span></span> <span data-ttu-id="0f032-109">클라이언트 코드에서는 서버에서 호출 되는 메서드를 정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-109">In the client code, you define methods that are called from the server.</span></span> <span data-ttu-id="0f032-110">:::no-loc(SignalR)::: 에서는 실시간 클라이언트와 서버 간 통신을 가능 하 게 하는 백그라운드의 모든 작업을 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-110">:::no-loc(SignalR)::: takes care of everything behind the scenes that makes real-time client-to-server and server-to-client communications possible.</span></span>
+<span data-ttu-id="0f032-107">SignalR허브 API를 사용 하면 서버에서 연결 된 클라이언트의 메서드를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-107">The SignalR Hubs API enables you to call methods on connected clients from the server.</span></span> <span data-ttu-id="0f032-108">서버 코드에서 클라이언트에 의해 호출 되는 메서드를 정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-108">In the server code, you define methods that are called by client.</span></span> <span data-ttu-id="0f032-109">클라이언트 코드에서는 서버에서 호출 되는 메서드를 정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-109">In the client code, you define methods that are called from the server.</span></span> <span data-ttu-id="0f032-110">SignalR 에서는 실시간 클라이언트와 서버 간 통신을 가능 하 게 하는 백그라운드의 모든 작업을 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-110">SignalR takes care of everything behind the scenes that makes real-time client-to-server and server-to-client communications possible.</span></span>
 
-## <a name="configure-no-locsignalr-hubs"></a><span data-ttu-id="0f032-111">:::no-loc(SignalR):::허브 구성</span><span class="sxs-lookup"><span data-stu-id="0f032-111">Configure :::no-loc(SignalR)::: hubs</span></span>
+## <a name="configure-no-locsignalr-hubs"></a><span data-ttu-id="0f032-111">SignalR허브 구성</span><span class="sxs-lookup"><span data-stu-id="0f032-111">Configure SignalR hubs</span></span>
 
-<span data-ttu-id="0f032-112">미들웨어에는 :::no-loc(SignalR)::: 를 호출 하 여 구성 되는 일부 서비스가 필요 합니다 `services.Add:::no-loc(SignalR):::` .</span><span class="sxs-lookup"><span data-stu-id="0f032-112">The :::no-loc(SignalR)::: middleware requires some services, which are configured by calling `services.Add:::no-loc(SignalR):::`.</span></span>
+<span data-ttu-id="0f032-112">미들웨어에는 SignalR 를 호출 하 여 구성 되는 일부 서비스가 필요 합니다 `services.AddSignalR` .</span><span class="sxs-lookup"><span data-stu-id="0f032-112">The SignalR middleware requires some services, which are configured by calling `services.AddSignalR`.</span></span>
 
 [!code-csharp[Configure service](hubs/sample/startup.cs?range=38)]
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="0f032-113">:::no-loc(SignalR):::ASP.NET Core 앱에 기능을 추가 하는 경우 :::no-loc(SignalR)::: 메서드 콜백에서를 호출 하 여 경로를 설정 `endpoint.MapHub` `Startup.Configure` `app.UseEndpoints` 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-113">When adding :::no-loc(SignalR)::: functionality to an ASP.NET Core app, setup :::no-loc(SignalR)::: routes by calling `endpoint.MapHub` in the `Startup.Configure` method's `app.UseEndpoints` callback.</span></span>
+<span data-ttu-id="0f032-113">SignalRASP.NET Core 앱에 기능을 추가 하는 경우 SignalR 메서드 콜백에서를 호출 하 여 경로를 설정 `endpoint.MapHub` `Startup.Configure` `app.UseEndpoints` 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-113">When adding SignalR functionality to an ASP.NET Core app, setup SignalR routes by calling `endpoint.MapHub` in the `Startup.Configure` method's `app.UseEndpoints` callback.</span></span>
 
 ```csharp
 app.UseRouting();
@@ -58,7 +58,7 @@ app.UseEndpoints(endpoints =>
 
 ::: moniker range="<= aspnetcore-2.2"
 
-<span data-ttu-id="0f032-114">:::no-loc(SignalR):::ASP.NET Core 앱에 기능을 추가 하는 경우 :::no-loc(SignalR)::: 메서드를 호출 하 여 경로를 설정 `app.Use:::no-loc(SignalR):::` `Startup.Configure` 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-114">When adding :::no-loc(SignalR)::: functionality to an ASP.NET Core app, setup :::no-loc(SignalR)::: routes by calling `app.Use:::no-loc(SignalR):::` in the `Startup.Configure` method.</span></span>
+<span data-ttu-id="0f032-114">SignalRASP.NET Core 앱에 기능을 추가 하는 경우 SignalR 메서드를 호출 하 여 경로를 설정 `app.UseSignalR` `Startup.Configure` 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-114">When adding SignalR functionality to an ASP.NET Core app, setup SignalR routes by calling `app.UseSignalR` in the `Startup.Configure` method.</span></span>
 
 [!code-csharp[Configure routes to hubs](hubs/sample/startup.cs?range=57-60)]
 
@@ -78,7 +78,7 @@ public class ChatHub : Hub
 }
 ```
 
-<span data-ttu-id="0f032-118">모든 c # 메서드에서와 같이 복합 형식 및 배열을 포함 하 여 반환 형식 및 매개 변수를 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-118">You can specify a return type and parameters, including complex types and arrays, as you would in any C# method.</span></span> <span data-ttu-id="0f032-119">:::no-loc(SignalR)::: 매개 변수와 반환 값의 복합 개체와 배열의 serialization 및 deserialization을 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-119">:::no-loc(SignalR)::: handles the serialization and deserialization of complex objects and arrays in your parameters and return values.</span></span>
+<span data-ttu-id="0f032-118">모든 c # 메서드에서와 같이 복합 형식 및 배열을 포함 하 여 반환 형식 및 매개 변수를 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-118">You can specify a return type and parameters, including complex types and arrays, as you would in any C# method.</span></span> <span data-ttu-id="0f032-119">SignalR 매개 변수와 반환 값의 복합 개체와 배열의 serialization 및 deserialization을 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-119">SignalR handles the serialization and deserialization of complex objects and arrays in your parameters and return values.</span></span>
 
 > [!NOTE]
 > <span data-ttu-id="0f032-120">허브는 일시적입니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-120">Hubs are transient:</span></span>
@@ -92,8 +92,8 @@ public class ChatHub : Hub
 
 | <span data-ttu-id="0f032-127">속성</span><span class="sxs-lookup"><span data-stu-id="0f032-127">Property</span></span> | <span data-ttu-id="0f032-128">설명</span><span class="sxs-lookup"><span data-stu-id="0f032-128">Description</span></span> |
 | ------ | ----------- |
-| `ConnectionId` | <span data-ttu-id="0f032-129">에서 할당 한 연결의 고유 ID를 가져옵니다 :::no-loc(SignalR)::: .</span><span class="sxs-lookup"><span data-stu-id="0f032-129">Gets the unique ID for the connection, assigned by :::no-loc(SignalR):::.</span></span> <span data-ttu-id="0f032-130">각 연결에 대해 하나의 연결 ID가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-130">There is one connection ID for each connection.</span></span>|
-| `UserIdentifier` | <span data-ttu-id="0f032-131">[사용자 식별자](xref:signalr/groups)를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-131">Gets the [user identifier](xref:signalr/groups).</span></span> <span data-ttu-id="0f032-132">기본적으로는 :::no-loc(SignalR)::: 연결과 관련 된의을 `ClaimTypes.NameIdentifier` `ClaimsPrincipal` 사용자 식별자로 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-132">By default, :::no-loc(SignalR)::: uses the `ClaimTypes.NameIdentifier` from the `ClaimsPrincipal` associated with the connection as the user identifier.</span></span> |
+| `ConnectionId` | <span data-ttu-id="0f032-129">에서 할당 한 연결의 고유 ID를 가져옵니다 SignalR .</span><span class="sxs-lookup"><span data-stu-id="0f032-129">Gets the unique ID for the connection, assigned by SignalR.</span></span> <span data-ttu-id="0f032-130">각 연결에 대해 하나의 연결 ID가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-130">There is one connection ID for each connection.</span></span>|
+| `UserIdentifier` | <span data-ttu-id="0f032-131">[사용자 식별자](xref:signalr/groups)를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-131">Gets the [user identifier](xref:signalr/groups).</span></span> <span data-ttu-id="0f032-132">기본적으로는 SignalR 연결과 관련 된의을 `ClaimTypes.NameIdentifier` `ClaimsPrincipal` 사용자 식별자로 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-132">By default, SignalR uses the `ClaimTypes.NameIdentifier` from the `ClaimsPrincipal` associated with the connection as the user identifier.</span></span> |
 | `User` | <span data-ttu-id="0f032-133">`ClaimsPrincipal`현재 사용자와 연결 된를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-133">Gets the `ClaimsPrincipal` associated with the current user.</span></span> |
 | `Items` | <span data-ttu-id="0f032-134">이 연결 범위 내에서 데이터를 공유 하는 데 사용할 수 있는 키/값 컬렉션을 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-134">Gets a key/value collection that can be used to share data within the scope of this connection.</span></span> <span data-ttu-id="0f032-135">데이터는이 컬렉션에 저장 될 수 있으며 다른 허브 메서드 호출을 통해 연결에 대해 유지 됩니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-135">Data can be stored in this collection and it will persist for the connection across different hub method invocations.</span></span> |
 | `Features` | <span data-ttu-id="0f032-136">연결에서 사용할 수 있는 기능 컬렉션을 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-136">Gets the collection of features available on the connection.</span></span> <span data-ttu-id="0f032-137">지금은이 컬렉션이 대부분의 시나리오에서 필요 하지 않으므로 자세히 설명 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-137">For now, this collection isn't needed in most scenarios, so it isn't documented in detail yet.</span></span> |
@@ -138,7 +138,7 @@ public class ChatHub : Hub
 
 * <span data-ttu-id="0f032-169">`SendMessage` 을 사용 하 여 연결 된 모든 클라이언트에 메시지를 보냅니다 `Clients.All` .</span><span class="sxs-lookup"><span data-stu-id="0f032-169">`SendMessage` sends a message to all connected clients, using `Clients.All`.</span></span>
 * <span data-ttu-id="0f032-170">`SendMessageToCaller` 를 사용 하 여 메시지를 다시 호출자에 게 보냅니다 `Clients.Caller` .</span><span class="sxs-lookup"><span data-stu-id="0f032-170">`SendMessageToCaller` sends a message back to the caller, using `Clients.Caller`.</span></span>
-* <span data-ttu-id="0f032-171">`SendMessageToGroups` 그룹의 모든 클라이언트에 메시지를 보냅니다 `:::no-loc(SignalR)::: Users` .</span><span class="sxs-lookup"><span data-stu-id="0f032-171">`SendMessageToGroups` sends a message to all clients in the `:::no-loc(SignalR)::: Users` group.</span></span>
+* <span data-ttu-id="0f032-171">`SendMessageToGroups` 그룹의 모든 클라이언트에 메시지를 보냅니다 `SignalR Users` .</span><span class="sxs-lookup"><span data-stu-id="0f032-171">`SendMessageToGroups` sends a message to all clients in the `SignalR Users` group.</span></span>
 
 [!code-csharp[Send messages](hubs/sample/hubs/chathub.cs?name=HubMethods)]
 
@@ -146,7 +146,7 @@ public class ChatHub : Hub
 
 <span data-ttu-id="0f032-173">을 사용 하는 경우의 단점은 `SendAsync` 호출 될 클라이언트 메서드를 지정 하기 위해 매직 문자열을 사용 한다는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-173">A drawback of using `SendAsync` is that it relies on a magic string to specify the client method to be called.</span></span> <span data-ttu-id="0f032-174">그러면 메서드 이름의 철자가 틀렸거나 클라이언트에서 누락 된 경우 코드를 런타임 오류에 열어 둡니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-174">This leaves code open to runtime errors if the method name is misspelled or missing from the client.</span></span>
 
-<span data-ttu-id="0f032-175">를 사용 하는 대신를 사용 하는 `SendAsync` 것이 좋습니다 `Hub` <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Hub%601> .</span><span class="sxs-lookup"><span data-stu-id="0f032-175">An alternative to using `SendAsync` is to strongly type the `Hub` with <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.Hub%601>.</span></span> <span data-ttu-id="0f032-176">다음 예제에서는 `ChatHub` 클라이언트 메서드가 라는 인터페이스로 추출 되었습니다 `IChatClient` .</span><span class="sxs-lookup"><span data-stu-id="0f032-176">In the following example, the `ChatHub` client methods have been extracted out into an interface called `IChatClient`.</span></span>
+<span data-ttu-id="0f032-175">를 사용 하는 대신를 사용 하는 `SendAsync` 것이 좋습니다 `Hub` <xref:Microsoft.AspNetCore.SignalR.Hub%601> .</span><span class="sxs-lookup"><span data-stu-id="0f032-175">An alternative to using `SendAsync` is to strongly type the `Hub` with <xref:Microsoft.AspNetCore.SignalR.Hub%601>.</span></span> <span data-ttu-id="0f032-176">다음 예제에서는 `ChatHub` 클라이언트 메서드가 라는 인터페이스로 추출 되었습니다 `IChatClient` .</span><span class="sxs-lookup"><span data-stu-id="0f032-176">In the following example, the `ChatHub` client methods have been extracted out into an interface called `IChatClient`.</span></span>
 
 [!code-csharp[Interface for IChatClient](hubs/sample/hubs/ichatclient.cs?name=snippet_IChatClient)]
 
@@ -170,13 +170,13 @@ public interface IClient
 
 ## <a name="change-the-name-of-a-hub-method"></a><span data-ttu-id="0f032-187">허브 메서드 이름 변경</span><span class="sxs-lookup"><span data-stu-id="0f032-187">Change the name of a hub method</span></span>
 
-<span data-ttu-id="0f032-188">기본적으로 서버 허브 메서드 이름은 .NET 메서드의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-188">By default, a server hub method name is the name of the .NET method.</span></span> <span data-ttu-id="0f032-189">그러나 [HubMethodName](xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.HubMethodNameAttribute) 특성을 사용 하 여이 기본값을 변경 하 고 메서드의 이름을 수동으로 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-189">However, you can use the [HubMethodName](xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.HubMethodNameAttribute) attribute to change this default and manually specify a name for the method.</span></span> <span data-ttu-id="0f032-190">클라이언트는 메서드를 호출할 때 .NET 메서드 이름 대신이 이름을 사용 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-190">The client should use this name, instead of the .NET method name, when invoking the method.</span></span>
+<span data-ttu-id="0f032-188">기본적으로 서버 허브 메서드 이름은 .NET 메서드의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-188">By default, a server hub method name is the name of the .NET method.</span></span> <span data-ttu-id="0f032-189">그러나 [HubMethodName](xref:Microsoft.AspNetCore.SignalR.HubMethodNameAttribute) 특성을 사용 하 여이 기본값을 변경 하 고 메서드의 이름을 수동으로 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-189">However, you can use the [HubMethodName](xref:Microsoft.AspNetCore.SignalR.HubMethodNameAttribute) attribute to change this default and manually specify a name for the method.</span></span> <span data-ttu-id="0f032-190">클라이언트는 메서드를 호출할 때 .NET 메서드 이름 대신이 이름을 사용 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-190">The client should use this name, instead of the .NET method name, when invoking the method.</span></span>
 
 [!code-csharp[HubMethodName attribute](hubs/sample/hubs/chathub.cs?name=HubMethodName&highlight=1)]
 
 ## <a name="handle-events-for-a-connection"></a><span data-ttu-id="0f032-191">연결에 대 한 이벤트 처리</span><span class="sxs-lookup"><span data-stu-id="0f032-191">Handle events for a connection</span></span>
 
-<span data-ttu-id="0f032-192">:::no-loc(SignalR):::허브 API는 `OnConnectedAsync` `OnDisconnectedAsync` 연결을 관리 하 고 추적 하는 및 가상 메서드를 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-192">The :::no-loc(SignalR)::: Hubs API provides the `OnConnectedAsync` and `OnDisconnectedAsync` virtual methods to manage and track connections.</span></span> <span data-ttu-id="0f032-193">`OnConnectedAsync`클라이언트가 허브에 연결 하는 경우 (예: 그룹에 추가 하는 경우) 작업을 수행 하도록 가상 메서드를 재정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-193">Override the `OnConnectedAsync` virtual method to perform actions when a client connects to the Hub, such as adding it to a group.</span></span>
+<span data-ttu-id="0f032-192">SignalR허브 API는 `OnConnectedAsync` `OnDisconnectedAsync` 연결을 관리 하 고 추적 하는 및 가상 메서드를 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-192">The SignalR Hubs API provides the `OnConnectedAsync` and `OnDisconnectedAsync` virtual methods to manage and track connections.</span></span> <span data-ttu-id="0f032-193">`OnConnectedAsync`클라이언트가 허브에 연결 하는 경우 (예: 그룹에 추가 하는 경우) 작업을 수행 하도록 가상 메서드를 재정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-193">Override the `OnConnectedAsync` virtual method to perform actions when a client connects to the Hub, such as adding it to a group.</span></span>
 
 [!code-csharp[Handle connection](hubs/sample/hubs/chathub.cs?name=OnConnectedAsync)]
 
@@ -192,23 +192,23 @@ public interface IClient
 
 [!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=23)]
 
-<span data-ttu-id="0f032-201">허브가 예외를 throw 하는 경우 연결이 닫혀 있지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-201">If your Hub throws an exception, connections aren't closed.</span></span> <span data-ttu-id="0f032-202">기본적으로는 :::no-loc(SignalR)::: 일반 오류 메시지를 클라이언트에 반환 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-202">By default, :::no-loc(SignalR)::: returns a generic error message to the client.</span></span> <span data-ttu-id="0f032-203">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-203">For example:</span></span>
+<span data-ttu-id="0f032-201">허브가 예외를 throw 하는 경우 연결이 닫혀 있지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-201">If your Hub throws an exception, connections aren't closed.</span></span> <span data-ttu-id="0f032-202">기본적으로는 SignalR 일반 오류 메시지를 클라이언트에 반환 합니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-202">By default, SignalR returns a generic error message to the client.</span></span> <span data-ttu-id="0f032-203">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-203">For example:</span></span>
 
 ```
-Microsoft.AspNetCore.:::no-loc(SignalR):::.HubException: An unexpected error occurred invoking 'MethodName' on the server.
+Microsoft.AspNetCore.SignalR.HubException: An unexpected error occurred invoking 'MethodName' on the server.
 ```
 
-<span data-ttu-id="0f032-204">예기치 않은 예외에는 데이터베이스 연결에 실패 한 경우 트리거된 예외의 데이터베이스 서버 이름과 같은 중요 한 정보가 포함 되어 있는 경우가 많습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-204">Unexpected exceptions often contain sensitive information, such as the name of a database server in an exception triggered when the database connection fails.</span></span> <span data-ttu-id="0f032-205">:::no-loc(SignalR)::: 에서는 이러한 자세한 오류 메시지를 기본적으로 보안 조치로 노출 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-205">:::no-loc(SignalR)::: doesn't expose these detailed error messages by default as a security measure.</span></span> <span data-ttu-id="0f032-206">예외 정보를 표시 하지 않는 이유에 대 한 자세한 내용은 [보안 고려 사항 문서](xref:signalr/security#exceptions) 를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="0f032-206">See the [Security considerations article](xref:signalr/security#exceptions) for more information on why exception details are suppressed.</span></span>
+<span data-ttu-id="0f032-204">예기치 않은 예외에는 데이터베이스 연결에 실패 한 경우 트리거된 예외의 데이터베이스 서버 이름과 같은 중요 한 정보가 포함 되어 있는 경우가 많습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-204">Unexpected exceptions often contain sensitive information, such as the name of a database server in an exception triggered when the database connection fails.</span></span> <span data-ttu-id="0f032-205">SignalR 에서는 이러한 자세한 오류 메시지를 기본적으로 보안 조치로 노출 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-205">SignalR doesn't expose these detailed error messages by default as a security measure.</span></span> <span data-ttu-id="0f032-206">예외 정보를 표시 하지 않는 이유에 대 한 자세한 내용은 [보안 고려 사항 문서](xref:signalr/security#exceptions) 를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="0f032-206">See the [Security considerations article](xref:signalr/security#exceptions) for more information on why exception details are suppressed.</span></span>
 
-<span data-ttu-id="0f032-207">클라이언트에 *전파 하려는 예외* 조건이 있는 경우 클래스를 사용할 수 있습니다 `HubException` .</span><span class="sxs-lookup"><span data-stu-id="0f032-207">If you have an exceptional condition you *do* want to propagate to the client, you can use the `HubException` class.</span></span> <span data-ttu-id="0f032-208">허브 메서드에서을 throw 하는 경우는 `HubException` 수정 :::no-loc(SignalR)::: **되지** 않은 상태로 전체 메시지를 클라이언트에 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-208">If you throw a `HubException` from your hub method, :::no-loc(SignalR)::: **will** send the entire message to the client, unmodified.</span></span>
+<span data-ttu-id="0f032-207">클라이언트에 *전파 하려는 예외* 조건이 있는 경우 클래스를 사용할 수 있습니다 `HubException` .</span><span class="sxs-lookup"><span data-stu-id="0f032-207">If you have an exceptional condition you *do* want to propagate to the client, you can use the `HubException` class.</span></span> <span data-ttu-id="0f032-208">허브 메서드에서을 throw 하는 경우는 `HubException` 수정 SignalR **되지** 않은 상태로 전체 메시지를 클라이언트에 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-208">If you throw a `HubException` from your hub method, SignalR **will** send the entire message to the client, unmodified.</span></span>
 
 [!code-csharp[ThrowHubException](hubs/sample/hubs/chathub.cs?name=ThrowHubException&highlight=3)]
 
 > [!NOTE]
-> <span data-ttu-id="0f032-209">:::no-loc(SignalR)::: 는 `Message` 예외의 속성만 클라이언트에 게 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-209">:::no-loc(SignalR)::: only sends the `Message` property of the exception to the client.</span></span> <span data-ttu-id="0f032-210">예외에 대 한 스택 추적 및 기타 속성은 클라이언트에서 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-210">The stack trace and other properties on the exception aren't available to the client.</span></span>
+> <span data-ttu-id="0f032-209">SignalR 는 `Message` 예외의 속성만 클라이언트에 게 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-209">SignalR only sends the `Message` property of the exception to the client.</span></span> <span data-ttu-id="0f032-210">예외에 대 한 스택 추적 및 기타 속성은 클라이언트에서 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="0f032-210">The stack trace and other properties on the exception aren't available to the client.</span></span>
 
 ## <a name="related-resources"></a><span data-ttu-id="0f032-211">관련 리소스</span><span class="sxs-lookup"><span data-stu-id="0f032-211">Related resources</span></span>
 
-* [<span data-ttu-id="0f032-212">ASP.NET Core 소개 :::no-loc(SignalR):::</span><span class="sxs-lookup"><span data-stu-id="0f032-212">Intro to ASP.NET Core :::no-loc(SignalR):::</span></span>](xref:signalr/introduction)
+* [<span data-ttu-id="0f032-212">ASP.NET Core 소개 SignalR</span><span class="sxs-lookup"><span data-stu-id="0f032-212">Intro to ASP.NET Core SignalR</span></span>](xref:signalr/introduction)
 * [<span data-ttu-id="0f032-213">JavaScript 클라이언트</span><span class="sxs-lookup"><span data-stu-id="0f032-213">JavaScript client</span></span>](xref:signalr/javascript-client)
 * [<span data-ttu-id="0f032-214">Azure에 게시</span><span class="sxs-lookup"><span data-stu-id="0f032-214">Publish to Azure</span></span>](xref:signalr/publish-to-azure-web-app)

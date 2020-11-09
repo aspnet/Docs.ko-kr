@@ -1,23 +1,23 @@
 ---
-title: 'ASP.NET Core :::no-loc(Blazor)::: 구성 요소 가상화'
+title: 'ASP.NET Core Blazor 구성 요소 가상화'
 author: guardrex
-description: 'ASP.NET Core :::no-loc(Blazor)::: 앱에서 구성 요소 가상화를 사용하는 방법을 알아봅니다.'
+description: 'ASP.NET Core Blazor 앱에서 구성 요소 가상화를 사용하는 방법을 알아봅니다.'
 monikerRange: '>= aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/02/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/components/virtualization
 ms.openlocfilehash: b23e4814daaabbe2c8660d49cc5b6940a9cc3b4f
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,11 +26,11 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056168"
 ---
-# <a name="aspnet-core-no-locblazor-component-virtualization"></a><span data-ttu-id="f0df7-103">ASP.NET Core :::no-loc(Blazor)::: 구성 요소 가상화</span><span class="sxs-lookup"><span data-stu-id="f0df7-103">ASP.NET Core :::no-loc(Blazor)::: component virtualization</span></span>
+# <a name="aspnet-core-no-locblazor-component-virtualization"></a><span data-ttu-id="f0df7-103">ASP.NET Core Blazor 구성 요소 가상화</span><span class="sxs-lookup"><span data-stu-id="f0df7-103">ASP.NET Core Blazor component virtualization</span></span>
 
 <span data-ttu-id="f0df7-104">작성자: [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="f0df7-104">By [Daniel Roth](https://github.com/danroth27)</span></span>
 
-<span data-ttu-id="f0df7-105">:::no-loc(Blazor)::: 프레임워크의 기본 제공 가상화 지원을 사용하여 구성 요소 렌더링의 인식된 성능을 향상합니다.</span><span class="sxs-lookup"><span data-stu-id="f0df7-105">Improve the perceived performance of component rendering using the :::no-loc(Blazor)::: framework's built-in virtualization support.</span></span> <span data-ttu-id="f0df7-106">가상화는 UI 렌더링을 현재 표시되는 부분으로만 제한하는 기술입니다.</span><span class="sxs-lookup"><span data-stu-id="f0df7-106">Virtualization is a technique for limiting UI rendering to just the parts that are currently visible.</span></span> <span data-ttu-id="f0df7-107">예를 들어 가상화는 앱에서 긴 항목 목록을 렌더링해야 하고 지정된 시간에 항목의 하위 집합만 표시해야 하는 경우에 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="f0df7-107">For example, virtualization is helpful when the app must render a long list of items and only a subset of items is required to be visible at any given time.</span></span> <span data-ttu-id="f0df7-108">:::no-loc(Blazor):::는 앱의 구성 요소에 가상화를 추가하는 데 사용할 수 있는 `Virtualize` 구성 요소를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f0df7-108">:::no-loc(Blazor)::: provides the `Virtualize` component that can be used to add virtualization to an app's components.</span></span>
+<span data-ttu-id="f0df7-105">Blazor 프레임워크의 기본 제공 가상화 지원을 사용하여 구성 요소 렌더링의 인식된 성능을 향상합니다.</span><span class="sxs-lookup"><span data-stu-id="f0df7-105">Improve the perceived performance of component rendering using the Blazor framework's built-in virtualization support.</span></span> <span data-ttu-id="f0df7-106">가상화는 UI 렌더링을 현재 표시되는 부분으로만 제한하는 기술입니다.</span><span class="sxs-lookup"><span data-stu-id="f0df7-106">Virtualization is a technique for limiting UI rendering to just the parts that are currently visible.</span></span> <span data-ttu-id="f0df7-107">예를 들어 가상화는 앱에서 긴 항목 목록을 렌더링해야 하고 지정된 시간에 항목의 하위 집합만 표시해야 하는 경우에 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="f0df7-107">For example, virtualization is helpful when the app must render a long list of items and only a subset of items is required to be visible at any given time.</span></span> <span data-ttu-id="f0df7-108">Blazor는 앱의 구성 요소에 가상화를 추가하는 데 사용할 수 있는 `Virtualize` 구성 요소를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f0df7-108">Blazor provides the `Virtualize` component that can be used to add virtualization to an app's components.</span></span>
 
 <span data-ttu-id="f0df7-109">가상화를 사용하지 않는 경우 일반적인 목록은 C# [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) 루프를 사용하여 목록의 각 항목을 렌더링할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f0df7-109">Without virtualization, a typical list might use a C# [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) loop to render each item in the list:</span></span>
 
@@ -72,9 +72,9 @@ ms.locfileid: "93056168"
 
 <span data-ttu-id="f0df7-116">`Virtualize` 구성 요소에 대한 항목 콘텐츠에는 다음이 포함될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f0df7-116">The item content for the `Virtualize` component can include:</span></span>
 
-* <span data-ttu-id="f0df7-117">이전 예제처럼 일반 HTML 및 :::no-loc(Razor)::: 코드</span><span class="sxs-lookup"><span data-stu-id="f0df7-117">Plain HTML and :::no-loc(Razor)::: code, as the preceding example shows.</span></span>
-* <span data-ttu-id="f0df7-118">하나 이상의 :::no-loc(Razor)::: 구성 요소</span><span class="sxs-lookup"><span data-stu-id="f0df7-118">One or more :::no-loc(Razor)::: components.</span></span>
-* <span data-ttu-id="f0df7-119">HTML/:::no-loc(Razor)::: 및 :::no-loc(Razor)::: 구성 요소의 혼합</span><span class="sxs-lookup"><span data-stu-id="f0df7-119">A mix of HTML/:::no-loc(Razor)::: and :::no-loc(Razor)::: components.</span></span>
+* <span data-ttu-id="f0df7-117">이전 예제처럼 일반 HTML 및 Razor 코드</span><span class="sxs-lookup"><span data-stu-id="f0df7-117">Plain HTML and Razor code, as the preceding example shows.</span></span>
+* <span data-ttu-id="f0df7-118">하나 이상의 Razor 구성 요소</span><span class="sxs-lookup"><span data-stu-id="f0df7-118">One or more Razor components.</span></span>
+* <span data-ttu-id="f0df7-119">HTML/Razor 및 Razor 구성 요소의 혼합</span><span class="sxs-lookup"><span data-stu-id="f0df7-119">A mix of HTML/Razor and Razor components.</span></span>
 
 ## <a name="item-provider-delegate"></a><span data-ttu-id="f0df7-120">항목 공급자 대리자</span><span class="sxs-lookup"><span data-stu-id="f0df7-120">Item provider delegate</span></span>
 

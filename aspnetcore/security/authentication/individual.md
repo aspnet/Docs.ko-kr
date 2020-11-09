@@ -5,17 +5,17 @@ description: 개별 사용자 계정을 사용 하 여 만든 ASP.NET Core 프�
 ms.author: riande
 ms.date: 12/11/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/individual
 ms.openlocfilehash: 656006396de120b7feae6f2e08b5dad3b5a170b5
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,7 +26,7 @@ ms.locfileid: "93053347"
 ---
 # <a name="articles-based-on-aspnet-core-projects-created-with-individual-user-accounts"></a><span data-ttu-id="63849-103">개별 사용자 계정을 사용 하 여 만든 ASP.NET Core 프로젝트를 기반으로 하는 문서</span><span class="sxs-lookup"><span data-stu-id="63849-103">Articles based on ASP.NET Core projects created with individual user accounts</span></span>
 
-<span data-ttu-id="63849-104">:::no-loc(ASP.NET Core Identity)::: 는 "개별 사용자 계정" 옵션을 사용 하 여 Visual Studio의 프로젝트 템플릿에 포함 되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="63849-104">:::no-loc(ASP.NET Core Identity)::: is included in project templates in Visual Studio with the "Individual User Accounts" option.</span></span>
+<span data-ttu-id="63849-104">ASP.NET Core Identity 는 "개별 사용자 계정" 옵션을 사용 하 여 Visual Studio의 프로젝트 템플릿에 포함 되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="63849-104">ASP.NET Core Identity is included in project templates in Visual Studio with the "Individual User Accounts" option.</span></span>
 
 <span data-ttu-id="63849-105">인증 템플릿은 .NET Core CLI에서 사용할 수 있습니다 `-au Individual` .</span><span class="sxs-lookup"><span data-stu-id="63849-105">The authentication templates are available in .NET Core CLI with `-au Individual`:</span></span>
 

@@ -6,17 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/13/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
 ms.openlocfilehash: d39db59b0fc273fe4193a4864f302ecd3f4ad348
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -151,7 +151,7 @@ ms.locfileid: "93060913"
 
 <span data-ttu-id="e536b-147">[asp-all-route-data](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) 특성은 키-값 쌍 사전을 만들 수 있도록 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-147">The [asp-all-route-data](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) attribute supports the creation of a dictionary of key-value pairs.</span></span> <span data-ttu-id="e536b-148">키는 매개 변수 이름이고, 값은 매개 변수 값입니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-148">The key is the parameter name, and the value is the parameter value.</span></span>
 
-<span data-ttu-id="e536b-149">다음 예제에서는 사전이 초기화 되어 뷰에 전달 됩니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="e536b-149">In the following example, a dictionary is initialized and passed to a :::no-loc(Razor)::: view.</span></span> <span data-ttu-id="e536b-150">또는 모델을 사용하여 데이터를 전달할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-150">Alternatively, the data could be passed in with your model.</span></span>
+<span data-ttu-id="e536b-149">다음 예제에서는 사전이 초기화 되어 뷰에 전달 됩니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="e536b-149">In the following example, a dictionary is initialized and passed to a Razor view.</span></span> <span data-ttu-id="e536b-150">또는 모델을 사용하여 데이터를 전달할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-150">Alternatively, the data could be passed in with your model.</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAllRouteData)]
 
@@ -185,9 +185,9 @@ ms.locfileid: "93060913"
 
 <span data-ttu-id="e536b-163">[asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) 특성은 적절한 경로를 설정하는 데 사용되는 영역 이름을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-163">The [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) attribute sets the area name used to set the appropriate route.</span></span> <span data-ttu-id="e536b-164">이어지는 예제는 `asp-area` 특성이 경로를 다시 매핑하는 방법을 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-164">The following examples depict how the `asp-area` attribute causes a remapping of routes.</span></span>
 
-#### <a name="usage-in-no-locrazor-pages"></a><span data-ttu-id="e536b-165">페이지에서 사용 :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="e536b-165">Usage in :::no-loc(Razor)::: Pages</span></span>
+#### <a name="usage-in-no-locrazor-pages"></a><span data-ttu-id="e536b-165">페이지에서 사용 Razor</span><span class="sxs-lookup"><span data-stu-id="e536b-165">Usage in Razor Pages</span></span>
 
-<span data-ttu-id="e536b-166">:::no-loc(Razor)::: 페이지 영역은 ASP.NET Core 2.1 이상에서 지원 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-166">:::no-loc(Razor)::: Pages areas are supported in ASP.NET Core 2.1 or later.</span></span>
+<span data-ttu-id="e536b-166">Razor 페이지 영역은 ASP.NET Core 2.1 이상에서 지원 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-166">Razor Pages areas are supported in ASP.NET Core 2.1 or later.</span></span>
 
 <span data-ttu-id="e536b-167">다음 디렉터리 계층 구조를 고려해보세요.</span><span class="sxs-lookup"><span data-stu-id="e536b-167">Consider the following directory hierarchy:</span></span>
 
@@ -201,9 +201,9 @@ ms.locfileid: "93060913"
         * <span data-ttu-id="e536b-175">*Index.cshtml.cs*</span><span class="sxs-lookup"><span data-stu-id="e536b-175">*Index.cshtml.cs*</span></span>
   * <span data-ttu-id="e536b-176">**페이지**</span><span class="sxs-lookup"><span data-stu-id="e536b-176">**Pages**</span></span>
 
-<span data-ttu-id="e536b-177">*세션* 영역 *인덱스* 페이지를 참조할 태그는 :::no-loc(Razor)::: 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-177">The markup to reference the *Sessions* area *Index* :::no-loc(Razor)::: Page is:</span></span>
+<span data-ttu-id="e536b-177">*세션* 영역 *인덱스* 페이지를 참조할 태그는 Razor 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-177">The markup to reference the *Sessions* area *Index* Razor Page is:</span></span>
 
-[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspArea:::no-loc(Razor):::Pages)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAreaRazorPages)]
 
 <span data-ttu-id="e536b-178">생성되는 HTML은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-178">The generated HTML:</span></span>
 
@@ -212,10 +212,10 @@ ms.locfileid: "93060913"
 ```
 
 > [!TIP]
-> <span data-ttu-id="e536b-179">페이지 앱에서 영역을 지원 하려면 :::no-loc(Razor)::: 에서 다음 중 하나를 수행 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="e536b-179">To support areas in a :::no-loc(Razor)::: Pages app, do one of the following in `Startup.ConfigureServices`:</span></span>
+> <span data-ttu-id="e536b-179">페이지 앱에서 영역을 지원 하려면 Razor 에서 다음 중 하나를 수행 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="e536b-179">To support areas in a Razor Pages app, do one of the following in `Startup.ConfigureServices`:</span></span>
 >
 > * <span data-ttu-id="e536b-180">[호환성 버전](xref:mvc/compatibility-version)을 2.1 이상으로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-180">Set the [compatibility version](xref:mvc/compatibility-version) to 2.1 or later.</span></span>
-> * <span data-ttu-id="e536b-181">작업 [ :::no-loc(Razor)::: 옵션. allowareas](xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages.:::no-loc(Razor):::PagesOptions.AllowAreas*) 속성을 다음으로 설정 합니다. `true`</span><span class="sxs-lookup"><span data-stu-id="e536b-181">Set the [:::no-loc(Razor):::PagesOptions.AllowAreas](xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::Pages.:::no-loc(Razor):::PagesOptions.AllowAreas*) property to `true`:</span></span>
+> * <span data-ttu-id="e536b-181">작업 [ Razor 옵션. allowareas](xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.AllowAreas*) 속성을 다음으로 설정 합니다. `true`</span><span class="sxs-lookup"><span data-stu-id="e536b-181">Set the [RazorPagesOptions.AllowAreas](xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.AllowAreas*) property to `true`:</span></span>
 >
 >   [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_AllowAreas)]
 
@@ -279,9 +279,9 @@ ms.locfileid: "93060913"
 
 ### <a name="asp-page"></a><span data-ttu-id="e536b-211">asp-page</span><span class="sxs-lookup"><span data-stu-id="e536b-211">asp-page</span></span>
 
-<span data-ttu-id="e536b-212">[Asp 페이지](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*) 특성은 페이지와 함께 사용 됩니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="e536b-212">The [asp-page](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*) attribute is used with :::no-loc(Razor)::: Pages.</span></span> <span data-ttu-id="e536b-213">이 특성은 앵커 태그의 `href` 특성 값을 특정 페이지로 설정하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-213">Use it to set an anchor tag's `href` attribute value to a specific page.</span></span> <span data-ttu-id="e536b-214">페이지 이름 앞에 슬래시("/")를 접두사로 사용해서 URL을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-214">Prefixing the page name with a forward slash ("/") creates the URL.</span></span>
+<span data-ttu-id="e536b-212">[Asp 페이지](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*) 특성은 페이지와 함께 사용 됩니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="e536b-212">The [asp-page](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*) attribute is used with Razor Pages.</span></span> <span data-ttu-id="e536b-213">이 특성은 앵커 태그의 `href` 특성 값을 특정 페이지로 설정하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-213">Use it to set an anchor tag's `href` attribute value to a specific page.</span></span> <span data-ttu-id="e536b-214">페이지 이름 앞에 슬래시("/")를 접두사로 사용해서 URL을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-214">Prefixing the page name with a forward slash ("/") creates the URL.</span></span>
 
-<span data-ttu-id="e536b-215">다음 샘플에서는 참석자 페이지를 가리킵니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="e536b-215">The following sample points to the attendee :::no-loc(Razor)::: Page:</span></span>
+<span data-ttu-id="e536b-215">다음 샘플에서는 참석자 페이지를 가리킵니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="e536b-215">The following sample points to the attendee Razor Page:</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPage)]
 
@@ -303,7 +303,7 @@ ms.locfileid: "93060913"
 
 ### <a name="asp-page-handler"></a><span data-ttu-id="e536b-220">asp-page-handler</span><span class="sxs-lookup"><span data-stu-id="e536b-220">asp-page-handler</span></span>
 
-<span data-ttu-id="e536b-221">[Asp-페이지 처리기](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*) 특성은 페이지와 함께 사용 됩니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="e536b-221">The [asp-page-handler](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*) attribute is used with :::no-loc(Razor)::: Pages.</span></span> <span data-ttu-id="e536b-222">이 특성은 특정 페이지 처리기에 연결하기 위한 것입니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-222">It's intended for linking to specific page handlers.</span></span>
+<span data-ttu-id="e536b-221">[Asp-페이지 처리기](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*) 특성은 페이지와 함께 사용 됩니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="e536b-221">The [asp-page-handler](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*) attribute is used with Razor Pages.</span></span> <span data-ttu-id="e536b-222">이 특성은 특정 페이지 처리기에 연결하기 위한 것입니다.</span><span class="sxs-lookup"><span data-stu-id="e536b-222">It's intended for linking to specific page handlers.</span></span>
 
 <span data-ttu-id="e536b-223">다음 페이지 처리기를 고려해보세요.</span><span class="sxs-lookup"><span data-stu-id="e536b-223">Consider the following page handler:</span></span>
 

@@ -1,22 +1,22 @@
 ---
-title: '8부. ASP.NET Core에서 EF Core를 사용한 :::no-loc(Razor)::: Pages - 동시성'
+title: '8부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 동시성'
 author: rick-anderson
-description: ':::no-loc(Razor)::: Pages 및 Entity Framework 자습서 시리즈의 8부입니다.'
+description: 'Razor Pages 및 Entity Framework 자습서 시리즈의 8부입니다.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/ef-rp/concurrency
 ms.openlocfilehash: 573a509041bfb34faf50a227c451824db03f92ee
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,7 +25,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93053997"
 ---
-# <a name="part-8-no-locrazor-pages-with-ef-core-in-aspnet-core---concurrency"></a><span data-ttu-id="b6bf4-103">8부. ASP.NET Core에서 EF Core를 사용한 :::no-loc(Razor)::: Pages - 동시성</span><span class="sxs-lookup"><span data-stu-id="b6bf4-103">Part 8, :::no-loc(Razor)::: Pages with EF Core in ASP.NET Core - Concurrency</span></span>
+# <a name="part-8-no-locrazor-pages-with-ef-core-in-aspnet-core---concurrency"></a><span data-ttu-id="b6bf4-103">8부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 동시성</span><span class="sxs-lookup"><span data-stu-id="b6bf4-103">Part 8, Razor Pages with EF Core in ASP.NET Core - Concurrency</span></span>
 
 <span data-ttu-id="b6bf4-104">작성자: [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra) 및 [Jon P Smith](https://twitter.com/thereformedprog)</span><span class="sxs-lookup"><span data-stu-id="b6bf4-104">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra), and [Jon P Smith](https://twitter.com/thereformedprog)</span></span>
 
@@ -268,7 +268,7 @@ modelBuilder.Entity<Department>()
 
 <span data-ttu-id="b6bf4-244">앞의 강조 표시된 코드에서 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-244">In the preceding highlighted code:</span></span>
 
-* <span data-ttu-id="b6bf4-245">`Department.RowVersion`의 값은 편집 페이지에 대한 Get 요청에서 원래 페치되었을 때 엔터티에 있었던 값입니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-245">The value in `Department.RowVersion` is what was in the entity when it was originally fetched in the Get request for the Edit page.</span></span> <span data-ttu-id="b6bf4-246">이 값은 편집할 엔터티를 표시하는 :::no-loc(Razor)::: 페이지의 숨겨진 필드를 통해 `OnPost` 메서드에 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-246">The value is provided to the `OnPost` method by a hidden field in the :::no-loc(Razor)::: page that displays the entity to be edited.</span></span> <span data-ttu-id="b6bf4-247">숨겨진 필드 값은 모델 바인더를 통해 `Department.RowVersion`에 복사됩니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-247">The hidden field value is copied to `Department.RowVersion` by the model binder.</span></span>
+* <span data-ttu-id="b6bf4-245">`Department.RowVersion`의 값은 편집 페이지에 대한 Get 요청에서 원래 페치되었을 때 엔터티에 있었던 값입니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-245">The value in `Department.RowVersion` is what was in the entity when it was originally fetched in the Get request for the Edit page.</span></span> <span data-ttu-id="b6bf4-246">이 값은 편집할 엔터티를 표시하는 Razor 페이지의 숨겨진 필드를 통해 `OnPost` 메서드에 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-246">The value is provided to the `OnPost` method by a hidden field in the Razor page that displays the entity to be edited.</span></span> <span data-ttu-id="b6bf4-247">숨겨진 필드 값은 모델 바인더를 통해 `Department.RowVersion`에 복사됩니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-247">The hidden field value is copied to `Department.RowVersion` by the model binder.</span></span>
 * <span data-ttu-id="b6bf4-248">`OriginalValue`는 EF Core가 Where 절에서 사용할 값입니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-248">`OriginalValue` is what EF Core will use in the Where clause.</span></span> <span data-ttu-id="b6bf4-249">강조 표시된 코드 줄이 실행되기 전에 `OriginalValue`에는 `FirstOrDefaultAsync`가 이 메서드에서 호출될 때 데이터베이스에 있었던 값이 포함되며, 이 값은 편집 페이지에 표시된 값과 다를 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-249">Before the highlighted line of code executes, `OriginalValue` has the value that was in the database when `FirstOrDefaultAsync` was called in this method, which might be different from what was displayed on the Edit page.</span></span>
 * <span data-ttu-id="b6bf4-250">강조 표시된 코드는 EF Core가 SQL UPDATE 문의 Where 절에 표시된 `Department` 엔터티의 원래 `RowVersion` 값을 사용하는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-250">The highlighted code makes sure that EF Core uses the original `RowVersion` value from the displayed `Department` entity in the SQL UPDATE statement's Where clause.</span></span>
 
@@ -284,7 +284,7 @@ modelBuilder.Entity<Department>()
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_TryUpdateModel&highlight=28)]
 
-<span data-ttu-id="b6bf4-255">`ModelState`에 이전 `RowVersion` 값이 있으므로 `ModelState.Remove` 문이 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-255">The `ModelState.Remove` statement is required because `ModelState` has the old `RowVersion` value.</span></span> <span data-ttu-id="b6bf4-256">:::no-loc(Razor)::: 페이지에서 필드의 `ModelState` 값은 모델 속성 값에 우선합니다(둘 다 있는 경우).</span><span class="sxs-lookup"><span data-stu-id="b6bf4-256">In the :::no-loc(Razor)::: Page, the `ModelState` value for a field takes precedence over the model property values when both are present.</span></span>
+<span data-ttu-id="b6bf4-255">`ModelState`에 이전 `RowVersion` 값이 있으므로 `ModelState.Remove` 문이 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-255">The `ModelState.Remove` statement is required because `ModelState` has the old `RowVersion` value.</span></span> <span data-ttu-id="b6bf4-256">Razor 페이지에서 필드의 `ModelState` 값은 모델 속성 값에 우선합니다(둘 다 있는 경우).</span><span class="sxs-lookup"><span data-stu-id="b6bf4-256">In the Razor Page, the `ModelState` value for a field takes precedence over the model property values when both are present.</span></span>
 
 ### <a name="update-the-edit-page"></a><span data-ttu-id="b6bf4-257">편집 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="b6bf4-257">Update the Edit page</span></span>
 
@@ -580,7 +580,7 @@ dotnet ef database update
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=23)]
 
-<span data-ttu-id="b6bf4-443">`ModelState`에 이전 `RowVersion` 값이 있으므로 `ModelState.Remove` 문이 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-443">The `ModelState.Remove` statement is required because `ModelState` has the old `RowVersion` value.</span></span> <span data-ttu-id="b6bf4-444">:::no-loc(Razor)::: 페이지에서 필드의 `ModelState` 값은 모델 속성 값에 우선합니다(둘 다 있는 경우).</span><span class="sxs-lookup"><span data-stu-id="b6bf4-444">In the :::no-loc(Razor)::: Page, the `ModelState` value for a field takes precedence over the model property values when both are present.</span></span>
+<span data-ttu-id="b6bf4-443">`ModelState`에 이전 `RowVersion` 값이 있으므로 `ModelState.Remove` 문이 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="b6bf4-443">The `ModelState.Remove` statement is required because `ModelState` has the old `RowVersion` value.</span></span> <span data-ttu-id="b6bf4-444">Razor 페이지에서 필드의 `ModelState` 값은 모델 속성 값에 우선합니다(둘 다 있는 경우).</span><span class="sxs-lookup"><span data-stu-id="b6bf4-444">In the Razor Page, the `ModelState` value for a field takes precedence over the model property values when both are present.</span></span>
 
 ## <a name="update-the-edit-page"></a><span data-ttu-id="b6bf4-445">편집 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="b6bf4-445">Update the Edit page</span></span>
 

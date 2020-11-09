@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/tag-helpers/authoring
 ms.openlocfilehash: 306416db3d9ae0219f859c3cf459eb08a5b778cf
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -77,11 +77,11 @@ ms.locfileid: "93060926"
    public class Email : TagHelper
    ```
 
-1. <span data-ttu-id="2351f-134">`EmailTagHelper`모든 보기에서 클래스를 사용할 수 있도록 하려면 :::no-loc(Razor)::: `addTagHelper` 다음 지시문을 *views/_ViewImports에 추가 합니다.*</span><span class="sxs-lookup"><span data-stu-id="2351f-134">To make the `EmailTagHelper` class available to all our :::no-loc(Razor)::: views, add the `addTagHelper` directive to the *Views/_ViewImports.cshtml* file:</span></span>
+1. <span data-ttu-id="2351f-134">`EmailTagHelper`모든 보기에서 클래스를 사용할 수 있도록 하려면 Razor `addTagHelper` 다음 지시문을 *views/_ViewImports에 추가 합니다.*</span><span class="sxs-lookup"><span data-stu-id="2351f-134">To make the `EmailTagHelper` class available to all our Razor views, add the `addTagHelper` directive to the *Views/_ViewImports.cshtml* file:</span></span>
 
    [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
 
-   <span data-ttu-id="2351f-135">위의 코드에서는 와일드 카드 구문을 사용하여 사용할 수 있는 모든 태그 도우미를 어셈블리에서 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-135">The code above uses the wildcard syntax to specify all the tag helpers in our assembly will be available.</span></span> <span data-ttu-id="2351f-136">`@addTagHelper` 뒤의 첫 번째 문자열은 로드할 태그 도우미(모든 태그 도우미에 "\*" 사용)를 지정하고 두 번째 문자열 "AuthoringTagHelpers"는 태그 도우미가 있는 어셈블리를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-136">The first string after `@addTagHelper` specifies the tag helper to load (Use "\*" for all tag helpers), and the second string "AuthoringTagHelpers" specifies the assembly the tag helper is in.</span></span> <span data-ttu-id="2351f-137">또한 두 번째 줄은 와일드 카드 구문을 사용 하 여 ASP.NET Core MVC 태그 도우미에 표시 됩니다. 해당 도우미는 [태그 도우미 소개](intro.md)에 설명 되어 있습니다. 이 지시문은 `@addTagHelper` 태그 도우미를 뷰에서 사용할 수 있도록 하는 지시문입니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="2351f-137">Also, note that the second line brings in the ASP.NET Core MVC tag helpers using the wildcard syntax (those helpers are discussed in [Introduction to Tag Helpers](intro.md).) It's the `@addTagHelper` directive that makes the tag helper available to the :::no-loc(Razor)::: view.</span></span> <span data-ttu-id="2351f-138">또는 아래 표시된 것처럼 태그 도우미의 FQN(정규화된 이름)을 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-138">Alternatively, you can provide the fully qualified name (FQN) of a tag helper as shown below:</span></span>
+   <span data-ttu-id="2351f-135">위의 코드에서는 와일드 카드 구문을 사용하여 사용할 수 있는 모든 태그 도우미를 어셈블리에서 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-135">The code above uses the wildcard syntax to specify all the tag helpers in our assembly will be available.</span></span> <span data-ttu-id="2351f-136">`@addTagHelper` 뒤의 첫 번째 문자열은 로드할 태그 도우미(모든 태그 도우미에 "\*" 사용)를 지정하고 두 번째 문자열 "AuthoringTagHelpers"는 태그 도우미가 있는 어셈블리를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-136">The first string after `@addTagHelper` specifies the tag helper to load (Use "\*" for all tag helpers), and the second string "AuthoringTagHelpers" specifies the assembly the tag helper is in.</span></span> <span data-ttu-id="2351f-137">또한 두 번째 줄은 와일드 카드 구문을 사용 하 여 ASP.NET Core MVC 태그 도우미에 표시 됩니다. 해당 도우미는 [태그 도우미 소개](intro.md)에 설명 되어 있습니다. 이 지시문은 `@addTagHelper` 태그 도우미를 뷰에서 사용할 수 있도록 하는 지시문입니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="2351f-137">Also, note that the second line brings in the ASP.NET Core MVC tag helpers using the wildcard syntax (those helpers are discussed in [Introduction to Tag Helpers](intro.md).) It's the `@addTagHelper` directive that makes the tag helper available to the Razor view.</span></span> <span data-ttu-id="2351f-138">또는 아래 표시된 것처럼 태그 도우미의 FQN(정규화된 이름)을 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-138">Alternatively, you can provide the fully qualified name (FQN) of a tag helper as shown below:</span></span>
 
 ```csharp
 @using AuthoringTagHelpers
@@ -104,7 +104,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 ## <a name="setattribute-and-setcontent"></a><span data-ttu-id="2351f-146">SetAttribute 및 SetContent</span><span class="sxs-lookup"><span data-stu-id="2351f-146">SetAttribute and SetContent</span></span>
 
-<span data-ttu-id="2351f-147">이 섹션에서는 `EmailTagHelper`를 업데이트하여 이메일에 대한 유효한 앵커 태그를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-147">In this section, we'll update the `EmailTagHelper` so that it will create a valid anchor tag for email.</span></span> <span data-ttu-id="2351f-148">이를 업데이트 하 여 :::no-loc(Razor)::: 보기 (특성 형식)에서 정보를 가져와 `mail-to` 앵커 생성에 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-148">We'll update it to take information from a :::no-loc(Razor)::: view (in the form of a `mail-to` attribute) and use that in generating the anchor.</span></span>
+<span data-ttu-id="2351f-147">이 섹션에서는 `EmailTagHelper`를 업데이트하여 이메일에 대한 유효한 앵커 태그를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-147">In this section, we'll update the `EmailTagHelper` so that it will create a valid anchor tag for email.</span></span> <span data-ttu-id="2351f-148">이를 업데이트 하 여 Razor 보기 (특성 형식)에서 정보를 가져와 `mail-to` 앵커 생성에 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-148">We'll update it to take information from a Razor view (in the form of a `mail-to` attribute) and use that in generating the anchor.</span></span>
 
 <span data-ttu-id="2351f-149">`EmailTagHelper` 클래스를 다음으로 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-149">Update the `EmailTagHelper` class with the following:</span></span>
 
@@ -205,7 +205,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs)]
 
-   * <span data-ttu-id="2351f-196">앞에서 언급했듯이, 태그 도우미는 파스칼식 C# 클래스 이름과 태그 도우미 속성을 [kebab case](https://wiki.c2.com/?KebabCase)로 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-196">As mentioned previously, tag helpers translates Pascal-cased C# class names and properties for tag helpers into [kebab case](https://wiki.c2.com/?KebabCase).</span></span> <span data-ttu-id="2351f-197">따라서에서를 사용 하려면 `WebsiteInformationTagHelper` 를 :::no-loc(Razor)::: 작성 `<website-information />` 합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-197">Therefore, to use the `WebsiteInformationTagHelper` in :::no-loc(Razor):::, you'll write `<website-information />`.</span></span>
+   * <span data-ttu-id="2351f-196">앞에서 언급했듯이, 태그 도우미는 파스칼식 C# 클래스 이름과 태그 도우미 속성을 [kebab case](https://wiki.c2.com/?KebabCase)로 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-196">As mentioned previously, tag helpers translates Pascal-cased C# class names and properties for tag helpers into [kebab case](https://wiki.c2.com/?KebabCase).</span></span> <span data-ttu-id="2351f-197">따라서에서를 사용 하려면 `WebsiteInformationTagHelper` 를 Razor 작성 `<website-information />` 합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-197">Therefore, to use the `WebsiteInformationTagHelper` in Razor, you'll write `<website-information />`.</span></span>
 
    * <span data-ttu-id="2351f-198">`[HtmlTargetElement]` 특성을 사용하여 대상 요소를 명시적으로 식별하지 않으므로 `website-information`의 기본값이 대상으로 지정됩니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-198">You are not explicitly identifying the target element with the `[HtmlTargetElement]` attribute, so the default of `website-information` will be targeted.</span></span> <span data-ttu-id="2351f-199">다음 특성을 적용한 경우(kebab 대/소문자는 아니지만 클래스 이름 일치):</span><span class="sxs-lookup"><span data-stu-id="2351f-199">If you applied the following attribute (note it's not kebab case but matches the class name):</span></span>
 
@@ -219,7 +219,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
    [HtmlTargetElement("Website-Information")]
    ```
 
-   * <span data-ttu-id="2351f-202">자체 닫음 요소에는 내용이 없습니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-202">Elements that are self-closing have no content.</span></span> <span data-ttu-id="2351f-203">이 예제에서 태그는 :::no-loc(Razor)::: 자체 닫는 태그를 사용 하지만, 태그 도우미는 [section](https://www.w3.org/TR/html5/sections.html#the-section-element) 요소를 만듭니다 .이 요소는 자체 닫히지 않으며 요소 내에 콘텐츠를 작성 하는 것입니다 `section` .</span><span class="sxs-lookup"><span data-stu-id="2351f-203">For this example, the :::no-loc(Razor)::: markup will use a self-closing tag, but the tag helper will be creating a [section](https://www.w3.org/TR/html5/sections.html#the-section-element) element (which isn't self-closing and you are writing content inside the `section` element).</span></span> <span data-ttu-id="2351f-204">따라서 `TagMode`를 `StartTagAndEndTag`로 설정하여 출력을 작성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-204">Therefore, you need to set `TagMode` to `StartTagAndEndTag` to write output.</span></span> <span data-ttu-id="2351f-205">또는 `TagMode` 설정 줄을 주석 처리하고 닫는 태그로 태그를 작성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-205">Alternatively, you can comment out the line setting `TagMode` and write markup with a closing tag.</span></span> <span data-ttu-id="2351f-206">(예제 태그는 이 자습서의 뒷부분에 제공됩니다.)</span><span class="sxs-lookup"><span data-stu-id="2351f-206">(Example markup is provided later in this tutorial.)</span></span>
+   * <span data-ttu-id="2351f-202">자체 닫음 요소에는 내용이 없습니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-202">Elements that are self-closing have no content.</span></span> <span data-ttu-id="2351f-203">이 예제에서 태그는 Razor 자체 닫는 태그를 사용 하지만, 태그 도우미는 [section](https://www.w3.org/TR/html5/sections.html#the-section-element) 요소를 만듭니다 .이 요소는 자체 닫히지 않으며 요소 내에 콘텐츠를 작성 하는 것입니다 `section` .</span><span class="sxs-lookup"><span data-stu-id="2351f-203">For this example, the Razor markup will use a self-closing tag, but the tag helper will be creating a [section](https://www.w3.org/TR/html5/sections.html#the-section-element) element (which isn't self-closing and you are writing content inside the `section` element).</span></span> <span data-ttu-id="2351f-204">따라서 `TagMode`를 `StartTagAndEndTag`로 설정하여 출력을 작성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-204">Therefore, you need to set `TagMode` to `StartTagAndEndTag` to write output.</span></span> <span data-ttu-id="2351f-205">또는 `TagMode` 설정 줄을 주석 처리하고 닫는 태그로 태그를 작성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-205">Alternatively, you can comment out the line setting `TagMode` and write markup with a closing tag.</span></span> <span data-ttu-id="2351f-206">(예제 태그는 이 자습서의 뒷부분에 제공됩니다.)</span><span class="sxs-lookup"><span data-stu-id="2351f-206">(Example markup is provided later in this tutorial.)</span></span>
 
    * <span data-ttu-id="2351f-207">다음 줄에서 `$`(달러 기호)는 [보간된 문자열](/dotnet/csharp/language-reference/keywords/interpolated-strings)을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-207">The `$` (dollar sign) in the following line uses an [interpolated string](/dotnet/csharp/language-reference/keywords/interpolated-strings):</span></span>
 
@@ -232,11 +232,11 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
    [!code-cshtml[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,4-8, 18-999)]
 
    > [!NOTE]
-   > <span data-ttu-id="2351f-210">:::no-loc(Razor):::아래 표시 된 태그에서:</span><span class="sxs-lookup"><span data-stu-id="2351f-210">In the :::no-loc(Razor)::: markup shown below:</span></span>
+   > <span data-ttu-id="2351f-210">Razor아래 표시 된 태그에서:</span><span class="sxs-lookup"><span data-stu-id="2351f-210">In the Razor markup shown below:</span></span>
    >
    > [!code-html[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?range=18-18)]
    >
-   > <span data-ttu-id="2351f-211">:::no-loc(Razor)::: 특성은 `info` 문자열이 아니라 클래스 이며 c # 코드를 작성 하려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-211">:::no-loc(Razor)::: knows the `info` attribute is a class, not a string, and you want to write C# code.</span></span> <span data-ttu-id="2351f-212">모든 문자열이 아닌 태그 도우미 특성이 `@` 문자 없이 작성됩니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-212">Any non-string tag helper attribute should be written without the `@` character.</span></span>
+   > <span data-ttu-id="2351f-211">Razor 특성은 `info` 문자열이 아니라 클래스 이며 c # 코드를 작성 하려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-211">Razor knows the `info` attribute is a class, not a string, and you want to write C# code.</span></span> <span data-ttu-id="2351f-212">모든 문자열이 아닌 태그 도우미 특성이 `@` 문자 없이 작성됩니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-212">Any non-string tag helper attribute should be written without the `@` character.</span></span>
 
 1. <span data-ttu-id="2351f-213">앱을 실행하고 About 뷰로 이동하여 웹 사이트 정보를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="2351f-213">Run the app, and navigate to the About view to see the web site information.</span></span>
 

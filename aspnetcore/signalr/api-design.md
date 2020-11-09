@@ -1,23 +1,23 @@
 ---
-title: ':::no-loc(SignalR)::: API 디자인 고려 사항'
+title: 'SignalR API 디자인 고려 사항'
 author: anurse
-description: :::no-loc(SignalR):::앱 버전 간 호환성을 위해 api를 설계 하는 방법에 대해 알아봅니다.
+description: SignalR앱 버전 간 호환성을 위해 api를 설계 하는 방법에 대해 알아봅니다.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: signalr/api-design
 ms.openlocfilehash: 87665a7950edbc70b664230d2f078598e9dbc0aa
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,15 +26,15 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93059652"
 ---
-# <a name="no-locsignalr-api-design-considerations"></a><span data-ttu-id="c6d93-103">:::no-loc(SignalR)::: API 디자인 고려 사항</span><span class="sxs-lookup"><span data-stu-id="c6d93-103">:::no-loc(SignalR)::: API design considerations</span></span>
+# <a name="no-locsignalr-api-design-considerations"></a><span data-ttu-id="c6d93-103">SignalR API 디자인 고려 사항</span><span class="sxs-lookup"><span data-stu-id="c6d93-103">SignalR API design considerations</span></span>
 
 <span data-ttu-id="c6d93-104">[Andrew Stanton-간호사](https://twitter.com/anurse)</span><span class="sxs-lookup"><span data-stu-id="c6d93-104">By [Andrew Stanton-Nurse](https://twitter.com/anurse)</span></span>
 
-<span data-ttu-id="c6d93-105">이 문서에서는 기반 Api를 빌드하기 위한 지침을 제공 :::no-loc(SignalR)::: 합니다.</span><span class="sxs-lookup"><span data-stu-id="c6d93-105">This article provides guidance for building :::no-loc(SignalR):::-based APIs.</span></span>
+<span data-ttu-id="c6d93-105">이 문서에서는 기반 Api를 빌드하기 위한 지침을 제공 SignalR 합니다.</span><span class="sxs-lookup"><span data-stu-id="c6d93-105">This article provides guidance for building SignalR-based APIs.</span></span>
 
 ## <a name="use-custom-object-parameters-to-ensure-backwards-compatibility"></a><span data-ttu-id="c6d93-106">사용자 지정 개체 매개 변수를 사용 하 여 이전 버전과의 호환성 보장</span><span class="sxs-lookup"><span data-stu-id="c6d93-106">Use custom object parameters to ensure backwards-compatibility</span></span>
 
-<span data-ttu-id="c6d93-107">:::no-loc(SignalR):::클라이언트 또는 서버에서 허브 메서드에 매개 변수를 추가 하는 것은 *주요 변경 사항* 입니다.</span><span class="sxs-lookup"><span data-stu-id="c6d93-107">Adding parameters to a :::no-loc(SignalR)::: hub method (on either the client or the server) is a *breaking change* .</span></span> <span data-ttu-id="c6d93-108">즉, 이전 클라이언트/서버에서 적절 한 수의 매개 변수를 사용 하지 않고 메서드를 호출 하려고 하면 오류가 발생 합니다.</span><span class="sxs-lookup"><span data-stu-id="c6d93-108">This means older clients/servers will get errors when they try to invoke the method without the appropriate number of parameters.</span></span> <span data-ttu-id="c6d93-109">그러나 사용자 지정 개체 매개 변수에 속성을 추가 하는 것은 주요 변경 사항이 **아닙니다** .</span><span class="sxs-lookup"><span data-stu-id="c6d93-109">However, adding properties to a custom object parameter is **not** a breaking change.</span></span> <span data-ttu-id="c6d93-110">이를 사용 하 여 클라이언트 또는 서버의 변경 내용에 대해 복원 력이 있는 호환 Api를 디자인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c6d93-110">This can be used to design compatible APIs that are resilient to changes on the client or the server.</span></span>
+<span data-ttu-id="c6d93-107">SignalR클라이언트 또는 서버에서 허브 메서드에 매개 변수를 추가 하는 것은 *주요 변경 사항* 입니다.</span><span class="sxs-lookup"><span data-stu-id="c6d93-107">Adding parameters to a SignalR hub method (on either the client or the server) is a *breaking change* .</span></span> <span data-ttu-id="c6d93-108">즉, 이전 클라이언트/서버에서 적절 한 수의 매개 변수를 사용 하지 않고 메서드를 호출 하려고 하면 오류가 발생 합니다.</span><span class="sxs-lookup"><span data-stu-id="c6d93-108">This means older clients/servers will get errors when they try to invoke the method without the appropriate number of parameters.</span></span> <span data-ttu-id="c6d93-109">그러나 사용자 지정 개체 매개 변수에 속성을 추가 하는 것은 주요 변경 사항이 **아닙니다** .</span><span class="sxs-lookup"><span data-stu-id="c6d93-109">However, adding properties to a custom object parameter is **not** a breaking change.</span></span> <span data-ttu-id="c6d93-110">이를 사용 하 여 클라이언트 또는 서버의 변경 내용에 대해 복원 력이 있는 호환 Api를 디자인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c6d93-110">This can be used to design compatible APIs that are resilient to changes on the client or the server.</span></span>
 
 <span data-ttu-id="c6d93-111">예를 들어 다음과 같은 서버 쪽 API를 살펴보겠습니다.</span><span class="sxs-lookup"><span data-stu-id="c6d93-111">For example, consider a server-side API like the following:</span></span>
 
@@ -51,7 +51,7 @@ ms.locfileid: "93059652"
 <span data-ttu-id="c6d93-115">이전 클라이언트에서이 메서드를 호출 하려고 하면 다음과 같은 오류가 발생 합니다.</span><span class="sxs-lookup"><span data-stu-id="c6d93-115">When the old client tries to invoke this method, it will get an error like this:</span></span>
 
 ```
-Microsoft.AspNetCore.:::no-loc(SignalR):::.HubException: Failed to invoke 'GetTotalLength' due to an error on the server.
+Microsoft.AspNetCore.SignalR.HubException: Failed to invoke 'GetTotalLength' due to an error on the server.
 ```
 
 <span data-ttu-id="c6d93-116">서버에 다음과 같은 로그 메시지가 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c6d93-116">On the server, you'll see a log message like this:</span></span>

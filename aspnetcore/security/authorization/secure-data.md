@@ -1,22 +1,22 @@
 ---
 title: 권한 부여로 보호 되는 사용자 데이터를 사용 하 여 ASP.NET Core 앱 만들기
 author: rick-anderson
-description: '권한 부여로 보호 되는 사용자 데이터를 사용 하 여 ASP.NET Core 웹 앱을 만드는 방법을 알아봅니다. 에는 HTTPS, 인증, 보안이 포함 됩니다 :::no-loc(ASP.NET Core Identity)::: .'
+description: '권한 부여로 보호 되는 사용자 데이터를 사용 하 여 ASP.NET Core 웹 앱을 만드는 방법을 알아봅니다. 에는 HTTPS, 인증, 보안이 포함 됩니다 ASP.NET Core Identity .'
 ms.author: riande
 ms.date: 7/18/2020
 ms.custom: mvc, seodec18
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authorization/secure-data
 ms.openlocfilehash: accfd46fa72c33976f8af2a39267c993447e036e
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -101,11 +101,11 @@ ms.locfileid: "93051943"
 
 ### <a name="tie-the-contact-data-to-the-user"></a><span data-ttu-id="477cc-151">사용자에 게 연락처 데이터 연결</span><span class="sxs-lookup"><span data-stu-id="477cc-151">Tie the contact data to the user</span></span>
 
-<span data-ttu-id="477cc-152">ASP.NET [:::no-loc(Identity):::](xref:security/authentication/identity) 사용자 ID를 사용 하 여 사용자가 데이터를 편집할 수 있지만 다른 사용자 데이터는 편집할 수 없도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-152">Use the ASP.NET [:::no-loc(Identity):::](xref:security/authentication/identity) user ID to ensure users can edit their data, but not other users data.</span></span> <span data-ttu-id="477cc-153">`OwnerID` `ContactStatus` 모델에 및을 추가 합니다 `Contact` .</span><span class="sxs-lookup"><span data-stu-id="477cc-153">Add `OwnerID` and `ContactStatus` to the `Contact` model:</span></span>
+<span data-ttu-id="477cc-152">ASP.NET [Identity](xref:security/authentication/identity) 사용자 ID를 사용 하 여 사용자가 데이터를 편집할 수 있지만 다른 사용자 데이터는 편집할 수 없도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-152">Use the ASP.NET [Identity](xref:security/authentication/identity) user ID to ensure users can edit their data, but not other users data.</span></span> <span data-ttu-id="477cc-153">`OwnerID` `ContactStatus` 모델에 및을 추가 합니다 `Contact` .</span><span class="sxs-lookup"><span data-stu-id="477cc-153">Add `OwnerID` and `ContactStatus` to the `Contact` model:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
-<span data-ttu-id="477cc-154">`OwnerID``AspNetUser`데이터베이스에 있는 테이블의 사용자 ID입니다 [:::no-loc(Identity):::](xref:security/authentication/identity) .</span><span class="sxs-lookup"><span data-stu-id="477cc-154">`OwnerID` is the user's ID from the `AspNetUser` table in the [:::no-loc(Identity):::](xref:security/authentication/identity) database.</span></span> <span data-ttu-id="477cc-155">`Status`필드는 일반 사용자가 연락처를 볼 수 있는지 여부를 결정 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-155">The `Status` field determines if a contact is viewable by general users.</span></span>
+<span data-ttu-id="477cc-154">`OwnerID``AspNetUser`데이터베이스에 있는 테이블의 사용자 ID입니다 [Identity](xref:security/authentication/identity) .</span><span class="sxs-lookup"><span data-stu-id="477cc-154">`OwnerID` is the user's ID from the `AspNetUser` table in the [Identity](xref:security/authentication/identity) database.</span></span> <span data-ttu-id="477cc-155">`Status`필드는 일반 사용자가 연락처를 볼 수 있는지 여부를 결정 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-155">The `Status` field determines if a contact is viewable by general users.</span></span>
 
 <span data-ttu-id="477cc-156">새 마이그레이션을 만들고 데이터베이스를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-156">Create a new migration and update the database:</span></span>
 
@@ -114,9 +114,9 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-no-locidentity"></a><span data-ttu-id="477cc-157">역할 서비스 추가 :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="477cc-157">Add Role services to :::no-loc(Identity):::</span></span>
+### <a name="add-role-services-to-no-locidentity"></a><span data-ttu-id="477cc-157">역할 서비스 추가 Identity</span><span class="sxs-lookup"><span data-stu-id="477cc-157">Add Role services to Identity</span></span>
 
-<span data-ttu-id="477cc-158">역할 서비스를 추가 하려면 [Addroles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_:::no-loc(Identity):::_:::no-loc(Identity):::Builder_AddRoles__1) 를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-158">Append [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_:::no-loc(Identity):::_:::no-loc(Identity):::Builder_AddRoles__1) to add Role services:</span></span>
+<span data-ttu-id="477cc-158">역할 서비스를 추가 하려면 [Addroles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) 를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-158">Append [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) to add Role services:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet2&highlight=9)]
 
@@ -128,19 +128,19 @@ dotnet ef database update
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
-<span data-ttu-id="477cc-161">위의 강조 표시 된 코드는 [대체 인증 정책을](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy)설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-161">The preceding highlighted code sets the [fallback authentication policy](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy).</span></span> <span data-ttu-id="477cc-162">대체 인증 정책에는 *_all_* :::no-loc(Razor)::: 인증 특성이 있는 페이지, 컨트롤러 또는 작업 메서드를 제외 하 고 \* 모든 _ 사용자를 인증 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-162">The fallback authentication policy requires \* *_all_* _ users to be authenticated, except for :::no-loc(Razor)::: Pages, controllers, or action methods with an authentication attribute.</span></span> <span data-ttu-id="477cc-163">예를 들어 :::no-loc(Razor)::: 또는를 사용 하는 페이지, 컨트롤러 또는 작업 메서드 `[AllowAnonymous]` `[Authorize(PolicyName="MyPolicy")]` 는 대체 인증 정책 대신 적용 된 인증 특성을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-163">For example, :::no-loc(Razor)::: Pages, controllers, or action methods with `[AllowAnonymous]` or `[Authorize(PolicyName="MyPolicy")]` use the applied authentication attribute rather than the fallback authentication policy.</span></span>
+<span data-ttu-id="477cc-161">위의 강조 표시 된 코드는 [대체 인증 정책을](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy)설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-161">The preceding highlighted code sets the [fallback authentication policy](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy).</span></span> <span data-ttu-id="477cc-162">대체 인증 정책에는 *_all_* Razor 인증 특성이 있는 페이지, 컨트롤러 또는 작업 메서드를 제외 하 고 \* 모든 _ 사용자를 인증 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-162">The fallback authentication policy requires \* *_all_* _ users to be authenticated, except for Razor Pages, controllers, or action methods with an authentication attribute.</span></span> <span data-ttu-id="477cc-163">예를 들어 Razor 또는를 사용 하는 페이지, 컨트롤러 또는 작업 메서드 `[AllowAnonymous]` `[Authorize(PolicyName="MyPolicy")]` 는 대체 인증 정책 대신 적용 된 인증 특성을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-163">For example, Razor Pages, controllers, or action methods with `[AllowAnonymous]` or `[Authorize(PolicyName="MyPolicy")]` use the applied authentication attribute rather than the fallback authentication policy.</span></span>
 
 <span data-ttu-id="477cc-164">대체 인증 정책:</span><span class="sxs-lookup"><span data-stu-id="477cc-164">The fallback authentication policy:</span></span>
 
 <span data-ttu-id="477cc-165">_는 인증 정책을 명시적으로 지정 하지 않는 모든 요청에 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-165">_ Is applied to all requests that do not explicitly specify an authentication policy.</span></span> <span data-ttu-id="477cc-166">끝점 라우팅을 통해 처리 되는 요청의 경우 권한 부여 특성을 지정 하지 않는 끝점이 여기에 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-166">For requests served by endpoint routing, this would include any endpoint that does not specify an authorization attribute.</span></span> <span data-ttu-id="477cc-167">[정적 파일과](xref:fundamentals/static-files)같이 권한 부여 미들웨어 후 다른 미들웨어에서 처리 하는 요청의 경우 모든 요청에 정책을 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-167">For requests served by other middleware after the authorization middleware, such as [static files](xref:fundamentals/static-files), this would apply the policy to all requests.</span></span>
 
-<span data-ttu-id="477cc-168">사용자를 인증 하도록 요구 하는 대체 인증 정책을 설정 하면 새로 추가 된 :::no-loc(Razor)::: 페이지와 컨트롤러를 보호 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-168">Setting the fallback authentication policy to require users to be authenticated protects newly added :::no-loc(Razor)::: Pages and controllers.</span></span> <span data-ttu-id="477cc-169">기본적으로 인증을 요구 하는 것은 특성을 포함 하는 새 컨트롤러 및 페이지에 의존 하는 것 보다 안전 :::no-loc(Razor)::: 합니다 `[Authorize]` .</span><span class="sxs-lookup"><span data-stu-id="477cc-169">Having authentication required by default is more secure than relying on new controllers and :::no-loc(Razor)::: Pages to include the `[Authorize]` attribute.</span></span>
+<span data-ttu-id="477cc-168">사용자를 인증 하도록 요구 하는 대체 인증 정책을 설정 하면 새로 추가 된 Razor 페이지와 컨트롤러를 보호 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-168">Setting the fallback authentication policy to require users to be authenticated protects newly added Razor Pages and controllers.</span></span> <span data-ttu-id="477cc-169">기본적으로 인증을 요구 하는 것은 특성을 포함 하는 새 컨트롤러 및 페이지에 의존 하는 것 보다 안전 Razor 합니다 `[Authorize]` .</span><span class="sxs-lookup"><span data-stu-id="477cc-169">Having authentication required by default is more secure than relying on new controllers and Razor Pages to include the `[Authorize]` attribute.</span></span>
 
 <span data-ttu-id="477cc-170">클래스에는 <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions> 도 포함 <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.DefaultPolicy?displayProperty=nameWithType> 됩니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-170">The <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions> class also contains <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.DefaultPolicy?displayProperty=nameWithType>.</span></span> <span data-ttu-id="477cc-171">는 `DefaultPolicy` `[Authorize]` 정책을 지정 하지 않은 경우 특성에 사용 되는 정책입니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-171">The `DefaultPolicy` is the policy used with the `[Authorize]` attribute when no policy is specified.</span></span> <span data-ttu-id="477cc-172">`[Authorize]` 는와 달리 명명 된 정책을 포함 하지 않습니다 `[Authorize(PolicyName="MyPolicy")]` .</span><span class="sxs-lookup"><span data-stu-id="477cc-172">`[Authorize]` doesn't contain a named policy, unlike `[Authorize(PolicyName="MyPolicy")]`.</span></span>
 
 <span data-ttu-id="477cc-173">정책에 대 한 자세한 내용은을 참조 하십시오 <xref:security/authorization/policies> .</span><span class="sxs-lookup"><span data-stu-id="477cc-173">For more information on policies, see <xref:security/authorization/policies>.</span></span>
 
-<span data-ttu-id="477cc-174">MVC 컨트롤러 및 :::no-loc(Razor)::: 페이지에서 모든 사용자를 인증 하도록 요구 하는 다른 방법은 권한 부여 필터를 추가 하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-174">An alternative way for MVC controllers and :::no-loc(Razor)::: Pages to require all users be authenticated is adding an authorization filter:</span></span>
+<span data-ttu-id="477cc-174">MVC 컨트롤러 및 Razor 페이지에서 모든 사용자를 인증 하도록 요구 하는 다른 방법은 권한 부여 필터를 추가 하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-174">An alternative way for MVC controllers and Razor Pages to require all users be authenticated is adding an authorization filter:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Startup2.cs?name=snippet&highlight=14-99)]
 
@@ -203,7 +203,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="register-the-authorization-handlers"></a><span data-ttu-id="477cc-209">권한 부여 처리기 등록</span><span class="sxs-lookup"><span data-stu-id="477cc-209">Register the authorization handlers</span></span>
 
-<span data-ttu-id="477cc-210">[Addscoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions)를 사용 하 여 [종속성 주입](xref:fundamentals/dependency-injection) 을 위해 Entity Framework Core를 사용 하는 서비스를 등록 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-210">Services using Entity Framework Core must be registered for [dependency injection](xref:fundamentals/dependency-injection) using [AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions).</span></span> <span data-ttu-id="477cc-211">는 `ContactIsOwnerAuthorizationHandler` Entity Framework Core를 기반으로 하는 ASP.NET Core을 사용 합니다 [:::no-loc(Identity):::](xref:security/authentication/identity) .</span><span class="sxs-lookup"><span data-stu-id="477cc-211">The `ContactIsOwnerAuthorizationHandler` uses ASP.NET Core [:::no-loc(Identity):::](xref:security/authentication/identity), which is built on Entity Framework Core.</span></span> <span data-ttu-id="477cc-212">종속성 주입을 통해에 사용할 수 있도록 서비스 컬렉션에 처리기를 `ContactsController` 등록 [dependency injection](xref:fundamentals/dependency-injection)합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-212">Register the handlers with the service collection so they're available to the `ContactsController` through [dependency injection](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="477cc-213">끝에 다음 코드를 추가 합니다 `ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="477cc-213">Add the following code to the end of `ConfigureServices`:</span></span>
+<span data-ttu-id="477cc-210">[Addscoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions)를 사용 하 여 [종속성 주입](xref:fundamentals/dependency-injection) 을 위해 Entity Framework Core를 사용 하는 서비스를 등록 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-210">Services using Entity Framework Core must be registered for [dependency injection](xref:fundamentals/dependency-injection) using [AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions).</span></span> <span data-ttu-id="477cc-211">는 `ContactIsOwnerAuthorizationHandler` Entity Framework Core를 기반으로 하는 ASP.NET Core을 사용 합니다 [Identity](xref:security/authentication/identity) .</span><span class="sxs-lookup"><span data-stu-id="477cc-211">The `ContactIsOwnerAuthorizationHandler` uses ASP.NET Core [Identity](xref:security/authentication/identity), which is built on Entity Framework Core.</span></span> <span data-ttu-id="477cc-212">종속성 주입을 통해에 사용할 수 있도록 서비스 컬렉션에 처리기를 `ContactsController` 등록 [dependency injection](xref:fundamentals/dependency-injection)합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-212">Register the handlers with the service collection so they're available to the `ContactsController` through [dependency injection](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="477cc-213">끝에 다음 코드를 추가 합니다 `ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="477cc-213">Add the following code to the end of `ConfigureServices`:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet_defaultPolicy&highlight=23-99)]
 
@@ -211,7 +211,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="support-authorization"></a><span data-ttu-id="477cc-216">인증 지원</span><span class="sxs-lookup"><span data-stu-id="477cc-216">Support authorization</span></span>
 
-<span data-ttu-id="477cc-217">이 섹션에서는 페이지를 업데이트 하 :::no-loc(Razor)::: 고 작업 요구 사항 클래스를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-217">In this section, you update the :::no-loc(Razor)::: Pages and add an operations requirements class.</span></span>
+<span data-ttu-id="477cc-217">이 섹션에서는 페이지를 업데이트 하 Razor 고 작업 요구 사항 클래스를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-217">In this section, you update the Razor Pages and add an operations requirements class.</span></span>
 
 ### <a name="review-the-contact-operations-requirements-class"></a><span data-ttu-id="477cc-218">연락처 작업 요구 사항 클래스를 검토 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-218">Review the contact operations requirements class</span></span>
 
@@ -219,16 +219,16 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[](secure-data/samples/final3/Authorization/ContactOperations.cs)]
 
-### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a><span data-ttu-id="477cc-221">연락처 페이지에 대 한 기본 클래스 만들기 :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="477cc-221">Create a base class for the Contacts :::no-loc(Razor)::: Pages</span></span>
+### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a><span data-ttu-id="477cc-221">연락처 페이지에 대 한 기본 클래스 만들기 Razor</span><span class="sxs-lookup"><span data-stu-id="477cc-221">Create a base class for the Contacts Razor Pages</span></span>
 
-<span data-ttu-id="477cc-222">연락처 페이지에 사용 되는 서비스를 포함 하는 기본 클래스를 만듭니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="477cc-222">Create a base class that contains the services used in the contacts :::no-loc(Razor)::: Pages.</span></span> <span data-ttu-id="477cc-223">기본 클래스는 초기화 코드를 한 위치에 배치 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-223">The base class puts the initialization code in one location:</span></span>
+<span data-ttu-id="477cc-222">연락처 페이지에 사용 되는 서비스를 포함 하는 기본 클래스를 만듭니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="477cc-222">Create a base class that contains the services used in the contacts Razor Pages.</span></span> <span data-ttu-id="477cc-223">기본 클래스는 초기화 코드를 한 위치에 배치 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-223">The base class puts the initialization code in one location:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Pages/Contacts/DI_BasePageModel.cs)]
 
 <span data-ttu-id="477cc-224">위의 코드는</span><span class="sxs-lookup"><span data-stu-id="477cc-224">The preceding code:</span></span>
 
 * <span data-ttu-id="477cc-225">`IAuthorizationService`권한 부여 처리기에 액세스 하는 서비스를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-225">Adds the `IAuthorizationService` service to access to the authorization handlers.</span></span>
-* <span data-ttu-id="477cc-226">서비스를 추가 :::no-loc(Identity)::: `UserManager` 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-226">Adds the :::no-loc(Identity)::: `UserManager` service.</span></span>
+* <span data-ttu-id="477cc-226">서비스를 추가 Identity `UserManager` 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-226">Adds the Identity `UserManager` service.</span></span>
 * <span data-ttu-id="477cc-227">`ApplicationDbContext`를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-227">Add the `ApplicationDbContext`.</span></span>
 
 ### <a name="update-the-createmodel"></a><span data-ttu-id="477cc-228">CreateModel 업데이트</span><span class="sxs-lookup"><span data-stu-id="477cc-228">Update the CreateModel</span></span>
@@ -277,7 +277,7 @@ dotnet user-secrets set SeedUserPW <PW>
 [!code-cshtml[](secure-data/samples/final3/Pages/Contacts/Index.cshtml?highlight=34-36,62-999)]
 
 > [!WARNING]
-> <span data-ttu-id="477cc-249">데이터를 변경할 수 있는 권한이 없는 사용자의 링크를 숨기면 앱이 보호 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-249">Hiding links from users that don't have permission to change data doesn't secure the app.</span></span> <span data-ttu-id="477cc-250">링크를 숨기면 올바른 링크만 표시 하 여 앱을 보다 사용자에 게 친숙 하 게 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-250">Hiding links makes the app more user-friendly by displaying only valid links.</span></span> <span data-ttu-id="477cc-251">사용자는 생성 된 Url을 해킹 하 여 자신이 소유 하지 않은 데이터에 대 한 편집 및 삭제 작업을 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-251">Users can hack the generated URLs to invoke edit and delete operations on data they don't own.</span></span> <span data-ttu-id="477cc-252">:::no-loc(Razor):::페이지 또는 컨트롤러는 데이터를 보호 하기 위해 액세스 검사를 적용 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-252">The :::no-loc(Razor)::: Page or controller must enforce access checks to secure the data.</span></span>
+> <span data-ttu-id="477cc-249">데이터를 변경할 수 있는 권한이 없는 사용자의 링크를 숨기면 앱이 보호 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-249">Hiding links from users that don't have permission to change data doesn't secure the app.</span></span> <span data-ttu-id="477cc-250">링크를 숨기면 올바른 링크만 표시 하 여 앱을 보다 사용자에 게 친숙 하 게 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-250">Hiding links makes the app more user-friendly by displaying only valid links.</span></span> <span data-ttu-id="477cc-251">사용자는 생성 된 Url을 해킹 하 여 자신이 소유 하지 않은 데이터에 대 한 편집 및 삭제 작업을 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-251">Users can hack the generated URLs to invoke edit and delete operations on data they don't own.</span></span> <span data-ttu-id="477cc-252">Razor페이지 또는 컨트롤러는 데이터를 보호 하기 위해 액세스 검사를 적용 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-252">The Razor Page or controller must enforce access checks to secure the data.</span></span>
 
 ### <a name="update-details"></a><span data-ttu-id="477cc-253">업데이트 세부 정보</span><span class="sxs-lookup"><span data-stu-id="477cc-253">Update Details</span></span>
 
@@ -342,7 +342,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="create-the-starter-app"></a><span data-ttu-id="477cc-299">시작 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="477cc-299">Create the starter app</span></span>
 
-* <span data-ttu-id="477cc-300">:::no-loc(Razor):::"연락처 관리자" 라는 페이지 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="477cc-300">Create a :::no-loc(Razor)::: Pages app named "ContactManager"</span></span>
+* <span data-ttu-id="477cc-300">Razor"연락처 관리자" 라는 페이지 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="477cc-300">Create a Razor Pages app named "ContactManager"</span></span>
   * <span data-ttu-id="477cc-301">**개별 사용자 계정을** 사용 하 여 앱을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-301">Create the app with **Individual User Accounts** .</span></span>
   * <span data-ttu-id="477cc-302">네임 스페이스는 샘플에서 사용 되는 네임 스페이스와 일치 하도록 "연락처 관리자"로 이름을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-302">Name it "ContactManager" so the namespace matches the namespace used in the sample.</span></span>
   * <span data-ttu-id="477cc-303">`-uld` SQLite 대신 LocalDB를 지정 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-303">`-uld` specifies LocalDB instead of SQLite</span></span>
@@ -455,11 +455,11 @@ dotnet ef database update
 
 ### <a name="tie-the-contact-data-to-the-user"></a><span data-ttu-id="477cc-358">사용자에 게 연락처 데이터 연결</span><span class="sxs-lookup"><span data-stu-id="477cc-358">Tie the contact data to the user</span></span>
 
-<span data-ttu-id="477cc-359">ASP.NET [:::no-loc(Identity):::](xref:security/authentication/identity) 사용자 ID를 사용 하 여 사용자가 데이터를 편집할 수 있지만 다른 사용자 데이터는 편집할 수 없도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-359">Use the ASP.NET [:::no-loc(Identity):::](xref:security/authentication/identity) user ID to ensure users can edit their data, but not other users data.</span></span> <span data-ttu-id="477cc-360">`OwnerID` `ContactStatus` 모델에 및을 추가 합니다 `Contact` .</span><span class="sxs-lookup"><span data-stu-id="477cc-360">Add `OwnerID` and `ContactStatus` to the `Contact` model:</span></span>
+<span data-ttu-id="477cc-359">ASP.NET [Identity](xref:security/authentication/identity) 사용자 ID를 사용 하 여 사용자가 데이터를 편집할 수 있지만 다른 사용자 데이터는 편집할 수 없도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-359">Use the ASP.NET [Identity](xref:security/authentication/identity) user ID to ensure users can edit their data, but not other users data.</span></span> <span data-ttu-id="477cc-360">`OwnerID` `ContactStatus` 모델에 및을 추가 합니다 `Contact` .</span><span class="sxs-lookup"><span data-stu-id="477cc-360">Add `OwnerID` and `ContactStatus` to the `Contact` model:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
-<span data-ttu-id="477cc-361">`OwnerID``AspNetUser`데이터베이스에 있는 테이블의 사용자 ID입니다 [:::no-loc(Identity):::](xref:security/authentication/identity) .</span><span class="sxs-lookup"><span data-stu-id="477cc-361">`OwnerID` is the user's ID from the `AspNetUser` table in the [:::no-loc(Identity):::](xref:security/authentication/identity) database.</span></span> <span data-ttu-id="477cc-362">`Status`필드는 일반 사용자가 연락처를 볼 수 있는지 여부를 결정 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-362">The `Status` field determines if a contact is viewable by general users.</span></span>
+<span data-ttu-id="477cc-361">`OwnerID``AspNetUser`데이터베이스에 있는 테이블의 사용자 ID입니다 [Identity](xref:security/authentication/identity) .</span><span class="sxs-lookup"><span data-stu-id="477cc-361">`OwnerID` is the user's ID from the `AspNetUser` table in the [Identity](xref:security/authentication/identity) database.</span></span> <span data-ttu-id="477cc-362">`Status`필드는 일반 사용자가 연락처를 볼 수 있는지 여부를 결정 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-362">The `Status` field determines if a contact is viewable by general users.</span></span>
 
 <span data-ttu-id="477cc-363">새 마이그레이션을 만들고 데이터베이스를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-363">Create a new migration and update the database:</span></span>
 
@@ -468,9 +468,9 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-no-locidentity"></a><span data-ttu-id="477cc-364">역할 서비스 추가 :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="477cc-364">Add Role services to :::no-loc(Identity):::</span></span>
+### <a name="add-role-services-to-no-locidentity"></a><span data-ttu-id="477cc-364">역할 서비스 추가 Identity</span><span class="sxs-lookup"><span data-stu-id="477cc-364">Add Role services to Identity</span></span>
 
-<span data-ttu-id="477cc-365">역할 서비스를 추가 하려면 [Addroles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_:::no-loc(Identity):::_:::no-loc(Identity):::Builder_AddRoles__1) 를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-365">Append [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_:::no-loc(Identity):::_:::no-loc(Identity):::Builder_AddRoles__1) to add Role services:</span></span>
+<span data-ttu-id="477cc-365">역할 서비스를 추가 하려면 [Addroles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) 를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-365">Append [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) to add Role services:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Startup.cs?name=snippet2&highlight=11)]
 
@@ -480,7 +480,7 @@ dotnet ef database update
 
 [!code-csharp[](secure-data/samples/final2.1/Startup.cs?name=snippet&highlight=17-99)] 
 
- <span data-ttu-id="477cc-368">특성을 사용 하 여 :::no-loc(Razor)::: 페이지, 컨트롤러 또는 작업 메서드 수준에서 인증을 옵트아웃 (opt out) 할 수 있습니다 `[AllowAnonymous]` .</span><span class="sxs-lookup"><span data-stu-id="477cc-368">You can opt out of authentication at the :::no-loc(Razor)::: Page, controller, or action method level with the `[AllowAnonymous]` attribute.</span></span> <span data-ttu-id="477cc-369">사용자를 인증 하도록 요구 하는 기본 인증 정책을 설정 하면 새로 추가 된 :::no-loc(Razor)::: 페이지와 컨트롤러를 보호 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-369">Setting the default authentication policy to require users to be authenticated protects newly added :::no-loc(Razor)::: Pages and controllers.</span></span> <span data-ttu-id="477cc-370">기본적으로 인증을 요구 하는 것은 특성을 포함 하는 새 컨트롤러 및 페이지에 의존 하는 것 보다 안전 :::no-loc(Razor)::: 합니다 `[Authorize]` .</span><span class="sxs-lookup"><span data-stu-id="477cc-370">Having authentication required by default is more secure than relying on new controllers and :::no-loc(Razor)::: Pages to include the `[Authorize]` attribute.</span></span>
+ <span data-ttu-id="477cc-368">특성을 사용 하 여 Razor 페이지, 컨트롤러 또는 작업 메서드 수준에서 인증을 옵트아웃 (opt out) 할 수 있습니다 `[AllowAnonymous]` .</span><span class="sxs-lookup"><span data-stu-id="477cc-368">You can opt out of authentication at the Razor Page, controller, or action method level with the `[AllowAnonymous]` attribute.</span></span> <span data-ttu-id="477cc-369">사용자를 인증 하도록 요구 하는 기본 인증 정책을 설정 하면 새로 추가 된 Razor 페이지와 컨트롤러를 보호 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-369">Setting the default authentication policy to require users to be authenticated protects newly added Razor Pages and controllers.</span></span> <span data-ttu-id="477cc-370">기본적으로 인증을 요구 하는 것은 특성을 포함 하는 새 컨트롤러 및 페이지에 의존 하는 것 보다 안전 Razor 합니다 `[Authorize]` .</span><span class="sxs-lookup"><span data-stu-id="477cc-370">Having authentication required by default is more secure than relying on new controllers and Razor Pages to include the `[Authorize]` attribute.</span></span>
 
 <span data-ttu-id="477cc-371">익명 사용자가 등록 하기 전에 사이트에 대 한 정보를 얻을 수 있도록 인덱스, 정보 및 연락처 페이지에 [Allowanonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) 를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-371">Add [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) to the Index, About, and Contact pages so anonymous users can get information about the site before they register.</span></span>
 
@@ -539,7 +539,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="register-the-authorization-handlers"></a><span data-ttu-id="477cc-403">권한 부여 처리기 등록</span><span class="sxs-lookup"><span data-stu-id="477cc-403">Register the authorization handlers</span></span>
 
-<span data-ttu-id="477cc-404">[Addscoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions)를 사용 하 여 [종속성 주입](xref:fundamentals/dependency-injection) 을 위해 Entity Framework Core를 사용 하는 서비스를 등록 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-404">Services using Entity Framework Core must be registered for [dependency injection](xref:fundamentals/dependency-injection) using [AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions).</span></span> <span data-ttu-id="477cc-405">는 `ContactIsOwnerAuthorizationHandler` Entity Framework Core를 기반으로 하는 ASP.NET Core을 사용 합니다 [:::no-loc(Identity):::](xref:security/authentication/identity) .</span><span class="sxs-lookup"><span data-stu-id="477cc-405">The `ContactIsOwnerAuthorizationHandler` uses ASP.NET Core [:::no-loc(Identity):::](xref:security/authentication/identity), which is built on Entity Framework Core.</span></span> <span data-ttu-id="477cc-406">종속성 주입을 통해에 사용할 수 있도록 서비스 컬렉션에 처리기를 `ContactsController` 등록 [dependency injection](xref:fundamentals/dependency-injection)합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-406">Register the handlers with the service collection so they're available to the `ContactsController` through [dependency injection](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="477cc-407">끝에 다음 코드를 추가 합니다 `ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="477cc-407">Add the following code to the end of `ConfigureServices`:</span></span>
+<span data-ttu-id="477cc-404">[Addscoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions)를 사용 하 여 [종속성 주입](xref:fundamentals/dependency-injection) 을 위해 Entity Framework Core를 사용 하는 서비스를 등록 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-404">Services using Entity Framework Core must be registered for [dependency injection](xref:fundamentals/dependency-injection) using [AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions).</span></span> <span data-ttu-id="477cc-405">는 `ContactIsOwnerAuthorizationHandler` Entity Framework Core를 기반으로 하는 ASP.NET Core을 사용 합니다 [Identity](xref:security/authentication/identity) .</span><span class="sxs-lookup"><span data-stu-id="477cc-405">The `ContactIsOwnerAuthorizationHandler` uses ASP.NET Core [Identity](xref:security/authentication/identity), which is built on Entity Framework Core.</span></span> <span data-ttu-id="477cc-406">종속성 주입을 통해에 사용할 수 있도록 서비스 컬렉션에 처리기를 `ContactsController` 등록 [dependency injection](xref:fundamentals/dependency-injection)합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-406">Register the handlers with the service collection so they're available to the `ContactsController` through [dependency injection](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="477cc-407">끝에 다음 코드를 추가 합니다 `ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="477cc-407">Add the following code to the end of `ConfigureServices`:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Startup.cs?name=snippet_defaultPolicy&highlight=27-99)]
 
@@ -547,7 +547,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="support-authorization"></a><span data-ttu-id="477cc-410">인증 지원</span><span class="sxs-lookup"><span data-stu-id="477cc-410">Support authorization</span></span>
 
-<span data-ttu-id="477cc-411">이 섹션에서는 페이지를 업데이트 하 :::no-loc(Razor)::: 고 작업 요구 사항 클래스를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-411">In this section, you update the :::no-loc(Razor)::: Pages and add an operations requirements class.</span></span>
+<span data-ttu-id="477cc-411">이 섹션에서는 페이지를 업데이트 하 Razor 고 작업 요구 사항 클래스를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-411">In this section, you update the Razor Pages and add an operations requirements class.</span></span>
 
 ### <a name="review-the-contact-operations-requirements-class"></a><span data-ttu-id="477cc-412">연락처 작업 요구 사항 클래스를 검토 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-412">Review the contact operations requirements class</span></span>
 
@@ -555,16 +555,16 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[](secure-data/samples/final2.1/Authorization/ContactOperations.cs)]
 
-### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a><span data-ttu-id="477cc-415">연락처 페이지에 대 한 기본 클래스 만들기 :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="477cc-415">Create a base class for the Contacts :::no-loc(Razor)::: Pages</span></span>
+### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a><span data-ttu-id="477cc-415">연락처 페이지에 대 한 기본 클래스 만들기 Razor</span><span class="sxs-lookup"><span data-stu-id="477cc-415">Create a base class for the Contacts Razor Pages</span></span>
 
-<span data-ttu-id="477cc-416">연락처 페이지에 사용 되는 서비스를 포함 하는 기본 클래스를 만듭니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="477cc-416">Create a base class that contains the services used in the contacts :::no-loc(Razor)::: Pages.</span></span> <span data-ttu-id="477cc-417">기본 클래스는 초기화 코드를 한 위치에 배치 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-417">The base class puts the initialization code in one location:</span></span>
+<span data-ttu-id="477cc-416">연락처 페이지에 사용 되는 서비스를 포함 하는 기본 클래스를 만듭니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="477cc-416">Create a base class that contains the services used in the contacts Razor Pages.</span></span> <span data-ttu-id="477cc-417">기본 클래스는 초기화 코드를 한 위치에 배치 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-417">The base class puts the initialization code in one location:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/DI_BasePageModel.cs)]
 
 <span data-ttu-id="477cc-418">위의 코드는</span><span class="sxs-lookup"><span data-stu-id="477cc-418">The preceding code:</span></span>
 
 * <span data-ttu-id="477cc-419">`IAuthorizationService`권한 부여 처리기에 액세스 하는 서비스를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-419">Adds the `IAuthorizationService` service to access to the authorization handlers.</span></span>
-* <span data-ttu-id="477cc-420">서비스를 추가 :::no-loc(Identity)::: `UserManager` 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-420">Adds the :::no-loc(Identity)::: `UserManager` service.</span></span>
+* <span data-ttu-id="477cc-420">서비스를 추가 Identity `UserManager` 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-420">Adds the Identity `UserManager` service.</span></span>
 * <span data-ttu-id="477cc-421">`ApplicationDbContext`를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-421">Add the `ApplicationDbContext`.</span></span>
 
 ### <a name="update-the-createmodel"></a><span data-ttu-id="477cc-422">CreateModel 업데이트</span><span class="sxs-lookup"><span data-stu-id="477cc-422">Update the CreateModel</span></span>
@@ -613,7 +613,7 @@ dotnet user-secrets set SeedUserPW <PW>
 [!code-cshtml[](secure-data/samples/final2.1/Pages/Contacts/Index.cshtml?highlight=34-36,62-999)]
 
 > [!WARNING]
-> <span data-ttu-id="477cc-443">데이터를 변경할 수 있는 권한이 없는 사용자의 링크를 숨기면 앱이 보호 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-443">Hiding links from users that don't have permission to change data doesn't secure the app.</span></span> <span data-ttu-id="477cc-444">링크를 숨기면 올바른 링크만 표시 하 여 앱을 보다 사용자에 게 친숙 하 게 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-444">Hiding links makes the app more user-friendly by displaying only valid links.</span></span> <span data-ttu-id="477cc-445">사용자는 생성 된 Url을 해킹 하 여 자신이 소유 하지 않은 데이터에 대 한 편집 및 삭제 작업을 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-445">Users can hack the generated URLs to invoke edit and delete operations on data they don't own.</span></span> <span data-ttu-id="477cc-446">:::no-loc(Razor):::페이지 또는 컨트롤러는 데이터를 보호 하기 위해 액세스 검사를 적용 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-446">The :::no-loc(Razor)::: Page or controller must enforce access checks to secure the data.</span></span>
+> <span data-ttu-id="477cc-443">데이터를 변경할 수 있는 권한이 없는 사용자의 링크를 숨기면 앱이 보호 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-443">Hiding links from users that don't have permission to change data doesn't secure the app.</span></span> <span data-ttu-id="477cc-444">링크를 숨기면 올바른 링크만 표시 하 여 앱을 보다 사용자에 게 친숙 하 게 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-444">Hiding links makes the app more user-friendly by displaying only valid links.</span></span> <span data-ttu-id="477cc-445">사용자는 생성 된 Url을 해킹 하 여 자신이 소유 하지 않은 데이터에 대 한 편집 및 삭제 작업을 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-445">Users can hack the generated URLs to invoke edit and delete operations on data they don't own.</span></span> <span data-ttu-id="477cc-446">Razor페이지 또는 컨트롤러는 데이터를 보호 하기 위해 액세스 검사를 적용 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-446">The Razor Page or controller must enforce access checks to secure the data.</span></span>
 
 ### <a name="update-details"></a><span data-ttu-id="477cc-447">업데이트 세부 정보</span><span class="sxs-lookup"><span data-stu-id="477cc-447">Update Details</span></span>
 
@@ -669,7 +669,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="create-the-starter-app"></a><span data-ttu-id="477cc-483">시작 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="477cc-483">Create the starter app</span></span>
 
-* <span data-ttu-id="477cc-484">:::no-loc(Razor):::"연락처 관리자" 라는 페이지 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="477cc-484">Create a :::no-loc(Razor)::: Pages app named "ContactManager"</span></span>
+* <span data-ttu-id="477cc-484">Razor"연락처 관리자" 라는 페이지 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="477cc-484">Create a Razor Pages app named "ContactManager"</span></span>
   * <span data-ttu-id="477cc-485">**개별 사용자 계정을** 사용 하 여 앱을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-485">Create the app with **Individual User Accounts** .</span></span>
   * <span data-ttu-id="477cc-486">네임 스페이스는 샘플에서 사용 되는 네임 스페이스와 일치 하도록 "연락처 관리자"로 이름을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-486">Name it "ContactManager" so the namespace matches the namespace used in the sample.</span></span>
   * <span data-ttu-id="477cc-487">`-uld` SQLite 대신 LocalDB를 지정 합니다.</span><span class="sxs-lookup"><span data-stu-id="477cc-487">`-uld` specifies LocalDB instead of SQLite</span></span>

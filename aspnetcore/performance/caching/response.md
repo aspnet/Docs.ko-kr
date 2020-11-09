@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/04/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: performance/caching/response
 ms.openlocfilehash: 2864de5b9931ed255569cb087c67c71004c4df92
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -84,13 +84,13 @@ ms.locfileid: "93059015"
 
 ### <a name="cache-tag-helper"></a><span data-ttu-id="d414c-169">캐시 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="d414c-169">Cache Tag Helper</span></span>
 
-<span data-ttu-id="d414c-170">캐시 태그 도우미를 사용 하 여 MVC 뷰 또는 페이지에서 콘텐츠를 캐시 합니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="d414c-170">Cache the content from an MVC view or :::no-loc(Razor)::: Page with the Cache Tag Helper.</span></span> <span data-ttu-id="d414c-171">캐시 태그 도우미는 메모리 내 캐싱을 사용 하 여 데이터를 저장 합니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-171">The Cache Tag Helper uses in-memory caching to store data.</span></span>
+<span data-ttu-id="d414c-170">캐시 태그 도우미를 사용 하 여 MVC 뷰 또는 페이지에서 콘텐츠를 캐시 합니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="d414c-170">Cache the content from an MVC view or Razor Page with the Cache Tag Helper.</span></span> <span data-ttu-id="d414c-171">캐시 태그 도우미는 메모리 내 캐싱을 사용 하 여 데이터를 저장 합니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-171">The Cache Tag Helper uses in-memory caching to store data.</span></span>
 
 <span data-ttu-id="d414c-172">자세한 내용은 <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d414c-172">For more information, see <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>.</span></span>
 
 ### <a name="distributed-cache-tag-helper"></a><span data-ttu-id="d414c-173">분산 캐시 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="d414c-173">Distributed Cache Tag Helper</span></span>
 
-<span data-ttu-id="d414c-174">분산 된 :::no-loc(Razor)::: 캐시 태그 도우미를 사용 하 여 분산 클라우드 또는 웹 팜 시나리오의 MVC 뷰나 페이지에서 콘텐츠를 캐시 합니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-174">Cache the content from an MVC view or :::no-loc(Razor)::: Page in distributed cloud or web farm scenarios with the Distributed Cache Tag Helper.</span></span> <span data-ttu-id="d414c-175">분산 캐시 태그 도우미는 SQL Server, [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)또는 [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) 를 사용 하 여 데이터를 저장 합니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-175">The Distributed Cache Tag Helper uses SQL Server, [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis), or [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) to store data.</span></span>
+<span data-ttu-id="d414c-174">분산 된 Razor 캐시 태그 도우미를 사용 하 여 분산 클라우드 또는 웹 팜 시나리오의 MVC 뷰나 페이지에서 콘텐츠를 캐시 합니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-174">Cache the content from an MVC view or Razor Page in distributed cloud or web farm scenarios with the Distributed Cache Tag Helper.</span></span> <span data-ttu-id="d414c-175">분산 캐시 태그 도우미는 SQL Server, [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)또는 [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) 를 사용 하 여 데이터를 저장 합니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-175">The Distributed Cache Tag Helper uses SQL Server, [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis), or [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) to store data.</span></span>
 
 <span data-ttu-id="d414c-176">자세한 내용은 <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d414c-176">For more information, see <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>.</span></span>
 
@@ -176,7 +176,7 @@ Cache-Control: public,max-age=10
 
 ### <a name="cache-profiles"></a><span data-ttu-id="d414c-232">캐시 프로필</span><span class="sxs-lookup"><span data-stu-id="d414c-232">Cache profiles</span></span>
 
-<span data-ttu-id="d414c-233">여러 컨트롤러 작업 특성에 대 한 응답 캐시 설정을 복제 하는 대신에서 MVC/Pages를 설정할 때 캐시 프로필을 옵션으로 구성할 수 있습니다 :::no-loc(Razor)::: `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="d414c-233">Instead of duplicating response cache settings on many controller action attributes, cache profiles can be configured as options when setting up MVC/:::no-loc(Razor)::: Pages in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="d414c-234">참조 된 캐시 프로필에 있는 값은에서 기본값으로 사용 되며 <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> 특성에 지정 된 모든 속성에 의해 재정의 됩니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-234">Values found in a referenced cache profile are used as the defaults by the <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> and are overridden by any properties specified on the attribute.</span></span>
+<span data-ttu-id="d414c-233">여러 컨트롤러 작업 특성에 대 한 응답 캐시 설정을 복제 하는 대신에서 MVC/Pages를 설정할 때 캐시 프로필을 옵션으로 구성할 수 있습니다 Razor `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="d414c-233">Instead of duplicating response cache settings on many controller action attributes, cache profiles can be configured as options when setting up MVC/Razor Pages in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="d414c-234">참조 된 캐시 프로필에 있는 값은에서 기본값으로 사용 되며 <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> 특성에 지정 된 모든 속성에 의해 재정의 됩니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-234">Values found in a referenced cache profile are used as the defaults by the <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> and are overridden by any properties specified on the attribute.</span></span>
 
 <span data-ttu-id="d414c-235">캐시 프로필을 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-235">Set up a cache profile.</span></span> <span data-ttu-id="d414c-236">다음 예제에서는 샘플 앱의 30 초 캐시 프로필을 보여 줍니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="d414c-236">The following example shows a 30 second cache profile in the sample app's `Startup.ConfigureServices`:</span></span>
 
@@ -198,7 +198,7 @@ Cache-Control: public,max-age=10
 
 <span data-ttu-id="d414c-238">는 <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> 다음에 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-238">The <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> can be applied to:</span></span>
 
-* <span data-ttu-id="d414c-239">:::no-loc(Razor)::: Pages: 특성은 처리기 메서드에 적용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-239">:::no-loc(Razor)::: Pages: Attributes can't be applied to handler methods.</span></span>
+* <span data-ttu-id="d414c-239">Razor Pages: 특성은 처리기 메서드에 적용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-239">Razor Pages: Attributes can't be applied to handler methods.</span></span>
 * <span data-ttu-id="d414c-240">MVC 컨트롤러.</span><span class="sxs-lookup"><span data-stu-id="d414c-240">MVC controllers.</span></span>
 * <span data-ttu-id="d414c-241">MVC 작업 메서드: 메서드 수준 특성은 클래스 수준 특성에 지정 된 설정을 재정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="d414c-241">MVC action methods: Method-level attributes override the settings specified in class-level attributes.</span></span>
 

@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/06/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: performance/performance-best-practices
 ms.openlocfilehash: a3fc398569fafefc0b4634e80433a5d4e0e1b4ff
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -55,7 +55,7 @@ ms.locfileid: "93061004"
 
 * <span data-ttu-id="d7b6a-126">[핫 코드 경로](#understand-hot-code-paths) 를 비동기식으로 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="d7b6a-126">Make [hot code paths](#understand-hot-code-paths) asynchronous.</span></span>
 * <span data-ttu-id="d7b6a-127">비동기 API를 사용할 수 있는 경우 데이터 액세스, i/o 및 장기 실행 작업 Api를 비동기적으로 호출 합니다.</span><span class="sxs-lookup"><span data-stu-id="d7b6a-127">Call data access, I/O, and long-running operations APIs asynchronously if an asynchronous API is available.</span></span> <span data-ttu-id="d7b6a-128">작업을 실행 **하 여 동기** API를 비동기식으로 만듭니다 [.](/dotnet/api/system.threading.tasks.task.run)</span><span class="sxs-lookup"><span data-stu-id="d7b6a-128">Do **not** use [Task.Run](/dotnet/api/system.threading.tasks.task.run) to make a synchronous API asynchronous.</span></span>
-* <span data-ttu-id="d7b6a-129">컨트롤러/ :::no-loc(Razor)::: 페이지 작업을 비동기식으로 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="d7b6a-129">Make controller/:::no-loc(Razor)::: Page actions asynchronous.</span></span> <span data-ttu-id="d7b6a-130">비동기 [/](/dotnet/csharp/programming-guide/concepts/async/) 대기 패턴을 활용 하기 위해 전체 호출 스택은 비동기입니다.</span><span class="sxs-lookup"><span data-stu-id="d7b6a-130">The entire call stack is asynchronous in order to benefit from [async/await](/dotnet/csharp/programming-guide/concepts/async/) patterns.</span></span>
+* <span data-ttu-id="d7b6a-129">컨트롤러/ Razor 페이지 작업을 비동기식으로 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="d7b6a-129">Make controller/Razor Page actions asynchronous.</span></span> <span data-ttu-id="d7b6a-130">비동기 [/](/dotnet/csharp/programming-guide/concepts/async/) 대기 패턴을 활용 하기 위해 전체 호출 스택은 비동기입니다.</span><span class="sxs-lookup"><span data-stu-id="d7b6a-130">The entire call stack is asynchronous in order to benefit from [async/await](/dotnet/csharp/programming-guide/concepts/async/) patterns.</span></span>
 
 <span data-ttu-id="d7b6a-131">[Perfview](https://github.com/Microsoft/perfview)와 같은 프로파일러를 사용 하 여 [스레드 풀](/windows/desktop/procthread/thread-pools)에 자주 추가 되는 스레드를 찾을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d7b6a-131">A profiler, such as [PerfView](https://github.com/Microsoft/perfview), can be used to find threads frequently added to the [Thread Pool](/windows/desktop/procthread/thread-pools).</span></span> <span data-ttu-id="d7b6a-132">이벤트는 스레드 `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` 풀에 추가 된 스레드를 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="d7b6a-132">The `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` event indicates a thread added to the thread pool.</span></span> <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc)  -->
 
@@ -136,7 +136,7 @@ ms.locfileid: "93061004"
 
 * <span data-ttu-id="d7b6a-208">일반 HTTP 요청 처리의 일부로 장기 실행 작업이 완료 될 때까지 기다리지 **마세요** .</span><span class="sxs-lookup"><span data-stu-id="d7b6a-208">**Do not** wait for long-running tasks to complete as part of ordinary HTTP request processing.</span></span>
 * <span data-ttu-id="d7b6a-209">[백그라운드 서비스](xref:fundamentals/host/hosted-services) 를 사용 하 여 장기 실행 요청을 처리 하거나 [Azure 함수](/azure/azure-functions/)를 사용 하 여 out-of-process를 처리 하는 **것이 좋습니다** .</span><span class="sxs-lookup"><span data-stu-id="d7b6a-209">**Do** consider handling long-running requests with [background services](xref:fundamentals/host/hosted-services) or out of process with an [Azure Function](/azure/azure-functions/).</span></span> <span data-ttu-id="d7b6a-210">Out-of-process 작업을 완료 하는 작업은 특히 CPU를 많이 사용 하는 작업에 유용 합니다.</span><span class="sxs-lookup"><span data-stu-id="d7b6a-210">Completing work out-of-process is especially beneficial for CPU-intensive tasks.</span></span>
-* <span data-ttu-id="d7b6a-211">와 같은 실시간 통신 옵션 **을 사용** 하 여 [:::no-loc(SignalR):::](xref:signalr/introduction) 비동기적으로 클라이언트와 통신 합니다.</span><span class="sxs-lookup"><span data-stu-id="d7b6a-211">**Do** use real-time communication options, such as [:::no-loc(SignalR):::](xref:signalr/introduction), to communicate with clients asynchronously.</span></span>
+* <span data-ttu-id="d7b6a-211">와 같은 실시간 통신 옵션 **을 사용** 하 여 [SignalR](xref:signalr/introduction) 비동기적으로 클라이언트와 통신 합니다.</span><span class="sxs-lookup"><span data-stu-id="d7b6a-211">**Do** use real-time communication options, such as [SignalR](xref:signalr/introduction), to communicate with clients asynchronously.</span></span>
 
 ## <a name="minify-client-assets"></a><span data-ttu-id="d7b6a-212">클라이언트 자산 축소</span><span class="sxs-lookup"><span data-stu-id="d7b6a-212">Minify client assets</span></span>
 

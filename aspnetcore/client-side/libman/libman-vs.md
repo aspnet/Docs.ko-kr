@@ -6,17 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: client-side/libman/libman-vs
 ms.openlocfilehash: 1c97f5d7fbf64c5043e6d2277091b9a477833bf1
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -72,7 +72,7 @@ ms.locfileid: "93054712"
     * <span data-ttu-id="a257c-139">*wwwroot* 가 없으면 *lib* 가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="a257c-139">*lib* is used if *wwwroot* doesn't exist.</span></span>
   * <span data-ttu-id="a257c-140">프로젝트 폴더에서 시작한 경우 해당 폴더 이름이 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="a257c-140">If launched from a project folder, the corresponding folder name is used.</span></span>
 
-  <span data-ttu-id="a257c-141">폴더 제안에 라이브러리 이름이 접미사로 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="a257c-141">The folder suggestion is suffixed with the library name.</span></span> <span data-ttu-id="a257c-142">다음 표에는 :::no-loc(Razor)::: Pages 프로젝트에 jQuery를 설치하는 경우의 폴더 제안이 나와 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a257c-142">The following table illustrates folder suggestions when installing jQuery in a :::no-loc(Razor)::: Pages project.</span></span>
+  <span data-ttu-id="a257c-141">폴더 제안에 라이브러리 이름이 접미사로 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="a257c-141">The folder suggestion is suffixed with the library name.</span></span> <span data-ttu-id="a257c-142">다음 표에는 Razor Pages 프로젝트에 jQuery를 설치하는 경우의 폴더 제안이 나와 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a257c-142">The following table illustrates folder suggestions when installing jQuery in a Razor Pages project.</span></span>
   
   |<span data-ttu-id="a257c-143">시작 위치</span><span class="sxs-lookup"><span data-stu-id="a257c-143">Launch location</span></span>                           |<span data-ttu-id="a257c-144">제안된 폴더</span><span class="sxs-lookup"><span data-stu-id="a257c-144">Suggested folder</span></span>      |
   |------------------------------------------|----------------------|

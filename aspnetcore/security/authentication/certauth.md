@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
 ms.date: 07/16/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/certauth
 ms.openlocfilehash: 83525a4c1e87a60b57130c1bba14360c7d03f552
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -175,7 +175,7 @@ services.AddAuthentication(
                 };
 
                 context.Principal = new ClaimsPrincipal(
-                    new Claims:::no-loc(Identity):::(claims, context.Scheme.Name));
+                    new ClaimsIdentity(claims, context.Scheme.Name));
                 context.Success();
 
                 return Task.CompletedTask;
@@ -219,7 +219,7 @@ services.AddAuthentication(
                     };
 
                     context.Principal = new ClaimsPrincipal(
-                        new Claims:::no-loc(Identity):::(claims, context.Scheme.Name));
+                        new ClaimsIdentity(claims, context.Scheme.Name));
                     context.Success();
                 }                     
 
@@ -624,7 +624,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="optional-client-certificates"></a><span data-ttu-id="8864e-244">클라이언트 인증서 (옵션)</span><span class="sxs-lookup"><span data-stu-id="8864e-244">Optional client certificates</span></span>
 
-<span data-ttu-id="8864e-245">이 섹션에서는 인증서를 사용 하 여 앱의 하위 집합을 보호 해야 하는 앱에 대 한 정보를 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="8864e-245">This section provides information for apps that must protect a subset of the app with a certificate.</span></span> <span data-ttu-id="8864e-246">예를 들어 :::no-loc(Razor)::: 앱의 페이지 또는 컨트롤러에 클라이언트 인증서가 필요할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8864e-246">For example, a :::no-loc(Razor)::: Page or controller in the app might require client certificates.</span></span> <span data-ttu-id="8864e-247">클라이언트 인증서로 챌린지를 표시 합니다.</span><span class="sxs-lookup"><span data-stu-id="8864e-247">This presents challenges as client certificates:</span></span>
+<span data-ttu-id="8864e-245">이 섹션에서는 인증서를 사용 하 여 앱의 하위 집합을 보호 해야 하는 앱에 대 한 정보를 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="8864e-245">This section provides information for apps that must protect a subset of the app with a certificate.</span></span> <span data-ttu-id="8864e-246">예를 들어 Razor 앱의 페이지 또는 컨트롤러에 클라이언트 인증서가 필요할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8864e-246">For example, a Razor Page or controller in the app might require client certificates.</span></span> <span data-ttu-id="8864e-247">클라이언트 인증서로 챌린지를 표시 합니다.</span><span class="sxs-lookup"><span data-stu-id="8864e-247">This presents challenges as client certificates:</span></span>
   
 * <span data-ttu-id="8864e-248">는 HTTP 기능이 아닌 TLS 기능입니다.</span><span class="sxs-lookup"><span data-stu-id="8864e-248">Are a TLS feature, not an HTTP feature.</span></span>
 * <span data-ttu-id="8864e-249">는 연결당 협상 되며, HTTP 데이터를 사용 하려면 먼저 연결을 시작할 때 협상 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="8864e-249">Are negotiated per-connection and must be be negotiated at the start of the connection before any HTTP data is available.</span></span> <span data-ttu-id="8864e-250">연결이 시작 될 때 SNI (서버 이름 표시)만 &dagger; 알려집니다.</span><span class="sxs-lookup"><span data-stu-id="8864e-250">At the start of the connection, only the Server Name Indication (SNI)&dagger; is known.</span></span> <span data-ttu-id="8864e-251">클라이언트 및 서버 인증서는 연결에 대 한 첫 번째 요청 이전에 협상 되며 요청은 일반적으로 재협상을 수행할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="8864e-251">The client and server certificates are negotiated prior to the first request on a connection and requests generally aren't able to renegotiate.</span></span>

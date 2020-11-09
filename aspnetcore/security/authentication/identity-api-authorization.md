@@ -1,23 +1,23 @@
 ---
 title: ASP.NET Core의 단일 페이지 앱에 대 한 인증 소개
 author: javiercn
-description: :::no-loc(Identity):::ASP.NET Core 앱 내에서 호스팅되는 단일 페이지 앱과 함께 사용 합니다.
+description: IdentityASP.NET Core 앱 내에서 호스팅되는 단일 페이지 앱과 함께 사용 합니다.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/27/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/identity/spa
 ms.openlocfilehash: 8acc34c88bf62b3da1b920acc7318c94435c100e
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -28,9 +28,9 @@ ms.locfileid: "93051982"
 ---
 # <a name="authentication-and-authorization-for-spas"></a><span data-ttu-id="2f526-103">SPAs에 대 한 인증 및 권한 부여</span><span class="sxs-lookup"><span data-stu-id="2f526-103">Authentication and authorization for SPAs</span></span>
 
-<span data-ttu-id="2f526-104">ASP.NET Core 3.1 이상 템플릿은 API 권한 부여에 대 한 지원을 사용 하 여 SPAs (단일 페이지 앱)의 인증을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-104">The ASP.NET Core 3.1 and later templates offer authentication in Single Page Apps (SPAs) using the support for API authorization.</span></span> <span data-ttu-id="2f526-105">:::no-loc(ASP.NET Core Identity):::사용자를 인증 하 고 저장 하기 위해 Openid connect Connect를 구현 하기 위해 [ :::no-loc(Identity)::: 서버](https://identityserver.io/) 와 결합 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-105">:::no-loc(ASP.NET Core Identity)::: for authenticating and storing users is combined with [:::no-loc(Identity):::Server](https://identityserver.io/) for implementing OpenID Connect.</span></span>
+<span data-ttu-id="2f526-104">ASP.NET Core 3.1 이상 템플릿은 API 권한 부여에 대 한 지원을 사용 하 여 SPAs (단일 페이지 앱)의 인증을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-104">The ASP.NET Core 3.1 and later templates offer authentication in Single Page Apps (SPAs) using the support for API authorization.</span></span> <span data-ttu-id="2f526-105">ASP.NET Core Identity사용자를 인증 하 고 저장 하기 위해 Openid connect Connect를 구현 하기 위해 [ Identity 서버](https://identityserver.io/) 와 결합 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-105">ASP.NET Core Identity for authenticating and storing users is combined with [IdentityServer](https://identityserver.io/) for implementing OpenID Connect.</span></span>
 
-<span data-ttu-id="2f526-106">인증 매개 변수는 **웹 응용 프로그램 (모델-뷰-컨트롤러)** (MVC) 및 **웹 응용 프로그램** (페이지) 프로젝트 템플릿의 인증 매개 변수와 비슷한 **각도** 및 **반응** 프로젝트 템플릿에 추가 되었습니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="2f526-106">An authentication parameter was added to the **Angular** and **React** project templates that is similar to the authentication parameter in the **Web Application (Model-View-Controller)** (MVC) and **Web Application** (:::no-loc(Razor)::: Pages) project templates.</span></span> <span data-ttu-id="2f526-107">허용 되는 매개 변수 값은 **None** 및 **개인용** 입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-107">The allowed parameter values are **None** and **Individual** .</span></span> <span data-ttu-id="2f526-108">현재 **React.js 및 Redux** 프로젝트 템플릿에서 인증 매개 변수를 지원 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-108">The **React.js and Redux** project template doesn't support the authentication parameter at this time.</span></span>
+<span data-ttu-id="2f526-106">인증 매개 변수는 **웹 응용 프로그램 (모델-뷰-컨트롤러)** (MVC) 및 **웹 응용 프로그램** (페이지) 프로젝트 템플릿의 인증 매개 변수와 비슷한 **각도** 및 **반응** 프로젝트 템플릿에 추가 되었습니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="2f526-106">An authentication parameter was added to the **Angular** and **React** project templates that is similar to the authentication parameter in the **Web Application (Model-View-Controller)** (MVC) and **Web Application** (Razor Pages) project templates.</span></span> <span data-ttu-id="2f526-107">허용 되는 매개 변수 값은 **None** 및 **개인용** 입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-107">The allowed parameter values are **None** and **Individual** .</span></span> <span data-ttu-id="2f526-108">현재 **React.js 및 Redux** 프로젝트 템플릿에서 인증 매개 변수를 지원 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-108">The **React.js and Redux** project template doesn't support the authentication parameter at this time.</span></span>
 
 ## <a name="create-an-app-with-api-authorization-support"></a><span data-ttu-id="2f526-109">API 권한 부여를 지 원하는 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="2f526-109">Create an app with API authorization support</span></span>
 
@@ -56,33 +56,33 @@ dotnet new react -o <output_directory_name> -au Individual
 
 ### <a name="startup-class"></a><span data-ttu-id="2f526-117">시작 클래스</span><span class="sxs-lookup"><span data-stu-id="2f526-117">Startup class</span></span>
 
-<span data-ttu-id="2f526-118">다음 코드 예제에서는 AspNetCore를 사용 합니다 [. :::no-loc(Identity)::: 서버](https://www.nuget.org/packages/Microsoft.AspNetCore.ApiAuthorization.:::no-loc(Identity):::Server) NuGet 패키지.</span><span class="sxs-lookup"><span data-stu-id="2f526-118">The following code examples rely on the [Microsoft.AspNetCore.ApiAuthorization.:::no-loc(Identity):::Server](https://www.nuget.org/packages/Microsoft.AspNetCore.ApiAuthorization.:::no-loc(Identity):::Server) NuGet package.</span></span> <span data-ttu-id="2f526-119">이 예제에서는 <xref:Microsoft.Extensions.DependencyInjection.:::no-loc(Identity):::ServerBuilderConfigurationExtensions.AddApiAuthorization%2A> 및 확장 메서드를 사용 하 여 API 인증 및 권한 부여를 구성 합니다 <xref:Microsoft.AspNetCore.ApiAuthorization.:::no-loc(Identity):::Server.ApiResourceCollection.Add:::no-loc(Identity):::ServerJwt%2A> .</span><span class="sxs-lookup"><span data-stu-id="2f526-119">The examples configure API authentication and authorization using the <xref:Microsoft.Extensions.DependencyInjection.:::no-loc(Identity):::ServerBuilderConfigurationExtensions.AddApiAuthorization%2A> and <xref:Microsoft.AspNetCore.ApiAuthorization.:::no-loc(Identity):::Server.ApiResourceCollection.Add:::no-loc(Identity):::ServerJwt%2A> extension methods.</span></span> <span data-ttu-id="2f526-120">인증을 통해 반응 또는 각도 SPA 프로젝트 템플릿을 사용 하는 프로젝트에는이 패키지에 대 한 참조가 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-120">Projects using the React or Angular SPA project templates with authentication include a reference to this package.</span></span>
+<span data-ttu-id="2f526-118">다음 코드 예제에서는 AspNetCore를 사용 합니다 [. Identity 서버](https://www.nuget.org/packages/Microsoft.AspNetCore.ApiAuthorization.IdentityServer) NuGet 패키지.</span><span class="sxs-lookup"><span data-stu-id="2f526-118">The following code examples rely on the [Microsoft.AspNetCore.ApiAuthorization.IdentityServer](https://www.nuget.org/packages/Microsoft.AspNetCore.ApiAuthorization.IdentityServer) NuGet package.</span></span> <span data-ttu-id="2f526-119">이 예제에서는 <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> 및 확장 메서드를 사용 하 여 API 인증 및 권한 부여를 구성 합니다 <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiResourceCollection.AddIdentityServerJwt%2A> .</span><span class="sxs-lookup"><span data-stu-id="2f526-119">The examples configure API authentication and authorization using the <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> and <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiResourceCollection.AddIdentityServerJwt%2A> extension methods.</span></span> <span data-ttu-id="2f526-120">인증을 통해 반응 또는 각도 SPA 프로젝트 템플릿을 사용 하는 프로젝트에는이 패키지에 대 한 참조가 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-120">Projects using the React or Angular SPA project templates with authentication include a reference to this package.</span></span>
 
 <span data-ttu-id="2f526-121">클래스에는 `Startup` 다음과 같은 추가 항목이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-121">The `Startup` class has the following additions:</span></span>
 
 * <span data-ttu-id="2f526-122">메서드 내에서 `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="2f526-122">Inside the `Startup.ConfigureServices` method:</span></span>
-  * <span data-ttu-id="2f526-123">:::no-loc(Identity)::: 기본 UI 사용:</span><span class="sxs-lookup"><span data-stu-id="2f526-123">:::no-loc(Identity)::: with the default UI:</span></span>
+  * <span data-ttu-id="2f526-123">Identity 기본 UI 사용:</span><span class="sxs-lookup"><span data-stu-id="2f526-123">Identity with the default UI:</span></span>
 
     ```csharp
     services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
-    services.AddDefault:::no-loc(Identity):::<ApplicationUser>()
+    services.AddDefaultIdentity<ApplicationUser>()
         .AddEntityFrameworkStores<ApplicationDbContext>();
     ```
 
-  * <span data-ttu-id="2f526-124">:::no-loc(Identity):::`AddApiAuthorization`서버 위에 몇 가지 기본 ASP.NET Core 규칙을 설정 하는 추가 도우미 메서드가 포함 된 서버 :::no-loc(Identity)::: :</span><span class="sxs-lookup"><span data-stu-id="2f526-124">:::no-loc(Identity):::Server with an additional `AddApiAuthorization` helper method that sets up some default ASP.NET Core conventions on top of :::no-loc(Identity):::Server:</span></span>
+  * <span data-ttu-id="2f526-124">Identity`AddApiAuthorization`서버 위에 몇 가지 기본 ASP.NET Core 규칙을 설정 하는 추가 도우미 메서드가 포함 된 서버 Identity :</span><span class="sxs-lookup"><span data-stu-id="2f526-124">IdentityServer with an additional `AddApiAuthorization` helper method that sets up some default ASP.NET Core conventions on top of IdentityServer:</span></span>
 
     ```csharp
-    services.Add:::no-loc(Identity):::Server()
+    services.AddIdentityServer()
         .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
     ```
 
-  * <span data-ttu-id="2f526-125">:::no-loc(Identity):::Server에 의해 생성된 JWT 토큰의 유효성을 검사하도록 앱을 구성하는 추가 `Add:::no-loc(Identity):::ServerJwt` 도우미 메서드를 사용한 인증:</span><span class="sxs-lookup"><span data-stu-id="2f526-125">Authentication with an additional `Add:::no-loc(Identity):::ServerJwt` helper method that configures the app to validate JWT tokens produced by :::no-loc(Identity):::Server:</span></span>
+  * <span data-ttu-id="2f526-125">IdentityServer에 의해 생성된 JWT 토큰의 유효성을 검사하도록 앱을 구성하는 추가 `AddIdentityServerJwt` 도우미 메서드를 사용한 인증:</span><span class="sxs-lookup"><span data-stu-id="2f526-125">Authentication with an additional `AddIdentityServerJwt` helper method that configures the app to validate JWT tokens produced by IdentityServer:</span></span>
 
     ```csharp
     services.AddAuthentication()
-        .Add:::no-loc(Identity):::ServerJwt();
+        .AddIdentityServerJwt();
     ```
 
 * <span data-ttu-id="2f526-126">메서드 내에서 `Startup.Configure` :</span><span class="sxs-lookup"><span data-stu-id="2f526-126">Inside the `Startup.Configure` method:</span></span>
@@ -92,43 +92,43 @@ dotnet new react -o <output_directory_name> -au Individual
     app.UseAuthentication();
     ```
 
-  * <span data-ttu-id="2f526-128">:::no-loc(Identity):::Openid connect Connect 끝점을 노출 하는 서버 미들웨어:</span><span class="sxs-lookup"><span data-stu-id="2f526-128">The :::no-loc(Identity):::Server middleware that exposes the OpenID Connect endpoints:</span></span>
+  * <span data-ttu-id="2f526-128">IdentityOpenid connect Connect 끝점을 노출 하는 서버 미들웨어:</span><span class="sxs-lookup"><span data-stu-id="2f526-128">The IdentityServer middleware that exposes the OpenID Connect endpoints:</span></span>
 
     ```csharp
-    app.Use:::no-loc(Identity):::Server();
+    app.UseIdentityServer();
     ```
 
 ### <a name="addapiauthorization"></a><span data-ttu-id="2f526-129">AddApiAuthorization</span><span class="sxs-lookup"><span data-stu-id="2f526-129">AddApiAuthorization</span></span>
 
-<span data-ttu-id="2f526-130">이 도우미 메서드는 :::no-loc(Identity)::: 지원 되는 구성을 사용 하도록 서버를 구성 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-130">This helper method configures :::no-loc(Identity):::Server to use our supported configuration.</span></span> <span data-ttu-id="2f526-131">:::no-loc(Identity):::Server는 앱 보안 문제를 처리하는 강력하고 확장성 있는 프레임워크입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-131">:::no-loc(Identity):::Server is a powerful and extensible framework for handling app security concerns.</span></span> <span data-ttu-id="2f526-132">이와 동시에는 가장 일반적인 시나리오에 대 한 불필요 한 복잡성을 노출 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-132">At the same time, that exposes unnecessary complexity for the most common scenarios.</span></span> <span data-ttu-id="2f526-133">따라서 규칙 집합 및 구성 옵션이 적절 한 시작 지점으로 간주 되는 사용자에 게 제공 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-133">Consequently, a set of conventions and configuration options is provided to you that are considered a good starting point.</span></span> <span data-ttu-id="2f526-134">인증을 변경 해야 하는 경우에는 요구 사항에 :::no-loc(Identity)::: 맞게 인증을 사용자 지정할 수 있도록 서버의 전체 기능을 계속 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-134">Once your authentication needs change, the full power of :::no-loc(Identity):::Server is still available to customize authentication to suit your needs.</span></span>
+<span data-ttu-id="2f526-130">이 도우미 메서드는 Identity 지원 되는 구성을 사용 하도록 서버를 구성 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-130">This helper method configures IdentityServer to use our supported configuration.</span></span> <span data-ttu-id="2f526-131">IdentityServer는 앱 보안 문제를 처리하는 강력하고 확장성 있는 프레임워크입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-131">IdentityServer is a powerful and extensible framework for handling app security concerns.</span></span> <span data-ttu-id="2f526-132">이와 동시에는 가장 일반적인 시나리오에 대 한 불필요 한 복잡성을 노출 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-132">At the same time, that exposes unnecessary complexity for the most common scenarios.</span></span> <span data-ttu-id="2f526-133">따라서 규칙 집합 및 구성 옵션이 적절 한 시작 지점으로 간주 되는 사용자에 게 제공 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-133">Consequently, a set of conventions and configuration options is provided to you that are considered a good starting point.</span></span> <span data-ttu-id="2f526-134">인증을 변경 해야 하는 경우에는 요구 사항에 Identity 맞게 인증을 사용자 지정할 수 있도록 서버의 전체 기능을 계속 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-134">Once your authentication needs change, the full power of IdentityServer is still available to customize authentication to suit your needs.</span></span>
 
-### <a name="addno-locidentityserverjwt"></a><span data-ttu-id="2f526-135">Add:::no-loc(Identity):::ServerJwt</span><span class="sxs-lookup"><span data-stu-id="2f526-135">Add:::no-loc(Identity):::ServerJwt</span></span>
+### <a name="addno-locidentityserverjwt"></a><span data-ttu-id="2f526-135">AddIdentityServerJwt</span><span class="sxs-lookup"><span data-stu-id="2f526-135">AddIdentityServerJwt</span></span>
 
-<span data-ttu-id="2f526-136">이 도우미 메서드는 앱의 정책 스키마를 기본 인증 처리기로 구성 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-136">This helper method configures a policy scheme for the app as the default authentication handler.</span></span> <span data-ttu-id="2f526-137">이 정책은 :::no-loc(Identity)::: :::no-loc(Identity)::: URL 공간 "/"에서 모든 하위 경로로 라우팅되는 모든 요청을 처리할 수 있도록 구성 됩니다 :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2f526-137">The policy is configured to let :::no-loc(Identity)::: handle all requests routed to any subpath in the :::no-loc(Identity)::: URL space "/:::no-loc(Identity):::".</span></span> <span data-ttu-id="2f526-138">`JwtBearerHandler`는 다른 모든 요청을 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-138">The `JwtBearerHandler` handles all other requests.</span></span> <span data-ttu-id="2f526-139">또한이 메서드는 `<<ApplicationName>>API` 기본 범위를 사용 하는 서버에 API 리소스를 등록 하 :::no-loc(Identity)::: `<<ApplicationName>>API` 고 JWT 전달자 토큰 미들웨어를 구성 하 여 :::no-loc(Identity)::: 서버에서 앱에 대해 발급 한 토큰의 유효성을 검사 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-139">Additionally, this method registers an `<<ApplicationName>>API` API resource with :::no-loc(Identity):::Server with a default scope of `<<ApplicationName>>API` and configures the JWT Bearer token middleware to validate tokens issued by :::no-loc(Identity):::Server for the app.</span></span>
+<span data-ttu-id="2f526-136">이 도우미 메서드는 앱의 정책 스키마를 기본 인증 처리기로 구성 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-136">This helper method configures a policy scheme for the app as the default authentication handler.</span></span> <span data-ttu-id="2f526-137">이 정책은 Identity Identity URL 공간 "/"에서 모든 하위 경로로 라우팅되는 모든 요청을 처리할 수 있도록 구성 됩니다 Identity .</span><span class="sxs-lookup"><span data-stu-id="2f526-137">The policy is configured to let Identity handle all requests routed to any subpath in the Identity URL space "/Identity".</span></span> <span data-ttu-id="2f526-138">`JwtBearerHandler`는 다른 모든 요청을 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-138">The `JwtBearerHandler` handles all other requests.</span></span> <span data-ttu-id="2f526-139">또한이 메서드는 `<<ApplicationName>>API` 기본 범위를 사용 하는 서버에 API 리소스를 등록 하 Identity `<<ApplicationName>>API` 고 JWT 전달자 토큰 미들웨어를 구성 하 여 Identity 서버에서 앱에 대해 발급 한 토큰의 유효성을 검사 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-139">Additionally, this method registers an `<<ApplicationName>>API` API resource with IdentityServer with a default scope of `<<ApplicationName>>API` and configures the JWT Bearer token middleware to validate tokens issued by IdentityServer for the app.</span></span>
 
 ### <a name="weatherforecastcontroller"></a><span data-ttu-id="2f526-140">WeatherForecastController</span><span class="sxs-lookup"><span data-stu-id="2f526-140">WeatherForecastController</span></span>
 
-<span data-ttu-id="2f526-141">*Controllers\WeatherForecastController.cs* 파일에서 `[Authorize]` 리소스에 액세스 하기 위한 기본 정책에 따라 사용자에 게 권한을 부여 해야 함을 나타내는 클래스에 적용 된 특성을 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-141">In the *Controllers\WeatherForecastController.cs* file, notice the `[Authorize]` attribute applied to the class that indicates that the user needs to be authorized based on the default policy to access the resource.</span></span> <span data-ttu-id="2f526-142">기본 권한 부여 정책은 위에서 언급 한 정책 체계에 의해 설정 되는 기본 인증 체계를 사용 하도록 구성 되며, `Add:::no-loc(Identity):::ServerJwt` `JwtBearerHandler` 이러한 도우미 메서드에서 앱에 대 한 요청의 기본 처리기로 구성 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-142">The default authorization policy happens to be configured to use the default authentication scheme, which is set up by `Add:::no-loc(Identity):::ServerJwt` to the policy scheme that was mentioned above, making the `JwtBearerHandler` configured by such helper method the default handler for requests to the app.</span></span>
+<span data-ttu-id="2f526-141">*Controllers\WeatherForecastController.cs* 파일에서 `[Authorize]` 리소스에 액세스 하기 위한 기본 정책에 따라 사용자에 게 권한을 부여 해야 함을 나타내는 클래스에 적용 된 특성을 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-141">In the *Controllers\WeatherForecastController.cs* file, notice the `[Authorize]` attribute applied to the class that indicates that the user needs to be authorized based on the default policy to access the resource.</span></span> <span data-ttu-id="2f526-142">기본 권한 부여 정책은 위에서 언급 한 정책 체계에 의해 설정 되는 기본 인증 체계를 사용 하도록 구성 되며, `AddIdentityServerJwt` `JwtBearerHandler` 이러한 도우미 메서드에서 앱에 대 한 요청의 기본 처리기로 구성 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-142">The default authorization policy happens to be configured to use the default authentication scheme, which is set up by `AddIdentityServerJwt` to the policy scheme that was mentioned above, making the `JwtBearerHandler` configured by such helper method the default handler for requests to the app.</span></span>
 
 ### <a name="applicationdbcontext"></a><span data-ttu-id="2f526-143">ApplicationDbContext</span><span class="sxs-lookup"><span data-stu-id="2f526-143">ApplicationDbContext</span></span>
 
-<span data-ttu-id="2f526-144">*Data\ApplicationDbContext.cs* 파일에서는 `DbContext` 가 :::no-loc(Identity)::: 확장 하는 예외 `ApiAuthorizationDbContext` (에서 더 많이 파생 된 클래스)를 사용 `:::no-loc(Identity):::DbContext` 하 여 서버에 대 한 스키마를 포함 하 :::no-loc(Identity)::: 는 것을 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-144">In the *Data\ApplicationDbContext.cs* file, notice the same `DbContext` is used in :::no-loc(Identity)::: with the exception that it extends `ApiAuthorizationDbContext` (a more derived class from `:::no-loc(Identity):::DbContext`) to include the schema for :::no-loc(Identity):::Server.</span></span>
+<span data-ttu-id="2f526-144">*Data\ApplicationDbContext.cs* 파일에서는 `DbContext` 가 Identity 확장 하는 예외 `ApiAuthorizationDbContext` (에서 더 많이 파생 된 클래스)를 사용 `IdentityDbContext` 하 여 서버에 대 한 스키마를 포함 하 Identity 는 것을 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-144">In the *Data\ApplicationDbContext.cs* file, notice the same `DbContext` is used in Identity with the exception that it extends `ApiAuthorizationDbContext` (a more derived class from `IdentityDbContext`) to include the schema for IdentityServer.</span></span>
 
-<span data-ttu-id="2f526-145">데이터베이스 스키마에 대 한 모든 권한을 얻으려면 사용 가능한 클래스 중 하나에서 상속 하 :::no-loc(Identity)::: `DbContext` 고 :::no-loc(Identity)::: 메서드를 호출 하 여 스키마를 포함 하도록 컨텍스트를 구성 합니다 `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` `OnModelCreating` .</span><span class="sxs-lookup"><span data-stu-id="2f526-145">To gain full control of the database schema, inherit from one of the available :::no-loc(Identity)::: `DbContext` classes and configure the context to include the :::no-loc(Identity)::: schema by calling `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` on the `OnModelCreating` method.</span></span>
+<span data-ttu-id="2f526-145">데이터베이스 스키마에 대 한 모든 권한을 얻으려면 사용 가능한 클래스 중 하나에서 상속 하 Identity `DbContext` 고 Identity 메서드를 호출 하 여 스키마를 포함 하도록 컨텍스트를 구성 합니다 `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` `OnModelCreating` .</span><span class="sxs-lookup"><span data-stu-id="2f526-145">To gain full control of the database schema, inherit from one of the available Identity `DbContext` classes and configure the context to include the Identity schema by calling `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` on the `OnModelCreating` method.</span></span>
 
 ### <a name="oidcconfigurationcontroller"></a><span data-ttu-id="2f526-146">OidcConfigurationController</span><span class="sxs-lookup"><span data-stu-id="2f526-146">OidcConfigurationController</span></span>
 
 <span data-ttu-id="2f526-147">*Controllers\OidcConfigurationController.cs* 파일에서 클라이언트가 사용 해야 하는 oidc 매개 변수를 제공 하도록 프로 비전 된 끝점을 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-147">In the *Controllers\OidcConfigurationController.cs* file, notice the endpoint that's provisioned to serve the OIDC parameters that the client needs to use.</span></span>
 
-### :::no-loc(appsettings.json):::
+### appsettings.json
 
-<span data-ttu-id="2f526-148">*:::no-loc(appsettings.json):::* 프로젝트 루트의 파일에는 `:::no-loc(Identity):::Server` 구성 된 클라이언트 목록을 설명 하는 새 섹션이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-148">In the *:::no-loc(appsettings.json):::* file of the project root, there's a new `:::no-loc(Identity):::Server` section that describes the list of configured clients.</span></span> <span data-ttu-id="2f526-149">다음 예제에는 단일 클라이언트가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-149">In the following example, there's a single client.</span></span> <span data-ttu-id="2f526-150">클라이언트 이름은 앱 이름에 대응되며 규칙에 따라 OAuth `ClientId` 매개 변수에 매핑됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-150">The client name corresponds to the app name and is mapped by convention to the OAuth `ClientId` parameter.</span></span> <span data-ttu-id="2f526-151">프로필은 구성되는 앱 유형을 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-151">The profile indicates the app type being configured.</span></span> <span data-ttu-id="2f526-152">서버에 대 한 구성 프로세스를 간소화 하는 규칙을 구동 하기 위해 내부적으로 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-152">It's used internally to drive conventions that simplify the configuration process for the server.</span></span> <span data-ttu-id="2f526-153">[응용 프로그램 프로필](#application-profiles) 섹션에 설명 된 대로 몇 가지 프로필을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-153">There are several profiles available, as explained in the [Application profiles](#application-profiles) section.</span></span>
+<span data-ttu-id="2f526-148">*appsettings.json* 프로젝트 루트의 파일에는 `IdentityServer` 구성 된 클라이언트 목록을 설명 하는 새 섹션이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-148">In the *appsettings.json* file of the project root, there's a new `IdentityServer` section that describes the list of configured clients.</span></span> <span data-ttu-id="2f526-149">다음 예제에는 단일 클라이언트가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-149">In the following example, there's a single client.</span></span> <span data-ttu-id="2f526-150">클라이언트 이름은 앱 이름에 대응되며 규칙에 따라 OAuth `ClientId` 매개 변수에 매핑됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-150">The client name corresponds to the app name and is mapped by convention to the OAuth `ClientId` parameter.</span></span> <span data-ttu-id="2f526-151">프로필은 구성되는 앱 유형을 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-151">The profile indicates the app type being configured.</span></span> <span data-ttu-id="2f526-152">서버에 대 한 구성 프로세스를 간소화 하는 규칙을 구동 하기 위해 내부적으로 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-152">It's used internally to drive conventions that simplify the configuration process for the server.</span></span> <span data-ttu-id="2f526-153">[응용 프로그램 프로필](#application-profiles) 섹션에 설명 된 대로 몇 가지 프로필을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-153">There are several profiles available, as explained in the [Application profiles](#application-profiles) section.</span></span>
 
 ```json
-":::no-loc(Identity):::Server": {
+"IdentityServer": {
   "Clients": {
     "angularindividualpreview3final": {
-      "Profile": ":::no-loc(Identity):::ServerSPA"
+      "Profile": "IdentityServerSPA"
     }
   }
 }
@@ -136,10 +136,10 @@ dotnet new react -o <output_directory_name> -au Individual
 
 ### <a name="appsettingsdevelopmentjson"></a><span data-ttu-id="2f526-154">appsettings.Development.js</span><span class="sxs-lookup"><span data-stu-id="2f526-154">appsettings.Development.json</span></span>
 
-<span data-ttu-id="2f526-155">프로젝트 루트의 *appsettings.Development.js* 파일에는 `:::no-loc(Identity):::Server` 토큰에 서명 하는 데 사용 되는 키를 설명 하는 섹션이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-155">In the *appsettings.Development.json* file of the project root, there's an `:::no-loc(Identity):::Server` section that describes the key used to sign tokens.</span></span> <span data-ttu-id="2f526-156">프로덕션에 배포 하는 경우 [프로덕션에 배포](#deploy-to-production) 섹션에 설명 된 대로 키를 프로 비전 하 고 앱과 함께 배포 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-156">When deploying to production, a key needs to be provisioned and deployed alongside the app, as explained in the [Deploy to production](#deploy-to-production) section.</span></span>
+<span data-ttu-id="2f526-155">프로젝트 루트의 *appsettings.Development.js* 파일에는 `IdentityServer` 토큰에 서명 하는 데 사용 되는 키를 설명 하는 섹션이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-155">In the *appsettings.Development.json* file of the project root, there's an `IdentityServer` section that describes the key used to sign tokens.</span></span> <span data-ttu-id="2f526-156">프로덕션에 배포 하는 경우 [프로덕션에 배포](#deploy-to-production) 섹션에 설명 된 대로 키를 프로 비전 하 고 앱과 함께 배포 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-156">When deploying to production, a key needs to be provisioned and deployed alongside the app, as explained in the [Deploy to production](#deploy-to-production) section.</span></span>
 
 ```json
-":::no-loc(Identity):::Server": {
+"IdentityServer": {
   "Key": {
     "Type": "Development"
   }
@@ -186,23 +186,23 @@ dotnet new react -o <output_directory_name> -au Individual
 
 ```csharp
 services.AddAuthentication()
-    .Add:::no-loc(Identity):::ServerJwt();
+    .AddIdentityServerJwt();
 
 services.Configure<JwtBearerOptions>(
-    :::no-loc(Identity):::ServerJwtConstants.:::no-loc(Identity):::ServerJwtBearerScheme,
+    IdentityServerJwtConstants.IdentityServerJwtBearerScheme,
     options =>
     {
         ...
     });
 ```
 
-<span data-ttu-id="2f526-188">API의 JWT 처리기는를 사용 하 여 인증 프로세스를 제어할 수 있는 이벤트를 발생 시킵니다 `JwtBearerEvents` .</span><span class="sxs-lookup"><span data-stu-id="2f526-188">The API's JWT handler raises events that enable control over the authentication process using `JwtBearerEvents`.</span></span> <span data-ttu-id="2f526-189">API 권한 부여에 대 한 지원을 제공 하기 위해는 `Add:::no-loc(Identity):::ServerJwt` 자체 이벤트 처리기를 등록 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-189">To provide support for API authorization, `Add:::no-loc(Identity):::ServerJwt` registers its own event handlers.</span></span>
+<span data-ttu-id="2f526-188">API의 JWT 처리기는를 사용 하 여 인증 프로세스를 제어할 수 있는 이벤트를 발생 시킵니다 `JwtBearerEvents` .</span><span class="sxs-lookup"><span data-stu-id="2f526-188">The API's JWT handler raises events that enable control over the authentication process using `JwtBearerEvents`.</span></span> <span data-ttu-id="2f526-189">API 권한 부여에 대 한 지원을 제공 하기 위해는 `AddIdentityServerJwt` 자체 이벤트 처리기를 등록 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-189">To provide support for API authorization, `AddIdentityServerJwt` registers its own event handlers.</span></span>
 
 <span data-ttu-id="2f526-190">이벤트 처리를 사용자 지정 하려면 필요한 만큼 추가 논리를 사용 하 여 기존 이벤트 처리기를 래핑합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-190">To customize the handling of an event, wrap the existing event handler with additional logic as required.</span></span> <span data-ttu-id="2f526-191">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-191">For example:</span></span>
 
 ```csharp
 services.Configure<JwtBearerOptions>(
-    :::no-loc(Identity):::ServerJwtConstants.:::no-loc(Identity):::ServerJwtBearerScheme,
+    IdentityServerJwtConstants.IdentityServerJwtBearerScheme,
     options =>
     {
         var onTokenValidated = options.Events.OnTokenValidated;       
@@ -277,7 +277,7 @@ async populateWeatherData() {
 
 <span data-ttu-id="2f526-215">프로덕션 환경에 앱을 배포 하려면 다음 리소스를 프로 비전 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-215">To deploy the app to production, the following resources need to be provisioned:</span></span>
 
-* <span data-ttu-id="2f526-216">:::no-loc(Identity):::사용자 계정 및 서버에서 부여할 데이터베이스를 저장 합니다 :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2f526-216">A database to store the :::no-loc(Identity)::: user accounts and the :::no-loc(Identity):::Server grants.</span></span>
+* <span data-ttu-id="2f526-216">Identity사용자 계정 및 서버에서 부여할 데이터베이스를 저장 합니다 Identity .</span><span class="sxs-lookup"><span data-stu-id="2f526-216">A database to store the Identity user accounts and the IdentityServer grants.</span></span>
 * <span data-ttu-id="2f526-217">토큰에 서명 하는 데 사용할 프로덕션 인증서입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-217">A production certificate to use for signing tokens.</span></span>
   * <span data-ttu-id="2f526-218">이 인증서에 대 한 특정 요구 사항은 없습니다. 자체 서명 된 인증서 또는 CA 인증 기관을 통해 프로 비전 된 인증서 일 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-218">There are no specific requirements for this certificate; it can be a self-signed certificate or a certificate provisioned through a CA authority.</span></span>
   * <span data-ttu-id="2f526-219">PowerShell 또는 OpenSSL 같은 표준 도구를 통해 생성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-219">It can be generated through standard tools like PowerShell or OpenSSL.</span></span>
@@ -285,10 +285,10 @@ async populateWeatherData() {
 
 ### <a name="example-deploy-to-a-non-azure-web-hosting-provider"></a><span data-ttu-id="2f526-221">예: 비 Azure 웹 호스팅 공급자에 배포</span><span class="sxs-lookup"><span data-stu-id="2f526-221">Example: Deploy to a non-Azure web hosting provider</span></span>
 
-<span data-ttu-id="2f526-222">웹 호스팅 패널에서 인증서를 만들거나 로드 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-222">In your web hosting panel, create or load your certificate.</span></span> <span data-ttu-id="2f526-223">그런 다음 앱의 *:::no-loc(appsettings.json):::* 파일에서 섹션을 수정 `:::no-loc(Identity):::Server` 하 여 키 세부 정보를 포함 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-223">Then in the app's *:::no-loc(appsettings.json):::* file, modify the `:::no-loc(Identity):::Server` section to include the key details.</span></span> <span data-ttu-id="2f526-224">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-224">For example:</span></span>
+<span data-ttu-id="2f526-222">웹 호스팅 패널에서 인증서를 만들거나 로드 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-222">In your web hosting panel, create or load your certificate.</span></span> <span data-ttu-id="2f526-223">그런 다음 앱의 *appsettings.json* 파일에서 섹션을 수정 `IdentityServer` 하 여 키 세부 정보를 포함 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-223">Then in the app's *appsettings.json* file, modify the `IdentityServer` section to include the key details.</span></span> <span data-ttu-id="2f526-224">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-224">For example:</span></span>
 
 ```json
-":::no-loc(Identity):::Server": {
+"IdentityServer": {
   "Key": {
     "Type": "Store",
     "StoreName": "WebHosting",
@@ -308,10 +308,10 @@ async populateWeatherData() {
 
 <span data-ttu-id="2f526-231">이 섹션에서는 인증서 저장소에 저장 된 인증서를 사용 하 여 Azure App Service에 앱을 배포 하는 방법을 설명 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-231">This section describes deploying the app to Azure App Service using a certificate stored in the certificate store.</span></span> <span data-ttu-id="2f526-232">인증서 저장소에서 인증서를 로드 하도록 앱을 수정 하려면 이후 단계에서 Azure Portal에서 앱을 구성할 때 표준 계층 서비스 계획 이상이 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-232">To modify the app to load a certificate from the certificate store, a Standard tier service plan or better is required when you configure the app in the Azure portal in a later step.</span></span>
 
-<span data-ttu-id="2f526-233">앱의 파일에서 *:::no-loc(appsettings.json):::* 섹션을 수정 `:::no-loc(Identity):::Server` 하 여 키 세부 정보를 포함 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-233">In the app's *:::no-loc(appsettings.json):::* file, modify the `:::no-loc(Identity):::Server` section to include the key details:</span></span>
+<span data-ttu-id="2f526-233">앱의 파일에서 *appsettings.json* 섹션을 수정 `IdentityServer` 하 여 키 세부 정보를 포함 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-233">In the app's *appsettings.json* file, modify the `IdentityServer` section to include the key details:</span></span>
 
 ```json
-":::no-loc(Identity):::Server": {
+"IdentityServer": {
   "Key": {
     "Type": "Store",
     "StoreName": "My",
@@ -335,25 +335,25 @@ async populateWeatherData() {
 
 ## <a name="other-configuration-options"></a><span data-ttu-id="2f526-244">기타 구성 옵션</span><span class="sxs-lookup"><span data-stu-id="2f526-244">Other configuration options</span></span>
 
-<span data-ttu-id="2f526-245">API 권한 부여에 대 한 지원은 :::no-loc(Identity)::: 규칙, 기본값 및 향상 된 기능 집합을 사용 하 여 서버를 기반으로 구축 되어 SPAs에 대 한 환경을 단순화 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-245">The support for API authorization builds on top of :::no-loc(Identity):::Server with a set of conventions, default values, and enhancements to simplify the experience for SPAs.</span></span> <span data-ttu-id="2f526-246">물론 :::no-loc(Identity)::: ASP.NET Core 통합이 시나리오에 포함 되지 않은 경우 서버의 전체 기능을 백그라운드에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-246">Needless to say, the full power of :::no-loc(Identity):::Server is available behind the scenes if the ASP.NET Core integrations don't cover your scenario.</span></span> <span data-ttu-id="2f526-247">ASP.NET Core 지원은 조직에서 모든 앱을 만들고 배포 하는 "자사" 앱에 중점을 두었습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-247">The ASP.NET Core support is focused on "first-party" apps, where all the apps are created and deployed by our organization.</span></span> <span data-ttu-id="2f526-248">따라서 동의 또는 페더레이션과 같은 항목에 대 한 지원이 제공 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-248">As such, support isn't offered for things like consent or federation.</span></span> <span data-ttu-id="2f526-249">이러한 시나리오의 경우 서버를 사용 :::no-loc(Identity)::: 하 고 해당 설명서를 따릅니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-249">For those scenarios, use :::no-loc(Identity):::Server and follow their documentation.</span></span>
+<span data-ttu-id="2f526-245">API 권한 부여에 대 한 지원은 Identity 규칙, 기본값 및 향상 된 기능 집합을 사용 하 여 서버를 기반으로 구축 되어 SPAs에 대 한 환경을 단순화 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-245">The support for API authorization builds on top of IdentityServer with a set of conventions, default values, and enhancements to simplify the experience for SPAs.</span></span> <span data-ttu-id="2f526-246">물론 Identity ASP.NET Core 통합이 시나리오에 포함 되지 않은 경우 서버의 전체 기능을 백그라운드에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-246">Needless to say, the full power of IdentityServer is available behind the scenes if the ASP.NET Core integrations don't cover your scenario.</span></span> <span data-ttu-id="2f526-247">ASP.NET Core 지원은 조직에서 모든 앱을 만들고 배포 하는 "자사" 앱에 중점을 두었습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-247">The ASP.NET Core support is focused on "first-party" apps, where all the apps are created and deployed by our organization.</span></span> <span data-ttu-id="2f526-248">따라서 동의 또는 페더레이션과 같은 항목에 대 한 지원이 제공 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-248">As such, support isn't offered for things like consent or federation.</span></span> <span data-ttu-id="2f526-249">이러한 시나리오의 경우 서버를 사용 Identity 하 고 해당 설명서를 따릅니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-249">For those scenarios, use IdentityServer and follow their documentation.</span></span>
 
 ### <a name="application-profiles"></a><span data-ttu-id="2f526-250">응용 프로그램 프로필</span><span class="sxs-lookup"><span data-stu-id="2f526-250">Application profiles</span></span>
 
 <span data-ttu-id="2f526-251">응용 프로그램 프로필은 매개 변수를 추가로 정의 하는 앱에 대 한 미리 정의 된 구성입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-251">Application profiles are predefined configurations for apps that further define their parameters.</span></span> <span data-ttu-id="2f526-252">이번에는 다음 프로필이 지원 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-252">At this time, the following profiles are supported:</span></span>
 
-* <span data-ttu-id="2f526-253">`:::no-loc(Identity):::ServerSPA`: 단일 단위로 서버와 함께 호스트 된 SPA를 나타냅니다 :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2f526-253">`:::no-loc(Identity):::ServerSPA`: Represents a SPA hosted alongside :::no-loc(Identity):::Server as a single unit.</span></span>
+* <span data-ttu-id="2f526-253">`IdentityServerSPA`: 단일 단위로 서버와 함께 호스트 된 SPA를 나타냅니다 Identity .</span><span class="sxs-lookup"><span data-stu-id="2f526-253">`IdentityServerSPA`: Represents a SPA hosted alongside IdentityServer as a single unit.</span></span>
   * <span data-ttu-id="2f526-254">`redirect_uri`기본값은 `/authentication/login-callback` 입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-254">The `redirect_uri` defaults to `/authentication/login-callback`.</span></span>
   * <span data-ttu-id="2f526-255">`post_logout_redirect_uri`기본값은 `/authentication/logout-callback` 입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-255">The `post_logout_redirect_uri` defaults to `/authentication/logout-callback`.</span></span>
   * <span data-ttu-id="2f526-256">범위 집합에는 `openid` `profile` 앱의 api에 대해 정의 된, 및 모든 범위가 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-256">The set of scopes includes the `openid`, `profile`, and every scope defined for the APIs in the app.</span></span>
   * <span data-ttu-id="2f526-257">허용 되는 OIDC 응답 형식의 집합은 `id_token token` 또는 각각 개별적으로 ( `id_token` , `token` )입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-257">The set of allowed OIDC response types is `id_token token` or each of them individually (`id_token`, `token`).</span></span>
   * <span data-ttu-id="2f526-258">허용 되는 응답 모드는 `fragment` 입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-258">The allowed response mode is `fragment`.</span></span>
-* <span data-ttu-id="2f526-259">`SPA`: 서버에서 호스팅되지 않는 SPA를 나타냅니다 :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2f526-259">`SPA`: Represents a SPA that isn't hosted with :::no-loc(Identity):::Server.</span></span>
+* <span data-ttu-id="2f526-259">`SPA`: 서버에서 호스팅되지 않는 SPA를 나타냅니다 Identity .</span><span class="sxs-lookup"><span data-stu-id="2f526-259">`SPA`: Represents a SPA that isn't hosted with IdentityServer.</span></span>
   * <span data-ttu-id="2f526-260">범위 집합에는 `openid` `profile` 앱의 api에 대해 정의 된, 및 모든 범위가 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-260">The set of scopes includes the `openid`, `profile`, and every scope defined for the APIs in the app.</span></span>
   * <span data-ttu-id="2f526-261">허용 되는 OIDC 응답 형식의 집합은 `id_token token` 또는 각각 개별적으로 ( `id_token` , `token` )입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-261">The set of allowed OIDC response types is `id_token token` or each of them individually (`id_token`, `token`).</span></span>
   * <span data-ttu-id="2f526-262">허용 되는 응답 모드는 `fragment` 입니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-262">The allowed response mode is `fragment`.</span></span>
-* <span data-ttu-id="2f526-263">`:::no-loc(Identity):::ServerJwt`: 서버와 함께 호스트 되는 API를 나타냅니다 :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2f526-263">`:::no-loc(Identity):::ServerJwt`: Represents an API that is hosted alongside with :::no-loc(Identity):::Server.</span></span>
+* <span data-ttu-id="2f526-263">`IdentityServerJwt`: 서버와 함께 호스트 되는 API를 나타냅니다 Identity .</span><span class="sxs-lookup"><span data-stu-id="2f526-263">`IdentityServerJwt`: Represents an API that is hosted alongside with IdentityServer.</span></span>
   * <span data-ttu-id="2f526-264">앱은 앱 이름으로 기본 설정 된 단일 범위를 갖도록 구성 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-264">The app is configured to have a single scope that defaults to the app name.</span></span>
-* <span data-ttu-id="2f526-265">`API`: 서버에서 호스팅되지 않는 API를 나타냅니다 :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2f526-265">`API`: Represents an API that isn't hosted with :::no-loc(Identity):::Server.</span></span>
+* <span data-ttu-id="2f526-265">`API`: 서버에서 호스팅되지 않는 API를 나타냅니다 Identity .</span><span class="sxs-lookup"><span data-stu-id="2f526-265">`API`: Represents an API that isn't hosted with IdentityServer.</span></span>
   * <span data-ttu-id="2f526-266">앱은 앱 이름으로 기본 설정 된 단일 범위를 갖도록 구성 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-266">The app is configured to have a single scope that defaults to the app name.</span></span>
 
 ### <a name="configuration-through-appsettings"></a><span data-ttu-id="2f526-267">AppSettings를 통한 구성</span><span class="sxs-lookup"><span data-stu-id="2f526-267">Configuration through AppSettings</span></span>
@@ -363,7 +363,7 @@ async populateWeatherData() {
 <span data-ttu-id="2f526-269">다음 예제와 같이 각 클라이언트의 `redirect_uri` 및 `post_logout_redirect_uri` 속성을 구성 합니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-269">Configure each client's `redirect_uri` and `post_logout_redirect_uri` property, as shown in the following example:</span></span>
 
 ```json
-":::no-loc(Identity):::Server": {
+"IdentityServer": {
   "Clients": {
     "MySPA": {
       "Profile": "SPA",
@@ -377,7 +377,7 @@ async populateWeatherData() {
 <span data-ttu-id="2f526-270">리소스를 구성할 때 아래와 같이 리소스에 대 한 범위를 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2f526-270">When configuring resources, you can configure the scopes for the resource as shown below:</span></span>
 
 ```json
-":::no-loc(Identity):::Server": {
+"IdentityServer": {
   "Resources": {
     "MyExternalApi": {
       "Profile": "API",

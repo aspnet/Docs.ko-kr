@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/working-with-forms
 ms.openlocfilehash: a568ad481eb09587e2ddce8e84d0ac3eff01e990
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -90,8 +90,8 @@ ms.locfileid: "93060900"
 |[<span data-ttu-id="5d6f4-137">asp-controller</span><span class="sxs-lookup"><span data-stu-id="5d6f4-137">asp-controller</span></span>](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-controller)|<span data-ttu-id="5d6f4-138">컨트롤러의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-138">The name of the controller.</span></span>|
 |[<span data-ttu-id="5d6f4-139">asp-action</span><span class="sxs-lookup"><span data-stu-id="5d6f4-139">asp-action</span></span>](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-action)|<span data-ttu-id="5d6f4-140">작업 메서드의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-140">The name of the action method.</span></span>|
 |[<span data-ttu-id="5d6f4-141">asp-area</span><span class="sxs-lookup"><span data-stu-id="5d6f4-141">asp-area</span></span>](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-area)|<span data-ttu-id="5d6f4-142">영역의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-142">The name of the area.</span></span>|
-|[<span data-ttu-id="5d6f4-143">asp-page</span><span class="sxs-lookup"><span data-stu-id="5d6f4-143">asp-page</span></span>](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|<span data-ttu-id="5d6f4-144">페이지의 이름 :::no-loc(Razor)::: 입니다.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-144">The name of the :::no-loc(Razor)::: page.</span></span>|
-|[<span data-ttu-id="5d6f4-145">asp-page-handler</span><span class="sxs-lookup"><span data-stu-id="5d6f4-145">asp-page-handler</span></span>](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|<span data-ttu-id="5d6f4-146">페이지 처리기의 이름 :::no-loc(Razor)::: 입니다.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-146">The name of the :::no-loc(Razor)::: page handler.</span></span>|
+|[<span data-ttu-id="5d6f4-143">asp-page</span><span class="sxs-lookup"><span data-stu-id="5d6f4-143">asp-page</span></span>](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|<span data-ttu-id="5d6f4-144">페이지의 이름 Razor 입니다.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-144">The name of the Razor page.</span></span>|
+|[<span data-ttu-id="5d6f4-145">asp-page-handler</span><span class="sxs-lookup"><span data-stu-id="5d6f4-145">asp-page-handler</span></span>](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|<span data-ttu-id="5d6f4-146">페이지 처리기의 이름 Razor 입니다.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-146">The name of the Razor page handler.</span></span>|
 |[<span data-ttu-id="5d6f4-147">asp-route</span><span class="sxs-lookup"><span data-stu-id="5d6f4-147">asp-route</span></span>](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|<span data-ttu-id="5d6f4-148">경로의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-148">The name of the route.</span></span>|
 |[<span data-ttu-id="5d6f4-149">asp-route-{value}</span><span class="sxs-lookup"><span data-stu-id="5d6f4-149">asp-route-{value}</span></span>](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|<span data-ttu-id="5d6f4-150">단일 URL 경로 값입니다.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-150">A single URL route value.</span></span> <span data-ttu-id="5d6f4-151">예: `asp-route-id="1234"`.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-151">For example, `asp-route-id="1234"`.</span></span>|
 |[<span data-ttu-id="5d6f4-152">asp-all-route-data</span><span class="sxs-lookup"><span data-stu-id="5d6f4-152">asp-all-route-data</span></span>](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-all-route-data)|<span data-ttu-id="5d6f4-153">모든 경로 값입니다.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-153">All route values.</span></span>|
@@ -120,7 +120,7 @@ ms.locfileid: "93060900"
 
 ### <a name="submit-to-page-example"></a><span data-ttu-id="5d6f4-159">페이지에 제출 예제</span><span class="sxs-lookup"><span data-stu-id="5d6f4-159">Submit to page example</span></span>
 
-<span data-ttu-id="5d6f4-160">다음 태그는 폼을 페이지에 제출 합니다 `About` :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="5d6f4-160">The following markup submits the form to the `About` :::no-loc(Razor)::: Page:</span></span>
+<span data-ttu-id="5d6f4-160">다음 태그는 폼을 페이지에 제출 합니다 `About` Razor .</span><span class="sxs-lookup"><span data-stu-id="5d6f4-160">The following markup submits the form to the `About` Razor Page:</span></span>
 
 ```cshtml
 <form method="post">
@@ -327,7 +327,7 @@ public IActionResult Edit(int id, int colorIndex)
 }
 ```
 
-<span data-ttu-id="5d6f4-251">다음은 :::no-loc(Razor)::: 특정 요소에 액세스 하는 방법을 보여 줍니다 `Color` .</span><span class="sxs-lookup"><span data-stu-id="5d6f4-251">The following :::no-loc(Razor)::: shows how you access a specific `Color` element:</span></span>
+<span data-ttu-id="5d6f4-251">다음은 Razor 특정 요소에 액세스 하는 방법을 보여 줍니다 `Color` .</span><span class="sxs-lookup"><span data-stu-id="5d6f4-251">The following Razor shows how you access a specific `Color` element:</span></span>
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
 
@@ -339,7 +339,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/ToDoItem.cs?range=3-8)]
 
-<span data-ttu-id="5d6f4-254">다음은 :::no-loc(Razor)::: 컬렉션을 반복 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-254">The following :::no-loc(Razor)::: shows how to iterate over a collection:</span></span>
+<span data-ttu-id="5d6f4-254">다음은 Razor 컬렉션을 반복 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="5d6f4-254">The following Razor shows how to iterate over a collection:</span></span>
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
 

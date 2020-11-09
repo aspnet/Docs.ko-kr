@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/enforcing-ssl
 ms.openlocfilehash: e473da9a7cbd91a601ad4af0c7c02c7f576f348c
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -114,9 +114,9 @@ ms.locfileid: "93051124"
 
   * <span data-ttu-id="a5fd2-155">호스트 구성에서.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-155">In host configuration.</span></span>
   * <span data-ttu-id="a5fd2-156">`ASPNETCORE_HTTPS_PORT`환경 변수를 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-156">By setting the `ASPNETCORE_HTTPS_PORT` environment variable.</span></span>
-  * <span data-ttu-id="a5fd2-157">에서 최상위 항목을 추가 하 여 *:::no-loc(appsettings.json):::* 다음을 수행 합니다.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-157">By adding a top-level entry in *:::no-loc(appsettings.json):::* :</span></span>
+  * <span data-ttu-id="a5fd2-157">에서 최상위 항목을 추가 하 여 *appsettings.json* 다음을 수행 합니다.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-157">By adding a top-level entry in *appsettings.json* :</span></span>
 
-    [!code-json[](enforcing-ssl/sample-snapshot/3.x/:::no-loc(appsettings.json):::?highlight=2)]
+    [!code-json[](enforcing-ssl/sample-snapshot/3.x/appsettings.json?highlight=2)]
 
 * <span data-ttu-id="a5fd2-158">[ASPNETCORE_URLS 환경 변수](../fundamentals/host/generic-host.md?view=aspnetcore-3.0#urls)를 사용 하 여 보안 체계가 있는 포트를 표시 합니다.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-158">Indicate a port with the secure scheme using the [ASPNETCORE_URLS environment variable](../fundamentals/host/generic-host.md?view=aspnetcore-3.0#urls).</span></span> <span data-ttu-id="a5fd2-159">환경 변수는 서버를 구성 합니다.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-159">The environment variable configures the server.</span></span> <span data-ttu-id="a5fd2-160">미들웨어는를 통해 HTTPS 포트를 간접적으로 검색 합니다 <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> .</span><span class="sxs-lookup"><span data-stu-id="a5fd2-160">The middleware indirectly discovers the HTTPS port via <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>.</span></span> <span data-ttu-id="a5fd2-161">이 방법은 역방향 프록시 배포에서 작동 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-161">This approach doesn't work in reverse proxy deployments.</span></span>
 
@@ -128,9 +128,9 @@ ms.locfileid: "93051124"
 
   * <span data-ttu-id="a5fd2-163">호스트 구성에서.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-163">In host configuration.</span></span>
   * <span data-ttu-id="a5fd2-164">`ASPNETCORE_HTTPS_PORT`환경 변수를 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-164">By setting the `ASPNETCORE_HTTPS_PORT` environment variable.</span></span>
-  * <span data-ttu-id="a5fd2-165">에서 최상위 항목을 추가 하 여 *:::no-loc(appsettings.json):::* 다음을 수행 합니다.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-165">By adding a top-level entry in *:::no-loc(appsettings.json):::* :</span></span>
+  * <span data-ttu-id="a5fd2-165">에서 최상위 항목을 추가 하 여 *appsettings.json* 다음을 수행 합니다.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-165">By adding a top-level entry in *appsettings.json* :</span></span>
 
-    [!code-json[](enforcing-ssl/sample-snapshot/2.x/:::no-loc(appsettings.json):::?highlight=2)]
+    [!code-json[](enforcing-ssl/sample-snapshot/2.x/appsettings.json?highlight=2)]
 
 * <span data-ttu-id="a5fd2-166">[ASPNETCORE_URLS 환경 변수](xref:fundamentals/host/web-host#server-urls)를 사용 하 여 보안 체계가 있는 포트를 표시 합니다.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-166">Indicate a port with the secure scheme using the [ASPNETCORE_URLS environment variable](xref:fundamentals/host/web-host#server-urls).</span></span> <span data-ttu-id="a5fd2-167">환경 변수는 서버를 구성 합니다.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-167">The environment variable configures the server.</span></span> <span data-ttu-id="a5fd2-168">미들웨어는를 통해 HTTPS 포트를 간접적으로 검색 합니다 <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> .</span><span class="sxs-lookup"><span data-stu-id="a5fd2-168">The middleware indirectly discovers the HTTPS port via <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>.</span></span> <span data-ttu-id="a5fd2-169">이 방법은 역방향 프록시 배포에서 작동 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="a5fd2-169">This approach doesn't work in reverse proxy deployments.</span></span>
 

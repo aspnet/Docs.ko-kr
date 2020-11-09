@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 09/26/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/configuration/platform-specific-configuration
 ms.openlocfilehash: c12487875db69472ee328dfc7a611ee99974c770
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -106,7 +106,7 @@ ms.locfileid: "93061056"
 
 <span data-ttu-id="3022e-135">클래스 라이브러리에서 호스팅 시작 기능 향상을 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-135">A hosting startup enhancement can be provided in a class library.</span></span> <span data-ttu-id="3022e-136">라이브러리에는 `HostingStartup` 특성이 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-136">The library contains a `HostingStartup` attribute.</span></span>
 
-<span data-ttu-id="3022e-137">[샘플 코드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/)에는 :::no-loc(Razor)::: 페이지 앱, *HostingStartupApp* 및 클래스 라이브러리, *HostingStartupLibrary* 가 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-137">The [sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) includes a :::no-loc(Razor)::: Pages app, *HostingStartupApp* , and a class library, *HostingStartupLibrary*.</span></span> <span data-ttu-id="3022e-138">클래스 라이브러리:</span><span class="sxs-lookup"><span data-stu-id="3022e-138">The class library:</span></span>
+<span data-ttu-id="3022e-137">[샘플 코드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/)에는 Razor 페이지 앱, *HostingStartupApp* 및 클래스 라이브러리, *HostingStartupLibrary* 가 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-137">The [sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) includes a Razor Pages app, *HostingStartupApp* , and a class library, *HostingStartupLibrary*.</span></span> <span data-ttu-id="3022e-138">클래스 라이브러리:</span><span class="sxs-lookup"><span data-stu-id="3022e-138">The class library:</span></span>
 
 * <span data-ttu-id="3022e-139">`IHostingStartup`을 구현하는 호스트 시작 클래스(`ServiceKeyInjection`)가 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-139">Contains a hosting startup class, `ServiceKeyInjection`, which implements `IHostingStartup`.</span></span> <span data-ttu-id="3022e-140">`ServiceKeyInjection`은 메모리 내 구성 공급자([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*))를 사용하여 앱의 구성에 서비스 문자열 쌍을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-140">`ServiceKeyInjection` adds a pair of service strings to the app's configuration using the in-memory configuration provider ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).</span></span>
 * <span data-ttu-id="3022e-141">호스팅 시작의 네임스페이스 및 클래스를 식별하는 `HostingStartup` 특성을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-141">Includes a `HostingStartup` attribute that identifies the hosting startup's namespace and class.</span></span>
@@ -504,7 +504,7 @@ dotnet nuget locals all --clear
 
 <span data-ttu-id="3022e-343">클래스 라이브러리에서 호스팅 시작 기능 향상을 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-343">A hosting startup enhancement can be provided in a class library.</span></span> <span data-ttu-id="3022e-344">라이브러리에는 `HostingStartup` 특성이 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-344">The library contains a `HostingStartup` attribute.</span></span>
 
-<span data-ttu-id="3022e-345">[샘플 코드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/)에는 :::no-loc(Razor)::: 페이지 앱, *HostingStartupApp* 및 클래스 라이브러리, *HostingStartupLibrary* 가 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-345">The [sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) includes a :::no-loc(Razor)::: Pages app, *HostingStartupApp* , and a class library, *HostingStartupLibrary*.</span></span> <span data-ttu-id="3022e-346">클래스 라이브러리:</span><span class="sxs-lookup"><span data-stu-id="3022e-346">The class library:</span></span>
+<span data-ttu-id="3022e-345">[샘플 코드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/)에는 Razor 페이지 앱, *HostingStartupApp* 및 클래스 라이브러리, *HostingStartupLibrary* 가 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-345">The [sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) includes a Razor Pages app, *HostingStartupApp* , and a class library, *HostingStartupLibrary*.</span></span> <span data-ttu-id="3022e-346">클래스 라이브러리:</span><span class="sxs-lookup"><span data-stu-id="3022e-346">The class library:</span></span>
 
 * <span data-ttu-id="3022e-347">`IHostingStartup`을 구현하는 호스트 시작 클래스(`ServiceKeyInjection`)가 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-347">Contains a hosting startup class, `ServiceKeyInjection`, which implements `IHostingStartup`.</span></span> <span data-ttu-id="3022e-348">`ServiceKeyInjection`은 메모리 내 구성 공급자([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*))를 사용하여 앱의 구성에 서비스 문자열 쌍을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-348">`ServiceKeyInjection` adds a pair of service strings to the app's configuration using the in-memory configuration provider ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).</span></span>
 * <span data-ttu-id="3022e-349">호스팅 시작의 네임스페이스 및 클래스를 식별하는 `HostingStartup` 특성을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="3022e-349">Includes a `HostingStartup` attribute that identifies the hosting startup's namespace and class.</span></span>

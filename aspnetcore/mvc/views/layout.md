@@ -5,17 +5,17 @@ description: ASP.NET Core 앱에서 뷰를 렌더링하기 전에 일반적인 �
 ms.author: riande
 ms.date: 07/30/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/layout
 ms.openlocfilehash: 502df268e7f5f33acfffccd5ec0bd65267fa12da
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -34,9 +34,9 @@ ms.locfileid: "93060978"
 * <span data-ttu-id="0e7a4-108">지시문 공유.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-108">Share directives.</span></span>
 * <span data-ttu-id="0e7a4-109">페이지 또는 보기를 렌더링하기 전에 일반적인 코드 실행.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-109">Run common code before rendering pages or views.</span></span>
 
-<span data-ttu-id="0e7a4-110">이 문서에서는 MVC: 페이지와 뷰를 사용 하 ASP.NET Core 하는 두 가지 방법에 대 한 레이아웃을 설명 :::no-loc(Razor)::: 합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-110">This document discusses layouts for the two different approaches to ASP.NET Core MVC: :::no-loc(Razor)::: Pages and controllers with views.</span></span> <span data-ttu-id="0e7a4-111">이 항목에서는 차이점이 최소화되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-111">For this topic, the differences are minimal:</span></span>
+<span data-ttu-id="0e7a4-110">이 문서에서는 MVC: 페이지와 뷰를 사용 하 ASP.NET Core 하는 두 가지 방법에 대 한 레이아웃을 설명 Razor 합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-110">This document discusses layouts for the two different approaches to ASP.NET Core MVC: Razor Pages and controllers with views.</span></span> <span data-ttu-id="0e7a4-111">이 항목에서는 차이점이 최소화되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-111">For this topic, the differences are minimal:</span></span>
 
-* <span data-ttu-id="0e7a4-112">:::no-loc(Razor)::: 페이지는 *pages* 폴더에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-112">:::no-loc(Razor)::: Pages are in the *Pages* folder.</span></span>
+* <span data-ttu-id="0e7a4-112">Razor 페이지는 *pages* 폴더에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-112">Razor Pages are in the *Pages* folder.</span></span>
 * <span data-ttu-id="0e7a4-113">보기를 사용하는 컨트롤러는 *Views* 폴더의 보기를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-113">Controllers with views uses a *Views* folder for views.</span></span>
 
 ## <a name="what-is-a-layout"></a><span data-ttu-id="0e7a4-114">레이아웃이란</span><span class="sxs-lookup"><span data-stu-id="0e7a4-114">What is a Layout</span></span>
@@ -49,7 +49,7 @@ ms.locfileid: "93060978"
 
 <span data-ttu-id="0e7a4-121">규칙에 따라, ASP.NET Core 앱의 기본 레이아웃 이름을 *_Layout.cshtml* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-121">By convention, the default layout for an ASP.NET Core app is named *_Layout.cshtml* .</span></span> <span data-ttu-id="0e7a4-122">템플릿을 사용하여 생성된 새로운 ASP.NET Core 프로젝트의 레이아웃 파일:</span><span class="sxs-lookup"><span data-stu-id="0e7a4-122">The layout files for new ASP.NET Core projects created with the templates are:</span></span>
 
-* <span data-ttu-id="0e7a4-123">:::no-loc(Razor)::: Pages: *pages/Shared/_Layout cshtml*</span><span class="sxs-lookup"><span data-stu-id="0e7a4-123">:::no-loc(Razor)::: Pages: *Pages/Shared/_Layout.cshtml*</span></span>
+* <span data-ttu-id="0e7a4-123">Razor Pages: *pages/Shared/_Layout cshtml*</span><span class="sxs-lookup"><span data-stu-id="0e7a4-123">Razor Pages: *Pages/Shared/_Layout.cshtml*</span></span>
 
   ![솔루션 탐색기의 Pages 폴더](layout/_static/rp-web-project-views.png)
 
@@ -65,11 +65,11 @@ ms.locfileid: "93060978"
 
 ## <a name="specifying-a-layout"></a><span data-ttu-id="0e7a4-131">레이아웃 지정</span><span class="sxs-lookup"><span data-stu-id="0e7a4-131">Specifying a Layout</span></span>
 
-<span data-ttu-id="0e7a4-132">:::no-loc(Razor)::: 뷰에는 `Layout` 속성이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-132">:::no-loc(Razor)::: views have a `Layout` property.</span></span> <span data-ttu-id="0e7a4-133">이 속성을 설정하여 레이아웃을 지정하는 개별 뷰:</span><span class="sxs-lookup"><span data-stu-id="0e7a4-133">Individual views specify a layout by setting this property:</span></span>
+<span data-ttu-id="0e7a4-132">Razor 뷰에는 `Layout` 속성이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-132">Razor views have a `Layout` property.</span></span> <span data-ttu-id="0e7a4-133">이 속성을 설정하여 레이아웃을 지정하는 개별 뷰:</span><span class="sxs-lookup"><span data-stu-id="0e7a4-133">Individual views specify a layout by setting this property:</span></span>
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
-<span data-ttu-id="0e7a4-134">지정된 레이아웃은 전체 경로(예: */Pages/Shared/_Layout.cshtml* 또는 */Views/Shared/_Layout.cshtml* ) 또는 부분적인 이름(예: `_Layout`)을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-134">The layout specified can use a full path (for example, */Pages/Shared/_Layout.cshtml* or */Views/Shared/_Layout.cshtml* ) or a partial name (example: `_Layout`).</span></span> <span data-ttu-id="0e7a4-135">부분 이름이 제공 되 면 :::no-loc(Razor)::: 뷰 엔진은 표준 검색 프로세스를 사용 하 여 레이아웃 파일을 검색 합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-135">When a partial name is provided, the :::no-loc(Razor)::: view engine searches for the layout file using its standard discovery process.</span></span> <span data-ttu-id="0e7a4-136">처리기 메서드(또는 컨트롤러)가 있는 폴더가 먼저 검색된 후 *공유* 폴더가 검색됩니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-136">The folder where the handler method (or controller) exists is searched first, followed by the *Shared* folder.</span></span> <span data-ttu-id="0e7a4-137">이 검색 프로세스는 [부분 뷰](xref:mvc/views/partial#partial-view-discovery)를 검색하는 데 사용된 프로세스와 동일합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-137">This discovery process is identical to the process used to discover [partial views](xref:mvc/views/partial#partial-view-discovery).</span></span>
+<span data-ttu-id="0e7a4-134">지정된 레이아웃은 전체 경로(예: */Pages/Shared/_Layout.cshtml* 또는 */Views/Shared/_Layout.cshtml* ) 또는 부분적인 이름(예: `_Layout`)을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-134">The layout specified can use a full path (for example, */Pages/Shared/_Layout.cshtml* or */Views/Shared/_Layout.cshtml* ) or a partial name (example: `_Layout`).</span></span> <span data-ttu-id="0e7a4-135">부분 이름이 제공 되 면 Razor 뷰 엔진은 표준 검색 프로세스를 사용 하 여 레이아웃 파일을 검색 합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-135">When a partial name is provided, the Razor view engine searches for the layout file using its standard discovery process.</span></span> <span data-ttu-id="0e7a4-136">처리기 메서드(또는 컨트롤러)가 있는 폴더가 먼저 검색된 후 *공유* 폴더가 검색됩니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-136">The folder where the handler method (or controller) exists is searched first, followed by the *Shared* folder.</span></span> <span data-ttu-id="0e7a4-137">이 검색 프로세스는 [부분 뷰](xref:mvc/views/partial#partial-view-discovery)를 검색하는 데 사용된 프로세스와 동일합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-137">This discovery process is identical to the process used to discover [partial views](xref:mvc/views/partial#partial-view-discovery).</span></span>
 
 <span data-ttu-id="0e7a4-138">기본적으로 모든 레이아웃에서 `RenderBody`를 호출해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-138">By default, every layout must call `RenderBody`.</span></span> <span data-ttu-id="0e7a4-139">`RenderBody` 호출이 배치될 때마다 뷰의 내용이 렌더링됩니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-139">Wherever the call to `RenderBody` is placed, the contents of the view will be rendered.</span></span>
 
@@ -85,9 +85,9 @@ ms.locfileid: "93060978"
 @RenderSection("Scripts", required: false)
 ```
 
-<span data-ttu-id="0e7a4-144">필수 섹션이 없는 경우 예외가 throw됩니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-144">If a required section isn't found, an exception is thrown.</span></span> <span data-ttu-id="0e7a4-145">개별 뷰는 구문을 사용 하 여 섹션 내에서 렌더링할 콘텐츠를 지정 합니다 `@section` :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="0e7a4-145">Individual views specify the content to be rendered within a section using the `@section` :::no-loc(Razor)::: syntax.</span></span> <span data-ttu-id="0e7a4-146">페이지 또는 보기에서 섹션을 정의하는 경우 렌더링되어야 합니다(그렇지 않은 경우 오류 발생).</span><span class="sxs-lookup"><span data-stu-id="0e7a4-146">If a page or view defines a section, it must be rendered (or an error will occur).</span></span>
+<span data-ttu-id="0e7a4-144">필수 섹션이 없는 경우 예외가 throw됩니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-144">If a required section isn't found, an exception is thrown.</span></span> <span data-ttu-id="0e7a4-145">개별 뷰는 구문을 사용 하 여 섹션 내에서 렌더링할 콘텐츠를 지정 합니다 `@section` Razor .</span><span class="sxs-lookup"><span data-stu-id="0e7a4-145">Individual views specify the content to be rendered within a section using the `@section` Razor syntax.</span></span> <span data-ttu-id="0e7a4-146">페이지 또는 보기에서 섹션을 정의하는 경우 렌더링되어야 합니다(그렇지 않은 경우 오류 발생).</span><span class="sxs-lookup"><span data-stu-id="0e7a4-146">If a page or view defines a section, it must be rendered (or an error will occur).</span></span>
 
-<span data-ttu-id="0e7a4-147">`@section`페이지 보기의 예제 정의는 :::no-loc(Razor)::: 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-147">An example `@section` definition in :::no-loc(Razor)::: Pages view:</span></span>
+<span data-ttu-id="0e7a4-147">`@section`페이지 보기의 예제 정의는 Razor 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-147">An example `@section` definition in Razor Pages view:</span></span>
 
 ```html
 @section Scripts {
@@ -105,23 +105,23 @@ ms.locfileid: "93060978"
 }
 ```
 
-<span data-ttu-id="0e7a4-151">이전 태그가 [스 캐 폴딩 :::no-loc(Identity)::: ](xref:security/authentication/scaffold-identity)에 의해 생성 되었습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-151">The preceding markup was generated by [scaffolding :::no-loc(Identity):::](xref:security/authentication/scaffold-identity).</span></span>
+<span data-ttu-id="0e7a4-151">이전 태그가 [스 캐 폴딩 Identity ](xref:security/authentication/scaffold-identity)에 의해 생성 되었습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-151">The preceding markup was generated by [scaffolding Identity](xref:security/authentication/scaffold-identity).</span></span>
 
 <span data-ttu-id="0e7a4-152">페이지 또는 보기에 정의된 섹션은 즉시 레이아웃 페이지에서만 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-152">Sections defined in a page or view are available only in its immediate layout page.</span></span> <span data-ttu-id="0e7a4-153">이들은 부분 뷰, 뷰 구성 요소 또는 뷰 시스템의 다른 부분에서 참조할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-153">They cannot be referenced from partials, view components, or other parts of the view system.</span></span>
 
 ### <a name="ignoring-sections"></a><span data-ttu-id="0e7a4-154">섹션 무시</span><span class="sxs-lookup"><span data-stu-id="0e7a4-154">Ignoring sections</span></span>
 
-<span data-ttu-id="0e7a4-155">기본적으로 콘텐츠 페이지 본문 및 모든 섹션은 레이아웃 페이지에서 모두 렌더링되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-155">By default, the body and all sections in a content page must all be rendered by the layout page.</span></span> <span data-ttu-id="0e7a4-156">:::no-loc(Razor):::뷰 엔진은 본문과 각 섹션이 렌더링 되었는지 여부를 추적 하 여이를 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-156">The :::no-loc(Razor)::: view engine enforces this by tracking whether the body and each section have been rendered.</span></span>
+<span data-ttu-id="0e7a4-155">기본적으로 콘텐츠 페이지 본문 및 모든 섹션은 레이아웃 페이지에서 모두 렌더링되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-155">By default, the body and all sections in a content page must all be rendered by the layout page.</span></span> <span data-ttu-id="0e7a4-156">Razor뷰 엔진은 본문과 각 섹션이 렌더링 되었는지 여부를 추적 하 여이를 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-156">The Razor view engine enforces this by tracking whether the body and each section have been rendered.</span></span>
 
 <span data-ttu-id="0e7a4-157">뷰 엔진이 본문 또는 섹션을 무시하도록 지시하려면 `IgnoreBody` 및 `IgnoreSection` 메서드를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-157">To instruct the view engine to ignore the body or sections, call the `IgnoreBody` and `IgnoreSection` methods.</span></span>
 
-<span data-ttu-id="0e7a4-158">페이지의 본문 및 모든 섹션은 :::no-loc(Razor)::: 렌더링 되거나 무시 되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-158">The body and every section in a :::no-loc(Razor)::: page must be either rendered or ignored.</span></span>
+<span data-ttu-id="0e7a4-158">페이지의 본문 및 모든 섹션은 Razor 렌더링 되거나 무시 되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-158">The body and every section in a Razor page must be either rendered or ignored.</span></span>
 
 <a name="viewimports"></a>
 
 ## <a name="importing-shared-directives"></a><span data-ttu-id="0e7a4-159">공유 지시문 가져오기</span><span class="sxs-lookup"><span data-stu-id="0e7a4-159">Importing Shared Directives</span></span>
 
-<span data-ttu-id="0e7a4-160">뷰 및 페이지는 :::no-loc(Razor)::: 지시문을 사용 하 여 네임 스페이스를 가져오고 [종속성 주입](dependency-injection.md)을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-160">Views and pages can use :::no-loc(Razor)::: directives to import namespaces and use [dependency injection](dependency-injection.md).</span></span> <span data-ttu-id="0e7a4-161">여러 보기에서 공유하는 지시문을 공용 *_ViewImports.cshtml* 파일에 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-161">Directives shared by many views may be specified in a common *_ViewImports.cshtml* file.</span></span> <span data-ttu-id="0e7a4-162">`_ViewImports` 파일은 다음 지시문을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-162">The `_ViewImports` file supports the following directives:</span></span>
+<span data-ttu-id="0e7a4-160">뷰 및 페이지는 Razor 지시문을 사용 하 여 네임 스페이스를 가져오고 [종속성 주입](dependency-injection.md)을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-160">Views and pages can use Razor directives to import namespaces and use [dependency injection](dependency-injection.md).</span></span> <span data-ttu-id="0e7a4-161">여러 보기에서 공유하는 지시문을 공용 *_ViewImports.cshtml* 파일에 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-161">Directives shared by many views may be specified in a common *_ViewImports.cshtml* file.</span></span> <span data-ttu-id="0e7a4-162">`_ViewImports` 파일은 다음 지시문을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-162">The `_ViewImports` file supports the following directives:</span></span>
 
 * `@addTagHelper`
 * `@removeTagHelper`
@@ -131,7 +131,7 @@ ms.locfileid: "93060978"
 * `@inherits`
 * `@inject`
 
-<span data-ttu-id="0e7a4-163">이 파일은 :::no-loc(Razor)::: 함수 및 섹션 정의와 같은 다른 기능을 지원 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-163">The file doesn't support other :::no-loc(Razor)::: features, such as functions and section definitions.</span></span>
+<span data-ttu-id="0e7a4-163">이 파일은 Razor 함수 및 섹션 정의와 같은 다른 기능을 지원 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="0e7a4-163">The file doesn't support other Razor features, such as functions and section definitions.</span></span>
 
 <span data-ttu-id="0e7a4-164">샘플 `_ViewImports.cshtml` 파일:</span><span class="sxs-lookup"><span data-stu-id="0e7a4-164">A sample `_ViewImports.cshtml` file:</span></span>
 

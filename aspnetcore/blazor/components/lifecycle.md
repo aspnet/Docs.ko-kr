@@ -1,23 +1,23 @@
 ---
-title: 'ASP.NET Core :::no-loc(Blazor)::: 수명 주기'
+title: 'ASP.NET Core Blazor 수명 주기'
 author: guardrex
-description: 'ASP.NET Core :::no-loc(Blazor)::: 앱에서 :::no-loc(Razor)::: 구성 요소 수명 주기 메서드를 사용하는 방법을 알아봅니다.'
+description: 'ASP.NET Core Blazor 앱에서 Razor 구성 요소 수명 주기 메서드를 사용하는 방법을 알아봅니다.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/14/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/components/lifecycle
 ms.openlocfilehash: 30dfd9e821490d016d1d2be5c4cfd56818d46655
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,13 +26,13 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056376"
 ---
-# <a name="aspnet-core-no-locblazor-lifecycle"></a><span data-ttu-id="c3950-103">ASP.NET Core :::no-loc(Blazor)::: 수명 주기</span><span class="sxs-lookup"><span data-stu-id="c3950-103">ASP.NET Core :::no-loc(Blazor)::: lifecycle</span></span>
+# <a name="aspnet-core-no-locblazor-lifecycle"></a><span data-ttu-id="c3950-103">ASP.NET Core Blazor 수명 주기</span><span class="sxs-lookup"><span data-stu-id="c3950-103">ASP.NET Core Blazor lifecycle</span></span>
 
 <span data-ttu-id="c3950-104">작성자: [Luke Latham](https://github.com/guardrex) 및 [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="c3950-104">By [Luke Latham](https://github.com/guardrex) and [Daniel Roth](https://github.com/danroth27)</span></span>
 
-<span data-ttu-id="c3950-105">:::no-loc(Blazor)::: 프레임워크는 동기 및 비동기 수명 주기 메서드를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-105">The :::no-loc(Blazor)::: framework includes synchronous and asynchronous lifecycle methods.</span></span> <span data-ttu-id="c3950-106">구성 요소 초기화 및 렌더링 중에 구성 요소에서 추가 작업을 수행하려면 수명 주기 메서드를 재정의합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-106">Override lifecycle methods to perform additional operations on components during component initialization and rendering.</span></span>
+<span data-ttu-id="c3950-105">Blazor 프레임워크는 동기 및 비동기 수명 주기 메서드를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-105">The Blazor framework includes synchronous and asynchronous lifecycle methods.</span></span> <span data-ttu-id="c3950-106">구성 요소 초기화 및 렌더링 중에 구성 요소에서 추가 작업을 수행하려면 수명 주기 메서드를 재정의합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-106">Override lifecycle methods to perform additional operations on components during component initialization and rendering.</span></span>
 
-<span data-ttu-id="c3950-107">다음 다이어그램은 :::no-loc(Blazor)::: 수명 주기를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-107">The following diagrams illustrate the :::no-loc(Blazor)::: lifecycle.</span></span> <span data-ttu-id="c3950-108">수명 주기 메서드는 이 문서의 다음 섹션에 있는 예제를 사용하여 정의됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-108">Lifecycle methods are defined with examples in the following sections of this article.</span></span>
+<span data-ttu-id="c3950-107">다음 다이어그램은 Blazor 수명 주기를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-107">The following diagrams illustrate the Blazor lifecycle.</span></span> <span data-ttu-id="c3950-108">수명 주기 메서드는 이 문서의 다음 섹션에 있는 예제를 사용하여 정의됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-108">Lifecycle methods are defined with examples in the following sections of this article.</span></span>
 
 <span data-ttu-id="c3950-109">구성 요소 수명 주기 이벤트:</span><span class="sxs-lookup"><span data-stu-id="c3950-109">Component lifecycle events:</span></span>
 
@@ -42,7 +42,7 @@ ms.locfileid: "93056376"
    * <span data-ttu-id="c3950-114">[`OnInitialized{Async}`](#component-initialization-methods)를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-114">Call [`OnInitialized{Async}`](#component-initialization-methods).</span></span> <span data-ttu-id="c3950-115"><xref:System.Threading.Tasks.Task>가 반환되면 <xref:System.Threading.Tasks.Task>가 대기한 다음, 구성 요소가 렌더링됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-115">If a <xref:System.Threading.Tasks.Task> is returned, the <xref:System.Threading.Tasks.Task> is awaited and then the component is rendered.</span></span> <span data-ttu-id="c3950-116"><xref:System.Threading.Tasks.Task>가 반환되지 않으면 구성 요소를 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-116">If a <xref:System.Threading.Tasks.Task> isn't returned, render the component.</span></span>
 1. <span data-ttu-id="c3950-117">[`OnParametersSet{Async}`](#after-parameters-are-set)를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-117">Call [`OnParametersSet{Async}`](#after-parameters-are-set).</span></span> <span data-ttu-id="c3950-118"><xref:System.Threading.Tasks.Task>가 반환되면 <xref:System.Threading.Tasks.Task>가 대기한 다음, 구성 요소가 렌더링됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-118">If a <xref:System.Threading.Tasks.Task> is returned, the <xref:System.Threading.Tasks.Task> is awaited and then the component is rendered.</span></span> <span data-ttu-id="c3950-119"><xref:System.Threading.Tasks.Task>가 반환되지 않으면 구성 요소를 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-119">If a <xref:System.Threading.Tasks.Task> isn't returned, render the component.</span></span>
 
-![:::no-loc(Blazor)::: 내 :::no-loc(Razor)::: 구성 요소의 구성 요소 수명 주기 이벤트](lifecycle/_static/lifecycle1.png)
+![Blazor 내 Razor 구성 요소의 구성 요소 수명 주기 이벤트](lifecycle/_static/lifecycle1.png)
 
 <span data-ttu-id="c3950-121">DOM(문서 개체 모델) 이벤트 처리:</span><span class="sxs-lookup"><span data-stu-id="c3950-121">Document Object Model (DOM) event processing:</span></span>
 
@@ -109,14 +109,14 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-<span data-ttu-id="c3950-148">[콘텐츠를 미리 렌더링](xref:blazor/fundamentals/additional-scenarios#render-mode)하는 :::no-loc(Blazor Server)::: 앱은 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>를 **‘두 번’** 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-148">:::no-loc(Blazor Server)::: apps that [prerender their content](xref:blazor/fundamentals/additional-scenarios#render-mode) call <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> **_twice_** :</span></span>
+<span data-ttu-id="c3950-148">[콘텐츠를 미리 렌더링](xref:blazor/fundamentals/additional-scenarios#render-mode)하는 Blazor Server 앱은 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>를 **‘두 번’** 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-148">Blazor Server apps that [prerender their content](xref:blazor/fundamentals/additional-scenarios#render-mode) call <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> **_twice_** :</span></span>
 
 * <span data-ttu-id="c3950-149">첫 번째 호출: 구성 요소가 처음에 페이지 일부로 정적 렌더링될 때</span><span class="sxs-lookup"><span data-stu-id="c3950-149">Once when the component is initially rendered statically as part of the page.</span></span>
 * <span data-ttu-id="c3950-150">두 번째 호출: 브라우저가 서버에 다시 연결할 때</span><span class="sxs-lookup"><span data-stu-id="c3950-150">A second time when the browser establishes a connection back to the server.</span></span>
 
 <span data-ttu-id="c3950-151"><xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>의 개발자 코드가 두 번 실행되는 것을 방지하려면 [미리 렌더링한 후의 상태 저장 다시 연결](#stateful-reconnection-after-prerendering) 섹션을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="c3950-151">To prevent developer code in <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> from running twice, see the [Stateful reconnection after prerendering](#stateful-reconnection-after-prerendering) section.</span></span>
 
-<span data-ttu-id="c3950-152">:::no-loc(Blazor Server)::: 앱을 미리 렌더링 중이면 브라우저에 연결되어 있지 않으므로 JavaScript 호출 등의 특정 작업을 수행할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-152">While a :::no-loc(Blazor Server)::: app is prerendering, certain actions, such as calling into JavaScript, aren't possible because a connection with the browser hasn't been established.</span></span> <span data-ttu-id="c3950-153">미리 렌더링된 경우 구성 요소를 다르게 렌더링해야 할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-153">Components may need to render differently when prerendered.</span></span> <span data-ttu-id="c3950-154">자세한 내용은 [앱을 미리 렌더링 중인 경우 검색](#detect-when-the-app-is-prerendering) 섹션을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="c3950-154">For more information, see the [Detect when the app is prerendering](#detect-when-the-app-is-prerendering) section.</span></span>
+<span data-ttu-id="c3950-152">Blazor Server 앱을 미리 렌더링 중이면 브라우저에 연결되어 있지 않으므로 JavaScript 호출 등의 특정 작업을 수행할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-152">While a Blazor Server app is prerendering, certain actions, such as calling into JavaScript, aren't possible because a connection with the browser hasn't been established.</span></span> <span data-ttu-id="c3950-153">미리 렌더링된 경우 구성 요소를 다르게 렌더링해야 할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-153">Components may need to render differently when prerendered.</span></span> <span data-ttu-id="c3950-154">자세한 내용은 [앱을 미리 렌더링 중인 경우 검색](#detect-when-the-app-is-prerendering) 섹션을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="c3950-154">For more information, see the [Detect when the app is prerendering](#detect-when-the-app-is-prerendering) section.</span></span>
 
 <span data-ttu-id="c3950-155">이벤트 처리기가 설정된 경우 삭제 시 해당 처리기를 언후크합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-155">If any event handlers are set up, unhook them on disposal.</span></span> <span data-ttu-id="c3950-156">자세한 내용은 [`IDisposable`을 사용한 구성 요소 삭제](#component-disposal-with-idisposable) 섹션을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="c3950-156">For more information, see the [Component disposal with `IDisposable`](#component-disposal-with-idisposable) section.</span></span>
 
@@ -218,9 +218,9 @@ protected override bool ShouldRender()
 
 <span data-ttu-id="c3950-199">수명 주기 이벤트에서 수행한 비동기 작업이 구성 요소를 렌더링하기 전에 완료되지 않았을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-199">Asynchronous actions performed in lifecycle events might not have completed before the component is rendered.</span></span> <span data-ttu-id="c3950-200">수명 주기 메서드를 실행하는 동안 개체가 `null`이거나 불완전하게 데이터로 채워졌을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-200">Objects might be `null` or incompletely populated with data while the lifecycle method is executing.</span></span> <span data-ttu-id="c3950-201">개체가 초기화되었는지 확인하는 렌더링 논리를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-201">Provide rendering logic to confirm that objects are initialized.</span></span> <span data-ttu-id="c3950-202">개체가 `null`인 동안 자리 표시자 UI 요소(예: 로드 메시지)를 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-202">Render placeholder UI elements (for example, a loading message) while objects are `null`.</span></span>
 
-<span data-ttu-id="c3950-203">:::no-loc(Blazor)::: 템플릿의 `FetchData` 구성 요소에서 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>는 예측 데이터(`forecasts`)를 비동기적으로 수신하도록 재정의되었습니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-203">In the `FetchData` component of the :::no-loc(Blazor)::: templates, <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> is overridden to asychronously receive forecast data (`forecasts`).</span></span> <span data-ttu-id="c3950-204">`forecasts`가 `null`인 경우 사용자에게 로드 메시지가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-204">When `forecasts` is `null`, a loading message is displayed to the user.</span></span> <span data-ttu-id="c3950-205"><xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>에서 반환된 `Task`가 완료되면 구성 요소가 업데이트된 상태로 다시 렌더링됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-205">After the `Task` returned by <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> completes, the component is rerendered with the updated state.</span></span>
+<span data-ttu-id="c3950-203">Blazor 템플릿의 `FetchData` 구성 요소에서 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>는 예측 데이터(`forecasts`)를 비동기적으로 수신하도록 재정의되었습니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-203">In the `FetchData` component of the Blazor templates, <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> is overridden to asychronously receive forecast data (`forecasts`).</span></span> <span data-ttu-id="c3950-204">`forecasts`가 `null`인 경우 사용자에게 로드 메시지가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-204">When `forecasts` is `null`, a loading message is displayed to the user.</span></span> <span data-ttu-id="c3950-205"><xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>에서 반환된 `Task`가 완료되면 구성 요소가 업데이트된 상태로 다시 렌더링됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-205">After the `Task` returned by <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> completes, the component is rerendered with the updated state.</span></span>
 
-<span data-ttu-id="c3950-206">:::no-loc(Blazor Server)::: 템플릿의 `Pages/FetchData.razor`:</span><span class="sxs-lookup"><span data-stu-id="c3950-206">`Pages/FetchData.razor` in the :::no-loc(Blazor Server)::: template:</span></span>
+<span data-ttu-id="c3950-206">Blazor Server 템플릿의 `Pages/FetchData.razor`:</span><span class="sxs-lookup"><span data-stu-id="c3950-206">`Pages/FetchData.razor` in the Blazor Server template:</span></span>
 
 [!code-razor[](lifecycle/samples_snapshot/FetchData.razor?highlight=9,21,25)]
 
@@ -230,20 +230,20 @@ protected override bool ShouldRender()
 
 ## <a name="stateful-reconnection-after-prerendering"></a><span data-ttu-id="c3950-209">미리 렌더링 후의 상태 저장 다시 연결</span><span class="sxs-lookup"><span data-stu-id="c3950-209">Stateful reconnection after prerendering</span></span>
 
-<span data-ttu-id="c3950-210">:::no-loc(Blazor Server)::: 앱에서 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode>가 <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered>인 경우 구성 요소는 처음에 페이지 일부로 정적 렌더링됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-210">In a :::no-loc(Blazor Server)::: app when <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> is <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered>, the component is initially rendered statically as part of the page.</span></span> <span data-ttu-id="c3950-211">브라우저가 서버에 다시 연결하면 구성 요소가 ‘다시’ 렌더링되고, 이제 대화형 구성 요소가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-211">Once the browser establishes a connection back to the server, the component is rendered *again* , and the component is now interactive.</span></span> <span data-ttu-id="c3950-212">구성 요소를 초기화하기 위한 [`OnInitialized{Async}`](#component-initialization-methods) 수명 주기 메서드가 있는 경우 메서드가 다음과 같이 ‘두 번’ 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-212">If the [`OnInitialized{Async}`](#component-initialization-methods) lifecycle method for initializing the component is present, the method is executed *twice* :</span></span>
+<span data-ttu-id="c3950-210">Blazor Server 앱에서 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode>가 <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered>인 경우 구성 요소는 처음에 페이지 일부로 정적 렌더링됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-210">In a Blazor Server app when <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> is <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered>, the component is initially rendered statically as part of the page.</span></span> <span data-ttu-id="c3950-211">브라우저가 서버에 다시 연결하면 구성 요소가 ‘다시’ 렌더링되고, 이제 대화형 구성 요소가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-211">Once the browser establishes a connection back to the server, the component is rendered *again* , and the component is now interactive.</span></span> <span data-ttu-id="c3950-212">구성 요소를 초기화하기 위한 [`OnInitialized{Async}`](#component-initialization-methods) 수명 주기 메서드가 있는 경우 메서드가 다음과 같이 ‘두 번’ 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-212">If the [`OnInitialized{Async}`](#component-initialization-methods) lifecycle method for initializing the component is present, the method is executed *twice* :</span></span>
 
 * <span data-ttu-id="c3950-213">구성 요소를 정적으로 미리 렌더링할 때</span><span class="sxs-lookup"><span data-stu-id="c3950-213">When the component is prerendered statically.</span></span>
 * <span data-ttu-id="c3950-214">서버 연결이 설정된 후</span><span class="sxs-lookup"><span data-stu-id="c3950-214">After the server connection has been established.</span></span>
 
 <span data-ttu-id="c3950-215">이 동작 때문에 구성 요소를 최종적으로 렌더링할 때는 UI에 표시되는 데이터가 상당히 변경될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-215">This can result in a noticeable change in the data displayed in the UI when the component is finally rendered.</span></span>
 
-<span data-ttu-id="c3950-216">:::no-loc(Blazor Server)::: 앱에서 이중 렌더링 시나리오를 방지하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-216">To avoid the double-rendering scenario in a :::no-loc(Blazor Server)::: app:</span></span>
+<span data-ttu-id="c3950-216">Blazor Server 앱에서 이중 렌더링 시나리오를 방지하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-216">To avoid the double-rendering scenario in a Blazor Server app:</span></span>
 
 * <span data-ttu-id="c3950-217">미리 렌더링 중에 상태를 캐시하고 앱이 다시 시작된 후 상태를 검색하는 데 사용할 수 있는 식별자를 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-217">Pass in an identifier that can be used to cache the state during prerendering and to retrieve the state after the app restarts.</span></span>
 * <span data-ttu-id="c3950-218">미리 렌더링 중에 식별자를 사용하여 구성 요소 상태를 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-218">Use the identifier during prerendering to save component state.</span></span>
 * <span data-ttu-id="c3950-219">미리 렌더링 후에 식별자를 사용하여 캐시된 상태를 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-219">Use the identifier after prerendering to retrieve the cached state.</span></span>
 
-<span data-ttu-id="c3950-220">다음 코드는 템플릿 기반 :::no-loc(Blazor Server)::: 앱에서 이중 렌더링을 방지하도록 업데이트된 `WeatherForecastService`를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-220">The following code demonstrates an updated `WeatherForecastService` in a template-based :::no-loc(Blazor Server)::: app that avoids the double rendering:</span></span>
+<span data-ttu-id="c3950-220">다음 코드는 템플릿 기반 Blazor Server 앱에서 이중 렌더링을 방지하도록 업데이트된 `WeatherForecastService`를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-220">The following code demonstrates an updated `WeatherForecastService` in a template-based Blazor Server app that avoids the double rendering:</span></span>
 
 ```csharp
 public class WeatherForecastService
@@ -313,7 +313,7 @@ public class WeatherForecastService
 > [!NOTE]
 > <span data-ttu-id="c3950-227">`Dispose`에서 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> 호출은 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-227">Calling <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> in `Dispose` isn't supported.</span></span> <span data-ttu-id="c3950-228">렌더러를 삭제하는 과정에서 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>가 호출될 수 있으므로, 해당 시점에 UI 업데이트를 요청할 수는 없습니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-228"><xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> might be invoked as part of tearing down the renderer, so requesting UI updates at that point isn't supported.</span></span>
 
-<span data-ttu-id="c3950-229">.NET 이벤트에서 이벤트 처리기의 구독을 취소합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-229">Unsubscribe event handlers from .NET events.</span></span> <span data-ttu-id="c3950-230">다음 [:::no-loc(Blazor)::: 양식](xref:blazor/forms-validation) 예제에서는 `Dispose` 메서드에서 이벤트 처리기를 언후크하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-230">The following [:::no-loc(Blazor)::: form](xref:blazor/forms-validation) examples show how to unhook an event handler in the `Dispose` method:</span></span>
+<span data-ttu-id="c3950-229">.NET 이벤트에서 이벤트 처리기의 구독을 취소합니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-229">Unsubscribe event handlers from .NET events.</span></span> <span data-ttu-id="c3950-230">다음 [Blazor 양식](xref:blazor/forms-validation) 예제에서는 `Dispose` 메서드에서 이벤트 처리기를 언후크하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="c3950-230">The following [Blazor form](xref:blazor/forms-validation) examples show how to unhook an event handler in the `Dispose` method:</span></span>
 
 * <span data-ttu-id="c3950-231">프라이빗 필드 및 람다 접근 방식</span><span class="sxs-lookup"><span data-stu-id="c3950-231">Private field and lambda approach</span></span>
 

@@ -5,17 +5,17 @@ description: ASP.NET Core MVC가 라우팅 미들웨어를 사용하여 들어�
 ms.author: riande
 ms.date: 3/25/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/controllers/routing
 ms.openlocfilehash: 9f64dd8f0ca026cec4b7ee4b5ea02523139eed4f
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -307,7 +307,7 @@ endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"
 
 ## <a name="reserved-routing-names"></a><span data-ttu-id="01ddf-281">예약된 라우팅 이름</span><span class="sxs-lookup"><span data-stu-id="01ddf-281">Reserved routing names</span></span>
 
-<span data-ttu-id="01ddf-282">다음 키워드는 컨트롤러 또는 페이지를 사용할 때 예약 된 경로 매개 변수 이름입니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="01ddf-282">The following keywords are reserved route parameter names when using Controllers or :::no-loc(Razor)::: Pages:</span></span>
+<span data-ttu-id="01ddf-282">다음 키워드는 컨트롤러 또는 페이지를 사용할 때 예약 된 경로 매개 변수 이름입니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="01ddf-282">The following keywords are reserved route parameter names when using Controllers or Razor Pages:</span></span>
 
 * `action`
 * `area`
@@ -319,7 +319,7 @@ endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/MyDemo2Controller.cs?name=snippet)]
 
-<span data-ttu-id="01ddf-285">특수 매개 변수 이름은 url 생성 작업에서 페이지 또는 컨트롤러를 참조 하는지 확인 하는 데 사용 됩니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="01ddf-285">The special parameter names are used by the URL generation to determine if a URL generation operation refers to a :::no-loc(Razor)::: Page or to a Controller.</span></span>
+<span data-ttu-id="01ddf-285">특수 매개 변수 이름은 url 생성 작업에서 페이지 또는 컨트롤러를 참조 하는지 확인 하는 데 사용 됩니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="01ddf-285">The special parameter names are used by the URL generation to determine if a URL generation operation refers to a Razor Page or to a Controller.</span></span>
 
 <a name="verb"></a>
 
@@ -477,7 +477,7 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 * <span data-ttu-id="01ddf-387">위의 코드는 예 이거나 낮은 라우팅 디자인입니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-387">The preceding code is an example or poor routing design.</span></span> <span data-ttu-id="01ddf-388">속성을 설명 하는 데 사용 되었습니다 `Order` .</span><span class="sxs-lookup"><span data-stu-id="01ddf-388">It was used to illustrate the `Order` property.</span></span>
 * <span data-ttu-id="01ddf-389">`Order`속성은 모호성을 해결 하 고 해당 템플릿은 일치 시킬 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-389">The `Order` property only resolves the ambiguity, that template cannot be matched.</span></span> <span data-ttu-id="01ddf-390">템플릿을 제거 하는 것이 좋습니다 `[Route("Home")]` .</span><span class="sxs-lookup"><span data-stu-id="01ddf-390">It would be better to remove the `[Route("Home")]` template.</span></span>
 
-<span data-ttu-id="01ddf-391">페이지 [ :::no-loc(Razor)::: 경로 및 앱 규칙:](xref:razor-pages/razor-pages-conventions#route-order) 경로 순서와 페이지의 경로 순서에 대 한 정보를 참조 하세요 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="01ddf-391">See [:::no-loc(Razor)::: Pages route and app conventions: Route order](xref:razor-pages/razor-pages-conventions#route-order) for information on route order with :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="01ddf-391">페이지 [ Razor 경로 및 앱 규칙:](xref:razor-pages/razor-pages-conventions#route-order) 경로 순서와 페이지의 경로 순서에 대 한 정보를 참조 하세요 Razor .</span><span class="sxs-lookup"><span data-stu-id="01ddf-391">See [Razor Pages route and app conventions: Route order](xref:razor-pages/razor-pages-conventions#route-order) for information on route order with Razor Pages.</span></span>
 
 <span data-ttu-id="01ddf-392">일부 경우에는 모호한 경로를 사용 하 여 HTTP 500 오류가 반환 됩니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-392">In some cases, an HTTP 500 error is returned with ambiguous routes.</span></span> <span data-ttu-id="01ddf-393">[로깅을](xref:fundamentals/logging/index) 사용 하 여를 일으킨 끝점을 확인 `AmbiguousMatchException` 합니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-393">Use [logging](xref:fundamentals/logging/index) to see which endpoints caused the `AmbiguousMatchException`.</span></span>
 
@@ -756,13 +756,13 @@ result: /UrlGeneration/Destination
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/UrlGeneration2Controller.cs?name=snippet_1)]
 
-<span data-ttu-id="01ddf-544">다음 :::no-loc(Razor)::: 파일은에 대 한 HTML 링크를 생성 합니다 `Destination_Route` .</span><span class="sxs-lookup"><span data-stu-id="01ddf-544">The following :::no-loc(Razor)::: file generates an HTML link to the `Destination_Route`:</span></span>
+<span data-ttu-id="01ddf-544">다음 Razor 파일은에 대 한 HTML 링크를 생성 합니다 `Destination_Route` .</span><span class="sxs-lookup"><span data-stu-id="01ddf-544">The following Razor file generates an HTML link to the `Destination_Route`:</span></span>
 
 [!code-cshtml[](routing/samples/3.x/main/Views/Shared/MyLink.cshtml)]
 
 <a name="routing-gen-urls-html-ref-label"></a>
 
-### <a name="generate-urls-in-html-and-no-locrazor"></a><span data-ttu-id="01ddf-545">HTML로 Url 생성 :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="01ddf-545">Generate URLs in HTML and :::no-loc(Razor):::</span></span>
+### <a name="generate-urls-in-html-and-no-locrazor"></a><span data-ttu-id="01ddf-545">HTML로 Url 생성 Razor</span><span class="sxs-lookup"><span data-stu-id="01ddf-545">Generate URLs in HTML and Razor</span></span>
 
 <span data-ttu-id="01ddf-546"><xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper><xref:Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper>및 요소를 각각 생성 하는 [Html.ActionLink](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.ActionLink*) [html.beginform](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.BeginForm*) 및 html.actionlink 메서드를 제공 합니다 `<form>` `<a>` .</span><span class="sxs-lookup"><span data-stu-id="01ddf-546"><xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper> provides the <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper> methods [Html.BeginForm](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.BeginForm*) and [Html.ActionLink](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.ActionLink*) to generate `<form>` and `<a>` elements respectively.</span></span> <span data-ttu-id="01ddf-547">이러한 메서드는 url을 생성 하는 데 [url. Action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) 메서드를 사용 하 여 비슷한 인수를 허용 합니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-547">These methods use the [Url.Action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) method to generate a URL and they accept similar arguments.</span></span> <span data-ttu-id="01ddf-548">`HtmlHelper`에 대한 `Url.RouteUrl` 보조 도구는 `Html.BeginRouteForm` 및 `Html.RouteLink`이며 서로 기능이 비슷합니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-548">The `Url.RouteUrl` companions for `HtmlHelper` are `Html.BeginRouteForm` and `Html.RouteLink` which have similar functionality.</span></span>
 
@@ -1224,7 +1224,7 @@ public class HomeController : Controller
 > [!TIP]
 > <span data-ttu-id="01ddf-747">`Order`를 사용하지 마세요.</span><span class="sxs-lookup"><span data-stu-id="01ddf-747">Avoid depending on `Order`.</span></span> <span data-ttu-id="01ddf-748">URL 공간에 올바른 라우팅을 위한 명시적 순서 값이 필요한 경우 클라이언트에서도 혼란이 발생할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-748">If your URL-space requires explicit order values to route correctly, then it's likely confusing to clients as well.</span></span> <span data-ttu-id="01ddf-749">일반적으로 특성 라우팅은 URL이 일치하는 올바른 경로를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-749">In general attribute routing will select the correct route with URL matching.</span></span> <span data-ttu-id="01ddf-750">URL 생성에 사용되는 기본 순서가 작동하지 않는 경우 일반적으로 경로 이름을 재정의로 사용하는 것이 `Order` 속성을 적용하는 것보다 간단합니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-750">If the default order used for URL generation isn't working, using route name as an override is usually simpler than applying the `Order` property.</span></span>
 
-<span data-ttu-id="01ddf-751">:::no-loc(Razor)::: Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-751">:::no-loc(Razor)::: Pages routing and MVC controller routing share an implementation.</span></span> <span data-ttu-id="01ddf-752">페이지 항목의 경로 순서에 대 한 정보 :::no-loc(Razor)::: 는 [ :::no-loc(Razor)::: 페이지 경로 및 앱 규칙: 경로 순서](xref:razor-pages/razor-pages-conventions#route-order)에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-752">Information on route order in the :::no-loc(Razor)::: Pages topics is available at [:::no-loc(Razor)::: Pages route and app conventions: Route order](xref:razor-pages/razor-pages-conventions#route-order).</span></span>
+<span data-ttu-id="01ddf-751">Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-751">Razor Pages routing and MVC controller routing share an implementation.</span></span> <span data-ttu-id="01ddf-752">페이지 항목의 경로 순서에 대 한 정보 Razor 는 [ Razor 페이지 경로 및 앱 규칙: 경로 순서](xref:razor-pages/razor-pages-conventions#route-order)에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="01ddf-752">Information on route order in the Razor Pages topics is available at [Razor Pages route and app conventions: Route order](xref:razor-pages/razor-pages-conventions#route-order).</span></span>
 
 <a name="routing-token-replacement-templates-ref-label"></a>
 

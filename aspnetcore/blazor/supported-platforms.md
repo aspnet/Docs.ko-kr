@@ -1,23 +1,23 @@
 ---
-title: 'ASP.NET Core :::no-loc(Blazor)::: 지원 플랫폼'
+title: 'ASP.NET Core Blazor 지원 플랫폼'
 author: guardrex
-description: 'ASP.NET Core :::no-loc(Blazor)::: 지원 플랫폼에 대해 알아봅니다.'
+description: 'ASP.NET Core Blazor 지원 플랫폼에 대해 알아봅니다.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/01/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/supported-platforms
 ms.openlocfilehash: fe0734dbf6eb2647fa6c9b6f336063b9ec091139
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,13 +26,13 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93054959"
 ---
-# <a name="aspnet-core-no-locblazor-supported-platforms"></a><span data-ttu-id="177e1-103">ASP.NET Core :::no-loc(Blazor)::: 지원 플랫폼</span><span class="sxs-lookup"><span data-stu-id="177e1-103">ASP.NET Core :::no-loc(Blazor)::: supported platforms</span></span>
+# <a name="aspnet-core-no-locblazor-supported-platforms"></a><span data-ttu-id="177e1-103">ASP.NET Core Blazor 지원 플랫폼</span><span class="sxs-lookup"><span data-stu-id="177e1-103">ASP.NET Core Blazor supported platforms</span></span>
 
 <span data-ttu-id="177e1-104">[Luke Latham](https://github.com/guardrex)으로</span><span class="sxs-lookup"><span data-stu-id="177e1-104">By [Luke Latham](https://github.com/guardrex)</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-<span data-ttu-id="177e1-105">:::no-loc(Blazor WebAssembly)::: 및 :::no-loc(Blazor Server):::는 다음 표에 나와 있는 브라우저에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="177e1-105">:::no-loc(Blazor WebAssembly)::: and :::no-loc(Blazor Server)::: are supported in the browsers shown in the following table.</span></span>
+<span data-ttu-id="177e1-105">Blazor WebAssembly 및 Blazor Server는 다음 표에 나와 있는 브라우저에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="177e1-105">Blazor WebAssembly and Blazor Server are supported in the browsers shown in the following table.</span></span>
 
 | <span data-ttu-id="177e1-106">브라우저</span><span class="sxs-lookup"><span data-stu-id="177e1-106">Browser</span></span>                          | <span data-ttu-id="177e1-107">버전</span><span class="sxs-lookup"><span data-stu-id="177e1-107">Version</span></span>         |
 | -------------------------------- | --------------- |
@@ -47,7 +47,7 @@ ms.locfileid: "93054959"
 
 ::: moniker range="< aspnetcore-5.0"
 
-## :::no-loc(Blazor WebAssembly):::
+## Blazor WebAssembly
 
 | <span data-ttu-id="177e1-117">브라우저</span><span class="sxs-lookup"><span data-stu-id="177e1-117">Browser</span></span>                          | <span data-ttu-id="177e1-118">버전</span><span class="sxs-lookup"><span data-stu-id="177e1-118">Version</span></span>               |
 | -------------------------------- | --------------------- |
@@ -60,7 +60,7 @@ ms.locfileid: "93054959"
 <span data-ttu-id="177e1-129">&dagger;‘현재’는 최신 버전의 브라우저를 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="177e1-129">&dagger;*Current* refers to the latest version of the browser.</span></span>  
 <span data-ttu-id="177e1-130">&Dagger;Microsoft Internet Explorer는 [WebAssembly](https://webassembly.org)를 지원하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="177e1-130">&Dagger;Microsoft Internet Explorer doesn't support [WebAssembly](https://webassembly.org).</span></span>
 
-## :::no-loc(Blazor Server):::
+## Blazor Server
 
 | <span data-ttu-id="177e1-131">브라우저</span><span class="sxs-lookup"><span data-stu-id="177e1-131">Browser</span></span>                          | <span data-ttu-id="177e1-132">버전</span><span class="sxs-lookup"><span data-stu-id="177e1-132">Version</span></span>         |
 | -------------------------------- | --------------- |

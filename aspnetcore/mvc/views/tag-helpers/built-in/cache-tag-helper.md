@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
 ms.openlocfilehash: a87f91255bd1f280b1567f522423a6f4e88a6dd8
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -33,7 +33,7 @@ ms.locfileid: "93060887"
 
 <span data-ttu-id="73fd1-106">태그 도우미에 대한 개요는 <xref:mvc/views/tag-helpers/intro>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="73fd1-106">For an overview of Tag Helpers, see <xref:mvc/views/tag-helpers/intro>.</span></span>
 
-<span data-ttu-id="73fd1-107">:::no-loc(Razor):::현재 날짜를 캐시 하는 태그는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-107">The following :::no-loc(Razor)::: markup caches the current date:</span></span>
+<span data-ttu-id="73fd1-107">Razor현재 날짜를 캐시 하는 태그는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-107">The following Razor markup caches the current date:</span></span>
 
 ```cshtml
 <cache>@DateTime.Now</cache>
@@ -91,7 +91,7 @@ ms.locfileid: "93060887"
 </cache>
 ```
 
-<span data-ttu-id="73fd1-133">:::no-loc(Razor):::뷰 엔진은 기본값 `expires-after` 을 20 분으로 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-133">The :::no-loc(Razor)::: View Engine sets the default `expires-after` value to twenty minutes.</span></span>
+<span data-ttu-id="73fd1-133">Razor뷰 엔진은 기본값 `expires-after` 을 20 분으로 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-133">The Razor View Engine sets the default `expires-after` value to twenty minutes.</span></span>
 
 ### <a name="expires-sliding"></a><span data-ttu-id="73fd1-134">expires-sliding</span><span class="sxs-lookup"><span data-stu-id="73fd1-134">expires-sliding</span></span>
 
@@ -167,18 +167,18 @@ routes.MapRoute(
 </cache>
 ```
 
-### <a name="vary-by-no-loccookie"></a><span data-ttu-id="73fd1-164">다름:::no-loc(cookie):::</span><span class="sxs-lookup"><span data-stu-id="73fd1-164">vary-by-:::no-loc(cookie):::</span></span>
+### <a name="vary-by-no-loccookie"></a><span data-ttu-id="73fd1-164">다름cookie</span><span class="sxs-lookup"><span data-stu-id="73fd1-164">vary-by-cookie</span></span>
 
 | <span data-ttu-id="73fd1-165">특성 유형</span><span class="sxs-lookup"><span data-stu-id="73fd1-165">Attribute Type</span></span> | <span data-ttu-id="73fd1-166">예</span><span class="sxs-lookup"><span data-stu-id="73fd1-166">Examples</span></span>                                                                         |
 | -------------- | -------------------------------------------------------------------------------- |
-| <span data-ttu-id="73fd1-167">String</span><span class="sxs-lookup"><span data-stu-id="73fd1-167">String</span></span>         | <span data-ttu-id="73fd1-168">`.AspNetCore.:::no-loc(Identity):::.Application`, `.AspNetCore.:::no-loc(Identity):::.Application,HairColor`</span><span class="sxs-lookup"><span data-stu-id="73fd1-168">`.AspNetCore.:::no-loc(Identity):::.Application`, `.AspNetCore.:::no-loc(Identity):::.Application,HairColor`</span></span> |
+| <span data-ttu-id="73fd1-167">String</span><span class="sxs-lookup"><span data-stu-id="73fd1-167">String</span></span>         | <span data-ttu-id="73fd1-168">`.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor`</span><span class="sxs-lookup"><span data-stu-id="73fd1-168">`.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor`</span></span> |
 
-<span data-ttu-id="73fd1-169">`vary-by-:::no-loc(cookie):::`:::no-loc(cookie):::값이 변경 될 때 캐시 새로 고침을 트리거하는 쉼표로 구분 된 이름 목록을 허용 :::no-loc(cookie)::: 합니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-169">`vary-by-:::no-loc(cookie):::` accepts a comma-delimited list of :::no-loc(cookie)::: names that trigger a cache refresh when the :::no-loc(cookie)::: values change.</span></span>
+<span data-ttu-id="73fd1-169">`vary-by-cookie`cookie값이 변경 될 때 캐시 새로 고침을 트리거하는 쉼표로 구분 된 이름 목록을 허용 cookie 합니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-169">`vary-by-cookie` accepts a comma-delimited list of cookie names that trigger a cache refresh when the cookie values change.</span></span>
 
-<span data-ttu-id="73fd1-170">다음 예에서는와 연결 된를 모니터링 합니다 :::no-loc(cookie)::: :::no-loc(ASP.NET Core Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="73fd1-170">The following example monitors the :::no-loc(cookie)::: associated with :::no-loc(ASP.NET Core Identity):::.</span></span> <span data-ttu-id="73fd1-171">사용자가 인증 되 면에서 변경 내용이 :::no-loc(Identity)::: :::no-loc(cookie)::: 캐시 새로 고침을 트리거합니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-171">When a user is authenticated, a change in the :::no-loc(Identity)::: :::no-loc(cookie)::: triggers a cache refresh:</span></span>
+<span data-ttu-id="73fd1-170">다음 예에서는와 연결 된를 모니터링 합니다 cookie ASP.NET Core Identity .</span><span class="sxs-lookup"><span data-stu-id="73fd1-170">The following example monitors the cookie associated with ASP.NET Core Identity.</span></span> <span data-ttu-id="73fd1-171">사용자가 인증 되 면에서 변경 내용이 Identity cookie 캐시 새로 고침을 트리거합니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-171">When a user is authenticated, a change in the Identity cookie triggers a cache refresh:</span></span>
 
 ```cshtml
-<cache vary-by-:::no-loc(cookie):::=".AspNetCore.:::no-loc(Identity):::.Application">
+<cache vary-by-cookie=".AspNetCore.Identity.Application">
     Current Time Inside Cache Tag Helper: @DateTime.Now
 </cache>
 ```
@@ -189,7 +189,7 @@ routes.MapRoute(
 | --------------- | --------------- | ------- |
 | <span data-ttu-id="73fd1-176">부울</span><span class="sxs-lookup"><span data-stu-id="73fd1-176">Boolean</span></span>         | <span data-ttu-id="73fd1-177">`true`, `false`</span><span class="sxs-lookup"><span data-stu-id="73fd1-177">`true`, `false`</span></span> | `true`  |
 
-<span data-ttu-id="73fd1-178">`vary-by-user`는 로그인한 사용자(또는 컨텍스트 보안 주체)가 변경될 때 캐시를 다시 설정할지 여부를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-178">`vary-by-user` specifies whether or not the cache resets when the signed-in user (or Context Principal) changes.</span></span> <span data-ttu-id="73fd1-179">현재 사용자를 요청 컨텍스트 보안 주체 라고도 하며를 :::no-loc(Razor)::: 참조 하 여 뷰에서 볼 수 있습니다 `@User.:::no-loc(Identity):::.Name` .</span><span class="sxs-lookup"><span data-stu-id="73fd1-179">The current user is also known as the Request Context Principal and can be viewed in a :::no-loc(Razor)::: view by referencing `@User.:::no-loc(Identity):::.Name`.</span></span>
+<span data-ttu-id="73fd1-178">`vary-by-user`는 로그인한 사용자(또는 컨텍스트 보안 주체)가 변경될 때 캐시를 다시 설정할지 여부를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-178">`vary-by-user` specifies whether or not the cache resets when the signed-in user (or Context Principal) changes.</span></span> <span data-ttu-id="73fd1-179">현재 사용자를 요청 컨텍스트 보안 주체 라고도 하며를 Razor 참조 하 여 뷰에서 볼 수 있습니다 `@User.Identity.Name` .</span><span class="sxs-lookup"><span data-stu-id="73fd1-179">The current user is also known as the Request Context Principal and can be viewed in a Razor view by referencing `@User.Identity.Name`.</span></span>
 
 <span data-ttu-id="73fd1-180">다음 예제는 현재 로그인한 사용자를 모니터링하여 캐시 새로 고침을 트리거합니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-180">The following example monitors the current logged in user to trigger a cache refresh:</span></span>
 
@@ -199,7 +199,7 @@ routes.MapRoute(
 </cache>
 ```
 
-<span data-ttu-id="73fd1-181">이 특성을 사용하면 로그인 및 로그아웃 주기 동안 콘텐츠를 캐시에 유지합니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-181">Using this attribute maintains the contents in cache through a sign-in and sign-out cycle.</span></span> <span data-ttu-id="73fd1-182">값이 `true`로 설정되면 인증 주기가 인증된 사용자에 대한 캐시를 무효화시킵니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-182">When the value is set to `true`, an authentication cycle invalidates the cache for the authenticated user.</span></span> <span data-ttu-id="73fd1-183">:::no-loc(cookie):::사용자가 인증 될 때 새 고유 값이 생성 되므로 캐시가 무효화 됩니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-183">The cache is invalidated because a new unique :::no-loc(cookie)::: value is generated when a user is authenticated.</span></span> <span data-ttu-id="73fd1-184">가 없거나가 만료 된 경우 캐시는 익명 상태에 대해 유지 관리 됩니다 :::no-loc(cookie)::: :::no-loc(cookie)::: .</span><span class="sxs-lookup"><span data-stu-id="73fd1-184">Cache is maintained for the anonymous state when no :::no-loc(cookie)::: is present or the :::no-loc(cookie)::: has expired.</span></span> <span data-ttu-id="73fd1-185">사용자가 인증되지 **않으면** 캐시가 유지됩니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-185">If the user is **not** authenticated, the cache is maintained.</span></span>
+<span data-ttu-id="73fd1-181">이 특성을 사용하면 로그인 및 로그아웃 주기 동안 콘텐츠를 캐시에 유지합니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-181">Using this attribute maintains the contents in cache through a sign-in and sign-out cycle.</span></span> <span data-ttu-id="73fd1-182">값이 `true`로 설정되면 인증 주기가 인증된 사용자에 대한 캐시를 무효화시킵니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-182">When the value is set to `true`, an authentication cycle invalidates the cache for the authenticated user.</span></span> <span data-ttu-id="73fd1-183">cookie사용자가 인증 될 때 새 고유 값이 생성 되므로 캐시가 무효화 됩니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-183">The cache is invalidated because a new unique cookie value is generated when a user is authenticated.</span></span> <span data-ttu-id="73fd1-184">가 없거나가 만료 된 경우 캐시는 익명 상태에 대해 유지 관리 됩니다 cookie cookie .</span><span class="sxs-lookup"><span data-stu-id="73fd1-184">Cache is maintained for the anonymous state when no cookie is present or the cookie has expired.</span></span> <span data-ttu-id="73fd1-185">사용자가 인증되지 **않으면** 캐시가 유지됩니다.</span><span class="sxs-lookup"><span data-stu-id="73fd1-185">If the user is **not** authenticated, the cache is maintained.</span></span>
 
 ### <a name="vary-by"></a><span data-ttu-id="73fd1-186">vary-by</span><span class="sxs-lookup"><span data-stu-id="73fd1-186">vary-by</span></span>
 

@@ -1,23 +1,23 @@
 ---
-title: ASP.NET Core :::no-loc(Blazor WebAssembly):::의 어셈블리 지연 로드
+title: ASP.NET Core Blazor WebAssembly의 어셈블리 지연 로드
 author: guardrex
-description: 'ASP.NET Core :::no-loc(Blazor WebAssembly)::: 앱에서 어셈블리를 지연 로드하는 방법을 알아봅니다.'
+description: 'ASP.NET Core Blazor WebAssembly 앱에서 어셈블리를 지연 로드하는 방법을 알아봅니다.'
 monikerRange: '>= aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/09/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/webassembly-lazy-load-assemblies
 ms.openlocfilehash: 6a1feffb5341d432d6d1949a9e26b9537b85ba03
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,30 +26,30 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93054790"
 ---
-# <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a><span data-ttu-id="68d1e-103">ASP.NET Core :::no-loc(Blazor WebAssembly):::의 어셈블리 지연 로드</span><span class="sxs-lookup"><span data-stu-id="68d1e-103">Lazy load assemblies in ASP.NET Core :::no-loc(Blazor WebAssembly):::</span></span>
+# <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a><span data-ttu-id="68d1e-103">ASP.NET Core Blazor WebAssembly의 어셈블리 지연 로드</span><span class="sxs-lookup"><span data-stu-id="68d1e-103">Lazy load assemblies in ASP.NET Core Blazor WebAssembly</span></span>
 
 <span data-ttu-id="68d1e-104">[Safia Abdalla](https://safia.rocks) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="68d1e-104">By [Safia Abdalla](https://safia.rocks) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="68d1e-105">일부 애플리케이션 어셈블리의 로드를 연기(지연 로드라고 함)하여 :::no-loc(Blazor WebAssembly)::: 앱 시작 성능을 향상시킬 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-105">:::no-loc(Blazor WebAssembly)::: app startup performance can be improved by deferring the loading of some application assemblies until they are required, which is called *lazy loading*.</span></span> <span data-ttu-id="68d1e-106">예를 들어 단일 구성 요소를 렌더링하는 데만 사용되는 어셈블리는 사용자가 해당 구성 요소로 이동하는 경우에만 로드되도록 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-106">For example, assemblies that are only used to render a single component can be set up to load only if the user navigates to that component.</span></span> <span data-ttu-id="68d1e-107">로드 후 어셈블리는 클라이언트 쪽에서 캐시되며 이후의 모든 탐색에 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-107">After loading, the assemblies are cached client-side and are available for all future navigations.</span></span>
+<span data-ttu-id="68d1e-105">일부 애플리케이션 어셈블리의 로드를 연기(지연 로드라고 함)하여 Blazor WebAssembly 앱 시작 성능을 향상시킬 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-105">Blazor WebAssembly app startup performance can be improved by deferring the loading of some application assemblies until they are required, which is called *lazy loading*.</span></span> <span data-ttu-id="68d1e-106">예를 들어 단일 구성 요소를 렌더링하는 데만 사용되는 어셈블리는 사용자가 해당 구성 요소로 이동하는 경우에만 로드되도록 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-106">For example, assemblies that are only used to render a single component can be set up to load only if the user navigates to that component.</span></span> <span data-ttu-id="68d1e-107">로드 후 어셈블리는 클라이언트 쪽에서 캐시되며 이후의 모든 탐색에 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-107">After loading, the assemblies are cached client-side and are available for all future navigations.</span></span>
 
-<span data-ttu-id="68d1e-108">:::no-loc(Blazor):::의 지연 로드 기능을 사용하면 사용자가 특정 경로로 이동할 때 런타임에 어셈블리를 로드하는 지연 로드로 앱 어셈블리를 표시할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-108">:::no-loc(Blazor):::'s lazy loading feature allows you to mark app assemblies for lazy loading, which loads the assemblies during runtime when the user navigates to a particular route.</span></span> <span data-ttu-id="68d1e-109">이 기능은 프로젝트 파일 변경과 애플리케이션의 라우터 변경으로 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-109">The feature consists of changes to the project file and changes to the application's router.</span></span>
+<span data-ttu-id="68d1e-108">Blazor의 지연 로드 기능을 사용하면 사용자가 특정 경로로 이동할 때 런타임에 어셈블리를 로드하는 지연 로드로 앱 어셈블리를 표시할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-108">Blazor's lazy loading feature allows you to mark app assemblies for lazy loading, which loads the assemblies during runtime when the user navigates to a particular route.</span></span> <span data-ttu-id="68d1e-109">이 기능은 프로젝트 파일 변경과 애플리케이션의 라우터 변경으로 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-109">The feature consists of changes to the project file and changes to the application's router.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="68d1e-110">어셈블리가 :::no-loc(Blazor Server)::: 앱에서 클라이언트로 다운로드되지 않기 때문에 어셈블리 지연 로드는 :::no-loc(Blazor Server)::: 앱에 유용하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-110">Assembly lazy loading doesn't benefit :::no-loc(Blazor Server)::: apps because assemblies aren't downloaded to the client in a :::no-loc(Blazor Server)::: app.</span></span>
+> <span data-ttu-id="68d1e-110">어셈블리가 Blazor Server 앱에서 클라이언트로 다운로드되지 않기 때문에 어셈블리 지연 로드는 Blazor Server 앱에 유용하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-110">Assembly lazy loading doesn't benefit Blazor Server apps because assemblies aren't downloaded to the client in a Blazor Server app.</span></span>
 
 ## <a name="project-file"></a><span data-ttu-id="68d1e-111">프로젝트 파일</span><span class="sxs-lookup"><span data-stu-id="68d1e-111">Project file</span></span>
 
-<span data-ttu-id="68d1e-112">`:::no-loc(Blazor):::WebAssemblyLazyLoad` 항목을 사용하여 앱의 프로젝트 파일(`.csproj`)에서 어셈블리를 지연 로드로 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-112">Mark assemblies for lazy loading in the app's project file (`.csproj`) using the `:::no-loc(Blazor):::WebAssemblyLazyLoad` item.</span></span> <span data-ttu-id="68d1e-113">`.dll` 확장명과 함께 어셈블리 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-113">Use the assembly name with the `.dll` extension.</span></span> <span data-ttu-id="68d1e-114">:::no-loc(Blazor)::: 프레임워크는 이 항목 그룹이 지정한 어셈블리가 앱 시작 시 로드되지 않도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-114">The :::no-loc(Blazor)::: framework prevents the assemblies specified by this item group from loading at app launch.</span></span> <span data-ttu-id="68d1e-115">다음 예제에서는 큰 사용자 지정 어셈블리(`GrantImaharaRobotControls.dll`)를 지연 로드로 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-115">The following example marks a large custom assembly (`GrantImaharaRobotControls.dll`) for lazy loading.</span></span> <span data-ttu-id="68d1e-116">지연 로드로 표시된 어셈블리에 종속성이 있는 경우 프로젝트 파일에서 종속성도 지연 로드로 표시되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-116">If an assembly that's marked for lazy loading has dependencies, they must also be marked for lazy loading in the project file.</span></span>
+<span data-ttu-id="68d1e-112">`BlazorWebAssemblyLazyLoad` 항목을 사용하여 앱의 프로젝트 파일(`.csproj`)에서 어셈블리를 지연 로드로 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-112">Mark assemblies for lazy loading in the app's project file (`.csproj`) using the `BlazorWebAssemblyLazyLoad` item.</span></span> <span data-ttu-id="68d1e-113">`.dll` 확장명과 함께 어셈블리 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-113">Use the assembly name with the `.dll` extension.</span></span> <span data-ttu-id="68d1e-114">Blazor 프레임워크는 이 항목 그룹이 지정한 어셈블리가 앱 시작 시 로드되지 않도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-114">The Blazor framework prevents the assemblies specified by this item group from loading at app launch.</span></span> <span data-ttu-id="68d1e-115">다음 예제에서는 큰 사용자 지정 어셈블리(`GrantImaharaRobotControls.dll`)를 지연 로드로 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-115">The following example marks a large custom assembly (`GrantImaharaRobotControls.dll`) for lazy loading.</span></span> <span data-ttu-id="68d1e-116">지연 로드로 표시된 어셈블리에 종속성이 있는 경우 프로젝트 파일에서 종속성도 지연 로드로 표시되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-116">If an assembly that's marked for lazy loading has dependencies, they must also be marked for lazy loading in the project file.</span></span>
 
 ```xml
 <ItemGroup>
-  <:::no-loc(Blazor):::WebAssemblyLazyLoad Include="GrantImaharaRobotControls.dll" />
+  <BlazorWebAssemblyLazyLoad Include="GrantImaharaRobotControls.dll" />
 </ItemGroup>
 ```
 
 ## <a name="router-component"></a><span data-ttu-id="68d1e-117">`Router` 구성 요소</span><span class="sxs-lookup"><span data-stu-id="68d1e-117">`Router` component</span></span>
 
-<span data-ttu-id="68d1e-118">:::no-loc(Blazor):::의 `Router` 구성 요소는 :::no-loc(Blazor):::가 라우팅 가능한 구성 요소를 검색할 어셈블리를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-118">:::no-loc(Blazor):::'s `Router` component designates which assemblies :::no-loc(Blazor)::: searches for routable components.</span></span> <span data-ttu-id="68d1e-119">`Router` 구성 요소는 사용자가 탐색하는 경로에 대한 구성 요소 렌더링도 담당합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-119">The `Router` component is also responsible for rendering the component for the route where the user navigates.</span></span> <span data-ttu-id="68d1e-120">`Router` 구성 요소는 지연 로드와 함께 사용할 수 있는 `OnNavigateAsync` 기능을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-120">The `Router` component supports an `OnNavigateAsync` feature that can be used in conjunction with lazy loading.</span></span>
+<span data-ttu-id="68d1e-118">Blazor의 `Router` 구성 요소는 Blazor가 라우팅 가능한 구성 요소를 검색할 어셈블리를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-118">Blazor's `Router` component designates which assemblies Blazor searches for routable components.</span></span> <span data-ttu-id="68d1e-119">`Router` 구성 요소는 사용자가 탐색하는 경로에 대한 구성 요소 렌더링도 담당합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-119">The `Router` component is also responsible for rendering the component for the route where the user navigates.</span></span> <span data-ttu-id="68d1e-120">`Router` 구성 요소는 지연 로드와 함께 사용할 수 있는 `OnNavigateAsync` 기능을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-120">The `Router` component supports an `OnNavigateAsync` feature that can be used in conjunction with lazy loading.</span></span>
 
 <span data-ttu-id="68d1e-121">앱의 `Router` 구성 요소(`App.razor`)에서 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-121">In the app's `Router` component (`App.razor`):</span></span>
 
@@ -75,7 +75,7 @@ ms.locfileid: "93054790"
 }
 ```
 
-<span data-ttu-id="68d1e-129">`OnNavigateAsync` 콜백이 처리되지 않은 예외를 throw하는 경우 [:::no-loc(Blazor)::: 오류 UI](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development)가 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-129">If the `OnNavigateAsync` callback throws an unhandled exception, the [:::no-loc(Blazor)::: error UI](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development) is invoked.</span></span>
+<span data-ttu-id="68d1e-129">`OnNavigateAsync` 콜백이 처리되지 않은 예외를 throw하는 경우 [Blazor 오류 UI](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development)가 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-129">If the `OnNavigateAsync` callback throws an unhandled exception, the [Blazor error UI](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development) is invoked.</span></span>
 
 ### <a name="assembly-load-logic-in-onnavigateasync"></a><span data-ttu-id="68d1e-130">`OnNavigateAsync`의 어셈블리 로드 논리</span><span class="sxs-lookup"><span data-stu-id="68d1e-130">Assembly load logic in `OnNavigateAsync`</span></span>
 
@@ -104,7 +104,7 @@ ms.locfileid: "93054790"
 * <span data-ttu-id="68d1e-142">JS interop을 사용하여 네트워크 호출을 통해 어셈블리를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-142">Uses JS interop to fetch assemblies via a network call.</span></span>
 * <span data-ttu-id="68d1e-143">브라우저의 WebAssembly에서 실행되는 런타임에 어셈블리를 로드합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-143">Loads assemblies into the runtime executing on WebAssembly in the browser.</span></span>
 
-<span data-ttu-id="68d1e-144">프레임워크의 지연 로드 구현에서는 호스트된 :::no-loc(Blazor)::: 솔루션에서 미리 렌더링으로 지연 로드를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-144">The framework's lazy loading implementation supports lazy loading with prerendering in a hosted :::no-loc(Blazor)::: solution.</span></span> <span data-ttu-id="68d1e-145">미리 렌더링 중에는 지연 로드로 표시된 어셈블리를 포함한 모든 어셈블리가 로드된다고 가정합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-145">During prerendering, all assemblies, including those marked for lazy loading, are assumed to be loaded.</span></span> <span data-ttu-id="68d1e-146">*Server* 프로젝트의 `Startup.ConfigureServices` 메서드(`Startup.cs`)에서 `LazyAssemblyLoader`를 수동으로 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-146">Manually register `LazyAssemblyLoader` in the *Server* project's `Startup.ConfigureServices` method (`Startup.cs`):</span></span>
+<span data-ttu-id="68d1e-144">프레임워크의 지연 로드 구현에서는 호스트된 Blazor 솔루션에서 미리 렌더링으로 지연 로드를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-144">The framework's lazy loading implementation supports lazy loading with prerendering in a hosted Blazor solution.</span></span> <span data-ttu-id="68d1e-145">미리 렌더링 중에는 지연 로드로 표시된 어셈블리를 포함한 모든 어셈블리가 로드된다고 가정합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-145">During prerendering, all assemblies, including those marked for lazy loading, are assumed to be loaded.</span></span> <span data-ttu-id="68d1e-146">*Server* 프로젝트의 `Startup.ConfigureServices` 메서드(`Startup.cs`)에서 `LazyAssemblyLoader`를 수동으로 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="68d1e-146">Manually register `LazyAssemblyLoader` in the *Server* project's `Startup.ConfigureServices` method (`Startup.cs`):</span></span>
 
 ```csharp
 services.AddScoped<LazyAssemblyLoader>();

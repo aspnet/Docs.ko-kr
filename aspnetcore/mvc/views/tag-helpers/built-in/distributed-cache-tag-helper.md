@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/24/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
 ms.openlocfilehash: 04ab5be4d9cec066a4b7cd422a1566bcbb5a291a
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -48,7 +48,7 @@ ms.locfileid: "93061160"
 * `vary-by-header`
 * `vary-by-query`
 * `vary-by-route`
-* `vary-by-:::no-loc(cookie):::`
+* `vary-by-cookie`
 * `vary-by-user`
 * `vary-by priority`
 
@@ -60,7 +60,7 @@ ms.locfileid: "93061160"
 | -------------- | ------------------------------------- |
 | <span data-ttu-id="99b7b-119">String</span><span class="sxs-lookup"><span data-stu-id="99b7b-119">String</span></span>         | `my-distributed-cache-unique-key-101` |
 
-<span data-ttu-id="99b7b-120">`name`은 필수입니다.</span><span class="sxs-lookup"><span data-stu-id="99b7b-120">`name` is required.</span></span> <span data-ttu-id="99b7b-121">`name` 특성은 저장된 각 캐시 인스턴스의 키로 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="99b7b-121">The `name` attribute is used as a key for each stored cache instance.</span></span> <span data-ttu-id="99b7b-122">페이지의 페이지 이름과 위치를 기준으로 각 인스턴스에 캐시 키를 할당 하는 캐시 태그 도우미와 달리 :::no-loc(Razor)::: :::no-loc(Razor)::: 분산 캐시 태그 도우미는 특성에 대 한 키만을 기준으로 `name` 합니다.</span><span class="sxs-lookup"><span data-stu-id="99b7b-122">Unlike the Cache Tag Helper that assigns a cache key to each instance based on the :::no-loc(Razor)::: page name and location in the :::no-loc(Razor)::: page, the Distributed Cache Tag Helper only bases its key on the attribute `name`.</span></span>
+<span data-ttu-id="99b7b-120">`name`은 필수입니다.</span><span class="sxs-lookup"><span data-stu-id="99b7b-120">`name` is required.</span></span> <span data-ttu-id="99b7b-121">`name` 특성은 저장된 각 캐시 인스턴스의 키로 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="99b7b-121">The `name` attribute is used as a key for each stored cache instance.</span></span> <span data-ttu-id="99b7b-122">페이지의 페이지 이름과 위치를 기준으로 각 인스턴스에 캐시 키를 할당 하는 캐시 태그 도우미와 달리 Razor Razor 분산 캐시 태그 도우미는 특성에 대 한 키만을 기준으로 `name` 합니다.</span><span class="sxs-lookup"><span data-stu-id="99b7b-122">Unlike the Cache Tag Helper that assigns a cache key to each instance based on the Razor page name and location in the Razor page, the Distributed Cache Tag Helper only bases its key on the attribute `name`.</span></span>
 
 <span data-ttu-id="99b7b-123">예제:</span><span class="sxs-lookup"><span data-stu-id="99b7b-123">Example:</span></span>
 

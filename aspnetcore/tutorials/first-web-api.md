@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc, devx-track-js
 ms.date: 08/13/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
-- ':::no-loc(Models):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
+- 'Models'
 uid: tutorials/first-web-api
 ms.openlocfilehash: fc41dd13e7d027d9630cd596162f9b5fd2ef9e2b
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -229,25 +229,25 @@ ms.locfileid: "93058495"
 
 # <a name="visual-studio"></a>[<span data-ttu-id="0a34c-205">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0a34c-205">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="0a34c-206">**솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-206">In **Solution Explorer** , right-click the project.</span></span> <span data-ttu-id="0a34c-207">**추가** > **새 폴더** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-207">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="0a34c-208">폴더 이름을 *:::no-loc(Models):::* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-208">Name the folder *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="0a34c-206">**솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-206">In **Solution Explorer** , right-click the project.</span></span> <span data-ttu-id="0a34c-207">**추가** > **새 폴더** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-207">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="0a34c-208">폴더 이름을 *Models* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-208">Name the folder *Models*.</span></span>
 
-* <span data-ttu-id="0a34c-209">*:::no-loc(Models):::* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-209">Right-click the *:::no-loc(Models):::* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="0a34c-210">클래스 이름을 *TodoItem* 으로 지정하고 **추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-210">Name the class *TodoItem* and select **Add**.</span></span>
+* <span data-ttu-id="0a34c-209">*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-209">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="0a34c-210">클래스 이름을 *TodoItem* 으로 지정하고 **추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-210">Name the class *TodoItem* and select **Add**.</span></span>
 
 * <span data-ttu-id="0a34c-211">템플릿 코드를 다음으로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-211">Replace the template code with the following:</span></span>
 
 # <a name="visual-studio-code"></a>[<span data-ttu-id="0a34c-212">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="0a34c-212">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="0a34c-213">*:::no-loc(Models):::* 폴더를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-213">Add a folder named *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="0a34c-213">*Models* 폴더를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-213">Add a folder named *Models*.</span></span>
 
-* <span data-ttu-id="0a34c-214">다음 코드를 사용하여 *:::no-loc(Models):::* 폴더에 `TodoItem` 클래스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-214">Add a `TodoItem` class to the *:::no-loc(Models):::* folder with the following code:</span></span>
+* <span data-ttu-id="0a34c-214">다음 코드를 사용하여 *Models* 폴더에 `TodoItem` 클래스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-214">Add a `TodoItem` class to the *Models* folder with the following code:</span></span>
 
 # <a name="visual-studio-for-mac"></a>[<span data-ttu-id="0a34c-215">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0a34c-215">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="0a34c-216">프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-216">Right-click the project.</span></span> <span data-ttu-id="0a34c-217">**추가** > **새 폴더** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-217">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="0a34c-218">폴더 이름을 *:::no-loc(Models):::* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-218">Name the folder *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="0a34c-216">프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-216">Right-click the project.</span></span> <span data-ttu-id="0a34c-217">**추가** > **새 폴더** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-217">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="0a34c-218">폴더 이름을 *Models* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-218">Name the folder *Models*.</span></span>
 
   ![새 폴더](first-web-api-mac/_static/folder.png)
 
-* <span data-ttu-id="0a34c-220">*:::no-loc(Models):::* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** > **일반** > **빈 클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-220">Right-click the *:::no-loc(Models):::* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
+* <span data-ttu-id="0a34c-220">*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** > **일반** > **빈 클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-220">Right-click the *Models* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
 
 * <span data-ttu-id="0a34c-221">클래스 이름을 *TodoItem* 으로 지정한 다음, **새로 만들기** 를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-221">Name the class *TodoItem* , and then click **New**.</span></span>
 
@@ -255,11 +255,11 @@ ms.locfileid: "93058495"
 
 ---
 
-  [!code-csharp[](first-web-api/samples/5.x/TodoApi/:::no-loc(Models):::/TodoItem.cs?name=snippet)]
+  [!code-csharp[](first-web-api/samples/5.x/TodoApi/Models/TodoItem.cs?name=snippet)]
 
 <span data-ttu-id="0a34c-223">`Id` 속성은 관계형 데이터베이스에서 고유 키로 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-223">The `Id` property functions as the unique key in a relational database.</span></span>
 
-<span data-ttu-id="0a34c-224">모델 클래스는 프로젝트의 어디로든 이동할 수 있지만 규칙에 따라 *:::no-loc(Models):::* 폴더를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-224">Model classes can go anywhere in the project, but the *:::no-loc(Models):::* folder is used by convention.</span></span>
+<span data-ttu-id="0a34c-224">모델 클래스는 프로젝트의 어디로든 이동할 수 있지만 규칙에 따라 *Models* 폴더를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-224">Model classes can go anywhere in the project, but the *Models* folder is used by convention.</span></span>
 
 ## <a name="add-a-database-context"></a><span data-ttu-id="0a34c-225">데이터베이스 컨텍스트 추가</span><span class="sxs-lookup"><span data-stu-id="0a34c-225">Add a database context</span></span>
 
@@ -283,17 +283,17 @@ ms.locfileid: "93058495"
 
 ## <a name="add-the-todocontext-database-context"></a><span data-ttu-id="0a34c-238">TodoContext 데이터베이스 컨텍스트 추가</span><span class="sxs-lookup"><span data-stu-id="0a34c-238">Add the TodoContext database context</span></span>
 
-* <span data-ttu-id="0a34c-239">*:::no-loc(Models):::* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-239">Right-click the *:::no-loc(Models):::* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="0a34c-240">클래스 이름을 *TodoContext* 로 지정하고 **추가** 를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-240">Name the class *TodoContext* and click **Add**.</span></span>
+* <span data-ttu-id="0a34c-239">*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-239">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="0a34c-240">클래스 이름을 *TodoContext* 로 지정하고 **추가** 를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-240">Name the class *TodoContext* and click **Add**.</span></span>
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="0a34c-241">Visual Studio Code / Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0a34c-241">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-* <span data-ttu-id="0a34c-242">`TodoContext` 클래스를 *:::no-loc(Models):::* 폴더에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-242">Add a `TodoContext` class to the *:::no-loc(Models):::* folder.</span></span>
+* <span data-ttu-id="0a34c-242">`TodoContext` 클래스를 *Models* 폴더에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-242">Add a `TodoContext` class to the *Models* folder.</span></span>
 
 ---
 
 * <span data-ttu-id="0a34c-243">다음 코드를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-243">Enter the following code:</span></span>
 
-  [!code-csharp[](first-web-api/samples/5.x/TodoApi/:::no-loc(Models):::/TodoContext.cs)]
+  [!code-csharp[](first-web-api/samples/5.x/TodoApi/Models/TodoContext.cs)]
 
 ## <a name="register-the-database-context"></a><span data-ttu-id="0a34c-244">데이터베이스 컨텍스트 등록</span><span class="sxs-lookup"><span data-stu-id="0a34c-244">Register the database context</span></span>
 
@@ -319,8 +319,8 @@ ms.locfileid: "93058495"
 * <span data-ttu-id="0a34c-257">**Entity Framework를 사용하며 동작이 포함된 API 컨트롤러** 를 선택하고 **추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-257">Select **API Controller with actions, using Entity Framework** , and then select **Add**.</span></span>
 * <span data-ttu-id="0a34c-258">**Entity Framework를 사용하며 동작이 포함된 API 컨트롤러 추가** 대화 상자에서:</span><span class="sxs-lookup"><span data-stu-id="0a34c-258">In the **Add API Controller with actions, using Entity Framework** dialog:</span></span>
 
-  * <span data-ttu-id="0a34c-259">**모델 클래스** 에서 **TodoItem(TodoApi.:::no-loc(Models):::)** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-259">Select **TodoItem (TodoApi.:::no-loc(Models):::)** in the **Model class**.</span></span>
-  * <span data-ttu-id="0a34c-260">**데이터 컨텍스트 클래스** 에서 **TodoContext(TodoApi.:::no-loc(Models):::)** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-260">Select **TodoContext (TodoApi.:::no-loc(Models):::)** in the **Data context class**.</span></span>
+  * <span data-ttu-id="0a34c-259">**모델 클래스** 에서 **TodoItem(TodoApi.Models)** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-259">Select **TodoItem (TodoApi.Models)** in the **Model class**.</span></span>
+  * <span data-ttu-id="0a34c-260">**데이터 컨텍스트 클래스** 에서 **TodoContext(TodoApi.Models)** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-260">Select **TodoContext (TodoApi.Models)** in the **Data context class**.</span></span>
   * <span data-ttu-id="0a34c-261">**추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-261">Select **Add**.</span></span>
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="0a34c-262">Visual Studio Code / Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0a34c-262">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
@@ -536,7 +536,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 <span data-ttu-id="0a34c-392">DTO 방법을 설명하려면 비밀 필드를 포함하도록 `TodoItem` 클래스를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-392">To demonstrate the DTO approach, update the `TodoItem` class to include a secret field:</span></span>
 
-[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/:::no-loc(Models):::/TodoItem.cs?name=snippet&highlight=6)]
+[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=6)]
 
 <span data-ttu-id="0a34c-393">이 앱에서는 숨겨진 필드를 숨겨야 하지만, 관리 앱은 숨겨진 필드를 공개할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-393">The secret field needs to be hidden from this app, but an administrative app could choose to expose it.</span></span>
 
@@ -544,7 +544,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 <span data-ttu-id="0a34c-395">DTO 모델을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-395">Create a DTO model:</span></span>
 
-[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/:::no-loc(Models):::/TodoItemDTO.cs?name=snippet)]
+[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/Models/TodoItemDTO.cs?name=snippet)]
 
 <span data-ttu-id="0a34c-396">`TodoItemDTO`를 사용하도록 `TodoItemsController`를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-396">Update the `TodoItemsController` to use `TodoItemDTO`:</span></span>
 
@@ -725,25 +725,25 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 # <a name="visual-studio"></a>[<span data-ttu-id="0a34c-486">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0a34c-486">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="0a34c-487">**솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-487">In **Solution Explorer** , right-click the project.</span></span> <span data-ttu-id="0a34c-488">**추가** > **새 폴더** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-488">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="0a34c-489">폴더 이름을 *:::no-loc(Models):::* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-489">Name the folder *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="0a34c-487">**솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-487">In **Solution Explorer** , right-click the project.</span></span> <span data-ttu-id="0a34c-488">**추가** > **새 폴더** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-488">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="0a34c-489">폴더 이름을 *Models* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-489">Name the folder *Models*.</span></span>
 
-* <span data-ttu-id="0a34c-490">*:::no-loc(Models):::* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-490">Right-click the *:::no-loc(Models):::* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="0a34c-491">클래스 이름을 *TodoItem* 으로 지정하고 **추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-491">Name the class *TodoItem* and select **Add**.</span></span>
+* <span data-ttu-id="0a34c-490">*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-490">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="0a34c-491">클래스 이름을 *TodoItem* 으로 지정하고 **추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-491">Name the class *TodoItem* and select **Add**.</span></span>
 
 * <span data-ttu-id="0a34c-492">템플릿 코드를 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-492">Replace the template code with the following code:</span></span>
 
 # <a name="visual-studio-code"></a>[<span data-ttu-id="0a34c-493">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="0a34c-493">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="0a34c-494">*:::no-loc(Models):::* 폴더를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-494">Add a folder named *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="0a34c-494">*Models* 폴더를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-494">Add a folder named *Models*.</span></span>
 
-* <span data-ttu-id="0a34c-495">다음 코드를 사용하여 *:::no-loc(Models):::* 폴더에 `TodoItem` 클래스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-495">Add a `TodoItem` class to the *:::no-loc(Models):::* folder with the following code:</span></span>
+* <span data-ttu-id="0a34c-495">다음 코드를 사용하여 *Models* 폴더에 `TodoItem` 클래스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-495">Add a `TodoItem` class to the *Models* folder with the following code:</span></span>
 
 # <a name="visual-studio-for-mac"></a>[<span data-ttu-id="0a34c-496">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0a34c-496">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="0a34c-497">프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-497">Right-click the project.</span></span> <span data-ttu-id="0a34c-498">**추가** > **새 폴더** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-498">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="0a34c-499">폴더 이름을 *:::no-loc(Models):::* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-499">Name the folder *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="0a34c-497">프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-497">Right-click the project.</span></span> <span data-ttu-id="0a34c-498">**추가** > **새 폴더** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-498">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="0a34c-499">폴더 이름을 *Models* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-499">Name the folder *Models*.</span></span>
 
   ![새 폴더](first-web-api-mac/_static/folder.png)
 
-* <span data-ttu-id="0a34c-501">*:::no-loc(Models):::* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** > **일반** > **빈 클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-501">Right-click the *:::no-loc(Models):::* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
+* <span data-ttu-id="0a34c-501">*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** > **일반** > **빈 클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-501">Right-click the *Models* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
 
 * <span data-ttu-id="0a34c-502">클래스 이름을 *TodoItem* 으로 지정한 다음, **새로 만들기** 를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-502">Name the class *TodoItem* , and then click **New**.</span></span>
 
@@ -751,11 +751,11 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ---
 
-  [!code-csharp[](first-web-api/samples/3.0/TodoApi/:::no-loc(Models):::/TodoItem.cs?name=snippet)]
+  [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoItem.cs?name=snippet)]
 
 <span data-ttu-id="0a34c-504">`Id` 속성은 관계형 데이터베이스에서 고유 키로 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-504">The `Id` property functions as the unique key in a relational database.</span></span>
 
-<span data-ttu-id="0a34c-505">모델 클래스는 프로젝트의 어디로든 이동할 수 있지만 규칙에 따라 *:::no-loc(Models):::* 폴더를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-505">Model classes can go anywhere in the project, but the *:::no-loc(Models):::* folder is used by convention.</span></span>
+<span data-ttu-id="0a34c-505">모델 클래스는 프로젝트의 어디로든 이동할 수 있지만 규칙에 따라 *Models* 폴더를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-505">Model classes can go anywhere in the project, but the *Models* folder is used by convention.</span></span>
 
 ## <a name="add-a-database-context"></a><span data-ttu-id="0a34c-506">데이터베이스 컨텍스트 추가</span><span class="sxs-lookup"><span data-stu-id="0a34c-506">Add a database context</span></span>
 
@@ -775,17 +775,17 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ## <a name="add-the-todocontext-database-context"></a><span data-ttu-id="0a34c-517">TodoContext 데이터베이스 컨텍스트 추가</span><span class="sxs-lookup"><span data-stu-id="0a34c-517">Add the TodoContext database context</span></span>
 
-* <span data-ttu-id="0a34c-518">*:::no-loc(Models):::* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-518">Right-click the *:::no-loc(Models):::* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="0a34c-519">클래스 이름을 *TodoContext* 로 지정하고 **추가** 를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-519">Name the class *TodoContext* and click **Add**.</span></span>
+* <span data-ttu-id="0a34c-518">*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-518">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="0a34c-519">클래스 이름을 *TodoContext* 로 지정하고 **추가** 를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-519">Name the class *TodoContext* and click **Add**.</span></span>
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="0a34c-520">Visual Studio Code / Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0a34c-520">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-* <span data-ttu-id="0a34c-521">`TodoContext` 클래스를 *:::no-loc(Models):::* 폴더에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-521">Add a `TodoContext` class to the *:::no-loc(Models):::* folder.</span></span>
+* <span data-ttu-id="0a34c-521">`TodoContext` 클래스를 *Models* 폴더에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-521">Add a `TodoContext` class to the *Models* folder.</span></span>
 
 ---
 
 * <span data-ttu-id="0a34c-522">다음 코드를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-522">Enter the following code:</span></span>
 
-  [!code-csharp[](first-web-api/samples/3.0/TodoApi/:::no-loc(Models):::/TodoContext.cs)]
+  [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoContext.cs)]
 
 ## <a name="register-the-database-context"></a><span data-ttu-id="0a34c-523">데이터베이스 컨텍스트 등록</span><span class="sxs-lookup"><span data-stu-id="0a34c-523">Register the database context</span></span>
 
@@ -810,8 +810,8 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * <span data-ttu-id="0a34c-535">**Entity Framework를 사용하며 동작이 포함된 API 컨트롤러** 를 선택하고 **추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-535">Select **API Controller with actions, using Entity Framework** , and then select **Add**.</span></span>
 * <span data-ttu-id="0a34c-536">**Entity Framework를 사용하며 동작이 포함된 API 컨트롤러 추가** 대화 상자에서:</span><span class="sxs-lookup"><span data-stu-id="0a34c-536">In the **Add API Controller with actions, using Entity Framework** dialog:</span></span>
 
-  * <span data-ttu-id="0a34c-537">**모델 클래스** 에서 **TodoItem(TodoApi.:::no-loc(Models):::)** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-537">Select **TodoItem (TodoApi.:::no-loc(Models):::)** in the **Model class**.</span></span>
-  * <span data-ttu-id="0a34c-538">**데이터 컨텍스트 클래스** 에서 **TodoContext(TodoApi.:::no-loc(Models):::)** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-538">Select **TodoContext (TodoApi.:::no-loc(Models):::)** in the **Data context class**.</span></span>
+  * <span data-ttu-id="0a34c-537">**모델 클래스** 에서 **TodoItem(TodoApi.Models)** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-537">Select **TodoItem (TodoApi.Models)** in the **Model class**.</span></span>
+  * <span data-ttu-id="0a34c-538">**데이터 컨텍스트 클래스** 에서 **TodoContext(TodoApi.Models)** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-538">Select **TodoContext (TodoApi.Models)** in the **Data context class**.</span></span>
   * <span data-ttu-id="0a34c-539">**추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-539">Select **Add**.</span></span>
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="0a34c-540">Visual Studio Code / Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0a34c-540">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
@@ -1024,7 +1024,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 <span data-ttu-id="0a34c-667">DTO 방법을 설명하려면 비밀 필드를 포함하도록 `TodoItem` 클래스를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-667">To demonstrate the DTO approach, update the `TodoItem` class to include a secret field:</span></span>
 
-[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/:::no-loc(Models):::/TodoItem.cs?name=snippet&highlight=6)]
+[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=6)]
 
 <span data-ttu-id="0a34c-668">이 앱에서는 숨겨진 필드를 숨겨야 하지만, 관리 앱은 숨겨진 필드를 공개할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-668">The secret field needs to be hidden from this app, but an administrative app could choose to expose it.</span></span>
 
@@ -1032,7 +1032,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 <span data-ttu-id="0a34c-670">DTO 모델을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-670">Create a DTO model:</span></span>
 
-[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/:::no-loc(Models):::/TodoItemDTO.cs?name=snippet)]
+[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Models/TodoItemDTO.cs?name=snippet)]
 
 <span data-ttu-id="0a34c-671">`TodoItemDTO`를 사용하도록 `TodoItemsController`를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-671">Update the `TodoItemsController` to use `TodoItemDTO`:</span></span>
 
@@ -1168,25 +1168,25 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 # <a name="visual-studio"></a>[<span data-ttu-id="0a34c-765">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0a34c-765">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="0a34c-766">**솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-766">In **Solution Explorer** , right-click the project.</span></span> <span data-ttu-id="0a34c-767">**추가** > **새 폴더** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-767">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="0a34c-768">폴더 이름을 *:::no-loc(Models):::* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-768">Name the folder *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="0a34c-766">**솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-766">In **Solution Explorer** , right-click the project.</span></span> <span data-ttu-id="0a34c-767">**추가** > **새 폴더** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-767">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="0a34c-768">폴더 이름을 *Models* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-768">Name the folder *Models*.</span></span>
 
-* <span data-ttu-id="0a34c-769">*:::no-loc(Models):::* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-769">Right-click the *:::no-loc(Models):::* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="0a34c-770">클래스 이름을 *TodoItem* 으로 지정하고 **추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-770">Name the class *TodoItem* and select **Add**.</span></span>
+* <span data-ttu-id="0a34c-769">*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-769">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="0a34c-770">클래스 이름을 *TodoItem* 으로 지정하고 **추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-770">Name the class *TodoItem* and select **Add**.</span></span>
 
 * <span data-ttu-id="0a34c-771">템플릿 코드를 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-771">Replace the template code with the following code:</span></span>
 
 # <a name="visual-studio-code"></a>[<span data-ttu-id="0a34c-772">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="0a34c-772">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="0a34c-773">*:::no-loc(Models):::* 폴더를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-773">Add a folder named *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="0a34c-773">*Models* 폴더를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-773">Add a folder named *Models*.</span></span>
 
-* <span data-ttu-id="0a34c-774">다음 코드를 사용하여 *:::no-loc(Models):::* 폴더에 `TodoItem` 클래스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-774">Add a `TodoItem` class to the *:::no-loc(Models):::* folder with the following code:</span></span>
+* <span data-ttu-id="0a34c-774">다음 코드를 사용하여 *Models* 폴더에 `TodoItem` 클래스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-774">Add a `TodoItem` class to the *Models* folder with the following code:</span></span>
 
 # <a name="visual-studio-for-mac"></a>[<span data-ttu-id="0a34c-775">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0a34c-775">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="0a34c-776">프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-776">Right-click the project.</span></span> <span data-ttu-id="0a34c-777">**추가** > **새 폴더** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-777">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="0a34c-778">폴더 이름을 *:::no-loc(Models):::* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-778">Name the folder *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="0a34c-776">프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-776">Right-click the project.</span></span> <span data-ttu-id="0a34c-777">**추가** > **새 폴더** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-777">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="0a34c-778">폴더 이름을 *Models* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-778">Name the folder *Models*.</span></span>
 
   ![새 폴더](first-web-api-mac/_static/folder.png)
 
-* <span data-ttu-id="0a34c-780">*:::no-loc(Models):::* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** > **일반** > **빈 클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-780">Right-click the *:::no-loc(Models):::* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
+* <span data-ttu-id="0a34c-780">*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** > **일반** > **빈 클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-780">Right-click the *Models* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
 
 * <span data-ttu-id="0a34c-781">클래스 이름을 *TodoItem* 으로 지정한 다음, **새로 만들기** 를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-781">Name the class *TodoItem* , and then click **New**.</span></span>
 
@@ -1194,11 +1194,11 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ---
 
-  [!code-csharp[](first-web-api/samples/2.2/TodoApi/:::no-loc(Models):::/TodoItem.cs)]
+  [!code-csharp[](first-web-api/samples/2.2/TodoApi/Models/TodoItem.cs)]
 
 <span data-ttu-id="0a34c-783">`Id` 속성은 관계형 데이터베이스에서 고유 키로 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-783">The `Id` property functions as the unique key in a relational database.</span></span>
 
-<span data-ttu-id="0a34c-784">모델 클래스는 프로젝트의 어디로든 이동할 수 있지만 규칙에 따라 *:::no-loc(Models):::* 폴더를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-784">Model classes can go anywhere in the project, but the *:::no-loc(Models):::* folder is used by convention.</span></span>
+<span data-ttu-id="0a34c-784">모델 클래스는 프로젝트의 어디로든 이동할 수 있지만 규칙에 따라 *Models* 폴더를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-784">Model classes can go anywhere in the project, but the *Models* folder is used by convention.</span></span>
 
 ## <a name="add-a-database-context-21"></a><span data-ttu-id="0a34c-785">데이터베이스 컨텍스트 추가 2.1</span><span class="sxs-lookup"><span data-stu-id="0a34c-785">Add a database context 2.1</span></span>
 
@@ -1206,17 +1206,17 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 # <a name="visual-studio"></a>[<span data-ttu-id="0a34c-788">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0a34c-788">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="0a34c-789">*:::no-loc(Models):::* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-789">Right-click the *:::no-loc(Models):::* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="0a34c-790">클래스 이름을 *TodoContext* 로 지정하고 **추가** 를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-790">Name the class *TodoContext* and click **Add**.</span></span>
+* <span data-ttu-id="0a34c-789">*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-789">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="0a34c-790">클래스 이름을 *TodoContext* 로 지정하고 **추가** 를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-790">Name the class *TodoContext* and click **Add**.</span></span>
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="0a34c-791">Visual Studio Code / Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0a34c-791">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-* <span data-ttu-id="0a34c-792">`TodoContext` 클래스를 *:::no-loc(Models):::* 폴더에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-792">Add a `TodoContext` class to the *:::no-loc(Models):::* folder.</span></span>
+* <span data-ttu-id="0a34c-792">`TodoContext` 클래스를 *Models* 폴더에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-792">Add a `TodoContext` class to the *Models* folder.</span></span>
 
 ---
 
 * <span data-ttu-id="0a34c-793">템플릿 코드를 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="0a34c-793">Replace the template code with the following code:</span></span>
 
-  [!code-csharp[](first-web-api/samples/2.2/TodoApi/:::no-loc(Models):::/TodoContext.cs)]
+  [!code-csharp[](first-web-api/samples/2.2/TodoApi/Models/TodoContext.cs)]
 
 ## <a name="register-the-database-context-21"></a><span data-ttu-id="0a34c-794">데이터베이스 컨텍스트 등록 2.1</span><span class="sxs-lookup"><span data-stu-id="0a34c-794">Register the database context 2.1</span></span>
 
@@ -1495,7 +1495,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ## <a name="add-authentication-support-to-a-web-api-21"></a><span data-ttu-id="0a34c-957">웹 API에 인증 지원 추가 2.1</span><span class="sxs-lookup"><span data-stu-id="0a34c-957">Add authentication support to a web API 2.1</span></span>
 
-[!INCLUDE[](~/includes/:::no-loc(Identity):::Server4.md)]
+[!INCLUDE[](~/includes/IdentityServer4.md)]
 
 ## <a name="additional-resources-21"></a><span data-ttu-id="0a34c-958">추가 리소스 2.1</span><span class="sxs-lookup"><span data-stu-id="0a34c-958">Additional resources 2.1</span></span>
 

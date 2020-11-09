@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/1/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/websockets
 ms.openlocfilehash: 83a41d503b2d56bca3f1bac14eeb9d54a8257642
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -34,11 +34,11 @@ ms.locfileid: "93057780"
 
 <span data-ttu-id="bc4da-108">[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-108">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([how to download](xref:index#how-to-download-a-sample)).</span></span> <span data-ttu-id="bc4da-109">[실행 방법](#sample-app).</span><span class="sxs-lookup"><span data-stu-id="bc4da-109">[How to run](#sample-app).</span></span>
 
-## :::no-loc(SignalR):::
+## SignalR
 
-<span data-ttu-id="bc4da-110">[ASP.NET Core :::no-loc(SignalR):::](xref:signalr/introduction)은 앱에 실시간 웹 기능을 추가하는 것을 간소화하는 라이브러리입니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-110">[ASP.NET Core :::no-loc(SignalR):::](xref:signalr/introduction) is a library that simplifies adding real-time web functionality to apps.</span></span> <span data-ttu-id="bc4da-111">가능하면 Websocket을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-111">It uses WebSockets whenever possible.</span></span>
+<span data-ttu-id="bc4da-110">[ASP.NET Core SignalR](xref:signalr/introduction)은 앱에 실시간 웹 기능을 추가하는 것을 간소화하는 라이브러리입니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-110">[ASP.NET Core SignalR](xref:signalr/introduction) is a library that simplifies adding real-time web functionality to apps.</span></span> <span data-ttu-id="bc4da-111">가능하면 Websocket을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-111">It uses WebSockets whenever possible.</span></span>
 
-<span data-ttu-id="bc4da-112">대부분의 애플리케이션의 경우 원시 WebSockets보다 :::no-loc(SignalR):::을 권장합니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-112">For most applications, we recommend :::no-loc(SignalR)::: over raw WebSockets.</span></span> <span data-ttu-id="bc4da-113">:::no-loc(SignalR):::은 WebSockets를 사용할 수 없는 환경에 대한 전송 대체(fallback)를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-113">:::no-loc(SignalR)::: provides transport fallback for environments where WebSockets is not available.</span></span> <span data-ttu-id="bc4da-114">기본 원격 프로시저 호출 앱 모델도 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-114">It also provides a basic remote procedure call app model.</span></span> <span data-ttu-id="bc4da-115">그리고 대부분의 시나리오에서 :::no-loc(SignalR):::은 원시 WebSockets 사용과 비교할 때 큰 성능상의 단점이 없습니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-115">And in most scenarios, :::no-loc(SignalR)::: has no significant performance disadvantage compared to using raw WebSockets.</span></span>
+<span data-ttu-id="bc4da-112">대부분의 애플리케이션의 경우 원시 WebSockets보다 SignalR을 권장합니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-112">For most applications, we recommend SignalR over raw WebSockets.</span></span> <span data-ttu-id="bc4da-113">SignalR은 WebSockets를 사용할 수 없는 환경에 대한 전송 대체(fallback)를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-113">SignalR provides transport fallback for environments where WebSockets is not available.</span></span> <span data-ttu-id="bc4da-114">기본 원격 프로시저 호출 앱 모델도 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-114">It also provides a basic remote procedure call app model.</span></span> <span data-ttu-id="bc4da-115">그리고 대부분의 시나리오에서 SignalR은 원시 WebSockets 사용과 비교할 때 큰 성능상의 단점이 없습니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-115">And in most scenarios, SignalR has no significant performance disadvantage compared to using raw WebSockets.</span></span>
 
 <span data-ttu-id="bc4da-116">일부 앱에 대해 [.NET의 gRPC](xref:grpc/index)는 Websocket을 대신하는 방법을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="bc4da-116">For some apps, [gRPC on .NET](xref:grpc/index) provides an alternative to WebSockets.</span></span>
 

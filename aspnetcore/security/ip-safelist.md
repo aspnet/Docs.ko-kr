@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/12/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/ip-safelist
 ms.openlocfilehash: dfc134b97bb0976bc682a53d536cd27785550c7d
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -34,7 +34,7 @@ ms.locfileid: "93059665"
 
 * <span data-ttu-id="eb42f-108">미들웨어를 통해 모든 요청의 원격 IP 주소를 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-108">Middleware to check the remote IP address of every request.</span></span>
 * <span data-ttu-id="eb42f-109">MVC 작업 필터를 통해 특정 컨트롤러 또는 작업 메서드에 대 한 요청의 원격 IP 주소를 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-109">MVC action filters to check the remote IP address of requests for specific controllers or action methods.</span></span>
-* <span data-ttu-id="eb42f-110">:::no-loc(Razor)::: 페이지 필터는 페이지에 대 한 요청의 원격 IP 주소를 확인 합니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="eb42f-110">:::no-loc(Razor)::: Pages filters to check the remote IP address of requests for :::no-loc(Razor)::: pages.</span></span>
+* <span data-ttu-id="eb42f-110">Razor 페이지 필터는 페이지에 대 한 요청의 원격 IP 주소를 확인 합니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="eb42f-110">Razor Pages filters to check the remote IP address of requests for Razor pages.</span></span>
 
 <span data-ttu-id="eb42f-111">각각의 경우 승인 된 클라이언트 IP 주소를 포함 하는 문자열은 앱 설정에 저장 됩니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-111">In each case, a string containing approved client IP addresses is stored in an app setting.</span></span> <span data-ttu-id="eb42f-112">미들웨어 또는 필터:</span><span class="sxs-lookup"><span data-stu-id="eb42f-112">The middleware or filter:</span></span>
 
@@ -49,10 +49,10 @@ ms.locfileid: "93059665"
 
 <span data-ttu-id="eb42f-119">샘플 앱에서 IP 주소 safelist는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-119">In the sample app, the IP address safelist is:</span></span>
 
-* <span data-ttu-id="eb42f-120">`AdminSafeList`파일의 속성으로 정의 *:::no-loc(appsettings.json):::* 됩니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-120">Defined by the `AdminSafeList` property in the *:::no-loc(appsettings.json):::* file.</span></span>
+* <span data-ttu-id="eb42f-120">`AdminSafeList`파일의 속성으로 정의 *appsettings.json* 됩니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-120">Defined by the `AdminSafeList` property in the *appsettings.json* file.</span></span>
 * <span data-ttu-id="eb42f-121">[IPv4 (인터넷 프로토콜 버전 4)](https://wikipedia.org/wiki/IPv4) 및 [IPv6 (인터넷 프로토콜 버전 6)](https://wikipedia.org/wiki/IPv6) 주소를 둘 다 포함할 수 있는 세미콜론으로 구분 된 문자열입니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-121">A semicolon-delimited string that may contain both [Internet Protocol version 4 (IPv4)](https://wikipedia.org/wiki/IPv4) and [Internet Protocol version 6 (IPv6)](https://wikipedia.org/wiki/IPv6) addresses.</span></span>
 
-[!code-json[](ip-safelist/samples/3.x/ClientIpAspNetCore/:::no-loc(appsettings.json):::?range=1-3&highlight=2)]
+[!code-json[](ip-safelist/samples/3.x/ClientIpAspNetCore/appsettings.json?range=1-3&highlight=2)]
 
 <span data-ttu-id="eb42f-122">앞의 예제에서 및의 IPv4 주소와 `127.0.0.1` `192.168.1.5` 의 IPv6 루프백 주소 `::1` (압축 형식 `0:0:0:0:0:0:0:1` )가 허용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-122">In the preceding example, the IPv4 addresses of `127.0.0.1` and `192.168.1.5` and the IPv6 loopback address of `::1` (compressed format for `0:0:0:0:0:0:0:1`) are allowed.</span></span>
 
@@ -103,13 +103,13 @@ ms.locfileid: "93059665"
 
 * <span data-ttu-id="eb42f-140">GET이 아닌 HTTP 요청 동사로 `AdminSafeListMiddleware` 미들웨어는 클라이언트 IP 주소의 유효성을 검사 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-140">An HTTP request verb other than GET, the `AdminSafeListMiddleware` middleware validates the client IP address.</span></span>
 
-## <a name="no-locrazor-pages-filter"></a><span data-ttu-id="eb42f-141">:::no-loc(Razor)::: 페이지 필터</span><span class="sxs-lookup"><span data-stu-id="eb42f-141">:::no-loc(Razor)::: Pages filter</span></span>
+## <a name="no-locrazor-pages-filter"></a><span data-ttu-id="eb42f-141">Razor 페이지 필터</span><span class="sxs-lookup"><span data-stu-id="eb42f-141">Razor Pages filter</span></span>
 
-<span data-ttu-id="eb42f-142">페이지 앱에 대 한 safelist 기반 access control :::no-loc(Razor)::: 을 사용 하려면 :::no-loc(Razor)::: 페이지 필터를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-142">If you want safelist-driven access control for a :::no-loc(Razor)::: Pages app, use a :::no-loc(Razor)::: Pages filter.</span></span> <span data-ttu-id="eb42f-143">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-143">For example:</span></span>
+<span data-ttu-id="eb42f-142">페이지 앱에 대 한 safelist 기반 access control Razor 을 사용 하려면 Razor 페이지 필터를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-142">If you want safelist-driven access control for a Razor Pages app, use a Razor Pages filter.</span></span> <span data-ttu-id="eb42f-143">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-143">For example:</span></span>
 
 [!code-csharp[](ip-safelist/samples/Shared/ClientIpSafelistComponents/Filters/ClientIpCheckPageFilter.cs?name=snippet_ClassOnly)]
 
-<span data-ttu-id="eb42f-144">에서 `Startup.ConfigureServices` :::no-loc(Razor)::: 페이지 필터를 MVC filters 컬렉션에 추가 하 여 사용 하도록 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-144">In `Startup.ConfigureServices`, enable the :::no-loc(Razor)::: Pages filter by adding it to the MVC filters collection.</span></span> <span data-ttu-id="eb42f-145">다음 예제에서는 `ClientIpCheckPageFilter` :::no-loc(Razor)::: 페이지 필터를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-145">In the following example, a `ClientIpCheckPageFilter` :::no-loc(Razor)::: Pages filter is added.</span></span> <span data-ttu-id="eb42f-146">Safelist 및 콘솔로 거 인스턴스는 생성자 매개 변수로 전달 됩니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-146">A safelist and a console logger instance are passed as constructor parameters.</span></span>
+<span data-ttu-id="eb42f-144">에서 `Startup.ConfigureServices` Razor 페이지 필터를 MVC filters 컬렉션에 추가 하 여 사용 하도록 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-144">In `Startup.ConfigureServices`, enable the Razor Pages filter by adding it to the MVC filters collection.</span></span> <span data-ttu-id="eb42f-145">다음 예제에서는 `ClientIpCheckPageFilter` Razor 페이지 필터를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-145">In the following example, a `ClientIpCheckPageFilter` Razor Pages filter is added.</span></span> <span data-ttu-id="eb42f-146">Safelist 및 콘솔로 거 인스턴스는 생성자 매개 변수로 전달 됩니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-146">A safelist and a console logger instance are passed as constructor parameters.</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -123,7 +123,7 @@ ms.locfileid: "93059665"
 
 ::: moniker-end
 
-<span data-ttu-id="eb42f-147">샘플 앱의 *인덱스* :::no-loc(Razor)::: 페이지가 요청 되 면 :::no-loc(Razor)::: 페이지 필터는 클라이언트 IP 주소의 유효성을 검사 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-147">When the sample app's *Index* :::no-loc(Razor)::: page is requested, the :::no-loc(Razor)::: Pages filter validates the client IP address.</span></span> <span data-ttu-id="eb42f-148">필터는 다음 콘솔 출력의 변형을 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-148">The filter produces a variation of the following console output:</span></span>
+<span data-ttu-id="eb42f-147">샘플 앱의 *인덱스* Razor 페이지가 요청 되 면 Razor 페이지 필터는 클라이언트 IP 주소의 유효성을 검사 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-147">When the sample app's *Index* Razor page is requested, the Razor Pages filter validates the client IP address.</span></span> <span data-ttu-id="eb42f-148">필터는 다음 콘솔 출력의 변형을 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="eb42f-148">The filter produces a variation of the following console output:</span></span>
 
 ```
 dbug: ClientIpSafelistComponents.Filters.ClientIpCheckPageFilter[0]

@@ -1,23 +1,23 @@
 ---
-title: 'ASP.NET Core :::no-loc(Blazor)::: 환경'
+title: 'ASP.NET Core Blazor 환경'
 author: guardrex
-description: ':::no-loc(Blazor WebAssembly)::: 앱의 환경을 설정하는 방법을 포함하여 :::no-loc(Blazor):::의 환경에 대해 알아봅니다.'
+description: 'Blazor WebAssembly 앱의 환경을 설정하는 방법을 포함하여 Blazor의 환경에 대해 알아봅니다.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/fundamentals/environments
 ms.openlocfilehash: 61d46e0bd83d8bd82bf7faaf9d8f2fecbacc2ffa
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,14 +26,14 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056038"
 ---
-# <a name="aspnet-core-no-locblazor-environments"></a><span data-ttu-id="cc0aa-103">ASP.NET Core :::no-loc(Blazor)::: 환경</span><span class="sxs-lookup"><span data-stu-id="cc0aa-103">ASP.NET Core :::no-loc(Blazor)::: environments</span></span>
+# <a name="aspnet-core-no-locblazor-environments"></a><span data-ttu-id="cc0aa-103">ASP.NET Core Blazor 환경</span><span class="sxs-lookup"><span data-stu-id="cc0aa-103">ASP.NET Core Blazor environments</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="cc0aa-104">이 항목은 :::no-loc(Blazor WebAssembly):::에 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-104">This topic applies to :::no-loc(Blazor WebAssembly):::.</span></span> <span data-ttu-id="cc0aa-105">ASP.NET Core 앱 구성에 대한 일반적인 지침은 <xref:fundamentals/environments>의 내용을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-105">For general guidance on ASP.NET Core app configuration, see <xref:fundamentals/environments>.</span></span>
+> <span data-ttu-id="cc0aa-104">이 항목은 Blazor WebAssembly에 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-104">This topic applies to Blazor WebAssembly.</span></span> <span data-ttu-id="cc0aa-105">ASP.NET Core 앱 구성에 대한 일반적인 지침은 <xref:fundamentals/environments>의 내용을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-105">For general guidance on ASP.NET Core app configuration, see <xref:fundamentals/environments>.</span></span>
 
 <span data-ttu-id="cc0aa-106">앱을 로컬에서 실행하면 환경이 기본적으로 개발로 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-106">When running an app locally, the environment defaults to Development.</span></span> <span data-ttu-id="cc0aa-107">앱이 게시되면 환경이 기본적으로 프로덕션으로 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-107">When the app is published, the environment defaults to Production.</span></span>
 
-<span data-ttu-id="cc0aa-108">호스트된 :::no-loc(Blazor WebAssembly)::: 앱은 `blazor-environment` 헤더를 추가하여 브라우저에 환경을 전달하는 미들웨어를 통해 서버에서 환경을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-108">A hosted :::no-loc(Blazor WebAssembly)::: app picks up the environment from the server via a middleware that communicates the environment to the browser by adding the `blazor-environment` header.</span></span> <span data-ttu-id="cc0aa-109">헤더의 값은 해당 환경입니다.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-109">The value of the header is the environment.</span></span> <span data-ttu-id="cc0aa-110">호스트된 :::no-loc(Blazor)::: 앱과 서버 앱은 동일한 환경을 공유합니다.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-110">The hosted :::no-loc(Blazor)::: app and the server app share the same environment.</span></span> <span data-ttu-id="cc0aa-111">환경을 구성하는 방법을 비롯한 자세한 내용은 <xref:fundamentals/environments> 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-111">For more information, including how to configure the environment, see <xref:fundamentals/environments>.</span></span>
+<span data-ttu-id="cc0aa-108">호스트된 Blazor WebAssembly 앱은 `blazor-environment` 헤더를 추가하여 브라우저에 환경을 전달하는 미들웨어를 통해 서버에서 환경을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-108">A hosted Blazor WebAssembly app picks up the environment from the server via a middleware that communicates the environment to the browser by adding the `blazor-environment` header.</span></span> <span data-ttu-id="cc0aa-109">헤더의 값은 해당 환경입니다.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-109">The value of the header is the environment.</span></span> <span data-ttu-id="cc0aa-110">호스트된 Blazor 앱과 서버 앱은 동일한 환경을 공유합니다.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-110">The hosted Blazor app and the server app share the same environment.</span></span> <span data-ttu-id="cc0aa-111">환경을 구성하는 방법을 비롯한 자세한 내용은 <xref:fundamentals/environments> 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-111">For more information, including how to configure the environment, see <xref:fundamentals/environments>.</span></span>
 
 <span data-ttu-id="cc0aa-112">로컬에서 실행되는 독립 실행형 앱의 경우 개발 서버는 `blazor-environment` 헤더를 추가하여 개발 환경을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-112">For a standalone app running locally, the development server adds the `blazor-environment` header to specify the Development environment.</span></span> <span data-ttu-id="cc0aa-113">다른 호스팅 환경을 위한 환경을 지정하려면 `blazor-environment` 헤더를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="cc0aa-113">To specify the environment for other hosting environments, add the `blazor-environment` header.</span></span>
 

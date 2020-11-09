@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/02/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: performance/caching/memory
 ms.openlocfilehash: 4d5f459d54a3c74a2eb23a50db6537eeaf8596b3
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -190,7 +190,7 @@ ms.locfileid: "93061446"
 * <span data-ttu-id="bcfab-230">한 캐시 엔트리를 사용 하 여 다른 캐시 엔트리를 만드는 경우 자식는 부모 항목의 만료 토큰 및 시간 기반 만료 설정을 복사 합니다.</span><span class="sxs-lookup"><span data-stu-id="bcfab-230">When one cache entry is used to create another, the child copies the parent entry's expiration tokens and time-based expiration settings.</span></span> <span data-ttu-id="bcfab-231">자식은 수동으로 제거 하거나 부모 항목을 업데이트 하 여 만료 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="bcfab-231">The child isn't expired by manual removal or updating of the parent entry.</span></span>
 
 * <span data-ttu-id="bcfab-232">캐시 <xref:Microsoft.Extensions.Caching.Memory.ICacheEntry.PostEvictionCallbacks> 엔트리를 캐시에서 제거한 후에 발생 하는 콜백을 설정 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bcfab-232">Use <xref:Microsoft.Extensions.Caching.Memory.ICacheEntry.PostEvictionCallbacks> to set the callbacks that will be fired after the cache entry is evicted from the cache.</span></span>
-* <span data-ttu-id="bcfab-233">대부분의 앱에서 `IMemoryCache` 이 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bcfab-233">For most apps, `IMemoryCache` is enabled.</span></span> <span data-ttu-id="bcfab-234">예를 들어,,, `AddMvc` `AddControllersWithViews` `Add:::no-loc(Razor):::Pages` `AddMvcCore().Add:::no-loc(Razor):::ViewEngine` 및의 다른 여러 메서드를 호출 하면 `Add{Service}` `ConfigureServices` 가 활성화 `IMemoryCache` 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bcfab-234">For example, calling `AddMvc`, `AddControllersWithViews`, `Add:::no-loc(Razor):::Pages`, `AddMvcCore().Add:::no-loc(Razor):::ViewEngine`, and many other `Add{Service}` methods in `ConfigureServices`, enables `IMemoryCache`.</span></span> <span data-ttu-id="bcfab-235">이전 메서드 중 하나를 호출 하지 않는 앱의 경우 `Add{Service}` 에서를 호출 해야 할 수 있습니다 <xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddMemoryCache*> `ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="bcfab-235">For apps that are not calling one of the preceding `Add{Service}` methods, it may be necessary to call <xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddMemoryCache*> in `ConfigureServices`.</span></span>
+* <span data-ttu-id="bcfab-233">대부분의 앱에서 `IMemoryCache` 이 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bcfab-233">For most apps, `IMemoryCache` is enabled.</span></span> <span data-ttu-id="bcfab-234">예를 들어,,, `AddMvc` `AddControllersWithViews` `AddRazorPages` `AddMvcCore().AddRazorViewEngine` 및의 다른 여러 메서드를 호출 하면 `Add{Service}` `ConfigureServices` 가 활성화 `IMemoryCache` 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bcfab-234">For example, calling `AddMvc`, `AddControllersWithViews`, `AddRazorPages`, `AddMvcCore().AddRazorViewEngine`, and many other `Add{Service}` methods in `ConfigureServices`, enables `IMemoryCache`.</span></span> <span data-ttu-id="bcfab-235">이전 메서드 중 하나를 호출 하지 않는 앱의 경우 `Add{Service}` 에서를 호출 해야 할 수 있습니다 <xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddMemoryCache*> `ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="bcfab-235">For apps that are not calling one of the preceding `Add{Service}` methods, it may be necessary to call <xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddMemoryCache*> in `ConfigureServices`.</span></span>
 
 ## <a name="background-cache-update"></a><span data-ttu-id="bcfab-236">백그라운드 캐시 업데이트</span><span class="sxs-lookup"><span data-stu-id="bcfab-236">Background cache update</span></span>
 

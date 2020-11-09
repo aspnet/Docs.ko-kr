@@ -6,17 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/02/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: client-side/bundling-and-minification
 ms.openlocfilehash: 7dd11ceb7a7c01ce1042f50595013b7fe7f1cd5c
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -75,7 +75,7 @@ ms.locfileid: "93054842"
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a><span data-ttu-id="5ebfe-151">번들링 및 축소 전략 선택하기</span><span class="sxs-lookup"><span data-stu-id="5ebfe-151">Choose a bundling and minification strategy</span></span>
 
-<span data-ttu-id="5ebfe-152">MVC 및 :::no-loc(Razor)::: Pages 프로젝트 템플릿은 JSON 구성 파일로 구성된 묶음 및 축소용 솔루션을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-152">The MVC and :::no-loc(Razor)::: Pages project templates provide a solution for bundling and minification consisting of a JSON configuration file.</span></span> <span data-ttu-id="5ebfe-153">[Grunt](xref:client-side/using-grunt) 작업 실행기와 같은 타사 도구는 동일한 작업을 약간 더 복잡하게 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-153">Third-party tools, such as the [Grunt](xref:client-side/using-grunt) task runner, accomplish the same tasks with a bit more complexity.</span></span> <span data-ttu-id="5ebfe-154">타사 도구는 개발 워크플로에 lint 및 이미지 최적화와 같은 묶음 및 축소 이외의 처리가 필요한 경우에 적합합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-154">A third-party tool is a great fit when your development workflow requires processing beyond bundling and minification&mdash;such as linting and image optimization.</span></span> <span data-ttu-id="5ebfe-155">디자인 타임 묶음 및 축소를 사용하여 앱 배포 전에 축소된 파일이 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-155">By using design-time bundling and minification, the minified files are created prior to the app's deployment.</span></span> <span data-ttu-id="5ebfe-156">배포 전 묶음 및 축소는 서버 부하 감소라는 이점을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-156">Bundling and minifying before deployment provides the advantage of reduced server load.</span></span> <span data-ttu-id="5ebfe-157">그러나 디자인 타임 묶음 및 축소는 빌드 복잡성을 높이고 정적 파일에만 작동한다는 것을 인식하는 것이 중요합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-157">However, it's important to recognize that design-time bundling and minification increases build complexity and only works with static files.</span></span>
+<span data-ttu-id="5ebfe-152">MVC 및 Razor Pages 프로젝트 템플릿은 JSON 구성 파일로 구성된 묶음 및 축소용 솔루션을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-152">The MVC and Razor Pages project templates provide a solution for bundling and minification consisting of a JSON configuration file.</span></span> <span data-ttu-id="5ebfe-153">[Grunt](xref:client-side/using-grunt) 작업 실행기와 같은 타사 도구는 동일한 작업을 약간 더 복잡하게 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-153">Third-party tools, such as the [Grunt](xref:client-side/using-grunt) task runner, accomplish the same tasks with a bit more complexity.</span></span> <span data-ttu-id="5ebfe-154">타사 도구는 개발 워크플로에 lint 및 이미지 최적화와 같은 묶음 및 축소 이외의 처리가 필요한 경우에 적합합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-154">A third-party tool is a great fit when your development workflow requires processing beyond bundling and minification&mdash;such as linting and image optimization.</span></span> <span data-ttu-id="5ebfe-155">디자인 타임 묶음 및 축소를 사용하여 앱 배포 전에 축소된 파일이 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-155">By using design-time bundling and minification, the minified files are created prior to the app's deployment.</span></span> <span data-ttu-id="5ebfe-156">배포 전 묶음 및 축소는 서버 부하 감소라는 이점을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-156">Bundling and minifying before deployment provides the advantage of reduced server load.</span></span> <span data-ttu-id="5ebfe-157">그러나 디자인 타임 묶음 및 축소는 빌드 복잡성을 높이고 정적 파일에만 작동한다는 것을 인식하는 것이 중요합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-157">However, it's important to recognize that design-time bundling and minification increases build complexity and only works with static files.</span></span>
 
 ## <a name="configure-bundling-and-minification"></a><span data-ttu-id="5ebfe-158">번들링 및 축소 구성하기</span><span class="sxs-lookup"><span data-stu-id="5ebfe-158">Configure bundling and minification</span></span>
 
@@ -84,13 +84,13 @@ ms.locfileid: "93054842"
 
 ::: moniker range="<= aspnetcore-2.0"
 
-<span data-ttu-id="5ebfe-160">ASP.NET Core 2.0 이전에서는 MVC 및 :::no-loc(Razor)::: 페이지 프로젝트 템플릿에서 각 번들에 대한 옵션을 정의하는 *bundleconfig.json* 구성 파일을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-160">In ASP.NET Core 2.0 or earlier, the MVC and :::no-loc(Razor)::: Pages project templates provide a *bundleconfig.json* configuration file that defines the options for each bundle:</span></span>
+<span data-ttu-id="5ebfe-160">ASP.NET Core 2.0 이전에서는 MVC 및 Razor 페이지 프로젝트 템플릿에서 각 번들에 대한 옵션을 정의하는 *bundleconfig.json* 구성 파일을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-160">In ASP.NET Core 2.0 or earlier, the MVC and Razor Pages project templates provide a *bundleconfig.json* configuration file that defines the options for each bundle:</span></span>
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="5ebfe-161">ASP.NET Core 2.1 이상에서는 MVC 또는 :::no-loc(Razor)::: Pages 프로젝트 루트에 *bundleconfig.json* 이라는 새로운 JSON 파일을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-161">In ASP.NET Core 2.1 or later, add a new JSON file, named *bundleconfig.json* , to the MVC or :::no-loc(Razor)::: Pages project root.</span></span> <span data-ttu-id="5ebfe-162">다음 JSON을 이 파일의 시작점으로 포함시킵니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-162">Include the following JSON in that file as a starting point:</span></span>
+<span data-ttu-id="5ebfe-161">ASP.NET Core 2.1 이상에서는 MVC 또는 Razor Pages 프로젝트 루트에 *bundleconfig.json* 이라는 새로운 JSON 파일을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-161">In ASP.NET Core 2.1 or later, add a new JSON file, named *bundleconfig.json* , to the MVC or Razor Pages project root.</span></span> <span data-ttu-id="5ebfe-162">다음 JSON을 이 파일의 시작점으로 포함시킵니다.</span><span class="sxs-lookup"><span data-stu-id="5ebfe-162">Include the following JSON in that file as a starting point:</span></span>
 
 ::: moniker-end
 

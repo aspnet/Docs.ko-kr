@@ -1,22 +1,22 @@
 ---
-title: 'TypeScript 및 WebPack과 함께 ASP.NET Core :::no-loc(SignalR)::: 사용'
+title: 'TypeScript 및 WebPack과 함께 ASP.NET Core SignalR 사용'
 author: ssougnez
-description: '이 자습서에서는 클라이언트가 TypeScript로 작성된 ASP.NET Core :::no-loc(SignalR)::: 웹앱을 번들링 및 빌드하도록 WebPack을 구성합니다.'
+description: '이 자습서에서는 클라이언트가 TypeScript로 작성된 ASP.NET Core SignalR 웹앱을 번들링 및 빌드하도록 WebPack을 구성합니다.'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 02/10/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/signalr-typescript-webpack
 ms.openlocfilehash: 949276bf4aae33c3af3fd1b8219a83868095f378
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,19 +25,19 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056844"
 ---
-# <a name="use-aspnet-core-no-locsignalr-with-typescript-and-webpack"></a><span data-ttu-id="26d04-103">TypeScript 및 WebPack과 함께 ASP.NET Core :::no-loc(SignalR)::: 사용</span><span class="sxs-lookup"><span data-stu-id="26d04-103">Use ASP.NET Core :::no-loc(SignalR)::: with TypeScript and Webpack</span></span>
+# <a name="use-aspnet-core-no-locsignalr-with-typescript-and-webpack"></a><span data-ttu-id="26d04-103">TypeScript 및 WebPack과 함께 ASP.NET Core SignalR 사용</span><span class="sxs-lookup"><span data-stu-id="26d04-103">Use ASP.NET Core SignalR with TypeScript and Webpack</span></span>
 
 <span data-ttu-id="26d04-104">작성자: [Sébastien Sougnez](https://twitter.com/ssougnez) 및 [Scott Addie](https://twitter.com/Scott_Addie)</span><span class="sxs-lookup"><span data-stu-id="26d04-104">By [Sébastien Sougnez](https://twitter.com/ssougnez) and [Scott Addie](https://twitter.com/Scott_Addie)</span></span>
 
-<span data-ttu-id="26d04-105">[WebPack](https://webpack.js.org/)을 사용하면 개발자가 웹 앱의 클라이언트 쪽 리소스를 번들링 및 빌드할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-105">[Webpack](https://webpack.js.org/) enables developers to bundle and build the client-side resources of a web app.</span></span> <span data-ttu-id="26d04-106">이 자습서에서는 클라이언트가 [TypeScript](https://www.typescriptlang.org/)로 작성된 ASP.NET Core :::no-loc(SignalR)::: 웹앱에서 WebPack을 사용하는 방법을 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-106">This tutorial demonstrates using Webpack in an ASP.NET Core :::no-loc(SignalR)::: web app whose client is written in [TypeScript](https://www.typescriptlang.org/).</span></span>
+<span data-ttu-id="26d04-105">[WebPack](https://webpack.js.org/)을 사용하면 개발자가 웹 앱의 클라이언트 쪽 리소스를 번들링 및 빌드할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-105">[Webpack](https://webpack.js.org/) enables developers to bundle and build the client-side resources of a web app.</span></span> <span data-ttu-id="26d04-106">이 자습서에서는 클라이언트가 [TypeScript](https://www.typescriptlang.org/)로 작성된 ASP.NET Core SignalR 웹앱에서 WebPack을 사용하는 방법을 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-106">This tutorial demonstrates using Webpack in an ASP.NET Core SignalR web app whose client is written in [TypeScript](https://www.typescriptlang.org/).</span></span>
 
 <span data-ttu-id="26d04-107">이 자습서에서는 다음과 같은 작업을 수행하는 방법을 살펴봅니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-107">In this tutorial, you learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="26d04-108">시작 ASP.NET Core :::no-loc(SignalR)::: 앱 스캐폴드</span><span class="sxs-lookup"><span data-stu-id="26d04-108">Scaffold a starter ASP.NET Core :::no-loc(SignalR)::: app</span></span>
-> * <span data-ttu-id="26d04-109">:::no-loc(SignalR)::: TypeScript 클라이언트 구성</span><span class="sxs-lookup"><span data-stu-id="26d04-109">Configure the :::no-loc(SignalR)::: TypeScript client</span></span>
+> * <span data-ttu-id="26d04-108">시작 ASP.NET Core SignalR 앱 스캐폴드</span><span class="sxs-lookup"><span data-stu-id="26d04-108">Scaffold a starter ASP.NET Core SignalR app</span></span>
+> * <span data-ttu-id="26d04-109">SignalR TypeScript 클라이언트 구성</span><span class="sxs-lookup"><span data-stu-id="26d04-109">Configure the SignalR TypeScript client</span></span>
 > * <span data-ttu-id="26d04-110">WebPack을 사용하여 빌드 파이프라인 구성</span><span class="sxs-lookup"><span data-stu-id="26d04-110">Configure a build pipeline using Webpack</span></span>
-> * <span data-ttu-id="26d04-111">:::no-loc(SignalR)::: 서버 구성</span><span class="sxs-lookup"><span data-stu-id="26d04-111">Configure the :::no-loc(SignalR)::: server</span></span>
+> * <span data-ttu-id="26d04-111">SignalR 서버 구성</span><span class="sxs-lookup"><span data-stu-id="26d04-111">Configure the SignalR server</span></span>
 > * <span data-ttu-id="26d04-112">클라이언트 및 서버 간 통신 활성화</span><span class="sxs-lookup"><span data-stu-id="26d04-112">Enable communication between client and server</span></span>
 
 <span data-ttu-id="26d04-113">[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-typescript-webpack/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="26d04-113">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-typescript-webpack/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
@@ -76,7 +76,7 @@ ms.locfileid: "93056844"
 <span data-ttu-id="26d04-135">Visual Studio의 구성이 완료되었습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-135">Visual Studio configuration is complete.</span></span>
 
 1. <span data-ttu-id="26d04-136">**파일** > **새로 만들기** > **프로젝트** 메뉴 옵션에서 **ASP.NET Core 웹 애플리케이션** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-136">Use the **File** > **New** > **Project** menu option and choose the **ASP.NET Core Web Application** template.</span></span> <span data-ttu-id="26d04-137">**새로 만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-137">Select **Next**.</span></span>
-1. <span data-ttu-id="26d04-138">프로젝트 이름을 *:::no-loc(SignalR):::WebPack* 으로 지정하고 **만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-138">Name the project *:::no-loc(SignalR):::WebPack* , and select **Create**.</span></span>
+1. <span data-ttu-id="26d04-138">프로젝트 이름을 *SignalRWebPack* 으로 지정하고 **만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-138">Name the project *SignalRWebPack* , and select **Create**.</span></span>
 1. <span data-ttu-id="26d04-139">대상 프레임워크 드롭다운에서 *.NET Core* 를 선택하고, 프레임워크 선택기 드롭다운에서 *ASP.NET Core 3.1* 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-139">Select *.NET Core* from the target framework drop-down, and select *ASP.NET Core 3.1* from the framework selector drop-down.</span></span> <span data-ttu-id="26d04-140">**빈** 템플릿을 선택하고 **만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-140">Select the **Empty** template, and select **Create**.</span></span>
 
 <span data-ttu-id="26d04-141">프로젝트에 `Microsoft.TypeScript.MSBuild` 패키지를 추가:</span><span class="sxs-lookup"><span data-stu-id="26d04-141">Add the `Microsoft.TypeScript.MSBuild` package to the project:</span></span>
@@ -90,12 +90,12 @@ ms.locfileid: "93056844"
 <span data-ttu-id="26d04-146">**통합 터미널** 에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-146">Run the following command in the **Integrated Terminal** :</span></span>
 
 ```dotnetcli
-dotnet new web -o :::no-loc(SignalR):::WebPack
-code -r :::no-loc(SignalR):::WebPack
+dotnet new web -o SignalRWebPack
+code -r SignalRWebPack
 ```
 
-* <span data-ttu-id="26d04-147">`dotnet new` 명령은 *:::no-loc(SignalR):::WebPack* 디렉터리에 빈 ASP.NET Core 웹앱을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-147">The `dotnet new` command creates an empty ASP.NET Core web app in a *:::no-loc(SignalR):::WebPack* directory.</span></span>
-* <span data-ttu-id="26d04-148">`code` 명령은 Visual Studio Code의 현재 인스턴스에서 *:::no-loc(SignalR):::WebPack* 폴더를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-148">The `code` command opens the *:::no-loc(SignalR):::WebPack* folder in the current instance of Visual Studio Code.</span></span>
+* <span data-ttu-id="26d04-147">`dotnet new` 명령은 *SignalRWebPack* 디렉터리에 빈 ASP.NET Core 웹앱을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-147">The `dotnet new` command creates an empty ASP.NET Core web app in a *SignalRWebPack* directory.</span></span>
+* <span data-ttu-id="26d04-148">`code` 명령은 Visual Studio Code의 현재 인스턴스에서 *SignalRWebPack* 폴더를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-148">The `code` command opens the *SignalRWebPack* folder in the current instance of Visual Studio Code.</span></span>
 
 <span data-ttu-id="26d04-149">**통합 터미널** 에서 다음 .NET Core CLI 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-149">Run the following .NET Core CLI command in the **Integrated Terminal** :</span></span>
 
@@ -159,7 +159,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
     <span data-ttu-id="26d04-175">앞의 파일은 WebPack 컴파일을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-175">The preceding file configures the Webpack compilation.</span></span> <span data-ttu-id="26d04-176">참고할 일부 구성 세부 정보:</span><span class="sxs-lookup"><span data-stu-id="26d04-176">Some configuration details to note:</span></span>
 
     * <span data-ttu-id="26d04-177">`output` 속성은 *dist* 의 기본값을 재정의합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-177">The `output` property overrides the default value of *dist*.</span></span> <span data-ttu-id="26d04-178">번들은 *wwwroot* 디렉터리에 대신 내보내집니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-178">The bundle is instead emitted in the *wwwroot* directory.</span></span>
-    * <span data-ttu-id="26d04-179">`resolve.extensions` 배열은 :::no-loc(SignalR)::: 클라이언트 JavaScript를 가져오기 위한 *.js* 를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-179">The `resolve.extensions` array includes *.js* to import the :::no-loc(SignalR)::: client JavaScript.</span></span>
+    * <span data-ttu-id="26d04-179">`resolve.extensions` 배열은 SignalR 클라이언트 JavaScript를 가져오기 위한 *.js* 를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-179">The `resolve.extensions` array includes *.js* to import the SignalR client JavaScript.</span></span>
 
 1. <span data-ttu-id="26d04-180">프로젝트 루트에 새 *src* 디렉터리를 만들어 프로젝트의 클라이언트 쪽 자산을 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-180">Create a new *src* directory in the project root to store the project's client-side assets.</span></span>
 
@@ -202,13 +202,13 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
 1. <span data-ttu-id="26d04-199">`Startup.Configure`의 끝에서 */hub* 경로를 `ChatHub` 허브에 매핑합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-199">At the end of `Startup.Configure`, map a */hub* route to the `ChatHub` hub.</span></span> <span data-ttu-id="26d04-200">*Hello World!* 를 표시하는 코드를</span><span class="sxs-lookup"><span data-stu-id="26d04-200">Replace the code that displays *Hello World!*</span></span> <span data-ttu-id="26d04-201">다음 줄로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-201">with the following line:</span></span> 
 
-   [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_Use:::no-loc(SignalR):::&highlight=3)]
+   [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_UseSignalR&highlight=3)]
 
-1. <span data-ttu-id="26d04-202">`Startup.ConfigureServices`에서 [Add:::no-loc(SignalR):::](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_:::no-loc(SignalR):::DependencyInjectionExtensions_Add:::no-loc(SignalR):::_Microsoft_Extensions_DependencyInjection_IServiceCollection_)을 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-202">In `Startup.ConfigureServices`, call [Add:::no-loc(SignalR):::](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_:::no-loc(SignalR):::DependencyInjectionExtensions_Add:::no-loc(SignalR):::_Microsoft_Extensions_DependencyInjection_IServiceCollection_).</span></span>
+1. <span data-ttu-id="26d04-202">`Startup.ConfigureServices`에서 [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_)을 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-202">In `Startup.ConfigureServices`, call [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_).</span></span>
 
-   [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_Add:::no-loc(SignalR):::)]
+   [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_AddSignalR)]
 
-1. <span data-ttu-id="26d04-203">프로젝트 루트 *:::no-loc(SignalR):::WebPack/* 에 *Hubs* 라는 새 디렉터리를 만들어 :::no-loc(SignalR)::: 허브를 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-203">Create a new directory named *Hubs* in the project root *:::no-loc(SignalR):::WebPack/* to store the :::no-loc(SignalR)::: hub.</span></span>
+1. <span data-ttu-id="26d04-203">프로젝트 루트 *SignalRWebPack/* 에 *Hubs* 라는 새 디렉터리를 만들어 SignalR 허브를 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-203">Create a new directory named *Hubs* in the project root *SignalRWebPack/* to store the SignalR hub.</span></span>
 
 1. <span data-ttu-id="26d04-204">다음 내용을 포함한 *Hubs/ChatHub.cs* 허브를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-204">Create hub *Hubs/ChatHub.cs* with the following code:</span></span>
 
@@ -230,7 +230,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
     <span data-ttu-id="26d04-210">이전 명령은 다음을 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-210">The preceding command installs:</span></span>
 
-     * <span data-ttu-id="26d04-211">클라이언트에서 서버로 메시지를 전송할 수 있게 해주는 [:::no-loc(SignalR)::: TypeScript 클라이언트](https://www.npmjs.com/package/@microsoft/signalr).</span><span class="sxs-lookup"><span data-stu-id="26d04-211">The [:::no-loc(SignalR)::: TypeScript client](https://www.npmjs.com/package/@microsoft/signalr), which allows the client to send messages to the server.</span></span>
+     * <span data-ttu-id="26d04-211">클라이언트에서 서버로 메시지를 전송할 수 있게 해주는 [SignalR TypeScript 클라이언트](https://www.npmjs.com/package/@microsoft/signalr).</span><span class="sxs-lookup"><span data-stu-id="26d04-211">The [SignalR TypeScript client](https://www.npmjs.com/package/@microsoft/signalr), which allows the client to send messages to the server.</span></span>
      * <span data-ttu-id="26d04-212">Node.js 형식에 대한 컴파일 시간 검사를 가능하게 하는 Node.js에 대한 TypeScript 형식 정의.</span><span class="sxs-lookup"><span data-stu-id="26d04-212">The TypeScript type definitions for Node.js, which enables compile-time checking of Node.js types.</span></span>
 
 1. <span data-ttu-id="26d04-213">강조 표시된 코드를 *src/index.ts* 파일에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-213">Add the highlighted code to the *src/index.ts* file:</span></span>
@@ -239,7 +239,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
     <span data-ttu-id="26d04-214">앞의 코드는 서버에서 오는 메시지의 수신을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-214">The preceding code supports receiving messages from the server.</span></span> <span data-ttu-id="26d04-215">`HubConnectionBuilder` 클래스는 서버 연결을 구성하기 위한 새 빌더를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-215">The `HubConnectionBuilder` class creates a new builder for configuring the server connection.</span></span> <span data-ttu-id="26d04-216">`withUrl` 함수는 허브 URL을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-216">The `withUrl` function configures the hub URL.</span></span>
 
-    <span data-ttu-id="26d04-217">:::no-loc(SignalR):::은 클라이언트 및 서버 간 메시지 교환을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-217">:::no-loc(SignalR)::: enables the exchange of messages between a client and a server.</span></span> <span data-ttu-id="26d04-218">각 메시지는 특정 이름을 가집니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-218">Each message has a specific name.</span></span> <span data-ttu-id="26d04-219">예를 들어 `messageReceived`라는 이름을 가진 메시지가 메시지 영역에 새 메시지를 표시하는 로직을 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-219">For example, messages with the name `messageReceived` can run the logic responsible for displaying the new message in the messages zone.</span></span> <span data-ttu-id="26d04-220">특정 메시지 수신 대기는 `on` 함수를 통해 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-220">Listening to a specific message can be done via the `on` function.</span></span> <span data-ttu-id="26d04-221">임의 개수의 메시지 이름을 수신 대기할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-221">Any number of message names can be listened to.</span></span> <span data-ttu-id="26d04-222">또한 수신 메시지의 작성자 이름 및 내용 등을 메시지에 파라미터로 전달할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-222">It's also possible to pass parameters to the message, such as the author's name and the content of the message received.</span></span> <span data-ttu-id="26d04-223">클라이언트가 메시지를 수신한 후 `innerHTML` 특성의 작성자 이름 및 메시지 내용을 사용하여 새 `div` 요소가 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-223">Once the client receives a message, a new `div` element is created with the author's name and the message content in its `innerHTML` attribute.</span></span> <span data-ttu-id="26d04-224">이 요소가 주 `div` 요소에 추가되어 메시지를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-224">It's added to the main `div` element displaying the messages.</span></span>
+    <span data-ttu-id="26d04-217">SignalR은 클라이언트 및 서버 간 메시지 교환을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-217">SignalR enables the exchange of messages between a client and a server.</span></span> <span data-ttu-id="26d04-218">각 메시지는 특정 이름을 가집니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-218">Each message has a specific name.</span></span> <span data-ttu-id="26d04-219">예를 들어 `messageReceived`라는 이름을 가진 메시지가 메시지 영역에 새 메시지를 표시하는 로직을 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-219">For example, messages with the name `messageReceived` can run the logic responsible for displaying the new message in the messages zone.</span></span> <span data-ttu-id="26d04-220">특정 메시지 수신 대기는 `on` 함수를 통해 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-220">Listening to a specific message can be done via the `on` function.</span></span> <span data-ttu-id="26d04-221">임의 개수의 메시지 이름을 수신 대기할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-221">Any number of message names can be listened to.</span></span> <span data-ttu-id="26d04-222">또한 수신 메시지의 작성자 이름 및 내용 등을 메시지에 파라미터로 전달할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-222">It's also possible to pass parameters to the message, such as the author's name and the content of the message received.</span></span> <span data-ttu-id="26d04-223">클라이언트가 메시지를 수신한 후 `innerHTML` 특성의 작성자 이름 및 메시지 내용을 사용하여 새 `div` 요소가 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-223">Once the client receives a message, a new `div` element is created with the author's name and the message content in its `innerHTML` attribute.</span></span> <span data-ttu-id="26d04-224">이 요소가 주 `div` 요소에 추가되어 메시지를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-224">It's added to the main `div` element displaying the messages.</span></span>
 
 1. <span data-ttu-id="26d04-225">이제 클라이언트가 메시지를 수신할 수 있으므로, 메시지를 보내도록 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-225">Now that the client can receive a message, configure it to send messages.</span></span> <span data-ttu-id="26d04-226">강조 표시된 코드를 *src/index.ts* 파일에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-226">Add the highlighted code to the *src/index.ts* file:</span></span>
 
@@ -261,7 +261,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
 # <a name="visual-studio"></a>[<span data-ttu-id="26d04-243">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="26d04-243">Visual Studio</span></span>](#tab/visual-studio)
 
-1. <span data-ttu-id="26d04-244">WebPack을 *release* 모드로 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-244">Run Webpack in *release* mode.</span></span> <span data-ttu-id="26d04-245">**패키지 관리자 콘솔** 창을 사용하여 프로젝트 루트에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-245">Using the **Package Manager Console** window, run the following command in the project root.</span></span> <span data-ttu-id="26d04-246">프로젝트 루트가 아닌 경우 명령을 입력하기 전에 `cd :::no-loc(SignalR):::WebPack`을 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-246">If you are not in the project root, enter `cd :::no-loc(SignalR):::WebPack` before entering the command.</span></span>
+1. <span data-ttu-id="26d04-244">WebPack을 *release* 모드로 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-244">Run Webpack in *release* mode.</span></span> <span data-ttu-id="26d04-245">**패키지 관리자 콘솔** 창을 사용하여 프로젝트 루트에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-245">Using the **Package Manager Console** window, run the following command in the project root.</span></span> <span data-ttu-id="26d04-246">프로젝트 루트가 아닌 경우 명령을 입력하기 전에 `cd SignalRWebPack`을 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-246">If you are not in the project root, enter `cd SignalRWebPack` before entering the command.</span></span>
 
     [!INCLUDE [npm-run-release](../includes/signalr-typescript-webpack/npm-run-release.md)]
 
@@ -332,7 +332,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 <span data-ttu-id="26d04-285">Visual Studio 구성이 완료되었습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-285">Visual Studio configuration is completed.</span></span> <span data-ttu-id="26d04-286">이제 프로젝트를 만들어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-286">It's time to create the project.</span></span>
 
 1. <span data-ttu-id="26d04-287">**파일** > **새로 만들기** > **프로젝트** 메뉴 옵션에서 **ASP.NET Core 웹 애플리케이션** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-287">Use the **File** > **New** > **Project** menu option and choose the **ASP.NET Core Web Application** template.</span></span>
-1. <span data-ttu-id="26d04-288">프로젝트 이름을 *:::no-loc(SignalR):::WebPack* 으로 지정하고 **만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-288">Name the project *:::no-loc(SignalR):::WebPack* , and select **Create**.</span></span>
+1. <span data-ttu-id="26d04-288">프로젝트 이름을 *SignalRWebPack* 으로 지정하고 **만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-288">Name the project *SignalRWebPack* , and select **Create**.</span></span>
 1. <span data-ttu-id="26d04-289">대상 프레임워크 드롭다운에서 *.NET Core* 를 선택하고, 프레임워크 선택기 드롭다운에서 *ASP.NET Core 2.2* 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-289">Select *.NET Core* from the target framework drop-down, and select *ASP.NET Core 2.2* from the framework selector drop-down.</span></span> <span data-ttu-id="26d04-290">**빈** 템플릿을 선택하고 **만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-290">Select the **Empty** template, and select **Create**.</span></span>
 
 # <a name="visual-studio-code"></a>[<span data-ttu-id="26d04-291">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="26d04-291">Visual Studio Code</span></span>](#tab/visual-studio-code)
@@ -340,10 +340,10 @@ dotnet add package Microsoft.TypeScript.MSBuild
 <span data-ttu-id="26d04-292">**통합 터미널** 에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-292">Run the following command in the **Integrated Terminal** :</span></span>
 
 ```dotnetcli
-dotnet new web -o :::no-loc(SignalR):::WebPack
+dotnet new web -o SignalRWebPack
 ```
 
-<span data-ttu-id="26d04-293">.NET Core를 대상으로 하는 빈 ASP.NET Core 웹앱이 *:::no-loc(SignalR):::WebPack* 디렉터리에 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-293">An empty ASP.NET Core web app, targeting .NET Core, is created in a *:::no-loc(SignalR):::WebPack* directory.</span></span>
+<span data-ttu-id="26d04-293">.NET Core를 대상으로 하는 빈 ASP.NET Core 웹앱이 *SignalRWebPack* 디렉터리에 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-293">An empty ASP.NET Core web app, targeting .NET Core, is created in a *SignalRWebPack* directory.</span></span>
 
 ---
 
@@ -399,7 +399,7 @@ dotnet new web -o :::no-loc(SignalR):::WebPack
     <span data-ttu-id="26d04-318">앞의 파일은 WebPack 컴파일을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-318">The preceding file configures the Webpack compilation.</span></span> <span data-ttu-id="26d04-319">참고할 일부 구성 세부 정보:</span><span class="sxs-lookup"><span data-stu-id="26d04-319">Some configuration details to note:</span></span>
 
     * <span data-ttu-id="26d04-320">`output` 속성은 *dist* 의 기본값을 재정의합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-320">The `output` property overrides the default value of *dist*.</span></span> <span data-ttu-id="26d04-321">번들은 *wwwroot* 디렉터리에 대신 내보내집니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-321">The bundle is instead emitted in the *wwwroot* directory.</span></span>
-    * <span data-ttu-id="26d04-322">`resolve.extensions` 배열은 :::no-loc(SignalR)::: 클라이언트 JavaScript를 가져오기 위한 *.js* 를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-322">The `resolve.extensions` array includes *.js* to import the :::no-loc(SignalR)::: client JavaScript.</span></span>
+    * <span data-ttu-id="26d04-322">`resolve.extensions` 배열은 SignalR 클라이언트 JavaScript를 가져오기 위한 *.js* 를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-322">The `resolve.extensions` array includes *.js* to import the SignalR client JavaScript.</span></span>
 
 1. <span data-ttu-id="26d04-323">프로젝트 루트에 새 *src* 디렉터리를 만들어 프로젝트의 클라이언트 쪽 자산을 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-323">Create a new *src* directory in the project root to store the project's client-side assets.</span></span>
 
@@ -440,15 +440,15 @@ dotnet new web -o :::no-loc(SignalR):::WebPack
 
     <span data-ttu-id="26d04-341">이 코드는 사용자가 전체 URL을 입력하는지 아니면 웹앱의 루트 URL만 입력하는지 관계없이 서버가 *index.html* 파일을 찾아서 제공할 수 있도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-341">The preceding code allows the server to locate and serve the *index.html* file, whether the user enters its full URL or the root URL of the web app.</span></span>
 
-1. <span data-ttu-id="26d04-342">`Startup.ConfigureServices`에서 [Add:::no-loc(SignalR):::](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_:::no-loc(SignalR):::DependencyInjectionExtensions_Add:::no-loc(SignalR):::_Microsoft_Extensions_DependencyInjection_IServiceCollection_)을 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-342">Call [Add:::no-loc(SignalR):::](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_:::no-loc(SignalR):::DependencyInjectionExtensions_Add:::no-loc(SignalR):::_Microsoft_Extensions_DependencyInjection_IServiceCollection_) in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="26d04-343">그러면 :::no-loc(SignalR)::: 서비스가 프로젝트에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-343">It adds the :::no-loc(SignalR)::: services to the project.</span></span>
+1. <span data-ttu-id="26d04-342">`Startup.ConfigureServices`에서 [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_)을 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-342">Call [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_) in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="26d04-343">그러면 SignalR 서비스가 프로젝트에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-343">It adds the SignalR services to the project.</span></span>
 
-    [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_Add:::no-loc(SignalR):::)]
+    [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_AddSignalR)]
 
 1. <span data-ttu-id="26d04-344">*/hub* 경로를 `ChatHub` 허브에 매핑합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-344">Map a */hub* route to the `ChatHub` hub.</span></span> <span data-ttu-id="26d04-345">`Startup.Configure` 끝에 다음 줄을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-345">Add the following lines at the end of `Startup.Configure`:</span></span>
 
-    [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_Use:::no-loc(SignalR):::)]
+    [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_UseSignalR)]
 
-1. <span data-ttu-id="26d04-346">프로젝트 루트에 *Hubs* 라는 새 디렉터리를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-346">Create a new directory, called *Hubs* , in the project root.</span></span> <span data-ttu-id="26d04-347">그 목적은 다음 단계에서 생성되는 :::no-loc(SignalR)::: 허브를 저장하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-347">Its purpose is to store the :::no-loc(SignalR)::: hub, which is created in the next step.</span></span>
+1. <span data-ttu-id="26d04-346">프로젝트 루트에 *Hubs* 라는 새 디렉터리를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-346">Create a new directory, called *Hubs* , in the project root.</span></span> <span data-ttu-id="26d04-347">그 목적은 다음 단계에서 생성되는 SignalR 허브를 저장하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-347">Its purpose is to store the SignalR hub, which is created in the next step.</span></span>
 
 1. <span data-ttu-id="26d04-348">다음 내용을 포함한 *Hubs/ChatHub.cs* 허브를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-348">Create hub *Hubs/ChatHub.cs* with the following code:</span></span>
 
@@ -468,7 +468,7 @@ dotnet new web -o :::no-loc(SignalR):::WebPack
     npm install @aspnet/signalr
     ```
 
-    <span data-ttu-id="26d04-355">이 명령은 클라이언트에서 서버로 메시지를 전송할 수 있게 해주는 [:::no-loc(SignalR)::: TypeScript 클라이언트](https://www.npmjs.com/package/@microsoft/signalr)를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-355">The preceding command installs the [:::no-loc(SignalR)::: TypeScript client](https://www.npmjs.com/package/@microsoft/signalr), which allows the client to send messages to the server.</span></span>
+    <span data-ttu-id="26d04-355">이 명령은 클라이언트에서 서버로 메시지를 전송할 수 있게 해주는 [SignalR TypeScript 클라이언트](https://www.npmjs.com/package/@microsoft/signalr)를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-355">The preceding command installs the [SignalR TypeScript client](https://www.npmjs.com/package/@microsoft/signalr), which allows the client to send messages to the server.</span></span>
 
 1. <span data-ttu-id="26d04-356">강조 표시된 코드를 *src/index.ts* 파일에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-356">Add the highlighted code to the *src/index.ts* file:</span></span>
 
@@ -476,7 +476,7 @@ dotnet new web -o :::no-loc(SignalR):::WebPack
 
     <span data-ttu-id="26d04-357">앞의 코드는 서버에서 오는 메시지의 수신을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-357">The preceding code supports receiving messages from the server.</span></span> <span data-ttu-id="26d04-358">`HubConnectionBuilder` 클래스는 서버 연결을 구성하기 위한 새 빌더를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-358">The `HubConnectionBuilder` class creates a new builder for configuring the server connection.</span></span> <span data-ttu-id="26d04-359">`withUrl` 함수는 허브 URL을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-359">The `withUrl` function configures the hub URL.</span></span>
 
-    <span data-ttu-id="26d04-360">:::no-loc(SignalR):::은 클라이언트 및 서버 간 메시지 교환을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-360">:::no-loc(SignalR)::: enables the exchange of messages between a client and a server.</span></span> <span data-ttu-id="26d04-361">각 메시지는 특정 이름을 가집니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-361">Each message has a specific name.</span></span> <span data-ttu-id="26d04-362">예를 들어 `messageReceived`라는 이름을 가진 메시지가 메시지 영역에 새 메시지를 표시하는 로직을 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-362">For example, messages with the name `messageReceived` can run the logic responsible for displaying the new message in the messages zone.</span></span> <span data-ttu-id="26d04-363">특정 메시지 수신 대기는 `on` 함수를 통해 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-363">Listening to a specific message can be done via the `on` function.</span></span> <span data-ttu-id="26d04-364">임의 개수의 메시지 이름을 수신 대기할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-364">You can listen to any number of message names.</span></span> <span data-ttu-id="26d04-365">또한 수신 메시지의 작성자 이름 및 내용 등을 메시지에 파라미터로 전달할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-365">It's also possible to pass parameters to the message, such as the author's name and the content of the message received.</span></span> <span data-ttu-id="26d04-366">클라이언트가 메시지를 수신한 후 `innerHTML` 특성의 작성자 이름 및 메시지 내용을 사용하여 새 `div` 요소가 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-366">Once the client receives a message, a new `div` element is created with the author's name and the message content in its `innerHTML` attribute.</span></span> <span data-ttu-id="26d04-367">메시지를 표시하는 주 `div` 요소에 새 메시지가 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-367">The new message is added to the main `div` element displaying the messages.</span></span>
+    <span data-ttu-id="26d04-360">SignalR은 클라이언트 및 서버 간 메시지 교환을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-360">SignalR enables the exchange of messages between a client and a server.</span></span> <span data-ttu-id="26d04-361">각 메시지는 특정 이름을 가집니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-361">Each message has a specific name.</span></span> <span data-ttu-id="26d04-362">예를 들어 `messageReceived`라는 이름을 가진 메시지가 메시지 영역에 새 메시지를 표시하는 로직을 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-362">For example, messages with the name `messageReceived` can run the logic responsible for displaying the new message in the messages zone.</span></span> <span data-ttu-id="26d04-363">특정 메시지 수신 대기는 `on` 함수를 통해 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-363">Listening to a specific message can be done via the `on` function.</span></span> <span data-ttu-id="26d04-364">임의 개수의 메시지 이름을 수신 대기할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-364">You can listen to any number of message names.</span></span> <span data-ttu-id="26d04-365">또한 수신 메시지의 작성자 이름 및 내용 등을 메시지에 파라미터로 전달할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-365">It's also possible to pass parameters to the message, such as the author's name and the content of the message received.</span></span> <span data-ttu-id="26d04-366">클라이언트가 메시지를 수신한 후 `innerHTML` 특성의 작성자 이름 및 메시지 내용을 사용하여 새 `div` 요소가 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-366">Once the client receives a message, a new `div` element is created with the author's name and the message content in its `innerHTML` attribute.</span></span> <span data-ttu-id="26d04-367">메시지를 표시하는 주 `div` 요소에 새 메시지가 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-367">The new message is added to the main `div` element displaying the messages.</span></span>
 
 1. <span data-ttu-id="26d04-368">이제 클라이언트가 메시지를 수신할 수 있으므로, 메시지를 보내도록 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-368">Now that the client can receive a message, configure it to send messages.</span></span> <span data-ttu-id="26d04-369">강조 표시된 코드를 *src/index.ts* 파일에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-369">Add the highlighted code to the *src/index.ts* file:</span></span>
 
@@ -498,7 +498,7 @@ dotnet new web -o :::no-loc(SignalR):::WebPack
 
 # <a name="visual-studio"></a>[<span data-ttu-id="26d04-386">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="26d04-386">Visual Studio</span></span>](#tab/visual-studio)
 
-1. <span data-ttu-id="26d04-387">WebPack을 *release* 모드로 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-387">Run Webpack in *release* mode.</span></span> <span data-ttu-id="26d04-388">**패키지 관리자 콘솔** 창을 사용하여 프로젝트 루트에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-388">Using the **Package Manager Console** window, run the following command in the project root.</span></span> <span data-ttu-id="26d04-389">프로젝트 루트가 아닌 경우 명령을 입력하기 전에 `cd :::no-loc(SignalR):::WebPack`을 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-389">If you are not in the project root, enter `cd :::no-loc(SignalR):::WebPack` before entering the command.</span></span>
+1. <span data-ttu-id="26d04-387">WebPack을 *release* 모드로 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-387">Run Webpack in *release* mode.</span></span> <span data-ttu-id="26d04-388">**패키지 관리자 콘솔** 창을 사용하여 프로젝트 루트에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-388">Using the **Package Manager Console** window, run the following command in the project root.</span></span> <span data-ttu-id="26d04-389">프로젝트 루트가 아닌 경우 명령을 입력하기 전에 `cd SignalRWebPack`을 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="26d04-389">If you are not in the project root, enter `cd SignalRWebPack` before entering the command.</span></span>
 
     [!INCLUDE [npm-run-release](../includes/signalr-typescript-webpack/npm-run-release.md)]
 

@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/04/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/controllers/filters
 ms.openlocfilehash: ecb4de3439656eb56507b920db704048d8f96759
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -40,7 +40,7 @@ ms.locfileid: "93058508"
 
 <span data-ttu-id="81f30-109">사용자 지정 필터를 만들어 교차 편집 문제를 처리할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-109">Custom filters can be created to handle cross-cutting concerns.</span></span> <span data-ttu-id="81f30-110">횡단 관심사의 사례로는 오류 처리, 캐싱, 구성, 권한 부여 및 로깅을 들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-110">Examples of cross-cutting concerns include error handling, caching, configuration, authorization, and logging.</span></span>  <span data-ttu-id="81f30-111">필터는 코드 중복을 방지합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-111">Filters avoid duplicating code.</span></span> <span data-ttu-id="81f30-112">예를 들어 오류 처리 예외 필터는 오류 처리를 통합할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-112">For example, an error handling exception filter could consolidate error handling.</span></span>
 
-<span data-ttu-id="81f30-113">이 문서 :::no-loc(Razor)::: 는 뷰가 있는 페이지, API 컨트롤러 및 컨트롤러에 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-113">This document applies to :::no-loc(Razor)::: Pages, API controllers, and controllers with views.</span></span> <span data-ttu-id="81f30-114">필터는 [ :::no-loc(Razor)::: 구성 요소](xref:blazor/components/index)와 직접 작동 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-114">Filters don't work directly with [:::no-loc(Razor)::: components](xref:blazor/components/index).</span></span> <span data-ttu-id="81f30-115">필터는 다음과 같은 경우에만 간접적으로 구성 요소에 영향을 줄 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-115">A filter can only indirectly affect a component when:</span></span>
+<span data-ttu-id="81f30-113">이 문서 Razor 는 뷰가 있는 페이지, API 컨트롤러 및 컨트롤러에 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-113">This document applies to Razor Pages, API controllers, and controllers with views.</span></span> <span data-ttu-id="81f30-114">필터는 [ Razor 구성 요소](xref:blazor/components/index)와 직접 작동 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-114">Filters don't work directly with [Razor components](xref:blazor/components/index).</span></span> <span data-ttu-id="81f30-115">필터는 다음과 같은 경우에만 간접적으로 구성 요소에 영향을 줄 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-115">A filter can only indirectly affect a component when:</span></span>
 
 * <span data-ttu-id="81f30-116">구성 요소가 페이지 또는 보기에 포함되어 있는 경우</span><span class="sxs-lookup"><span data-stu-id="81f30-116">The component is embedded in a page or view.</span></span>
 * <span data-ttu-id="81f30-117">페이지 또는 컨트롤러/보기에서 필터를 사용하는 경우</span><span class="sxs-lookup"><span data-stu-id="81f30-117">The page or controller/view uses the filter.</span></span>
@@ -70,7 +70,7 @@ ms.locfileid: "93058508"
   * <span data-ttu-id="81f30-134">작업 메서드가 호출되기 전후에 즉시 코드를 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-134">Run code immediately before and after an action method is called.</span></span>
   * <span data-ttu-id="81f30-135">작업에 전달된 인수를 변경할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-135">Can change the arguments passed into an action.</span></span>
   * <span data-ttu-id="81f30-136">작업에서 반환된 결과를 변경할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-136">Can change the result returned from the action.</span></span>
-  * <span data-ttu-id="81f30-137">는 페이지에서 지원 **되지 않습니다** :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="81f30-137">Are **not** supported in :::no-loc(Razor)::: Pages.</span></span>
+  * <span data-ttu-id="81f30-137">는 페이지에서 지원 **되지 않습니다** Razor .</span><span class="sxs-lookup"><span data-stu-id="81f30-137">Are **not** supported in Razor Pages.</span></span>
 
 * <span data-ttu-id="81f30-138">[예외 필터](#exception-filters)는 응답 본문이 쓰여지기 전에 발생한 처리되지 않은 예외에 대한 전역 정책을 적용합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-138">[Exception filters](#exception-filters) apply global policies to unhandled exceptions that occur before the response body has been written to.</span></span>
 
@@ -127,9 +127,9 @@ ms.locfileid: "93058508"
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/MyActionFilterAttribute.cs?name=snippet)]
 
-<span data-ttu-id="81f30-175">구성 옵션은 [옵션 패턴](xref:fundamentals/configuration/options)을 사용하여 [구성 시스템](xref:fundamentals/configuration/index)에서 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-175">The configuration options are provided from the [configuration system](xref:fundamentals/configuration/index) using the [options pattern](xref:fundamentals/configuration/options).</span></span> <span data-ttu-id="81f30-176">예를 들어 파일에서 *:::no-loc(appsettings.json):::* 다음을 수행 합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-176">For example, from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="81f30-175">구성 옵션은 [옵션 패턴](xref:fundamentals/configuration/options)을 사용하여 [구성 시스템](xref:fundamentals/configuration/index)에서 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-175">The configuration options are provided from the [configuration system](xref:fundamentals/configuration/index) using the [options pattern](xref:fundamentals/configuration/options).</span></span> <span data-ttu-id="81f30-176">예를 들어 파일에서 *appsettings.json* 다음을 수행 합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-176">For example, from the *appsettings.json* file:</span></span>
 
-[!code-json[](filters/3.1sample/FiltersSample/:::no-loc(appsettings.json):::)]
+[!code-json[](filters/3.1sample/FiltersSample/appsettings.json)]
 
 <span data-ttu-id="81f30-177">`StartUp.ConfigureServices`에서</span><span class="sxs-lookup"><span data-stu-id="81f30-177">In the `StartUp.ConfigureServices`:</span></span>
 
@@ -148,11 +148,11 @@ ms.locfileid: "93058508"
 
 <span data-ttu-id="81f30-182">**응답 헤더** 아래에는 `author: Rick Anderson` `Editor: Joe Smith` 끝점이 호출 될 때 및가 표시 됩니다 `Sample/Index2` .</span><span class="sxs-lookup"><span data-stu-id="81f30-182">Under **Response Headers** , `author: Rick Anderson`, and `Editor: Joe Smith` is displayed when the `Sample/Index2` endpoint is called.</span></span>
 
-<span data-ttu-id="81f30-183">다음 코드에서는 `MyActionFilterAttribute` 페이지에 및을 적용 합니다 `AddHeaderAttribute` :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="81f30-183">The following code applies the `MyActionFilterAttribute` and the `AddHeaderAttribute` to the :::no-loc(Razor)::: Page:</span></span>
+<span data-ttu-id="81f30-183">다음 코드에서는 `MyActionFilterAttribute` 페이지에 및을 적용 합니다 `AddHeaderAttribute` Razor .</span><span class="sxs-lookup"><span data-stu-id="81f30-183">The following code applies the `MyActionFilterAttribute` and the `AddHeaderAttribute` to the Razor Page:</span></span>
 
 [!code-csharp[](filters/3.1sample/FiltersSample/Pages/Movies/Index.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="81f30-184">페이지 처리기 메서드에는 필터를 적용할 수 없습니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="81f30-184">Filters cannot be applied to :::no-loc(Razor)::: Page handler methods.</span></span> <span data-ttu-id="81f30-185">이러한 :::no-loc(Razor)::: 모델은 페이지 모델 또는 전역적으로 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-185">They can be applied either to the :::no-loc(Razor)::: Page model or globally.</span></span>
+<span data-ttu-id="81f30-184">페이지 처리기 메서드에는 필터를 적용할 수 없습니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="81f30-184">Filters cannot be applied to Razor Page handler methods.</span></span> <span data-ttu-id="81f30-185">이러한 Razor 모델은 페이지 모델 또는 전역적으로 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-185">They can be applied either to the Razor Page model or globally.</span></span>
 
 <span data-ttu-id="81f30-186">여러 필터 인터페이스에는 사용자 지정 구현에 대한 기본 클래스로 사용할 수 있는 해당 특성이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-186">Several of the filter interfaces have corresponding attributes that can be used as base classes for custom implementations.</span></span>
 
@@ -169,9 +169,9 @@ ms.locfileid: "93058508"
 
 <span data-ttu-id="81f30-189">다음 세 가지 *범위* 중 하나에서 파이프라인에 필터를 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-189">A filter can be added to the pipeline at one of three *scopes* :</span></span>
 
-* <span data-ttu-id="81f30-190">컨트롤러 작업에서 특성 사용.</span><span class="sxs-lookup"><span data-stu-id="81f30-190">Using an attribute on a controller action.</span></span> <span data-ttu-id="81f30-191">페이지 처리기 메서드에는 필터 특성을 적용할 수 없습니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="81f30-191">Filter attributes cannot be applied to :::no-loc(Razor)::: Pages handler methods.</span></span>
-* <span data-ttu-id="81f30-192">컨트롤러 또는 페이지에서 특성을 사용 :::no-loc(Razor)::: 합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-192">Using an attribute on a controller or :::no-loc(Razor)::: Page.</span></span>
-* <span data-ttu-id="81f30-193">모든 컨트롤러, 작업 및 페이지에 대해 전역적 :::no-loc(Razor)::: 으로 다음 코드와 같이 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-193">Globally for all controllers, actions, and :::no-loc(Razor)::: Pages as shown in the following code:</span></span>
+* <span data-ttu-id="81f30-190">컨트롤러 작업에서 특성 사용.</span><span class="sxs-lookup"><span data-stu-id="81f30-190">Using an attribute on a controller action.</span></span> <span data-ttu-id="81f30-191">페이지 처리기 메서드에는 필터 특성을 적용할 수 없습니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="81f30-191">Filter attributes cannot be applied to Razor Pages handler methods.</span></span>
+* <span data-ttu-id="81f30-192">컨트롤러 또는 페이지에서 특성을 사용 Razor 합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-192">Using an attribute on a controller or Razor Page.</span></span>
+* <span data-ttu-id="81f30-193">모든 컨트롤러, 작업 및 페이지에 대해 전역적 Razor 으로 다음 코드와 같이 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-193">Globally for all controllers, actions, and Razor Pages as shown in the following code:</span></span>
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/StartupOrder.cs?name=snippet)]
 
@@ -182,10 +182,10 @@ ms.locfileid: "93058508"
 <span data-ttu-id="81f30-197">필터 중첩의 결과로 필터의 *after* 코드는 *before* 코드의 역순으로 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-197">As a result of filter nesting, the *after* code of filters runs in the reverse order of the *before* code.</span></span> <span data-ttu-id="81f30-198">필터의 순서는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-198">The filter sequence:</span></span>
 
 * <span data-ttu-id="81f30-199">전역 필터의 *before* 코드.</span><span class="sxs-lookup"><span data-stu-id="81f30-199">The *before* code of global filters.</span></span>
-  * <span data-ttu-id="81f30-200">컨트롤러 및 페이지 필터의 *이전* 코드 :::no-loc(Razor)::: 입니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-200">The *before* code of controller and :::no-loc(Razor)::: Page filters.</span></span>
+  * <span data-ttu-id="81f30-200">컨트롤러 및 페이지 필터의 *이전* 코드 Razor 입니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-200">The *before* code of controller and Razor Page filters.</span></span>
     * <span data-ttu-id="81f30-201">작업 메서드 필터의 *before* 코드.</span><span class="sxs-lookup"><span data-stu-id="81f30-201">The *before* code of action method filters.</span></span>
     * <span data-ttu-id="81f30-202">작업 메서드 필터의 *after* 코드.</span><span class="sxs-lookup"><span data-stu-id="81f30-202">The *after* code of action method filters.</span></span>
-  * <span data-ttu-id="81f30-203">컨트롤러 및 페이지 필터의 *이후* 코드 :::no-loc(Razor)::: 입니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-203">The *after* code of controller and :::no-loc(Razor)::: Page filters.</span></span>
+  * <span data-ttu-id="81f30-203">컨트롤러 및 페이지 필터의 *이후* 코드 Razor 입니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-203">The *after* code of controller and Razor Page filters.</span></span>
 * <span data-ttu-id="81f30-204">전역 필터의 *after* 코드.</span><span class="sxs-lookup"><span data-stu-id="81f30-204">The *after* code of global filters.</span></span>
   
 <span data-ttu-id="81f30-205">다음 예제는 필터 메서드가 동기 작업 필터에 대해 호출되는 순서를 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-205">The following example that illustrates the order in which filter methods are called for synchronous action filters.</span></span>
@@ -193,10 +193,10 @@ ms.locfileid: "93058508"
 | <span data-ttu-id="81f30-206">시퀀스</span><span class="sxs-lookup"><span data-stu-id="81f30-206">Sequence</span></span> | <span data-ttu-id="81f30-207">필터 범위</span><span class="sxs-lookup"><span data-stu-id="81f30-207">Filter scope</span></span> | <span data-ttu-id="81f30-208">필터 메서드</span><span class="sxs-lookup"><span data-stu-id="81f30-208">Filter method</span></span> |
 |:--------:|:------------:|:-------------:|
 | <span data-ttu-id="81f30-209">1</span><span class="sxs-lookup"><span data-stu-id="81f30-209">1</span></span> | <span data-ttu-id="81f30-210">전역</span><span class="sxs-lookup"><span data-stu-id="81f30-210">Global</span></span> | `OnActionExecuting` |
-| <span data-ttu-id="81f30-211">2</span><span class="sxs-lookup"><span data-stu-id="81f30-211">2</span></span> | <span data-ttu-id="81f30-212">컨트롤러 또는 :::no-loc(Razor)::: 페이지</span><span class="sxs-lookup"><span data-stu-id="81f30-212">Controller or :::no-loc(Razor)::: Page</span></span>| `OnActionExecuting` |
+| <span data-ttu-id="81f30-211">2</span><span class="sxs-lookup"><span data-stu-id="81f30-211">2</span></span> | <span data-ttu-id="81f30-212">컨트롤러 또는 Razor 페이지</span><span class="sxs-lookup"><span data-stu-id="81f30-212">Controller or Razor Page</span></span>| `OnActionExecuting` |
 | <span data-ttu-id="81f30-213">3</span><span class="sxs-lookup"><span data-stu-id="81f30-213">3</span></span> | <span data-ttu-id="81f30-214">메서드</span><span class="sxs-lookup"><span data-stu-id="81f30-214">Method</span></span> | `OnActionExecuting` |
 | <span data-ttu-id="81f30-215">4</span><span class="sxs-lookup"><span data-stu-id="81f30-215">4</span></span> | <span data-ttu-id="81f30-216">메서드</span><span class="sxs-lookup"><span data-stu-id="81f30-216">Method</span></span> | `OnActionExecuted` |
-| <span data-ttu-id="81f30-217">5</span><span class="sxs-lookup"><span data-stu-id="81f30-217">5</span></span> | <span data-ttu-id="81f30-218">컨트롤러 또는 :::no-loc(Razor)::: 페이지</span><span class="sxs-lookup"><span data-stu-id="81f30-218">Controller or :::no-loc(Razor)::: Page</span></span> | `OnActionExecuted` |
+| <span data-ttu-id="81f30-217">5</span><span class="sxs-lookup"><span data-stu-id="81f30-217">5</span></span> | <span data-ttu-id="81f30-218">컨트롤러 또는 Razor 페이지</span><span class="sxs-lookup"><span data-stu-id="81f30-218">Controller or Razor Page</span></span> | `OnActionExecuted` |
 | <span data-ttu-id="81f30-219">6</span><span class="sxs-lookup"><span data-stu-id="81f30-219">6</span></span> | <span data-ttu-id="81f30-220">전역</span><span class="sxs-lookup"><span data-stu-id="81f30-220">Global</span></span> | `OnActionExecuted` |
 
 ### <a name="controller-level-filters"></a><span data-ttu-id="81f30-221">컨트롤러 수준 필터</span><span class="sxs-lookup"><span data-stu-id="81f30-221">Controller level filters</span></span>
@@ -235,7 +235,7 @@ ms.locfileid: "93058508"
 
 <span data-ttu-id="81f30-234">컨트롤러 수준 필터는 [Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) 속성을 `int.MinValue`로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-234">Controller level filters set the [Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) property to `int.MinValue`.</span></span> <span data-ttu-id="81f30-235">컨트롤러 수준 필터는 메서드에 적용된 후에 실행되도록 설정할 수 **없습니다** .</span><span class="sxs-lookup"><span data-stu-id="81f30-235">Controller level filters can **not** be set to run after filters applied to methods.</span></span> <span data-ttu-id="81f30-236">순서는 다음 섹션에 설명되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-236">Order is explained in the next section.</span></span>
 
-<span data-ttu-id="81f30-237">:::no-loc(Razor):::페이지는 [ :::no-loc(Razor)::: 필터 메서드를 재정의 하 여 페이지 필터 구현](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-237">For :::no-loc(Razor)::: Pages, see [Implement :::no-loc(Razor)::: Page filters by overriding filter methods](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).</span></span>
+<span data-ttu-id="81f30-237">Razor페이지는 [ Razor 필터 메서드를 재정의 하 여 페이지 필터 구현](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-237">For Razor Pages, see [Implement Razor Page filters by overriding filter methods](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).</span></span>
 
 ### <a name="overriding-the-default-order"></a><span data-ttu-id="81f30-238">기본 순서 재정의</span><span class="sxs-lookup"><span data-stu-id="81f30-238">Overriding the default order</span></span>
 
@@ -411,7 +411,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 ## <a name="action-filters"></a><span data-ttu-id="81f30-340">작업 필터</span><span class="sxs-lookup"><span data-stu-id="81f30-340">Action filters</span></span>
 
-<span data-ttu-id="81f30-341">작업 필터는 페이지에 적용 **되지** 않습니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="81f30-341">Action filters do **not** apply to :::no-loc(Razor)::: Pages.</span></span> <span data-ttu-id="81f30-342">:::no-loc(Razor)::: 페이지는 <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> 및를 지원 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> 합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-342">:::no-loc(Razor)::: Pages supports <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> and <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> .</span></span> <span data-ttu-id="81f30-343">자세한 내용은 [:::no-loc(Razor)::: Pages에 대한 필터 메서드](xref:razor-pages/filter)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-343">For more information, see [Filter methods for :::no-loc(Razor)::: Pages](xref:razor-pages/filter).</span></span>
+<span data-ttu-id="81f30-341">작업 필터는 페이지에 적용 **되지** 않습니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="81f30-341">Action filters do **not** apply to Razor Pages.</span></span> <span data-ttu-id="81f30-342">Razor 페이지는 <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> 및를 지원 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> 합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-342">Razor Pages supports <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> and <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> .</span></span> <span data-ttu-id="81f30-343">자세한 내용은 [Razor Pages에 대한 필터 메서드](xref:razor-pages/filter)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-343">For more information, see [Filter methods for Razor Pages](xref:razor-pages/filter).</span></span>
 
 <span data-ttu-id="81f30-344">작업 필터는:</span><span class="sxs-lookup"><span data-stu-id="81f30-344">Action filters:</span></span>
 
@@ -490,7 +490,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 * <span data-ttu-id="81f30-385">before 및 after 이벤트가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-385">Don't have before and after events.</span></span>
 * <span data-ttu-id="81f30-386"><xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter.OnException*> 또는 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncExceptionFilter.OnExceptionAsync*>를 구현합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-386">Implement <xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter.OnException*> or <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncExceptionFilter.OnExceptionAsync*>.</span></span>
-* <span data-ttu-id="81f30-387">:::no-loc(Razor):::페이지 또는 컨트롤러 생성, [모델 바인딩](xref:mvc/models/model-binding), 작업 필터 또는 작업 메서드에서 발생 하는 처리 되지 않은 예외를 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-387">Handle unhandled exceptions that occur in :::no-loc(Razor)::: Page or controller creation, [model binding](xref:mvc/models/model-binding), action filters, or action methods.</span></span>
+* <span data-ttu-id="81f30-387">Razor페이지 또는 컨트롤러 생성, [모델 바인딩](xref:mvc/models/model-binding), 작업 필터 또는 작업 메서드에서 발생 하는 처리 되지 않은 예외를 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-387">Handle unhandled exceptions that occur in Razor Page or controller creation, [model binding](xref:mvc/models/model-binding), action filters, or action methods.</span></span>
 * <span data-ttu-id="81f30-388">리소스 필터, 결과 필터 또는 MVC 결과 실행에서 발생 하는 예외를 catch **하지** 마세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-388">Do **not** catch exceptions that occur in resource filters, result filters, or MVC result execution.</span></span>
 
 <span data-ttu-id="81f30-389">예외를 처리하려면 <xref:System.Web.Mvc.ExceptionContext.ExceptionHandled> 속성을 `true`로 설정하거나 응답을 작성합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-389">To handle an exception, set the <xref:System.Web.Mvc.ExceptionContext.ExceptionHandled> property to `true` or write a response.</span></span> <span data-ttu-id="81f30-390">그러면 예외가 전파되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-390">This stops propagation of the exception.</span></span> <span data-ttu-id="81f30-391">예외 필터는 예외를 “성공”으로 변환할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-391">An exception filter can't turn an exception into a "success".</span></span> <span data-ttu-id="81f30-392">이는 작업 필터에서만 가능합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-392">Only an action filter can do that.</span></span>
@@ -615,7 +615,7 @@ What's a non-named attribute?
 
 ## <a name="next-actions"></a><span data-ttu-id="81f30-470">다음 작업</span><span class="sxs-lookup"><span data-stu-id="81f30-470">Next actions</span></span>
 
-* <span data-ttu-id="81f30-471">[ :::no-loc(Razor)::: 페이지에 대 한 필터 메서드를](xref:razor-pages/filter)참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-471">See [Filter methods for :::no-loc(Razor)::: Pages](xref:razor-pages/filter).</span></span>
+* <span data-ttu-id="81f30-471">[ Razor 페이지에 대 한 필터 메서드를](xref:razor-pages/filter)참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-471">See [Filter methods for Razor Pages](xref:razor-pages/filter).</span></span>
 * <span data-ttu-id="81f30-472">필터를 실험하려면 [GitHub 샘플을 다운로드하고, 테스트하고, 수정](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample)합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-472">To experiment with filters, [download, test, and modify the GitHub sample](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample).</span></span>
 
 ::: moniker-end
@@ -633,7 +633,7 @@ What's a non-named attribute?
 
 <span data-ttu-id="81f30-478">사용자 지정 필터를 만들어 교차 편집 문제를 처리할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-478">Custom filters can be created to handle cross-cutting concerns.</span></span> <span data-ttu-id="81f30-479">횡단 관심사의 사례로는 오류 처리, 캐싱, 구성, 권한 부여 및 로깅을 들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-479">Examples of cross-cutting concerns include error handling, caching, configuration, authorization, and logging.</span></span>  <span data-ttu-id="81f30-480">필터는 코드 중복을 방지합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-480">Filters avoid duplicating code.</span></span> <span data-ttu-id="81f30-481">예를 들어 오류 처리 예외 필터는 오류 처리를 통합할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-481">For example, an error handling exception filter could consolidate error handling.</span></span>
 
-<span data-ttu-id="81f30-482">이 문서 :::no-loc(Razor)::: 는 뷰가 있는 페이지, API 컨트롤러 및 컨트롤러에 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-482">This document applies to :::no-loc(Razor)::: Pages, API controllers, and controllers with views.</span></span>
+<span data-ttu-id="81f30-482">이 문서 Razor 는 뷰가 있는 페이지, API 컨트롤러 및 컨트롤러에 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-482">This document applies to Razor Pages, API controllers, and controllers with views.</span></span>
 
 <span data-ttu-id="81f30-483">[예제 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)([다운로드 방법](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="81f30-483">[View or download sample](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
@@ -655,7 +655,7 @@ What's a non-named attribute?
   * <span data-ttu-id="81f30-495"><xref:Microsoft.AspNetCore.Mvc.Filters.IResourceFilter.OnResourceExecuting*>는 나머지 필터 파이프라인보다 먼저 코드를 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-495"><xref:Microsoft.AspNetCore.Mvc.Filters.IResourceFilter.OnResourceExecuting*> can run code before the rest of the filter pipeline.</span></span> <span data-ttu-id="81f30-496">예를 들어 `OnResourceExecuting`는 모델 바인딩 전에 코드를 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-496">For example, `OnResourceExecuting` can run code before model binding.</span></span>
   * <span data-ttu-id="81f30-497"><xref:Microsoft.AspNetCore.Mvc.Filters.IResourceFilter.OnResourceExecuted*>는 파이프라인의 나머지 부분이 완료된 후에 코드를 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-497"><xref:Microsoft.AspNetCore.Mvc.Filters.IResourceFilter.OnResourceExecuted*> can run code after the rest of the pipeline has completed.</span></span>
 
-* <span data-ttu-id="81f30-498">[작업 필터](#action-filters)는 개별 작업 메서드가 호출된 전후에 즉시 코드를 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-498">[Action filters](#action-filters) can run code immediately before and after an individual action method is called.</span></span> <span data-ttu-id="81f30-499">작업에 전달된 인수 및 작업에서 반환된 결과를 조작하는 데 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-499">They can be used to manipulate the arguments passed into an action and the result returned from the action.</span></span> <span data-ttu-id="81f30-500">작업 필터는 페이지에서 지원 **되지 않습니다** :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="81f30-500">Action filters are **not** supported in :::no-loc(Razor)::: Pages.</span></span>
+* <span data-ttu-id="81f30-498">[작업 필터](#action-filters)는 개별 작업 메서드가 호출된 전후에 즉시 코드를 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-498">[Action filters](#action-filters) can run code immediately before and after an individual action method is called.</span></span> <span data-ttu-id="81f30-499">작업에 전달된 인수 및 작업에서 반환된 결과를 조작하는 데 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-499">They can be used to manipulate the arguments passed into an action and the result returned from the action.</span></span> <span data-ttu-id="81f30-500">작업 필터는 페이지에서 지원 **되지 않습니다** Razor .</span><span class="sxs-lookup"><span data-stu-id="81f30-500">Action filters are **not** supported in Razor Pages.</span></span>
 
 * <span data-ttu-id="81f30-501">[예외 필터](#exception-filters)는 응답 본문에 무언가 쓰여지기 전에 발생한 처리되지 않은 예외에 전역 정책을 적용하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-501">[Exception filters](#exception-filters) are used to apply global policies to unhandled exceptions that occur before anything has been written to the response body.</span></span>
 
@@ -751,7 +751,7 @@ What's a non-named attribute?
 * <span data-ttu-id="81f30-566">메서드 필터는 컨트롤러 필터 내에서 중첩됩니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-566">The method filter is nested within the controller filter.</span></span>
 * <span data-ttu-id="81f30-567">컨트롤러 필터는 전역 필터 내에서 중첩됩니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-567">The controller filter is nested within the global filter.</span></span>
 
-### <a name="controller-and-no-locrazor-page-level-filters"></a><span data-ttu-id="81f30-568">컨트롤러 및 :::no-loc(Razor)::: 페이지 수준 필터</span><span class="sxs-lookup"><span data-stu-id="81f30-568">Controller and :::no-loc(Razor)::: Page level filters</span></span>
+### <a name="controller-and-no-locrazor-page-level-filters"></a><span data-ttu-id="81f30-568">컨트롤러 및 Razor 페이지 수준 필터</span><span class="sxs-lookup"><span data-stu-id="81f30-568">Controller and Razor Page level filters</span></span>
 
 <span data-ttu-id="81f30-569"><xref:Microsoft.AspNetCore.Mvc.Controller> 기본 클래스에서 상속되는 모든 컨트롤러에는 [Controller.OnActionExecuting](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuting*), [Controller.OnActionExecutionAsync](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecutionAsync*) 및 [Controller.OnActionExecuted](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuted*)
 `OnActionExecuted` 메서드가 포함됩니다. 이러한 메서드는:</span><span class="sxs-lookup"><span data-stu-id="81f30-569">Every controller that inherits from the <xref:Microsoft.AspNetCore.Mvc.Controller> base class includes [Controller.OnActionExecuting](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuting*),  [Controller.OnActionExecutionAsync](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecutionAsync*), and [Controller.OnActionExecuted](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuted*)
@@ -781,7 +781,7 @@ What's a non-named attribute?
   * `MySampleActionFilter.OnActionExecuted`
 * `TestController.OnActionExecuted`
 
-<span data-ttu-id="81f30-581">:::no-loc(Razor):::페이지는 [ :::no-loc(Razor)::: 필터 메서드를 재정의 하 여 페이지 필터 구현](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-581">For :::no-loc(Razor)::: Pages, see [Implement :::no-loc(Razor)::: Page filters by overriding filter methods](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).</span></span>
+<span data-ttu-id="81f30-581">Razor페이지는 [ Razor 필터 메서드를 재정의 하 여 페이지 필터 구현](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-581">For Razor Pages, see [Implement Razor Page filters by overriding filter methods](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).</span></span>
 
 ### <a name="overriding-the-default-order"></a><span data-ttu-id="81f30-582">기본 순서 재정의</span><span class="sxs-lookup"><span data-stu-id="81f30-582">Overriding the default order</span></span>
 
@@ -946,7 +946,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 ## <a name="action-filters"></a><span data-ttu-id="81f30-702">작업 필터</span><span class="sxs-lookup"><span data-stu-id="81f30-702">Action filters</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="81f30-703">작업 필터는 페이지에 적용 **되지** 않습니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="81f30-703">Action filters do **not** apply to :::no-loc(Razor)::: Pages.</span></span> <span data-ttu-id="81f30-704">:::no-loc(Razor)::: 페이지는 <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> 및를 지원 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> 합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-704">:::no-loc(Razor)::: Pages supports <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> and <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> .</span></span> <span data-ttu-id="81f30-705">자세한 내용은 [:::no-loc(Razor)::: Pages에 대한 필터 메서드](xref:razor-pages/filter)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-705">For more information, see [Filter methods for :::no-loc(Razor)::: Pages](xref:razor-pages/filter).</span></span>
+> <span data-ttu-id="81f30-703">작업 필터는 페이지에 적용 **되지** 않습니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="81f30-703">Action filters do **not** apply to Razor Pages.</span></span> <span data-ttu-id="81f30-704">Razor 페이지는 <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> 및를 지원 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> 합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-704">Razor Pages supports <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> and <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> .</span></span> <span data-ttu-id="81f30-705">자세한 내용은 [Razor Pages에 대한 필터 메서드](xref:razor-pages/filter)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-705">For more information, see [Filter methods for Razor Pages](xref:razor-pages/filter).</span></span>
 
 <span data-ttu-id="81f30-706">작업 필터는:</span><span class="sxs-lookup"><span data-stu-id="81f30-706">Action filters:</span></span>
 
@@ -1018,7 +1018,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 * <span data-ttu-id="81f30-744">before 및 after 이벤트가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-744">Don't have before and after events.</span></span>
 * <span data-ttu-id="81f30-745"><xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter.OnException*> 또는 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncExceptionFilter.OnExceptionAsync*>를 구현합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-745">Implement <xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter.OnException*> or <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncExceptionFilter.OnExceptionAsync*>.</span></span>
-* <span data-ttu-id="81f30-746">:::no-loc(Razor):::페이지 또는 컨트롤러 생성, [모델 바인딩](xref:mvc/models/model-binding), 작업 필터 또는 작업 메서드에서 발생 하는 처리 되지 않은 예외를 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-746">Handle unhandled exceptions that occur in :::no-loc(Razor)::: Page or controller creation, [model binding](xref:mvc/models/model-binding), action filters, or action methods.</span></span>
+* <span data-ttu-id="81f30-746">Razor페이지 또는 컨트롤러 생성, [모델 바인딩](xref:mvc/models/model-binding), 작업 필터 또는 작업 메서드에서 발생 하는 처리 되지 않은 예외를 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-746">Handle unhandled exceptions that occur in Razor Page or controller creation, [model binding](xref:mvc/models/model-binding), action filters, or action methods.</span></span>
 * <span data-ttu-id="81f30-747">리소스 필터, 결과 필터 또는 MVC 결과 실행에서 발생 하는 예외를 catch **하지** 마세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-747">Do **not** catch exceptions that occur in resource filters, result filters, or MVC result execution.</span></span>
 
 <span data-ttu-id="81f30-748">예외를 처리하려면 <xref:System.Web.Mvc.ExceptionContext.ExceptionHandled> 속성을 `true`로 설정하거나 응답을 작성합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-748">To handle an exception, set the <xref:System.Web.Mvc.ExceptionContext.ExceptionHandled> property to `true` or write a response.</span></span> <span data-ttu-id="81f30-749">그러면 예외가 전파되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-749">This stops propagation of the exception.</span></span> <span data-ttu-id="81f30-750">예외 필터는 예외를 “성공”으로 변환할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-750">An exception filter can't turn an exception into a "success".</span></span> <span data-ttu-id="81f30-751">이는 작업 필터에서만 가능합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-751">Only an action filter can do that.</span></span>
@@ -1139,7 +1139,7 @@ What's a non-named attribute?
 
 ## <a name="next-actions"></a><span data-ttu-id="81f30-828">다음 작업</span><span class="sxs-lookup"><span data-stu-id="81f30-828">Next actions</span></span>
 
-* <span data-ttu-id="81f30-829">[ :::no-loc(Razor)::: 페이지에 대 한 필터 메서드를](xref:razor-pages/filter)참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-829">See [Filter methods for :::no-loc(Razor)::: Pages](xref:razor-pages/filter).</span></span>
+* <span data-ttu-id="81f30-829">[ Razor 페이지에 대 한 필터 메서드를](xref:razor-pages/filter)참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="81f30-829">See [Filter methods for Razor Pages](xref:razor-pages/filter).</span></span>
 * <span data-ttu-id="81f30-830">필터를 실험하려면 [GitHub 샘플을 다운로드하고, 테스트하고, 수정](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)합니다.</span><span class="sxs-lookup"><span data-stu-id="81f30-830">To experiment with filters, [download, test, and modify the GitHub sample](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).</span></span>
 
 ::: moniker-end

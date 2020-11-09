@@ -1,22 +1,22 @@
 ---
-title: '7부. ASP.NET Core의 :::no-loc(Razor)::: Page에 새 필드 추가'
+title: '7부. ASP.NET Core의 Razor Page에 새 필드 추가'
 author: rick-anderson
-description: ':::no-loc(Razor)::: Pages에 대한 자습서 시리즈의 7부입니다.'
+description: 'Razor Pages에 대한 자습서 시리즈의 7부입니다.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/razor-pages/new-field
 ms.openlocfilehash: 951a8ada57ae523f362313426c0279556eb8339b
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,7 +25,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93050617"
 ---
-# <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a><span data-ttu-id="fc6e3-103">7부. ASP.NET Core의 :::no-loc(Razor)::: Page에 새 필드 추가</span><span class="sxs-lookup"><span data-stu-id="fc6e3-103">Part 7, add a new field to a :::no-loc(Razor)::: Page in ASP.NET Core</span></span>
+# <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a><span data-ttu-id="fc6e3-103">7부. ASP.NET Core의 Razor Page에 새 필드 추가</span><span class="sxs-lookup"><span data-stu-id="fc6e3-103">Part 7, add a new field to a Razor Page in ASP.NET Core</span></span>
 
 <span data-ttu-id="fc6e3-104">작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="fc6e3-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
@@ -49,7 +49,7 @@ ms.locfileid: "93050617"
 
 <span data-ttu-id="fc6e3-113">*Models/Movie.cs* 파일을 열고 `Rating` 속성을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-113">Open the *Models/Movie.cs* file and add a `Rating` property:</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/MovieDateRating.cs?highlight=13&name=snippet)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRating.cs?highlight=13&name=snippet)]
 
 <span data-ttu-id="fc6e3-114">앱을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-114">Build the app.</span></span>
 
@@ -57,12 +57,12 @@ ms.locfileid: "93050617"
 
 <a name="addrat"></a>
 
-[!code-cshtml[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
 
 <span data-ttu-id="fc6e3-116">다음 페이지를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-116">Update the following pages:</span></span>
 
 * <span data-ttu-id="fc6e3-117">삭제 및 세부 정보 페이지에 `Rating` 필드를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-117">Add the `Rating` field to the Delete and Details pages.</span></span>
-* <span data-ttu-id="fc6e3-118">[Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-118">Update [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Pages/Movies/Create.cshtml) with a `Rating` field.</span></span>
+* <span data-ttu-id="fc6e3-118">[Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-118">Update [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) with a `Rating` field.</span></span>
 * <span data-ttu-id="fc6e3-119">편집 페이지에 `Rating` 필드를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-119">Add the `Rating` field to the Edit Page.</span></span>
 
 <span data-ttu-id="fc6e3-120">새 필드를 포함하도록 DB가 수정될 때까지 앱은 작동하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-120">The app won't work until the DB is updated to include the new field.</span></span> <span data-ttu-id="fc6e3-121">데이터베이스를 업데이트하지 않고 앱을 실행하면 `SqlException`이 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-121">Running the app without updating the database throws a `SqlException`:</span></span>
@@ -83,9 +83,9 @@ ms.locfileid: "93050617"
 
 <span data-ttu-id="fc6e3-135">새 열에 대한 값을 제공하도록 `SeedData` 클래스를 수정합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-135">Update the `SeedData` class so that it provides a value for the new column.</span></span> <span data-ttu-id="fc6e3-136">샘플 변경은 아래에 표시되지만 각 `new Movie` 블록에 대해 이 변경을 수행하려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-136">A sample change is shown below, but you'll want to make this change for each `new Movie` block.</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-<span data-ttu-id="fc6e3-137">[완료된 SeedData.cs 파일](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/SeedDataRating.cs)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-137">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/SeedDataRating.cs).</span></span>
+<span data-ttu-id="fc6e3-137">[완료된 SeedData.cs 파일](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-137">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs).</span></span>
 
 <span data-ttu-id="fc6e3-138">솔루션을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-138">Build the solution.</span></span>
 
@@ -177,18 +177,18 @@ dotnet ef database update
 
 <span data-ttu-id="fc6e3-175">*Models/Movie.cs* 파일을 열고 `Rating` 속성을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-175">Open the *Models/Movie.cs* file and add a `Rating` property:</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Models/MovieDateRating.cs?highlight=13&name=snippet)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRating.cs?highlight=13&name=snippet)]
 
 <span data-ttu-id="fc6e3-176">앱을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-176">Build the app.</span></span>
 
 <span data-ttu-id="fc6e3-177">*Pages/Movies/Index.cshtml* 를 편집하고 `Rating` 필드를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-177">Edit *Pages/Movies/Index.cshtml* , and add a `Rating` field:</span></span>
 
-[!code-cshtml[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Pages/Movies/IndexRating.cshtml?highlight=40-42,61-63)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/IndexRating.cshtml?highlight=40-42,61-63)]
 
 <span data-ttu-id="fc6e3-178">다음 페이지를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-178">Update the following pages:</span></span>
 
 * <span data-ttu-id="fc6e3-179">삭제 및 세부 정보 페이지에 `Rating` 필드를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-179">Add the `Rating` field to the Delete and Details pages.</span></span>
-* <span data-ttu-id="fc6e3-180">[Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-180">Update [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Pages/Movies/Create.cshtml) with a `Rating` field.</span></span>
+* <span data-ttu-id="fc6e3-180">[Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-180">Update [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) with a `Rating` field.</span></span>
 * <span data-ttu-id="fc6e3-181">편집 페이지에 `Rating` 필드를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-181">Add the `Rating` field to the Edit Page.</span></span>
 
 <span data-ttu-id="fc6e3-182">앱은 새 필드를 포함하도록 DB가 업데이트될 때까지 작동하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-182">The app won't work until the DB is updated to include the new field.</span></span> <span data-ttu-id="fc6e3-183">지금 실행하면 앱은 `SqlException`을 throw합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-183">If run now, the app throws a `SqlException`:</span></span>
@@ -209,9 +209,9 @@ dotnet ef database update
 
 <span data-ttu-id="fc6e3-197">새 열에 대한 값을 제공하도록 `SeedData` 클래스를 수정합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-197">Update the `SeedData` class so that it provides a value for the new column.</span></span> <span data-ttu-id="fc6e3-198">샘플 변경은 아래에 표시되지만 각 `new Movie` 블록에 대해 이 변경을 수행하려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-198">A sample change is shown below, but you'll want to make this change for each `new Movie` block.</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-<span data-ttu-id="fc6e3-199">[완료된 SeedData.cs 파일](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Models/SeedDataRating.cs)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-199">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Models/SeedDataRating.cs).</span></span>
+<span data-ttu-id="fc6e3-199">[완료된 SeedData.cs 파일](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-199">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs).</span></span>
 
 <span data-ttu-id="fc6e3-200">솔루션을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="fc6e3-200">Build the solution.</span></span>
 

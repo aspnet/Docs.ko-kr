@@ -1,22 +1,22 @@
 ---
-title: 'ASP.NET Core 프로젝트에서 사용자 데이터 추가, 다운로드 및 삭제 :::no-loc(Identity):::'
+title: 'ASP.NET Core 프로젝트에서 사용자 데이터 추가, 다운로드 및 삭제 Identity'
 author: rick-anderson
-description: 'ASP.NET Core 프로젝트에서에 사용자 지정 사용자 데이터를 추가 하는 방법에 대해 알아봅니다 :::no-loc(Identity)::: . GDPR 당 데이터를 삭제 합니다.'
+description: 'ASP.NET Core 프로젝트에서에 사용자 지정 사용자 데이터를 추가 하는 방법에 대해 알아봅니다 Identity . GDPR 당 데이터를 삭제 합니다.'
 ms.author: riande
 ms.date: 03/26/2020
 ms.custom: mvc, seodec18
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/add-user-data
 ms.openlocfilehash: a4e1fd780947cfa5f09fb1e03964595fa09f0f18
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,16 +25,16 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93061420"
 ---
-# <a name="add-download-and-delete-custom-user-data-to-no-locidentity-in-an-aspnet-core-project"></a><span data-ttu-id="e223b-104">ASP.NET Core 프로젝트에서 사용자 지정 사용자 데이터 추가, 다운로드 및 삭제 :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="e223b-104">Add, download, and delete custom user data to :::no-loc(Identity)::: in an ASP.NET Core project</span></span>
+# <a name="add-download-and-delete-custom-user-data-to-no-locidentity-in-an-aspnet-core-project"></a><span data-ttu-id="e223b-104">ASP.NET Core 프로젝트에서 사용자 지정 사용자 데이터 추가, 다운로드 및 삭제 Identity</span><span class="sxs-lookup"><span data-stu-id="e223b-104">Add, download, and delete custom user data to Identity in an ASP.NET Core project</span></span>
 
 <span data-ttu-id="e223b-105">작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="e223b-105">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
 <span data-ttu-id="e223b-106">이 문서는 다음 방법을 안내합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-106">This article shows how to:</span></span>
 
 * <span data-ttu-id="e223b-107">ASP.NET Core 웹 앱에 사용자 지정 사용자 데이터를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-107">Add custom user data to an ASP.NET Core web app.</span></span>
-* <span data-ttu-id="e223b-108">사용자 지정 사용자 데이터 모델을 특성으로 표시 하 여 <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PersonalDataAttribute> 자동으로 다운로드 및 삭제에 사용할 수 있도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-108">Mark the custom user data model with the <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PersonalDataAttribute> attribute so it's automatically available for download and deletion.</span></span> <span data-ttu-id="e223b-109">데이터를 다운로드 하 고 삭제할 수 있도록 하는 것은 [Gdpr](xref:security/gdpr) 요구 사항을 충족 하는 데 도움이 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-109">Making the data able to be downloaded and deleted helps meet [GDPR](xref:security/gdpr) requirements.</span></span>
+* <span data-ttu-id="e223b-108">사용자 지정 사용자 데이터 모델을 특성으로 표시 하 여 <xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute> 자동으로 다운로드 및 삭제에 사용할 수 있도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-108">Mark the custom user data model with the <xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute> attribute so it's automatically available for download and deletion.</span></span> <span data-ttu-id="e223b-109">데이터를 다운로드 하 고 삭제할 수 있도록 하는 것은 [Gdpr](xref:security/gdpr) 요구 사항을 충족 하는 데 도움이 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-109">Making the data able to be downloaded and deleted helps meet [GDPR](xref:security/gdpr) requirements.</span></span>
 
-<span data-ttu-id="e223b-110">프로젝트 샘플은 :::no-loc(Razor)::: 페이지 웹 앱에서 생성 되지만 지침은 ASP.NET CORE MVC 웹 앱과 유사 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-110">The project sample is created from a :::no-loc(Razor)::: Pages web app, but the instructions are similar for a ASP.NET Core MVC web app.</span></span>
+<span data-ttu-id="e223b-110">프로젝트 샘플은 Razor 페이지 웹 앱에서 생성 되지만 지침은 ASP.NET CORE MVC 웹 앱과 유사 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-110">The project sample is created from a Razor Pages web app, but the instructions are similar for a ASP.NET Core MVC web app.</span></span>
 
 <span data-ttu-id="e223b-111">[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) ([다운로드 방법](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="e223b-111">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
@@ -52,7 +52,7 @@ ms.locfileid: "93061420"
 
 ::: moniker-end
 
-## <a name="create-a-no-locrazor-web-app"></a><span data-ttu-id="e223b-113">:::no-loc(Razor):::웹 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="e223b-113">Create a :::no-loc(Razor)::: web app</span></span>
+## <a name="create-a-no-locrazor-web-app"></a><span data-ttu-id="e223b-113">Razor웹 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="e223b-113">Create a Razor web app</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="e223b-114">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e223b-114">Visual Studio</span></span>](#tab/visual-studio)
 
@@ -85,13 +85,13 @@ dotnet new webapp -o WebApp1
 
 ---
 
-## <a name="run-the-no-locidentity-scaffolder"></a><span data-ttu-id="e223b-128">스 캐 폴더 실행 :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="e223b-128">Run the :::no-loc(Identity)::: scaffolder</span></span>
+## <a name="run-the-no-locidentity-scaffolder"></a><span data-ttu-id="e223b-128">스 캐 폴더 실행 Identity</span><span class="sxs-lookup"><span data-stu-id="e223b-128">Run the Identity scaffolder</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="e223b-129">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e223b-129">Visual Studio</span></span>](#tab/visual-studio)
 
 * <span data-ttu-id="e223b-130">**솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭 하 > **Add**  >  **새 스 캐 폴드 항목** 추가를 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-130">From **Solution Explorer** , right-click on the project > **Add** > **New Scaffolded Item** .</span></span>
-* <span data-ttu-id="e223b-131">**스 캐 폴드 추가** 대화 상자의 왼쪽 창에서 추가를 선택 **:::no-loc(Identity):::**  >  **Add** 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-131">From the left pane of the **Add Scaffold** dialog, select **:::no-loc(Identity):::** > **Add** .</span></span>
-* <span data-ttu-id="e223b-132">**추가 :::no-loc(Identity):::** 대화 상자에서 다음 옵션을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-132">In the **Add :::no-loc(Identity):::** dialog, the following options:</span></span>
+* <span data-ttu-id="e223b-131">**스 캐 폴드 추가** 대화 상자의 왼쪽 창에서 추가를 선택 **Identity**  >  **Add** 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-131">From the left pane of the **Add Scaffold** dialog, select **Identity** > **Add** .</span></span>
+* <span data-ttu-id="e223b-132">**추가 Identity** 대화 상자에서 다음 옵션을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-132">In the **Add Identity** dialog, the following options:</span></span>
   * <span data-ttu-id="e223b-133">기존 레이아웃 파일  *~/Pages/Shared/_Layout를 선택 합니다.*</span><span class="sxs-lookup"><span data-stu-id="e223b-133">Select the existing layout  file  *~/Pages/Shared/_Layout.cshtml*</span></span>
   * <span data-ttu-id="e223b-134">재정의할 다음 파일 선택:</span><span class="sxs-lookup"><span data-stu-id="e223b-134">Select the following files to override:</span></span>
     * <span data-ttu-id="e223b-135">**계정/등록**</span><span class="sxs-lookup"><span data-stu-id="e223b-135">**Account/Register**</span></span>
@@ -115,13 +115,13 @@ dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 ```
 
-<span data-ttu-id="e223b-146">다음 명령을 실행 하 여 스 캐 폴더 옵션을 나열 합니다 :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="e223b-146">Run the following command to list the :::no-loc(Identity)::: scaffolder options:</span></span>
+<span data-ttu-id="e223b-146">다음 명령을 실행 하 여 스 캐 폴더 옵션을 나열 합니다 Identity .</span><span class="sxs-lookup"><span data-stu-id="e223b-146">Run the following command to list the Identity scaffolder options:</span></span>
 
 ```dotnetcli
 dotnet aspnet-codegenerator identity -h
 ```
 
-<span data-ttu-id="e223b-147">프로젝트 폴더에서 스 캐 폴더를 실행 합니다 :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="e223b-147">In the project folder, run the :::no-loc(Identity)::: scaffolder:</span></span>
+<span data-ttu-id="e223b-147">프로젝트 폴더에서 스 캐 폴더를 실행 합니다 Identity .</span><span class="sxs-lookup"><span data-stu-id="e223b-147">In the project folder, run the Identity scaffolder:</span></span>
 
 ```dotnetcli
 dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account.Manage.Index
@@ -141,72 +141,72 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
   * <span data-ttu-id="e223b-157">**다운로드** 단추를 선택 하 고 파일 *의PersonalData.js* 를 검사 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-157">Select the **Download** button and examined the *PersonalData.json* file.</span></span>
   * <span data-ttu-id="e223b-158">로그온 한 사용자를 삭제 하는 **삭제** 단추를 테스트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-158">Test the **Delete** button, which deletes the logged on user.</span></span>
 
-## <a name="add-custom-user-data-to-the-no-locidentity-db"></a><span data-ttu-id="e223b-159">DB에 사용자 지정 사용자 데이터 추가 :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="e223b-159">Add custom user data to the :::no-loc(Identity)::: DB</span></span>
+## <a name="add-custom-user-data-to-the-no-locidentity-db"></a><span data-ttu-id="e223b-159">DB에 사용자 지정 사용자 데이터 추가 Identity</span><span class="sxs-lookup"><span data-stu-id="e223b-159">Add custom user data to the Identity DB</span></span>
 
-<span data-ttu-id="e223b-160">`:::no-loc(Identity):::User`사용자 지정 속성을 사용 하 여 파생 클래스를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-160">Update the `:::no-loc(Identity):::User` derived class with custom properties.</span></span> <span data-ttu-id="e223b-161">WebApp1 프로젝트의 이름을 지정 하는 경우 파일의 이름은 *Areas/ :::no-loc(Identity)::: /Data/WebApp1User.cs* 입니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-161">If you named the project WebApp1, the file is named *Areas/:::no-loc(Identity):::/Data/WebApp1User.cs* .</span></span> <span data-ttu-id="e223b-162">다음 코드를 사용 하 여 파일을 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-162">Update the file with the following code:</span></span>
+<span data-ttu-id="e223b-160">`IdentityUser`사용자 지정 속성을 사용 하 여 파생 클래스를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-160">Update the `IdentityUser` derived class with custom properties.</span></span> <span data-ttu-id="e223b-161">WebApp1 프로젝트의 이름을 지정 하는 경우 파일의 이름은 *Areas/ Identity /Data/WebApp1User.cs* 입니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-161">If you named the project WebApp1, the file is named *Areas/Identity/Data/WebApp1User.cs* .</span></span> <span data-ttu-id="e223b-162">다음 코드를 사용 하 여 파일을 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-162">Update the file with the following code:</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[!code-csharp[](add-user-data/samples/3.x/SampleApp/Areas/:::no-loc(Identity):::/Data/WebApp1User.cs)]
+[!code-csharp[](add-user-data/samples/3.x/SampleApp/Areas/Identity/Data/WebApp1User.cs)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-[!code-csharp[](add-user-data/samples/2.x/SampleApp/Areas/:::no-loc(Identity):::/Data/WebApp1User.cs)]
+[!code-csharp[](add-user-data/samples/2.x/SampleApp/Areas/Identity/Data/WebApp1User.cs)]
 
 ::: moniker-end
 
 <span data-ttu-id="e223b-163">[PersonalData](/dotnet/api/microsoft.aspnetcore.identity.personaldataattribute) 특성이 있는 속성은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-163">Properties with the [PersonalData](/dotnet/api/microsoft.aspnetcore.identity.personaldataattribute) attribute are:</span></span>
 
-* <span data-ttu-id="e223b-164">*Areas/ :::no-loc(Identity)::: /Pages/Account/Manage/DeletePersonalData.cshtml* :::no-loc(Razor)::: 페이지가 호출 하면 삭제 `UserManager.Delete` 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-164">Deleted when the *Areas/:::no-loc(Identity):::/Pages/Account/Manage/DeletePersonalData.cshtml* :::no-loc(Razor)::: Page calls `UserManager.Delete`.</span></span>
-* <span data-ttu-id="e223b-165">*영역/ :::no-loc(Identity)::: /Pages/Account/Manage/DownloadPersonalData.cshtml* 페이지에서 다운로드 한 데이터에 포함 :::no-loc(Razor)::: 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-165">Included in the downloaded data by the *Areas/:::no-loc(Identity):::/Pages/Account/Manage/DownloadPersonalData.cshtml* :::no-loc(Razor)::: Page.</span></span>
+* <span data-ttu-id="e223b-164">*Areas/ Identity /Pages/Account/Manage/DeletePersonalData.cshtml* Razor 페이지가 호출 하면 삭제 `UserManager.Delete` 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-164">Deleted when the *Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml* Razor Page calls `UserManager.Delete`.</span></span>
+* <span data-ttu-id="e223b-165">*영역/ Identity /Pages/Account/Manage/DownloadPersonalData.cshtml* 페이지에서 다운로드 한 데이터에 포함 Razor 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-165">Included in the downloaded data by the *Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml* Razor Page.</span></span>
 
 ### <a name="update-the-accountmanageindexcshtml-page"></a><span data-ttu-id="e223b-166">계정/관리/인덱스를 업데이트 합니다. cshtml 페이지</span><span class="sxs-lookup"><span data-stu-id="e223b-166">Update the Account/Manage/Index.cshtml page</span></span>
 
-<span data-ttu-id="e223b-167">`InputModel`다음 강조 표시 된 코드를 사용 하 여 *영역/ :::no-loc(Identity)::: /Pages/Account/Manage/Index.cshtml.cs* 의를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-167">Update the `InputModel` in *Areas/:::no-loc(Identity):::/Pages/Account/Manage/Index.cshtml.cs* with the following highlighted code:</span></span>
+<span data-ttu-id="e223b-167">`InputModel`다음 강조 표시 된 코드를 사용 하 여 *영역/ Identity /Pages/Account/Manage/Index.cshtml.cs* 의를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-167">Update the `InputModel` in *Areas/Identity/Pages/Account/Manage/Index.cshtml.cs* with the following highlighted code:</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[!code-csharp[](add-user-data/samples/3.x/SampleApp/Areas/:::no-loc(Identity):::/Pages/Account/Manage/Index.cshtml.cs?name=snippet&highlight=24-32,48-49,96-104,106)]
+[!code-csharp[](add-user-data/samples/3.x/SampleApp/Areas/Identity/Pages/Account/Manage/Index.cshtml.cs?name=snippet&highlight=24-32,48-49,96-104,106)]
 
-<span data-ttu-id="e223b-168">다음 강조 표시 된 태그를 사용 하 여 *영역/ :::no-loc(Identity)::: /Pages/Account/Manage/Index.cshtml* 를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-168">Update the *Areas/:::no-loc(Identity):::/Pages/Account/Manage/Index.cshtml* with the following highlighted markup:</span></span>
+<span data-ttu-id="e223b-168">다음 강조 표시 된 태그를 사용 하 여 *영역/ Identity /Pages/Account/Manage/Index.cshtml* 를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-168">Update the *Areas/Identity/Pages/Account/Manage/Index.cshtml* with the following highlighted markup:</span></span>
 
-[!code-cshtml[](add-user-data/samples/3.x/SampleApp/Areas/:::no-loc(Identity):::/Pages/Account/Manage/Index.cshtml?highlight=18-25)]
+[!code-cshtml[](add-user-data/samples/3.x/SampleApp/Areas/Identity/Pages/Account/Manage/Index.cshtml?highlight=18-25)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-[!code-csharp[](add-user-data/samples/2.x/SampleApp/Areas/:::no-loc(Identity):::/Pages/Account/Manage/Index.cshtml.cs?name=snippet&highlight=28-36,63-64,98-106,119)]
+[!code-csharp[](add-user-data/samples/2.x/SampleApp/Areas/Identity/Pages/Account/Manage/Index.cshtml.cs?name=snippet&highlight=28-36,63-64,98-106,119)]
 
-<span data-ttu-id="e223b-169">다음 강조 표시 된 태그를 사용 하 여 *영역/ :::no-loc(Identity)::: /Pages/Account/Manage/Index.cshtml* 를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-169">Update the *Areas/:::no-loc(Identity):::/Pages/Account/Manage/Index.cshtml* with the following highlighted markup:</span></span>
+<span data-ttu-id="e223b-169">다음 강조 표시 된 태그를 사용 하 여 *영역/ Identity /Pages/Account/Manage/Index.cshtml* 를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-169">Update the *Areas/Identity/Pages/Account/Manage/Index.cshtml* with the following highlighted markup:</span></span>
 
-[!code-cshtml[](add-user-data/samples/2.x/SampleApp/Areas/:::no-loc(Identity):::/Pages/Account/Manage/Index.cshtml?highlight=35-42)]
+[!code-cshtml[](add-user-data/samples/2.x/SampleApp/Areas/Identity/Pages/Account/Manage/Index.cshtml?highlight=35-42)]
 
 ::: moniker-end
 
 ### <a name="update-the-accountregistercshtml-page"></a><span data-ttu-id="e223b-170">계정/레지스터를 업데이트 합니다. cshtml 페이지</span><span class="sxs-lookup"><span data-stu-id="e223b-170">Update the Account/Register.cshtml page</span></span>
 
-<span data-ttu-id="e223b-171">`InputModel`다음 강조 표시 된 코드를 사용 하 여 *영역/ :::no-loc(Identity)::: /Pages/Account/Register.cshtml.cs* 의를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-171">Update the `InputModel` in *Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml.cs* with the following highlighted code:</span></span>
+<span data-ttu-id="e223b-171">`InputModel`다음 강조 표시 된 코드를 사용 하 여 *영역/ Identity /Pages/Account/Register.cshtml.cs* 의를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-171">Update the `InputModel` in *Areas/Identity/Pages/Account/Register.cshtml.cs* with the following highlighted code:</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[!code-csharp[](add-user-data/samples/3.x/SampleApp/Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml.cs?name=snippet&highlight=30-38,70-71)]
+[!code-csharp[](add-user-data/samples/3.x/SampleApp/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=30-38,70-71)]
 
-<span data-ttu-id="e223b-172">다음 강조 표시 된 태그를 사용 하 여 *영역/ :::no-loc(Identity)::: /Pages/Account/Register.cshtml* 를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-172">Update the *Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml* with the following highlighted markup:</span></span>
+<span data-ttu-id="e223b-172">다음 강조 표시 된 태그를 사용 하 여 *영역/ Identity /Pages/Account/Register.cshtml* 를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-172">Update the *Areas/Identity/Pages/Account/Register.cshtml* with the following highlighted markup:</span></span>
 
-[!code-cshtml[](add-user-data/samples/3.x/SampleApp/Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml?highlight=16-25)]
+[!code-cshtml[](add-user-data/samples/3.x/SampleApp/Areas/Identity/Pages/Account/Register.cshtml?highlight=16-25)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-[!code-csharp[](add-user-data/samples/2.x/SampleApp/Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml.cs?name=snippet&highlight=28-36,67,66)]
+[!code-csharp[](add-user-data/samples/2.x/SampleApp/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=28-36,67,66)]
 
-<span data-ttu-id="e223b-173">다음 강조 표시 된 태그를 사용 하 여 *영역/ :::no-loc(Identity)::: /Pages/Account/Register.cshtml* 를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-173">Update the *Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml* with the following highlighted markup:</span></span>
+<span data-ttu-id="e223b-173">다음 강조 표시 된 태그를 사용 하 여 *영역/ Identity /Pages/Account/Register.cshtml* 를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-173">Update the *Areas/Identity/Pages/Account/Register.cshtml* with the following highlighted markup:</span></span>
 
-[!code-cshtml[](add-user-data/samples/2.x/SampleApp/Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml?highlight=16-25)]
+[!code-cshtml[](add-user-data/samples/2.x/SampleApp/Areas/Identity/Pages/Account/Register.cshtml?highlight=16-25)]
 
 ::: moniker-end
 
@@ -238,20 +238,20 @@ dotnet ef database update
 <span data-ttu-id="e223b-180">앱을 테스트합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-180">Test the app:</span></span>
 
 * <span data-ttu-id="e223b-181">새 사용자를 등록 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-181">Register a new user.</span></span>
-* <span data-ttu-id="e223b-182">페이지에서 사용자 지정 사용자 데이터를 봅니다 `/:::no-loc(Identity):::/Account/Manage` .</span><span class="sxs-lookup"><span data-stu-id="e223b-182">View the custom user data on the `/:::no-loc(Identity):::/Account/Manage` page.</span></span>
-* <span data-ttu-id="e223b-183">페이지에서 사용자 개인 데이터를 다운로드 하 여 봅니다 `/:::no-loc(Identity):::/Account/Manage/PersonalData` .</span><span class="sxs-lookup"><span data-stu-id="e223b-183">Download and view the users personal data from the `/:::no-loc(Identity):::/Account/Manage/PersonalData` page.</span></span>
+* <span data-ttu-id="e223b-182">페이지에서 사용자 지정 사용자 데이터를 봅니다 `/Identity/Account/Manage` .</span><span class="sxs-lookup"><span data-stu-id="e223b-182">View the custom user data on the `/Identity/Account/Manage` page.</span></span>
+* <span data-ttu-id="e223b-183">페이지에서 사용자 개인 데이터를 다운로드 하 여 봅니다 `/Identity/Account/Manage/PersonalData` .</span><span class="sxs-lookup"><span data-stu-id="e223b-183">Download and view the users personal data from the `/Identity/Account/Manage/PersonalData` page.</span></span>
 
-## <a name="add-claims-to-no-locidentity-using-iuserclaimsprincipalfactoryapplicationuser"></a><span data-ttu-id="e223b-184">IUserClaimsPrincipalFactory를 사용 하 여 클레임 추가 :::no-loc(Identity):::<ApplicationUser></span><span class="sxs-lookup"><span data-stu-id="e223b-184">Add claims to :::no-loc(Identity)::: using IUserClaimsPrincipalFactory<ApplicationUser></span></span>
+## <a name="add-claims-to-no-locidentity-using-iuserclaimsprincipalfactoryapplicationuser"></a><span data-ttu-id="e223b-184">IUserClaimsPrincipalFactory를 사용 하 여 클레임 추가 Identity<ApplicationUser></span><span class="sxs-lookup"><span data-stu-id="e223b-184">Add claims to Identity using IUserClaimsPrincipalFactory<ApplicationUser></span></span>
 
 > [!NOTE]
 > <span data-ttu-id="e223b-185">이 섹션은 이전 자습서의 확장이 아닙니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-185">This section isn't an extension of the previous tutorial.</span></span> <span data-ttu-id="e223b-186">자습서를 사용 하 여 빌드한 앱에 다음 단계를 적용 하려면 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/18797)를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="e223b-186">To apply the following steps to the app built using the tutorial, see [this GitHub issue](https://github.com/dotnet/AspNetCore.Docs/issues/18797).</span></span>
 
-<span data-ttu-id="e223b-187">인터페이스를 사용 하 여 추가 클레임을에 추가할 수 있습니다 :::no-loc(ASP.NET Core Identity)::: `IUserClaimsPrincipalFactory<T>` .</span><span class="sxs-lookup"><span data-stu-id="e223b-187">Additional claims can be added to :::no-loc(ASP.NET Core Identity)::: by using the `IUserClaimsPrincipalFactory<T>` interface.</span></span> <span data-ttu-id="e223b-188">이 클래스는 메서드의 응용 프로그램에 추가할 수 있습니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="e223b-188">This class can be added to the app in the `Startup.ConfigureServices` method.</span></span> <span data-ttu-id="e223b-189">다음과 같이 클래스의 사용자 지정 구현을 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-189">Add the custom implementation of the class as follows:</span></span>
+<span data-ttu-id="e223b-187">인터페이스를 사용 하 여 추가 클레임을에 추가할 수 있습니다 ASP.NET Core Identity `IUserClaimsPrincipalFactory<T>` .</span><span class="sxs-lookup"><span data-stu-id="e223b-187">Additional claims can be added to ASP.NET Core Identity by using the `IUserClaimsPrincipalFactory<T>` interface.</span></span> <span data-ttu-id="e223b-188">이 클래스는 메서드의 응용 프로그램에 추가할 수 있습니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="e223b-188">This class can be added to the app in the `Startup.ConfigureServices` method.</span></span> <span data-ttu-id="e223b-189">다음과 같이 클래스의 사용자 지정 구현을 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-189">Add the custom implementation of the class as follows:</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.Add:::no-loc(Identity):::<ApplicationUser, :::no-loc(Identity):::Role>()
+    services.AddIdentity<ApplicationUser, IdentityRole>()
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
 
@@ -262,7 +262,7 @@ public void ConfigureServices(IServiceCollection services)
 <span data-ttu-id="e223b-190">데모 코드는 클래스를 사용 합니다 `ApplicationUser` .</span><span class="sxs-lookup"><span data-stu-id="e223b-190">The demo code uses the `ApplicationUser` class.</span></span> <span data-ttu-id="e223b-191">이 클래스는 `IsAdmin` 추가 클레임을 추가 하는 데 사용 되는 속성을 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-191">This class adds an `IsAdmin` property which is used to add the additional claim.</span></span>
 
 ```csharp
-public class ApplicationUser : :::no-loc(Identity):::User
+public class ApplicationUser : IdentityUser
 {
     public bool IsAdmin { get; set; }
 }
@@ -272,19 +272,19 @@ public class ApplicationUser : :::no-loc(Identity):::User
 
 ```csharp
 public class AdditionalUserClaimsPrincipalFactory 
-        : UserClaimsPrincipalFactory<ApplicationUser, :::no-loc(Identity):::Role>
+        : UserClaimsPrincipalFactory<ApplicationUser, IdentityRole>
 {
     public AdditionalUserClaimsPrincipalFactory( 
         UserManager<ApplicationUser> userManager,
-        RoleManager<:::no-loc(Identity):::Role> roleManager, 
-        IOptions<:::no-loc(Identity):::Options> optionsAccessor) 
+        RoleManager<IdentityRole> roleManager, 
+        IOptions<IdentityOptions> optionsAccessor) 
         : base(userManager, roleManager, optionsAccessor)
     {}
 
     public async override Task<ClaimsPrincipal> CreateAsync(ApplicationUser user)
     {
         var principal = await base.CreateAsync(user);
-        var identity = (Claims:::no-loc(Identity):::)principal.:::no-loc(Identity):::;
+        var identity = (ClaimsIdentity)principal.Identity;
 
         var claims = new List<Claim>();
         if (user.IsAdmin)
@@ -302,7 +302,7 @@ public class AdditionalUserClaimsPrincipalFactory
 }
 ```
 
-<span data-ttu-id="e223b-194">그러면 앱에서 추가 클레임을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-194">The additional claim can then be used in the app.</span></span> <span data-ttu-id="e223b-195">페이지에서 :::no-loc(Razor)::: `IAuthorizationService` 인스턴스를 사용 하 여 클레임 값에 액세스할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-195">In a :::no-loc(Razor)::: Page, the `IAuthorizationService` instance can be used to access the claim value.</span></span>
+<span data-ttu-id="e223b-194">그러면 앱에서 추가 클레임을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-194">The additional claim can then be used in the app.</span></span> <span data-ttu-id="e223b-195">페이지에서 Razor `IAuthorizationService` 인스턴스를 사용 하 여 클레임 값에 액세스할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e223b-195">In a Razor Page, the `IAuthorizationService` instance can be used to access the claim value.</span></span>
 
 ```cshtml
 @using Microsoft.AspNetCore.Authorization

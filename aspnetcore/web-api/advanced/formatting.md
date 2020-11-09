@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 04/17/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: web-api/advanced/formatting
 ms.openlocfilehash: 89e3e51373db5f7cff974b7a8c69d06bedf856ca
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -165,7 +165,7 @@ public IActionResult Get()
 
 [!code-csharp[](./formatting/3.0sample/StartupNewtonsoftJson.cs?name=snippet)]
 
-<span data-ttu-id="fa937-189">위의 코드에서를 호출 하면 `AddNewtonsoftJson` 다음 WEB API, MVC 및 :::no-loc(Razor)::: Pages 기능을 사용 하도록 구성 됩니다 `Newtonsoft.Json` .</span><span class="sxs-lookup"><span data-stu-id="fa937-189">In the preceding code, the call to `AddNewtonsoftJson` configures the following Web API, MVC, and :::no-loc(Razor)::: Pages features to use `Newtonsoft.Json`:</span></span>
+<span data-ttu-id="fa937-189">위의 코드에서를 호출 하면 `AddNewtonsoftJson` 다음 WEB API, MVC 및 Razor Pages 기능을 사용 하도록 구성 됩니다 `Newtonsoft.Json` .</span><span class="sxs-lookup"><span data-stu-id="fa937-189">In the preceding code, the call to `AddNewtonsoftJson` configures the following Web API, MVC, and Razor Pages features to use `Newtonsoft.Json`:</span></span>
 
 * <span data-ttu-id="fa937-190">JSON을 읽고 쓰는 입력 및 출력 포맷터</span><span class="sxs-lookup"><span data-stu-id="fa937-190">Input and output formatters that read and write JSON</span></span>
 * <xref:Microsoft.AspNetCore.Mvc.JsonResult>

@@ -6,17 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 4/20/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/app-secrets
 ms.openlocfilehash: 174f831583c2ef6cb7f122a22fe855acc8fe3047
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -39,7 +39,7 @@ ms.locfileid: "93056870"
 
 <span data-ttu-id="b8fef-112">환경 변수는 코드 또는 로컬 구성 파일에서 앱 암호의 저장을 방지 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-112">Environment variables are used to avoid storage of app secrets in code or in local configuration files.</span></span> <span data-ttu-id="b8fef-113">환경 변수는 이전에 지정 된 모든 구성 소스에 대 한 구성 값을 재정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-113">Environment variables override configuration values for all previously specified configuration sources.</span></span>
 
-<span data-ttu-id="b8fef-114">**개별 사용자 계정** 보안이 사용 되는 ASP.NET Core 웹 앱을 고려 합니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-114">Consider an ASP.NET Core web app in which **Individual User Accounts** security is enabled.</span></span> <span data-ttu-id="b8fef-115">기본 데이터베이스 연결 문자열은 키가 있는 프로젝트의 파일에 포함 됩니다 *:::no-loc(appsettings.json):::* `DefaultConnection` .</span><span class="sxs-lookup"><span data-stu-id="b8fef-115">A default database connection string is included in the project's *:::no-loc(appsettings.json):::* file with the key `DefaultConnection`.</span></span> <span data-ttu-id="b8fef-116">기본 연결 문자열은 사용자 모드에서 실행 되며 암호를 요구 하지 않는 LocalDB 용입니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-116">The default connection string is for LocalDB, which runs in user mode and doesn't require a password.</span></span> <span data-ttu-id="b8fef-117">앱을 배포 하는 동안 `DefaultConnection` 환경 변수의 값으로 키 값을 재정의할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-117">During app deployment, the `DefaultConnection` key value can be overridden with an environment variable's value.</span></span> <span data-ttu-id="b8fef-118">환경 변수는 중요 한 자격 증명을 사용 하 여 전체 연결 문자열을 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-118">The environment variable may store the complete connection string with sensitive credentials.</span></span>
+<span data-ttu-id="b8fef-114">**개별 사용자 계정** 보안이 사용 되는 ASP.NET Core 웹 앱을 고려 합니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-114">Consider an ASP.NET Core web app in which **Individual User Accounts** security is enabled.</span></span> <span data-ttu-id="b8fef-115">기본 데이터베이스 연결 문자열은 키가 있는 프로젝트의 파일에 포함 됩니다 *appsettings.json* `DefaultConnection` .</span><span class="sxs-lookup"><span data-stu-id="b8fef-115">A default database connection string is included in the project's *appsettings.json* file with the key `DefaultConnection`.</span></span> <span data-ttu-id="b8fef-116">기본 연결 문자열은 사용자 모드에서 실행 되며 암호를 요구 하지 않는 LocalDB 용입니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-116">The default connection string is for LocalDB, which runs in user mode and doesn't require a password.</span></span> <span data-ttu-id="b8fef-117">앱을 배포 하는 동안 `DefaultConnection` 환경 변수의 값으로 키 값을 재정의할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-117">During app deployment, the `DefaultConnection` key value can be overridden with an environment variable's value.</span></span> <span data-ttu-id="b8fef-118">환경 변수는 중요 한 자격 증명을 사용 하 여 전체 연결 문자열을 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-118">The environment variable may store the complete connection string with sensitive credentials.</span></span>
 
 > [!WARNING]
 > <span data-ttu-id="b8fef-119">환경 변수는 일반적으로 암호화 되지 않은 일반 텍스트로 저장 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-119">Environment variables are generally stored in plain, unencrypted text.</span></span> <span data-ttu-id="b8fef-120">컴퓨터 또는 프로세스가 손상 되 면 신뢰할 수 없는 당사자가 환경 변수에 액세스할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-120">If the machine or process is compromised, environment variables can be accessed by untrusted parties.</span></span> <span data-ttu-id="b8fef-121">사용자 비밀 공개를 방지 하는 추가 조치가 필요할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-121">Additional measures to prevent disclosure of user secrets may be required.</span></span>
@@ -182,7 +182,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ## <a name="string-replacement-with-secrets"></a><span data-ttu-id="b8fef-186">암호를 사용 하 여 문자열 대체</span><span class="sxs-lookup"><span data-stu-id="b8fef-186">String replacement with secrets</span></span>
 
-<span data-ttu-id="b8fef-187">암호를 일반 텍스트로 저장 하는 것은 안전 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-187">Storing passwords in plain text is insecure.</span></span> <span data-ttu-id="b8fef-188">예를 들어에 저장 된 데이터베이스 연결 문자열은 *:::no-loc(appsettings.json):::* 지정 된 사용자에 대 한 암호를 포함할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-188">For example, a database connection string stored in *:::no-loc(appsettings.json):::* may include a password for the specified user:</span></span>
+<span data-ttu-id="b8fef-187">암호를 일반 텍스트로 저장 하는 것은 안전 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-187">Storing passwords in plain text is insecure.</span></span> <span data-ttu-id="b8fef-188">예를 들어에 저장 된 데이터베이스 연결 문자열은 *appsettings.json* 지정 된 사용자에 대 한 암호를 포함할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-188">For example, a database connection string stored in *appsettings.json* may include a password for the specified user:</span></span>
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
@@ -192,9 +192,9 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-<span data-ttu-id="b8fef-191">`Password`에서 연결 문자열의 키-값 쌍을 제거 합니다 *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="b8fef-191">Remove the `Password` key-value pair from the connection string in *:::no-loc(appsettings.json):::* .</span></span> <span data-ttu-id="b8fef-192">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-192">For example:</span></span>
+<span data-ttu-id="b8fef-191">`Password`에서 연결 문자열의 키-값 쌍을 제거 합니다 *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="b8fef-191">Remove the `Password` key-value pair from the connection string in *appsettings.json* .</span></span> <span data-ttu-id="b8fef-192">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-192">For example:</span></span>
 
-[!code-json[](app-secrets/samples/3.x/UserSecrets/:::no-loc(appsettings.json):::?highlight=3)]
+[!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings.json?highlight=3)]
 
 <span data-ttu-id="b8fef-193">개체의 속성에 대해 암호의 값을 설정 <xref:System.Data.SqlClient.SqlConnectionStringBuilder> <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password%2A> 하 여 연결 문자열을 완성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-193">The secret's value can be set on a <xref:System.Data.SqlClient.SqlConnectionStringBuilder> object's <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password%2A> property to complete the connection string:</span></span>
 
@@ -287,7 +287,7 @@ No secrets configured for this application.
 
 <span data-ttu-id="b8fef-216">환경 변수는 코드 또는 로컬 구성 파일에서 앱 암호의 저장을 방지 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-216">Environment variables are used to avoid storage of app secrets in code or in local configuration files.</span></span> <span data-ttu-id="b8fef-217">환경 변수는 이전에 지정 된 모든 구성 소스에 대 한 구성 값을 재정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-217">Environment variables override configuration values for all previously specified configuration sources.</span></span>
 
-<span data-ttu-id="b8fef-218">**개별 사용자 계정** 보안이 사용 되는 ASP.NET Core 웹 앱을 고려 합니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-218">Consider an ASP.NET Core web app in which **Individual User Accounts** security is enabled.</span></span> <span data-ttu-id="b8fef-219">기본 데이터베이스 연결 문자열은 키가 있는 프로젝트의 파일에 포함 됩니다 *:::no-loc(appsettings.json):::* `DefaultConnection` .</span><span class="sxs-lookup"><span data-stu-id="b8fef-219">A default database connection string is included in the project's *:::no-loc(appsettings.json):::* file with the key `DefaultConnection`.</span></span> <span data-ttu-id="b8fef-220">기본 연결 문자열은 사용자 모드에서 실행 되며 암호를 요구 하지 않는 LocalDB 용입니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-220">The default connection string is for LocalDB, which runs in user mode and doesn't require a password.</span></span> <span data-ttu-id="b8fef-221">앱을 배포 하는 동안 `DefaultConnection` 환경 변수의 값으로 키 값을 재정의할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-221">During app deployment, the `DefaultConnection` key value can be overridden with an environment variable's value.</span></span> <span data-ttu-id="b8fef-222">환경 변수는 중요 한 자격 증명을 사용 하 여 전체 연결 문자열을 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-222">The environment variable may store the complete connection string with sensitive credentials.</span></span>
+<span data-ttu-id="b8fef-218">**개별 사용자 계정** 보안이 사용 되는 ASP.NET Core 웹 앱을 고려 합니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-218">Consider an ASP.NET Core web app in which **Individual User Accounts** security is enabled.</span></span> <span data-ttu-id="b8fef-219">기본 데이터베이스 연결 문자열은 키가 있는 프로젝트의 파일에 포함 됩니다 *appsettings.json* `DefaultConnection` .</span><span class="sxs-lookup"><span data-stu-id="b8fef-219">A default database connection string is included in the project's *appsettings.json* file with the key `DefaultConnection`.</span></span> <span data-ttu-id="b8fef-220">기본 연결 문자열은 사용자 모드에서 실행 되며 암호를 요구 하지 않는 LocalDB 용입니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-220">The default connection string is for LocalDB, which runs in user mode and doesn't require a password.</span></span> <span data-ttu-id="b8fef-221">앱을 배포 하는 동안 `DefaultConnection` 환경 변수의 값으로 키 값을 재정의할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-221">During app deployment, the `DefaultConnection` key value can be overridden with an environment variable's value.</span></span> <span data-ttu-id="b8fef-222">환경 변수는 중요 한 자격 증명을 사용 하 여 전체 연결 문자열을 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-222">The environment variable may store the complete connection string with sensitive credentials.</span></span>
 
 > [!WARNING]
 > <span data-ttu-id="b8fef-223">환경 변수는 일반적으로 암호화 되지 않은 일반 텍스트로 저장 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-223">Environment variables are generally stored in plain, unencrypted text.</span></span> <span data-ttu-id="b8fef-224">컴퓨터 또는 프로세스가 손상 되 면 신뢰할 수 없는 당사자가 환경 변수에 액세스할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-224">If the machine or process is compromised, environment variables can be accessed by untrusted parties.</span></span> <span data-ttu-id="b8fef-225">사용자 비밀 공개를 방지 하는 추가 조치가 필요할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-225">Additional measures to prevent disclosure of user secrets may be required.</span></span>
@@ -427,7 +427,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ## <a name="string-replacement-with-secrets"></a><span data-ttu-id="b8fef-289">암호를 사용 하 여 문자열 대체</span><span class="sxs-lookup"><span data-stu-id="b8fef-289">String replacement with secrets</span></span>
 
-<span data-ttu-id="b8fef-290">암호를 일반 텍스트로 저장 하는 것은 안전 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-290">Storing passwords in plain text is insecure.</span></span> <span data-ttu-id="b8fef-291">예를 들어에 저장 된 데이터베이스 연결 문자열은 *:::no-loc(appsettings.json):::* 지정 된 사용자에 대 한 암호를 포함할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-291">For example, a database connection string stored in *:::no-loc(appsettings.json):::* may include a password for the specified user:</span></span>
+<span data-ttu-id="b8fef-290">암호를 일반 텍스트로 저장 하는 것은 안전 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-290">Storing passwords in plain text is insecure.</span></span> <span data-ttu-id="b8fef-291">예를 들어에 저장 된 데이터베이스 연결 문자열은 *appsettings.json* 지정 된 사용자에 대 한 암호를 포함할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-291">For example, a database connection string stored in *appsettings.json* may include a password for the specified user:</span></span>
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
@@ -437,9 +437,9 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-<span data-ttu-id="b8fef-294">`Password`에서 연결 문자열의 키-값 쌍을 제거 합니다 *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="b8fef-294">Remove the `Password` key-value pair from the connection string in *:::no-loc(appsettings.json):::* .</span></span> <span data-ttu-id="b8fef-295">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-295">For example:</span></span>
+<span data-ttu-id="b8fef-294">`Password`에서 연결 문자열의 키-값 쌍을 제거 합니다 *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="b8fef-294">Remove the `Password` key-value pair from the connection string in *appsettings.json* .</span></span> <span data-ttu-id="b8fef-295">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-295">For example:</span></span>
 
-[!code-json[](app-secrets/samples/2.x/UserSecrets/:::no-loc(appsettings.json):::?highlight=3)]
+[!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
 <span data-ttu-id="b8fef-296">개체의 속성에 대해 암호의 값을 설정 <xref:System.Data.SqlClient.SqlConnectionStringBuilder> <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password%2A> 하 여 연결 문자열을 완성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b8fef-296">The secret's value can be set on a <xref:System.Data.SqlClient.SqlConnectionStringBuilder> object's <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password%2A> property to complete the connection string:</span></span>
 

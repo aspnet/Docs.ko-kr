@@ -7,17 +7,17 @@ ms.custom: mvc
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/microsoft-logins
 ms.openlocfilehash: 3161e4f0f735294d69dd51634b424d1ed573e615
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -100,7 +100,7 @@ ms.locfileid: "93060302"
 * <span data-ttu-id="929f0-145">Microsoft 계정 공급자가 로그인 오류 페이지로 리디렉션되는 경우 `#` Uri에서 (해시 태그) 바로 다음에 나오는 오류 제목 및 설명 쿼리 문자열 매개 변수를 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="929f0-145">If the Microsoft Account provider redirects you to a sign in error page, note the error title and description query string parameters directly following the `#` (hashtag) in the Uri.</span></span>
 
   <span data-ttu-id="929f0-146">오류 메시지가 Microsoft 인증 문제를 나타내는 것 처럼 보이지만 가장 일반적인 원인은 **웹** 플랫폼에 지정 된 **리디렉션 uri** 와 일치 하지 않는 응용 프로그램 uri입니다.</span><span class="sxs-lookup"><span data-stu-id="929f0-146">Although the error message seems to indicate a problem with Microsoft authentication, the most common cause is your application Uri not matching any of the **Redirect URIs** specified for the **Web** platform.</span></span>
-* <span data-ttu-id="929f0-147">:::no-loc(Identity):::에서를 호출 하 여가 구성 되지 않은 경우 `services.Add:::no-loc(Identity):::` `ConfigureServices` 인증을 시도 하면 ArgumentException이 발생 합니다. *' SignInScheme ' 옵션을 제공 해야* 합니다.</span><span class="sxs-lookup"><span data-stu-id="929f0-147">If :::no-loc(Identity)::: isn't configured by calling `services.Add:::no-loc(Identity):::` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided* .</span></span> <span data-ttu-id="929f0-148">이 샘플에서 사용 되는 프로젝트 템플릿은이 작업이 수행 되도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="929f0-148">The project template used in this sample ensures that this is done.</span></span>
+* <span data-ttu-id="929f0-147">Identity에서를 호출 하 여가 구성 되지 않은 경우 `services.AddIdentity` `ConfigureServices` 인증을 시도 하면 ArgumentException이 발생 합니다. *' SignInScheme ' 옵션을 제공 해야* 합니다.</span><span class="sxs-lookup"><span data-stu-id="929f0-147">If Identity isn't configured by calling `services.AddIdentity` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided* .</span></span> <span data-ttu-id="929f0-148">이 샘플에서 사용 되는 프로젝트 템플릿은이 작업이 수행 되도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="929f0-148">The project template used in this sample ensures that this is done.</span></span>
 * <span data-ttu-id="929f0-149">초기 마이그레이션을 적용 하 여 사이트 데이터베이스를 만들지 않은 경우 요청 오류를 *처리 하는 동안 데이터베이스 작업이 실패* 하 게 됩니다.</span><span class="sxs-lookup"><span data-stu-id="929f0-149">If the site database has not been created by applying the initial migration, you will get *A database operation failed while processing the request* error.</span></span> <span data-ttu-id="929f0-150">**마이그레이션 적용** 을 탭 하 여 데이터베이스를 만들고 새로 고쳐 오류를 계속 합니다.</span><span class="sxs-lookup"><span data-stu-id="929f0-150">Tap **Apply Migrations** to create the database and refresh to continue past the error.</span></span>
 
 ## <a name="next-steps"></a><span data-ttu-id="929f0-151">다음 단계</span><span class="sxs-lookup"><span data-stu-id="929f0-151">Next steps</span></span>

@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 01/09/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: client-side/using-browserlink
 ms.openlocfilehash: 80f05acab55af973faf08b5db79ea4cbaf896b14
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -35,7 +35,7 @@ ms.locfileid: "93054491"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="ca456-109">[Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) 패키지를 프로젝트에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-109">Add the [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) package to your project.</span></span> <span data-ttu-id="ca456-110">또한 ASP.NET Core :::no-loc(Razor)::: Pages 또는 MVC 프로젝트의 경우, <xref:mvc/views/view-compilation>에 설명된 대로 :::no-loc(Razor):::( *.cshtml* ) 파일의 런타임 컴파일을 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-110">For ASP.NET Core :::no-loc(Razor)::: Pages or MVC projects, also enable runtime compilation of :::no-loc(Razor)::: ( *.cshtml* ) files as described in <xref:mvc/views/view-compilation>.</span></span> <span data-ttu-id="ca456-111">:::no-loc(Razor)::: 구문 변경 내용은 런타임 컴파일을 사용하도록 설정한 경우에만 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-111">:::no-loc(Razor)::: syntax changes are applied only when runtime compilation has been enabled.</span></span>
+<span data-ttu-id="ca456-109">[Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) 패키지를 프로젝트에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-109">Add the [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) package to your project.</span></span> <span data-ttu-id="ca456-110">또한 ASP.NET Core Razor Pages 또는 MVC 프로젝트의 경우, <xref:mvc/views/view-compilation>에 설명된 대로 Razor( *.cshtml* ) 파일의 런타임 컴파일을 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-110">For ASP.NET Core Razor Pages or MVC projects, also enable runtime compilation of Razor ( *.cshtml* ) files as described in <xref:mvc/views/view-compilation>.</span></span> <span data-ttu-id="ca456-111">Razor 구문 변경 내용은 런타임 컴파일을 사용하도록 설정한 경우에만 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-111">Razor syntax changes are applied only when runtime compilation has been enabled.</span></span>
 
 ::: moniker-end
 
@@ -140,7 +140,7 @@ if (env.IsDevelopment())
 
 ## <a name="how-it-works"></a><span data-ttu-id="ca456-157">작동 방법</span><span class="sxs-lookup"><span data-stu-id="ca456-157">How it works</span></span>
 
-<span data-ttu-id="ca456-158">브라우저 링크는 [:::no-loc(SignalR):::](xref:signalr/introduction)를 사용하여 Visual Studio와 브라우저 간에 통신 채널을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-158">Browser Link uses [:::no-loc(SignalR):::](xref:signalr/introduction) to create a communication channel between Visual Studio and the browser.</span></span> <span data-ttu-id="ca456-159">브라우저 링크를 사용하도록 설정한 경우, Visual Studio는 여러 클라이언트(브라우저)가 연결할 수 있는 :::no-loc(SignalR)::: 서버 역할을 합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-159">When Browser Link is enabled, Visual Studio acts as a :::no-loc(SignalR)::: server that multiple clients (browsers) can connect to.</span></span> <span data-ttu-id="ca456-160">또한 브라우저 링크는 ASP.NET Core 요청 파이프라인에 미들웨어 구성 요소를 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-160">Browser Link also registers a middleware component in the ASP.NET Core request pipeline.</span></span> <span data-ttu-id="ca456-161">이 구성 요소는 서버의 모든 페이지 요청에 특수 `<script>` 참조를 삽입합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-161">This component injects special `<script>` references into every page request from the server.</span></span> <span data-ttu-id="ca456-162">브라우저에서 **소스 보기** 를 선택하고 `<body>` 태그 콘텐츠의 끝으로 스크롤하면 스크립트 참조를 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-162">You can see the script references by selecting **View source** in the browser and scrolling to the end of the `<body>` tag content:</span></span>
+<span data-ttu-id="ca456-158">브라우저 링크는 [SignalR](xref:signalr/introduction)를 사용하여 Visual Studio와 브라우저 간에 통신 채널을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-158">Browser Link uses [SignalR](xref:signalr/introduction) to create a communication channel between Visual Studio and the browser.</span></span> <span data-ttu-id="ca456-159">브라우저 링크를 사용하도록 설정한 경우, Visual Studio는 여러 클라이언트(브라우저)가 연결할 수 있는 SignalR 서버 역할을 합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-159">When Browser Link is enabled, Visual Studio acts as a SignalR server that multiple clients (browsers) can connect to.</span></span> <span data-ttu-id="ca456-160">또한 브라우저 링크는 ASP.NET Core 요청 파이프라인에 미들웨어 구성 요소를 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-160">Browser Link also registers a middleware component in the ASP.NET Core request pipeline.</span></span> <span data-ttu-id="ca456-161">이 구성 요소는 서버의 모든 페이지 요청에 특수 `<script>` 참조를 삽입합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-161">This component injects special `<script>` references into every page request from the server.</span></span> <span data-ttu-id="ca456-162">브라우저에서 **소스 보기** 를 선택하고 `<body>` 태그 콘텐츠의 끝으로 스크롤하면 스크립트 참조를 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-162">You can see the script references by selecting **View source** in the browser and scrolling to the end of the `<body>` tag content:</span></span>
 
 ```html
     <!-- Visual Studio Browser Link -->
@@ -154,4 +154,4 @@ if (env.IsDevelopment())
 
 <span data-ttu-id="ca456-163">소스 파일은 수정되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-163">Your source files aren't modified.</span></span> <span data-ttu-id="ca456-164">미들웨어 구성 요소는 스크립트 참조를 동적으로 삽입합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-164">The middleware component injects the script references dynamically.</span></span>
 
-<span data-ttu-id="ca456-165">브라우저 쪽 코드는 모두 JavaScript이므로, 브라우저 플러그 인을 요구하지 않고 :::no-loc(SignalR):::를 지원하는 모든 브라우저에서 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-165">Because the browser-side code is all JavaScript, it works on all browsers that :::no-loc(SignalR)::: supports without requiring a browser plug-in.</span></span>
+<span data-ttu-id="ca456-165">브라우저 쪽 코드는 모두 JavaScript이므로, 브라우저 플러그 인을 요구하지 않고 SignalR를 지원하는 모든 브라우저에서 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="ca456-165">Because the browser-side code is all JavaScript, it works on all browsers that SignalR supports without requiring a browser plug-in.</span></span>

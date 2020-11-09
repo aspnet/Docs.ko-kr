@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/21/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/models/file-uploads
 ms.openlocfilehash: 14561bace565c104d0a9c926cad3105c4865e72a
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -48,7 +48,7 @@ ms.locfileid: "93061173"
 
 * <span data-ttu-id="40ca9-114">전용 파일 업로드 영역(바람직하게는 시스템 드라이브가 아닌 위치)에 파일을 업로드합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-114">Upload files to a dedicated file upload area, preferably to a non-system drive.</span></span> <span data-ttu-id="40ca9-115">전용 위치를 사용하면 업로드된 파일에 대한 보안 제한을 더 쉽게 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-115">A dedicated location makes it easier to impose security restrictions on uploaded files.</span></span> <span data-ttu-id="40ca9-116">파일 업로드 위치에 대한 실행 권한을 사용하지 않도록 설정합니다.&dagger;</span><span class="sxs-lookup"><span data-stu-id="40ca9-116">Disable execute permissions on the file upload location.&dagger;</span></span>
 * <span data-ttu-id="40ca9-117">업로드된 파일을 앱과 동일한 디렉터리 트리에 보관하지 **마세요** .&dagger;</span><span class="sxs-lookup"><span data-stu-id="40ca9-117">Do **not** persist uploaded files in the same directory tree as the app.&dagger;</span></span>
-* <span data-ttu-id="40ca9-118">앱에 의해 결정된 안전한 파일 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-118">Use a safe file name determined by the app.</span></span> <span data-ttu-id="40ca9-119">사용자가 제공한 파일 이름 또는 업로드 된 파일의 신뢰할 수 없는 파일 이름을 사용 하지 마세요. &dagger; HTML을 표시 하는 경우 신뢰할 수 없는 파일 이름을 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-119">Don't use a file name provided by the user or the untrusted file name of the uploaded file.&dagger; HTML encode the untrusted file name when displaying it.</span></span> <span data-ttu-id="40ca9-120">예를 들어 파일 이름을 기록 하거나 UI에 표시 하는 경우 ( :::no-loc(Razor)::: 자동으로 HTML 인코딩 출력)</span><span class="sxs-lookup"><span data-stu-id="40ca9-120">For example, logging the file name or displaying in UI (:::no-loc(Razor)::: automatically HTML encodes output).</span></span>
+* <span data-ttu-id="40ca9-118">앱에 의해 결정된 안전한 파일 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-118">Use a safe file name determined by the app.</span></span> <span data-ttu-id="40ca9-119">사용자가 제공한 파일 이름 또는 업로드 된 파일의 신뢰할 수 없는 파일 이름을 사용 하지 마세요. &dagger; HTML을 표시 하는 경우 신뢰할 수 없는 파일 이름을 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-119">Don't use a file name provided by the user or the untrusted file name of the uploaded file.&dagger; HTML encode the untrusted file name when displaying it.</span></span> <span data-ttu-id="40ca9-120">예를 들어 파일 이름을 기록 하거나 UI에 표시 하는 경우 ( Razor 자동으로 HTML 인코딩 출력)</span><span class="sxs-lookup"><span data-stu-id="40ca9-120">For example, logging the file name or displaying in UI (Razor automatically HTML encodes output).</span></span>
 * <span data-ttu-id="40ca9-121">앱의 디자인 사양으로 승인된 파일 확장명만 허용합니다.&dagger;</span><span class="sxs-lookup"><span data-stu-id="40ca9-121">Allow only approved file extensions for the app's design specification.&dagger;</span></span> <!-- * Check the file format signature to prevent a user from uploading a masqueraded file.&dagger; For example, don't permit a user to upload an *.exe* file with a *.txt* extension. Add this back when we get instructions how to do this.  -->
 * <span data-ttu-id="40ca9-122">서버에서 클라이언트 쪽 검사가 수행 되는지 확인 합니다. &dagger; 클라이언트 쪽 검사는 쉽게 피할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-122">Verify that client-side checks are performed on the server.&dagger; Client-side checks are easy to circumvent.</span></span>
 * <span data-ttu-id="40ca9-123">업로드된 파일의 크기를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-123">Check the size of an uploaded file.</span></span> <span data-ttu-id="40ca9-124">대규모로 업로드되지 않도록 최대 크기 제한을 설정합니다.&dagger;</span><span class="sxs-lookup"><span data-stu-id="40ca9-124">Set a maximum size limit to prevent large uploads.&dagger;</span></span>
@@ -125,7 +125,7 @@ ms.locfileid: "93061173"
 
 <span data-ttu-id="40ca9-171">소용량 파일을 업로드하려면 다중 파트 양식을 사용하거나 JavaScript를 사용하여 POST 요청을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-171">To upload small files, use a multipart form or construct a POST request using JavaScript.</span></span>
 
-<span data-ttu-id="40ca9-172">다음 예제에서는 :::no-loc(Razor)::: pages 폼을 사용 하 여 단일 파일 (샘플 응용 프로그램의 *Pages/BufferedSingleFileUploadPhysical* )을 업로드 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-172">The following example demonstrates the use of a :::no-loc(Razor)::: Pages form to upload a single file ( *Pages/BufferedSingleFileUploadPhysical.cshtml* in the sample app):</span></span>
+<span data-ttu-id="40ca9-172">다음 예제에서는 Razor pages 폼을 사용 하 여 단일 파일 (샘플 응용 프로그램의 *Pages/BufferedSingleFileUploadPhysical* )을 업로드 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-172">The following example demonstrates the use of a Razor Pages form to upload a single file ( *Pages/BufferedSingleFileUploadPhysical.cshtml* in the sample app):</span></span>
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -352,7 +352,7 @@ public class BufferedSingleFileUploadDb
 > [!NOTE]
 > <span data-ttu-id="40ca9-223"><xref:Microsoft.AspNetCore.Http.IFormFile>은 작업 메서드 매개 변수 또는 바운딩 모델 속성으로 직접 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-223"><xref:Microsoft.AspNetCore.Http.IFormFile> can be used directly as an action method parameter or as a bound model property.</span></span> <span data-ttu-id="40ca9-224">위 예제에서는 바인딩된 모델 속성을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-224">The prior example uses a bound model property.</span></span>
 
-<span data-ttu-id="40ca9-225">는 `FileUpload` Pages 폼에 사용 됩니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="40ca9-225">The `FileUpload` is used in the :::no-loc(Razor)::: Pages form:</span></span>
+<span data-ttu-id="40ca9-225">는 `FileUpload` Pages 폼에 사용 됩니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="40ca9-225">The `FileUpload` is used in the Razor Pages form:</span></span>
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -418,17 +418,17 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 <span data-ttu-id="40ca9-239">다음 예제에서는 JavaScript를 사용하여 컨트롤러 작업에 파일을 스트리밍하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-239">The following example demonstrates how to use JavaScript to stream a file to a controller action.</span></span> <span data-ttu-id="40ca9-240">사용자 지정 필터 특성을 사용하여 파일의 위조 방지 토큰이 생성되고 요청 본문 대신 클라이언트 HTTP 헤더에 전달됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-240">The file's antiforgery token is generated using a custom filter attribute and passed to the client HTTP headers instead of in the request body.</span></span> <span data-ttu-id="40ca9-241">작업 메서드에서 업로드된 데이터를 직접 처리하므로 다른 사용자 지정 필터에서 형식 모델 바인딩을 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-241">Because the action method processes the uploaded data directly, form model binding is disabled by another custom filter.</span></span> <span data-ttu-id="40ca9-242">작업 내에서 양식의 콘텐츠는 각 개별 `MultipartSection`을 읽고 적절하게 파일을 처리하거나 콘텐츠를 저장하는 `MultipartReader`를 사용하여 읽습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-242">Within the action, the form's contents are read using a `MultipartReader`, which reads each individual `MultipartSection`, processing the file or storing the contents as appropriate.</span></span> <span data-ttu-id="40ca9-243">다중 파트 섹션을 읽은 후 작업에서 자체 모델 바인딩을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-243">After the multipart sections are read, the action performs its own model binding.</span></span>
 
-<span data-ttu-id="40ca9-244">초기 페이지 응답은 양식을 로드 하 고 특성을 통해의 위조 방지 토큰을에 저장 합니다 :::no-loc(cookie)::: `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-244">The initial page response loads the form and saves an antiforgery token in a :::no-loc(cookie)::: (via the `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` attribute).</span></span> <span data-ttu-id="40ca9-245">특성은 ASP.NET Core의 기본 제공 [위조 방지 지원 기능](xref:security/anti-request-forgery) 을 사용 하 여 :::no-loc(cookie)::: 요청 토큰으로를 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-245">The attribute uses ASP.NET Core's built-in [antiforgery support](xref:security/anti-request-forgery) to set a :::no-loc(cookie)::: with a request token:</span></span>
+<span data-ttu-id="40ca9-244">초기 페이지 응답은 양식을 로드 하 고 특성을 통해의 위조 방지 토큰을에 저장 합니다 cookie `GenerateAntiforgeryTokenCookieAttribute` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-244">The initial page response loads the form and saves an antiforgery token in a cookie (via the `GenerateAntiforgeryTokenCookieAttribute` attribute).</span></span> <span data-ttu-id="40ca9-245">특성은 ASP.NET Core의 기본 제공 [위조 방지 지원 기능](xref:security/anti-request-forgery) 을 사용 하 여 cookie 요청 토큰으로를 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-245">The attribute uses ASP.NET Core's built-in [antiforgery support](xref:security/anti-request-forgery) to set a cookie with a request token:</span></span>
 
-[!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute)]
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryTokenCookieAttribute)]
 
 <span data-ttu-id="40ca9-246">`DisableFormValueModelBindingAttribute`은 모델 바인딩을 사용하지 않도록 설정하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-246">The `DisableFormValueModelBindingAttribute` is used to disable model binding:</span></span>
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/ModelBinding.cs?name=snippet_DisableFormValueModelBindingAttribute)]
 
-<span data-ttu-id="40ca9-247">샘플 앱에서 `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` 및는 페이지 `DisableFormValueModelBindingAttribute` `/StreamedSingleFileUploadDb` `/StreamedSingleFileUploadPhysical` `Startup.ConfigureServices` [ :::no-loc(Razor)::: 규칙](xref:razor-pages/razor-pages-conventions)을 사용 하 여 및의 페이지 응용 프로그램 모델에 필터로 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-247">In the sample app, `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` and `DisableFormValueModelBindingAttribute` are applied as filters to the page application models of `/StreamedSingleFileUploadDb` and `/StreamedSingleFileUploadPhysical` in `Startup.ConfigureServices` using [:::no-loc(Razor)::: Pages conventions](xref:razor-pages/razor-pages-conventions):</span></span>
+<span data-ttu-id="40ca9-247">샘플 앱에서 `GenerateAntiforgeryTokenCookieAttribute` 및는 페이지 `DisableFormValueModelBindingAttribute` `/StreamedSingleFileUploadDb` `/StreamedSingleFileUploadPhysical` `Startup.ConfigureServices` [ Razor 규칙](xref:razor-pages/razor-pages-conventions)을 사용 하 여 및의 페이지 응용 프로그램 모델에 필터로 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-247">In the sample app, `GenerateAntiforgeryTokenCookieAttribute` and `DisableFormValueModelBindingAttribute` are applied as filters to the page application models of `/StreamedSingleFileUploadDb` and `/StreamedSingleFileUploadPhysical` in `Startup.ConfigureServices` using [Razor Pages conventions](xref:razor-pages/razor-pages-conventions):</span></span>
 
-[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_Add:::no-loc(Razor):::Pages&highlight=7-10,16-19)]
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_AddRazorPages&highlight=7-10,16-19)]
 
 <span data-ttu-id="40ca9-248">모델 바인딩은 양식을 읽지 않으므로 양식에서 바인딩된 매개 변수가 바인딩되지 않습니다(쿼리, 경로 및 헤더는 계속 작동함).</span><span class="sxs-lookup"><span data-stu-id="40ca9-248">Since model binding doesn't read the form, parameters that are bound from the form don't bind (query, route, and header continue to work).</span></span> <span data-ttu-id="40ca9-249">작업 메서드는 `Request` 속성으로 직접 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-249">The action method works directly with the `Request` property.</span></span> <span data-ttu-id="40ca9-250">`MultipartReader`는 각 섹션을 읽는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-250">A `MultipartReader` is used to read each section.</span></span> <span data-ttu-id="40ca9-251">키/값 데이터는 `KeyValueAccumulator`에 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-251">Key/value data is stored in a `KeyValueAccumulator`.</span></span> <span data-ttu-id="40ca9-252">다중 파트 섹션을 읽은 후 `KeyValueAccumulator`의 내용이 양식 데이터를 모델 형식으로 바인딩하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-252">After the multipart sections are read, the contents of the `KeyValueAccumulator` are used to bind the form data to a model type.</span></span>
 
@@ -514,7 +514,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 
 <span data-ttu-id="40ca9-285">실제 스토리지에 파일을 저장하는 데 클라이언트에서 제공하는 파일 이름을 사용하지 마세요.</span><span class="sxs-lookup"><span data-stu-id="40ca9-285">Never use a client-supplied file name for saving a file to physical storage.</span></span> <span data-ttu-id="40ca9-286">[Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) 또는 [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*)을 사용하여 임시 스토리지에 대한 전체 경로(파일 이름을 포함)를 만들어 파일에 대한 안전한 파일 이름을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-286">Create a safe file name for the file using [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) or [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) to create a full path (including the file name) for temporary storage.</span></span>
 
-<span data-ttu-id="40ca9-287">:::no-loc(Razor)::: 자동으로 표시 하기 위해 속성 값을 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-287">:::no-loc(Razor)::: automatically HTML encodes property values for display.</span></span> <span data-ttu-id="40ca9-288">다음 코드는 안전하게 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-288">The following code is safe to use:</span></span>
+<span data-ttu-id="40ca9-287">Razor 자동으로 표시 하기 위해 속성 값을 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-287">Razor automatically HTML encodes property values for display.</span></span> <span data-ttu-id="40ca9-288">다음 코드는 안전하게 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-288">The following code is safe to use:</span></span>
 
 ```cshtml
 @foreach (var file in Model.DatabaseFiles) {
@@ -526,7 +526,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 }
 ```
 
-<span data-ttu-id="40ca9-289">외부 :::no-loc(Razor)::: 에서는 항상 <xref:System.Net.WebUtility.HtmlEncode*> 사용자 요청의 파일 이름 콘텐츠를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-289">Outside of :::no-loc(Razor):::, always <xref:System.Net.WebUtility.HtmlEncode*> file name content from a user's request.</span></span>
+<span data-ttu-id="40ca9-289">외부 Razor 에서는 항상 <xref:System.Net.WebUtility.HtmlEncode*> 사용자 요청의 파일 이름 콘텐츠를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-289">Outside of Razor, always <xref:System.Net.WebUtility.HtmlEncode*> file name content from a user's request.</span></span>
 
 <span data-ttu-id="40ca9-290">많은 구현에서 파일 존재 여부에 대한 확인이 포함되어야 합니다. 그렇지 않으면 파일이 같은 이름의 파일을 덮어씁니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-290">Many implementations must include a check that the file exists; otherwise, the file is overwritten by a file of the same name.</span></span> <span data-ttu-id="40ca9-291">앱의 사양을 충족하는 추가 논리를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-291">Supply additional logic to meet your app's specifications.</span></span>
 
@@ -534,7 +534,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 
 <span data-ttu-id="40ca9-293">업로드된 파일의 크기를 제한합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-293">Limit the size of uploaded files.</span></span>
 
-<span data-ttu-id="40ca9-294">샘플 앱에서 파일 크기는 2MB(바이트 단위로 표시)로 제한됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-294">In the sample app, the size of the file is limited to 2 MB (indicated in bytes).</span></span> <span data-ttu-id="40ca9-295">이 제한은 파일의 [구성을](xref:fundamentals/configuration/index) 통해 제공 됩니다 *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="40ca9-295">The limit is supplied via [Configuration](xref:fundamentals/configuration/index) from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="40ca9-294">샘플 앱에서 파일 크기는 2MB(바이트 단위로 표시)로 제한됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-294">In the sample app, the size of the file is limited to 2 MB (indicated in bytes).</span></span> <span data-ttu-id="40ca9-295">이 제한은 파일의 [구성을](xref:fundamentals/configuration/index) 통해 제공 됩니다 *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="40ca9-295">The limit is supplied via [Configuration](xref:fundamentals/configuration/index) from the *appsettings.json* file:</span></span>
 
 ```json
 {
@@ -569,7 +569,7 @@ if (formFile.Length > _fileSizeLimit)
 
 ### <a name="match-name-attribute-value-to-parameter-name-of-post-method"></a><span data-ttu-id="40ca9-298">이름 특성 값을 POST 메서드의 매개 변수 이름과 일치</span><span class="sxs-lookup"><span data-stu-id="40ca9-298">Match name attribute value to parameter name of POST method</span></span>
 
-<span data-ttu-id="40ca9-299">폼 데이터를 :::no-loc(Razor)::: 게시 하거나 JavaScript를 직접 사용 하는 형식이 아닌 `FormData` 경우 폼의 요소에 지정 된 이름이 나 `FormData` 컨트롤러 작업의 매개 변수 이름과 일치 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-299">In non-:::no-loc(Razor)::: forms that POST form data or use JavaScript's `FormData` directly, the name specified in the form's element or `FormData` must match the name of the parameter in the controller's action.</span></span>
+<span data-ttu-id="40ca9-299">폼 데이터를 Razor 게시 하거나 JavaScript를 직접 사용 하는 형식이 아닌 `FormData` 경우 폼의 요소에 지정 된 이름이 나 `FormData` 컨트롤러 작업의 매개 변수 이름과 일치 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-299">In non-Razor forms that POST form data or use JavaScript's `FormData` directly, the name specified in the form's element or `FormData` must match the name of the parameter in the controller's action.</span></span>
 
 <span data-ttu-id="40ca9-300">다음 예제에서는</span><span class="sxs-lookup"><span data-stu-id="40ca9-300">In the following example:</span></span>
 
@@ -591,7 +591,7 @@ if (formFile.Length > _fileSizeLimit)
 
 <span data-ttu-id="40ca9-303">C# 메서드(`battlePlans`)의 매개 변수와 일치하는 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-303">Use a matching name for the parameter of the C# method (`battlePlans`):</span></span>
 
-* <span data-ttu-id="40ca9-304">:::no-loc(Razor):::페이지 페이지 처리기 메서드를 `Upload` 다음과 같이 지정 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-304">For a :::no-loc(Razor)::: Pages page handler method named `Upload`:</span></span>
+* <span data-ttu-id="40ca9-304">Razor페이지 페이지 처리기 메서드를 `Upload` 다음과 같이 지정 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-304">For a Razor Pages page handler method named `Upload`:</span></span>
 
   ```csharp
   public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> battlePlans)
@@ -622,10 +622,10 @@ public void ConfigureServices(IServiceCollection services)
 
 <span data-ttu-id="40ca9-312"><xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute>는 단일 페이지 또는 작업에 대해 <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit>을 설정하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-312"><xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> is used to set the <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> for a single page or action.</span></span>
 
-<span data-ttu-id="40ca9-313">:::no-loc(Razor):::페이지 앱에서 다음과 같은 [규칙](xref:razor-pages/razor-pages-conventions) 을 사용 하 여 필터를 적용 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-313">In a :::no-loc(Razor)::: Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="40ca9-313">Razor페이지 앱에서 다음과 같은 [규칙](xref:razor-pages/razor-pages-conventions) 을 사용 하 여 필터를 적용 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-313">In a Razor Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
-services.Add:::no-loc(Razor):::Pages(options =>
+services.AddRazorPages(options =>
 {
     options.Conventions
         .AddPageApplicationModelConvention("/FileUploadPage",
@@ -638,7 +638,7 @@ services.Add:::no-loc(Razor):::Pages(options =>
 });
 ```
 
-<span data-ttu-id="40ca9-314">페이지 :::no-loc(Razor)::: 앱 또는 MVC 앱에서 필터를 페이지 모델 또는 작업 메서드에 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-314">In a :::no-loc(Razor)::: Pages app or an MVC app, apply the filter to the page model or action method:</span></span>
+<span data-ttu-id="40ca9-314">페이지 Razor 앱 또는 MVC 앱에서 필터를 페이지 모델 또는 작업 메서드에 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-314">In a Razor Pages app or an MVC app, apply the filter to the page model or action method:</span></span>
 
 ```csharp
 // Set the limit to 256 MB
@@ -669,10 +669,10 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 <span data-ttu-id="40ca9-318"><xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute>는 단일 페이지 또는 작업에 대해 [ MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size)를 설정하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-318"><xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> is used to set the [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) for a single page or action.</span></span>
 
-<span data-ttu-id="40ca9-319">:::no-loc(Razor):::페이지 앱에서 다음과 같은 [규칙](xref:razor-pages/razor-pages-conventions) 을 사용 하 여 필터를 적용 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-319">In a :::no-loc(Razor)::: Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="40ca9-319">Razor페이지 앱에서 다음과 같은 [규칙](xref:razor-pages/razor-pages-conventions) 을 사용 하 여 필터를 적용 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-319">In a Razor Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
-services.Add:::no-loc(Razor):::Pages(options =>
+services.AddRazorPages(options =>
 {
     options.Conventions
         .AddPageApplicationModelConvention("/FileUploadPage",
@@ -685,7 +685,7 @@ services.Add:::no-loc(Razor):::Pages(options =>
 });
 ```
 
-<span data-ttu-id="40ca9-320">페이지 :::no-loc(Razor)::: 앱 또는 MVC 앱에서 필터를 페이지 처리기 클래스 또는 작업 메서드에 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-320">In a :::no-loc(Razor)::: pages app or an MVC app, apply the filter to the page handler class or action method:</span></span>
+<span data-ttu-id="40ca9-320">페이지 Razor 앱 또는 MVC 앱에서 필터를 페이지 처리기 클래스 또는 작업 메서드에 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-320">In a Razor pages app or an MVC app, apply the filter to the page handler class or action method:</span></span>
 
 ```csharp
 // Handle requests up to 50 MB
@@ -696,7 +696,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 }
 ```
 
-<span data-ttu-id="40ca9-321">`RequestSizeLimitAttribute`지시문을 사용 하 여를 적용할 수도 있습니다 [`@attribute`](xref:mvc/views/razor#attribute) :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="40ca9-321">The `RequestSizeLimitAttribute` can also be applied using the [`@attribute`](xref:mvc/views/razor#attribute) :::no-loc(Razor)::: directive:</span></span>
+<span data-ttu-id="40ca9-321">`RequestSizeLimitAttribute`지시문을 사용 하 여를 적용할 수도 있습니다 [`@attribute`](xref:mvc/views/razor#attribute) Razor .</span><span class="sxs-lookup"><span data-stu-id="40ca9-321">The `RequestSizeLimitAttribute` can also be applied using the [`@attribute`](xref:mvc/views/razor#attribute) Razor directive:</span></span>
 
 ```cshtml
 @attribute [RequestSizeLimitAttribute(52428800)]
@@ -772,7 +772,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 * <span data-ttu-id="40ca9-358">전용 파일 업로드 영역(바람직하게는 시스템 드라이브가 아닌 위치)에 파일을 업로드합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-358">Upload files to a dedicated file upload area, preferably to a non-system drive.</span></span> <span data-ttu-id="40ca9-359">전용 위치를 사용하면 업로드된 파일에 대한 보안 제한을 더 쉽게 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-359">A dedicated location makes it easier to impose security restrictions on uploaded files.</span></span> <span data-ttu-id="40ca9-360">파일 업로드 위치에 대한 실행 권한을 사용하지 않도록 설정합니다.&dagger;</span><span class="sxs-lookup"><span data-stu-id="40ca9-360">Disable execute permissions on the file upload location.&dagger;</span></span>
 * <span data-ttu-id="40ca9-361">업로드된 파일을 앱과 동일한 디렉터리 트리에 보관하지 **마세요** .&dagger;</span><span class="sxs-lookup"><span data-stu-id="40ca9-361">Do **not** persist uploaded files in the same directory tree as the app.&dagger;</span></span>
-* <span data-ttu-id="40ca9-362">앱에 의해 결정된 안전한 파일 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-362">Use a safe file name determined by the app.</span></span> <span data-ttu-id="40ca9-363">사용자가 제공한 파일 이름 또는 업로드 된 파일의 신뢰할 수 없는 파일 이름을 사용 하지 마세요. &dagger; HTML을 표시 하는 경우 신뢰할 수 없는 파일 이름을 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-363">Don't use a file name provided by the user or the untrusted file name of the uploaded file.&dagger; HTML encode the untrusted file name when displaying it.</span></span> <span data-ttu-id="40ca9-364">예를 들어 파일 이름을 기록 하거나 UI에 표시 하는 경우 ( :::no-loc(Razor)::: 자동으로 HTML 인코딩 출력)</span><span class="sxs-lookup"><span data-stu-id="40ca9-364">For example, logging the file name or displaying in UI (:::no-loc(Razor)::: automatically HTML encodes output).</span></span>
+* <span data-ttu-id="40ca9-362">앱에 의해 결정된 안전한 파일 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-362">Use a safe file name determined by the app.</span></span> <span data-ttu-id="40ca9-363">사용자가 제공한 파일 이름 또는 업로드 된 파일의 신뢰할 수 없는 파일 이름을 사용 하지 마세요. &dagger; HTML을 표시 하는 경우 신뢰할 수 없는 파일 이름을 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-363">Don't use a file name provided by the user or the untrusted file name of the uploaded file.&dagger; HTML encode the untrusted file name when displaying it.</span></span> <span data-ttu-id="40ca9-364">예를 들어 파일 이름을 기록 하거나 UI에 표시 하는 경우 ( Razor 자동으로 HTML 인코딩 출력)</span><span class="sxs-lookup"><span data-stu-id="40ca9-364">For example, logging the file name or displaying in UI (Razor automatically HTML encodes output).</span></span>
 * <span data-ttu-id="40ca9-365">앱의 디자인 사양으로 승인된 파일 확장명만 허용합니다.&dagger;</span><span class="sxs-lookup"><span data-stu-id="40ca9-365">Allow only approved file extensions for the app's design specification.&dagger;</span></span> <!-- * Check the file format signature to prevent a user from uploading a masqueraded file.&dagger; For example, don't permit a user to upload an *.exe* file with a *.txt* extension. Add this back when we get instructions how to do this.  -->
 * <span data-ttu-id="40ca9-366">서버에서 클라이언트 쪽 검사가 수행 되는지 확인 합니다. &dagger; 클라이언트 쪽 검사는 쉽게 피할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-366">Verify that client-side checks are performed on the server.&dagger; Client-side checks are easy to circumvent.</span></span>
 * <span data-ttu-id="40ca9-367">업로드된 파일의 크기를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-367">Check the size of an uploaded file.</span></span> <span data-ttu-id="40ca9-368">대규모로 업로드되지 않도록 최대 크기 제한을 설정합니다.&dagger;</span><span class="sxs-lookup"><span data-stu-id="40ca9-368">Set a maximum size limit to prevent large uploads.&dagger;</span></span>
@@ -849,7 +849,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 <span data-ttu-id="40ca9-415">소용량 파일을 업로드하려면 다중 파트 양식을 사용하거나 JavaScript를 사용하여 POST 요청을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-415">To upload small files, use a multipart form or construct a POST request using JavaScript.</span></span>
 
-<span data-ttu-id="40ca9-416">다음 예제에서는 :::no-loc(Razor)::: pages 폼을 사용 하 여 단일 파일 (샘플 응용 프로그램의 *Pages/BufferedSingleFileUploadPhysical* )을 업로드 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-416">The following example demonstrates the use of a :::no-loc(Razor)::: Pages form to upload a single file ( *Pages/BufferedSingleFileUploadPhysical.cshtml* in the sample app):</span></span>
+<span data-ttu-id="40ca9-416">다음 예제에서는 Razor pages 폼을 사용 하 여 단일 파일 (샘플 응용 프로그램의 *Pages/BufferedSingleFileUploadPhysical* )을 업로드 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-416">The following example demonstrates the use of a Razor Pages form to upload a single file ( *Pages/BufferedSingleFileUploadPhysical.cshtml* in the sample app):</span></span>
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1076,7 +1076,7 @@ public class BufferedSingleFileUploadDb
 > [!NOTE]
 > <span data-ttu-id="40ca9-467"><xref:Microsoft.AspNetCore.Http.IFormFile>은 작업 메서드 매개 변수 또는 바운딩 모델 속성으로 직접 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-467"><xref:Microsoft.AspNetCore.Http.IFormFile> can be used directly as an action method parameter or as a bound model property.</span></span> <span data-ttu-id="40ca9-468">위 예제에서는 바인딩된 모델 속성을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-468">The prior example uses a bound model property.</span></span>
 
-<span data-ttu-id="40ca9-469">는 `FileUpload` Pages 폼에 사용 됩니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="40ca9-469">The `FileUpload` is used in the :::no-loc(Razor)::: Pages form:</span></span>
+<span data-ttu-id="40ca9-469">는 `FileUpload` Pages 폼에 사용 됩니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="40ca9-469">The `FileUpload` is used in the Razor Pages form:</span></span>
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1142,17 +1142,17 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 <span data-ttu-id="40ca9-483">다음 예제에서는 JavaScript를 사용하여 컨트롤러 작업에 파일을 스트리밍하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-483">The following example demonstrates how to use JavaScript to stream a file to a controller action.</span></span> <span data-ttu-id="40ca9-484">사용자 지정 필터 특성을 사용하여 파일의 위조 방지 토큰이 생성되고 요청 본문 대신 클라이언트 HTTP 헤더에 전달됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-484">The file's antiforgery token is generated using a custom filter attribute and passed to the client HTTP headers instead of in the request body.</span></span> <span data-ttu-id="40ca9-485">작업 메서드에서 업로드된 데이터를 직접 처리하므로 다른 사용자 지정 필터에서 형식 모델 바인딩을 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-485">Because the action method processes the uploaded data directly, form model binding is disabled by another custom filter.</span></span> <span data-ttu-id="40ca9-486">작업 내에서 양식의 콘텐츠는 각 개별 `MultipartSection`을 읽고 적절하게 파일을 처리하거나 콘텐츠를 저장하는 `MultipartReader`를 사용하여 읽습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-486">Within the action, the form's contents are read using a `MultipartReader`, which reads each individual `MultipartSection`, processing the file or storing the contents as appropriate.</span></span> <span data-ttu-id="40ca9-487">다중 파트 섹션을 읽은 후 작업에서 자체 모델 바인딩을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-487">After the multipart sections are read, the action performs its own model binding.</span></span>
 
-<span data-ttu-id="40ca9-488">초기 페이지 응답은 양식을 로드 하 고 특성을 통해의 위조 방지 토큰을에 저장 합니다 :::no-loc(cookie)::: `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-488">The initial page response loads the form and saves an antiforgery token in a :::no-loc(cookie)::: (via the `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` attribute).</span></span> <span data-ttu-id="40ca9-489">특성은 ASP.NET Core의 기본 제공 [위조 방지 지원 기능](xref:security/anti-request-forgery) 을 사용 하 여 :::no-loc(cookie)::: 요청 토큰으로를 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-489">The attribute uses ASP.NET Core's built-in [antiforgery support](xref:security/anti-request-forgery) to set a :::no-loc(cookie)::: with a request token:</span></span>
+<span data-ttu-id="40ca9-488">초기 페이지 응답은 양식을 로드 하 고 특성을 통해의 위조 방지 토큰을에 저장 합니다 cookie `GenerateAntiforgeryTokenCookieAttribute` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-488">The initial page response loads the form and saves an antiforgery token in a cookie (via the `GenerateAntiforgeryTokenCookieAttribute` attribute).</span></span> <span data-ttu-id="40ca9-489">특성은 ASP.NET Core의 기본 제공 [위조 방지 지원 기능](xref:security/anti-request-forgery) 을 사용 하 여 cookie 요청 토큰으로를 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-489">The attribute uses ASP.NET Core's built-in [antiforgery support](xref:security/anti-request-forgery) to set a cookie with a request token:</span></span>
 
-[!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute)]
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryTokenCookieAttribute)]
 
 <span data-ttu-id="40ca9-490">`DisableFormValueModelBindingAttribute`은 모델 바인딩을 사용하지 않도록 설정하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-490">The `DisableFormValueModelBindingAttribute` is used to disable model binding:</span></span>
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/ModelBinding.cs?name=snippet_DisableFormValueModelBindingAttribute)]
 
-<span data-ttu-id="40ca9-491">샘플 앱에서 `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` 및는 페이지 `DisableFormValueModelBindingAttribute` `/StreamedSingleFileUploadDb` `/StreamedSingleFileUploadPhysical` `Startup.ConfigureServices` [ :::no-loc(Razor)::: 규칙](xref:razor-pages/razor-pages-conventions)을 사용 하 여 및의 페이지 응용 프로그램 모델에 필터로 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-491">In the sample app, `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` and `DisableFormValueModelBindingAttribute` are applied as filters to the page application models of `/StreamedSingleFileUploadDb` and `/StreamedSingleFileUploadPhysical` in `Startup.ConfigureServices` using [:::no-loc(Razor)::: Pages conventions](xref:razor-pages/razor-pages-conventions):</span></span>
+<span data-ttu-id="40ca9-491">샘플 앱에서 `GenerateAntiforgeryTokenCookieAttribute` 및는 페이지 `DisableFormValueModelBindingAttribute` `/StreamedSingleFileUploadDb` `/StreamedSingleFileUploadPhysical` `Startup.ConfigureServices` [ Razor 규칙](xref:razor-pages/razor-pages-conventions)을 사용 하 여 및의 페이지 응용 프로그램 모델에 필터로 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-491">In the sample app, `GenerateAntiforgeryTokenCookieAttribute` and `DisableFormValueModelBindingAttribute` are applied as filters to the page application models of `/StreamedSingleFileUploadDb` and `/StreamedSingleFileUploadPhysical` in `Startup.ConfigureServices` using [Razor Pages conventions](xref:razor-pages/razor-pages-conventions):</span></span>
 
-[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_Add:::no-loc(Razor):::Pages&highlight=7-10,16-19)]
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_AddRazorPages&highlight=7-10,16-19)]
 
 <span data-ttu-id="40ca9-492">모델 바인딩은 양식을 읽지 않으므로 양식에서 바인딩된 매개 변수가 바인딩되지 않습니다(쿼리, 경로 및 헤더는 계속 작동함).</span><span class="sxs-lookup"><span data-stu-id="40ca9-492">Since model binding doesn't read the form, parameters that are bound from the form don't bind (query, route, and header continue to work).</span></span> <span data-ttu-id="40ca9-493">작업 메서드는 `Request` 속성으로 직접 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-493">The action method works directly with the `Request` property.</span></span> <span data-ttu-id="40ca9-494">`MultipartReader`는 각 섹션을 읽는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-494">A `MultipartReader` is used to read each section.</span></span> <span data-ttu-id="40ca9-495">키/값 데이터는 `KeyValueAccumulator`에 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-495">Key/value data is stored in a `KeyValueAccumulator`.</span></span> <span data-ttu-id="40ca9-496">다중 파트 섹션을 읽은 후 `KeyValueAccumulator`의 내용이 양식 데이터를 모델 형식으로 바인딩하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-496">After the multipart sections are read, the contents of the `KeyValueAccumulator` are used to bind the form data to a model type.</span></span>
 
@@ -1238,7 +1238,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 
 <span data-ttu-id="40ca9-529">실제 스토리지에 파일을 저장하는 데 클라이언트에서 제공하는 파일 이름을 사용하지 마세요.</span><span class="sxs-lookup"><span data-stu-id="40ca9-529">Never use a client-supplied file name for saving a file to physical storage.</span></span> <span data-ttu-id="40ca9-530">[Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) 또는 [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*)을 사용하여 임시 스토리지에 대한 전체 경로(파일 이름을 포함)를 만들어 파일에 대한 안전한 파일 이름을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-530">Create a safe file name for the file using [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) or [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) to create a full path (including the file name) for temporary storage.</span></span>
 
-<span data-ttu-id="40ca9-531">:::no-loc(Razor)::: 자동으로 표시 하기 위해 속성 값을 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-531">:::no-loc(Razor)::: automatically HTML encodes property values for display.</span></span> <span data-ttu-id="40ca9-532">다음 코드는 안전하게 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-532">The following code is safe to use:</span></span>
+<span data-ttu-id="40ca9-531">Razor 자동으로 표시 하기 위해 속성 값을 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-531">Razor automatically HTML encodes property values for display.</span></span> <span data-ttu-id="40ca9-532">다음 코드는 안전하게 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-532">The following code is safe to use:</span></span>
 
 ```cshtml
 @foreach (var file in Model.DatabaseFiles) {
@@ -1250,7 +1250,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 }
 ```
 
-<span data-ttu-id="40ca9-533">외부 :::no-loc(Razor)::: 에서는 항상 <xref:System.Net.WebUtility.HtmlEncode*> 사용자 요청의 파일 이름 콘텐츠를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-533">Outside of :::no-loc(Razor):::, always <xref:System.Net.WebUtility.HtmlEncode*> file name content from a user's request.</span></span>
+<span data-ttu-id="40ca9-533">외부 Razor 에서는 항상 <xref:System.Net.WebUtility.HtmlEncode*> 사용자 요청의 파일 이름 콘텐츠를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-533">Outside of Razor, always <xref:System.Net.WebUtility.HtmlEncode*> file name content from a user's request.</span></span>
 
 <span data-ttu-id="40ca9-534">많은 구현에서 파일 존재 여부에 대한 확인이 포함되어야 합니다. 그렇지 않으면 파일이 같은 이름의 파일을 덮어씁니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-534">Many implementations must include a check that the file exists; otherwise, the file is overwritten by a file of the same name.</span></span> <span data-ttu-id="40ca9-535">앱의 사양을 충족하는 추가 논리를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-535">Supply additional logic to meet your app's specifications.</span></span>
 
@@ -1258,7 +1258,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 
 <span data-ttu-id="40ca9-537">업로드된 파일의 크기를 제한합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-537">Limit the size of uploaded files.</span></span>
 
-<span data-ttu-id="40ca9-538">샘플 앱에서 파일 크기는 2MB(바이트 단위로 표시)로 제한됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-538">In the sample app, the size of the file is limited to 2 MB (indicated in bytes).</span></span> <span data-ttu-id="40ca9-539">이 제한은 파일의 [구성을](xref:fundamentals/configuration/index) 통해 제공 됩니다 *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="40ca9-539">The limit is supplied via [Configuration](xref:fundamentals/configuration/index) from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="40ca9-538">샘플 앱에서 파일 크기는 2MB(바이트 단위로 표시)로 제한됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-538">In the sample app, the size of the file is limited to 2 MB (indicated in bytes).</span></span> <span data-ttu-id="40ca9-539">이 제한은 파일의 [구성을](xref:fundamentals/configuration/index) 통해 제공 됩니다 *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="40ca9-539">The limit is supplied via [Configuration](xref:fundamentals/configuration/index) from the *appsettings.json* file:</span></span>
 
 ```json
 {
@@ -1293,7 +1293,7 @@ if (formFile.Length > _fileSizeLimit)
 
 ### <a name="match-name-attribute-value-to-parameter-name-of-post-method"></a><span data-ttu-id="40ca9-542">이름 특성 값을 POST 메서드의 매개 변수 이름과 일치</span><span class="sxs-lookup"><span data-stu-id="40ca9-542">Match name attribute value to parameter name of POST method</span></span>
 
-<span data-ttu-id="40ca9-543">폼 데이터를 :::no-loc(Razor)::: 게시 하거나 JavaScript를 직접 사용 하는 형식이 아닌 `FormData` 경우 폼의 요소에 지정 된 이름이 나 `FormData` 컨트롤러 작업의 매개 변수 이름과 일치 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-543">In non-:::no-loc(Razor)::: forms that POST form data or use JavaScript's `FormData` directly, the name specified in the form's element or `FormData` must match the name of the parameter in the controller's action.</span></span>
+<span data-ttu-id="40ca9-543">폼 데이터를 Razor 게시 하거나 JavaScript를 직접 사용 하는 형식이 아닌 `FormData` 경우 폼의 요소에 지정 된 이름이 나 `FormData` 컨트롤러 작업의 매개 변수 이름과 일치 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-543">In non-Razor forms that POST form data or use JavaScript's `FormData` directly, the name specified in the form's element or `FormData` must match the name of the parameter in the controller's action.</span></span>
 
 <span data-ttu-id="40ca9-544">다음 예제에서는</span><span class="sxs-lookup"><span data-stu-id="40ca9-544">In the following example:</span></span>
 
@@ -1315,7 +1315,7 @@ if (formFile.Length > _fileSizeLimit)
 
 <span data-ttu-id="40ca9-547">C# 메서드(`battlePlans`)의 매개 변수와 일치하는 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-547">Use a matching name for the parameter of the C# method (`battlePlans`):</span></span>
 
-* <span data-ttu-id="40ca9-548">:::no-loc(Razor):::페이지 페이지 처리기 메서드를 `Upload` 다음과 같이 지정 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-548">For a :::no-loc(Razor)::: Pages page handler method named `Upload`:</span></span>
+* <span data-ttu-id="40ca9-548">Razor페이지 페이지 처리기 메서드를 `Upload` 다음과 같이 지정 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-548">For a Razor Pages page handler method named `Upload`:</span></span>
 
   ```csharp
   public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> battlePlans)
@@ -1346,10 +1346,10 @@ public void ConfigureServices(IServiceCollection services)
 
 <span data-ttu-id="40ca9-556"><xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute>는 단일 페이지 또는 작업에 대해 <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit>을 설정하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-556"><xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> is used to set the <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> for a single page or action.</span></span>
 
-<span data-ttu-id="40ca9-557">:::no-loc(Razor):::페이지 앱에서 다음과 같은 [규칙](xref:razor-pages/razor-pages-conventions) 을 사용 하 여 필터를 적용 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-557">In a :::no-loc(Razor)::: Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="40ca9-557">Razor페이지 앱에서 다음과 같은 [규칙](xref:razor-pages/razor-pages-conventions) 을 사용 하 여 필터를 적용 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-557">In a Razor Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
-services.Add:::no-loc(Razor):::Pages(options =>
+services.AddRazorPages(options =>
 {
     options.Conventions
         .AddPageApplicationModelConvention("/FileUploadPage",
@@ -1362,7 +1362,7 @@ services.Add:::no-loc(Razor):::Pages(options =>
 });
 ```
 
-<span data-ttu-id="40ca9-558">페이지 :::no-loc(Razor)::: 앱 또는 MVC 앱에서 필터를 페이지 모델 또는 작업 메서드에 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-558">In a :::no-loc(Razor)::: Pages app or an MVC app, apply the filter to the page model or action method:</span></span>
+<span data-ttu-id="40ca9-558">페이지 Razor 앱 또는 MVC 앱에서 필터를 페이지 모델 또는 작업 메서드에 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-558">In a Razor Pages app or an MVC app, apply the filter to the page model or action method:</span></span>
 
 ```csharp
 // Set the limit to 256 MB
@@ -1393,10 +1393,10 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 <span data-ttu-id="40ca9-562"><xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute>는 단일 페이지 또는 작업에 대해 [ MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size)를 설정하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-562"><xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> is used to set the [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) for a single page or action.</span></span>
 
-<span data-ttu-id="40ca9-563">:::no-loc(Razor):::페이지 앱에서 다음과 같은 [규칙](xref:razor-pages/razor-pages-conventions) 을 사용 하 여 필터를 적용 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-563">In a :::no-loc(Razor)::: Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="40ca9-563">Razor페이지 앱에서 다음과 같은 [규칙](xref:razor-pages/razor-pages-conventions) 을 사용 하 여 필터를 적용 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-563">In a Razor Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
-services.Add:::no-loc(Razor):::Pages(options =>
+services.AddRazorPages(options =>
 {
     options.Conventions
         .AddPageApplicationModelConvention("/FileUploadPage",
@@ -1409,7 +1409,7 @@ services.Add:::no-loc(Razor):::Pages(options =>
 });
 ```
 
-<span data-ttu-id="40ca9-564">페이지 :::no-loc(Razor)::: 앱 또는 MVC 앱에서 필터를 페이지 처리기 클래스 또는 작업 메서드에 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-564">In a :::no-loc(Razor)::: pages app or an MVC app, apply the filter to the page handler class or action method:</span></span>
+<span data-ttu-id="40ca9-564">페이지 Razor 앱 또는 MVC 앱에서 필터를 페이지 처리기 클래스 또는 작업 메서드에 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-564">In a Razor pages app or an MVC app, apply the filter to the page handler class or action method:</span></span>
 
 ```csharp
 // Handle requests up to 50 MB
@@ -1420,7 +1420,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 }
 ```
 
-<span data-ttu-id="40ca9-565">`RequestSizeLimitAttribute`지시문을 사용 하 여를 적용할 수도 있습니다 [`@attribute`](xref:mvc/views/razor#attribute) :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="40ca9-565">The `RequestSizeLimitAttribute` can also be applied using the [`@attribute`](xref:mvc/views/razor#attribute) :::no-loc(Razor)::: directive:</span></span>
+<span data-ttu-id="40ca9-565">`RequestSizeLimitAttribute`지시문을 사용 하 여를 적용할 수도 있습니다 [`@attribute`](xref:mvc/views/razor#attribute) Razor .</span><span class="sxs-lookup"><span data-stu-id="40ca9-565">The `RequestSizeLimitAttribute` can also be applied using the [`@attribute`](xref:mvc/views/razor#attribute) Razor directive:</span></span>
 
 ```cshtml
 @attribute [RequestSizeLimitAttribute(52428800)]
@@ -1507,7 +1507,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 * <span data-ttu-id="40ca9-605">전용 파일 업로드 영역(바람직하게는 시스템 드라이브가 아닌 위치)에 파일을 업로드합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-605">Upload files to a dedicated file upload area, preferably to a non-system drive.</span></span> <span data-ttu-id="40ca9-606">전용 위치를 사용하면 업로드된 파일에 대한 보안 제한을 더 쉽게 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-606">A dedicated location makes it easier to impose security restrictions on uploaded files.</span></span> <span data-ttu-id="40ca9-607">파일 업로드 위치에 대한 실행 권한을 사용하지 않도록 설정합니다.&dagger;</span><span class="sxs-lookup"><span data-stu-id="40ca9-607">Disable execute permissions on the file upload location.&dagger;</span></span>
 * <span data-ttu-id="40ca9-608">업로드된 파일을 앱과 동일한 디렉터리 트리에 보관하지 **마세요** .&dagger;</span><span class="sxs-lookup"><span data-stu-id="40ca9-608">Do **not** persist uploaded files in the same directory tree as the app.&dagger;</span></span>
-* <span data-ttu-id="40ca9-609">앱에 의해 결정된 안전한 파일 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-609">Use a safe file name determined by the app.</span></span> <span data-ttu-id="40ca9-610">사용자가 제공한 파일 이름 또는 업로드 된 파일의 신뢰할 수 없는 파일 이름을 사용 하지 마세요. &dagger; HTML을 표시 하는 경우 신뢰할 수 없는 파일 이름을 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-610">Don't use a file name provided by the user or the untrusted file name of the uploaded file.&dagger; HTML encode the untrusted file name when displaying it.</span></span> <span data-ttu-id="40ca9-611">예를 들어 파일 이름을 기록 하거나 UI에 표시 하는 경우 ( :::no-loc(Razor)::: 자동으로 HTML 인코딩 출력)</span><span class="sxs-lookup"><span data-stu-id="40ca9-611">For example, logging the file name or displaying in UI (:::no-loc(Razor)::: automatically HTML encodes output).</span></span>
+* <span data-ttu-id="40ca9-609">앱에 의해 결정된 안전한 파일 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-609">Use a safe file name determined by the app.</span></span> <span data-ttu-id="40ca9-610">사용자가 제공한 파일 이름 또는 업로드 된 파일의 신뢰할 수 없는 파일 이름을 사용 하지 마세요. &dagger; HTML을 표시 하는 경우 신뢰할 수 없는 파일 이름을 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-610">Don't use a file name provided by the user or the untrusted file name of the uploaded file.&dagger; HTML encode the untrusted file name when displaying it.</span></span> <span data-ttu-id="40ca9-611">예를 들어 파일 이름을 기록 하거나 UI에 표시 하는 경우 ( Razor 자동으로 HTML 인코딩 출력)</span><span class="sxs-lookup"><span data-stu-id="40ca9-611">For example, logging the file name or displaying in UI (Razor automatically HTML encodes output).</span></span>
 * <span data-ttu-id="40ca9-612">앱의 디자인 사양으로 승인된 파일 확장명만 허용합니다.&dagger;</span><span class="sxs-lookup"><span data-stu-id="40ca9-612">Allow only approved file extensions for the app's design specification.&dagger;</span></span> <!-- * Check the file format signature to prevent a user from uploading a masqueraded file.&dagger; For example, don't permit a user to upload an *.exe* file with a *.txt* extension. Add this back when we get instructions how to do this.  -->
 * <span data-ttu-id="40ca9-613">서버에서 클라이언트 쪽 검사가 수행 되는지 확인 합니다. &dagger; 클라이언트 쪽 검사는 쉽게 피할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-613">Verify that client-side checks are performed on the server.&dagger; Client-side checks are easy to circumvent.</span></span>
 * <span data-ttu-id="40ca9-614">업로드된 파일의 크기를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-614">Check the size of an uploaded file.</span></span> <span data-ttu-id="40ca9-615">대규모로 업로드되지 않도록 최대 크기 제한을 설정합니다.&dagger;</span><span class="sxs-lookup"><span data-stu-id="40ca9-615">Set a maximum size limit to prevent large uploads.&dagger;</span></span>
@@ -1584,7 +1584,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 <span data-ttu-id="40ca9-663">소용량 파일을 업로드하려면 다중 파트 양식을 사용하거나 JavaScript를 사용하여 POST 요청을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-663">To upload small files, use a multipart form or construct a POST request using JavaScript.</span></span>
 
-<span data-ttu-id="40ca9-664">다음 예제에서는 :::no-loc(Razor)::: pages 폼을 사용 하 여 단일 파일 (샘플 응용 프로그램의 *Pages/BufferedSingleFileUploadPhysical* )을 업로드 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-664">The following example demonstrates the use of a :::no-loc(Razor)::: Pages form to upload a single file ( *Pages/BufferedSingleFileUploadPhysical.cshtml* in the sample app):</span></span>
+<span data-ttu-id="40ca9-664">다음 예제에서는 Razor pages 폼을 사용 하 여 단일 파일 (샘플 응용 프로그램의 *Pages/BufferedSingleFileUploadPhysical* )을 업로드 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-664">The following example demonstrates the use of a Razor Pages form to upload a single file ( *Pages/BufferedSingleFileUploadPhysical.cshtml* in the sample app):</span></span>
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1811,7 +1811,7 @@ public class BufferedSingleFileUploadDb
 > [!NOTE]
 > <span data-ttu-id="40ca9-715"><xref:Microsoft.AspNetCore.Http.IFormFile>은 작업 메서드 매개 변수 또는 바운딩 모델 속성으로 직접 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-715"><xref:Microsoft.AspNetCore.Http.IFormFile> can be used directly as an action method parameter or as a bound model property.</span></span> <span data-ttu-id="40ca9-716">위 예제에서는 바인딩된 모델 속성을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-716">The prior example uses a bound model property.</span></span>
 
-<span data-ttu-id="40ca9-717">는 `FileUpload` Pages 폼에 사용 됩니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="40ca9-717">The `FileUpload` is used in the :::no-loc(Razor)::: Pages form:</span></span>
+<span data-ttu-id="40ca9-717">는 `FileUpload` Pages 폼에 사용 됩니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="40ca9-717">The `FileUpload` is used in the Razor Pages form:</span></span>
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1877,15 +1877,15 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 <span data-ttu-id="40ca9-731">다음 예제에서는 JavaScript를 사용하여 컨트롤러 작업에 파일을 스트리밍하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-731">The following example demonstrates how to use JavaScript to stream a file to a controller action.</span></span> <span data-ttu-id="40ca9-732">사용자 지정 필터 특성을 사용하여 파일의 위조 방지 토큰이 생성되고 요청 본문 대신 클라이언트 HTTP 헤더에 전달됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-732">The file's antiforgery token is generated using a custom filter attribute and passed to the client HTTP headers instead of in the request body.</span></span> <span data-ttu-id="40ca9-733">작업 메서드에서 업로드된 데이터를 직접 처리하므로 다른 사용자 지정 필터에서 형식 모델 바인딩을 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-733">Because the action method processes the uploaded data directly, form model binding is disabled by another custom filter.</span></span> <span data-ttu-id="40ca9-734">작업 내에서 양식의 콘텐츠는 각 개별 `MultipartSection`을 읽고 적절하게 파일을 처리하거나 콘텐츠를 저장하는 `MultipartReader`를 사용하여 읽습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-734">Within the action, the form's contents are read using a `MultipartReader`, which reads each individual `MultipartSection`, processing the file or storing the contents as appropriate.</span></span> <span data-ttu-id="40ca9-735">다중 파트 섹션을 읽은 후 작업에서 자체 모델 바인딩을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-735">After the multipart sections are read, the action performs its own model binding.</span></span>
 
-<span data-ttu-id="40ca9-736">초기 페이지 응답은 양식을 로드 하 고 특성을 통해의 위조 방지 토큰을에 저장 합니다 :::no-loc(cookie)::: `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-736">The initial page response loads the form and saves an antiforgery token in a :::no-loc(cookie)::: (via the `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` attribute).</span></span> <span data-ttu-id="40ca9-737">특성은 ASP.NET Core의 기본 제공 [위조 방지 지원 기능](xref:security/anti-request-forgery) 을 사용 하 여 :::no-loc(cookie)::: 요청 토큰으로를 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-737">The attribute uses ASP.NET Core's built-in [antiforgery support](xref:security/anti-request-forgery) to set a :::no-loc(cookie)::: with a request token:</span></span>
+<span data-ttu-id="40ca9-736">초기 페이지 응답은 양식을 로드 하 고 특성을 통해의 위조 방지 토큰을에 저장 합니다 cookie `GenerateAntiforgeryTokenCookieAttribute` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-736">The initial page response loads the form and saves an antiforgery token in a cookie (via the `GenerateAntiforgeryTokenCookieAttribute` attribute).</span></span> <span data-ttu-id="40ca9-737">특성은 ASP.NET Core의 기본 제공 [위조 방지 지원 기능](xref:security/anti-request-forgery) 을 사용 하 여 cookie 요청 토큰으로를 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-737">The attribute uses ASP.NET Core's built-in [antiforgery support](xref:security/anti-request-forgery) to set a cookie with a request token:</span></span>
 
-[!code-csharp[](file-uploads/samples/2.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute)]
+[!code-csharp[](file-uploads/samples/2.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryTokenCookieAttribute)]
 
 <span data-ttu-id="40ca9-738">`DisableFormValueModelBindingAttribute`은 모델 바인딩을 사용하지 않도록 설정하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-738">The `DisableFormValueModelBindingAttribute` is used to disable model binding:</span></span>
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Filters/ModelBinding.cs?name=snippet_DisableFormValueModelBindingAttribute)]
 
-<span data-ttu-id="40ca9-739">샘플 앱에서 `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` 및는 페이지 `DisableFormValueModelBindingAttribute` `/StreamedSingleFileUploadDb` `/StreamedSingleFileUploadPhysical` `Startup.ConfigureServices` [ :::no-loc(Razor)::: 규칙](xref:razor-pages/razor-pages-conventions)을 사용 하 여 및의 페이지 응용 프로그램 모델에 필터로 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-739">In the sample app, `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` and `DisableFormValueModelBindingAttribute` are applied as filters to the page application models of `/StreamedSingleFileUploadDb` and `/StreamedSingleFileUploadPhysical` in `Startup.ConfigureServices` using [:::no-loc(Razor)::: Pages conventions](xref:razor-pages/razor-pages-conventions):</span></span>
+<span data-ttu-id="40ca9-739">샘플 앱에서 `GenerateAntiforgeryTokenCookieAttribute` 및는 페이지 `DisableFormValueModelBindingAttribute` `/StreamedSingleFileUploadDb` `/StreamedSingleFileUploadPhysical` `Startup.ConfigureServices` [ Razor 규칙](xref:razor-pages/razor-pages-conventions)을 사용 하 여 및의 페이지 응용 프로그램 모델에 필터로 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-739">In the sample app, `GenerateAntiforgeryTokenCookieAttribute` and `DisableFormValueModelBindingAttribute` are applied as filters to the page application models of `/StreamedSingleFileUploadDb` and `/StreamedSingleFileUploadPhysical` in `Startup.ConfigureServices` using [Razor Pages conventions](xref:razor-pages/razor-pages-conventions):</span></span>
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Startup.cs?name=snippet_AddMvc&highlight=8-11,17-20)]
 
@@ -1973,7 +1973,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 
 <span data-ttu-id="40ca9-777">실제 스토리지에 파일을 저장하는 데 클라이언트에서 제공하는 파일 이름을 사용하지 마세요.</span><span class="sxs-lookup"><span data-stu-id="40ca9-777">Never use a client-supplied file name for saving a file to physical storage.</span></span> <span data-ttu-id="40ca9-778">[Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) 또는 [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*)을 사용하여 임시 스토리지에 대한 전체 경로(파일 이름을 포함)를 만들어 파일에 대한 안전한 파일 이름을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-778">Create a safe file name for the file using [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) or [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) to create a full path (including the file name) for temporary storage.</span></span>
 
-<span data-ttu-id="40ca9-779">:::no-loc(Razor)::: 자동으로 표시 하기 위해 속성 값을 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-779">:::no-loc(Razor)::: automatically HTML encodes property values for display.</span></span> <span data-ttu-id="40ca9-780">다음 코드는 안전하게 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-780">The following code is safe to use:</span></span>
+<span data-ttu-id="40ca9-779">Razor 자동으로 표시 하기 위해 속성 값을 인코딩합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-779">Razor automatically HTML encodes property values for display.</span></span> <span data-ttu-id="40ca9-780">다음 코드는 안전하게 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-780">The following code is safe to use:</span></span>
 
 ```cshtml
 @foreach (var file in Model.DatabaseFiles) {
@@ -1985,7 +1985,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 }
 ```
 
-<span data-ttu-id="40ca9-781">외부 :::no-loc(Razor)::: 에서는 항상 <xref:System.Net.WebUtility.HtmlEncode*> 사용자 요청의 파일 이름 콘텐츠를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-781">Outside of :::no-loc(Razor):::, always <xref:System.Net.WebUtility.HtmlEncode*> file name content from a user's request.</span></span>
+<span data-ttu-id="40ca9-781">외부 Razor 에서는 항상 <xref:System.Net.WebUtility.HtmlEncode*> 사용자 요청의 파일 이름 콘텐츠를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-781">Outside of Razor, always <xref:System.Net.WebUtility.HtmlEncode*> file name content from a user's request.</span></span>
 
 <span data-ttu-id="40ca9-782">많은 구현에서 파일 존재 여부에 대한 확인이 포함되어야 합니다. 그렇지 않으면 파일이 같은 이름의 파일을 덮어씁니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-782">Many implementations must include a check that the file exists; otherwise, the file is overwritten by a file of the same name.</span></span> <span data-ttu-id="40ca9-783">앱의 사양을 충족하는 추가 논리를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-783">Supply additional logic to meet your app's specifications.</span></span>
 
@@ -1993,7 +1993,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 
 <span data-ttu-id="40ca9-785">업로드된 파일의 크기를 제한합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-785">Limit the size of uploaded files.</span></span>
 
-<span data-ttu-id="40ca9-786">샘플 앱에서 파일 크기는 2MB(바이트 단위로 표시)로 제한됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-786">In the sample app, the size of the file is limited to 2 MB (indicated in bytes).</span></span> <span data-ttu-id="40ca9-787">이 제한은 파일의 [구성을](xref:fundamentals/configuration/index) 통해 제공 됩니다 *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="40ca9-787">The limit is supplied via [Configuration](xref:fundamentals/configuration/index) from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="40ca9-786">샘플 앱에서 파일 크기는 2MB(바이트 단위로 표시)로 제한됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-786">In the sample app, the size of the file is limited to 2 MB (indicated in bytes).</span></span> <span data-ttu-id="40ca9-787">이 제한은 파일의 [구성을](xref:fundamentals/configuration/index) 통해 제공 됩니다 *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="40ca9-787">The limit is supplied via [Configuration](xref:fundamentals/configuration/index) from the *appsettings.json* file:</span></span>
 
 ```json
 {
@@ -2028,7 +2028,7 @@ if (formFile.Length > _fileSizeLimit)
 
 ### <a name="match-name-attribute-value-to-parameter-name-of-post-method"></a><span data-ttu-id="40ca9-790">이름 특성 값을 POST 메서드의 매개 변수 이름과 일치</span><span class="sxs-lookup"><span data-stu-id="40ca9-790">Match name attribute value to parameter name of POST method</span></span>
 
-<span data-ttu-id="40ca9-791">폼 데이터를 :::no-loc(Razor)::: 게시 하거나 JavaScript를 직접 사용 하는 형식이 아닌 `FormData` 경우 폼의 요소에 지정 된 이름이 나 `FormData` 컨트롤러 작업의 매개 변수 이름과 일치 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-791">In non-:::no-loc(Razor)::: forms that POST form data or use JavaScript's `FormData` directly, the name specified in the form's element or `FormData` must match the name of the parameter in the controller's action.</span></span>
+<span data-ttu-id="40ca9-791">폼 데이터를 Razor 게시 하거나 JavaScript를 직접 사용 하는 형식이 아닌 `FormData` 경우 폼의 요소에 지정 된 이름이 나 `FormData` 컨트롤러 작업의 매개 변수 이름과 일치 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-791">In non-Razor forms that POST form data or use JavaScript's `FormData` directly, the name specified in the form's element or `FormData` must match the name of the parameter in the controller's action.</span></span>
 
 <span data-ttu-id="40ca9-792">다음 예제에서는</span><span class="sxs-lookup"><span data-stu-id="40ca9-792">In the following example:</span></span>
 
@@ -2050,7 +2050,7 @@ if (formFile.Length > _fileSizeLimit)
 
 <span data-ttu-id="40ca9-795">C# 메서드(`battlePlans`)의 매개 변수와 일치하는 이름을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-795">Use a matching name for the parameter of the C# method (`battlePlans`):</span></span>
 
-* <span data-ttu-id="40ca9-796">:::no-loc(Razor):::페이지 페이지 처리기 메서드를 `Upload` 다음과 같이 지정 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-796">For a :::no-loc(Razor)::: Pages page handler method named `Upload`:</span></span>
+* <span data-ttu-id="40ca9-796">Razor페이지 페이지 처리기 메서드를 `Upload` 다음과 같이 지정 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-796">For a Razor Pages page handler method named `Upload`:</span></span>
 
   ```csharp
   public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> battlePlans)
@@ -2081,11 +2081,11 @@ public void ConfigureServices(IServiceCollection services)
 
 <span data-ttu-id="40ca9-804"><xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute>는 단일 페이지 또는 작업에 대해 <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit>을 설정하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-804"><xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> is used to set the <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> for a single page or action.</span></span>
 
-<span data-ttu-id="40ca9-805">:::no-loc(Razor):::페이지 앱에서 다음과 같은 [규칙](xref:razor-pages/razor-pages-conventions) 을 사용 하 여 필터를 적용 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-805">In a :::no-loc(Razor)::: Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="40ca9-805">Razor페이지 앱에서 다음과 같은 [규칙](xref:razor-pages/razor-pages-conventions) 을 사용 하 여 필터를 적용 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-805">In a Razor Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
 services.AddMvc()
-    .Add:::no-loc(Razor):::PagesOptions(options =>
+    .AddRazorPagesOptions(options =>
     {
         options.Conventions
             .AddPageApplicationModelConvention("/FileUploadPage",
@@ -2099,7 +2099,7 @@ services.AddMvc()
     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 ```
 
-<span data-ttu-id="40ca9-806">페이지 :::no-loc(Razor)::: 앱 또는 MVC 앱에서 필터를 페이지 모델 또는 작업 메서드에 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-806">In a :::no-loc(Razor)::: Pages app or an MVC app, apply the filter to the page model or action method:</span></span>
+<span data-ttu-id="40ca9-806">페이지 Razor 앱 또는 MVC 앱에서 필터를 페이지 모델 또는 작업 메서드에 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-806">In a Razor Pages app or an MVC app, apply the filter to the page model or action method:</span></span>
 
 ```csharp
 // Set the limit to 256 MB
@@ -2127,11 +2127,11 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 <span data-ttu-id="40ca9-810"><xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute>는 단일 페이지 또는 작업에 대해 [ MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size)를 설정하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-810"><xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> is used to set the [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) for a single page or action.</span></span>
 
-<span data-ttu-id="40ca9-811">:::no-loc(Razor):::페이지 앱에서 다음과 같은 [규칙](xref:razor-pages/razor-pages-conventions) 을 사용 하 여 필터를 적용 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-811">In a :::no-loc(Razor)::: Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="40ca9-811">Razor페이지 앱에서 다음과 같은 [규칙](xref:razor-pages/razor-pages-conventions) 을 사용 하 여 필터를 적용 합니다 `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="40ca9-811">In a Razor Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
 services.AddMvc()
-    .Add:::no-loc(Razor):::PagesOptions(options =>
+    .AddRazorPagesOptions(options =>
     {
         options.Conventions
             .AddPageApplicationModelConvention("/FileUploadPage",
@@ -2145,7 +2145,7 @@ services.AddMvc()
     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 ```
 
-<span data-ttu-id="40ca9-812">페이지 :::no-loc(Razor)::: 앱 또는 MVC 앱에서 필터를 페이지 처리기 클래스 또는 작업 메서드에 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-812">In a :::no-loc(Razor)::: pages app or an MVC app, apply the filter to the page handler class or action method:</span></span>
+<span data-ttu-id="40ca9-812">페이지 Razor 앱 또는 MVC 앱에서 필터를 페이지 처리기 클래스 또는 작업 메서드에 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="40ca9-812">In a Razor pages app or an MVC app, apply the filter to the page handler class or action method:</span></span>
 
 ```csharp
 // Handle requests up to 50 MB

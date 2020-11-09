@@ -5,17 +5,17 @@ description: ASP.NET Core의 키 저장소 공급자 및 키 저장소 위치를
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/data-protection/implementation/key-storage-providers
 ms.openlocfilehash: 36e8bc494125d0770347ddf32390365d83a91d27
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -47,7 +47,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="azure-storage"></a><span data-ttu-id="27448-114">Azure Storage</span><span class="sxs-lookup"><span data-stu-id="27448-114">Azure Storage</span></span>
 
-<span data-ttu-id="27448-115">[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) 패키지를 사용 하 여 Azure Blob Storage에 데이터 보호 키를 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-115">The [Microsoft.AspNetCore.DataProtection.AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) package allows storing data protection keys in Azure Blob Storage.</span></span> <span data-ttu-id="27448-116">웹 앱의 여러 인스턴스 간에 키를 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-116">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="27448-117">앱은 :::no-loc(cookie)::: 여러 서버에서 인증 s 또는 CSRF 보호를 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-117">Apps can share authentication :::no-loc(cookie):::s or CSRF protection across multiple servers.</span></span>
+<span data-ttu-id="27448-115">[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) 패키지를 사용 하 여 Azure Blob Storage에 데이터 보호 키를 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-115">The [Microsoft.AspNetCore.DataProtection.AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) package allows storing data protection keys in Azure Blob Storage.</span></span> <span data-ttu-id="27448-116">웹 앱의 여러 인스턴스 간에 키를 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-116">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="27448-117">앱은 cookie 여러 서버에서 인증 s 또는 CSRF 보호를 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-117">Apps can share authentication cookies or CSRF protection across multiple servers.</span></span>
 
 <span data-ttu-id="27448-118">Azure Blob Storage 공급자를 구성 하려면 [Persistkeystoazureblobstorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage) 오버 로드 중 하나를 호출 합니다.</span><span class="sxs-lookup"><span data-stu-id="27448-118">To configure the Azure Blob Storage provider, call one of the [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage) overloads.</span></span>
 
@@ -82,13 +82,13 @@ services.AddDataProtection()
 
 ::: moniker range=">= aspnetcore-2.2"
 
-<span data-ttu-id="27448-122">[AspNetCore StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) 패키지를 사용 하면 Redis cache에 데이터 보호 키를 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-122">The [Microsoft.AspNetCore.DataProtection.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) package allows storing data protection keys in a Redis cache.</span></span> <span data-ttu-id="27448-123">웹 앱의 여러 인스턴스 간에 키를 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-123">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="27448-124">앱은 :::no-loc(cookie)::: 여러 서버에서 인증 s 또는 CSRF 보호를 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-124">Apps can share authentication :::no-loc(cookie):::s or CSRF protection across multiple servers.</span></span>
+<span data-ttu-id="27448-122">[AspNetCore StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) 패키지를 사용 하면 Redis cache에 데이터 보호 키를 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-122">The [Microsoft.AspNetCore.DataProtection.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) package allows storing data protection keys in a Redis cache.</span></span> <span data-ttu-id="27448-123">웹 앱의 여러 인스턴스 간에 키를 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-123">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="27448-124">앱은 cookie 여러 서버에서 인증 s 또는 CSRF 보호를 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-124">Apps can share authentication cookies or CSRF protection across multiple servers.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-<span data-ttu-id="27448-125">[AspNetCore Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) 패키지를 사용 하면 Redis cache에 데이터 보호 키를 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-125">The [Microsoft.AspNetCore.DataProtection.Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) package allows storing data protection keys in a Redis cache.</span></span> <span data-ttu-id="27448-126">웹 앱의 여러 인스턴스 간에 키를 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-126">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="27448-127">앱은 :::no-loc(cookie)::: 여러 서버에서 인증 s 또는 CSRF 보호를 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-127">Apps can share authentication :::no-loc(cookie):::s or CSRF protection across multiple servers.</span></span>
+<span data-ttu-id="27448-125">[AspNetCore Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) 패키지를 사용 하면 Redis cache에 데이터 보호 키를 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-125">The [Microsoft.AspNetCore.DataProtection.Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) package allows storing data protection keys in a Redis cache.</span></span> <span data-ttu-id="27448-126">웹 앱의 여러 인스턴스 간에 키를 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-126">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="27448-127">앱은 cookie 여러 서버에서 인증 s 또는 CSRF 보호를 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="27448-127">Apps can share authentication cookies or CSRF protection across multiple servers.</span></span>
 
 ::: moniker-end
 

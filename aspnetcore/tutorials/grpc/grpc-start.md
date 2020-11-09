@@ -5,16 +5,16 @@ description: 이 자습서는 ASP.NET Core에서 gRPC 서비스 및 gRPC 클라�
 ms.author: johluo
 ms.date: 04/08/2020
 no-loc:
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/grpc/grpc-start
 ms.openlocfilehash: fbfd37b8f796990ff035f7fffeb906e23a8739d4
 ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e

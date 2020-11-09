@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 05/26/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: grpc/clientfactory
 ms.openlocfilehash: c63bf495f558237ed801881d378953119791b8ce
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -46,7 +46,7 @@ services.AddGrpcClient<Greeter.GreeterClient>(o =>
 });
 ```
 
-<span data-ttu-id="ce2b4-113">gRPC 클라이언트 형식은 DI(종속성 주입)를 사용하여 일시적으로 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-113">The gRPC client type is registered as transient with dependency injection (DI).</span></span> <span data-ttu-id="ce2b4-114">이제 클라이언트는 DI를 사용하여 만든 형식으로 직접 주입하고 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-114">The client can now be injected and consumed directly in types created by DI.</span></span> <span data-ttu-id="ce2b4-115">ASP.NET Core MVC 컨트롤러, :::no-loc(SignalR)::: 허브 및 gRPC 서비스는 gRPC 클라이언트가 자동으로 주입될 수 있는 위치입니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-115">ASP.NET Core MVC controllers, :::no-loc(SignalR)::: hubs and gRPC services are places where gRPC clients can automatically be injected:</span></span>
+<span data-ttu-id="ce2b4-113">gRPC 클라이언트 형식은 DI(종속성 주입)를 사용하여 일시적으로 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-113">The gRPC client type is registered as transient with dependency injection (DI).</span></span> <span data-ttu-id="ce2b4-114">이제 클라이언트는 DI를 사용하여 만든 형식으로 직접 주입하고 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-114">The client can now be injected and consumed directly in types created by DI.</span></span> <span data-ttu-id="ce2b4-115">ASP.NET Core MVC 컨트롤러, SignalR 허브 및 gRPC 서비스는 gRPC 클라이언트가 자동으로 주입될 수 있는 위치입니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-115">ASP.NET Core MVC controllers, SignalR hubs and gRPC services are places where gRPC clients can automatically be injected:</span></span>
 
 ```csharp
 public class AggregatorService : Aggregator.AggregatorBase

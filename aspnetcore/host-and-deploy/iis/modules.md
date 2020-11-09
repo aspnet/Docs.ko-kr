@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: host-and-deploy/iis/modules
 ms.openlocfilehash: 47ba04f199f9b77cf6032de9f80f2410f5c69424
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -66,7 +66,7 @@ ms.locfileid: "93057403"
 | <span data-ttu-id="1c63a-179">**정적 콘텐츠**</span><span class="sxs-lookup"><span data-stu-id="1c63a-179">**Static Content**</span></span><br>`StaticFileModule`                                                         | <span data-ttu-id="1c63a-180">아니요</span><span class="sxs-lookup"><span data-stu-id="1c63a-180">No</span></span>  | [<span data-ttu-id="1c63a-181">정적 파일 미들웨어</span><span class="sxs-lookup"><span data-stu-id="1c63a-181">Static File Middleware</span></span>](xref:fundamentals/static-files) |
 | <span data-ttu-id="1c63a-182">**토큰 캐싱**</span><span class="sxs-lookup"><span data-stu-id="1c63a-182">**Token Caching**</span></span><br>`TokenCacheModule`                                                          | <span data-ttu-id="1c63a-183">예</span><span class="sxs-lookup"><span data-stu-id="1c63a-183">Yes</span></span> | |
 | <span data-ttu-id="1c63a-184">**URI 캐싱**</span><span class="sxs-lookup"><span data-stu-id="1c63a-184">**URI Caching**</span></span><br>`UriCacheModule`                                                              | <span data-ttu-id="1c63a-185">예</span><span class="sxs-lookup"><span data-stu-id="1c63a-185">Yes</span></span> | |
-| <span data-ttu-id="1c63a-186">**URL 권한 부여**</span><span class="sxs-lookup"><span data-stu-id="1c63a-186">**URL Authorization**</span></span><br>`UrlAuthorizationModule`                                                | <span data-ttu-id="1c63a-187">예</span><span class="sxs-lookup"><span data-stu-id="1c63a-187">Yes</span></span> | [:::no-loc(ASP.NET Core Identity):::](xref:security/authentication/identity) |
+| <span data-ttu-id="1c63a-186">**URL 권한 부여**</span><span class="sxs-lookup"><span data-stu-id="1c63a-186">**URL Authorization**</span></span><br>`UrlAuthorizationModule`                                                | <span data-ttu-id="1c63a-187">예</span><span class="sxs-lookup"><span data-stu-id="1c63a-187">Yes</span></span> | [ASP.NET Core Identity](xref:security/authentication/identity) |
 | <span data-ttu-id="1c63a-188">**Windows 인증**</span><span class="sxs-lookup"><span data-stu-id="1c63a-188">**Windows Authentication**</span></span><br>`WindowsAuthenticationModule`                                      | <span data-ttu-id="1c63a-189">예</span><span class="sxs-lookup"><span data-stu-id="1c63a-189">Yes</span></span> | |
 
 <span data-ttu-id="1c63a-190">&#8224;URL 재작성 모듈의 `isFile` 및 `isDirectory` 일치 유형이 [디렉터리 구조](xref:host-and-deploy/directory-structure)의 변경으로 인해 ASP.NET Core 앱에서 작동하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="1c63a-190">&#8224;The URL Rewrite Module's `isFile` and `isDirectory` match types don't work with ASP.NET Core apps due to the changes in [directory structure](xref:host-and-deploy/directory-structure).</span></span>
@@ -80,7 +80,7 @@ ms.locfileid: "93057403"
 | <span data-ttu-id="1c63a-196">AnonymousIdentification</span><span class="sxs-lookup"><span data-stu-id="1c63a-196">AnonymousIdentification</span></span> | |
 | <span data-ttu-id="1c63a-197">DefaultAuthentication</span><span class="sxs-lookup"><span data-stu-id="1c63a-197">DefaultAuthentication</span></span>   | |
 | <span data-ttu-id="1c63a-198">FileAuthorization</span><span class="sxs-lookup"><span data-stu-id="1c63a-198">FileAuthorization</span></span>       | |
-| <span data-ttu-id="1c63a-199">FormsAuthentication</span><span class="sxs-lookup"><span data-stu-id="1c63a-199">FormsAuthentication</span></span>     | <span data-ttu-id="1c63a-200">[:::no-loc(Cookie)::: 인증 미들웨어](xref:security/authentication/:::no-loc(cookie):::)</span><span class="sxs-lookup"><span data-stu-id="1c63a-200">[:::no-loc(Cookie)::: Authentication Middleware](xref:security/authentication/:::no-loc(cookie):::)</span></span> |
+| <span data-ttu-id="1c63a-199">FormsAuthentication</span><span class="sxs-lookup"><span data-stu-id="1c63a-199">FormsAuthentication</span></span>     | <span data-ttu-id="1c63a-200">[Cookie 인증 미들웨어](xref:security/authentication/cookie)</span><span class="sxs-lookup"><span data-stu-id="1c63a-200">[Cookie Authentication Middleware](xref:security/authentication/cookie)</span></span> |
 | <span data-ttu-id="1c63a-201">OutputCache</span><span class="sxs-lookup"><span data-stu-id="1c63a-201">OutputCache</span></span>             | [<span data-ttu-id="1c63a-202">응답 캐싱 미들웨어</span><span class="sxs-lookup"><span data-stu-id="1c63a-202">Response Caching Middleware</span></span>](xref:performance/caching/middleware) |
 | <span data-ttu-id="1c63a-203">프로필</span><span class="sxs-lookup"><span data-stu-id="1c63a-203">Profile</span></span>                 | |
 | <span data-ttu-id="1c63a-204">RoleManager</span><span class="sxs-lookup"><span data-stu-id="1c63a-204">RoleManager</span></span>             | |
@@ -88,7 +88,7 @@ ms.locfileid: "93057403"
 | <span data-ttu-id="1c63a-206">세션</span><span class="sxs-lookup"><span data-stu-id="1c63a-206">Session</span></span>                 | [<span data-ttu-id="1c63a-207">세션 미들웨어</span><span class="sxs-lookup"><span data-stu-id="1c63a-207">Session Middleware</span></span>](xref:fundamentals/app-state) |
 | <span data-ttu-id="1c63a-208">UrlAuthorization</span><span class="sxs-lookup"><span data-stu-id="1c63a-208">UrlAuthorization</span></span>        | |
 | <span data-ttu-id="1c63a-209">UrlMappingsModule</span><span class="sxs-lookup"><span data-stu-id="1c63a-209">UrlMappingsModule</span></span>       | [<span data-ttu-id="1c63a-210">URL 재작성 미들웨어</span><span class="sxs-lookup"><span data-stu-id="1c63a-210">URL Rewriting Middleware</span></span>](xref:fundamentals/url-rewriting) |
-| <span data-ttu-id="1c63a-211">UrlRoutingModule-4.0</span><span class="sxs-lookup"><span data-stu-id="1c63a-211">UrlRoutingModule-4.0</span></span>    | [:::no-loc(ASP.NET Core Identity):::](xref:security/authentication/identity) |
+| <span data-ttu-id="1c63a-211">UrlRoutingModule-4.0</span><span class="sxs-lookup"><span data-stu-id="1c63a-211">UrlRoutingModule-4.0</span></span>    | [ASP.NET Core Identity](xref:security/authentication/identity) |
 | <span data-ttu-id="1c63a-212">WindowsAuthentication</span><span class="sxs-lookup"><span data-stu-id="1c63a-212">WindowsAuthentication</span></span>   | |
 
 ## <a name="iis-manager-application-changes"></a><span data-ttu-id="1c63a-213">IIS 관리자 애플리케이션 변경 내용</span><span class="sxs-lookup"><span data-stu-id="1c63a-213">IIS Manager application changes</span></span>

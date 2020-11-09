@@ -5,17 +5,17 @@ description: Microsoft.NET.Sdk.Web의 개요
 ms.author: riande
 ms.date: 01/25/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: razor-pages/web-sdk
 ms.openlocfilehash: 8cc0a51d3d917300f3add31f5884b4784dd573dd
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -55,4 +55,4 @@ ms.locfileid: "93059756"
 | -------- | ----------- |
 | `DisableImplicitFrameworkReferences` | <span data-ttu-id="8c662-118">`Microsoft.AspNetCore.App` 공유 프레임워크에 대한 암시적 참조를 사용하지 않도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="8c662-118">Disables implicit reference to the `Microsoft.AspNetCore.App` shared framework.</span></span> |
 | `DisableImplicitAspNetCoreAnalyzers` | <span data-ttu-id="8c662-119">ASP.NET Core 분석기에 대한 암시적 참조를 사용하지 않도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="8c662-119">Disables implicit reference to ASP.NET Core analyzers.</span></span> |
-| `DisableImplicitComponentsAnalyzers` | <span data-ttu-id="8c662-120">:::no-loc(Blazor):::(서버) 애플리케이션을 빌드할 때 :::no-loc(Razor)::: 구성 요소 분석기에 대한 암시적 참조를 사용하지 않도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="8c662-120">Disables implicit reference to :::no-loc(Razor)::: Components analyzers when building :::no-loc(Blazor)::: (server) applications.</span></span> |
+| `DisableImplicitComponentsAnalyzers` | <span data-ttu-id="8c662-120">Blazor(서버) 애플리케이션을 빌드할 때 Razor 구성 요소 분석기에 대한 암시적 참조를 사용하지 않도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="8c662-120">Disables implicit reference to Razor Components analyzers when building Blazor (server) applications.</span></span> |

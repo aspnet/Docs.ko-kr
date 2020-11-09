@@ -5,17 +5,17 @@ description: ASP.NET Core MVC에 대한 자습서 시리즈의 2부입니다.
 ms.author: riande
 ms.date: 08/05/2017
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/first-mvc-app/adding-controller
 ms.openlocfilehash: 11832efa6715f96856665f174d65b094806d2810
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -135,7 +135,7 @@ ms.locfileid: "93061290"
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
-<span data-ttu-id="00789-195">지금까지의 예제에서는 컨트롤러가 MVC의 “VC” 부분, 즉 **V** iew(보기) 및 **C** ontroller(컨트롤러) 작업을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="00789-195">In these examples the controller has been doing the "VC" portion of MVC - that is, the **V** iew and the **C** ontroller work.</span></span> <span data-ttu-id="00789-196">컨트롤러가 HTML을 직접 반환하고 있습니다.</span><span class="sxs-lookup"><span data-stu-id="00789-196">The controller is returning HTML directly.</span></span> <span data-ttu-id="00789-197">코드 및 유지 관리가 매우 복잡해지므로 일반적으로 컨트롤러에서 직접 HTML을 반환하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="00789-197">Generally you don't want controllers returning HTML directly, since that becomes very cumbersome to code and maintain.</span></span> <span data-ttu-id="00789-198">대신 일반적으로 별도의 :::no-loc(Razor)::: 뷰 템플릿 파일을 사용하여 HTML 응답을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="00789-198">Instead you typically use a separate :::no-loc(Razor)::: view template file to generate the HTML response.</span></span> <span data-ttu-id="00789-199">다음 자습서에서는 해당 작업을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="00789-199">You do that in the next tutorial.</span></span>
+<span data-ttu-id="00789-195">지금까지의 예제에서는 컨트롤러가 MVC의 “VC” 부분, 즉 **V** iew(보기) 및 **C** ontroller(컨트롤러) 작업을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="00789-195">In these examples the controller has been doing the "VC" portion of MVC - that is, the **V** iew and the **C** ontroller work.</span></span> <span data-ttu-id="00789-196">컨트롤러가 HTML을 직접 반환하고 있습니다.</span><span class="sxs-lookup"><span data-stu-id="00789-196">The controller is returning HTML directly.</span></span> <span data-ttu-id="00789-197">코드 및 유지 관리가 매우 복잡해지므로 일반적으로 컨트롤러에서 직접 HTML을 반환하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="00789-197">Generally you don't want controllers returning HTML directly, since that becomes very cumbersome to code and maintain.</span></span> <span data-ttu-id="00789-198">대신 일반적으로 별도의 Razor 뷰 템플릿 파일을 사용하여 HTML 응답을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="00789-198">Instead you typically use a separate Razor view template file to generate the HTML response.</span></span> <span data-ttu-id="00789-199">다음 자습서에서는 해당 작업을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="00789-199">You do that in the next tutorial.</span></span>
 
 > [!div class="step-by-step"]
 > <span data-ttu-id="00789-200">[이전](start-mvc.md)
@@ -256,7 +256,7 @@ Remove link for simplified tutorial.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
-<span data-ttu-id="00789-291">이러한 예제에서 컨트롤러는 MVC의 "VC" 부분을 사용했습니다. 즉, 보기 및 컨트롤러 작업입니다.</span><span class="sxs-lookup"><span data-stu-id="00789-291">In these examples the controller has been doing the "VC" portion of MVC - that is, the view and controller work.</span></span> <span data-ttu-id="00789-292">컨트롤러가 HTML을 직접 반환하고 있습니다.</span><span class="sxs-lookup"><span data-stu-id="00789-292">The controller is returning HTML directly.</span></span> <span data-ttu-id="00789-293">코드 및 유지 관리가 매우 복잡해지므로 일반적으로 컨트롤러에서 직접 HTML을 반환하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="00789-293">Generally you don't want controllers returning HTML directly, since that becomes very cumbersome to code and maintain.</span></span> <span data-ttu-id="00789-294">대신 일반적으로 별도의 :::no-loc(Razor)::: 뷰 템플릿 파일을 사용하여 HTML 응답을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="00789-294">Instead you typically use a separate :::no-loc(Razor)::: view template file to help generate the HTML response.</span></span> <span data-ttu-id="00789-295">다음 자습서에서는 해당 작업을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="00789-295">You do that in the next tutorial.</span></span>
+<span data-ttu-id="00789-291">이러한 예제에서 컨트롤러는 MVC의 "VC" 부분을 사용했습니다. 즉, 보기 및 컨트롤러 작업입니다.</span><span class="sxs-lookup"><span data-stu-id="00789-291">In these examples the controller has been doing the "VC" portion of MVC - that is, the view and controller work.</span></span> <span data-ttu-id="00789-292">컨트롤러가 HTML을 직접 반환하고 있습니다.</span><span class="sxs-lookup"><span data-stu-id="00789-292">The controller is returning HTML directly.</span></span> <span data-ttu-id="00789-293">코드 및 유지 관리가 매우 복잡해지므로 일반적으로 컨트롤러에서 직접 HTML을 반환하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="00789-293">Generally you don't want controllers returning HTML directly, since that becomes very cumbersome to code and maintain.</span></span> <span data-ttu-id="00789-294">대신 일반적으로 별도의 Razor 뷰 템플릿 파일을 사용하여 HTML 응답을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="00789-294">Instead you typically use a separate Razor view template file to help generate the HTML response.</span></span> <span data-ttu-id="00789-295">다음 자습서에서는 해당 작업을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="00789-295">You do that in the next tutorial.</span></span>
 
 > [!div class="step-by-step"]
 > <span data-ttu-id="00789-296">[이전](start-mvc.md)

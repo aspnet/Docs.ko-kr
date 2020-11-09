@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/view-components
 ms.openlocfilehash: e0ff97b53d12fbf6c6a89e94704de1aee9d7f9e6
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -33,7 +33,7 @@ ms.locfileid: "93060588"
 
 ## <a name="view-components"></a><span data-ttu-id="24e73-106">보기 구성 요소</span><span class="sxs-lookup"><span data-stu-id="24e73-106">View components</span></span>
 
-<span data-ttu-id="24e73-107">뷰 구성 요소는 부분 보기와 유사하지만 훨씬 강력합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-107">View components are similar to partial views, but they're much more powerful.</span></span> <span data-ttu-id="24e73-108">뷰 구성 요소는 모델 바인딩을 사용하지 않으며 호출할 때 제공되는 데이터에만 의존합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-108">View components don't use model binding, and only depend on the data provided when calling into it.</span></span> <span data-ttu-id="24e73-109">이 문서는 컨트롤러 및 뷰를 사용 하 여 작성 되었지만 페이지 에서도 보기 구성 요소를 사용할 수 :::no-loc(Razor)::: 있습니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-109">This article was written using controllers and views, but view components also work with :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="24e73-107">뷰 구성 요소는 부분 보기와 유사하지만 훨씬 강력합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-107">View components are similar to partial views, but they're much more powerful.</span></span> <span data-ttu-id="24e73-108">뷰 구성 요소는 모델 바인딩을 사용하지 않으며 호출할 때 제공되는 데이터에만 의존합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-108">View components don't use model binding, and only depend on the data provided when calling into it.</span></span> <span data-ttu-id="24e73-109">이 문서는 컨트롤러 및 뷰를 사용 하 여 작성 되었지만 페이지 에서도 보기 구성 요소를 사용할 수 Razor 있습니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-109">This article was written using controllers and views, but view components also work with Razor Pages.</span></span>
 
 <span data-ttu-id="24e73-110">뷰 구성 요소:</span><span class="sxs-lookup"><span data-stu-id="24e73-110">A view component:</span></span>
 
@@ -54,7 +54,7 @@ ms.locfileid: "93060588"
 
 <span data-ttu-id="24e73-123">보기 구성 요소는 클래스(일반적으로 [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)에서 파생됨)와 보기 구성 요소가 반환하는 결과(일반적으로 보기)의 두 부분으로 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-123">A view component consists of two parts: the class (typically derived from [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) and the result it returns (typically a view).</span></span> <span data-ttu-id="24e73-124">컨트롤러와 마찬가지로, 뷰 구성 요소는 POCO일 수 있지만 대부분의 개발자는 `ViewComponent`에서 파생되어 사용 가능한 메서드와 속성을 활용하려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-124">Like controllers, a view component can be a POCO, but most developers will want to take advantage of the methods and properties available by deriving from `ViewComponent`.</span></span>
 
-<span data-ttu-id="24e73-125">뷰 구성 요소가 앱의 사양을 충족 하는지 고려할 때 구성 요소를 대신 사용 하는 것이 좋습니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="24e73-125">When considering if view components meet an app's specifications, consider using :::no-loc(Razor)::: Components instead.</span></span> <span data-ttu-id="24e73-126">:::no-loc(Razor)::: 또한 구성 요소는 태그를 c # 코드와 결합 하 여 재사용 가능한 UI 단위를 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-126">:::no-loc(Razor)::: Components also combine markup with C# code to produce reusable UI units.</span></span> <span data-ttu-id="24e73-127">:::no-loc(Razor)::: 구성 요소는 클라이언트 쪽 UI 논리 및 컴퍼지션을 제공할 때 개발자 생산성을 위해 설계 되었습니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-127">:::no-loc(Razor)::: Components are designed for developer productivity when providing client-side UI logic and composition.</span></span> <span data-ttu-id="24e73-128">자세한 내용은 <xref:blazor/components/index>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="24e73-128">For more information, see <xref:blazor/components/index>.</span></span>
+<span data-ttu-id="24e73-125">뷰 구성 요소가 앱의 사양을 충족 하는지 고려할 때 구성 요소를 대신 사용 하는 것이 좋습니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="24e73-125">When considering if view components meet an app's specifications, consider using Razor Components instead.</span></span> <span data-ttu-id="24e73-126">Razor 또한 구성 요소는 태그를 c # 코드와 결합 하 여 재사용 가능한 UI 단위를 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-126">Razor Components also combine markup with C# code to produce reusable UI units.</span></span> <span data-ttu-id="24e73-127">Razor 구성 요소는 클라이언트 쪽 UI 논리 및 컴퍼지션을 제공할 때 개발자 생산성을 위해 설계 되었습니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-127">Razor Components are designed for developer productivity when providing client-side UI logic and composition.</span></span> <span data-ttu-id="24e73-128">자세한 내용은 <xref:blazor/components/index>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="24e73-128">For more information, see <xref:blazor/components/index>.</span></span>
 
 ## <a name="creating-a-view-component"></a><span data-ttu-id="24e73-129">뷰 구성 요소 만들기</span><span class="sxs-lookup"><span data-stu-id="24e73-129">Creating a view component</span></span>
 
@@ -94,7 +94,7 @@ ms.locfileid: "93060588"
 * <span data-ttu-id="24e73-160">/Views/Shared/Components/{View Component Name}/{View Name}</span><span class="sxs-lookup"><span data-stu-id="24e73-160">/Views/Shared/Components/{View Component Name}/{View Name}</span></span>
 * <span data-ttu-id="24e73-161">/Pages/Shared/Components/{View Component Name}/{View Name}</span><span class="sxs-lookup"><span data-stu-id="24e73-161">/Pages/Shared/Components/{View Component Name}/{View Name}</span></span>
 
-<span data-ttu-id="24e73-162">검색 경로는 컨트롤러 + 뷰 및 페이지를 사용 하는 프로젝트에 적용 됩니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="24e73-162">The search path applies to projects using controllers + views and :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="24e73-162">검색 경로는 컨트롤러 + 뷰 및 페이지를 사용 하는 프로젝트에 적용 됩니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="24e73-162">The search path applies to projects using controllers + views and Razor Pages.</span></span>
 
 <span data-ttu-id="24e73-163">뷰 구성 요소에 대한 기본 뷰 이름은 *Default* 이며 이것은 일반적으로 뷰 파일의 이름이 *Default.cshtml* 로 지정됨을 의미합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-163">The default view name for a view component is *Default* , which means your view file will typically be named *Default.cshtml* .</span></span> <span data-ttu-id="24e73-164">뷰 구성 요소 결과를 만들거나 `View` 메서드를 호출할 때 다른 뷰 이름을 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-164">You can specify a different view name when creating the view component result or when calling the `View` method.</span></span>
 
@@ -102,7 +102,7 @@ ms.locfileid: "93060588"
 
 ### <a name="customize-the-view-search-path"></a><span data-ttu-id="24e73-167">보기 검색 경로 사용자 지정</span><span class="sxs-lookup"><span data-stu-id="24e73-167">Customize the view search path</span></span>
 
-<span data-ttu-id="24e73-168">보기 검색 경로를 사용자 지정 하려면 :::no-loc(Razor)::: 의 컬렉션을 수정 <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::.:::no-loc(Razor):::ViewEngineOptions.ViewLocationFormats> 합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-168">To customize the view search path, modify :::no-loc(Razor):::'s <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::.:::no-loc(Razor):::ViewEngineOptions.ViewLocationFormats> collection.</span></span> <span data-ttu-id="24e73-169">예를 들어 "/Components/{View Component Name}/{View Name}" 경로 내에서 보기를 검색하려면 컬렉션에 새 항목을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-169">For example, to search for views within the path "/Components/{View Component Name}/{View Name}", add a new item to the collection:</span></span>
+<span data-ttu-id="24e73-168">보기 검색 경로를 사용자 지정 하려면 Razor 의 컬렉션을 수정 <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.ViewLocationFormats> 합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-168">To customize the view search path, modify Razor's <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.ViewLocationFormats> collection.</span></span> <span data-ttu-id="24e73-169">예를 들어 "/Components/{View Component Name}/{View Name}" 경로 내에서 보기를 검색하려면 컬렉션에 새 항목을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-169">For example, to search for views within the path "/Components/{View Component Name}/{View Name}", add a new item to the collection:</span></span>
 
 [!code-csharp[](view-components/samples_snapshot/2.x/Startup.cs?name=snippet_ViewLocationFormats&highlight=4)]
 
@@ -193,18 +193,18 @@ ms.locfileid: "93060588"
 * <span data-ttu-id="24e73-208">`InvokeAsync`는 보기에서 호출할 수 있는 메서드를 노출하며 임의의 개수의 인수를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-208">`InvokeAsync` exposes a method which can be called from a view, and it can take an arbitrary number of arguments.</span></span>
 * <span data-ttu-id="24e73-209">`InvokeAsync` 메서드는 `isDone` 및 `maxPriority` 매개 변수를 만족하는 `ToDo` 항목 집합을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-209">The `InvokeAsync` method returns the set of `ToDo` items that satisfy the `isDone` and `maxPriority` parameters.</span></span>
 
-### <a name="create-the-view-component-no-locrazor-view"></a><span data-ttu-id="24e73-210">뷰 구성 요소 :::no-loc(Razor)::: 보기 만들기</span><span class="sxs-lookup"><span data-stu-id="24e73-210">Create the view component :::no-loc(Razor)::: view</span></span>
+### <a name="create-the-view-component-no-locrazor-view"></a><span data-ttu-id="24e73-210">뷰 구성 요소 Razor 보기 만들기</span><span class="sxs-lookup"><span data-stu-id="24e73-210">Create the view component Razor view</span></span>
 
 * <span data-ttu-id="24e73-211">*Views/Shared/Components* 폴더를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-211">Create the *Views/Shared/Components* folder.</span></span> <span data-ttu-id="24e73-212">이 폴더의 이름은 *Components* 로 **지정되어야만** 합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-212">This folder **must** be named *Components* .</span></span>
 
 * <span data-ttu-id="24e73-213">*Views/Shared/Components/PriorityList* 폴더를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-213">Create the *Views/Shared/Components/PriorityList* folder.</span></span> <span data-ttu-id="24e73-214">이 폴더 이름은 보기 구성 요소 클래스의 이름 또는 클래스 이름에서 접미사를 뺀 이름과 일치해야 합니다(규칙을 준수하고 클래스 이름에 *ViewComponent* 접미사를 사용한 경우).</span><span class="sxs-lookup"><span data-stu-id="24e73-214">This folder name must match the name of the view component class, or the name of the class minus the suffix (if we followed convention and used the *ViewComponent* suffix in the class name).</span></span> <span data-ttu-id="24e73-215">`ViewComponent` 특성을 사용한 경우 클래스 이름은 특성 지정과 일치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-215">If you used the `ViewComponent` attribute, the class name would need to match the attribute designation.</span></span>
 
-* <span data-ttu-id="24e73-216">*Views/Shared/Components/PriorityList/Default* 뷰를 만듭니다. :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="24e73-216">Create a *Views/Shared/Components/PriorityList/Default.cshtml* :::no-loc(Razor)::: view:</span></span>
+* <span data-ttu-id="24e73-216">*Views/Shared/Components/PriorityList/Default* 뷰를 만듭니다. Razor</span><span class="sxs-lookup"><span data-stu-id="24e73-216">Create a *Views/Shared/Components/PriorityList/Default.cshtml* Razor view:</span></span>
 
 
   [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
 
-   <span data-ttu-id="24e73-217">뷰를 사용 하 여 :::no-loc(Razor)::: 목록을 `TodoItem` 표시 하 고 표시 합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-217">The :::no-loc(Razor)::: view takes a list of `TodoItem` and displays them.</span></span> <span data-ttu-id="24e73-218">뷰 구성 요소 `InvokeAsync` 메서드가 뷰의 이름을 전달하지 않은 경우(샘플에서처럼) 규칙에 따라 뷰 이름으로 *Default* 가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-218">If the view component `InvokeAsync` method doesn't pass the name of the view (as in our sample), *Default* is used for the view name by convention.</span></span> <span data-ttu-id="24e73-219">자습서의 뒷부분에서 뷰 이름을 전달하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-219">Later in the tutorial, I'll show you how to pass the name of the view.</span></span> <span data-ttu-id="24e73-220">특정 컨트롤러에 대 한 기본 스타일을 재정의 하려면 뷰를 컨트롤러 관련 뷰 폴더에 추가 합니다 (예: *Views/ToDo/Components/PriorityList/default. cshtml)* .</span><span class="sxs-lookup"><span data-stu-id="24e73-220">To override the default styling for a specific controller, add a view to the controller-specific view folder (for example *Views/ToDo/Components/PriorityList/Default.cshtml)* .</span></span>
+   <span data-ttu-id="24e73-217">뷰를 사용 하 여 Razor 목록을 `TodoItem` 표시 하 고 표시 합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-217">The Razor view takes a list of `TodoItem` and displays them.</span></span> <span data-ttu-id="24e73-218">뷰 구성 요소 `InvokeAsync` 메서드가 뷰의 이름을 전달하지 않은 경우(샘플에서처럼) 규칙에 따라 뷰 이름으로 *Default* 가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-218">If the view component `InvokeAsync` method doesn't pass the name of the view (as in our sample), *Default* is used for the view name by convention.</span></span> <span data-ttu-id="24e73-219">자습서의 뒷부분에서 뷰 이름을 전달하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-219">Later in the tutorial, I'll show you how to pass the name of the view.</span></span> <span data-ttu-id="24e73-220">특정 컨트롤러에 대 한 기본 스타일을 재정의 하려면 뷰를 컨트롤러 관련 뷰 폴더에 추가 합니다 (예: *Views/ToDo/Components/PriorityList/default. cshtml)* .</span><span class="sxs-lookup"><span data-stu-id="24e73-220">To override the default styling for a specific controller, add a view to the controller-specific view folder (for example *Views/ToDo/Components/PriorityList/Default.cshtml)* .</span></span>
 
     <span data-ttu-id="24e73-221">뷰 구성 요소가 컨트롤러에 특정 한 경우에는 컨트롤러 관련 폴더 ( *Views/ToDo/Components/PriorityList/Default. cshtml* )에 해당 구성 요소를 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-221">If the view component is controller-specific, you can add it to the controller-specific folder ( *Views/ToDo/Components/PriorityList/Default.cshtml* ).</span></span>
 
@@ -272,7 +272,7 @@ ms.locfileid: "93060588"
 
 [!code-csharp[](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs?highlight=10&range=5-35)]
 
-<span data-ttu-id="24e73-253">`using`뷰 파일에 문을 추가 하 :::no-loc(Razor)::: 고 연산자를 사용 합니다 `nameof` .</span><span class="sxs-lookup"><span data-stu-id="24e73-253">Add a `using` statement to your :::no-loc(Razor)::: view file, and use the `nameof` operator:</span></span>
+<span data-ttu-id="24e73-253">`using`뷰 파일에 문을 추가 하 Razor 고 연산자를 사용 합니다 `nameof` .</span><span class="sxs-lookup"><span data-stu-id="24e73-253">Add a `using` statement to your Razor view file, and use the `nameof` operator:</span></span>
 
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexNameof.cshtml?range=1-6,35-)]
 
@@ -291,7 +291,7 @@ public class PriorityList : ViewComponent
 }
 ```
 
-<span data-ttu-id="24e73-257">뷰 구성 요소 파일에는 :::no-loc(Razor)::: 메서드에 전달 된 문자열이 나열 됩니다 `Invoke` ( *Views/Home/Components/PriorityList/Default. cshtml* ).</span><span class="sxs-lookup"><span data-stu-id="24e73-257">The view component's :::no-loc(Razor)::: file lists the strings passed to the `Invoke` method ( *Views/Home/Components/PriorityList/Default.cshtml* ):</span></span>
+<span data-ttu-id="24e73-257">뷰 구성 요소 파일에는 Razor 메서드에 전달 된 문자열이 나열 됩니다 `Invoke` ( *Views/Home/Components/PriorityList/Default. cshtml* ).</span><span class="sxs-lookup"><span data-stu-id="24e73-257">The view component's Razor file lists the strings passed to the `Invoke` method ( *Views/Home/Components/PriorityList/Default.cshtml* ):</span></span>
 
 ```cshtml
 @model List<string>
@@ -307,7 +307,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker range=">= aspnetcore-1.1"
 
-<span data-ttu-id="24e73-258">뷰 구성 요소는 :::no-loc(Razor)::: 다음 방법 중 하나를 사용 하 여 파일 (예: *Views/Home/Index. cshtml* )에서 호출 됩니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-258">The view component is invoked in a :::no-loc(Razor)::: file (for example, *Views/Home/Index.cshtml* ) using one of the following approaches:</span></span>
+<span data-ttu-id="24e73-258">뷰 구성 요소는 Razor 다음 방법 중 하나를 사용 하 여 파일 (예: *Views/Home/Index. cshtml* )에서 호출 됩니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-258">The view component is invoked in a Razor file (for example, *Views/Home/Index.cshtml* ) using one of the following approaches:</span></span>
 
 * <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>
 * [<span data-ttu-id="24e73-259">태그 도우미</span><span class="sxs-lookup"><span data-stu-id="24e73-259">Tag Helper</span></span>](xref:mvc/views/tag-helpers/intro)
@@ -318,7 +318,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker range="< aspnetcore-1.1"
 
-<span data-ttu-id="24e73-261">뷰 구성 요소는 :::no-loc(Razor)::: 를 사용 하 여 파일 (예: *Views/Home/Index. cshtml* )에서 호출 됩니다 <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> .</span><span class="sxs-lookup"><span data-stu-id="24e73-261">The view component is invoked in a :::no-loc(Razor)::: file (for example, *Views/Home/Index.cshtml* ) with <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>.</span></span>
+<span data-ttu-id="24e73-261">뷰 구성 요소는 Razor 를 사용 하 여 파일 (예: *Views/Home/Index. cshtml* )에서 호출 됩니다 <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> .</span><span class="sxs-lookup"><span data-stu-id="24e73-261">The view component is invoked in a Razor file (for example, *Views/Home/Index.cshtml* ) with <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>.</span></span>
 
 <span data-ttu-id="24e73-262">`Component.InvokeAsync`를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="24e73-262">Call `Component.InvokeAsync`:</span></span>
 
@@ -336,7 +336,7 @@ public class PriorityList : ViewComponent
 @addTagHelper *, MyWebApp
 ```
 
-<span data-ttu-id="24e73-264">태그 파일에서 뷰 구성 요소 태그 도우미를 사용 합니다 :::no-loc(Razor)::: .</span><span class="sxs-lookup"><span data-stu-id="24e73-264">Use the view component Tag Helper in the :::no-loc(Razor)::: markup file:</span></span>
+<span data-ttu-id="24e73-264">태그 파일에서 뷰 구성 요소 태그 도우미를 사용 합니다 Razor .</span><span class="sxs-lookup"><span data-stu-id="24e73-264">Use the view component Tag Helper in the Razor markup file:</span></span>
 
 ```cshtml
 <vc:priority-list max-priority="999" is-done="false">
@@ -345,7 +345,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker-end
 
-<span data-ttu-id="24e73-265">의 메서드 시그니처는 `PriorityList.Invoke` 동기적 이지만 :::no-loc(Razor)::: 태그 파일의를 사용 하 여 메서드를 찾아서 호출 합니다 `Component.InvokeAsync` .</span><span class="sxs-lookup"><span data-stu-id="24e73-265">The method signature of `PriorityList.Invoke` is synchronous, but :::no-loc(Razor)::: finds and calls the method with `Component.InvokeAsync` in the markup file.</span></span>
+<span data-ttu-id="24e73-265">의 메서드 시그니처는 `PriorityList.Invoke` 동기적 이지만 Razor 태그 파일의를 사용 하 여 메서드를 찾아서 호출 합니다 `Component.InvokeAsync` .</span><span class="sxs-lookup"><span data-stu-id="24e73-265">The method signature of `PriorityList.Invoke` is synchronous, but Razor finds and calls the method with `Component.InvokeAsync` in the markup file.</span></span>
 
 ## <a name="all-view-component-parameters-are-required"></a><span data-ttu-id="24e73-266">모든 뷰 구성 요소 매개 변수 필요</span><span class="sxs-lookup"><span data-stu-id="24e73-266">All view component parameters are required</span></span>
 

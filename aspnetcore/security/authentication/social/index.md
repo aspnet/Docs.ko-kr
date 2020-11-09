@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/23/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/social/index
 ms.openlocfilehash: 1f7c8cd0716f1ada3517add0d37a09e419f38774
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -69,7 +69,7 @@ ms.locfileid: "93053308"
   dotnet new webapp -o WebApp1 -au Individual
   ```
 
-  * <span data-ttu-id="7926c-128">`dotnet new` 명령은 *WebApp1* 폴더에서 새 :::no-loc(Razor)::: Pages 프로젝트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-128">The `dotnet new` command creates a new :::no-loc(Razor)::: Pages project in the *WebApp1* folder.</span></span>
+  * <span data-ttu-id="7926c-128">`dotnet new` 명령은 *WebApp1* 폴더에서 새 Razor Pages 프로젝트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-128">The `dotnet new` command creates a new Razor Pages project in the *WebApp1* folder.</span></span>
   * <span data-ttu-id="7926c-129">`-au Individual`은 개별 인증을 위한 코드를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-129">`-au Individual` creates the code for Individual authentication.</span></span>
   * <span data-ttu-id="7926c-130">`-uld`에서는 Windows용 SQL Server Express의 경량 버전인 LocalDB를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-130">`-uld` uses LocalDB, a lightweight version of SQL Server Express for Windows.</span></span> <span data-ttu-id="7926c-131">SQLite를 사용하려면 `-uld`를 생략합니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-131">Omit `-uld` to use SQLite.</span></span>
   * <span data-ttu-id="7926c-132">`code` 명령은 Visual Studio Code의 새 인스턴스에서 *WebApp1* 폴더를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-132">The `code` command opens the *WebApp1* folder in a new instance of Visual Studio Code.</span></span>
@@ -86,7 +86,7 @@ ms.locfileid: "93053308"
 
 ## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a><span data-ttu-id="7926c-137">SecretManager를 사용하여 로그인 공급자에 의해 할당된 토큰 저장</span><span class="sxs-lookup"><span data-stu-id="7926c-137">Use SecretManager to store tokens assigned by login providers</span></span>
 
-<span data-ttu-id="7926c-138">소셜 로그인 공급자는 등록 프로세스 중에 **애플리케이션 ID** 및 **애플리케이션 암호** 토큰을 할당합니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-138">Social login providers assign **Application Id** and **Application Secret** tokens during the registration process.</span></span> <span data-ttu-id="7926c-139">정확한 토큰 이름은 공급자에 따라 달라집니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-139">The exact token names vary by provider.</span></span> <span data-ttu-id="7926c-140">이러한 토큰은 앱이 API에 액세스하는 데 사용하는 자격 증명을 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-140">These tokens represent the credentials your app uses to access their API.</span></span> <span data-ttu-id="7926c-141">토큰은 [Secret Manager](xref:security/app-secrets#secret-manager)의 도움으로 앱 구성에 연결할 수 있는 "암호"를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-141">The tokens constitute the "secrets" that can be linked to your app configuration with the help of [Secret Manager](xref:security/app-secrets#secret-manager).</span></span> <span data-ttu-id="7926c-142">Secret Manager는 *:::no-loc(appsettings.json):::* 같은 구성 파일에 토큰을 저장하는 보다 안전한 대안입니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-142">Secret Manager is a more secure alternative to storing the tokens in a configuration file, such as *:::no-loc(appsettings.json):::* .</span></span>
+<span data-ttu-id="7926c-138">소셜 로그인 공급자는 등록 프로세스 중에 **애플리케이션 ID** 및 **애플리케이션 암호** 토큰을 할당합니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-138">Social login providers assign **Application Id** and **Application Secret** tokens during the registration process.</span></span> <span data-ttu-id="7926c-139">정확한 토큰 이름은 공급자에 따라 달라집니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-139">The exact token names vary by provider.</span></span> <span data-ttu-id="7926c-140">이러한 토큰은 앱이 API에 액세스하는 데 사용하는 자격 증명을 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-140">These tokens represent the credentials your app uses to access their API.</span></span> <span data-ttu-id="7926c-141">토큰은 [Secret Manager](xref:security/app-secrets#secret-manager)의 도움으로 앱 구성에 연결할 수 있는 "암호"를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-141">The tokens constitute the "secrets" that can be linked to your app configuration with the help of [Secret Manager](xref:security/app-secrets#secret-manager).</span></span> <span data-ttu-id="7926c-142">Secret Manager는 *appsettings.json* 같은 구성 파일에 토큰을 저장하는 보다 안전한 대안입니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-142">Secret Manager is a more secure alternative to storing the tokens in a configuration file, such as *appsettings.json* .</span></span>
 
 > [!IMPORTANT]
 > <span data-ttu-id="7926c-143">Secret Manager는 개발 목적으로만 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-143">Secret Manager is for development purposes only.</span></span> <span data-ttu-id="7926c-144">[Azure Key Vault 구성 제공자](xref:security/key-vault-configuration)로 Azure 테스트 및 프로덕션 암호를 저장하고 보호할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7926c-144">You can store and protect Azure test and production secrets with the [Azure Key Vault configuration provider](xref:security/key-vault-configuration).</span></span>

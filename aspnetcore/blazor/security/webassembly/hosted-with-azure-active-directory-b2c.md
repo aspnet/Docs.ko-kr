@@ -1,22 +1,22 @@
 ---
-title: 'Azure Active Directory B2C를 사용하여 ASP.NET Core :::no-loc(Blazor WebAssembly)::: 호스트된 앱 보호'
+title: 'Azure Active Directory B2C를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호'
 author: guardrex
-description: 'Azure Active Directory B2C를 사용하여 ASP.NET Core :::no-loc(Blazor WebAssembly)::: 호스트된 앱을 보호하는 방법을 알아봅니다.'
+description: 'Azure Active Directory B2C를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱을 보호하는 방법을 알아봅니다.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/27/2020
 no-loc:
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/security/webassembly/hosted-with-azure-active-directory-b2c
 ms.openlocfilehash: 1a58e19ecaf816ddfb724b9a575d35c801cebd04
 ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
@@ -25,11 +25,11 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2020
 ms.locfileid: "92690553"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a><span data-ttu-id="1f9b2-103">Azure Active Directory B2C를 사용하여 ASP.NET Core :::no-loc(Blazor WebAssembly)::: 호스트된 앱 보호</span><span class="sxs-lookup"><span data-stu-id="1f9b2-103">Secure an ASP.NET Core :::no-loc(Blazor WebAssembly)::: hosted app with Azure Active Directory B2C</span></span>
+# <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a><span data-ttu-id="1f9b2-103">Azure Active Directory B2C를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호</span><span class="sxs-lookup"><span data-stu-id="1f9b2-103">Secure an ASP.NET Core Blazor WebAssembly hosted app with Azure Active Directory B2C</span></span>
 
 <span data-ttu-id="1f9b2-104">작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="1f9b2-104">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="1f9b2-105">이 문서에서는 인증을 위해 [AAD(Azure Active Directory) B2C](/azure/active-directory-b2c/overview)를 사용하는 [호스트된 :::no-loc(Blazor WebAssembly)::: 앱](xref:blazor/hosting-models#blazor-webassembly)을 만드는 방법을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-105">This article describes how to create a [hosted :::no-loc(Blazor WebAssembly)::: app](xref:blazor/hosting-models#blazor-webassembly) that uses [Azure Active Directory (AAD) B2C](/azure/active-directory-b2c/overview) for authentication.</span></span>
+<span data-ttu-id="1f9b2-105">이 문서에서는 인증을 위해 [AAD(Azure Active Directory) B2C](/azure/active-directory-b2c/overview)를 사용하는 [호스트된 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만드는 방법을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-105">This article describes how to create a [hosted Blazor WebAssembly app](xref:blazor/hosting-models#blazor-webassembly) that uses [Azure Active Directory (AAD) B2C](/azure/active-directory-b2c/overview) for authentication.</span></span>
 
 ## <a name="register-apps-in-aad-b2c-and-create-solution"></a><span data-ttu-id="1f9b2-106">AAD B2C에 앱을 등록하고 솔루션 만들기</span><span class="sxs-lookup"><span data-stu-id="1f9b2-106">Register apps in AAD B2C and create solution</span></span>
 
@@ -44,7 +44,7 @@ ms.locfileid: "92690553"
 <span data-ttu-id="1f9b2-112">[자습서: Azure Active Directory B2C에서 애플리케이션 등록](/azure/active-directory-b2c/tutorial-register-applications)의 지침에 따라 ‘서버 API 앱’에 대해 AAD 앱을 등록하고 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-112">Follow the guidance in [Tutorial: Register an application in Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-register-applications) to register an AAD app for the *Server API app* and then do the following:</span></span>
 
 1. <span data-ttu-id="1f9b2-113">**Azure Active Directory** > **앱 등록** 에서 **새 등록** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-113">In **Azure Active Directory** > **App registrations** , select **New registration** .</span></span>
-1. <span data-ttu-id="1f9b2-114">앱의 **이름** 을 지정합니다(예: **:::no-loc(Blazor Server)::: AAD B2C** ).</span><span class="sxs-lookup"><span data-stu-id="1f9b2-114">Provide a **Name** for the app (for example, **:::no-loc(Blazor Server)::: AAD B2C** ).</span></span>
+1. <span data-ttu-id="1f9b2-114">앱의 **이름** 을 지정합니다(예: **Blazor Server AAD B2C** ).</span><span class="sxs-lookup"><span data-stu-id="1f9b2-114">Provide a **Name** for the app (for example, **Blazor Server AAD B2C** ).</span></span>
 1. <span data-ttu-id="1f9b2-115">**지원되는 계정 유형** 으로 다중 테넌트 옵션 **모든 ID 공급자 또는 조직 디렉터리의 계정(사용자 흐름을 사용하여 사용자를 인증하는 경우)**</span><span class="sxs-lookup"><span data-stu-id="1f9b2-115">For **Supported account types** , select the multi-tenant option: **Accounts in any identity provider or organizational directory (for authenticating users with user flows)**</span></span>
 1. <span data-ttu-id="1f9b2-116">이 시나리오에서는 ‘서버 API 앱’에 **리디렉션 URI** 가 필요하지 않으므로 드롭다운이 **웹** 으로 설정된 상태로 두고 리디렉션 URI를 입력하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-116">The *Server API app* doesn't require a **Redirect URI** in this scenario, so leave the drop down set to **Web** and don't enter a redirect URI.</span></span>
 1. <span data-ttu-id="1f9b2-117">**권한** > **openid 및 offline_access 권한에 대한 관리자 동의 허용** 이 선택되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-117">Confirm that **Permissions** > **Grant admin consent to openid and offline_access permissions** is selected.</span></span>
@@ -77,7 +77,7 @@ ms.locfileid: "92690553"
 ::: moniker range=">= aspnetcore-5.0"
 
 1. <span data-ttu-id="1f9b2-135">**Azure Active Directory** > **앱 등록** 에서 **새 등록** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-135">In **Azure Active Directory** > **App registrations** , select **New registration** .</span></span>
-1. <span data-ttu-id="1f9b2-136">앱의 **이름** 을 지정합니다(예: **:::no-loc(Blazor)::: 클라이언트 AAD B2C** ).</span><span class="sxs-lookup"><span data-stu-id="1f9b2-136">Provide a **Name** for the app (for example, **:::no-loc(Blazor)::: Client AAD B2C** ).</span></span>
+1. <span data-ttu-id="1f9b2-136">앱의 **이름** 을 지정합니다(예: **Blazor 클라이언트 AAD B2C** ).</span><span class="sxs-lookup"><span data-stu-id="1f9b2-136">Provide a **Name** for the app (for example, **Blazor Client AAD B2C** ).</span></span>
 1. <span data-ttu-id="1f9b2-137">**지원되는 계정 유형** 으로 다중 테넌트 옵션 **모든 ID 공급자 또는 조직 디렉터리의 계정(사용자 흐름을 사용하여 사용자를 인증하는 경우)**</span><span class="sxs-lookup"><span data-stu-id="1f9b2-137">For **Supported account types** , select the multi-tenant option: **Accounts in any identity provider or organizational directory (for authenticating users with user flows)**</span></span>
 1. <span data-ttu-id="1f9b2-138">**리디렉션 URI** 드롭다운은 **SPA(단일 페이지 애플리케이션)** 으로 설정하고 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-138">Set the **Redirect URI** drop down to **Single-page application (SPA)** and provide the following redirect URI: `https://localhost:{PORT}/authentication/login-callback`.</span></span> <span data-ttu-id="1f9b2-139">Kestrel에서 실행되는 앱의 기본 포트는 5001입니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-139">The default port for an app running on Kestrel is 5001.</span></span> <span data-ttu-id="1f9b2-140">앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-140">If the app is run on a different Kestrel port, use the app's port.</span></span> <span data-ttu-id="1f9b2-141">IIS Express의 경우 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 *`Server`* 앱 속성에서 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-141">For IIS Express, the randomly generated port for the app can be found in the *`Server`* app's properties in the **Debug** panel.</span></span> <span data-ttu-id="1f9b2-142">이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-142">Since the app doesn't exist at this point and the IIS Express port isn't known, return to this step after the app is created and update the redirect URI.</span></span> <span data-ttu-id="1f9b2-143">[앱 만들기](#create-the-app) 섹션에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-143">A remark appears in the [Create the app](#create-the-app) section to remind IIS Express users to update the redirect URI.</span></span>
 1. <span data-ttu-id="1f9b2-144">**권한** > **openid 및 offline_access 권한에 대한 관리자 동의 허용** 이 선택되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-144">Confirm that **Permissions** > **Grant admin consent to openid and offline_access permissions** is selected.</span></span>
@@ -97,7 +97,7 @@ ms.locfileid: "92690553"
 ::: moniker range="< aspnetcore-5.0"
 
 1. <span data-ttu-id="1f9b2-152">**Azure Active Directory** > **앱 등록** 에서 **새 등록** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-152">In **Azure Active Directory** > **App registrations** , select **New registration** .</span></span>
-1. <span data-ttu-id="1f9b2-153">앱의 **이름** 을 지정합니다(예: **:::no-loc(Blazor)::: 클라이언트 AAD B2C** ).</span><span class="sxs-lookup"><span data-stu-id="1f9b2-153">Provide a **Name** for the app (for example, **:::no-loc(Blazor)::: Client AAD B2C** ).</span></span>
+1. <span data-ttu-id="1f9b2-153">앱의 **이름** 을 지정합니다(예: **Blazor 클라이언트 AAD B2C** ).</span><span class="sxs-lookup"><span data-stu-id="1f9b2-153">Provide a **Name** for the app (for example, **Blazor Client AAD B2C** ).</span></span>
 1. <span data-ttu-id="1f9b2-154">**지원되는 계정 유형** 으로 다중 테넌트 옵션 **모든 ID 공급자 또는 조직 디렉터리의 계정(사용자 흐름을 사용하여 사용자를 인증하는 경우)**</span><span class="sxs-lookup"><span data-stu-id="1f9b2-154">For **Supported account types** , select the multi-tenant option: **Accounts in any identity provider or organizational directory (for authenticating users with user flows)**</span></span>
 1. <span data-ttu-id="1f9b2-155">**리디렉션 URI** 드롭다운은 **웹** 으로 설정된 상태로 두고, 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-155">Leave the **Redirect URI** drop down set to **Web** and provide the following redirect URI: `https://localhost:{PORT}/authentication/login-callback`.</span></span> <span data-ttu-id="1f9b2-156">Kestrel에서 실행되는 앱의 기본 포트는 5001입니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-156">The default port for an app running on Kestrel is 5001.</span></span> <span data-ttu-id="1f9b2-157">앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-157">If the app is run on a different Kestrel port, use the app's port.</span></span> <span data-ttu-id="1f9b2-158">IIS Express의 경우 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 *`Server`* 앱 속성에서 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-158">For IIS Express, the randomly generated port for the app can be found in the *`Server`* app's properties in the **Debug** panel.</span></span> <span data-ttu-id="1f9b2-159">이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-159">Since the app doesn't exist at this point and the IIS Express port isn't known, return to this step after the app is created and update the redirect URI.</span></span> <span data-ttu-id="1f9b2-160">[앱 만들기](#create-the-app) 섹션에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-160">A remark appears in the [Create the app](#create-the-app) section to remind IIS Express users to update the redirect URI.</span></span>
 1. <span data-ttu-id="1f9b2-161">**권한** > **openid 및 offline_access 권한에 대한 관리자 동의 허용** 이 선택되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-161">Confirm that **Permissions** > **Grant admin consent to openid and offline_access permissions** is selected.</span></span>
@@ -117,7 +117,7 @@ ms.locfileid: "92690553"
 <span data-ttu-id="1f9b2-169">**API 사용 권한** 에서:</span><span class="sxs-lookup"><span data-stu-id="1f9b2-169">In **API permissions** :</span></span>
 
 1. <span data-ttu-id="1f9b2-170">**사용 권한 추가** 를 선택하고 **내 API** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-170">Select **Add a permission** followed by **My APIs** .</span></span>
-1. <span data-ttu-id="1f9b2-171">**이름** 열에서 ‘서버 API 앱’을 선택합니다(예: **:::no-loc(Blazor Server)::: AAD B2C** ).</span><span class="sxs-lookup"><span data-stu-id="1f9b2-171">Select the *Server API app* from the **Name** column (for example, **:::no-loc(Blazor Server)::: AAD B2C** ).</span></span>
+1. <span data-ttu-id="1f9b2-171">**이름** 열에서 ‘서버 API 앱’을 선택합니다(예: **Blazor Server AAD B2C** ).</span><span class="sxs-lookup"><span data-stu-id="1f9b2-171">Select the *Server API app* from the **Name** column (for example, **Blazor Server AAD B2C** ).</span></span>
 1. <span data-ttu-id="1f9b2-172">**API** 목록을 엽니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-172">Open the **API** list.</span></span>
 1. <span data-ttu-id="1f9b2-173">API에 대한 액세스를 사용하도록 설정합니다(예: `API.Access`).</span><span class="sxs-lookup"><span data-stu-id="1f9b2-173">Enable access to the API (for example, `API.Access`).</span></span>
 1. <span data-ttu-id="1f9b2-174">**권한 추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-174">Select **Add permissions** .</span></span>
@@ -127,7 +127,7 @@ ms.locfileid: "92690553"
 
 [<span data-ttu-id="1f9b2-178">가입 및 로그인 사용자 흐름 만들기</span><span class="sxs-lookup"><span data-stu-id="1f9b2-178">Create a sign-up and sign-in user flow</span></span>](/azure/active-directory-b2c/tutorial-create-user-flows)
 
-<span data-ttu-id="1f9b2-179">최소한 **애플리케이션 클레임** > **표시 이름** 사용자 특성을 선택하여 `LoginDisplay` 구성 요소(`Shared/LoginDisplay.razor`)의 `context.User.:::no-loc(Identity):::.Name`을 채웁니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-179">At a minimum, select the **Application claims** > **Display Name** user attribute to populate the `context.User.:::no-loc(Identity):::.Name` in the `LoginDisplay` component (`Shared/LoginDisplay.razor`).</span></span>
+<span data-ttu-id="1f9b2-179">최소한 **애플리케이션 클레임** > **표시 이름** 사용자 특성을 선택하여 `LoginDisplay` 구성 요소(`Shared/LoginDisplay.razor`)의 `context.User.Identity.Name`을 채웁니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-179">At a minimum, select the **Application claims** > **Display Name** user attribute to populate the `context.User.Identity.Name` in the `LoginDisplay` component (`Shared/LoginDisplay.razor`).</span></span>
 
 <span data-ttu-id="1f9b2-180">앱에 대해 만들어진 가입 및 로그인 사용자 흐름 이름을 기록해 둡니다(예: `B2C_1_signupsignin`).</span><span class="sxs-lookup"><span data-stu-id="1f9b2-180">Record the sign-up and sign-in user flow name created for the app (for example, `B2C_1_signupsignin`).</span></span>
 
@@ -142,7 +142,7 @@ dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" 
 | <span data-ttu-id="1f9b2-183">자리표시자</span><span class="sxs-lookup"><span data-stu-id="1f9b2-183">Placeholder</span></span>                   | <span data-ttu-id="1f9b2-184">Azure Portal 이름</span><span class="sxs-lookup"><span data-stu-id="1f9b2-184">Azure portal name</span></span>                                     | <span data-ttu-id="1f9b2-185">예제</span><span class="sxs-lookup"><span data-stu-id="1f9b2-185">Example</span></span>                                      |
 | ----------------------------- | ----------------------------------------------------- | -------------------------------------------- |
 | `{AAD B2C INSTANCE}`          | <span data-ttu-id="1f9b2-186">인스턴스</span><span class="sxs-lookup"><span data-stu-id="1f9b2-186">Instance</span></span>                                              | `https://contoso.b2clogin.com/`              |
-| `{APP NAME}`                  | &mdash;                                               | `:::no-loc(Blazor):::Sample`                               |
+| `{APP NAME}`                  | &mdash;                                               | `BlazorSample`                               |
 | `{CLIENT APP CLIENT ID}`      | <span data-ttu-id="1f9b2-187">*`Client`* 앱의 애플리케이션(클라이언트) ID</span><span class="sxs-lookup"><span data-stu-id="1f9b2-187">Application (client) ID for the *`Client`* app</span></span>        | `4369008b-21fa-427c-abaa-9b53bf58e538`       |
 | `{DEFAULT SCOPE}`             | <span data-ttu-id="1f9b2-188">범위 이름</span><span class="sxs-lookup"><span data-stu-id="1f9b2-188">Scope name</span></span>                                            | `API.Access`                                 |
 | `{SERVER API APP CLIENT ID}`  | <span data-ttu-id="1f9b2-189">서버 API 앱의 애플리케이션(클라이언트) ID</span><span class="sxs-lookup"><span data-stu-id="1f9b2-189">Application (client) ID for the *Server API app*</span></span>      | `41451fa7-82d9-4673-8fa5-69eff5a761fd`       |
@@ -153,7 +153,7 @@ dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" 
 <span data-ttu-id="1f9b2-193">`-o|--output` 옵션으로 지정된 출력 위치는 프로젝트 폴더가 없는 경우 폴더를 하나 만들고 앱 이름의 일부가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-193">The output location specified with the `-o|--output` option creates a project folder if it doesn't exist and becomes part of the app's name.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="1f9b2-194">호스티드 :::no-loc(Blazor)::: 템플릿에 의해 설정된 범위에서는 앱 ID URI 호스트가 반복될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-194">The scope set up by the Hosted :::no-loc(Blazor)::: template might have the App ID URI host repeated.</span></span> <span data-ttu-id="1f9b2-195">*`Client`* 앱의 `Program.Main`(`Program.cs`)에서 `DefaultAccessTokenScopes` 컬렉션에 대해 구성된 범위가 올바른지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-195">Confirm that the scope configured for the `DefaultAccessTokenScopes` collection is correct in `Program.Main` (`Program.cs`) of the *`Client`* app.</span></span>
+> <span data-ttu-id="1f9b2-194">호스티드 Blazor 템플릿에 의해 설정된 범위에서는 앱 ID URI 호스트가 반복될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-194">The scope set up by the Hosted Blazor template might have the App ID URI host repeated.</span></span> <span data-ttu-id="1f9b2-195">*`Client`* 앱의 `Program.Main`(`Program.cs`)에서 `DefaultAccessTokenScopes` 컬렉션에 대해 구성된 범위가 올바른지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-195">Confirm that the scope configured for the `DefaultAccessTokenScopes` collection is correct in `Program.Main` (`Program.cs`) of the *`Client`* app.</span></span>
 
 > [!NOTE]
 > <span data-ttu-id="1f9b2-196">Azure Portal에서 *`Client`* 앱의 플랫폼 구성 **리디렉션 URI** 는 Kestrel 서버에서 기본 설정으로 실행되는 앱의 경우 포트 5001로 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-196">In the Azure portal, the *`Client`* app's platform configuration **Redirect URI** is configured for port 5001 for apps that run on the Kestrel server with default settings.</span></span>
@@ -196,11 +196,11 @@ app.UseAuthentication();
 app.UseAuthorization();
 ```
 
-### <a name="userno-locidentityname"></a><span data-ttu-id="1f9b2-210">User.:::no-loc(Identity):::.Name</span><span class="sxs-lookup"><span data-stu-id="1f9b2-210">User.:::no-loc(Identity):::.Name</span></span>
+### <a name="userno-locidentityname"></a><span data-ttu-id="1f9b2-210">User.Identity.Name</span><span class="sxs-lookup"><span data-stu-id="1f9b2-210">User.Identity.Name</span></span>
 
-<span data-ttu-id="1f9b2-211">기본적으로 `User.:::no-loc(Identity):::.Name`은 채워지지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-211">By default, the `User.:::no-loc(Identity):::.Name` isn't populated.</span></span>
+<span data-ttu-id="1f9b2-211">기본적으로 `User.Identity.Name`은 채워지지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-211">By default, the `User.Identity.Name` isn't populated.</span></span>
 
-<span data-ttu-id="1f9b2-212">앱이 `name` 클레임 유형으로부터 값을 받도록 구성하려면 `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>의 <xref:Microsoft.:::no-loc(Identity):::Model.Tokens.TokenValidationParameters.NameClaimType?displayProperty=nameWithType>을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-212">To configure the app to receive the value from the `name` claim type, configure the <xref:Microsoft.:::no-loc(Identity):::Model.Tokens.TokenValidationParameters.NameClaimType?displayProperty=nameWithType> of the <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions> in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="1f9b2-212">앱이 `name` 클레임 유형으로부터 값을 받도록 구성하려면 `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>의 <xref:Microsoft.IdentityModel.Tokens.TokenValidationParameters.NameClaimType?displayProperty=nameWithType>을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-212">To configure the app to receive the value from the `name` claim type, configure the <xref:Microsoft.IdentityModel.Tokens.TokenValidationParameters.NameClaimType?displayProperty=nameWithType> of the <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions> in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -247,7 +247,7 @@ services.Configure<JwtBearerOptions>(
 <span data-ttu-id="1f9b2-217">WeatherForecast 컨트롤러( *Controllers/WeatherForecastController.cs* )는 컨트롤러에 적용된 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성을 사용하여, 보호된 API를 노출합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-217">The WeatherForecast controller ( *Controllers/WeatherForecastController.cs* ) exposes a protected API with the [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute applied to the controller.</span></span> <span data-ttu-id="1f9b2-218">다음과 같은 사항을 이해하는 것이 **중요합니다** .</span><span class="sxs-lookup"><span data-stu-id="1f9b2-218">It's **important** to understand that:</span></span>
 
 * <span data-ttu-id="1f9b2-219">이 API 컨트롤러의 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성은 무단 액세스로부터 이 API 컨트롤러를 보호하는 유일한 항목입니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-219">The [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute in this API controller is the only thing that protect this API from unauthorized access.</span></span>
-* <span data-ttu-id="1f9b2-220">:::no-loc(Blazor WebAssembly)::: 앱에서 사용되는 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성은 앱이 올바르게 작동하려면 사용자에게 권한이 부여되어야 한다는 힌트만 앱에 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-220">The [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute used in the :::no-loc(Blazor WebAssembly)::: app only serves as a hint to the app that the user should be authorized for the app to work correctly.</span></span>
+* <span data-ttu-id="1f9b2-220">Blazor WebAssembly 앱에서 사용되는 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성은 앱이 올바르게 작동하려면 사용자에게 권한이 부여되어야 한다는 힌트만 앱에 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-220">The [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute used in the Blazor WebAssembly app only serves as a hint to the app that the user should be authorized for the app to work correctly.</span></span>
 
 ```csharp
 [Authorize]
@@ -297,9 +297,9 @@ builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
     .CreateClient("{APP ASSEMBLY}.ServerAPI"));
 ```
 
-<span data-ttu-id="1f9b2-232">자리 표시자 `{APP ASSEMBLY}`는 앱의 어셈블리 이름입니다(예: `:::no-loc(Blazor):::Sample.ServerAPI`).</span><span class="sxs-lookup"><span data-stu-id="1f9b2-232">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `:::no-loc(Blazor):::Sample.ServerAPI`).</span></span>
+<span data-ttu-id="1f9b2-232">자리 표시자 `{APP ASSEMBLY}`는 앱의 어셈블리 이름입니다(예: `BlazorSample.ServerAPI`).</span><span class="sxs-lookup"><span data-stu-id="1f9b2-232">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `BlazorSample.ServerAPI`).</span></span>
 
-<span data-ttu-id="1f9b2-233">사용자 인증에 대한 지원은 [`Microsoft.Authentication.WebAssembly.Msal`](https://www.nuget.org/packages/Microsoft.Authentication.WebAssembly.Msal) 패키지에서 제공하는 <xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A> 확장 메서드를 통해 서비스 컨테이너에 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-233">Support for authenticating users is registered in the service container with the <xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A> extension method provided by the [`Microsoft.Authentication.WebAssembly.Msal`](https://www.nuget.org/packages/Microsoft.Authentication.WebAssembly.Msal) package.</span></span> <span data-ttu-id="1f9b2-234">이 메서드는 앱이 IP(:::no-loc(Identity)::: 공급자)와 상호 작용하는 데 필요한 서비스를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-234">This method sets up the services required for the app to interact with the :::no-loc(Identity)::: Provider (IP).</span></span>
+<span data-ttu-id="1f9b2-233">사용자 인증에 대한 지원은 [`Microsoft.Authentication.WebAssembly.Msal`](https://www.nuget.org/packages/Microsoft.Authentication.WebAssembly.Msal) 패키지에서 제공하는 <xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A> 확장 메서드를 통해 서비스 컨테이너에 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-233">Support for authenticating users is registered in the service container with the <xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A> extension method provided by the [`Microsoft.Authentication.WebAssembly.Msal`](https://www.nuget.org/packages/Microsoft.Authentication.WebAssembly.Msal) package.</span></span> <span data-ttu-id="1f9b2-234">이 메서드는 앱이 IP(Identity 공급자)와 상호 작용하는 데 필요한 서비스를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="1f9b2-234">This method sets up the services required for the app to interact with the Identity Provider (IP).</span></span>
 
 <span data-ttu-id="1f9b2-235">`Program.cs`:</span><span class="sxs-lookup"><span data-stu-id="1f9b2-235">`Program.cs`:</span></span>
 

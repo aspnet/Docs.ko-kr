@@ -7,17 +7,17 @@ ms.author: stevesa
 ms.custom: mvc
 ms.date: 02/06/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: spa/angular
 ms.openlocfilehash: 2fff0d60b71bbbab9347dbe74cad023264247388
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -133,7 +133,7 @@ npm install --save <package_name>
 
 ### <a name="pass-data-from-net-code-into-typescript-code"></a><span data-ttu-id="327d0-175">.NET 코드의 데이터를 TypeScript 코드로 전달</span><span class="sxs-lookup"><span data-stu-id="327d0-175">Pass data from .NET code into TypeScript code</span></span>
 
-<span data-ttu-id="327d0-176">SSR 중에 ASP.NET Core 앱에서 요청별 데이터를 Angular 앱으로 전달할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="327d0-176">During SSR, you might want to pass per-request data from your ASP.NET Core app into your Angular app.</span></span> <span data-ttu-id="327d0-177">예를 들어 :::no-loc(cookie)::: 정보를 전달하거나 데이터베이스에서 무언가를 읽을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="327d0-177">For example, you could pass :::no-loc(cookie)::: information or something read from a database.</span></span> <span data-ttu-id="327d0-178">이를 수행하려면 *Startup* 클래스를 편집합니다.</span><span class="sxs-lookup"><span data-stu-id="327d0-178">To do this, edit your *Startup* class.</span></span> <span data-ttu-id="327d0-179">`UseSpaPrerendering`에 대한 콜백에서 다음과 같은 `options.SupplyData` 값을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="327d0-179">In the callback for `UseSpaPrerendering`, set a value for `options.SupplyData` such as the following:</span></span>
+<span data-ttu-id="327d0-176">SSR 중에 ASP.NET Core 앱에서 요청별 데이터를 Angular 앱으로 전달할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="327d0-176">During SSR, you might want to pass per-request data from your ASP.NET Core app into your Angular app.</span></span> <span data-ttu-id="327d0-177">예를 들어 cookie 정보를 전달하거나 데이터베이스에서 무언가를 읽을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="327d0-177">For example, you could pass cookie information or something read from a database.</span></span> <span data-ttu-id="327d0-178">이를 수행하려면 *Startup* 클래스를 편집합니다.</span><span class="sxs-lookup"><span data-stu-id="327d0-178">To do this, edit your *Startup* class.</span></span> <span data-ttu-id="327d0-179">`UseSpaPrerendering`에 대한 콜백에서 다음과 같은 `options.SupplyData` 값을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="327d0-179">In the callback for `UseSpaPrerendering`, set a value for `options.SupplyData` such as the following:</span></span>
 
 ```csharp
 options.SupplyData = (context, data) =>

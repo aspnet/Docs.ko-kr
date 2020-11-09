@@ -5,17 +5,17 @@ description: ASP.NET Core의 데이터 보호 키 관리 및 수명에 대해 �
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/data-protection/configuration/default-settings
 ms.openlocfilehash: 1303c5c2c993f1d20383457666aebfa2a583e938
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -35,7 +35,7 @@ ms.locfileid: "93053009"
 1. <span data-ttu-id="b6dc1-107">앱이 [Azure 앱](https://azure.microsoft.com/services/app-service/)에서 호스트 되는 경우 키는 *%HOME%\ASP.NET\DataProtection-Keys* 폴더에 유지 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b6dc1-107">If the app is hosted in [Azure Apps](https://azure.microsoft.com/services/app-service/), keys are persisted to the *%HOME%\ASP.NET\DataProtection-Keys* folder.</span></span> <span data-ttu-id="b6dc1-108">이 폴더는 네트워크 스토리지에서 지원하고, 앱을 호스트하는 모든 머신에서 동기화됩니다.</span><span class="sxs-lookup"><span data-stu-id="b6dc1-108">This folder is backed by network storage and is synchronized across all machines hosting the app.</span></span>
    * <span data-ttu-id="b6dc1-109">저장된 키는 보호되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b6dc1-109">Keys aren't protected at rest.</span></span>
    * <span data-ttu-id="b6dc1-110">*Dataprotection-Keys* 폴더는 단일 배포 슬롯의 모든 앱 인스턴스에 대 한 키 링을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="b6dc1-110">The *DataProtection-Keys* folder supplies the key ring to all instances of an app in a single deployment slot.</span></span>
-   * <span data-ttu-id="b6dc1-111">준비 및 프로덕션과 같은 별도의 배포 슬롯은 키 링을 공유하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b6dc1-111">Separate deployment slots, such as Staging and Production, don't share a key ring.</span></span> <span data-ttu-id="b6dc1-112">스테이징을 프로덕션으로 교환 하거나 A/B 테스트를 사용 하는 경우와 같이 배포 슬롯 간에 교환 하는 경우 데이터 보호를 사용 하는 모든 앱은 이전 슬롯 내에서 키 링을 사용 하 여 저장 된 데이터의 암호를 해독할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="b6dc1-112">When you swap between deployment slots, for example swapping Staging to Production or using A/B testing, any app using Data Protection won't be able to decrypt stored data using the key ring inside the previous slot.</span></span> <span data-ttu-id="b6dc1-113">이를 통해 사용자는 :::no-loc(cookie)::: 데이터 보호를 사용 하 여를 보호 하므로 표준 ASP.NET Core 인증을 사용 하는 앱에서 로그 아웃 됩니다 :::no-loc(cookie)::: .</span><span class="sxs-lookup"><span data-stu-id="b6dc1-113">This leads to users being logged out of an app that uses the standard ASP.NET Core :::no-loc(cookie)::: authentication, as it uses Data Protection to protect its :::no-loc(cookie):::s.</span></span> <span data-ttu-id="b6dc1-114">슬롯 독립적 키 링을 원하는 경우 Azure Blob Storage, Azure Key Vault, SQL 저장소 또는 Redis cache와 같은 외부 키 링 공급자를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="b6dc1-114">If you desire slot-independent key rings, use an external key ring provider, such as Azure Blob Storage, Azure Key Vault, a SQL store, or Redis cache.</span></span>
+   * <span data-ttu-id="b6dc1-111">준비 및 프로덕션과 같은 별도의 배포 슬롯은 키 링을 공유하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b6dc1-111">Separate deployment slots, such as Staging and Production, don't share a key ring.</span></span> <span data-ttu-id="b6dc1-112">스테이징을 프로덕션으로 교환 하거나 A/B 테스트를 사용 하는 경우와 같이 배포 슬롯 간에 교환 하는 경우 데이터 보호를 사용 하는 모든 앱은 이전 슬롯 내에서 키 링을 사용 하 여 저장 된 데이터의 암호를 해독할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="b6dc1-112">When you swap between deployment slots, for example swapping Staging to Production or using A/B testing, any app using Data Protection won't be able to decrypt stored data using the key ring inside the previous slot.</span></span> <span data-ttu-id="b6dc1-113">이를 통해 사용자는 cookie 데이터 보호를 사용 하 여를 보호 하므로 표준 ASP.NET Core 인증을 사용 하는 앱에서 로그 아웃 됩니다 cookie .</span><span class="sxs-lookup"><span data-stu-id="b6dc1-113">This leads to users being logged out of an app that uses the standard ASP.NET Core cookie authentication, as it uses Data Protection to protect its cookies.</span></span> <span data-ttu-id="b6dc1-114">슬롯 독립적 키 링을 원하는 경우 Azure Blob Storage, Azure Key Vault, SQL 저장소 또는 Redis cache와 같은 외부 키 링 공급자를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="b6dc1-114">If you desire slot-independent key rings, use an external key ring provider, such as Azure Blob Storage, Azure Key Vault, a SQL store, or Redis cache.</span></span>
 
 1. <span data-ttu-id="b6dc1-115">사용자 프로필을 사용할 수 있는 경우 키가 *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys* 폴더에 유지 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b6dc1-115">If the user profile is available, keys are persisted to the *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys* folder.</span></span> <span data-ttu-id="b6dc1-116">운영 체제가 Windows 인 경우 키는 암호화 된 상태로 DPAPI를 사용 하 여 암호화 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b6dc1-116">If the operating system is Windows, the keys are encrypted at rest using DPAPI.</span></span>
 
