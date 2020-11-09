@@ -1,9 +1,9 @@
 ---
 title: '자습서: ASP.NET Core를 사용하여 Razor Pages 웹앱 만들기'
 author: rick-anderson
-description: Windows에서 Visual Studio, ASP.NET Core 및 EF Core를 사용하여 Razor Pages 웹앱을 만듭니다.
+description: 이 시리즈의 자습서는 Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설명합니다.
 ms.author: riande
-ms.date: 08/09/2019
+ms.date: 09/14/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: 0feb60c7e0189bf12d584c3916e0254b3be729c0
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: cad4cf12e475c2f7db3e62a6ae78d53777710b6f
+ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058066"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94360569"
 ---
 # <a name="tutorial-create-a-no-locrazor-pages-web-app-with-aspnet-core"></a>자습서: ASP.NET Core를 사용하여 Razor Pages 웹앱 만들기
 
 이 시리즈의 자습서는 Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설명합니다. 
 
-[!INCLUDE[](~/includes/advancedRP.md)]
+컨트롤러 및 보기에 익숙한 개발자를 대상으로 한 고급 소개는 <xref:razor-pages/index>를 참조하세요.
 
 이 시리즈에는 다음 자습서가 포함됩니다.
 
