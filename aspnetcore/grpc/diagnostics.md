@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 09/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/diagnostics
-ms.openlocfilehash: 7d2da20d04b93ebcd16fb58a4b74b5b67d37bd72
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 1f25ae76e5a480e5e6f247e4ac78d06dd4e778e9
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722925"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060445"
 ---
 # <a name="logging-and-diagnostics-in-grpc-on-net"></a>.NET의 gRPC에서 로깅 및 진단
 
@@ -49,7 +50,7 @@ gRPC는 `Grpc` 범주에 로그를 추가합니다. gRPC의 자세한 로그를 
 
 [!code-json[](diagnostics/sample/logging-config.json?highlight=7)]
 
-`ConfigureLogging`을 사용하여 *Startup.cs*에서 이 동작을 구성할 수도 있습니다.
+`ConfigureLogging`을 사용하여 *Startup.cs* 에서 이 동작을 구성할 수도 있습니다.
 
 [!code-csharp[](diagnostics/sample/logging-config-code.cs?highlight=5)]
 
@@ -222,7 +223,7 @@ Press p to pause, r to resume, q to quit.
 
 gRPC 메트릭을 확인하는 또 다른 방법은 Application Insights의 [Microsoft.ApplicationInsights.EventCounterCollector 패키지](/azure/azure-monitor/app/eventcounters)를 사용하여 카운터 데이터를 캡처하는 것입니다. 설정이 완료되면 Application Insights는 런타임에 일반적인 .NET 카운터를 수집합니다. gRPC 카운터는 기본적으로 수집되지 않지만, [추가 카운터를 포함하도록 App Insights를 사용자 지정](/azure/azure-monitor/app/eventcounters#customizing-counters-to-be-collected)할 수 있습니다.
 
-*Startup.cs*에서 수집할 Application Insight의 gRPC 카운터를 지정합니다.
+*Startup.cs* 에서 수집할 Application Insight의 gRPC 카운터를 지정합니다.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;

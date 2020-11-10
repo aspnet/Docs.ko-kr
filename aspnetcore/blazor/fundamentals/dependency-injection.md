@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/dependency-injection
-ms.openlocfilehash: 3dc15f5efcc8f48a809bf9132588fb38732a7b35
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 32228cc98b4650d5871369511808e519a4f65be4
+ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628289"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93343678"
 ---
 # <a name="aspnet-core-no-locblazor-dependency-injection"></a>ASP.NET Core Blazor 종속성 주입
 
@@ -42,7 +43,7 @@ DI는 중앙 위치에 구성된 서비스에 액세스하기 위한 기술입�
 
 | 서비스 | 수명 | 설명 |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | Scoped | URI로 식별되는 리소스에서 HTTP 요청을 보내고 HTTP 응답을 받기 위한 메서드를 제공합니다.<br><br>Blazor WebAssembly 앱의 <xref:System.Net.Http.HttpClient> 인스턴스는 브라우저를 사용하여 백그라운드에서 HTTP 트래픽을 처리합니다.<br><br>Blazor Server 앱에는 기본적으로 서비스로 구성된 <xref:System.Net.Http.HttpClient>는 포함되지 않습니다. Blazor Server 앱에 <xref:System.Net.Http.HttpClient>를 제공합니다.<br><br>자세한 내용은 <xref:blazor/call-web-api>를 참조하세요. |
+| <xref:System.Net.Http.HttpClient> | Scoped | URI로 식별되는 리소스에서 HTTP 요청을 보내고 HTTP 응답을 받기 위한 메서드를 제공합니다.<br><br>Blazor WebAssembly 앱의 <xref:System.Net.Http.HttpClient> 인스턴스는 브라우저를 사용하여 백그라운드에서 HTTP 트래픽을 처리합니다.<br><br>Blazor Server 앱에는 기본적으로 서비스로 구성된 <xref:System.Net.Http.HttpClient>는 포함되지 않습니다. Blazor Server 앱에 <xref:System.Net.Http.HttpClient>를 제공합니다.<br><br>자세한 내용은 <xref:blazor/call-web-api>를 참조하세요.<br><br><xref:System.Net.Http.HttpClient>가 싱글톤이 아닌 범위가 지정된 서비스로 등록됩니다. 자세한 내용은 [서비스 수명](#service-lifetime) 섹션을 참조하세요. |
 | <xref:Microsoft.JSInterop.IJSRuntime> | singleton(Blazor WebAssembly)<br>범위 지정됨(Blazor Server) | JavaScript 호출이 디스패치되는 JavaScript 런타임의 인스턴스를 나타냅니다. 자세한 내용은 <xref:blazor/call-javascript-from-dotnet>를 참조하세요. |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager> | singleton(Blazor WebAssembly)<br>범위 지정됨(Blazor Server) | URI 및 탐색 상태를 사용하기 위한 도우미를 포함합니다. 자세한 내용은 [URI 및 탐색 상태 도우미](xref:blazor/fundamentals/routing#uri-and-navigation-state-helpers)를 참조하세요. |
 
@@ -68,7 +69,7 @@ public class Program
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
         builder.Services.AddSingleton<IMyDependency, MyDependency>();
         builder.RootComponents.Add<App>("app");
-        
+
         builder.Services.AddScoped(sp => 
             new HttpClient
             {
@@ -90,7 +91,7 @@ public class Program
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
         builder.Services.AddSingleton<WeatherService>();
         builder.RootComponents.Add<App>("app");
-        
+
         builder.Services.AddScoped(sp => 
             new HttpClient
             {
@@ -117,7 +118,7 @@ public class Program
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
         builder.Services.AddSingleton<WeatherService>();
         builder.RootComponents.Add<App>("app");
-        
+
         builder.Services.AddScoped(sp => 
             new HttpClient
             {
@@ -165,9 +166,9 @@ public void ConfigureServices(IServiceCollection services)
 
 | 수명 | 설명 |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | Blazor WebAssembly 앱에는 현재, DI 범위에 대한 개념이 없습니다. `Scoped` 등록 서비스는 `Singleton` 서비스처럼 동작합니다. 그러나 Blazor Server 호스팅 모델은 `Scoped` 수명을 지원합니다. Blazor Server 앱에서 범위가 지정된 서비스 등록은 ‘연결’로 범위가 지정됩니다. 따라서 현재, 브라우저에서 클라이언트 쪽을 실행하려는 의도가 있더라도 현재 사용자로 범위를 지정해야 하는 서비스에 대해서는 범위 지정 서비스를 사용하는 것이 좋습니다. |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | DI는 서비스의 *단일 인스턴스*를 만듭니다. `Singleton` 서비스가 필요한 모든 구성 요소는 동일한 서비스의 인스턴스를 수신합니다. |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | 구성 요소는 서비스 컨테이너에서 `Transient` 서비스의 인스턴스를 가져올 때마다 서비스의 *새 인스턴스*을 받습니다. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | Blazor WebAssembly 앱에는 현재, DI 범위에 대한 개념이 없습니다. `Scoped` 등록 서비스는 `Singleton` 서비스처럼 동작합니다. 그러나 Blazor Server 호스팅 모델은 `Scoped` 수명을 지원합니다. Blazor Server 앱에서 범위가 지정된 서비스 등록은 ‘연결’로 범위가 지정됩니다. 따라서 현재 의도가 Blazor WebAssembly 앱에서 브라우저의 클라이언트 쪽을 실행하는 것이더라도 현재 사용자로 범위를 지정해야 하는 서비스의 경우 범위가 지정된 서비스를 사용하는 것이 좋습니다. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | DI는 서비스의 *단일 인스턴스* 를 만듭니다. `Singleton` 서비스가 필요한 모든 구성 요소는 동일한 서비스의 인스턴스를 수신합니다. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | 구성 요소는 서비스 컨테이너에서 `Transient` 서비스의 인스턴스를 가져올 때마다 서비스의 *새 인스턴스* 을 받습니다. |
 
 DI 시스템은 ASP.NET Core에서 DI 시스템을 기준으로 합니다. 자세한 내용은 <xref:fundamentals/dependency-injection>를 참조하세요.
 
@@ -211,12 +212,12 @@ public class ComponentBase : IComponent
 
 ## <a name="use-di-in-services"></a>서비스에서 DI 사용
 
-복잡한 서비스에는 추가 서비스가 필요할 수 있습니다. 이전 예제에서는 `DataAccess`에 <xref:System.Net.Http.HttpClient> 기본 서비스가 필요할 수 있습니다. 서비스에서는 [`@inject`](xref:mvc/views/razor#inject)(또는 [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) 특성)를 사용할 수 없습니다. 대신 *생성자 주입*을 사용해야 합니다. 서비스의 생성자에 매개 변수를 추가하여 필요한 서비스를 추가합니다. DI는 서비스를 만들 때 생성자에 필요한 서비스를 인식하고 적절히 제공합니다. 다음 예제에서 생성자는 DI를 통해 <xref:System.Net.Http.HttpClient>를 받습니다. <xref:System.Net.Http.HttpClient>는 기본 서비스입니다.
+복잡한 서비스에는 추가 서비스가 필요할 수 있습니다. 이전 예제에서는 `DataAccess`에 <xref:System.Net.Http.HttpClient> 기본 서비스가 필요할 수 있습니다. 서비스에서는 [`@inject`](xref:mvc/views/razor#inject)(또는 [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) 특성)를 사용할 수 없습니다. 대신 *생성자 주입* 을 사용해야 합니다. 서비스의 생성자에 매개 변수를 추가하여 필요한 서비스를 추가합니다. DI는 서비스를 만들 때 생성자에 필요한 서비스를 인식하고 적절히 제공합니다. 다음 예제에서 생성자는 DI를 통해 <xref:System.Net.Http.HttpClient>를 받습니다. <xref:System.Net.Http.HttpClient>는 기본 서비스입니다.
 
 ```csharp
 public class DataAccess : IDataAccess
 {
-    public DataAccess(HttpClient client)
+    public DataAccess(HttpClient http)
     {
         ...
     }

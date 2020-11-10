@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 9f64dd8f0ca026cec4b7ee4b5ea02523139eed4f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 59ad373cefaa12370aa7c02a367125c7a94f59a6
+ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93057156"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94422602"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>ASP.NET Core의 컨트롤러 작업에 라우팅
 
@@ -220,7 +220,7 @@ ASP.NET Core 3.0 이상의 엔드포인트 라우팅은 다음과 같습니다.
 * 가장 적합 한 후보를 선택 합니다.
 * 예외를 throw합니다.
 
-다음은 그 예입니다.
+예를 들어:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet9)]
 
@@ -278,7 +278,7 @@ REST Api는 특성 라우팅을 사용 하 여 응용 프로그램의 기능을 
 
 위의 코드에서 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers%2A> 는 `UseEndpoints` 특성 라우트된 컨트롤러를 매핑하기 위해 내부에서 호출 됩니다.
 
-다음 예제에서는
+다음 예제에서,
 
 * 위의 `Configure` 메서드가 사용 됩니다.
 * `HomeController` 기본 기본 경로와 유사한 Url 집합과 일치 `{controller=Home}/{action=Index}/{id?}` 합니다.
@@ -351,7 +351,7 @@ ASP.NET Core에는 다음과 같은 경로 템플릿이 있습니다.
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/Test2Controller.cs?name=snippet)]
 
-앞의 코드에서 다음을 확인할 수 있습니다.
+위의 코드에서
 
 * 각 작업에는 `[HttpGet]` HTTP GET 요청에 대해서만 일치를 제한 하는 특성이 포함 됩니다.
 * `GetProduct`작업은 템플릿을 포함 `"{id}"` 하므로 `id` `"api/[controller]"` 컨트롤러의 템플릿에 추가 됩니다. 메서드 템플릿은 `"api/[controller]/"{id}""` 입니다. 따라서이 작업은,, 등의 폼에 대 한 GET 요청만 일치 `/api/test2/xyz` `/api/test2/123` `/api/test2/{any string}` 합니다.
@@ -435,7 +435,7 @@ REST Api는 특성 라우팅을 사용 하 여 응용 프로그램의 기능을 
 | `[Route("")]` | 예 | `"Home"` |
 | `[Route("Index")]` | 예 | `"Home/Index"` |
 | `[Route("/")]` | **아니요** | `""` |
-| `[Route("About")]` | Yes | `"Home/About"` |
+| `[Route("About")]` | 예 | `"Home/About"` |
 
 <a name="routing-ordering-ref-label"></a>
 <a name="oar"></a>
@@ -494,7 +494,7 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet)]
 
-앞의 코드에서 다음을 확인할 수 있습니다.
+위의 코드에서
 
   [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet10)]
 
@@ -633,7 +633,7 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 
 [!code-csharp[](routing/samples/3.x/nsrc/Controllers/UsersController.cs)]
 
-앞의 코드에서 다음을 확인할 수 있습니다.
+위의 코드에서
 
 * 밑 `namespace` 이 인 `My.Application` 경우
 * 이전 컨트롤러의 전체 이름은 `My.Application.Admin.Controllers.UsersController` 입니다.
@@ -857,7 +857,7 @@ URL 경로와 일치 하는 경우 경로 `/Manage/Users/AddUser` 는 `"blog_rou
 
 ## <a name="sample-code"></a>예제 코드
 
- * [MyDisplayRouteInfo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x/main/Extensions/ControllerContextExtensions.cs) 메서드는 [샘플 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x) 에 포함 되어 있으며 라우팅 정보를 표시 하는 데 사용 됩니다.
+* [!INCLUDE[](~/includes/MyDisplayRouteInfo.md)]
 * [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 [!INCLUDE[](~/includes/dbg-route.md)]
@@ -1013,7 +1013,7 @@ app.UseMvc(routes =>
 
 ### <a name="disambiguating-actions"></a>명확한 작업 구분
 
-두 작업이 라우팅을 통해 일치하는 경우 MVC는 작업을 명확히 구분하여 '최적의' 후보를 선택해야 하며, 그렇지 못하면 예외가 throw됩니다. 다음은 그 예입니다.
+두 작업이 라우팅을 통해 일치하는 경우 MVC는 작업을 명확히 구분하여 '최적의' 후보를 선택해야 하며, 그렇지 못하면 예외가 throw됩니다. 예를 들어:
 
 ```csharp
 public class ProductsController : Controller
@@ -1086,7 +1086,7 @@ public class HomeController : Controller
 > [!NOTE]
 > 이 예제에서는 특성 라우팅과 규칙 기반 라우팅 간의 주요 프로그래밍 차이점을 강조합니다. 특성 라우팅은 경로를 지정하기 위해 더 많은 입력이 필요하고, 규칙 기반 기본 경로는 경로를 보다 간결하게 처리합니다. 그러나 특성 라우팅을 사용하면 각 작업에 적용되는 경로 템플릿을 정확하게 제어할 수 있습니다(또 그래야만 합니다).
 
-특성 라우팅을 사용하면 컨트롤러 이름 및 작업 이름은 작업 선택에 있어서 아무 역할도 하지 **않습니다** . 이 예제는 이전 예제와 동일한 URL을 매칭합니다.
+특성 라우팅을 사용하면 컨트롤러 이름 및 작업 이름은 작업 선택에 있어서 아무 역할도 하지 **않습니다**. 이 예제는 이전 예제와 동일한 URL을 매칭합니다.
 
 ```csharp
 public class MyDemoController : Controller
@@ -1470,7 +1470,7 @@ MVC는 모든 특성 라우팅 작업의 조회 테이블을 작성하고 `contr
 
 ### <a name="generating-urls-by-route"></a>경로로 URL 생성
 
-위의 코드에서는 컨트롤러 및 작업 이름을 전달하여 URL을 생성하는 방법을 보여줍니다. `IUrlHelper`는 `Url.RouteUrl` 메서드 모음도 제공합니다. 이 메서드는 `Url.Action`과 비슷하지만, `action` 및 `controller`의 현재 값을 경로 값에 복사하지 않습니다. 가장 일반적인 사용법은 URL을 생성할 경로를 지정하기 위한 경로 이름을 지정하는 것으로, 일반적으로 컨트롤러 또는 작업 이름을 지정하지 *않습니다* .
+위의 코드에서는 컨트롤러 및 작업 이름을 전달하여 URL을 생성하는 방법을 보여줍니다. `IUrlHelper`는 `Url.RouteUrl` 메서드 모음도 제공합니다. 이 메서드는 `Url.Action`과 비슷하지만, `action` 및 `controller`의 현재 값을 경로 값에 복사하지 않습니다. 가장 일반적인 사용법은 URL을 생성할 경로를 지정하기 위한 경로 이름을 지정하는 것으로, 일반적으로 컨트롤러 또는 작업 이름을 지정하지 *않습니다*.
 
 [!code-csharp[](routing/samples/2.x/main/Controllers/UrlGenerationControllerRouting.cs?name=snippet_1)]
 
@@ -1548,7 +1548,7 @@ app.UseMvc(routes =>
 
 [!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
 
-`AreaAttribute`는 컨트롤러가 영역의 일부임을 나타내며, 이때 이 컨트롤러가 `Blog` 영역에 있다고 표현합니다. `[Area]` 특성이 없는 컨트롤러는 어떠한 영역의 구성원도 아니며, 라우팅에서 `area` 경로 값을 제공해도 매칭되지 **않습니다** . 다음 예제에서는 나열된 첫 번째 컨트롤러만 `{ area = Blog, controller = Users, action = AddUser }` 경로 값과 매칭됩니다.
+`AreaAttribute`는 컨트롤러가 영역의 일부임을 나타내며, 이때 이 컨트롤러가 `Blog` 영역에 있다고 표현합니다. `[Area]` 특성이 없는 컨트롤러는 어떠한 영역의 구성원도 아니며, 라우팅에서 `area` 경로 값을 제공해도 매칭되지 **않습니다**. 다음 예제에서는 나열된 첫 번째 컨트롤러만 `{ area = Blog, controller = Users, action = AddUser }` 경로 값과 매칭됩니다.
 
 [!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
 

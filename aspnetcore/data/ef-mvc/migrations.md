@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 058d59834dc53b6280b8e4ff285a1860e90e257c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 070c18db55956d79560904f53395b5001c7bce6d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629446"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054036"
 ---
 # <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>자습서: 마이그레이션 기능 사용 - ASP.NET MVC 및 EF Core 사용
 
@@ -72,7 +73,7 @@ ms.locfileid: "88629446"
 
 변경 내용을 저장하고 프로젝트를 빌드합니다. 그런 다음, 명령 창을 열고 프로젝트 폴더로 이동합니다. 작업을 수행하는 빠른 방법은 다음과 같습니다.
 
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 상황에 맞는 메뉴에서 **파일 탐색기에서 폴더 열기**를 선택합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 상황에 맞는 메뉴에서 **파일 탐색기에서 폴더 열기** 를 선택합니다.
 
   ![파일 탐색기에서 열기 메뉴 항목](migrations/_static/open-in-file-explorer.png)
 
@@ -97,11 +98,11 @@ info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
 Done. To undo this action, use 'ef migrations remove'
 ```
 
-“*cannot access the file ... ContosoUniversity.dll because it is being used by another process.* (다른 프로세스에서 사용 중이므로 ContosoUniversity.dll 파일에 액세스할 수 없음.)” 오류 메시지가 표시되면 Windows 시스템 트레이에서 IIS Express 아이콘을 찾아 마우스 오른쪽 단추로 클릭한 다음, **ContosoUniversity > 사이트 중단**을 클릭합니다.
+“ *cannot access the file ... ContosoUniversity.dll because it is being used by another process.* (다른 프로세스에서 사용 중이므로 ContosoUniversity.dll 파일에 액세스할 수 없음.)” 오류 메시지가 표시되면 Windows 시스템 트레이에서 IIS Express 아이콘을 찾아 마우스 오른쪽 단추로 클릭한 다음, **ContosoUniversity > 사이트 중단** 을 클릭합니다.
 
 ## <a name="examine-up-and-down-methods"></a>Up 및 Down 메서드 검사
 
-`migrations add` 명령을 실행하면 EF는 데이터베이스를 처음부터 만드는 코드를 생성했습니다. 이 코드는 *\<timestamp>_InitialCreate.cs*라는 파일의 *Migrations* 폴더에 있습니다. 다음 예제와 같이 `InitialCreate` 클래스의 `Up` 메서드는 데이터 모델 엔터티 집합에 해당하는 데이터베이스 테이블을 만들고 `Down` 메서드는 이를 삭제합니다.
+`migrations add` 명령을 실행하면 EF는 데이터베이스를 처음부터 만드는 코드를 생성했습니다. 이 코드는 *\<timestamp>_InitialCreate.cs* 라는 파일의 *Migrations* 폴더에 있습니다. 다음 예제와 같이 `InitialCreate` 클래스의 `Up` 메서드는 데이터 모델 엔터티 집합에 해당하는 데이터베이스 테이블을 만들고 `Down` 메서드는 이를 삭제합니다.
 
 [!code-csharp[](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
 
@@ -113,7 +114,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 ## <a name="the-data-model-snapshot"></a>데이터 모델 스냅샷
 
-마이그레이션은 현재 데이터베이스 스키마의 *스냅숏*을 *Migrations/SchoolContextModelSnapshot.cs*에 만듭니다. 마이그레이션을 추가하면 EF가 데이터 모델을 스냅샷 파일과 비교하여 변경 내용을 확인합니다.
+마이그레이션은 현재 데이터베이스 스키마의 *스냅숏* 을 *Migrations/SchoolContextModelSnapshot.cs* 에 만듭니다. 마이그레이션을 추가하면 EF가 데이터 모델을 스냅샷 파일과 비교하여 변경 내용을 확인합니다.
 
 마이그레이션을 삭제하려면 [dotnet ef migrations remove](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) 명령을 사용합니다. `dotnet ef migrations remove`는 마이그레이션을 삭제하고 스냅샷이 올바르게 다시 설정되도록 합니다. `dotnet ef migrations remove`가 실패하는 경우 `dotnet ef migrations remove -v`를 사용하여 자세한 오류 정보를 확인하세요.
 
@@ -158,7 +159,7 @@ info: Microsoft.EntityFrameworkCore.Database.Command[20101]
 Done.
 ```
 
-**SQL Server 개체 탐색기**를 사용하여 첫 번째 자습서에서와 같이 데이터베이스를 검사합니다.  데이터베이스에 어떤 마이그레이션이 적용되는지를 추적하는 \_\_EFMigrationsHistory 테이블이 추가된 것을 확인할 수 있습니다. 해당 테이블의 데이터를 보면 첫 번째 마이그레이션에 대해 한 행이 표시됩니다. (앞의 CLI 출력 예제의 마지막 로그는 이 행을 만드는 INSERT 문을 보여 줍니다.)
+**SQL Server 개체 탐색기** 를 사용하여 첫 번째 자습서에서와 같이 데이터베이스를 검사합니다.  데이터베이스에 어떤 마이그레이션이 적용되는지를 추적하는 \_\_EFMigrationsHistory 테이블이 추가된 것을 확인할 수 있습니다. 해당 테이블의 데이터를 보면 첫 번째 마이그레이션에 대해 한 행이 표시됩니다. (앞의 CLI 출력 예제의 마지막 로그는 이 행을 만드는 INSERT 문을 보여 줍니다.)
 
 애플리케이션을 실행하여 모든 항목이 여전히 이전과 동일하게 작동하는지 확인합니다.
 

@@ -5,6 +5,7 @@ description: Razor Pages에 대한 자습서 시리즈의 2부입니다.
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 4099873142b99afb7f0659dfd9a4fde8bec3081d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 84198760cf8302d379c7630b65641e65b66d72a2
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633775"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050929"
 ---
 # <a name="part-2-add-a-model-to-a-no-locrazor-pages-app-in-aspnet-core"></a>2부. ASP.NET Core에서 Razor Pages 앱에 모델 추가
 
@@ -41,9 +42,9 @@ ms.locfileid: "88633775"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-**RazorPagesMovie** 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더**를 선택합니다. 폴더 이름을 *Models*로 지정합니다.
+**RazorPagesMovie** 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더** 를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
 
-*Models* 폴더를 마우스 오른쪽 단추로 클릭합니다. **추가** > **클래스**를 선택합니다. 클래스의 이름을 **동영상**으로 지정합니다.
+*Models* 폴더를 마우스 오른쪽 단추로 클릭합니다. **추가** > **클래스** 를 선택합니다. 클래스의 이름을 **동영상** 으로 지정합니다.
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -58,13 +59,13 @@ ms.locfileid: "88633775"
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* Solution Pad에서 **RazorPagesMovie** 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더...** 를 선택합니다. 폴더 이름을 *Models*로 지정합니다.
+* Solution Pad에서 **RazorPagesMovie** 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더...** 를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
 * *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일...** 을 선택합니다.
 * **새 파일** 대화 상자에서:
 
-  * 왼쪽 창에서 **일반**을 선택합니다.
-  * 가운데 창에서 **빈 클래스**를 선택합니다.
-  * 클래스 이름을 **Movie**로 지정하고 **새로 만들기**를 선택합니다.
+  * 왼쪽 창에서 **일반** 을 선택합니다.
+  * 가운데 창에서 **빈 클래스** 를 선택합니다.
+  * 클래스 이름을 **Movie** 로 지정하고 **새로 만들기** 를 선택합니다.
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -80,46 +81,46 @@ ms.locfileid: "88633775"
 
 *Pages/Movies* 폴더를 만듭니다.
 
-* *Pages* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더**를 선택합니다.
-* 폴더 이름을 *Movies*로 지정합니다.
+* *Pages* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더** 를 선택합니다.
+* 폴더 이름을 *Movies* 로 지정합니다.
 
-*Pages/Movies* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **스캐폴드된 새 항목**을 선택합니다.
+*Pages/Movies* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **스캐폴드된 새 항목** 을 선택합니다.
 
 ![이전 지침의 이미지입니다.](model/_static/sca.png)
 
-**스캐폴드 추가** 대화 상자에서 **Entity Framework를 사용한 Razor Pages(CRUD)** > **추가**를 선택합니다.
+**스캐폴드 추가** 대화 상자에서 **Entity Framework를 사용한 Razor Pages(CRUD)** > **추가** 를 선택합니다.
 
 ![이전 지침의 이미지입니다.](model/_static/add_scaffold.png)
 
 **Entity Framework(CRUD)를 사용하여 Razor Pages 추가** 대화 상자를 완료합니다.
 
 * **모델 클래스** 드롭다운에서 **동영상(RazorPagesMovie.Models)** 을 선택합니다.
-* **데이터 컨텍스트 클래스** 행에서 **+** 기호를 선택하고 생성된 이름을 RazorPagesMovie.**Models**.RazorPagesMovieContext에서 RazorPagesMovie.**Data**.RazorPagesMovieContext로 변경합니다. [이 변경은](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) 필수는 아닙니다. 올바른 네임스페이스를 사용하여 데이터베이스 컨텍스트 클래스를 만듭니다.
-* **추가**를 선택합니다.
+* **데이터 컨텍스트 클래스** 행에서 **+** 기호를 선택하고 생성된 이름을 RazorPagesMovie. **Models**.RazorPagesMovieContext에서 RazorPagesMovie. **Data**.RazorPagesMovieContext로 변경합니다. [이 변경은](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) 필수는 아닙니다. 올바른 네임스페이스를 사용하여 데이터베이스 컨텍스트 클래스를 만듭니다.
+* **추가** 를 선택합니다.
 
 ![이전 지침의 이미지입니다.](model/_static/3/arp.png)
 
-*appsettings.json* 파일을 로컬 데이터베이스에 연결하는 데 사용된 연결 문자열로 업데이트합니다.
+*appsettings.json* 파일이 로컬 데이터베이스에 연결하는 데 사용된 연결 문자열로 업데이트됩니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
 
-* 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+* 프로젝트 디렉터리( *Program.cs* , *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
 * 스캐폴딩 도구를 설치합니다.
 
   ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* **Windows의 경우**: 다음 명령을 실행합니다.
+* **Windows의 경우** : 다음 명령을 실행합니다.
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
-* **macOS 및 Linux의 경우**: 다음 명령을 실행합니다.
+* **macOS 및 Linux의 경우** : 다음 명령을 실행합니다.
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
@@ -134,26 +135,26 @@ ms.locfileid: "88633775"
 
 *Pages/Movies* 폴더를 만듭니다.
 
-* *Pages* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더**를 선택합니다.
-* 폴더 이름을 *Movies*로 지정합니다.
+* *Pages* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더** 를 선택합니다.
+* 폴더 이름을 *Movies* 로 지정합니다.
 
 *Pages/Movies* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 스캐폴딩...** 을 선택합니다.
 
 ![이전 지침의 이미지입니다.](model/_static/scaMac.png)
 
-**새 스캐폴딩** 대화 상자에서 **Entity Framework를 사용한 Razor Pages(CRUD)** > **다음**을 선택합니다.
+**새 스캐폴딩** 대화 상자에서 **Entity Framework를 사용한 Razor Pages(CRUD)** > **다음** 을 선택합니다.
 
 ![이전 지침의 이미지입니다.](model/_static/add_scaffoldMac.png)
 
 **Entity Framework(CRUD)를 사용하여 Razor Pages 추가** 대화 상자를 완료합니다.
 
 * **모델 클래스** 드롭다운에서 **동영상(RazorPagesMovie.Models)** 을 선택하거나 입력합니다.
-* **데이터 컨텍스트 클래스** 행에 새 클래스의 이름 RazorPagesMovie.**Data**.RazorPagesMovieContext를 입력합니다. [이 변경은](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) 필수는 아닙니다. 올바른 네임스페이스를 사용하여 데이터베이스 컨텍스트 클래스를 만듭니다.
-* **추가**를 선택합니다.
+* **데이터 컨텍스트 클래스** 행에 새 클래스의 이름 RazorPagesMovie. **Data**.RazorPagesMovieContext를 입력합니다. [이 변경은](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) 필수는 아닙니다. 올바른 네임스페이스를 사용하여 데이터베이스 컨텍스트 클래스를 만듭니다.
+* **추가** 를 선택합니다.
 
 ![이전 지침의 이미지입니다.](model/_static/arpMac.png)
 
-*appsettings.json* 파일을 로컬 데이터베이스에 연결하는 데 사용된 연결 문자열로 업데이트합니다.
+*appsettings.json* 파일이 로컬 데이터베이스에 연결하는 데 사용된 연결 문자열로 업데이트됩니다.
 
 ### <a name="add-ef-tools"></a>EF 도구 추가
 
@@ -173,7 +174,7 @@ dotnet tool install --global dotnet-ef
 
 스캐폴드 프로세스는 다음 파일을 생성하고 업데이트합니다.
 
-* *Pages/Movies*: 만들기, 삭제, 세부 정보, 편집 및 인덱스입니다.
+* *Pages/Movies* : 만들기, 삭제, 세부 정보, 편집 및 인덱스입니다.
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="updated"></a>업데이트됨
@@ -186,7 +187,7 @@ dotnet tool install --global dotnet-ef
 
 스캐폴드 프로세스는 다음 파일을 생성하고 업데이트합니다.
 
-* *Pages/Movies*: 만들기, 삭제, 세부 정보, 편집 및 인덱스입니다.
+* *Pages/Movies* : 만들기, 삭제, 세부 정보, 편집 및 인덱스입니다.
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="updated"></a>업데이트됨
@@ -199,7 +200,7 @@ dotnet tool install --global dotnet-ef
 
 스캐폴드 프로세스는 다음 파일을 만듭니다.
 
-* *Pages/Movies*: 만들기, 삭제, 세부 정보, 편집 및 인덱스입니다.
+* *Pages/Movies* : 만들기, 삭제, 세부 정보, 편집 및 인덱스입니다.
 
 생성된 파일은 다음 섹션에서 설명합니다.
 
@@ -216,7 +217,7 @@ dotnet tool install --global dotnet-ef
 * 초기 마이그레이션을 추가합니다.
 * 초기 마이그레이션을 사용하여 데이터베이스를 수정합니다.
 
-**도구** 메뉴에서 **NuGet 패키지 관리자** > **패키지 관리자 콘솔**을 선택합니다.
+**도구** 메뉴에서 **NuGet 패키지 관리자** > **패키지 관리자 콘솔** 을 선택합니다.
 
   ![PMC 메뉴](../first-mvc-app/adding-model/_static/pmc.png)
 
@@ -297,7 +298,7 @@ Login failed for user 'User-name'.
   > [!NOTE]
   > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(",")를 사용하는 비 영어 로캘 및 비 US-English 날짜 형식에 대해[jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 세계화해야 합니다. 세계화 지침은 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)를 참조하세요.
 
-* **Edit**, **Details** 및 **Delete** 링크를 테스트합니다.
+* **Edit** , **Details** 및 **Delete** 링크를 테스트합니다.
 
 다음 자습서에서는 스캐폴딩을 통해 만들어진 파일을 설명합니다.
 
@@ -322,9 +323,9 @@ Login failed for user 'User-name'.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-**RazorPagesMovie** 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더**를 선택합니다. 폴더 이름을 *Models*로 지정합니다.
+**RazorPagesMovie** 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더** 를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
 
-*Models* 폴더를 마우스 오른쪽 단추로 클릭합니다. **추가** > **클래스**를 선택합니다. 클래스의 이름을 **동영상**으로 지정합니다.
+*Models* 폴더를 마우스 오른쪽 단추로 클릭합니다. **추가** > **클래스** 를 선택합니다. 클래스의 이름을 **동영상** 으로 지정합니다.
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -339,13 +340,13 @@ Login failed for user 'User-name'.
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 솔루션 탐색기에서 **RazorPagesMovie** 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더**를 선택합니다. 폴더 이름을 *Models*로 지정합니다.
-* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일**을 선택합니다.
+* 솔루션 탐색기에서 **RazorPagesMovie** 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더** 를 선택합니다. 폴더 이름을 *Models* 로 지정합니다.
+* *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 파일** 을 선택합니다.
 * **새 파일** 대화 상자에서:
 
-  * 왼쪽 창에서 **일반**을 선택합니다.
-  * 가운데 창에서 **빈 클래스**를 선택합니다.
-  * 클래스 이름을 **Movie**로 지정하고 **새로 만들기**를 선택합니다.
+  * 왼쪽 창에서 **일반** 을 선택합니다.
+  * 가운데 창에서 **빈 클래스** 를 선택합니다.
+  * 클래스 이름을 **Movie** 로 지정하고 **새로 만들기** 를 선택합니다.
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -361,14 +362,14 @@ Login failed for user 'User-name'.
 
 *Pages/Movies* 폴더를 만듭니다.
 
-* *Pages* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더**를 선택합니다.
-* 폴더 이름을 *Movies*로 지정합니다.
+* *Pages* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더** 를 선택합니다.
+* 폴더 이름을 *Movies* 로 지정합니다.
 
-*Pages/Movies* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **스캐폴드된 새 항목**을 선택합니다.
+*Pages/Movies* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **스캐폴드된 새 항목** 을 선택합니다.
 
 ![이전 지침의 이미지입니다.](model/_static/sca.png)
 
-**스캐폴드 추가** 대화 상자에서 **Entity Framework를 사용한 Razor Pages(CRUD)** > **추가**를 선택합니다.
+**스캐폴드 추가** 대화 상자에서 **Entity Framework를 사용한 Razor Pages(CRUD)** > **추가** 를 선택합니다.
 
 ![이전 지침의 이미지입니다.](model/_static/add_scaffold.png)
 
@@ -379,27 +380,27 @@ to use Data, it should not use models. That will make the namespace the same for
 -->
 
 * **모델 클래스** 드롭다운에서 **동영상(RazorPagesMovie.Models)** 을 선택합니다.
-* **데이터 컨텍스트 클래스** 행에서 **+** 기호를 선택하고 생성된 이름인 **RazorPagesMovie.Models.RazorPagesMovieContext**를 수용합니다.
-* **추가**를 선택합니다.
+* **데이터 컨텍스트 클래스** 행에서 **+** 기호를 선택하고 생성된 이름인 **RazorPagesMovie.Models.RazorPagesMovieContext** 를 수용합니다.
+* **추가** 를 선택합니다.
 
 ![이전 지침의 이미지입니다.](model/_static/arp.png)
 
-*appsettings.json* 파일을 로컬 데이터베이스에 연결하는 데 사용된 연결 문자열로 업데이트합니다.
+*appsettings.json* 파일이 로컬 데이터베이스에 연결하는 데 사용된 연결 문자열로 업데이트됩니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
 
-* 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+* 프로젝트 디렉터리( *Program.cs* , *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
 
-* **Windows의 경우**: 다음 명령을 실행합니다.
+* **Windows의 경우** : 다음 명령을 실행합니다.
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
-* **macOS 및 Linux의 경우**: 다음 명령을 실행합니다.
+* **macOS 및 Linux의 경우** : 다음 명령을 실행합니다.
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
@@ -411,26 +412,26 @@ to use Data, it should not use models. That will make the namespace the same for
 
 *Pages/Movies* 폴더를 만듭니다.
 
-* *Pages* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더**를 선택합니다.
-* 폴더 이름을 *Movies*로 지정합니다.
+* *Pages* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더** 를 선택합니다.
+* 폴더 이름을 *Movies* 로 지정합니다.
 
-*Pages/Movies* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **스캐폴드된 새 항목**을 선택합니다.
+*Pages/Movies* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **스캐폴드된 새 항목** 을 선택합니다.
 
 ![이전 지침의 이미지입니다.](model/_static/scaMac.png)
 
-**새 스캐폴딩 추가** 대화 상자에서 **Entity Framework를 사용한 Razor Pages(CRUD)** > **추가**를 선택합니다.
+**새 스캐폴딩 추가** 대화 상자에서 **Entity Framework를 사용한 Razor Pages(CRUD)** > **추가** 를 선택합니다.
 
 ![이전 지침의 이미지입니다.](model/_static/add_scaffoldMac.png)
 
 **Entity Framework(CRUD)를 사용하여 Razor Pages 추가** 대화 상자를 완료합니다.
 
-* **모델 클래스** 드롭다운에서 **동영상**을 선택하거나 입력합니다.
-* **데이터 컨텍스트 클래스** 행에 **RazorPagesMovieContext**를 입력하거나 선택합니다. 그러면 올바른 네임스페이스의 새 db 컨텍스트 클래스가 만들어집니다. 이 경우 클래스는 **RazorPagesMovie.Models.RazorPagesMovieContext**입니다.
-* **추가**를 선택합니다.
+* **모델 클래스** 드롭다운에서 **동영상** 을 선택하거나 입력합니다.
+* **데이터 컨텍스트 클래스** 행에 **RazorPagesMovieContext** 를 입력하거나 선택합니다. 그러면 올바른 네임스페이스의 새 db 컨텍스트 클래스가 만들어집니다. 이 경우 클래스는 **RazorPagesMovie.Models.RazorPagesMovieContext** 입니다.
+* **추가** 를 선택합니다.
 
 ![이전 지침의 이미지입니다.](model/_static/arpMac.png)
 
-*appsettings.json* 파일을 로컬 데이터베이스에 연결하는 데 사용된 연결 문자열로 업데이트합니다.
+*appsettings.json* 파일이 로컬 데이터베이스에 연결하는 데 사용된 연결 문자열로 업데이트됩니다.
 
 ---
 
@@ -438,7 +439,7 @@ to use Data, it should not use models. That will make the namespace the same for
 
 ### <a name="files-created"></a>생성된 파일
 
-* *Pages/Movies*: 만들기, 삭제, 세부 정보, 편집 및 인덱스입니다.
+* *Pages/Movies* : 만들기, 삭제, 세부 정보, 편집 및 인덱스입니다.
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="file-updated"></a>파일 업데이트됨
@@ -458,7 +459,7 @@ to use Data, it should not use models. That will make the namespace the same for
 * 초기 마이그레이션을 추가합니다.
 * 초기 마이그레이션을 사용하여 데이터베이스를 수정합니다.
 
-**도구** 메뉴에서 **NuGet 패키지 관리자** > **패키지 관리자 콘솔**을 선택합니다.
+**도구** 메뉴에서 **NuGet 패키지 관리자** > **패키지 관리자 콘솔** 을 선택합니다.
 
   ![PMC 메뉴](../first-mvc-app/adding-model/_static/pmc.png)
 
@@ -483,7 +484,7 @@ Update-Database
 
 ---
 > [!NOTE]
-> 이전 명령은 다음 경고를 생성합니다. "*엔터티 형식 'Movie'에서 10진수 열 'Price'의 형식이 지정되지 않았습니다. This will cause values to be silently truncated if they do not fit in the default precision and scale. 'HasColumnType()'을 사용하여 모든 값을 수용할 수 있는 SQL Server 열 형식을 명시적으로 지정합니다.* " 이 경고는 무시할 수 있으며 이후 자습서에서 수정될 예정입니다.
+> 이전 명령은 다음 경고를 생성합니다. " *엔터티 형식 'Movie'에서 10진수 열 'Price'의 형식이 지정되지 않았습니다. This will cause values to be silently truncated if they do not fit in the default precision and scale. 'HasColumnType()'을 사용하여 모든 값을 수용할 수 있는 SQL Server 열 형식을 명시적으로 지정합니다.* " 이 경고는 무시할 수 있으며 이후 자습서에서 수정될 예정입니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -537,7 +538,7 @@ Login failed for user 'User-name'.
   > [!NOTE]
   > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(",")를 사용하는 비 영어 로캘 및 비 US-English 날짜 형식에 대해[jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 세계화해야 합니다. 세계화 지침은 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)를 참조하세요.
 
-* **Edit**, **Details** 및 **Delete** 링크를 테스트합니다.
+* **Edit** , **Details** 및 **Delete** 링크를 테스트합니다.
 
 다음 자습서에서는 스캐폴딩을 통해 만들어진 파일을 설명합니다.
 

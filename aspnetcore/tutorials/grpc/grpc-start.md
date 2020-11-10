@@ -3,8 +3,9 @@ title: ASP.NET Core에서 .NET Core gRPC 클라이언트 및 서버 만들기
 author: juntaoluo
 description: 이 자습서는 ASP.NET Core에서 gRPC 서비스 및 gRPC 클라이언트를 만드는 방법을 보여줍니다. gRPC 서비스 프로젝트를 만들고, proto 파일을 편집하고, 이중 스트리밍 호출을 추가하는 방법을 알아봅니다.
 ms.author: johluo
-ms.date: 04/08/2020
+ms.date: 10/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: fbfd37b8f796990ff035f7fffeb906e23a8739d4
-ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
+ms.openlocfilehash: 9388a2f814008ebb50171f85b8baccf6dadfac27
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678580"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057026"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>자습서: ASP.NET Core에서 gRPC 클라이언트 및 서버 만들기
 
@@ -63,7 +64,7 @@ ms.locfileid: "92678580"
 * Visual Studio를 시작하고 **새 프로젝트 만들기** 를 선택합니다. 또는 Visual Studio **파일** 메뉴에서 **새로 만들기** > **프로젝트** 를 선택합니다.
 * **새 프로젝트 만들기** 대화 상자에서 **gRPC 서비스** 를 선택한 후 **다음** 을 선택합니다.
 
-  ![새 프로젝트 만들기 대화 상자](~/tutorials/grpc/grpc-start/static/cnp.png)
+  ![Visual Studio에서 새 프로젝트 대화 상자 만들기](~/tutorials/grpc/grpc-start/static/cnp.png)
 
 * 프로젝트 이름을 **GrpcGreeter** 로 지정합니다. 코드를 복사하여 붙여넣을 때 네임스페이스가 일치하도록 프로젝트 이름을 *GrpcGreeter* 로 지정해야 합니다.
 * **만들기** 를 선택합니다.
@@ -74,7 +75,7 @@ ms.locfileid: "92678580"
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [통합 터미널](https://code.visualstudio.com/docs/editor/integrated-terminal)을 엽니다.
-* 프로젝트를 포함할 폴더로 디렉터리를 변경(`cd`)합니다.
+* 프로젝트용 폴더로 디렉터리를 변경(`cd`)합니다.
 * 다음 명령을 실행합니다.
 
   ```dotnetcli
@@ -93,9 +94,9 @@ ms.locfileid: "92678580"
 * Mac용 Visual Studio를 시작하고 **새 프로젝트 만들기** 를 선택합니다. 또는 Visual Studio **파일** 메뉴에서 **새로 만들기** > **프로젝트** 를 선택합니다.
 * **새 프로젝트 만들기** 대화 상자에서 **웹 및 콘솔** > **앱** > **gRPC 서비스** 를 선택하고 **다음** 을 선택합니다.
 
-  ![새 프로젝트 만들기 대화 상자](~/tutorials/grpc/grpc-start/static/cnp-mac.png)
+  ![macOS에서 새 프로젝트 대화 상자 만들기](~/tutorials/grpc/grpc-start/static/cnp-mac.png)
 
-* 대상 프레임워크에 대해 **.NET Core 3.1** 을 선택하고 **다음** 을 클릭합니다.
+* 대상 프레임워크로 **.NET Core 3.1** 을 선택하고 **다음** 을 선택합니다.
 * 프로젝트 이름을 **GrpcGreeter** 로 지정합니다. 코드를 복사하여 붙여넣을 때 네임스페이스가 일치하도록 프로젝트 이름을 *GrpcGreeter* 로 지정해야 합니다.
 * **만들기** 를 선택합니다.
 ---
@@ -141,7 +142,7 @@ info: Microsoft.Hosting.Lifetime[0]
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [통합 터미널](https://code.visualstudio.com/docs/editor/integrated-terminal)을 엽니다.
-* 프로젝트를 포함할 폴더로 디렉터리를 변경(`cd`)합니다.
+* 프로젝트용 폴더로 디렉터리를 변경(`cd`)합니다.
 * 다음 명령을 실행합니다.
 
   ```dotnetcli
@@ -181,7 +182,7 @@ PMC(패키지 관리자 콘솔) 또는 NuGet 패키지 관리를 사용하여 �
 
 #### <a name="manage-nuget-packages-option-to-install-packages"></a>NuGet 패키지 관리를 사용한 패키지 설치
 
-* **솔루션 탐색기** > **NuGet 패키지 관리** 에서 프로젝트를 마우스 오른쪽 단추로 클릭
+* **솔루션 탐색기** > **NuGet 패키지 관리** 에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다.
 * **찾아보기** 탭을 선택합니다.
 * 검색 상자에 **Grpc.Net.Client** 를 입력합니다.
 * **찾아보기** 탭에서 **Grpc.Net.Client** 패키지를 선택하고 **설치** 를 선택합니다.
@@ -202,7 +203,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 * **Solution Pad** 에서 **GrpcGreeterClient** 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다.
 * 검색 상자에 **Grpc.Net.Client** 를 입력합니다.
 * 결과 창에서 **Grpc.Net.Client** 패키지를 선택하고 **패키지 추가** 를 선택합니다.
-* **라이선스 동의** 대화 상자에서 **동의** 단추를 클릭합니다.
+* **라이선스 동의** 대화 상자에서 **동의** 단추를 선택합니다.
 * `Google.Protobuf` 및 `Grpc.Tools`에 대해 반복하세요.
 
 ---

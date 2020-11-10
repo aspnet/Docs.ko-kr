@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/27/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,29 +19,27 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: 134ec3a913d19c5aba38e7419f25352e93c04e31
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 14eda03419e22538e17b7b4d6fa697d61cb384c8
+ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690409"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93343711"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Azure Active Directory B2C를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
 
 작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)
 
-인증을 위해 [AAD(Azure Active Directory) B2C](/azure/active-directory-b2c/overview)를 사용하는 [ 독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만들려면:
+이 문서에서는 인증을 위해 [Azure Active Directory(AAD) B2C](/azure/active-directory-b2c/overview)를 사용하는 [독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만드는 방법을 다룹니다.
 
-다음 항목의 지침에 따라 테넌트를 만들고 Azure Portal에 웹앱을 등록합니다.
-
-[AAD B2C 테넌트 만들기](/azure/active-directory-b2c/tutorial-create-tenant)
+[AAD B2C 테넌트 만들기(Azure 설명서)](/azure/active-directory-b2c/tutorial-create-tenant) 문서에 따라 테넌트를 만들거나 Azure Portal에서 앱이 사용할 기존 B2C 테넌트를 식별하세요.
 
 다음과 같은 정보를 기록해 둡니다.
 
 * AAD B2C 인스턴스(예: 후행 슬래시를 포함하는 `https://contoso.b2clogin.com/`): 이 인스턴스는 Azure B2C 앱 등록의 스키마 및 호스트로, Azure Portal의 **앱 등록** 페이지에서 **엔드포인트** 창을 열어 찾을 수 있습니다.
 * AAD B2C 주/게시자/테넌트 도메인(예: `contoso.onmicrosoft.com`): 도메인은 Azure Portal에서 등록된 앱의 **브랜딩** 블레이드에 **게시자 도메인** 으로 표시되어 있습니다.
 
-다시 한번 [자습서: Azure Active Directory B2C에서 애플리케이션 등록](/azure/active-directory-b2c/tutorial-register-applications)의 지침에 따라 *`Client`* 앱에 대해 AAD 앱을 등록하고 다음을 수행합니다.
+AAD B2C 앱을 등록합니다(Azure 설명서: [자습서: Azure Active Directory B2C에서 애플리케이션 등록](/azure/active-directory-b2c/tutorial-register-applications)의 관련 지침).
 
 ::: moniker range=">= aspnetcore-5.0"
 

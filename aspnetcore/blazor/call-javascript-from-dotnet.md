@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc, devx-track-js
 ms.date: 10/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: ddbffa356a1cb53ee6ba1589f93e815af968bfb7
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 17d6087b884775a8bfcb41fe23296f508467e924
+ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690289"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234454"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor의 .NET 메서드에서 JavaScript 함수 호출
 
@@ -55,7 +56,7 @@ Blazor 앱은 .NET 메서드에서 JavaScript 함수를 호출하고 JavaScript 
 
 다음 구성 요소는
 
-* 구성 요소 단추( **`Convert Array`** )가 선택된 경우 `JSRuntime`을 사용하여 `convertArray` JavaScript 함수를 호출합니다.
+* 구성 요소 단추( **`Convert Array`** )가 선택된 경우 `JS`을 사용하여 `convertArray` JavaScript 함수를 호출합니다.
 * JavaScript 함수를 호출한 후에는 전달된 배열이 문자열로 변환됩니다. 이 문자열은 표시를 위해 구성 요소로 반환됩니다.
 
 [!code-razor[](call-javascript-from-dotnet/samples_snapshot/call-js-example.razor?highlight=2,34-35)]
@@ -76,7 +77,7 @@ Blazor 앱은 .NET 메서드에서 JavaScript 함수를 호출하고 JavaScript 
 
   [!code-csharp[](call-javascript-from-dotnet/samples_snapshot/inject-abstraction-class.cs?highlight=5)]
 
-  `wwwroot/index.html`(Blazor WebAssembly) 또는 `Pages/_Host.cshtml`(Blazor Server)의 `<head>` 요소 내에 `handleTickerChanged` JavaScript 함수를 제공합니다. 이 함수는 `JSRuntime.InvokeAsync`를 사용하여 호출되며 값을 반환합니다.
+  `wwwroot/index.html`(Blazor WebAssembly) 또는 `Pages/_Host.cshtml`(Blazor Server)의 `<head>` 요소 내에 `handleTickerChanged` JavaScript 함수를 제공합니다. 이 함수는 `JS.InvokeAsync`를 사용하여 호출되며 값을 반환합니다.
 
   [!code-html[](call-javascript-from-dotnet/samples_snapshot/index-script-handleTickerChanged2.html)]
 
@@ -84,7 +85,7 @@ Blazor 앱은 .NET 메서드에서 JavaScript 함수를 호출하고 JavaScript 
 
   ```razor
   [Inject]
-  IJSRuntime JSRuntime { get; set; }
+  IJSRuntime JS { get; set; }
   ```
 
 이 항목과 함께 제공되는 클라이언트 쪽 샘플 앱에서는 사용자 입력을 수신하고 환영 메시지를 표시하기 위해 DOM과 상호 작용하는 두 가지 JavaScript 함수를 앱에서 사용할 수 있습니다.
@@ -130,7 +131,7 @@ JavaScript 파일을 참조하는 `<script>` 태그를 `wwwroot/index.html` 파�
 ```razor
 @page "/JSInterop"
 @using {APP ASSEMBLY}.JsInteropClasses
-@inject IJSRuntime JSRuntime
+@inject IJSRuntime JS
 
 <h1>JavaScript Interop</h1>
 
@@ -145,11 +146,11 @@ JavaScript 파일을 참조하는 `<script>` 태그를 `wwwroot/index.html` 파�
 @code {
     public async Task TriggerJsPrompt()
     {
-        var name = await JSRuntime.InvokeAsync<string>(
+        var name = await JS.InvokeAsync<string>(
                 "exampleJsFunctions.showPrompt",
                 "What's your name?");
 
-        await JSRuntime.InvokeVoidAsync(
+        await JS.InvokeVoidAsync(
                 "exampleJsFunctions.displayWelcome",
                 $"Hello {name}! Welcome to Blazor!");
     }
@@ -235,10 +236,9 @@ window.interopFunctions = {
 
 ```csharp
 public static async Task TriggerClickEvent(this ElementReference elementRef, 
-    IJSRuntime jsRuntime)
+    IJSRuntime js)
 {
-    await jsRuntime.InvokeVoidAsync(
-        "interopFunctions.clickElement", elementRef);
+    await js.InvokeVoidAsync("interopFunctions.clickElement", elementRef);
 }
 ```
 
@@ -253,10 +253,9 @@ public static async Task TriggerClickEvent(this ElementReference elementRef,
 
 ```csharp
 public static ValueTask<T> GenericMethod<T>(this ElementReference elementRef, 
-    IJSRuntime jsRuntime)
+    IJSRuntime js)
 {
-    return jsRuntime.InvokeAsync<T>(
-        "exampleJsFunctions.doSomethingGeneric", elementRef);
+    return js.InvokeAsync<T>("exampleJsFunctions.doSomethingGeneric", elementRef);
 }
 ```
 
@@ -487,7 +486,7 @@ JS interop는 네트워킹 오류로 인해 실패할 수 있으며 신뢰할 �
 * 구성 요소 코드의 호출마다 단일 호출은 다음과 같이 제한 시간을 지정할 수 있습니다.
 
   ```csharp
-  var result = await JSRuntime.InvokeAsync<string>("MyJSOperation", 
+  var result = await JS.InvokeAsync<string>("MyJSOperation", 
       TimeSpan.FromSeconds({SECONDS}), new[] { "Arg1" });
   ```
 
@@ -524,10 +523,10 @@ export function showPrompt(message) {
 }
 ```
 
-위의 JavaScript 모듈을 .NET 라이브러리에 정적 웹 자산(`wwwroot/exampleJsInterop.js`)으로 추가한 다음, <xref:Microsoft.JSInterop.IJSRuntime> 서비스를 사용하여 .NET 코드로 모듈을 가져옵니다. 다음 예제에서는 서비스가 `jsRuntime`(표시되지 않음)으로 삽입됩니다.
+위의 JavaScript 모듈을 .NET 라이브러리에 정적 웹 자산(`wwwroot/exampleJsInterop.js`)으로 추가한 다음, <xref:Microsoft.JSInterop.IJSRuntime> 서비스를 사용하여 .NET 코드로 모듈을 가져옵니다. 다음 예제에서는 서비스가 `js`(표시되지 않음)으로 삽입됩니다.
 
 ```csharp
-var module = await jsRuntime.InvokeAsync<IJSObjectReference>(
+var module = await js.InvokeAsync<IJSObjectReference>(
     "import", "./_content/MyComponents/exampleJsInterop.js");
 ```
 
@@ -556,13 +555,15 @@ window.unmarshalledInstance = {
 ```
 
 ```csharp
-var unmarshalledRuntime = (IJSUnmarshalledRuntime)jsRuntime;
+var unmarshalledRuntime = (IJSUnmarshalledRuntime)js;
 var jsUnmarshalledReference = unmarshalledRuntime
     .InvokeUnmarshalled<IJSUnmarshalledObjectReference>("unmarshalledInstance");
 
 string helloWorldString = jsUnmarshalledReference.InvokeUnmarshalled<string, string>(
     "helloWorld");
 ```
+
+앞의 예제에서 <xref:Microsoft.JSInterop.IJSRuntime> 서비스는 클래스에 삽입되고 `js`에 할당됩니다(표시되지 않음).
 
 ## <a name="use-of-javascript-libraries-that-render-ui-dom-elements"></a>UI(DOM 요소)를 렌더링하는 JavaScript 라이브러리 사용
 

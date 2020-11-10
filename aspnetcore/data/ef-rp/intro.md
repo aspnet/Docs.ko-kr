@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 9/26/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 35a5758500ae2bc691c8d08eccb22340f9998c39
-ms.sourcegitcommit: 6c82d78662332cd40d614019b9ed17c46e25be28
+ms.openlocfilehash: 74f65b916c2d5b7de61ec29f4259a51584ee5989
+ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91424289"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93365420"
 ---
 # <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core에서 Entity Framework Core를 사용한 Razor Pages - 자습서 1/8
 
@@ -118,10 +119,11 @@ To run the app after downloading the completed project:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트**를 선택합니다.
-* **새 ASP.NET Core 웹 애플리케이션**을 선택합니다.
-* 프로젝트 이름을 *ContosoUniversity*로 지정합니다. 코드를 복사하여 붙여넣을 때 네임스페이스가 일치하도록 대문자 표시를 포함하여 정확한 이름을 사용해야 합니다.
-* 드롭다운에서 **.NET Core** 및 **ASP.NET Core 5.0**을 선택한 다음, **웹 애플리케이션**을 선택합니다.
+* Visual Studio를 시작하고 **새 프로젝트 만들기** 를 선택합니다.
+* **ASP.NET Core 웹 애플리케이션** > **다음** 을 선택합니다.
+* 프로젝트 이름을 *ContosoUniversity* 로 지정합니다. 코드를 복사하여 붙여넣을 때 네임스페이스가 일치하도록 대문자 표시를 포함하여 정확한 이름을 사용해야 합니다.
+* **만들기** 를 선택합니다.
+* 드롭다운에서 **.NET Core** 및 **ASP.NET Core 5.0** 을 선택한 다음, **웹 애플리케이션** 을 선택합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -143,9 +145,9 @@ To run the app after downloading the completed project:
 
 * 모든 “ContosoUniversity”가 “Contoso University”로 변경됩니다. 세 번 나옵니다.
 * **홈** 및 **프라이버시** 메뉴 항목이 삭제됩니다.
-* **정보**,**학생**, **과정**, **강사** 및 **부서**에 대해 항목이 추가됩니다.
+* **정보** , **학생** , **과정** , **강사** 및 **부서** 에 대해 항목이 추가됩니다.
 
-*Pages/Index.cshtml*에서 파일의 내용을 다음 코드로 바꿉니다.
+*Pages/Index.cshtml* 에서 파일의 내용을 다음 코드로 바꿉니다.
 
 [!code-cshtml[Main](intro/samples/cu50/Pages/Index.cshtml)]
 
@@ -167,7 +169,7 @@ To run the app after downloading the completed project:
 
 * 프로젝트 폴더에 *Models* 폴더를 만듭니다. 
 
-* 다음 코드로 *Models/Student.cs*를 만듭니다.
+* 다음 코드로 *Models/Student.cs* 를 만듭니다.
 
   [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Models/Student.cs)]
 
@@ -183,7 +185,7 @@ To run the app after downloading the completed project:
 
 ![등록 엔터티 다이어그램](intro/_static/enrollment-entity.png)
 
-다음 코드로 *Models/Enrollment.cs*를 만듭니다.
+다음 코드로 *Models/Enrollment.cs* 를 만듭니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Models/Enrollment.cs)]
 
@@ -201,7 +203,7 @@ EF Core는 속성 이름이 `<navigation property name><primary key property nam
 
 ![강좌 엔터티 다이어그램](intro/_static/course-entity.png)
 
-다음 코드로 *Models/Course.cs*를 만듭니다.
+다음 코드로 *Models/Course.cs* 를 만듭니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Models/Course.cs)]
 
@@ -221,15 +223,15 @@ EF Core는 속성 이름이 `<navigation property name><primary key property nam
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * *Pages/Students* 폴더를 만듭니다.
-* **솔루션 탐색기**에서 *Pages/Students* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **스캐폴드 항목 새로 만들기**를 선택합니다.
+* **솔루션 탐색기** 에서 *Pages/Students* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **스캐폴드 항목 새로 만들기** 를 선택합니다.
 * **새 스캐폴드 항목 추가** 대화 상자에서 다음을 수행합니다.
-  * 왼쪽 탭에서 **설치 > 공통 > Razor 페이지**를 선택합니다.
-  * **RazorEntity Framework를 사용한 Razor 페이지(CRUD)** > **추가**를 선택합니다.
+  * 왼쪽 탭에서 **설치 > 공통 > Razor 페이지** 를 선택합니다.
+  * **RazorEntity Framework를 사용한 Razor 페이지(CRUD)** > **추가** 를 선택합니다.
 * **Entity Framework(CRUD)를 사용한 Razor Pages 추가** 대화 상자에서 다음 작업을 수행합니다.
   * **모델 클래스** 드롭다운에서 **학생(ContosoUniversity.Models)** 을 선택합니다.
   * **데이터 컨텍스트 클래스** 행에서 **+** (더하기) 기호를 선택합니다.
     * 데이터 컨텍스트 이름을 `ContosoUniversityContext`가 아닌 `SchoolContext`로 끝나게 변경합니다. 업데이트된 컨텍스트 이름: `ContosoUniversity.Data.SchoolContext`
-   * **추가**를 선택합니다.
+   * **추가** 를 선택합니다.
 
 다음 패키지가 자동으로 설치됩니다.
 
@@ -287,9 +289,9 @@ EF Core는 속성 이름이 `<navigation property name><primary key property nam
   * *Details.cshtml* 및 *Details.cshtml.cs*
   * *Edit.cshtml* 및 *Edit.cshtml.cs*
   * *Index.cshtml* 및 *Index.cshtml.cs*
-* *Data/SchoolContext.cs*를 만듭니다.
-* *Startup.cs*의 종속성 주입에 컨텍스트를 추가합니다.
-* *appsettings.json*에 데이터베이스 연결 문자열을 추가합니다.
+* *Data/SchoolContext.cs* 를 만듭니다.
+* *Startup.cs* 의 종속성 주입에 컨텍스트를 추가합니다.
+* *appsettings.json* 에 데이터베이스 연결 문자열을 추가합니다.
 
 ## <a name="database-connection-string"></a>데이터베이스 연결 문자열
 
@@ -305,7 +307,7 @@ LocalDB는 프로덕션 사용이 아닌 앱 개발용으로 고안된 SQL Serve
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-SQLite 연결 문자열을 *CU.db*로 줄입니다.
+SQLite 연결 문자열을 *CU.db* 로 줄입니다.
 
 [!code-json[Main](intro/samples/cu50/appsettingsSQLite.json?highlight=11)]
 
@@ -315,7 +317,7 @@ SQLite 연결 문자열을 *CU.db*로 줄입니다.
 
 특정 데이터 모델에 맞게 EF Core 기능을 조정하는 주 클래스는 데이터베이스 컨텍스트 클래스입니다. 컨텍스트는 [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)에서 파생됩니다. 컨텍스트는 데이터 모델에 포함되는 엔터티를 지정합니다. 이 프로젝트에서 클래스 이름은 `SchoolContext`로 지정됩니다.
 
-다음 코드로 *Data/SchoolContext.cs*를 업데이트합니다.
+다음 코드로 *Data/SchoolContext.cs* 를 업데이트합니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Data/SchoolContext.cs?highlight=13-22)]
 
@@ -364,7 +366,7 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 ### <a name="add-the-database-exception-filter"></a>데이터베이스 예외 필터 추가
 
-다음 코드와 같이 `AddDatabaseDeveloperPageExceptionFilter`를 `ConfigureServices`에 추가합니다.
+다음 코드와 같이 <xref:Microsoft.Extensions.DependencyInjection.DatabaseDeveloperPageExceptionFilterServiceExtensions.AddDatabaseDeveloperPageExceptionFilter%2A>를 `ConfigureServices`에 추가합니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -372,10 +374,10 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 [Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore) NuGet 패키지를 추가합니다.
 
-PMC에서 다음 명령을 입력하여 NuGet 패키지를 추가합니다.
+PMC에서 다음을 입력하여 NuGet 패키지를 추가합니다.
 
 ```powershell
-Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.0.0-rc.1.20451.17
+Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.0.0-rc.2.20475.17
 ```
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -386,9 +388,11 @@ Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.
 
 `Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore` NuGet 패키지는 Entity Framework Core 오류 페이지에 대한 ASP.NET Core 미들웨어를 제공합니다. 이 미들웨어는 Entity Framework Core 마이그레이션의 오류를 검색 및 진단하는 데 도움이 됩니다.
 
+`AddDatabaseDeveloperPageExceptionFilter`는 [개발 환경](xref:fundamentals/environments)에서 유용한 오류 정보를 제공합니다.
+
 ## <a name="create-the-database"></a>데이터베이스 만들기
 
-*Program.cs*를 업데이트하여 데이터베이스가 없는 경우 데이터베이스를 만듭니다.
+*Program.cs* 를 업데이트하여 데이터베이스가 없는 경우 데이터베이스를 만듭니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Program.cs?highlight=1-2,14-18,21-38)]
 
@@ -406,20 +410,20 @@ Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.
 ### <a name="test-the-app"></a>앱을 테스트합니다.
 
 * 앱을 실행합니다.
-* **학생** 링크 및 **새로 만들기**를 차례로 선택합니다.
+* **학생** 링크 및 **새로 만들기** 를 차례로 선택합니다.
 * 편집, 세부 정보 및 삭제 링크를 테스트합니다.
 
 ## <a name="seed-the-database"></a>데이터베이스 시드
 
 `EnsureCreated` 메서드는 빈 데이터베이스를 만듭니다. 이 섹션에서는 테스트 데이터로 데이터베이스를 채우는 코드를 추가합니다.
 
-다음 코드로 *Data/DbInitializer.cs*를 만듭니다.
+다음 코드로 *Data/DbInitializer.cs* 를 만듭니다.
 <!-- next update, keep this file in the project and surround with #if -->
   [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Data/DbInitializer.cs)]
 
   이 코드는 데이터베이스에 학생이 있는지 확인합니다. 학생이 없는 경우 테스트 데이터를 데이터베이스에 추가합니다. `List<T>` 컬렉션이 아닌 배열에 테스트 데이터를 만들어 성능을 최적화합니다.
 
-*Program.cs*에서 `EnsureCreated` 호출을 `DbInitializer.Initialize` 호출로 바꿉니다.
+*Program.cs* 에서 `EnsureCreated` 호출을 `DbInitializer.Initialize` 호출로 바꿉니다.
 
   ```csharp
   // context.Database.EnsureCreated();
@@ -428,7 +432,7 @@ Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-앱이 실행 중이라면 중지하고 **패키지 관리자 콘솔**(PMC)에서 다음 명령을 실행합니다.
+앱이 실행 중이라면 중지하고 **패키지 관리자 콘솔** (PMC)에서 다음 명령을 실행합니다.
 
 ```powershell
 Drop-Database -Confirm
@@ -452,12 +456,12 @@ Drop-Database -Confirm
 * Visual Studio의 **보기** 메뉴에서 **SSOX(SQL Server 개체 탐색기)** 를 엽니다.
 * SSOX에서 **(localdb)\MSSQLLocalDB > Databases > SchoolContext-{GUID}** 를 선택합니다. 데이터베이스 이름은 이전에 제공한 컨텍스트 이름과 대시 및 GUID를 사용하여 생성됩니다.
 * **테이블** 노드를 확장합니다.
-* **학생** 테이블을 마우스 오른쪽 단추로 클릭하고, **데이터 보기**를 클릭하여 만든 열 및 테이블에 삽입된 행을 볼 수 있습니다.
-* **Student** 테이블을 마우스 오른쪽 단추로 클릭하고 **코드 보기**를 클릭하여 `Student` 모델이 `Student` 테이블 스키마에 어떻게 매핑되는지 확인합니다.
+* **학생** 테이블을 마우스 오른쪽 단추로 클릭하고, **데이터 보기** 를 클릭하여 만든 열 및 테이블에 삽입된 행을 볼 수 있습니다.
+* **Student** 테이블을 마우스 오른쪽 단추로 클릭하고 **코드 보기** 를 클릭하여 `Student` 모델이 `Student` 테이블 스키마에 어떻게 매핑되는지 확인합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-SQLite 도구를 사용하여 데이터베이스 스키마 및 시드된 데이터를 표시합니다. 데이터베이스 파일은 *CU.db*로 이름이 지정되고 프로젝트 폴더에 배치됩니다.
+SQLite 도구를 사용하여 데이터베이스 스키마 및 시드된 데이터를 표시합니다. 데이터베이스 파일은 *CU.db* 로 이름이 지정되고 프로젝트 폴더에 배치됩니다.
 
 ---
 
@@ -576,10 +580,10 @@ SQLite를 사용하도록 선택하는 경우 [SQLite용 DB 브라우저](https:
 
 완료된 프로젝트를 다운로드한 후 앱을 실행하려면 다음을 수행합니다.
 
-* *ContosoUniversity.csproj*를 삭제하고 *ContosoUniversitySQLite.csproj*의 이름을 *ContosoUniversity.csproj*로 바꿉니다.
-* *Program.cs*에서 `StartupSQLite`를 사용하도록 `#define Startup`을 주석으로 처리합니다.
-* *appSettings.json*을 삭제하고 *appSettingsSQLite.json*의 이름을 *appSettings.json*으로 바꿉니다.
-* *Migrations* 폴더를 삭제하고 *MigrationsSQL*의 이름을 *Migrations*로 바꿉니다.
+* *ContosoUniversity.csproj* 를 삭제하고 *ContosoUniversitySQLite.csproj* 의 이름을 *ContosoUniversity.csproj* 로 바꿉니다.
+* *Program.cs* 에서 `StartupSQLite`를 사용하도록 `#define Startup`을 주석으로 처리합니다.
+* *appSettings.json* 을 삭제하고 *appSettingsSQLite.json* 의 이름을 *appSettings.json* 으로 바꿉니다.
+* *Migrations* 폴더를 삭제하고 *MigrationsSQL* 의 이름을 *Migrations* 로 바꿉니다.
 * `#if SQLiteVersion`에 대한 전체 검색을 수행하고 `#if SQLiteVersion` 및 관련된 `#endif` 문을 제거합니다.
 * 프로젝트를 빌드합니다.
 * 프로젝트 폴더의 명령 프롬프트에서 다음 명령을 실행합니다.
@@ -604,10 +608,10 @@ SQLite를 사용하도록 선택하는 경우 [SQLite용 DB 브라우저](https:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트**를 선택합니다.
-* **새 ASP.NET Core 웹 애플리케이션**을 선택합니다.
-* 프로젝트 이름을 *ContosoUniversity*로 지정합니다. 코드를 복사하여 붙여넣을 때 네임스페이스가 일치하도록 대문자 표시를 포함하여 정확한 이름을 사용해야 합니다.
-* 드롭다운에서 **.NET Core** 및 **ASP.NET Core 3.0**을 선택한 후 **웹 애플리케이션**을 선택합니다.
+* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트** 를 선택합니다.
+* **새 ASP.NET Core 웹 애플리케이션** 을 선택합니다.
+* 프로젝트 이름을 *ContosoUniversity* 로 지정합니다. 코드를 복사하여 붙여넣을 때 네임스페이스가 일치하도록 대문자 표시를 포함하여 정확한 이름을 사용해야 합니다.
+* 드롭다운에서 **.NET Core** 및 **ASP.NET Core 3.0** 을 선택한 후 **웹 애플리케이션** 을 선택합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -624,17 +628,17 @@ SQLite를 사용하도록 선택하는 경우 [SQLite용 DB 브라우저](https:
 
 ## <a name="set-up-the-site-style"></a>사이트 스타일 설정
 
-*Pages/Shared/_Layout.cshtml*을 업데이트하여 사이트 헤더, 바닥글 및 메뉴를 설정합니다.
+*Pages/Shared/_Layout.cshtml* 을 업데이트하여 사이트 헤더, 바닥글 및 메뉴를 설정합니다.
 
 * 모든 “ContosoUniversity”를 “Contoso University”로 변경합니다. 세 번 나옵니다.
 
-* **홈** 및 **프라이버시** 메뉴 항목을 삭제하고 **정보**, **학생**, **과정**, **강사** 및 **부서** 항목을 추가합니다.
+* **홈** 및 **프라이버시** 메뉴 항목을 삭제하고 **정보** , **학생** , **과정** , **강사** 및 **부서** 항목을 추가합니다.
 
 변경 내용은 강조 표시되어 있습니다.
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Shared/_Layout.cshtml?highlight=6,14,21-35,49)]
 
-*Pages/Index.cshtml*에서 다음 코드로 파일의 콘텐츠를 텍스트를 대체하여 ASP.NET Core에 대한 텍스트를 이 앱에 대한 텍스트로 바꿉니다.
+*Pages/Index.cshtml* 에서 다음 코드로 파일의 콘텐츠를 텍스트를 대체하여 ASP.NET Core에 대한 텍스트를 이 앱에 대한 텍스트로 바꿉니다.
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Index.cshtml)]
 
@@ -653,7 +657,7 @@ SQLite를 사용하도록 선택하는 경우 [SQLite용 DB 브라우저](https:
 ![학생 엔터티 다이어그램](intro/_static/student-entity.png)
 
 * 프로젝트 폴더에 *Models* 폴더를 만듭니다.
-* 다음 코드로 *Models/Student.cs*를 만듭니다.
+* 다음 코드로 *Models/Student.cs* 를 만듭니다.
 
   [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Models/Student.cs)]
 
@@ -669,7 +673,7 @@ SQLite를 사용하도록 선택하는 경우 [SQLite용 DB 브라우저](https:
 
 ![등록 엔터티 다이어그램](intro/_static/enrollment-entity.png)
 
-다음 코드로 *Models/Enrollment.cs*를 만듭니다.
+다음 코드로 *Models/Enrollment.cs* 를 만듭니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Models/Enrollment.cs)]
 
@@ -687,7 +691,7 @@ EF Core는 속성 이름이 `<navigation property name><primary key property nam
 
 ![강좌 엔터티 다이어그램](intro/_static/course-entity.png)
 
-다음 코드로 *Models/Course.cs*를 만듭니다.
+다음 코드로 *Models/Course.cs* 를 만듭니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Models/Course.cs)]
 
@@ -707,13 +711,13 @@ EF Core는 속성 이름이 `<navigation property name><primary key property nam
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * *Pages* 폴더에 *Students* 폴더를 만듭니다.
-* **솔루션 탐색기**에서 *Pages/Students* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **스캐폴드 항목 새로 만들기**를 선택합니다.
-* **스캐폴드 추가** 대화 상자에서 **Entity Framework를 사용한 Razor Pages(CRUD)** > **추가**를 선택합니다.
+* **솔루션 탐색기** 에서 *Pages/Students* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **스캐폴드 항목 새로 만들기** 를 선택합니다.
+* **스캐폴드 추가** 대화 상자에서 **Entity Framework를 사용한 Razor Pages(CRUD)** > **추가** 를 선택합니다.
 * **Entity Framework(CRUD)를 사용한 Razor Pages 추가** 대화 상자에서 다음 작업을 수행합니다.
   * **모델 클래스** 드롭다운에서 **학생(ContosoUniversity.Models)** 을 선택합니다.
   * **데이터 컨텍스트 클래스** 행에서 **+** (더하기) 기호를 선택합니다.
-  * 데이터 컨텍스트 이름을 *ContosoUniversity.Models.ContosoUniversityContext*에서 *ContosoUniversity.Data.SchoolContext*로 변경합니다.
-  * **추가**를 선택합니다.
+  * 데이터 컨텍스트 이름을 *ContosoUniversity.Models.ContosoUniversityContext* 에서 *ContosoUniversity.Data.SchoolContext* 로 변경합니다.
+  * **추가** 를 선택합니다.
 
 다음 패키지가 자동으로 설치됩니다.
 
@@ -774,9 +778,9 @@ remove dotnet tool install --global  below
   * *Details.cshtml* 및 *Details.cshtml.cs*
   * *Edit.cshtml* 및 *Edit.cshtml.cs*
   * *Index.cshtml* 및 *Index.cshtml.cs*
-* *Data/SchoolContext.cs*를 만듭니다.
-* *Startup.cs*의 종속성 주입에 컨텍스트를 추가합니다.
-* *appsettings.json*에 데이터베이스 연결 문자열을 추가합니다.
+* *Data/SchoolContext.cs* 를 만듭니다.
+* *Startup.cs* 의 종속성 주입에 컨텍스트를 추가합니다.
+* *appsettings.json* 에 데이터베이스 연결 문자열을 추가합니다.
 
 ## <a name="database-connection-string"></a>데이터베이스 연결 문자열
 
@@ -790,7 +794,7 @@ LocalDB는 프로덕션 사용이 아닌 앱 개발용으로 고안된 SQL Serve
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-*CU.db*라는 SQLite 데이터베이스 파일을 가리키도록 연결 문자열을 변경합니다.
+*CU.db* 라는 SQLite 데이터베이스 파일을 가리키도록 연결 문자열을 변경합니다.
 
 [!code-json[Main](intro/samples/cu30/appsettingsSQLite.json?highlight=11)]
 
@@ -800,7 +804,7 @@ LocalDB는 프로덕션 사용이 아닌 앱 개발용으로 고안된 SQL Serve
 
 특정 데이터 모델에 맞게 EF Core 기능을 조정하는 주 클래스는 데이터베이스 컨텍스트 클래스입니다. 컨텍스트는 [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)에서 파생됩니다. 컨텍스트는 데이터 모델에 포함되는 엔터티를 지정합니다. 이 프로젝트에서 클래스 이름은 `SchoolContext`로 지정됩니다.
 
-다음 코드로 *Data/SchoolContext.cs*를 업데이트합니다.
+다음 코드로 *Data/SchoolContext.cs* 를 업데이트합니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Data/SchoolContext.cs?highlight=13-22)]
 
@@ -839,7 +843,7 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 ## <a name="create-the-database"></a>데이터베이스 만들기
 
-*Program.cs*를 업데이트하여 데이터베이스가 없는 경우 데이터베이스를 만듭니다.
+*Program.cs* 를 업데이트하여 데이터베이스가 없는 경우 데이터베이스를 만듭니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Program.cs?highlight=1-2,14-18,21-38)]
 
@@ -857,20 +861,20 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 ### <a name="test-the-app"></a>앱을 테스트합니다.
 
 * 앱을 실행합니다.
-* **학생** 링크 및 **새로 만들기**를 차례로 선택합니다.
+* **학생** 링크 및 **새로 만들기** 를 차례로 선택합니다.
 * 편집, 세부 정보 및 삭제 링크를 테스트합니다.
 
 ## <a name="seed-the-database"></a>데이터베이스 시드
 
 `EnsureCreated` 메서드는 빈 데이터베이스를 만듭니다. 이 섹션에서는 테스트 데이터로 데이터베이스를 채우는 코드를 추가합니다.
 
-다음 코드로 *Data/DbInitializer.cs*를 만듭니다.
+다음 코드로 *Data/DbInitializer.cs* 를 만듭니다.
 <!-- next update, keep this file in the project and surround with #if -->
   [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Data/DbInitializer.cs)]
 
   이 코드는 데이터베이스에 학생이 있는지 확인합니다. 학생이 없는 경우 테스트 데이터를 데이터베이스에 추가합니다. `List<T>` 컬렉션이 아닌 배열에 테스트 데이터를 만들어 성능을 최적화합니다.
 
-* *Program.cs*에서 `EnsureCreated` 호출을 `DbInitializer.Initialize` 호출로 바꿉니다.
+* *Program.cs* 에서 `EnsureCreated` 호출을 `DbInitializer.Initialize` 호출로 바꿉니다.
 
   ```csharp
   // context.Database.EnsureCreated();
@@ -879,7 +883,7 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-앱이 실행 중이라면 중지하고 **패키지 관리자 콘솔**(PMC)에서 다음 명령을 실행합니다.
+앱이 실행 중이라면 중지하고 **패키지 관리자 콘솔** (PMC)에서 다음 명령을 실행합니다.
 
 ```powershell
 Drop-Database
@@ -902,12 +906,12 @@ Drop-Database
 * Visual Studio의 **보기** 메뉴에서 **SSOX(SQL Server 개체 탐색기)** 를 엽니다.
 * SSOX에서 **(localdb)\MSSQLLocalDB > Databases > SchoolContext-{GUID}** 를 선택합니다. 데이터베이스 이름은 이전에 제공한 컨텍스트 이름과 대시 및 GUID를 사용하여 생성됩니다.
 * **테이블** 노드를 확장합니다.
-* **학생** 테이블을 마우스 오른쪽 단추로 클릭하고, **데이터 보기**를 클릭하여 만든 열 및 테이블에 삽입된 행을 볼 수 있습니다.
-* **Student** 테이블을 마우스 오른쪽 단추로 클릭하고 **코드 보기**를 클릭하여 `Student` 모델이 `Student` 테이블 스키마에 어떻게 매핑되는지 확인합니다.
+* **학생** 테이블을 마우스 오른쪽 단추로 클릭하고, **데이터 보기** 를 클릭하여 만든 열 및 테이블에 삽입된 행을 볼 수 있습니다.
+* **Student** 테이블을 마우스 오른쪽 단추로 클릭하고 **코드 보기** 를 클릭하여 `Student` 모델이 `Student` 테이블 스키마에 어떻게 매핑되는지 확인합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-SQLite 도구를 사용하여 데이터베이스 스키마 및 시드된 데이터를 표시합니다. 데이터베이스 파일은 *CU.db*로 이름이 지정되고 프로젝트 폴더에 배치됩니다.
+SQLite 도구를 사용하여 데이터베이스 스키마 및 시드된 데이터를 표시합니다. 데이터베이스 파일은 *CU.db* 로 이름이 지정되고 프로젝트 폴더에 배치됩니다.
 
 ---
 
@@ -992,9 +996,9 @@ Contoso University 샘플 웹앱은 EF(Entity Framework) Core를 사용하여 AS
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트**를 선택합니다.
-* 새 ASP.NET Core 웹 애플리케이션을 만듭니다. 프로젝트 이름을 **ContosoUniversity**로 지정합니다. 코드를 복사/붙여넣을 때 네임스페이스와 일치할 수 있도록 프로젝트 이름을 *ContosoUniversity*로 지정하는 것이 중요합니다.
-* 드롭다운에서 **ASP.NET Core 2.1**을 선택한 다음, **웹 애플리케이션**을 선택합니다.
+* Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트** 를 선택합니다.
+* 새 ASP.NET Core 웹 애플리케이션을 만듭니다. 프로젝트 이름을 **ContosoUniversity** 로 지정합니다. 코드를 복사/붙여넣을 때 네임스페이스와 일치할 수 있도록 프로젝트 이름을 *ContosoUniversity* 로 지정하는 것이 중요합니다.
+* 드롭다운에서 **ASP.NET Core 2.1** 을 선택한 다음, **웹 애플리케이션** 을 선택합니다.
 
 이전 단계의 이미지는 [Razor 웹앱 만들기](xref:tutorials/razor-pages/razor-pages-start#create-a-razor-pages-web-app)를 참조하세요.
 앱을 실행합니다.
@@ -1011,17 +1015,17 @@ dotnet run
 
 ## <a name="set-up-the-site-style"></a>사이트 스타일 설정
 
-몇 가지 변경 내용으로 사이트 메뉴, 레이아웃 및 홈페이지를 설정합니다. *Pages/Shared/_Layout.cshtml*을 다음 변경 내용으로 업데이트합니다.
+몇 가지 변경 내용으로 사이트 메뉴, 레이아웃 및 홈페이지를 설정합니다. *Pages/Shared/_Layout.cshtml* 을 다음 변경 내용으로 업데이트합니다.
 
 * 모든 “ContosoUniversity”를 “Contoso University”로 변경합니다. 세 번 나옵니다.
 
-* **학생**, **강좌**, **강사** 및 **부서**에 대한 메뉴 항목을 추가하고 **연락처** 메뉴 항목을 삭제합니다.
+* **학생** , **강좌** , **강사** 및 **부서** 에 대한 메뉴 항목을 추가하고 **연락처** 메뉴 항목을 삭제합니다.
 
 변경 내용은 강조 표시되어 있습니다. (모든 표시가 표시되지는 *않습니다*.)
 
 [!code-cshtml[](intro/samples/cu21/Pages/Shared/_Layout.cshtml?highlight=6,29,35-38,50&name=snippet)]
 
-*Pages/Index.cshtml*에서 다음 코드로 파일의 콘텐츠를 텍스트를 대체하여 ASP.NET 및 MVC에 대한 텍스트를 이 앱에 대한 텍스트로 바꿉니다.
+*Pages/Index.cshtml* 에서 다음 코드로 파일의 콘텐츠를 텍스트를 대체하여 ASP.NET 및 MVC에 대한 텍스트를 이 앱에 대한 텍스트로 바꿉니다.
 
 [!code-cshtml[](intro/samples/cu21/Pages/Index.cshtml)]
 
@@ -1039,7 +1043,7 @@ Contoso University 앱에 대한 엔터티 클래스를 만듭니다. 다음과 
 
 ![학생 엔터티 다이어그램](intro/_static/student-entity.png)
 
-*모델* 폴더를 만듭니다. *모델* 폴더에서 다음 코드로 *Student.cs*라는 이름의 클래스 파일을 만듭니다.
+*모델* 폴더를 만듭니다. *모델* 폴더에서 다음 코드로 *Student.cs* 라는 이름의 클래스 파일을 만듭니다.
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_Intro)]
 
@@ -1053,7 +1057,7 @@ Contoso University 앱에 대한 엔터티 클래스를 만듭니다. 다음과 
 
 ![등록 엔터티 다이어그램](intro/_static/enrollment-entity.png)
 
-*모델* 폴더에서 다음 코드로 *Enrollment.cs*를 만듭니다.
+*모델* 폴더에서 다음 코드로 *Enrollment.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu21/Models/Enrollment.cs?name=snippet_Intro)]
 
@@ -1071,7 +1075,7 @@ EF Core는 속성 이름이 `<navigation property name><primary key property nam
 
 ![강좌 엔터티 다이어그램](intro/_static/course-entity.png)
 
-*모델* 폴더에서 다음 코드로 *Course.cs*를 만듭니다.
+*모델* 폴더에서 다음 코드로 *Course.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu21/Models/Course.cs?name=snippet_Intro)]
 
@@ -1088,15 +1092,15 @@ EF Core는 속성 이름이 `<navigation property name><primary key property nam
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **솔루션 탐색기**에서 *Pages/Students* 폴더 > **추가** > **스캐폴드 항목 새로 만들기**를 마우스 오른쪽 단추로 클릭합니다.
-* **스캐폴드 추가** 대화 상자에서 **Entity Framework를 사용한 Razor Pages(CRUD)** > **추가**를 선택합니다.
+* **솔루션 탐색기** 에서 *Pages/Students* 폴더 > **추가** > **스캐폴드 항목 새로 만들기** 를 마우스 오른쪽 단추로 클릭합니다.
+* **스캐폴드 추가** 대화 상자에서 **Entity Framework를 사용한 Razor Pages(CRUD)** > **추가** 를 선택합니다.
 
 **Entity Framework(CRUD)를 사용하여 Razor Pages 추가** 대화 상자를 완료합니다.
 
 * **모델 클래스** 드롭다운에서 **학생(ContosoUniversity.Models)** 을 선택합니다.
-* **데이터 컨텍스트 클래스** 행에서 **+** (더하기)를 선택 하고 생성된 이름을 서명하고 **ContosoUniversity.Models.SchoolContext**로 변경합니다.
-* **데이터 컨텍스트 클래스** 드롭다운에서 **ContosoUniversity.Models.SchoolContext**를 선택합니다.
-* **추가**를 선택합니다.
+* **데이터 컨텍스트 클래스** 행에서 **+** (더하기)를 선택 하고 생성된 이름을 서명하고 **ContosoUniversity.Models.SchoolContext** 로 변경합니다.
+* **데이터 컨텍스트 클래스** 드롭다운에서 **ContosoUniversity.Models.SchoolContext** 를 선택합니다.
+* **추가** 를 선택합니다.
 
 ![CRUD 대화 상자](intro/_static/s1.png)
 
@@ -1132,7 +1136,7 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 스캐폴딩 도구는 자동으로 DB 컨텍스트를 생성하고 종속성 주입 컨테이너에 등록했습니다.
 
-*Startup.cs*의 `ConfigureServices` 메서드를 검사합니다. 강조 표시된 줄은 스캐폴더에서 추가되었습니다.
+*Startup.cs* 의 `ConfigureServices` 메서드를 검사합니다. 강조 표시된 줄은 스캐폴더에서 추가되었습니다.
 
 [!code-csharp[](intro/samples/cu21/Startup.cs?name=snippet_SchoolContext&highlight=13-14)]
 
@@ -1140,7 +1144,7 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 ## <a name="update-main"></a>기본 업데이트
 
-*Program.cs*에서 다음을 수행하는 `Main` 메서드를 수정합니다.
+*Program.cs* 에서 다음을 수행하는 `Main` 메서드를 수정합니다.
 
 * 종속성 주입 컨테이너에서 DB 컨텍스트 인스턴스를 가져옵니다.
 * [EnsureCreated](/dotnet/api/microsoft.entityframeworkcore.infrastructure.databasefacade.ensurecreated#Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_EnsureCreated)를 호출합니다.
@@ -1165,14 +1169,14 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 앱을 실행하고 cookie 정책에 동의합니다. 이 앱은 개인 정보를 보관하지 않습니다. [EU GDPR(일반 데이터 보호 규정) 지원](xref:security/gdpr)에서 cookie 정책을 확인할 수 있습니다.
 
-* **학생** 링크 및 **새로 만들기**를 차례로 선택합니다.
+* **학생** 링크 및 **새로 만들기** 를 차례로 선택합니다.
 * 편집, 세부 정보 및 삭제 링크를 테스트합니다.
 
 ## <a name="examine-the-schoolcontext-db-context"></a>SchoolContext DB 컨텍스트 검사
 
 특정 데이터 모델에 맞게 EF Core 기능을 조정하는 주 클래스는 DB 컨텍스트 클래스입니다. 데이터 컨텍스트는 [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)에서 파생됩니다. 데이터 컨텍스트는 데이터 모델에 포함되는 엔터티를 지정합니다. 이 프로젝트에서 클래스 이름은 `SchoolContext`로 지정됩니다.
 
-*SchoolContext.cs*를 다음 코드로 업데이트합니다.
+*SchoolContext.cs* 를 다음 코드로 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu21/Data/SchoolContext.cs?name=snippet_Intro&highlight=12-14)]
 
@@ -1191,7 +1195,7 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 EF Core가 빈 DB를 만듭니다. 이 섹션에서는 테스트 데이터로 채울 `Initialize` 메서드가 작성됩니다.
 
-*Data* 폴더에서 *DbInitializer.cs*라는 새 클래스 파일을 만들고 다음 코드를 추가합니다.
+*Data* 폴더에서 *DbInitializer.cs* 라는 새 클래스 파일을 만들고 다음 코드를 추가합니다.
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Intro)]
 
@@ -1201,13 +1205,13 @@ EF Core가 빈 DB를 만듭니다. 이 섹션에서는 테스트 데이터로 �
 
 `EnsureCreated` 메서드는 자동으로 DB 컨텍스트에 대한 DB를 만듭니다. DB가 있는 경우 `EnsureCreated`는 DB를 수정하지 않고 반환합니다.
 
-*Program.cs*에서 `Initialize`를 호출하도록 `Main` 메서드를 수정합니다.
+*Program.cs* 에서 `Initialize`를 호출하도록 `Main` 메서드를 수정합니다.
 
 [!code-csharp[](intro/samples/cu21/Program.cs?name=snippet2&highlight=14-15)]
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-앱이 실행 중이라면 중지하고 **패키지 관리자 콘솔**(PMC)에서 다음 명령을 실행합니다.
+앱이 실행 중이라면 중지하고 **패키지 관리자 콘솔** (PMC)에서 다음 명령을 실행합니다.
 
 ```powershell
 Drop-Database
@@ -1227,7 +1231,7 @@ SSOX에서 **(localdb)\MSSQLLocalDB > Databases > SchoolContext-{GUID}** 를 클
 
 **테이블** 노드를 확장합니다.
 
-**학생** 테이블을 마우스 오른쪽 단추로 클릭하고, **데이터 보기**를 클릭하여 만든 열 및 테이블에 삽입된 행을 볼 수 있습니다.
+**학생** 테이블을 마우스 오른쪽 단추로 클릭하고, **데이터 보기** 를 클릭하여 만든 열 및 테이블에 삽입된 행을 볼 수 있습니다.
 
 ## <a name="asynchronous-code"></a>비동기 코드
 

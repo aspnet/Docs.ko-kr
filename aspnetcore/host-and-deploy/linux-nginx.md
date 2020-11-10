@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 63227f068926c4158ac8162fdc1ac11399fd65cb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 916bb1f761ce99b2296c84e1653e55fffa04f83c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633788"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057689"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Nginx를 사용하여 Linux에서 ASP.NET Core 호스트
 
@@ -34,7 +35,7 @@ ms.locfileid: "88633788"
 ASP.NET Core에서 지원하는 다른 Linux 배포에 대한 자세한 내용은 [Linux에서 .NET Core의 필수 구성 요소](/dotnet/core/linux-prerequisites)를 참조하세요.
 
 > [!NOTE]
-> Ubuntu 14.04의 경우 Kestrel 프로세스를 모니터링하기 위한 솔루션으로 *supervisord*를 사용하는 것이 좋습니다. *systemd*는 Ubuntu 14.04에서 사용할 수 없습니다. Ubuntu 14.04 지침의 경우 [이 항목의 이전 버전](https://github.com/dotnet/AspNetCore.Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md)을 참조하세요.
+> Ubuntu 14.04의 경우 Kestrel 프로세스를 모니터링하기 위한 솔루션으로 *supervisord* 를 사용하는 것이 좋습니다. *systemd* 는 Ubuntu 14.04에서 사용할 수 없습니다. Ubuntu 14.04 지침의 경우 [이 항목의 이전 버전](https://github.com/dotnet/AspNetCore.Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md)을 참조하세요.
 
 이 가이드의 내용:
 
@@ -49,7 +50,7 @@ ASP.NET Core에서 지원하는 다른 Linux 배포에 대한 자세한 내용�
 1. 서버에서 .NET Core 런타임을 설치합니다.
    1. [.NET Core 다운로드 페이지](https://dotnet.microsoft.com/download/dotnet-core)를 참조하세요.
    1. 미리 보기가 아닌 최신 .NET Core 버전을 선택합니다.
-   1. **앱 실행 - 런타임**에 있는 테이블에서 미리 보기가 아닌 최신 런타임을 다운로드합니다.
+   1. **앱 실행 - 런타임** 에 있는 테이블에서 미리 보기가 아닌 최신 런타임을 다운로드합니다.
    1. Linux **패키지 관리자 지침** 링크를 선택하고 Ubuntu 버전의 Ubuntu 지침을 따릅니다.
 1. 기존 ASP.NET Core 앱입니다.
 
@@ -64,7 +65,7 @@ ASP.NET Core에서 지원하는 다른 Linux 배포에 대한 자세한 내용�
 * 보안 로컬 연결을 처리하도록 앱을 구성합니다. 자세한 내용은 [HTTPS 구성](#https-configuration) 섹션을 참조하세요.
 * *Properties/launchSettings.json* 파일의 `applicationUrl` 속성에서 `https://localhost:5001`(있는 경우)을 제거합니다.
 
-서버에서 실행할 수 있는 디렉터리(예: *bin/Release/&lt;target_framework_moniker&gt;/publish*)로 앱을 패키징하기 위해 개발 환경에서 [dotnet publish](/dotnet/core/tools/dotnet-publish)를 실행합니다.
+서버에서 실행할 수 있는 디렉터리(예: *bin/Release/&lt;target_framework_moniker&gt;/publish* )로 앱을 패키징하기 위해 개발 환경에서 [dotnet publish](/dotnet/core/tools/dotnet-publish)를 실행합니다.
 
 ```dotnetcli
 dotnet publish --configuration Release
@@ -72,7 +73,7 @@ dotnet publish --configuration Release
 
 .NET Core 런타임을 서버에서 유지 관리하지 않으려는 경우 앱은 [자체 포함된 배포](/dotnet/core/deploying/#self-contained-deployments-scd)로 게시될 수도 있습니다.
 
-조직의 워크플로에 통합된 도구(예: SCP, SFTP)를 사용하여 ASP.NET Core 앱을 서버에 복사합니다. *var* 디렉터리(예: *var/www/helloapp*)에서 웹앱을 찾는 것이 일반적입니다.
+조직의 워크플로에 통합된 도구(예: SCP, SFTP)를 사용하여 ASP.NET Core 앱을 서버에 복사합니다. *var* 디렉터리(예: *var/www/helloapp* )에서 웹앱을 찾는 것이 일반적입니다.
 
 > [!NOTE]
 > 프로덕션 배포 시나리오에서 지속적인 통합 워크플로는 앱을 게시하고 자산을 서버로 복사하는 워크플로를 수행합니다.
@@ -142,7 +143,7 @@ sudo service nginx start
 
 ### <a name="configure-nginx"></a>Nginx 구성
 
-Nginx를 역방향 프록시로 구성하여 요청을 ASP.NET Core 앱에 프로그램에 전달하려면 */etc/nginx/sites-available/default*를 수정합니다. 텍스트 편집기에서 해당 항목을 열고 콘텐츠를 다음으로 바꿉니다.
+Nginx를 역방향 프록시로 구성하여 요청을 ASP.NET Core 앱에 프로그램에 전달하려면 */etc/nginx/sites-available/default* 를 수정합니다. 텍스트 편집기에서 해당 항목을 열고 콘텐츠를 다음으로 바꿉니다.
 
 ```nginx
 server {
@@ -161,7 +162,7 @@ server {
 }
 ```
 
-앱이 SignalR WebSocket을 사용하는 Blazor Server 앱인 경우 `Connection` 헤더를 설정하는 방법에 관한 자세한 내용은 <xref:blazor/host-and-deploy/server#linux-with-nginx>를 참조하세요.
+앱이 SignalR 또는 Blazor Server 앱인 경우, 자세한 내용은 각각 <xref:signalr/scale#linux-with-nginx> 및 <xref:blazor/host-and-deploy/server#linux-with-nginx>를 참조하세요.
 
 `server_name`이 일치하지 않으면 Nginx는 기본 서버를 사용합니다. 기본 서버가 정의되지 않은 경우 구성 파일의 첫 번째 서버는 기본 서버입니다. 구성 파일에 있는 444 상태 코드를 반환하는 특정 기본 서버를 추가하는 것이 좋습니다. 기본 서버 구성 예제는 다음과 같습니다.
 
@@ -191,7 +192,7 @@ Nginx 구성이 설정되면 `sudo nginx -t`를 실행하여 구성 파일의 �
 
 ## <a name="monitor-the-app"></a>앱 모니터링
 
-서버는 `http://<serveraddress>:80`에 대해 실행된 요청을 `http://127.0.0.1:5000`의 Kestrel에서 실행되는 ASP.NET Core 앱에 전달하도록 설정됩니다. 그러나 Nginx는 Kestrel 프로세스를 관리하도록 설정되지 않습니다. *systemd*를 사용하여 기본 웹앱을 시작 및 모니터링하기 위한 서비스 파일을 만들 수 있습니다. *systemd*는 프로세스를 시작, 중지 및 관리하기 위한 다양하고 강력한 기능을 제공하는 init 시스템입니다. 
+서버는 `http://<serveraddress>:80`에 대해 실행된 요청을 `http://127.0.0.1:5000`의 Kestrel에서 실행되는 ASP.NET Core 앱에 전달하도록 설정됩니다. 그러나 Nginx는 Kestrel 프로세스를 관리하도록 설정되지 않습니다. *systemd* 를 사용하여 기본 웹앱을 시작 및 모니터링하기 위한 서비스 파일을 만들 수 있습니다. *systemd* 는 프로세스를 시작, 중지 및 관리하기 위한 다양하고 강력한 기능을 제공하는 init 시스템입니다. 
 
 ### <a name="create-the-service-file"></a>서비스 파일 만들기
 
@@ -225,14 +226,14 @@ WantedBy=multi-user.target
 
 앞의 예제에서 서비스를 관리하는 사용자는 `User` 옵션으로 지정됩니다. 사용자(`www-data`)가 존재해야 하며 앱 파일에 대한 적절한 소유권이 있어야 합니다.
 
-`TimeoutStopSec`를 사용하여 초기 인터럽트 신호를 받은 후 앱이 종료되기를 기다리는 기간을 구성합니다. 이 기간 내에 앱이 종료되지 않으면 앱을 종료하기 위해 SIGKILL이 실행됩니다. 단위 없는 초로 된 값(예: `150`) 또는 시간 범위 값(예: `2min 30s`)으로 값을 입력하거나, 시간 제한을 사용하지 않으려면 `infinity`를 입력합니다. `TimeoutStopSec`의 기본값은 관리자 구성 파일(*systemd-system.conf*, *system.conf.d*, *systemd-user.conf*, *user.conf.d*)의 `DefaultTimeoutStopSec` 값입니다. 대부분의 배포에서 기본 시간 제한은 90초입니다.
+`TimeoutStopSec`를 사용하여 초기 인터럽트 신호를 받은 후 앱이 종료되기를 기다리는 기간을 구성합니다. 이 기간 내에 앱이 종료되지 않으면 앱을 종료하기 위해 SIGKILL이 실행됩니다. 단위 없는 초로 된 값(예: `150`) 또는 시간 범위 값(예: `2min 30s`)으로 값을 입력하거나, 시간 제한을 사용하지 않으려면 `infinity`를 입력합니다. `TimeoutStopSec`의 기본값은 관리자 구성 파일( *systemd-system.conf* , *system.conf.d* , *systemd-user.conf* , *user.conf.d* )의 `DefaultTimeoutStopSec` 값입니다. 대부분의 배포에서 기본 시간 제한은 90초입니다.
 
 ```
 # The default value is 90 seconds for most distributions.
 TimeoutStopSec=90
 ```
 
-Linux에는 대/소문자를 구분하는 파일 시스템이 있습니다. ASPNETCORE_ENVIRONMENT를 “프로덕션”으로 설정하면 *appsettings.production.json* 대신 구성 파일 *appsettings.Production.json*을 검색합니다.
+Linux에는 대/소문자를 구분하는 파일 시스템이 있습니다. ASPNETCORE_ENVIRONMENT를 “프로덕션”으로 설정하면 *appsettings.production.json* 대신 구성 파일 *appsettings.Production.json* 을 검색합니다.
 
 일부 값(예: SQL 연결 문자열)은 환경 변수를 읽기 위해 구성 공급자에 대해 이스케이프되어야 합니다. 다음 명령을 사용하여 구성 파일에서 사용할 제대로 이스케이프된 값을 생성합니다.
 
@@ -356,7 +357,7 @@ sudo ufw enable
 
 #### <a name="change-the-nginx-response-name"></a>Nginx 응답 이름 변경
 
-*src/http/ngx_http_header_filter_module.c*를 편집합니다.
+*src/http/ngx_http_header_filter_module.c* 를 편집합니다.
 
 ```
 static char ngx_http_server_string[] = "Server: Web Server" CRLF;
@@ -375,7 +376,7 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 다음 방법 중 하나를 사용하여 `dotnet run` 명령 또는 개발 환경(Visual Studio Code의 F5 또는 Ctrl+F5)에 대해 개발 중인 인증서를 사용하도록 앱을 구성합니다.
 
-* [구성에서 기본 인증서를 바꿈](xref:fundamentals/servers/kestrel#configuration)(*권장*)
+* [구성에서 기본 인증서를 바꿈](xref:fundamentals/servers/kestrel#configuration)( *권장* )
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
 **보안 (HTTPS) 클라이언트 연결을 위해 역방향 프록시 구성**

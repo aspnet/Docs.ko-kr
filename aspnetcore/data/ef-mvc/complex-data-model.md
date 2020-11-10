@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 07f5e910236f78105c039e462ab51d6e62b09439
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cee9e9eb4c5435f3f63f7d1d04f131d88effe9f6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626937"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054478"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>자습서: 복잡한 데이터 모델 만들기 - ASP.NET MVC 및 EF Core 사용
 
@@ -61,7 +62,7 @@ ms.locfileid: "88626937"
 
 학생 등록 날짜의 경우, 이 필드에서 필요한 것은 날짜이지만 현재 모든 웹 페이지는 날짜와 함께 시간을 표시합니다. 데이터 주석 특성을 사용하면 데이터를 표시하는 모든 보기에서 표시 형식을 해결하는 하나의 코드 변경을 만들 수 있습니다. 수행 방법의 예제를 보려면 특성을 `Student` 클래스의 `EnrollmentDate` 속성에 추가합니다.
 
-*Models/Student.cs*에서 다음 예제와 같이 `System.ComponentModel.DataAnnotations` 네임스페이스에 대한 `using` 문을 추가하고 `DataType` 및 `DisplayFormat` 특성을 `EnrollmentDate` 속성에 추가합니다.
+*Models/Student.cs* 에서 다음 예제와 같이 `System.ComponentModel.DataAnnotations` 네임스페이스에 대한 `using` 문을 추가하고 `DataType` 및 `DisplayFormat` 특성을 `EnrollmentDate` 속성에 추가합니다.
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
@@ -117,11 +118,11 @@ dotnet ef migrations add MaxLengthOnNames
 dotnet ef database update
 ```
 
-`migrations add` 명령은 변경으로 인해 두 개의 열에 대한 최대 길이가 짧아질 수 있으므로 데이터 손실이 발생할 수 있음에 대해 경고합니다.  마이그레이션은 *\<timeStamp>_MaxLengthOnNames.cs*라는 파일을 만듭니다. 이 파일에는 현재 데이터 모델과 일치하도록 데이터베이스를 업데이트하는 `Up` 메서드의 코드가 포함됩니다. `database update` 명령은 해당 코드를 실행합니다.
+`migrations add` 명령은 변경으로 인해 두 개의 열에 대한 최대 길이가 짧아질 수 있으므로 데이터 손실이 발생할 수 있음에 대해 경고합니다.  마이그레이션은 *\<timeStamp>_MaxLengthOnNames.cs* 라는 파일을 만듭니다. 이 파일에는 현재 데이터 모델과 일치하도록 데이터베이스를 업데이트하는 `Up` 메서드의 코드가 포함됩니다. `database update` 명령은 해당 코드를 실행합니다.
 
 timestamp가 접두사로 사용된 마이그레이션 파일 이름이 마이그레이션을 요청하는 Entity Framework에서 사용됩니다. update-database 명령을 실행하기 전에 여러 마이그레이션을 만들 수 있습니다. 그런 다음, 모든 마이그레이션이 생성된 순서 대로 적용됩니다.
 
-앱을 실행하고, **학생** 탭을 선택하고, **새로 만들기**를 클릭한 다음, 50자보다 긴 이름을 입력해 봅니다. 애플리케이션에서 이 작업을 수행하지 못하게 합니다. 
+앱을 실행하고, **학생** 탭을 선택하고, **새로 만들기** 를 클릭한 다음, 50자보다 긴 이름을 입력해 봅니다. 애플리케이션에서 이 작업을 수행하지 못하게 합니다. 
 
 ### <a name="the-column-attribute"></a>열 특성
 
@@ -145,7 +146,7 @@ dotnet ef migrations add ColumnFirstName
 dotnet ef database update
 ```
 
-**SQL Server 개체 탐색기**에서 **학생** 테이블을 두 번 클릭하여 학생 테이블 디자이너를 엽니다.
+**SQL Server 개체 탐색기** 에서 **학생** 테이블을 두 번 클릭하여 학생 테이블 디자이너를 엽니다.
 
 ![마이그레이션 후 SSOX의 학생 테이블](complex-data-model/_static/ssox-after-migration.png)
 
@@ -158,7 +159,7 @@ dotnet ef database update
 
 ![학생 엔터티](complex-data-model/_static/student-entity.png)
 
-*Models/Student.cs*에서 앞서 추가한 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
+*Models/Student.cs* 에서 앞서 추가한 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
 
@@ -187,7 +188,7 @@ public string LastName { get; set; }
 
 ![강사 엔터티](complex-data-model/_static/instructor-entity.png)
 
-템플릿 코드를 다음 코드로 바꾸어 *Models/Instructor.cs*를 만듭니다.
+템플릿 코드를 다음 코드로 바꾸어 *Models/Instructor.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
 
@@ -223,7 +224,7 @@ public OfficeAssignment OfficeAssignment { get; set; }
 
 ![OfficeAssignment 엔터티](complex-data-model/_static/officeassignment-entity.png)
 
-다음 코드로 *Models/OfficeAssignment.cs*를 만듭니다.
+다음 코드로 *Models/OfficeAssignment.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu/Models/OfficeAssignment.cs)]
 
@@ -250,7 +251,7 @@ public int InstructorID { get; set; }
 
 ![강좌 엔터티](complex-data-model/_static/course-entity.png)
 
-*Models/Course.cs*에서 앞서 추가한 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
+*Models/Course.cs* 에서 앞서 추가한 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
 
 [!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
 
@@ -299,7 +300,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ![부서 엔터티](complex-data-model/_static/department-entity.png)
 
-다음 코드로 *Models/Department.cs*를 만듭니다.
+다음 코드로 *Models/Department.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Begin)]
 
@@ -345,7 +346,7 @@ public ICollection<Course> Courses { get; set; }
 
 ![등록 엔터티](complex-data-model/_static/enrollment-entity.png)
 
-*Models/Enrollment.cs*에서 앞서 추가한 코드를 다음 코드로 바꿉니다.
+*Models/Enrollment.cs* 에서 앞서 추가한 코드를 다음 코드로 바꿉니다.
 
 [!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
 
@@ -385,7 +386,7 @@ public Student Student { get; set; }
 
 ![CourseAssignment 엔터티](complex-data-model/_static/courseassignment-entity.png)
 
-다음 코드로 *Models/CourseAssignment.cs*를 만듭니다.
+다음 코드로 *Models/CourseAssignment.cs* 를 만듭니다.
 
 [!code-csharp[](intro/samples/cu/Models/CourseAssignment.cs)]
 
@@ -395,7 +396,7 @@ public Student Student { get; set; }
 
 ### <a name="composite-key"></a>복합 키
 
-외래 키가 null을 허용하지 않고 고유하게 테이블의 각 행을 식별하기 때문에 별도 기본 키가 필요하지 않습니다. *InstructorID* 및 *CourseID* 속성은 복합 기본 키로 작동해야 합니다. EF에서 복합 기본 키를 식별하는 유일한 방법은 *흐름 API*를 사용하는 것입니다(특성을 사용해서는 수행할 수 없음). 다음 섹션에 복합 기본 키를 구성하는 방법이 나와 있습니다.
+외래 키가 null을 허용하지 않고 고유하게 테이블의 각 행을 식별하기 때문에 별도 기본 키가 필요하지 않습니다. *InstructorID* 및 *CourseID* 속성은 복합 기본 키로 작동해야 합니다. EF에서 복합 기본 키를 식별하는 유일한 방법은 *흐름 API* 를 사용하는 것입니다(특성을 사용해서는 수행할 수 없음). 다음 섹션에 복합 기본 키를 구성하는 방법이 나와 있습니다.
 
 복합 키는 한 강좌에 여러 행 및 한 강사에 여러 행을 가질 수 있는 반면, 동일한 강사 및 강좌에는 여러 행을 가질 수 없음을 확인합니다. `Enrollment` 조인 엔터티는 고유한 기본 키를 정의하므로 이러한 종류의 중복이 가능합니다. 그러한 중복을 방지하려면 외래 키 필드에서 고유한 인덱스를 추가하거나 `CourseAssignment`와 유사한 기본 복합 키로 `Enrollment`를 구성할 수 있습니다. 자세한 내용은 [인덱스](/ef/core/modeling/indexes)를 참조하세요.
 
@@ -409,7 +410,7 @@ public Student Student { get; set; }
 
 ## <a name="about-a-fluent-api-alternative"></a>흐름 API 대안 정보
 
-`DbContext` 클래스에서 `OnModelCreating` 메서드의 코드는 *흐름 API*를 사용하여 EF 동작을 구성합니다. API는 종종 [EF Core 설명서](/ef/core/modeling/#use-fluent-api-to-configure-a-model)의 이 예제와 같이 일련의 메서드 호출을 단일 명령문으로 연결하여 사용되기 때문에 “흐름”이라고 부릅니다.
+`DbContext` 클래스에서 `OnModelCreating` 메서드의 코드는 *흐름 API* 를 사용하여 EF 동작을 구성합니다. API는 종종 [EF Core 설명서](/ef/core/modeling/#use-fluent-api-to-configure-a-model)의 이 예제와 같이 일련의 메서드 호출을 단일 명령문으로 연결하여 사용되기 때문에 “흐름”이라고 부릅니다.
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -481,7 +482,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 ## <a name="change-the-connection-string"></a>연결 문자열 변경
 
-이제 새 엔터티에 대한 시드 데이터를 빈 데이터베이스에 추가하는 새 코드가 `DbInitializer` 클래스에 있습니다. EF가 비어 있는 새 데이터베이스를 만들도록 하려면 *appsettings.json*의 연결 문자열에서 데이터베이스의 이름을 ContosoUniversity3 또는 사용 중인 컴퓨터에서 사용한 적 없는 다른 이름으로 변경합니다.
+이제 새 엔터티에 대한 시드 데이터를 빈 데이터베이스에 추가하는 새 코드가 `DbInitializer` 클래스에 있습니다. EF가 비어 있는 새 데이터베이스를 만들도록 하려면 *appsettings.json* 의 연결 문자열에서 데이터베이스의 이름을 ContosoUniversity3 또는 사용 중인 컴퓨터에서 사용한 적 없는 다른 이름으로 변경합니다.
 
 ```json
 {
@@ -490,7 +491,7 @@ Done. To undo this action, use 'ef migrations remove'
   },
 ```
 
-*appsettings.json*에 대한 변경 내용을 저장합니다.
+변경 내용을 *appsettings.json* 에 저장합니다.
 
 > [!NOTE]
 > 데이터베이스 이름을 변경하는 대신, 데이터베이스를 삭제할 수 있습니다. **SSOX(SQL Server 개체 탐색기)** 또는 `database drop` CLI 명령을 사용합니다.
@@ -515,7 +516,7 @@ dotnet ef database update
 
 앱을 실행하여 데이터베이스를 시드하는 이니셜라이저 코드를 트리거합니다.
 
-**CourseAssignment** 테이블을 마우스 오른쪽 단추로 클릭하고 **데이터 보기**를 선택하여 데이터가 있는지 확인합니다.
+**CourseAssignment** 테이블을 마우스 오른쪽 단추로 클릭하고 **데이터 보기** 를 선택하여 데이터가 있는지 확인합니다.
 
 ![SSOX의 CourseAssignment 데이터](complex-data-model/_static/ssox-ci-data.png)
 

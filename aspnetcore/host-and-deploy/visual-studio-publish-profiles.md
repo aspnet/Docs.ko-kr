@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/28/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: e86a648e2707e808452e3bc92d991058c8fde480
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 98dfd539171807cbf94d4ac8746458152c809495
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754647"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057572"
 ---
 # <a name="visual-studio-publish-profiles-pubxml-for-aspnet-core-app-deployment"></a>ASP.NET Core 앱 배포용 Visual Studio 게시 프로필(.pubxml)
 
@@ -39,7 +40,7 @@ ms.locfileid: "91754647"
 </Project>
 ```
 
-위 `<Project>` 요소의 `Sdk` 특성은 각각 *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.props* 및 *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.targets*에서 MSBuild [속성](/visualstudio/msbuild/msbuild-properties) 및 [대상](/visualstudio/msbuild/msbuild-targets)을 가져옵니다. `$(MSBuildSDKsPath)`(Visual Studio 2019 Enterprise 사용)의 기본 위치는 *%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Sdks* 폴더입니다.
+위 `<Project>` 요소의 `Sdk` 특성은 각각 *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.props* 및 *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.targets* 에서 MSBuild [속성](/visualstudio/msbuild/msbuild-properties) 및 [대상](/visualstudio/msbuild/msbuild-targets)을 가져옵니다. `$(MSBuildSDKsPath)`(Visual Studio 2019 Enterprise 사용)의 기본 위치는 *%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Sdks* 폴더입니다.
 
 `Microsoft.NET.Sdk.Web`([웹 SDK](xref:razor-pages/web-sdk))은 `Microsoft.NET.Sdk`([.NET Core SDK](/dotnet/core/project-sdk/msbuild-props)) 및 `Microsoft.NET.Sdk.Razor`([Razor SDK](xref:razor-pages/sdk))를 비롯한 다른 SDK에 종속됩니다. 각 종속 SDK와 연결된 MSBuild 속성과 대상을 가져옵니다. 게시 대상은 사용된 게시 방법에 따라 해당 대상 집합을 가져옵니다.
 
@@ -72,7 +73,7 @@ MSBuild 또는 Visual Studio가 프로젝트를 로드하면 다음 높은 수�
 Visual Studio에서 **게시** 단추를 선택하거나 명령줄에서 게시할 경우:
 
 * 속성/항목이 계산됩니다(빌드하는 데 필요한 파일).
-* **Visual Studio 전용**: NuGet 패키지가 복원됩니다. (CLI에서 사용자가 명시적으로 복원해야 합니다.)
+* **Visual Studio 전용** : NuGet 패키지가 복원됩니다. (CLI에서 사용자가 명시적으로 복원해야 합니다.)
 * 프로젝트가 빌드됩니다.
 * 게시 항목이 계산됩니다(게시하는 데 필요한 파일).
 * 프로젝트가 게시됩니다(계산된 파일이 게시 대상에 복사됨).
@@ -136,7 +137,7 @@ dotnet publish -c Release /p:PublishDir=//r8/release/AdminWeb
 
 다음 경로 중 하나를 선택하여 Visual Studio에서 게시 프로필을 만듭니다.
 
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **게시**를 선택합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **게시** 를 선택합니다.
 * **빌드** 메뉴에서 **게시 {PROJECT NAME}** 를 선택합니다.
 
 앱 기능 페이지의 **게시** 탭이 표시됩니다. 프로젝트에 게시 프로필에 없는 경우 **게시 대상 선택** 페이지가 표시됩니다. 다음 게시 대상 중 하나를 선택하라는 메시지가 나타납니다.
@@ -152,7 +153,7 @@ dotnet publish -c Release /p:PublishDir=//r8/release/AdminWeb
 
 **폴더** 게시 대상을 선택하는 경우 게시된 자산을 저장할 폴더 경로를 지정합니다. 기본 폴더 경로는 *bin\\{PROJECT CONFIGURATION}\\{TARGET FRAMEWORK MONIKER}\publish\\* 입니다. 예를 들어 *bin\Release\netcoreapp2.2\publish\\* 입니다. **프로필 만들기** 단추를 선택하여 완료합니다.
 
-게시 프로필이 만들어지면 **게시** 탭의 콘텐츠가 변경됩니다. 새로 만들어진 프로필이 드롭다운 목록에 표시됩니다. 드롭다운 목록 아래에서 **새 프로필 만들기**를 선택하여 다른 새 프로필을 만듭니다.
+게시 프로필이 만들어지면 **게시** 탭의 콘텐츠가 변경됩니다. 새로 만들어진 프로필이 드롭다운 목록에 표시됩니다. 드롭다운 목록 아래에서 **새 프로필 만들기** 를 선택하여 다른 새 프로필을 만듭니다.
 
 Visual Studio의 게시 도구는 게시 프로필을 설명하는 *Properties/PublishProfiles/{PROFILE NAME}.pubxml* MSBuild 파일을 생성합니다. *.pubxml* 파일:
 
@@ -219,7 +220,7 @@ dotnet build WebApplication.csproj /p:DeployOnBuild=true /p:PublishProfile=<MsDe
 
 ## <a name="folder-publish-example"></a>폴더 게시 예
 
-*FolderProfile*이라는 프로필을 사용하여 게시할 경우 다음 명령 중 하나를 사용하세요.
+*FolderProfile* 이라는 프로필을 사용하여 게시할 경우 다음 명령 중 하나를 사용하세요.
 
 ```dotnetcli
 dotnet publish /p:Configuration=Release /p:PublishProfile=FolderProfile`
@@ -288,9 +289,9 @@ MSBuild file.
 
 ## <a name="publish-to-an-msdeploy-endpoint-from-the-command-line"></a>명령줄에서 MSDeploy 엔드포인트에 게시
 
-다음 예제에서는 *AzureWebApp*라는 Visual Studio에서 만든 ASP.NET Core 웹앱을 사용합니다. Azure 게시 프로필이 Visual Studio에 추가되었습니다. 프로필을 만드는 방법에 대한 자세한 내용은 [게시 프로필](#publish-profiles) 섹션을 참조하세요.
+다음 예제에서는 *AzureWebApp* 라는 Visual Studio에서 만든 ASP.NET Core 웹앱을 사용합니다. Azure 게시 프로필이 Visual Studio에 추가되었습니다. 프로필을 만드는 방법에 대한 자세한 내용은 [게시 프로필](#publish-profiles) 섹션을 참조하세요.
 
-게시 프로필을 사용하여 앱을 배포하려면 Visual Studio **개발자 명령 프롬프트**에서 `msbuild` 명령을 실행합니다. 명령 프롬프트는 Windows 작업 표시줄의 **시작** 메뉴에 있는 *Visual Studio* 폴더에서 사용할 수 있습니다. 쉽게 액세스할 수 있도록 Visual Studio의 **도구** 메뉴에 명령 프롬프트를 추가할 수 있습니다. 자세한 내용은 [Visual Studio용 개발자 명령 프롬프트](/dotnet/framework/tools/developer-command-prompt-for-vs#run-the-command-prompt-from-inside-visual-studio)를 참조하세요.
+게시 프로필을 사용하여 앱을 배포하려면 Visual Studio **개발자 명령 프롬프트** 에서 `msbuild` 명령을 실행합니다. 명령 프롬프트는 Windows 작업 표시줄의 **시작** 메뉴에 있는 *Visual Studio* 폴더에서 사용할 수 있습니다. 쉽게 액세스할 수 있도록 Visual Studio의 **도구** 메뉴에 명령 프롬프트를 추가할 수 있습니다. 자세한 내용은 [Visual Studio용 개발자 명령 프롬프트](/dotnet/framework/tools/developer-command-prompt-for-vs#run-the-command-prompt-from-inside-visual-studio)를 참조하세요.
 
 MSBuild는 다음 명령 구문을 사용합니다.
 
@@ -306,10 +307,10 @@ msbuild {PATH}
 * `{PROFILE}`: 게시 프로필의 이름입니다.
 * `{USERNAME}`: MSDeploy 사용자 이름입니다. `{USERNAME}`은 게시 프로필에서 찾을 수 있습니다.
 * `{PASSWORD}`: MSDeploy 암호입니다. *{PROFILE}.PublishSettings* 파일에서 `{PASSWORD}`를 가져옵니다. 다음 위치에서 *.PublishSettings* 파일을 다운로드합니다.
-  * **솔루션 탐색기**: **보기** > **클라우드 탐색기** 를 선택합니다. Azure 구독으로 연결합니다. **App Services**를 엽니다. 앱을 마우스 오른쪽 단추로 클릭합니다. **게시 프로필 다운로드**를 선택합니다.
-  * Azure Portal: 웹앱의 **개요** 패널에서 **게시 프로필 가져오기**를 선택합니다.
+  * **솔루션 탐색기** : **보기** > **클라우드 탐색기** 를 선택합니다. Azure 구독으로 연결합니다. **App Services** 를 엽니다. 앱을 마우스 오른쪽 단추로 클릭합니다. **게시 프로필 다운로드** 를 선택합니다.
+  * Azure Portal: 웹앱의 **개요** 패널에서 **게시 프로필 가져오기** 를 선택합니다.
 
-다음 예제에서는 *AzureWebApp - 웹 배포*라는 게시 프로필을 사용합니다.
+다음 예제에서는 *AzureWebApp - 웹 배포* 라는 게시 프로필을 사용합니다.
 
 ```bash
 msbuild "AzureWebApp.csproj" 
@@ -334,7 +335,7 @@ dotnet msbuild "AzureWebApp.csproj"
 
 ## <a name="set-the-environment"></a>환경 설정
 
-`<EnvironmentName>` 속성을 게시 프로필( *.pubxml*) 또는 프로젝트 파일에 포함하여 앱의 [환경](xref:fundamentals/environments)을 설정합니다.
+`<EnvironmentName>` 속성을 게시 프로필( *.pubxml* ) 또는 프로젝트 파일에 포함하여 앱의 [환경](xref:fundamentals/environments)을 설정합니다.
 
 ```xml
 <PropertyGroup>
@@ -350,11 +351,11 @@ ASP.NET Core 웹앱을 게시하는 경우 다음 자산이 포함됩니다.
 
 * 빌드 아티팩트
 * 다음 와일드카드 사용 패턴과 일치하는 폴더 및 파일:
-  * `**\*.config`(예: *web.config*)
-  * `**\*.json`(예: *appsettings.json*)
+  * `**\*.config`(예: *web.config* )
+  * `**\*.json`(예를 들어 *appsettings.json* )
   * `wwwroot\**`
 
-MSBuild는 [와일드카드 사용 패턴](https://gruntjs.com/configuring-tasks#globbing-patterns)을 지원합니다. 예를 들어 다음 `<Content>` 요소는 *wwwroot\content* 폴더와 모든 하위 폴더에 있는 텍스트( *.txt*) 파일의 복사를 표시하지 않습니다.
+MSBuild는 [와일드카드 사용 패턴](https://gruntjs.com/configuring-tasks#globbing-patterns)을 지원합니다. 예를 들어 다음 `<Content>` 요소는 *wwwroot\content* 폴더와 모든 하위 폴더에 있는 텍스트( *.txt* ) 파일의 복사를 표시하지 않습니다.
 
 ```xml
 <ItemGroup>
@@ -458,7 +459,7 @@ Done Building Project "C:\Webs\Web1\Web1.csproj" (default targets).
 
 다음 예제에서 강조 표시된 변경 내용은 보여 줍니다.
 
-* 프로젝트 밖에 위치한 파일을 게시된 사이트의 *wwwroot* 폴더로 복사. *ReadMe2.md*의 파일 이름은 유지됩니다.
+* 프로젝트 밖에 위치한 파일을 게시된 사이트의 *wwwroot* 폴더로 복사. *ReadMe2.md* 의 파일 이름은 유지됩니다.
 * *wwwroot\Content* 폴더 제외.
 * *Views\Home\About2.cshtml* 제외.
 

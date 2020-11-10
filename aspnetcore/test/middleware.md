@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/middleware
-ms.openlocfilehash: 1a5259f65261fb95fcfaa59df3f04da14d3f1ae3
-ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
+ms.openlocfilehash: 2dd5fa127af4432c612bb654d50eb4147aea6868
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89102867"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051436"
 ---
 # <a name="test-aspnet-core-middleware"></a>ASP.NET Core 미들웨어 테스트
 
@@ -135,14 +136,14 @@ public async Task TestMiddleware_ExpectedResponse()
 TestServer:
 
 * 서버 동작을 복제하여 미들웨어를 테스트하기 위해 만들었습니다.
-* 모든 <xref:System.Net.Http.HttpClient> 동작을 복제하지는 ***않습니다***.
-* 클라이언트에 서버에 대한 제어 및 서버에서 발생하는 상황에 대한 가시성을 최대한 제공하려고 시도합니다. 예를 들어 서버 상태를 직접 전달하기 위해 일반적으로 `HttpClient`에서 throw하지 않는 예외를 throw할 수 있습니다.
+* 모든 <xref:System.Net.Http.HttpClient> 동작을 복제하려 시도하지는 **않습니다**.
+클라이언트에 서버에 대한 제어 및 서버에서 발생하는 상황에 대한 가시성을 최대한 제공하려고 시도합니다. 예를 들어 서버 상태를 직접 전달하기 위해 일반적으로 `HttpClient`에서 throw하지 않는 예외를 throw할 수 있습니다.
 * 일부 전송 관련 헤더는 일반적으로 미들웨어와 관련되지 않으므로 기본적으로 설정되지 않습니다. 자세한 내용은 다음 단원을 참조하세요.
 
 ### <a name="content-length-and-transfer-encoding-headers"></a>Content-Length 및 Transfer-Encoding 헤더
 
-TestServer는 [Content-Length](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Length) 또는 [Transfer-Encoding](https://developer.mozilla.org/docs/Web/HTTP/Headers/Transfer-Encoding) 등의 전송 관련 요청 또는 응답 헤더를 설정하지 ***않습니다***. 애플리케이션은 클라이언트, 시나리오 및 프로토콜에 따라 사용량이 달라지므로 이러한 헤더는 사용하지 않아야 합니다. 특정 시나리오를 테스트하는 데 `Content-Length` 및 `Transfer-Encoding`이 필요한 경우 <xref:System.Net.Http.HttpRequestMessage> 또는 <xref:Microsoft.AspNetCore.Http.HttpContext>를 작성할 때 테스트에 지정할 수 있습니다. 자세한 내용은 다음 GitHub 문제를 참조하세요.
+TestServer는 [Content-Length](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Length) 또는 [Transfer-Encoding](https://developer.mozilla.org/docs/Web/HTTP/Headers/Transfer-Encoding) 등의 전송 관련 요청 또는 응답 헤더를 설정하지 **않습니다**. 애플리케이션은 클라이언트, 시나리오 및 프로토콜에 따라 사용량이 달라지므로 이러한 헤더는 사용하지 않아야 합니다. 특정 시나리오를 테스트하는 데 `Content-Length` 및 `Transfer-Encoding`이 필요한 경우 <xref:System.Net.Http.HttpRequestMessage> 또는 <xref:Microsoft.AspNetCore.Http.HttpContext>를 작성할 때 테스트에 지정할 수 있습니다. 자세한 내용은 다음 GitHub 문제를 참조하세요.
 
-* [dotnet/aspnetcore#21677](https://github.com/dotnet/aspnetcore/issues/21677)
+[dotnet/aspnetcore#21677](https://github.com/dotnet/aspnetcore/issues/21677)
 * [dotnet/aspnetcore#18463](https://github.com/dotnet/aspnetcore/issues/18463)
 * [dotnet/aspnetcore#13273](https://github.com/dotnet/aspnetcore/issues/13273)

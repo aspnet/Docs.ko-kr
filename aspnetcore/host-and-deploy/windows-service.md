@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: d4df10f9450ca956d7b1a4297caa63cdd0caf23e
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: 31a738e7aa8779171dfa09a5678d7240b8f62343
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113753"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057234"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Windows 서비스에서 ASP.NET Core 호스트
 
@@ -58,10 +59,10 @@ ASP.NET Core Worker Service 템플릿은 장기간 실행되는 서비스 앱을
 * 이벤트 로그에 대한 로깅을 사용하도록 설정합니다.
   * 애플리케이션 이름이 기본 소스 이름으로 사용됩니다.
   * 호스트를 빌드하기 위해 `CreateDefaultBuilder`를 호출하는 ASP.NET Core 템플릿 기반 앱에 대한 기본 로그 수준은 *경고* 이상입니다.
-  * *appsettings.json*/*appsettings.{Environment}.json*의 `Logging:EventLog:LogLevel:Default` 키 또는 다른 구성 공급자로 기본 로그 수준을 재정의합니다.
+  * *appsettings.json* /*appsettings.{Environment}.json* 의 `Logging:EventLog:LogLevel:Default` 키 또는 다른 구성 공급자로 기본 로그 수준을 재정의합니다.
   * 관리자만 새 이벤트 소스를 만들 수 있습니다. 애플리케이션 이름을 사용하여 이벤트 소스를 만들 수 없는 경우 *Application* 소스에 경고가 기록되고 이벤트 로그가 사용하지 않도록 설정됩니다.
 
-*Program.cs*의 `CreateHostBuilder`에서:
+*Program.cs* 의 `CreateHostBuilder`에서:
 
 ```csharp
 Host.CreateDefaultBuilder(args)
@@ -96,7 +97,7 @@ Razor Pages 또는 MVC 프레임워크를 사용하는 웹앱 기반 서비스�
 
 ### <a name="framework-dependent-deployment-fdd"></a>FDD(프레임워크 종속 배포)
 
-FDD(프레임워크 종속 배포)에서는 대상 시스템에 .NET Core의 공유 시스템 차원 버전이 있어야 합니다. 이 문서의 지침에 따라 FDD 시나리오가 채택된 경우 SDK는 *프레임워크 종속 실행 파일*이라는 실행 파일( *.exe*)을 생성합니다.
+FDD(프레임워크 종속 배포)에서는 대상 시스템에 .NET Core의 공유 시스템 차원 버전이 있어야 합니다. 이 문서의 지침에 따라 FDD 시나리오가 채택된 경우 SDK는 *프레임워크 종속 실행 파일* 이라는 실행 파일( *.exe* )을 생성합니다.
 
 [Web SDK](#sdk)를 사용할 경우 ASP.NET Core 앱을 게시할 때 일반적으로 생성되는 *web.config* 파일은 Windows 서비스 앱에 필요하지 않습니다. *web.config* 파일이 생성되지 않도록 하려면 `<IsTransformWebConfigDisabled>` 속성을 `true`로 설정합니다.
 
@@ -152,14 +153,14 @@ Active Directory를 사용할 때 사용자를 관리하는 대체 방법은 관
 
 서비스 사용자 계정에 대해 *서비스로 로그온* 권한을 설정하려면:
 
-1. *secpol.msc*를 실행하여 로컬 보안 정책 편집기를 엽니다.
-1. **로컬 정책** 노드를 확장하고 **사용자 권한 할당**을 선택합니다.
+1. *secpol.msc* 를 실행하여 로컬 보안 정책 편집기를 엽니다.
+1. **로컬 정책** 노드를 확장하고 **사용자 권한 할당** 을 선택합니다.
 1. **서비스로 로그온** 정책을 엽니다.
-1. **사용자 또는 그룹 추가**를 선택합니다.
+1. **사용자 또는 그룹 추가** 를 선택합니다.
 1. 다음 방법 중 하나를 사용하여 개체 이름(사용자 계정)을 제공합니다.
-   1. 개체 이름 필드에 사용자 계정(`{DOMAIN OR COMPUTER NAME\USER}`)을 입력하고 **확인**을 선택하여 정책에 사용자를 추가합니다.
-   1. **고급**을 선택합니다. **지금 찾기**를 선택합니다. 목록에서 사용자 계정을 선택합니다. **확인**을 선택합니다. 다시 **확인**을 선택하여 정책에 사용자를 추가합니다.
-1. **확인** 또는 **적용**을 선택하여 변경 내용을 적용합니다.
+   1. 개체 이름 필드에 사용자 계정(`{DOMAIN OR COMPUTER NAME\USER}`)을 입력하고 **확인** 을 선택하여 정책에 사용자를 추가합니다.
+   1. **고급** 을 선택합니다. **지금 찾기** 를 선택합니다. 목록에서 사용자 계정을 선택합니다. **확인** 을 선택합니다. 다시 **확인** 을 선택하여 정책에 사용자를 추가합니다.
+1. **확인** 또는 **적용** 을 선택하여 변경 내용을 적용합니다.
 
 ## <a name="create-and-manage-the-windows-service"></a>Windows 서비스 만들기 및 관리
 
@@ -253,7 +254,7 @@ Windows 서비스에 대해 <xref:System.IO.Directory.GetCurrentDirectory*>를 �
 
 앱이 서비스로 실행되면 <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*>가 <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath>를 [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory)로 설정합니다.
 
-앱의 기본 설정 파일 *appsettings.json* 및 *appsettings.{Environment}.json*은 호스트 생성 도중 [CreateDefaultBuilder](xref:fundamentals/host/generic-host#set-up-a-host)를 호출하여 앱의 콘텐츠 루트에서 로드됩니다.
+앱의 기본 설정 파일인 *appsettings.json* 및 *appsettings.{Environment}.json* 은 [호스트 생성 중에 CreateDefaultBuilder](xref:fundamentals/host/generic-host#set-up-a-host)를 호출하여 앱의 콘텐츠 루트에서 로드됩니다.
 
 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>에서 개발자 코드로 로드되는 다른 설정 파일의 경우 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>를 호출할 필요가 없습니다. 다음 예제에서 *custom_settings.json* 파일은 앱의 콘텐츠 루트에 있으며 기본 경로를 명시적으로 설정하지 않고 로드됩니다.
 
@@ -273,10 +274,10 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 * 이전 또는 시험판 버전의 PowerShell을 사용 중입니다.
 * 등록된 서비스가 [dotnet publish](/dotnet/core/tools/dotnet-publish) 명령에서 앱의 **게시된** 출력을 사용하지 않습니다. [dotnet build](/dotnet/core/tools/dotnet-build) 명령의 출력은 앱 배포에 지원되지 않습니다. 게시된 자산은 배포 유형에 따라 다음 폴더 중 하나에 있습니다.
-  * *bin/Release/{TARGET FRAMEWORK}/publish*(FDD)
-  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish*(SCD)
+  * *bin/Release/{TARGET FRAMEWORK}/publish* (FDD)
+  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish* (SCD)
 * 서비스가 실행 중 상태가 아닙니다.
-* 앱에서 사용하는 리소스(예: 인증서)의 경로가 올바르지 않습니다. Windows Service의 기본 경로는 *c:\\Windows\\System32*입니다.
+* 앱에서 사용하는 리소스(예: 인증서)의 경로가 올바르지 않습니다. Windows Service의 기본 경로는 *c:\\Windows\\System32* 입니다.
 * 사용자에게 *서비스로 로그온* 권한이 없습니다.
 * `New-Service` PowerShell 명령을 실행할 때 사용자 암호가 만료되었거나 잘못 전달되었습니다.
 * 앱에 ASP.NET Core 인증이 필요하지만 보안 연결(HTTPS)에 대해 구성되어 있지 않습니다.
@@ -286,9 +287,9 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 시스템 및 애플리케이션 이벤트 로그 액세스:
 
-1. 시작 메뉴를 열고 *이벤트 뷰어*를 검색한 다음, **이벤트 뷰어** 앱을 선택합니다.
-1. **이벤트 뷰어**에서 **Windows 로그** 노드를 엽니다.
-1. **시스템**을 선택하여 시스템 이벤트 로그를 엽니다. **애플리케이션**을 선택하여 애플리케이션 이벤트 로그를 엽니다.
+1. 시작 메뉴를 열고 *이벤트 뷰어* 를 검색한 다음, **이벤트 뷰어** 앱을 선택합니다.
+1. **이벤트 뷰어** 에서 **Windows 로그** 노드를 엽니다.
+1. **시스템** 을 선택하여 시스템 이벤트 로그를 엽니다. **애플리케이션** 을 선택하여 애플리케이션 이벤트 로그를 엽니다.
 1. 실패한 앱과 연결된 오류를 검색합니다.
 
 ### <a name="run-the-app-at-a-command-prompt"></a>명령 프롬프트에서 앱 실행
@@ -302,14 +303,14 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 1. *bin* 및 *obj* 폴더를 삭제합니다.
 1. 명령 셸에서 [dotnet nuget locals all --clear](/dotnet/core/tools/dotnet-nuget-locals)를 실행하여 패키지 캐시를 지웁니다.
 
-   [nuget.exe](https://www.nuget.org/downloads) 도구에서 `nuget locals all -clear` 명령을 실행하여 패키지 캐시를 지울 수도 있습니다. *nuget.exe*는 Windows 데스크톱 운영 체제와 함께 제공되는 설치가 아니므로 [NuGet 웹 사이트](https://www.nuget.org/downloads)에서 별도로 다운로드해야 합니다.
+   [nuget.exe](https://www.nuget.org/downloads) 도구에서 `nuget locals all -clear` 명령을 실행하여 패키지 캐시를 지울 수도 있습니다. *nuget.exe* 는 Windows 데스크톱 운영 체제와 함께 제공되는 설치가 아니므로 [NuGet 웹 사이트](https://www.nuget.org/downloads)에서 별도로 다운로드해야 합니다.
 
 1. 프로젝트를 복원하고 다시 빌드합니다.
 1. 앱을 다시 배포하기 전에 서버의 배포 폴더에 있는 모든 파일을 삭제합니다.
 
 ### <a name="slow-or-hanging-app"></a>앱이 느리거나 중단됨
 
-*크래시 덤프*는 시스템 메모리의 스냅샷이며 앱 충돌, 시작 실패 또는 느린 앱의 원인을 확인하는 데 도움이 됩니다.
+*크래시 덤프* 는 시스템 메모리의 스냅샷이며 앱 충돌, 시작 실패 또는 느린 앱의 원인을 확인하는 데 도움이 됩니다.
 
 #### <a name="app-crashes-or-encounters-an-exception"></a>앱 충돌 또는 예외 발생
 
@@ -336,7 +337,7 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 #### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>앱 중단 시작 중에 실패 또는 정상적으로 실행
 
-앱이 *중단*(응답하지 않거나 충돌하지 않음), 시작 중에 실패 또는 정상적으로 실행되면 [사용자 모드 덤프 파일: 가장 적합한 도구 선택](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)을 참조하여 덤프를 생성할 적절한 도구를 선택합니다.
+앱이 *중단* (응답하지 않거나 충돌하지 않음), 시작 중에 실패 또는 정상적으로 실행되면 [사용자 모드 덤프 파일: 가장 적합한 도구 선택](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)을 참조하여 덤프를 생성할 적절한 도구를 선택합니다.
 
 #### <a name="analyze-the-dump"></a>덤프 분석
 
@@ -398,9 +399,9 @@ Razor Pages 또는 MVC 프레임워크를 사용하는 웹앱 기반 서비스�
 
 ### <a name="framework-dependent-deployment-fdd"></a>FDD(프레임워크 종속 배포)
 
-FDD(프레임워크 종속 배포)에서는 대상 시스템에 .NET Core의 공유 시스템 차원 버전이 있어야 합니다. 이 문서의 지침에 따라 FDD 시나리오가 채택된 경우 SDK는 *프레임워크 종속 실행 파일*이라는 실행 파일( *.exe*)을 생성합니다.
+FDD(프레임워크 종속 배포)에서는 대상 시스템에 .NET Core의 공유 시스템 차원 버전이 있어야 합니다. 이 문서의 지침에 따라 FDD 시나리오가 채택된 경우 SDK는 *프레임워크 종속 실행 파일* 이라는 실행 파일( *.exe* )을 생성합니다.
 
-Windows [RID(런타임 식별자)](/dotnet/core/rid-catalog)([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier))에는 대상 프레임워크가 포함되어 있습니다. 다음 예제에서는 RID가 `win7-x64`로 설정됩니다. `<SelfContained>` 속성은 `false`로 설정됩니다. 해당 속성은 SDK에 Windows용 실행 파일( *.exe*)과 공유 .NET Core Framework에 종속되는 앱을 생성하도록 지시합니다.
+Windows [RID(런타임 식별자)](/dotnet/core/rid-catalog)([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier))에는 대상 프레임워크가 포함되어 있습니다. 다음 예제에서는 RID가 `win7-x64`로 설정됩니다. `<SelfContained>` 속성은 `false`로 설정됩니다. 해당 속성은 SDK에 Windows용 실행 파일( *.exe* )과 공유 .NET Core Framework에 종속되는 앱을 생성하도록 지시합니다.
 
 ASP.NET Core 앱을 게시할 때 일반적으로 생성되는 *web.config* 파일은 Windows 서비스 앱에 필요하지 않습니다. *web.config* 파일이 생성되지 않도록 하려면 `<IsTransformWebConfigDisabled>` 속성을 `true`로 설정합니다.
 
@@ -464,14 +465,14 @@ Active Directory를 사용할 때 사용자를 관리하는 대체 방법은 관
 
 서비스 사용자 계정에 대해 *서비스로 로그온* 권한을 설정하려면:
 
-1. *secpol.msc*를 실행하여 로컬 보안 정책 편집기를 엽니다.
-1. **로컬 정책** 노드를 확장하고 **사용자 권한 할당**을 선택합니다.
+1. *secpol.msc* 를 실행하여 로컬 보안 정책 편집기를 엽니다.
+1. **로컬 정책** 노드를 확장하고 **사용자 권한 할당** 을 선택합니다.
 1. **서비스로 로그온** 정책을 엽니다.
-1. **사용자 또는 그룹 추가**를 선택합니다.
+1. **사용자 또는 그룹 추가** 를 선택합니다.
 1. 다음 방법 중 하나를 사용하여 개체 이름(사용자 계정)을 제공합니다.
-   1. 개체 이름 필드에 사용자 계정(`{DOMAIN OR COMPUTER NAME\USER}`)을 입력하고 **확인**을 선택하여 정책에 사용자를 추가합니다.
-   1. **고급**을 선택합니다. **지금 찾기**를 선택합니다. 목록에서 사용자 계정을 선택합니다. **확인**을 선택합니다. 다시 **확인**을 선택하여 정책에 사용자를 추가합니다.
-1. **확인** 또는 **적용**을 선택하여 변경 내용을 적용합니다.
+   1. 개체 이름 필드에 사용자 계정(`{DOMAIN OR COMPUTER NAME\USER}`)을 입력하고 **확인** 을 선택하여 정책에 사용자를 추가합니다.
+   1. **고급** 을 선택합니다. **지금 찾기** 를 선택합니다. 목록에서 사용자 계정을 선택합니다. **확인** 을 선택합니다. 다시 **확인** 을 선택하여 정책에 사용자를 추가합니다.
+1. **확인** 또는 **적용** 을 선택하여 변경 내용을 적용합니다.
 
 ## <a name="create-and-manage-the-windows-service"></a>Windows 서비스 만들기 및 관리
 
@@ -607,10 +608,10 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 * 이전 또는 시험판 버전의 PowerShell을 사용 중입니다.
 * 등록된 서비스가 [dotnet publish](/dotnet/core/tools/dotnet-publish) 명령에서 앱의 **게시된** 출력을 사용하지 않습니다. [dotnet build](/dotnet/core/tools/dotnet-build) 명령의 출력은 앱 배포에 지원되지 않습니다. 게시된 자산은 배포 유형에 따라 다음 폴더 중 하나에 있습니다.
-  * *bin/Release/{TARGET FRAMEWORK}/publish*(FDD)
-  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish*(SCD)
+  * *bin/Release/{TARGET FRAMEWORK}/publish* (FDD)
+  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish* (SCD)
 * 서비스가 실행 중 상태가 아닙니다.
-* 앱에서 사용하는 리소스(예: 인증서)의 경로가 올바르지 않습니다. Windows Service의 기본 경로는 *c:\\Windows\\System32*입니다.
+* 앱에서 사용하는 리소스(예: 인증서)의 경로가 올바르지 않습니다. Windows Service의 기본 경로는 *c:\\Windows\\System32* 입니다.
 * 사용자에게 *서비스로 로그온* 권한이 없습니다.
 * `New-Service` PowerShell 명령을 실행할 때 사용자 암호가 만료되었거나 잘못 전달되었습니다.
 * 앱에 ASP.NET Core 인증이 필요하지만 보안 연결(HTTPS)에 대해 구성되어 있지 않습니다.
@@ -620,9 +621,9 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 시스템 및 애플리케이션 이벤트 로그 액세스:
 
-1. 시작 메뉴를 열고 *이벤트 뷰어*를 검색한 다음, **이벤트 뷰어** 앱을 선택합니다.
-1. **이벤트 뷰어**에서 **Windows 로그** 노드를 엽니다.
-1. **시스템**을 선택하여 시스템 이벤트 로그를 엽니다. **애플리케이션**을 선택하여 애플리케이션 이벤트 로그를 엽니다.
+1. 시작 메뉴를 열고 *이벤트 뷰어* 를 검색한 다음, **이벤트 뷰어** 앱을 선택합니다.
+1. **이벤트 뷰어** 에서 **Windows 로그** 노드를 엽니다.
+1. **시스템** 을 선택하여 시스템 이벤트 로그를 엽니다. **애플리케이션** 을 선택하여 애플리케이션 이벤트 로그를 엽니다.
 1. 실패한 앱과 연결된 오류를 검색합니다.
 
 ### <a name="run-the-app-at-a-command-prompt"></a>명령 프롬프트에서 앱 실행
@@ -636,14 +637,14 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 1. *bin* 및 *obj* 폴더를 삭제합니다.
 1. 명령 셸에서 [dotnet nuget locals all --clear](/dotnet/core/tools/dotnet-nuget-locals)를 실행하여 패키지 캐시를 지웁니다.
 
-   [nuget.exe](https://www.nuget.org/downloads) 도구에서 `nuget locals all -clear` 명령을 실행하여 패키지 캐시를 지울 수도 있습니다. *nuget.exe*는 Windows 데스크톱 운영 체제와 함께 제공되는 설치가 아니므로 [NuGet 웹 사이트](https://www.nuget.org/downloads)에서 별도로 다운로드해야 합니다.
+   [nuget.exe](https://www.nuget.org/downloads) 도구에서 `nuget locals all -clear` 명령을 실행하여 패키지 캐시를 지울 수도 있습니다. *nuget.exe* 는 Windows 데스크톱 운영 체제와 함께 제공되는 설치가 아니므로 [NuGet 웹 사이트](https://www.nuget.org/downloads)에서 별도로 다운로드해야 합니다.
 
 1. 프로젝트를 복원하고 다시 빌드합니다.
 1. 앱을 다시 배포하기 전에 서버의 배포 폴더에 있는 모든 파일을 삭제합니다.
 
 ### <a name="slow-or-hanging-app"></a>앱이 느리거나 중단됨
 
-*크래시 덤프*는 시스템 메모리의 스냅샷이며 앱 충돌, 시작 실패 또는 느린 앱의 원인을 확인하는 데 도움이 됩니다.
+*크래시 덤프* 는 시스템 메모리의 스냅샷이며 앱 충돌, 시작 실패 또는 느린 앱의 원인을 확인하는 데 도움이 됩니다.
 
 #### <a name="app-crashes-or-encounters-an-exception"></a>앱 충돌 또는 예외 발생
 
@@ -670,7 +671,7 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 #### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>앱 중단 시작 중에 실패 또는 정상적으로 실행
 
-앱이 *중단*(응답하지 않거나 충돌하지 않음), 시작 중에 실패 또는 정상적으로 실행되면 [사용자 모드 덤프 파일: 가장 적합한 도구 선택](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)을 참조하여 덤프를 생성할 적절한 도구를 선택합니다.
+앱이 *중단* (응답하지 않거나 충돌하지 않음), 시작 중에 실패 또는 정상적으로 실행되면 [사용자 모드 덤프 파일: 가장 적합한 도구 선택](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)을 참조하여 덤프를 생성할 적절한 도구를 선택합니다.
 
 #### <a name="analyze-the-dump"></a>덤프 분석
 
@@ -732,11 +733,11 @@ Razor Pages 또는 MVC 프레임워크를 사용하는 웹앱 기반 서비스�
 
 ### <a name="framework-dependent-deployment-fdd"></a>FDD(프레임워크 종속 배포)
 
-FDD(프레임워크 종속 배포)에서는 대상 시스템에 .NET Core의 공유 시스템 차원 버전이 있어야 합니다. 이 문서의 지침에 따라 FDD 시나리오가 채택된 경우 SDK는 *프레임워크 종속 실행 파일*이라는 실행 파일( *.exe*)을 생성합니다.
+FDD(프레임워크 종속 배포)에서는 대상 시스템에 .NET Core의 공유 시스템 차원 버전이 있어야 합니다. 이 문서의 지침에 따라 FDD 시나리오가 채택된 경우 SDK는 *프레임워크 종속 실행 파일* 이라는 실행 파일( *.exe* )을 생성합니다.
 
-Windows [RID(런타임 식별자)](/dotnet/core/rid-catalog)([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier))에는 대상 프레임워크가 포함되어 있습니다. 다음 예제에서는 RID가 `win7-x64`로 설정됩니다. `<SelfContained>` 속성은 `false`로 설정됩니다. 해당 속성은 SDK에 Windows용 실행 파일( *.exe*)과 공유 .NET Core Framework에 종속되는 앱을 생성하도록 지시합니다.
+Windows [RID(런타임 식별자)](/dotnet/core/rid-catalog)([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier))에는 대상 프레임워크가 포함되어 있습니다. 다음 예제에서는 RID가 `win7-x64`로 설정됩니다. `<SelfContained>` 속성은 `false`로 설정됩니다. 해당 속성은 SDK에 Windows용 실행 파일( *.exe* )과 공유 .NET Core Framework에 종속되는 앱을 생성하도록 지시합니다.
 
-`<UseAppHost>` 속성은 `true`로 설정됩니다. 이 속성은 서비스에 FDD의 활성화 경로(실행 파일, *.exe*)를 제공합니다.
+`<UseAppHost>` 속성은 `true`로 설정됩니다. 이 속성은 서비스에 FDD의 활성화 경로(실행 파일, *.exe* )를 제공합니다.
 
 ASP.NET Core 앱을 게시할 때 일반적으로 생성되는 *web.config* 파일은 Windows 서비스 앱에 필요하지 않습니다. *web.config* 파일이 생성되지 않도록 하려면 `<IsTransformWebConfigDisabled>` 속성을 `true`로 설정합니다.
 
@@ -801,14 +802,14 @@ Active Directory를 사용할 때 사용자를 관리하는 대체 방법은 관
 
 서비스 사용자 계정에 대해 *서비스로 로그온* 권한을 설정하려면:
 
-1. *secpol.msc*를 실행하여 로컬 보안 정책 편집기를 엽니다.
-1. **로컬 정책** 노드를 확장하고 **사용자 권한 할당**을 선택합니다.
+1. *secpol.msc* 를 실행하여 로컬 보안 정책 편집기를 엽니다.
+1. **로컬 정책** 노드를 확장하고 **사용자 권한 할당** 을 선택합니다.
 1. **서비스로 로그온** 정책을 엽니다.
-1. **사용자 또는 그룹 추가**를 선택합니다.
+1. **사용자 또는 그룹 추가** 를 선택합니다.
 1. 다음 방법 중 하나를 사용하여 개체 이름(사용자 계정)을 제공합니다.
-   1. 개체 이름 필드에 사용자 계정(`{DOMAIN OR COMPUTER NAME\USER}`)을 입력하고 **확인**을 선택하여 정책에 사용자를 추가합니다.
-   1. **고급**을 선택합니다. **지금 찾기**를 선택합니다. 목록에서 사용자 계정을 선택합니다. **확인**을 선택합니다. 다시 **확인**을 선택하여 정책에 사용자를 추가합니다.
-1. **확인** 또는 **적용**을 선택하여 변경 내용을 적용합니다.
+   1. 개체 이름 필드에 사용자 계정(`{DOMAIN OR COMPUTER NAME\USER}`)을 입력하고 **확인** 을 선택하여 정책에 사용자를 추가합니다.
+   1. **고급** 을 선택합니다. **지금 찾기** 를 선택합니다. 목록에서 사용자 계정을 선택합니다. **확인** 을 선택합니다. 다시 **확인** 을 선택하여 정책에 사용자를 추가합니다.
+1. **확인** 또는 **적용** 을 선택하여 변경 내용을 적용합니다.
 
 ## <a name="create-and-manage-the-windows-service"></a>Windows 서비스 만들기 및 관리
 
@@ -944,10 +945,10 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 * 이전 또는 시험판 버전의 PowerShell을 사용 중입니다.
 * 등록된 서비스가 [dotnet publish](/dotnet/core/tools/dotnet-publish) 명령에서 앱의 **게시된** 출력을 사용하지 않습니다. [dotnet build](/dotnet/core/tools/dotnet-build) 명령의 출력은 앱 배포에 지원되지 않습니다. 게시된 자산은 배포 유형에 따라 다음 폴더 중 하나에 있습니다.
-  * *bin/Release/{TARGET FRAMEWORK}/publish*(FDD)
-  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish*(SCD)
+  * *bin/Release/{TARGET FRAMEWORK}/publish* (FDD)
+  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish* (SCD)
 * 서비스가 실행 중 상태가 아닙니다.
-* 앱에서 사용하는 리소스(예: 인증서)의 경로가 올바르지 않습니다. Windows Service의 기본 경로는 *c:\\Windows\\System32*입니다.
+* 앱에서 사용하는 리소스(예: 인증서)의 경로가 올바르지 않습니다. Windows Service의 기본 경로는 *c:\\Windows\\System32* 입니다.
 * 사용자에게 *서비스로 로그온* 권한이 없습니다.
 * `New-Service` PowerShell 명령을 실행할 때 사용자 암호가 만료되었거나 잘못 전달되었습니다.
 * 앱에 ASP.NET Core 인증이 필요하지만 보안 연결(HTTPS)에 대해 구성되어 있지 않습니다.
@@ -957,9 +958,9 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 시스템 및 애플리케이션 이벤트 로그 액세스:
 
-1. 시작 메뉴를 열고 *이벤트 뷰어*를 검색한 다음, **이벤트 뷰어** 앱을 선택합니다.
-1. **이벤트 뷰어**에서 **Windows 로그** 노드를 엽니다.
-1. **시스템**을 선택하여 시스템 이벤트 로그를 엽니다. **애플리케이션**을 선택하여 애플리케이션 이벤트 로그를 엽니다.
+1. 시작 메뉴를 열고 *이벤트 뷰어* 를 검색한 다음, **이벤트 뷰어** 앱을 선택합니다.
+1. **이벤트 뷰어** 에서 **Windows 로그** 노드를 엽니다.
+1. **시스템** 을 선택하여 시스템 이벤트 로그를 엽니다. **애플리케이션** 을 선택하여 애플리케이션 이벤트 로그를 엽니다.
 1. 실패한 앱과 연결된 오류를 검색합니다.
 
 ### <a name="run-the-app-at-a-command-prompt"></a>명령 프롬프트에서 앱 실행
@@ -973,14 +974,14 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 1. *bin* 및 *obj* 폴더를 삭제합니다.
 1. 명령 셸에서 [dotnet nuget locals all --clear](/dotnet/core/tools/dotnet-nuget-locals)를 실행하여 패키지 캐시를 지웁니다.
 
-   [nuget.exe](https://www.nuget.org/downloads) 도구에서 `nuget locals all -clear` 명령을 실행하여 패키지 캐시를 지울 수도 있습니다. *nuget.exe*는 Windows 데스크톱 운영 체제와 함께 제공되는 설치가 아니므로 [NuGet 웹 사이트](https://www.nuget.org/downloads)에서 별도로 다운로드해야 합니다.
+   [nuget.exe](https://www.nuget.org/downloads) 도구에서 `nuget locals all -clear` 명령을 실행하여 패키지 캐시를 지울 수도 있습니다. *nuget.exe* 는 Windows 데스크톱 운영 체제와 함께 제공되는 설치가 아니므로 [NuGet 웹 사이트](https://www.nuget.org/downloads)에서 별도로 다운로드해야 합니다.
 
 1. 프로젝트를 복원하고 다시 빌드합니다.
 1. 앱을 다시 배포하기 전에 서버의 배포 폴더에 있는 모든 파일을 삭제합니다.
 
 ### <a name="slow-or-hanging-app"></a>앱이 느리거나 중단됨
 
-*크래시 덤프*는 시스템 메모리의 스냅샷이며 앱 충돌, 시작 실패 또는 느린 앱의 원인을 확인하는 데 도움이 됩니다.
+*크래시 덤프* 는 시스템 메모리의 스냅샷이며 앱 충돌, 시작 실패 또는 느린 앱의 원인을 확인하는 데 도움이 됩니다.
 
 #### <a name="app-crashes-or-encounters-an-exception"></a>앱 충돌 또는 예외 발생
 
@@ -1007,7 +1008,7 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 #### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>앱 중단 시작 중에 실패 또는 정상적으로 실행
 
-앱이 *중단*(응답하지 않거나 충돌하지 않음), 시작 중에 실패 또는 정상적으로 실행되면 [사용자 모드 덤프 파일: 가장 적합한 도구 선택](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)을 참조하여 덤프를 생성할 적절한 도구를 선택합니다.
+앱이 *중단* (응답하지 않거나 충돌하지 않음), 시작 중에 실패 또는 정상적으로 실행되면 [사용자 모드 덤프 파일: 가장 적합한 도구 선택](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)을 참조하여 덤프를 생성할 적절한 도구를 선택합니다.
 
 #### <a name="analyze-the-dump"></a>덤프 분석
 

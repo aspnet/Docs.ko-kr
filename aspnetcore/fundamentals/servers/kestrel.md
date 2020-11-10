@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/04/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 50bf2a60f14238c9b71fe90a64c284da202bff59
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: 56ac6635639eed93a84f47fc915c7013c6ed2381
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491602"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052333"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core에서 Kestrel 웹 서버 구현
 
@@ -527,7 +528,7 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 
 `CreateDefaultBuilder`는 기본적으로 `Configure(context.Configuration.GetSection("Kestrel"))`을 호출하여 Kestrel 구성을 로드합니다. 기본 HTTPS 앱 설정 구성 스키마는 Kestrel에 대해 사용 가능합니다. 디스크 상의 파일에서 또는 인증서 저장소에서 사용할 인증서 및 URL을 포함하여 여러 엔드포인트를 구성합니다.
 
-다음 *appsettings.json* 예제에서:
+다음 *appsettings.json* 예제에서
 
 * 잘못된 인증서 사용을 허가하려면 **AllowInvalid** 를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
 * 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert** )는 **인증서** > **기본** 에서 정의된 인증서 또는 개발 인증서로 대체합니다.
@@ -889,7 +890,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 `CreateDefaultBuilder`는 기본적으로 `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))`을 호출하여 Kestrel 구성을 로드합니다.
 
-다음 *appsettings.json* 예제에서는 HTTP/1.1을 모든 엔드포인트에 대한 기본 연결 프로토콜로 설정합니다.
+다음 *appsettings.json* 예제에서는 HTTP/1.1을 모든 엔드포인트의 기본 연결 프로토콜로 설정합니다.
 
 ```json
 {
@@ -901,7 +902,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 }
 ```
 
-다음 *appsettings.json* 예제에서는 특정 엔드포인트에 대한 HTTP/1.1 연결 프로토콜을 설정합니다.
+다음 *appsettings.json* 예제에서는 특정 엔드포인트의 HTTP/1.1 연결 프로토콜을 설정합니다.
 
 ```json
 {
@@ -1001,7 +1002,7 @@ Kestrel은 `http://example.com:5000`과 같은 접두사에 따라 구성을 지
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json*/*appsettings.\<EnvironmentName>.json* 에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
+호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json* /*appsettings.\<EnvironmentName>.json* 에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
 
 *appsettings.json* :
 
@@ -1515,7 +1516,7 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 
 `CreateDefaultBuilder`는 기본적으로 `Configure(context.Configuration.GetSection("Kestrel"))`을 호출하여 Kestrel 구성을 로드합니다. 기본 HTTPS 앱 설정 구성 스키마는 Kestrel에 대해 사용 가능합니다. 디스크 상의 파일에서 또는 인증서 저장소에서 사용할 인증서 및 URL을 포함하여 여러 엔드포인트를 구성합니다.
 
-다음 *appsettings.json* 예제에서:
+다음 *appsettings.json* 예제에서
 
 * 잘못된 인증서 사용을 허가하려면 **AllowInvalid** 를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
 * 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert** )는 **인증서** > **기본** 에서 정의된 인증서 또는 개발 인증서로 대체합니다.
@@ -1838,7 +1839,7 @@ private class TlsFilterAdapter : IConnectionAdapter
 
 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>는 기본적으로 `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))`을 호출하여 Kestrel 구성을 로드합니다.
 
-다음 *appsettings.json* 예제에서는 모든 Kestrel의 엔드포인트에 대해 기본 연결 프로토콜(HTTP/1.1 및 HTTP/2)이 설정됩니다.
+다음 *appsettings.json* 예제에서는 모든 Kestrel의 엔드포인트에 기본 연결 프로토콜(HTTP/1.1 및 HTTP/2)이 설정됩니다.
 
 ```json
 {
@@ -1952,7 +1953,7 @@ Kestrel은 `http://example.com:5000`과 같은 접두사에 따라 구성을 지
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json*/*appsettings.\<EnvironmentName>.json* 에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
+호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json* /*appsettings.\<EnvironmentName>.json* 에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
 
 *appsettings.json* :
 
@@ -2379,7 +2380,7 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 
 `CreateDefaultBuilder`는 기본적으로 `Configure(context.Configuration.GetSection("Kestrel"))`을 호출하여 Kestrel 구성을 로드합니다. 기본 HTTPS 앱 설정 구성 스키마는 Kestrel에 대해 사용 가능합니다. 디스크 상의 파일에서 또는 인증서 저장소에서 사용할 인증서 및 URL을 포함하여 여러 엔드포인트를 구성합니다.
 
-다음 *appsettings.json* 예제에서:
+다음 *appsettings.json* 예제에서
 
 * 잘못된 인증서 사용을 허가하려면 **AllowInvalid** 를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
 * 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert** )는 **인증서** > **기본** 에서 정의된 인증서 또는 개발 인증서로 대체합니다.
@@ -2742,7 +2743,7 @@ Kestrel은 `http://example.com:5000`과 같은 접두사에 따라 구성을 지
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json*/*appsettings.\<EnvironmentName>.json* 에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
+호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json* /*appsettings.\<EnvironmentName>.json* 에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
 
 *appsettings.json* :
 

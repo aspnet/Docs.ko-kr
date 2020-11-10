@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 6eafad63bd4c49cee6a85108b37a8b61e1214bce
-ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
+ms.openlocfilehash: dedc17d7d793a6fd2eac1c8017b704d98a86f1cb
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762336"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061095"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core의 옵션 패턴
 
@@ -54,8 +55,7 @@ ms.locfileid: "91762336"
 
 <xref:Microsoft.Extensions.Options.IOptions%601>:
 
-* 다음을 지원하지 ****** 않습니다.
-  * 앱이 시작된 후 구성 데이터 읽기
+* 지원하지 **않음** : 앱이 시작된 후 구성 데이터 읽기.
   * [명명된 옵션](#named)
 * [Singleton](xref:fundamentals/dependency-injection#singleton)으로 등록되며 [서비스 수명](xref:fundamentals/dependency-injection#service-lifetimes)에 주입할 수 있습니다.
 
@@ -123,7 +123,7 @@ ms.locfileid: "91762336"
 * 여러 구성 섹션이 동일한 속성에 바인딩되는 경우에 유용합니다.
 * 대/소문자를 구분합니다.
 
-다음 *appsettings.json* 파일을 고려하세요.
+다음 *appsettings.json* 파일을 살펴보세요.
 
 [!code-json[](~/fundamentals/configuration/options/samples/3.x/OptionsSample/appsettings.NO.json)]
 
@@ -170,7 +170,7 @@ ms.locfileid: "91762336"
 
 옵션 유효성 검사를 통해 옵션 값의 유효성을 검사할 수 있습니다.
 
-다음 *appsettings.json* 파일을 고려하세요.
+다음 *appsettings.json* 파일을 살펴보세요.
 
 [!code-json[](~/fundamentals/configuration/options/samples/3.x/OptionsValidationSample/appsettings.Dev2.json)]
 
@@ -320,7 +320,7 @@ public void Configure(IApplicationBuilder app,
 
 일반 옵션 구성은 샘플 앱에 예제 1로 설명되어 있습니다.
 
-옵션 클래스는 매개 변수가 없는 public 생성자를 사용하는 비추상이어야 합니다. 다음 클래스 `MyOptions`에는 `Option1` 및 `Option2`의 두 가지 속성이 있습니다. 기본 값 설정은 선택 사항이지만, 다음 예제의 클래스 생성자는 `Option1`의 기본값을 설정합니다. `Option2`에는 직접 속성을 초기화하여 설정된 기본값이 있습니다(*Models/MyOptions.cs*).
+옵션 클래스는 매개 변수가 없는 public 생성자를 사용하는 비추상이어야 합니다. 다음 클래스 `MyOptions`에는 `Option1` 및 `Option2`의 두 가지 속성이 있습니다. 기본 값 설정은 선택 사항이지만, 다음 예제의 클래스 생성자는 `Option1`의 기본값을 설정합니다. `Option2`에는 직접 속성을 초기화하여 설정된 기본값이 있습니다( *Models/MyOptions.cs* ).
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptions.cs?name=snippet1)]
 
@@ -328,7 +328,7 @@ public void Configure(IApplicationBuilder app,
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example1)]
 
-다음 페이지 모델은 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>를 통해 [생성자 종속성 주입](xref:mvc/controllers/dependency-injection)을 사용하여 설정에 액세스합니다(*Pages/Index.cshtml.cs*).
+다음 페이지 모델은 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>를 통해 [생성자 종속성 주입](xref:mvc/controllers/dependency-injection)을 사용하여 설정에 액세스합니다( *Pages/Index.cshtml.cs* ).
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -336,7 +336,7 @@ public void Configure(IApplicationBuilder app,
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example1)]
 
-샘플의 *appsettings.json* 파일은 `option1` 및 `option2`에 대한 값을 지정합니다.
+샘플의 *appsettings.json* 파일은 `option1` 및 `option2`의 값을 지정합니다.
 
 [!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=2-3)]
 
@@ -364,7 +364,7 @@ option1 = value1_from_json, option2 = -1
 
 대리자를 사용한 간단한 옵션 구성은 샘플 앱에 예제 2로 설명되어 있습니다.
 
-대리자를 사용하여 옵션 값을 설정합니다. 샘플 앱에서는 `MyOptionsWithDelegateConfig` 클래스(*Models/MyOptionsWithDelegateConfig.cs*)를 사용합니다.
+대리자를 사용하여 옵션 값을 설정합니다. 샘플 앱에서는 `MyOptionsWithDelegateConfig` 클래스( *Models/MyOptionsWithDelegateConfig.cs* )를 사용합니다.
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptionsWithDelegateConfig.cs?name=snippet1)]
 
@@ -372,7 +372,7 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example2)]
 
-*Index.cshtml.cs*:
+*Index.cshtml.cs* :
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=10)]
 
@@ -382,9 +382,9 @@ option1 = value1_from_json, option2 = -1
 
 여러 구성 공급자를 추가할 수 있습니다. 구성 공급자는 NuGet 패키지에서 사용할 수 있으며 등록된 순서대로 적용됩니다. 자세한 내용은 <xref:fundamentals/configuration/index>를 참조하세요.
 
-<xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*>를 호출할 때마다 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다. 위의 예제에서는 `Option1` 및 `Option2`의 값은 모두 *appsettings.json*에서 지정되지만, `Option1` 및 `Option2`의 값은 구성된 대리자에 의해 재정의됩니다.
+<xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*>를 호출할 때마다 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다. 위의 예제에서는 `Option1` 및 `Option2`의 값은 모두 *appsettings.json* 에서 지정되지만 `Option1` 및 `Option2`의 값은 구성된 대리자에 의해 재정의됩니다.
 
-둘 이상의 구성 서비스를 활성화한 경우 마지막 지정된 구성 소스가 *승리*하고 구성 값을 설정합니다. 앱을 실행할 때 페이지 모델의 `OnGet` 메서드는 옵션 클래스 값을 표시하는 문자열을 반환합니다.
+둘 이상의 구성 서비스를 활성화한 경우 마지막 지정된 구성 소스가 *승리* 하고 구성 값을 설정합니다. 앱을 실행할 때 페이지 모델의 `OnGet` 메서드는 옵션 클래스 값을 표시하는 문자열을 반환합니다.
 
 ```html
 delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
@@ -396,9 +396,9 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 앱은 앱의 특정 시나리오 그룹(클래스)에 적합한 옵션 클래스를 만들어야 합니다. 구성 값을 필요로 하는 앱의 부분은 사용하는 구성 값에만 액세스할 수 있어야 합니다.
 
-옵션을 구성에 바인딩하는 경우 옵션 형식의 각 속성은 `property[:sub-property:]` 양식의 구성 키에 바인딩됩니다. 예를 들어 `MyOptions.Option1` 속성은 키 `Option1`에 바인딩되어 *appsettings.json*의 `option1` 속성에서 읽습니다.
+옵션을 구성에 바인딩하는 경우 옵션 형식의 각 속성은 `property[:sub-property:]` 양식의 구성 키에 바인딩됩니다. 예를 들어 `MyOptions.Option1` 속성은 키 `Option1`에 바인딩되어 *appsettings.json* 의 `option1` 속성에서 읽힙니다.
 
-다음 코드에서 세 번째 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다. 이 코드는 `MySubOptions`를 *appsettings.json* 파일의 `subsection` 섹션에 바인딩합니다.
+다음 코드에서 세 번째 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다. 이 서비스는 `MySubOptions`를 *appsettings.json* 파일의 섹션 `subsection`에 바인딩합니다.
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
@@ -408,11 +408,11 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 [!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=4-7)]
 
-`MySubOptions` 클래스는 `SubOption1` 및 `SubOption2` 속성을 정의하여 옵션 값을 유지합니다(*Models/MySubOptions.cs*).
+`MySubOptions` 클래스는 `SubOption1` 및 `SubOption2` 속성을 정의하여 옵션 값을 유지합니다( *Models/MySubOptions.cs* ).
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MySubOptions.cs?name=snippet1)]
 
-페이지 모델의 `OnGet` 메서드는 옵션 값이 포함된 문자열을 반환합니다(*Pages/Index.cshtml.cs*).
+페이지 모델의 `OnGet` 메서드는 옵션 값이 포함된 문자열을 반환합니다( *Pages/Index.cshtml.cs* ).
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=11)]
 
@@ -435,7 +435,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 * [`@inject`](xref:mvc/views/razor#inject) Razor 지시문이 포함된 Razor 페이지 또는 MVC 뷰.
 * 페이지 또는 뷰 모델입니다.
 
-샘플 앱의 다음 예제는 페이지 모델(*Pages/Index.cshtml.cs*)에 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>를 삽입합니다.
+샘플 앱의 다음 예제는 페이지 모델( *Pages/Index.cshtml.cs* )에 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>를 삽입합니다.
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -462,7 +462,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 * `IOptionsMonitor`는 언제든지 현재 옵션 값을 검색하는 [싱글톤 서비스](xref:fundamentals/dependency-injection#singleton)로, 싱글톤 종속성에서 특히 유용합니다.
 * `IOptionsSnapshot`은 [범위가 지정된 서비스](xref:fundamentals/dependency-injection#scoped)이며 `IOptionsSnapshot<T>` 개체가 생성될 때 옵션의 스냅샷을 제공합니다. 옵션 스냅숏은 임시 및 범위가 지정된 종속성과 함께 사용하도록 설계되었습니다.
 
-다음 예제에는 *appsettings.json*이 변경된 후 새 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>을 만드는 방법이 설명되어 있습니다(*Pages/Index.cshtml.cs*). 서버에 대한 여러 요청은 파일이 변경되고 구성이 다시 로드될 때까지 *appsettings.json* 파일에서 제공하는 상수 값을 반환합니다.
+다음 예제에는 *appsettings.json* 이 변경된 후 새 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>을 만드는 방법이 설명되어 있습니다( *Pages/Index.cshtml.cs* ). 서버에 대한 여러 요청은 파일이 변경되고 구성이 다시 로드될 때까지 *appsettings.json* 파일에서 제공하는 상수 값을 반환합니다.
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=12)]
 
@@ -470,7 +470,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example5)]
 
-다음 이미지는 *appsettings.json* 파일에서 로드된 초기 `option1` 및 `option2` 값을 보여줍니다.
+다음 이미지는 *appsettings.json* 파일에서 로드된 초기 `option1` 및 `option2` 값을 보여 줍니다.
 
 ```html
 snapshot option1 = value1_from_json, snapshot option2 = -1
@@ -490,7 +490,7 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
-샘플 앱은 <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*>을 사용하여 명명된 옵션에 액세스합니다(*Pages/Index.cshtml.cs*).
+샘플 앱은 <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*>을 사용하여 명명된 옵션에 액세스합니다( *Pages/Index.cshtml.cs* ).
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=13-14)]
 
@@ -742,7 +742,7 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 
 일반 옵션 구성은 샘플 앱에 예제 1로 설명되어 있습니다.
 
-옵션 클래스는 매개 변수가 없는 public 생성자를 사용하는 비추상이어야 합니다. 다음 클래스 `MyOptions`에는 `Option1` 및 `Option2`의 두 가지 속성이 있습니다. 기본 값 설정은 선택 사항이지만, 다음 예제의 클래스 생성자는 `Option1`의 기본값을 설정합니다. `Option2`에는 직접 속성을 초기화하여 설정된 기본값이 있습니다(*Models/MyOptions.cs*).
+옵션 클래스는 매개 변수가 없는 public 생성자를 사용하는 비추상이어야 합니다. 다음 클래스 `MyOptions`에는 `Option1` 및 `Option2`의 두 가지 속성이 있습니다. 기본 값 설정은 선택 사항이지만, 다음 예제의 클래스 생성자는 `Option1`의 기본값을 설정합니다. `Option2`에는 직접 속성을 초기화하여 설정된 기본값이 있습니다( *Models/MyOptions.cs* ).
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptions.cs?name=snippet1)]
 
@@ -750,7 +750,7 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example1)]
 
-다음 페이지 모델은 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>를 통해 [생성자 종속성 주입](xref:mvc/controllers/dependency-injection)을 사용하여 설정에 액세스합니다(*Pages/Index.cshtml.cs*).
+다음 페이지 모델은 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>를 통해 [생성자 종속성 주입](xref:mvc/controllers/dependency-injection)을 사용하여 설정에 액세스합니다( *Pages/Index.cshtml.cs* ).
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -758,7 +758,7 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example1)]
 
-샘플의 *appsettings.json* 파일은 `option1` 및 `option2`에 대한 값을 지정합니다.
+샘플의 *appsettings.json* 파일은 `option1` 및 `option2`의 값을 지정합니다.
 
 [!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=2-3)]
 
@@ -786,7 +786,7 @@ option1 = value1_from_json, option2 = -1
 
 대리자를 사용한 간단한 옵션 구성은 샘플 앱에 예제 2로 설명되어 있습니다.
 
-대리자를 사용하여 옵션 값을 설정합니다. 샘플 앱에서는 `MyOptionsWithDelegateConfig` 클래스(*Models/MyOptionsWithDelegateConfig.cs*)를 사용합니다.
+대리자를 사용하여 옵션 값을 설정합니다. 샘플 앱에서는 `MyOptionsWithDelegateConfig` 클래스( *Models/MyOptionsWithDelegateConfig.cs* )를 사용합니다.
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptionsWithDelegateConfig.cs?name=snippet1)]
 
@@ -794,7 +794,7 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example2)]
 
-*Index.cshtml.cs*:
+*Index.cshtml.cs* :
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=10)]
 
@@ -804,9 +804,9 @@ option1 = value1_from_json, option2 = -1
 
 여러 구성 공급자를 추가할 수 있습니다. 구성 공급자는 NuGet 패키지에서 사용할 수 있으며 등록된 순서대로 적용됩니다. 자세한 내용은 <xref:fundamentals/configuration/index>를 참조하세요.
 
-<xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*>를 호출할 때마다 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다. 위의 예제에서는 `Option1` 및 `Option2`의 값은 모두 *appsettings.json*에서 지정되지만, `Option1` 및 `Option2`의 값은 구성된 대리자에 의해 재정의됩니다.
+<xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*>를 호출할 때마다 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다. 위의 예제에서는 `Option1` 및 `Option2`의 값은 모두 *appsettings.json* 에서 지정되지만 `Option1` 및 `Option2`의 값은 구성된 대리자에 의해 재정의됩니다.
 
-둘 이상의 구성 서비스를 활성화한 경우 마지막 지정된 구성 소스가 *승리*하고 구성 값을 설정합니다. 앱을 실행할 때 페이지 모델의 `OnGet` 메서드는 옵션 클래스 값을 표시하는 문자열을 반환합니다.
+둘 이상의 구성 서비스를 활성화한 경우 마지막 지정된 구성 소스가 *승리* 하고 구성 값을 설정합니다. 앱을 실행할 때 페이지 모델의 `OnGet` 메서드는 옵션 클래스 값을 표시하는 문자열을 반환합니다.
 
 ```html
 delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
@@ -818,9 +818,9 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 앱은 앱의 특정 시나리오 그룹(클래스)에 적합한 옵션 클래스를 만들어야 합니다. 구성 값을 필요로 하는 앱의 부분은 사용하는 구성 값에만 액세스할 수 있어야 합니다.
 
-옵션을 구성에 바인딩하는 경우 옵션 형식의 각 속성은 `property[:sub-property:]` 양식의 구성 키에 바인딩됩니다. 예를 들어 `MyOptions.Option1` 속성은 키 `Option1`에 바인딩되어 *appsettings.json*의 `option1` 속성에서 읽습니다.
+옵션을 구성에 바인딩하는 경우 옵션 형식의 각 속성은 `property[:sub-property:]` 양식의 구성 키에 바인딩됩니다. 예를 들어 `MyOptions.Option1` 속성은 키 `Option1`에 바인딩되어 *appsettings.json* 의 `option1` 속성에서 읽힙니다.
 
-다음 코드에서 세 번째 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다. 이 코드는 `MySubOptions`를 *appsettings.json* 파일의 `subsection` 섹션에 바인딩합니다.
+다음 코드에서 세 번째 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다. 이 서비스는 `MySubOptions`를 *appsettings.json* 파일의 섹션 `subsection`에 바인딩합니다.
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
@@ -830,11 +830,11 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 [!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=4-7)]
 
-`MySubOptions` 클래스는 `SubOption1` 및 `SubOption2` 속성을 정의하여 옵션 값을 유지합니다(*Models/MySubOptions.cs*).
+`MySubOptions` 클래스는 `SubOption1` 및 `SubOption2` 속성을 정의하여 옵션 값을 유지합니다( *Models/MySubOptions.cs* ).
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MySubOptions.cs?name=snippet1)]
 
-페이지 모델의 `OnGet` 메서드는 옵션 값이 포함된 문자열을 반환합니다(*Pages/Index.cshtml.cs*).
+페이지 모델의 `OnGet` 메서드는 옵션 값이 포함된 문자열을 반환합니다( *Pages/Index.cshtml.cs* ).
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=11)]
 
@@ -852,7 +852,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 직접 보기 주입 또는 보기 모델에 의해 제공되는 옵션은 샘플 앱에 예제 4로 설명되어 있습니다.
 
-옵션은 뷰 모델 또는 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>를 보기에 직접 주입하여 제공할 수 있습니다(*Pages/Index.cshtml.cs*).
+옵션은 뷰 모델 또는 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>를 보기에 직접 주입하여 제공할 수 있습니다( *Pages/Index.cshtml.cs* ).
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -876,7 +876,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 옵션은 엑세스될 때 요청 당 한 번씩 계산되고 요청의 수명 동안 캐시됩니다.
 
-다음 예제에는 *appsettings.json*이 변경된 후 새 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>을 만드는 방법이 설명되어 있습니다(*Pages/Index.cshtml.cs*). 서버에 대한 여러 요청은 파일이 변경되고 구성이 다시 로드될 때까지 *appsettings.json* 파일에서 제공하는 상수 값을 반환합니다.
+다음 예제에는 *appsettings.json* 이 변경된 후 새 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>을 만드는 방법이 설명되어 있습니다( *Pages/Index.cshtml.cs* ). 서버에 대한 여러 요청은 파일이 변경되고 구성이 다시 로드될 때까지 *appsettings.json* 파일에서 제공하는 상수 값을 반환합니다.
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=12)]
 
@@ -884,7 +884,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example5)]
 
-다음 이미지는 *appsettings.json* 파일에서 로드된 초기 `option1` 및 `option2` 값을 보여줍니다.
+다음 이미지는 *appsettings.json* 파일에서 로드된 초기 `option1` 및 `option2` 값을 보여 줍니다.
 
 ```html
 snapshot option1 = value1_from_json, snapshot option2 = -1
@@ -904,7 +904,7 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
-샘플 앱은 <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*>을 사용하여 명명된 옵션에 액세스합니다(*Pages/Index.cshtml.cs*).
+샘플 앱은 <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*>을 사용하여 명명된 옵션에 액세스합니다( *Pages/Index.cshtml.cs* ).
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=13-14)]
 

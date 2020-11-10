@@ -5,6 +5,7 @@ description: Razor Pages에 대한 자습서 시리즈의 4부입니다.
 ms.author: riande
 ms.date: 7/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: d2e18782411b1801c74fa33ba1b31bad9662f3b2
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d592cf7d8a96a7e4ec2e53418843a186488951be
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627119"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058157"
 ---
 # <a name="part-4-with-a-database-and-aspnet-core"></a>4부. 데이터베이스 및 ASP.NET Core 작업
 
@@ -31,7 +32,7 @@ ms.locfileid: "88627119"
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-`RazorPagesMovieContext` 개체는 데이터베이스에 연결하고 데이터베이스 레코드에 `Movie` 개체를 매핑하는 작업을 처리합니다. 데이터베이스 컨텍스트는 *Startup.cs*의 `ConfigureServices` 메서드에서 [종속성 주입](xref:fundamentals/dependency-injection) 컨테이너에 등록됩니다.
+`RazorPagesMovieContext` 개체는 데이터베이스에 연결하고 데이터베이스 레코드에 `Movie` 개체를 매핑하는 작업을 처리합니다. 데이터베이스 컨텍스트는 *Startup.cs* 의 `ConfigureServices` 메서드에서 [종속성 주입](xref:fundamentals/dependency-injection) 컨테이너에 등록됩니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -66,11 +67,11 @@ ASP.NET Core [구성](xref:fundamentals/configuration/index) 시스템은 `Conne
 LocalDB는 프로그램 개발용으로 대상이 지정된 간단한 버전의 SQL Server Express 데이터베이스 엔진입니다. LocalDB는 요청 시 시작하고 사용자 모드에서 실행되므로 복잡한 구성이 없습니다. 기본적으로 LocalDB 데이터베이스는 `C:\Users\<user>\` 디렉터리에서 `*.mdf` 파일을 만듭니다.
 
 <a name="ssox"></a>
-* **보기** 메뉴에서 SSOX(**SQL Server 개체 탐색기**)를 엽니다.
+* **보기** 메뉴에서 SSOX( **SQL Server 개체 탐색기** )를 엽니다.
 
   ![보기 메뉴](sql/_static/ssox.png)
 
-* `Movie` 테이블을 마우스 오른쪽 단추로 클릭하고 **디자이너 보기**를 선택합니다.
+* `Movie` 테이블을 마우스 오른쪽 단추로 클릭하고 **디자이너 보기** 를 선택합니다.
 
   ![동영상 테이블의 열린 바로 가기 메뉴](sql/_static/design.png)
 
@@ -78,7 +79,7 @@ LocalDB는 프로그램 개발용으로 대상이 지정된 간단한 버전의 
 
 `ID` 옆의 키 아이콘을 확인합니다. 기본적으로 EF는 기본 키에 대해 `ID`라는 속성을 만듭니다.
 
-* `Movie` 테이블을 마우스 오른쪽 단추로 클릭하고 **데이터 보기**를 선택합니다.
+* `Movie` 테이블을 마우스 오른쪽 단추로 클릭하고 **데이터 보기** 를 선택합니다.
 
   ![테이블 데이터를 보여 주는 열린 Movie 테이블](sql/_static/vd22.png)
 
@@ -108,7 +109,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>시드 이니셜라이저 추가
 
-*Program.cs*에서 다음을 수행하는 `Main` 메서드를 수정합니다.
+*Program.cs* 에서 다음을 수행하는 `Main` 메서드를 수정합니다.
 
 * 종속성 주입 컨테이너에서 DB 컨텍스트 인스턴스를 가져옵니다.
 * 컨텍스트를 전달하는 시드 메서드를 호출합니다.
@@ -130,7 +131,7 @@ if (context.Movie.Any())
 * DB의 모든 레코드를 삭제합니다. 브라우저 또는 [SSOX](xref:tutorials/razor-pages/new-field#ssox)에서 삭제 링크를 사용하여 이를 수행할 수 있습니다.
 * 시드 메서드가 실행되도록 앱을 강제로 초기화합니다(`Startup` 클래스에서 메서드 호출). 초기화를 적용하려면 IIS Express를 중지하고 다시 시작해야 합니다. 다음 중 한 가지 방법을 사용하여 이를 수행할 수 있습니다.
 
-  * 알림 영역에서 IIS Express 시스템 트레이 아이콘을 마우스 오른쪽 단추로 클릭하고 **종료** 또는 **사이트 중지**를 탭합니다.
+  * 알림 영역에서 IIS Express 시스템 트레이 아이콘을 마우스 오른쪽 단추로 클릭하고 **종료** 또는 **사이트 중지** 를 탭합니다.
 
     ![IIS Express 시스템 트레이 아이콘](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
@@ -161,7 +162,7 @@ DB의 모든 레코드를 삭제합니다(시드 메서드가 실행되도록). 
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-`RazorPagesMovieContext` 개체는 데이터베이스에 연결하고 데이터베이스 레코드에 `Movie` 개체를 매핑하는 작업을 처리합니다. 데이터베이스 컨텍스트는 *Startup.cs*의 `ConfigureServices` 메서드에서 [종속성 주입](xref:fundamentals/dependency-injection) 컨테이너에 등록됩니다.
+`RazorPagesMovieContext` 개체는 데이터베이스에 연결하고 데이터베이스 레코드에 `Movie` 개체를 매핑하는 작업을 처리합니다. 데이터베이스 컨텍스트는 *Startup.cs* 의 `ConfigureServices` 메서드에서 [종속성 주입](xref:fundamentals/dependency-injection) 컨테이너에 등록됩니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -205,11 +206,11 @@ ASP.NET Core [구성](xref:fundamentals/configuration/index) 시스템은 `Conne
 LocalDB는 프로그램 개발용으로 대상이 지정된 간단한 버전의 SQL Server Express 데이터베이스 엔진입니다. LocalDB는 요청 시 시작하고 사용자 모드에서 실행되므로 복잡한 구성이 없습니다. 기본적으로 LocalDB 데이터베이스는 `C:/Users/<user/>` 디렉터리에서 `*.mdf` 파일을 만듭니다.
 
 <a name="ssox"></a>
-* **보기** 메뉴에서 SSOX(**SQL Server 개체 탐색기**)를 엽니다.
+* **보기** 메뉴에서 SSOX( **SQL Server 개체 탐색기** )를 엽니다.
 
   ![보기 메뉴](sql/_static/ssox.png)
 
-* `Movie` 테이블을 마우스 오른쪽 단추로 클릭하고 **디자이너 보기**를 선택합니다.
+* `Movie` 테이블을 마우스 오른쪽 단추로 클릭하고 **디자이너 보기** 를 선택합니다.
 
   ![Movie 테이블에서 열린 상황에 맞는 메뉴](sql/_static/design.png)
 
@@ -217,7 +218,7 @@ LocalDB는 프로그램 개발용으로 대상이 지정된 간단한 버전의 
 
 `ID` 옆의 키 아이콘을 확인합니다. 기본적으로 EF는 기본 키에 대해 `ID`라는 속성을 만듭니다.
 
-* `Movie` 테이블을 마우스 오른쪽 단추로 클릭하고 **데이터 보기**를 선택합니다.
+* `Movie` 테이블을 마우스 오른쪽 단추로 클릭하고 **데이터 보기** 를 선택합니다.
 
   ![테이블 데이터를 보여 주는 열린 Movie 테이블](sql/_static/vd22.png)
 
@@ -252,7 +253,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>시드 이니셜라이저 추가
 
-*Program.cs*에서 다음을 수행하는 `Main` 메서드를 수정합니다.
+*Program.cs* 에서 다음을 수행하는 `Main` 메서드를 수정합니다.
 
 * 종속성 주입 컨테이너에서 DB 컨텍스트 인스턴스를 가져옵니다.
 * 컨텍스트를 전달하는 시드 메서드를 호출합니다.
@@ -274,7 +275,7 @@ SqlException: 로그인에서 요청한 “RazorPagesMovieContext-21” 데이�
 * DB의 모든 레코드를 삭제합니다. 브라우저 또는 [SSOX](xref:tutorials/razor-pages/new-field#ssox)에서 삭제 링크를 사용하여 이를 수행할 수 있습니다.
 * 시드 메서드가 실행되도록 앱을 강제로 초기화합니다(`Startup` 클래스에서 메서드 호출). 초기화를 적용하려면 IIS Express를 중지하고 다시 시작해야 합니다. 다음 중 한 가지 방법을 사용하여 이를 수행할 수 있습니다.
 
-  * 알림 영역에서 IIS Express 시스템 트레이 아이콘을 마우스 오른쪽 단추로 클릭하고 **종료** 또는 **사이트 중지**를 탭합니다.
+  * 알림 영역에서 IIS Express 시스템 트레이 아이콘을 마우스 오른쪽 단추로 클릭하고 **종료** 또는 **사이트 중지** 를 탭합니다.
 
     ![IIS Express 시스템 트레이 아이콘](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 

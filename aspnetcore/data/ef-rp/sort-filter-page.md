@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: e01704cb10c88f3e9442e74034f5e5d39787f300
-ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
+ms.openlocfilehash: 51a1e2a90259898262ac655b7a0e8a55d766f0c7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653895"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061043"
 ---
 # <a name="part-3-no-locrazor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>3부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 정렬, 필터, 페이징
 
@@ -40,7 +41,7 @@ ms.locfileid: "91653895"
 
 ## <a name="add-sorting"></a>정렬 추가
 
-*Pages/Students/Index.cshtml.cs*에 있는 코드를 다음 코드로 바꿔서 정렬을 추가합니다.
+*Pages/Students/Index.cshtml.cs* 에 있는 코드를 다음 코드로 바꿔서 정렬을 추가합니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_All)]
 
@@ -61,7 +62,7 @@ Razor Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_Ternary)]
 
-이 코드는 C# [조건 연산자 ?:](/dotnet/csharp/language-reference/operators/conditional-operator)을 사용합니다. `?:` 연산자는 피연산자 3개를 사용하는 3개로 구성된 연산자입니다. 첫 번째 줄은 `sortOrder`가 null이거나 비어 있는 경우 `NameSort`가 `name_desc`로 설정되도록 지정합니다. `sortOrder`가 null 또는 비어 있지 ***않은*** 경우 `NameSort`는 빈 문자열로 설정됩니다.
+이 코드는 C# [조건 연산자 ?:](/dotnet/csharp/language-reference/operators/conditional-operator)을 사용합니다. `?:` 연산자는 피연산자 3개를 사용하는 3개로 구성된 연산자입니다. 첫 번째 줄은 `sortOrder`가 null이거나 비어 있는 경우 `NameSort`가 `name_desc`로 설정되도록 지정합니다. `sortOrder`가 null이 아니거나 비어 있지 않은 경우 `NameSort`는 빈 문자열로 설정됩니다.
 
 이러한 두 명령문을 사용하면 페이지에서 다음과 같이 열 제목 하이퍼링크를 설정할 수 있습니다.
 
@@ -84,7 +85,7 @@ Razor Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으
 
 ### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a>학생 인덱스 페이지에 열 제목 하이퍼링크 추가
 
-*Students/Index.cshtml*의 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
+_Students/Index.cshtml*의 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시되어 있습니다.
 
 [!code-cshtml[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml?highlight=5,8,17-19,22,25-27,33)]
 
@@ -109,7 +110,7 @@ Razor Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으
 
 ### <a name="update-the-ongetasync-method"></a>OnGetAsync 메서드 업데이트
 
-*Students/Index.cshtml.cs*에 있는 코드를 다음 코드로 바꿔서 필터링을 추가합니다.
+*Students/Index.cshtml.cs* 에 있는 코드를 다음 코드로 바꿔서 필터링을 추가합니다.
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index2.cshtml.cs?name=snippet_All&highlight=17,22,26-30)]
 
@@ -140,7 +141,7 @@ Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
 ### <a name="update-the-no-locrazor-page"></a>Razor 페이지 업데이트
 
-*Pages/Students/Index.cshtml*의 코드를 바꿔서 **검색** 단추를 추가합니다.
+*Pages/Students/Index.cshtml* 의 코드를 바꿔서 **검색** 단추를 추가합니다.
 
 [!code-cshtml[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index2.cshtml?highlight=14-23)]
 
@@ -150,7 +151,7 @@ Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
 * **학생** 탭을 선택하고 검색 문자열을 입력합니다. SQLite를 사용하는 경우 필터는 앞에 표시된 선택적 `ToUpper` 코드를 구현한 경우에만 대/소문자를 구분하지 않습니다.
 
-* **검색**을 선택합니다.
+* **검색** 을 선택합니다.
 
 URL에 검색 문자열이 포함되어 있음을 확인하세요. 예를 들어:
 
@@ -180,7 +181,7 @@ https://localhost:5001/Students?SearchString=an
 
 ### <a name="add-paging-to-the-pagemodel-class"></a>PageModel 클래스에 페이징 추가
 
-*Students/Index.cshtml.cs*의 코드를 바꿔서 페이징을 추가합니다.
+*Students/Index.cshtml.cs* 의 코드를 바꿔서 페이징을 추가합니다.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Index.cshtml.cs?name=snippet_All&highlight=15-20,23-30,57-59)]
 
@@ -207,7 +208,7 @@ https://localhost:5001/Students?SearchString=an
 * 페이징하는 동안 필터 설정을 유지하기 위해 페이징 링크에 포함되어야 합니다.
 * 페이지를 다시 표시하는 경우 텍스트 상자에 복원되어야 합니다.
 
-검색 문자열이 페이징하는 동안 변경되면 페이지가 1로 다시 설정됩니다. 새 필터로 인해 다른 데이터가 표시될 수 있으므로 페이지는 1로 재설정되어야 합니다. 검색 값을 입력하는 경우 및 **전송**을 선택한 경우:
+검색 문자열이 페이징하는 동안 변경되면 페이지가 1로 다시 설정됩니다. 새 필터로 인해 다른 데이터가 표시될 수 있으므로 페이지는 1로 재설정되어야 합니다. 검색 값을 입력하는 경우 및 **전송** 을 선택한 경우:
 
   * 검색 문자열이 변경됩니다.
   * `searchString` 매개 변수가 null이 아닙니다.
@@ -218,7 +219,7 @@ https://localhost:5001/Students?SearchString=an
 
 ### <a name="add-paging-links-to-the-no-locrazor-page"></a>Razor Page에 페이징 링크 추가
 
-*Students/Index.cshtml*의 코드를 다음 코드로 바꿉니다. 변경 내용이 강조 표시되어 있습니다.
+*Students/Index.cshtml* 의 코드를 다음 코드로 바꿉니다. 변경 내용이 강조 표시되어 있습니다.
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Index.cshtml?highlight=29-32,38-41,69-87)]
 
@@ -248,7 +249,7 @@ https://localhost:5001/Students?SearchString=an
 
 *Models/SchoolViewModels* 폴더를 만듭니다.
 
-다음 코드로 *SchoolViewModels/EnrollmentDateGroup.cs*를 만듭니다.
+다음 코드로 *SchoolViewModels/EnrollmentDateGroup.cs* 를 만듭니다.
 
 [!code-csharp[Main](intro/samples/cu30/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
@@ -340,7 +341,7 @@ Razor Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으
 
 ### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a>학생 인덱스 페이지에 열 제목 하이퍼링크 추가
 
-*Students/Index.cshtml*의 코드를 다음 강조 표시된 코드로 바꿉니다.
+*Students/Index.cshtml* 의 코드를 다음 강조 표시된 코드로 바꿉니다.
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index2.cshtml?highlight=17-19,25-27)]
 
@@ -352,14 +353,14 @@ Razor Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으
 정렬이 작동하는지 확인하려면 다음을 수행합니다.
 
 * 앱을 실행하고 **학생** 탭을 선택합니다.
-* **성**을 클릭합니다.
-* **등록 날짜**를 클릭합니다.
+* **성** 을 클릭합니다.
+* **등록 날짜** 를 클릭합니다.
 
 코드를 더 잘 이해하려면 다음을 수행합니다.
 
-* *Students/Index.cshtml.cs*에서 `switch (sortOrder)`에 중단점을 설정합니다.
+* *Students/Index.cshtml.cs* 에서 `switch (sortOrder)`에 중단점을 설정합니다.
 * `NameSort` 및 `DateSort`에 대한 조사식을 추가합니다.
-* *Students/Index.cshtml*에서 `@Html.DisplayNameFor(model => model.Student[0].LastName)`에 중단점을 설정합니다.
+* *Students/Index.cshtml* 에서 `@Html.DisplayNameFor(model => model.Student[0].LastName)`에 중단점을 설정합니다.
 
 디버거를 단계별로 실행합니다.
 
@@ -396,7 +397,7 @@ Razor Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으
 
 ### <a name="add-a-search-box-to-the-student-index-page"></a>학생 인덱스 페이지에 검색 상자 추가
 
-*Pages/Students/Index.cshtml*에서 다음 강조 표시된 코드를 추가하여 **검색** 단추와 다양한 크롬을 만듭니다.
+*Pages/Students/Index.cshtml* 에서 다음 강조 표시된 코드를 추가하여 **검색** 단추와 다양한 크롬을 만듭니다.
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
@@ -405,7 +406,7 @@ Razor Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으
 앱을 테스트합니다.
 
 * **학생** 탭을 선택하고 검색 문자열을 입력합니다.
-* **검색**을 선택합니다.
+* **검색** 을 선택합니다.
 
 URL에 검색 문자열이 포함되어 있음을 확인하세요.
 
@@ -433,7 +434,7 @@ http://localhost:5000/Students?SearchString=an
 
 ## <a name="add-paging-functionality-to-the-index-method"></a>인덱스 메서드에 페이징 기능 추가
 
-*Students/Index.cshtml.cs*에서 `Student`의 형식을 `IList<Student>`에서 `PaginatedList<Student>`로 업데이트합니다.
+*Students/Index.cshtml.cs* 에서 `Student`의 형식을 `IList<Student>`에서 `PaginatedList<Student>`로 업데이트합니다.
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPageType)]
 
@@ -459,7 +460,7 @@ http://localhost:5000/Students?SearchString=an
 * 페이징하는 동안 필터 설정을 유지하기 위해 페이징 링크에 포함되어야 합니다.
 * 페이지를 다시 표시하는 경우 텍스트 상자에 복원되어야 합니다.
 
-검색 문자열이 페이징하는 동안 변경되면 페이지가 1로 다시 설정됩니다. 새 필터로 인해 다른 데이터가 표시될 수 있으므로 페이지는 1로 재설정되어야 합니다. 검색 값을 입력하는 경우 및 **전송**을 선택한 경우:
+검색 문자열이 페이징하는 동안 변경되면 페이지가 1로 다시 설정됩니다. 새 필터로 인해 다른 데이터가 표시될 수 있으므로 페이지는 1로 재설정되어야 합니다. 검색 값을 입력하는 경우 및 **전송** 을 선택한 경우:
 
 * 검색 문자열이 변경됩니다.
 * `searchString` 매개 변수가 null이 아닙니다.
@@ -474,7 +475,7 @@ http://localhost:5000/Students?SearchString=an
 
 ## <a name="add-paging-links-to-the-student-no-locrazor-page"></a>학생 Razor 페이지에 페이징 링크 추가
 
-*Students/Index.cshtml*의 표시를 업데이트합니다. 변경 내용은 강조 표시되어 있습니다.
+*Students/Index.cshtml* 의 표시를 업데이트합니다. 변경 내용은 강조 표시되어 있습니다.
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
 
@@ -495,15 +496,15 @@ http://localhost:5000/Students?SearchString=an
 
 코드를 더 잘 이해하려면 다음을 수행합니다.
 
-* *Students/Index.cshtml.cs*에서 `switch (sortOrder)`에 중단점을 설정합니다.
+* *Students/Index.cshtml.cs* 에서 `switch (sortOrder)`에 중단점을 설정합니다.
 * `NameSort`, `DateSort`, `CurrentSort` 및 `Model.Student.PageIndex`에 대한 조사식을 추가합니다.
-* *Students/Index.cshtml*에서 `@Html.DisplayNameFor(model => model.Student[0].LastName)`에 중단점을 설정합니다.
+* *Students/Index.cshtml* 에서 `@Html.DisplayNameFor(model => model.Student[0].LastName)`에 중단점을 설정합니다.
 
 디버거를 단계별로 실행합니다.
 
 ## <a name="update-the-about-page-to-show-student-statistics"></a>학생 통계를 표시하도록 정보 페이지를 업데이트
 
-이 단계에서는 각 등록 날짜에 대해 등록한 학생 수를 표시하도록 *Pages/About.cshtml*을 업데이트합니다. 업데이트는 그룹화를 사용하며 다음 단계를 포함합니다.
+이 단계에서는 각 등록 날짜에 대해 등록한 학생 수를 표시하도록 *Pages/About.cshtml* 을 업데이트합니다. 업데이트는 그룹화를 사용하며 다음 단계를 포함합니다.
 
 * **정보** 페이지에서 사용되는 데이터에 대한 보기 모델을 만듭니다.
 * 정보 페이지를 업데이트하여 보기 모델을 사용합니다.
@@ -512,7 +513,7 @@ http://localhost:5000/Students?SearchString=an
 
 *Models* 폴더에 *SchoolViewModels* 폴더를 만듭니다.
 
-*SchoolViewModels* 폴더에서 다음 코드로 *EnrollmentDateGroup.cs*를 추가합니다.
+*SchoolViewModels* 폴더에서 다음 코드로 *EnrollmentDateGroup.cs* 를 추가합니다.
 
 [!code-csharp[](intro/samples/cu21/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 

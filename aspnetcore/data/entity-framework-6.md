@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/14/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/entity-framework-6
-ms.openlocfilehash: 64d420d7076f1da453ee423cc4a3732eeb47b221
-ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
+ms.openlocfilehash: 086418c161677f585b08ed360555c93d8575e701
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88876700"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059457"
 ---
 # <a name="aspnet-core-and-entity-framework-6"></a>ASP.NET Core 및 Entity Framework 6
 ::: moniker range=">= aspnetcore-3.0"
@@ -49,7 +50,7 @@ Entity Framework 6을 사용하려면 Entity Framework 6에서 .NET Core를 지�
 
 ASP.NET Core 애플리케이션에서 Entity Framework 6을 사용하는 권장되는 방법은 EF6 컨텍스트 및 모델 클래스를 .NET Framework를 대상으로 하는 클래스 라이브러리 프로젝트에 넣는 것입니다. ASP.NET Core 프로젝트에서 클래스 라이브러리에 참조를 추가합니다. 샘플 [EF6 및 ASP.NET Core 프로젝트가 있는 Visual Studio 솔루션](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)을 참조하세요.  
 
-.NET Core 프로젝트는 *Enable-Migrations*와 같은 EF6 명령이 요구하는 모든 기능을 지원하지 않으므로 ASP.NET Core 프로젝트에 EF6 컨텍스트를 배치할 수 없습니다.    
+.NET Core 프로젝트는 *Enable-Migrations* 와 같은 EF6 명령이 요구하는 모든 기능을 지원하지 않으므로 ASP.NET Core 프로젝트에 EF6 컨텍스트를 배치할 수 없습니다.    
 
 EF6 컨텍스트를 찾는 프로젝트 형식에 관계없이 EF6 명령줄 도구만 EF6 컨텍스트에서 작동합니다. 예를 들어 `Scaffold-DbContext`는 Entity Framework Core에서만 사용할 수 있습니다. 데이터베이스를 EF6 모델로 리버스 엔지니어링해야 하는 경우 <https://docs.microsoft.com/ef/ef6/modeling/code-first/workflows/existing-database>를 참조하세요.    
 
@@ -104,9 +105,9 @@ Visual Studio에서 다음 단계에 따라 이 샘플을 처음부터 만들 �
 
 * Core 프로젝트에서 클래스 라이브러리 프로젝트에 프로젝트 참조를 추가합니다.    
 
-* Core 프로젝트의 *Startup.cs*에서 DI에 대한 컨텍스트를 등록합니다.    
+* Core 프로젝트의 *Startup.cs* 에서 DI에 대한 컨텍스트를 등록합니다.    
 
-* Core 프로젝트의 *appsettings.json*에서 연결 문자열을 추가합니다.    
+* Core 프로젝트의 *appsettings.json* 에서 연결 문자열을 추가합니다.  
 
 * Core 프로젝트에서 데이터를 읽고 쓸 수 있는지 확인하는 컨트롤러 및 뷰를 추가합니다. (ASP.NET Core MVC 스캐폴딩은 클래스 라이브러리에서 참조된 EF6 컨텍스트와 작동하지 않습니다.)
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/file-providers
-ms.openlocfilehash: 30c28e7bd4cd9c926b157f5a7b9e6688bd5b9b9a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 16e5ead9898125c804da4d60322510474201d897
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634607"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059444"
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core의 파일 공급자
 
@@ -114,7 +115,7 @@ var physicalProvider = _env.ContentRootFileProvider;
 
 *FileProviderSample* 샘플 앱은 `ManifestEmbeddedFileProvider`를 만들고 현재 실행 중인 어셈블리를 생성자에 전달합니다.
 
-*Startup.cs*:
+*Startup.cs* :
 
 ```csharp
 var manifestEmbeddedProvider = 
@@ -161,7 +162,7 @@ Docker 컨테이너나 네트워크 공유 같은 일부 파일 시스템은 변
 
 ### <a name="glob-patterns"></a>GLOB 패턴
 
-파일 시스템 경로는 *GLOB(또는 와일드카드 사용) 패턴*이라고 부르는 와일드카드 패턴을 사용합니다. 이러한 패턴을 사용하여 파일 그룹을 지정합니다. 두 개의 와일드카드 문자는 `*`와 `**`입니다.
+파일 시스템 경로는 *GLOB(또는 와일드카드 사용) 패턴* 이라고 부르는 와일드카드 패턴을 사용합니다. 이러한 패턴을 사용하여 파일 그룹을 지정합니다. 두 개의 와일드카드 문자는 `*`와 `**`입니다.
 
 **`*`**  
 현재 폴더 수준의 모든 항목, 모든 파일명 또는 모든 파일 확장자를 찾습니다. 파일 경로의 `/` 및 `.` 문자에 의해서 일치가 중단됩니다.
@@ -174,9 +175,9 @@ Docker 컨테이너나 네트워크 공유 같은 일부 파일 시스템은 변
 |무늬  |설명  |
 |---------|---------|
 |`directory/file.txt`|특정 디렉터리에 있는 특정 파일을 일치시킵니다.|
-|`directory/*.txt`|특정 디렉터리에서 확장명이 *.txt*인 파일을 모두 찾습니다.|
+|`directory/*.txt`|특정 디렉터리에서 확장명이 *.txt* 인 파일을 모두 찾습니다.|
 |`directory/*/appsettings.json`|*directory* 폴더보다 정확히 한 수준 아래의 디렉터리에서 모든 *appsettings.json* 파일을 찾습니다.|
-|`directory/**/*.txt`|*directory* 폴더 아래의 모든 곳에서 찾은 확장명이 *.txt*인 모든 파일을 찾습니다.|
+|`directory/**/*.txt`|*directory* 폴더 아래의 모든 곳에서 찾은 확장명이 *.txt* 인 모든 파일을 찾습니다.|
 
 ::: moniker-end
 
@@ -261,7 +262,7 @@ var physicalProvider = _env.ContentRootFileProvider;
 
 샘플 앱은 `ManifestEmbeddedFileProvider`를 생성하고 현재 실행 중인 어셈블리를 생성자에 전달합니다.
 
-*Startup.cs*:
+*Startup.cs* :
 
 ```csharp
 var manifestEmbeddedProvider = 
@@ -303,7 +304,7 @@ Docker 컨테이너나 네트워크 공유 같은 일부 파일 시스템은 변
 
 ## <a name="glob-patterns"></a>GLOB 패턴
 
-파일 시스템 경로는 *GLOB(또는 와일드카드 사용) 패턴*이라고 부르는 와일드카드 패턴을 사용합니다. 이러한 패턴을 사용하여 파일 그룹을 지정합니다. 두 개의 와일드카드 문자는 `*`와 `**`입니다.
+파일 시스템 경로는 *GLOB(또는 와일드카드 사용) 패턴* 이라고 부르는 와일드카드 패턴을 사용합니다. 이러한 패턴을 사용하여 파일 그룹을 지정합니다. 두 개의 와일드카드 문자는 `*`와 `**`입니다.
 
 **`*`**  
 현재 폴더 수준의 모든 항목, 모든 파일명 또는 모든 파일 확장자를 찾습니다. 파일 경로의 `/` 및 `.` 문자에 의해서 일치가 중단됩니다.
@@ -317,12 +318,12 @@ Docker 컨테이너나 네트워크 공유 같은 일부 파일 시스템은 변
 특정 디렉터리에 있는 특정 파일을 일치시킵니다.
 
 **`directory/*.txt`**  
-특정 디렉터리에서 확장명이 *.txt*인 파일을 모두 찾습니다.
+특정 디렉터리에서 확장명이 *.txt* 인 파일을 모두 찾습니다.
 
 **`directory/*/appsettings.json`**  
 *directory* 폴더보다 정확히 한 수준 아래의 디렉터리에서 모든 `appsettings.json` 파일을 찾습니다.
 
 **`directory/**/*.txt`**  
-*directory* 폴더 아래의 모든 곳에서 찾은 확장명이 *.txt*인 파일을 모두 찾습니다.
+*directory* 폴더 아래의 모든 곳에서 찾은 확장명이 *.txt* 인 파일을 모두 찾습니다.
 
 ::: moniker-end

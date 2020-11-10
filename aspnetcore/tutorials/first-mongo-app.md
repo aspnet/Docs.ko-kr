@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 08/17/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 61f72c4d281e7957b520e1660440e536ebd4c78a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 350df417886fe1ea5fef89dc221c217d596768b3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631773"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060744"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>ASP.NET Core 및 MongoDB를 사용하여 웹 API 만들기
 
@@ -69,11 +70,11 @@ ms.locfileid: "88631773"
 
 ## <a name="configure-mongodb"></a>MongoDB 구성
 
-Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\MongoDB*에 설치됩니다. *C:\\Program Files\\MongoDB\\Server\\\<version_number>\\bin*을 `Path` 환경 변수에 추가합니다. 이렇게 변경하면 개발 머신의 어디에서나 MongoDB에 액세스할 수 있습니다.
+Windows를 사용하는 경우 MongoDB는 기본적으로 *C:\\Program Files\\MongoDB* 에 설치됩니다. *C:\\Program Files\\MongoDB\\Server\\\<version_number>\\bin* 을 `Path` 환경 변수에 추가합니다. 이렇게 변경하면 개발 머신의 어디에서나 MongoDB에 액세스할 수 있습니다.
 
 다음 단계에서 mongo 셸을 사용하여 데이터베이스 및 컬렉션을 만들고 문서를 저장합니다. mongo 셸 명령에 대한 자세한 내용은 [mongo 셸 작업](https://docs.mongodb.com/manual/mongo/#working-with-the-mongo-shell)을 참조하세요.
 
-1. 개발 머신에서 데이터를 저장할 디렉터리를 선택합니다. 예를 들어 Windows의 경우 *C:\\BooksData*를 선택합니다. 디렉터리가 없을 경우 새로 만듭니다. mongo 셸은 새 디렉터리를 만들지 않습니다.
+1. 개발 머신에서 데이터를 저장할 디렉터리를 선택합니다. 예를 들어 Windows의 경우 *C:\\BooksData* 를 선택합니다. 디렉터리가 없을 경우 새로 만듭니다. mongo 셸은 새 디렉터리를 만들지 않습니다.
 1. 명령 셸을 엽니다. 다음 명령을 실행하여 기본 포트 27017에서 MongoDB에 연결합니다. `<data_directory_path>`를 이전 단계에서 선택한 디렉터리로 바꿔야 합니다.
 
    ```console
@@ -92,7 +93,7 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
    use BookstoreDb
    ```
 
-   아직 존재하지 않는 경우 *BookstoreDb*라는 데이터베이스가 생성됩니다. 데이터베이스가 있는 경우 트랜잭션을 위해 해당 연결이 열립니다.
+   아직 존재하지 않는 경우 *BookstoreDb* 라는 데이터베이스가 생성됩니다. 데이터베이스가 있는 경우 트랜잭션을 위해 해당 연결이 열립니다.
 
 1. 다음 명령을 사용하여 `Books` 컬렉션을 만듭니다.
 
@@ -160,10 +161,10 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. **파일** > **새로 만들기** > **프로젝트**로 이동합니다.
-1. **ASP.NET Core 웹 애플리케이션** 프로젝트 유형을 선택하고 **다음**을 선택합니다.
-1. 프로젝트 이름을 *BooksApi*로 지정하고 **만들기**를 선택합니다.
-1. **.NET Core** 대상 프레임워크 및 **ASP.NET Core 3.0**을 선택합니다. **API** 프로젝트 템플릿을 선택하고 **만들기**를 선택합니다.
+1. **파일** > **새로 만들기** > **프로젝트** 로 이동합니다.
+1. **ASP.NET Core 웹 애플리케이션** 프로젝트 유형을 선택하고 **다음** 을 선택합니다.
+1. 프로젝트 이름을 *BooksApi* 로 지정하고 **만들기** 를 선택합니다.
+1. **.NET Core** 대상 프레임워크 및 **ASP.NET Core 3.0** 을 선택합니다. **API** 프로젝트 템플릿을 선택하고 **만들기** 를 선택합니다.
 1. [NuGet 갤러리: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/)를 방문하여 MongoDB용 .NET 드라이버의 안정적인 최신 버전을 확인합니다. **패키지 관리자 콘솔** 창에서 프로젝트 루트로 이동합니다. 다음 명령을 실행하여 MongoDB용 .NET 드라이버를 설치합니다.
 
    ```powershell
@@ -181,8 +182,8 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
    .NET Core를 대상으로 하는 새로운 ASP.NET Core 웹 API 프로젝트가 Visual Studio Code에서 생성되어 열립니다.
 
-1. 상태 표시줄의 OmniSharp 불꽃 아이콘이 녹색으로 바뀐 후 대화 상자에 **빌드 및 디버그에 필요한 자산이 'BooksApi'에서 누락되었습니다.라는 메시지가 표시됩니다. 추가할까요?** . **Yes**를 선택합니다.
-1. [NuGet 갤러리: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/)를 방문하여 MongoDB용 .NET 드라이버의 안정적인 최신 버전을 확인합니다. **통합 터미널**을 열고 프로젝트 루트로 이동합니다. 다음 명령을 실행하여 MongoDB용 .NET 드라이버를 설치합니다.
+1. 상태 표시줄의 OmniSharp 불꽃 아이콘이 녹색으로 바뀐 후 대화 상자에 **빌드 및 디버그에 필요한 자산이 'BooksApi'에서 누락되었습니다.라는 메시지가 표시됩니다. 추가할까요?** . **Yes** 를 선택합니다.
+1. [NuGet 갤러리: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/)를 방문하여 MongoDB용 .NET 드라이버의 안정적인 최신 버전을 확인합니다. **통합 터미널** 을 열고 프로젝트 루트로 이동합니다. 다음 명령을 실행하여 MongoDB용 .NET 드라이버를 설치합니다.
 
    ```dotnetcli
    dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
@@ -190,12 +191,12 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-1. Mac용 Visual Studio 버전 8.6 미만에서는 사이드바에서 **파일** > **새 솔루션** >  **.NET Core** > **앱**을 선택합니다. 버전 8.6 이상에서는 사이드바에서 **파일** > **새 솔루션** > **웹 및 콘솔** > **앱**을 선택합니다.
-1. **ASP.NET Core** > **API** C# 프로젝트 템플릿을 선택하고 **다음**을 선택합니다.
-1. **대상 프레임워크** 드롭다운 목록에서 **.NET Core 3.1**을 선택하고 **다음**을 선택합니다.
-1. **프로젝트 이름**으로 *BooksApi*를 입력하고 **만들기**를 선택합니다.
-1. **솔루션** 패드에서 프로젝트의 **종속성** 노드를 마우스 오른쪽 단추로 클릭하고 **패키지 추가**를 선택합니다.
-1. 검색 상자에 *MongoDB.Driver*를 입력하여 *MongoDB.Driver* 패키지를 선택하고 **패키지 추가**를 선택합니다.
+1. Mac용 Visual Studio 버전 8.6 미만에서는 사이드바에서 **파일** > **새 솔루션** >  **.NET Core** > **앱** 을 선택합니다. 버전 8.6 이상에서는 사이드바에서 **파일** > **새 솔루션** > **웹 및 콘솔** > **앱** 을 선택합니다.
+1. **ASP.NET Core** > **API** C# 프로젝트 템플릿을 선택하고 **다음** 을 선택합니다.
+1. **대상 프레임워크** 드롭다운 목록에서 **.NET Core 3.1** 을 선택하고 **다음** 을 선택합니다.
+1. **프로젝트 이름** 으로 *BooksApi* 를 입력하고 **만들기** 를 선택합니다.
+1. **솔루션** 패드에서 프로젝트의 **종속성** 노드를 마우스 오른쪽 단추로 클릭하고 **패키지 추가** 를 선택합니다.
+1. 검색 상자에 *MongoDB.Driver* 를 입력하여 *MongoDB.Driver* 패키지를 선택하고 **패키지 추가** 를 선택합니다.
 1. **라이선스 승인** 대화 상자에서 **동의** 단추를 선택합니다.
 
 ---
@@ -239,7 +240,7 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
 ## <a name="add-a-configuration-model"></a>구성 모델 추가
 
-1. 다음 데이터베이스 구성 값을 *appsettings.json*에 추가합니다.
+1. 다음 데이터베이스 구성 값을 *appsettings.json* 에 추가합니다.
 
    [!code-json[](first-mongo-app/samples/3.x/SampleApp/appsettings.json?highlight=2-6)]
 
@@ -255,10 +256,10 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
    위의 코드에서
 
-   * *appsettings.json* 파일의 `BookstoreDatabaseSettings` 섹션이 바인딩되는 구성 인스턴스가 DI(종속성 주입) 컨테이너에 등록됩니다. 예를 들어 `BookstoreDatabaseSettings` 개체의 `ConnectionString` 속성은 *appsettings.json*의 `BookstoreDatabaseSettings:ConnectionString` 속성으로 채워집니다.
+   * *appsettings.json* 파일의 `BookstoreDatabaseSettings` 섹션이 바인딩되는 구성 인스턴스가 DI(종속성 주입) 컨테이너에 등록됩니다. 예를 들어 `BookstoreDatabaseSettings` 개체의 `ConnectionString` 속성은 *appsettings.json* 의 `BookstoreDatabaseSettings:ConnectionString` 속성으로 채워집니다.
    * `IBookstoreDatabaseSettings` 인터페이스는 싱글톤 [서비스 수명](xref:fundamentals/dependency-injection#service-lifetimes)으로 DI에 등록됩니다. 삽입하면 인터페이스 인스턴스가 `BookstoreDatabaseSettings` 개체로 확인됩니다.
 
-1. *Startup.cs*의 맨 위에 다음 코드를 추가하여 `BookstoreDatabaseSettings` 및 `IBookstoreDatabaseSettings` 참조를 확인합니다.
+1. *Startup.cs* 의 맨 위에 다음 코드를 추가하여 `BookstoreDatabaseSettings` 및 `IBookstoreDatabaseSettings` 참조를 확인합니다.
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Startup.cs?name=snippet_UsingBooksApiModels)]
 
@@ -269,7 +270,7 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Services/BookService.cs?name=snippet_BookServiceClass)]
 
-   위의 코드에서 생성자 주입을 통해 DI에서 `IBookstoreDatabaseSettings` 인스턴스가 검색됩니다. 이 기술은 [구성 모델 추가](#add-a-configuration-model) 섹션에 추가된 *appsettings.json* 구성 값에 대한 액세스를 제공합니다.
+   위의 코드에서 생성자 주입을 통해 DI에서 `IBookstoreDatabaseSettings` 인스턴스가 검색됩니다. 이 방법은 [구성 모델 추가](#add-a-configuration-model) 섹션에 추가된 *appsettings.json* 구성 값에 대한 액세스를 제공합니다.
 
 1. 다음 강조 표시된 코드를 `Startup.ConfigureServices`에 추가합니다.
 
@@ -277,7 +278,7 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
    위의 코드에서 `BookService` 클래스는 사용 클래스에서 생성자 주입을 지원하는 DI로 등록됩니다. `BookService`가 `MongoClient`에 직접 종속되기 때문에 싱글톤 서비스 수명이 가장 적합합니다. 공식 [Mongo 클라이언트 재사용 지침](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use)에 따라 `MongoClient`를 싱글톤 수명으로 DI에 등록해야 합니다.
 
-1. *Startup.cs*의 맨 위에 다음 코드를 추가하여 `BookService` 참조를 확인합니다.
+1. *Startup.cs* 의 맨 위에 다음 코드를 추가하여 `BookService` 참조를 확인합니다.
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Startup.cs?name=snippet_UsingBooksApiServices)]
 
@@ -365,13 +366,13 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
    이전 변경으로 웹 API의 직렬화된 JSON 응답에서 속성 이름은 CLR 개체 형식의 해당 속성 이름과 일치합니다. 예를 들어 `Book` 클래스의 `Author` 속성은 `Author`로 직렬화합니다.
 
-1. *Models/Book.cs*에서 다음 [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) 특성으로 `BookName` 속성에 주석을 추가합니다.
+1. *Models/Book.cs* 에서 다음 [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) 특성으로 `BookName` 속성에 주석을 추가합니다.
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
 
    `Name`의 `[JsonProperty]` 특성 값은 웹 API의 직렬화된 JSON 응답의 속성 이름을 나타냅니다.
 
-1. *Models/Book.cs*의 맨 위에 다음 코드를 추가하여 `[JsonProperty]` 특성 참조를 확인합니다.
+1. *Models/Book.cs* 의 맨 위에 다음 코드를 추가하여 `[JsonProperty]` 특성 참조를 확인합니다.
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Models/Book.cs?name=snippet_NewtonsoftJsonImport)]
 
@@ -419,11 +420,11 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
 ## <a name="configure-mongodb"></a>MongoDB 구성
 
-Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\MongoDB*에 설치됩니다. *C:\\Program Files\\MongoDB\\Server\\\<version_number>\\bin*을 `Path` 환경 변수에 추가합니다. 이렇게 변경하면 개발 머신의 어디에서나 MongoDB에 액세스할 수 있습니다.
+Windows를 사용하는 경우 MongoDB는 기본적으로 *C:\\Program Files\\MongoDB* 에 설치됩니다. *C:\\Program Files\\MongoDB\\Server\\\<version_number>\\bin* 을 `Path` 환경 변수에 추가합니다. 이렇게 변경하면 개발 머신의 어디에서나 MongoDB에 액세스할 수 있습니다.
 
 다음 단계에서 mongo 셸을 사용하여 데이터베이스 및 컬렉션을 만들고 문서를 저장합니다. mongo 셸 명령에 대한 자세한 내용은 [mongo 셸 작업](https://docs.mongodb.com/manual/mongo/#working-with-the-mongo-shell)을 참조하세요.
 
-1. 개발 머신에서 데이터를 저장할 디렉터리를 선택합니다. 예를 들어 Windows의 경우 *C:\\BooksData*를 선택합니다. 디렉터리가 없을 경우 새로 만듭니다. mongo 셸은 새 디렉터리를 만들지 않습니다.
+1. 개발 머신에서 데이터를 저장할 디렉터리를 선택합니다. 예를 들어 Windows의 경우 *C:\\BooksData* 를 선택합니다. 디렉터리가 없을 경우 새로 만듭니다. mongo 셸은 새 디렉터리를 만들지 않습니다.
 1. 명령 셸을 엽니다. 다음 명령을 실행하여 기본 포트 27017에서 MongoDB에 연결합니다. `<data_directory_path>`를 이전 단계에서 선택한 디렉터리로 바꿔야 합니다.
 
    ```console
@@ -442,7 +443,7 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
    use BookstoreDb
    ```
 
-   아직 존재하지 않는 경우 *BookstoreDb*라는 데이터베이스가 생성됩니다. 데이터베이스가 있는 경우 트랜잭션을 위해 해당 연결이 열립니다.
+   아직 존재하지 않는 경우 *BookstoreDb* 라는 데이터베이스가 생성됩니다. 데이터베이스가 있는 경우 트랜잭션을 위해 해당 연결이 열립니다.
 
 1. 다음 명령을 사용하여 `Books` 컬렉션을 만듭니다.
 
@@ -510,10 +511,10 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. **파일** > **새로 만들기** > **프로젝트**로 이동합니다.
-1. **ASP.NET Core 웹 애플리케이션** 프로젝트 유형을 선택하고 **다음**을 선택합니다.
-1. 프로젝트 이름을 *BooksApi*로 지정하고 **만들기**를 선택합니다.
-1. **.NET Core** 대상 프레임워크 및 **ASP.NET Core 2.2**를 선택합니다. **API** 프로젝트 템플릿을 선택하고 **만들기**를 선택합니다.
+1. **파일** > **새로 만들기** > **프로젝트** 로 이동합니다.
+1. **ASP.NET Core 웹 애플리케이션** 프로젝트 유형을 선택하고 **다음** 을 선택합니다.
+1. 프로젝트 이름을 *BooksApi* 로 지정하고 **만들기** 를 선택합니다.
+1. **.NET Core** 대상 프레임워크 및 **ASP.NET Core 2.2** 를 선택합니다. **API** 프로젝트 템플릿을 선택하고 **만들기** 를 선택합니다.
 1. [NuGet 갤러리: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/)를 방문하여 MongoDB용 .NET 드라이버의 안정적인 최신 버전을 확인합니다. **패키지 관리자 콘솔** 창에서 프로젝트 루트로 이동합니다. 다음 명령을 실행하여 MongoDB용 .NET 드라이버를 설치합니다.
 
    ```powershell
@@ -531,8 +532,8 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
    .NET Core를 대상으로 하는 새로운 ASP.NET Core 웹 API 프로젝트가 Visual Studio Code에서 생성되어 열립니다.
 
-1. 상태 표시줄의 OmniSharp 불꽃 아이콘이 녹색으로 바뀐 후 대화 상자에 **빌드 및 디버그에 필요한 자산이 'BooksApi'에서 누락되었습니다.라는 메시지가 표시됩니다. 추가할까요?** . **Yes**를 선택합니다.
-1. [NuGet 갤러리: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/)를 방문하여 MongoDB용 .NET 드라이버의 안정적인 최신 버전을 확인합니다. **통합 터미널**을 열고 프로젝트 루트로 이동합니다. 다음 명령을 실행하여 MongoDB용 .NET 드라이버를 설치합니다.
+1. 상태 표시줄의 OmniSharp 불꽃 아이콘이 녹색으로 바뀐 후 대화 상자에 **빌드 및 디버그에 필요한 자산이 'BooksApi'에서 누락되었습니다.라는 메시지가 표시됩니다. 추가할까요?** . **Yes** 를 선택합니다.
+1. [NuGet 갤러리: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/)를 방문하여 MongoDB용 .NET 드라이버의 안정적인 최신 버전을 확인합니다. **통합 터미널** 을 열고 프로젝트 루트로 이동합니다. 다음 명령을 실행하여 MongoDB용 .NET 드라이버를 설치합니다.
 
    ```dotnetcli
    dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
@@ -540,12 +541,12 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-1. Mac용 Visual Studio 버전 8.6 미만에서는 사이드바에서 **파일** > **새 솔루션** >  **.NET Core** > **앱**을 선택합니다. 버전 8.6 이상에서는 사이드바에서 **파일** > **새 솔루션** > **웹 및 콘솔** > **앱**을 선택합니다.
-1. **ASP.NET Core Web API** C# 프로젝트 템플릿을 선택하고 **다음**을 선택합니다.
-1. **대상 프레임워크** 드롭다운 목록에서 **.NET Core 2.2**를 선택하고 **다음**을 선택합니다.
-1. **프로젝트 이름**으로 *BooksApi*를 입력하고 **만들기**를 선택합니다.
-1. **솔루션** 패드에서 프로젝트의 **종속성** 노드를 마우스 오른쪽 단추로 클릭하고 **패키지 추가**를 선택합니다.
-1. 검색 상자에 *MongoDB.Driver*를 입력하여 *MongoDB.Driver* 패키지를 선택하고 **패키지 추가**를 선택합니다.
+1. Mac용 Visual Studio 버전 8.6 미만에서는 사이드바에서 **파일** > **새 솔루션** >  **.NET Core** > **앱** 을 선택합니다. 버전 8.6 이상에서는 사이드바에서 **파일** > **새 솔루션** > **웹 및 콘솔** > **앱** 을 선택합니다.
+1. **ASP.NET Core Web API** C# 프로젝트 템플릿을 선택하고 **다음** 을 선택합니다.
+1. **대상 프레임워크** 드롭다운 목록에서 **.NET Core 2.2** 를 선택하고 **다음** 을 선택합니다.
+1. **프로젝트 이름** 으로 *BooksApi* 를 입력하고 **만들기** 를 선택합니다.
+1. **솔루션** 패드에서 프로젝트의 **종속성** 노드를 마우스 오른쪽 단추로 클릭하고 **패키지 추가** 를 선택합니다.
+1. 검색 상자에 *MongoDB.Driver* 를 입력하여 *MongoDB.Driver* 패키지를 선택하고 **패키지 추가** 를 선택합니다.
 1. **라이선스 승인** 대화 상자에서 **동의** 단추를 선택합니다.
 
 ---
@@ -589,7 +590,7 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
 ## <a name="add-a-configuration-model"></a>구성 모델 추가
 
-1. 다음 데이터베이스 구성 값을 *appsettings.json*에 추가합니다.
+1. 다음 데이터베이스 구성 값을 *appsettings.json* 에 추가합니다.
 
    [!code-json[](first-mongo-app/samples/2.x/SampleApp/appsettings.json?highlight=2-6)]
 
@@ -605,10 +606,10 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
    위의 코드에서
 
-   * *appsettings.json* 파일의 `BookstoreDatabaseSettings` 섹션이 바인딩되는 구성 인스턴스가 DI(종속성 주입) 컨테이너에 등록됩니다. 예를 들어 `BookstoreDatabaseSettings` 개체의 `ConnectionString` 속성은 *appsettings.json*의 `BookstoreDatabaseSettings:ConnectionString` 속성으로 채워집니다.
+   * *appsettings.json* 파일의 `BookstoreDatabaseSettings` 섹션이 바인딩되는 구성 인스턴스가 DI(종속성 주입) 컨테이너에 등록됩니다. 예를 들어 `BookstoreDatabaseSettings` 개체의 `ConnectionString` 속성은 *appsettings.json* 의 `BookstoreDatabaseSettings:ConnectionString` 속성으로 채워집니다.
    * `IBookstoreDatabaseSettings` 인터페이스는 싱글톤 [서비스 수명](xref:fundamentals/dependency-injection#service-lifetimes)으로 DI에 등록됩니다. 삽입하면 인터페이스 인스턴스가 `BookstoreDatabaseSettings` 개체로 확인됩니다.
 
-1. *Startup.cs*의 맨 위에 다음 코드를 추가하여 `BookstoreDatabaseSettings` 및 `IBookstoreDatabaseSettings` 참조를 확인합니다.
+1. *Startup.cs* 의 맨 위에 다음 코드를 추가하여 `BookstoreDatabaseSettings` 및 `IBookstoreDatabaseSettings` 참조를 확인합니다.
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Startup.cs?name=snippet_UsingBooksApiModels)]
 
@@ -619,7 +620,7 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Services/BookService.cs?name=snippet_BookServiceClass)]
 
-   위의 코드에서 생성자 주입을 통해 DI에서 `IBookstoreDatabaseSettings` 인스턴스가 검색됩니다. 이 기술은 [구성 모델 추가](#add-a-configuration-model) 섹션에 추가된 *appsettings.json* 구성 값에 대한 액세스를 제공합니다.
+   위의 코드에서 생성자 주입을 통해 DI에서 `IBookstoreDatabaseSettings` 인스턴스가 검색됩니다. 이 방법은 [구성 모델 추가](#add-a-configuration-model) 섹션에 추가된 *appsettings.json* 구성 값에 대한 액세스를 제공합니다.
 
 1. 다음 강조 표시된 코드를 `Startup.ConfigureServices`에 추가합니다.
 
@@ -627,7 +628,7 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
    위의 코드에서 `BookService` 클래스는 사용 클래스에서 생성자 주입을 지원하는 DI로 등록됩니다. `BookService`가 `MongoClient`에 직접 종속되기 때문에 싱글톤 서비스 수명이 가장 적합합니다. 공식 [Mongo 클라이언트 재사용 지침](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use)에 따라 `MongoClient`를 싱글톤 수명으로 DI에 등록해야 합니다.
 
-1. *Startup.cs*의 맨 위에 다음 코드를 추가하여 `BookService` 참조를 확인합니다.
+1. *Startup.cs* 의 맨 위에 다음 코드를 추가하여 `BookService` 참조를 확인합니다.
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Startup.cs?name=snippet_UsingBooksApiServices)]
 
@@ -713,13 +714,13 @@ Windows를 사용하는 경우 MongoDB는 기본적으로*C:\\Program Files\\Mon
 
    이전 변경으로 웹 API의 직렬화된 JSON 응답에서 속성 이름은 CLR 개체 형식의 해당 속성 이름과 일치합니다. 예를 들어 `Book` 클래스의 `Author` 속성은 `Author`로 직렬화합니다.
 
-1. *Models/Book.cs*에서 다음 [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) 특성으로 `BookName` 속성에 주석을 추가합니다.
+1. *Models/Book.cs* 에서 다음 [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) 특성으로 `BookName` 속성에 주석을 추가합니다.
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
 
    `Name`의 `[JsonProperty]` 특성 값은 웹 API의 직렬화된 JSON 응답의 속성 이름을 나타냅니다.
 
-1. *Models/Book.cs*의 맨 위에 다음 코드를 추가하여 `[JsonProperty]` 특성 참조를 확인합니다.
+1. *Models/Book.cs* 의 맨 위에 다음 코드를 추가하여 `[JsonProperty]` 특성 참조를 확인합니다.
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Models/Book.cs?name=snippet_NewtonsoftJsonImport)]
 

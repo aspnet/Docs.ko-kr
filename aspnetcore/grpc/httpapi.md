@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 08/28/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/httpapi
-ms.openlocfilehash: fa4e7489920338344b78874690e64d4080b5a719
-ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
+ms.openlocfilehash: 45e2a1a5e6a9f00294147db769454b78c5b866e5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805585"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059938"
 ---
 # <a name="create-json-web-apis-from-grpc"></a>GRPC에서 JSON 웹 API 만들기
 
@@ -38,7 +39,7 @@ ms.locfileid: "91805585"
 
 gRPC는 앱 간에 통신하는 최신 방법입니다. gRPC는 HTTP/2, 스트리밍, Protobuf 및 메시지 계약을 사용하여 고성능 실시간 서비스를 만듭니다.
 
-gRPC의 한 가지 제한 사항은 일부 플랫폼에서 gRPC를 사용할 수 없다는 것입니다. 브라우저는 HTTP/2를 완전히 지원하지 않으므로 브라우저 앱으로 데이터를 가져오는 기본 방법으로 REST 및 JSON을 설정합니다. gRPC가 제공하는 혜택이 있지만 REST 및 JSON은 최신 앱에서 중요합니다. gRPC ***및*** JSON 웹 API를 빌드하면 앱 개발에 원치 않는 오버헤드가 추가됩니다.
+gRPC의 한 가지 제한 사항은 일부 플랫폼에서 gRPC를 사용할 수 없다는 것입니다. 브라우저는 HTTP/2를 완전히 지원하지 않으므로 브라우저 앱으로 데이터를 가져오는 기본 방법으로 REST 및 JSON을 설정합니다. gRPC가 제공하는 혜택이 있지만 REST 및 JSON은 최신 앱에서 중요합니다. gRPC **및** JSON 웹 API를 빌드하면 앱 개발에 원치 않는 오버헤드가 추가됩니다.
 
 이 문서에서는 gRPC 서비스를 사용하여 JSON 웹 API를 만드는 방법을 설명합니다.
 
@@ -46,7 +47,7 @@ gRPC의 한 가지 제한 사항은 일부 플랫폼에서 gRPC를 사용할 수
 
 gRPC HTTP API는 gRPC 서비스용 RESTful JSON API를 만드는 ASP.NET Core의 실험적 확장입니다. 구성된 후 gRPC HTTP API를 사용하면 앱에서 친숙한 HTTP 개념으로 gRPC 서비스를 호출할 수 있습니다.
 
-* HTTP 동사
+HTTP 동사
 * URL 매개 변수 바인딩
 * JSON 요청/응답
 
@@ -55,7 +56,7 @@ gRPC HTTP API는 gRPC 서비스용 RESTful JSON API를 만드는 ASP.NET Core의
 ### <a name="usage"></a>사용
 
 1. [Microsoft.AspNetCore.Grpc.HttpApi](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.HttpApi)에 패키지 참조를 추가합니다.
-1. *Startup.cs*의 서비스를 `AddGrpcHttpApi`에 등록합니다.
+1. *Startup.cs* 의 서비스를 `AddGrpcHttpApi`에 등록합니다.
 1. [google/api/http.proto](https://github.com/aspnet/AspLabs/blob/c1e59cacf7b9606650d6ec38e54fa3a82377f360/src/GrpcHttpApi/sample/Proto/google/api/http.proto) 및 [google/api/annotations.proto](https://github.com/aspnet/AspLabs/blob/c1e59cacf7b9606650d6ec38e54fa3a82377f360/src/GrpcHttpApi/sample/Proto/google/api/annotations.proto) 파일을 프로젝트에 추가합니다.
 1. HTTP 바인딩 및 경로가 포함된 *.proto* 파일에서 gRPC 메서드에 주석을 답니다.
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/22/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: fcd6a679c5401ec58cc219f56b5dce1cfee07372
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 32b7a4c6722ba45ba998f9430f5d6da6ddca53f9
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629693"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058664"
 ---
 # <a name="health-checks-in-aspnet-core"></a>ASP.NET Core의 상태 검사
 
@@ -63,13 +64,13 @@ ASP.NET Core는 앱 인프라 구성 요소의 상태를 보고하기 위해 상
 
 ## <a name="basic-health-probe"></a>기본 상태 프로브
 
-많은 앱의 경우, 요청을 처리할 수 있는 앱의 가용성(*활동성*)을 보고하는 기본 상태 검사 구성으로 앱 상태를 충분히 파악할 수 있습니다.
+많은 앱의 경우, 요청을 처리할 수 있는 앱의 가용성( *활동성* )을 보고하는 기본 상태 검사 구성으로 앱 상태를 충분히 파악할 수 있습니다.
 
 기본 구성은 상태 검사 서비스를 등록하고 상태 검사 미들웨어를 호출하여 URL 엔드포인트에서 상태 응답을 사용하여 응답합니다. 기본적으로 특정 종속성이나 하위 시스템을 테스트하기 위해 특정 상태 검사가 등록되지 않습니다. 상태 엔드포인트 URL에서 응답할 수 있는 경우 앱 상태가 좋은 것으로 간주됩니다. 기본 응답 기록기는 상태(<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>)를 일반 텍스트 응답으로 다시 클라이언트에 기록하여 [HealthStatus.Healthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus), [HealthStatus.Degraded](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) 또는 [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) 상태를 나타냅니다.
 
 `Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*>에 상태 검사 서비스를 등록합니다. `Startup.Configure`에서 `MapHealthChecks`를 호출하여 상태 검사 엔드포인트를 만듭니다.
 
-샘플 앱에서 상태 검사 엔드포인트는 `/health`(*BasicStartup.cs*)에 만들어집니다.
+샘플 앱에서 상태 검사 엔드포인트는 `/health`( *BasicStartup.cs* )에 만들어집니다.
 
 ```csharp
 public class BasicStartup
@@ -143,7 +144,7 @@ services.AddHealthChecks()
 
 다음 예제에 표시된 <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> 오버로드는 상태 검사에서 오류가 보고되면 보고하도록 오류 상태(<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>)를 설정합니다. 오류 상태가 `null`(기본값)로 설정되면 [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus)가 보고됩니다. 이 오버로드는 라이브러리 작성자에게 유용한 시나리오입니다. 이 라이브러리에서는 상태 검사 구현이 설정을 준수하는 경우 상태 검사 실패가 발생할 때 라이브러리가 나타내는 오류 상태는 앱에 의해 적용됩니다.
 
-*태그*를 사용하여 상태 검사를 필터링할 수 있습니다([필터 상태 검사](#filter-health-checks) 섹션에 자세히 설명되어 있음).
+*태그* 를 사용하여 상태 검사를 필터링할 수 있습니다( [필터 상태 검사](#filter-health-checks) 섹션에 자세히 설명되어 있음).
 
 ```csharp
 services.AddHealthChecks()
@@ -333,7 +334,7 @@ app.UseEndpoints(endpoints =>
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/CustomWriterStartup.cs?name=snippet_WriteResponse_NewtonSoftJson)]
 
-샘플 앱에서 `WriteResponse` 버전의 `Newtonsoft.Json`을 사용할 수 있도록 *CustomWriterStartup.cs*의 `SYSTEM_TEXT_JSON` [전처리기 지시문](xref:index#preprocessor-directives-in-sample-code)을 주석 처리합니다.
+샘플 앱에서 `WriteResponse` 버전의 `Newtonsoft.Json`을 사용할 수 있도록 *CustomWriterStartup.cs* 의 `SYSTEM_TEXT_JSON` [전처리기 지시문](xref:index#preprocessor-directives-in-sample-code)을 주석 처리합니다.
 
 상태 검사 API는 사용자가 선택한 모니터링 시스템에만 적용되는 형식이므로 복합 JSON 반환 형식에 대한 기본 제공 지원을 제공하지 않습니다. 앞의 예제에서 응답을 필요에 따라 사용자 지정합니다. `System.Text.Json`을 사용한 역직렬화에 대한 자세한 내용은 [.NET에서 JSON을 직렬화 및 역직렬화하는 방법](/dotnet/standard/serialization/system-text-json-how-to)을 참조하세요.
 
@@ -352,7 +353,7 @@ app.UseEndpoints(endpoints =>
 
 [!code-json[](health-checks/samples/3.x/HealthChecksSample/appsettings.json?highlight=3)]
 
-`Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*>에 상태 검사 서비스를 등록합니다. 샘플 앱은 데이터베이스의 연결 문자열(*DbHealthStartup.cs*)을 사용하여 `AddSqlServer` 메서드를 호출합니다.
+`Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*>에 상태 검사 서비스를 등록합니다. 샘플 앱은 데이터베이스의 연결 문자열( *DbHealthStartup.cs* )을 사용하여 `AddSqlServer` 메서드를 호출합니다.
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -388,7 +389,7 @@ dotnet run --scenario db
 * `DbContextHealthCheck`는 EF Core의 `CanConnectAsync` 메서드를 호출합니다. `AddDbContextCheck` 메서드 오버로드를 사용하여 상태를 검사할 때 실행되는 작업을 사용자 정의할 수 있습니다.
 * 상태 검사의 이름은 `TContext` 형식의 이름입니다.
 
-샘플 앱에서 `AppDbContext`는 `AddDbContextCheck`에 제공되고 `Startup.ConfigureServices`의 서비스로서 등록됩니다(*DbContextHealthStartup.cs*).
+샘플 앱에서 `AppDbContext`는 `AddDbContextCheck`에 제공되고 `Startup.ConfigureServices`의 서비스로서 등록됩니다( *DbContextHealthStartup.cs* ).
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/DbContextHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -452,15 +453,15 @@ Unhealthy
 
 다음 예제를 참조하세요. 앱이 요청을 처리할 준비가 되려면 먼저 대용량 구성 파일을 다운로드해야 합니다. 앱에서 파일 다운로드를 여러 번 다시 시도할 수 있으므로 초기 다운로드가 실패하더라도 앱을 다시 시작하지 않는 것이 좋습니다. ‘활동성 프로브’를 사용하여 프로세스의 활동성을 설명하며, 추가 검사를 수행하지 않습니다. 또한 구성 파일이 다운로드되기 전에는 앱에 요청을 보내지 못하게 합니다. ‘준비 상태 프로브’를 사용하여 다운로드에 성공하여 앱이 요청을 받을 준비가 될 때까지 “준비되지 않음” 상태를 표시합니다.
 
-샘플 앱에는 [호스팅된 서비스](xref:fundamentals/host/hosted-services)에서 장기 실행 시작 작업 완료를 보고하는 상태 검사가 있습니다. `StartupHostedServiceHealthCheck`는 장기 실행 작업이 완료되면(*StartupHostedServiceHealthCheck.cs*) 호스팅된 서비스를 `true`로 설정할 수 있는 속성 `StartupTaskCompleted`를 노출합니다.
+샘플 앱에는 [호스팅된 서비스](xref:fundamentals/host/hosted-services)에서 장기 실행 시작 작업 완료를 보고하는 상태 검사가 있습니다. `StartupHostedServiceHealthCheck`는 장기 실행 작업이 완료되면( *StartupHostedServiceHealthCheck.cs* ) 호스팅된 서비스를 `true`로 설정할 수 있는 속성 `StartupTaskCompleted`를 노출합니다.
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/StartupHostedServiceHealthCheck.cs?name=snippet1&highlight=7-11)]
 
-장기 실행 백그라운드 작업은 [호스팅된 서비스](xref:fundamentals/host/hosted-services)(*Services/StartupHostedService*)에 의해 시작됩니다. 작업이 끝나면 `StartupHostedServiceHealthCheck.StartupTaskCompleted`는 `true`로 설정됩니다.
+장기 실행 백그라운드 작업은 [호스팅된 서비스](xref:fundamentals/host/hosted-services)( *Services/StartupHostedService* )에 의해 시작됩니다. 작업이 끝나면 `StartupHostedServiceHealthCheck.StartupTaskCompleted`는 `true`로 설정됩니다.
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/Services/StartupHostedService.cs?name=snippet1&highlight=18-20)]
 
-상태 검사는 호스팅된 서비스와 함께 `Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*>에 등록됩니다. 호스팅된 서비스가 상태 검사에서 속성을 설정해야 하기 때문에 상태 확인도 서비스 컨테이너(*LivenessProbeStartup.cs*)에 등록됩니다.
+상태 검사는 호스팅된 서비스와 함께 `Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*>에 등록됩니다. 호스팅된 서비스가 상태 검사에서 속성을 설정해야 하기 때문에 상태 확인도 서비스 컨테이너( *LivenessProbeStartup.cs* )에 등록됩니다.
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_ConfigureServices)]
 
@@ -495,7 +496,7 @@ app.UseEndpoints(endpoints =>
 dotnet run --scenario liveness
 ```
 
-브라우저에서 15초가 경과할 때까지 `/health/ready`를 여러 번 방문합니다. 상태 검사는 첫 15초 동안 *Unhealthy*를 보고합니다. 15초 후, 엔드포인트는 *Healthy*를 보고하여 호스트된 서비스에 의해 장기 실행 작업이 완료되었음을 나타냅니다.
+브라우저에서 15초가 경과할 때까지 `/health/ready`를 여러 번 방문합니다. 상태 검사는 첫 15초 동안 *Unhealthy* 를 보고합니다. 15초 후, 엔드포인트는 *Healthy* 를 보고하여 호스트된 서비스에 의해 장기 실행 작업이 완료되었음을 나타냅니다.
 
 이 예제에서는 2초 지연을 사용하여 첫 번째 준비 검사를 실행하는 상태 검사 게시자(<xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 구현)도 만듭니다. 자세한 내용은 [상태 검사 게시자](#health-check-publisher) 섹션을 참조하세요.
 
@@ -526,13 +527,13 @@ spec:
 
 샘플 앱은 사용자 지정 응답 기록기가 있는 메모리 상태를 보여줍니다.
 
-앱이 일정한 메모리 임계값(샘플 앱의 경우 1GB)을 초과하여 사용하는 경우 `MemoryHealthCheck`는 성능이 저하된 상태를 보고합니다. <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult>에는 앱의 가비지 수집기(GC) 정보가 포함됩니다(*MemoryHealthCheck.cs*).
+앱이 일정한 메모리 임계값(샘플 앱의 경우 1GB)을 초과하여 사용하는 경우 `MemoryHealthCheck`는 성능이 저하된 상태를 보고합니다. <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult>에는 앱의 가비지 수집기(GC) 정보가 포함됩니다( *MemoryHealthCheck.cs* ).
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 
 `Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*>에 상태 검사 서비스를 등록합니다. <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*>에 전달하여 상태 검사를 사용하는 대신 `MemoryHealthCheck`는 서비스로 등록됩니다. 모든 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheck> 등록된 서비스는 상태 검사 서비스 및 미들웨어에 사용할 수 있습니다. 상태 확인 서비스를 Singleton 서비스로 등록하는 것이 좋습니다.
 
-샘플 앱의 *CustomWriterStartup.cs*에서:
+샘플 앱의 *CustomWriterStartup.cs* 에서:
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/CustomWriterStartup.cs?name=snippet_ConfigureServices&highlight=4)]
 
@@ -619,9 +620,9 @@ app.UseEndpoints(endpoints =>
 ```
 
 > [!NOTE]
-> 코드에서 관리 포트를 명시적으로 설정하여 샘플 앱에 *launchSettings.json* 파일을 만들지 않도록 할 수 있습니다. <xref:Microsoft.Extensions.Hosting.HostBuilder>가 만들어진 *Program.cs*에서 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenAnyIP*>에 대한 호출을 추가하고 앱의 관리 포트 엔드포인트를 제공합니다. *ManagementPortStartup.cs*의 `Configure`에서 `RequireHost`로 관리 포트를 지정합니다.
+> 코드에서 관리 포트를 명시적으로 설정하여 샘플 앱에 *launchSettings.json* 파일을 만들지 않도록 할 수 있습니다. <xref:Microsoft.Extensions.Hosting.HostBuilder>가 만들어진 *Program.cs* 에서 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenAnyIP*>에 대한 호출을 추가하고 앱의 관리 포트 엔드포인트를 제공합니다. *ManagementPortStartup.cs* 의 `Configure`에서 `RequireHost`로 관리 포트를 지정합니다.
 >
-> *Program.cs*:
+> *Program.cs* :
 >
 > ```csharp
 > return new HostBuilder()
@@ -637,7 +638,7 @@ app.UseEndpoints(endpoints =>
 >     .Build();
 > ```
 >
-> *ManagementPortStartup.cs*:
+> *ManagementPortStartup.cs* :
 >
 > ```csharp
 > app.UseEndpoints(endpoints =>
@@ -832,13 +833,13 @@ ASP.NET Core는 앱 인프라 구성 요소의 상태를 보고하기 위해 상
 
 ## <a name="basic-health-probe"></a>기본 상태 프로브
 
-많은 앱의 경우, 요청을 처리할 수 있는 앱의 가용성(*활동성*)을 보고하는 기본 상태 검사 구성으로 앱 상태를 충분히 파악할 수 있습니다.
+많은 앱의 경우, 요청을 처리할 수 있는 앱의 가용성( *활동성* )을 보고하는 기본 상태 검사 구성으로 앱 상태를 충분히 파악할 수 있습니다.
 
 기본 구성은 상태 검사 서비스를 등록하고 상태 검사 미들웨어를 호출하여 URL 엔드포인트에서 상태 응답을 사용하여 응답합니다. 기본적으로 특정 종속성이나 하위 시스템을 테스트하기 위해 특정 상태 검사가 등록되지 않습니다. 상태 엔드포인트 URL에서 응답할 수 있는 경우 앱 상태가 좋은 것으로 간주됩니다. 기본 응답 기록기는 상태(<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>)를 일반 텍스트 응답으로 다시 클라이언트에 기록하여 [HealthStatus.Healthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus), [HealthStatus.Degraded](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) 또는 [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) 상태를 나타냅니다.
 
 `Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*>에 상태 검사 서비스를 등록합니다. `Startup.Configure`의 요청 처리 파이프라인에 있는 <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>로 상태 검사 미들웨어용 엔드포인트를 추가합니다.
 
-샘플 앱에서 상태 검사 엔드포인트는 `/health`(*BasicStartup.cs*)에 만들어집니다.
+샘플 앱에서 상태 검사 엔드포인트는 `/health`( *BasicStartup.cs* )에 만들어집니다.
 
 ```csharp
 public class BasicStartup
@@ -909,7 +910,7 @@ services.AddHealthChecks()
 
 다음 예제에 표시된 <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> 오버로드는 상태 검사에서 오류가 보고되면 보고하도록 오류 상태(<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>)를 설정합니다. 오류 상태가 `null`(기본값)로 설정되면 [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus)가 보고됩니다. 이 오버로드는 라이브러리 작성자에게 유용한 시나리오입니다. 이 라이브러리에서는 상태 검사 구현이 설정을 준수하는 경우 상태 검사 실패가 발생할 때 라이브러리가 나타내는 오류 상태는 앱에 의해 적용됩니다.
 
-*태그*를 사용하여 상태 검사를 필터링할 수 있습니다([필터 상태 검사](#filter-health-checks) 섹션에 자세히 설명되어 있음).
+*태그* 를 사용하여 상태 검사를 필터링할 수 있습니다( [필터 상태 검사](#filter-health-checks) 섹션에 자세히 설명되어 있음).
 
 ```csharp
 services.AddHealthChecks()
@@ -1071,7 +1072,7 @@ private static Task WriteResponse(HttpContext httpContext, HealthReport result)
 
 [!code-json[](health-checks/samples/2.x/HealthChecksSample/appsettings.json?highlight=3)]
 
-`Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*>에 상태 검사 서비스를 등록합니다. 샘플 앱은 데이터베이스의 연결 문자열(*DbHealthStartup.cs*)을 사용하여 `AddSqlServer` 메서드를 호출합니다.
+`Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*>에 상태 검사 서비스를 등록합니다. 샘플 앱은 데이터베이스의 연결 문자열( *DbHealthStartup.cs* )을 사용하여 `AddSqlServer` 메서드를 호출합니다.
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -1104,7 +1105,7 @@ dotnet run --scenario db
 * `DbContextHealthCheck`는 EF Core의 `CanConnectAsync` 메서드를 호출합니다. `AddDbContextCheck` 메서드 오버로드를 사용하여 상태를 검사할 때 실행되는 작업을 사용자 정의할 수 있습니다.
 * 상태 검사의 이름은 `TContext` 형식의 이름입니다.
 
-샘플 앱에서 `AppDbContext`는 `AddDbContextCheck`에 제공되고 `Startup.ConfigureServices`의 서비스로서 등록됩니다(*DbContextHealthStartup.cs*).
+샘플 앱에서 `AppDbContext`는 `AddDbContextCheck`에 제공되고 `Startup.ConfigureServices`의 서비스로서 등록됩니다( *DbContextHealthStartup.cs* ).
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbContextHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -1165,15 +1166,15 @@ Unhealthy
 
 다음 예제를 참조하세요. 앱이 요청을 처리할 준비가 되려면 먼저 대용량 구성 파일을 다운로드해야 합니다. 앱에서 파일 다운로드를 여러 번 다시 시도할 수 있으므로 초기 다운로드가 실패하더라도 앱을 다시 시작하지 않는 것이 좋습니다. ‘활동성 프로브’를 사용하여 프로세스의 활동성을 설명하며, 추가 검사를 수행하지 않습니다. 또한 구성 파일이 다운로드되기 전에는 앱에 요청을 보내지 못하게 합니다. ‘준비 상태 프로브’를 사용하여 다운로드에 성공하여 앱이 요청을 받을 준비가 될 때까지 “준비되지 않음” 상태를 표시합니다.
 
-샘플 앱에는 [호스팅된 서비스](xref:fundamentals/host/hosted-services)에서 장기 실행 시작 작업 완료를 보고하는 상태 검사가 있습니다. `StartupHostedServiceHealthCheck`는 장기 실행 작업이 완료되면(*StartupHostedServiceHealthCheck.cs*) 호스팅된 서비스를 `true`로 설정할 수 있는 속성 `StartupTaskCompleted`를 노출합니다.
+샘플 앱에는 [호스팅된 서비스](xref:fundamentals/host/hosted-services)에서 장기 실행 시작 작업 완료를 보고하는 상태 검사가 있습니다. `StartupHostedServiceHealthCheck`는 장기 실행 작업이 완료되면( *StartupHostedServiceHealthCheck.cs* ) 호스팅된 서비스를 `true`로 설정할 수 있는 속성 `StartupTaskCompleted`를 노출합니다.
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/StartupHostedServiceHealthCheck.cs?name=snippet1&highlight=7-11)]
 
-장기 실행 백그라운드 작업은 [호스팅된 서비스](xref:fundamentals/host/hosted-services)(*Services/StartupHostedService*)에 의해 시작됩니다. 작업이 끝나면 `StartupHostedServiceHealthCheck.StartupTaskCompleted`는 `true`로 설정됩니다.
+장기 실행 백그라운드 작업은 [호스팅된 서비스](xref:fundamentals/host/hosted-services)( *Services/StartupHostedService* )에 의해 시작됩니다. 작업이 끝나면 `StartupHostedServiceHealthCheck.StartupTaskCompleted`는 `true`로 설정됩니다.
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/Services/StartupHostedService.cs?name=snippet1&highlight=18-20)]
 
-상태 검사는 호스팅된 서비스와 함께 `Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*>에 등록됩니다. 호스팅된 서비스가 상태 검사에서 속성을 설정해야 하기 때문에 상태 확인도 서비스 컨테이너(*LivenessProbeStartup.cs*)에 등록됩니다.
+상태 검사는 호스팅된 서비스와 함께 `Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*>에 등록됩니다. 호스팅된 서비스가 상태 검사에서 속성을 설정해야 하기 때문에 상태 확인도 서비스 컨테이너( *LivenessProbeStartup.cs* )에 등록됩니다.
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_ConfigureServices)]
 
@@ -1197,7 +1198,7 @@ app.UseHealthChecks("/health/live", new HealthCheckOptions()
 dotnet run --scenario liveness
 ```
 
-브라우저에서 15초가 경과할 때까지 `/health/ready`를 여러 번 방문합니다. 상태 검사는 첫 15초 동안 *Unhealthy*를 보고합니다. 15초 후, 엔드포인트는 *Healthy*를 보고하여 호스트된 서비스에 의해 장기 실행 작업이 완료되었음을 나타냅니다.
+브라우저에서 15초가 경과할 때까지 `/health/ready`를 여러 번 방문합니다. 상태 검사는 첫 15초 동안 *Unhealthy* 를 보고합니다. 15초 후, 엔드포인트는 *Healthy* 를 보고하여 호스트된 서비스에 의해 장기 실행 작업이 완료되었음을 나타냅니다.
 
 이 예제에서는 2초 지연을 사용하여 첫 번째 준비 검사를 실행하는 상태 검사 게시자(<xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 구현)도 만듭니다. 자세한 내용은 [상태 검사 게시자](#health-check-publisher) 섹션을 참조하세요.
 
@@ -1228,13 +1229,13 @@ spec:
 
 샘플 앱은 사용자 지정 응답 기록기가 있는 메모리 상태를 보여줍니다.
 
-앱이 일정한 메모리 임계값(샘플 앱의 경우 1GB)을 초과하여 사용하는 경우 `MemoryHealthCheck`는 비정상적인 상태를 보고합니다. <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult>에는 앱의 가비지 수집기(GC) 정보가 포함됩니다(*MemoryHealthCheck.cs*).
+앱이 일정한 메모리 임계값(샘플 앱의 경우 1GB)을 초과하여 사용하는 경우 `MemoryHealthCheck`는 비정상적인 상태를 보고합니다. <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult>에는 앱의 가비지 수집기(GC) 정보가 포함됩니다( *MemoryHealthCheck.cs* ).
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 
 `Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*>에 상태 검사 서비스를 등록합니다. <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*>에 전달하여 상태 검사를 사용하는 대신 `MemoryHealthCheck`는 서비스로 등록됩니다. 모든 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheck> 등록된 서비스는 상태 검사 서비스 및 미들웨어에 사용할 수 있습니다. 상태 확인 서비스를 Singleton 서비스로 등록하는 것이 좋습니다.
 
-샘플 앱(*CustomWriterStartup.cs*)에서:
+샘플 앱( *CustomWriterStartup.cs* )에서:
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/CustomWriterStartup.cs?name=snippet_ConfigureServices&highlight=4)]
 
@@ -1294,14 +1295,14 @@ dotnet run --scenario writer
 }
 ```
 
-`Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*>에 상태 검사 서비스를 등록합니다. <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>에 대한 호출은 관리 포트를 지정합니다(*ManagementPortStartup.cs*).
+`Startup.ConfigureServices`의 <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*>에 상태 검사 서비스를 등록합니다. <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>에 대한 호출은 관리 포트를 지정합니다( *ManagementPortStartup.cs* ).
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ManagementPortStartup.cs?name=snippet1&highlight=17)]
 
 > [!NOTE]
-> 코드에서 URL과 관리 포트를 명시적으로 설정하여 샘플 앱에 *launchSettings.json* 파일을 만들지 않도록 할 수 있습니다. <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>가 만들어진 *Program.cs*에서 <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls*>에 호출을 추가하고 앱의 정상적인 응답 엔드포인트와 관리 포트 엔드포인트를 제공합니다. <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>가 호출되는 *ManagementPortStartup.cs*에서 관리 포트를 명시적으로 지정합니다.
+> 코드에서 URL과 관리 포트를 명시적으로 설정하여 샘플 앱에 *launchSettings.json* 파일을 만들지 않도록 할 수 있습니다. <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>가 만들어진 *Program.cs* 에서 <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls*>에 호출을 추가하고 앱의 정상적인 응답 엔드포인트와 관리 포트 엔드포인트를 제공합니다. <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>가 호출되는 *ManagementPortStartup.cs* 에서 관리 포트를 명시적으로 지정합니다.
 >
-> *Program.cs*:
+> *Program.cs* :
 >
 > ```csharp
 > return new WebHostBuilder()
@@ -1318,7 +1319,7 @@ dotnet run --scenario writer
 >     .Build();
 > ```
 >
-> *ManagementPortStartup.cs*:
+> *ManagementPortStartup.cs* :
 >
 > ```csharp
 > app.UseHealthChecks("/health", port: 5001);

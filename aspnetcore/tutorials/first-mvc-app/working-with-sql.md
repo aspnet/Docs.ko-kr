@@ -5,6 +5,7 @@ description: 5부. ASP.NET Core MVC 앱에 모델 추가
 ms.author: riande
 ms.date: 8/16/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: 23ecee4e3482b3ee82ae597671a8c45515eb4589
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f893aa1041a42c12514b825fb3c8e96a6104358d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634932"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051579"
 ---
 # <a name="part-5-work-with-a-database-in-an-aspnet-core-mvc-app"></a>5부. ASP.NET Core MVC 앱에서 데이터베이스 작업
 
@@ -57,11 +58,11 @@ ASP.NET Core [구성](xref:fundamentals/configuration/index) 시스템은 `Conne
 
 LocalDB는 프로그램 개발을 위한 SQL Server Express 데이터베이스 엔진의 간단 버전입니다. LocalDB는 요청 시 시작하고 사용자 모드에서 실행되므로 복잡한 구성이 없습니다. 기본적으로 LocalDB 데이터베이스는 *C:/Users/{user}* 디렉터리에 *.mdf* 파일을 만듭니다.
 
-* **보기** 메뉴에서 SSOX(**SQL Server 개체 탐색기**)를 엽니다.
+* **보기** 메뉴에서 SSOX( **SQL Server 개체 탐색기** )를 엽니다.
 
   ![보기 메뉴](working-with-sql/_static/ssox.png)
 
-* 마우스 오른쪽 단추로 `Movie` 테이블 **> 디자이너 보기**를 클릭합니다.
+* 마우스 오른쪽 단추로 `Movie` 테이블 **> 디자이너 보기** 를 클릭합니다.
 
   ![Movie 테이블에서 열린 상황에 맞는 메뉴](working-with-sql/_static/design.png)
 
@@ -69,7 +70,7 @@ LocalDB는 프로그램 개발을 위한 SQL Server Express 데이터베이스 �
 
 `ID` 옆의 키 아이콘을 확인합니다. 기본적으로 EF는 `ID`라는 속성을 기본 키로 만듭니다.
 
-* 마우스 오른쪽 단추로 `Movie` 테이블 **> 데이터 보기**를 클릭합니다.
+* 마우스 오른쪽 단추로 `Movie` 테이블 **> 데이터 보기** 를 클릭합니다.
 
   ![Movie 테이블에서 열린 상황에 맞는 메뉴](working-with-sql/_static/ssox2.png)
 
@@ -102,7 +103,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>시드 이니셜라이저 추가
 
-*Program.cs*의 내용을 다음 코드로 바꿉니다.
+*Program.cs* 의 내용을 다음 코드로 바꿉니다.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Program.cs)]
 
@@ -113,7 +114,7 @@ if (context.Movie.Any())
 * DB의 모든 레코드를 삭제합니다. 브라우저에서 삭제 링크를 사용하거나 SSOX에서 이를 수행할 수 있습니다.
 * 시드 메서드가 실행되도록 앱을 강제로 초기화합니다(`Startup` 클래스에서 메서드 호출). 초기화를 적용하려면 IIS Express를 중지하고 다시 시작해야 합니다. 다음 중 한 가지 방법을 사용하여 이를 수행할 수 있습니다.
 
-  * 알림 영역에서 IIS Express 시스템 트레이 아이콘을 마우스 오른쪽 단추로 클릭하고 **종료** 또는 **사이트 중지**를 누릅니다.
+  * 알림 영역에서 IIS Express 시스템 트레이 아이콘을 마우스 오른쪽 단추로 클릭하고 **종료** 또는 **사이트 중지** 를 누릅니다.
 
     ![IIS Express 시스템 트레이 아이콘](working-with-sql/_static/iisExIcon.png)
 
@@ -169,11 +170,11 @@ ASP.NET Core [구성](xref:fundamentals/configuration/index) 시스템은 `Conne
 
 LocalDB는 프로그램 개발을 위한 SQL Server Express 데이터베이스 엔진의 간단 버전입니다. LocalDB는 요청 시 시작하고 사용자 모드에서 실행되므로 복잡한 구성이 없습니다. 기본적으로 LocalDB 데이터베이스는 *C:/Users/{user}* 디렉터리에 *.mdf* 파일을 만듭니다.
 
-* **보기** 메뉴에서 SSOX(**SQL Server 개체 탐색기**)를 엽니다.
+* **보기** 메뉴에서 SSOX( **SQL Server 개체 탐색기** )를 엽니다.
 
   ![보기 메뉴](working-with-sql/_static/ssox.png)
 
-* 마우스 오른쪽 단추로 `Movie` 테이블 **> 디자이너 보기**를 클릭합니다.
+* 마우스 오른쪽 단추로 `Movie` 테이블 **> 디자이너 보기** 를 클릭합니다.
 
   ![Movie 테이블에서 열린 상황에 맞는 메뉴](working-with-sql/_static/design.png)
 
@@ -181,7 +182,7 @@ LocalDB는 프로그램 개발을 위한 SQL Server Express 데이터베이스 �
 
 `ID` 옆의 키 아이콘을 확인합니다. 기본적으로 EF는 `ID`라는 속성을 기본 키로 만듭니다.
 
-* 마우스 오른쪽 단추로 `Movie` 테이블 **> 데이터 보기**를 클릭합니다.
+* 마우스 오른쪽 단추로 `Movie` 테이블 **> 데이터 보기** 를 클릭합니다.
 
   ![Movie 테이블에서 열린 상황에 맞는 메뉴](working-with-sql/_static/ssox2.png)
 
@@ -214,7 +215,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>시드 이니셜라이저 추가
 
-*Program.cs*의 내용을 다음 코드로 바꿉니다.
+*Program.cs* 의 내용을 다음 코드로 바꿉니다.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Program.cs)]
 
@@ -225,7 +226,7 @@ if (context.Movie.Any())
 * DB의 모든 레코드를 삭제합니다. 브라우저에서 삭제 링크를 사용하거나 SSOX에서 이를 수행할 수 있습니다.
 * 시드 메서드가 실행되도록 앱을 강제로 초기화합니다(`Startup` 클래스에서 메서드 호출). 초기화를 적용하려면 IIS Express를 중지하고 다시 시작해야 합니다. 다음 중 한 가지 방법을 사용하여 이를 수행할 수 있습니다.
 
-  * 알림 영역에서 IIS Express 시스템 트레이 아이콘을 마우스 오른쪽 단추로 클릭하고 **종료** 또는 **사이트 중지**를 누릅니다.
+  * 알림 영역에서 IIS Express 시스템 트레이 아이콘을 마우스 오른쪽 단추로 클릭하고 **종료** 또는 **사이트 중지** 를 누릅니다.
 
     ![IIS Express 시스템 트레이 아이콘](working-with-sql/_static/iisExIcon.png)
 

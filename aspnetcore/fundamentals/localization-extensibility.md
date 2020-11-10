@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/03/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization-extensibility
-ms.openlocfilehash: 2e1041ed4cce3c3919d75ff47e2bc24fc446e9c3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a6ef5a547e6ccba6771cdf892a9636f83d6796b1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627613"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053737"
 ---
 # <a name="localization-extensibility"></a>지역화 확장성
 
@@ -104,7 +105,7 @@ options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async 
 
 사용자 지정 소스에서 요청 문화 정보를 판별하는 <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider>의 새 구현을 만들 수 있습니다. 예를 들어 사용자 지정 소스는 구성 파일 또는 데이터베이스일 수 있습니다.
 
-다음 예제에서는 <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider>를 확장하여 *appsettings.json*에서 요청 문화 정보를 판별하는 `AppSettingsRequestCultureProvider`를 보여줍니다.
+다음 예제는 <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider>를 확장하여 *appsettings.json* 에서 요청 문화권 정보를 확인하는 `AppSettingsRequestCultureProvider`를 보여 줍니다.
 
 ```csharp
 public class AppSettingsRequestCultureProvider : RequestCultureProvider

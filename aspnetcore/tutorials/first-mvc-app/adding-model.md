@@ -5,6 +5,7 @@ description: ASP.NET Core MVC에 대한 자습서 시리즈의 4부입니다.
 ms.author: riande
 ms.date: 01/13/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,22 +17,22 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: ddd517ef8fbf8cb4bb8765cb3caab4724c0205f0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 428d153cd94c882db16484a3009c86d1f9593538
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631968"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050903"
 ---
 # <a name="part-4-add-a-model-to-an-aspnet-core-mvc-app"></a>4부. ASP.NET Core MVC 앱에 모델 추가
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Tom Dykstra](https://github.com/tdykstra)
 
-이 섹션에서는 데이터베이스에서 영화를 관리하기 위한 클래스를 추가합니다. 이러한 클래스는 **M**VC 앱의 "**M**odel" 부분이 됩니다.
+이 섹션에서는 데이터베이스에서 영화를 관리하기 위한 클래스를 추가합니다. 이러한 클래스는 **M** VC 앱의 " **M** odel" 부분이 됩니다.
 
 이러한 클래스를 EF Core([Entity Framework Core](/ef/core))와 함께 사용하여 데이터베이스 작업을 수행합니다. EF Core는 작성해야 할 데이터 액세스 코드를 간소화하는 ORM(개체-관계형 매핑) 프레임워크입니다.
 
-직접 만들게 될 모델 클래스는 EF Core에 대한 어떠한 종속성도 없으므로 POCO(**P**lain **O**ld **C**LR **O**bject) 클래스로 알려져 있습니다. 이 클래스는 데이터베이스에 저장될 데이터의 속성만 정의합니다.
+직접 만들게 될 모델 클래스는 EF Core에 대한 어떠한 종속성도 없으므로 POCO( **P** lain **O** ld **C** LR **O** bject) 클래스로 알려져 있습니다. 이 클래스는 데이터베이스에 저장될 데이터의 속성만 정의합니다.
 
 이 자습서에서는 먼저 모델 클래스를 작성하고 EF Core가 데이터베이스를 만듭니다.
 
@@ -41,7 +42,7 @@ ms.locfileid: "88631968"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-*Models* 폴더> **추가** > **클래스**를 마우스 오른쪽 단추로 클릭합니다. 파일 이름을 *Movie.cs*로 지정합니다.
+*Models* 폴더> **추가** > **클래스** 를 마우스 오른쪽 단추로 클릭합니다. 파일 이름을 *Movie.cs* 로 지정합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -49,7 +50,7 @@ ms.locfileid: "88631968"
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 클래스** > **빈 클래스**를 클릭합니다. 파일 이름을 *Movie.cs*로 지정합니다.
+*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 클래스** > **빈 클래스** 를 클릭합니다. 파일 이름을 *Movie.cs* 로 지정합니다.
 
 ---
 
@@ -88,7 +89,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-**프로젝트** 메뉴에서 **NuGet 패키지 관리**를 선택합니다.
+**프로젝트** 메뉴에서 **NuGet 패키지 관리** 를 선택합니다.
 
 오른쪽 위의 **검색** 필드에 `Microsoft.EntityFrameworkCore.SQLite`를 입력하고 **반환** 키를 눌러 검색합니다. 일치하는 NuGet 패키지를 선택하고 **패키지 추가** 단추를 누릅니다.
 
@@ -171,11 +172,11 @@ using Microsoft.EntityFrameworkCore;
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-**솔루션 탐색기**에서 *Controllers* 폴더를 마우스 오른쪽 단추로 클릭하고 **> 추가 > 스캐폴드 항목 새로 만들기**를 선택합니다.
+**솔루션 탐색기** 에서 *Controllers* 폴더를 마우스 오른쪽 단추로 클릭하고 **> 추가 > 스캐폴드 항목 새로 만들기** 를 선택합니다.
 
 ![위 단계의 보기](adding-model/_static/add_controller21.png)
 
-**스캐폴드 추가** 대화 상자에서 **보기 포함 MVC 컨트롤러, Entity Framework > 추가 사용**을 선택합니다.
+**스캐폴드 추가** 대화 상자에서 **보기 포함 MVC 컨트롤러, Entity Framework > 추가 사용** 을 선택합니다.
 
 ![스캐폴드 추가 대화 상자](adding-model/_static/add_scaffold21.png)
 
@@ -188,18 +189,18 @@ using Microsoft.EntityFrameworkCore;
 
 * **보기:** 확인된 각 옵션의 기본값 선택 유지
 * **컨트롤러 이름:** 기본값 *MoviesController* 유지
-* **추가**를 선택합니다.
+* **추가** 를 선택합니다.
 
 Visual Studio가 다음을 만듭니다
 
-* 영화 컨트롤러(*Controllers/MoviesController.cs*)
-* Create, Delete, Details, Edit, 및 Index 페이지에 대한 Razor 뷰 파일(*Views/Movies/\*.cshtml*)
+* 영화 컨트롤러( *Controllers/MoviesController.cs* )
+* Create, Delete, Details, Edit, 및 Index 페이지에 대한 Razor 뷰 파일( *Views/Movies/\*.cshtml* )
 
-이러한 파일의 자동 생성을 *스캐폴딩*이라고 합니다.
+이러한 파일의 자동 생성을 *스캐폴딩* 이라고 합니다.
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) 
 
-* 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+* 프로젝트 디렉터리( *Program.cs* , *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
 
 * Linux에서는 스캐폴드 도구 경로를 내보냅니다.
 
@@ -217,7 +218,7 @@ Visual Studio가 다음을 만듭니다
 
 ### <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+* 프로젝트 디렉터리( *Program.cs* , *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
 
 * 다음 명령을 실행합니다.
 
@@ -315,7 +316,7 @@ dotnet ef database update
   > [!NOTE]
   > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(",")를 사용하는 비 영어 로캘 및 비 US-English 날짜 형식에 대해[jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 세계화해야 합니다. 세계화 지침은 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)를 참조하세요.
 
-* **Edit**, **Details** 및 **Delete** 링크를 테스트합니다.
+* **Edit** , **Details** 및 **Delete** 링크를 테스트합니다.
 
 ## <a name="dependency-injection-in-the-controller"></a>컨트롤러에서 종속성 주입
 
@@ -427,7 +428,7 @@ return View(movie);
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-*Models* 폴더> **추가** > **클래스**를 마우스 오른쪽 단추로 클릭합니다. 클래스의 이름을 **Movie**로 지정합니다.
+*Models* 폴더> **추가** > **클래스** 를 마우스 오른쪽 단추로 클릭합니다. 클래스의 이름을 **Movie** 로 지정합니다.
 
 [!INCLUDE [model 1b](~/includes/mvc-intro/model1b.md)]
 
@@ -446,41 +447,41 @@ return View(movie);
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-**솔루션 탐색기**에서 *Controllers* 폴더를 마우스 오른쪽 단추로 클릭하고 **> 추가 > 스캐폴드 항목 새로 만들기**를 선택합니다.
+**솔루션 탐색기** 에서 *Controllers* 폴더를 마우스 오른쪽 단추로 클릭하고 **> 추가 > 스캐폴드 항목 새로 만들기** 를 선택합니다.
 
 ![위 단계의 보기](adding-model/_static/add_controller21.png)
 
-**스캐폴드 추가** 대화 상자에서 **보기 포함 MVC 컨트롤러, Entity Framework > 추가 사용**을 선택합니다.
+**스캐폴드 추가** 대화 상자에서 **보기 포함 MVC 컨트롤러, Entity Framework > 추가 사용** 을 선택합니다.
 
 ![스캐폴드 추가 대화 상자](adding-model/_static/add_scaffold21.png)
 
 **컨트롤러 추가** 대화 상자를 입력합니다.
 
 * **모델 클래스:** *Movie(MvcMovie.Models)*
-* **데이터 컨텍스트 클래스:** **+** 아이콘을 선택하고 기본값 **MvcMovie.Models.MvcMovieContext**를 추가합니다.
+* **데이터 컨텍스트 클래스:** **+** 아이콘을 선택하고 기본값 **MvcMovie.Models.MvcMovieContext** 를 추가합니다.
 
 ![데이터 컨텍스트 추가](adding-model/_static/dc.png)
 
 * **보기:** 확인된 각 옵션의 기본값 선택 유지
 * **컨트롤러 이름:** 기본값 *MoviesController* 유지
-* **추가**를 선택합니다.
+* **추가** 를 선택합니다.
 
 ![컨트롤러 추가 대화 상자](adding-model/_static/add_controller2.png)
 
 Visual Studio가 다음을 만듭니다
 
-* Entity Framework Core [데이터베이스 컨텍스트 클래스](xref:data/ef-mvc/intro#create-the-database-context)(*Data/MvcMovieContext.cs*)
-* 영화 컨트롤러(*Controllers/MoviesController.cs*)
-* Create, Delete, Details, Edit, 및 Index 페이지에 대한 Razor 뷰 파일(*Views/Movies/\*.cshtml*)
+* Entity Framework Core [데이터베이스 컨텍스트 클래스](xref:data/ef-mvc/intro#create-the-database-context)( *Data/MvcMovieContext.cs* )
+* 영화 컨트롤러( *Controllers/MoviesController.cs* )
+* Create, Delete, Details, Edit, 및 Index 페이지에 대한 Razor 뷰 파일( *Views/Movies/\*.cshtml* )
 
-[CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete)(생성, 읽기, 수정 및 삭제) 작업 메서드와 보기 및 데이터베이스 컨텍스트의 자동 생성을 *스캐폴딩*이라고 합니다.
+[CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete)(생성, 읽기, 수정 및 삭제) 작업 메서드와 보기 및 데이터베이스 컨텍스트의 자동 생성을 *스캐폴딩* 이라고 합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
 
-* 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+* 프로젝트 디렉터리( *Program.cs* , *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
 * 스캐폴딩 도구를 설치합니다.
 
   ```dotnetcli
@@ -505,7 +506,7 @@ Visual Studio가 다음을 만듭니다
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+* 프로젝트 디렉터리( *Program.cs* , *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
 * 스캐폴딩 도구를 설치합니다.
 
   ```dotnetcli
@@ -634,7 +635,7 @@ Login failed for user 'User-name'.
   > [!NOTE]
   > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(",")를 사용하는 비 영어 로캘 및 비 US-English 날짜 형식에 대해[jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 세계화해야 합니다. 세계화 지침은 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)를 참조하세요.
 
-* **Edit**, **Details** 및 **Delete** 링크를 테스트합니다.
+* **Edit** , **Details** 및 **Delete** 링크를 테스트합니다.
 
 `Startup` 클래스를 확인합니다.
 

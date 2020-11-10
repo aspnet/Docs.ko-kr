@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: devx-track-csharp, mvc
 ms.date: 10/27/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,33 +19,25 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory
-ms.openlocfilehash: 46e5a422864dd8f6aef72afddb3b406bc99f9163
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 4e8c22c56b7023301499fd273a9194b8c7b58f3d
+ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690424"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93343714"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory"></a>Azure Active Directory를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
 
 작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)
 
-이 문서에서는 AAD(Azure Active Directory)를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱을 보호하는 방법을 설명합니다.
+이 문서에서는 인증을 위해 [Azure Active Directory(AAD)](https://azure.microsoft.com/services/active-directory/)를 사용하는 [독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만드는 방법을 다룹니다.
 
 ::: moniker range=">= aspnetcore-5.0"
 
 > [!NOTE]
 > AAD 조직 디렉터리에서 계정을 지원하도록 구성된 Visual Studio에서 만든 Blazor WebAssembly 앱에 대해 Visual Studio는 프로젝트 생성 시 앱을 올바르게 구성하지 않습니다. 이 문제는 Visual Studio의 이후 릴리스에서 해결될 예정입니다. 이 문서에서는 .NET Core CLI의 `dotnet new` 명령을 사용하여 앱을 만드는 방법을 보여 줍니다. ASP.NET Core 5.0의 최신 Blazor 템플릿에 대해 IDE를 업데이트하기 전에 Visual Studio를 사용하여 앱을 만들려는 경우 이 문서의 각 섹션을 참조하고 Visual Studio에서 앱을 만든 후 앱의 구성을 확인하거나 업데이트하세요.
 
-::: moniker-end
-
-인증을 위해 [AAD(Azure Active Directory)](https://azure.microsoft.com/services/active-directory/)를 사용하는 [독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만들려면:
-
-[AAD 테넌트 및 웹 애플리케이션 만들기](/azure/active-directory/develop/v2-overview):
-
 Azure Portal의 **Azure Active Directory** > **앱 등록** 영역에서 AAD 앱을 등록합니다.
-
-::: moniker range=">= aspnetcore-5.0"
 
 1. 앱의 **이름** 을 지정합니다(예: **Blazor 독립 실행형 AAD** ).
 1. **지원되는 계정 유형** 을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만** 을 선택합니다.
@@ -67,6 +60,8 @@ Azure Portal의 **Azure Active Directory** > **앱 등록** 영역에서 AAD 앱
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
+
+Azure Portal의 **Azure Active Directory** > **앱 등록** 영역에서 AAD 앱을 등록합니다.
 
 1. 앱의 **이름** 을 지정합니다(예: **Blazor 독립 실행형 AAD** ).
 1. **지원되는 계정 유형** 을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만** 을 선택합니다.

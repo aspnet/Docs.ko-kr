@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 9f02165f54d3cd3328496710dc92ebc86c4640d6
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 386be395399bf4131e4b6c8cac8221f994e8b7c5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626833"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054387"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>자습서: 고급 시나리오에 대해 알아보기 - ASP.NET MVC 및 EF Core 사용
 
@@ -62,11 +63,11 @@ Entity Framework를 사용할 때 장점 중 하나는 코드가 데이터를 �
 
 `DbSet<TEntity>` 클래스는 `TEntity` 형식의 엔터티를 반환하는 쿼리를 실행하는 데 사용할 수 있는 메서드를 제공합니다. 어떻게 작동하는지 보기 위해 Department 컨트롤러의 `Details` 메서드에서 코드를 변경합니다.
 
-다음 강조 표시된 코드에서처럼 *DepartmentsController.cs*의 `Details` 메서드에서 `FromSql` 메서드 호출로 부서를 검색하는 코드를 바꿉니다.
+다음 강조 표시된 코드에서처럼 *DepartmentsController.cs* 의 `Details` 메서드에서 `FromSql` 메서드 호출로 부서를 검색하는 코드를 바꿉니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10)]
 
-새 코드가 올바르게 작동하는지 확인하려면 **부서** 탭을 선택한 후 부서 중 하나에 대해 **세부 정보**를 선택합니다.
+새 코드가 올바르게 작동하는지 확인하려면 **부서** 탭을 선택한 후 부서 중 하나에 대해 **세부 정보** 를 선택합니다.
 
 ![부서 세부 정보](advanced/_static/department-details.png)
 
@@ -74,7 +75,7 @@ Entity Framework를 사용할 때 장점 중 하나는 코드가 데이터를 �
 
 이전에 등록 날짜별로 학생 수를 보여주는 [정보] 페이지의 학생 통계 표를 만들었습니다. 학생 엔터티 집합(`_context.Students`)에서 데이터를 가져와 LINQ를 사용하여 결과를 `EnrollmentDateGroup` 뷰 모델 개체 목록에 프로젝션했습니다. LINQ를 사용하지 않고 SQL을 직접 작성한다고 가정해 보겠습니다. 이를 수행하려면 엔터티 개체가 아닌 다른 것을 리턴하는 SQL 쿼리를 실행해야 합니다. EF Core 1.0에서 이를 수행하는 한 가지 방법은 ADO.NET 코드를 작성하고 EF에서 데이터베이스 연결을 얻는 것입니다.
 
-*HomeController.cs*에서 `About` 메서드를 다음 코드로 바꿉니다.
+*HomeController.cs* 에서 `About` 메서드를 다음 코드로 바꿉니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseRawSQL&highlight=3-32)]
 
@@ -92,7 +93,7 @@ Contoso University 관리자가 모든 과정의 학점 수를 변경하는 등 
 
 ![[Course Credits(과정 학점)] 페이지 업데이트](advanced/_static/update-credits.png)
 
-*CoursesController.cs*에서 HttpGet 및 HttpPost의 UpdateCourseCredits 메서드를 추가합니다.
+*CoursesController.cs* 에서 HttpGet 및 HttpPost의 UpdateCourseCredits 메서드를 추가합니다.
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdateGet)]
 
@@ -102,11 +103,11 @@ Contoso University 관리자가 모든 과정의 학점 수를 변경하는 등 
 
 **업데이트** 단추를 클릭하면 HttpPost 메서드가 호출되고 승수는 텍스트 상자에 입력된 값을 포함합니다. 그런 다음, 코드는 과정을 업데이트하는 SQL을 실행하고 영향을 받은 행 수를 `ViewData`의 뷰에 반환합니다. 뷰에 `RowsAffected` 값이 있으면 업데이트된 행 수가 표시됩니다.
 
-**솔루션 탐색기**에서 *Views/Courses* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가 > 새 항목**을 클릭합니다.
+**솔루션 탐색기** 에서 *Views/Courses* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가 > 새 항목** 을 클릭합니다.
 
-**새 항목 추가** 대화 상자에서 왼쪽 창의 **설치됨** 아래에서 **ASP.NET**을 클릭하고, **Razor 뷰**를 클릭한 후, 새 뷰의 이름을 *UpdateCourseCredits.cshtml*로 지정합니다.
+**새 항목 추가** 대화 상자에서 왼쪽 창의 **설치됨** 아래에서 **ASP.NET** 을 클릭하고, **Razor 뷰** 를 클릭한 후, 새 뷰의 이름을 *UpdateCourseCredits.cshtml* 로 지정합니다.
 
-*Views/Courses/UpdateCourseCredits.cshtml*에서 템플릿 코드를 다음 코드로 바꿉니다.
+*Views/Courses/UpdateCourseCredits.cshtml* 에서 템플릿 코드를 다음 코드로 바꿉니다.
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
 
@@ -114,11 +115,11 @@ Contoso University 관리자가 모든 과정의 학점 수를 변경하는 등 
 
 ![[Course Credits(과정 학점)] 페이지 업데이트](advanced/_static/update-credits.png)
 
-**업데이트**를 클릭합니다. 영향을 받은 행 수가 표시됩니다.
+**업데이트** 를 클릭합니다. 영향을 받은 행 수가 표시됩니다.
 
 ![영향을 받는 [Course Credits(과정 학점)] 페이지 행 업데이트](advanced/_static/update-credits-rows-affected.png)
 
-학점 수가 수정된 과정 목록을 보려면 **목록으로 돌아가기**를 클릭합니다.
+학점 수가 수정된 과정 목록을 보려면 **목록으로 돌아가기** 를 클릭합니다.
 
 프로덕션 코드는 항상 업데이트로 인해 항상 유효한 데이터가 생기도록 보장해 줍니다. 여기에 표시된 간소화된 코드에서는 5보다 큰 숫자가 생길 만큼 충분한 학점 수를 곱할 수 있습니다. (`Credits` 속성에는 `[Range(0, 5)]` 특성이 포함됩니다.) 업데이트 쿼리가 작동하지만 잘못된 데이터로 인해 학점이 5 이하라고 가정하는 시스템의 다른 부분에 예기치 않은 결과가 발생할 수 있습니다.
 
@@ -128,7 +129,7 @@ Contoso University 관리자가 모든 과정의 학점 수를 변경하는 등 
 
 때로는 데이터베이스로 전송된 실제 SQL 쿼리를 볼 수 있는 것이 도움이 됩니다. ASP.NET Core의 기본 로깅 기능은 EF Core에서 쿼리 및 업데이트용 SQL이 포함된 로그를 작성하기 위해 EF Core에 의해 자동으로 사용됩니다. 이 섹션에서는 SQL 로깅의 몇 가지 예를 살펴봅니다.
 
-*StudentsController.cs*를 열고 `Details` 메서드에서 `if (student == null)` 문에 중단점을 설정합니다.
+*StudentsController.cs* 를 열고 `Details` 메서드에서 `if (student == null)` 문에 중단점을 설정합니다.
 
 디버그 모드에서 앱을 실행하고 학생에 대한 [세부 정보] 페이지로 이동합니다.
 
@@ -224,7 +225,7 @@ Tom Dykstra 및 Rick Anderson(twitter @RickAndMSFT)이 본 자습서를 작성�
 
 해결책:
 
-IIS Express에서 사이트를 중지합니다. Windows 시스템 트레이로 이동하고 IIS Express를 찾아 해당 아이콘을 마우스 오른쪽 단추로 클릭하고 Contoso University 사이트를 선택한 다음, **사이트 중지**를 클릭합니다.
+IIS Express에서 사이트를 중지합니다. Windows 시스템 트레이로 이동하고 IIS Express를 찾아 해당 아이콘을 마우스 오른쪽 단추로 클릭하고 Contoso University 사이트를 선택한 다음, **사이트 중지** 를 클릭합니다.
 
 ### <a name="migration-scaffolded-with-no-code-in-up-and-down-methods"></a>Up 및 Down 메서드에서 코드 없이 스캐폴드된 마이그레이션
 
@@ -240,9 +241,9 @@ EF CLI 명령은 코드 파일을 자동으로 닫고 저장하지 않습니다.
 
 기존 데이터가 있는 데이터베이스에서 스키마를 변경할 때 다른 오류가 발생할 수 있습니다. 해결할 수 없는 마이그레이션 오류가 발생하면 연결 문자열에서 데이터베이스 이름을 변경하거나 데이터베이스를 삭제할 수 있습니다. 새 데이터베이스에는 마이그레이션할 데이터가 없으므로 update-database 명령은 오류없이 완료될 가능성이 훨씬 큽니다.
 
-가장 간단한 방법은 *appsettings.json*에서 데이터베이스 이름을 바꾸는 것입니다. 다음에 `database update`를 실행할 때 새 데이터베이스가 생성됩니다.
+가장 간단한 방법은 *appsettings.json* 에서 데이터베이스 이름을 바꾸는 것입니다. 다음에 `database update`를 실행할 때 새 데이터베이스가 생성됩니다.
 
-SSOX에서 데이터베이스를 삭제하려면 데이터베이스를 마우스 오른쪽 단추로 클릭하고 **삭제**를 클릭한 후 **데이터베이스 삭제** 대화 상자에서 **기존 연결 닫기**를 선택하고 **확인**을 클릭합니다.
+SSOX에서 데이터베이스를 삭제하려면 데이터베이스를 마우스 오른쪽 단추로 클릭하고 **삭제** 를 클릭한 후 **데이터베이스 삭제** 대화 상자에서 **기존 연결 닫기** 를 선택하고 **확인** 을 클릭합니다.
 
 CLI를 사용하여 데이터베이스를 삭제하려면 `database drop` CLI 명령을 실행합니다.
 
