@@ -5,8 +5,9 @@ description: Azure Active Directory를 사용하여 ASP.NET Core Blazor WebAssem
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: devx-track-csharp, mvc
-ms.date: 10/27/2020
+ms.date: 11/02/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: cb1deb71723660964954c2faae4512b7df9b2ed4
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 17f96be762ece8c59577445eb2ae630a8ee3b3dd
+ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690547"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234480"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>Azure Active Directory를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호
 
@@ -140,15 +141,17 @@ ms.locfileid: "92690547"
 dotnet new blazorwasm -au SingleOrg --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -o {APP NAME} --tenant-id "{TENANT ID}"
 ```
 
-| 자리표시자                  | Azure Portal 이름                                     | 예제                                      |
-| ---------------------------- | ----------------------------------------------------- | -------------------------------------------- |
-| `{APP NAME}`                 | &mdash;                                               | `BlazorSample`                               |
-| `{CLIENT APP CLIENT ID}`     | *`Client`* 앱의 애플리케이션(클라이언트) ID        | `4369008b-21fa-427c-abaa-9b53bf58e538`       |
-| `{DEFAULT SCOPE}`            | 범위 이름                                            | `API.Access`                                 |
-| `{SERVER API APP CLIENT ID}` | 서버 API 앱의 애플리케이션(클라이언트) ID      | `41451fa7-82d9-4673-8fa5-69eff5a761fd`       |
-| `{SERVER API APP ID URI}`    | 애플리케이션 ID URI                                    | `api://41451fa7-82d9-4673-8fa5-69eff5a761fd` |
-| `{TENANT DOMAIN}`            | 주/게시자/테넌트 도메인                       | `contoso.onmicrosoft.com`                    |
-| `{TENANT ID}`                | 디렉터리(테넌트) ID                                 | `e86c78e2-8bb4-4c41-aefd-918e0565a45e`       |
+| 자리표시자                  | Azure Portal 이름                                     | 예제                                        |
+| ---------------------------- | ----------------------------------------------------- | ---------------------------------------------- |
+| `{APP NAME}`                 | &mdash;                                               | `BlazorSample`                                 |
+| `{CLIENT APP CLIENT ID}`     | *`Client`* 앱의 애플리케이션(클라이언트) ID        | `4369008b-21fa-427c-abaa-9b53bf58e538`         |
+| `{DEFAULT SCOPE}`            | 범위 이름                                            | `API.Access`                                   |
+| `{SERVER API APP CLIENT ID}` | 서버 API 앱의 애플리케이션(클라이언트) ID      | `41451fa7-82d9-4673-8fa5-69eff5a761fd`         |
+| `{SERVER API APP ID URI}`    | 애플리케이션 ID URI&dagger;                            | `41451fa7-82d9-4673-8fa5-69eff5a761fd`&dagger; |
+| `{TENANT DOMAIN}`            | 주/게시자/테넌트 도메인                       | `contoso.onmicrosoft.com`                      |
+| `{TENANT ID}`                | 디렉터리(테넌트) ID                                 | `e86c78e2-8bb4-4c41-aefd-918e0565a45e`         |
+
+&dagger;Blazor WebAssembly 템플릿은 `dotnet new` 명령에 전달된 앱 ID URI 인수에 `api://`의 구성표를 자동으로 추가합니다. `{SERVER API APP ID URI}` 자리 표시자의 앱 ID URI를 제공할 때 구성표가 `api://`인 경우 앞의 테이블에 나온 것처럼 인수에서 구성표(`api://`)를 제거하세요. 앱 ID URI가 사용자 지정 값이거나 다른 구성표(예를 들어 `https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd`와 유사한 신뢰할 수 없는 게시자 도메인의 `https://`)를 갖는 경우 기본 범위 URI를 수동으로 업데이트하고 템플릿이 *`Client`* 앱을 만든 후 `api://` 구성표를 제거해야 합니다. 자세한 내용은 [액세스 토큰 범위](#access-token-scopes) 섹션의 참고를 참조하세요. 이러한 시나리오를 해결하기 위해 ASP.NET Core의 이후 릴리스에서 Blazor WebAssembly 템플릿이 변경될 수 있습니다. 자세한 내용은 [Double scheme for App ID URI with Blazor WASM template (hosted, single org) (dotnet/aspnetcore #27417)](https://github.com/dotnet/aspnetcore/issues/27417)을 참조하세요.
 
 `-o|--output` 옵션으로 지정된 출력 위치는 프로젝트 폴더가 없는 경우 폴더를 하나 만들고 앱 이름의 일부가 됩니다.
 
@@ -328,7 +331,7 @@ services.Configure<JwtBearerOptions>(
 
 ### <a name="weatherforecast-controller"></a>WeatherForecast 컨트롤러
 
-WeatherForecast 컨트롤러( *Controllers/WeatherForecastController.cs* )는 컨트롤러에 적용된 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성을 사용하여, 보호된 API를 노출합니다. 다음과 같은 사항을 이해하는 것이 **중요합니다** .
+WeatherForecast 컨트롤러( *Controllers/WeatherForecastController.cs* )는 컨트롤러에 적용된 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성을 사용하여, 보호된 API를 노출합니다. 다음과 같은 사항을 이해하는 것이 **중요합니다**.
 
 * 이 API 컨트롤러의 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성은 무단 액세스로부터 이 API 컨트롤러를 보호하는 유일한 항목입니다.
 * Blazor WebAssembly 앱에서 사용되는 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성은 앱이 올바르게 작동하려면 사용자에게 권한이 부여되어야 한다는 힌트만 앱에 전달합니다.
@@ -437,6 +440,29 @@ builder.Services.AddMsalAuthentication(options =>
     options.ProviderOptions.DefaultAccessTokenScopes.Add("{SCOPE URI}");
 });
 ```
+
+> [!NOTE]
+> Blazor WebAssembly 템플릿은 `dotnet new` 명령에 전달된 앱 ID URI 인수에 `api://`의 구성표를 자동으로 추가합니다. Blazor 프로젝트 템플릿에서 앱을 생성할 때 기본 액세스 토큰 범위의 값이 Azure Portal에 제공한 올바른 사용자 지정 앱 ID URI 값 또는 다음 형식 중 **하나** 인 값을 사용하는지 확인합니다.
+>
+> * 디렉터리의 게시자 도메인을 **신뢰할 수 있는** 경우 기본 액세스 토큰 범위는 일반적으로 다음 예제와 비슷한 값입니다. 여기서 `API.Access`는 기본 범위 이름입니다.
+>
+>   ```csharp
+>   options.ProviderOptions.DefaultAccessTokenScopes.Add(
+>       "api://41451fa7-82d9-4673-8fa5-69eff5a761fd/API.Access");
+>   ```
+>
+>   이중 구성표(`api://api://...`)의 값을 검사합니다. 이중 구성표가 있는 경우 값에서 첫 번째 `api://` 구성표를 제거합니다.
+>
+> * 디렉터리의 게시자 도메인을 **신뢰할 수 없는** 경우 기본 액세스 토큰 범위는 일반적으로 다음 예제와 비슷한 값입니다. 여기서 `API.Access`는 기본 범위 이름입니다.
+>
+>   ```csharp
+>   options.ProviderOptions.DefaultAccessTokenScopes.Add(
+>       "https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd/API.Access");
+>   ```
+>
+>   추가 `api://` 구성표(`api://https://contoso.onmicrosoft.com/...`)의 값을 검사합니다. 추가 `api://` 구성표가 있는 경우 값에서 `api://` 구성표를 제거합니다.
+>
+> 이러한 시나리오를 해결하기 위해 ASP.NET Core의 이후 릴리스에서 Blazor WebAssembly 템플릿이 변경될 수 있습니다. 자세한 내용은 [Double scheme for App ID URI with Blazor WASM template (hosted, single org) (dotnet/aspnetcore #27417)](https://github.com/dotnet/aspnetcore/issues/27417)을 참조하세요.
 
 `AdditionalScopesToConsent`를 사용하여 추가 범위를 지정합니다.
 
