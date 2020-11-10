@@ -7,17 +7,17 @@ ms.custom: mvc
 ms.date: 11/06/2020
 ms.topic: tutorial
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/ef-mvc/intro
 ms.openlocfilehash: 77cf1e9ad51b7044a35e1a9b2c125b0fdd91435e
 ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
@@ -217,9 +217,9 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 5.0.0-rc.2.2047
 
 [!code-csharp[](intro/samples/5cu-snap/Startup.cs?name=snippet&highlight=1-2,22-23)]
 
-<span data-ttu-id="0bb2d-236">`DbContextOptionsBuilder` 개체에서 메서드를 호출하여 연결 문자열의 이름을 컨텍스트에 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-236">The name of the connection string is passed in to the context by calling a method on a `DbContextOptionsBuilder` object.</span></span> <span data-ttu-id="0bb2d-237">로컬 개발의 경우 [ASP.NET Core 구성 시스템](xref:fundamentals/configuration/index)은 *:::no-loc(appsettings.json):::* 파일에서 연결 문자열을 읽습니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-237">For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *:::no-loc(appsettings.json):::* file.</span></span>
+<span data-ttu-id="0bb2d-236">`DbContextOptionsBuilder` 개체에서 메서드를 호출하여 연결 문자열의 이름을 컨텍스트에 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-236">The name of the connection string is passed in to the context by calling a method on a `DbContextOptionsBuilder` object.</span></span> <span data-ttu-id="0bb2d-237">로컬 개발의 경우 [ASP.NET Core 구성 시스템](xref:fundamentals/configuration/index)은 *appsettings.json* 파일에서 연결 문자열을 읽습니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-237">For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *appsettings.json* file.</span></span>
 
-<span data-ttu-id="0bb2d-238">*:::no-loc(appsettings.json):::* 파일을 열고 다음 표시에 나온 것처럼 연결 문자열을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-238">Open the *:::no-loc(appsettings.json):::* file and add a connection string as shown in the following markup:</span></span>
+<span data-ttu-id="0bb2d-238">*appsettings.json* 파일을 열고 다음 표시에 나온 것처럼 연결 문자열을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-238">Open the *appsettings.json* file and add a connection string as shown in the following markup:</span></span>
 
 [!code-json[](./intro/samples/5cu/appsettings1.json?highlight=2-4)]
 
@@ -322,7 +322,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 5.0.0-rc.2.2047
 
 * <span data-ttu-id="0bb2d-300">Visual Studio의 **보기** 메뉴에서 **SQL Server 개체 탐색기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-300">Select **SQL Server Object Explorer** from the **View** menu in Visual Studio.</span></span>
 * <span data-ttu-id="0bb2d-301">SSOX에서 **(localdb)\MSSQLLocalDB > Databases** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-301">In SSOX, select **(localdb)\MSSQLLocalDB > Databases**.</span></span>
-* <span data-ttu-id="0bb2d-302">*:::no-loc(appsettings.json):::* 파일의 연결 문자열에 있는 데이터베이스 이름의 항목인 `ContosoUniversity1`를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-302">Select `ContosoUniversity1`, the entry for the database name that's in the connection string in the *:::no-loc(appsettings.json):::* file.</span></span>
+* <span data-ttu-id="0bb2d-302">*appsettings.json* 파일의 연결 문자열에 있는 데이터베이스 이름의 항목인 `ContosoUniversity1`를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-302">Select `ContosoUniversity1`, the entry for the database name that's in the connection string in the *appsettings.json* file.</span></span>
 * <span data-ttu-id="0bb2d-303">**테이블** 노드를 확장하여 데이터베이스의 테이블을 봅니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-303">Expand the **Tables** node to see the tables in the database.</span></span>
 
 ![SSOX의 테이블](intro/_static/ssox-tables.png)
@@ -556,13 +556,13 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 5.0.0-rc.2.2047
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=9-10)]
 
-<span data-ttu-id="0bb2d-472">`DbContextOptionsBuilder` 개체에서 메서드를 호출하여 연결 문자열의 이름을 컨텍스트에 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-472">The name of the connection string is passed in to the context by calling a method on a `DbContextOptionsBuilder` object.</span></span> <span data-ttu-id="0bb2d-473">로컬 개발의 경우 [ASP.NET Core 구성 시스템](xref:fundamentals/configuration/index)은 *:::no-loc(appsettings.json):::* 파일에서 연결 문자열을 읽습니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-473">For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *:::no-loc(appsettings.json):::* file.</span></span>
+<span data-ttu-id="0bb2d-472">`DbContextOptionsBuilder` 개체에서 메서드를 호출하여 연결 문자열의 이름을 컨텍스트에 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-472">The name of the connection string is passed in to the context by calling a method on a `DbContextOptionsBuilder` object.</span></span> <span data-ttu-id="0bb2d-473">로컬 개발의 경우 [ASP.NET Core 구성 시스템](xref:fundamentals/configuration/index)은 *appsettings.json* 파일에서 연결 문자열을 읽습니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-473">For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *appsettings.json* file.</span></span>
 
 <span data-ttu-id="0bb2d-474">`ContosoUniversity.Data` 및 `Microsoft.EntityFrameworkCore` 네임스페이스에 대해 `using` 문을 추가한 다음, 프로젝트를 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-474">Add `using` statements for `ContosoUniversity.Data` and `Microsoft.EntityFrameworkCore` namespaces, and then build the project.</span></span>
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Usings)]
 
-<span data-ttu-id="0bb2d-475">*:::no-loc(appsettings.json):::* 파일을 열고 다음 예제에 나온 것처럼 연결 문자열을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-475">Open the *:::no-loc(appsettings.json):::* file and add a connection string as shown in the following example.</span></span>
+<span data-ttu-id="0bb2d-475">*appsettings.json* 파일을 열고 다음 예제에 나온 것처럼 연결 문자열을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-475">Open the *appsettings.json* file and add a connection string as shown in the following example.</span></span>
 
 [!code-json[](./intro/samples/cu/appsettings1.json?highlight=2-4)]
 
@@ -646,7 +646,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 5.0.0-rc.2.2047
 
 <span data-ttu-id="0bb2d-530">SSOX 창이 열려 있지 않은 경우 Visual Studio의 **보기** 메뉴에서 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-530">If the SSOX window isn't already open, select it from the **View** menu in Visual Studio.</span></span>
 
-<span data-ttu-id="0bb2d-531">SSOX에서 **(localdb)\MSSQLLocalDB > Databases** 를 클릭한 다음 *:::no-loc(appsettings.json):::* 파일의 연결 문자열에 있는 데이터베이스 이름 항목을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-531">In SSOX, click **(localdb)\MSSQLLocalDB > Databases** , and then click the entry for the database name that's in the connection string in the *:::no-loc(appsettings.json):::* file.</span></span>
+<span data-ttu-id="0bb2d-531">SSOX에서 **(localdb)\MSSQLLocalDB > Databases** 를 클릭한 다음 *appsettings.json* 파일의 연결 문자열에 있는 데이터베이스 이름 항목을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-531">In SSOX, click **(localdb)\MSSQLLocalDB > Databases** , and then click the entry for the database name that's in the connection string in the *appsettings.json* file.</span></span>
 
 <span data-ttu-id="0bb2d-532">**테이블** 노드를 확장하여 데이터베이스의 테이블을 봅니다.</span><span class="sxs-lookup"><span data-stu-id="0bb2d-532">Expand the **Tables** node to see the tables in the database.</span></span>
 

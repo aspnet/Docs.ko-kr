@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/17/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/host/generic-host
 ms.openlocfilehash: 3e44932c302713132a37534b97fffdd91acce2c7
 ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
@@ -114,7 +114,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
   * <span data-ttu-id="192d4-132">접두사가 `DOTNET_`인 환경 변수.</span><span class="sxs-lookup"><span data-stu-id="192d4-132">Environment variables prefixed with `DOTNET_`.</span></span>
   * <span data-ttu-id="192d4-133">명령줄 인수.</span><span class="sxs-lookup"><span data-stu-id="192d4-133">Command-line arguments.</span></span>
 * <span data-ttu-id="192d4-134">다음에서 앱 구성을 로드합니다.</span><span class="sxs-lookup"><span data-stu-id="192d4-134">Loads app configuration from:</span></span>
-  * <span data-ttu-id="192d4-135">*:::no-loc(appsettings.json):::*.</span><span class="sxs-lookup"><span data-stu-id="192d4-135">*:::no-loc(appsettings.json):::*.</span></span>
+  * <span data-ttu-id="192d4-135">*appsettings.json*.</span><span class="sxs-lookup"><span data-stu-id="192d4-135">*appsettings.json*.</span></span>
   * <span data-ttu-id="192d4-136">*appsettings.{Environment}.json*.</span><span class="sxs-lookup"><span data-stu-id="192d4-136">*appsettings.{Environment}.json*.</span></span>
   * <span data-ttu-id="192d4-137">[비밀 관리자](xref:security/app-secrets): 앱이 `Development` 환경에서 실행되는 경우</span><span class="sxs-lookup"><span data-stu-id="192d4-137">[Secret Manager](xref:security/app-secrets) when the app runs in the `Development` environment.</span></span>
   * <span data-ttu-id="192d4-138">환경 변수.</span><span class="sxs-lookup"><span data-stu-id="192d4-138">Environment variables.</span></span>
@@ -271,7 +271,7 @@ Host.CreateDefaultBuilder(args)
 
 ### <a name="disable-app-configuration-reload-on-change"></a><span data-ttu-id="192d4-244">변경 시 앱 구성 다시 로드 사용 안 함</span><span class="sxs-lookup"><span data-stu-id="192d4-244">Disable app configuration reload on change</span></span>
 
-<span data-ttu-id="192d4-245">[기본적으로](xref:fundamentals/configuration/index#default) 파일이 변경되면 *:::no-loc(appsettings.json):::* 및 *appsettings.{Environment}.json* 이 다시 로드됩니다.</span><span class="sxs-lookup"><span data-stu-id="192d4-245">By [default](xref:fundamentals/configuration/index#default), *:::no-loc(appsettings.json):::* and *appsettings.{Environment}.json* are reloaded when the file changes.</span></span> <span data-ttu-id="192d4-246">ASP.NET Core 5.0 이상에서 해당 다시 로드 동작을 사용하지 않도록 설정하려면 `hostBuilder:reloadConfigOnChange` 키를 `false`로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="192d4-246">To disable this reload behavior in ASP.NET Core 5.0 or later, set the `hostBuilder:reloadConfigOnChange` key to `false`.</span></span>
+<span data-ttu-id="192d4-245">[기본적으로](xref:fundamentals/configuration/index#default) 파일이 변경되면 *appsettings.json* 및 *appsettings.{Environment}.json* 이 다시 로드됩니다.</span><span class="sxs-lookup"><span data-stu-id="192d4-245">By [default](xref:fundamentals/configuration/index#default), *appsettings.json* and *appsettings.{Environment}.json* are reloaded when the file changes.</span></span> <span data-ttu-id="192d4-246">ASP.NET Core 5.0 이상에서 해당 다시 로드 동작을 사용하지 않도록 설정하려면 `hostBuilder:reloadConfigOnChange` 키를 `false`로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="192d4-246">To disable this reload behavior in ASP.NET Core 5.0 or later, set the `hostBuilder:reloadConfigOnChange` key to `false`.</span></span>
 
 <span data-ttu-id="192d4-247">**키** : `hostBuilder:reloadConfigOnChange`</span><span class="sxs-lookup"><span data-stu-id="192d4-247">**Key** : `hostBuilder:reloadConfigOnChange`</span></span>  
 <span data-ttu-id="192d4-248">**형식** : `bool`(`true` 또는 `1`)</span><span class="sxs-lookup"><span data-stu-id="192d4-248">**Type** : `bool` (`true` or `1`)</span></span>  
@@ -617,7 +617,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
   * <span data-ttu-id="192d4-399">접두사가 `DOTNET_`인 환경 변수.</span><span class="sxs-lookup"><span data-stu-id="192d4-399">Environment variables prefixed with `DOTNET_`.</span></span>
   * <span data-ttu-id="192d4-400">명령줄 인수.</span><span class="sxs-lookup"><span data-stu-id="192d4-400">Command-line arguments.</span></span>
 * <span data-ttu-id="192d4-401">다음에서 앱 구성을 로드합니다.</span><span class="sxs-lookup"><span data-stu-id="192d4-401">Loads app configuration from:</span></span>
-  * <span data-ttu-id="192d4-402">*:::no-loc(appsettings.json):::*.</span><span class="sxs-lookup"><span data-stu-id="192d4-402">*:::no-loc(appsettings.json):::*.</span></span>
+  * <span data-ttu-id="192d4-402">*appsettings.json*.</span><span class="sxs-lookup"><span data-stu-id="192d4-402">*appsettings.json*.</span></span>
   * <span data-ttu-id="192d4-403">*appsettings.{Environment}.json*.</span><span class="sxs-lookup"><span data-stu-id="192d4-403">*appsettings.{Environment}.json*.</span></span>
   * <span data-ttu-id="192d4-404">[비밀 관리자](xref:security/app-secrets): 앱이 `Development` 환경에서 실행되는 경우</span><span class="sxs-lookup"><span data-stu-id="192d4-404">[Secret Manager](xref:security/app-secrets) when the app runs in the `Development` environment.</span></span>
   * <span data-ttu-id="192d4-405">환경 변수.</span><span class="sxs-lookup"><span data-stu-id="192d4-405">Environment variables.</span></span>
@@ -1175,9 +1175,9 @@ var host = new HostBuilder()
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_ConfigureAppConfiguration)]
 
-<span data-ttu-id="192d4-729">*:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="192d4-729">*:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="192d4-729">*appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="192d4-729">*appsettings.json* :</span></span>
 
-[!code-json[](generic-host/samples/2.x/GenericHostSample/:::no-loc(appsettings.json):::)]
+[!code-json[](generic-host/samples/2.x/GenericHostSample/appsettings.json)]
 
 <span data-ttu-id="192d4-730">*appsettings.Development.json* :</span><span class="sxs-lookup"><span data-stu-id="192d4-730">*appsettings.Development.json* :</span></span>
 

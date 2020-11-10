@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/26/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/logging/loggermessage
 ms.openlocfilehash: 0224e768bd0e016eac5165dc4d9745f4b0867094
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -155,9 +155,9 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 
 <span data-ttu-id="b12eb-168">샘플 앱에는 데이터베이스에서 모든 견적을 삭제하기 위한 **모두 지우기** 단추가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-168">The sample app has a **Clear All** button for deleting all of the quotes in the database.</span></span> <span data-ttu-id="b12eb-169">견적은 한 번에 하나를 제거하여 삭제됩니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-169">The quotes are deleted by removing them one at a time.</span></span> <span data-ttu-id="b12eb-170">견적이 삭제될 때마다 로거에서 `QuoteDeleted` 메서드가 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-170">Each time a quote is deleted, the `QuoteDeleted` method is called on the logger.</span></span> <span data-ttu-id="b12eb-171">로그 범위가 이러한 로그 메시지에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-171">A log scope is added to these log messages.</span></span>
 
-<span data-ttu-id="b12eb-172">*:::no-loc(appsettings.json):::* 의 콘솔 로거 섹션에서 `IncludeScopes`를 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-172">Enable `IncludeScopes` in the console logger section of *:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="b12eb-172">*appsettings.json* 의 콘솔 로거 섹션에서 `IncludeScopes`를 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-172">Enable `IncludeScopes` in the console logger section of *appsettings.json* :</span></span>
 
-[!code-json[](loggermessage/samples/3.x/LoggerMessageSample/:::no-loc(appsettings.json):::?highlight=3-5)]
+[!code-json[](loggermessage/samples/3.x/LoggerMessageSample/appsettings.json?highlight=3-5)]
 
 <span data-ttu-id="b12eb-173">로그 범위를 만들려면 범위에 대한 <xref:System.Func%601> 대리자를 보유하는 필드를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-173">To create a log scope, add a field to hold a <xref:System.Func%601> delegate for the scope.</span></span> <span data-ttu-id="b12eb-174">샘플 앱은 `_allQuotesDeletedScope`라는 필드를 만듭니다( *Internal/LoggerExtensions.cs* ).</span><span class="sxs-lookup"><span data-stu-id="b12eb-174">The sample app creates a field called `_allQuotesDeletedScope` ( *Internal/LoggerExtensions.cs* ):</span></span>
 
@@ -323,9 +323,9 @@ Parameter name: entity
 
 <span data-ttu-id="b12eb-248">샘플 앱에는 데이터베이스에서 모든 견적을 삭제하기 위한 **모두 지우기** 단추가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-248">The sample app has a **Clear All** button for deleting all of the quotes in the database.</span></span> <span data-ttu-id="b12eb-249">견적은 한 번에 하나를 제거하여 삭제됩니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-249">The quotes are deleted by removing them one at a time.</span></span> <span data-ttu-id="b12eb-250">견적이 삭제될 때마다 로거에서 `QuoteDeleted` 메서드가 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-250">Each time a quote is deleted, the `QuoteDeleted` method is called on the logger.</span></span> <span data-ttu-id="b12eb-251">로그 범위가 이러한 로그 메시지에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-251">A log scope is added to these log messages.</span></span>
 
-<span data-ttu-id="b12eb-252">*:::no-loc(appsettings.json):::* 의 콘솔 로거 섹션에서 `IncludeScopes`를 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-252">Enable `IncludeScopes` in the console logger section of *:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="b12eb-252">*appsettings.json* 의 콘솔 로거 섹션에서 `IncludeScopes`를 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-252">Enable `IncludeScopes` in the console logger section of *appsettings.json* :</span></span>
 
-[!code-json[](loggermessage/samples/2.x/LoggerMessageSample/:::no-loc(appsettings.json):::?highlight=3-5)]
+[!code-json[](loggermessage/samples/2.x/LoggerMessageSample/appsettings.json?highlight=3-5)]
 
 <span data-ttu-id="b12eb-253">로그 범위를 만들려면 범위에 대한 <xref:System.Func%601> 대리자를 보유하는 필드를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="b12eb-253">To create a log scope, add a field to hold a <xref:System.Func%601> delegate for the scope.</span></span> <span data-ttu-id="b12eb-254">샘플 앱은 `_allQuotesDeletedScope`라는 필드를 만듭니다( *Internal/LoggerExtensions.cs* ).</span><span class="sxs-lookup"><span data-stu-id="b12eb-254">The sample app creates a field called `_allQuotesDeletedScope` ( *Internal/LoggerExtensions.cs* ):</span></span>
 

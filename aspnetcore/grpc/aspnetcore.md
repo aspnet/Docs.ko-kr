@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/03/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: grpc/aspnetcore
 ms.openlocfilehash: b120aa4ab6922445f2c53f3b1cb3bd5c159d8a84
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -94,9 +94,9 @@ ms.locfileid: "93057832"
 
 <span data-ttu-id="b3b32-133">gRPC에 사용되는 Kestrel 엔드포인트는 TLS로 보호해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="b3b32-133">Kestrel endpoints used for gRPC should be secured with TLS.</span></span> <span data-ttu-id="b3b32-134">개발에서는 ASP.NET Core 개발 인증서가 있을 경우 TLS로 보호된 엔드포인트가 `https://localhost:5001`에 자동으로 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="b3b32-134">In development, an endpoint secured with TLS is automatically created at `https://localhost:5001` when the ASP.NET Core development certificate is present.</span></span> <span data-ttu-id="b3b32-135">구성이 필요하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="b3b32-135">No configuration is required.</span></span> <span data-ttu-id="b3b32-136">`https` 접두사는 Kestrel 엔드포인트가 TLS를 사용하는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="b3b32-136">An `https` prefix verifies the Kestrel endpoint is using TLS.</span></span>
 
-<span data-ttu-id="b3b32-137">프로덕션에서는 TLS를 명시적으로 구성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="b3b32-137">In production, TLS must be explicitly configured.</span></span> <span data-ttu-id="b3b32-138">다음 *:::no-loc(appsettings.json):::* 예제에서는 TLS로 보호되는 HTTP/2 엔드포인트가 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="b3b32-138">In the following *:::no-loc(appsettings.json):::* example, an HTTP/2 endpoint secured with TLS is provided:</span></span>
+<span data-ttu-id="b3b32-137">프로덕션에서는 TLS를 명시적으로 구성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="b3b32-137">In production, TLS must be explicitly configured.</span></span> <span data-ttu-id="b3b32-138">다음 *appsettings.json* 예제에서는 TLS로 보호되는 HTTP/2 엔드포인트가 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="b3b32-138">In the following *appsettings.json* example, an HTTP/2 endpoint secured with TLS is provided:</span></span>
 
-[!code-json[](~/grpc/aspnetcore/sample/:::no-loc(appsettings.json):::?highlight=4)]
+[!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
 
 <span data-ttu-id="b3b32-139">또는 *Program.cs* 에서 Kestrel 엔드포인트를 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b3b32-139">Alternatively, Kestrel endpoints can be configured in *Program.cs* :</span></span>
 

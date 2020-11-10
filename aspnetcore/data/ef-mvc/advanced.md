@@ -7,17 +7,17 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/ef-mvc/advanced
 ms.openlocfilehash: 386be395399bf4131e4b6c8cac8221f994e8b7c5
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -105,7 +105,7 @@ ms.locfileid: "93054387"
 
 <span data-ttu-id="2b48f-160">**솔루션 탐색기** 에서 *Views/Courses* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가 > 새 항목** 을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="2b48f-160">In **Solution Explorer** , right-click the *Views/Courses* folder, and then click **Add > New Item**.</span></span>
 
-<span data-ttu-id="2b48f-161">**새 항목 추가** 대화 상자에서 왼쪽 창의 **설치됨** 아래에서 **ASP.NET** 을 클릭하고, **:::no-loc(Razor)::: 뷰** 를 클릭한 후, 새 뷰의 이름을 *UpdateCourseCredits.cshtml* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="2b48f-161">In the **Add New Item** dialog, click **ASP.NET Core** under **Installed** in the left pane, click **:::no-loc(Razor)::: View** , and name the new view *UpdateCourseCredits.cshtml*.</span></span>
+<span data-ttu-id="2b48f-161">**새 항목 추가** 대화 상자에서 왼쪽 창의 **설치됨** 아래에서 **ASP.NET** 을 클릭하고, **Razor 뷰** 를 클릭한 후, 새 뷰의 이름을 *UpdateCourseCredits.cshtml* 로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="2b48f-161">In the **Add New Item** dialog, click **ASP.NET Core** under **Installed** in the left pane, click **Razor View** , and name the new view *UpdateCourseCredits.cshtml*.</span></span>
 
 <span data-ttu-id="2b48f-162">*Views/Courses/UpdateCourseCredits.cshtml* 에서 템플릿 코드를 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="2b48f-162">In *Views/Courses/UpdateCourseCredits.cshtml* , replace the template code with the following code:</span></span>
 
@@ -241,7 +241,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 <span data-ttu-id="2b48f-241">기존 데이터가 있는 데이터베이스에서 스키마를 변경할 때 다른 오류가 발생할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2b48f-241">It's possible to get other errors when making schema changes in a database that has existing data.</span></span> <span data-ttu-id="2b48f-242">해결할 수 없는 마이그레이션 오류가 발생하면 연결 문자열에서 데이터베이스 이름을 변경하거나 데이터베이스를 삭제할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2b48f-242">If you get migration errors you can't resolve, you can either change the database name in the connection string or delete the database.</span></span> <span data-ttu-id="2b48f-243">새 데이터베이스에는 마이그레이션할 데이터가 없으므로 update-database 명령은 오류없이 완료될 가능성이 훨씬 큽니다.</span><span class="sxs-lookup"><span data-stu-id="2b48f-243">With a new database, there's no data to migrate, and the update-database command is much more likely to complete without errors.</span></span>
 
-<span data-ttu-id="2b48f-244">가장 간단한 방법은 *:::no-loc(appsettings.json):::* 에서 데이터베이스 이름을 바꾸는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="2b48f-244">The simplest approach is to rename the database in *:::no-loc(appsettings.json):::*.</span></span> <span data-ttu-id="2b48f-245">다음에 `database update`를 실행할 때 새 데이터베이스가 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="2b48f-245">The next time you run `database update`, a new database will be created.</span></span>
+<span data-ttu-id="2b48f-244">가장 간단한 방법은 *appsettings.json* 에서 데이터베이스 이름을 바꾸는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="2b48f-244">The simplest approach is to rename the database in *appsettings.json*.</span></span> <span data-ttu-id="2b48f-245">다음에 `database update`를 실행할 때 새 데이터베이스가 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="2b48f-245">The next time you run `database update`, a new database will be created.</span></span>
 
 <span data-ttu-id="2b48f-246">SSOX에서 데이터베이스를 삭제하려면 데이터베이스를 마우스 오른쪽 단추로 클릭하고 **삭제** 를 클릭한 후 **데이터베이스 삭제** 대화 상자에서 **기존 연결 닫기** 를 선택하고 **확인** 을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="2b48f-246">To delete a database in SSOX, right-click the database, click **Delete** , and then in the **Delete Database** dialog box select **Close existing connections** and click **OK**.</span></span>
 

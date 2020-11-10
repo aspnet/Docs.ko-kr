@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/28/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: host-and-deploy/visual-studio-publish-profiles
 ms.openlocfilehash: 98dfd539171807cbf94d4ac8746458152c809495
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -42,7 +42,7 @@ ms.locfileid: "93057572"
 
 <span data-ttu-id="5a8a9-109">위 `<Project>` 요소의 `Sdk` 특성은 각각 *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.props* 및 *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.targets* 에서 MSBuild [속성](/visualstudio/msbuild/msbuild-properties) 및 [대상](/visualstudio/msbuild/msbuild-targets)을 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-109">The preceding `<Project>` element's `Sdk` attribute imports the MSBuild [properties](/visualstudio/msbuild/msbuild-properties) and [targets](/visualstudio/msbuild/msbuild-targets) from *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.props* and *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.targets* , respectively.</span></span> <span data-ttu-id="5a8a9-110">`$(MSBuildSDKsPath)`(Visual Studio 2019 Enterprise 사용)의 기본 위치는 *%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Sdks* 폴더입니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-110">The default location for `$(MSBuildSDKsPath)` (with Visual Studio 2019 Enterprise) is the *%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Sdks* folder.</span></span>
 
-<span data-ttu-id="5a8a9-111">`Microsoft.NET.Sdk.Web`([웹 SDK](xref:razor-pages/web-sdk))은 `Microsoft.NET.Sdk`([.NET Core SDK](/dotnet/core/project-sdk/msbuild-props)) 및 `Microsoft.NET.Sdk.:::no-loc(Razor):::`([:::no-loc(Razor)::: SDK](xref:razor-pages/sdk))를 비롯한 다른 SDK에 종속됩니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-111">`Microsoft.NET.Sdk.Web` ([Web SDK](xref:razor-pages/web-sdk)) depends on other SDKs, including `Microsoft.NET.Sdk` ([.NET Core SDK](/dotnet/core/project-sdk/msbuild-props)) and `Microsoft.NET.Sdk.:::no-loc(Razor):::` ([:::no-loc(Razor)::: SDK](xref:razor-pages/sdk)).</span></span> <span data-ttu-id="5a8a9-112">각 종속 SDK와 연결된 MSBuild 속성과 대상을 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-112">The MSBuild properties and targets associated with each dependent SDK are imported.</span></span> <span data-ttu-id="5a8a9-113">게시 대상은 사용된 게시 방법에 따라 해당 대상 집합을 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-113">Publish targets import the appropriate set of targets based on the publish method used.</span></span>
+<span data-ttu-id="5a8a9-111">`Microsoft.NET.Sdk.Web`([웹 SDK](xref:razor-pages/web-sdk))은 `Microsoft.NET.Sdk`([.NET Core SDK](/dotnet/core/project-sdk/msbuild-props)) 및 `Microsoft.NET.Sdk.Razor`([Razor SDK](xref:razor-pages/sdk))를 비롯한 다른 SDK에 종속됩니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-111">`Microsoft.NET.Sdk.Web` ([Web SDK](xref:razor-pages/web-sdk)) depends on other SDKs, including `Microsoft.NET.Sdk` ([.NET Core SDK](/dotnet/core/project-sdk/msbuild-props)) and `Microsoft.NET.Sdk.Razor` ([Razor SDK](xref:razor-pages/sdk)).</span></span> <span data-ttu-id="5a8a9-112">각 종속 SDK와 연결된 MSBuild 속성과 대상을 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-112">The MSBuild properties and targets associated with each dependent SDK are imported.</span></span> <span data-ttu-id="5a8a9-113">게시 대상은 사용된 게시 방법에 따라 해당 대상 집합을 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-113">Publish targets import the appropriate set of targets based on the publish method used.</span></span>
 
 <span data-ttu-id="5a8a9-114">MSBuild 또는 Visual Studio가 프로젝트를 로드하면 다음 높은 수준의 작업이 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-114">When MSBuild or Visual Studio loads a project, the following high-level actions occur:</span></span>
 
@@ -58,13 +58,13 @@ ms.locfileid: "93057572"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="5a8a9-126">[웹 SDK](xref:razor-pages/web-sdk)는 [:::no-loc(Razor)::: SDK](xref:razor-pages/sdk)를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-126">The [Web SDK](xref:razor-pages/web-sdk) imports the [:::no-loc(Razor)::: SDK](xref:razor-pages/sdk).</span></span> <span data-ttu-id="5a8a9-127">따라서 `**\*.cshtml` 및 `**\*.razor` 패턴과 일치하는 파일도 `Content` 항목 목록에 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-127">As a result, files matching the patterns `**\*.cshtml` and `**\*.razor` are also included in the `Content` item list.</span></span>
+<span data-ttu-id="5a8a9-126">[웹 SDK](xref:razor-pages/web-sdk)는 [Razor SDK](xref:razor-pages/sdk)를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-126">The [Web SDK](xref:razor-pages/web-sdk) imports the [Razor SDK](xref:razor-pages/sdk).</span></span> <span data-ttu-id="5a8a9-127">따라서 `**\*.cshtml` 및 `**\*.razor` 패턴과 일치하는 파일도 `Content` 항목 목록에 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-127">As a result, files matching the patterns `**\*.cshtml` and `**\*.razor` are also included in the `Content` item list.</span></span>
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
-<span data-ttu-id="5a8a9-128">[웹 SDK](xref:razor-pages/web-sdk)는 [:::no-loc(Razor)::: SDK](xref:razor-pages/sdk)를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-128">The [Web SDK](xref:razor-pages/web-sdk) imports the [:::no-loc(Razor)::: SDK](xref:razor-pages/sdk).</span></span> <span data-ttu-id="5a8a9-129">따라서 `**\*.cshtml` 패턴과 일치하는 파일도 `Content` 항목 목록에 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-129">As a result, files matching the `**\*.cshtml` pattern are also included in the `Content` item list.</span></span>
+<span data-ttu-id="5a8a9-128">[웹 SDK](xref:razor-pages/web-sdk)는 [Razor SDK](xref:razor-pages/sdk)를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-128">The [Web SDK](xref:razor-pages/web-sdk) imports the [Razor SDK](xref:razor-pages/sdk).</span></span> <span data-ttu-id="5a8a9-129">따라서 `**\*.cshtml` 패턴과 일치하는 파일도 `Content` 항목 목록에 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-129">As a result, files matching the `**\*.cshtml` pattern are also included in the `Content` item list.</span></span>
 
 ::: moniker-end
 
@@ -352,7 +352,7 @@ dotnet msbuild "AzureWebApp.csproj"
 * <span data-ttu-id="5a8a9-259">빌드 아티팩트</span><span class="sxs-lookup"><span data-stu-id="5a8a9-259">Build artifacts</span></span>
 * <span data-ttu-id="5a8a9-260">다음 와일드카드 사용 패턴과 일치하는 폴더 및 파일:</span><span class="sxs-lookup"><span data-stu-id="5a8a9-260">Folders and files matching the following globbing patterns:</span></span>
   * <span data-ttu-id="5a8a9-261">`**\*.config`(예: *web.config* )</span><span class="sxs-lookup"><span data-stu-id="5a8a9-261">`**\*.config` (for example, *web.config* )</span></span>
-  * <span data-ttu-id="5a8a9-262">`**\*.json`(예를 들어 *:::no-loc(appsettings.json):::* )</span><span class="sxs-lookup"><span data-stu-id="5a8a9-262">`**\*.json` (for example, *:::no-loc(appsettings.json):::* )</span></span>
+  * <span data-ttu-id="5a8a9-262">`**\*.json`(예를 들어 *appsettings.json* )</span><span class="sxs-lookup"><span data-stu-id="5a8a9-262">`**\*.json` (for example, *appsettings.json* )</span></span>
   * `wwwroot\**`
 
 <span data-ttu-id="5a8a9-263">MSBuild는 [와일드카드 사용 패턴](https://gruntjs.com/configuring-tasks#globbing-patterns)을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-263">MSBuild supports [globbing patterns](https://gruntjs.com/configuring-tasks#globbing-patterns).</span></span> <span data-ttu-id="5a8a9-264">예를 들어 다음 `<Content>` 요소는 *wwwroot\content* 폴더와 모든 하위 폴더에 있는 텍스트( *.txt* ) 파일의 복사를 표시하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="5a8a9-264">For example, the following `<Content>` element suppresses the copying of text ( *.txt* ) files in the *wwwroot\content* folder and its subfolders:</span></span>

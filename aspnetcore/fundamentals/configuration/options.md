@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/20/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/configuration/options
 ms.openlocfilehash: dedc17d7d793a6fd2eac1c8017b704d98a86f1cb
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -123,7 +123,7 @@ ms.locfileid: "93061095"
 * <span data-ttu-id="e2485-158">여러 구성 섹션이 동일한 속성에 바인딩되는 경우에 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-158">Are useful when multiple configuration sections bind to the same properties.</span></span>
 * <span data-ttu-id="e2485-159">대/소문자를 구분합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-159">Are case sensitive.</span></span>
 
-<span data-ttu-id="e2485-160">다음 *:::no-loc(appsettings.json):::* 파일을 살펴보세요.</span><span class="sxs-lookup"><span data-stu-id="e2485-160">Consider the following *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="e2485-160">다음 *appsettings.json* 파일을 살펴보세요.</span><span class="sxs-lookup"><span data-stu-id="e2485-160">Consider the following *appsettings.json* file:</span></span>
 
 [!code-json[](~/fundamentals/configuration/options/samples/3.x/OptionsSample/appsettings.NO.json)]
 
@@ -170,7 +170,7 @@ ms.locfileid: "93061095"
 
 <span data-ttu-id="e2485-184">옵션 유효성 검사를 통해 옵션 값의 유효성을 검사할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-184">Options validation enables option values to be validated.</span></span>
 
-<span data-ttu-id="e2485-185">다음 *:::no-loc(appsettings.json):::* 파일을 살펴보세요.</span><span class="sxs-lookup"><span data-stu-id="e2485-185">Consider the following *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="e2485-185">다음 *appsettings.json* 파일을 살펴보세요.</span><span class="sxs-lookup"><span data-stu-id="e2485-185">Consider the following *appsettings.json* file:</span></span>
 
 [!code-json[](~/fundamentals/configuration/options/samples/3.x/OptionsValidationSample/appsettings.Dev2.json)]
 
@@ -336,9 +336,9 @@ public void Configure(IApplicationBuilder app,
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example1)]
 
-<span data-ttu-id="e2485-247">샘플의 *:::no-loc(appsettings.json):::* 파일은 `option1` 및 `option2`의 값을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-247">The sample's *:::no-loc(appsettings.json):::* file specifies values for `option1` and `option2`:</span></span>
+<span data-ttu-id="e2485-247">샘플의 *appsettings.json* 파일은 `option1` 및 `option2`의 값을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-247">The sample's *appsettings.json* file specifies values for `option1` and `option2`:</span></span>
 
-[!code-json[](options/samples/2.x/OptionsSample/:::no-loc(appsettings.json):::?highlight=2-3)]
+[!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=2-3)]
 
 <span data-ttu-id="e2485-248">앱을 실행할 때 페이지 모델의 `OnGet` 메서드는 옵션 클래스 값을 표시하는 문자열을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-248">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
 
@@ -352,7 +352,7 @@ option1 = value1_from_json, option2 = -1
 > ```csharp
 > var configBuilder = new ConfigurationBuilder()
 >    .SetBasePath(Directory.GetCurrentDirectory())
->    .AddJsonFile(":::no-loc(appsettings.json):::", optional: true);
+>    .AddJsonFile("appsettings.json", optional: true);
 > var config = configBuilder.Build();
 >
 > services.Configure<MyOptions>(config);
@@ -382,7 +382,7 @@ option1 = value1_from_json, option2 = -1
 
 <span data-ttu-id="e2485-258">여러 구성 공급자를 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-258">You can add multiple configuration providers.</span></span> <span data-ttu-id="e2485-259">구성 공급자는 NuGet 패키지에서 사용할 수 있으며 등록된 순서대로 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-259">Configuration providers are available from NuGet packages and are applied in the order that they're registered.</span></span> <span data-ttu-id="e2485-260">자세한 내용은 <xref:fundamentals/configuration/index>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="e2485-260">For more information, see <xref:fundamentals/configuration/index>.</span></span>
 
-<span data-ttu-id="e2485-261"><xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*>를 호출할 때마다 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-261">Each call to <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> adds an <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service to the service container.</span></span> <span data-ttu-id="e2485-262">위의 예제에서는 `Option1` 및 `Option2`의 값은 모두 *:::no-loc(appsettings.json):::* 에서 지정되지만 `Option1` 및 `Option2`의 값은 구성된 대리자에 의해 재정의됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-262">In the preceding example, the values of `Option1` and `Option2` are both specified in *:::no-loc(appsettings.json):::* , but the values of `Option1` and `Option2` are overridden by the configured delegate.</span></span>
+<span data-ttu-id="e2485-261"><xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*>를 호출할 때마다 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-261">Each call to <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> adds an <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service to the service container.</span></span> <span data-ttu-id="e2485-262">위의 예제에서는 `Option1` 및 `Option2`의 값은 모두 *appsettings.json* 에서 지정되지만 `Option1` 및 `Option2`의 값은 구성된 대리자에 의해 재정의됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-262">In the preceding example, the values of `Option1` and `Option2` are both specified in *appsettings.json* , but the values of `Option1` and `Option2` are overridden by the configured delegate.</span></span>
 
 <span data-ttu-id="e2485-263">둘 이상의 구성 서비스를 활성화한 경우 마지막 지정된 구성 소스가 *승리* 하고 구성 값을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-263">When more than one configuration service is enabled, the last configuration source specified *wins* and sets the configuration value.</span></span> <span data-ttu-id="e2485-264">앱을 실행할 때 페이지 모델의 `OnGet` 메서드는 옵션 클래스 값을 표시하는 문자열을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-264">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
 
@@ -396,17 +396,17 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 <span data-ttu-id="e2485-267">앱은 앱의 특정 시나리오 그룹(클래스)에 적합한 옵션 클래스를 만들어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-267">Apps should create options classes that pertain to specific scenario groups (classes) in the app.</span></span> <span data-ttu-id="e2485-268">구성 값을 필요로 하는 앱의 부분은 사용하는 구성 값에만 액세스할 수 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-268">Parts of the app that require configuration values should only have access to the configuration values that they use.</span></span>
 
-<span data-ttu-id="e2485-269">옵션을 구성에 바인딩하는 경우 옵션 형식의 각 속성은 `property[:sub-property:]` 양식의 구성 키에 바인딩됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-269">When binding options to configuration, each property in the options type is bound to a configuration key of the form `property[:sub-property:]`.</span></span> <span data-ttu-id="e2485-270">예를 들어 `MyOptions.Option1` 속성은 키 `Option1`에 바인딩되어 *:::no-loc(appsettings.json):::* 의 `option1` 속성에서 읽힙니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-270">For example, the `MyOptions.Option1` property is bound to the key `Option1`, which is read from the `option1` property in *:::no-loc(appsettings.json):::*.</span></span>
+<span data-ttu-id="e2485-269">옵션을 구성에 바인딩하는 경우 옵션 형식의 각 속성은 `property[:sub-property:]` 양식의 구성 키에 바인딩됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-269">When binding options to configuration, each property in the options type is bound to a configuration key of the form `property[:sub-property:]`.</span></span> <span data-ttu-id="e2485-270">예를 들어 `MyOptions.Option1` 속성은 키 `Option1`에 바인딩되어 *appsettings.json* 의 `option1` 속성에서 읽힙니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-270">For example, the `MyOptions.Option1` property is bound to the key `Option1`, which is read from the `option1` property in *appsettings.json*.</span></span>
 
-<span data-ttu-id="e2485-271">다음 코드에서 세 번째 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-271">In the following code, a third <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="e2485-272">이 서비스는 `MySubOptions`를 *:::no-loc(appsettings.json):::* 파일의 섹션 `subsection`에 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-272">It binds `MySubOptions` to the section `subsection` of the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="e2485-271">다음 코드에서 세 번째 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-271">In the following code, a third <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="e2485-272">이 서비스는 `MySubOptions`를 *appsettings.json* 파일의 섹션 `subsection`에 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-272">It binds `MySubOptions` to the section `subsection` of the *appsettings.json* file:</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
 <span data-ttu-id="e2485-273">`GetSection` 메서드를 사용하려면 <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> 네임스페이스가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-273">The `GetSection` method requires the <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> namespace.</span></span>
 
-<span data-ttu-id="e2485-274">샘플의 *:::no-loc(appsettings.json):::* 파일은 `suboption1` 및 `suboption2`에 대한 키로 `subsection` 멤버를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-274">The sample's *:::no-loc(appsettings.json):::* file defines a `subsection` member with keys for `suboption1` and `suboption2`:</span></span>
+<span data-ttu-id="e2485-274">샘플의 *appsettings.json* 파일은 `suboption1` 및 `suboption2`에 대한 키로 `subsection` 멤버를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-274">The sample's *appsettings.json* file defines a `subsection` member with keys for `suboption1` and `suboption2`:</span></span>
 
-[!code-json[](options/samples/2.x/OptionsSample/:::no-loc(appsettings.json):::?highlight=4-7)]
+[!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=4-7)]
 
 <span data-ttu-id="e2485-275">`MySubOptions` 클래스는 `SubOption1` 및 `SubOption2` 속성을 정의하여 옵션 값을 유지합니다( *Models/MySubOptions.cs* ).</span><span class="sxs-lookup"><span data-stu-id="e2485-275">The `MySubOptions` class defines properties, `SubOption1` and `SubOption2`, to hold the options values ( *Models/MySubOptions.cs* ):</span></span>
 
@@ -432,7 +432,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 <span data-ttu-id="e2485-280">다음에 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>를 삽입합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-280">Inject <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> into:</span></span>
 
-* <span data-ttu-id="e2485-281">[`@inject`](xref:mvc/views/razor#inject) :::no-loc(Razor)::: 지시문이 포함된 :::no-loc(Razor)::: 페이지 또는 MVC 뷰.</span><span class="sxs-lookup"><span data-stu-id="e2485-281">A :::no-loc(Razor)::: page or MVC view with the [`@inject`](xref:mvc/views/razor#inject) :::no-loc(Razor)::: directive.</span></span>
+* <span data-ttu-id="e2485-281">[`@inject`](xref:mvc/views/razor#inject) Razor 지시문이 포함된 Razor 페이지 또는 MVC 뷰.</span><span class="sxs-lookup"><span data-stu-id="e2485-281">A Razor page or MVC view with the [`@inject`](xref:mvc/views/razor#inject) Razor directive.</span></span>
 * <span data-ttu-id="e2485-282">페이지 또는 뷰 모델입니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-282">A page or view model.</span></span>
 
 <span data-ttu-id="e2485-283">샘플 앱의 다음 예제는 페이지 모델( *Pages/Index.cshtml.cs* )에 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>를 삽입합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-283">The following example from the sample app injects <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> into a page model ( *Pages/Index.cshtml.cs* ):</span></span>
@@ -462,7 +462,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 * <span data-ttu-id="e2485-291">`IOptionsMonitor`는 언제든지 현재 옵션 값을 검색하는 [싱글톤 서비스](xref:fundamentals/dependency-injection#singleton)로, 싱글톤 종속성에서 특히 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-291">`IOptionsMonitor` is a [singleton service](xref:fundamentals/dependency-injection#singleton) that retrieves current option values at any time, which is especially useful in singleton dependencies.</span></span>
 * <span data-ttu-id="e2485-292">`IOptionsSnapshot`은 [범위가 지정된 서비스](xref:fundamentals/dependency-injection#scoped)이며 `IOptionsSnapshot<T>` 개체가 생성될 때 옵션의 스냅샷을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-292">`IOptionsSnapshot` is a [scoped service](xref:fundamentals/dependency-injection#scoped) and provides a snapshot of the options at the time the `IOptionsSnapshot<T>` object is constructed.</span></span> <span data-ttu-id="e2485-293">옵션 스냅숏은 임시 및 범위가 지정된 종속성과 함께 사용하도록 설계되었습니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-293">Options snapshots are designed for use with transient and scoped dependencies.</span></span>
 
-<span data-ttu-id="e2485-294">다음 예제에는 *:::no-loc(appsettings.json):::* 이 변경된 후 새 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>을 만드는 방법이 설명되어 있습니다( *Pages/Index.cshtml.cs* ).</span><span class="sxs-lookup"><span data-stu-id="e2485-294">The following example demonstrates how a new <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is created after *:::no-loc(appsettings.json):::* changes ( *Pages/Index.cshtml.cs* ).</span></span> <span data-ttu-id="e2485-295">서버에 대한 여러 요청은 파일이 변경되고 구성이 다시 로드될 때까지 *:::no-loc(appsettings.json):::* 파일에서 제공하는 상수 값을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-295">Multiple requests to the server return constant values provided by the *:::no-loc(appsettings.json):::* file until the file is changed and configuration reloads.</span></span>
+<span data-ttu-id="e2485-294">다음 예제에는 *appsettings.json* 이 변경된 후 새 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>을 만드는 방법이 설명되어 있습니다( *Pages/Index.cshtml.cs* ).</span><span class="sxs-lookup"><span data-stu-id="e2485-294">The following example demonstrates how a new <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is created after *appsettings.json* changes ( *Pages/Index.cshtml.cs* ).</span></span> <span data-ttu-id="e2485-295">서버에 대한 여러 요청은 파일이 변경되고 구성이 다시 로드될 때까지 *appsettings.json* 파일에서 제공하는 상수 값을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-295">Multiple requests to the server return constant values provided by the *appsettings.json* file until the file is changed and configuration reloads.</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=12)]
 
@@ -470,13 +470,13 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example5)]
 
-<span data-ttu-id="e2485-296">다음 이미지는 *:::no-loc(appsettings.json):::* 파일에서 로드된 초기 `option1` 및 `option2` 값을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-296">The following image shows the initial `option1` and `option2` values loaded from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="e2485-296">다음 이미지는 *appsettings.json* 파일에서 로드된 초기 `option1` 및 `option2` 값을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-296">The following image shows the initial `option1` and `option2` values loaded from the *appsettings.json* file:</span></span>
 
 ```html
 snapshot option1 = value1_from_json, snapshot option2 = -1
 ```
 
-<span data-ttu-id="e2485-297">*:::no-loc(appsettings.json):::* 파일의 값을 `value1_from_json UPDATED` 및 `200`으로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-297">Change the values in the *:::no-loc(appsettings.json):::* file to `value1_from_json UPDATED` and `200`.</span></span> <span data-ttu-id="e2485-298">*:::no-loc(appsettings.json):::* 파일을 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-298">Save the *:::no-loc(appsettings.json):::* file.</span></span> <span data-ttu-id="e2485-299">옵션 값이 변경되었음을 확인하려면 브라우저를 새로 고칩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-299">Refresh the browser to see that the options values are updated:</span></span>
+<span data-ttu-id="e2485-297">*appsettings.json* 파일의 값을 `value1_from_json UPDATED` 및 `200`으로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-297">Change the values in the *appsettings.json* file to `value1_from_json UPDATED` and `200`.</span></span> <span data-ttu-id="e2485-298">*appsettings.json* 파일을 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-298">Save the *appsettings.json* file.</span></span> <span data-ttu-id="e2485-299">옵션 값이 변경되었음을 확인하려면 브라우저를 새로 고칩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-299">Refresh the browser to see that the options values are updated:</span></span>
 
 ```html
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
@@ -505,7 +505,7 @@ named_options_1: option1 = value1_from_json, option2 = -1
 named_options_2: option1 = named_options_2_value1_from_action, option2 = 5
 ```
 
-<span data-ttu-id="e2485-307">`named_options_1` 값은 *:::no-loc(appsettings.json):::* 파일에서 로드되는 구성에서 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-307">`named_options_1` values are provided from configuration, which are loaded from the *:::no-loc(appsettings.json):::* file.</span></span> <span data-ttu-id="e2485-308">`named_options_2` 값은 다음에서 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-308">`named_options_2` values are provided by:</span></span>
+<span data-ttu-id="e2485-307">`named_options_1` 값은 *appsettings.json* 파일에서 로드되는 구성에서 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-307">`named_options_1` values are provided from configuration, which are loaded from the *appsettings.json* file.</span></span> <span data-ttu-id="e2485-308">`named_options_2` 값은 다음에서 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-308">`named_options_2` values are provided by:</span></span>
 
 * <span data-ttu-id="e2485-309">`Option1`에 대한 `ConfigureServices`의 `named_options_2` 대리자.</span><span class="sxs-lookup"><span data-stu-id="e2485-309">The `named_options_2` delegate in `ConfigureServices` for `Option1`.</span></span>
 * <span data-ttu-id="e2485-310">`MyOptions` 클래스에서 제공되는 `Option2`에 대한 기본값.</span><span class="sxs-lookup"><span data-stu-id="e2485-310">The default value for `Option2` provided by the `MyOptions` class.</span></span>
@@ -758,9 +758,9 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example1)]
 
-<span data-ttu-id="e2485-401">샘플의 *:::no-loc(appsettings.json):::* 파일은 `option1` 및 `option2`의 값을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-401">The sample's *:::no-loc(appsettings.json):::* file specifies values for `option1` and `option2`:</span></span>
+<span data-ttu-id="e2485-401">샘플의 *appsettings.json* 파일은 `option1` 및 `option2`의 값을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-401">The sample's *appsettings.json* file specifies values for `option1` and `option2`:</span></span>
 
-[!code-json[](options/samples/2.x/OptionsSample/:::no-loc(appsettings.json):::?highlight=2-3)]
+[!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=2-3)]
 
 <span data-ttu-id="e2485-402">앱을 실행할 때 페이지 모델의 `OnGet` 메서드는 옵션 클래스 값을 표시하는 문자열을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-402">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
 
@@ -774,7 +774,7 @@ option1 = value1_from_json, option2 = -1
 > ```csharp
 > var configBuilder = new ConfigurationBuilder()
 >    .SetBasePath(Directory.GetCurrentDirectory())
->    .AddJsonFile(":::no-loc(appsettings.json):::", optional: true);
+>    .AddJsonFile("appsettings.json", optional: true);
 > var config = configBuilder.Build();
 >
 > services.Configure<MyOptions>(config);
@@ -804,7 +804,7 @@ option1 = value1_from_json, option2 = -1
 
 <span data-ttu-id="e2485-412">여러 구성 공급자를 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-412">You can add multiple configuration providers.</span></span> <span data-ttu-id="e2485-413">구성 공급자는 NuGet 패키지에서 사용할 수 있으며 등록된 순서대로 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-413">Configuration providers are available from NuGet packages and are applied in the order that they're registered.</span></span> <span data-ttu-id="e2485-414">자세한 내용은 <xref:fundamentals/configuration/index>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="e2485-414">For more information, see <xref:fundamentals/configuration/index>.</span></span>
 
-<span data-ttu-id="e2485-415"><xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*>를 호출할 때마다 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-415">Each call to <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> adds an <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service to the service container.</span></span> <span data-ttu-id="e2485-416">위의 예제에서는 `Option1` 및 `Option2`의 값은 모두 *:::no-loc(appsettings.json):::* 에서 지정되지만 `Option1` 및 `Option2`의 값은 구성된 대리자에 의해 재정의됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-416">In the preceding example, the values of `Option1` and `Option2` are both specified in *:::no-loc(appsettings.json):::* , but the values of `Option1` and `Option2` are overridden by the configured delegate.</span></span>
+<span data-ttu-id="e2485-415"><xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*>를 호출할 때마다 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-415">Each call to <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> adds an <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service to the service container.</span></span> <span data-ttu-id="e2485-416">위의 예제에서는 `Option1` 및 `Option2`의 값은 모두 *appsettings.json* 에서 지정되지만 `Option1` 및 `Option2`의 값은 구성된 대리자에 의해 재정의됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-416">In the preceding example, the values of `Option1` and `Option2` are both specified in *appsettings.json* , but the values of `Option1` and `Option2` are overridden by the configured delegate.</span></span>
 
 <span data-ttu-id="e2485-417">둘 이상의 구성 서비스를 활성화한 경우 마지막 지정된 구성 소스가 *승리* 하고 구성 값을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-417">When more than one configuration service is enabled, the last configuration source specified *wins* and sets the configuration value.</span></span> <span data-ttu-id="e2485-418">앱을 실행할 때 페이지 모델의 `OnGet` 메서드는 옵션 클래스 값을 표시하는 문자열을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-418">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
 
@@ -818,17 +818,17 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 <span data-ttu-id="e2485-421">앱은 앱의 특정 시나리오 그룹(클래스)에 적합한 옵션 클래스를 만들어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-421">Apps should create options classes that pertain to specific scenario groups (classes) in the app.</span></span> <span data-ttu-id="e2485-422">구성 값을 필요로 하는 앱의 부분은 사용하는 구성 값에만 액세스할 수 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-422">Parts of the app that require configuration values should only have access to the configuration values that they use.</span></span>
 
-<span data-ttu-id="e2485-423">옵션을 구성에 바인딩하는 경우 옵션 형식의 각 속성은 `property[:sub-property:]` 양식의 구성 키에 바인딩됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-423">When binding options to configuration, each property in the options type is bound to a configuration key of the form `property[:sub-property:]`.</span></span> <span data-ttu-id="e2485-424">예를 들어 `MyOptions.Option1` 속성은 키 `Option1`에 바인딩되어 *:::no-loc(appsettings.json):::* 의 `option1` 속성에서 읽힙니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-424">For example, the `MyOptions.Option1` property is bound to the key `Option1`, which is read from the `option1` property in *:::no-loc(appsettings.json):::*.</span></span>
+<span data-ttu-id="e2485-423">옵션을 구성에 바인딩하는 경우 옵션 형식의 각 속성은 `property[:sub-property:]` 양식의 구성 키에 바인딩됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-423">When binding options to configuration, each property in the options type is bound to a configuration key of the form `property[:sub-property:]`.</span></span> <span data-ttu-id="e2485-424">예를 들어 `MyOptions.Option1` 속성은 키 `Option1`에 바인딩되어 *appsettings.json* 의 `option1` 속성에서 읽힙니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-424">For example, the `MyOptions.Option1` property is bound to the key `Option1`, which is read from the `option1` property in *appsettings.json*.</span></span>
 
-<span data-ttu-id="e2485-425">다음 코드에서 세 번째 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-425">In the following code, a third <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="e2485-426">이 서비스는 `MySubOptions`를 *:::no-loc(appsettings.json):::* 파일의 섹션 `subsection`에 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-426">It binds `MySubOptions` to the section `subsection` of the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="e2485-425">다음 코드에서 세 번째 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 서비스가 서비스 컨테이너에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-425">In the following code, a third <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="e2485-426">이 서비스는 `MySubOptions`를 *appsettings.json* 파일의 섹션 `subsection`에 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-426">It binds `MySubOptions` to the section `subsection` of the *appsettings.json* file:</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
 <span data-ttu-id="e2485-427">`GetSection` 메서드를 사용하려면 <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> 네임스페이스가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-427">The `GetSection` method requires the <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> namespace.</span></span>
 
-<span data-ttu-id="e2485-428">샘플의 *:::no-loc(appsettings.json):::* 파일은 `suboption1` 및 `suboption2`에 대한 키로 `subsection` 멤버를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-428">The sample's *:::no-loc(appsettings.json):::* file defines a `subsection` member with keys for `suboption1` and `suboption2`:</span></span>
+<span data-ttu-id="e2485-428">샘플의 *appsettings.json* 파일은 `suboption1` 및 `suboption2`에 대한 키로 `subsection` 멤버를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-428">The sample's *appsettings.json* file defines a `subsection` member with keys for `suboption1` and `suboption2`:</span></span>
 
-[!code-json[](options/samples/2.x/OptionsSample/:::no-loc(appsettings.json):::?highlight=4-7)]
+[!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=4-7)]
 
 <span data-ttu-id="e2485-429">`MySubOptions` 클래스는 `SubOption1` 및 `SubOption2` 속성을 정의하여 옵션 값을 유지합니다( *Models/MySubOptions.cs* ).</span><span class="sxs-lookup"><span data-stu-id="e2485-429">The `MySubOptions` class defines properties, `SubOption1` and `SubOption2`, to hold the options values ( *Models/MySubOptions.cs* ):</span></span>
 
@@ -876,7 +876,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 <span data-ttu-id="e2485-441">옵션은 엑세스될 때 요청 당 한 번씩 계산되고 요청의 수명 동안 캐시됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-441">Options are computed once per request when accessed and cached for the lifetime of the request.</span></span>
 
-<span data-ttu-id="e2485-442">다음 예제에는 *:::no-loc(appsettings.json):::* 이 변경된 후 새 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>을 만드는 방법이 설명되어 있습니다( *Pages/Index.cshtml.cs* ).</span><span class="sxs-lookup"><span data-stu-id="e2485-442">The following example demonstrates how a new <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is created after *:::no-loc(appsettings.json):::* changes ( *Pages/Index.cshtml.cs* ).</span></span> <span data-ttu-id="e2485-443">서버에 대한 여러 요청은 파일이 변경되고 구성이 다시 로드될 때까지 *:::no-loc(appsettings.json):::* 파일에서 제공하는 상수 값을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-443">Multiple requests to the server return constant values provided by the *:::no-loc(appsettings.json):::* file until the file is changed and configuration reloads.</span></span>
+<span data-ttu-id="e2485-442">다음 예제에는 *appsettings.json* 이 변경된 후 새 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>을 만드는 방법이 설명되어 있습니다( *Pages/Index.cshtml.cs* ).</span><span class="sxs-lookup"><span data-stu-id="e2485-442">The following example demonstrates how a new <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is created after *appsettings.json* changes ( *Pages/Index.cshtml.cs* ).</span></span> <span data-ttu-id="e2485-443">서버에 대한 여러 요청은 파일이 변경되고 구성이 다시 로드될 때까지 *appsettings.json* 파일에서 제공하는 상수 값을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-443">Multiple requests to the server return constant values provided by the *appsettings.json* file until the file is changed and configuration reloads.</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=12)]
 
@@ -884,13 +884,13 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example5)]
 
-<span data-ttu-id="e2485-444">다음 이미지는 *:::no-loc(appsettings.json):::* 파일에서 로드된 초기 `option1` 및 `option2` 값을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-444">The following image shows the initial `option1` and `option2` values loaded from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="e2485-444">다음 이미지는 *appsettings.json* 파일에서 로드된 초기 `option1` 및 `option2` 값을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-444">The following image shows the initial `option1` and `option2` values loaded from the *appsettings.json* file:</span></span>
 
 ```html
 snapshot option1 = value1_from_json, snapshot option2 = -1
 ```
 
-<span data-ttu-id="e2485-445">*:::no-loc(appsettings.json):::* 파일의 값을 `value1_from_json UPDATED` 및 `200`으로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-445">Change the values in the *:::no-loc(appsettings.json):::* file to `value1_from_json UPDATED` and `200`.</span></span> <span data-ttu-id="e2485-446">*:::no-loc(appsettings.json):::* 파일을 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-446">Save the *:::no-loc(appsettings.json):::* file.</span></span> <span data-ttu-id="e2485-447">옵션 값이 변경되었음을 확인하려면 브라우저를 새로 고칩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-447">Refresh the browser to see that the options values are updated:</span></span>
+<span data-ttu-id="e2485-445">*appsettings.json* 파일의 값을 `value1_from_json UPDATED` 및 `200`으로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-445">Change the values in the *appsettings.json* file to `value1_from_json UPDATED` and `200`.</span></span> <span data-ttu-id="e2485-446">*appsettings.json* 파일을 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-446">Save the *appsettings.json* file.</span></span> <span data-ttu-id="e2485-447">옵션 값이 변경되었음을 확인하려면 브라우저를 새로 고칩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-447">Refresh the browser to see that the options values are updated:</span></span>
 
 ```html
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
@@ -919,7 +919,7 @@ named_options_1: option1 = value1_from_json, option2 = -1
 named_options_2: option1 = named_options_2_value1_from_action, option2 = 5
 ```
 
-<span data-ttu-id="e2485-455">`named_options_1` 값은 *:::no-loc(appsettings.json):::* 파일에서 로드되는 구성에서 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-455">`named_options_1` values are provided from configuration, which are loaded from the *:::no-loc(appsettings.json):::* file.</span></span> <span data-ttu-id="e2485-456">`named_options_2` 값은 다음에서 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-456">`named_options_2` values are provided by:</span></span>
+<span data-ttu-id="e2485-455">`named_options_1` 값은 *appsettings.json* 파일에서 로드되는 구성에서 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-455">`named_options_1` values are provided from configuration, which are loaded from the *appsettings.json* file.</span></span> <span data-ttu-id="e2485-456">`named_options_2` 값은 다음에서 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2485-456">`named_options_2` values are provided by:</span></span>
 
 * <span data-ttu-id="e2485-457">`Option1`에 대한 `ConfigureServices`의 `named_options_2` 대리자.</span><span class="sxs-lookup"><span data-stu-id="e2485-457">The `named_options_2` delegate in `ConfigureServices` for `Option1`.</span></span>
 * <span data-ttu-id="e2485-458">`MyOptions` 클래스에서 제공되는 `Option2`에 대한 기본값.</span><span class="sxs-lookup"><span data-stu-id="e2485-458">The default value for `Option2` provided by the `MyOptions` class.</span></span>

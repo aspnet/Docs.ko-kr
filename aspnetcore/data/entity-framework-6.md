@@ -6,15 +6,15 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/14/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/entity-framework-6
 ms.openlocfilehash: 086418c161677f585b08ed360555c93d8575e701
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -107,7 +107,7 @@ ms.locfileid: "93059457"
 
 * <span data-ttu-id="92110-154">Core 프로젝트의 *Startup.cs* 에서 DI에 대한 컨텍스트를 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="92110-154">In the Core project, in *Startup.cs* , register the context for DI.</span></span>    
 
-* <span data-ttu-id="92110-155">Core 프로젝트의 *:::no-loc(appsettings.json):::* 에서 연결 문자열을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="92110-155">In the Core project, in *:::no-loc(appsettings.json):::* , add the connection string.</span></span>  
+* <span data-ttu-id="92110-155">Core 프로젝트의 *appsettings.json* 에서 연결 문자열을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="92110-155">In the Core project, in *appsettings.json* , add the connection string.</span></span>  
 
 * <span data-ttu-id="92110-156">Core 프로젝트에서 데이터를 읽고 쓸 수 있는지 확인하는 컨트롤러 및 뷰를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="92110-156">In the Core project, add a controller and view(s) to verify that you can read and write data.</span></span> <span data-ttu-id="92110-157">(ASP.NET Core MVC 스캐폴딩은 클래스 라이브러리에서 참조된 EF6 컨텍스트와 작동하지 않습니다.)</span><span class="sxs-lookup"><span data-stu-id="92110-157">(Note that ASP.NET Core MVC scaffolding won't work with the EF6 context referenced from the class library.)</span></span>
 

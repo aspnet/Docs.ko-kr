@@ -7,17 +7,17 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/ef-mvc/complex-data-model
 ms.openlocfilehash: cee9e9eb4c5435f3f63f7d1d04f131d88effe9f6
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -482,7 +482,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 ## <a name="change-the-connection-string"></a><span data-ttu-id="750a7-354">연결 문자열 변경</span><span class="sxs-lookup"><span data-stu-id="750a7-354">Change the connection string</span></span>
 
-<span data-ttu-id="750a7-355">이제 새 엔터티에 대한 시드 데이터를 빈 데이터베이스에 추가하는 새 코드가 `DbInitializer` 클래스에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="750a7-355">You now have new code in the `DbInitializer` class that adds seed data for the new entities to an empty database.</span></span> <span data-ttu-id="750a7-356">EF가 비어 있는 새 데이터베이스를 만들도록 하려면 *:::no-loc(appsettings.json):::* 의 연결 문자열에서 데이터베이스의 이름을 ContosoUniversity3 또는 사용 중인 컴퓨터에서 사용한 적 없는 다른 이름으로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="750a7-356">To make EF create a new empty database, change the name of the database in the connection string in *:::no-loc(appsettings.json):::* to ContosoUniversity3 or some other name that you haven't used on the computer you're using.</span></span>
+<span data-ttu-id="750a7-355">이제 새 엔터티에 대한 시드 데이터를 빈 데이터베이스에 추가하는 새 코드가 `DbInitializer` 클래스에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="750a7-355">You now have new code in the `DbInitializer` class that adds seed data for the new entities to an empty database.</span></span> <span data-ttu-id="750a7-356">EF가 비어 있는 새 데이터베이스를 만들도록 하려면 *appsettings.json* 의 연결 문자열에서 데이터베이스의 이름을 ContosoUniversity3 또는 사용 중인 컴퓨터에서 사용한 적 없는 다른 이름으로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="750a7-356">To make EF create a new empty database, change the name of the database in the connection string in *appsettings.json* to ContosoUniversity3 or some other name that you haven't used on the computer you're using.</span></span>
 
 ```json
 {
@@ -491,7 +491,7 @@ Done. To undo this action, use 'ef migrations remove'
   },
 ```
 
-<span data-ttu-id="750a7-357">변경 내용을 *:::no-loc(appsettings.json):::* 에 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="750a7-357">Save your change to *:::no-loc(appsettings.json):::*.</span></span>
+<span data-ttu-id="750a7-357">변경 내용을 *appsettings.json* 에 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="750a7-357">Save your change to *appsettings.json*.</span></span>
 
 > [!NOTE]
 > <span data-ttu-id="750a7-358">데이터베이스 이름을 변경하는 대신, 데이터베이스를 삭제할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="750a7-358">As an alternative to changing the database name, you can delete the database.</span></span> <span data-ttu-id="750a7-359">**SSOX(SQL Server 개체 탐색기)** 또는 `database drop` CLI 명령을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="750a7-359">Use **SQL Server Object Explorer** (SSOX) or the `database drop` CLI command:</span></span>

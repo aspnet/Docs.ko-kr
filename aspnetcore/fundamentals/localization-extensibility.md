@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/03/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/localization-extensibility
 ms.openlocfilehash: a6ef5a547e6ccba6771cdf892a9636f83d6796b1
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -49,7 +49,7 @@ ms.locfileid: "93053737"
 <span data-ttu-id="023bb-115">ASP.NET Core 지역화 API에는 실행 요청의 현재 문화권을 확인할 수 있는 네 가지 기본 공급자가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="023bb-115">ASP.NET Core localization APIs have four default providers that can determine the current culture of an executing request:</span></span>
 
 * <xref:Microsoft.AspNetCore.Localization.QueryStringRequestCultureProvider>
-* <xref:Microsoft.AspNetCore.Localization.:::no-loc(Cookie):::RequestCultureProvider>
+* <xref:Microsoft.AspNetCore.Localization.CookieRequestCultureProvider>
 * <xref:Microsoft.AspNetCore.Localization.AcceptLanguageHeaderRequestCultureProvider>
 * <xref:Microsoft.AspNetCore.Localization.CustomRequestCultureProvider>
 
@@ -105,7 +105,7 @@ options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async 
 
 <span data-ttu-id="023bb-121">사용자 지정 소스에서 요청 문화 정보를 판별하는 <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider>의 새 구현을 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="023bb-121">A new implementation of <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> can be created that determines the request culture information from a custom source.</span></span> <span data-ttu-id="023bb-122">예를 들어 사용자 지정 소스는 구성 파일 또는 데이터베이스일 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="023bb-122">For example, the custom source can be a configuration file or database.</span></span>
 
-<span data-ttu-id="023bb-123">다음 예제는 <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider>를 확장하여 *:::no-loc(appsettings.json):::* 에서 요청 문화권 정보를 확인하는 `AppSettingsRequestCultureProvider`를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="023bb-123">The following example shows `AppSettingsRequestCultureProvider`, which extends the <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> to determine the request culture information from *:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="023bb-123">다음 예제는 <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider>를 확장하여 *appsettings.json* 에서 요청 문화권 정보를 확인하는 `AppSettingsRequestCultureProvider`를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="023bb-123">The following example shows `AppSettingsRequestCultureProvider`, which extends the <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> to determine the request culture information from *appsettings.json* :</span></span>
 
 ```csharp
 public class AppSettingsRequestCultureProvider : RequestCultureProvider

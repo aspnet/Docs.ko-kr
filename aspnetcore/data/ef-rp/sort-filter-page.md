@@ -1,22 +1,22 @@
 ---
-title: '3부. ASP.NET Core에서 EF Core를 사용한 :::no-loc(Razor)::: Pages - 정렬, 필터, 페이징'
+title: '3부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 정렬, 필터, 페이징'
 author: rick-anderson
-description: ':::no-loc(Razor)::: Pages 및 Entity Framework 자습서 시리즈의 3부입니다.'
+description: 'Razor Pages 및 Entity Framework 자습서 시리즈의 3부입니다.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/ef-rp/sort-filter-page
 ms.openlocfilehash: 51a1e2a90259898262ac655b7a0e8a55d766f0c7
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,7 +25,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93061043"
 ---
-# <a name="part-3-no-locrazor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a><span data-ttu-id="f973f-103">3부. ASP.NET Core에서 EF Core를 사용한 :::no-loc(Razor)::: Pages - 정렬, 필터, 페이징</span><span class="sxs-lookup"><span data-stu-id="f973f-103">Part 3, :::no-loc(Razor)::: Pages with EF Core in ASP.NET Core - Sort, Filter, Paging</span></span>
+# <a name="part-3-no-locrazor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a><span data-ttu-id="f973f-103">3부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 정렬, 필터, 페이징</span><span class="sxs-lookup"><span data-stu-id="f973f-103">Part 3, Razor Pages with EF Core in ASP.NET Core - Sort, Filter, Paging</span></span>
 
 <span data-ttu-id="f973f-104">작성자: [Tom Dykstra](https://github.com/tdykstra), [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Jon P Smith](https://twitter.com/thereformedprog)</span><span class="sxs-lookup"><span data-stu-id="f973f-104">By [Tom Dykstra](https://github.com/tdykstra), [Rick Anderson](https://twitter.com/RickAndMSFT), and [Jon P Smith](https://twitter.com/thereformedprog)</span></span>
 
@@ -58,7 +58,7 @@ ms.locfileid: "93061043"
 
 <span data-ttu-id="f973f-122">인덱스 페이지가 **학생** 링크에서 요청되는 경우 쿼리 문자열이 없습니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-122">When the Index page is requested from the **Students** link, there's no query string.</span></span> <span data-ttu-id="f973f-123">학생은 성 기준 오름차순으로 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-123">The students are displayed in ascending order by last name.</span></span> <span data-ttu-id="f973f-124">`switch` 문에서는 성 기준 오름차순이 `default`입니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-124">Ascending order by last name is the `default` in the `switch` statement.</span></span> <span data-ttu-id="f973f-125">사용자가 열 제목 링크를 클릭하면 적절한 `sortOrder` 값이 쿼리 문자열 값에 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-125">When the user clicks a column heading link, the appropriate `sortOrder` value is provided in the query string value.</span></span>
 
-<span data-ttu-id="f973f-126">:::no-loc(Razor)::: Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으로 구성하기 위해 `NameSort` 및 `DateSort`가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-126">`NameSort` and `DateSort` are used by the :::no-loc(Razor)::: Page to configure the column heading hyperlinks with the appropriate query string values:</span></span>
+<span data-ttu-id="f973f-126">Razor Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으로 구성하기 위해 `NameSort` 및 `DateSort`가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-126">`NameSort` and `DateSort` are used by the Razor Page to configure the column heading hyperlinks with the appropriate query string values:</span></span>
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_Ternary)]
 
@@ -105,7 +105,7 @@ ms.locfileid: "93061043"
 
 <span data-ttu-id="f973f-167">학생 인덱스 페이지에 필터링을 추가하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-167">To add filtering to the Students Index page:</span></span>
 
-* <span data-ttu-id="f973f-168">텍스트 상자 및 전송 단추가 :::no-loc(Razor)::: 페이지에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-168">A text box and a submit button is added to the :::no-loc(Razor)::: Page.</span></span> <span data-ttu-id="f973f-169">텍스트 상자는 첫 번째 또는 마지막 이름에 검색 문자열을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-169">The text box supplies a search string on the first or last name.</span></span>
+* <span data-ttu-id="f973f-168">텍스트 상자 및 전송 단추가 Razor 페이지에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-168">A text box and a submit button is added to the Razor Page.</span></span> <span data-ttu-id="f973f-169">텍스트 상자는 첫 번째 또는 마지막 이름에 검색 문자열을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-169">The text box supplies a search string on the first or last name.</span></span>
 * <span data-ttu-id="f973f-170">페이지 모델이 텍스트 상자 값을 사용하도록 업데이트됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-170">The page model is updated to use the text box value.</span></span>
 
 ### <a name="update-the-ongetasync-method"></a><span data-ttu-id="f973f-171">OnGetAsync 메서드 업데이트</span><span class="sxs-lookup"><span data-stu-id="f973f-171">Update the OnGetAsync method</span></span>
@@ -139,7 +139,7 @@ Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
 <span data-ttu-id="f973f-199">자세한 내용은 [SQLite 공급자를 사용하여 대/소문자를 구분하지 않는 쿼리를 사용하는 방법](https://github.com/aspnet/EntityFrameworkCore/issues/11414)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="f973f-199">For more information, see [How to use case-insensitive query with Sqlite provider](https://github.com/aspnet/EntityFrameworkCore/issues/11414).</span></span>
 
-### <a name="update-the-no-locrazor-page"></a><span data-ttu-id="f973f-200">:::no-loc(Razor)::: 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="f973f-200">Update the :::no-loc(Razor)::: page</span></span>
+### <a name="update-the-no-locrazor-page"></a><span data-ttu-id="f973f-200">Razor 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="f973f-200">Update the Razor page</span></span>
 
 <span data-ttu-id="f973f-201">*Pages/Students/Index.cshtml* 의 코드를 바꿔서 **검색** 단추를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-201">Replace the code in *Pages/Students/Index.cshtml* to add a **Search** button.</span></span>
 
@@ -201,9 +201,9 @@ https://localhost:5001/Students?SearchString=an
 
 <span data-ttu-id="f973f-243">페이징 링크를 클릭하면 페이지 인덱스 변수에 표시할 페이지 번호가 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-243">When a paging link is clicked, the page index variable contains the page number to display.</span></span>
 
-<span data-ttu-id="f973f-244">`CurrentSort` 속성은 :::no-loc(Razor)::: Page에 현재 정렬 순서를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-244">The `CurrentSort` property provides the :::no-loc(Razor)::: Page with the current sort order.</span></span> <span data-ttu-id="f973f-245">현재 정렬 순서는 페이징하는 동안 정렬 순서를 유지하기 위해 페이징 링크에 포함되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-245">The current sort order must be included in the paging links to keep the sort order while paging.</span></span>
+<span data-ttu-id="f973f-244">`CurrentSort` 속성은 Razor Page에 현재 정렬 순서를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-244">The `CurrentSort` property provides the Razor Page with the current sort order.</span></span> <span data-ttu-id="f973f-245">현재 정렬 순서는 페이징하는 동안 정렬 순서를 유지하기 위해 페이징 링크에 포함되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-245">The current sort order must be included in the paging links to keep the sort order while paging.</span></span>
 
-<span data-ttu-id="f973f-246">`CurrentFilter` 속성은 :::no-loc(Razor)::: Page에 현재 필터 문자열을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-246">The `CurrentFilter` property provides the :::no-loc(Razor)::: Page with the current filter string.</span></span> <span data-ttu-id="f973f-247">`CurrentFilter` 값은:</span><span class="sxs-lookup"><span data-stu-id="f973f-247">The `CurrentFilter` value:</span></span>
+<span data-ttu-id="f973f-246">`CurrentFilter` 속성은 Razor Page에 현재 필터 문자열을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-246">The `CurrentFilter` property provides the Razor Page with the current filter string.</span></span> <span data-ttu-id="f973f-247">`CurrentFilter` 값은:</span><span class="sxs-lookup"><span data-stu-id="f973f-247">The `CurrentFilter` value:</span></span>
 
 * <span data-ttu-id="f973f-248">페이징하는 동안 필터 설정을 유지하기 위해 페이징 링크에 포함되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-248">Must be included in the paging links in order to maintain the filter settings during paging.</span></span>
 * <span data-ttu-id="f973f-249">페이지를 다시 표시하는 경우 텍스트 상자에 복원되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-249">Must be restored to the text box when the page is redisplayed.</span></span>
@@ -213,11 +213,11 @@ https://localhost:5001/Students?SearchString=an
   * <span data-ttu-id="f973f-253">검색 문자열이 변경됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-253">The search string is changed.</span></span>
   * <span data-ttu-id="f973f-254">`searchString` 매개 변수가 null이 아닙니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-254">The `searchString` parameter isn't null.</span></span>
 
-  <span data-ttu-id="f973f-255">`PaginatedList.CreateAsync` 메서드가 학생 쿼리를 페이징을 지원하는 컬렉션 형식의 단일 학생 페이지로 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-255">The `PaginatedList.CreateAsync` method converts the student query to a single page of students in a collection type that supports paging.</span></span> <span data-ttu-id="f973f-256">해당 단일 학생 페이지가 :::no-loc(Razor)::: 페이지에 전달됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-256">That single page of students is passed to the :::no-loc(Razor)::: Page.</span></span>
+  <span data-ttu-id="f973f-255">`PaginatedList.CreateAsync` 메서드가 학생 쿼리를 페이징을 지원하는 컬렉션 형식의 단일 학생 페이지로 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-255">The `PaginatedList.CreateAsync` method converts the student query to a single page of students in a collection type that supports paging.</span></span> <span data-ttu-id="f973f-256">해당 단일 학생 페이지가 Razor 페이지에 전달됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-256">That single page of students is passed to the Razor Page.</span></span>
 
   <span data-ttu-id="f973f-257">`PaginatedList.CreateAsync`에서 `pageIndex` 뒤에 있는 두 개의 물음표는 [Null 병합 연산자](/dotnet/csharp/language-reference/operators/null-conditional-operator)를 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-257">The two question marks after `pageIndex` in the `PaginatedList.CreateAsync` call represent the [null-coalescing operator](/dotnet/csharp/language-reference/operators/null-conditional-operator).</span></span> <span data-ttu-id="f973f-258">Null 병합 연산자는 null 허용 형식에 대한 기본값을 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-258">The null-coalescing operator defines a default value for a nullable type.</span></span> <span data-ttu-id="f973f-259">`pageIndex ?? 1` 식은 값이 있으면 `pageIndex`의 값을 반환하고, 그렇지 않으면 1을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-259">The expression `pageIndex ?? 1` returns the value of `pageIndex` if it has a value, otherwise, it returns 1.</span></span>
 
-### <a name="add-paging-links-to-the-no-locrazor-page"></a><span data-ttu-id="f973f-260">:::no-loc(Razor)::: Page에 페이징 링크 추가</span><span class="sxs-lookup"><span data-stu-id="f973f-260">Add paging links to the :::no-loc(Razor)::: Page</span></span>
+### <a name="add-paging-links-to-the-no-locrazor-page"></a><span data-ttu-id="f973f-260">Razor Page에 페이징 링크 추가</span><span class="sxs-lookup"><span data-stu-id="f973f-260">Add paging links to the Razor Page</span></span>
 
 <span data-ttu-id="f973f-261">*Students/Index.cshtml* 의 코드를 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-261">Replace the code in *Students/Index.cshtml* with the following code.</span></span> <span data-ttu-id="f973f-262">변경 내용이 강조 표시되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-262">The changes are highlighted:</span></span>
 
@@ -253,7 +253,7 @@ https://localhost:5001/Students?SearchString=an
 
 [!code-csharp[Main](intro/samples/cu30/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
-### <a name="create-the-no-locrazor-page"></a><span data-ttu-id="f973f-277">:::no-loc(Razor)::: Page 만들기</span><span class="sxs-lookup"><span data-stu-id="f973f-277">Create the :::no-loc(Razor)::: Page</span></span>
+### <a name="create-the-no-locrazor-page"></a><span data-ttu-id="f973f-277">Razor Page 만들기</span><span class="sxs-lookup"><span data-stu-id="f973f-277">Create the Razor Page</span></span>
 
 <span data-ttu-id="f973f-278">다음 코드로 *Pages/About.cshtml* 파일을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-278">Create a *Pages/About.cshtml* file with the following code:</span></span>
 
@@ -310,7 +310,7 @@ https://localhost:5001/Students?SearchString=an
 
 <span data-ttu-id="f973f-302">인덱스 페이지가 **학생** 링크에서 요청되는 경우 쿼리 문자열이 없습니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-302">When the Index page is requested from the **Students** link, there's no query string.</span></span> <span data-ttu-id="f973f-303">학생은 성 기준 오름차순으로 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-303">The students are displayed in ascending order by last name.</span></span> <span data-ttu-id="f973f-304">`switch` 문에서 성 기준 오름차순이 기본값(제어 이동 사례)입니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-304">Ascending order by last name is the default (fall-through case) in the `switch` statement.</span></span> <span data-ttu-id="f973f-305">사용자가 열 제목 링크를 클릭하면 적절한 `sortOrder` 값이 쿼리 문자열 값에 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-305">When the user clicks a column heading link, the appropriate `sortOrder` value is provided in the query string value.</span></span>
 
-<span data-ttu-id="f973f-306">:::no-loc(Razor)::: Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으로 구성하기 위해 `NameSort` 및 `DateSort`가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-306">`NameSort` and `DateSort` are used by the :::no-loc(Razor)::: Page to configure the column heading hyperlinks with the appropriate query string values:</span></span>
+<span data-ttu-id="f973f-306">Razor Page에서 열 제목 하이퍼링크를 적절한 쿼리 문자열 값으로 구성하기 위해 `NameSort` 및 `DateSort`가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-306">`NameSort` and `DateSort` are used by the Razor Page to configure the column heading hyperlinks with the appropriate query string values:</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=3-4)]
 
@@ -370,7 +370,7 @@ https://localhost:5001/Students?SearchString=an
 
 <span data-ttu-id="f973f-349">학생 인덱스 페이지에 필터링을 추가하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-349">To add filtering to the Students Index page:</span></span>
 
-* <span data-ttu-id="f973f-350">텍스트 상자 및 전송 단추가 :::no-loc(Razor)::: 페이지에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-350">A text box and a submit button is added to the :::no-loc(Razor)::: Page.</span></span> <span data-ttu-id="f973f-351">텍스트 상자는 첫 번째 또는 마지막 이름에 검색 문자열을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-351">The text box supplies a search string on the first or last name.</span></span>
+* <span data-ttu-id="f973f-350">텍스트 상자 및 전송 단추가 Razor 페이지에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-350">A text box and a submit button is added to the Razor Page.</span></span> <span data-ttu-id="f973f-351">텍스트 상자는 첫 번째 또는 마지막 이름에 검색 문자열을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-351">The text box supplies a search string on the first or last name.</span></span>
 * <span data-ttu-id="f973f-352">페이지 모델이 텍스트 상자 값을 사용하도록 업데이트됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-352">The page model is updated to use the text box value.</span></span>
 
 ### <a name="add-filtering-functionality-to-the-index-method"></a><span data-ttu-id="f973f-353">인덱스 메서드에 필터링 기능 추가</span><span class="sxs-lookup"><span data-stu-id="f973f-353">Add filtering functionality to the Index method</span></span>
@@ -455,9 +455,9 @@ http://localhost:5000/Students?SearchString=an
 
 <span data-ttu-id="f973f-413">페이징 링크를 클릭하면 페이지 인덱스 변수에 표시할 페이지 번호가 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-413">When a paging link is clicked, the page index variable contains the page number to display.</span></span>
 
-<span data-ttu-id="f973f-414">`CurrentSort`는 :::no-loc(Razor)::: 페이지를 현재 정렬 순서로 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-414">`CurrentSort` provides the :::no-loc(Razor)::: Page with the current sort order.</span></span> <span data-ttu-id="f973f-415">현재 정렬 순서는 페이징하는 동안 정렬 순서를 유지하기 위해 페이징 링크에 포함되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-415">The current sort order must be included in the paging links to keep the sort order while paging.</span></span>
+<span data-ttu-id="f973f-414">`CurrentSort`는 Razor 페이지를 현재 정렬 순서로 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-414">`CurrentSort` provides the Razor Page with the current sort order.</span></span> <span data-ttu-id="f973f-415">현재 정렬 순서는 페이징하는 동안 정렬 순서를 유지하기 위해 페이징 링크에 포함되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-415">The current sort order must be included in the paging links to keep the sort order while paging.</span></span>
 
-<span data-ttu-id="f973f-416">`CurrentFilter`는 :::no-loc(Razor)::: 페이지를 현재 필터 문자열로 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-416">`CurrentFilter` provides the :::no-loc(Razor)::: Page with the current filter string.</span></span> <span data-ttu-id="f973f-417">`CurrentFilter` 값은:</span><span class="sxs-lookup"><span data-stu-id="f973f-417">The `CurrentFilter` value:</span></span>
+<span data-ttu-id="f973f-416">`CurrentFilter`는 Razor 페이지를 현재 필터 문자열로 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-416">`CurrentFilter` provides the Razor Page with the current filter string.</span></span> <span data-ttu-id="f973f-417">`CurrentFilter` 값은:</span><span class="sxs-lookup"><span data-stu-id="f973f-417">The `CurrentFilter` value:</span></span>
 
 * <span data-ttu-id="f973f-418">페이징하는 동안 필터 설정을 유지하기 위해 페이징 링크에 포함되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-418">Must be included in the paging links in order to maintain the filter settings during paging.</span></span>
 * <span data-ttu-id="f973f-419">페이지를 다시 표시하는 경우 텍스트 상자에 복원되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-419">Must be restored to the text box when the page is redisplayed.</span></span>
@@ -469,13 +469,13 @@ http://localhost:5000/Students?SearchString=an
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage3)]
 
-<span data-ttu-id="f973f-425">`PaginatedList.CreateAsync` 메서드가 학생 쿼리를 페이징을 지원하는 컬렉션 형식의 단일 학생 페이지로 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-425">The `PaginatedList.CreateAsync` method converts the student query to a single page of students in a collection type that supports paging.</span></span> <span data-ttu-id="f973f-426">해당 단일 학생 페이지가 :::no-loc(Razor)::: 페이지에 전달됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-426">That single page of students is passed to the :::no-loc(Razor)::: Page.</span></span>
+<span data-ttu-id="f973f-425">`PaginatedList.CreateAsync` 메서드가 학생 쿼리를 페이징을 지원하는 컬렉션 형식의 단일 학생 페이지로 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-425">The `PaginatedList.CreateAsync` method converts the student query to a single page of students in a collection type that supports paging.</span></span> <span data-ttu-id="f973f-426">해당 단일 학생 페이지가 Razor 페이지에 전달됩니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-426">That single page of students is passed to the Razor Page.</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage4)]
 
 <span data-ttu-id="f973f-427">`PaginatedList.CreateAsync`에서 두 개의 물음표는 [Null 병합 연산자](/dotnet/csharp/language-reference/operators/null-conditional-operator)를 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-427">The two question marks in `PaginatedList.CreateAsync` represent the [null-coalescing operator](/dotnet/csharp/language-reference/operators/null-conditional-operator).</span></span> <span data-ttu-id="f973f-428">Null 병합 연산자는 null 허용 형식에 대한 기본값을 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-428">The null-coalescing operator defines a default value for a nullable type.</span></span> <span data-ttu-id="f973f-429">식 `(pageIndex ?? 1)`은 값이 있는 경우 `pageIndex`의 값을 반환함을 의미합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-429">The expression `(pageIndex ?? 1)` means return the value of `pageIndex` if it has a value.</span></span> <span data-ttu-id="f973f-430">`pageIndex`에 값이 없으면 1을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-430">If `pageIndex` doesn't have a value, return 1.</span></span>
 
-## <a name="add-paging-links-to-the-student-no-locrazor-page"></a><span data-ttu-id="f973f-431">학생 :::no-loc(Razor)::: 페이지에 페이징 링크 추가</span><span class="sxs-lookup"><span data-stu-id="f973f-431">Add paging links to the student :::no-loc(Razor)::: Page</span></span>
+## <a name="add-paging-links-to-the-student-no-locrazor-page"></a><span data-ttu-id="f973f-431">학생 Razor 페이지에 페이징 링크 추가</span><span class="sxs-lookup"><span data-stu-id="f973f-431">Add paging links to the student Razor Page</span></span>
 
 <span data-ttu-id="f973f-432">*Students/Index.cshtml* 의 표시를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-432">Update the markup in *Students/Index.cshtml*.</span></span> <span data-ttu-id="f973f-433">변경 내용은 강조 표시되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-433">The changes are highlighted:</span></span>
 
@@ -521,7 +521,7 @@ http://localhost:5000/Students?SearchString=an
 
 ### <a name="update-the-about-page-model"></a><span data-ttu-id="f973f-453">페이지 모델 정보 업데이트</span><span class="sxs-lookup"><span data-stu-id="f973f-453">Update the About page model</span></span>
 
-<span data-ttu-id="f973f-454">ASP.NET Core 2.2의 웹 템플릿에는 정보 페이지가 포함되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-454">The web templates in ASP.NET Core 2.2 do not include the About page.</span></span> <span data-ttu-id="f973f-455">ASP.NET Core 2.2를 사용하는 경우 :::no-loc(Razor)::: 정보 페이지를 만드세요.</span><span class="sxs-lookup"><span data-stu-id="f973f-455">If you are using ASP.NET Core 2.2, create the About :::no-loc(Razor)::: Page.</span></span>
+<span data-ttu-id="f973f-454">ASP.NET Core 2.2의 웹 템플릿에는 정보 페이지가 포함되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-454">The web templates in ASP.NET Core 2.2 do not include the About page.</span></span> <span data-ttu-id="f973f-455">ASP.NET Core 2.2를 사용하는 경우 Razor 정보 페이지를 만드세요.</span><span class="sxs-lookup"><span data-stu-id="f973f-455">If you are using ASP.NET Core 2.2, create the About Razor Page.</span></span>
 
 <span data-ttu-id="f973f-456">*Pages/About.cshtml.cs* 파일을 다음 코드로 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-456">Update the *Pages/About.cshtml.cs* file with the following code:</span></span>
 
@@ -529,7 +529,7 @@ http://localhost:5000/Students?SearchString=an
 
 <span data-ttu-id="f973f-457">LINQ 문은 등록 날짜별로 학생 엔터티를 그룹화하고 각 그룹의 엔터티 수를 계산하며 결과를 `EnrollmentDateGroup` 뷰 모델 개체의 컬렉션에 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-457">The LINQ statement groups the student entities by enrollment date, calculates the number of entities in each group, and stores the results in a collection of `EnrollmentDateGroup` view model objects.</span></span>
 
-### <a name="modify-the-about-no-locrazor-page"></a><span data-ttu-id="f973f-458">:::no-loc(Razor)::: 페이지 정보 수정</span><span class="sxs-lookup"><span data-stu-id="f973f-458">Modify the About :::no-loc(Razor)::: Page</span></span>
+### <a name="modify-the-about-no-locrazor-page"></a><span data-ttu-id="f973f-458">Razor 페이지 정보 수정</span><span class="sxs-lookup"><span data-stu-id="f973f-458">Modify the About Razor Page</span></span>
 
 <span data-ttu-id="f973f-459">*Pages/About.cshtml* 파일의 코드를 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="f973f-459">Replace the code in the *Pages/About.cshtml* file with the following code:</span></span>
 
