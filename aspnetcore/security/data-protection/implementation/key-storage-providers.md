@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 36e8bc494125d0770347ddf32390365d83a91d27
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 6a70183ce4b1a129ef213300473b233a5ef822f9
+ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051748"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94463888"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>ASP.NET Core의 키 저장소 공급자
 
@@ -47,7 +47,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="azure-storage"></a>Azure Storage
 
-[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) 패키지를 사용 하 여 Azure Blob Storage에 데이터 보호 키를 저장할 수 있습니다. 웹 앱의 여러 인스턴스 간에 키를 공유할 수 있습니다. 앱은 cookie 여러 서버에서 인증 s 또는 CSRF 보호를 공유할 수 있습니다.
+[AspNetCore](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.DataProtection.Blobs) 패키지를 사용 하 여 Azure Blob Storage에 데이터 보호 키를 저장할 수 있습니다. 웹 앱의 여러 인스턴스 간에 키를 공유할 수 있습니다. 앱은 cookie 여러 서버에서 인증 s 또는 CSRF 보호를 공유할 수 있습니다.
 
 Azure Blob Storage 공급자를 구성 하려면 [Persistkeystoazureblobstorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage) 오버 로드 중 하나를 호출 합니다.
 
@@ -59,15 +59,12 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-웹 앱이 Azure 서비스로 실행 되 고 있는 경우에는 인증 토큰을 [Microsoft. azure. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)을 사용 하 여 자동으로 만들 수 있습니다.
+웹 앱이 Azure 서비스로 실행 되는 경우 azure [. blob](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient)을 사용 하 여 azure storage에 인증 하는 데 연결 문자열을 사용할 수 있습니다.
 
 ```csharp
-var tokenProvider = new AzureServiceTokenProvider();
-var token = await tokenProvider.GetAccessTokenAsync("https://storage.azure.com/");
-var credentials = new StorageCredentials(new TokenCredential(token));
-var storageAccount = new CloudStorageAccount(credentials, "mystorageaccount", "core.windows.net", useHttps: true);
-var client = storageAccount.CreateCloudBlobClient();
-var container = client.GetContainerReference("my-key-container");
+string connectionString = "<connection_string>";
+string containerName = "my-key-container";
+BlobContainerClient container = new BlobContainerClient(connectionString, containerName);
 
 // optional - provision the container automatically
 await container.CreateIfNotExistsAsync();
@@ -76,7 +73,11 @@ services.AddDataProtection()
     .PersistKeysToAzureBlobStorage(container, "keys.xml");
 ```
 
-[서비스 간 인증 구성에 대 한 자세한 내용을](/azure/key-vault/service-to-service-authentication) 참조 하세요.
+> [!NOTE]
+> 저장소 계정에 대 한 연결 문자열은 Azure Portal의 "액세스 키" 섹션 아래에서 또는 다음 CLI 명령을 실행 하 여 찾을 수 있습니다. 
+> ```bash
+> az storage account show-connection-string --name <account_name> --resource-group <resource_group>
+> ```
 
 ## <a name="redis"></a>Redis
 
