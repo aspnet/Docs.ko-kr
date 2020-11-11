@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: 9664f49bd709d2c9e46130773211c339e391d1f6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4abba1d4304bf537bd96623527c851d9d15774a4
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060705"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508164"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>HTTP 처리기 및 모듈을 ASP.NET Core 미들웨어로 마이그레이션
 
@@ -357,7 +357,7 @@ public async Task Invoke(HttpContext context)
 
 **TransmitFile**
 
-파일을 처리 하는 방법은 [미들웨어 및 요청 기능](xref:fundamentals/request-features#middleware-and-request-features)에 설명 되어 있습니다.
+에서 파일을 처리 하는 방법을 설명 <xref:fundamentals/request-features> 합니다.
 
 **HttpContext. 헤더**
 
