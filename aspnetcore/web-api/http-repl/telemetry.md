@@ -1,10 +1,10 @@
 ---
-title: HTTP REPL 원격 분석
+title: HttpRepl 원격 분석
 author: scottaddie
-description: HTTP REPL에 의해 수집 된 원격 분석에 대해 알아봅니다.
+description: HttpRepl에 의해 수집 된 원격 분석에 대해 알아봅니다.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
-ms.date: 11/10/2020
+ms.date: 11/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,30 +18,32 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl/telemetry
-ms.openlocfilehash: 8590959e43c2dda69090acb358e740b271426a44
-ms.sourcegitcommit: fb72e9c1ae5b279817f1fb4b46a52170449b6f30
+ms.openlocfilehash: 5ff22753f566c494e51dae67c8c4f6371211be78
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94502007"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550610"
 ---
-# <a name="http-repl-telemetry"></a>HTTP REPL 원격 분석
+# <a name="httprepl-telemetry"></a>HttpRepl 원격 분석
 
-[HTTP REPL (읽기-평가-인쇄 루프)](xref:web-api/http-repl) 은 사용 데이터를 수집 하는 원격 분석 기능을 포함 합니다. HTTP REPL 팀은 도구를 사용 하 여 개선할 수 있는 방법을 이해 하는 것이 중요 합니다.
+[HttpRepl](xref:web-api/http-repl) 에는 사용 현황 데이터를 수집 하는 원격 분석 기능이 포함 되어 있습니다. HttpRepl 팀이 도구를 사용 하 여 개선할 수 있는 방법을 이해 하는 것이 중요 합니다.
 
 ## <a name="how-to-opt-out"></a>옵트아웃(opt out)하는 방법
 
-HTTP REPL 원격 분석 기능은 기본적으로 사용 하도록 설정 되어 있습니다. 원격 분석 기능을 옵트아웃하려면 `DOTNET_HTTPREPL_TELEMETRY_OPTOUT` 환경 변수를 `1` 또는 `true`로 설정합니다.
+HttpRepl 원격 분석 기능은 기본적으로 사용 하도록 설정 되어 있습니다. 원격 분석 기능을 옵트아웃하려면 `DOTNET_HTTPREPL_TELEMETRY_OPTOUT` 환경 변수를 `1` 또는 `true`로 설정합니다.
 
 ## <a name="disclosure"></a>공개
 
-HttpRepl 도구를 처음 실행할 때 다음과 비슷한 텍스트를 표시 합니다. 텍스트는 실행 중인 도구의 버전에 따라 약간씩 다를 수 있습니다. 이 "첫 실행" 경험이 Microsoft가 사용자에게 데이터 수집에 대해 알리는 방법입니다.
+HttpRepl는 도구를 처음 실행할 때 다음과 유사한 텍스트를 표시 합니다. 텍스트는 실행 중인 도구의 버전에 따라 약간씩 다를 수 있습니다. 이 "첫 실행" 경험이 Microsoft가 사용자에게 데이터 수집에 대해 알리는 방법입니다.
 
 ```console
 Telemetry
 ---------
-The .NET Core tools collect usage data in order to help us improve your experience. It is collected by Microsoft and shared with the community. You can opt-out of telemetry by setting the DOTNET_HTTPREPL_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.
+The .NET tools collect usage data in order to help us improve your experience. It is collected by Microsoft and shared with the community. You can opt-out of telemetry by setting the DOTNET_HTTPREPL_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.
 ```
+
+"첫 실행" 환경 텍스트를 표시 하지 않으려면 `DOTNET_HTTPREPL_SKIP_FIRST_TIME_EXPERIENCE` 환경 변수를 또는로 설정 합니다 `1` `true` .
 
 ## <a name="data-points"></a>데이터 요소
 
@@ -68,7 +70,7 @@ The .NET Core tools collect usage data in order to help us improve your experien
 | >= 5.0        | 도구가 컨테이너에서 실행 되 고 있는지 여부를 나타냅니다. |
 | >= 5.0        | 해시 된 미디어 Access Control (MAC) 주소: 컴퓨터에 대 한 암호화 (SHA256) 해시 및 고유 ID입니다. |
 | >= 5.0        | 커널 버전 |
-| >= 5.0        | HTTP REPL 버전입니다. |
+| >= 5.0        | HttpRepl 버전입니다. |
 | >= 5.0        | 도구가 `help` , 또는 인수를 사용 하 여 시작 되었는지 여부를 나타냅니다 `run` `connect` . 실제 인수 값은 수집 되지 않습니다. |
 | >= 5.0        | 호출 되는 명령 (예: `get` ) 및 성공 여부입니다. |
 | >= 5.0        | 명령의 경우, `connect` `root` `base` 또는 인수가 제공 되었는지 여부 `openapi` 입니다. 실제 인수 값은 수집 되지 않습니다. |
@@ -77,7 +79,7 @@ The .NET Core tools collect usage data in order to help us improve your experien
 | >= 5.0        | 명령에 `connect` 대 한 특수 한 사례가 사용 되었는지 여부 `dotnet new webapi` 와 기본 설정에 따라 무시 되었는지 여부를 나타냅니다. |
 | >= 5.0        | 모든 HTTP 명령 (예: GET, POST, PUT)의 경우 각 옵션이 지정 되었는지 여부입니다. 이 옵션의 값은 수집 되지 않습니다. |
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [.NET Core SDK 원격 분석](/dotnet/core/tools/telemetry)
 * [원격 분석 데이터 .NET Core CLI](https://dotnet.microsoft.com/platform/telemetry)
