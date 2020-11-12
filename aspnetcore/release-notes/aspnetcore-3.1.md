@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: 15240df978d9389af08030521adaf491f81d3a77
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: dd012a2104f574865ed577ab3c0e81dc9cc9596d
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051176"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94431019"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>ASP.NET Core 3.1의 새로운 기능
 
@@ -52,7 +52,7 @@ Blazor Server 앱에서 이제 초기 렌더링 중에 최상위 수준 구성 �
     param-IncrementAmount="10" />
 ```
 
-자세한 내용은 [구성 요소를 Razor Pages 및 MVC 앱에 통합](xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps)을 참조하세요.
+자세한 내용은 [구성 요소를 Razor Pages 및 MVC 앱에 통합](xref:blazor/components/prerendering-and-integration)을 참조하세요.
 
 ## <a name="support-for-shared-queues-in-httpsys"></a>HTTP.sys에서 공유 큐에 대한 지원
 

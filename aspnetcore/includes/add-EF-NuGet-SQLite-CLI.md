@@ -1,13 +1,14 @@
 다음 .NET Core CLI 명령을 실행합니다.
 
 ```dotnetcli
-dotnet tool install --global dotnet-ef
-dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet add package Microsoft.EntityFrameworkCore.SQLite
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
-dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-dotnet add package Microsoft.Extensions.Logging.Debug
+dotnet tool install --global dotnet-ef --version 3.1.9
+dotnet tool install --global dotnet-aspnet-codegenerator --version 3.1.4
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 3.1.9
+dotnet add package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore --version 3.1.9
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.1.4
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.1.9
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.1.9
+dotnet add package Microsoft.Extensions.Logging.Debug --version 3.1.9
 ```
 
 앞의 명령은 다음을 추가합니다.

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: e61c76b5d53ad7646961632d00b047ecd2d9e477
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 9462b73ad67394e79de08e7d2b13bf6a3145a04e
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055609"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94507969"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>ASP.NET Core Blazor 레이아웃
 
@@ -41,13 +41,23 @@ ms.locfileid: "93055609"
 
 다음 코드 샘플은 레이아웃 구성 요소인 `MainLayout.razor`의 Razor 템플릿을 보여 줍니다. 레이아웃은 <xref:Microsoft.AspNetCore.Components.LayoutComponentBase>를 상속하고 탐색 모음과 바닥글 사이에 `@Body`를 설정합니다.
 
-[!code-razor[](layouts/sample_snapshot/3.x/MainLayout.razor?highlight=1,13)]
+[!code-razor[](layouts/sample_snapshot/3.x/MainLayout.razor)]
 
 ## <a name="mainlayout-component"></a>`MainLayout` 구성 요소
 
 Blazor 프로젝트 템플릿 중 하나를 기반으로 하는 앱에서 `MainLayout` 구성 요소(`MainLayout.razor`)는 앱의 `Shared` 폴더에 있습니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](./common/samples/5.x/BlazorWebAssemblySample/Shared/MainLayout.razor)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 [!code-razor[](./common/samples/3.x/BlazorWebAssemblySample/Shared/MainLayout.razor)]
+
+::: moniker-end
 
 ## <a name="default-layout"></a>기본 레이아웃
 
@@ -110,7 +120,7 @@ Razor 지시문 `@layout`을 사용하여 구성 요소에 레이아웃을 적�
 
 ## <a name="share-a-no-locrazor-pages-layout-with-integrated-components"></a>통합 구성 요소와 Razor Pages 레이아웃 공유
 
-라우팅 가능한 구성 요소가 Razor Pages 앱에 통합된 경우 구성 요소와 함께 앱의 공유 레이아웃을 사용할 수 있습니다. 자세한 내용은 <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps>를 참조하세요.
+라우팅 가능한 구성 요소가 Razor Pages 앱에 통합된 경우 구성 요소와 함께 앱의 공유 레이아웃을 사용할 수 있습니다. 자세한 내용은 <xref:blazor/components/prerendering-and-integration>를 참조하세요.
 
 ## <a name="additional-resources"></a>추가 자료
 
