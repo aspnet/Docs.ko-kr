@@ -5,7 +5,7 @@ description: 데이터에 바인딩하고, 이벤트를 처리하고, 구성 요
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/19/2020
+ms.date: 11/09/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d30f40945a3b2799dfc2d9391bba37eee1bfdc18
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0f02bc3a92b9f62eb0e3efea0cd780ad6d09bef5
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056272"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94431006"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>ASP.NET Core Razor 구성 요소 만들기 및 사용
 
@@ -464,7 +464,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 구성 요소 참조 캡처에는 [요소 참조 캡처](xref:blazor/call-javascript-from-dotnet#capture-references-to-elements)와 유사한 구문을 사용하지만 JavaScript interop 기능이 아닙니다. 구성 요소 참조가 JavaScript 코드로 전달되지 않습니다. 구성 요소 참조는 .NET 코드에서만 사용됩니다.
 
 > [!NOTE]
-> 구성 요소 참조를 사용하여 자식 구성 요소의 상태를 변경하지 **않도록 합니다** . 대신, 일반 선언적 매개 변수를 사용하여 자식 구성 요소에 데이터를 전달합니다. 일반 선언적 매개 변수를 사용하면 자식 구성 요소가 올바른 시간에 자동으로 다시 렌더링됩니다.
+> 구성 요소 참조를 사용하여 자식 구성 요소의 상태를 변경하지 **않도록 합니다**. 대신, 일반 선언적 매개 변수를 사용하여 자식 구성 요소에 데이터를 전달합니다. 일반 선언적 매개 변수를 사용하면 자식 구성 요소가 올바른 시간에 자동으로 다시 렌더링됩니다.
 
 ## <a name="synchronization-context"></a>동기화 컨텍스트
 
@@ -628,12 +628,26 @@ public class NotifierService
 
 ## <a name="overwritten-parameters"></a>덮어쓴 매개 변수
 
-부모 구성 요소가 다시 렌더링될 때 새 매개 변수 값이 제공됩니다. 일반적으로 기존 값을 덮어씁니다.
+Blazor 프레임워크는 일반적으로 안전한 부모-자식 매개 변수 할당을 적용합니다.
 
-다음을 수행하는 `Expander` 구성 요소를 고려해 보세요.
+* 매개 변수는 예기치 않게 덮어쓰지 않습니다.
+* 부작용이 최소화됩니다. 예를 들어 추가 렌더링은 무한 렌더링 루프를 만들 수 있으므로 피합니다.
+
+자식 구성 요소는 부모 구성 요소가 렌더링될 때 기존 값을 덮어쓸 수 있는 새 매개 변수 값을 받습니다. 자식 구성 요소의 매개 변수 값을 실수로 덮어쓰게 되면 하나 이상의 데이터 바인딩 매개 변수가 있는 구성 요소를 개발하고 개발자가 자식의 매개 변수에 직접 쓸 때 종종 발생합니다.
+
+* 자식 구성 요소는 부모 구성 요소의 매개 변수 값을 하나 이상 사용하여 렌더링됩니다.
+* 자식은 매개 변수 값에 직접 씁니다.
+* 부모 구성 요소는 자식 매개 변수의 값을 렌더링하고 덮어씁니다.
+
+매개 변수 값을 덮어쓸 수 있는 가능성은 자식 구성 요소의 속성 setter로도 확장됩니다.
+
+**일반적인 지침은 자체 매개 변수에 직접 쓰는 구성 요소를 만드는 것이 아닙니다.**
+
+다음과 같은 잘못된 `Expander` 구성 요소를 고려해 보세요.
 
 * 자식 콘텐츠를 렌더링합니다.
-* 구성 요소 매개 변수로 자식 콘텐츠 표시를 설정/해제합니다.
+* 구성 요소 매개 변수(`Expanded`)로 자식 콘텐츠 표시를 설정/해제합니다.
+* 구성 요소는 `Expanded` 매개 변수에 직접 기록하는데, 이는 덮어쓴 매개 변수의 문제를 보여 주므로 피해야 합니다.
 
 ```razor
 <div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
@@ -685,7 +699,7 @@ public class NotifierService
 
 * 부모의 `Expanded` 구성 요소 매개 변수 값을 허용합니다.
 * [OnInitialized 이벤트](xref:blazor/components/lifecycle#component-initialization-methods)에서 구성 요소 매개 변수 값을 ‘private 필드’(`expanded`)에 할당합니다 *.*
-* Private 필드를 사용하여 내부 설정/해제 상태를 유지합니다.
+* 프라이빗 필드를 사용하여 내부 설정/해제 상태를 유지합니다. 이 상태는 매개 변수에 직접 쓰는 것을 방지하는 방법을 보여줍니다.
 
 ```razor
 <div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
@@ -719,6 +733,8 @@ public class NotifierService
     }
 }
 ```
+
+자세한 내용은 [Blazor 양방향 바인딩 오류(dotnet/aspnetcore #24599)](https://github.com/dotnet/aspnetcore/issues/24599)를 참조하세요. 
 
 ## <a name="apply-an-attribute"></a>특성 적용
 
@@ -823,7 +839,7 @@ Blazor는 프로젝트의 [`web root (wwwroot)` 폴더](xref:fundamentals/index#
 <img alt="Company logo" src="/images/logo.png" />
 ```
 
-Razor 구성 요소는 물결표-슬래시 표기법(`~/`)을 지원하지 **않습니다** .
+Razor 구성 요소는 물결표-슬래시 표기법(`~/`)을 지원하지 **않습니다**.
 
 앱의 기본 경로를 설정하는 방법에 대한 내용은 <xref:blazor/host-and-deploy/index#app-base-path>를 참조하세요.
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/index
-ms.openlocfilehash: eb8c5b3c66f9a0d845d6a1d58c69e6fddefa5b0b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e9e4ca11d20557666c75b84e56af825d002df0f1
+ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053386"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94464005"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>ASP.NET Core 인증 개요
 
@@ -141,3 +141,4 @@ Orchard Core는 다음과 같습니다.
 * <xref:security/authentication/policyschemes>
 * <xref:security/authorization/secure-data>
 * [인증된 사용자가 전역적으로 필요함](xref:security/authorization/secure-data#rau)
+* [여러 인증 스키마 사용에 대한 GitHub 문제](https://github.com/dotnet/aspnetcore/issues/26002)
