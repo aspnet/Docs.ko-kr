@@ -5,17 +5,17 @@ description: ASP.NET Core MVC에 대한 자습서 시리즈의 3부입니다.
 ms.author: riande
 ms.date: 8/04/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/first-mvc-app/adding-view
 ms.openlocfilehash: 56f39643ccd69c6508148374033208eb3b2f25ab
 ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
@@ -30,9 +30,9 @@ ms.locfileid: "94422719"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="cf173-105">이 섹션에서는 [:::no-loc(Razor):::](xref:mvc/views/razor) 뷰 파일을 사용하도록 `HelloWorldController` 클래스를 수정하여 클라이언트에 대한 HTML 응답을 생성하는 프로세스를 깔끔하게 캡슐화합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-105">In this section you modify the `HelloWorldController` class to use [:::no-loc(Razor):::](xref:mvc/views/razor) view files to cleanly encapsulate the process of generating HTML responses to a client.</span></span>
+<span data-ttu-id="cf173-105">이 섹션에서는 [Razor](xref:mvc/views/razor) 뷰 파일을 사용하도록 `HelloWorldController` 클래스를 수정하여 클라이언트에 대한 HTML 응답을 생성하는 프로세스를 깔끔하게 캡슐화합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-105">In this section you modify the `HelloWorldController` class to use [Razor](xref:mvc/views/razor) view files to cleanly encapsulate the process of generating HTML responses to a client.</span></span>
 
-<span data-ttu-id="cf173-106">:::no-loc(Razor):::를 사용하여 뷰 템플릿 파일을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-106">You create a view template file using :::no-loc(Razor):::.</span></span> <span data-ttu-id="cf173-107">:::no-loc(Razor)::: 기반 뷰 템플릿의 파일 확장명은 *.cshtml* 입니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-107">:::no-loc(Razor):::-based view templates have a *.cshtml* file extension.</span></span> <span data-ttu-id="cf173-108">C#으로 HTML 출력을 만드는 세련된 방법을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-108">They provide an elegant way to create HTML output with C#.</span></span>
+<span data-ttu-id="cf173-106">Razor를 사용하여 뷰 템플릿 파일을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-106">You create a view template file using Razor.</span></span> <span data-ttu-id="cf173-107">Razor 기반 뷰 템플릿의 파일 확장명은 *.cshtml* 입니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-107">Razor-based view templates have a *.cshtml* file extension.</span></span> <span data-ttu-id="cf173-108">C#으로 HTML 출력을 만드는 세련된 방법을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-108">They provide an elegant way to create HTML output with C#.</span></span>
 
 <span data-ttu-id="cf173-109">현재 `Index` 메서드는 컨트롤러 클래스에서 하드 코딩된 메시지 문자열을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-109">Currently the `Index` method returns a string with a message that's hard-coded in the controller class.</span></span> <span data-ttu-id="cf173-110">`HelloWorldController` 클래스에서 `Index` 메서드를 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-110">In the `HelloWorldController` class, replace the `Index` method with the following code:</span></span>
 
@@ -52,7 +52,7 @@ ms.locfileid: "94422719"
 
   * <span data-ttu-id="cf173-119">오른쪽 위의 검색 상자에 *뷰* 를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-119">In the search box in the upper-right, enter *view*</span></span>
 
-  * <span data-ttu-id="cf173-120">**:::no-loc(Razor)::: 뷰** 선택</span><span class="sxs-lookup"><span data-stu-id="cf173-120">Select **:::no-loc(Razor)::: View**</span></span>
+  * <span data-ttu-id="cf173-120">**Razor 뷰** 선택</span><span class="sxs-lookup"><span data-stu-id="cf173-120">Select **Razor View**</span></span>
 
   * <span data-ttu-id="cf173-121">*이름* 상자 값은 **Index.cshtml** 을 유지하세요.</span><span class="sxs-lookup"><span data-stu-id="cf173-121">Keep the **Name** box value, *Index.cshtml*.</span></span>
 
@@ -82,7 +82,7 @@ ms.locfileid: "94422719"
 
 ---
 
-<span data-ttu-id="cf173-137">*Views/HelloWorld/Index.cshtml* :::no-loc(Razor)::: 뷰 파일의 콘텐츠를 다음으로 대체합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-137">Replace the contents of the *Views/HelloWorld/Index.cshtml* :::no-loc(Razor)::: view file with the following:</span></span>
+<span data-ttu-id="cf173-137">*Views/HelloWorld/Index.cshtml* Razor 뷰 파일의 콘텐츠를 다음으로 대체합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-137">Replace the contents of the *Views/HelloWorld/Index.cshtml* Razor view file with the following:</span></span>
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
@@ -200,9 +200,9 @@ ms.locfileid: "94422719"
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="cf173-219">이 섹션에서는 [:::no-loc(Razor):::](xref:mvc/views/razor) 뷰 파일을 사용하도록 `HelloWorldController` 클래스를 수정하여 클라이언트에 대한 HTML 응답을 생성하는 프로세스를 깔끔하게 캡슐화합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-219">In this section you modify the `HelloWorldController` class to use [:::no-loc(Razor):::](xref:mvc/views/razor) view files to cleanly encapsulate the process of generating HTML responses to a client.</span></span>
+<span data-ttu-id="cf173-219">이 섹션에서는 [Razor](xref:mvc/views/razor) 뷰 파일을 사용하도록 `HelloWorldController` 클래스를 수정하여 클라이언트에 대한 HTML 응답을 생성하는 프로세스를 깔끔하게 캡슐화합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-219">In this section you modify the `HelloWorldController` class to use [Razor](xref:mvc/views/razor) view files to cleanly encapsulate the process of generating HTML responses to a client.</span></span>
 
-<span data-ttu-id="cf173-220">:::no-loc(Razor):::를 사용하여 뷰 템플릿 파일을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-220">You create a view template file using :::no-loc(Razor):::.</span></span> <span data-ttu-id="cf173-221">:::no-loc(Razor)::: 기반 뷰 템플릿의 파일 확장명은 *.cshtml* 입니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-221">:::no-loc(Razor):::-based view templates have a *.cshtml* file extension.</span></span> <span data-ttu-id="cf173-222">C#으로 HTML 출력을 만드는 세련된 방법을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-222">They provide an elegant way to create HTML output with C#.</span></span>
+<span data-ttu-id="cf173-220">Razor를 사용하여 뷰 템플릿 파일을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-220">You create a view template file using Razor.</span></span> <span data-ttu-id="cf173-221">Razor 기반 뷰 템플릿의 파일 확장명은 *.cshtml* 입니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-221">Razor-based view templates have a *.cshtml* file extension.</span></span> <span data-ttu-id="cf173-222">C#으로 HTML 출력을 만드는 세련된 방법을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-222">They provide an elegant way to create HTML output with C#.</span></span>
 
 <span data-ttu-id="cf173-223">현재 `Index` 메서드는 컨트롤러 클래스에서 하드 코딩된 메시지 문자열을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-223">Currently the `Index` method returns a string with a message that's hard-coded in the controller class.</span></span> <span data-ttu-id="cf173-224">`HelloWorldController` 클래스에서 `Index` 메서드를 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-224">In the `HelloWorldController` class, replace the `Index` method with the following code:</span></span>
 
@@ -222,7 +222,7 @@ ms.locfileid: "94422719"
 
   * <span data-ttu-id="cf173-233">오른쪽 위의 검색 상자에 *뷰* 를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-233">In the search box in the upper-right, enter *view*</span></span>
 
-  * <span data-ttu-id="cf173-234">**:::no-loc(Razor)::: 뷰** 선택</span><span class="sxs-lookup"><span data-stu-id="cf173-234">Select **:::no-loc(Razor)::: View**</span></span>
+  * <span data-ttu-id="cf173-234">**Razor 뷰** 선택</span><span class="sxs-lookup"><span data-stu-id="cf173-234">Select **Razor View**</span></span>
 
   * <span data-ttu-id="cf173-235">*이름* 상자 값은 **Index.cshtml** 을 유지하세요.</span><span class="sxs-lookup"><span data-stu-id="cf173-235">Keep the **Name** box value, *Index.cshtml*.</span></span>
 
@@ -252,7 +252,7 @@ ms.locfileid: "94422719"
 
 ---
 
-<span data-ttu-id="cf173-251">*Views/HelloWorld/Index.cshtml* :::no-loc(Razor)::: 뷰 파일의 콘텐츠를 다음으로 대체합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-251">Replace the contents of the *Views/HelloWorld/Index.cshtml* :::no-loc(Razor)::: view file with the following:</span></span>
+<span data-ttu-id="cf173-251">*Views/HelloWorld/Index.cshtml* Razor 뷰 파일의 콘텐츠를 다음으로 대체합니다.</span><span class="sxs-lookup"><span data-stu-id="cf173-251">Replace the contents of the *Views/HelloWorld/Index.cshtml* Razor view file with the following:</span></span>
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 

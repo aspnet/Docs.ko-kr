@@ -1,23 +1,23 @@
 ---
-title: 'ASP.NET Core :::no-loc(Blazor)::: 양식 및 유효성 검사'
+title: 'ASP.NET Core Blazor 양식 및 유효성 검사'
 author: guardrex
-description: :::no-loc(Blazor):::에서 양식 및 필드 유효성 검사 시나리오를 사용하는 방법을 알아봅니다.
+description: Blazor에서 양식 및 필드 유효성 검사 시나리오를 사용하는 방법을 알아봅니다.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/17/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/forms-validation
 ms.openlocfilehash: fe232b40a2255732dd375cc266937576d5b2d5d9
 ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
@@ -26,11 +26,11 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 11/11/2020
 ms.locfileid: "94507826"
 ---
-# <a name="aspnet-core-no-locblazor-forms-and-validation"></a><span data-ttu-id="3b589-103">ASP.NET Core :::no-loc(Blazor)::: 양식 및 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="3b589-103">ASP.NET Core :::no-loc(Blazor)::: forms and validation</span></span>
+# <a name="aspnet-core-no-locblazor-forms-and-validation"></a><span data-ttu-id="3b589-103">ASP.NET Core Blazor 양식 및 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="3b589-103">ASP.NET Core Blazor forms and validation</span></span>
 
 <span data-ttu-id="3b589-104">작성자: [Daniel Roth](https://github.com/danroth27), [Rémi Bourgarel](https://remibou.github.io/), [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="3b589-104">By [Daniel Roth](https://github.com/danroth27), [Rémi Bourgarel](https://remibou.github.io/), and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="3b589-105">양식 및 유효성 검사는 [데이터 주석](xref:mvc/models/validation)을 사용하여 :::no-loc(Blazor):::에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-105">Forms and validation are supported in :::no-loc(Blazor)::: using [data annotations](xref:mvc/models/validation).</span></span>
+<span data-ttu-id="3b589-105">양식 및 유효성 검사는 [데이터 주석](xref:mvc/models/validation)을 사용하여 Blazor에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-105">Forms and validation are supported in Blazor using [data annotations](xref:mvc/models/validation).</span></span>
 
 <span data-ttu-id="3b589-106">다음 `ExampleModel` 형식은 데이터 주석을 사용하여 유효성 검사 논리를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-106">The following `ExampleModel` type defines validation logic using data annotations:</span></span>
 
@@ -45,7 +45,7 @@ public class ExampleModel
 }
 ```
 
-<span data-ttu-id="3b589-107">양식은 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> 구성 요소를 사용하여 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-107">A form is defined using the <xref:Microsoft.AspNetCore.Components.Forms.EditForm> component.</span></span> <span data-ttu-id="3b589-108">다음 양식은 일반적인 요소, 구성 요소 및 :::no-loc(Razor)::: 코드를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-108">The following form demonstrates typical elements, components, and :::no-loc(Razor)::: code:</span></span>
+<span data-ttu-id="3b589-107">양식은 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> 구성 요소를 사용하여 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-107">A form is defined using the <xref:Microsoft.AspNetCore.Components.Forms.EditForm> component.</span></span> <span data-ttu-id="3b589-108">다음 양식은 일반적인 요소, 구성 요소 및 Razor 코드를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-108">The following form demonstrates typical elements, components, and Razor code:</span></span>
 
 ```razor
 <EditForm Model="@exampleModel" OnValidSubmit="@HandleValidSubmit">
@@ -313,7 +313,7 @@ The birthday must be a date.
 
 <span data-ttu-id="3b589-160">유효성 검사기 구성 요소는 양식의 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>에 대한 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>를 관리하여 양식 유효성 검사를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-160">Validator components support form validation by managing a <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> for a form's <xref:Microsoft.AspNetCore.Components.Forms.EditContext>.</span></span>
 
-<span data-ttu-id="3b589-161">:::no-loc(Blazor)::: 프레임워크는 [유효성 검사 특성(데이터 주석)](xref:mvc/models/validation#validation-attributes)을 기반으로 양식에 유효성 검사 지원을 연결하는 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-161">The :::no-loc(Blazor)::: framework provides the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component to attach validation support to forms based on [validation attributes (data annotations)](xref:mvc/models/validation#validation-attributes).</span></span> <span data-ttu-id="3b589-162">사용자 지정 유효성 검사기 구성 요소를 만들어 동일한 페이지의 다른 양식에 대한 유효성 검사 메시지를 처리하거나, 다양한 양식 처리 단계에서 동일한 양식에 대한 유효성 검사 메시지를 처리할 수 있습니다. 예를 들어 클라이언트 쪽 유효성 검사 후 서버 쪽 유효성 검사를 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-162">Create custom validator components to process validation messages for different forms on the same page or the same form at different steps of form processing, for example client-side validation followed by server-side validation.</span></span> <span data-ttu-id="3b589-163">이 섹션에 표시된 유효성 검사기 구성 요소 예제(`CustomValidator`)는 이 문서의 다음 섹션에서 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-163">The validator component example shown in this section, `CustomValidator`, is used in the following sections of this article:</span></span>
+<span data-ttu-id="3b589-161">Blazor 프레임워크는 [유효성 검사 특성(데이터 주석)](xref:mvc/models/validation#validation-attributes)을 기반으로 양식에 유효성 검사 지원을 연결하는 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-161">The Blazor framework provides the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component to attach validation support to forms based on [validation attributes (data annotations)](xref:mvc/models/validation#validation-attributes).</span></span> <span data-ttu-id="3b589-162">사용자 지정 유효성 검사기 구성 요소를 만들어 동일한 페이지의 다른 양식에 대한 유효성 검사 메시지를 처리하거나, 다양한 양식 처리 단계에서 동일한 양식에 대한 유효성 검사 메시지를 처리할 수 있습니다. 예를 들어 클라이언트 쪽 유효성 검사 후 서버 쪽 유효성 검사를 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-162">Create custom validator components to process validation messages for different forms on the same page or the same form at different steps of form processing, for example client-side validation followed by server-side validation.</span></span> <span data-ttu-id="3b589-163">이 섹션에 표시된 유효성 검사기 구성 요소 예제(`CustomValidator`)는 이 문서의 다음 섹션에서 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-163">The validator component example shown in this section, `CustomValidator`, is used in the following sections of this article:</span></span>
 
 * [<span data-ttu-id="3b589-164">비즈니스 논리 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="3b589-164">Business logic validation</span></span>](#business-logic-validation)
 * [<span data-ttu-id="3b589-165">서버 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="3b589-165">Server validation</span></span>](#server-validation)
@@ -337,7 +337,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
-namespace :::no-loc(Blazor):::Sample.Client
+namespace BlazorSample.Client
 {
     public class CustomValidator : ComponentBase
     {
@@ -456,9 +456,9 @@ namespace :::no-loc(Blazor):::Sample.Client
 
 <span data-ttu-id="3b589-203">다음 예제는 다음을 기반으로 합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-203">The following example is based on:</span></span>
 
-* <span data-ttu-id="3b589-204">[:::no-loc(Blazor)::: 호스트된 프로젝트 템플릿](xref:blazor/hosting-models#blazor-webassembly)에서 만든 호스트된 :::no-loc(Blazor)::: 솔루션.</span><span class="sxs-lookup"><span data-stu-id="3b589-204">A hosted :::no-loc(Blazor)::: solution created by the [:::no-loc(Blazor)::: Hosted project template](xref:blazor/hosting-models#blazor-webassembly).</span></span> <span data-ttu-id="3b589-205">이 예제는 [보안 및 :::no-loc(Identity)::: 설명서](xref:blazor/security/webassembly/index#implementation-guidance)에 설명된 보안 호스트된 :::no-loc(Blazor)::: 솔루션과 함께 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-205">The example can be used with any of the secure hosted :::no-loc(Blazor)::: solutions described in the [Security and :::no-loc(Identity)::: documentation](xref:blazor/security/webassembly/index#implementation-guidance).</span></span>
+* <span data-ttu-id="3b589-204">[Blazor 호스트된 프로젝트 템플릿](xref:blazor/hosting-models#blazor-webassembly)에서 만든 호스트된 Blazor 솔루션.</span><span class="sxs-lookup"><span data-stu-id="3b589-204">A hosted Blazor solution created by the [Blazor Hosted project template](xref:blazor/hosting-models#blazor-webassembly).</span></span> <span data-ttu-id="3b589-205">이 예제는 [보안 및 Identity 설명서](xref:blazor/security/webassembly/index#implementation-guidance)에 설명된 보안 호스트된 Blazor 솔루션과 함께 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-205">The example can be used with any of the secure hosted Blazor solutions described in the [Security and Identity documentation](xref:blazor/security/webassembly/index#implementation-guidance).</span></span>
 * <span data-ttu-id="3b589-206">이전 [기본 제공 양식 구성 요소](#built-in-forms-components) 섹션의 ‘Starfleet Starship 데이터베이스’ 양식 예제.</span><span class="sxs-lookup"><span data-stu-id="3b589-206">The *Starfleet Starship Database* form example in the preceding [Built-in forms components](#built-in-forms-components) section.</span></span>
-* <span data-ttu-id="3b589-207">:::no-loc(Blazor)::: 프레임워크의 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소.</span><span class="sxs-lookup"><span data-stu-id="3b589-207">The :::no-loc(Blazor)::: framework's <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span>
+* <span data-ttu-id="3b589-207">Blazor 프레임워크의 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소.</span><span class="sxs-lookup"><span data-stu-id="3b589-207">The Blazor framework's <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span>
 * <span data-ttu-id="3b589-208">[유효성 검사기 구성 요소](#validator-components) 섹션에 표시된 `CustomValidator` 구성 요소.</span><span class="sxs-lookup"><span data-stu-id="3b589-208">The `CustomValidator` component shown in the [Validator components](#validator-components) section.</span></span>
 
 <span data-ttu-id="3b589-209">다음 예에서 사용자가 `Defense` 배송 분류(`Classification`)를 선택하는 경우 서버 API는 배송 설명(`Description`)에 대한 값이 제공되는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-209">In the following example, the server API validates that a value is provided for the ship's description (`Description`) if the user selects the `Defense` ship classification (`Classification`).</span></span>
@@ -481,9 +481,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using :::no-loc(Blazor):::Sample.Shared;
+using BlazorSample.Shared;
 
-namespace :::no-loc(Blazor):::Sample.Server.Controllers
+namespace BlazorSample.Server.Controllers
 {
     [Authorize]
     [ApiController]
@@ -593,7 +593,7 @@ services.AddControllersWithViews()
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @using Microsoft.Extensions.Logging
-@using :::no-loc(Blazor):::Sample.Shared
+@using BlazorSample.Shared
 @attribute [Authorize]
 @inject HttpClient Http
 @inject ILogger<FormValidation> Logger
@@ -720,11 +720,11 @@ services.AddControllersWithViews()
 > <span data-ttu-id="3b589-228">[유효성 검사 구성 요소](#validator-components) 대신 데이터 주석 유효성 검사 특성을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-228">As an alternative to [validation components](#validator-components), data annotation validation attributes can be used.</span></span> <span data-ttu-id="3b589-229">양식의 모델에 적용된 사용자 지정 특성은 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 사용하여 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-229">Custom attributes applied to the form's model activate with the use of the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span> <span data-ttu-id="3b589-230">서버 쪽 유효성 검사에 사용하는 경우 특성을 서버에서 실행 가능해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-230">When used with server-side validation, the attributes must be executable on the server.</span></span> <span data-ttu-id="3b589-231">자세한 내용은 <xref:mvc/models/validation#alternatives-to-built-in-attributes>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="3b589-231">For more information, see <xref:mvc/models/validation#alternatives-to-built-in-attributes>.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="3b589-232">이 섹션의 서버 쪽 유효성 검사 방법은 이 설명서 집합의 :::no-loc(Blazor WebAssembly)::: 호스트된 솔루션 예제에 적합합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-232">The server-side validation approach in this section is suitable for any of the :::no-loc(Blazor WebAssembly)::: hosted solution examples in this documentation set:</span></span>
+> <span data-ttu-id="3b589-232">이 섹션의 서버 쪽 유효성 검사 방법은 이 설명서 집합의 Blazor WebAssembly 호스트된 솔루션 예제에 적합합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-232">The server-side validation approach in this section is suitable for any of the Blazor WebAssembly hosted solution examples in this documentation set:</span></span>
 >
 > * [<span data-ttu-id="3b589-233">AAD(Azure Active Directory)</span><span class="sxs-lookup"><span data-stu-id="3b589-233">Azure Active Directory (AAD)</span></span>](xref:blazor/security/webassembly/hosted-with-azure-active-directory)
 > * [<span data-ttu-id="3b589-234">AAD(Azure Active Directory) B2C</span><span class="sxs-lookup"><span data-stu-id="3b589-234">Azure Active Directory (AAD) B2C</span></span>](xref:blazor/security/webassembly/hosted-with-azure-active-directory-b2c)
-> * [<span data-ttu-id="3b589-235">:::no-loc(Identity):::서버</span><span class="sxs-lookup"><span data-stu-id="3b589-235">:::no-loc(Identity)::: Server</span></span>](xref:blazor/security/webassembly/hosted-with-identity-server)
+> * [<span data-ttu-id="3b589-235">Identity서버</span><span class="sxs-lookup"><span data-stu-id="3b589-235">Identity Server</span></span>](xref:blazor/security/webassembly/hosted-with-identity-server)
 
 ## <a name="inputtext-based-on-the-input-event"></a><span data-ttu-id="3b589-236">입력 이벤트를 기반으로 하는 InputText</span><span class="sxs-lookup"><span data-stu-id="3b589-236">InputText based on the input event</span></span>
 
@@ -952,20 +952,20 @@ public enum Engine { Ion, Plasma, Fusion, Warp }
 * <span data-ttu-id="3b589-261">HTML 특성에는 `null` 값을 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-261">HTML attributes can't have `null` values.</span></span> <span data-ttu-id="3b589-262">HTML에서 `null`에 가장 근사한 값은 `<option>` 요소에서 HTML `value` 특성이 없는 상태입니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-262">The closest equivalent to `null` in HTML is absence of the HTML `value` attribute from the `<option>` element.</span></span>
 * <span data-ttu-id="3b589-263">`value` 특성이 없는 `<option>`을 선택하면 브라우저가 해당 `<option>` 요소의 텍스트 내용을 값으로 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-263">When selecting an `<option>` with no `value` attribute, the browser treats the value as the *text content* of that `<option>`'s element.</span></span>
 
-<span data-ttu-id="3b589-264">:::no-loc(Blazor)::: 프레임워크는 기본 동작에 다음을 포함하므로 기본 동작을 억제하려고 시도하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-264">The :::no-loc(Blazor)::: framework doesn't attempt to suppress the default behavior because it would involve:</span></span>
+<span data-ttu-id="3b589-264">Blazor 프레임워크는 기본 동작에 다음을 포함하므로 기본 동작을 억제하려고 시도하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-264">The Blazor framework doesn't attempt to suppress the default behavior because it would involve:</span></span>
 
 * <span data-ttu-id="3b589-265">프레임워크에서 일련의 특수 경우 해결 방법 만들기</span><span class="sxs-lookup"><span data-stu-id="3b589-265">Creating a chain of special-case workarounds in the framework.</span></span>
 * <span data-ttu-id="3b589-266">현재 프레임워크 동작에 대한 호환성이 손상되는 변경</span><span class="sxs-lookup"><span data-stu-id="3b589-266">Breaking changes to current framework behavior.</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-<span data-ttu-id="3b589-267">HTML에서 가장 타당한 `null` 근사값은 빈 문자열 `value`입니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-267">The most plausible `null` equivalent in HTML is an *empty string* `value`.</span></span> <span data-ttu-id="3b589-268">:::no-loc(Blazor)::: 프레임워크는 `<select>`의 값에 대한 양방향 바인딩을 위해 `null`을 빈 문자열 변환으로 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-268">The :::no-loc(Blazor)::: framework handles `null` to empty string conversions for two-way binding to a `<select>`'s value.</span></span>
+<span data-ttu-id="3b589-267">HTML에서 가장 타당한 `null` 근사값은 빈 문자열 `value`입니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-267">The most plausible `null` equivalent in HTML is an *empty string* `value`.</span></span> <span data-ttu-id="3b589-268">Blazor 프레임워크는 `<select>`의 값에 대한 양방향 바인딩을 위해 `null`을 빈 문자열 변환으로 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-268">The Blazor framework handles `null` to empty string conversions for two-way binding to a `<select>`'s value.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-<span data-ttu-id="3b589-269">:::no-loc(Blazor)::: 프레임워크는 `<select>`의 값에 대한 양방향 바인딩을 시도할 때 자동으로 `null`을 빈 문자열 변환으로 처리하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-269">The :::no-loc(Blazor)::: framework doesn't automatically handle `null` to empty string conversions when attempting two-way binding to a `<select>`'s value.</span></span> <span data-ttu-id="3b589-270">자세한 내용은 [Null 값에 대한 `<select>` 바인딩 수정(dotnet/aspnetcore #23221)](https://github.com/dotnet/aspnetcore/pull/23221)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="3b589-270">For more information, see [Fix binding `<select>` to a null value (dotnet/aspnetcore #23221)](https://github.com/dotnet/aspnetcore/pull/23221).</span></span>
+<span data-ttu-id="3b589-269">Blazor 프레임워크는 `<select>`의 값에 대한 양방향 바인딩을 시도할 때 자동으로 `null`을 빈 문자열 변환으로 처리하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-269">The Blazor framework doesn't automatically handle `null` to empty string conversions when attempting two-way binding to a `<select>`'s value.</span></span> <span data-ttu-id="3b589-270">자세한 내용은 [Null 값에 대한 `<select>` 바인딩 수정(dotnet/aspnetcore #23221)](https://github.com/dotnet/aspnetcore/pull/23221)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="3b589-270">For more information, see [Fix binding `<select>` to a null value (dotnet/aspnetcore #23221)](https://github.com/dotnet/aspnetcore/pull/23221).</span></span>
 
 ::: moniker-end
 
@@ -973,7 +973,7 @@ public enum Engine { Ion, Plasma, Fusion, Warp }
 
 <span data-ttu-id="3b589-272"><xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소는 데이터 주석을 사용하여 유효성 검사 지원을 계단식 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>에 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-272">The <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component attaches validation support using data annotations to the cascaded <xref:Microsoft.AspNetCore.Components.Forms.EditContext>.</span></span> <span data-ttu-id="3b589-273">데이터 주석을 통해 유효성 검사 지원을 사용하도록 설정하려면 이 명시적 제스처가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-273">Enabling support for validation using data annotations requires this explicit gesture.</span></span> <span data-ttu-id="3b589-274">데이터 주석이 아닌 다른 유효성 검사 시스템을 사용하려면 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>를 사용자 지정 구현으로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-274">To use a different validation system than data annotations, replace the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> with a custom implementation.</span></span> <span data-ttu-id="3b589-275">참조 원본 [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs)/[`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs)에서 ASP.NET Core 구현을 검사할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-275">The ASP.NET Core implementation is available for inspection in the reference source: [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs)/[`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs).</span></span> <span data-ttu-id="3b589-276">위의 참조 원본 링크에서는 ASP.NET Core의 향후 릴리스를 위한 제품 단위의 최신 개발을 나타내는 리포지토리 `master` 분기의 코드를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-276">The preceding links to reference source provide code from the repository's `master` branch, which represents the product unit's current development for the next release of ASP.NET Core.</span></span> <span data-ttu-id="3b589-277">다른 릴리스의 분기를 선택하려면 GitHub 분기 선택기를 사용합니다(예: `release/3.1`).</span><span class="sxs-lookup"><span data-stu-id="3b589-277">To select the branch for a different release, use the GitHub branch selector (for example `release/3.1`).</span></span>
 
-<span data-ttu-id="3b589-278">:::no-loc(Blazor):::는 다음 두 가지 유형의 유효성 검사를 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-278">:::no-loc(Blazor)::: performs two types of validation:</span></span>
+<span data-ttu-id="3b589-278">Blazor는 다음 두 가지 유형의 유효성 검사를 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-278">Blazor performs two types of validation:</span></span>
 
 * <span data-ttu-id="3b589-279">‘필드 유효성 검사’는 사용자가 Tab 키를 눌러 필드를 벗어날 때 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-279">*Field validation* is performed when the user tabs out of a field.</span></span> <span data-ttu-id="3b589-280">필드 유효성을 검사하는 동안 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소는 보고된 모든 유효성 검사 결과를 필드에 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-280">During field validation, the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component associates all reported validation results with the field.</span></span>
 * <span data-ttu-id="3b589-281">‘모델 유효성 검사’는 사용자가 양식을 제출할 때 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-281">*Model validation* is performed when the user submits the form.</span></span> <span data-ttu-id="3b589-282">모델 유효성을 검사하는 동안 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소는 유효성 검사 결과에 보고된 멤버 이름을 기준으로 필드를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-282">During model validation, the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component attempts to determine the field based on the member name that the validation result reports.</span></span> <span data-ttu-id="3b589-283">개별 멤버와 연결되지 않은 유효성 검사 결과는 필드가 아니라 모델과 연결됩니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-283">Validation results that aren't associated with an individual member are associated with the model rather than a field.</span></span>
@@ -1058,7 +1058,7 @@ private class MyFieldClassProvider : FieldCssClassProvider
 
 ::: moniker-end
 
-### <a name="no-locblazor-data-annotations-validation-package"></a><span data-ttu-id="3b589-300">:::no-loc(Blazor)::: 데이터 주석 유효성 검사 패키지</span><span class="sxs-lookup"><span data-stu-id="3b589-300">:::no-loc(Blazor)::: data annotations validation package</span></span>
+### <a name="no-locblazor-data-annotations-validation-package"></a><span data-ttu-id="3b589-300">Blazor 데이터 주석 유효성 검사 패키지</span><span class="sxs-lookup"><span data-stu-id="3b589-300">Blazor data annotations validation package</span></span>
 
 <span data-ttu-id="3b589-301">[`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation)는 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 사용하여 유효성 검사 환경 차이를 완화하는 패키지입니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-301">The [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) is a package that fills validation experience gaps using the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span> <span data-ttu-id="3b589-302">이 패키지는 현재 ‘실험적’입니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-302">The package is currently *experimental*.</span></span>
 
@@ -1067,11 +1067,11 @@ private class MyFieldClassProvider : FieldCssClassProvider
 
 ### <a name="compareproperty-attribute"></a><span data-ttu-id="3b589-306">[CompareProperty] 특성</span><span class="sxs-lookup"><span data-stu-id="3b589-306">[CompareProperty] attribute</span></span>
 
-<span data-ttu-id="3b589-307"><xref:System.ComponentModel.DataAnnotations.CompareAttribute>는 유효성 검사 결과를 특정 멤버에 연결하지 않으므로 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소에서 제대로 작동하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-307">The <xref:System.ComponentModel.DataAnnotations.CompareAttribute> doesn't work well with the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component because it doesn't associate the validation result with a specific member.</span></span> <span data-ttu-id="3b589-308">이로 인해 제출 시 전체 모델의 유효성을 검사하는 경우와 필드 수준 유효성 검사 간에 동작이 일치하지 않을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-308">This can result in inconsistent behavior between field-level validation and when the entire model is validated on a submit.</span></span> <span data-ttu-id="3b589-309">[`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) ‘실험적’ 패키지는 해당 제한 사항을 해결하는 추가 유효성 검사 특성인 `ComparePropertyAttribute`를 도입합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-309">The [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) *experimental* package introduces an additional validation attribute, `ComparePropertyAttribute`, that works around these limitations.</span></span> <span data-ttu-id="3b589-310">:::no-loc(Blazor)::: 앱에서 `[CompareProperty]`는 [`[Compare]`](xref:System.ComponentModel.DataAnnotations.CompareAttribute) 특성을 직접 대체합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-310">In a :::no-loc(Blazor)::: app, `[CompareProperty]` is a direct replacement for the [`[Compare]`](xref:System.ComponentModel.DataAnnotations.CompareAttribute) attribute.</span></span>
+<span data-ttu-id="3b589-307"><xref:System.ComponentModel.DataAnnotations.CompareAttribute>는 유효성 검사 결과를 특정 멤버에 연결하지 않으므로 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소에서 제대로 작동하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-307">The <xref:System.ComponentModel.DataAnnotations.CompareAttribute> doesn't work well with the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component because it doesn't associate the validation result with a specific member.</span></span> <span data-ttu-id="3b589-308">이로 인해 제출 시 전체 모델의 유효성을 검사하는 경우와 필드 수준 유효성 검사 간에 동작이 일치하지 않을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-308">This can result in inconsistent behavior between field-level validation and when the entire model is validated on a submit.</span></span> <span data-ttu-id="3b589-309">[`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) ‘실험적’ 패키지는 해당 제한 사항을 해결하는 추가 유효성 검사 특성인 `ComparePropertyAttribute`를 도입합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-309">The [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) *experimental* package introduces an additional validation attribute, `ComparePropertyAttribute`, that works around these limitations.</span></span> <span data-ttu-id="3b589-310">Blazor 앱에서 `[CompareProperty]`는 [`[Compare]`](xref:System.ComponentModel.DataAnnotations.CompareAttribute) 특성을 직접 대체합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-310">In a Blazor app, `[CompareProperty]` is a direct replacement for the [`[Compare]`](xref:System.ComponentModel.DataAnnotations.CompareAttribute) attribute.</span></span>
 
 ### <a name="nested-models-collection-types-and-complex-types"></a><span data-ttu-id="3b589-311">중첩된 모델, 컬렉션 형식 및 복합 형식</span><span class="sxs-lookup"><span data-stu-id="3b589-311">Nested models, collection types, and complex types</span></span>
 
-<span data-ttu-id="3b589-312">:::no-loc(Blazor):::는 기본 제공 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>와 함께 데이터 주석을 사용하여 양식 입력의 유효성 검사를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-312">:::no-loc(Blazor)::: provides support for validating form input using data annotations with the built-in <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>.</span></span> <span data-ttu-id="3b589-313">그러나 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>는 컬렉션 형식 또는 복합 형식 속성이 아닌, 양식에 바인딩된 모델의 최상위 속성에 대해서만 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-313">However, the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> only validates top-level properties of the model bound to the form that aren't collection- or complex-type properties.</span></span>
+<span data-ttu-id="3b589-312">Blazor는 기본 제공 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>와 함께 데이터 주석을 사용하여 양식 입력의 유효성 검사를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-312">Blazor provides support for validating form input using data annotations with the built-in <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>.</span></span> <span data-ttu-id="3b589-313">그러나 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>는 컬렉션 형식 또는 복합 형식 속성이 아닌, 양식에 바인딩된 모델의 최상위 속성에 대해서만 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-313">However, the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> only validates top-level properties of the model bound to the form that aren't collection- or complex-type properties.</span></span>
 
 <span data-ttu-id="3b589-314">컬렉션 형식 및 복합 형식 속성을 포함한 바인딩된 모델의 전체 개체 그래프에 대해 유효성을 검사하려면 다음과 같이 ‘실험적’ [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) 패키지에서 제공하는 `ObjectGraphDataAnnotationsValidator`를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="3b589-314">To validate the bound model's entire object graph, including collection- and complex-type properties, use the `ObjectGraphDataAnnotationsValidator` provided by the *experimental* [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) package:</span></span>
 

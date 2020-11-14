@@ -1,23 +1,23 @@
 ---
-title: 'ASP.NET Core :::no-loc(Blazor WebAssembly)::: 추가 보안 시나리오'
+title: 'ASP.NET Core Blazor WebAssembly 추가 보안 시나리오'
 author: guardrex
-description: 추가 보안 시나리오에 대해 :::no-loc(Blazor WebAssembly):::를 구성하는 방법을 알아봅니다.
+description: 추가 보안 시나리오에 대해 Blazor WebAssembly를 구성하는 방법을 알아봅니다.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/27/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/security/webassembly/additional-scenarios
 ms.openlocfilehash: baed18df2d127b592f420aac0432e0b28f076d46
 ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
@@ -26,7 +26,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 11/11/2020
 ms.locfileid: "94508047"
 ---
-# <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a><span data-ttu-id="18e78-103">ASP.NET Core :::no-loc(Blazor WebAssembly)::: 추가 보안 시나리오</span><span class="sxs-lookup"><span data-stu-id="18e78-103">ASP.NET Core :::no-loc(Blazor WebAssembly)::: additional security scenarios</span></span>
+# <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a><span data-ttu-id="18e78-103">ASP.NET Core Blazor WebAssembly 추가 보안 시나리오</span><span class="sxs-lookup"><span data-stu-id="18e78-103">ASP.NET Core Blazor WebAssembly additional security scenarios</span></span>
 
 <span data-ttu-id="18e78-104">작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="18e78-104">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
 
@@ -59,7 +59,7 @@ builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
     .CreateClient("ServerAPI"));
 ```
 
-<span data-ttu-id="18e78-122">:::no-loc(Blazor WebAssembly)::: 호스트 프로젝트 템플릿을 기반으로 하는 :::no-loc(Blazor)::: 앱의 경우 요청 URI는 기본적으로 앱의 기본 URI 내에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-122">For a :::no-loc(Blazor)::: app based on the :::no-loc(Blazor WebAssembly)::: Hosted project template, request URIs are within the app's base URI by default.</span></span> <span data-ttu-id="18e78-123">따라서 <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>(`new Uri(builder.HostEnvironment.BaseAddress)`)은 프로젝트 템플릿에서 생성된 앱의 <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-123">Therefore, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> in an app generated from the project template.</span></span>
+<span data-ttu-id="18e78-122">Blazor WebAssembly 호스트 프로젝트 템플릿을 기반으로 하는 Blazor 앱의 경우 요청 URI는 기본적으로 앱의 기본 URI 내에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-122">For a Blazor app based on the Blazor WebAssembly Hosted project template, request URIs are within the app's base URI by default.</span></span> <span data-ttu-id="18e78-123">따라서 <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>(`new Uri(builder.HostEnvironment.BaseAddress)`)은 프로젝트 템플릿에서 생성된 앱의 <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-123">Therefore, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> in an app generated from the project template.</span></span>
 
 <span data-ttu-id="18e78-124">구성된 <xref:System.Net.Http.HttpClient>는 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 패턴을 사용하여 권한이 부여된 요청을 수행하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-124">The configured <xref:System.Net.Http.HttpClient> is used to make authorized requests using the [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) pattern:</span></span>
 
@@ -120,7 +120,7 @@ builder.Services.AddHttpClient("ServerAPI",
     .AddHttpMessageHandler<CustomAuthorizationMessageHandler>();
 ```
 
-<span data-ttu-id="18e78-131">:::no-loc(Blazor WebAssembly)::: 호스트 프로젝트 템플릿에 기반한 :::no-loc(Blazor)::: 앱의 경우, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>(`new Uri(builder.HostEnvironment.BaseAddress)`)이 기본적으로 <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-131">For a :::no-loc(Blazor)::: app based on the :::no-loc(Blazor WebAssembly)::: Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> by default.</span></span>
+<span data-ttu-id="18e78-131">Blazor WebAssembly 호스트 프로젝트 템플릿에 기반한 Blazor 앱의 경우, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>(`new Uri(builder.HostEnvironment.BaseAddress)`)이 기본적으로 <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-131">For a Blazor app based on the Blazor WebAssembly Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> by default.</span></span>
 
 <span data-ttu-id="18e78-132">구성된 <xref:System.Net.Http.HttpClient>는 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 패턴을 사용하여 권한이 부여된 요청을 수행하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-132">The configured <xref:System.Net.Http.HttpClient> is used to make authorized requests using the [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) pattern.</span></span> <span data-ttu-id="18e78-133">클라이언트가 <xref:System.Net.Http.IHttpClientFactory.CreateClient%2A>([`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) 패키지)를 사용하여 만들어진 경우, <xref:System.Net.Http.HttpClient>에는 서버 API에 요청할 때 액세스 토큰을 포함하는 인스턴스가 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-133">Where the client is created with <xref:System.Net.Http.IHttpClientFactory.CreateClient%2A> ([`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) package), the <xref:System.Net.Http.HttpClient> is supplied instances that include access tokens when making requests to the server API.</span></span> <span data-ttu-id="18e78-134">요청 URI가 다음 예제(`ExampleAPIMethod`)와 같이 상대 URI인 경우 클라이언트 앱이 요청을 할 때 <xref:System.Net.Http.HttpClient.BaseAddress>와 결합됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-134">If the request URI is a relative URI, as it is in the following example (`ExampleAPIMethod`), it's combined with the <xref:System.Net.Http.HttpClient.BaseAddress> when the client app makes the request:</span></span>
 
@@ -171,7 +171,7 @@ builder.Services.AddScoped(sp => new HttpClient(
     });
 ```
 
-<span data-ttu-id="18e78-141">:::no-loc(Blazor WebAssembly)::: 호스트 프로젝트 템플릿에 기반한 :::no-loc(Blazor)::: 앱의 경우, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>이 기본적으로 다음에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-141">For a :::no-loc(Blazor)::: app based on the :::no-loc(Blazor WebAssembly)::: Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> is assigned to the following by default:</span></span>
+<span data-ttu-id="18e78-141">Blazor WebAssembly 호스트 프로젝트 템플릿에 기반한 Blazor 앱의 경우, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>이 기본적으로 다음에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-141">For a Blazor app based on the Blazor WebAssembly Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> is assigned to the following by default:</span></span>
 
 * <span data-ttu-id="18e78-142"><xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>(`new Uri(builder.HostEnvironment.BaseAddress)`).</span><span class="sxs-lookup"><span data-stu-id="18e78-142">The <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`).</span></span>
 * <span data-ttu-id="18e78-143">`authorizedUrls` 배열의 URL.</span><span class="sxs-lookup"><span data-stu-id="18e78-143">A URL of the `authorizedUrls` array.</span></span>
@@ -217,7 +217,7 @@ public class WeatherForecastClient
 }
 ```
 
-<span data-ttu-id="18e78-147">자리 표시자 `{APP ASSEMBLY}`는 앱의 어셈블리 이름입니다(예: `using static :::no-loc(Blazor):::Sample.Data;`).</span><span class="sxs-lookup"><span data-stu-id="18e78-147">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `using static :::no-loc(Blazor):::Sample.Data;`).</span></span>
+<span data-ttu-id="18e78-147">자리 표시자 `{APP ASSEMBLY}`는 앱의 어셈블리 이름입니다(예: `using static BlazorSample.Data;`).</span><span class="sxs-lookup"><span data-stu-id="18e78-147">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `using static BlazorSample.Data;`).</span></span>
 
 <span data-ttu-id="18e78-148">`Program.Main` (`Program.cs`):</span><span class="sxs-lookup"><span data-stu-id="18e78-148">`Program.Main` (`Program.cs`):</span></span>
 
@@ -232,7 +232,7 @@ builder.Services.AddHttpClient<WeatherForecastClient>(
     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 ```
 
-<span data-ttu-id="18e78-149">:::no-loc(Blazor WebAssembly)::: 호스트 프로젝트 템플릿에 기반한 :::no-loc(Blazor)::: 앱의 경우, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>(`new Uri(builder.HostEnvironment.BaseAddress)`)이 기본적으로 <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-149">For a :::no-loc(Blazor)::: app based on the :::no-loc(Blazor WebAssembly)::: Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> by default.</span></span>
+<span data-ttu-id="18e78-149">Blazor WebAssembly 호스트 프로젝트 템플릿에 기반한 Blazor 앱의 경우, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>(`new Uri(builder.HostEnvironment.BaseAddress)`)이 기본적으로 <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-149">For a Blazor app based on the Blazor WebAssembly Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> by default.</span></span>
 
 <span data-ttu-id="18e78-150">`FetchData` 구성 요소(`Pages/FetchData.razor`):</span><span class="sxs-lookup"><span data-stu-id="18e78-150">`FetchData` component (`Pages/FetchData.razor`):</span></span>
 
@@ -262,14 +262,14 @@ builder.Services.AddHttpClient<WeatherForecastClient>(
         scopes: new[] { "example.read", "example.write" }));
 ```
 
-<span data-ttu-id="18e78-154">:::no-loc(Blazor WebAssembly)::: 호스트 프로젝트 템플릿에 기반한 :::no-loc(Blazor)::: 앱의 경우, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>이 기본적으로 다음에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-154">For a :::no-loc(Blazor)::: app based on the :::no-loc(Blazor WebAssembly)::: Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> is assigned to the following by default:</span></span>
+<span data-ttu-id="18e78-154">Blazor WebAssembly 호스트 프로젝트 템플릿에 기반한 Blazor 앱의 경우, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>이 기본적으로 다음에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-154">For a Blazor app based on the Blazor WebAssembly Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> is assigned to the following by default:</span></span>
 
 * <span data-ttu-id="18e78-155"><xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>(`new Uri(builder.HostEnvironment.BaseAddress)`).</span><span class="sxs-lookup"><span data-stu-id="18e78-155">The <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`).</span></span>
 * <span data-ttu-id="18e78-156">`authorizedUrls` 배열의 URL.</span><span class="sxs-lookup"><span data-stu-id="18e78-156">A URL of the `authorizedUrls` array.</span></span>
 
 ## <a name="unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client"></a><span data-ttu-id="18e78-157">보안 기본 클라이언트가 있는 앱의 인증되지 않거나 권한이 부여되지 않은 웹 API 요청</span><span class="sxs-lookup"><span data-stu-id="18e78-157">Unauthenticated or unauthorized web API requests in an app with a secure default client</span></span>
 
-<span data-ttu-id="18e78-158">:::no-loc(Blazor WebAssembly)::: 앱이 일반적으로 보안 기본 <xref:System.Net.Http.HttpClient>를 사용하는 경우 이 앱은 명명된 <xref:System.Net.Http.HttpClient>를 구성하여 인증되지 않거나 권한 부여되지 않은 웹 API 요청을 수행할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-158">If the :::no-loc(Blazor WebAssembly)::: app ordinarily uses a secure default <xref:System.Net.Http.HttpClient>, the app can also make unauthenticated or unauthorized web API requests by configuring a named <xref:System.Net.Http.HttpClient>:</span></span>
+<span data-ttu-id="18e78-158">Blazor WebAssembly 앱이 일반적으로 보안 기본 <xref:System.Net.Http.HttpClient>를 사용하는 경우 이 앱은 명명된 <xref:System.Net.Http.HttpClient>를 구성하여 인증되지 않거나 권한 부여되지 않은 웹 API 요청을 수행할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-158">If the Blazor WebAssembly app ordinarily uses a secure default <xref:System.Net.Http.HttpClient>, the app can also make unauthenticated or unauthorized web API requests by configuring a named <xref:System.Net.Http.HttpClient>:</span></span>
 
 <span data-ttu-id="18e78-159">`Program.Main` (`Program.cs`):</span><span class="sxs-lookup"><span data-stu-id="18e78-159">`Program.Main` (`Program.cs`):</span></span>
 
@@ -278,7 +278,7 @@ builder.Services.AddHttpClient("ServerAPI.NoAuthenticationClient",
     client => client.BaseAddress = new Uri("https://www.example.com/base"));
 ```
 
-<span data-ttu-id="18e78-160">:::no-loc(Blazor WebAssembly)::: 호스트 프로젝트 템플릿에 기반한 :::no-loc(Blazor)::: 앱의 경우, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>(`new Uri(builder.HostEnvironment.BaseAddress)`)이 기본적으로 <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-160">For a :::no-loc(Blazor)::: app based on the :::no-loc(Blazor WebAssembly)::: Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> by default.</span></span>
+<span data-ttu-id="18e78-160">Blazor WebAssembly 호스트 프로젝트 템플릿에 기반한 Blazor 앱의 경우, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>(`new Uri(builder.HostEnvironment.BaseAddress)`)이 기본적으로 <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-160">For a Blazor app based on the Blazor WebAssembly Hosted project template, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) is assigned to the <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> by default.</span></span>
 
 <span data-ttu-id="18e78-161">앞에 나온 등록은 기존의 보안 기본 <xref:System.Net.Http.HttpClient> 등록에 더해 이루어집니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-161">The preceding registration is in addition to the existing secure default <xref:System.Net.Http.HttpClient> registration.</span></span>
 
@@ -329,7 +329,7 @@ builder.Services.AddMsalAuthentication(options =>
 
 <span data-ttu-id="18e78-175">`IAccessTokenProvider.RequestToken` 메서드는 앱이 지정된 범위 세트를 사용하여 액세스 토큰을 프로비저닝할 수 있도록 지원하는 오버로드를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-175">The `IAccessTokenProvider.RequestToken` method provides an overload that allows an app to provision an access token with a given set of scopes.</span></span>
 
-<span data-ttu-id="18e78-176">:::no-loc(Razor)::: 구성 요소에서:</span><span class="sxs-lookup"><span data-stu-id="18e78-176">In a :::no-loc(Razor)::: component:</span></span>
+<span data-ttu-id="18e78-176">Razor 구성 요소에서:</span><span class="sxs-lookup"><span data-stu-id="18e78-176">In a Razor component:</span></span>
 
 ```razor
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
@@ -358,7 +358,7 @@ if (tokenResult.TryGetToken(out var token))
 
 ## <a name="cross-origin-resource-sharing-cors"></a><span data-ttu-id="18e78-181">CORS(원본 간 리소스 공유)</span><span class="sxs-lookup"><span data-stu-id="18e78-181">Cross-origin resource sharing (CORS)</span></span>
 
-<span data-ttu-id="18e78-182">CORS 요청에 대한 자격 증명(권한 부여 :::no-loc(cookie):::/헤더)을 보낼 때 CORS 정책에서 `Authorization` 헤더를 허용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-182">When sending credentials (authorization :::no-loc(cookie):::s/headers) on CORS requests, the `Authorization` header must be allowed by the CORS policy.</span></span>
+<span data-ttu-id="18e78-182">CORS 요청에 대한 자격 증명(권한 부여 cookie/헤더)을 보낼 때 CORS 정책에서 `Authorization` 헤더를 허용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-182">When sending credentials (authorization cookies/headers) on CORS requests, the `Authorization` header must be allowed by the CORS policy.</span></span>
 
 <span data-ttu-id="18e78-183">다음 정책에는 해당 구성이 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-183">The following policy includes configuration for:</span></span>
 
@@ -375,19 +375,19 @@ app.UseCors(policy =>
     .AllowCredentials());
 ```
 
-<span data-ttu-id="18e78-189">:::no-loc(Blazor)::: 호스트 프로젝트 템플릿에 기반한 호스트된 :::no-loc(Blazor)::: 솔루션은 클라이언트 앱과 서버 앱에 동일한 기준 주소를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-189">A hosted :::no-loc(Blazor)::: solution based on the :::no-loc(Blazor)::: Hosted project template uses the same base address for the client and server apps.</span></span> <span data-ttu-id="18e78-190">클라이언트 앱의 <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>은 기본적으로 `builder.HostEnvironment.BaseAddress`의 URI로 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-190">The client app's <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> is set to a URI of `builder.HostEnvironment.BaseAddress` by default.</span></span> <span data-ttu-id="18e78-191">CORS 구성은 :::no-loc(Blazor)::: 호스트 프로젝트 템플릿에서 만든 호스트된 앱의 기본 구성에서는 필요하지 **않습니다**.</span><span class="sxs-lookup"><span data-stu-id="18e78-191">CORS configuration is **not** required in the default configuration of a hosted app created from the :::no-loc(Blazor)::: Hosted project template.</span></span> <span data-ttu-id="18e78-192">서버 프로젝트가 호스트하지 않으며 서버 앱의 기준 주소를 공유하지 않는 추가 클라이언트 앱은 서버 프로젝트에 CORS 구성이 **필요** 합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-192">Additional client apps that aren't hosted by the server project and don't share the server app's base address **do** require CORS configuration in the server project.</span></span>
+<span data-ttu-id="18e78-189">Blazor 호스트 프로젝트 템플릿에 기반한 호스트된 Blazor 솔루션은 클라이언트 앱과 서버 앱에 동일한 기준 주소를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-189">A hosted Blazor solution based on the Blazor Hosted project template uses the same base address for the client and server apps.</span></span> <span data-ttu-id="18e78-190">클라이언트 앱의 <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>은 기본적으로 `builder.HostEnvironment.BaseAddress`의 URI로 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-190">The client app's <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> is set to a URI of `builder.HostEnvironment.BaseAddress` by default.</span></span> <span data-ttu-id="18e78-191">CORS 구성은 Blazor 호스트 프로젝트 템플릿에서 만든 호스트된 앱의 기본 구성에서는 필요하지 **않습니다**.</span><span class="sxs-lookup"><span data-stu-id="18e78-191">CORS configuration is **not** required in the default configuration of a hosted app created from the Blazor Hosted project template.</span></span> <span data-ttu-id="18e78-192">서버 프로젝트가 호스트하지 않으며 서버 앱의 기준 주소를 공유하지 않는 추가 클라이언트 앱은 서버 프로젝트에 CORS 구성이 **필요** 합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-192">Additional client apps that aren't hosted by the server project and don't share the server app's base address **do** require CORS configuration in the server project.</span></span>
 
 <span data-ttu-id="18e78-193">자세한 내용은 <xref:security/cors> 및 샘플 앱의 HTTP 요청 테스터 구성 요소(`Components/HTTPRequestTester.razor`)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="18e78-193">For more information, see <xref:security/cors> and the sample app's HTTP Request Tester component (`Components/HTTPRequestTester.razor`).</span></span>
 
 ## <a name="handle-token-request-errors"></a><span data-ttu-id="18e78-194">토큰 요청 오류 처리</span><span class="sxs-lookup"><span data-stu-id="18e78-194">Handle token request errors</span></span>
 
-<span data-ttu-id="18e78-195">SPA(단일 페이지 애플리케이션)가 OIDC(OpenID Connect)를 사용하여 사용자를 인증하는 경우 인증 상태는 SPA 내에서 로컬로 유지 관리되는 동시에 IP(:::no-loc(Identity)::: 공급자)에서 사용자가 자격 증명을 제공한 결과 설정된 세션 :::no-loc(cookie)::: 형식으로 유지 관리됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-195">When a Single Page Application (SPA) authenticates a user using OpenID Connect (OIDC), the authentication state is maintained locally within the SPA and in the :::no-loc(Identity)::: Provider (IP) in the form of a session :::no-loc(cookie)::: that's set as a result of the user providing their credentials.</span></span>
+<span data-ttu-id="18e78-195">SPA(단일 페이지 애플리케이션)가 OIDC(OpenID Connect)를 사용하여 사용자를 인증하는 경우 인증 상태는 SPA 내에서 로컬로 유지 관리되는 동시에 IP(Identity 공급자)에서 사용자가 자격 증명을 제공한 결과 설정된 세션 cookie 형식으로 유지 관리됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-195">When a Single Page Application (SPA) authenticates a user using OpenID Connect (OIDC), the authentication state is maintained locally within the SPA and in the Identity Provider (IP) in the form of a session cookie that's set as a result of the user providing their credentials.</span></span>
 
 <span data-ttu-id="18e78-196">일반적으로 사용자에 대해 IP가 내보내는 토큰은 짧은 시간 동안(보통 1시간 동안) 유효하므로 클라이언트 앱이 정기적으로 새 토큰을 페치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-196">The tokens that the IP emits for the user typically are valid for short periods of time, about one hour normally, so the client app must regularly fetch new tokens.</span></span> <span data-ttu-id="18e78-197">그러지 않으면 부여된 토큰이 만료된 후에 사용자가 로그아웃됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-197">Otherwise, the user would be logged-out after the granted tokens expire.</span></span> <span data-ttu-id="18e78-198">대부분의 경우 OIDC 클라이언트는 IP 내에 유지되는 인증 상태 또는 “세션” 덕분에 사용자에게 다시 인증하도록 요구하지 않고 새 토큰을 프로비저닝할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-198">In most cases, OIDC clients are able to provision new tokens without requiring the user to authenticate again thanks to the authentication state or "session" that is kept within the IP.</span></span>
 
 <span data-ttu-id="18e78-199">클라이언트가 사용자 조작 없이는 토큰을 가져올 수 없는 경우도 있습니다. 사용자가 어떤 이유로든 IP에서 명시적으로 로그아웃하는 경우가 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-199">There are some cases in which the client can't get a token without user interaction, for example, when for some reason the user explicitly logs out from the IP.</span></span> <span data-ttu-id="18e78-200">이 시나리오는 사용자가 `https://login.microsoftonline.com`을 방문한 후 로그아웃하는 경우에 발생합니다. 이러한 시나리오에서 앱은 사용자가 로그아웃했다는 사실을 즉시 인식하지 못합니다. 이때 클라이언트가 보유하고 있는 토큰은 모두 더 이상 유효하지 않을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-200">This scenario occurs if a user visits `https://login.microsoftonline.com` and logs out. In these scenarios, the app doesn't know immediately that the user has logged out. Any token that the client holds might no longer be valid.</span></span> <span data-ttu-id="18e78-201">또한 클라이언트는 현재 토큰이 만료된 후 사용자 조작 없이는 새 토큰을 프로비저닝할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-201">Also, the client isn't able to provision a new token without user interaction after the current token expires.</span></span>
 
-<span data-ttu-id="18e78-202">이러한 시나리오는 토큰 기반 인증에만 국한되지 않으며,</span><span class="sxs-lookup"><span data-stu-id="18e78-202">These scenarios aren't specific to token-based authentication.</span></span> <span data-ttu-id="18e78-203">SPA의 특성에 해당합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-203">They are part of the nature of SPAs.</span></span> <span data-ttu-id="18e78-204">:::no-loc(cookie):::를 사용하는 SPA도 인증 :::no-loc(cookie):::가 제거된 경우 서버 API를 호출하지 못합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-204">An SPA using :::no-loc(cookie):::s also fails to call a server API if the authentication :::no-loc(cookie)::: is removed.</span></span>
+<span data-ttu-id="18e78-202">이러한 시나리오는 토큰 기반 인증에만 국한되지 않으며,</span><span class="sxs-lookup"><span data-stu-id="18e78-202">These scenarios aren't specific to token-based authentication.</span></span> <span data-ttu-id="18e78-203">SPA의 특성에 해당합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-203">They are part of the nature of SPAs.</span></span> <span data-ttu-id="18e78-204">cookie를 사용하는 SPA도 인증 cookie가 제거된 경우 서버 API를 호출하지 못합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-204">An SPA using cookies also fails to call a server API if the authentication cookie is removed.</span></span>
 
 <span data-ttu-id="18e78-205">앱에서 보호된 리소스에 대해 API 호출을 수행하는 경우에는 다음 사항에 유의해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-205">When an app performs API calls to protected resources, you must be aware of the following:</span></span>
 
@@ -714,7 +714,7 @@ builder.Services.AddApiAuthorization(options => {
 
 ### <a name="customize-the-user-with-a-payload-claim"></a><span data-ttu-id="18e78-267">페이로드 클레임으로 사용자의 사용자 지정</span><span class="sxs-lookup"><span data-stu-id="18e78-267">Customize the user with a payload claim</span></span>
 
-<span data-ttu-id="18e78-268">다음 예제에서는 앱의 인증된 사용자가 각 사용자 인증 방법에 대해 `amr` 클레임을 받습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-268">In the following example, the app's authenticated users receive an `amr` claim for each of the user's authentication methods.</span></span> <span data-ttu-id="18e78-269">`amr` 클레임은 Microsoft :::no-loc(Identity)::: Platform v1.0 [페이로드 클레임](/azure/active-directory/develop/access-tokens#the-amr-claim)에서 토큰의 주체가 인증된 방법을 식별합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-269">The `amr` claim identifies how the subject of the token was authenticated in Microsoft :::no-loc(Identity)::: Platform v1.0 [payload claims](/azure/active-directory/develop/access-tokens#the-amr-claim).</span></span> <span data-ttu-id="18e78-270">이 예제에서는 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount>에 따라 사용자 지정 사용자 계정 클래스를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-270">The example uses a custom user account class based on <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount>.</span></span>
+<span data-ttu-id="18e78-268">다음 예제에서는 앱의 인증된 사용자가 각 사용자 인증 방법에 대해 `amr` 클레임을 받습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-268">In the following example, the app's authenticated users receive an `amr` claim for each of the user's authentication methods.</span></span> <span data-ttu-id="18e78-269">`amr` 클레임은 Microsoft Identity Platform v1.0 [페이로드 클레임](/azure/active-directory/develop/access-tokens#the-amr-claim)에서 토큰의 주체가 인증된 방법을 식별합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-269">The `amr` claim identifies how the subject of the token was authenticated in Microsoft Identity Platform v1.0 [payload claims](/azure/active-directory/develop/access-tokens#the-amr-claim).</span></span> <span data-ttu-id="18e78-270">이 예제에서는 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount>에 따라 사용자 지정 사용자 계정 클래스를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-270">The example uses a custom user account class based on <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount>.</span></span>
 
 <span data-ttu-id="18e78-271"><xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> 클래스를 확장하는 클래스를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-271">Create a class that extends the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> class.</span></span> <span data-ttu-id="18e78-272">다음 예제에서는 `AuthenticationMethod` 속성을 `amr` JSON 속성 값의 사용자 배열로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-272">The following example sets the `AuthenticationMethod` property to the user's array of `amr` JSON property values.</span></span> <span data-ttu-id="18e78-273">`AuthenticationMethod`는 사용자가 인증될 때 프레임워크에서 자동으로 채워집니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-273">`AuthenticationMethod` is populated automatically by the framework when the user is authenticated.</span></span>
 
@@ -751,11 +751,11 @@ public class CustomAccountFactory
     {
         var initialUser = await base.CreateUserAsync(account, options);
 
-        if (initialUser.:::no-loc(Identity):::.IsAuthenticated)
+        if (initialUser.Identity.IsAuthenticated)
         {
             foreach (var value in account.AuthenticationMethod)
             {
-                ((Claims:::no-loc(Identity):::)initialUser.:::no-loc(Identity):::)
+                ((ClaimsIdentity)initialUser.Identity)
                     .AddClaim(new Claim("amr", value));
             }
         }
@@ -821,7 +821,7 @@ public class CustomAccountFactory
 
 ## <a name="support-prerendering-with-authentication"></a><span data-ttu-id="18e78-282">인증을 사용한 미리 렌더링 지원</span><span class="sxs-lookup"><span data-stu-id="18e78-282">Support prerendering with authentication</span></span>
 
-<span data-ttu-id="18e78-283">호스트된 :::no-loc(Blazor WebAssembly)::: 앱 항목 중 하나의 지침을 따른 후에는 다음 지침에 따라 다음과 같은 동작을 수행하는 앱을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-283">After following the guidance in one of the hosted :::no-loc(Blazor WebAssembly)::: app topics, use the following instructions to create an app that:</span></span>
+<span data-ttu-id="18e78-283">호스트된 Blazor WebAssembly 앱 항목 중 하나의 지침을 따른 후에는 다음 지침에 따라 다음과 같은 동작을 수행하는 앱을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-283">After following the guidance in one of the hosted Blazor WebAssembly app topics, use the following instructions to create an app that:</span></span>
 
 * <span data-ttu-id="18e78-284">인증이 필요하지 않은 경로를 미리 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-284">Prerenders paths for which authorization isn't required.</span></span>
 * <span data-ttu-id="18e78-285">인증이 필요한 경로를 미리 렌더링하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-285">Doesn't prerender paths for which authorization is required.</span></span>
@@ -863,7 +863,7 @@ public void ConfigureServices(IServiceCollection services)
 {
     ...
 
-    services.Add:::no-loc(Razor):::Pages();
+    services.AddRazorPages();
     services.AddScoped<AuthenticationStateProvider, 
         ServerAuthenticationStateProvider>();
     services.AddScoped<SignOutSessionStateManager>();
@@ -872,7 +872,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<span data-ttu-id="18e78-288">서버 앱의 `Startup.Configure` 메서드에서 [`endpoints.MapFallbackToFile("index.html")`](xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A)을 [`endpoints.MapFallbackToPage("/_Host")`](xref:Microsoft.AspNetCore.Builder.:::no-loc(Razor):::PagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A)로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-288">In the server app's `Startup.Configure` method, replace [`endpoints.MapFallbackToFile("index.html")`](xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A) with [`endpoints.MapFallbackToPage("/_Host")`](xref:Microsoft.AspNetCore.Builder.:::no-loc(Razor):::PagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A):</span></span>
+<span data-ttu-id="18e78-288">서버 앱의 `Startup.Configure` 메서드에서 [`endpoints.MapFallbackToFile("index.html")`](xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A)을 [`endpoints.MapFallbackToPage("/_Host")`](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A)로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-288">In the server app's `Startup.Configure` method, replace [`endpoints.MapFallbackToFile("index.html")`](xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A) with [`endpoints.MapFallbackToPage("/_Host")`](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A):</span></span>
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -903,7 +903,7 @@ app.UseEndpoints(endpoints =>
   
 ## <a name="options-for-hosted-apps-and-third-party-login-providers"></a><span data-ttu-id="18e78-295">호스트된 앱 및 타사 로그인 공급자에 대한 옵션</span><span class="sxs-lookup"><span data-stu-id="18e78-295">Options for hosted apps and third-party login providers</span></span>
 
-<span data-ttu-id="18e78-296">타사 공급자를 사용하여 호스트된 :::no-loc(Blazor WebAssembly)::: 앱을 인증하고 권한을 부여하는 경우 사용자를 인증하는 데 사용할 수 있는 몇 가지 옵션이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-296">When authenticating and authorizing a hosted :::no-loc(Blazor WebAssembly)::: app with a third-party provider, there are several options available for authenticating the user.</span></span> <span data-ttu-id="18e78-297">시나리오에 따라 선택하는 옵션이 달라집니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-297">Which one you choose depends on your scenario.</span></span>
+<span data-ttu-id="18e78-296">타사 공급자를 사용하여 호스트된 Blazor WebAssembly 앱을 인증하고 권한을 부여하는 경우 사용자를 인증하는 데 사용할 수 있는 몇 가지 옵션이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-296">When authenticating and authorizing a hosted Blazor WebAssembly app with a third-party provider, there are several options available for authenticating the user.</span></span> <span data-ttu-id="18e78-297">시나리오에 따라 선택하는 옵션이 달라집니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-297">Which one you choose depends on your scenario.</span></span>
 
 <span data-ttu-id="18e78-298">자세한 내용은 <xref:security/authentication/social/additional-claims>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="18e78-298">For more information, see <xref:security/authentication/social/additional-claims>.</span></span>
 
@@ -923,13 +923,13 @@ app.UseEndpoints(endpoints =>
 
 ### <a name="authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party"></a><span data-ttu-id="18e78-305">타사 공급자를 사용하여 사용자를 인증하고 호스트 서버 및 타사에서 보호된 API 호출</span><span class="sxs-lookup"><span data-stu-id="18e78-305">Authenticate users with a third-party provider and call protected APIs on the host server and the third party</span></span>
 
-<span data-ttu-id="18e78-306">타사 로그인 공급자를 사용하여 :::no-loc(Identity):::를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-306">Configure :::no-loc(Identity)::: with a third-party login provider.</span></span> <span data-ttu-id="18e78-307">타사 API 액세스에 필요한 토큰을 가져와 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-307">Obtain the tokens required for third-party API access and store them.</span></span>
+<span data-ttu-id="18e78-306">타사 로그인 공급자를 사용하여 Identity를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-306">Configure Identity with a third-party login provider.</span></span> <span data-ttu-id="18e78-307">타사 API 액세스에 필요한 토큰을 가져와 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-307">Obtain the tokens required for third-party API access and store them.</span></span>
 
-<span data-ttu-id="18e78-308">사용자가 로그인하면 :::no-loc(Identity):::는 인증 프로세스의 일부로 액세스 및 새로 고침 토큰을 수집합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-308">When a user logs in, :::no-loc(Identity)::: collects access and refresh tokens as part of the authentication process.</span></span> <span data-ttu-id="18e78-309">이때 타사 API에 대한 API 호출을 수행하는 데 사용할 수 있는 몇 가지 방법이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-309">At that point, there are a couple of approaches available for making API calls to third-party APIs.</span></span>
+<span data-ttu-id="18e78-308">사용자가 로그인하면 Identity는 인증 프로세스의 일부로 액세스 및 새로 고침 토큰을 수집합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-308">When a user logs in, Identity collects access and refresh tokens as part of the authentication process.</span></span> <span data-ttu-id="18e78-309">이때 타사 API에 대한 API 호출을 수행하는 데 사용할 수 있는 몇 가지 방법이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-309">At that point, there are a couple of approaches available for making API calls to third-party APIs.</span></span>
 
 #### <a name="use-a-server-access-token-to-retrieve-the-third-party-access-token"></a><span data-ttu-id="18e78-310">서버 액세스 토큰을 사용하여 타사 액세스 토큰 검색</span><span class="sxs-lookup"><span data-stu-id="18e78-310">Use a server access token to retrieve the third-party access token</span></span>
 
-<span data-ttu-id="18e78-311">서버에서 생성된 액세스 토큰을 사용하여 서버 API 엔드포인트에서 타사 액세스 토큰을 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-311">Use the access token generated on the server to retrieve the third-party access token from a server API endpoint.</span></span> <span data-ttu-id="18e78-312">여기에서 타사 액세스 토큰을 사용하여 클라이언트의 :::no-loc(Identity):::에서 직접 타사 API 리소스를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-312">From there, use the third-party access token to call third-party API resources directly from :::no-loc(Identity)::: on the client.</span></span>
+<span data-ttu-id="18e78-311">서버에서 생성된 액세스 토큰을 사용하여 서버 API 엔드포인트에서 타사 액세스 토큰을 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-311">Use the access token generated on the server to retrieve the third-party access token from a server API endpoint.</span></span> <span data-ttu-id="18e78-312">여기에서 타사 액세스 토큰을 사용하여 클라이언트의 Identity에서 직접 타사 API 리소스를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-312">From there, use the third-party access token to call third-party API resources directly from Identity on the client.</span></span>
 
 <span data-ttu-id="18e78-313">이 방법은 사용하지 않는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-313">We don't recommend this approach.</span></span> <span data-ttu-id="18e78-314">이 방법을 사용하려면 퍼블릭 클라이언트에 대해 생성된 것처럼 타사 액세스 토큰을 처리해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-314">This approach requires treating the third-party access token as if it were generated for a public client.</span></span> <span data-ttu-id="18e78-315">OAuth 맥락에서, 퍼블릭 앱은 암호를 안전하게 저장하는 데 신뢰할 수 없으므로 클라이언트 암호를 갖지 않으며, 액세스 토큰은 기밀 클라이언트에 대해 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-315">In OAuth terms, the public app doesn't have a client secret because it can't be trusted to store secrets safely, and the access token is produced for a confidential client.</span></span> <span data-ttu-id="18e78-316">기밀 클라이언트는 클라이언트 암호를 포함하는 클라이언트이며 비밀을 안전하게 저장할 수 있는 것으로 간주됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-316">A confidential client is a client that has a client secret and is assumed to be able to safely store secrets.</span></span>
 
@@ -947,7 +947,7 @@ app.UseEndpoints(endpoints =>
 
 ## <a name="use-openid-connect-oidc-v20-endpoints"></a><span data-ttu-id="18e78-325">OIDC(OpenID Connect) v2.0 엔드포인트 사용</span><span class="sxs-lookup"><span data-stu-id="18e78-325">Use OpenID Connect (OIDC) v2.0 endpoints</span></span>
 
-<span data-ttu-id="18e78-326">인증 라이브러리 및 :::no-loc(Blazor)::: 프로젝트 템플릿은 OIDC(OpenID Connect) v1.0 엔드포인트를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-326">The authentication library and :::no-loc(Blazor)::: project templates use OpenID Connect (OIDC) v1.0 endpoints.</span></span> <span data-ttu-id="18e78-327">v2.0 엔드포인트를 사용하려면 JWT 전달자 <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> 옵션을 구성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-327">To use a v2.0 endpoint, configure the JWT Bearer <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> option.</span></span> <span data-ttu-id="18e78-328">다음 예제에서는 <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority> 속성에 `v2.0` 세그먼트를 추가하여 v2.0에 대해 AAD를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-328">In the following example, AAD is configured for v2.0 by appending a `v2.0` segment to the <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority> property:</span></span>
+<span data-ttu-id="18e78-326">인증 라이브러리 및 Blazor 프로젝트 템플릿은 OIDC(OpenID Connect) v1.0 엔드포인트를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-326">The authentication library and Blazor project templates use OpenID Connect (OIDC) v1.0 endpoints.</span></span> <span data-ttu-id="18e78-327">v2.0 엔드포인트를 사용하려면 JWT 전달자 <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> 옵션을 구성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-327">To use a v2.0 endpoint, configure the JWT Bearer <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> option.</span></span> <span data-ttu-id="18e78-328">다음 예제에서는 <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority> 속성에 `v2.0` 세그먼트를 추가하여 v2.0에 대해 AAD를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-328">In the following example, AAD is configured for v2.0 by appending a `v2.0` segment to the <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority> property:</span></span>
 
 ```csharp
 builder.Services.Configure<JwtBearerOptions>(
@@ -958,7 +958,7 @@ builder.Services.Configure<JwtBearerOptions>(
     });
 ```
 
-<span data-ttu-id="18e78-329">또는 앱 설정(`:::no-loc(appsettings.json):::`) 파일에서 설정을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-329">Alternatively, the setting can be made in the app settings (`:::no-loc(appsettings.json):::`) file:</span></span>
+<span data-ttu-id="18e78-329">또는 앱 설정(`appsettings.json`) 파일에서 설정을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-329">Alternatively, the setting can be made in the app settings (`appsettings.json`) file:</span></span>
 
 ```json
 {
@@ -969,13 +969,13 @@ builder.Services.Configure<JwtBearerOptions>(
 }
 ```
 
-<span data-ttu-id="18e78-330">인증 기관에 대한 세그먼트의 추적이 앱의 OIDC 공급자에 적합하지 않은 경우(예: 비 AAD 공급자) <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> 속성을 직접 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-330">If tacking on a segment to the authority isn't appropriate for the app's OIDC provider, such as with non-AAD providers, set the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> property directly.</span></span> <span data-ttu-id="18e78-331"><xref:Microsoft.AspNetCore.Builder.JwtBearerOptions> 또는 앱 설정 파일(`:::no-loc(appsettings.json):::`)에서 `Authority` 키를 사용하여 속성을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-331">Either set the property in <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions> or in the app settings file (`:::no-loc(appsettings.json):::`) with the `Authority` key.</span></span>
+<span data-ttu-id="18e78-330">인증 기관에 대한 세그먼트의 추적이 앱의 OIDC 공급자에 적합하지 않은 경우(예: 비 AAD 공급자) <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> 속성을 직접 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-330">If tacking on a segment to the authority isn't appropriate for the app's OIDC provider, such as with non-AAD providers, set the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> property directly.</span></span> <span data-ttu-id="18e78-331"><xref:Microsoft.AspNetCore.Builder.JwtBearerOptions> 또는 앱 설정 파일(`appsettings.json`)에서 `Authority` 키를 사용하여 속성을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-331">Either set the property in <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions> or in the app settings file (`appsettings.json`) with the `Authority` key.</span></span>
 
 <span data-ttu-id="18e78-332">ID 토큰의 클레임 목록은 v2.0 엔드포인트의 경우 변경됩니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-332">The list of claims in the ID token changes for v2.0 endpoints.</span></span> <span data-ttu-id="18e78-333">자세한 내용은 [Microsoft ID 플랫폼(v2.0)으로 업데이트해야 하는 이유](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="18e78-333">For more information, see [Why update to Microsoft identity platform (v2.0)?](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison).</span></span>
 
 ## <a name="configure-and-use-grpc-in-components"></a><span data-ttu-id="18e78-334">구성 요소에서 gRPC 구성 및 사용</span><span class="sxs-lookup"><span data-stu-id="18e78-334">Configure and use gRPC in components</span></span>
 
-<span data-ttu-id="18e78-335">[ASP.NET Core gRPC 프레임워크](xref:grpc/index)를 사용하도록 :::no-loc(Blazor WebAssembly)::: 앱을 구성하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-335">To configure a :::no-loc(Blazor WebAssembly)::: app to use the [ASP.NET Core gRPC framework](xref:grpc/index):</span></span>
+<span data-ttu-id="18e78-335">[ASP.NET Core gRPC 프레임워크](xref:grpc/index)를 사용하도록 Blazor WebAssembly 앱을 구성하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-335">To configure a Blazor WebAssembly app to use the [ASP.NET Core gRPC framework](xref:grpc/index):</span></span>
 
 * <span data-ttu-id="18e78-336">서버에서 gRPC-Web을 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-336">Enable gRPC-Web on the server.</span></span> <span data-ttu-id="18e78-337">자세한 내용은 <xref:grpc/browser>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="18e78-337">For more information, see <xref:grpc/browser>.</span></span>
 * <span data-ttu-id="18e78-338">앱의 메시지 처리기에 gRPC 서비스를 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-338">Register gRPC services for the app's message handler.</span></span> <span data-ttu-id="18e78-339">다음 예제에서는 [gRPC 자습서에 나온 `GreeterClient` 서비스](xref:tutorials/grpc/grpc-start#create-a-grpc-service)(`Program.Main`)를 사용하도록 앱의 권한 부여 메시지 처리기를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-339">The following example configures the app's authorization message handler to use the [`GreeterClient` service from the gRPC tutorial](xref:tutorials/grpc/grpc-start#create-a-grpc-service) (`Program.Main`):</span></span>
@@ -1003,7 +1003,7 @@ builder.Services.AddScoped(sp =>
 });
 ```
 
-<span data-ttu-id="18e78-340">자리 표시자 `{APP ASSEMBLY}`는 앱의 어셈블리 이름입니다(예: `:::no-loc(Blazor):::Sample`).</span><span class="sxs-lookup"><span data-stu-id="18e78-340">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `:::no-loc(Blazor):::Sample`).</span></span> <span data-ttu-id="18e78-341">호스트된 :::no-loc(Blazor)::: 솔루션의 `Shared` 프로젝트에 `.proto` 파일을 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-341">Place the `.proto` file in the `Shared` project of the hosted :::no-loc(Blazor)::: solution.</span></span>
+<span data-ttu-id="18e78-340">자리 표시자 `{APP ASSEMBLY}`는 앱의 어셈블리 이름입니다(예: `BlazorSample`).</span><span class="sxs-lookup"><span data-stu-id="18e78-340">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `BlazorSample`).</span></span> <span data-ttu-id="18e78-341">호스트된 Blazor 솔루션의 `Shared` 프로젝트에 `.proto` 파일을 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-341">Place the `.proto` file in the `Shared` project of the hosted Blazor solution.</span></span>
 
 <span data-ttu-id="18e78-342">클라이언트 앱의 구성 요소는 gRPC 클라이언트(`Pages/Grpc.razor`)를 사용하여 gRPC 호출을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-342">A component in the client app can make gRPC calls using the gRPC client (`Pages/Grpc.razor`):</span></span>
 
@@ -1045,7 +1045,7 @@ Server response: <strong>@serverResponse</strong>
 }
 ```
 
-<span data-ttu-id="18e78-343">자리 표시자 `{APP ASSEMBLY}`는 앱의 어셈블리 이름입니다(예: `:::no-loc(Blazor):::Sample`).</span><span class="sxs-lookup"><span data-stu-id="18e78-343">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `:::no-loc(Blazor):::Sample`).</span></span> <span data-ttu-id="18e78-344">`Status.DebugException` 속성을 사용하려면 [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client) 버전 2.30.0 이상을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-344">To use the `Status.DebugException` property, use [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client) version 2.30.0 or later.</span></span>
+<span data-ttu-id="18e78-343">자리 표시자 `{APP ASSEMBLY}`는 앱의 어셈블리 이름입니다(예: `BlazorSample`).</span><span class="sxs-lookup"><span data-stu-id="18e78-343">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `BlazorSample`).</span></span> <span data-ttu-id="18e78-344">`Status.DebugException` 속성을 사용하려면 [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client) 버전 2.30.0 이상을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="18e78-344">To use the `Status.DebugException` property, use [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client) version 2.30.0 or later.</span></span>
 
 <span data-ttu-id="18e78-345">자세한 내용은 <xref:grpc/browser>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="18e78-345">For more information, see <xref:grpc/browser>.</span></span>
 
