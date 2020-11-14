@@ -18,23 +18,33 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
-ms.openlocfilehash: 8e780de2367f66ad1f5197077d5243e0b85a41dd
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 761c125e3c5f94157cf7bf4524374db2545610b1
+ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431045"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94595456"
 ---
 # <a name="component-tag-helper-in-aspnet-core"></a>ASP.NET Core의 구성 요소 태그 도우미
 
 작성자: [Daniel Roth](https://github.com/danroth27) 및 [Luke Latham](https://github.com/guardrex)
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
+
+::: moniker range=">= aspnetcore-5.0"
 
 다음 중 하나에 대 한 *구성* 섹션의 지침을 따르세요.
 
 * [Blazor WebAssembly](xref:blazor/components/prerendering-and-integration?pivots=webassembly)
 * [Blazor Server](xref:blazor/components/prerendering-and-integration?pivots=server)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+문서의 *구성* 섹션에 있는 지침을 따르세요 <xref:blazor/components/prerendering-and-integration?pivots=server> .
+
+::: moniker-end
 
 ## <a name="component-tag-helper"></a>구성 요소 태그 도우미
 
