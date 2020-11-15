@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hub-filters
-ms.openlocfilehash: 5a4cb5122080b72875ac11cf2e682162d017d7b9
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 9b131d8ec13204525f39263afaf506e336373a7c
+ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052723"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634576"
 ---
 # <a name="use-hub-filters-in-aspnet-core-no-locsignalr"></a>ASP.NET Core에서 허브 필터 사용 SignalR
 
@@ -99,8 +99,8 @@ public class CustomFilter : IHubFilter
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Exception calling '{invocationContext.HubMethodName}'");
-            throw ex;
+            Console.WriteLine($"Exception calling '{invocationContext.HubMethodName}': {ex}");
+            throw;
         }
     }
 
@@ -197,7 +197,7 @@ public class CustomFilter : IHubFilter
 
 에는 `HubInvocationContext` 현재 허브 메서드 호출에 대 한 정보가 포함 되어 있습니다.
 
-| 속성 | 설명 | 형식 |
+| 속성 | Description | Type |
 | ------ | ------ | ----------- |
 | `Context ` | 에는 `HubCallerContext` 연결에 대 한 정보가 포함 되어 있습니다. | `HubCallerContext` |
 | `Hub` | 이 허브 메서드 호출에 사용 되는 허브의 인스턴스입니다. | `Hub` |
@@ -210,7 +210,7 @@ public class CustomFilter : IHubFilter
 
 에는 `HubLifetimeContext` `OnConnectedAsync` 및 허브 메서드에 대 한 정보가 포함 되어 있습니다 `OnDisconnectedAsync` .
 
-| 속성 | 설명 | 형식 |
+| 속성 | Description | Type |
 | ------ | ------ | ----------- |
 | `Context ` | 에는 `HubCallerContext` 연결에 대 한 정보가 포함 되어 있습니다. | `HubCallerContext` |
 | `Hub` | 이 허브 메서드 호출에 사용 되는 허브의 인스턴스입니다. | `Hub` |
