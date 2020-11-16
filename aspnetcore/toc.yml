@@ -333,42 +333,6 @@
           items:
             - name: 개요
               uid: blazor/components/index
-            - name: 기본 제공 구성 요소
-              items:
-                - name: 앱
-                  href: blazor/templates.md#blazor-project-structure
-                - name: 인증
-                  href: blazor/security/webassembly/index.md#authentication-component
-                - name: AuthorizeView
-                  href: blazor/security/index.md#authorizeview-component
-                - name: InputCheckbox
-                  href: blazor/forms-validation.md#built-in-forms-components
-                - name: InputDate
-                  href: blazor/forms-validation.md#built-in-forms-components
-                - name: InputFile
-                  uid: blazor/file-uploads
-                - name: InputNumber
-                  href: blazor/forms-validation.md#built-in-forms-components
-                - name: InputRadio
-                  href: blazor/forms-validation.md#built-in-forms-components
-                - name: InputRadioGroup
-                  href: blazor/forms-validation.md#built-in-forms-components
-                - name: InputSelect
-                  href: blazor/forms-validation.md#built-in-forms-components
-                - name: InputText
-                  href: blazor/forms-validation.md#built-in-forms-components
-                - name: InputTextArea
-                  href: blazor/forms-validation.md#built-in-forms-components
-                - name: MainLayout
-                  href: blazor/layouts.md#mainlayout-component
-                - name: NavLink
-                  href: blazor/fundamentals/routing.md#navlink-component
-                - name: NavMenu
-                  href: blazor/fundamentals/routing.md#navlink-component
-                - name: 라우터
-                  href: blazor/fundamentals/routing.md#route-templates
-                - name: Virtualize
-                  uid: blazor/components/virtualization
             - name: 연계 값 및 매개 변수
               uid: blazor/components/cascading-values-and-parameters
             - name: 데이터 바인딩
@@ -467,6 +431,42 @@
           uid: blazor/blazor-server-ef-core
         - name: 고급 시나리오
           uid: blazor/advanced-scenarios
+        - name: 기본 제공 구성 요소
+          items:
+            - name: 앱
+              href: blazor/templates.md#blazor-project-structure
+            - name: 인증
+              href: blazor/security/webassembly/index.md#authentication-component
+            - name: AuthorizeView
+              href: blazor/security/index.md#authorizeview-component
+            - name: InputCheckbox
+              href: blazor/forms-validation.md#built-in-forms-components
+            - name: InputDate
+              href: blazor/forms-validation.md#built-in-forms-components
+            - name: InputFile
+              uid: blazor/file-uploads
+            - name: InputNumber
+              href: blazor/forms-validation.md#built-in-forms-components
+            - name: InputRadio
+              href: blazor/forms-validation.md#built-in-forms-components
+            - name: InputRadioGroup
+              href: blazor/forms-validation.md#built-in-forms-components
+            - name: InputSelect
+              href: blazor/forms-validation.md#built-in-forms-components
+            - name: InputText
+              href: blazor/forms-validation.md#built-in-forms-components
+            - name: InputTextArea
+              href: blazor/forms-validation.md#built-in-forms-components
+            - name: MainLayout
+              href: blazor/layouts.md#mainlayout-component
+            - name: NavLink
+              href: blazor/fundamentals/routing.md#navlink-component
+            - name: NavMenu
+              href: blazor/fundamentals/routing.md#navlink-component
+            - name: 라우터
+              href: blazor/fundamentals/routing.md#route-templates
+            - name: Virtualize
+              uid: blazor/components/virtualization
     - name: 클라이언트 쪽 개발
       items:
         - name: 단일 페이지 앱
@@ -604,9 +604,9 @@
       uid: web-api/advanced/conventions
     - name: 오류 처리
       uid: web-api/handle-errors
-    - name: HTTP REPL
+    - name: HttpRepl을 사용하여 테스트
       items:
-        - name: API 테스트
+        - name: 개요
           uid: web-api/http-repl
         - name: 원격 분석
           uid: web-api/http-repl/telemetry
