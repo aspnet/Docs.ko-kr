@@ -1,11 +1,11 @@
 ---
-title: HTTP REPL을 사용하여 웹 API 테스트
+title: HttpRepl을 사용하여 웹 API 테스트
 author: scottaddie
-description: HTTP REPL .NET Core 전역 도구를 사용하여 ASP.NET Core 웹 API를 찾아보고 테스트하는 방법에 대해 알아보세요.
+description: HttpRepl .NET Core 전역 도구를 사용하여 ASP.NET Core 웹 API를 찾아보고 테스트하는 방법에 대해 알아보세요.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc, devx-track-azurecli
-ms.date: 11/10/2020
+ms.date: 11/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: 81174b551c5b6d81e6ac80975f7f77ee6664059d
-ms.sourcegitcommit: fb72e9c1ae5b279817f1fb4b46a52170449b6f30
+ms.openlocfilehash: df2d4e63a18471b4c5f4f1c9434921303bb1da8a
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94501993"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550623"
 ---
-# <a name="test-web-apis-with-the-http-repl"></a>HTTP REPL을 사용하여 웹 API 테스트
+# <a name="test-web-apis-with-the-httprepl"></a>HttpRepl을 사용하여 웹 API 테스트
 
 작성자: [Scott Addie](https://twitter.com/Scott_Addie)
 
@@ -54,7 +54,7 @@ HTTP REPL(Read-Eval-Print Loop):
 
 ## <a name="installation"></a>설치
 
-HTTP REPL을 설치하려면 다음 명령을 실행합니다.
+HttpRepl을 설치하려면 다음 명령을 실행합니다.
 
 ```dotnetcli
 dotnet tool install -g Microsoft.dotnet-httprepl
@@ -62,15 +62,15 @@ dotnet tool install -g Microsoft.dotnet-httprepl
 
 [.NET Core 글로벌 도구](/dotnet/core/tools/global-tools#install-a-global-tool)가 [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl) NuGet 패키지에서 설치됩니다.
 
-## <a name="usage"></a>사용
+## <a name="usage"></a>사용량
 
-도구를 성공적으로 설치한 후 다음 명령을 실행하여 HTTP REPL을 시작합니다.
+도구를 성공적으로 설치한 후 다음 명령을 실행하여 HttpRepl을 시작합니다.
 
 ```console
 httprepl
 ```
 
-사용 가능한 HTTP REPL 명령을 보려면 다음 명령 중 하나를 실행합니다.
+사용 가능한 HttpRepl 명령을 보려면 다음 명령 중 하나를 실행합니다.
 
 ```console
 httprepl -h
@@ -135,7 +135,7 @@ Use `help <COMMAND>` for more detail on an individual command. e.g. `help get`.
 For detailed tool info, see https://aka.ms/http-repl-doc.
 ```
 
-HTTP REPL은 명령 완성을 제안합니다. <kbd>Tab</kbd> 키를 누르면 입력한 문자 또는 API 엔드포인트를 완성하는 명령 목록이 반복됩니다. 다음 섹션에서는 사용 가능한 CLI 명령에 대해 간략하게 설명합니다.
+HttpRepl은 명령 완성을 제안합니다. <kbd>Tab</kbd> 키를 누르면 입력한 문자 또는 API 엔드포인트를 완성하는 명령 목록이 반복됩니다. 다음 섹션에서는 사용 가능한 CLI 명령에 대해 간략하게 설명합니다.
 
 ## <a name="connect-to-the-web-api"></a>웹 API에 연결
 
@@ -151,7 +151,7 @@ httprepl <ROOT URI>
 httprepl https://localhost:5001
 ```
 
-또는 HTTP REPL이 실행되는 동안 언제든지 다음 명령을 실행합니다.
+또는 HttpRepl이 실행되는 동안 언제든지 다음 명령을 실행합니다.
 
 ```console
 connect <ROOT URI>
@@ -252,9 +252,9 @@ https://localhost:5001/> cd people
 https://localhost:5001/people>
 ```
 
-## <a name="customize-the-http-repl"></a>HTTP REPL 사용자 지정
+## <a name="customize-the-httprepl"></a>HttpRepl 사용자 지정
 
-HTTP REPL의 기본 [색](#set-color-preferences)을 사용자 지정할 수 있습니다. 또한 [기본 텍스트 편집기](#set-the-default-text-editor)를 정의할 수 있습니다. HTTP REPL 기본 설정은 현재 세션에서 유지되고 이후 세션에 적용됩니다. 기본 설정을 수정하는 경우 다음 파일에 저장됩니다.
+HttpRepl의 기본 [색](#set-color-preferences)을 사용자 지정할 수 있습니다. 또한 [기본 텍스트 편집기](#set-the-default-text-editor)를 정의할 수 있습니다. HttpRepl 기본 설정은 현재 세션에서 유지되고 이후 세션에 적용됩니다. 기본 설정을 수정하는 경우 다음 파일에 저장됩니다.
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -274,7 +274,7 @@ HTTP REPL의 기본 [색](#set-color-preferences)을 사용자 지정할 수 있
 
 ### <a name="view-the-settings"></a>설정 보기
 
-사용 가능한 설정을 보려면 `pref get` 명령을 실행합니다. 예를 들면 다음과 같습니다.
+사용 가능한 설정을 보려면 `pref get` 명령을 실행합니다. 예를 들어:
 
 ```console
 https://localhost:5001/> pref get
@@ -295,7 +295,7 @@ colors.status=BoldYellow
 
 ### <a name="set-color-preferences"></a>색 기본 설정 지정
 
-응답 색 지정은 현재 JSON에만 지원됩니다. 기본 HTTP REPL 도구 색 지정을 사용자 지정하려면 변경할 색에 해당하는 키를 찾습니다. 키를 찾는 방법에 대한 지침은 [설정 보기](#view-the-settings) 섹션을 참조하세요. 예를 들어 다음과 같이 `colors.json` 키 값을 `Green`에서 `White`로 변경합니다.
+응답 색 지정은 현재 JSON에만 지원됩니다. 기본 HttpRepl 도구 색 지정을 사용자 지정하려면 변경할 색에 해당하는 키를 찾습니다. 키를 찾는 방법에 대한 지침은 [설정 보기](#view-the-settings) 섹션을 참조하세요. 예를 들어 다음과 같이 `colors.json` 키 값을 `Green`에서 `White`로 변경합니다.
 
 ```console
 https://localhost:5001/people> pref set colors.json White
@@ -358,7 +358,7 @@ pref set formatting.json.indentSize 4
 
 ### <a name="set-the-default-text-editor"></a>기본 텍스트 편집기 설정
 
-기본적으로 HTTP REPL에는 사용하도록 구성된 텍스트 편집기가 없습니다. HTTP 요청 본문이 필요한 웹 API 메서드를 테스트하려면 기본 텍스트 편집기를 설정해야 합니다. HTTP REPL 도구는 요청 본문을 작성할 목적으로만 구성된 텍스트 편집기를 시작합니다. 다음 명령을 실행하여 기본 설정 텍스트 편집기를 기본값으로 설정합니다.
+기본적으로 HttpRepl에는 사용하도록 구성된 텍스트 편집기가 없습니다. HTTP 요청 본문이 필요한 웹 API 메서드를 테스트하려면 기본 텍스트 편집기를 설정해야 합니다. HttpRepl 도구는 요청 본문을 작성할 목적으로만 구성된 텍스트 편집기를 시작합니다. 다음 명령을 실행하여 기본 설정 텍스트 편집기를 기본값으로 설정합니다.
 
 ```console
 pref set editor.command.default "<EXECUTABLE>"
@@ -386,7 +386,7 @@ pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
 
 ---
 
-특정 CLI 인수를 사용하여 기본 텍스트 편집기를 시작하려면 `editor.command.default.arguments` 키를 설정합니다. 예를 들어 Visual Studio Code가 기본 텍스트 편집기이며 항상 HTTP REPL이 확장을 사용하지 않도록 설정한 새 세션에서 Visual Studio Code를 열도록 하는 경우를 가정합니다. 다음 명령을 실행합니다.
+특정 CLI 인수를 사용하여 기본 텍스트 편집기를 시작하려면 `editor.command.default.arguments` 키를 설정합니다. 예를 들어 Visual Studio Code가 기본 텍스트 편집기이며 항상 HttpRepl이 확장을 사용하지 않도록 설정한 새 세션에서 Visual Studio Code를 열도록 하는 경우를 가정합니다. 다음 명령을 실행합니다.
 
 ```console
 pref set editor.command.default.arguments "--disable-extensions --new-window"
@@ -397,7 +397,7 @@ pref set editor.command.default.arguments "--disable-extensions --new-window"
 
 ### <a name="set-the-openapi-description-search-paths"></a>OpenAPI 설명 검색 경로 설정
 
-기본적으로 HTTP REPL에는 `--openapi` 옵션 없이 `connect` 명령을 실행할 때 OpenAPI 설명을 찾는 데 사용하는 상대 경로 세트가 있습니다. 이러한 상대 경로는 `connect` 명령에서 지정된 루트 및 기본 경로와 결합됩니다. 기본 상대 경로는 다음과 같습니다.
+기본적으로 HttpRepl에는 `--openapi` 옵션 없이 `connect` 명령을 실행할 때 OpenAPI 설명을 찾는 데 사용하는 상대 경로 세트가 있습니다. 이러한 상대 경로는 `connect` 명령에서 지정된 루트 및 기본 경로와 결합됩니다. 기본 상대 경로는 다음과 같습니다.
 
 - *swagger.json*
 - *swagger/v1/swagger.json*
@@ -864,7 +864,7 @@ HTTP 요청 헤더를 설정하려면 다음 방법 중 하나를 사용합니�
 
 ## <a name="test-secured-endpoints"></a>보안 엔드포인트 테스트
 
-HTTP REPL은 다음과 같은 방법으로 보안 엔드포인트의 테스트를 지원합니다.
+HttpRepl은 다음과 같은 방법으로 보안 엔드포인트의 테스트를 지원합니다.
 
 * 로그인한 사용자의 기본 자격 증명을 통해
 * HTTP 요청 헤더를 사용합니다.
@@ -907,7 +907,7 @@ IIS에서 호스팅되고 Windows 인증으로 보호되는 테스트 중인 웹
 set header Authorization "bearer <TOKEN VALUE>"
 ```
 
-Azure에서 호스트되는 엔드포인트에 액세스하거나 [Azure REST API](/rest/api/azure/)를 사용하려면 전달자 토큰이 필요합니다. [Azure CLI](/cli/azure/)를 통해 Azure 구독에 대한 전달자 토큰을 가져오려면 다음 단계를 사용합니다. HTTP REPL은 HTTP 요청 헤더에서 전달자 토큰을 설정합니다. Azure App Service Web Apps 목록이 검색됩니다.
+Azure에서 호스트되는 엔드포인트에 액세스하거나 [Azure REST API](/rest/api/azure/)를 사용하려면 전달자 토큰이 필요합니다. [Azure CLI](/cli/azure/)를 통해 Azure 구독에 대한 전달자 토큰을 가져오려면 다음 단계를 사용합니다. HttpRepl은 HTTP 요청 헤더에서 전달자 토큰을 설정합니다. Azure App Service Web Apps 목록이 검색됩니다.
 
 1. Azure에 로그인:
 
@@ -933,7 +933,7 @@ Azure에서 호스트되는 엔드포인트에 액세스하거나 [Azure REST AP
     az account get-access-token --query accessToken
     ```
 
-1. HTTP REPL을 통해 Azure REST API에 연결합니다.
+1. HttpRepl을 통해 Azure REST API에 연결합니다.
 
     ```console
     httprepl https://management.azure.com
@@ -1041,7 +1041,7 @@ Request echoing is off
 
 ## <a name="run-a-script"></a>스크립트 실행
 
-동일한 HTTP REPL 명령 세트를 자주 실행하는 경우에는 텍스트 파일에 저장하는 것이 좋습니다. 파일의 명령은 명령줄에서 수동으로 실행되는 명령과 동일한 형식을 사용합니다. `run` 명령을 사용하여 일괄적으로 명령을 실행할 수 있습니다. 예를 들면 다음과 같습니다.
+동일한 HttpRepl 명령 세트를 자주 실행하는 경우에는 텍스트 파일에 저장하는 것이 좋습니다. 파일의 명령은 명령줄에서 수동으로 실행되는 명령과 동일한 형식을 사용합니다. `run` 명령을 사용하여 일괄적으로 명령을 실행할 수 있습니다. 예를 들면 다음과 같습니다.
 
 1. 줄 바꿈 기호로 분리된 명령 세트를 포함하는 텍스트 파일을 만듭니다. 다음 명령을 포함하는 *people-script.txt* 파일을 설명합니다.
 
@@ -1096,7 +1096,7 @@ Request echoing is off
 
 ## <a name="clear-the-output"></a>출력 지우기
 
-HTTP REPL 도구에 의해 명령 셸에 작성된 모든 출력을 제거하려면 `clear` 또는 `cls` 명령을 실행합니다. 설명을 위해 명령 셸에 다음 출력이 포함되어 있다고 가정합니다.
+HttpRepl 도구에 의해 명령 셸에 작성된 모든 출력을 제거하려면 `clear` 또는 `cls` 명령을 실행합니다. 설명을 위해 명령 셸에 다음 출력이 포함되어 있다고 가정합니다.
 
 ```console
 httprepl https://localhost:5001
@@ -1123,7 +1123,7 @@ https://localhost:5001/> clear
 https://localhost:5001/>
 ```
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [REST API 요청](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)
-* [HTTP REPL GitHub 리포지토리](https://github.com/dotnet/HttpRepl)
+* [HttpRepl GitHub 리포지토리](https://github.com/dotnet/HttpRepl)
