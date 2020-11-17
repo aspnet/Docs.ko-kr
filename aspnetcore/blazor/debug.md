@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 669ebaf6dcd05561340aefda4a75b6fe1068d207
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 990882c03ddc14c664aa8da0518fb36087199aca
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056194"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550519"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly 디버그
 
@@ -49,17 +49,20 @@ Blazor WebAssembly 앱은 Chromium 기반 브라우저(Edge/Chrome)의 브라우
 
 * 처리되지 않은 예외에서 중단합니다.
 * 디버그 프록시가 실행되기 전에 앱을 시작하는 동안 중단점에 적중합니다. 여기에는 `Program.Main`(`Program.cs`)의 중단점과 애플리케이션에서 요청하는 첫 페이지에서 로드되는 구성 요소의 [`OnInitialized{Async}` 메서드](xref:blazor/components/lifecycle#component-initialization-methods)의 중단점이 포함됩니다.
+* 비로컬 시나리오(예: [Linux용 Windows 하위 시스템(WSL)](/windows/wsl/) 또는 [Visual Studio Codespaces](/visualstudio/codespaces/overview/what-is-vsonline))에서 디버그합니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 디버깅 작업에는 다음 브라우저 중 하나가 필요합니다.
 
 * Google Chrome(버전 70 이상)(기본값)
 * Microsoft Edge(버전 80 이상)
 
+방화벽 또는 프록시가 디버그 프록시(`NodeJS` 프로세스)와의 통신을 차단하지 않아야 합니다. 자세한 내용은 [방화벽 구성](#firewall-configuration) 섹션을 참조하세요.
+
 Mac용 Visual Studio에는 버전 8.8(빌드 1532) 이상이 필요합니다.
 
-1. **Mac용 Visual Studio 다운로드** 단추( [Microsoft: Mac용 Visual Studio](https://visualstudio.microsoft.com/vs/mac/) 페이지)를 선택하여 Mac용 Visual Studio 최신 릴리스를 설치합니다.
+1. **Mac용 Visual Studio 다운로드** 단추([Microsoft: Mac용 Visual Studio](https://visualstudio.microsoft.com/vs/mac/) 페이지)를 선택하여 Mac용 Visual Studio 최신 릴리스를 설치합니다.
 1. Visual Studio 내에서 ‘미리 보기’ 채널을 선택합니다. 자세한 내용은 [Mac용 Visual Studio의 미리 보기 버전 설치](/visualstudio/mac/install-preview)를 참조하세요.
 
 > [!NOTE]
@@ -92,10 +95,10 @@ Visual Studio에서 Blazor WebAssembly 앱을 디버그하려면:
 1. <kbd>F5</kbd> 키를 눌러 디버거에서 앱을 실행합니다.
 
    > [!NOTE]
-   > **디버깅하지 않고 시작** ( <kbd>Ctrl</kbd>+<kbd>F5</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
+   > **디버깅하지 않고 시작**(<kbd>Ctrl</kbd>+<kbd>F5</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
 
 1. `*Client*` 앱에서 `Pages/Counter.razor`의 `currentCount++;` 줄에 중단점을 설정합니다.
-1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me** (여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
+1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me**(여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
 1. Visual Studio에서 **지역** 창에 있는 `currentCount` 필드의 값을 검사합니다.
 1. <kbd>F5</kbd> 키를 눌러 실행을 계속합니다.
 
@@ -169,13 +172,13 @@ Blazor WebAssembly 앱에서의 사용자 지정 앱 기본 경로 사용에 대
    이러한 알림이 표시되면 다음을 수행합니다.
 
    * 최신 [Visual Studio Code용 C# 확장](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)이 설치되어 있는지 확인합니다. 설치된 확장을 검사하려면 메뉴 모음에서 **보기** > **확장** 을 열거나 **작업** 사이드바에서 **확장** 아이콘을 선택합니다.
-   * JavaScript 미리 보기 디버깅이 사용되는지 확인합니다. 메뉴 모음에서 설정을 엽니다( **파일** > **기본 설정** > **설정** ). `debug preview` 키워드를 사용하여 검색합니다. 검색 결과에서 **디버그 > JavaScript: 미리 보기 사용** 확인란이 선택되어 있는지 확인합니다. 미리 보기 디버깅을 사용하도록 설정하는 옵션이 없는 경우 최신 버전의 VS Code로 업그레이드하거나 [JavaScript 디버거 확장](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)(VS Code 버전 1.46 이전)을 설치합니다.
+   * JavaScript 미리 보기 디버깅이 사용되는지 확인합니다. 메뉴 모음에서 설정을 엽니다(**파일** > **기본 설정** > **설정**). `debug preview` 키워드를 사용하여 검색합니다. 검색 결과에서 **디버그 > JavaScript: 미리 보기 사용** 확인란이 선택되어 있는지 확인합니다. 미리 보기 디버깅을 사용하도록 설정하는 옵션이 없는 경우 최신 버전의 VS Code로 업그레이드하거나 [JavaScript 디버거 확장](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)(VS Code 버전 1.46 이전)을 설치합니다.
    * 윈도우를 다시 로드합니다.
 
 1. <kbd>F5</kbd> 바로 가기 키 또는 메뉴 항목을 사용하여 디버깅을 시작합니다.
 
    > [!NOTE]
-   > **디버깅하지 않고 시작** ( <kbd>Ctrl</kbd>+<kbd>F5</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
+   > **디버깅하지 않고 시작**(<kbd>Ctrl</kbd>+<kbd>F5</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
 
 1. 메시지가 표시되면 **Blazor WebAssembly 디버그** 옵션을 선택하여 디버깅을 시작합니다.
 
@@ -183,7 +186,7 @@ Blazor WebAssembly 앱에서의 사용자 지정 앱 기본 경로 사용에 대
 
 1. `*Client*` 앱에서 `Pages/Counter.razor`의 `currentCount++;` 줄에 중단점을 설정합니다.
 
-1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me** (여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
+1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me**(여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
 
 > [!NOTE]
 > 앱 시작 도중 디버그 프록시가 실행되기 전에 중단점이 적중되지 **않습니다**. 여기에는 `Program.Main`(`Program.cs`)의 중단점과 애플리케이션에서 요청하는 첫 페이지에서 로드되는 구성 요소의 [`OnInitialized{Async}` 메서드](xref:blazor/components/lifecycle#component-initialization-methods)의 중단점이 포함됩니다.
@@ -281,13 +284,13 @@ Mac용 Visual Studio에서 Blazor WebAssembly 앱을 디버그하려면 다음�
 1. <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd>을 눌러 디버거에서 앱을 실행합니다.
 
    > [!NOTE]
-   > **디버깅하지 않고 시작** ( <kbd>&#8997;</kbd>+<kbd>&#8984;</kbd>+<kbd>&#8617;</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
+   > **디버깅하지 않고 시작**(<kbd>&#8997;</kbd>+<kbd>&#8984;</kbd>+<kbd>&#8617;</kbd>)은 지원되지 않습니다. 디버그 구성에서 앱을 실행하는 경우 디버깅 오버헤드로 인해 항상 약간의 성능 저하가 발생합니다.
 
    > [!IMPORTANT]
    > 디버깅 세션용으로 Google Chrome 또는 Microsoft Edge 브라우저를 선택해야 합니다.
 
 1. `*Client*` 앱에서 `Pages/Counter.razor`의 `currentCount++;` 줄에 중단점을 설정합니다.
-1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me** (여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
+1. 브라우저에서 `Counter` 페이지로 이동하고 **Click Me**(여기 클릭) 단추를 선택하여 중단점을 적중시킵니다.
 1. Visual Studio에서 **지역** 창에 있는 `currentCount` 필드의 값을 검사합니다.
 1. <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd>을 눌러 실행을 계속합니다.
 
@@ -339,6 +342,23 @@ Blazor에서는 [Chrome DevTools 프로토콜](https://chromedevtools.github.io/
 
 브라우저 소스 맵을 사용하면 브라우저에서 컴파일된 파일을 원래 소스 파일에 다시 매핑할 수 있으며, 일반적으로 클라이언트 쪽 디버깅에 사용됩니다. 그러나 Blazor는 현재 C#을 JavaScript/WASM에 직접 매핑하지 않습니다. 대신, Blazor가 브라우저 내에서 IL 해석을 수행하므로 소스 맵은 관련이 없습니다.
 
+## <a name="firewall-configuration"></a>방화벽 구성
+
+방화벽이 디버그 프록시와의 통신을 차단하는 경우 브라우저와 `NodeJS` 프로세스 간의 통신을 허용하는 방화벽 예외 규칙을 만듭니다.
+
+> [!WARNING]
+> 보안 취약점 생성을 방지하려면 방화벽 구성을 수정해야 합니다. 보안 지침을 신중하게 적용하고, 보안 모범 사례를 따르고, 방화벽 제조업체에서 발급한 경고를 준수합니다.
+>
+> `NodeJS` 프로세스와의 개방형 통신 허용:
+>
+> * 방화벽의 기능과 구성에 따라 모든 연결에 노드 서버를 엽니다.
+> * 네트워크에 따라 위험할 수 있습니다.
+> * **개발자 컴퓨터에서만 권장됩니다.**
+>
+> 가능하면 **신뢰할 수 있는 네트워크 또는 비공개 네트워크** 의 `NodeJS` 프로세스와의 개방형 통신만 허용합니다.
+
+[Windows 방화벽](/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) 구성 지침은 [인바운드 프로그램 또는 서비스 규칙 만들기](/windows/security/threat-protection/windows-firewall/create-an-inbound-program-or-service-rule)를 참조하세요. 자세한 내용은 Windows 방화벽 설명서 집합의 [고급 보안이 포함된 Windows Defender 방화벽](/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) 및 관련 문서를 참조하세요.
+
 ## <a name="troubleshoot"></a>문제 해결
 
 오류가 발생할 경우 다음 팁이 도움이 될 수 있습니다.
@@ -349,6 +369,7 @@ Blazor에서는 [Chrome DevTools 프로토콜](https://chromedevtools.github.io/
 * 사용자 환경에서 HTTP 프록시를 사용하는 경우 `localhost`가 프록시 바이패스 설정에 포함되는지 확인합니다. 이 작업을 수행하려면 다음 중 하나에서 `NO_PROXY` 환경 변수를 설정합니다.
   * 프로젝트의 `launchSettings.json` 파일에서.
   * 모든 앱에 적용할 사용자 또는 시스템 환경 변수 수준에서. 환경 변수를 사용하는 경우 변경을 적용하려면 Visual Studio를 다시 시작합니다.
+* 방화벽 또는 프록시가 디버그 프록시(`NodeJS` 프로세스)와의 통신을 차단하지 않아야 합니다. 자세한 내용은 [방화벽 구성](#firewall-configuration) 섹션을 참조하세요.
 
 ### <a name="breakpoints-in-oninitializedasync-not-hit"></a>`OnInitialized{Async}`의 중단점이 적중되지 않음
 

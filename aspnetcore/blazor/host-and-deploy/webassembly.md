@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 0912b3fbcd0b891deb4985eaa18841c22f4f3264
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7ae462ff9abd06fe4ab4b3e00a71515b76b0ee7d
+ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055752"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94339986"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core 호스트 및 배포 Blazor WebAssembly
 
@@ -125,7 +125,7 @@ IIS 서버에 배포하는 경우 앱의 게시된 `web.config` 파일과 함께
 
 ‘호스트된 배포’는 웹 서버에서 실행되는 [ASP.NET Core 앱](xref:index)에서 Blazor WebAssembly 앱을 브라우저에 제공하지 않습니다.
 
-클라이언트 Blazor WebAssembly 앱이 서버 앱의 `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` 폴더에 서버 앱의 다른 정적 웹 자산과 함께 게시됩니다. 두 앱이 함께 배포됩니다. ASP.NET Core 앱을 호스트할 수 있는 웹 서버가 필요합니다. 호스트된 배포의 경우 Visual Studio는 **`Hosted`** (`dotnet new` 명령을 사용하는 경우 `-ho|--hosted`) 옵션이 선택된 **Blazor WebAssembly 앱** 프로젝트 템플릿( [`dotnet new`](/dotnet/core/tools/dotnet-new) 명령을 사용하는 경우 `blazorwasm` 템플릿)을 포함합니다.
+클라이언트 Blazor WebAssembly 앱이 서버 앱의 `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` 폴더에 서버 앱의 다른 정적 웹 자산과 함께 게시됩니다. 두 앱이 함께 배포됩니다. ASP.NET Core 앱을 호스트할 수 있는 웹 서버가 필요합니다. 호스트된 배포의 경우 Visual Studio는 **`Hosted`** (`dotnet new` 명령을 사용하는 경우 `-ho|--hosted`) 옵션이 선택된 **Blazor WebAssembly 앱** 프로젝트 템플릿([`dotnet new`](/dotnet/core/tools/dotnet-new) 명령을 사용하는 경우 `blazorwasm` 템플릿)을 포함합니다.
 
 ASP.NET Core 앱 호스팅 및 배포에 대한 자세한 내용은 <xref:host-and-deploy/index>를 참조하세요.
 
@@ -523,7 +523,16 @@ URL을 다시 생성하려면 [URL 다시 생성 모듈](https://www.iis.net/dow
 
 #### <a name="brotli-and-gzip-compression"></a>Brotli 및 Gzip 압축
 
-`web.config`를 통해 IIS를 구성하여 Brotli 또는 Gzip 압축 Blazor 자산을 제공할 수 있습니다. 예제 구성은 [`web.config`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/web.config?raw=true)을 참조합니다.
+이 섹션은 독립 실행형 Blazor WebAssembly 앱에만 적용됩니다. 호스트된 Blazor 앱은 이 섹션에 연결된 파일이 아니라 기본 ASP.NET Core 앱 `web.config` 파일을 사용합니다.
+
+`web.config`를 통해 IIS를 구성하여 독립 실행형 Blazor WebAssembly 앱을 위한 Brotli 또는 Gzip 압축 Blazor 자산을 제공할 수 있습니다. 구성 파일 예제는 [`web.config`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/web.config?raw=true)를 참조하세요.
+
+다음 시나리오에서는 예제 `web.config` 파일의 추가 구성이 필요할 수 있습니다.
+
+* 앱 사양에는 다음 중 하나가 필요합니다.
+  * 예제 `web.config` 파일에 의해 구성되지 않은 압축 파일 제공.
+  * 예제 `web.config` 파일에 의해 구성된 압축 파일을 압축되지 않은 형식으로 제공.
+* 서버의 IIS 구성(예: `applicationHost.config`)은 서버 수준 IIS 기본값을 제공합니다. 서버 수준 구성에 따라 예제 `web.config` 파일에 포함된 것과 다른 IIS 구성이 앱에 필요할 수 있습니다.
 
 #### <a name="troubleshooting"></a>문제 해결
 
@@ -923,7 +932,7 @@ Failed to find a valid digest in the 'integrity' attribute for resource 'https:/
 
  1. 오류 메시지를 읽어서 어떤 파일이 오류를 트리거하는지 확인합니다.
  1. 브라우저의 개발자 도구를 열고 ‘네트워크’ 탭을 확인합니다. 필요한 경우 페이지를 다시 로드하여 요청 및 응답 목록을 확인합니다. 해당 목록에서 오류를 트리거하는 파일을 찾습니다.
- 1. 응답의 HTTP 상태 코드를 확인합니다. 서버가 *200 - OK* (또는 또 다른 2xx 상태 코드) 이외의 값을 반환하면 진단해야 하는 서버 쪽 문제가 있는 것입니다. 예를 들어 상태 코드 403은 권한 부여 문제가 있음을 의미하는 반면, 상태 코드 500은 서버가 지정되지 않은 방식으로 실패함을 의미합니다. 서버 쪽 로그를 참조하여 앱을 진단하고 수정합니다.
+ 1. 응답의 HTTP 상태 코드를 확인합니다. 서버가 *200 - OK*(또는 또 다른 2xx 상태 코드) 이외의 값을 반환하면 진단해야 하는 서버 쪽 문제가 있는 것입니다. 예를 들어 상태 코드 403은 권한 부여 문제가 있음을 의미하는 반면, 상태 코드 500은 서버가 지정되지 않은 방식으로 실패함을 의미합니다. 서버 쪽 로그를 참조하여 앱을 진단하고 수정합니다.
  1. 리소스에 대한 상태 코드가 *200-OK* 인 경우 브라우저 개발자 도구에서 응답 콘텐츠를 확인하고 콘텐츠가 예상 데이터와 일치하는지 확인합니다. 예를 들어 일반적인 문제는 요청이 다른 파일에 대해서도 `index.html` 데이터를 반환하도록 라우팅을 잘못 구성하는 것입니다. `.wasm` 요청에 대한 응답이 WebAssembly 이진 파일이고 `.dll` 요청에 대한 응답이 .NET 어셈블리 이진 파일인지 확인합니다. 그렇지 않으면 진단해야 할 서버 쪽 라우팅 문제가 있는 것입니다.
 
 서버가 올바른 것 같은 데이터를 반환하고 있는지 확인하는 경우 파일의 빌드와 제공 사이에 콘텐츠를 수정하는 다른 항목이 있어야 합니다. 이를 조사하려면:

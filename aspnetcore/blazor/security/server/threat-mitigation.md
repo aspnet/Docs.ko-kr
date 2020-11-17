@@ -5,7 +5,7 @@ description: Blazor Server 앱의 보안 위협을 완화하는 방법을 알아
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/05/2020
+ms.date: 11/09/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: 5c3a002a8e3df030d53c8625597342a68ca0d4b5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0e8b26110a970526b5f6306da236a92f52e64604
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055414"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430957"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-no-locblazor-server"></a>ASP.NET Core Blazor Server를 위한 위협 완화 지침
 
@@ -101,7 +101,10 @@ Blazor 클라이언트는 세션당 단일 연결을 설정하고 브라우저 �
     * 앱에 연결할 때 인증을 요구하고, 사용자당 활성 세션을 추적합니다.
     * 제한에 도달하면 새 세션을 거부합니다.
     * 프록시를 사용한 앱에 대한 프록시 WebSocket 연결(예: 클라이언트에서 앱으로의 연결을 다중 송신하는 [Azure SignalR 서비스](/azure/azure-signalr/signalr-overview)). 이렇게 하면 앱에 단일 클라이언트에서 설정할 수 있는 것보다 더 많은 연결 용량이 제공되어 하나의 클라이언트가 서버에 대한 연결을 소모하는 일을 방지할 수 있습니다.
-  * 서버 수준에서: 앱 앞에서 프록시/게이트웨이를 사용합니다. 예를 들어 [Azure Front Door](/azure/frontdoor/front-door-overview)를 사용하면 앱에 대한 웹 트래픽의 전역 라우팅을 정의, 관리 및 모니터링할 수 있습니다.
+  * 서버 수준에서: 앱 앞에서 프록시/게이트웨이를 사용합니다. 예를 들어 [Azure Front Door](/azure/frontdoor/front-door-overview)는 앱으로 가는 웹 트래픽의 전역 라우팅을 정의, 관리, 모니터링할 수 있고, Blazor Server 앱이 Long Polling을 사용하도록 구성된 경우 작동합니다.
+  
+    > [!NOTE]
+    > Long Polling은 Blazor Server 앱에서 지원되지만 [WebSocket이 권장 전송 프로토콜](xref:blazor/host-and-deploy/server#azure-signalr-service)입니다. [Azure Front Door](/azure/frontdoor/front-door-overview)는 현재 WebSocket을 지원하지 않지만 향후 서비스 릴리스에서 WebSocket을 지원하는 것을 검토 중입니다.
 
 ## <a name="denial-of-service-dos-attacks"></a>DoS(서비스 거부) 공격
 
@@ -332,7 +335,7 @@ XSS(교차 사이트 스크립팅)를 사용하면 권한이 없는 주체가 �
 
 Blazor Server 프레임워크는 위와 같은 위협으로부터 보호하기 위한 단계를 수행합니다.
 
-* 클라이언트에서 렌더링 일괄 처리를 승인하지 않는 경우 새 UI 업데이트의 생성을 중지합니다. <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.MaxBufferedUnacknowledgedRenderBatches?displayProperty=nameWithType>로 구성됩니다.
+* 클라이언트에서 렌더링 일괄 처리를 승인하지 않는 경우 새 UI 업데이트의 생성을 중지합니다. <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.MaxBufferedUnacknowledgedRenderBatches?displayProperty=nameWithType>으로 구성됩니다.
 * 클라이언트에서 응답을 받지 않은 상태에서 1분이 지나면 .NET에서 JavaScript로의 호출을 시간 초과 처리합니다. <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.JSInteropDefaultCallTimeout?displayProperty=nameWithType>으로 구성됩니다.
 * JS interop 중에 브라우저에서 들어오는 모든 입력에 대해 다음과 같은 기본적인 유효성 검사를 수행합니다.
   * .NET 참조가 유효하며 .NET 메서드에 예상하는 형식입니다.

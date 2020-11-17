@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 77cf1e9ad51b7044a35e1a9b2c125b0fdd91435e
-ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
+ms.openlocfilehash: 428320f9d706b0dd16ced68d183ec4b331451965
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93365390"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550649"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>자습서: ASP.NET MVC 웹앱에서 EF Core 시작
 
@@ -73,11 +73,15 @@ If you choose to use SQLite, download and install a third-party tool for managin
 
 ## <a name="create-web-app"></a>웹앱 만들기
 
-* Visual Studio를 시작하고 **ASP.NET Core 웹 애플리케이션** > **다음** 을 선택합니다.
-* 프로젝트 이름을 `ContosoUniversity`로 지정합니다. 코드를 복사할 때 네임스페이스가 일치하도록 대문자 표시를 포함하여 이 이름을 정확히 사용해야 합니다.
-* **만들기** 를 선택합니다.
-* 드롭다운에서 **.NET Core** 및 **ASP.NET Core 5.0** 을 선택한 다음 **웹 애플리케이션(Model-View-Controller)** 템플릿을 선택합니다.
-  ![새 ASP.NET Core 프로젝트 대화 상자](intro/_static/new-aspnet5.png)
+1. Visual Studio를 시작하고 **새 프로젝트 만들기** 를 선택합니다.
+1. **새 프로젝트 만들기** 대화 상자에서 **ASP.NET Core 웹 애플리케이션** > **다음** 을 선택합니다.
+1. **새 프로젝트 구성** 대화 상자에서 **프로젝트 이름** 으로 `ContosoUniversity`를 입력합니다. 코드를 복사할 때 `namespace`가 일치하도록 대문자 표시를 포함하여 이 이름을 정확히 사용해야 합니다.
+1. **만들기** 를 선택합니다.
+1. **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 다음을 선택합니다.
+    1. 드롭다운에서 **.NET Core** 와 **ASP.NET Core 5.0** 을 선택합니다.
+    1. **ASP.NET Core 웹앱(Model-View-Controller)** .
+    1. 
+      ![새 ASP.NET Core 프로젝트 **만들기** 대화 상자](~/data/ef-mvc/intro/_static/new-aspnet5.png)
 
 ## <a name="set-up-the-site-style"></a>사이트 스타일 설정
 
@@ -86,7 +90,7 @@ If you choose to use SQLite, download and install a third-party tool for managin
 *Views/Shared/_Layout.cshtml* 을 열고 다음과 같이 변경합니다.
 
 * 각 `ContosoUniversity` 항목을 `Contoso University`로 변경합니다. 세 번 나옵니다.
-* **정보** , **학생** , **강좌** , **강사** 및 **부서** 메뉴 항목을 추가하고 **개인 정보** 메뉴 항목을 삭제합니다.
+* **정보**, **학생**, **강좌**, **강사** 및 **부서** 메뉴 항목을 추가하고 **개인 정보** 메뉴 항목을 삭제합니다.
 
 위의 변경 내용은 다음 코드에서 강조 표시됩니다.
 
@@ -109,8 +113,8 @@ EF SQL Server 패키지 및 해당 종속성(`Microsoft.EntityFrameworkCore` 및
 [Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore) NuGet 패키지와 [Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore) NuGet 패키지를 추가합니다. PMC(프로그램 관리자 콘솔)에서 다음 명령을 입력하여 NuGet 패키지를 추가합니다.
 
 ```powershell
-Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.0.0-rc.2.20475.17
-Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 5.0.0-rc.2.20475.6
+Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
 ```
 
 `Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore` NuGet 패키지는 EF Core 오류 페이지에 대한 ASP.NET Core 미들웨어를 제공합니다. 이 미들웨어는 EF Core 마이그레이션의 오류를 검색 및 진단하는 데 도움이 됩니다.
@@ -138,7 +142,7 @@ EF Core에 사용할 수 있는 다른 데이터베이스 공급자에 대한 �
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Intro)]
 
-`ID` 속성은 이 클래스에 해당하는 데이터베이스 테이블의 기본 키( **PK** ) 열입니다. 기본적으로 EF는 이름이 `ID` 또는 `classnameID`인 속성을 기본 키로 해석합니다. 예를 들어 PK 이름을 `ID` 대신 `StudentID`로 지정할 수 있습니다.
+`ID` 속성은 이 클래스에 해당하는 데이터베이스 테이블의 기본 키(**PK**) 열입니다. 기본적으로 EF는 이름이 `ID` 또는 `classnameID`인 속성을 기본 키로 해석합니다. 예를 들어 PK 이름을 `ID` 대신 `StudentID`로 지정할 수 있습니다.
 
 `Enrollments` 속성은 [탐색 속성](/ef/core/modeling/relationships)입니다. 탐색 속성은 이 엔터티와 관련된 다른 엔터티를 포함합니다. `Student` 엔터티의 `Enrollments` 속성:
 
@@ -146,7 +150,7 @@ EF Core에 사용할 수 있는 다른 데이터베이스 공급자에 대한 �
 * 데이터베이스의 특정 `Student` 행에 두 개의 관련 `Enrollment` 행이 있는 경우:
   * 이 `Student` 엔터티의 `Enrollments` 탐색 속성은 이러한 두 개의 `Enrollment` 엔터티를 포함합니다.
   
-`Enrollment` 행은 `StudentID` 외래 키( **FK** ) 열에 학생의 PK 값을 포함합니다.
+`Enrollment` 행은 `StudentID` 외래 키(**FK**) 열에 학생의 PK 값을 포함합니다.
 
 탐색 속성 하나에 여러 엔터티가 있을 수 있는 경우:
 
@@ -318,7 +322,7 @@ CTRL+F5 키를 눌러 프로젝트를 실행하거나 메뉴 모음에서 **디�
 * 따라서 데이터베이스를 만들었습니다.
 * `Initialize` 메서드 코드가 데이터베이스를 데이터로 채웠습니다.
 
-**SQL Server 개체 탐색기** (SSOX)를 사용하여 Visual Studio에서 데이터베이스를 봅니다.
+**SQL Server 개체 탐색기**(SSOX)를 사용하여 Visual Studio에서 데이터베이스를 봅니다.
 
 * Visual Studio의 **보기** 메뉴에서 **SQL Server 개체 탐색기** 를 선택합니다.
 * SSOX에서 **(localdb)\MSSQLLocalDB > Databases** 를 선택합니다.
@@ -388,11 +392,13 @@ EF를 사용하는 비동기 코드를 작성할 때 주의 사항:
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-3.0"
+::: moniker range="<= aspnetcore-3.1"
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
 Contoso University 샘플 웹 애플리케이션은 EF(Entity Framework) Core 2.2 및 Visual Studio 2017 또는 2019를 사용하여 ASP.NET Core 2.2 MVC 웹 애플리케이션을 만드는 방법을 보여줍니다.
+
+이 자습서는 ASP.NET Core 3.1에 맞게 업데이트되지 않았습니다. [ASP.NET Core 5.0](xref:data/ef-mvc/intro?view=aspnetcore-5.0)에 맞게 업데이트되었습니다.
 
 샘플 애플리케이션은 가상 Contoso University의 웹 사이트입니다. 학생 입학, 강좌 개설 및 강사 할당과 같은 기능이 있습니다. 이는 Contoso University 샘플 애플리케이션을 처음부터 빌드하는 방법을 설명하는 일련의 자습서 중 첫 번째입니다.
 
@@ -436,7 +442,7 @@ Contoso University 샘플 웹 애플리케이션은 EF(Entity Framework) Core 2.
 
 * **새 ASP.NET Core 웹 애플리케이션** 대화 상자가 표시될 때까지 기다립니다.
 
-* **.NET Core** , **ASP.NET Core 2.2** 및 **웹 애플리케이션(Model-View-Controller)** 템플릿을 선택합니다.
+* **.NET Core**, **ASP.NET Core 2.2** 및 **웹 애플리케이션(Model-View-Controller)** 템플릿을 선택합니다.
 
 * **인증** 이 **인증 없음** 으로 설정되었는지 확인합니다.
 
@@ -452,7 +458,7 @@ Contoso University 샘플 웹 애플리케이션은 EF(Entity Framework) Core 2.
 
 * 모든 “ContosoUniversity”를 “Contoso University”로 변경합니다. 세 번 나옵니다.
 
-* **정보** , **학생** , **강좌** , **강사** 및 **부서** 메뉴 항목을 추가하고 **개인 정보** 메뉴 항목을 삭제합니다.
+* **정보**, **학생**, **강좌**, **강사** 및 **부서** 메뉴 항목을 추가하고 **개인 정보** 메뉴 항목을 삭제합니다.
 
 변경 내용은 강조 표시되어 있습니다.
 
@@ -640,7 +646,7 @@ CTRL+F5 키를 눌러 프로젝트를 실행하거나 메뉴 모음에서 **디�
 
 ## <a name="view-the-database"></a>데이터베이스 보기
 
-애플리케이션을 시작했을 때 `DbInitializer.Initialize` 메서드는 `EnsureCreated`를 호출합니다. EF는 데이터베이스가 없는 것을 확인하고 하나를 만들었습니다. 그런 다음, `Initialize` 메서드 코드의 나머지 부분은 데이터베이스를 데이터로 채웠습니다. **SQL Server 개체 탐색기** (SSOX)를 사용하여 Visual Studio에서 데이터베이스를 볼 수 있습니다.
+애플리케이션을 시작했을 때 `DbInitializer.Initialize` 메서드는 `EnsureCreated`를 호출합니다. EF는 데이터베이스가 없는 것을 확인하고 하나를 만들었습니다. 그런 다음, `Initialize` 메서드 코드의 나머지 부분은 데이터베이스를 데이터로 채웠습니다. **SQL Server 개체 탐색기**(SSOX)를 사용하여 Visual Studio에서 데이터베이스를 볼 수 있습니다.
 
 브라우저를 닫습니다.
 

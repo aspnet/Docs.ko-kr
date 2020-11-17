@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 5898059d83576cd0d2af15ad61bc399cbfbe0e99
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 8f0aa80d092b6678131a2b7152f21ecb8e168257
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055856"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430993"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>ASP.NET Core Blazor 라우팅
 
@@ -223,7 +223,7 @@ endpoints.MapFallbackToPage("/example/{param?}", "/_Host");
 
 ::: moniker range="< aspnetcore-5.0"
 
-Catch-all 경로 매개 변수는 .NET 5 RC1(릴리스 후보 1) 이상의 ASP.NET Core에서 지원됩니다.*
+catch-all 경로 매개 변수는 ASP.NET Core 5.0 이상에서 지원됩니다.
 
 ::: moniker-end
 

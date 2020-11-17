@@ -5,7 +5,7 @@ description: Blazor WebAssembly와 함께 ASP.NET Core SignalR을 사용하는 �
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/01/2020
+ms.date: 11/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 81cbfb692ffbd0bb6335ccef6dd10ad6c20fb334
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: afbfc44db8cb833df7a79061f9bd73052859fec2
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052710"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508177"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-no-locblazor-webassembly"></a>Blazor WebAssembly와 함께 ASP.NET Core SignalR 사용
 
@@ -49,8 +49,7 @@ ms.locfileid: "93052710"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-<!-- * [Visual Studio 2019 16.8 or later](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) with the **ASP.NET and web development** workload -->
-* **ASP.NET 및 웹 개발** 워크로드가 포함된 [Visual Studio 2019 16.8 이상(미리 보기)](https://visualstudio.microsoft.com/vs/preview/)
+* [Visual Studio 2019 16.8 이상](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)과 **ASP.NET 및 웹 개발** 워크로드
 * [!INCLUDE [.NET Core 5.0 SDK](~/includes/5.0-SDK.md)]
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -59,8 +58,7 @@ ms.locfileid: "93052710"
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-<!-- * [Visual Studio for Mac version 8.8 or later (in preview)](https://visualstudio.microsoft.com/vs/mac/) -->
-* [Mac용 Visual Studio 버전 8.8 이상(미리 보기)](/visualstudio/releasenotes/vs2019-mac-preview-relnotes).
+* [Mac용 Visual Studio 버전 8.8 이상](https://visualstudio.microsoft.com/vs/mac/)
 * [!INCLUDE [.NET Core 5.0 SDK](~/includes/5.0-SDK.md)]
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
@@ -185,7 +183,7 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-**통합 터미널** (도구 모음에서 **보기** > **터미널** )에서 다음 명령을 실행합니다.
+**통합 터미널**(도구 모음에서 **보기** > **터미널**)에서 다음 명령을 실행합니다.
 
 ```dotnetcli
 dotnet add Client package Microsoft.AspNetCore.SignalR.Client

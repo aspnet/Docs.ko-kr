@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: ecb4de3439656eb56507b920db704048d8f96759
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: d075faa951a34fb3856b54eb9e21593b6616b4f1
+ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058508"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94673967"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core에서 필터링
 
@@ -49,7 +49,7 @@ ASP.NET Core에서 *필터* 를 사용하면 요청 처리 파이프라인의 �
 
 ## <a name="how-filters-work"></a>필터 작동 방법
 
-필터는 ‘필터 파이프라인’이라고도 하는 ‘ASP.NET Core 동작 호출 파이프라인’내에서 실행됩니다.  필터 파이프라인은 ASP.NET Core가 실행할 작업을 선택한 후에 실행됩니다.
+필터는 ‘필터 파이프라인’이라고도 하는 ‘ASP.NET Core 동작 호출 파이프라인’내에서 실행됩니다. 필터 파이프라인은 ASP.NET Core가 실행할 작업을 선택한 후에 실행됩니다.
 
 ![다른 미들웨어, 라우팅 미들웨어, 작업 선택 영역 및 작업 호출 파이프라인을 통해 요청이 처리됩니다. 응답이 클라이언트에 전송되기 전에 작업 선택 영역, 라우팅 미들웨어 및 기타 다양한 미들웨어를 통해 요청 처리가 계속됩니다.](filters/_static/filter-pipeline-1.png)
 
@@ -232,7 +232,7 @@ ASP.NET Core에는 서브클래싱 및 사용자 지정할 수 있는 기본 제
   * `MySampleActionFilter.OnActionExecuted`
 * `TestController.OnActionExecuted`
 
-컨트롤러 수준 필터는 [Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) 속성을 `int.MinValue`로 설정합니다. 컨트롤러 수준 필터는 메서드에 적용된 후에 실행되도록 설정할 수 **없습니다** . 순서는 다음 섹션에 설명되어 있습니다.
+컨트롤러 수준 필터는 [Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) 속성을 `int.MinValue`로 설정합니다. 컨트롤러 수준 필터는 메서드에 적용된 후에 실행되도록 설정할 수 **없습니다**. 순서는 다음 섹션에 설명되어 있습니다.
 
 Razor페이지는 [ Razor 필터 메서드를 재정의 하 여 페이지 필터 구현](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods)을 참조 하세요.
 
@@ -315,7 +315,7 @@ Razor페이지는 [ Razor 필터 메서드를 재정의 하 여 페이지 필터
 로거는 DI를 통해서 사용할 수 있습니다. 그러나 로깅 용도로만 필터를 만들거나 사용하지는 마세요. [기본 제공 프레임워크 로깅](xref:fundamentals/logging/index)은 일반적으로 로깅에 필요한 기능을 제공합니다. 필터에 추가된 로깅은:
 
 * 비즈니스 도메인 문제 또는 필터 고유의 동작에 중점을 두어야 합니다.
-* 작업 또는 다른 프레임워크 이벤트를 로깅해서는 **안 됩니다** . 기본 제공 필터는 작업 및 프레임워크 이벤트를 로깅합니다.
+* 작업 또는 다른 프레임워크 이벤트를 로깅해서는 **안 됩니다**. 기본 제공 필터는 작업 및 프레임워크 이벤트를 로깅합니다.
 
 ### <a name="servicefilterattribute"></a>ServiceFilterAttribute
 
@@ -381,7 +381,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 * 권한 부여 시스템을 호출합니다.
 * 요청을 승인하지 않습니다.
 
-권한 부여 필터 내에서 예외를 던지지 **마세요** .
+권한 부여 필터 내에서 예외를 던지지 **마세요**.
 
 * 해당 예외는 처리되지 않습니다.
 * 예외 필터가 해당 예외를 처리하지 않습니다.
@@ -499,7 +499,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 * 작업 내에서 발생하는 예외를 잡는 데 좋습니다.
 * 오류 처리 미들웨어만큼 유연하지 않습니다.
 
-예외 처리의 경우 미들웨어를 선호합니다. 어떤 작업 메서드가 호출되는지에 따라 오류 처리 방식이 ‘다른’ 경우에만 예외 필터를 사용합니다.  예를 들어 앱에는 API 엔드포인트 및 보기/HTML 모두에 대한 작업 메서드가 있을 수 있습니다. API 엔드포인트는 JSON으로 오류 정보를 반환할 수 있습니다. 반면 보기 기반 작업은 HTML로 오류 페이지를 반환할 수 있습니다.
+예외 처리의 경우 미들웨어를 선호합니다. 어떤 작업 메서드가 호출되는지에 따라 오류 처리 방식이 ‘다른’ 경우에만 예외 필터를 사용합니다. 예를 들어 앱에는 API 엔드포인트 및 보기/HTML 모두에 대한 작업 메서드가 있을 수 있습니다. API 엔드포인트는 JSON으로 오류 정보를 반환할 수 있습니다. 반면 보기 기반 작업은 HTML로 오류 페이지를 반환할 수 있습니다.
 
 ## <a name="result-filters"></a>결과 필터
 
@@ -554,6 +554,18 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 ### <a name="ifilterfactory"></a>IFilterFactory
 
 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>는 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>를 구현합니다. 따라서 `IFilterFactory` 인스턴스를 필터 파이프라인에서 `IFilterMetadata` 인스턴스로 사용할 수 있습니다. 런타임이 필터를 호출하려고 준비할 때 `IFilterFactory`로 캐스팅을 시도합니다. 해당 캐스팅에 성공하면 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> 메서드를 호출하여 호출되는 `IFilterMetadata` 인스턴스를 만듭니다. 앱이 시작될 때 정확한 필터 파이프라인을 명시적으로 설정할 필요가 없으므로 유연한 디자인을 제공합니다.
+
+`IFilterFactory.IsReusable`:
+
+* 팩터리에서 생성 된 요청 범위 외부에서 팩터리에서 만든 필터 인스턴스를 다시 사용할 수 있음을 팩터리에서 힌트 합니다.
+* Singleton 이외의 수명으로 서비스에 의존 하는 필터와 함께 사용 **하면 안 됩니다**.
+
+ASP.NET Core 런타임은 다음을 보장하지 않습니다.
+
+_ 필터의 단일 인스턴스가 생성 됩니다.
+* 나중에 DI 컨테이너에서 필터가 다시 요청되지 않음.
+
+[!WARNING]`IFilterFactory.IsReusable` `true` 필터 원본이 모호 하 고, 필터가 상태 비저장 이며, 여러 HTTP 요청에서 사용할 수 있는 경우에만를 반환 하도록를 구성 합니다. 예를 들어,가를 반환 하는 경우 범위 지정 또는 임시로 등록 된 DI에서 필터를 반환 하지 않습니다. `IFilterFactory.IsReusable``true`
 
 필터를 만드는 다른 방법으로 사용자 지정 특성 구현을 사용하여 `IFilterFactory`를 구현할 수 있습니다.
 
@@ -638,7 +650,7 @@ ASP.NET Core에서 *필터* 를 사용하면 요청 처리 파이프라인의 �
 
 ## <a name="how-filters-work"></a>필터 작동 방법
 
-필터는 ‘필터 파이프라인’이라고도 하는 ‘ASP.NET Core 동작 호출 파이프라인’내에서 실행됩니다.   필터 파이프라인은 ASP.NET Core가 실행할 작업을 선택한 후에 실행됩니다.
+필터는 ‘필터 파이프라인’이라고도 하는 ‘ASP.NET Core 동작 호출 파이프라인’내에서 실행됩니다.  필터 파이프라인은 ASP.NET Core가 실행할 작업을 선택한 후에 실행됩니다.
 
 ![요청은 기타 미들웨어, 라우팅 미들웨어, 작업 선택 및 ASP.NET Core 작업 호출 파이프라인을 통해서 처리됩니다. 응답이 클라이언트에 전송되기 전에 작업 선택 영역, 라우팅 미들웨어 및 기타 다양한 미들웨어를 통해 요청 처리가 계속됩니다.](filters/_static/filter-pipeline-1.png)
 
@@ -847,7 +859,7 @@ Razor페이지는 [ Razor 필터 메서드를 재정의 하 여 페이지 필터
 로거는 DI를 통해서 사용할 수 있습니다. 그러나 로깅 용도로만 필터를 만들거나 사용하지는 마세요. [기본 제공 프레임워크 로깅](xref:fundamentals/logging/index)은 일반적으로 로깅에 필요한 기능을 제공합니다. 필터에 추가된 로깅은:
 
 * 비즈니스 도메인 문제 또는 필터 고유의 동작에 중점을 두어야 합니다.
-* 작업 또는 다른 프레임워크 이벤트를 로깅해서는 **안 됩니다** . 기본 제공 필터는 작업 및 프레임워크 이벤트를 로깅합니다.
+* 작업 또는 다른 프레임워크 이벤트를 로깅해서는 **안 됩니다**. 기본 제공 필터는 작업 및 프레임워크 이벤트를 로깅합니다.
 
 ### <a name="servicefilterattribute"></a>ServiceFilterAttribute
 
@@ -914,7 +926,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 * 권한 부여 시스템을 호출합니다.
 * 요청을 승인하지 않습니다.
 
-권한 부여 필터 내에서 예외를 던지지 **마세요** .
+권한 부여 필터 내에서 예외를 던지지 **마세요**.
 
 * 해당 예외는 처리되지 않습니다.
 * 예외 필터가 해당 예외를 처리하지 않습니다.
@@ -1026,7 +1038,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 * 작업 내에서 발생하는 예외를 잡는 데 좋습니다.
 * 오류 처리 미들웨어만큼 유연하지 않습니다.
 
-예외 처리의 경우 미들웨어를 선호합니다. 어떤 작업 메서드가 호출되는지에 따라 오류 처리 방식이 ‘다른’ 경우에만 예외 필터를 사용합니다.  예를 들어 앱에는 API 엔드포인트 및 보기/HTML 모두에 대한 작업 메서드가 있을 수 있습니다. API 엔드포인트는 JSON으로 오류 정보를 반환할 수 있습니다. 반면 보기 기반 작업은 HTML로 오류 페이지를 반환할 수 있습니다.
+예외 처리의 경우 미들웨어를 선호합니다. 어떤 작업 메서드가 호출되는지에 따라 오류 처리 방식이 ‘다른’ 경우에만 예외 필터를 사용합니다. 예를 들어 앱에는 API 엔드포인트 및 보기/HTML 모두에 대한 작업 메서드가 있을 수 있습니다. API 엔드포인트는 JSON으로 오류 정보를 반환할 수 있습니다. 반면 보기 기반 작업은 HTML로 오류 페이지를 반환할 수 있습니다.
 
 ## <a name="result-filters"></a>결과 필터
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d78076eb29d6d09756e408b388fcf12b4b6460f6
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: d8838a458943599890420adec4551ad87e43d328
+ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507943"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637706"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>ASP.NET Core Razor 구성 요소 만들기 및 사용
 
@@ -244,11 +244,25 @@ namespace BlazorSample
 
 구성 요소는 [`@page`][9] 지시문에 제공된 경로 템플릿에서 경로 매개 변수를 받을 수 있습니다. 라우터는 경로 매개 변수를 사용하여 해당하는 구성 요소 매개 변수를 채웁니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
+선택적 매개 변수가 지원됩니다. 다음 예제에서 `text` 선택적 매개 변수는 경로 세그먼트의 값을 구성 요소의 `Text` 속성에 할당합니다. 세그먼트가 없으면 `Text` 값이 `fantastic`으로 설정됩니다.
+
 `Pages/RouteParameter.razor`:
 
-[!code-razor[](index/samples_snapshot/RouteParameter.razor?highlight=2,7-8)]
+[!code-razor[](index/samples_snapshot/RouteParameter-5x.razor?highlight=1,6-7)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+`Pages/RouteParameter.razor`:
+
+[!code-razor[](index/samples_snapshot/RouteParameter-3x.razor?highlight=2,7-8)]
 
 선택적 매개 변수는 지원되지 않으므로 앞의 예제에서 두 개의 [`@page`][9] 지시문이 적용됩니다. 첫 번째 지시문은 매개 변수 없이 구성 요소 탐색을 허용합니다. 두 번째 [`@page`][9] 지시문은 `{text}` 경로 매개 변수를 받고 `Text` 속성에 값을 할당합니다.
+
+::: moniker-end
 
 여러 폴더 경계에서 경로를 캡처하는 범용 경로 매개 변수(`{*pageRoute}`)에 대한 자세한 내용은 <xref:blazor/fundamentals/routing#catch-all-route-parameters>을 참조하세요.
 
@@ -265,6 +279,14 @@ namespace BlazorSample
 `Pages/ParentComponent.razor`:
 
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=5-6)]
+
+규칙에 따라 C# 코드로 구성되는 특성 값은 [Razor의 예약된 `@` 기호](xref:mvc/views/razor#razor-syntax)를 사용하여 매개 변수에 할당됩니다.
+
+* 부모 필드 또는 속성: `Title="@{FIELD OR PROPERTY}`, 여기서 `{FIELD OR PROPERTY}` 자리 표시자는 부모 구성 요소의 C# 필드 또는 속성입니다.
+* 메서드의 결과: `Title="@{METHOD}"`, 여기서 `{METHOD}` 자리 표시자는 부모 구성 요소의 C# 메서드입니다.
+* [암시적 또는 명시적 식](xref:mvc/views/razor#implicit-razor-expressions): `Title="@({EXPRESSION})"`, 여기서 `{EXPRESSION}` 자리 표시자는 C# 식입니다.
+  
+자세한 내용은 <xref:mvc/views/razor>를 참조하세요.
 
 > [!WARNING]
 > 자체 *구성 요소 매개 변수* 에 쓰는 구성 요소를 만들지 말고 대신 private 필드를 사용합니다. 자세한 내용은 [덮어쓴 매개 변수](#overwritten-parameters) 섹션을 참조하세요.
@@ -294,7 +316,7 @@ Blazor가 자식 콘텐츠를 렌더링하는 방식 때문에 `for` 루프 내�
 > @for (int c = 0; c < 10; c++)
 > {
 >     var current = c;
->     <ChildComponent Param1="@c">
+>     <ChildComponent Title="@c">
 >         Child Content: Count: @current
 >     </ChildComponent>
 > }
@@ -305,7 +327,7 @@ Blazor가 자식 콘텐츠를 렌더링하는 방식 때문에 `for` 루프 내�
 > ```razor
 > @foreach(var c in Enumerable.Range(0,10))
 > {
->     <ChildComponent Param1="@c">
+>     <ChildComponent Title="@c">
 >         Child Content: Count: @c
 >     </ChildComponent>
 > }
@@ -650,7 +672,7 @@ Blazor 프레임워크는 일반적으로 안전한 부모-자식 매개 변수 
 * 구성 요소는 `Expanded` 매개 변수에 직접 기록하는데, 이는 덮어쓴 매개 변수의 문제를 보여 주므로 피해야 합니다.
 
 ```razor
-<div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
+<div @onclick="Toggle" class="card bg-light mb-3" style="width:30rem">
     <div class="card-body">
         <h2 class="card-title">Toggle (<code>Expanded</code> = @Expanded)</h2>
 
@@ -702,7 +724,7 @@ Blazor 프레임워크는 일반적으로 안전한 부모-자식 매개 변수 
 * 프라이빗 필드를 사용하여 내부 설정/해제 상태를 유지합니다. 이 상태는 매개 변수에 직접 쓰는 것을 방지하는 방법을 보여줍니다.
 
 ```razor
-<div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
+<div @onclick="Toggle" class="card bg-light mb-3" style="width:30rem">
     <div class="card-body">
         <h2 class="card-title">Toggle (<code>expanded</code> = @expanded)</h2>
 

@@ -5,7 +5,7 @@ description: HttpRepl .NET Core 전역 도구를 사용하여 ASP.NET Core 웹 A
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc, devx-track-azurecli
-ms.date: 11/11/2020
+ms.date: 11/12/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: df2d4e63a18471b4c5f4f1c9434921303bb1da8a
-ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
+ms.openlocfilehash: c661141c1bec93c0f7b6404964dc0bca2319b529
+ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550623"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634615"
 ---
 # <a name="test-web-apis-with-the-httprepl"></a>HttpRepl을 사용하여 웹 API 테스트
 
@@ -62,7 +62,7 @@ dotnet tool install -g Microsoft.dotnet-httprepl
 
 [.NET Core 글로벌 도구](/dotnet/core/tools/global-tools#install-a-global-tool)가 [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl) NuGet 패키지에서 설치됩니다.
 
-## <a name="usage"></a>사용량
+## <a name="usage"></a>사용
 
 도구를 성공적으로 설치한 후 다음 명령을 실행하여 HttpRepl을 시작합니다.
 
@@ -204,7 +204,7 @@ The field 'paths' in 'document' object is REQUIRED [#/paths]
 웹 API 주소의 현재 경로에 있는 다른 엔드포인트(컨트롤러)를 나열하려면 `ls` 또는 `dir` 명령을 실행합니다.
 
 ```console
-https://localhot:5001/> ls
+https://localhost:5001/> ls
 ```
 
 다음 출력 형식이 표시됩니다.
@@ -274,7 +274,7 @@ HttpRepl의 기본 [색](#set-color-preferences)을 사용자 지정할 수 있�
 
 ### <a name="view-the-settings"></a>설정 보기
 
-사용 가능한 설정을 보려면 `pref get` 명령을 실행합니다. 예를 들어:
+사용 가능한 설정을 보려면 `pref get` 명령을 실행합니다. 예를 들면 다음과 같습니다.
 
 ```console
 https://localhost:5001/> pref get
@@ -604,7 +604,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
 
 HTTP PUT 요청을 실행하려면:
 
-1. *선택 사항* : `get` 명령을 실행하여 데이터를 수정하기 전에 확인합니다.
+1. *선택 사항*: `get` 명령을 실행하여 데이터를 수정하기 전에 확인합니다.
 
     ```console
     https://localhost:5001/fruits> get
@@ -666,7 +666,7 @@ HTTP PUT 요청을 실행하려면:
     Server: Kestrel
     ```
 
-1. *선택 사항* : `get` 명령을 실행하여 수정 내용을 확인합니다. 예를 들어 텍스트 편집기에서 "Cherry"를 입력한 경우 `get`은 다음 출력을 반환합니다.
+1. *선택 사항*: `get` 명령을 실행하여 수정 내용을 확인합니다. 예를 들어 텍스트 편집기에서 "Cherry"를 입력한 경우 `get`은 다음 출력을 반환합니다.
 
     ```console
     https://localhost:5001/fruits> get
@@ -717,7 +717,7 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
 
 HTTP DELETE 요청을 실행하려면:
 
-1. *선택 사항* : `get` 명령을 실행하여 데이터를 수정하기 전에 확인합니다.
+1. *선택 사항*: `get` 명령을 실행하여 데이터를 수정하기 전에 확인합니다.
 
     ```console
     https://localhost:5001/fruits> get
@@ -757,7 +757,7 @@ HTTP DELETE 요청을 실행하려면:
     Server: Kestrel
     ```
 
-1. *선택 사항* : `get` 명령을 실행하여 수정 내용을 확인합니다. 이 예제에서 `get`은 다음 출력을 반환합니다.
+1. *선택 사항*: `get` 명령을 실행하여 수정 내용을 확인합니다. 이 예제에서 `get`은 다음 출력을 반환합니다.
 
     ```console
     https://localhost:5001/fruits> get
@@ -1123,7 +1123,10 @@ https://localhost:5001/> clear
 https://localhost:5001/>
 ```
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * [REST API 요청](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)
 * [HttpRepl GitHub 리포지토리](https://github.com/dotnet/HttpRepl)
+* [HttpRepl을 시작하도록 Visual Studio 구성](https://devblogs.microsoft.com/aspnet/httprepl-a-command-line-tool-for-interacting-with-restful-http-services/#configure-visual-studio-for-windows-to-launch-httprepl-on-f5)
+* [HttpRepl을 시작하도록 Visual Studio Code 구성](https://devblogs.microsoft.com/aspnet/httprepl-a-command-line-tool-for-interacting-with-restful-http-services/#configure-visual-studio-code-to-launch-httprepl-on-debug)
+* [HttpRepl을 시작하도록 Mac용 Visual Studio 구성](https://devblogs.microsoft.com/aspnet/httprepl-a-command-line-tool-for-interacting-with-restful-http-services/#configure-visual-studio-for-mac-to-launch-httprepl-as-a-custom-tool)

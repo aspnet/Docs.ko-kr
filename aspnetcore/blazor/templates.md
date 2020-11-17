@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: eef381367d7aa59dcc430c529746088d4488e700
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: fc2e81cf130732d515fb871227031493e297cf9f
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93054933"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94507774"
 ---
 # <a name="aspnet-core-no-locblazor-templates"></a>ASP.NET Core Blazor 템플릿
 
@@ -48,12 +48,27 @@ dotnet new blazorserver --help
 
 다음 파일 및 폴더는 Blazor 프로젝트 템플릿에서 생성된 Blazor 앱을 구성합니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
 * `Program.cs`: 다음을 설정하는 앱의 진입점입니다.
 
   * ASP.NET Core [호스트](xref:fundamentals/host/generic-host)(Blazor Server)
   * WebAssembly 호스트(Blazor WebAssembly): 이 파일의 코드는 Blazor WebAssembly 템플릿(`blazorwasm`)에서 만든 앱에 고유합니다.
-    * `App` 구성 요소는 앱의 루트 구성 요소입니다. `App` 구성 요소는 루트 구성 요소 컬렉션(`builder.RootComponents.Add<App>("app")`)에 대한 `app` DOM 요소(`<app>...</app>`)로 지정됩니다.
+    * `App` 구성 요소는 앱의 루트 구성 요소입니다. `App` 구성 요소는 루트 구성 요소 컬렉션(`builder.RootComponents.Add<App>("#app")`)에 대한 `app` DOM 요소(`wwwroot/index.html`의 `<div id="app">Loading...</div>`)로 지정됩니다.
     * [서비스](xref:blazor/fundamentals/dependency-injection)가 추가되고 구성됩니다(예: `builder.Services.AddSingleton<IMyDependency, MyDependency>()`).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+* `Program.cs`: 다음을 설정하는 앱의 진입점입니다.
+
+  * ASP.NET Core [호스트](xref:fundamentals/host/generic-host)(Blazor Server)
+  * WebAssembly 호스트(Blazor WebAssembly): 이 파일의 코드는 Blazor WebAssembly 템플릿(`blazorwasm`)에서 만든 앱에 고유합니다.
+    * `App` 구성 요소는 앱의 루트 구성 요소입니다. `App` 구성 요소는 루트 구성 요소 컬렉션(`builder.RootComponents.Add<App>("app")`)에 대한 `app` DOM 요소(`wwwroot/index.html`의 `<app>Loading...</app>`)로 지정됩니다.
+    * [서비스](xref:blazor/fundamentals/dependency-injection)가 추가되고 구성됩니다(예: `builder.Services.AddSingleton<IMyDependency, MyDependency>()`).
+
+::: moniker-end
 
 * `Startup.cs`(Blazor Server): 앱의 시작 논리를 포함합니다. `Startup` 클래스는 다음 두 가지 메서드를 정의합니다.
 

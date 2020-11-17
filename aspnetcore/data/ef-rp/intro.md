@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 74f65b916c2d5b7de61ec29f4259a51584ee5989
-ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
+ms.openlocfilehash: 5849f4bfb9d0355177ceb5c2f4236c6d39dd9e92
+ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93365420"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94340038"
 ---
 # <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core에서 Entity Framework Core를 사용한 Razor Pages - 자습서 1/8
 
@@ -119,12 +119,16 @@ To run the app after downloading the completed project:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Visual Studio를 시작하고 **새 프로젝트 만들기** 를 선택합니다.
-* **ASP.NET Core 웹 애플리케이션** > **다음** 을 선택합니다.
-* 프로젝트 이름을 *ContosoUniversity* 로 지정합니다. 코드를 복사하여 붙여넣을 때 네임스페이스가 일치하도록 대문자 표시를 포함하여 정확한 이름을 사용해야 합니다.
-* **만들기** 를 선택합니다.
-* 드롭다운에서 **.NET Core** 및 **ASP.NET Core 5.0** 을 선택한 다음, **웹 애플리케이션** 을 선택합니다.
-
+1. Visual Studio를 시작하고 **새 프로젝트 만들기** 를 선택합니다.
+1. **새 프로젝트 만들기** 대화 상자에서 **ASP.NET Core 웹 애플리케이션** > **다음** 을 선택합니다.
+1. **새 프로젝트 구성** 대화 상자에서 **프로젝트 이름** 으로 `ContosoUniversity`를 입력합니다. 코드를 복사할 때 `namespace`가 일치하도록 대문자 표시를 포함하여 이 이름을 정확히 사용해야 합니다.
+1. **만들기** 를 선택합니다.
+1. **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 다음을 선택합니다.
+    1. 드롭다운에서 **.NET Core** 와 **ASP.NET Core 5.0** 을 선택합니다.
+    1. **ASP.NET Core 웹앱(Model-View-Controller)** .
+    1. 
+      ![새 ASP.NET Core 프로젝트 **만들기** 대화 상자](~/data/ef-mvc/intro/_static/new-aspnet5.png)
+    
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 터미널에서 프로젝트 폴더를 만들어야 하는 폴더로 이동합니다.
@@ -145,7 +149,7 @@ To run the app after downloading the completed project:
 
 * 모든 “ContosoUniversity”가 “Contoso University”로 변경됩니다. 세 번 나옵니다.
 * **홈** 및 **프라이버시** 메뉴 항목이 삭제됩니다.
-* **정보** , **학생** , **과정** , **강사** 및 **부서** 에 대해 항목이 추가됩니다.
+* **정보**,**학생**, **과정**, **강사** 및 **부서** 에 대해 항목이 추가됩니다.
 
 *Pages/Index.cshtml* 에서 파일의 내용을 다음 코드로 바꿉니다.
 
@@ -432,7 +436,7 @@ Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-앱이 실행 중이라면 중지하고 **패키지 관리자 콘솔** (PMC)에서 다음 명령을 실행합니다.
+앱이 실행 중이라면 중지하고 **패키지 관리자 콘솔**(PMC)에서 다음 명령을 실행합니다.
 
 ```powershell
 Drop-Database -Confirm
@@ -632,7 +636,7 @@ SQLite를 사용하도록 선택하는 경우 [SQLite용 DB 브라우저](https:
 
 * 모든 “ContosoUniversity”를 “Contoso University”로 변경합니다. 세 번 나옵니다.
 
-* **홈** 및 **프라이버시** 메뉴 항목을 삭제하고 **정보** , **학생** , **과정** , **강사** 및 **부서** 항목을 추가합니다.
+* **홈** 및 **프라이버시** 메뉴 항목을 삭제하고 **정보**, **학생**, **과정**, **강사** 및 **부서** 항목을 추가합니다.
 
 변경 내용은 강조 표시되어 있습니다.
 
@@ -883,7 +887,7 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-앱이 실행 중이라면 중지하고 **패키지 관리자 콘솔** (PMC)에서 다음 명령을 실행합니다.
+앱이 실행 중이라면 중지하고 **패키지 관리자 콘솔**(PMC)에서 다음 명령을 실행합니다.
 
 ```powershell
 Drop-Database
@@ -1019,7 +1023,7 @@ dotnet run
 
 * 모든 “ContosoUniversity”를 “Contoso University”로 변경합니다. 세 번 나옵니다.
 
-* **학생** , **강좌** , **강사** 및 **부서** 에 대한 메뉴 항목을 추가하고 **연락처** 메뉴 항목을 삭제합니다.
+* **학생**, **강좌**, **강사** 및 **부서** 에 대한 메뉴 항목을 추가하고 **연락처** 메뉴 항목을 삭제합니다.
 
 변경 내용은 강조 표시되어 있습니다. (모든 표시가 표시되지는 *않습니다*.)
 
@@ -1211,7 +1215,7 @@ EF Core가 빈 DB를 만듭니다. 이 섹션에서는 테스트 데이터로 �
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-앱이 실행 중이라면 중지하고 **패키지 관리자 콘솔** (PMC)에서 다음 명령을 실행합니다.
+앱이 실행 중이라면 중지하고 **패키지 관리자 콘솔**(PMC)에서 다음 명령을 실행합니다.
 
 ```powershell
 Drop-Database

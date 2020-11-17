@@ -5,7 +5,7 @@ description: Blazor 앱을 단계별로 빌드합니다.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/22/2020
+ms.date: 11/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 68a38b82f5a89365e4f345a60f1f34b697c027ed
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4d5bd977b52dd20ffb62519720106ef0a4560914
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060094"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508138"
 ---
 # <a name="build-a-no-locblazor-todo-list-app"></a>Blazor 할 일 목록 앱 빌드
 
@@ -42,7 +42,17 @@ ms.locfileid: "93060094"
 
 ## <a name="prerequisites"></a>필수 조건
 
+::: moniker range=">= aspnetcore-5.0"
+
+[!INCLUDE[](~/includes/5.0-SDK.md)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 [!INCLUDE[](~/includes/3.1-SDK.md)]
+
+::: moniker-end
 
 ## <a name="create-a-todo-list-no-locblazor-app"></a>할 일 목록 Blazor 앱 만들기
 
@@ -89,32 +99,32 @@ ms.locfileid: "93060094"
    </li>
    ```
 
-1. `TodoList` 폴더의 명령 셸에서 `dotnet run` 명령을 실행하여 앱을 빌드하고 실행합니다. 새 Todo 페이지를 방문하여 `Todo` 구성 요소에 대한 링크가 작동하는지 확인합니다.
+1. `TodoList` 폴더의 명령 셸에서 `dotnet run` 명령을 실행하여 앱을 빌드하고 실행합니다. `https://localhost:5001/todo`의 새 Todo 페이지를 방문하여 `Todo` 구성 요소에 대한 링크가 작동하는지 확인합니다.
 
 1. 프로젝트 루트(`TodoList` 폴더)에 `TodoItem.cs` 파일을 추가하여 todo 항목을 나타내는 클래스를 저장합니다. `TodoItem` 클래스에 대해 다음 C# 코드를 사용합니다.
 
-   [!code-csharp[](build-a-blazor-app/samples_snapshot/3.x/TodoItem.cs)]
+   [!code-csharp[](build-a-blazor-app/samples_snapshot/TodoItem.cs)]
 
 1. `Todo` 구성 요소(`Pages/Todo.razor`)로 돌아갑니다.
 
    * `@code` 블록에 있는 할 일 항목에 대한 필드를 추가합니다. `Todo` 구성 요소는 이 필드를 사용하여 할 일 목록의 상태를 유지 관리합니다.
    * 순서가 지정되지 않은 목록 태그 및 `foreach` 루프를 추가하여 각 할 일 항목을 목록 항목(`<li>`)으로 렌더링합니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo4.razor?highlight=5-10,12-14)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo2.razor?highlight=5-10,12-14)]
 
 1. 목록에 할 일 항목을 추가하려면 앱에 UI 요소가 필요합니다. 순서가 지정되지 않은 목록(`<ul>...</ul>`) 아래에 텍스트 입력(`<input>`)과 단추(`<button>`)를 추가합니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo5.razor?highlight=12-13)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo3.razor?highlight=12-13)]
 
 1. 명령 셸에서 실행 중인 앱을 중지합니다. 많은 명령 셸에서 키보드 명령 <kbd>Ctrl</kbd>+<kbd>C</kbd>를 통해 앱을 중지합니다. `dotnet run` 명령으로 앱을 다시 빌드하고 실행합니다. 단추에 이벤트 처리기가 연결되어 있지 않으므로 **`Add todo`** 단추를 선택해도 아무 일도 발생하지 않습니다.
 
 1. `Todo` 구성 요소에 `AddTodo` 메서드를 추가하고 `@onclick` 특성을 사용하여 이를 단추 선택에 등록합니다. 단추가 선택되면 `AddTodo` C# 메서드가 호출됩니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo6.razor?highlight=2,7-10)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo4.razor?highlight=2,7-10)]
 
 1. 새 할 일 항목의 제목을 가져오기 위해 `@code` 블록의 상단에 `newTodo` 문자열 필드를 추가하고 `<input>` 요소에서 `bind` 특성을 사용하여 이를 텍스트 입력 값에 바인딩합니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo7.razor?highlight=2)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo5.razor?highlight=2)]
 
    ```razor
    <input placeholder="Something todo" @bind="newTodo" />
@@ -122,13 +132,13 @@ ms.locfileid: "93060094"
 
 1. `AddTodo` 메서드를 수정하여 지정한 제목으로 `TodoItem`을 목록에 추가합니다. `newTodo`를 빈 문자열로 설정하여 텍스트 입력 값을 지웁니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo8.razor?highlight=19-26)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo6.razor?highlight=19-26)]
 
 1. 명령 셸에서 실행 중인 앱을 중지합니다. `dotnet run` 명령으로 앱을 다시 빌드하고 실행합니다. 할 일 목록에 몇 개의 할 일 항목을 추가하여 새 코드를 테스트합니다.
 
 1. 각 할 일 항목의 제목 텍스트를 편집 가능하게 설정하고 확인란을 통해 사용자가 완료된 항목을 추적하도록 도울 수 있습니다. 각 할 일 항목의 확인란 입력을 추가하고 해당 값을 `IsDone` 속성에 바인딩합니다. `@todo.Title`을 `@todo.Title`에 바인딩된 `<input>` 요소로 변경합니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo9.razor?highlight=5-6)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo7.razor?highlight=5-6)]
 
 1. 해당 값이 바인딩되었는지 확인하기 위해 `<h3>` 헤더를 수정하여 완료되지 않은(`IsDone`이 `false`) 할 일 항목 수를 표시합니다.
 
@@ -138,7 +148,7 @@ ms.locfileid: "93060094"
 
 1. 완료된 `Todo` 구성 요소(`Pages/Todo.razor`)는 다음과 같습니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/Todo.razor)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo1.razor)]
 
 1. 명령 셸에서 실행 중인 앱을 중지합니다. `dotnet run` 명령으로 앱을 다시 빌드하고 실행합니다. 할 일 항목을 추가하여 새 코드를 테스트합니다.
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: a333c189e81a9f44e94deb6b37097f1a8b19a0f9
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 6435a7c9ce2a30873f0d3475a38270d3dea1b300
+ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94430928"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94595469"
 ---
 # <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>ASP.NET Core Blazor 인증 및 권한 부여
 
@@ -255,7 +255,7 @@ Blazor Server 앱에는 옵션 및 권한 부여 서비스가 이미 있으므�
 
 ## <a name="authorizeview-component"></a>AuthorizeView 구성 요소
 
-<xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소는 사용자에게 볼 수 있는 권한이 있는지 여부에 따라 선택적으로 UI를 표시합니다. 이 접근 방식은 사용자에게 데이터를 ‘표시’하기만 하면 되고 절차적 논리에 사용자 ID를 사용할 필요가 없는 경우에 유용합니다.
+<xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소는 사용자에게 권한이 있는지에 따라 선택적으로 UI 콘텐츠를 표시합니다. 이 접근 방식은 사용자에게 데이터를 ‘표시’하기만 하면 되고 절차적 논리에 사용자 ID를 사용할 필요가 없는 경우에 유용합니다.
 
 이 구성 요소는 로그인한 사용자 정보에 액세스하는 데 사용할 수 있는 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState> 형식의 `context` 변수를 공개합니다.
 
@@ -266,24 +266,29 @@ Blazor Server 앱에는 옵션 및 권한 부여 서비스가 이미 있으므�
 </AuthorizeView>
 ```
 
-사용자가 인증되지 않은 경우에 표시할 다른 콘텐츠를 제공할 수도 있습니다.
+사용자가 권한이 없는 경우에 표시할 다른 콘텐츠를 제공할 수도 있습니다.
 
 ```razor
 <AuthorizeView>
     <Authorized>
         <h1>Hello, @context.User.Identity.Name!</h1>
-        <p>You can only see this content if you're authenticated.</p>
+        <p>You can only see this content if you're authorized.</p>
+        <button @onclick="SecureMethod">Authorized Only Button</button>
     </Authorized>
     <NotAuthorized>
         <h1>Authentication Failure!</h1>
         <p>You're not signed in.</p>
     </NotAuthorized>
 </AuthorizeView>
+
+@code {
+    private void SecureMethod() { ... }
+}
 ```
 
-<xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소는 `NavMenu` 구성 요소(`Shared/NavMenu.razor`)에서 [`NavLink` 구성 요소](xref:blazor/fundamentals/routing#navlink-component)(<xref:Microsoft.AspNetCore.Components.Routing.NavLink>)에 대한 목록 항목(`<li>...</li>`)을 표시하는 데 사용할 수 있지만, 이 방법은 렌더링된 출력에서 목록 항목을 제거할 뿐입니다. 사용자가 해당 구성 요소로 이동하는 것을 방지하지는 않습니다.
-
 `<Authorized>` 및 `<NotAuthorized>` 태그의 콘텐츠에는 다른 대화형 구성 요소와 같은 임의 항목이 포함될 수 있습니다.
+
+이전 예제의 `<button>` 요소에 대한 `SecureMethod` 메서드와 같이 권한 있는 요소에 대한 기본 이벤트 처리기는 권한 있는 사용자만 호출할 수 있습니다.
 
 UI 옵션이나 액세스를 제어하는 역할 또는 정책과 같은 권한 부여 조건은 [권한 부여](#authorization) 섹션에서 설명합니다.
 
@@ -291,6 +296,8 @@ UI 옵션이나 액세스를 제어하는 역할 또는 정책과 같은 권한 
 
 * 인증(로그인)된 사용자를 권한 있는 사용자로 처리
 * 인증되지 않은(로그아웃된) 사용자를 권한 없는 사용자로 처리
+
+<xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소는 `NavMenu` 구성 요소(`Shared/NavMenu.razor`)에서 [`NavLink` 구성 요소](xref:blazor/fundamentals/routing#navlink-component)(<xref:Microsoft.AspNetCore.Components.Routing.NavLink>)에 대한 목록 항목(`<li>...</li>`)을 표시하는 데 사용할 수 있지만, 이 방법은 렌더링된 출력에서 목록 항목을 제거할 뿐입니다. 사용자가 해당 구성 요소로 이동하는 것을 방지하지는 않습니다.
 
 ### <a name="role-based-and-policy-based-authorization"></a>역할 기반 및 정책 기반 권한 부여
 

@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: e9c74f7b45ebcdffc19a0483b4e98ad2f44d5747
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e25549d557dd971d0f2f4d67a182574f07138acb
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061746"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508125"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>ASP.NET Core 5.0의 새로운 기능
 
@@ -224,6 +224,8 @@ ICU(International Components for Unicode)를 기반으로 하는 세계화 지�
 
 ## SignalR
 
+### <a name="no-locsignalr-hub-filters"></a>SignalR 허브 필터
+
 ASP.NET SignalR에서 허브 파이프라인이라고 하는 SignalR 허브 필터는 허브 메서드가 호출되기 전과 후에 코드를 실행할 수 있는 기능입니다. 허브 메서드가 호출되기 전과 후에 코드를 실행하는 것은 미들웨어가 HTTP 요청 전후에 코드를 실행할 수 있는 것과 유사합니다. 일반적인 용도로는 로깅, 오류 처리, 인수 유효성 검사 등이 있습니다.
 
 자세한 내용은 [ASP.NET Core에서 허브 필터 사용SignalR](xref:signalr/hub-filters)을 참조하세요.
@@ -412,9 +414,10 @@ endpoints.MapGet("/weather/{city:alpha}", async context =>
 
 ```csharp
 public IActionResult Post([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Allow)]
-                           MyModel model) {
-     ...
-     }
+                          MyModel model)
+{
+    ...
+}
 ```
 
 ## <a name="miscellaneous-improvements"></a>기타 개선 사항

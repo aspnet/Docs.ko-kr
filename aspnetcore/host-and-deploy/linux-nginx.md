@@ -5,7 +5,7 @@ description: Ubuntu 16.04에서 Nginx를 역방향 프록시로 설정하여 Kes
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/09/2020
+ms.date: 10/30/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 916bb1f761ce99b2296c84e1653e55fffa04f83c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c4e0d70b41221f272bb4b1fe82cfa531ec6fcf15
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93057689"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94431069"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Nginx를 사용하여 Linux에서 ASP.NET Core 호스트
 
@@ -35,7 +35,7 @@ ms.locfileid: "93057689"
 ASP.NET Core에서 지원하는 다른 Linux 배포에 대한 자세한 내용은 [Linux에서 .NET Core의 필수 구성 요소](/dotnet/core/linux-prerequisites)를 참조하세요.
 
 > [!NOTE]
-> Ubuntu 14.04의 경우 Kestrel 프로세스를 모니터링하기 위한 솔루션으로 *supervisord* 를 사용하는 것이 좋습니다. *systemd* 는 Ubuntu 14.04에서 사용할 수 없습니다. Ubuntu 14.04 지침의 경우 [이 항목의 이전 버전](https://github.com/dotnet/AspNetCore.Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md)을 참조하세요.
+> Ubuntu 14.04의 경우 Kestrel 프로세스를 모니터링하기 위한 솔루션으로 `supervisord`를 사용하는 것이 좋습니다. `systemd`는 Ubuntu 14.04에서 사용할 수 없습니다. Ubuntu 14.04 지침의 경우 [이 항목의 이전 버전](https://github.com/dotnet/AspNetCore.Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md)을 참조하세요.
 
 이 가이드의 내용:
 
@@ -63,9 +63,9 @@ ASP.NET Core에서 지원하는 다른 Linux 배포에 대한 자세한 내용�
 앱을 로컬에서 실행하고 보안 연결(HTTPS)을 확인하도록 구성하지 않은 경우 다음 방법 중 하나를 채택합니다.
 
 * 보안 로컬 연결을 처리하도록 앱을 구성합니다. 자세한 내용은 [HTTPS 구성](#https-configuration) 섹션을 참조하세요.
-* *Properties/launchSettings.json* 파일의 `applicationUrl` 속성에서 `https://localhost:5001`(있는 경우)을 제거합니다.
+* `Properties/launchSettings.json` 파일의 `applicationUrl` 속성에서 `https://localhost:5001`(있는 경우)을 제거합니다.
 
-서버에서 실행할 수 있는 디렉터리(예: *bin/Release/&lt;target_framework_moniker&gt;/publish* )로 앱을 패키징하기 위해 개발 환경에서 [dotnet publish](/dotnet/core/tools/dotnet-publish)를 실행합니다.
+개발 환경에서 [dotnet publish](/dotnet/core/tools/dotnet-publish)를 실행하여 서버에서 실행할 수 있는 디렉터리(예: `bin/Release/{TARGET FRAMEWORK MONIKER}/publish`, 여기서 자리 표시자 `{TARGET FRAMEWORK MONIKER}`는 대상 프레임워크 모니커/TFM)로 앱을 패키징합니다.
 
 ```dotnetcli
 dotnet publish --configuration Release
@@ -73,7 +73,7 @@ dotnet publish --configuration Release
 
 .NET Core 런타임을 서버에서 유지 관리하지 않으려는 경우 앱은 [자체 포함된 배포](/dotnet/core/deploying/#self-contained-deployments-scd)로 게시될 수도 있습니다.
 
-조직의 워크플로에 통합된 도구(예: SCP, SFTP)를 사용하여 ASP.NET Core 앱을 서버에 복사합니다. *var* 디렉터리(예: *var/www/helloapp* )에서 웹앱을 찾는 것이 일반적입니다.
+조직의 워크플로에 통합된 도구(예: `SCP`, `SFTP`)를 사용하여 ASP.NET Core 앱을 서버에 복사합니다. `var` 디렉터리(예: `var/www/helloapp`)에서 웹앱을 찾는 것이 일반적입니다.
 
 > [!NOTE]
 > 프로덕션 배포 시나리오에서 지속적인 통합 워크플로는 앱을 게시하고 자산을 서버로 복사하는 워크플로를 수행합니다.
@@ -93,15 +93,16 @@ Kestrel은 ASP.NET Core에서 동적 콘텐츠를 제공하는 데 유용합니�
 
 이 가이드에서는 Nginx의 단일 인스턴스가 사용됩니다. 이 인스턴스는 HTTP 서버와 함께 동일한 서버에서 실행됩니다. 요구 사항에 따라 다른 설정을 선택할 수 있습니다.
 
-요청이 역방향 프록시를 통해 전달되므로 [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) 패키지의 [전달된 헤더 미들웨어](xref:host-and-deploy/proxy-load-balancer)를 사용합니다. 이 미들웨어는 `X-Forwarded-Proto` 헤더를 사용하여 `Request.Scheme`을 업데이트하므로 리디렉션 URI 및 기타 보안 정책이 제대로 작동합니다.
-
+요청이 역방향 프록시에 의해 전달되므로 [`Microsoft.AspNetCore.HttpOverrides`](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides) 패키지의 [전달된 헤더 미들웨어](xref:host-and-deploy/proxy-load-balancer)를 사용합니다. 이 미들웨어는 `X-Forwarded-Proto` 헤더를 사용하여 `Request.Scheme`을 업데이트하므로 리디렉션 URI 및 기타 보안 정책이 제대로 작동합니다.
 
 [!INCLUDE[](~/includes/ForwardedHeaders.md)]
 
 다른 미들웨어를 호출하기 전에 `Startup.Configure`의 맨 위에 있는 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 메서드를 호출합니다. `X-Forwarded-For` 및 `X-Forwarded-Proto` 헤더를 전달하도록 미들웨어를 구성합니다.
 
 ```csharp
-// using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.HttpOverrides;
+
+...
 
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
@@ -113,10 +114,12 @@ app.UseAuthentication();
 
 미들웨어에 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>가 지정되지 않은 경우 전달할 기본 헤더는 `None`입니다.
 
-표준 localhost 주소(127.0.0.1)를 포함하여 루프백 주소(127.0.0.0/8, [::1])에서 실행 중인 프록시는 기본적으로 신뢰됩니다. 조직 내의 다른 신뢰할 수 있는 프록시 또는 네트워크가 인터넷과 웹 서버 간의 요청을 처리하는 경우 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>를 사용하여 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> 또는 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> 목록에 추가합니다. 다음 예제는 IP 주소 10.0.0.100의 신뢰할 수 있는 프록시 서버를 `Startup.ConfigureServices`의 전달된 헤더 미들웨어 `KnownProxies`에 추가합니다.
+표준 localhost 주소(`127.0.0.1`)를 포함하여 루프백 주소(`127.0.0.0/8`, `[::1]`)에서 실행 중인 프록시는 기본적으로 신뢰할 수 있습니다. 조직 내의 다른 신뢰할 수 있는 프록시 또는 네트워크가 인터넷과 웹 서버 간의 요청을 처리하는 경우 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>를 사용하여 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> 또는 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> 목록에 추가합니다. 다음 예제는 IP 주소 10.0.0.100의 신뢰할 수 있는 프록시 서버를 `Startup.ConfigureServices`의 전달된 헤더 미들웨어 `KnownProxies`에 추가합니다.
 
 ```csharp
-// using System.Net;
+using System.Net;
+
+...
 
 services.Configure<ForwardedHeadersOptions>(options =>
 {
@@ -128,7 +131,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 
 ### <a name="install-nginx"></a>Nginx 설치
 
-`apt-get`을 사용하여 Nginx를 설치합니다. 설치 관리자는 시스템 시작 시 Nginx를 디먼으로 실행하는 *systemd* 시작 스크립트를 만듭니다. Ubuntu의 설치 지침은 [Nginx: 공식 Debian/Ubuntu 패키지](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages)를 따릅니다.
+`apt-get`을 사용하여 Nginx를 설치합니다. 설치 관리자는 시스템 시작 시 Nginx를 디먼으로 실행하는 `systemd` 시작 스크립트를 만듭니다. Ubuntu의 설치 지침은 [Nginx: 공식 Debian/Ubuntu 패키지](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages)를 따릅니다.
 
 > [!NOTE]
 > 선택적 Nginx 모듈이 필요한 경우 소스에서 Nginx를 빌드해야 할 수 있습니다.
@@ -143,7 +146,7 @@ sudo service nginx start
 
 ### <a name="configure-nginx"></a>Nginx 구성
 
-Nginx를 역방향 프록시로 구성하여 요청을 ASP.NET Core 앱에 프로그램에 전달하려면 */etc/nginx/sites-available/default* 를 수정합니다. 텍스트 편집기에서 해당 항목을 열고 콘텐츠를 다음으로 바꿉니다.
+Nginx를 역방향 프록시로 구성하여 HTTP 요청을 ASP.NET Core 앱에 전달하려면 `/etc/nginx/sites-available/default`를 수정합니다. 텍스트 편집기에서 해당 항목을 열고 콘텐츠를 다음으로 바꿉니다.
 
 ```nginx
 server {
@@ -192,7 +195,7 @@ Nginx 구성이 설정되면 `sudo nginx -t`를 실행하여 구성 파일의 �
 
 ## <a name="monitor-the-app"></a>앱 모니터링
 
-서버는 `http://<serveraddress>:80`에 대해 실행된 요청을 `http://127.0.0.1:5000`의 Kestrel에서 실행되는 ASP.NET Core 앱에 전달하도록 설정됩니다. 그러나 Nginx는 Kestrel 프로세스를 관리하도록 설정되지 않습니다. *systemd* 를 사용하여 기본 웹앱을 시작 및 모니터링하기 위한 서비스 파일을 만들 수 있습니다. *systemd* 는 프로세스를 시작, 중지 및 관리하기 위한 다양하고 강력한 기능을 제공하는 init 시스템입니다. 
+서버는 `http://<serveraddress>:80`에 대해 실행된 요청을 `http://127.0.0.1:5000`의 Kestrel에서 실행되는 ASP.NET Core 앱에 전달하도록 설정됩니다. 그러나 Nginx는 Kestrel 프로세스를 관리하도록 설정되지 않습니다. `systemd`를 사용하여 기본 웹앱을 시작 및 모니터링하기 위한 서비스 파일을 만들 수 있습니다. `systemd`는 프로세스를 시작, 중지 및 관리하기 위한 다양하고 강력한 기능을 제공하는 init 시스템입니다. 
 
 ### <a name="create-the-service-file"></a>서비스 파일 만들기
 
@@ -226,14 +229,14 @@ WantedBy=multi-user.target
 
 앞의 예제에서 서비스를 관리하는 사용자는 `User` 옵션으로 지정됩니다. 사용자(`www-data`)가 존재해야 하며 앱 파일에 대한 적절한 소유권이 있어야 합니다.
 
-`TimeoutStopSec`를 사용하여 초기 인터럽트 신호를 받은 후 앱이 종료되기를 기다리는 기간을 구성합니다. 이 기간 내에 앱이 종료되지 않으면 앱을 종료하기 위해 SIGKILL이 실행됩니다. 단위 없는 초로 된 값(예: `150`) 또는 시간 범위 값(예: `2min 30s`)으로 값을 입력하거나, 시간 제한을 사용하지 않으려면 `infinity`를 입력합니다. `TimeoutStopSec`의 기본값은 관리자 구성 파일( *systemd-system.conf* , *system.conf.d* , *systemd-user.conf* , *user.conf.d* )의 `DefaultTimeoutStopSec` 값입니다. 대부분의 배포에서 기본 시간 제한은 90초입니다.
+`TimeoutStopSec`를 사용하여 초기 인터럽트 신호를 받은 후 앱이 종료되기를 기다리는 기간을 구성합니다. 이 기간 내에 앱이 종료되지 않으면 앱을 종료하기 위해 SIGKILL이 실행됩니다. 단위 없는 초로 된 값(예: `150`) 또는 시간 범위 값(예: `2min 30s`)으로 값을 입력하거나, 시간 제한을 사용하지 않으려면 `infinity`를 입력합니다. `TimeoutStopSec`는 관리자 구성 파일(`systemd-system.conf`, `system.conf.d`, `systemd-user.conf`, `user.conf.d`)에서 `DefaultTimeoutStopSec`의 값으로 기본 설정됩니다. 대부분의 배포에서 기본 시간 제한은 90초입니다.
 
 ```
 # The default value is 90 seconds for most distributions.
 TimeoutStopSec=90
 ```
 
-Linux에는 대/소문자를 구분하는 파일 시스템이 있습니다. ASPNETCORE_ENVIRONMENT를 “프로덕션”으로 설정하면 *appsettings.production.json* 대신 구성 파일 *appsettings.Production.json* 을 검색합니다.
+Linux에는 대/소문자를 구분하는 파일 시스템이 있습니다. `ASPNETCORE_ENVIRONMENT`를 `Production`으로 설정하면 `appsettings.production.json`이 아니라 `appsettings.Production.json`구성 파일이 검색됩니다.
 
 일부 값(예: SQL 연결 문자열)은 환경 변수를 읽기 위해 구성 공급자에 대해 이스케이프되어야 합니다. 다음 명령을 사용하여 구성 파일에서 사용할 제대로 이스케이프된 값을 생성합니다.
 
@@ -276,7 +279,7 @@ Main PID: 9021 (dotnet)
             └─9021 /usr/local/bin/dotnet /var/www/helloapp/helloapp.dll
 ```
 
-역방향 프록시를 구성하고 systemd를 통해 Kestrel을 관리하면 웹앱이 완전히 구성되고 로컬 컴퓨터(`http://localhost`)의 브라우저에서 웹앱에 액세스할 수 있습니다. 차단 중인 방화벽이 없다면 원격 컴퓨터에서 액세스할 수도 있습니다. 응답 헤더를 검사하는 `Server` 헤더는 Kestrel에서 지원하는 ASP.NET Core 앱을 보여줍니다.
+역방향 프록시를 구성하고 `systemd`를 통해 Kestrel을 관리하면 웹앱이 완전히 구성되고 로컬 컴퓨터(`http://localhost`)의 브라우저에서 웹앱에 액세스할 수 있습니다. 차단 중인 방화벽이 없다면 원격 컴퓨터에서 액세스할 수도 있습니다. 응답 헤더를 검사하는 `Server` 헤더는 Kestrel에서 지원하는 ASP.NET Core 앱을 보여줍니다.
 
 ```text
 HTTP/1.1 200 OK
@@ -357,7 +360,7 @@ sudo ufw enable
 
 #### <a name="change-the-nginx-response-name"></a>Nginx 응답 이름 변경
 
-*src/http/ngx_http_header_filter_module.c* 를 편집합니다.
+편집 `src/http/ngx_http_header_filter_module.c`:
 
 ```
 static char ngx_http_server_string[] = "Server: Web Server" CRLF;
@@ -372,31 +375,36 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 **보안(HTTPS) 로컬 연결을 위해 앱 구성**
 
-[dotnet 실행](/dotnet/core/tools/dotnet-run) 명령은 `applicationUrl` 속성(예: `https://localhost:5001;http://localhost:5000`)이 제공하는 URL에서 수신 대기하도록 앱을 구성하는 앱의 *Properties/launchSettings.json* 파일을 사용합니다.
+[dotnet 실행](/dotnet/core/tools/dotnet-run) 명령은 `applicationUrl` 속성(예: `https://localhost:5001;http://localhost:5000`)이 제공하는 URL에서 수신 대기하도록 앱을 구성하는 앱의 `Properties/launchSettings.json` 파일을 사용합니다.
 
-다음 방법 중 하나를 사용하여 `dotnet run` 명령 또는 개발 환경(Visual Studio Code의 F5 또는 Ctrl+F5)에 대해 개발 중인 인증서를 사용하도록 앱을 구성합니다.
+다음 방법 중 하나를 사용하여 `dotnet run` 명령 또는 개발 환경(Visual Studio Code에서 <kbd>F5</kbd> 또는 <kbd>Ctrl</kbd>+<kbd>F5</kbd>)에 개발 중인 인증서를 사용하도록 앱을 구성합니다.
 
-* [구성에서 기본 인증서를 바꿈](xref:fundamentals/servers/kestrel#configuration)( *권장* )
+* [구성에서 기본 인증서를 바꿈](xref:fundamentals/servers/kestrel#configuration)(*권장*)
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
 **보안 (HTTPS) 클라이언트 연결을 위해 역방향 프록시 구성**
 
 * 신뢰할 수 있는 CA(인증 기관)에서 발급된 유효한 인증서를 지정하여 포트 `443`에서 HTTPS 트래픽을 수신 대기하도록 서버를 구성합니다.
 
-* 다음 */etc/nginx/nginx.conf* 파일에 설명된 일부 사례를 채택하여 보안을 강화합니다. 예를 들어 더 강력한 암호화를 선택하고 HTTP를 사용한 모든 트래픽을 HTTPS로 리디렉션합니다.
+* 다음 `/etc/nginx/nginx.conf` 파일에 설명된 일부 사례를 채택하여 보안을 강화합니다. 예를 들어 더 강력한 암호화를 선택하고 HTTP를 사용한 모든 트래픽을 HTTPS로 리디렉션합니다.
+
+  > [!NOTE]
+  > 개발 환경에서는 영구 리디렉션(301)보다 임시 리디렉션(302)을 사용하는 것이 좋습니다. 링크 캐싱은 개발 환경에서 불안정한 동작을 일으킬 수 있습니다.
 
 * HSTS(`HTTP Strict-Transport-Security`) 헤더를 추가하면 클라이언트에서 만든 모든 후속 요청이 HTTPS를 통해 이루어집니다.
+
+  HSTS에 대한 중요 지침은 <xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts>를 참조하세요.
 
 * 추후 HTTPS가 사용하지 않도록 설정될 경우 다음 방법 중 하나를 사용합니다.
 
   * HSTS 헤더를 추가하지 않습니다.
   * 짧은 `max-age` 값을 선택합니다.
 
-*/etc/nginx/proxy.conf* 구성 파일을 추가합니다.
+`/etc/nginx/proxy.conf` 구성 파일을 추가합니다.
 
 [!code-nginx[](linux-nginx/proxy.conf)]
 
-*/etc/nginx/nginx.conf* 구성 파일을 편집합니다. 예제에서는 `http` 및 `server` 섹션이 하나의 구성 파일에 포함됩니다.
+`/etc/nginx/nginx.conf` 구성 파일의 내용을 다음 파일로 **바꿉니다**. 예제에서는 `http` 및 `server` 섹션이 하나의 구성 파일에 포함됩니다.
 
 [!code-nginx[](linux-nginx/nginx.conf?highlight=2)]
 
@@ -409,27 +417,31 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 클릭재킹 공격을 완화하려면:
 
-1. *nginx.conf* 파일을 편집합니다.
+1. `nginx.conf` 파일을 편집합니다.
 
    ```bash
    sudo nano /etc/nginx/nginx.conf
    ```
 
    `add_header X-Frame-Options "SAMEORIGIN";` 줄을 추가합니다.
+
 1. 파일을 저장합니다.
 1. Nginx를 다시 시작합니다.
 
 #### <a name="mime-type-sniffing"></a>MIME 형식 검색
 
-이 헤더는 응답 콘텐츠 형식을 재정의하지 않도록 브라우저에 지시하므로 대부분의 브라우저에서 선언된 콘텐츠 형식이 아닌 응답에 대한 MIME 검색을 차단합니다. `nosniff` 옵션을 사용하면 서버에 콘텐츠가 “text/html”이라고 표시될 경우 브라우저는 콘텐츠를 “text/html”으로 렌더링합니다.
+이 헤더는 응답 콘텐츠 형식을 재정의하지 않도록 브라우저에 지시하므로 대부분의 브라우저에서 선언된 콘텐츠 형식이 아닌 응답에 대한 MIME 검색을 차단합니다. `nosniff` 옵션을 사용하면 서버에 콘텐츠가 `text/html`이라고 표시될 경우 브라우저가 이를`text/html`로 렌더링합니다.
 
-*nginx.conf* 파일을 편집합니다.
+1. `nginx.conf` 파일을 편집합니다.
 
-```bash
-sudo nano /etc/nginx/nginx.conf
-```
+   ```bash
+   sudo nano /etc/nginx/nginx.conf
+   ```
 
-줄 `add_header X-Content-Type-Options "nosniff";`를 추가하고 파일을 저장한 다음 Nginx를 다시 시작합니다.
+   `add_header X-Content-Type-Options "nosniff";` 줄을 추가합니다.
+
+1. 파일을 저장합니다.
+1. Nginx를 다시 시작합니다.
 
 ## <a name="additional-nginx-suggestions"></a>추가 Nginx 제안
 

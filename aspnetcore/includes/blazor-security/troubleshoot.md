@@ -1,5 +1,25 @@
 ## <a name="troubleshoot"></a>문제 해결
 
+::: moniker range=">= aspnetcore-5.0"
+
+### <a name="common-errors"></a>일반 오류
+
+* AAD에 대한 권한이 없는 클라이언트
+
+  > 정보: Microsoft.AspNetCore.Authorization.DefaultAuthorizationService[2] 권한 부여에 실패했습니다. 다음 요구 사항이 충족되지 않았습니다. DenyAnonymousAuthorizationRequirement: 인증된 사용자가 필요합니다.
+
+  AAD에서 로그인 콜백 오류:
+
+  * 오류: `unauthorized_client`
+  * 설명: `AADB2C90058: The provided application is not configured to allow public clients.`
+
+  오류를 해결하려면:
+
+  1. Azure Portal에서 [앱의 매니페스트](/azure/active-directory/develop/reference-app-manifest)에 액세스합니다.
+  1. [`allowPublicClient`](/azure/active-directory/develop/reference-app-manifest#allowpublicclient-attribute) 특성을 `null` 또는 `true`로 설정합니다.
+
+::: moniker-end
+
 ### <a name="cookies-and-site-data"></a>쿠키 및 사이트 데이터
 
 쿠키 및 사이트 데이터가 앱을 업데이트할 때에도 유지되어 테스트 및 문제 해결에 방해가 될 수 있습니다. 앱 코드를 변경하거나 공급자를 사용하여 사용자 계정을 변경하거나 공급자 앱 구성을 변경하는 경우 다음을 지우세요.
@@ -31,10 +51,10 @@
 
 ### <a name="run-the-server-app"></a>서버 앱 실행
 
-호스트된 Blazor 앱을 테스트하고 문제를 해결할 때 **`Server`** 프로젝트에서 앱을 실행하고 있는지 확인합니다. 예를 들어 Visual Studio에서 다음 방법 중 하나를 사용하여 앱을 시작하기 전에 **솔루션 탐색기**에서 서버 프로젝트가 강조 표시되어 있는지 확인합니다.
+호스트된 Blazor 앱을 테스트하고 문제를 해결할 때 **`Server`** 프로젝트에서 앱을 실행하고 있는지 확인합니다. 예를 들어 Visual Studio에서 다음 방법 중 하나를 사용하여 앱을 시작하기 전에 **솔루션 탐색기** 에서 서버 프로젝트가 강조 표시되어 있는지 확인합니다.
 
 * **실행** 단추를 선택합니다.
-* 메뉴에서 **디버그** > **디버깅 시작**을 사용합니다.
+* 메뉴에서 **디버그** > **디버깅 시작** 을 사용합니다.
 * <kbd>F5</kbd>키를 누릅니다.
 
 ### <a name="inspect-the-content-of-a-json-web-token-jwt"></a>JWT(JSON Web Token)의 콘텐츠 검사
