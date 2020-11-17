@@ -1,60 +1,69 @@
 ---
-title: 5부. ASP.NET Core 앱에서 생성된 페이지 업데이트
+title: '5부: 생성된 페이지 업데이트'
 author: rick-anderson
-description: 'Razor Pages에 대한 자습서 시리즈의 5부입니다.'
+description: Razor Pages에 대한 자습서 시리즈의 5부입니다.
 ms.author: riande
-ms.date: 12/20/2018
+ms.date: 09/20/2020
 no-loc:
-- 'appsettings.json'
-- 'ASP.NET Core Identity'
-- 'cookie'
-- 'Cookie'
-- 'Blazor'
-- 'Blazor Server'
-- 'Blazor WebAssembly'
-- 'Identity'
-- "Let's Encrypt"
-- 'Razor'
-- 'SignalR'
+- Index
+- Create
+- Delete
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 7d25dae67c928fa659654ce4ab34cfdad08b5300
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7146c1955a578502a63578de4f1abce932cb8b32
+ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060068"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94360610"
 ---
-# <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a><span data-ttu-id="509c1-103">5부. ASP.NET Core 앱에서 생성된 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="509c1-103">Part 5, update the generated pages in an ASP.NET Core app</span></span>
+# <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a><span data-ttu-id="c58a8-103">5부. ASP.NET Core 앱에서 생성된 페이지 업데이트</span><span class="sxs-lookup"><span data-stu-id="c58a8-103">Part 5, update the generated pages in an ASP.NET Core app</span></span>
 
-<span data-ttu-id="509c1-104">작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="509c1-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="c58a8-104">작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="c58a8-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="509c1-105">스캐폴드된 동영상 앱을 사용하는 것이 좋지만 프레젠테이션은 이상적이지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-105">The scaffolded movie app has a good start, but the presentation isn't ideal.</span></span> <span data-ttu-id="509c1-106">**ReleaseDate** 는 **출시일** (두 단어)이어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-106">**ReleaseDate** should be **Release Date** (two words).</span></span>
+<span data-ttu-id="c58a8-105">스캐폴드된 동영상 앱을 사용하는 것이 좋지만 프레젠테이션은 이상적이지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-105">The scaffolded movie app has a good start, but the presentation isn't ideal.</span></span> <span data-ttu-id="c58a8-106">**ReleaseDate** 는 두 단어, **Release Date** 여야 합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-106">**ReleaseDate** should be two words, **Release Date**.</span></span>
 
-![크롬에서 열린 동영상 애플리케이션](sql/_static/m55.png)
+![크롬에서 열린 동영상 애플리케이션](sql/_static/5/m55.png)
 
-## <a name="update-the-generated-code"></a><span data-ttu-id="509c1-108">생성된 코드 업데이트</span><span class="sxs-lookup"><span data-stu-id="509c1-108">Update the generated code</span></span>
+## <a name="update-the-generated-code"></a><span data-ttu-id="c58a8-108">생성된 코드 업데이트</span><span class="sxs-lookup"><span data-stu-id="c58a8-108">Update the generated code</span></span>
 
-<span data-ttu-id="509c1-109">*Models/Movie.cs* 파일을 열고 다음 코드에 표시된 강조 표시된 줄을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-109">Open the *Models/Movie.cs* file and add the highlighted lines shown in the following code:</span></span>
+<span data-ttu-id="c58a8-109">*Models/Movie.cs* 파일을 열고 다음 코드에 표시된 강조 표시된 줄을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-109">Open the *Models/Movie.cs* file and add the highlighted lines shown in the following code:</span></span>
 
 [!code-csharp[Main](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateFixed.cs?name=snippet_1&highlight=3,12,17)]
 
-<span data-ttu-id="509c1-110">`[Column(TypeName = "decimal(18, 2)")]` 데이터 주석을 사용하면 Entity Framework Core에서 `Price`를 데이터베이스의 통화에 올바르게 매핑할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-110">The `[Column(TypeName = "decimal(18, 2)")]` data annotation enables Entity Framework Core to correctly map `Price` to currency in the database.</span></span> <span data-ttu-id="509c1-111">자세한 내용은 [데이터 형식](/ef/core/modeling/relational/data-types)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="509c1-111">For more information, see [Data Types](/ef/core/modeling/relational/data-types).</span></span>
+<span data-ttu-id="c58a8-110">위의 코드에서:</span><span class="sxs-lookup"><span data-stu-id="c58a8-110">In the previous code:</span></span>
 
-<span data-ttu-id="509c1-112">다음 자습서에서 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)를 다룹니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-112">[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) is covered in the next tutorial.</span></span> <span data-ttu-id="509c1-113">[Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) 특성은 필드의 이름으로 표시할 내용을 지정합니다(이 경우 "ReleaseDate" 대신 "Release Date")</span><span class="sxs-lookup"><span data-stu-id="509c1-113">The [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) attribute specifies what to display for the name of a field (in this case "Release Date" instead of "ReleaseDate").</span></span> <span data-ttu-id="509c1-114">[DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 특성은 필드에 저장된 시간 정보가 표시되지 않도록 데이터의 형식(날짜)을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-114">The [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) attribute specifies the type of the data (Date), so the time information stored in the field isn't displayed.</span></span>
+* <span data-ttu-id="c58a8-111">`[Column(TypeName = "decimal(18, 2)")]` 데이터 주석을 사용하면 Entity Framework Core에서 `Price`를 데이터베이스의 통화에 올바르게 매핑할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-111">The `[Column(TypeName = "decimal(18, 2)")]` data annotation enables Entity Framework Core to correctly map `Price` to currency in the database.</span></span> <span data-ttu-id="c58a8-112">자세한 내용은 [데이터 형식](/ef/core/modeling/relational/data-types)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="c58a8-112">For more information, see [Data Types](/ef/core/modeling/relational/data-types).</span></span>
+* <span data-ttu-id="c58a8-113">[Display](xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.DisplayMetadata) 특성은 필드의 표시 이름을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-113">The [[Display]](xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.DisplayMetadata) attribute specifies the display name of a field.</span></span> <span data-ttu-id="c58a8-114">위의 코드에서는 "ReleaseDate" 대신 "Release Date"입니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-114">In the preceding code, "Release Date" instead of "ReleaseDate".</span></span>
+* <span data-ttu-id="c58a8-115">[DataType](xref:System.ComponentModel.DataAnnotations.DataTypeAttribute) 특성은 데이터 형식(`Date`)을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-115">The [[DataType]](xref:System.ComponentModel.DataAnnotations.DataTypeAttribute) attribute specifies the type of the data (`Date`).</span></span> <span data-ttu-id="c58a8-116">필드에 저장된 시간 정보는 표시되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-116">The time information stored in the field isn't displayed.</span></span>
 
-<span data-ttu-id="509c1-115">페이지/동영상으로 이동하고 **편집** 링크로 마우스를 가져가 대상 URL을 봅니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-115">Browse to Pages/Movies and  hover over an **Edit** link to see the target URL.</span></span>
+<span data-ttu-id="c58a8-117">다음 자습서에서 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)를 다룹니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-117">[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) is covered in the next tutorial.</span></span>
 
-![브라우저 창에서 편집 링크에 마우스를 가져가면 http://localhost:1234/Movies/Edit/5 의 링크 Url이 표시됩니다.](~/tutorials/razor-pages/da1/edit7.png)
+<span data-ttu-id="c58a8-118">*Pages/Movies* 로 이동하고 **편집** 링크로 마우스를 가져가 대상 URL을 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-118">Browse to *Pages/Movies* and hover over an **Edit** link to see the target URL.</span></span>
 
-<span data-ttu-id="509c1-117">**편집** , **세부 정보** 및 **삭제** 링크는 *Pages/Movies/Index.cshtml* 파일에서 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-117">The **Edit** , **Details** , and **Delete** links are generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) in the *Pages/Movies/Index.cshtml* file.</span></span>
+![브라우저 창에서 편집 링크에 마우스를 가져가면 https://localhost:1234/Movies/Edit/5 의 링크 Url이 표시됩니다.](~/tutorials/razor-pages/da1/edit7.png)
+
+<span data-ttu-id="c58a8-120">**편집**, **세부 정보**, **Delete** 링크는 *Pages/Movies/Index.cshtml* 파일의 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-120">The **Edit**, **Details**, and **Delete** links are generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) in the *Pages/Movies/Index.cshtml* file.</span></span>
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
-<span data-ttu-id="509c1-118">[태그 도우미](xref:mvc/views/tag-helpers/intro)를 사용하면 Razor 파일에서 HTML 요소를 만들고 렌더링하는 데 서버 쪽 코드를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-118">[Tag Helpers](xref:mvc/views/tag-helpers/intro) enable server-side code to participate in creating and rendering HTML elements in Razor files.</span></span> <span data-ttu-id="509c1-119">위의 코드에서 `AnchorTagHelper`는 Razor 페이지에서 HTML `href` 특성 값(경로는 상대적), `asp-page` 및 경로 ID(`asp-route-id`)를 동적으로 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-119">In the preceding code, the `AnchorTagHelper` dynamically generates the HTML `href` attribute value from the Razor Page (the route is relative), the `asp-page`,  and the route id (`asp-route-id`).</span></span> <span data-ttu-id="509c1-120">자세한 내용은 [페이지에 대한 URL 생성](xref:razor-pages/index#url-generation-for-pages)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="509c1-120">See [URL generation for Pages](xref:razor-pages/index#url-generation-for-pages) for more information.</span></span>
+<span data-ttu-id="c58a8-121">[태그 도우미](xref:mvc/views/tag-helpers/intro)를 사용하면 Razor 파일에서 HTML 요소를 만들고 렌더링하는 데 서버 쪽 코드를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-121">[Tag Helpers](xref:mvc/views/tag-helpers/intro) enable server-side code to participate in creating and rendering HTML elements in Razor files.</span></span>
 
-<span data-ttu-id="509c1-121">선호하는 브라우저에서 **소스 보기** 를 사용하여 생성된 표시를 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-121">Use **View Source** from your favorite browser to examine the generated markup.</span></span> <span data-ttu-id="509c1-122">생성된 HTML의 일부는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-122">A portion of the generated HTML is shown below:</span></span>
+<span data-ttu-id="c58a8-122">위의 코드에서 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)는 Razor 페이지(경로는 상대적), `asp-page`, 경로 ID(`asp-route-id`)에서 HTML `href` 속성 값을 동적으로 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-122">In the preceding code, the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) dynamically generates the HTML `href` attribute value from the Razor Page (the route is relative), the `asp-page`, and the route identifier (`asp-route-id`).</span></span> <span data-ttu-id="c58a8-123">자세한 내용은 [페이지 URL 생성](xref:razor-pages/index#url-generation-for-pages)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="c58a8-123">For more information, see [URL generation for Pages](xref:razor-pages/index#url-generation-for-pages).</span></span>
+
+<span data-ttu-id="c58a8-124">브라우저에서 **소스 보기** 를 사용하여 생성된 태그를 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-124">Use **View Source** from a browser to examine the generated markup.</span></span> <span data-ttu-id="c58a8-125">생성된 HTML의 일부는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-125">A portion of the generated HTML is shown below:</span></span>
 
 ```html
 <td>
@@ -64,11 +73,13 @@ ms.locfileid: "93060068"
 </td>
 ```
 
-<span data-ttu-id="509c1-123">동적으로 생성된 링크는 쿼리 문자열이 포함된 동영상 ID를 전달합니다(예: `https://localhost:5001/Movies/Details?id=1`의 `?id=1`).</span><span class="sxs-lookup"><span data-stu-id="509c1-123">The dynamically-generated links pass the movie ID with a query string (for example, the `?id=1` in  `https://localhost:5001/Movies/Details?id=1`).</span></span>
+   <span data-ttu-id="c58a8-126">동적으로 생성된 링크는 쿼리 문자열이 포함된 영화 ID를 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-126">The dynamically generated links pass the movie ID with a query string.</span></span> <span data-ttu-id="c58a8-127">`https://localhost:5001/Movies/Details?id=1`의 `?id=1`이 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-127">For example, the `?id=1` in `https://localhost:5001/Movies/Details?id=1`.</span></span>
 
-### <a name="add-route-template"></a><span data-ttu-id="509c1-124">경로 템플릿 추가</span><span class="sxs-lookup"><span data-stu-id="509c1-124">Add route template</span></span>
+### <a name="add-route-template"></a><span data-ttu-id="c58a8-128">경로 템플릿 추가</span><span class="sxs-lookup"><span data-stu-id="c58a8-128">Add route template</span></span>
 
-<span data-ttu-id="509c1-125">편집, 세부 정보 및 삭제 Razor Pages를 “{id:int}” 경로 템플릿을 사용하도록 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-125">Update the Edit, Details, and Delete Razor Pages to use the "{id:int}" route template.</span></span> <span data-ttu-id="509c1-126">이러한 각 페이지에 대한 page 지시문을 `@page`에서 `@page "{id:int}"`로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-126">Change the page directive for each of these pages from `@page` to `@page "{id:int}"`.</span></span> <span data-ttu-id="509c1-127">앱을 실행한 다음 소스를 봅니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-127">Run the app and then view source.</span></span> <span data-ttu-id="509c1-128">생성된 HTML에서 URL의 경로 부분에 ID를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-128">The generated HTML adds the ID to the path portion of the URL:</span></span>
+<span data-ttu-id="c58a8-129">`{id:int}` 경로 템플릿을 사용하도록 편집, 세부 정보, Delete Razor Pages를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-129">Update the Edit, Details, and Delete Razor Pages to use the `{id:int}` route template.</span></span> <span data-ttu-id="c58a8-130">이러한 각 페이지에 대한 page 지시문을 `@page`에서 `@page "{id:int}"`로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-130">Change the page directive for each of these pages from `@page` to `@page "{id:int}"`.</span></span> <span data-ttu-id="c58a8-131">앱을 실행한 다음 소스를 봅니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-131">Run the app and then view source.</span></span>
+
+<span data-ttu-id="c58a8-132">생성된 HTML에서 URL의 경로 부분에 ID를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-132">The generated HTML adds the ID to the path portion of the URL:</span></span>
 
 ```html
 <td>
@@ -78,99 +89,101 @@ ms.locfileid: "93060068"
 </td>
 ```
 
-<span data-ttu-id="509c1-129">정수를 포함하지 **않는** "{id:int}" 경로 템플릿이 있는 페이지에 대한 요청은 HTTP 404(찾을 수 없음) 오류를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-129">A request to the page with the "{id:int}" route template that does **not** include the integer will return an HTTP 404 (not found) error.</span></span> <span data-ttu-id="509c1-130">예를 들어 `http://localhost:5000/Movies/Details`는 404 오류를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-130">For example, `http://localhost:5000/Movies/Details` will return a 404 error.</span></span> <span data-ttu-id="509c1-131">ID를 옵션으로 설정하려면 경로 제약 조건에 `?`를 추가하면 됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-131">To make the ID optional, append `?` to the route constraint:</span></span>
+<span data-ttu-id="c58a8-133">정수를 포함하지 **않는** `{id:int}` 경로 템플릿이 있는 페이지에 대한 요청은 HTTP 404(찾을 수 없음) 오류를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-133">A request to the page with the `{id:int}` route template that does **not** include the integer will return an HTTP 404 (not found) error.</span></span> <span data-ttu-id="c58a8-134">예를 들어 `https://localhost:5001/Movies/Details`는 404 오류를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-134">For example, `https://localhost:5001/Movies/Details` will return a 404 error.</span></span> <span data-ttu-id="c58a8-135">ID를 옵션으로 설정하려면 경로 제약 조건에 `?`를 추가하면 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-135">To make the ID optional, append `?` to the route constraint:</span></span>
 
- ```cshtml
+```cshtml
 @page "{id:int?}"
 ```
 
-<span data-ttu-id="509c1-132">`@page "{id:int?}"`의 동작을 테스트하려면:</span><span class="sxs-lookup"><span data-stu-id="509c1-132">To test the behavior of `@page "{id:int?}"`:</span></span>
+<span data-ttu-id="c58a8-136">`@page "{id:int?}"`의 동작을 테스트합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-136">Test the behavior of `@page "{id:int?}"`:</span></span>
 
-* <span data-ttu-id="509c1-133">*Pages/Movies/Details.cshtml* 에서 페이지 지시문을 `@page "{id:int?}"`로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-133">Set the page directive in *Pages/Movies/Details.cshtml* to `@page "{id:int?}"`.</span></span>
-* <span data-ttu-id="509c1-134">*Pages/Movies/Details.cshtml.cs* 의 `public async Task<IActionResult> OnGetAsync(int? id)`에서 중단점을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-134">Set a break point in `public async Task<IActionResult> OnGetAsync(int? id)` (in *Pages/Movies/Details.cshtml.cs* ).</span></span>
-* <span data-ttu-id="509c1-135">`https://localhost:5001/Movies/Details/`로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-135">Navigate to `https://localhost:5001/Movies/Details/`.</span></span>
+1. <span data-ttu-id="c58a8-137">*Pages/Movies/Details.cshtml* 에서 페이지 지시문을 `@page "{id:int?}"`로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-137">Set the page directive in *Pages/Movies/Details.cshtml* to `@page "{id:int?}"`.</span></span>
+1. <span data-ttu-id="c58a8-138">*Pages/Movies/Details.cshtml.cs* 에서 `public async Task<IActionResult> OnGetAsync(int? id)`에 중단점을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-138">Set a break point in `public async Task<IActionResult> OnGetAsync(int? id)`, in *Pages/Movies/Details.cshtml.cs*.</span></span>
+1. <span data-ttu-id="c58a8-139">`https://localhost:5001/Movies/Details/`로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-139">Navigate to `https://localhost:5001/Movies/Details/`.</span></span>
 
-<span data-ttu-id="509c1-136">`@page "{id:int}"` 지시문을 사용하면 중단점에 도달하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-136">With the `@page "{id:int}"` directive, the break point is never hit.</span></span> <span data-ttu-id="509c1-137">라우팅 엔진은 HTTP 404를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-137">The routing engine returns HTTP 404.</span></span> <span data-ttu-id="509c1-138">`OnGetAsync` 메서드는 `@page "{id:int?}"`를 사용하여 `NotFound`(HTTP 404)를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-138">Using `@page "{id:int?}"`, the `OnGetAsync` method returns `NotFound` (HTTP 404).</span></span>
+<span data-ttu-id="c58a8-140">`@page "{id:int}"` 지시문을 사용하면 중단점에 도달하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-140">With the `@page "{id:int}"` directive, the break point is never hit.</span></span> <span data-ttu-id="c58a8-141">라우팅 엔진은 HTTP 404를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-141">The routing engine returns HTTP 404.</span></span> <span data-ttu-id="c58a8-142">`OnGetAsync` 메서드는 `@page "{id:int?}"`를 사용하여 `NotFound`(HTTP 404)를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-142">Using `@page "{id:int?}"`, the `OnGetAsync` method returns `NotFound` (HTTP 404):</span></span>
 
-### <a name="review-concurrency-exception-handling"></a><span data-ttu-id="509c1-139">동시성 예외 처리 검토</span><span class="sxs-lookup"><span data-stu-id="509c1-139">Review concurrency exception handling</span></span>
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Details.cshtml.cs?name=snippet1&highlight=10-13)]
 
-<span data-ttu-id="509c1-140">*Pages/Movies/Edit.cshtml.cs* 파일에서 `OnPostAsync` 메서드를 검토합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-140">Review the `OnPostAsync` method in the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
+### <a name="review-concurrency-exception-handling"></a><span data-ttu-id="c58a8-143">동시성 예외 처리 검토</span><span class="sxs-lookup"><span data-stu-id="c58a8-143">Review concurrency exception handling</span></span>
+
+<span data-ttu-id="c58a8-144">*Pages/Movies/Edit.cshtml.cs* 파일에서 `OnPostAsync` 메서드를 검토합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-144">Review the `OnPostAsync` method in the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="509c1-141">하나의 클라이언트가 동영상을 삭제하고 다른 클라이언트가 동영상에 변경 내용을 게시하는 경우 이전 코드에서는 동시성 예외를 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-141">The previous code detects concurrency exceptions when the one client deletes the movie and the other client posts changes to the movie.</span></span>
+<span data-ttu-id="c58a8-145">한 클라이언트가 영화를 삭제하고 다른 클라이언트가 영화 변경 내용을 게시하는 경우 위의 코드는 동시성 예외를 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-145">The previous code detects concurrency exceptions when one client deletes the movie and the other client posts changes to the movie.</span></span>
 
-<span data-ttu-id="509c1-142">`catch` 블록을 테스트하려면:</span><span class="sxs-lookup"><span data-stu-id="509c1-142">To test the `catch` block:</span></span>
+<span data-ttu-id="c58a8-146">`catch` 블록을 테스트하려면:</span><span class="sxs-lookup"><span data-stu-id="c58a8-146">To test the `catch` block:</span></span>
 
-* <span data-ttu-id="509c1-143">`catch (DbUpdateConcurrencyException)`에서 중단점 설정</span><span class="sxs-lookup"><span data-stu-id="509c1-143">Set a breakpoint on `catch (DbUpdateConcurrencyException)`</span></span>
-* <span data-ttu-id="509c1-144">동영상에 대한 **편집** 을 선택하고, 변경하지만 **저장** 을 입력하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-144">Select **Edit** for a movie, make changes, but don't enter **Save**.</span></span>
-* <span data-ttu-id="509c1-145">다른 브라우저 창에서 동일한 동영상에 대한 **삭제** 링크를 선택한 다음 동영상을 삭제합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-145">In another browser window, select the **Delete** link for the same movie, and then delete the movie.</span></span>
-* <span data-ttu-id="509c1-146">이전 브라우저 창에서 동영상에 변경 내용을 게시합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-146">In the previous browser window, post changes to the movie.</span></span>
+1. <span data-ttu-id="c58a8-147">`catch (DbUpdateConcurrencyException)`에서 중단점을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-147">Set a breakpoint on `catch (DbUpdateConcurrencyException)`.</span></span>
+1. <span data-ttu-id="c58a8-148">동영상에 대한 **편집** 을 선택하고, 변경하지만 **저장** 을 입력하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-148">Select **Edit** for a movie, make changes, but don't enter **Save**.</span></span>
+1. <span data-ttu-id="c58a8-149">다른 브라우저 창에서 동일한 영화의 **Delete** 링크를 선택한 다음 영화를 삭제합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-149">In another browser window, select the **Delete** link for the same movie, and then delete the movie.</span></span>
+1. <span data-ttu-id="c58a8-150">이전 브라우저 창에서 동영상에 변경 내용을 게시합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-150">In the previous browser window, post changes to the movie.</span></span>
 
-<span data-ttu-id="509c1-147">프로덕션 코드는 동시성 충돌을 검색할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-147">Production code may want to detect concurrency conflicts.</span></span> <span data-ttu-id="509c1-148">자세한 내용은 [동시성 충돌 처리](xref:data/ef-rp/concurrency)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="509c1-148">See [Handle concurrency conflicts](xref:data/ef-rp/concurrency) for more information.</span></span>
+<span data-ttu-id="c58a8-151">프로덕션 코드는 동시성 충돌을 검색할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-151">Production code may want to detect concurrency conflicts.</span></span> <span data-ttu-id="c58a8-152">자세한 내용은 [동시성 충돌 처리](xref:data/ef-rp/concurrency)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="c58a8-152">See [Handle concurrency conflicts](xref:data/ef-rp/concurrency) for more information.</span></span>
 
-### <a name="posting-and-binding-review"></a><span data-ttu-id="509c1-149">검토 게시 및 바인딩</span><span class="sxs-lookup"><span data-stu-id="509c1-149">Posting and binding review</span></span>
+### <a name="posting-and-binding-review"></a><span data-ttu-id="c58a8-153">검토 게시 및 바인딩</span><span class="sxs-lookup"><span data-stu-id="c58a8-153">Posting and binding review</span></span>
 
-<span data-ttu-id="509c1-150">*Pages/Movies/Edit.cshtml.cs* 파일을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-150">Examine the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
+<span data-ttu-id="c58a8-154">*Pages/Movies/Edit.cshtml.cs* 파일을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-154">Examine the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/SnapShots/Edit.cshtml.cs?name=snippet2)]
 
-<span data-ttu-id="509c1-151">동영상/편집 페이지에 대해 HTTP GET 요청이 만들어지는 경우(예: `http://localhost:5000/Movies/Edit/2`):</span><span class="sxs-lookup"><span data-stu-id="509c1-151">When an HTTP GET request is made to the Movies/Edit page (for example, `http://localhost:5000/Movies/Edit/2`):</span></span>
+<span data-ttu-id="c58a8-155">Movies/Edit 페이지(예: `https://localhost:5001/Movies/Edit/3`)에 HTTP GET 요청을 하는 경우:</span><span class="sxs-lookup"><span data-stu-id="c58a8-155">When an HTTP GET request is made to the Movies/Edit page, for example, `https://localhost:5001/Movies/Edit/3`:</span></span>
 
-* <span data-ttu-id="509c1-152">`OnGetAsync` 메서드는 데이터베이스에서 동영상을 가져오고 `Page` 메서드를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-152">The `OnGetAsync` method fetches the movie from the database and returns the `Page` method.</span></span>
-* <span data-ttu-id="509c1-153">`Page` 메서드는 *Pages/Movies/Edit.cshtml* Razor 페이지를 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-153">The `Page` method renders the *Pages/Movies/Edit.cshtml* Razor Page.</span></span> <span data-ttu-id="509c1-154">*Pages/Movies/Edit.cshtml* 파일은 동영상 모델을 페이지에서 사용할 수 있도록 하는 모델 지시문(`@model RazorPagesMovie.Pages.Movies.EditModel`)을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-154">The *Pages/Movies/Edit.cshtml* file contains the model directive (`@model RazorPagesMovie.Pages.Movies.EditModel`), which makes the movie model available on the page.</span></span>
-* <span data-ttu-id="509c1-155">편집 양식은 동영상에서 값으로 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-155">The Edit form is displayed with the values from the movie.</span></span>
+* <span data-ttu-id="c58a8-156">`OnGetAsync` 메서드는 데이터베이스에서 동영상을 가져오고 `Page` 메서드를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-156">The `OnGetAsync` method fetches the movie from the database and returns the `Page` method.</span></span>
+* <span data-ttu-id="c58a8-157">`Page` 메서드는 *Pages/Movies/Edit.cshtml* Razor 페이지를 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-157">The `Page` method renders the *Pages/Movies/Edit.cshtml* Razor Page.</span></span> <span data-ttu-id="c58a8-158">*Pages/Movies/Edit.cshtml* 파일은 영화 모델을 페이지에서 사용할 수 있도록 하는 모델 지시문 `@model RazorPagesMovie.Pages.Movies.EditModel`을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-158">The *Pages/Movies/Edit.cshtml* file contains the model directive `@model RazorPagesMovie.Pages.Movies.EditModel`, which makes the movie model available on the page.</span></span>
+* <span data-ttu-id="c58a8-159">편집 양식은 동영상에서 값으로 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-159">The Edit form is displayed with the values from the movie.</span></span>
 
-<span data-ttu-id="509c1-156">동영상/편집 페이지가 게시될 때:</span><span class="sxs-lookup"><span data-stu-id="509c1-156">When the Movies/Edit page is posted:</span></span>
+<span data-ttu-id="c58a8-160">동영상/편집 페이지가 게시될 때:</span><span class="sxs-lookup"><span data-stu-id="c58a8-160">When the Movies/Edit page is posted:</span></span>
 
-* <span data-ttu-id="509c1-157">페이지에서 양식 값은 `Movie` 속성으로 바인딩됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-157">The form values on the page are bound to the `Movie` property.</span></span> <span data-ttu-id="509c1-158">`[BindProperty]` 특성은 [모델 바인딩](xref:mvc/models/model-binding)을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-158">The `[BindProperty]` attribute enables [Model binding](xref:mvc/models/model-binding).</span></span>
+* <span data-ttu-id="c58a8-161">페이지에서 양식 값은 `Movie` 속성으로 바인딩됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-161">The form values on the page are bound to the `Movie` property.</span></span> <span data-ttu-id="c58a8-162">`[BindProperty]` 특성은 [모델 바인딩](xref:mvc/models/model-binding)을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-162">The `[BindProperty]` attribute enables [Model binding](xref:mvc/models/model-binding).</span></span>
 
   ```csharp
   [BindProperty]
   public Movie Movie { get; set; }
   ```
 
-* <span data-ttu-id="509c1-159">모델 상태에 오류가 있는 경우(예: `ReleaseDate`를 날짜로 변환할 수 없는 경우) 양식은 제출된 값으로 다시 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-159">If there are errors in the model state (for example, `ReleaseDate` cannot be converted to a date), the form is redisplayed with the submitted values.</span></span>
-* <span data-ttu-id="509c1-160">모델 오류가 없는 경우 동영상이 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-160">If there are no model errors, the movie is saved.</span></span>
+* <span data-ttu-id="c58a8-163">모델 상태에 오류가 있는 경우(예: `ReleaseDate`를 날짜로 변환할 수 없는 경우) 양식은 제출된 값으로 다시 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-163">If there are errors in the model state, for example, `ReleaseDate` cannot be converted to a date, the form is redisplayed with the submitted values.</span></span>
+* <span data-ttu-id="c58a8-164">모델 오류가 없는 경우 동영상이 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-164">If there are no model errors, the movie is saved.</span></span>
 
-<span data-ttu-id="509c1-161">인덱스, 만들기 및 삭제 Razor Pages의 HTTP GET 메서드는 유사한 패턴을 따릅니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-161">The HTTP GET methods in the Index, Create, and Delete Razor pages follow a similar pattern.</span></span> <span data-ttu-id="509c1-162">만들기 Razor 페이지에서 HTTP POST `OnPostAsync` 메서드는 편집 Razor 페이지의 `OnPostAsync` 메서드와 유사한 패턴을 따릅니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-162">The HTTP POST `OnPostAsync` method in the Create Razor Page follows a similar pattern to the `OnPostAsync` method in the Edit Razor Page.</span></span>
+<span data-ttu-id="c58a8-165">Index, Create, Delete Razor 페이지의 HTTP GET 메서드는 유사한 패턴을 따릅니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-165">The HTTP GET methods in the Index, Create, and Delete Razor pages follow a similar pattern.</span></span> <span data-ttu-id="c58a8-166">Create Razor 페이지의 HTTP POST `OnPostAsync` 메서드는 Razor 편집 페이지의 `OnPostAsync` 메서드와 유사한 패턴을 따릅니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-166">The HTTP POST `OnPostAsync` method in the Create Razor Page follows a similar pattern to the `OnPostAsync` method in the Edit Razor Page.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="509c1-163">추가 자료</span><span class="sxs-lookup"><span data-stu-id="509c1-163">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="c58a8-167">추가 리소스</span><span class="sxs-lookup"><span data-stu-id="c58a8-167">Additional resources</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="509c1-164">[이전: 데이터베이스 작업](xref:tutorials/razor-pages/sql)
-> [다음: 검색 추가](xref:tutorials/razor-pages/search)</span><span class="sxs-lookup"><span data-stu-id="509c1-164">[Previous: Working with a database](xref:tutorials/razor-pages/sql)
+> <span data-ttu-id="c58a8-168">[이전: 데이터베이스 작업](xref:tutorials/razor-pages/sql)
+> [다음: 검색 추가](xref:tutorials/razor-pages/search)</span><span class="sxs-lookup"><span data-stu-id="c58a8-168">[Previous: Work with a database](xref:tutorials/razor-pages/sql)
 [Next: Add search](xref:tutorials/razor-pages/search)</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="509c1-165">스캐폴드된 동영상 앱을 사용하는 것이 좋지만 프레젠테이션은 이상적이지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-165">The scaffolded movie app has a good start, but the presentation isn't ideal.</span></span> <span data-ttu-id="509c1-166">**ReleaseDate** 는 **출시일** (두 단어)이어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-166">**ReleaseDate** should be **Release Date** (two words).</span></span>
+<span data-ttu-id="c58a8-169">스캐폴드된 동영상 앱을 사용하는 것이 좋지만 프레젠테이션은 이상적이지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-169">The scaffolded movie app has a good start, but the presentation isn't ideal.</span></span> <span data-ttu-id="c58a8-170">**ReleaseDate** 는 두 단어, **Release Date** 여야 합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-170">**ReleaseDate** should be two words, **Release Date**.</span></span>
 
-![크롬에서 열린 동영상 애플리케이션](sql/_static/m55.png)
+![크롬에서 열린 동영상 애플리케이션](sql/_static/m55https.png)
 
-## <a name="update-the-generated-code"></a><span data-ttu-id="509c1-168">생성된 코드 업데이트</span><span class="sxs-lookup"><span data-stu-id="509c1-168">Update the generated code</span></span>
+## <a name="update-the-generated-code"></a><span data-ttu-id="c58a8-172">생성된 코드 업데이트</span><span class="sxs-lookup"><span data-stu-id="c58a8-172">Update the generated code</span></span>
 
-<span data-ttu-id="509c1-169">*Models/Movie.cs* 파일을 열고 다음 코드에 표시된 강조 표시된 줄을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-169">Open the *Models/Movie.cs* file and add the highlighted lines shown in the following code:</span></span>
+<span data-ttu-id="c58a8-173">*Models/Movie.cs* 파일을 열고 다음 코드에 표시된 강조 표시된 줄을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-173">Open the *Models/Movie.cs* file and add the highlighted lines shown in the following code:</span></span>
 
 [!code-csharp[Main](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateFixed.cs?name=snippet_1&highlight=3,12,17)]
 
-<span data-ttu-id="509c1-170">`[Column(TypeName = "decimal(18, 2)")]` 데이터 주석을 사용하면 Entity Framework Core에서 `Price`를 데이터베이스의 통화에 올바르게 매핑할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-170">The `[Column(TypeName = "decimal(18, 2)")]` data annotation enables Entity Framework Core to correctly map `Price` to currency in the database.</span></span> <span data-ttu-id="509c1-171">자세한 내용은 [데이터 형식](/ef/core/modeling/relational/data-types)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="509c1-171">For more information, see [Data Types](/ef/core/modeling/relational/data-types).</span></span>
+<span data-ttu-id="c58a8-174">`[Column(TypeName = "decimal(18, 2)")]` 데이터 주석을 사용하면 Entity Framework Core에서 `Price`를 데이터베이스의 통화에 올바르게 매핑할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-174">The `[Column(TypeName = "decimal(18, 2)")]` data annotation enables Entity Framework Core to correctly map `Price` to currency in the database.</span></span> <span data-ttu-id="c58a8-175">자세한 내용은 [데이터 형식](/ef/core/modeling/relational/data-types)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="c58a8-175">For more information, see [Data Types](/ef/core/modeling/relational/data-types).</span></span>
 
-<span data-ttu-id="509c1-172">다음 자습서에서 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)를 다룹니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-172">[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) is covered in the next tutorial.</span></span> <span data-ttu-id="509c1-173">[Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) 특성은 필드의 이름으로 표시할 내용을 지정합니다(이 경우 "ReleaseDate" 대신 "Release Date")</span><span class="sxs-lookup"><span data-stu-id="509c1-173">The [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) attribute specifies what to display for the name of a field (in this case "Release Date" instead of "ReleaseDate").</span></span> <span data-ttu-id="509c1-174">[DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 특성은 필드에 저장된 시간 정보가 표시되지 않도록 데이터의 형식(날짜)을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-174">The [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) attribute specifies the type of the data (Date), so the time information stored in the field isn't displayed.</span></span>
+<span data-ttu-id="c58a8-176">다음 자습서에서 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)를 다룹니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-176">[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) is covered in the next tutorial.</span></span> <span data-ttu-id="c58a8-177">[Display](xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.DisplayMetadata) 특성은 필드의 이름으로 표시할 내용을 지정합니다(이 경우 "ReleaseDate" 대신 "Release Date").</span><span class="sxs-lookup"><span data-stu-id="c58a8-177">The [[Display]](xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.DisplayMetadata) attribute specifies what to display for the name of a field, in this case "Release Date" instead of "ReleaseDate".</span></span> <span data-ttu-id="c58a8-178">[DataType](xref:System.ComponentModel.DataAnnotations.DataTypeAttribute) 특성은 데이터의 형식(`Date`)을 지정하므로 필드에 저장된 시간 정보가 표시되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-178">The [DataType](xref:System.ComponentModel.DataAnnotations.DataTypeAttribute) attribute specifies the type of the data (`Date`), so the time information stored in the field isn't displayed.</span></span>
 
-<span data-ttu-id="509c1-175">페이지/동영상으로 이동하고 **편집** 링크로 마우스를 가져가 대상 URL을 봅니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-175">Browse to Pages/Movies and  hover over an **Edit** link to see the target URL.</span></span>
+<span data-ttu-id="c58a8-179">페이지/동영상으로 이동하고 **편집** 링크로 마우스를 가져가 대상 URL을 봅니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-179">Browse to Pages/Movies and  hover over an **Edit** link to see the target URL.</span></span>
 
 ![브라우저 창에서 편집 링크에 마우스를 가져가면 http://localhost:1234/Movies/Edit/5 의 링크 Url이 표시됩니다.](~/tutorials/razor-pages/da1/edit7.png)
 
-<span data-ttu-id="509c1-177">**편집** , **세부 정보** 및 **삭제** 링크는 *Pages/Movies/Index.cshtml* 파일에서 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-177">The **Edit** , **Details** , and **Delete** links are generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) in the *Pages/Movies/Index.cshtml* file.</span></span>
+<span data-ttu-id="c58a8-181">**편집**, **세부 정보**, **Delete** 링크는 *Pages/Movies/Index.cshtml* 파일의 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-181">The **Edit**, **Details**, and **Delete** links are generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) in the *Pages/Movies/Index.cshtml* file.</span></span>
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
-<span data-ttu-id="509c1-178">[태그 도우미](xref:mvc/views/tag-helpers/intro)를 사용하면 Razor 파일에서 HTML 요소를 만들고 렌더링하는 데 서버 쪽 코드를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-178">[Tag Helpers](xref:mvc/views/tag-helpers/intro) enable server-side code to participate in creating and rendering HTML elements in Razor files.</span></span> <span data-ttu-id="509c1-179">위의 코드에서 `AnchorTagHelper`는 Razor 페이지에서 HTML `href` 특성 값(경로는 상대적), `asp-page` 및 경로 ID(`asp-route-id`)를 동적으로 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-179">In the preceding code, the `AnchorTagHelper` dynamically generates the HTML `href` attribute value from the Razor Page (the route is relative), the `asp-page`,  and the route id (`asp-route-id`).</span></span> <span data-ttu-id="509c1-180">자세한 내용은 [페이지에 대한 URL 생성](xref:razor-pages/index#url-generation-for-pages)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="509c1-180">See [URL generation for Pages](xref:razor-pages/index#url-generation-for-pages) for more information.</span></span>
+<span data-ttu-id="c58a8-182">[태그 도우미](xref:mvc/views/tag-helpers/intro)를 사용하면 Razor 파일에서 HTML 요소를 만들고 렌더링하는 데 서버 쪽 코드를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-182">[Tag Helpers](xref:mvc/views/tag-helpers/intro) enable server-side code to participate in creating and rendering HTML elements in Razor files.</span></span> <span data-ttu-id="c58a8-183">위의 코드에서 `AnchorTagHelper`는 Razor 페이지에서 HTML `href` 특성 값(경로는 상대적), `asp-page` 및 경로 ID(`asp-route-id`)를 동적으로 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-183">In the preceding code, the `AnchorTagHelper` dynamically generates the HTML `href` attribute value from the Razor Page (the route is relative), the `asp-page`, and the route id (`asp-route-id`).</span></span> <span data-ttu-id="c58a8-184">자세한 내용은 [페이지에 대한 URL 생성](xref:razor-pages/index#url-generation-for-pages)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="c58a8-184">See [URL generation for Pages](xref:razor-pages/index#url-generation-for-pages) for more information.</span></span>
 
-<span data-ttu-id="509c1-181">선호하는 브라우저에서 **소스 보기** 를 사용하여 생성된 표시를 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-181">Use **View Source** from your favorite browser to examine the generated markup.</span></span> <span data-ttu-id="509c1-182">생성된 HTML의 일부는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-182">A portion of the generated HTML is shown below:</span></span>
+<span data-ttu-id="c58a8-185">브라우저에서 **소스 보기** 를 사용하여 생성된 태그를 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-185">Use **View Source** from a browser to examine the generated markup.</span></span> <span data-ttu-id="c58a8-186">생성된 HTML의 일부는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-186">A portion of the generated HTML is shown below:</span></span>
 
 ```html
 <td>
@@ -180,9 +193,9 @@ ms.locfileid: "93060068"
 </td>
 ```
 
-<span data-ttu-id="509c1-183">동적으로 생성된 링크는 쿼리 문자열이 포함된 동영상 ID를 전달합니다(예: `https://localhost:5001/Movies/Details?id=1`의 `?id=1`).</span><span class="sxs-lookup"><span data-stu-id="509c1-183">The dynamically-generated links pass the movie ID with a query string (for example, the `?id=1` in  `https://localhost:5001/Movies/Details?id=1`).</span></span>
+<span data-ttu-id="c58a8-187">동적으로 생성된 링크는 쿼리 문자열이 포함된 영화 ID를 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-187">The dynamically generated links pass the movie ID with a query string.</span></span> <span data-ttu-id="c58a8-188">`https://localhost:5001/Movies/Details?id=1`의 `?id=1`이 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-188">For example, the `?id=1` in  `https://localhost:5001/Movies/Details?id=1`.</span></span>
 
-<span data-ttu-id="509c1-184">편집, 세부 정보 및 삭제 Razor Pages를 “{id:int}” 경로 템플릿을 사용하도록 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-184">Update the Edit, Details, and Delete Razor Pages to use the "{id:int}" route template.</span></span> <span data-ttu-id="509c1-185">이러한 각 페이지에 대한 page 지시문을 `@page`에서 `@page "{id:int}"`로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-185">Change the page directive for each of these pages from `@page` to `@page "{id:int}"`.</span></span> <span data-ttu-id="509c1-186">앱을 실행한 다음 소스를 봅니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-186">Run the app and then view source.</span></span> <span data-ttu-id="509c1-187">생성된 HTML에서 URL의 경로 부분에 ID를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-187">The generated HTML adds the ID to the path portion of the URL:</span></span>
+<span data-ttu-id="c58a8-189">"{id:int}" 경로 템플릿을 사용하도록 편집, 세부 정보, Delete Razor Pages를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-189">Update the Edit, Details, and Delete Razor Pages to use the "{id:int}" route template.</span></span> <span data-ttu-id="c58a8-190">이러한 각 페이지에 대한 page 지시문을 `@page`에서 `@page "{id:int}"`로 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-190">Change the page directive for each of these pages from `@page` to `@page "{id:int}"`.</span></span> <span data-ttu-id="c58a8-191">앱을 실행한 다음 소스를 봅니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-191">Run the app and then view source.</span></span> <span data-ttu-id="c58a8-192">생성된 HTML에서 URL의 경로 부분에 ID를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-192">The generated HTML adds the ID to the path portion of the URL:</span></span>
 
 ```html
 <td>
@@ -192,72 +205,74 @@ ms.locfileid: "93060068"
 </td>
 ```
 
-<span data-ttu-id="509c1-188">정수를 포함하지 **않는** "{id:int}" 경로 템플릿이 있는 페이지에 대한 요청은 HTTP 404(찾을 수 없음) 오류를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-188">A request to the page with the "{id:int}" route template that does **not** include the integer will return an HTTP 404 (not found) error.</span></span> <span data-ttu-id="509c1-189">예를 들어 `http://localhost:5000/Movies/Details`는 404 오류를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-189">For example, `http://localhost:5000/Movies/Details` will return a 404 error.</span></span> <span data-ttu-id="509c1-190">ID를 옵션으로 설정하려면 경로 제약 조건에 `?`를 추가하면 됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-190">To make the ID optional, append `?` to the route constraint:</span></span>
+<span data-ttu-id="c58a8-193">정수를 포함하지 **않는** "{id:int}" 경로 템플릿이 있는 페이지에 대한 요청은 HTTP 404(찾을 수 없음) 오류를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-193">A request to the page with the "{id:int}" route template that does **not** include the integer will return an HTTP 404 (not found) error.</span></span> <span data-ttu-id="c58a8-194">예를 들어 `https://localhost:5001/Movies/Details`는 404 오류를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-194">For example, `https://localhost:5001/Movies/Details` will return a 404 error.</span></span> <span data-ttu-id="c58a8-195">ID를 옵션으로 설정하려면 경로 제약 조건에 `?`를 추가하면 됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-195">To make the ID optional, append `?` to the route constraint:</span></span>
 
  ```cshtml
 @page "{id:int?}"
 ```
 
-<span data-ttu-id="509c1-191">`@page "{id:int?}"`의 동작을 테스트하려면:</span><span class="sxs-lookup"><span data-stu-id="509c1-191">To test the behavior of `@page "{id:int?}"`:</span></span>
+<span data-ttu-id="c58a8-196">`@page "{id:int?}"`의 동작을 테스트하려면:</span><span class="sxs-lookup"><span data-stu-id="c58a8-196">To test the behavior of `@page "{id:int?}"`:</span></span>
 
-* <span data-ttu-id="509c1-192">*Pages/Movies/Details.cshtml* 에서 페이지 지시문을 `@page "{id:int?}"`로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-192">Set the page directive in *Pages/Movies/Details.cshtml* to `@page "{id:int?}"`.</span></span>
-* <span data-ttu-id="509c1-193">*Pages/Movies/Details.cshtml.cs* 의 `public async Task<IActionResult> OnGetAsync(int? id)`에서 중단점을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-193">Set a break point in `public async Task<IActionResult> OnGetAsync(int? id)` (in *Pages/Movies/Details.cshtml.cs* ).</span></span>
-* <span data-ttu-id="509c1-194">`https://localhost:5001/Movies/Details/`로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-194">Navigate to `https://localhost:5001/Movies/Details/`.</span></span>
+* <span data-ttu-id="c58a8-197">*Pages/Movies/Details.cshtml* 에서 페이지 지시문을 `@page "{id:int?}"`로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-197">Set the page directive in *Pages/Movies/Details.cshtml* to `@page "{id:int?}"`.</span></span>
+* <span data-ttu-id="c58a8-198">*Pages/Movies/Details.cshtml.cs* 에서 `public async Task<IActionResult> OnGetAsync(int? id)`에 중단점을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-198">Set a break point in `public async Task<IActionResult> OnGetAsync(int? id)`, in *Pages/Movies/Details.cshtml.cs*.</span></span>
+* <span data-ttu-id="c58a8-199">`https://localhost:5001/Movies/Details/`로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-199">Navigate to `https://localhost:5001/Movies/Details/`.</span></span>
 
-<span data-ttu-id="509c1-195">`@page "{id:int}"` 지시문을 사용하면 중단점에 도달하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-195">With the `@page "{id:int}"` directive, the break point is never hit.</span></span> <span data-ttu-id="509c1-196">라우팅 엔진은 HTTP 404를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-196">The routing engine returns HTTP 404.</span></span> <span data-ttu-id="509c1-197">`OnGetAsync` 메서드는 `@page "{id:int?}"`를 사용하여 `NotFound`(HTTP 404)를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-197">Using `@page "{id:int?}"`, the `OnGetAsync` method returns `NotFound` (HTTP 404).</span></span>
+<span data-ttu-id="c58a8-200">`@page "{id:int}"` 지시문을 사용하면 중단점에 도달하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-200">With the `@page "{id:int}"` directive, the break point is never hit.</span></span> <span data-ttu-id="c58a8-201">라우팅 엔진은 HTTP 404를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-201">The routing engine returns HTTP 404.</span></span> <span data-ttu-id="c58a8-202">`OnGetAsync` 메서드는 `@page "{id:int?}"`를 사용하여 `NotFound`(HTTP 404)를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-202">Using `@page "{id:int?}"`, the `OnGetAsync` method returns `NotFound` (HTTP 404):</span></span>
 
-### <a name="review-concurrency-exception-handling"></a><span data-ttu-id="509c1-198">동시성 예외 처리 검토</span><span class="sxs-lookup"><span data-stu-id="509c1-198">Review concurrency exception handling</span></span>
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Details.cshtml.cs?name=snippet1&highlight=10-13)]
 
-<span data-ttu-id="509c1-199">*Pages/Movies/Edit.cshtml.cs* 파일에서 `OnPostAsync` 메서드를 검토합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-199">Review the `OnPostAsync` method in the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
+### <a name="review-concurrency-exception-handling"></a><span data-ttu-id="c58a8-203">동시성 예외 처리 검토</span><span class="sxs-lookup"><span data-stu-id="c58a8-203">Review concurrency exception handling</span></span>
+
+<span data-ttu-id="c58a8-204">*Pages/Movies/Edit.cshtml.cs* 파일에서 `OnPostAsync` 메서드를 검토합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-204">Review the `OnPostAsync` method in the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="509c1-200">하나의 클라이언트가 동영상을 삭제하고 다른 클라이언트가 동영상에 변경 내용을 게시하는 경우 이전 코드에서는 동시성 예외를 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-200">The previous code detects concurrency exceptions when the one client deletes the movie and the other client posts changes to the movie.</span></span>
+<span data-ttu-id="c58a8-205">하나의 클라이언트가 동영상을 삭제하고 다른 클라이언트가 동영상에 변경 내용을 게시하는 경우 이전 코드에서는 동시성 예외를 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-205">The previous code detects concurrency exceptions when the one client deletes the movie and the other client posts changes to the movie.</span></span>
 
-<span data-ttu-id="509c1-201">`catch` 블록을 테스트하려면:</span><span class="sxs-lookup"><span data-stu-id="509c1-201">To test the `catch` block:</span></span>
+<span data-ttu-id="c58a8-206">`catch` 블록을 테스트하려면:</span><span class="sxs-lookup"><span data-stu-id="c58a8-206">To test the `catch` block:</span></span>
 
-* <span data-ttu-id="509c1-202">`catch (DbUpdateConcurrencyException)`에서 중단점 설정</span><span class="sxs-lookup"><span data-stu-id="509c1-202">Set a breakpoint on `catch (DbUpdateConcurrencyException)`</span></span>
-* <span data-ttu-id="509c1-203">동영상에 대한 **편집** 을 선택하고, 변경하지만 **저장** 을 입력하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-203">Select **Edit** for a movie, make changes, but don't enter **Save**.</span></span>
-* <span data-ttu-id="509c1-204">다른 브라우저 창에서 동일한 동영상에 대한 **삭제** 링크를 선택한 다음 동영상을 삭제합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-204">In another browser window, select the **Delete** link for the same movie, and then delete the movie.</span></span>
-* <span data-ttu-id="509c1-205">이전 브라우저 창에서 동영상에 변경 내용을 게시합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-205">In the previous browser window, post changes to the movie.</span></span>
+* <span data-ttu-id="c58a8-207">`catch (DbUpdateConcurrencyException)`에서 중단점 설정</span><span class="sxs-lookup"><span data-stu-id="c58a8-207">Set a breakpoint on `catch (DbUpdateConcurrencyException)`</span></span>
+* <span data-ttu-id="c58a8-208">동영상에 대한 **편집** 을 선택하고, 변경하지만 **저장** 을 입력하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-208">Select **Edit** for a movie, make changes, but don't enter **Save**.</span></span>
+* <span data-ttu-id="c58a8-209">다른 브라우저 창에서 동일한 영화의 **Delete** 링크를 선택한 다음 영화를 삭제합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-209">In another browser window, select the **Delete** link for the same movie, and then delete the movie.</span></span>
+* <span data-ttu-id="c58a8-210">이전 브라우저 창에서 동영상에 변경 내용을 게시합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-210">In the previous browser window, post changes to the movie.</span></span>
 
-<span data-ttu-id="509c1-206">프로덕션 코드는 동시성 충돌을 검색할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-206">Production code may want to detect concurrency conflicts.</span></span> <span data-ttu-id="509c1-207">자세한 내용은 [동시성 충돌 처리](xref:data/ef-rp/concurrency)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="509c1-207">See [Handle concurrency conflicts](xref:data/ef-rp/concurrency) for more information.</span></span>
+<span data-ttu-id="c58a8-211">프로덕션 코드는 동시성 충돌을 검색할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-211">Production code may want to detect concurrency conflicts.</span></span> <span data-ttu-id="c58a8-212">자세한 내용은 [동시성 충돌 처리](xref:data/ef-rp/concurrency)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="c58a8-212">See [Handle concurrency conflicts](xref:data/ef-rp/concurrency) for more information.</span></span>
 
-### <a name="posting-and-binding-review"></a><span data-ttu-id="509c1-208">검토 게시 및 바인딩</span><span class="sxs-lookup"><span data-stu-id="509c1-208">Posting and binding review</span></span>
+### <a name="posting-and-binding-review"></a><span data-ttu-id="c58a8-213">검토 게시 및 바인딩</span><span class="sxs-lookup"><span data-stu-id="c58a8-213">Posting and binding review</span></span>
 
-<span data-ttu-id="509c1-209">*Pages/Movies/Edit.cshtml.cs* 파일을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-209">Examine the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
+<span data-ttu-id="c58a8-214">*Pages/Movies/Edit.cshtml.cs* 파일을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-214">Examine the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit21.cshtml.cs?name=snippet2)]
 
-<span data-ttu-id="509c1-210">동영상/편집 페이지에 대해 HTTP GET 요청이 만들어지는 경우(예: `http://localhost:5000/Movies/Edit/2`):</span><span class="sxs-lookup"><span data-stu-id="509c1-210">When an HTTP GET request is made to the Movies/Edit page (for example, `http://localhost:5000/Movies/Edit/2`):</span></span>
+<span data-ttu-id="c58a8-215">Movies/Edit 페이지(예: `https://localhost:5001/Movies/Edit/3`)에 HTTP GET 요청을 하는 경우:</span><span class="sxs-lookup"><span data-stu-id="c58a8-215">When an HTTP GET request is made to the Movies/Edit page, for example, `https://localhost:5001/Movies/Edit/3`:</span></span>
 
-* <span data-ttu-id="509c1-211">`OnGetAsync` 메서드는 데이터베이스에서 동영상을 가져오고 `Page` 메서드를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-211">The `OnGetAsync` method fetches the movie from the database and returns the `Page` method.</span></span> 
-* <span data-ttu-id="509c1-212">`Page` 메서드는 *Pages/Movies/Edit.cshtml* Razor 페이지를 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-212">The `Page` method renders the *Pages/Movies/Edit.cshtml* Razor Page.</span></span> <span data-ttu-id="509c1-213">*Pages/Movies/Edit.cshtml* 파일은 동영상 모델을 페이지에서 사용할 수 있도록 하는 모델 지시문(`@model RazorPagesMovie.Pages.Movies.EditModel`)을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-213">The *Pages/Movies/Edit.cshtml* file contains the model directive (`@model RazorPagesMovie.Pages.Movies.EditModel`), which makes the movie model available on the page.</span></span>
-* <span data-ttu-id="509c1-214">편집 양식은 동영상에서 값으로 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-214">The Edit form is displayed with the values from the movie.</span></span>
+* <span data-ttu-id="c58a8-216">`OnGetAsync` 메서드는 데이터베이스에서 동영상을 가져오고 `Page` 메서드를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-216">The `OnGetAsync` method fetches the movie from the database and returns the `Page` method.</span></span> 
+* <span data-ttu-id="c58a8-217">`Page` 메서드는 *Pages/Movies/Edit.cshtml* Razor 페이지를 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-217">The `Page` method renders the *Pages/Movies/Edit.cshtml* Razor Page.</span></span> <span data-ttu-id="c58a8-218">*Pages/Movies/Edit.cshtml* 파일은 영화 모델을 페이지에서 사용할 수 있도록 하는 모델 지시문 `@model RazorPagesMovie.Pages.Movies.EditModel`을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-218">The *Pages/Movies/Edit.cshtml* file contains the model directive `@model RazorPagesMovie.Pages.Movies.EditModel`, which makes the movie model available on the page.</span></span>
+* <span data-ttu-id="c58a8-219">편집 양식은 동영상에서 값으로 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-219">The Edit form is displayed with the values from the movie.</span></span>
 
-<span data-ttu-id="509c1-215">동영상/편집 페이지가 게시될 때:</span><span class="sxs-lookup"><span data-stu-id="509c1-215">When the Movies/Edit page is posted:</span></span>
+<span data-ttu-id="c58a8-220">동영상/편집 페이지가 게시될 때:</span><span class="sxs-lookup"><span data-stu-id="c58a8-220">When the Movies/Edit page is posted:</span></span>
 
-* <span data-ttu-id="509c1-216">페이지에서 양식 값은 `Movie` 속성으로 바인딩됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-216">The form values on the page are bound to the `Movie` property.</span></span> <span data-ttu-id="509c1-217">`[BindProperty]` 특성은 [모델 바인딩](xref:mvc/models/model-binding)을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-217">The `[BindProperty]` attribute enables [Model binding](xref:mvc/models/model-binding).</span></span>
+* <span data-ttu-id="c58a8-221">페이지에서 양식 값은 `Movie` 속성으로 바인딩됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-221">The form values on the page are bound to the `Movie` property.</span></span> <span data-ttu-id="c58a8-222">`[BindProperty]` 특성은 [모델 바인딩](xref:mvc/models/model-binding)을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-222">The `[BindProperty]` attribute enables [Model binding](xref:mvc/models/model-binding).</span></span>
 
   ```csharp
   [BindProperty]
   public Movie Movie { get; set; }
   ```
 
-* <span data-ttu-id="509c1-218">모델 상태에 오류가 있는 경우(예: `ReleaseDate`를 날짜로 변환할 수 없는 경우) 양식은 제출된 값으로 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-218">If there are errors in the model state (for example, `ReleaseDate` cannot be converted to a date), the form is displayed with the submitted values.</span></span>
-* <span data-ttu-id="509c1-219">모델 오류가 없는 경우 동영상이 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-219">If there are no model errors, the movie is saved.</span></span>
+* <span data-ttu-id="c58a8-223">모델 상태에 오류가 있는 경우(예: `ReleaseDate`를 날짜로 변환할 수 없는 경우) 양식은 제출된 값으로 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-223">If there are errors in the model state, for example, `ReleaseDate` cannot be converted to a date, the form is displayed with the submitted values.</span></span>
+* <span data-ttu-id="c58a8-224">모델 오류가 없는 경우 동영상이 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-224">If there are no model errors, the movie is saved.</span></span>
 
-<span data-ttu-id="509c1-220">인덱스, 만들기 및 삭제 Razor Pages의 HTTP GET 메서드는 유사한 패턴을 따릅니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-220">The HTTP GET methods in the Index, Create, and Delete Razor pages follow a similar pattern.</span></span> <span data-ttu-id="509c1-221">만들기 Razor 페이지에서 HTTP POST `OnPostAsync` 메서드는 편집 Razor 페이지의 `OnPostAsync` 메서드와 유사한 패턴을 따릅니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-221">The HTTP POST `OnPostAsync` method in the Create Razor Page follows a similar pattern to the `OnPostAsync` method in the Edit Razor Page.</span></span>
+<span data-ttu-id="c58a8-225">Index, Create, Delete Razor 페이지의 HTTP GET 메서드는 유사한 패턴을 따릅니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-225">The HTTP GET methods in the Index, Create, and Delete Razor pages follow a similar pattern.</span></span> <span data-ttu-id="c58a8-226">Create Razor 페이지의 HTTP POST `OnPostAsync` 메서드는 Razor 편집 페이지의 `OnPostAsync` 메서드와 유사한 패턴을 따릅니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-226">The HTTP POST `OnPostAsync` method in the Create Razor Page follows a similar pattern to the `OnPostAsync` method in the Edit Razor Page.</span></span>
 
-<span data-ttu-id="509c1-222">검색은 다음 자습서에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="509c1-222">Search is added in the next tutorial.</span></span>
+<span data-ttu-id="c58a8-227">검색은 다음 자습서에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="c58a8-227">Search is added in the next tutorial.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="509c1-223">추가 자료</span><span class="sxs-lookup"><span data-stu-id="509c1-223">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="c58a8-228">추가 자료</span><span class="sxs-lookup"><span data-stu-id="c58a8-228">Additional resources</span></span>
 
-* [<span data-ttu-id="509c1-224">이 자습서의 YouTube 버전</span><span class="sxs-lookup"><span data-stu-id="509c1-224">YouTube version of this tutorial</span></span>](https://youtu.be/yLnnleREMtQ)
+* [<span data-ttu-id="c58a8-229">이 자습서의 YouTube 버전</span><span class="sxs-lookup"><span data-stu-id="c58a8-229">YouTube version of this tutorial</span></span>](https://youtu.be/yLnnleREMtQ)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="509c1-225">[이전: 데이터베이스 작업](xref:tutorials/razor-pages/sql)
-> [다음: 검색 추가](xref:tutorials/razor-pages/search)</span><span class="sxs-lookup"><span data-stu-id="509c1-225">[Previous: Working with a database](xref:tutorials/razor-pages/sql)
+> <span data-ttu-id="c58a8-230">[이전: 데이터베이스 작업](xref:tutorials/razor-pages/sql)
+> [다음: 검색 추가](xref:tutorials/razor-pages/search)</span><span class="sxs-lookup"><span data-stu-id="c58a8-230">[Previous: Work with a database](xref:tutorials/razor-pages/sql)
 [Next: Add search](xref:tutorials/razor-pages/search)</span></span>
 
 ::: moniker-end
