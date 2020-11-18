@@ -167,7 +167,7 @@
           href: /learn/modules/create-razor-pages-aspnet-core/
         - name: 웹 API 앱>>
           displayName: tutorial
-          href: /learn/modules/build-web-api-net-core/
+          href: /learn/modules/build-web-api-aspnet-core/
         - name: 클라우드 네이티브 마이크로 서비스
           items:
             - name: 만들기 및 배포 >>
