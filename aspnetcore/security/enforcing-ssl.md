@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: e473da9a7cbd91a601ad4af0c7c02c7f576f348c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: aa109aaa89003fd7566e7dc219ecc9799b077355
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051124"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94703672"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>ASP.NET Core에서 HTTPS 적용
 
@@ -95,7 +95,7 @@ API가 없으면 클라이언트가 첫 번째 요청에서 중요 한 데이터
 * 기본 [HttpsRedirectionOptions](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode) ([Status307TemporaryRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status307temporaryredirect))를 사용 합니다.
 * 는 [HttpsRedirectionOptions.HttpsPort](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.httpsport) `ASPNETCORE_HTTPS_PORT` 환경 변수 또는 [IServerAddressesFeature](/dotnet/api/microsoft.aspnetcore.hosting.server.features.iserveraddressesfeature)에 의해 재정의 되지 않는 한 기본 HttpsRedirectionOptions (null)를 사용 합니다.
 
-영구 리디렉션이 아닌 임시 리디렉션을 사용 하는 것이 좋습니다. 링크 캐싱은 개발 환경에서 불안정 한 동작을 일으킬 수 있습니다. 앱이 개발 환경에 있지 않은 경우 영구 리디렉션 상태 코드를 보내려면 [프로덕션에서 영구 리디렉션 구성](#configure-permanent-redirects-in-production) 섹션을 참조 하세요. [Hsts](#http-strict-transport-security-protocol-hsts) 를 사용 하 여 보안 리소스 요청만 앱에 전송 되어야 한다는 것을 클라이언트에 알리는 것이 좋습니다 (프로덕션 환경 에서만).
+영구 리디렉션이 아닌 임시 리디렉션을 사용 하는 것이 좋습니다. 링크 캐싱은 개발 환경에서 불안정한 동작을 일으킬 수 있습니다. 앱이 개발 환경에 있지 않은 경우 영구 리디렉션 상태 코드를 보내려면 [프로덕션에서 영구 리디렉션 구성](#configure-permanent-redirects-in-production) 섹션을 참조 하세요. [Hsts](#http-strict-transport-security-protocol-hsts) 를 사용 하 여 보안 리소스 요청만 앱에 전송 되어야 한다는 것을 클라이언트에 알리는 것이 좋습니다 (프로덕션 환경 에서만).
 
 ### <a name="port-configuration"></a>포트 구성
 
@@ -289,7 +289,7 @@ ASP.NET Core 2.1 이상에서는 확장 메서드를 사용 하 여 HSTS를 구�
 ::: moniker-end
 
 
-* 헤더의 미리 로드 매개 변수를 설정 합니다 `Strict-Transport-Security` . 프리 로드는 [RFC hsts 사양의](https://tools.ietf.org/html/rfc6797)일부가 아니지만 웹 브라우저가 새로 설치 시 hsts 사이트를 미리 로드 하도록 지원 합니다. 자세한 내용은 [https://hstspreload.org/](https://hstspreload.org/)를 참조하세요.
+* 헤더의 미리 로드 매개 변수를 설정 합니다 `Strict-Transport-Security` . 프리 로드는 [RFC hsts 사양의](https://tools.ietf.org/html/rfc6797)일부가 아니지만 웹 브라우저가 새로 설치 시 hsts 사이트를 미리 로드 하도록 지원 합니다. 자세한 내용은 [https://hstspreload.org/](https://hstspreload.org/)을(를) 참조하세요.
 * 도메인을 호스트 하는 데 HSTS 정책을 적용 하는 [Includesubdomain 도메인](https://tools.ietf.org/html/rfc6797#section-6.1.2)을 사용 하도록 설정 합니다.
 * `max-age`헤더의 매개 변수를 60 일로 명시적으로 설정 `Strict-Transport-Security` 합니다. 설정 되지 않은 경우 기본값은 30 일입니다. 자세한 내용은 [최대 기간 지시문](https://tools.ietf.org/html/rfc6797#section-6.1.1)을 참조 하세요.
 * `example.com`제외할 호스트 목록에를 추가 합니다.
@@ -399,7 +399,7 @@ WSL (Linux 용 Windows 하위 시스템)은 HTTPS 자체 서명 된 인증서를
 
 ### <a name="all-platforms---certificate-not-trusted"></a>모든 플랫폼-인증서를 신뢰할 수 없음
 
-다음 명령을 실행 합니다.
+다음 명령을 실행합니다.
 
 ```dotnetcli
 dotnet dev-certs https --clean
@@ -420,7 +420,7 @@ dotnet dev-certs https --trust
 
 * 인증서 저장소의 인증서를 확인 합니다. `localhost`및의 이름을 가진 인증서가 있어야 합니다. `ASP.NET Core HTTPS development certificate` `Current User > Personal > Certificates``Current User > Trusted root certification authorities > Certificates`
 * 모든 찾은 인증서를 개인 및 신뢰할 수 있는 루트 인증 기관에서 제거 합니다. IIS Express localhost 인증서를 제거 **하지** 마십시오.
-* 다음 명령을 실행 합니다.
+* 다음 명령을 실행합니다.
 
 ```dotnetcli
 dotnet dev-certs https --clean
@@ -436,7 +436,7 @@ dotnet dev-certs https --trust
 * Localhost 인증서가 있는지 확인 합니다.
 * `+`모든 사용자가 신뢰할 수 있음을 나타내기 위해 아이콘에 기호가 포함 되어 있는지 확인 합니다.
 * 시스템 키 집합에서 인증서를 제거 합니다.
-* 다음 명령을 실행 합니다.
+* 다음 명령을 실행합니다.
 
 ```dotnetcli
 dotnet dev-certs https --clean
@@ -450,6 +450,20 @@ Visual Studio에서 인증서 문제를 해결 하려면 [IIS Express (dotnet/As
 ### <a name="iis-express-ssl-certificate-used-with-visual-studio"></a>Visual Studio에서 사용 되는 SSL 인증서 IIS Express
 
 IIS Express 인증서의 문제를 해결 하려면 Visual Studio 설치 관리자에서 **복구** 를 선택 합니다. 자세한 내용은 [이 GitHub 이슈](https://github.com/dotnet/aspnetcore/issues/16892)를 참조하세요.
+
+<a name="trust-ff"></a>
+
+### <a name="firefox-sec_error_inadequate_key_usage-certificate-error"></a>Firefox SEC_ERROR_INADEQUATE_KEY_USAGE 인증서 오류
+
+Firefox 브라우저는 자체 인증서 저장소를 사용 하므로 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 또는 [kestrel](xref:fundamentals/servers/kestrel) 개발자 인증서를 신뢰 하지 않습니다.
+
+IIS Express 또는 Kestrel과 함께 Firefox를 사용 하려면 다음을 설정 합니다.  `security.enterprise_roots.enabled` = `true`
+
+1. `about:config`FireFox 브라우저에서를 입력 합니다.
+1. 위험에 동의 하 고 위험을 수락 하는 경우 **계속을** 선택 합니다.
+1. **모두 표시** 선택
+1. 설정 `security.enterprise_roots.enabled` = `true`
+1. Firefox 종료 및 다시 시작
 
 ## <a name="additional-information"></a>추가 정보
 
