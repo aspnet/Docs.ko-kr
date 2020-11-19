@@ -5,7 +5,7 @@ description: Blazor 앱을 단계별로 빌드합니다.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/11/2020
+ms.date: 11/12/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 4d5bd977b52dd20ffb62519720106ef0a4560914
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: 1efcd167d9a45b2def271b239c9b360749d72791
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94508138"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570187"
 ---
 # <a name="build-a-no-locblazor-todo-list-app"></a>Blazor 할 일 목록 앱 빌드
 

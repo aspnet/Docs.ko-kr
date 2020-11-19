@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 1769ddbb95c9ffe373e916c885e411adc3d4c65b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7e79836e3dd1da175a62a84e11dfd30fee7b2f1b
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93054998"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570148"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>ASP.NET Core Blazor 상태 관리
 
@@ -61,12 +61,12 @@ Blazor WebAssembly 앱에서 만든 사용자 상태는 브라우저의 메모�
 
 상태를 유지하기 위한 공통 위치는 다음과 같습니다.
 
-* [서버 쪽 스토리지](#server-side-storage)
-* [URL](#url)
-* [브라우저 스토리지](#browser-storage)
-* [메모리 내 상태 컨테이너 서비스](#in-memory-state-container-service)
+* [서버 쪽 스토리지](#server-side-storage-wasm)
+* [URL](#url-wasm)
+* [브라우저 스토리지](#browser-storage-wasm)
+* [메모리 내 상태 컨테이너 서비스](#in-memory-state-container-service-wasm)
 
-### <a name="server-side-storage"></a>서버 쪽 스토리지
+<h2 id="server-side-storage-wasm">서버 쪽 스토리지</h2>
 
 여러 사용자 및 디바이스에 걸친 영구적 데이터 지속성을 위해 웹 API를 통해 액세스하는 독립적인 서버 쪽 스토리지를 앱에서 사용할 수 있습니다. 표시되는 옵션은 다음과 같습니다.
 
@@ -90,7 +90,7 @@ Azure 데이터 스토리지 옵션에 대한 자세한 내용은 다음을 참�
 * [Azure 데이터베이스](https://azure.microsoft.com/product-categories/databases/)
 * [Azure Storage 설명서](/azure/storage/)
 
-### <a name="url"></a>URL
+<h2 id="url-wasm">URL</h2>
 
 탐색 상태를 나타내는 임시 데이터의 경우 데이터를 URL 일부로 모델링합니다. URL에 모델링된 사용자 상태의 예는 다음과 같습니다.
 
@@ -101,7 +101,7 @@ Azure 데이터 스토리지 옵션에 대한 자세한 내용은 다음을 참�
 
 [`@page`](xref:mvc/views/razor#page) 지시문을 사용하여 URL 패턴을 정의하는 방법에 대한 자세한 내용은 <xref:blazor/fundamentals/routing>을 참조하세요.
 
-### <a name="browser-storage"></a>브라우저 스토리지
+<h2 id="browser-storage-wasm">브라우저 스토리지</h2>
 
 사용자가 적극적으로 만드는 임시 데이터의 경우, 일반적으로 사용되는 스토리지 위치는 브라우저의 [`localStorage`](https://developer.mozilla.org/docs/Web/API/Window/localStorage) 및 [`sessionStorage`](https://developer.mozilla.org/docs/Web/API/Window/sessionStorage) 컬렉션입니다.
 
@@ -121,7 +121,7 @@ Azure 데이터 스토리지 옵션에 대한 자세한 내용은 다음을 참�
 > [!WARNING]
 > 사용자는 `localStorage` 및 `sessionStorage`에 저장된 데이터를 보거나 변조할 수 있습니다.
 
-## <a name="in-memory-state-container-service"></a>메모리 내 상태 컨테이너 서비스
+<h2 id="in-memory-state-container-service-wasm">메모리 내 상태 컨테이너 서비스</h2>
 
 [!INCLUDE[](~/includes/blazor-state-management/state-container.md)]
 
@@ -170,12 +170,12 @@ Blazor Server는 상태 저장 앱 프레임워크입니다. 대체로 앱은 �
 
 상태를 유지하기 위한 공통 위치는 다음과 같습니다.
 
-* [서버 쪽 스토리지](#server-side-storage)
-* [URL](#url)
-* [브라우저 스토리지](#browser-storage)
-* [메모리 내 상태 컨테이너 서비스](#in-memory-state-container-service)
+* [서버 쪽 스토리지](#server-side-storage-server)
+* [URL](#url-server)
+* [브라우저 스토리지](#browser-storage-server)
+* [메모리 내 상태 컨테이너 서비스](#in-memory-state-container-service-server)
 
-### <a name="server-side-storage"></a>서버 쪽 스토리지
+<h2 id="server-side-storage-server">서버 쪽 스토리지</h2>
 
 여러 사용자 및 디바이스에 걸친 영구적 데이터 지속성을 위해 앱이 서버 쪽 스토리지를 사용할 수 있습니다. 표시되는 옵션은 다음과 같습니다.
 
@@ -191,7 +191,7 @@ Azure 데이터 스토리지 옵션에 대한 자세한 내용은 다음을 참�
 * [Azure 데이터베이스](https://azure.microsoft.com/product-categories/databases/)
 * [Azure Storage 설명서](/azure/storage/)
 
-### <a name="url"></a>URL
+<h2 id="url-server">URL</h2>
 
 탐색 상태를 나타내는 임시 데이터의 경우 데이터를 URL 일부로 모델링합니다. URL에 모델링된 사용자 상태의 예는 다음과 같습니다.
 
@@ -205,7 +205,7 @@ Azure 데이터 스토리지 옵션에 대한 자세한 내용은 다음을 참�
 
 [`@page`](xref:mvc/views/razor#page) 지시문을 사용하여 URL 패턴을 정의하는 방법에 대한 자세한 내용은 <xref:blazor/fundamentals/routing>을 참조하세요.
 
-### <a name="browser-storage"></a>브라우저 스토리지
+<h2 id="browser-storage-server">브라우저 스토리지</h2>
 
 사용자가 적극적으로 만드는 임시 데이터의 경우, 일반적으로 사용되는 스토리지 위치는 브라우저의 [`localStorage`](https://developer.mozilla.org/docs/Web/API/Window/localStorage) 및 [`sessionStorage`](https://developer.mozilla.org/docs/Web/API/Window/sessionStorage) 컬렉션입니다.
 
@@ -700,7 +700,7 @@ else
 
 ::: moniker-end
 
-## <a name="in-memory-state-container-service"></a>메모리 내 상태 컨테이너 서비스
+<h2 id="in-memory-state-container-service-server">메모리 내 상태 컨테이너 서비스</h2>
 
 [!INCLUDE[](~/includes/blazor-state-management/state-container.md)]
 

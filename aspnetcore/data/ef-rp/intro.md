@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 5849f4bfb9d0355177ceb5c2f4236c6d39dd9e92
-ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
+ms.openlocfilehash: 7323cf11ad4556443def4068873e6805b449058a
+ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94340038"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94674019"
 ---
 # <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core에서 Entity Framework Core를 사용한 Razor Pages - 자습서 1/8
 
@@ -143,7 +143,9 @@ To run the app after downloading the completed project:
 
 ## <a name="set-up-the-site-style"></a>사이트 스타일 설정
 
-다음 코드를 복사하여 *Pages/Shared/_Layout.cshtml* 파일에 붙여넣습니다. [!code-cshtml[Main](intro/samples/cu50/Pages/Shared/_Layout.cshtml?highlight=6,14,21-35,49)]
+다음 코드를 복사하여 *Pages/Shared/_Layout.cshtml* 파일에 붙여넣습니다. 
+
+[!code-cshtml[Main](intro/samples/cu50/Pages/Shared/_Layout.cshtml?highlight=6,14,21-35,49)]
 
 레이아웃 파일은 사이트 머리글, 바닥글 및 메뉴를 설정합니다. 위의 코드로 다음이 변경됩니다.
 

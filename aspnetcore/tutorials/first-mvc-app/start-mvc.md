@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 1c703cdbd168c2e83d09c40f7740689df8938dad
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: c96e7107c85bf36f55f6571c71c20d09bc94ddb3
+ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422785"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94688533"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 시작
 
@@ -75,7 +75,7 @@ ms.locfileid: "94422785"
     1. **ASP.NET Core 웹앱(Model-View-Controller)** .
     1. **만들기**
 
-![새 ASP.NET Core 웹 애플리케이션 만들기 ](start-mvc/_static/5/mvc.png)
+![새 ASP.NET Core 웹 애플리케이션 만들기 ](start-mvc/_static/mvcVS19v16.9.png)
 
 프로젝트를 만드는 다른 방법은 [Visual Studio에서 새 프로젝트 만들기](/visualstudio/ide/create-new-project)를 참조하세요.
 
@@ -142,7 +142,7 @@ Visual Studio는 방금 만든 MVC 프로젝트에 대해 기본 템플릿을 �
 
   다음 이미지는 앱을 보여줍니다.
 
-  ![홈 또는 인덱스 페이지](start-mvc/_static/home2.2.png)
+  ![홈 또는 인덱스 페이지](start-mvc/_static/home50-vs.png)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -154,7 +154,7 @@ Ctrl+F5를 눌러 디버거 없이 실행합니다.
 
   Ctrl+F5(비 디버그 모드)를 사용하여 앱을 시작하면 코드를 변경하고, 파일을 저장하고, 브라우저를 새로 고치고, 코드 변경 내용을 확인할 수 있습니다. 대부분의 개발자는 페이지 및 보기 변경 내용을 새로 고치기 위해 디버그 이외 모드를 사용하려고 합니다.
 
-  ![홈 또는 인덱스 페이지](start-mvc/_static/home2.2.png)
+  ![홈 또는 인덱스 페이지](start-mvc/_static/home50-port5001.png)
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 

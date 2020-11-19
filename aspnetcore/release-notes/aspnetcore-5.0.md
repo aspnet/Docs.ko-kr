@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: e25549d557dd971d0f2f4d67a182574f07138acb
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: 84747e2d13275a23e83dc2dc0f666cb0c8d001b1
+ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94508125"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634628"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>ASP.NET Core 5.0의 새로운 기능
 
@@ -453,8 +453,6 @@ public class Program
 텍스트 편집기에서 ASP.NET Core 프로젝트를 엽니다.
 * `dotnet watch`을 실행합니다.
 * 도구가 앱 다시 빌드, 다시 시작, 다시 로드를 처리하는 동안 코드 변경에 집중하세요.
-
-향후 Visual Studio에 자동 새로 고침 기능을 도입하기를 바라고 있습니다.
 
 ### <a name="console-logger-formatter"></a>콘솔 로거 포맷터
 

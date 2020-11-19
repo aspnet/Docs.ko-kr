@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/graph-api
-ms.openlocfilehash: 569a88630f7b75e866d8ecda99605ebe3bc58db8
-ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
+ms.openlocfilehash: 6464b80d52837e7fe35efe5daac2193b77e21c84
+ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234433"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637654"
 ---
 # <a name="use-graph-api-with-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly에서 Graph API 사용
 
@@ -95,9 +95,9 @@ internal static class GraphClientExtensions
 
     private class NoOpGraphAuthenticationProvider : IAuthenticationProvider
     {
-        public NoOpGraphAuthenticationProvider(IAccessTokenProvider provider)
+        public NoOpGraphAuthenticationProvider(IAccessTokenProvider tokenProvider)
         {
-            Provider = provider;
+            TokenProvider = tokenProvider;
         }
 
         public IAccessTokenProvider TokenProvider { get; }

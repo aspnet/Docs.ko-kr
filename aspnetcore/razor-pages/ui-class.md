@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/ui-class
-ms.openlocfilehash: e87e74533fe6900d8e0a73708ad24b765a968493
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0bfdb1932d829ec00c9de1bd38b7920cb1f40c51
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056805"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570174"
 ---
 # <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a>ASP.NET Core에서 Razor 클래스 라이브러리 프로젝트를 사용하여 재사용 가능한 UI 만들기
 
@@ -122,7 +122,7 @@ NuGet.exe 버전 `nuget pack` 대신 `dotnet pack` 명령을 사용합니다.
 
 RCL에 TypeScript 파일을 포함하려면 다음을 수행합니다.
 
-1. *wwwroot* 폴더 외부에 TypeScript 파일( *.ts* )을 배치합니다. 예를 들어 *Client* 폴더에 파일을 배치합니다.
+1. *wwwroot* 폴더 외부에 TypeScript 파일( *.ts*)을 배치합니다. 예를 들어 *Client* 폴더에 파일을 배치합니다.
 
 1. *wwwroot* 폴더에 대한 TypeScript 빌드 출력을 구성합니다. 프로젝트 파일의 `PropertyGroup` 내부에 `TypescriptOutDir` 속성을 설정합니다.
 
@@ -404,4 +404,15 @@ dotnet run
 
 ## <a name="additional-resources"></a>추가 자료
 
+::: moniker range=">= aspnetcore-5.0"
+
 * <xref:blazor/components/class-libraries>
+* <xref:blazor/components/css-isolation#razor-class-library-rcl-support>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+* <xref:blazor/components/class-libraries>
+
+::: moniker-end
