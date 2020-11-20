@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: 49300d32096e577db9b13a0510cc310b91ddb51d
-ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
+ms.openlocfilehash: 4de34a75da932b41190caa8434ac5be8cc0710fd
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93365355"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981936"
 ---
 # <a name="model-binding-in-aspnet-core"></a>ASP.NET Core의 모델 바인딩
 
@@ -211,8 +211,8 @@ public class Pet
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Decimal](xref:System.ComponentModel.DecimalConverter)
 * [double](xref:System.ComponentModel.DoubleConverter)
-* [열거형](xref:System.ComponentModel.EnumConverter)
-* [GUID](xref:System.ComponentModel.GuidConverter)
+* [Enum](xref:System.ComponentModel.EnumConverter)
+* [Eid](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
@@ -488,7 +488,7 @@ HTTP 요청에 포함되는 업로드된 파일입니다.  또한 여러 파일�
 
 ### <a name="cancellationtoken"></a>CancellationToken
 
-비동기 컨트롤러에서 작업을 취소하는 데 사용됩니다.
+작업은 필요에 따라를 매개 변수로 바인딩할 수 있습니다 `CancellationToken` . HTTP 요청을 기반으로 하는 <xref:Microsoft.AspNetCore.Http.HttpContext.RequestAborted> 연결이 중단 될 때 신호를 보냅니다. 작업은이 매개 변수를 사용 하 여 컨트롤러 작업의 일부로 실행 되는 장기 실행 비동기 작업을 취소할 수 있습니다.
 
 ### <a name="formcollection"></a>FormCollection
 
@@ -760,8 +760,8 @@ public class Pet
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Decimal](xref:System.ComponentModel.DecimalConverter)
 * [double](xref:System.ComponentModel.DoubleConverter)
-* [열거형](xref:System.ComponentModel.EnumConverter)
-* [GUID](xref:System.ComponentModel.GuidConverter)
+* [Enum](xref:System.ComponentModel.EnumConverter)
+* [Eid](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)

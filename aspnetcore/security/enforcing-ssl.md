@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: aa109aaa89003fd7566e7dc219ecc9799b077355
-ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
+ms.openlocfilehash: 209d055f6205eceb9efb5434427c303345791809
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94703672"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981962"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>ASP.NET Core에서 HTTPS 적용
 
@@ -464,6 +464,8 @@ IIS Express 또는 Kestrel과 함께 Firefox를 사용 하려면 다음을 설�
 1. **모두 표시** 선택
 1. 설정 `security.enterprise_roots.enabled` = `true`
 1. Firefox 종료 및 다시 시작
+
+자세한 내용은 [Firefox에서 ca (인증 기관) 설정](https://support.mozilla.org/kb/setting-certificate-authorities-firefox)을 참조 하세요.
 
 ## <a name="additional-information"></a>추가 정보
 
