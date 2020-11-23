@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: 10a949831c180f51bc6bb9b8294150a558f9343c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: fcd5524bed11cca2380ffd8956f437f742729b55
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060133"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417615"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core의 Azure Key Vault 구성 공급자
 
@@ -32,7 +32,7 @@ ms.locfileid: "93060133"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-이 문서에서는 [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 구성 공급자를 사용 하 여 Azure Key Vault 암호에서 앱 구성 값을 로드 하는 방법을 설명 합니다. Azure Key Vault는 앱 및 서비스에서 사용 하는 암호화 키 및 암호를 보호 하는 데 도움이 되는 클라우드 기반 서비스입니다. ASP.NET Core 앱과 함께 Azure Key Vault를 사용 하는 일반적인 시나리오는 다음과 같습니다.
+이 문서에서는 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 구성 공급자를 사용 하 여 Azure Key Vault 암호에서 앱 구성 값을 로드 하는 방법을 설명 합니다. Azure Key Vault는 앱 및 서비스에서 사용 하는 암호화 키 및 암호를 보호 하는 데 도움이 되는 클라우드 기반 서비스입니다. ASP.NET Core 앱과 함께 Azure Key Vault를 사용 하는 일반적인 시나리오는 다음과 같습니다.
 
 * 중요 한 구성 데이터에 대 한 액세스 제어
 * 구성 데이터를 저장할 때 FIPS 140-2 수준 2 유효성 검사 된 하드웨어 보안 모듈 (HSM)에 대 한 요구 사항을 충족 합니다.
@@ -41,7 +41,7 @@ ms.locfileid: "93060133"
 
 ## <a name="packages"></a>패키지
 
-Microsoft.Extensions.Configuration에 패키지 참조를 추가 [ 합니다. AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) 패키지입니다.
+Azure.Extensions.AspNetCore.Configuration에 패키지 참조를 추가 [ 합니다. 비밀](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.Configuration.Secrets/) 패키지.
 
 ## <a name="sample-app"></a>샘플 앱
 
@@ -127,14 +127,14 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 샘플 앱은 `#define` *Program.cs* 파일의 맨 위에 있는 문이로 설정 된 경우 응용 프로그램 ID 및 x.509 인증서를 사용 `Certificate` 합니다.
 
-1. PKCS # 12 archive ( *.pfx* ) 인증서를 만듭니다. 인증서를 만들기 위한 옵션에는 Windows 및 [OpenSSL](https://www.openssl.org/) [의 makecert.exe](/windows/desktop/seccrypto/makecert) 가 포함 됩니다.
+1. PKCS # 12 archive (*.pfx*) 인증서를 만듭니다. 인증서를 만들기 위한 옵션에는 Windows 및 [OpenSSL](https://www.openssl.org/) [의 makecert.exe](/windows/desktop/seccrypto/makecert) 가 포함 됩니다.
 1. 현재 사용자의 개인 인증서 저장소에 인증서를 설치 합니다. 키를 내보낼 수 있는 것으로 표시는 선택 사항입니다. 이 프로세스의 뒷부분에서 사용 되는 인증서의 지문을 적어둡니다.
-1. PKCS # 12 archive ( *.pfx* ) 인증서를 DER로 인코딩된 인증서 ( *.cer* )로 내보냅니다.
-1. Azure AD ( **앱 등록** )에 앱을 등록 합니다.
-1. DER로 인코딩된 인증서 ( *.cer* )를 Azure AD에 업로드 합니다.
+1. PKCS # 12 archive (*.pfx*) 인증서를 DER로 인코딩된 인증서 (*.cer*)로 내보냅니다.
+1. Azure AD (**앱 등록**)에 앱을 등록 합니다.
+1. DER로 인코딩된 인증서 (*.cer*)를 Azure AD에 업로드 합니다.
    1. Azure AD에서 앱을 선택 합니다.
    1. **인증서 & 암호** 로 이동 합니다.
-   1. **인증서 업로드** 를 선택 하 여 공개 키가 포함 된 인증서를 업로드 합니다. *.Cer* , *pem* 또는 *.crt* 인증서를 사용할 수 있습니다.
+   1. **인증서 업로드** 를 선택 하 여 공개 키가 포함 된 인증서를 업로드 합니다. *.Cer*, *pem* 또는 *.crt* 인증서를 사용할 수 있습니다.
 1. 키 자격 증명 모음 이름, 응용 프로그램 ID 및 인증서 지문을 앱의 파일에 저장 *appsettings.json* 합니다.
 1. Azure Portal에서 **키 자격 증명 모음** 으로 이동 합니다.
 1. [Azure Key Vault를 사용 하 여 프로덕션 환경에서 암호 저장소](#secret-storage-in-the-production-environment-with-azure-key-vault) 에 만든 key vault를 선택 합니다.
@@ -153,9 +153,9 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
-X.509 인증서는 OS를 통해 관리 됩니다. 응용 프로그램은 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 파일에서 제공 하는 값을 사용 하 여를 호출 합니다 *appsettings.json* .
+X.509 인증서는 OS를 통해 관리 됩니다. 앱은 파일에서 제공한 값으로 **Addazurekeyvault** 를 호출 합니다 *appsettings.json* .
 
-[!code-csharp[](key-vault-configuration/samples/3.x/SampleApp/Program.cs?name=snippet1&highlight=20-23)]
+[!code-csharp[](key-vault-configuration/samples/3.x/SampleApp/Program.cs?name=snippet1&highlight=46-49)]
 
 예제 값:
 
@@ -163,7 +163,7 @@ X.509 인증서는 OS를 통해 관리 됩니다. 응용 프로그램은 <xref:M
 * 응용 프로그램 ID: `627e911e-43cc-61d4-992e-12db9c81b413`
 * 인증서 지문: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`
 
-*appsettings.json* :
+*appsettings.json*:
 
 [!code-json[](key-vault-configuration/samples/3.x/SampleApp/appsettings.json?highlight=10-12)]
 
@@ -191,15 +191,15 @@ Azure CLI, PowerShell 또는 Azure Portal를 사용 하 여 **앱을 다시 시�
 
 샘플 앱:
 
-* `AzureServiceTokenProvider`연결 문자열을 사용 하지 않고 클래스의 인스턴스를 만듭니다. 연결 문자열이 제공 되지 않으면 공급자는 Azure 리소스에 대 한 관리 되는 id에서 액세스 토큰을 가져오려고 시도 합니다.
-* <xref:Microsoft.Azure.KeyVault.KeyVaultClient>인스턴스 토큰 콜백을 사용 하 여 새을 만듭니다 `AzureServiceTokenProvider` .
-* <xref:Microsoft.Azure.KeyVault.KeyVaultClient>인스턴스는 <xref:Microsoft.Extensions.Configuration.AzureKeyVault.IKeyVaultSecretManager> 모든 비밀 값을 로드 하 고 `--` 키 이름에서 이중 대시 ()를 콜론 ()으로 대체 하는의 기본 구현과 함께 사용 됩니다 `:` .
+* 클래스의 인스턴스를 만들고 `DefaultAzureCredential` , 자격 증명은 Azure 리소스에 대 한 환경에서 액세스 토큰을 가져오려고 시도 합니다.
+* 새 [`Azure.Security.KeyVault.Secrets.Secrets`](/dotnet/api/azure.security.keyvault.secrets) 이 인스턴스를 사용 하 여 만들어집니다 `DefaultAzureCredential` .
+* `Azure.Security.KeyVault.Secrets.Secrets`인스턴스는 `Azure.Extensions.Aspnetcore.Configuration.Secrets` 모든 비밀 값을 로드 하 고 `--` 키 이름에서 이중 대시 ()를 콜론 ()으로 대체 하는의 기본 구현과 함께 사용 됩니다 `:` .
 
-[!code-csharp[](key-vault-configuration/samples/3.x/SampleApp/Program.cs?name=snippet2&highlight=13-21)]
+[!code-csharp[](key-vault-configuration/samples/3.x/SampleApp/Program.cs?name=snippet2&highlight=12-14)]
 
 Key vault 이름 예 값: `contosovault`
-    
-*appsettings.json* :
+
+*appsettings.json*:
 
 ```json
 {
@@ -215,11 +215,11 @@ Key vault 이름 예 값: `contosovault`
 
 ## <a name="configuration-options"></a>구성 옵션
 
-<xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 수락 가능 <xref:Microsoft.Extensions.Configuration.AzureKeyVault.AzureKeyVaultConfigurationOptions> :
+AddAzureKeyVault는 AzureKeyVaultConfigurationOptions을 허용할 수 있습니다.
 
 ```csharp
-config.AddAzureKeyVault(
-    new AzureKeyVaultConfigurationOptions()
+config.AddAzureKeyVault(new SecretClient(new URI("Your Key Vault Endpoint"), new DefaultAzureCredential()),
+                        new AzureKeyVaultConfigurationOptions())
     {
         ...
     });
@@ -227,25 +227,23 @@ config.AddAzureKeyVault(
 
 | 속성         | 설명 |
 | ---------------- | ----------- |
-| `Client`         | <xref:Microsoft.Azure.KeyVault.KeyVaultClient> 값을 검색 하는 데 사용할입니다. |
-| `Manager`        | <xref:Microsoft.Extensions.Configuration.AzureKeyVault.IKeyVaultSecretManager> 비밀 로드를 제어 하는 데 사용 되는 인스턴스입니다. |
+| `Manager`        | `Azure.Extensions.Aspnetcore.Configuration.Secrets` 비밀 로드를 제어 하는 데 사용 되는 인스턴스입니다. |
 | `ReloadInterval` | `Timespan` 변경에 대 한 주요 자격 증명 모음 폴링 시도 사이에 대기 합니다. 기본값은 `null` (구성이 다시 로드 되지 않음)입니다. |
-| `Vault`          | 키 자격 증명 모음 URI입니다. |
 
 ## <a name="use-a-key-name-prefix"></a>키 이름 접두사 사용
 
-<xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 는의 구현을 허용 하는 오버 로드를 제공 하 여 <xref:Microsoft.Extensions.Configuration.AzureKeyVault.IKeyVaultSecretManager> 키 자격 증명 모음 비밀이 구성 키로 변환 되는 방식을 제어할 수 있습니다. 예를 들어, 인터페이스를 구현 하 여 앱 시작 시 제공 하는 접두사 값에 따라 비밀 값을 로드할 수 있습니다. 예를 들어 앱의 버전에 따라 비밀을 로드할 수 있습니다.
+AddAzureKeyVault는의 구현을 허용 하는 오버 로드를 제공 하며,이를 `Azure.Extensions.Aspnetcore.Configuration.Secrets` 통해 키 자격 증명 모음 비밀이 구성 키로 변환 되는 방식을 제어할 수 있습니다. 예를 들어, 인터페이스를 구현 하 여 앱 시작 시 제공 하는 접두사 값에 따라 비밀 값을 로드할 수 있습니다. 예를 들어 앱의 버전에 따라 비밀을 로드할 수 있습니다.
 
 > [!WARNING]
 > 키 자격 증명 모음 비밀에 대 한 접두사를 사용 하 여 여러 앱에 대 한 비밀을 동일한 주요 자격 증명 모음에 저장 하거나 환경 비밀 (예: *개발* 및 *프로덕션* 비밀)을 동일한 자격 증명 모음에 저장 하지 마세요. 앱과 개발/프로덕션 환경 마다 별도의 키 자격 증명 모음을 사용 하 여 가장 높은 수준의 보안을 위해 앱 환경을 격리 하는 것이 좋습니다.
 
 다음 예제에서는 키 자격 증명 모음 (및 개발 환경에 대 한 암호 관리자 도구 사용)에 대 한 비밀이 설정 됩니다 `5000-AppSecret` (마침표는 key vault 암호 이름에 사용할 수 없음). 이 암호는 앱의 버전 5.0.0.0 앱 암호를 나타냅니다. 5.1.0.0 앱의 다른 버전에 대해서는에 대해 비밀 관리자 도구를 사용 하 여 키 자격 증명 모음에 암호를 추가 `5100-AppSecret` 합니다. 각 앱 버전은 해당 버전의 보안 값을 해당 구성으로 구성 하 `AppSecret` 고, 암호를 로드할 때 버전을 제거 합니다.
 
-<xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 사용자 지정을 사용 하 여 호출 됩니다 <xref:Microsoft.Extensions.Configuration.AzureKeyVault.IKeyVaultSecretManager> .
+AddAzureKeyVault는 사용자 지정을 사용 하 여 호출 됩니다 `Azure.Extensions.Aspnetcore.Configuration.Secrets` .
 
 [!code-csharp[](key-vault-configuration/samples_snapshot/Program.cs)]
 
-<xref:Microsoft.Extensions.Configuration.AzureKeyVault.IKeyVaultSecretManager>구현은 암호의 버전 접두사에 반응 하 여 적절 한 비밀을 구성으로 로드 합니다.
+`Azure.Extensions.Aspnetcore.Configuration.Secrets`구현은 암호의 버전 접두사에 반응 하 여 적절 한 비밀을 구성으로 로드 합니다.
 
 * `Load` 이름이 접두사로 시작 하는 경우 비밀을 로드 합니다. 다른 암호는 로드 되지 않습니다.
 * `GetKey`:
@@ -295,7 +293,7 @@ config.AddAzureKeyVault(
 1. 응용 프로그램의 버전이 프로젝트 파일에서로 변경 되 `5.1.0.0` 고 앱이 다시 실행 되는 경우 반환 되는 암호 값은 `5.1.0.0_secret_value_dev` 개발 환경 및 프로덕션 환경에 `5.1.0.0_secret_value_prod` 있습니다.
 
 > [!NOTE]
-> 사용자 고유의 구현을 제공할 수도 있습니다 <xref:Microsoft.Azure.KeyVault.KeyVaultClient> <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> . 사용자 지정 클라이언트는 앱에서 클라이언트의 단일 인스턴스를 공유 하도록 허용 합니다.
+> <xref:Azure.Security.KeyVault.Secrets.SecretClient>AddAzureKeyVault에 대 한 고유한 구현을 제공할 수도 있습니다. 사용자 지정 클라이언트는 앱에서 클라이언트의 단일 인스턴스를 공유 하도록 허용 합니다.
 
 ## <a name="bind-an-array-to-a-class"></a>클래스에 배열 바인딩
 
@@ -349,7 +347,7 @@ Configuration.Reload();
 
 ## <a name="disabled-and-expired-secrets"></a>비활성화 및 만료 된 비밀
 
-비활성화 및 만료 된 비밀은을 throw <xref:Microsoft.Azure.KeyVault.Models.KeyVaultErrorException> 합니다. 앱이 throw 되지 않도록 하려면 다른 구성 공급자를 사용 하 여 구성을 제공 하거나 사용 하지 않거나 만료 된 암호를 업데이트 합니다.
+비활성화 및 만료 된 비밀은을 throw <xref:Azure.RequestFailedException> 합니다. 앱이 throw 되지 않도록 하려면 다른 구성 공급자를 사용 하 여 구성을 제공 하거나 사용 하지 않거나 만료 된 암호를 업데이트 합니다.
 
 ## <a name="troubleshoot"></a>문제 해결
 
@@ -360,7 +358,7 @@ Configuration.Reload();
 * 앱에 키 자격 증명 모음에 액세스할 수 있는 권한이 없습니다.
 * 액세스 정책에는 `Get` 및 사용 권한이 포함 되어 있지 않습니다 `List` .
 * 키 자격 증명 모음에서 구성 데이터 (이름-값 쌍)의 이름을 잘못 지정 했거나, 누락 되었거나, 사용 하지 않거나, 만료 되었습니다.
-* 앱에 잘못 된 키 자격 증명 모음 이름 ( `KeyVaultName` ), AZURE Ad 응용 프로그램 Id () `AzureADApplicationId` 또는 azure ad 인증서 지문 ( `AzureADCertThumbprint` )이 있습니다.
+* 앱에 잘못 된 키 자격 증명 모음 이름 ( `KeyVaultName` ), AZURE Ad 응용 프로그램 id () 또는 azure ad `AzureADApplicationId` 인증서 지문 () `AzureADCertThumbprint` 또는 Azure ad directoryid ( `AzureADDirectoryId` )가 있습니다.
 * 로드 하려는 값에 대 한 앱의 구성 키 (이름)가 잘못 되었습니다.
 * 키 자격 증명 모음에 앱에 대 한 액세스 정책을 추가 하는 경우 정책이 만들어졌지만 **액세스 정책** UI에서 **저장** 단추가 선택 되지 않았습니다.
 
@@ -473,14 +471,14 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 샘플 앱은 `#define` *Program.cs* 파일의 맨 위에 있는 문이로 설정 된 경우 응용 프로그램 ID 및 x.509 인증서를 사용 `Certificate` 합니다.
 
-1. PKCS # 12 archive ( *.pfx* ) 인증서를 만듭니다. 인증서를 만들기 위한 옵션에는 Windows 및 [OpenSSL](https://www.openssl.org/) [의 makecert.exe](/windows/desktop/seccrypto/makecert) 가 포함 됩니다.
+1. PKCS # 12 archive (*.pfx*) 인증서를 만듭니다. 인증서를 만들기 위한 옵션에는 Windows 및 [OpenSSL](https://www.openssl.org/) [의 makecert.exe](/windows/desktop/seccrypto/makecert) 가 포함 됩니다.
 1. 현재 사용자의 개인 인증서 저장소에 인증서를 설치 합니다. 키를 내보낼 수 있는 것으로 표시는 선택 사항입니다. 이 프로세스의 뒷부분에서 사용 되는 인증서의 지문을 적어둡니다.
-1. PKCS # 12 archive ( *.pfx* ) 인증서를 DER로 인코딩된 인증서 ( *.cer* )로 내보냅니다.
-1. Azure AD ( **앱 등록** )에 앱을 등록 합니다.
-1. DER로 인코딩된 인증서 ( *.cer* )를 Azure AD에 업로드 합니다.
+1. PKCS # 12 archive (*.pfx*) 인증서를 DER로 인코딩된 인증서 (*.cer*)로 내보냅니다.
+1. Azure AD (**앱 등록**)에 앱을 등록 합니다.
+1. DER로 인코딩된 인증서 (*.cer*)를 Azure AD에 업로드 합니다.
    1. Azure AD에서 앱을 선택 합니다.
    1. **인증서 & 암호** 로 이동 합니다.
-   1. **인증서 업로드** 를 선택 하 여 공개 키가 포함 된 인증서를 업로드 합니다. *.Cer* , *pem* 또는 *.crt* 인증서를 사용할 수 있습니다.
+   1. **인증서 업로드** 를 선택 하 여 공개 키가 포함 된 인증서를 업로드 합니다. *.Cer*, *pem* 또는 *.crt* 인증서를 사용할 수 있습니다.
 1. 키 자격 증명 모음 이름, 응용 프로그램 ID 및 인증서 지문을 앱의 파일에 저장 *appsettings.json* 합니다.
 1. Azure Portal에서 **키 자격 증명 모음** 으로 이동 합니다.
 1. [Azure Key Vault를 사용 하 여 프로덕션 환경에서 암호 저장소](#secret-storage-in-the-production-environment-with-azure-key-vault) 에 만든 key vault를 선택 합니다.
@@ -509,7 +507,7 @@ X.509 인증서는 OS를 통해 관리 됩니다. 응용 프로그램은 <xref:M
 * 응용 프로그램 ID: `627e911e-43cc-61d4-992e-12db9c81b413`
 * 인증서 지문: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`
 
-*appsettings.json* :
+*appsettings.json*:
 
 [!code-json[](key-vault-configuration/samples/2.x/SampleApp/appsettings.json?highlight=10-12)]
 
@@ -545,7 +543,7 @@ Azure CLI, PowerShell 또는 Azure Portal를 사용 하 여 **앱을 다시 시�
 
 Key vault 이름 예 값: `contosovault`
     
-*appsettings.json* :
+*appsettings.json*:
 
 ```json
 {
@@ -702,4 +700,3 @@ Configuration.Reload();
 * [자습서: .NET에서 Azure Windows Virtual Machine에 Azure Key Vault를 사용하는 방법](/azure/key-vault/tutorial-net-windows-virtual-machine)
 
 ::: moniker-end
-
