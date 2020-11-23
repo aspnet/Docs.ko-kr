@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 4a80e3e82a18e0066c7628c8f40401155538e32b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c32c5befe0be3b1ad4bd87649d3cc74b0296a134
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061199"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94703711"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>자습서: JavaScript로 ASP.NET Core 웹 API 호출하기
 
@@ -63,6 +63,10 @@ ASP.NET Core 2.2의 경우에는 [JavaScript를 사용하여 웹 API 호출하�
 1. *index.html* 이라는 HTML 파일을 *wwwroot* 폴더에 추가합니다. *index.html* 의 콘텐츠를 다음 마크업으로 바꿉니다.
 
     [!code-html[](first-web-api/samples/3.0/TodoApi/wwwroot/index.html)]
+
+1. *wwwroot/css* 폴더에 *site.css* 라는 CSS 파일을 추가합니다. *site.css* 의 콘텐츠를 다음 스타일로 바꿉니다.
+
+    [!code-css[](first-web-api/samples/3.0/TodoApi/wwwroot/css/site.css)]
 
 1. *site.js* 라는 JavaScript 파일을 *wwwroot/js* 폴더에 추가합니다. *site.js* 의 콘텐츠를 다음 코드로 바꿉니다.
 

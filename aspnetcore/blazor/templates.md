@@ -5,7 +5,7 @@ description: ASP.NET Core Blazor 앱 템플릿 및 Blazor 프로젝트 구조에
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/04/2020
+ms.date: 11/17/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: fc2e81cf130732d515fb871227031493e297cf9f
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: 602ad2908d607703a3b77b2047d51d912645b043
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507774"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94703724"
 ---
 # <a name="aspnet-core-no-locblazor-templates"></a>ASP.NET Core Blazor 템플릿
 
@@ -91,16 +91,30 @@ dotnet new blazorserver --help
     * 앱의 페이지를 처음 요청되면 이 페이지가 렌더링되어 응답으로 반환됩니다.
     * 브라우저와 서버 간에 실시간 SignalR 연결을 설정하는 `_framework/blazor.server.js` JavaScript 파일이 로드됩니다.
     * 이 호스트 페이지는 루트 `App` 구성 요소(`App.razor`)가 렌더링되는 위치를 지정합니다.
-  * `Counter`(`Pages/Counter.razor`): 카운터 페이지를 구현합니다.
-  * `Error`(`Error.razor`, Blazor Server 앱에만 해당): 앱에서 처리되지 않은 예외가 발생할 때 렌더링됩니다.
-  * `FetchData`(`Pages/FetchData.razor`): 데이터 가져오기 페이지를 구현합니다.
-  * `Index`(`Pages/Index.razor`): 홈페이지를 구현합니다.
+  * `Counter` 구성 요소(`Pages/Counter.razor`): 카운터 페이지를 구현합니다.
+  * `Error` 구성 요소(`Error.razor`, Blazor Server 앱에만 해당): 앱에서 처리되지 않은 예외가 발생할 때 렌더링됩니다.
+  * `FetchData` 구성 요소(`Pages/FetchData.razor`): 데이터 가져오기 페이지를 구현합니다.
+  * `Index` 구성 요소(`Pages/Index.razor`): 홈페이지를 구현합니다.
   
 * `Properties/launchSettings.json`: [개발 환경 구성](xref:fundamentals/environments#development-and-launchsettingsjson)을 보관합니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
 * `Shared` 폴더: 앱에서 사용되는 다른 UI 구성 요소(`.razor`)를 포함합니다.
-  * `MainLayout`(`MainLayout.razor`): 앱의 [레이아웃 구성 요소](xref:blazor/layouts)입니다.
-  * `NavMenu`(`NavMenu.razor`): 사이드바 탐색을 구현합니다. 다른 Razor 구성 요소의 탐색 링크를 렌더링하는 [`NavLink` 구성 요소](xref:blazor/fundamentals/routing#navlink-component)(<xref:Microsoft.AspNetCore.Components.Routing.NavLink>)를 포함합니다. <xref:Microsoft.AspNetCore.Components.Routing.NavLink> 구성 요소는 해당 구성 요소가 로드될 때 선택된 상태를 자동으로 나타내므로 사용자가 현재 표시되는 구성 요소를 파악하는 데 도움이 됩니다.
+  * `MainLayout` 구성 요소(`MainLayout.razor`): 앱의 [레이아웃 구성 요소](xref:blazor/layouts)입니다.
+  * `MainLayout.razor.css`: 앱의 기본 레이아웃용 스타일 시트입니다.
+  * `NavMenu` 구성 요소(`NavMenu.razor`): 사이드바 탐색을 구현합니다. 다른 Razor 구성 요소의 탐색 링크를 렌더링하는 [`NavLink` 구성 요소](xref:blazor/fundamentals/routing#navlink-component)(<xref:Microsoft.AspNetCore.Components.Routing.NavLink>)를 포함합니다. <xref:Microsoft.AspNetCore.Components.Routing.NavLink> 구성 요소는 해당 구성 요소가 로드될 때 선택된 상태를 자동으로 나타내므로 사용자가 현재 표시되는 구성 요소를 파악하는 데 도움이 됩니다.
+  * `NavMenu.razor.css`: 앱의 탐색 메뉴용 스타일 시트입니다.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+* `Shared` 폴더: 앱에서 사용되는 다른 UI 구성 요소(`.razor`)를 포함합니다.
+  * `MainLayout` 구성 요소(`MainLayout.razor`): 앱의 [레이아웃 구성 요소](xref:blazor/layouts)입니다.
+  * `NavMenu` 구성 요소(`NavMenu.razor`): 사이드바 탐색을 구현합니다. 다른 Razor 구성 요소의 탐색 링크를 렌더링하는 [`NavLink` 구성 요소](xref:blazor/fundamentals/routing#navlink-component)(<xref:Microsoft.AspNetCore.Components.Routing.NavLink>)를 포함합니다. <xref:Microsoft.AspNetCore.Components.Routing.NavLink> 구성 요소는 해당 구성 요소가 로드될 때 선택된 상태를 자동으로 나타내므로 사용자가 현재 표시되는 구성 요소를 파악하는 데 도움이 됩니다.
+  
+::: moniker-end
 
 * `_Imports.razor`: 네임스페이스의 [`@using`](xref:mvc/views/razor#using) 지시문과 같은 앱의 구성 요소(`.razor`)에 포함할 일반적인 Razor 지시문을 포함합니다.
 

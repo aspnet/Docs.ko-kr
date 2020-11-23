@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/authn-and-authz
-ms.openlocfilehash: 2efed6b76228227f032482346a36f528b3448de2
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 833114a12c8c1ac67097b3592cf410d7a69bb628
+ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053568"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94673980"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>ASP.NET Core용 gRPC의 인증 및 권한 부여
 
@@ -76,7 +76,7 @@ public override Task<BuyTicketsResponse> BuyTickets(
 
 서버에서 [JWT 전달자 미들웨어](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer)를 사용하여 전달자 토큰 인증을 구성합니다.
 
-.NET gRPC 클라이언트에서 호출과 함께 토큰을 헤더로 보낼 수 있습니다.
+.NET gRPC 클라이언트에서 `Metadata` 컬렉션을 사용하여 호출과 함께 토큰을 보낼 수 있습니다. `Metadata` 컬렉션의 항목은 gRPC 호출을 통해 HTTP 헤더로 전송됩니다.
 
 ```csharp
 public bool DoAuthenticatedCall(
@@ -92,7 +92,9 @@ public bool DoAuthenticatedCall(
 }
 ```
 
-gRPC 호출과 함께 토큰을 서비스로 보내는 대신, 채널에 `ChannelCredentials`를 구성할 수도 있습니다. gRPC 호출을 수행할 때마다 자격 증명이 실행되므로, 토큰을 직접 전달하기 위해 여러 위치에 코드를 작성하지 않아도 됩니다.
+gRPC 호출과 함께 토큰을 서비스로 보내는 대신, 채널에 `ChannelCredentials`를 구성할 수도 있습니다. `ChannelCredentials`는 `Metadata`를 자동으로 설정하는 방법을 제공하는 `CallCredentials`를 포함할 수 있습니다.
+
+gRPC 호출을 수행할 때마다 `CallCredentials`가 실행되므로, 토큰을 직접 전달하기 위해 여러 위치에 코드를 작성하지 않아도 됩니다. `CallCredentials`는 채널이 TLS로 보호되는 경우에만 적용됩니다. `CallCredentials`는 보안이 설정되지 않은 비 TLS 채널에는 적용되지 않습니다.
 
 다음 예제의 자격 증명은 모든 gRPC 호출과 함께 토큰을 보내도록 채널을 구성합니다.
 

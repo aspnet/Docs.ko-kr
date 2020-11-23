@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 31db9aea9e0b7ed21cae2f87fbb9e2e649782697
-ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
+ms.openlocfilehash: 3f7cce475b5c7b0fcbb93644b2c39acd637a6f9d
+ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234467"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94595482"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>ASP.NET Core에서 종속성 주입
 
@@ -151,7 +151,7 @@ public void Configure(IApplicationBuilder app, ILogger<Startup> logger)
 
 ## <a name="register-groups-of-services-with-extension-methods"></a>확장 메서드를 사용하여 서비스 그룹 등록
 
-ASP.NET Core 프레임워크에서는 관련 서비스 그룹을 등록하는 규칙을 사용합니다. 규칙은 단일 `Add{GROUP_NAME}` 확장 메서드를 사용하여 프레임워크 기능에 필요한 모든 서비스를 등록하는 것입니다. 예를 들어 <Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllers> 확장 메서드는 MVC 컨트롤러에 필요한 서비스를 등록합니다.
+ASP.NET Core 프레임워크에서는 관련 서비스 그룹을 등록하는 규칙을 사용합니다. 규칙은 단일 `Add{GROUP_NAME}` 확장 메서드를 사용하여 프레임워크 기능에 필요한 모든 서비스를 등록하는 것입니다. 예를 들어 <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllers%2A> 확장 메서드는 MVC 컨트롤러에 필요한 서비스를 등록합니다.
 
 다음 코드는 개별 사용자 계정을 사용하는 Razor Pages 템플릿으로 생성되며 확장 메서드 <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> 및 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity%2A>를 사용하여 컨테이너에 서비스를 추가하는 방법을 보여 줍니다.
 
@@ -328,7 +328,7 @@ Service1.Dispose
 
     ![잘못된 코드](dependency-injection/_static/bad.png)
 
-  **올바른 예** :
+  **올바른 예**:
 
   ```csharp
   public class MyClass
@@ -500,7 +500,10 @@ services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
 
 > [!NOTE]
-> 각 `services.Add{SERVICE_NAME}` 확장 메서드는 서비스를 추가(및 잠재적으로 구성)합니다. 예를 들어 `services.AddMvc()`는 Razor Pages와 MVC에서 요청하는 서비스를 추가합니다. 앱에서 이 규칙을 따르는 것이 좋습니다. 확장 메서드를 [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection) 네임스페이스에 배치하여 서비스 등록 그룹을 캡슐화합니다.
+> 각 `services.Add{SERVICE_NAME}` 확장 메서드는 서비스를 추가하고 잠재적으로 구성합니다. 예를 들어 `services.AddControllersWithViews`, `services.AddRazorPages`, `services.AddControllers`는 앱에 필요한 서비스 ASP.NET Core 앱을 추가합니다. 앱에서 이 규칙을 따르는 것이 좋습니다. 확장 메서드를 <xref:Microsoft.Extensions.DependencyInjection?displayProperty=fullName> 네임스페이스에 배치하여 서비스 등록 그룹을 캡슐화합니다. DI 확장 메서드에 대해 `Microsoft.Extensions.DependencyInjection` 네임스페이스 부분을 포함하면 다음도 가능합니다.
+>
+> * 더 이상의 `using` 블록을 추가하지 않고도 [IntelliSense](/visualstudio/ide/using-intellisense)에 표시할 수 있습니다.
+> * 이러한 확장 메서드가 일반적으로 호출되는 `Startup` 클래스의 과도한 `using` 문을 방지합니다.
 
 서비스의 생성자에 `string`과 같은 [기본 제공](/dotnet/csharp/language-reference/keywords/built-in-types-table) 형식이 필요한 경우 [구성](xref:fundamentals/configuration/index) 및 [옵션 패턴](xref:fundamentals/configuration/options)을 사용하여 해당 형식을 삽입할 수 있습니다.
 
@@ -620,11 +623,11 @@ Scoped 수명 서비스(<xref:Microsoft.Extensions.DependencyInjection.ServiceCo
 
 | 방법 | 자동<br>개체<br>삭제 | 여러<br>구현 | 인수 전달 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
-| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<IMyDep, MyDep>();` | 예 | yes | 예 |
-| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>예제:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 예 | yes | 예 |
+| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<IMyDep, MyDep>();` | 예 | 예 | 예 |
+| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>예:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 예 | 예 | 예 |
 | `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<MyDep>();` | 예 | 예 | 예 |
-| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>예제:<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 예 | yes | 예 |
-| `AddSingleton(new {IMPLEMENTATION})`<br>예제:<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | 예 | 예 | 예 |
+| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>예:<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 예 | 예 | 예 |
+| `AddSingleton(new {IMPLEMENTATION})`<br>예:<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | 예 | 예 | 예 |
 
 형식 삭제에 대한 자세한 내용은 [서비스의 삭제](#disposal-of-services) 섹션을 참조하세요. 여러 구현에 대한 일반적인 시나리오는 [테스트용 모의 형식](xref:test/integration-tests#inject-mock-services)입니다.
 
@@ -756,7 +759,7 @@ Scoped: 5d997e2d-55f5-4a64-8388-51c4e3a1ad19
 Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
 인스턴스: 00000000-0000-0000-0000-000000000000
 
-**두 번째 요청** :
+**두 번째 요청**:
 
 컨트롤러 작업:
 
@@ -877,7 +880,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-다음 예제에서,
+다음 예제에서는
 
 * 서비스 인스턴스가 서비스 컨테이너에 의해 만들어지지 않습니다.
 * 의도된 서비스 수명을 프레임워크가 알지 못합니다.
@@ -982,7 +985,7 @@ ASP.NET Core 앱에서 사용할 수 있는 타사 컨테이너는 다음과 같
       }
       ```
    
-    **올바른 예** :
+    **올바른 예**:
 
     ```csharp
     public class MyClass

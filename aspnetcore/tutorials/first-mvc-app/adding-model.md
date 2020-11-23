@@ -3,7 +3,7 @@ title: 4부. ASP.NET Core MVC 앱에 모델 추가
 author: rick-anderson
 description: ASP.NET Core MVC에 대한 자습서 시리즈의 4부입니다.
 ms.author: riande
-ms.date: 01/13/2020
+ms.date: 11/16/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -17,22 +17,22 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: fa1d79bed56f17afe69697a7e24ec200e6a0ab22
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: 16cef6cc9e772f494515942072c2aaf58913ce91
+ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422724"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94688451"
 ---
 # <a name="part-4-add-a-model-to-an-aspnet-core-mvc-app"></a>4부. ASP.NET Core MVC 앱에 모델 추가
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Tom Dykstra](https://github.com/tdykstra)
 
-이 섹션에서는 데이터베이스에서 영화를 관리하기 위한 클래스를 추가합니다. 이러한 클래스는 **M** VC 앱의 " **M** odel" 부분이 됩니다.
+이 섹션에서는 데이터베이스에서 영화를 관리하기 위한 클래스를 추가합니다. 이러한 클래스는 **M** VC 앱의 "**M** odel" 부분이 됩니다.
 
 이러한 클래스를 EF Core([Entity Framework Core](/ef/core))와 함께 사용하여 데이터베이스 작업을 수행합니다. EF Core는 작성해야 할 데이터 액세스 코드를 간소화하는 ORM(개체-관계형 매핑) 프레임워크입니다.
 
-직접 만들게 될 모델 클래스는 EF Core에 대한 어떠한 종속성도 없으므로 POCO( **P** lain **O** ld **C** LR **O** bject) 클래스로 알려져 있습니다. 이 클래스는 데이터베이스에 저장될 데이터의 속성만 정의합니다.
+직접 만들게 될 모델 클래스는 EF Core에 대한 어떠한 종속성도 없으므로 POCO(**P** lain **O** ld **C** LR **O** bject) 클래스로 알려져 있습니다. 이 클래스는 데이터베이스에 저장될 데이터의 속성만 정의합니다.
 
 이 자습서에서는 먼저 모델 클래스를 작성하고 EF Core가 데이터베이스를 만듭니다.
 
@@ -105,6 +105,14 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 * `Microsoft.EntityFrameworkCore.SqlServer`
 * `Microsoft.EntityFrameworkCore.Design`
 
+다음 .NET CLI 명령을 실행합니다.
+
+```dotnetcli
+dotnet tool install --global dotnet-aspnet-codegenerator
+```
+
+앞의 명령은 [aspnet-codegenerator 스캐폴딩 도구](xref:fundamentals/tools/dotnet-aspnet-codegenerator)를 추가합니다.
+
 ---
 
 <a name="dc"></a>
@@ -138,11 +146,11 @@ using Microsoft.EntityFrameworkCore;
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_ConfigureServices&highlight=6-7)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_UseSqlite&highlight=6-7)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_UseSqlite&highlight=5-6)]
 
 ---
 
@@ -156,11 +164,11 @@ using Microsoft.EntityFrameworkCore;
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-12)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-11)]
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-11)]
 
 ---
 
@@ -193,14 +201,14 @@ using Microsoft.EntityFrameworkCore;
 
 Visual Studio가 다음을 만듭니다
 
-* 영화 컨트롤러( *Controllers/MoviesController.cs* )
-* Create, Delete, Details, Edit, 및 Index 페이지에 대한 Razor 뷰 파일( *Views/Movies/\*.cshtml* )
+* 영화 컨트롤러(*Controllers/MoviesController.cs*)
+* Create, Delete, Details, Edit, 및 Index 페이지에 대한 Razor 뷰 파일(*Views/Movies/\*.cshtml*)
 
 이러한 파일의 자동 생성을 *스캐폴딩* 이라고 합니다.
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) 
 
-* 프로젝트 디렉터리( *Program.cs* , *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+* 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
 
 * Linux에서는 스캐폴드 도구 경로를 내보냅니다.
 
@@ -218,7 +226,7 @@ Visual Studio가 다음을 만듭니다
 
 ### <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 프로젝트 디렉터리( *Program.cs* , *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+* 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
 
 * 다음 명령을 실행합니다.
 
@@ -316,7 +324,7 @@ dotnet ef database update
   > [!NOTE]
   > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(",")를 사용하는 비 영어 로캘 및 비 US-English 날짜 형식에 대해[jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 세계화해야 합니다. 세계화 지침은 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)를 참조하세요.
 
-* **Edit** , **Details** 및 **Delete** 링크를 테스트합니다.
+* **Edit**, **Details** 및 **Delete** 링크를 테스트합니다.
 
 ## <a name="dependency-injection-in-the-controller"></a>컨트롤러에서 종속성 주입
 
@@ -579,14 +587,14 @@ using Microsoft.EntityFrameworkCore;
 
 Visual Studio가 다음을 만듭니다
 
-* 영화 컨트롤러( *Controllers/MoviesController.cs* )
-* Create, Delete, Details, Edit, 및 Index 페이지에 대한 Razor 뷰 파일( *Views/Movies/\*.cshtml* )
+* 영화 컨트롤러(*Controllers/MoviesController.cs*)
+* Create, Delete, Details, Edit, 및 Index 페이지에 대한 Razor 뷰 파일(*Views/Movies/\*.cshtml*)
 
 이러한 파일의 자동 생성을 *스캐폴딩* 이라고 합니다.
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) 
 
-* 프로젝트 디렉터리( *Program.cs* , *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+* 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
 
 * Linux에서는 스캐폴드 도구 경로를 내보냅니다.
 
@@ -604,7 +612,7 @@ Visual Studio가 다음을 만듭니다
 
 ### <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 프로젝트 디렉터리( *Program.cs* , *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+* 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
 
 * 다음 명령을 실행합니다.
 
@@ -702,7 +710,7 @@ dotnet ef database update
   > [!NOTE]
   > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(",")를 사용하는 비 영어 로캘 및 비 US-English 날짜 형식에 대해[jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 세계화해야 합니다. 세계화 지침은 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)를 참조하세요.
 
-* **Edit** , **Details** 및 **Delete** 링크를 테스트합니다.
+* **Edit**, **Details** 및 **Delete** 링크를 테스트합니다.
 
 ## <a name="dependency-injection-in-the-controller"></a>컨트롤러에서 종속성 주입
 
@@ -856,9 +864,9 @@ return View(movie);
 
 Visual Studio가 다음을 만듭니다
 
-* Entity Framework Core [데이터베이스 컨텍스트 클래스](xref:data/ef-mvc/intro#create-the-database-context)( *Data/MvcMovieContext.cs* )
-* 영화 컨트롤러( *Controllers/MoviesController.cs* )
-* Create, Delete, Details, Edit, 및 Index 페이지에 대한 Razor 뷰 파일( *Views/Movies/\*.cshtml* )
+* Entity Framework Core [데이터베이스 컨텍스트 클래스](xref:data/ef-mvc/intro#create-the-database-context)(*Data/MvcMovieContext.cs*)
+* 영화 컨트롤러(*Controllers/MoviesController.cs*)
+* Create, Delete, Details, Edit, 및 Index 페이지에 대한 Razor 뷰 파일(*Views/Movies/\*.cshtml*)
 
 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete)(생성, 읽기, 수정 및 삭제) 작업 메서드와 보기 및 데이터베이스 컨텍스트의 자동 생성을 *스캐폴딩* 이라고 합니다.
 
@@ -867,7 +875,7 @@ Visual Studio가 다음을 만듭니다
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
 
-* 프로젝트 디렉터리( *Program.cs* , *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+* 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
 * 스캐폴딩 도구를 설치합니다.
 
   ```dotnetcli
@@ -892,7 +900,7 @@ Visual Studio가 다음을 만듭니다
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 프로젝트 디렉터리( *Program.cs* , *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+* 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
 * 스캐폴딩 도구를 설치합니다.
 
   ```dotnetcli
@@ -1021,7 +1029,7 @@ Login failed for user 'User-name'.
   > [!NOTE]
   > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(",")를 사용하는 비 영어 로캘 및 비 US-English 날짜 형식에 대해[jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 세계화해야 합니다. 세계화 지침은 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)를 참조하세요.
 
-* **Edit** , **Details** 및 **Delete** 링크를 테스트합니다.
+* **Edit**, **Details** 및 **Delete** 링크를 테스트합니다.
 
 `Startup` 클래스를 확인합니다.
 

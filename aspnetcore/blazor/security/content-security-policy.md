@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 66fd41abe4f85071797bacc0a5531bbab35bd227
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 744449240fabc3dae317d0d7bc9090311521c224
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055596"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570122"
 ---
 # <a name="enforce-a-content-security-policy-for-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor에 콘텐츠 보안 정책 적용
 
@@ -57,12 +57,9 @@ CSP는 Chrome, Edge, Firefox, Opera, Safari를 비롯한 대부분의 최신 데
   * 부트스트랩 스크립트의 경우 `https://stackpath.bootstrapcdn.com/` 호스트 원본을 지정합니다.
   * 체계 및 포트 번호를 포함하여 앱의 원본이 유효한 원본임을 나타내려면 `self`를 지정합니다.
   * Blazor WebAssembly 앱에서:
-    * 필요한 Blazor WebAssembly 인라인 스크립트가 로드되는 것을 허용하려면 다음 해시를 지정합니다.
-      * `sha256-v8ZC9OgMhcnEQ/Me77/R9TlJfzOBqrMTW8e1KuqLaqc=`
-      * `sha256-If//FtbPc03afjLezvWHnC3Nbu4fDM04IIzkPaf3pH0=`
-      * `sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=`
+    * 필요한 스크립트의 로드를 허용하는 해시를 지정합니다.
     * 문자열로부터 코드를 만들기 위해 `eval()` 및 메서드를 사용하려면 `unsafe-eval`을 지정합니다.
-  * Blazor Server 앱에서 스타일시트의 대체 검색을 수행하는 인라인 스크립트에 대해 `sha256-34WLX60Tw3aG6hylk0plKbZZFXCuepeQ6Hu7OqRf8PI=` 해시를 지정합니다.
+  * Blazor Server 앱에서 필요한 스크립트의 로드를 허용하는 해시를 지정합니다.
 * [style-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/style-src): 스타일시트의 유효한 원본을 나타냅니다.
   * 부트스트랩 스타일시트의 경우 `https://stackpath.bootstrapcdn.com/` 호스트 원본을 지정합니다.
   * 체계 및 포트 번호를 포함하여 앱의 원본이 유효한 원본임을 나타내려면 `self`를 지정합니다.
@@ -93,6 +90,29 @@ CSP는 Chrome, Edge, Firefox, Opera, Safari를 비롯한 대부분의 최신 데
 
 `wwwroot/index.html` 호스트 페이지의 `<head>` 콘텐츠에서 [정책 지시문](#policy-directives) 섹션에 설명된 지시문을 적용합니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
+```html
+<meta http-equiv="Content-Security-Policy" 
+      content="base-uri 'self';
+               block-all-mixed-content;
+               default-src 'self';
+               img-src data: https:;
+               object-src 'none';
+               script-src https://stackpath.bootstrapcdn.com/ 
+                          'self' 
+                          'sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=' 
+                          'unsafe-eval';
+               style-src https://stackpath.bootstrapcdn.com/
+                         'self'
+                         'unsafe-inline';
+               upgrade-insecure-requests;">
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 ```html
 <meta http-equiv="Content-Security-Policy" 
       content="base-uri 'self';
@@ -112,9 +132,38 @@ CSP는 Chrome, Edge, Firefox, Opera, Safari를 비롯한 대부분의 최신 데
                upgrade-insecure-requests;">
 ```
 
+::: moniker-end
+
+앱에 필요한 더 많은 `script-src` 및 `style-src` 해시를 추가합니다. 개발하는 동안 온라인 도구나 브라우저 개발자 도구를 사용하여 해시를 계산합니다. 예를 들어 다음 브라우저 도구 콘솔 오류는 정책에서 다루지 않는 필수 스크립트의 해시를 보고합니다.
+
+> 다음 콘텐츠 보안 정책 지시문을 위반하기 때문에 인라인 스크립트 실행이 거부되었습니다. “ ... ”. 인라인 실행을 사용하려면 ‘unsafe-inline’ 키워드, 해시(‘sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=’) 또는 nonce(‘nonce-...’) 중 하나가 필요합니다.
+
+오류와 관련된 특정 스크립트가 콘솔에서 오류 옆에 표시됩니다.
+
 ### Blazor Server
 
 `Pages/_Host.cshtml` 호스트 페이지의 `<head>` 콘텐츠에서 [정책 지시문](#policy-directives) 섹션에 설명된 지시문을 적용합니다.
+
+::: moniker range=">= aspnetcore-5.0"
+
+```cshtml
+<meta http-equiv="Content-Security-Policy" 
+      content="base-uri 'self';
+               block-all-mixed-content;
+               default-src 'self';
+               img-src data: https:;
+               object-src 'none';
+               script-src https://stackpath.bootstrapcdn.com/ 
+                          'self';
+               style-src https://stackpath.bootstrapcdn.com/
+                         'self' 
+                         'unsafe-inline';
+               upgrade-insecure-requests;">
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 ```cshtml
 <meta http-equiv="Content-Security-Policy" 
@@ -131,6 +180,14 @@ CSP는 Chrome, Edge, Firefox, Opera, Safari를 비롯한 대부분의 최신 데
                          'unsafe-inline';
                upgrade-insecure-requests;">
 ```
+
+::: moniker-end
+
+앱에 필요한 더 많은 `script-src` 및 `style-src` 해시를 추가합니다. 개발하는 동안 온라인 도구나 브라우저 개발자 도구를 사용하여 해시를 계산합니다. 예를 들어 다음 브라우저 도구 콘솔 오류는 정책에서 다루지 않는 필수 스크립트의 해시를 보고합니다.
+
+> 다음 콘텐츠 보안 정책 지시문을 위반하기 때문에 인라인 스크립트 실행이 거부되었습니다. “ ... ”. 인라인 실행을 사용하려면 ‘unsafe-inline’ 키워드, 해시(‘sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=’) 또는 nonce(‘nonce-...’) 중 하나가 필요합니다.
+
+오류와 관련된 특정 스크립트가 콘솔에서 오류 옆에 표시됩니다.
 
 ## <a name="meta-tag-limitations"></a>Meta 태그 제한 사항
 

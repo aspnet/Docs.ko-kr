@@ -1,5 +1,5 @@
 ---
-title: Blazor WebAssembly와 함께 ASP.NET Core SignalR 사용
+title: 호스트된 Blazor WebAssembly 앱을 활용하여 ASP.NET Core SignalR 사용
 author: guardrex
 description: Blazor WebAssembly와 함께 ASP.NET Core SignalR을 사용하는 채팅 앱을 만듭니다.
 monikerRange: '>= aspnetcore-3.1'
@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: afbfc44db8cb833df7a79061f9bd73052859fec2
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: 2975ee699a2535cdf63ef2f5af5790f178a09f93
+ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94508177"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637732"
 ---
-# <a name="use-aspnet-core-no-locsignalr-with-no-locblazor-webassembly"></a>Blazor WebAssembly와 함께 ASP.NET Core SignalR 사용
+# <a name="use-aspnet-core-no-locsignalr-with-a-hosted-no-locblazor-webassembly-app"></a>호스트된 Blazor WebAssembly 앱을 활용하여 ASP.NET Core SignalR 사용
 
 작성자: [Daniel Roth](https://github.com/danroth27) 및 [Luke Latham](https://github.com/guardrex)
 

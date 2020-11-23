@@ -5,7 +5,7 @@ description: 앱에서 요청을 라우팅하는 방법과 NavLink 구성 요소
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/02/2020
+ms.date: 11/17/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 8f0aa80d092b6678131a2b7152f21ecb8e168257
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: c4da8bf8447618c9a7a2d0f690164fe48a7ed006
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94430993"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94703698"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>ASP.NET Core Blazor 라우팅
 
@@ -114,6 +114,30 @@ Blazor Server는 [ASP.NET Core 엔드포인트 라우팅](xref:fundamentals/rout
 
 라우터는 경로 매개 변수를 사용하여 해당 구성 요소 매개 변수를 동일한 이름(대/소문자 구분 안 함)으로 채웁니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
+선택적 매개 변수가 지원됩니다. 다음 예제에서 `text` 선택적 매개 변수는 경로 세그먼트의 값을 구성 요소의 `Text` 속성에 할당합니다. 세그먼트가 없으면 `Text` 값이 `fantastic`으로 설정됩니다.
+
+```razor
+@page "/RouteParameter/{text?}"
+
+<h1>Blazor is @Text!</h1>
+
+@code {
+    [Parameter]
+    public string Text { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Text = Text ?? "fantastic";
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 ```razor
 @page "/RouteParameter"
 @page "/RouteParameter/{text}"
@@ -132,6 +156,17 @@ Blazor Server는 [ASP.NET Core 엔드포인트 라우팅](xref:fundamentals/rout
 ```
 
 선택적 매개 변수는 지원되지 않습니다. 위의 예제에서는 두 개의 `@page` 지시문이 적용되었습니다. 첫 번째 지시문은 매개 변수 없이 구성 요소 탐색을 허용합니다. 두 번째 `@page` 지시문은 `{text}` 경로 매개 변수를 사용하고 `Text` 속성에 값을 할당합니다.
+
+::: moniker-end
+
+다른 선택적 매개 변수 값을 사용하여 동일한 구성 요소에 앱 탐색을 허용하려면 [`OnInitialized`](xref:blazor/components/lifecycle#component-initialization-methods) 대신 [`OnParametersSet`](xref:blazor/components/lifecycle#after-parameters-are-set)에 대해 사용합니다. 앞의 예제를 기반으로 하여, `/RouteParameter`에서 `/RouteParameter/awesome`으로, 또는 `/RouteParameter/awesome`에서 `/RouteParameter`로 이동할 수 있어야 할 때 `OnParametersSet`를 사용합니다.
+
+```csharp
+protected override void OnParametersSet()
+{
+    Text = Text ?? "fantastic";
+}
+```
 
 ## <a name="route-constraints"></a>경로 제약 조건
 

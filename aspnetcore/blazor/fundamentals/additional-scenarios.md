@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: f8b6e65424948aaa7b28023497bbbf2a1ceb47dd
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ef37c539d377f14a2744c3ead28234d8497df700
+ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056051"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637680"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>ASP.NET Core Blazor 호스팅 모델 구성
 
@@ -102,32 +102,21 @@ UI를 사용자 지정하려면 `_Host.cshtml` Razor 페이지의 `<body>`에서
 
 ## <a name="render-mode"></a>렌더링 모드
 
+::: moniker range=">= aspnetcore-5.0"
+
+‘이 섹션은 호스트된 Blazor WebAssembly 및 Blazor Server에 적용됩니다.’
+
+Blazor 앱은 기본적으로 서버에서 UI를 미리 렌더링하도록 설정됩니다. 자세한 내용은 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>를 참조하세요.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 ‘이 섹션은 Blazor Server에 적용됩니다.’
 
-Blazor Server 앱은 기본적으로 클라이언트가 서버에 연결되기 전에 서버에서 UI를 미리 렌더링하도록 설정되어 있습니다. 이는 `_Host.cshtml` Razor 페이지에서 설정합니다.
+Blazor Server 앱은 기본적으로 클라이언트가 서버에 연결되기 전에 서버에서 UI를 미리 렌더링하도록 설정되어 있습니다. 자세한 내용은 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>를 참조하세요.
 
-```cshtml
-<body>
-    <app>
-      <component type="typeof(App)" render-mode="ServerPrerendered" />
-    </app>
-
-    <script src="_framework/blazor.server.js"></script>
-</body>
-```
-
-<xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode>는 구성 요소에 대해 다음을 구성합니다.
-
-* 페이지에 미리 렌더링할지 여부
-* 페이지에 정적 HTML로 렌더링할지 여부 또는 사용자 에이전트에서 Blazor 앱을 부트스트랩하는 데 필요한 정보를 포함할지 여부
-
-| 렌더링 모드 | 설명 |
-| --- | --- |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 구성 요소를 정적 HTML에 렌더링하고 Blazor Server 앱의 마커를 포함합니다. 사용자 에이전트를 시작할 때 이 표식은 Blazor 앱을 부트스트랩하는 데 사용됩니다. |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | Blazor Server 앱의 마커를 렌더링합니다. 구성 요소의 출력은 포함되지 않습니다. 사용자 에이전트를 시작할 때 이 표식은 Blazor 앱을 부트스트랩하는 데 사용됩니다. |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | 구성 요소를 정적 HTML에 렌더링합니다. |
-
-정적 HTML 페이지에서 서버 구성 요소를 렌더링할 수는 없습니다.
+::: moniker-end
 
 ## <a name="initialize-the-no-locblazor-circuit"></a>Blazor 회로 초기화
 
@@ -389,3 +378,4 @@ When one of the framework components is used in a child component, the rendered 
 ## <a name="additional-resources"></a>추가 리소스
 
 * <xref:fundamentals/logging/index>
+* [Blazor Server 재연결 이벤트 및 구성 요소 수명 주기 이벤트](xref:blazor/components/lifecycle#blazor-server-reconnection-events)

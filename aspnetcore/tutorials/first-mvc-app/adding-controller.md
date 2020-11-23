@@ -3,7 +3,7 @@ title: 2부. ASP.NET Core MVC 앱에 컨트롤러 추가
 author: rick-anderson
 description: ASP.NET Core MVC에 대한 자습서 시리즈의 2부입니다.
 ms.author: riande
-ms.date: 08/05/2017
+ms.date: 11/12/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 1851a61441ed351442f86939022319ad59d10006
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: e51edc15b14a5bdd1d53e547e0b469ad608f46d0
+ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422621"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94688410"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>2부. ASP.NET Core MVC 앱에 컨트롤러 추가
 
@@ -47,19 +47,19 @@ MVC 패턴을 사용하면 앱의 다양한 측면(입력 논리, 비즈니스 �
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * **솔루션 탐색기** 에서 **컨트롤러를 마우스 오른쪽 단추로 클릭하고 추가 > 컨트롤러** 를 선택합니다
-  ![솔루션 탐색기에서 컨트롤러를 마우스 오른쪽 단추로 클릭하고 추가 > 컨트롤러를 선택](~/tutorials/first-mvc-app/adding-controller/_static/add_controllerCopy.png)
+  ![솔루션 탐색기에서 컨트롤러를 마우스 오른쪽 단추로 클릭하고 추가 > 컨트롤러를 선택](~/tutorials/first-mvc-app/adding-controller/_static/add_controllercopyVS19v16.9.png)
 
 * **스캐폴드 추가** 대화 상자에서 **MVC 컨트롤러 - 비어 있음** 을 선택합니다.
 
-  ![MVC 컨트롤러 추가 및 이름 지정](~/tutorials/first-mvc-app/adding-controller/_static/acCopy.png)
+  ![MVC 컨트롤러 추가 및 이름 지정](~/tutorials/first-mvc-app/adding-controller/_static/acCopyVS19v16.9.png)
 
-* **빈 MVC 컨트롤러 추가 대화 상자** 에 **HelloWorldController** 를 입력하고 **추가** 를 선택합니다.
+* **새 항목 추가 - MvcMovie 대화 상자** 에서 **HelloWorldController.cs** 를 입력하고 **추가** 를 선택합니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 **탐색기** 아이콘을 선택한 다음, **컨트롤러 > 새 파일** 을 컨트롤 클릭(마우스 오른쪽 단추로 클릭)하고 새 파일의 이름을 *HelloWorldController.cs* 로 지정합니다.
 
-  ![상황에 맞는 메뉴](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
+  ![상황에 맞는 메뉴](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_fileVSC1.51.png)
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 

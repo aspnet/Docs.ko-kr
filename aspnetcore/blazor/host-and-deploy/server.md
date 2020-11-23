@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: 74473eb5c0efcd8798d260b765c848d7e621e534
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: a209109210ef5e335734a974ceb0c2af7cb8e1a1
+ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055765"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94595443"
 ---
 # <a name="host-and-deploy-no-locblazor-server"></a>Blazor Server 호스트 및 배포
 
@@ -38,7 +38,7 @@ ms.locfileid: "93055765"
 
 [Blazor Server 호스팅 모델](xref:blazor/hosting-models#blazor-server)을 사용하면 Blazor가 서버의 ASP.NET Core 앱 내에서 실행됩니다. UI 업데이트, 이벤트 처리 및 JavaScript 호출은 [SignalR](xref:signalr/introduction) 연결을 통해 처리됩니다.
 
-ASP.NET Core 앱을 호스팅할 수 있는 웹 서버가 필요합니다. Visual Studio는 **Blazor Server 앱** 프로젝트 템플릿( [`dotnet new`](/dotnet/core/tools/dotnet-new) 명령을 사용하는 경우 `blazorserverside` 템플릿)을 포함합니다.
+ASP.NET Core 앱을 호스팅할 수 있는 웹 서버가 필요합니다. Visual Studio는 **Blazor Server 앱** 프로젝트 템플릿([`dotnet new`](/dotnet/core/tools/dotnet-new) 명령을 사용하는 경우 `blazorserverside` 템플릿)을 포함합니다.
 
 ## <a name="scalability"></a>확장성
 
@@ -78,9 +78,9 @@ Blazor Server 앱에 [Azure SignalR Service](xref:signalr/scale#azure-signalr-se
 > * [Azure SignalR Service란?](/azure/azure-signalr/signalr-overview)
 > * [Azure SignalR Service를 위한 성능 가이드](/azure-signalr/signalr-concept-performance#performance-factors)
 
-앱을 구성하고 원하는 경우 Azure SignalR Service를 프로비전하려면 다음 단계를 따릅니다.
+### <a name="configuration"></a>구성
 
-1. [사전 렌더링하는 경우 클라이언트를 동일한 서버로 다시 리디렉션하는](xref:blazor/hosting-models#connection-to-the-server)*고정 세션* 을 지원하려면 해당 서비스를 사용하도록 설정합니다. `ServerStickyMode` 옵션 또는 구성 값을 `Required`(으)로 설정합니다. 일반적으로 앱은 다음 방법 중 **하나** 를 사용하여 구성을 만듭니다.
+Azure SignalR Service에 대해 앱을 구성하려면 앱은 [사전 렌더링하는 경우 클라이언트를 동일한 서버로 다시 리디렉션](xref:blazor/hosting-models#connection-to-the-server)하는 ‘고정 세션’을 지원해야 합니다. `ServerStickyMode` 옵션 또는 구성 값을 `Required`로 설정합니다. 일반적으로 앱은 다음 방법 중 **‘하나’** 를 사용하여 구성을 만듭니다.
 
    * `Startup.ConfigureServices`:
   
@@ -92,19 +92,25 @@ Blazor Server 앱에 [Azure SignalR Service](xref:signalr/scale#azure-signalr-se
      });
      ```
 
-   * 구성(다음 방법 중 **하나** 를 사용):
+   * 구성(다음 방법 중 **‘하나’** 사용):
   
-     * `appsettings.json`:
+     * `appsettings.json`의 경우
 
        ```json
-       "Azure:SignalR:ServerStickyMode": "Required"
+       "Azure:SignalR:StickyServerMode": "Required"
        ```
 
-     * Azure Portal에서 앱 서비스의 **구성** > **애플리케이션 설정** ( **이름** : `Azure:SignalR:ServerStickyMode`, **값** : `Required`).
+     * Azure Portal에서 앱 서비스의 **구성** > **애플리케이션 설정**(**이름**: `Azure__SignalR__StickyServerMode`, **값**: `Required`). 이 방법은 [Azure SignalR Service를 프로비저닝](#provision-the-azure-signalr-service)하는 경우 자동으로 앱에 적용됩니다.
+
+### <a name="provision-the-azure-no-locsignalr-service"></a>Azure SignalR Service 프로비저닝
+
+Visual Studio에서 앱에 대해 Azure SignalR Service를 프로비저닝하려면 다음을 수행합니다.
 
 1. Visual Studio에 Blazor Server 앱을 위한 Azure 앱 게시 프로필을 만듭니다.
 1. **Azure SignalR Service** 종속성을 프로필에 추가합니다. 앱에 할당할 기존 Azure SignalR Service 인스턴스가 Azure 구독에 없는 경우 **새 Azure SignalR Service 인스턴스 만들기** 를 선택하여 새 서비스 인스턴스를 프로비전합니다.
 1. Azure에 앱을 게시합니다.
+
+Visual Studio에서 Azure SignalR Service를 프로비저닝하면 자동으로 [‘고정 세션’이 사용](#configuration)되고 SignalR 연결 문자열이 앱 서비스 구성에 추가됩니다.
 
 #### <a name="iis"></a>IIS
 

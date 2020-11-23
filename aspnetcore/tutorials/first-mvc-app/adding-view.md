@@ -3,7 +3,7 @@ title: 3부. ASP.NET Core MVC 앱에 뷰 추가
 author: rick-anderson
 description: ASP.NET Core MVC에 대한 자습서 시리즈의 3부입니다.
 ms.author: riande
-ms.date: 8/04/2019
+ms.date: 11/16/2019
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 56f39643ccd69c6508148374033208eb3b2f25ab
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: ce2754d22b61578bdbe5e78a69e08bdc1e83190d
+ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422719"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94688364"
 ---
 # <a name="part-3-add-a-view-to-an-aspnet-core-mvc-app"></a>3부. ASP.NET Core MVC 앱에 뷰 추가
 
@@ -74,11 +74,11 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 * **새 파일** 대화 상자에서:
 
   * 왼쪽 창에서 **ASP.NET Core** 를 선택합니다.
-  * 가운데 창에서 **MVC 뷰 페이지** 를 선택합니다.
+  * 가운데 창에서 **Razor 보기** 를 선택합니다.
   * **이름** 상자에 *Index* 를 입력합니다.
   * **새로 만들기** 를 선택합니다.
 
-![새 항목 추가 대화 상자](adding-view/_static/add_view_mac.png)
+![새 항목 추가 대화 상자](adding-view/_static/add_view_macVSM8.9.png)
 
 ---
 
@@ -92,7 +92,7 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 ## <a name="change-views-and-layout-pages"></a>보기 및 레이아웃 페이지 변경
 
-메뉴 링크를 선택합니다( **MvcMovie** , **Home** 및 **Privacy** ). 각 페이지는 동일한 메뉴 레이아웃을 보여줍니다. 메뉴 레이아웃은 *Views/Shared/_Layout.cshtml* 파일에서 구현됩니다. *Views/Shared/_Layout.cshtml* 파일을 엽니다.
+메뉴 링크를 선택합니다(**MvcMovie**, **Home** 및 **Privacy**). 각 페이지는 동일한 메뉴 레이아웃을 보여줍니다. 메뉴 레이아웃은 *Views/Shared/_Layout.cshtml* 파일에서 구현됩니다. *Views/Shared/_Layout.cshtml* 파일을 엽니다.
 
 [레이아웃](xref:mvc/views/layout) 템플릿을 사용하면 한 곳에서 사이트의 HTML 컨테이너 레이아웃을 지정한 다음 사이트의 여러 페이지에 걸쳐 적용할 수 있습니다. `@RenderBody()` 줄을 찾습니다. `RenderBody`는 개발자가 만든 모든 보기 전용 페이지가 표시되는 자리 표시자이며 레이아웃 페이지으로 *래핑됩니다*. 예를 들어 **Privacy** 링크를 선택하는 경우 **Views/Home/Privacy.cshtml** 보기가 `RenderBody` 메서드 내부에 렌더링됩니다.
 
@@ -121,7 +121,7 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 이 앱은 [영역](xref:mvc/controllers/areas)을 사용하지 않기 때문에 위의 태그에서 `asp-area=""` [앵커 태그 도우미 특성](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) 및 특성 값이 생략되었습니다.
 
-**참고** : `Movies` 컨트롤러는 아직 구현되지 않았습니다. 이 시점에서 `Movie App` 링크는 작동하지 않습니다.
+**참고**: `Movies` 컨트롤러는 아직 구현되지 않았습니다. 이 시점에서 `Movie App` 링크는 작동하지 않습니다.
 
 변경 내용을 저장하고 **Privacy** 링크를 선택합니다. 브라우저 탭의 제목으로 **Privacy Policy - Mvc Movie** 대신 **Privacy Policy - Movie App** 이 표시됨을 확인합니다.
 
@@ -261,7 +261,7 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 ## <a name="change-views-and-layout-pages"></a>보기 및 레이아웃 페이지 변경
 
-메뉴 링크를 선택합니다( **MvcMovie** , **Home** 및 **Privacy** ). 각 페이지는 동일한 메뉴 레이아웃을 보여줍니다. 메뉴 레이아웃은 *Views/Shared/_Layout.cshtml* 파일에서 구현됩니다. *Views/Shared/_Layout.cshtml* 파일을 엽니다.
+메뉴 링크를 선택합니다(**MvcMovie**, **Home** 및 **Privacy**). 각 페이지는 동일한 메뉴 레이아웃을 보여줍니다. 메뉴 레이아웃은 *Views/Shared/_Layout.cshtml* 파일에서 구현됩니다. *Views/Shared/_Layout.cshtml* 파일을 엽니다.
 
 [레이아웃](xref:mvc/views/layout) 템플릿을 사용하면 한 곳에서 사이트의 HTML 컨테이너 레이아웃을 지정한 다음 사이트의 여러 페이지에 걸쳐 적용할 수 있습니다. `@RenderBody()` 줄을 찾습니다. `RenderBody`는 개발자가 만든 모든 보기 전용 페이지가 표시되는 자리 표시자이며 레이아웃 페이지으로 *래핑됩니다*. 예를 들어 **Privacy** 링크를 선택하는 경우 **Views/Home/Privacy.cshtml** 보기가 `RenderBody` 메서드 내부에 렌더링됩니다.
 
@@ -281,7 +281,7 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 > We haven't implemented the `Movies` controller yet, so if you click the `Movie App` link, you get a 404 (Not found) error.
 -->
 
-**참고** : `Movies` 컨트롤러는 아직 구현되지 않았습니다. 이 시점에서 `Movie App` 링크는 작동하지 않습니다.
+**참고**: `Movies` 컨트롤러는 아직 구현되지 않았습니다. 이 시점에서 `Movie App` 링크는 작동하지 않습니다.
 
 변경 내용을 저장하고 **Privacy** 링크를 선택합니다. 브라우저 탭의 제목으로 **Privacy Policy - Mvc Movie** 대신 **Privacy Policy - Movie App** 이 표시됨을 확인합니다.
 

@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 ms.date: 10/27/2020
 uid: blazor/file-uploads
-ms.openlocfilehash: c0806c3a68a4d9e698925f6ec955dd2f53d7818f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 77c2874eef788b8083758c087913a7a04c55fa2b
+ms.sourcegitcommit: 54fdca99f30b18d69cf0753ca3c84c7dab8f2b0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056129"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94691172"
 ---
 # <a name="aspnet-core-no-locblazor-file-uploads"></a>ASP.NET Core Blazor 파일 업로드
 
@@ -46,12 +46,15 @@ ms.locfileid: "93056129"
 사용자가 선택한 파일에서 데이터를 읽으려면
 
 * 파일에 대한 `Microsoft.AspNetCore.Components.Forms.IBrowserFile.OpenReadStream`을 호출하고 반환된 스트림에서 읽습니다. 자세한 내용은 [파일 스트림](#file-streams) 섹션을 참조하세요.
-* `OpenReadStream`에서 반환되는 <xref:System.IO.Stream>은 읽고 있는 `Stream`의 최대 크기(바이트)를 적용합니다. 기본적으로, 추가 읽기로 인해 예외가 발생하기 전에는 524,288KB(512KB)보다 작은 파일만 읽을 수 있습니다. 이 제한은 개발자가 실수로 메모리에 대규모 파일을 읽어 들이는 것을 방지하기 위한 것입니다. 필요한 경우 `Microsoft.AspNetCore.Components.Forms.IBrowserFile.OpenReadStream`의 `maxAllowedSize` 매개 변수를 사용하여 더 큰 크기를 지정할 수 있습니다.
+* `OpenReadStream`에서 반환되는 <xref:System.IO.Stream>은 읽고 있는 `Stream`의 최대 크기(바이트)를 적용합니다. 기본적으로, 추가 읽기로 인해 예외가 발생하기 전에는 512,000바이트(500KB) 이하 크기의 파일만 읽을 수 있습니다. 이 제한은 개발자가 실수로 메모리에 대규모 파일을 읽어 들이는 것을 방지하기 위한 것입니다. 필요한 경우 `Microsoft.AspNetCore.Components.Forms.IBrowserFile.OpenReadStream`의 `maxAllowedSize` 매개 변수를 사용하여 더 큰 크기를 지정할 수 있습니다.
 * 들어오는 파일 스트림을 메모리로 직접 읽지 않도록 합니다. 예를 들어 파일 바이트를 <xref:System.IO.MemoryStream>에 복사하거나 바이트 배열로 읽지 않습니다. 이러한 접근 방식은 특히 Blazor Server에서 성능 및 보안 문제를 초래할 수 있습니다. 대신 Blob 또는 디스크의 파일과 같은 외부 저장소에 파일 바이트를 복사하는 것이 좋습니다.
 
 이미지 파일을 수신하는 구성 요소는 파일에 대한 `RequestImageFileAsync` 편의 메서드를 호출하여 이미지가 앱으로 스트리밍되기 전에 브라우저의 JavaScript 런타임 내에서 이미지 데이터의 크기를 조정할 수 있습니다.
 
 다음 예제에서는 한 구성 요소에서 여러 이미지 파일을 업로드하는 방법을 보여 줍니다. `InputFileChangeEventArgs.GetMultipleFiles`는 여러 파일을 읽을 수 있습니다. 악의적인 사용자가 앱에서 예상하는 것보다 많은 수의 파일을 업로드하지 못하도록 예상되는 최대 읽기 파일 수를 지정합니다. `InputFileChangeEventArgs.File`은 파일 업로드가 여러 파일을 지원하지 않을 경우 첫 번째 및 유일한 파일을 읽을 수 있습니다.
+
+> [!NOTE]
+> <xref:Microsoft.AspNetCore.Components.Forms.InputFileChangeEventArgs>는 앱 `_Imports.razor` 파일의 네임스페이스 중 하나인 <xref:Microsoft.AspNetCore.Components.Forms?displayProperty=fullName> 네임스페이스에 있습니다.
 
 ```razor
 <h3>Upload PNG images</h3>
@@ -75,7 +78,7 @@ ms.locfileid: "93056129"
 }
 
 @code {
-    IList<string> imageDataUrls = new List<string>();
+    private IList<string> imageDataUrls = new List<string>();
 
     private async Task OnInputFileChange(InputFileChangeEventArgs e)
     {

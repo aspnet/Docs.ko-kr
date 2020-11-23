@@ -1,10 +1,10 @@
 ---
-title: '자습서: 마이그레이션 기능 사용 - ASP.NET MVC 및 EF Core 사용'
-description: 이 자습서에서는 ASP.NET Core MVC 애플리케이션에서 데이터 모델 변경 관리를 위해 EF Core 마이그레이션 기능을 사용하는 것을 시작합니다.
+title: 자습서 5부, Contoso University 샘플에 마이그레이션 적용
+description: Contoso University 자습서 시리즈의 5부입니다. ASP.NET Core MVC 앱에서 데이터 모델 변경 관리를 위해 EF Core 마이그레이션 기능을 사용합니다.
 author: rick-anderson
 ms.author: riande
-ms.custom: mvc
-ms.date: 03/27/2019
+ms.custom: contperfq2
+ms.date: 11/13/2020
 ms.topic: tutorial
 no-loc:
 - appsettings.json
@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 070c18db55956d79560904f53395b5001c7bce6d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ab5be222416e61fcff90c5130ca91ad4a2a5c9b0
+ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93054036"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94674006"
 ---
-# <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>자습서: 마이그레이션 기능 사용 - ASP.NET MVC 및 EF Core 사용
+# <a name="tutorial-part-5-apply-migrations-to-the-contoso-university-sample"></a>자습서: 5부, Contoso University 샘플에 마이그레이션 적용
 
 이 자습서에서는 데이터 모델 변경을 관리하기 위해 EF Core 마이그레이션 기능을 사용하기 시작합니다. 이후의 자습서에서는 데이터 모델을 변경하면서 더 많은 마이그레이션을 추가하게 됩니다.
 
@@ -34,7 +34,6 @@ ms.locfileid: "93054036"
 
 > [!div class="checklist"]
 > * 마이그레이션에 대해 알아보기
-> * 연결 문자열 변경
 > * 초기 마이그레이션 만들기
 > * Up 및 Down 메서드 검사
 > * 데이터 모델 스냅샷에 대해 알아보기
@@ -52,22 +51,15 @@ ms.locfileid: "93054036"
 
 마이그레이션을 수행하기 위해 **PMC(패키지 관리자 콘솔)** 또는 CLI를 사용할 수 있습니다.  이러한 자습서에는 CLI 명령을 사용하는 방법을 보여 줍니다. PMC에 대한 정보는 [이 자습서의 마지막](#pmc)에 나와 있습니다.
 
-## <a name="change-the-connection-string"></a>연결 문자열 변경
+## <a name="drop-the-database"></a>데이터베이스 삭제
 
-*appsettings.json* 파일에서 연결 문자열에 있는 데이터베이스의 이름을 ContosoUniversity2 또는 사용 중인 컴퓨터에서 사용한 적 없는 다른 이름으로 변경합니다.
+데이터베이스를 삭제합니다. **SSOX(SQL Server 개체 탐색기)** 또는 `database drop` CLI 명령을 사용합니다.
 
-[!code-json[](intro/samples/cu/appsettings2.json?range=1-4)]
+ ```dotnetcli
+ dotnet ef database drop
+ ```
 
-이러한 변경은 첫 번째 마이그레이션이 새 데이터베이스를 만드는 프로젝트를 설정합니다. 이는 마이그레이션을 시작하는 데 필수는 아니지만 나중에 이에 대한 이점을 확인할 수 있습니다.
-
-> [!NOTE]
-> 데이터베이스 이름을 변경하는 대신, 데이터베이스를 삭제할 수 있습니다. **SSOX(SQL Server 개체 탐색기)** 또는 `database drop` CLI 명령을 사용합니다.
->
-> ```dotnetcli
-> dotnet ef database drop
-> ```
->
-> 다음 섹션에서는 CLI 명령을 실행하는 방법을 설명합니다.
+다음 섹션에서는 CLI 명령을 실행하는 방법을 설명합니다.
 
 ## <a name="create-an-initial-migration"></a>초기 마이그레이션 만들기
 
@@ -94,11 +86,11 @@ dotnet ef migrations add InitialCreate
 
 ```console
 info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
-      Entity Framework Core 2.2.0-rtm-35687 initialized 'SchoolContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+      Entity Framework Core initialized 'SchoolContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
 Done. To undo this action, use 'ef migrations remove'
 ```
 
-“ *cannot access the file ... ContosoUniversity.dll because it is being used by another process.* (다른 프로세스에서 사용 중이므로 ContosoUniversity.dll 파일에 액세스할 수 없음.)” 오류 메시지가 표시되면 Windows 시스템 트레이에서 IIS Express 아이콘을 찾아 마우스 오른쪽 단추로 클릭한 다음, **ContosoUniversity > 사이트 중단** 을 클릭합니다.
+“*cannot access the file ... ContosoUniversity.dll because it is being used by another process.* (다른 프로세스에서 사용 중이므로 ContosoUniversity.dll 파일에 액세스할 수 없음.)” 오류 메시지가 표시되면 Windows 시스템 트레이에서 IIS Express 아이콘을 찾아 마우스 오른쪽 단추로 클릭한 다음, **ContosoUniversity > 사이트 중단** 을 클릭합니다.
 
 ## <a name="examine-up-and-down-methods"></a>Up 및 Down 메서드 검사
 
@@ -132,7 +124,7 @@ dotnet ef database update
 
 ```text
 info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
-      Entity Framework Core 2.2.0-rtm-35687 initialized 'SchoolContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+      Entity Framework Core initialized 'SchoolContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
 info: Microsoft.EntityFrameworkCore.Database.Command[20101]
       Executed DbCommand (274ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
       CREATE DATABASE [ContosoUniversity2];
@@ -155,7 +147,7 @@ info: Microsoft.EntityFrameworkCore.Database.Command[20101]
 info: Microsoft.EntityFrameworkCore.Database.Command[20101]
       Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
       INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-      VALUES (N'20190327172701_InitialCreate', N'2.2.0-rtm-35687');
+      VALUES (N'20190327172701_InitialCreate', N'5.0-rtm');
 Done.
 ```
 
@@ -181,20 +173,9 @@ PMC 명령에 대한 자세한 내용은 [패키지 관리자 콘솔(Visual Stud
 
 ## <a name="get-the-code"></a>코드 가져오기
 
-[완성된 애플리케이션을 다운로드하거나 확인합니다.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[완성된 애플리케이션을 다운로드하거나 확인합니다.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples)
 
 ## <a name="next-step"></a>다음 단계
-
-이 자습서에서는 다음과 같은 작업을 수행합니다.
-
-> [!div class="checklist"]
-> * 마이그레이션에 대해 알아보기
-> * NuGet 마이그레이션 패키지에 대해 알아보기
-> * 연결 문자열 변경
-> * 초기 마이그레이션 만들기
-> * Up 및 Down 메서드 검사
-> * 데이터 모델 스냅샷에 대해 알아보기
-> * 마이그레이션 적용
 
 데이터 모델 확장에 관한 더 많은 고급 항목을 살펴보려면 다음 자습서로 진행합니다. 방식에 따라 추가 마이그레이션을 만들고 적용하게 됩니다.
 

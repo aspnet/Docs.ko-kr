@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/css-isolation
-ms.openlocfilehash: 628e7dc897912beaae0df792b82958517ac70ca4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4fec0fa750b9209849030d0d6b7de8f4e163d62f
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056324"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570135"
 ---
 # <a name="aspnet-core-no-locblazor-css-isolation"></a>ASP.NET Core Blazor CSS 격리
 
@@ -34,9 +34,9 @@ CSS 격리는 전역 스타일에 대한 종속성을 방지하여 앱의 CSS �
 
 ## <a name="enable-css-isolation"></a>CSS 격리 사용 
 
-구성 요소별 스타일을 정의하려면 구성 요소에 대한 `.razor` 파일의 이름과 일치하는 `razor.css` 파일을 만듭니다. 이 `razor.css` 파일은 ‘범위가 지정된 CSS 파일’입니다. 
+구성 요소별 스타일을 정의하려면 구성 요소에 대한 `.razor` 파일의 이름과 일치하는 `.razor.css` 파일을 만듭니다. 이 `.razor.css` 파일은 ‘범위가 지정된 CSS 파일’입니다. 
 
-`MyComponent.razor` 파일이 있는 `MyComponent` 구성 요소에 대해서는 `MyComponent.razor.css`라는 구성 요소와 함께 파일을 만듭니다. `razor.css` 파일 이름의 `MyComponent` 값은 대/소문자를 구분하지 **않습니다**.
+`MyComponent.razor` 파일이 있는 `MyComponent` 구성 요소에 대해서는 `MyComponent.razor.css`라는 구성 요소와 함께 파일을 만듭니다. `.razor.css` 파일 이름의 `MyComponent` 값은 대/소문자를 구분하지 **않습니다**.
 
 예를 들어 기본 Blazor 프로젝트 템플릿의 `Counter` 구성 요소에 CSS 격리를 추가하려면 `Counter.razor` 파일과 함께 `Counter.razor.css`라는 새 파일을 추가하고 다음 CSS를 추가합니다.
 
@@ -86,7 +86,7 @@ NuGet 패키지 또는 [Razor 클래스 라이브러리](xref:blazor/components/
 
 ## <a name="child-component-support"></a>자식 구성 요소 지원
 
-기본적으로 CSS 격리는 `{COMPONENT NAME}.razor.css` 형식으로 연결하는 구성 요소에만 적용됩니다. 여기서 `{COMPONENT NAME}` 자리 표시자는 일반적으로 구성 요소 이름입니다. 자식 구성 요소에 변경 내용을 적용하려면 부모 구성 요소의 `razor.css` 파일에 있는 모든 하위 항목 요소에 `::deep` 조합기를 사용합니다. `::deep` 조합기는 요소의 생성된 범위 식별자의 ‘하위 항목’인 요소를 선택합니다. 
+기본적으로 CSS 격리는 `{COMPONENT NAME}.razor.css` 형식으로 연결하는 구성 요소에만 적용됩니다. 여기서 `{COMPONENT NAME}` 자리 표시자는 일반적으로 구성 요소 이름입니다. 자식 구성 요소에 변경 내용을 적용하려면 부모 구성 요소의 `.razor.css` 파일에 있는 모든 하위 항목 요소에 `::deep` 조합기를 사용합니다. `::deep` 조합기는 요소의 생성된 범위 식별자의 ‘하위 항목’인 요소를 선택합니다. 
 
 다음 예제에서는 `Child`라는 자식 구성 요소가 있는 `Parent`라는 부모 구성 요소를 보여 줍니다.
 
@@ -180,3 +180,24 @@ Blazor가 런타임에 범위가 지정된 파일을 게시하고 로드하는 �
   <DisableScopedCssBundling>true</DisableScopedCssBundling>
 </PropertyGroup>
 ```
+
+## <a name="no-locrazor-class-library-rcl-support"></a>RCL(Razor 클래스 라이브러리) 지원
+
+[RCL(Razor 클래스 라이브러리)](xref:razor-pages/ui-class)이 격리된 스타일을 제공하는 경우 `<link>` 태그의 `href` 특성은 `{STATIC WEB ASSET BASE PATH}/{ASSEMBLY NAME}.bundle.scp.css`를 가리키며, 여기서 자리 표시자는 다음과 같습니다.
+
+* `{STATIC WEB ASSET BASE PATH}`: 정적 웹 자산 기본 경로입니다.
+* `{ASSEMBLY NAME}`: 클래스 라이브러리의 어셈블리 이름입니다.
+
+다음 예제에서는
+
+* 정적 웹 자산 기본 경로가 `_content/ClassLib`입니다.
+* 클래스 라이브러리의 어셈블리 이름이 `ClassLib`입니다.
+
+```html
+<link href="_content/ClassLib/ClassLib.bundle.scp.css" rel="stylesheet">
+```
+
+RCL 및 구성 요소 라이브러리에 대 한 자세한 내용은 다음을 참조하세요.
+
+* <xref:razor-pages/ui-class>
+* <xref:blazor/components/class-libraries>.
