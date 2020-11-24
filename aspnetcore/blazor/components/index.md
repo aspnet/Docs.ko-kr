@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d8838a458943599890420adec4551ad87e43d328
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: cc4604f7f67a6648c96e099572ff27bfed838916
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637706"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981871"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>ASP.NET Core Razor 구성 요소 만들기 및 사용
 
@@ -268,7 +268,7 @@ namespace BlazorSample
 
 ### <a name="component-parameters"></a>구성 요소 매개 변수
 
-구성 요소에는 [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) 특성을 사용하여 구성 요소 클래스의 퍼블릭 속성을 사용하여 정의되는 구성 요소 매개 변수가 있을 수 있습니다. 특성을 사용하여 태그에서 구성 요소의 인수를 지정합니다.
+구성 요소에는 [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) 특성이 지정된 구성 요소 클래스의 퍼블릭 단순 또는 복합 속성을 사용하여 정의되는 구성 요소 매개 변수가 있을 수 있습니다. 특성을 사용하여 태그에서 구성 요소의 인수를 지정합니다.
 
 `Components/ChildComponent.razor`:
 
