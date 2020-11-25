@@ -5,7 +5,7 @@ description: 구성 API를 사용하여 ASP.NET Core 앱을 구성하는 방법�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 3/29/2020
+ms.date: 11/23/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 9e744ec6d0f0dd72bded8284e98fd9ce53056b84
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c04dcc65f7518d2d8b32cdce7a7fbb756dd8ec3a
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93057975"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417541"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core의 구성
 
@@ -59,7 +59,7 @@ ASP.NET Core에서 구성은 하나 이상의 [구성 공급자](#cp)를 사용�
 
 1. [ChainedConfigurationProvider](xref:Microsoft.Extensions.Configuration.ChainedConfigurationSource):  기존 `IConfiguration`을 소스로 추가합니다. 기본 구성 사례에서는 [호스트](#hvac) 구성을 추가하고 앱 구성의 첫 번째 소스로 설정합니다.
 1. [JSON 구성 공급자](#file-configuration-provider)를 사용하는 [appsettings.json](#appsettingsjson).
-1. [JSON 구성 공급자](#file-configuration-provider)를 사용하는 *appsettings.* `Environment` *.json*. 예: *appsettings*. ***Production**_._json* 및 *appsettings*.***Development** _._json*.
+1. [JSON 구성 공급자](#file-configuration-provider)를 사용하는 *appsettings.* `Environment` *.json*. 예: *appsettings*.***Production**_._json* 및 *appsettings*.***Development** _._json*.
 1. 앱이 `Development` 환경에서 실행되는 경우 [앱 비밀](xref:security/app-secrets)
 1. [환경 변수 구성 공급자](#evcp)를 사용하는 환경 변수
 1. [명령줄 구성 공급자](#command-line)를 사용하는 명령줄 인수
@@ -85,12 +85,12 @@ ASP.NET Core에서 구성은 하나 이상의 [구성 공급자](#cp)를 사용�
 기본 <xref:Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider>는 다음과 같은 순서로 구성을 로드합니다.
 
 1. *appsettings.json*
-1. *appsettings.* `Environment` *.json* : 예: *appsettings*. ***Production**_._json* 및 *appsettings*.***Development** _._json* 파일. 파일의 환경 버전은 [IHostingEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)을 기반으로 합니다. 자세한 내용은 <xref:fundamentals/environments>를 참조하세요.
+1. *appsettings.* `Environment` *.json*: 예: *appsettings*.***Production**_._json* 및 *appsettings*.***Development** _._json* 파일. 파일의 환경 버전은 [IHostingEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)을 기반으로 합니다. 자세한 내용은 <xref:fundamentals/environments>를 참조하세요.
 
-*appsettings*.`Environment`. *json* 값은 *appsettings.json* 의 키를 재정의합니다. 예를 들어 기본적으로 다음과 같습니다.
+*appsettings*.`Environment`.*json* 값은 *appsettings.json* 의 키를 재정의합니다. 예를 들어 기본적으로 다음과 같습니다.
 
-* 개발 환경에서는 *appsettings*.* **Development** _._json* 구성이 *appsettings.json* 에서 찾은 값을 덮어씁니다.
-* 프로덕션 환경에서는 *appsettings*.* **Production** _._json* 구성이 *appsettings.json* 에서 찾은 값을 덮어씁니다. Azure에 앱을 배포하는 경우를 예로 들 수 있습니다.
+* 개발 환경에서는 *appsettings*.***Development** _._json* 구성이 *appsettings.json* 에서 찾은 값을 덮어씁니다.
+* 프로덕션 환경에서는 *appsettings*.***Production** _._json* 구성이 *appsettings.json* 에서 찾은 값을 덮어씁니다. Azure에 앱을 배포하는 경우를 예로 들 수 있습니다.
 
 <a name="optpat"></a>
 
@@ -129,7 +129,7 @@ ASP.NET Core에서 구성은 하나 이상의 [구성 공급자](#cp)를 사용�
 
 ## <a name="environment-variables"></a>환경 변수
 
-[기본](#default) 구성을 사용하여 <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider>는 *appsettings.json* , *appsettings.* `Environment` *.json* , [비밀 관리자](xref:security/app-secrets)를 읽은 후 환경 변수 키-값 쌍에서 구성을 로드합니다. 따라서 환경에서 읽은 키 값이 *appsettings.json* , *appsettings.* `Environment` *.json* , 비밀 관리자에서 읽은 값을 재정의합니다.
+[기본](#default) 구성을 사용하여 <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider>는 *appsettings.json* , *appsettings.* `Environment` *.json*, [비밀 관리자](xref:security/app-secrets)를 읽은 후 환경 변수 키-값 쌍에서 구성을 로드합니다. 따라서 환경에서 읽은 키 값이 *appsettings.json* , *appsettings.* `Environment` *.json*, 비밀 관리자에서 읽은 값을 재정의합니다.
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
@@ -152,7 +152,7 @@ dotnet run
 
 다음 [setx](/windows-server/administration/windows-commands/setx) 명령을 사용하여 Windows에서 환경 키 및 값을 설정할 수 있습니다. `set`와 달리, `setx` 설정은 유지됩니다. `/M`은 시스템 환경에서 변수를 설정합니다. `/M` 스위치를 사용하지 않으면 사용자 환경 변수가 설정됩니다.
 
-```cmd
+```console
 setx MyKey "My key from setx Environment" /M
 setx Position__Title Setx_Environment_Editor /M
 setx Position__Name Environment_Rick /M
@@ -194,6 +194,44 @@ dotnet run
 
 Azure 데이터베이스 연결 문자열에 대한 자세한 내용은 [연결 문자열 접두사](#constr)를 참조하세요.
 
+### <a name="naming-of-environment-variables"></a>환경 변수 명명
+
+환경 변수의 이름은 *appsettings.json* 파일의 구조를 반영합니다. 계층 구조의 각 요소는 이중 밑줄(권장) 또는 콜론으로 구분됩니다. 요소 구조에 배열이 포함된 경우, 해당 배열 인덱스는 이 경로의 추가 요소 이름으로 처리되어야 합니다. 다음 *appsettings.json* 파일 및 환경 변수라고 표시된 해당 값을 살펴보세요.
+
+**appsettings.json**
+
+```json
+{
+    "SmtpServer": "smtp.example.com",
+    "Logging": [
+        {
+            "Name": "ToEmail",
+            "Level": "Critical",
+            "Args": {
+                "FromAddress": "MySystem@example.com",
+                "ToAddress": "SRE@example.com"
+            }
+        },
+        {
+            "Name": "ToConsole",
+            "Level": "Information"
+        }
+    ]
+}
+```
+
+**환경 변수**
+
+```console
+setx SmtpServer=smtp.example.com
+setx Logging__0__Name=ToEmail
+setx Logging__0__Level=Critical
+setx Logging__0__Args__FromAddress=MySystem@example.com
+setx Logging__0__Args__ToAddress=SRE@example.com
+setx Logging__1__Name=ToConsole
+setx Logging__1__Level=Information
+```
+
 ### <a name="environment-variables-set-in-launchsettingsjson"></a>launchSettings.json에 설정된 환경 변수
 
 *launchSettings.json* 에 설정된 환경 변수는 시스템 환경에 설정된 변수를 재정의합니다.
@@ -204,7 +242,7 @@ Azure 데이터베이스 연결 문자열에 대한 자세한 내용은 [연결 
 
 [기본](#default) 구성을 사용하여 <xref:Microsoft.Extensions.Configuration.CommandLine.CommandLineConfigurationProvider>는 다음 구성 소스 뒤에 명령줄 인수 키-값 쌍에서 구성을 로드합니다.
 
-* *appsettings.json* 및 *appsettings*.`Environment`. *json* 파일.
+* *appsettings.json* 및 *appsettings*.`Environment`.*json* 파일.
 * 개발 환경의 [앱 비밀(비밀 관리자)](xref:security/app-secrets)
 * 환경 변수.
 
@@ -324,7 +362,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 구성 공급자의 일반적인 순서는 다음과 같습니다.
 
 1. *appsettings.json*
-1. *appsettings*.`Environment`. *json*
+1. *appsettings*.`Environment`.*json*
 1. [비밀 관리자](xref:security/app-secrets)
 1. [환경 변수 구성 공급자](#evcp)를 사용하는 환경 변수
 1. [명령줄 구성 공급자](#command-line-configuration-provider)를 사용하는 명령줄 인수
@@ -376,7 +414,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramINI.cs?name=snippet&highlight=10-30)]
 
-위의 코드에서 *MyIniConfig.ini* 및 *MyIniConfig*.`Environment`. *ini* 파일의 설정은 다음의 설정에 의해 재정의됩니다.
+위의 코드에서 *MyIniConfig.ini* 및 *MyIniConfig*.`Environment`.*ini* 파일의 설정은 다음의 설정에 의해 재정의됩니다.
 
 * [환경 변수 구성 공급자](#evcp)
 * [명령줄 구성 공급자](#clcp)
@@ -417,9 +455,9 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramJSON2.cs?name=snippet)]
 
-위의 코드에서 _MyConfig.json* 및 *MyConfig*.`Environment`. *json* 파일의 설정은 다음과 같습니다.
+위의 코드에서 _MyConfig.json* 및 *MyConfig*.`Environment`.*json* 파일의 설정은 다음과 같습니다.
 
-* *appsettings.json* 및 *appsettings*.`Environment`. *json* 파일의 설정을 재정의합니다.
+* *appsettings.json* 및 *appsettings*.`Environment`.*json* 파일의 설정을 재정의합니다.
 * [환경 변수 구성 공급자](#evcp) 및 [명령줄 구성 공급자](#clcp)의 설정에 의해 재정의됩니다.
 
 [샘플 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample)에는 다음 *MyConfig.json* 파일이 포함되어 있습니다.
@@ -438,7 +476,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramXML.cs?name=snippet)]
 
-위의 코드에서 *MyXMLFile.xml* 및 *MyXMLFile*.`Environment`. *xml* 파일의 설정은 다음의 설정에 의해 재정의됩니다.
+위의 코드에서 *MyXMLFile.xml* 및 *MyXMLFile*.`Environment`.*xml* 파일의 설정은 다음의 설정에 의해 재정의됩니다.
 
 * [환경 변수 구성 공급자](#evcp)
 * [명령줄 구성 공급자](#clcp)
@@ -647,31 +685,31 @@ Index: 5  Value: value5
 
 데이터베이스에 구성 값을 저장하는 `EFConfigurationValue` 엔터티를 정의합니다.
 
-*Models/EFConfigurationValue.cs* :
+*Models/EFConfigurationValue.cs*:
 
 [!code-csharp[](index/samples/3.x/ConfigurationSample/Models/EFConfigurationValue.cs?name=snippet1)]
 
 구성된 값을 저장 및 액세스하는 `EFConfigurationContext`를 추가합니다.
 
-*EFConfigurationProvider/EFConfigurationContext.cs* :
+*EFConfigurationProvider/EFConfigurationContext.cs*:
 
 [!code-csharp[](index/samples/3.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationContext.cs?name=snippet1)]
 
 <xref:Microsoft.Extensions.Configuration.IConfigurationSource>를 구현하는 클래스를 만듭니다.
 
-*EFConfigurationProvider/EFConfigurationSource.cs* :
+*EFConfigurationProvider/EFConfigurationSource.cs*:
 
 [!code-csharp[](index/samples/3.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationSource.cs?name=snippet1)]
 
 <xref:Microsoft.Extensions.Configuration.ConfigurationProvider>에서 상속하여 사용자 지정 구성 공급자를 만듭니다. 구성 공급자는 비어 있는 데이터베이스를 초기화합니다. [구성 키는 대/소문자를](#keys)구분하지 않으므로 데이터베이스를 초기화하는 데 사용되는 사전은 대/소문자를 구분하지 않는 비교자([StringComparer.OrdinalIgnoreCase](xref:System.StringComparer.OrdinalIgnoreCase))를 사용하여 생성됩니다.
 
-*EFConfigurationProvider/EFConfigurationProvider.cs* :
+*EFConfigurationProvider/EFConfigurationProvider.cs*:
 
 [!code-csharp[](index/samples/3.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationProvider.cs?name=snippet1)]
 
 `AddEFConfiguration` 확장 메서드를 사용하여 구성 소스를 `ConfigurationBuilder`에 추가할 수 있습니다.
 
-*Extensions/EntityFrameworkExtensions.cs* :
+*Extensions/EntityFrameworkExtensions.cs*:
 
 [!code-csharp[](index/samples/3.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
 
@@ -951,7 +989,7 @@ public class HomeController : Controller
 
 구성 공급자의 일반적인 순서는 다음과 같습니다.
 
-1. 파일( *appsettings.json* , *appsettings.{Environment}.json* , 여기서 `{Environment}`는 앱의 현재 호스팅 환경)
+1. 파일( *appsettings.json* , *appsettings.{Environment}.json*, 여기서 `{Environment}`는 앱의 현재 호스팅 환경)
 1. [Azure Key Vault](xref:security/key-vault-configuration)
 1. [사용자 비밀(비밀 관리자)](xref:security/app-secrets)(개발 환경에서만)
 1. 환경 변수
@@ -1297,7 +1335,7 @@ JSON 파일 구성을 활성화하려면 <xref:Microsoft.Extensions.Configuratio
 `CreateDefaultBuilder`를 사용하여 새 호스트 작성기를 초기화할 때 `AddJsonFile`이 자동으로 두 번 호출됩니다. 이 메서드는 호출되면 다음에서 구성을 로드합니다.
 
 * *appsettings.json* : 이 파일을 먼저 읽었습니다. 파일의 환경 버전이 *appsettings.json* 파일에서 제공한 값을 재정의할 수 있습니다.
-* *appsettings.{Environment}.json* : 파일의 환경 버전은 [IHostingEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)을 기반으로 합니다.
+* *appsettings.{Environment}.json*: 파일의 환경 버전은 [IHostingEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)을 기반으로 합니다.
 
 자세한 내용은 [기본 구성](#default-configuration) 섹션을 참조하세요.
 
@@ -1594,7 +1632,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*>는 전체 POCO 개체 그래프를 바인딩할 수 있습니다. 단순 개체 바인딩과 마찬가지로 공용 읽기/쓰기 속성만 바인딩되었습니다.
 
-다음 샘플은 개체 그래프에`Metadata` 및 `Actors` 클래스가 포함된 `TvShow` 모델( *Models/TvShow.cs* )을 포함합니다.
+다음 샘플은 개체 그래프에`Metadata` 및 `Actors` 클래스가 포함된 `TvShow` 모델(*Models/TvShow.cs*)을 포함합니다.
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/TvShow.cs?name=snippet1)]
 
@@ -1670,7 +1708,7 @@ _config.GetSection("array").Bind(arrayExample);
 
 인덱스 &num;3에 대한 누락된 구성 항목은 `ArrayExample` 인스턴스에 바인딩하기 전에 구성에서 올바른 키-값 쌍을 생성하는 모든 구성 공급자에서 제공할 수 있습니다. 샘플에 누락된 키-값 쌍이 있는 추가 JSON 구성 공급자가 포함된 경우 `ArrayExample.Entries`는 전체 구성 배열과 일치합니다.
 
-*missing_value.json* :
+*missing_value.json*:
 
 ```json
 {
@@ -1741,31 +1779,31 @@ JSON 구성 공급자는 구성 데이터를 다음 키-값 쌍으로 읽습니�
 
 데이터베이스에 구성 값을 저장하는 `EFConfigurationValue` 엔터티를 정의합니다.
 
-*Models/EFConfigurationValue.cs* :
+*Models/EFConfigurationValue.cs*:
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/EFConfigurationValue.cs?name=snippet1)]
 
 구성된 값을 저장 및 액세스하는 `EFConfigurationContext`를 추가합니다.
 
-*EFConfigurationProvider/EFConfigurationContext.cs* :
+*EFConfigurationProvider/EFConfigurationContext.cs*:
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationContext.cs?name=snippet1)]
 
 <xref:Microsoft.Extensions.Configuration.IConfigurationSource>를 구현하는 클래스를 만듭니다.
 
-*EFConfigurationProvider/EFConfigurationSource.cs* :
+*EFConfigurationProvider/EFConfigurationSource.cs*:
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationSource.cs?name=snippet1)]
 
 <xref:Microsoft.Extensions.Configuration.ConfigurationProvider>에서 상속하여 사용자 지정 구성 공급자를 만듭니다. 구성 공급자는 비어 있는 데이터베이스를 초기화합니다.
 
-*EFConfigurationProvider/EFConfigurationProvider.cs* :
+*EFConfigurationProvider/EFConfigurationProvider.cs*:
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationProvider.cs?name=snippet1)]
 
 `AddEFConfiguration` 확장 메서드를 사용하여 구성 소스를 `ConfigurationBuilder`에 추가할 수 있습니다.
 
-*Extensions/EntityFrameworkExtensions.cs* :
+*Extensions/EntityFrameworkExtensions.cs*:
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
 
