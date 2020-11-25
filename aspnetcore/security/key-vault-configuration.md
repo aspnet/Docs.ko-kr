@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: fcd5524bed11cca2380ffd8956f437f742729b55
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: 7f5cd3de38f1e45d9b188c513a0e62ca658b2992
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417615"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035907"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core의 Azure Key Vault 구성 공급자
 
@@ -54,7 +54,7 @@ Azure.Extensions.AspNetCore.Configuration에 패키지 참조를 추가 [ 합니
 
 ## <a name="secret-storage-in-the-development-environment"></a>개발 환경의 비밀 저장소
 
-[암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 암호를 로컬로 설정 합니다. 개발 환경에서 샘플 앱이 로컬 컴퓨터에서 실행 되 면 비밀이 로컬 암호 관리자 저장소에서 로드 됩니다.
+[암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 암호를 로컬로 설정 합니다. 샘플 앱이 개발 환경의 로컬 컴퓨터에서 실행 되는 경우 암호는 로컬 사용자 암호 저장소에서 로드 됩니다.
 
 비밀 관리자 도구에는 `<UserSecretsId>` 앱의 프로젝트 파일에 속성이 필요 합니다. 속성 값 ( `{GUID}` )을 고유한 GUID로 설정 합니다.
 
@@ -225,7 +225,7 @@ config.AddAzureKeyVault(new SecretClient(new URI("Your Key Vault Endpoint"), new
     });
 ```
 
-| 속성         | 설명 |
+| 속성         | Description |
 | ---------------- | ----------- |
 | `Manager`        | `Azure.Extensions.Aspnetcore.Configuration.Secrets` 비밀 로드를 제어 하는 데 사용 되는 인스턴스입니다. |
 | `ReloadInterval` | `Timespan` 변경에 대 한 주요 자격 증명 모음 폴링 시도 사이에 대기 합니다. 기본값은 `null` (구성이 다시 로드 되지 않음)입니다. |
@@ -398,7 +398,7 @@ Microsoft.Extensions.Configuration에 패키지 참조를 추가 [ 합니다. Az
 
 ## <a name="secret-storage-in-the-development-environment"></a>개발 환경의 비밀 저장소
 
-[암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 암호를 로컬로 설정 합니다. 개발 환경에서 샘플 앱이 로컬 컴퓨터에서 실행 되 면 비밀이 로컬 암호 관리자 저장소에서 로드 됩니다.
+[암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 암호를 로컬로 설정 합니다. 샘플 앱이 개발 환경의 로컬 컴퓨터에서 실행 되는 경우 암호는 로컬 사용자 암호 저장소에서 로드 됩니다.
 
 비밀 관리자 도구에는 `<UserSecretsId>` 앱의 프로젝트 파일에 속성이 필요 합니다. 속성 값 ( `{GUID}` )을 고유한 GUID로 설정 합니다.
 
