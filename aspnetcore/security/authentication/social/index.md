@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: 1f7c8cd0716f1ada3517add0d37a09e419f38774
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ca5fd8f746e759d1994dde9a2a0d5b5fd6c88d1a
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053308"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95870453"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core에서 Facebook, Google 및 외부 공급자 인증
 
 작성자: [Valeriy Novytskyy](https://github.com/01binary) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-이 자습서에서는 사용자가 외부 인증 공급 기업의 자격 증명으로 OAuth 2.0을 사용하여 로그인할 수 있도록 ASP.NET Core 3.0 앱을 빌드하는 방법을 보여줍니다.
+이 자습서에서는 사용자가 외부 인증 공급 기업의 자격 증명으로 OAuth 2.0을 사용하여 로그인할 수 있도록 ASP.NET Core 앱을 빌드하는 방법을 보여 줍니다.
 
 [Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins) 및 [Microsoft](xref:security/authentication/microsoft-logins) 공급자는 다음 섹션에서 다루고 이 문서에서 만든 시작 프로젝트를 사용합니다. 다른 공급자는 [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) 및 [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers)와 같은 타사 패키지에서 사용할 수 있습니다.
 
@@ -47,7 +47,7 @@ ms.locfileid: "93053308"
 * 새 프로젝트를 만듭니다.
 * **ASP.NET Core 웹 애플리케이션** 및 **다음** 을 선택합니다.
 * **프로젝트 이름** 을 제공하고 **위치** 를 확인하거나 변경합니다. **만들기** 를 선택합니다.
-* 드롭다운( **ASP.NET Core {x.y}** )에서 최신 버전의 ASP.NET Core를 선택한 다음 **웹 애플리케이션** 을 선택하세요.
+* 드롭다운(**ASP.NET Core {x.y}** )에서 최신 버전의 ASP.NET Core를 선택한 다음 **웹 애플리케이션** 을 선택하세요.
 * **인증** 에서 **변경** 을 선택하고 인증을 **개별 사용자 계정** 으로 설정합니다. **확인** 을 선택합니다.
 * **새 ASP.NET Core 웹 애플리케이션 만들기** 창에서 **만들기** 를 선택합니다.
 
