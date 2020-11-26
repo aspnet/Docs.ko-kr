@@ -19,7 +19,7 @@
 
   [!INCLUDE[](~/includes/trustCertMac.md)]
 
-* Visual Studio에서 **Opt-Cmd-Return**을 눌러 디버거 없이 실행합니다. 또는 메뉴 모음에서 **실행>디버깅하지 않고 시작**으로 이동합니다.
+* Visual Studio에서 **Opt-Cmd-Return** 을 눌러 디버거 없이 실행합니다. 또는 메뉴 모음에서 **실행>디버깅하지 않고 시작** 으로 이동합니다.
 
   Visual Studio가 [Kestrel](xref:fundamentals/servers/kestrel)을 시작하고, 브라우저를 시작하고, `http://localhost:5001`으로 이동합니다.
 

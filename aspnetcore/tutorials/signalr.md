@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: 59c296f3388e71254badb02fa3ae4279005c359c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1dad2264250bf43ec6c1df679b8754a82a5addfd
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056883"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417671"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-no-locsignalr"></a>자습서: ASP.NET Core SignalR 시작하기
 
@@ -82,14 +82,15 @@ ms.locfileid: "93056883"
 
    ```dotnetcli
    dotnet new webapp -o SignalRChat
-   code -r SignalRChat
+   cd SignalRChat
+   code -r .
    ```
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
 * 메뉴에서 **파일 > 새 솔루션** 을 선택합니다.
 
-* **.NET Core > 앱 > 웹 애플리케이션** ( **웹 애플리케이션(Model-View-Controller)** 선택 안 함)을 선택한 후, **다음** 을 선택합니다.
+* **.NET Core > 앱 > 웹 애플리케이션** (**웹 애플리케이션(Model-View-Controller)** 선택 안 함)을 선택한 후, **다음** 을 선택합니다.
 
 * **대상 프레임워크** 가 **.NET Core 3.1** 로 설정되어 있는지 확인한 후 **다음** 을 선택합니다.
 
@@ -320,7 +321,7 @@ SignalR에 SignalR 요청을 전달하도록 SignalR 서버를 구성해야 합�
 
 * 메뉴에서 **파일 > 새 솔루션** 을 선택합니다.    
 
-* **.NET Core > 앱 > ASP.NET Core 웹앱** ( **ASP.NET Core 웹앱(MVC) 선택 안 함** )을 선택합니다.  
+* **.NET Core > 앱 > ASP.NET Core 웹앱**(**ASP.NET Core 웹앱(MVC) 선택 안 함**)을 선택합니다.  
 
 * **새로 만들기** 를 선택합니다.  
 
@@ -342,7 +343,7 @@ SignalR 서버 라이브러리는 `Microsoft.AspNetCore.App` 메타패키지에 
 
   ![클라이언트 쪽 라이브러리 추가 대화 상자 - 라이브러리 선택](signalr/_static/2.x/libman1.png)   
 
-* **Choose specific files** (특정 파일 선택)를 선택하고 *dist/browser* 폴더를 확장한 후 *signalr.js* 및 *signalr.min.js* 를 선택합니다. 
+* **Choose specific files**(특정 파일 선택)를 선택하고 *dist/browser* 폴더를 확장한 후 *signalr.js* 및 *signalr.min.js* 를 선택합니다. 
 
 * **대상 위치** 를 *wwwroot/lib/signalr/* 로 설정하고 **설치** 를 선택합니다.    
 

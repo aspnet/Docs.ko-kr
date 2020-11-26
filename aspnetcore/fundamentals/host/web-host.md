@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 09383cb9067d7fdc2d7b69213b741e7ae823e9ea
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 904b57f95cbc48a8177174dc9be770e8a6abf146
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060016"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035881"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core 웹 호스트
 
@@ -74,7 +74,7 @@ public class Program
 * 다음 순서대로 앱 구성을 로드합니다.
   * *appsettings.json*.
   * *appsettings.{Environment}.json*.
-  * 앱이 항목 어셈블리를 사용하여 `Development` 환경에서 실행되는 경우 [Secret Manager](xref:security/app-secrets).
+  * 앱이 항목 어셈블리를 사용하여 `Development` 환경에서 실행되는 경우 [사용자 암호](xref:security/app-secrets)입니다.
   * 환경 변수.
   * 명령줄 인수.
 * 콘솔 및 디버그 출력에 대한 [로깅](xref:fundamentals/logging/index)을 구성합니다. 로깅은 *appsettings.json* 또는 *appsettings.{Environment}.json* 파일의 로깅 구성 섹션에 지정된 [로그 필터링](xref:fundamentals/logging/index#log-filtering) 규칙을 포함합니다.
@@ -94,7 +94,7 @@ public class Program
         ...
     ```
 
-* 다음 `ConfigureLogging` 호출은 최소 로깅 수준([SetMinimumLevel](/dotnet/api/microsoft.extensions.logging.loggingbuilderextensions.setminimumlevel))을 [LogLevel.Warning](/dotnet/api/microsoft.extensions.logging.loglevel)으로 구성하는 대리자를 추가합니다. 이 설정은 `CreateDefaultBuilder`에 의해 구성된 *appsettings.Development.json* (`LogLevel.Debug`) 및 *appsettings.Production.json* (`LogLevel.Error`)의 설정을 재정의합니다. `ConfigureLogging`이 여러 번 호출될 수 있습니다.
+* 다음 `ConfigureLogging` 호출은 최소 로깅 수준([SetMinimumLevel](/dotnet/api/microsoft.extensions.logging.loggingbuilderextensions.setminimumlevel))을 [LogLevel.Warning](/dotnet/api/microsoft.extensions.logging.loglevel)으로 구성하는 대리자를 추가합니다. 이 설정은 `CreateDefaultBuilder`에 의해 구성된 *appsettings.Development.json*(`LogLevel.Debug`) 및 *appsettings.Production.json*(`LogLevel.Error`)의 설정을 재정의합니다. `ConfigureLogging`이 여러 번 호출될 수 있습니다.
 
     ```csharp
     WebHost.CreateDefaultBuilder(args)
@@ -166,11 +166,11 @@ public class Program
 
 ::: moniker-end
 
-**키** : applicationName  
-**형식** : *string*  
-**기본값** : 앱의 진입점을 포함하는 어셈블리의 이름입니다.  
-**설정 방법** : `UseSetting`  
-**환경 변수** : `ASPNETCORE_APPLICATIONNAME`
+**키**: applicationName  
+**형식**: *string*  
+**기본값**: 앱의 진입점을 포함하는 어셈블리의 이름입니다.  
+**설정 방법**: `UseSetting`  
+**환경 변수**: `ASPNETCORE_APPLICATIONNAME`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -181,11 +181,11 @@ WebHost.CreateDefaultBuilder(args)
 
 이 설정은 시작 오류의 캡처를 제어합니다.
 
-**키** : captureStartupErrors  
-**형식** : *bool* (`true` 또는 `1`)  
-**기본값** : 기본값이 `true`인 IIS 뒤에 있는 Kestrel로 앱이 실행하지 않는 한 기본값은 `false`로 지정됩니다.  
-**설정 방법** : `CaptureStartupErrors`  
-**환경 변수** : `ASPNETCORE_CAPTURESTARTUPERRORS`
+**키**: captureStartupErrors  
+**형식**: *bool*(`true` 또는 `1`)  
+**기본값**: 기본값이 `true`인 IIS 뒤에 있는 Kestrel로 앱이 실행하지 않는 한 기본값은 `false`로 지정됩니다.  
+**설정 방법**: `CaptureStartupErrors`  
+**환경 변수**: `ASPNETCORE_CAPTURESTARTUPERRORS`
 
 `false`인 경우 시작 시 오류가 발생하면 호스트가 종료됩니다. `true`이면 호스트가 시작 시 예외를 캡처하고 서버 시작을 시도합니다.
 
@@ -198,11 +198,11 @@ WebHost.CreateDefaultBuilder(args)
 
 이 설정은 ASP.NET Core가 콘텐츠 파일을 검색하기 시작하는 지점을 결정합니다.
 
-**키** : contentRoot  
-**형식** : *string*  
-**기본값** : 앱 어셈블리가 있는 폴더가 기본값으로 지정됩니다.  
-**설정 방법** : `UseContentRoot`  
-**환경 변수** : `ASPNETCORE_CONTENTROOT`
+**키**: contentRoot  
+**형식**: *string*  
+**기본값**: 앱 어셈블리가 있는 폴더가 기본값으로 지정됩니다.  
+**설정 방법**: `UseContentRoot`  
+**환경 변수**: `ASPNETCORE_CONTENTROOT`
 
 콘텐츠 루트는 또한 [웹 루트](xref:fundamentals/index#web-root)에 대한 기본 경로로 사용됩니다. 콘텐츠 루트 경로가 존재하지 않는 경우 호스트가 시작되지 않습니다.
 
@@ -220,11 +220,11 @@ WebHost.CreateDefaultBuilder(args)
 
 자세한 오류를 캡처해야 하는지를 결정합니다.
 
-**키** : detailedErrors  
-**형식** : *bool* (`true` 또는 `1`)  
-**기본값** : false  
-**설정 방법** : `UseSetting`  
-**환경 변수** : `ASPNETCORE_DETAILEDERRORS`
+**키**: detailedErrors  
+**형식**: *bool*(`true` 또는 `1`)  
+**기본값**: false  
+**설정 방법**: `UseSetting`  
+**환경 변수**: `ASPNETCORE_DETAILEDERRORS`
 
 사용하는 경우(또는 <a href="#environment">환경</a>이 `Development`로 설정된 경우) 앱은 자세한 예외를 캡처합니다.
 
@@ -237,11 +237,11 @@ WebHost.CreateDefaultBuilder(args)
 
 앱의 환경을 설정합니다.
 
-**키** : environment  
-**형식** : *string*  
-**기본값** : Production  
-**설정 방법** : `UseEnvironment`  
-**환경 변수** : `ASPNETCORE_ENVIRONMENT`
+**키**: environment  
+**형식**: *string*  
+**기본값**: Production  
+**설정 방법**: `UseEnvironment`  
+**환경 변수**: `ASPNETCORE_ENVIRONMENT`
 
 환경은 어떠한 값으로도 설정할 수 있습니다. 프레임워크에서 정의된 값은 `Development`, `Staging` 및 `Production`을 포함합니다. 값은 대/소문자를 구분하지 않습니다. 기본적으로 *환경* 은 `ASPNETCORE_ENVIRONMENT` 환경 변수에서 읽습니다. [Visual Studio](https://visualstudio.microsoft.com)를 사용하는 경우 환경 변수는 *launchSettings.json* 파일에서 설정할 수 있습니다. 자세한 내용은 <xref:fundamentals/environments>를 참조하세요.
 
@@ -254,11 +254,11 @@ WebHost.CreateDefaultBuilder(args)
 
 앱의 호스팅 시작 어셈블리를 설정합니다.
 
-**키** : hostingStartupAssemblies  
-**형식** : *string*  
-**기본값** : 빈 문자열  
-**설정 방법** : `UseSetting`  
-**환경 변수** : `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`
+**키**: hostingStartupAssemblies  
+**형식**: *string*  
+**기본값**: 빈 문자열  
+**설정 방법**: `UseSetting`  
+**환경 변수**: `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`
 
 시작 시 로드할 호스팅 시작 어셈블리의 세미콜론으로 구분된 문자열입니다.
 
@@ -273,10 +273,10 @@ WebHost.CreateDefaultBuilder(args)
 
 HTTPS 리디렉션 포트를 설정합니다. [HTTPS 적용](xref:security/enforcing-ssl)에 사용됩니다.
 
-**키** : https_port **형식** : *문자열*
-**기본값** : 기본값은 설정되지 않습니다.
-**설정 방법** : `UseSetting`
-**환경 변수** : `ASPNETCORE_HTTPS_PORT`
+**키**: https_port **형식**: *문자열*
+**기본값**: 기본값은 설정되지 않습니다.
+**설정 방법**: `UseSetting`
+**환경 변수**: `ASPNETCORE_HTTPS_PORT`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -287,11 +287,11 @@ WebHost.CreateDefaultBuilder(args)
 
 시작 시 제외할 호스팅 시작 어셈블리의 세미콜론으로 구분된 문자열입니다.
 
-**키** : hostingStartupExcludeAssemblies  
-**형식** : *string*  
-**기본값** : 빈 문자열  
-**설정 방법** : `UseSetting`  
-**환경 변수** : `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
+**키**: hostingStartupExcludeAssemblies  
+**형식**: *string*  
+**기본값**: 빈 문자열  
+**설정 방법**: `UseSetting`  
+**환경 변수**: `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -302,11 +302,11 @@ WebHost.CreateDefaultBuilder(args)
 
 호스트가 `IServer` 구현으로 구성된 URL 대신에 `WebHostBuilder`로 구성된 URL에서 수신 대기할지 여부를 나타냅니다.
 
-**키** : preferHostingUrls  
-**형식** : *bool* (`true` 또는 `1`)  
-**기본값** : true  
-**설정 방법** : `PreferHostingUrls`  
-**환경 변수** : `ASPNETCORE_PREFERHOSTINGURLS`
+**키**: preferHostingUrls  
+**형식**: *bool*(`true` 또는 `1`)  
+**기본값**: true  
+**설정 방법**: `PreferHostingUrls`  
+**환경 변수**: `ASPNETCORE_PREFERHOSTINGURLS`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -317,11 +317,11 @@ WebHost.CreateDefaultBuilder(args)
 
 앱의 어셈블리에 의해 구성된 호스팅 시작 어셈블리를 포함한 호스팅 시작 어셈블리의 자동 로딩을 방지합니다. 자세한 내용은 <xref:fundamentals/configuration/platform-specific-configuration>를 참조하세요.
 
-**키** : preventHostingStartup  
-**형식** : *bool* (`true` 또는 `1`)  
-**기본값** : false  
-**설정 방법** : `UseSetting`  
-**환경 변수** : `ASPNETCORE_PREVENTHOSTINGSTARTUP`
+**키**: preventHostingStartup  
+**형식**: *bool*(`true` 또는 `1`)  
+**기본값**: false  
+**설정 방법**: `UseSetting`  
+**환경 변수**: `ASPNETCORE_PREVENTHOSTINGSTARTUP`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -332,11 +332,11 @@ WebHost.CreateDefaultBuilder(args)
 
 서버에서 요청을 수신해야 하는 포트와 프로토콜이 있는 IP 주소 또는 호스트 주소를 나타냅니다.
 
-**키** : urls  
-**형식** : *string*  
-**기본** : http://localhost:5000  
-**설정 방법** : `UseUrls`  
-**환경 변수** : `ASPNETCORE_URLS`
+**키**: urls  
+**형식**: *string*  
+**기본**: http://localhost:5000  
+**설정 방법**: `UseUrls`  
+**환경 변수**: `ASPNETCORE_URLS`
 
 서버가 응답해야 하는 세미콜론으로 구분된(;) URL 접두사의 목록으로 설정합니다. 예: `http://localhost:123`. “\*”를 사용하여 서버가 지정된 포트 및 프로토콜을 사용하는 IP 주소 또는 호스트 이름에서 요청을 수신해야 함을 나타냅니다(예: `http://*:5000`). 프로토콜(`http://` 또는 `https://`)은 각 URL에 포함되어 있어야 합니다. 지원되는 형식은 서버마다 다릅니다.
 
@@ -351,11 +351,11 @@ Kestrel에는 자체 엔드포인트 구성 API가 있습니다. 자세한 내�
 
 웹 호스트가 종료될 때까지 기다리는 시간을 지정합니다.
 
-**키** : shutdownTimeoutSeconds  
-**형식** : *int*  
-**기본값** : 5  
-**설정 방법** : `UseShutdownTimeout`  
-**환경 변수** : `ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`
+**키**: shutdownTimeoutSeconds  
+**형식**: *int*  
+**기본값**: 5  
+**설정 방법**: `UseShutdownTimeout`  
+**환경 변수**: `ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`
 
 키가 `UseSetting`을 사용할 때는 *int* 를 받지만(예: `.UseSetting(WebHostDefaults.ShutdownTimeoutKey, "10")`) [UseShutdownTimeout](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useshutdowntimeout) 확장 메서드는 [TimeSpan](/dotnet/api/system.timespan)을 사용합니다.
 
@@ -375,11 +375,11 @@ WebHost.CreateDefaultBuilder(args)
 
 `Startup` 클래스를 검색할 어셈블리를 결정합니다.
 
-**키** : startupAssembly  
-**형식** : *string*  
-**기본값** : 앱의 어셈블리  
-**설정 방법** : `UseStartup`  
-**환경 변수** : `ASPNETCORE_STARTUPASSEMBLY`
+**키**: startupAssembly  
+**형식**: *string*  
+**기본값**: 앱의 어셈블리  
+**설정 방법**: `UseStartup`  
+**환경 변수**: `ASPNETCORE_STARTUPASSEMBLY`
 
 이름(`string`) 또는 형식(`TStartup`)으로 어셈블리를 참조할 수 있습니다. `UseStartup` 메서드가 여러 개 호출된 경우 마지막 메서드가 우선 적용됩니다.
 
@@ -397,11 +397,11 @@ WebHost.CreateDefaultBuilder(args)
 
 앱의 정적 자산에 대한 상대 경로를 설정합니다.
 
-**키** : webroot  
-**형식** : *string*  
-**기본값** : 기본값은 `wwwroot`입니다. *{content root}/wwwroot* 경로가 존재해야 합니다. 경로가 존재하지 않으면 no-op 파일 공급자가 사용됩니다.  
-**설정 방법** : `UseWebRoot`  
-**환경 변수** : `ASPNETCORE_WEBROOT`
+**키**: webroot  
+**형식**: *string*  
+**기본값**: 기본값은 `wwwroot`입니다. *{content root}/wwwroot* 경로가 존재해야 합니다. 경로가 존재하지 않으면 no-op 파일 공급자가 사용됩니다.  
+**설정 방법**: `UseWebRoot`  
+**환경 변수**: `ASPNETCORE_WEBROOT`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -447,7 +447,7 @@ public class Program
 }
 ```
 
-*hostsettings.json* :
+*hostsettings.json*:
 
 ```json
 {

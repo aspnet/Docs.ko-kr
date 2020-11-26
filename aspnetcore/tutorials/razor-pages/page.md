@@ -20,12 +20,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: a9494feacbe783b20a9f5eb98ef9e481f2c713fa
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: d655be26a794f87a0be07046ae1d6415256d592c
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360894"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417632"
 ---
 # <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>3부. ASP.NET Core의 스캐폴드된 Razor Pages
 
@@ -236,12 +236,6 @@ Visual Studio에서는 다음 태그를 태그 도우미에 사용되는 독특�
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
-
-작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-이 자습서에서는 [이전 자습서](xref:tutorials/razor-pages/model)에서 스캐폴딩을 통해 만든 Razor 페이지를 살펴봅니다.
-
-샘플을 [보거나 다운로드합니다](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22).
 
 ## <a name="the-no-loccreate-no-locdelete-details-and-edit-pages"></a>Create, Delete, 세부 정보, 편집 페이지
 
