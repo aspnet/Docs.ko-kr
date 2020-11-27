@@ -5,7 +5,7 @@ description: 데이터에 바인딩하고, 이벤트를 처리하고, 구성 요
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/09/2020
+ms.date: 11/25/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,16 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: cc4604f7f67a6648c96e099572ff27bfed838916
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: b87986442bb8127f03df1f7ecff8167cafa27fdf
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981871"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035686"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>ASP.NET Core Razor 구성 요소 만들기 및 사용
 
-작성자: [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27) 및 [Tobias Bartsch](https://www.aveo-solutions.com/)
+작성자: [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), [Scott Addie](https://github.com/scottaddie), 및 [Tobias Bartsch](https://www.aveo-solutions.com/)
 
 [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
@@ -886,6 +886,64 @@ Blazor는 HTML을 렌더링하므로 SVG(Scalable Vector Graphics) 이미지(`.s
 ```
 
 그러나 인라인 SVG 태그는 일부 시나리오에서 지원되지 않습니다. `<svg>` 태그를 구성 요소 파일(`.razor`)에 직접 배치하면 기본 이미지 렌더링이 지원되지만 고급 시나리오 중 아직 지원되지 않는 시나리오가 많습니다. 예를 들어, `<use>` 태그는 현재 적용되지 않으며 [`@bind`][10]를 일부 SVG 태그에서는 사용할 수 없습니다. 자세한 내용은 [Blazor(dotnet/aspnetcore #18271)에서 SVG 지원](https://github.com/dotnet/aspnetcore/issues/18271)을 참조하세요.
+
+## <a name="whitespace-rendering-behavior"></a>공백 렌더링 동작
+
+::: moniker range=">= aspnetcore-5.0"
+
+[`@preservewhitespace`](xref:mvc/views/razor#preservewhitespace) 지시문이 `true` 값과 함께 사용되지 않을 때 다음과 같은 추가 공백이 제거됩니다.
+
+* 요소 내의 선행 또는 후행 공백.
+* `RenderFragment` 매개 변수 내의 선행 또는 후행 공백. 예: 자식 콘텐츠가 다른 구성 요소로 전달됨.
+* C# 코드 블록(예: `@if` 또는 `@foreach`)의 앞 또는 뒤에 있는 공백.
+
+`white-space: pre`와 같은 CSS 규칙을 사용하는 경우 공백 제거는 렌더링된 출력에 영향을 줄 수 있습니다. 성능 최적화를 사용하지 않고 공백을 유지하려면 다음 작업 중 하나를 수행합니다.
+
+* `.razor` 파일의 맨 위에 `@preservewhitespace true` 지시문을 추가하여 특정 구성 요소에 기본 설정을 적용합니다.
+* `_Imports.razor` 파일 안에 `@preservewhitespace true` 지시문을 추가하여 전체 하위 디렉터리 또는 전체 프로젝트에 기본 설정을 적용합니다.
+
+대부분의 경우 앱이 일반적으로 계속해서 정상적으로(그러나 더 빠르게) 동작하므로 수행해야 할 조치가 없습니다. 공백 제거 시 특정 구성 요소에 문제가 발생하는 경우에는 해당 구성 요소에서 `@preservewhitespace true`를 사용하여 이 최적화를 사용하지 않도록 설정합니다.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+구성 요소의 소스 코드에서는 공백이 유지됩니다. 공백만 있는 텍스트는 시각적 효과가 없는 경우에도 브라우저의 DOM(문서 개체 모델)에서 렌더링됩니다.
+
+다음 Razor 구성 요소를 고려해 보세요.
+
+```razor
+<ul>
+    @foreach (var item in Items)
+    {
+        <li>
+            @item.Text
+        </li>
+    }
+</ul>
+```
+
+앞의 예제에서는 다음과 같은 불필요한 공백을 렌더링합니다.
+
+* `@foreach` 코드 블록의 외부
+* `<li>` 요소의 주위
+* `@item.Text` 출력의 주위
+
+100개의 항목을 포함하는 목록의 경우 402개의 공백 영역이 있으며, 추가 공백은 렌더링된 출력에 시각적으로 영향을 주지 않습니다.
+
+구성 요소의 정적 HTML을 렌더링하면 태그 안의 공백이 유지되지 않습니다. 예를 들어, 렌더링된 출력에서 다음 구성 요소의 소스를 살펴보겠습니다.
+
+```razor
+<img     alt="My image"   src="img.png"     />
+```
+
+앞의 Razor 마크업에서 공백이 유지되지 않습니다.
+
+```razor
+<img alt="My image" src="img.png" />
+```
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>추가 자료
 

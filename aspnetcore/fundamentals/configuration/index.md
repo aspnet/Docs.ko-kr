@@ -5,7 +5,7 @@ description: 구성 API를 사용하여 ASP.NET Core 앱을 구성하는 방법�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/23/2020
+ms.date: 11/24/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: c04dcc65f7518d2d8b32cdce7a7fbb756dd8ec3a
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: 97ee00dd37ed4eef1c013e0f45b598a79f3f260c
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417541"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035868"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core의 구성
 
@@ -108,20 +108,20 @@ ASP.NET Core에서 구성은 하나 이상의 [구성 공급자](#cp)를 사용�
 
 <a name="security"></a>
 
-## <a name="security-and-secret-manager"></a>보안 및 비밀 관리자
+## <a name="security-and-user-secrets"></a>보안 및 사용자 비밀
 
 구성 데이터 지침:
 
-구성 공급자 코드 또는 일반 텍스트 구성 파일에 암호 또는 기타 중요한 데이터를 절대 저장하지 마세요. [비밀 관리자](xref:security/app-secrets)를 사용하여 개발에 사용되는 비밀을 저장할 수 있습니다.
+구성 공급자 코드 또는 일반 텍스트 구성 파일에 암호 또는 기타 중요한 데이터를 절대 저장하지 마세요. [비밀 관리자](xref:security/app-secrets) 도구를 사용하여 개발에 사용되는 비밀을 저장할 수 있습니다.
 * 개발 또는 테스트 환경에서 프로덕션 비밀을 사용하지 마세요.
 * 의도치 않게 소스 코드 리포지토리에 커밋되는 일이 없도록 프로젝트 외부에서 비밀을 지정하세요.
 
-[기본](#default)적으로, [비밀 관리자](xref:security/app-secrets)는 *appsettings.json* 및 *appsettings.* `Environment` *.json* 뒤에 구성 설정을 읽습니다.
+[기본적으로](#default), 사용자 비밀 구성 소스는 JSON 구성 소스 뒤에 등록됩니다. 따라서 사용자 비밀 키가 *appsettings.json* 및 *appsettings.* `Environment` *.json* 의 키보다 우선합니다.
 
 암호 또는 기타 중요한 데이터 저장에 대한 자세한 정보:
 
 * <xref:fundamentals/environments>
-* <xref:security/app-secrets>:  환경 변수를 사용하여 중요한 데이터를 저장하는 방법에 대한 조언을 포함합니다. 비밀 관리자는 [파일 구성 공급자](#fcp)를 사용하여 사용자 비밀을 로컬 시스템의 JSON 파일에 저장합니다.
+* <xref:security/app-secrets>: 환경 변수를 사용하여 중요한 데이터를 저장하는 방법에 대한 조언을 포함합니다. 비밀 관리자 도구는 [파일 구성 공급자](#fcp)를 사용하여 사용자 비밀을 로컬 시스템의 JSON 파일에 저장합니다.
 
 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)가 ASP.NET Core 앱에 대한 앱 비밀을 안전하게 저장합니다. 자세한 내용은 <xref:security/key-vault-configuration>를 참조하세요.
 
@@ -129,7 +129,7 @@ ASP.NET Core에서 구성은 하나 이상의 [구성 공급자](#cp)를 사용�
 
 ## <a name="environment-variables"></a>환경 변수
 
-[기본](#default) 구성을 사용하여 <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider>는 *appsettings.json* , *appsettings.* `Environment` *.json*, [비밀 관리자](xref:security/app-secrets)를 읽은 후 환경 변수 키-값 쌍에서 구성을 로드합니다. 따라서 환경에서 읽은 키 값이 *appsettings.json* , *appsettings.* `Environment` *.json*, 비밀 관리자에서 읽은 값을 재정의합니다.
+[기본](#default) 구성을 사용하여 <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider>는 *appsettings.json* , *appsettings.* `Environment` *.json*, [사용자 비밀](xref:security/app-secrets)을 읽은 후 환경 변수 키-값 쌍에서 구성을 로드합니다. 따라서 환경에서 읽은 키 값이 *appsettings.json* , *appsettings.* `Environment` *.json* 및 사용자 비밀에서 읽은 값을 재정의합니다.
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
@@ -243,7 +243,7 @@ setx Logging__1__Level=Information
 [기본](#default) 구성을 사용하여 <xref:Microsoft.Extensions.Configuration.CommandLine.CommandLineConfigurationProvider>는 다음 구성 소스 뒤에 명령줄 인수 키-값 쌍에서 구성을 로드합니다.
 
 * *appsettings.json* 및 *appsettings*.`Environment`.*json* 파일.
-* 개발 환경의 [앱 비밀(비밀 관리자)](xref:security/app-secrets)
+* 개발 환경의 [앱 비밀](xref:security/app-secrets).
 * 환경 변수.
 
 [기본](#default)적으로, 명령줄에 설정된 구성 값은 다른 모든 구성 공급자를 사용하여 설정된 구성 값을 재정의합니다.
@@ -355,7 +355,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 | [파일 구성 공급자](#file-configuration-provider) | INI, JSON 및 XML 파일 |
 | [파일별 키 구성 공급자](#key-per-file-configuration-provider) | 디렉터리 파일 |
 | [메모리 구성 공급자](#memory-configuration-provider) | 메모리 내 컬렉션 |
-| [비밀 관리자](xref:security/app-secrets)  | 사용자 프로필 디렉터리의 파일 |
+| [사용자 비밀](xref:security/app-secrets) | 사용자 프로필 디렉터리의 파일 |
 
 구성 공급자에서 지정한 순서로 구성 소스를 읽습니다. 앱에 필요한 기본 구성 소스에 대한 우선 순위에 맞게 구성 공급자를 코드에 정렬하세요.
 
@@ -363,7 +363,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 1. *appsettings.json*
 1. *appsettings*.`Environment`.*json*
-1. [비밀 관리자](xref:security/app-secrets)
+1. [사용자 비밀](xref:security/app-secrets)
 1. [환경 변수 구성 공급자](#evcp)를 사용하는 환경 변수
 1. [명령줄 구성 공급자](#command-line-configuration-provider)를 사용하는 명령줄 인수
 
@@ -865,7 +865,7 @@ using Microsoft.Extensions.Configuration;
 * 앱 구성은 다음에 의해 제공됩니다.
   * [파일 구성 공급자](#file-configuration-provider)를 사용하는 *appsettings.json* .
   * [파일 구성 공급자](#file-configuration-provider)를 사용하는 *appsettings.{Environment}.json*
-  * 앱이 항목 어셈블리를 사용하여 `Development` 환경에서 실행되는 경우 [Secret Manager](xref:security/app-secrets)입니다.
+  * 앱이 항목 어셈블리를 사용하여 `Development` 환경에서 실행되는 경우 [사용자 암호](xref:security/app-secrets)입니다.
   * [환경 변수 구성 공급 기업](#environment-variables-configuration-provider)을 사용하는 환경 변수
   * [명령줄 구성 공급자](#command-line-configuration-provider)를 사용하는 명령줄 인수
 
@@ -880,7 +880,7 @@ using Microsoft.Extensions.Configuration;
 자세한 내용은 다음 항목을 참조하세요.
 
 * <xref:fundamentals/environments>
-* <xref:security/app-secrets>: 환경 변수를 사용하여 중요한 데이터를 저장하는 방법에 대한 조언을 포함합니다. 비밀 관리자는 파일 구성 공급자를 사용하여 사용자 비밀을 로컬 시스템의 JSON 파일에 저장합니다. 파일 구성 공급자에 대해서는 이 항목의 뒷부분에서 설명합니다.
+* <xref:security/app-secrets>: 환경 변수를 사용하여 중요한 데이터를 저장하는 방법에 대한 조언을 포함합니다. 비밀 관리자 도구는 파일 구성 공급자를 사용하여 사용자 비밀을 로컬 시스템의 JSON 파일에 저장합니다. 파일 구성 공급자에 대해서는 이 항목의 뒷부분에서 설명합니다.
 
 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)가 ASP.NET Core 앱에 대한 앱 비밀을 안전하게 저장합니다. 자세한 내용은 <xref:security/key-vault-configuration>를 참조하세요.
 
@@ -983,7 +983,7 @@ public class HomeController : Controller
 | [파일 구성 공급자](#file-configuration-provider) | 파일(INI, JSON, XML) |
 | [파일별 키 구성 공급자](#key-per-file-configuration-provider) | 디렉터리 파일 |
 | [메모리 구성 공급자](#memory-configuration-provider) | 메모리 내 컬렉션 |
-| [사용자 비밀(비밀 관리자)](xref:security/app-secrets)(‘보안’ 항목) | 사용자 프로필 디렉터리의 파일 |
+| [사용자 비밀](xref:security/app-secrets)(*보안* 항목) | 사용자 프로필 디렉터리의 파일 |
 
 시작 시 구성 공급자에서 지정한 순서로 구성 소스를 읽습니다. 이 항목의 구성 공급자는 코드에서 정렬하는 순서가 아니라 사전 순으로 설명되어 있습니다. 앱에 필요한 기본 구성 소스에 대한 우선 순위에 맞게 구성 공급자를 코드에 정렬하세요.
 
@@ -991,7 +991,7 @@ public class HomeController : Controller
 
 1. 파일( *appsettings.json* , *appsettings.{Environment}.json*, 여기서 `{Environment}`는 앱의 현재 호스팅 환경)
 1. [Azure Key Vault](xref:security/key-vault-configuration)
-1. [사용자 비밀(비밀 관리자)](xref:security/app-secrets)(개발 환경에서만)
+1. [사용자 암호](xref:security/app-secrets)(개발 환경에만 해당)
 1. 환경 변수
 1. 명령줄 인수
 
@@ -1067,7 +1067,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 `CreateDefaultBuilder`는 다음 항목도 로드합니다.
 
 * *appsettings.json* 및 *appsettings.{Environment}.json* 파일에서 선택적 구성.
-* [사용자 비밀(비밀 관리자)](xref:security/app-secrets)(개발 환경에서)
+* 개발 환경의 [사용자 비밀](xref:security/app-secrets).
 * 환경 변수.
 
 `CreateDefaultBuilder`는 명령줄 구성 공급자를 마지막에 추가합니다. 따라서 런타임에 전달된 명령줄 인수가 다른 공급자에서 설정한 구성을 재정의합니다.
@@ -1182,7 +1182,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 * 접두사가 없는 `AddEnvironmentVariables`의 호출을 통한 접두사가 없는 환경 변수의 앱 구성
 * *appsettings.json* 및 *appsettings.{Environment}.json* 파일에서 선택적 구성.
-* [사용자 비밀(비밀 관리자)](xref:security/app-secrets)(개발 환경에서)
+* 개발 환경의 [사용자 비밀](xref:security/app-secrets).
 * 명령줄 인수.
 
 사용자 비밀 및 *appsettings* 파일을 통해 구성을 설정한 후 환경 변수 구성 공급자를 호출합니다. 이 위치에서 공급자를 호출하면 런타임에 환경 변수를 읽어 들여 사용자 비밀 및 *appsettings* 파일로 설정한 구성을 재정의할 수 있습니다.
@@ -1342,7 +1342,7 @@ JSON 파일 구성을 활성화하려면 <xref:Microsoft.Extensions.Configuratio
 `CreateDefaultBuilder`는 다음 항목도 로드합니다.
 
 * 환경 변수.
-* [사용자 비밀(비밀 관리자)](xref:security/app-secrets)(개발 환경에서)
+* 개발 환경의 [사용자 비밀](xref:security/app-secrets).
 * 명령줄 인수.
 
 JSON 구성 공급자를 먼저 설정합니다. 따라서 사용자 비밀, 환경 변수 및 명령줄 인수가 *appsettings* 파일에서 설정한 구성을 재정의할 수 있습니다.

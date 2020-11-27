@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: ca5fd8f746e759d1994dde9a2a0d5b5fd6c88d1a
-ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
+ms.openlocfilehash: f7bc7c6a14d014f8c3c283fb09718b9191b7b478
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95870453"
+ms.locfileid: "96035829"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core에서 Facebook, Google 및 외부 공급자 인증
 
@@ -86,7 +86,7 @@ ms.locfileid: "95870453"
 
 ## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a>SecretManager를 사용하여 로그인 공급자에 의해 할당된 토큰 저장
 
-소셜 로그인 공급자는 등록 프로세스 중에 **애플리케이션 ID** 및 **애플리케이션 암호** 토큰을 할당합니다. 정확한 토큰 이름은 공급자에 따라 달라집니다. 이러한 토큰은 앱이 API에 액세스하는 데 사용하는 자격 증명을 나타냅니다. 토큰은 [Secret Manager](xref:security/app-secrets#secret-manager)의 도움으로 앱 구성에 연결할 수 있는 "암호"를 구성합니다. Secret Manager는 *appsettings.json* 같은 구성 파일에 토큰을 저장하는 보다 안전한 대안입니다.
+소셜 로그인 공급자는 등록 프로세스 중에 **애플리케이션 ID** 및 **애플리케이션 암호** 토큰을 할당합니다. 정확한 토큰 이름은 공급자에 따라 달라집니다. 이러한 토큰은 앱이 API에 액세스하는 데 사용하는 자격 증명을 나타냅니다. 토큰은 [Secret Manager](xref:security/app-secrets#secret-manager)의 도움으로 앱 구성에 연결할 수 있는 “사용자 비밀”을 구성합니다. 사용자 비밀은 *appsettings.json* 같은 구성 파일에 토큰을 저장하는 보다 안전한 대안입니다.
 
 > [!IMPORTANT]
 > Secret Manager는 개발 목적으로만 사용됩니다. [Azure Key Vault 구성 제공자](xref:security/key-vault-configuration)로 Azure 테스트 및 프로덕션 암호를 저장하고 보호할 수 있습니다.
