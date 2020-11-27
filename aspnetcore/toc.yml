@@ -182,6 +182,9 @@
             - name: 로그 및 모니터 >>
               display: 'tutorial, kubernetes, aks, acr, docker, serilog'
               href: /learn/modules/microservices-logging-aspnet-core/
+            - name: 기능 플래그 구현 >>
+              display: 'tutorial, kubernetes, aks, acr, docker'
+              href: /learn/modules/microservices-configuration-aspnet-core/
         - name: 데이터 액세스 >>
           displayName: 'tutorial, ef, entity framework'
           href: /learn/modules/persist-data-ef-core/
