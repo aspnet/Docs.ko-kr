@@ -5,7 +5,7 @@ description: .NET 앱용 gRPC를 구성하는 방법을 알아봅니다.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.custom: mvc
-ms.date: 05/26/2020
+ms.date: 11/23/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/configuration
-ms.openlocfilehash: e0b782a254cafc440638ca77a3b9ac885dc3575e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 617c042c628dc431391f39c2ecb2d2f9c9463fa5
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059964"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417593"
 ---
 # <a name="grpc-for-net-configuration"></a>.NET용 gRPC 구성
 
@@ -65,6 +65,7 @@ gRPC 클라이언트 구성은 `GrpcChannelOptions`에 설정되어 있습니다
 | <span style="word-break:normal;word-wrap:normal">MaxReceiveMessageSize</span> | 4MB | 클라이언트에서 받을 수 있는 최대 메시지 크기(바이트)입니다. 클라이언트에서 이 한도를 초과하는 메시지를 수신하면 예외가 throw됩니다. 이 값을 늘리면 클라이언트가 더 큰 메시지를 받을 수 있지만 메모리 사용에 부정적인 영향을 줄 수 있습니다. `null`로 설정하면 메시지 크기의 제한이 없습니다. |
 | 자격 증명 | `null` | `ChannelCredentials` 인스턴스입니다. 자격 증명은 gRPC 호출에 인증 메타데이터를 추가하는 데 사용됩니다. |
 | CompressionProviders | gzip | 메시지를 압축하고 압축을 푸는 데 사용되는 압축 공급자의 컬렉션입니다. 사용자 지정 압축 공급자를 만들어 컬렉션에 추가할 수 있습니다. 구성된 기본 공급자는 **gzip** 압축을 지원합니다. |
+| ThrowOperationCanceledOnCancellation | `false` | `true`로 설정된 경우 호출이 취소되었거나 기한이 지났으면 클라이언트가 <xref:System.OperationCanceledException>을 throw합니다. |
 
 코드는 다음과 같습니다.
 

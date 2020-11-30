@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: ab5be222416e61fcff90c5130ca91ad4a2a5c9b0
-ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
+ms.openlocfilehash: 25ada6e3a210ed830514e69da7d5212264b4b91e
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94674006"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417567"
 ---
 # <a name="tutorial-part-5-apply-migrations-to-the-contoso-university-sample"></a>자습서: 5부, Contoso University 샘플에 마이그레이션 적용
 
@@ -53,9 +53,10 @@ ms.locfileid: "94674006"
 
 ## <a name="drop-the-database"></a>데이터베이스 삭제
 
-데이터베이스를 삭제합니다. **SSOX(SQL Server 개체 탐색기)** 또는 `database drop` CLI 명령을 사용합니다.
+EF Core 도구를 [전역 도구](/ef/core/miscellaneous/cli/dotnet)로서 설치하고 데이터베이스를 삭제합니다.
 
  ```dotnetcli
+ dotnet tool install --global dotnet-ef
  dotnet ef database drop
  ```
 
@@ -76,11 +77,8 @@ ms.locfileid: "94674006"
 명령 창에서 다음 명령을 입력합니다.
 
 ```dotnetcli
-dotnet tool install --global dotnet-ef
 dotnet ef migrations add InitialCreate
 ```
-
-`dotnet tool install --global dotnet-ef`는 `dotnet ef`를 [전역 도구](/ef/core/miscellaneous/cli/dotnet)로 설치합니다.
 
 위의 명령에서는 다음과 유사한 출력이 표시됩니다.
 

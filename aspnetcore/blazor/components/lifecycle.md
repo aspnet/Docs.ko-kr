@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: f435870e1e73fdb1296699ed62052b72b3b78abf
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: 8a2dc802a1d05ead7445e350e3aef0ce7dfb2bb8
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637719"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981923"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>ASP.NET Core Blazor 수명 주기
 
@@ -39,7 +39,7 @@ Blazor 프레임워크는 동기 및 비동기 수명 주기 메서드를 포함
 1. 구성 요소가 요청 시 처음 렌더링되는 경우:
    * 구성 요소의 인스턴스를 만듭니다.
    * 속성 삽입을 수행합니다. [`SetParametersAsync`](#before-parameters-are-set) 를 실행합니다.
-   * [`OnInitialized{Async}`](#component-initialization-methods)를 호출합니다. <xref:System.Threading.Tasks.Task>가 반환되면 <xref:System.Threading.Tasks.Task>가 대기한 다음, 구성 요소가 렌더링됩니다. <xref:System.Threading.Tasks.Task>가 반환되지 않으면 구성 요소를 렌더링합니다.
+   * [`OnInitialized{Async}`](#component-initialization-methods)를 호출합니다. <xref:System.Threading.Tasks.Task>가 반환되면 <xref:System.Threading.Tasks.Task>가 대기한 다음, 구성 요소가 렌더링됩니다. <xref:System.Threading.Tasks.Task>가 반환되지 않으면 구성 요소가 렌더링됩니다.
 1. [`OnParametersSet{Async}`](#after-parameters-are-set)를 호출하고 구성 요소를 렌더링합니다. <xref:System.Threading.Tasks.Task>가 `OnParametersSetAsync`에서 반환되면 <xref:System.Threading.Tasks.Task>가 대기한 다음 구성 요소가 렌더링됩니다.
 
 ![Blazor 내 Razor 구성 요소의 구성 요소 수명 주기 이벤트](lifecycle/_static/lifecycle1.png)

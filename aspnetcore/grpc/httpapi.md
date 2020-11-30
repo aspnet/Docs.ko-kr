@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/httpapi
-ms.openlocfilehash: 45e2a1a5e6a9f00294147db769454b78c5b866e5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 64d18114e2fe9ee10edb902a98a281c3cd9f3393
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059938"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417580"
 ---
 # <a name="create-json-web-apis-from-grpc"></a>GRPC에서 JSON 웹 API 만들기
 
@@ -137,7 +137,7 @@ gRPC HTTP API에 관한 개발자의 관심을 측정하려고 합니다. gRPC H
 
 grpc-gateway와 gRPC HTTP API의 가장 큰 차이점은 grpc-gateway는 코드 생성을 사용하여 역방향 프록시 서버를 만든다는 것입니다. 역방향 프록시는 RESTful 호출을 gRPC로 변환한 다음, gRPC 서비스로 보냅니다.
 
-grpc-gateway 설치 및 사용에 대해서는 [grpc-gateway 문서](https://grpc-ecosystem.github.io/grpc-gateway/docs/usage.html)를 참조하세요.
+grpc-gateway 설치 및 사용에 대해서는 [grpc-gateway 추가 정보](https://github.com/grpc-ecosystem/grpc-gateway/#grpc-gateway)를 참조하세요.
 
 ## <a name="additional-resources"></a>추가 자료
 

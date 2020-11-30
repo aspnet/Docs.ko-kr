@@ -4,7 +4,7 @@ author: rick-anderson
 description: dotnet aspnet codegenerator 명령은 ASP.NET Core 프로젝트를 스캐폴딩합니다.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 07/04/2019
+ms.date: 11/16/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: 88d761b09833a14de5af9f9610753174867aa09a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 8844b0014cac58f414d79df4c64bc0efac75bfe1
+ms.sourcegitcommit: d29535ea0b4197443fd884aaa6e5b4b763d04fc7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059990"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920705"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -31,9 +31,9 @@ ms.locfileid: "93059990"
 
 `dotnet aspnet-codegenerator`는 ASP.NET Core 스캐폴딩 엔진을 실행합니다. `dotnet aspnet-codegenerator`는 명령줄에서 스캐폴딩하는 경우에만 필요하며, Visual Studio에서 스캐폴딩을 사용하는 경우에는 필요하지 않습니다.
 
-이 문서는 [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/2.1) 이상에 적용됩니다.
+## <a name="install-and-update-aspnet-codegenerator"></a>Install and update aspnet-codegenerator 설치 및 업데이트
 
-## <a name="installing-aspnet-codegenerator"></a>aspnet-codegenerator 설치
+[.NET SDK](https://dotnet.microsoft.com/download)를 설치합니다.
 
 `dotnet-aspnet-codegenerator`는 설치가 필요한 [전역 도구](/dotnet/core/tools/global-tools)입니다. 다음 명령은 `dotnet-aspnet-codegenerator` 도구의 안정적인 최신 버전을 설치합니다.
 
@@ -45,6 +45,17 @@ dotnet tool install -g dotnet-aspnet-codegenerator
 
 ```dotnetcli
 dotnet tool update -g dotnet-aspnet-codegenerator
+```
+
+## <a name="uninstall-aspnet-codegenerator"></a>aspnet-codegenerator 제거
+
+문제를 해결하려면 `aspnet-codegenerator`를 제거해야 할 수 있습니다. 예를 들어, `aspnet-codegenerator`의 미리 보기 버전을 설치한 경우 릴리스 버전을 설치하기 전에 제거해야 합니다.
+
+다음 명령은 `dotnet-aspnet-codegenerator` 도구를 제거하고 안정적인 최신 버전을 설치합니다.
+
+```dotnetcli
+dotnet tool uninstall -g dotnet-aspnet-codegenerator
+dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
 ## <a name="synopsis"></a>개요

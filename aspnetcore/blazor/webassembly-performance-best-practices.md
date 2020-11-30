@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 423745d734d8da2b8f3f974f9b4dd1a0265d4877
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: cc090b4e56745e6b010e4a7ee17332b0d3a95560
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93054738"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417385"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>ASP.NET Core Blazor WebAssembly 성능 모범 사례
 
@@ -32,8 +32,8 @@ ms.locfileid: "93054738"
 
 Blazor WebAssembly는 세심하게 디자인되고 최적화되어 가장 현실적인 애플리케이션 UI 시나리오에서 고성능을 구현합니다. 하지만 개발자가 적합한 패턴과 기능을 사용해야만 최적의 결과를 얻을 수 있습니다. 다음 측면을 고려합니다.
 
-* **런타임 처리량** : .NET 코드는 WebAssembly 런타임 내의 인터프리터에서 실행되므로 CPU 처리량이 제한됩니다. 까다로운 시나리오에서 앱은 [렌더링 속도 최적화](#optimize-rendering-speed)를 활용합니다.
-* **시작 시간** : 앱은 브라우저에 .NET 런타임을 전송하므로 [애플리케이션 다운로드 크기를 최소화](#minimize-app-download-size)하는 기능을 사용해야 합니다.
+* **런타임 처리량**: .NET 코드는 WebAssembly 런타임 내의 인터프리터에서 실행되므로 CPU 처리량이 제한됩니다. 까다로운 시나리오에서 앱은 [렌더링 속도 최적화](#optimize-rendering-speed)를 활용합니다.
+* **시작 시간**: 앱은 브라우저에 .NET 런타임을 전송하므로 [애플리케이션 다운로드 크기를 최소화](#minimize-app-download-size)하는 기능을 사용해야 합니다.
 
 ## <a name="optimize-rendering-speed"></a>렌더링 속도 최적화
 

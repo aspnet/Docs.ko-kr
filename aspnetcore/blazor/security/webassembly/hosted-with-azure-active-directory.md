@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: 17f96be762ece8c59577445eb2ae630a8ee3b3dd
-ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
+ms.openlocfilehash: 0542e7556b82c22a8844f4d1f4b2ba852a420246
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234480"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025071"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>Azure Active Directory를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호
 
@@ -35,7 +35,11 @@ ms.locfileid: "93234480"
 ::: moniker range=">= aspnetcore-5.0"
 
 > [!NOTE]
-> AAD 조직 디렉터리에서 계정을 지원하도록 구성된 Visual Studio에서 만든 Blazor WebAssembly 앱에 대해 Visual Studio는 프로젝트 생성 시 앱을 올바르게 구성하지 않습니다. 이 문제는 Visual Studio의 이후 릴리스에서 해결될 예정입니다. 이 문서에서는 .NET Core CLI의 `dotnet new` 명령을 사용하여 앱을 만드는 방법을 보여 줍니다. ASP.NET Core 5.0의 최신 Blazor 템플릿에 대해 IDE를 업데이트하기 전에 Visual Studio를 사용하여 앱을 만들려는 경우 이 문서의 각 섹션을 참조하고 Visual Studio에서 앱을 만든 후 앱의 구성을 확인하거나 업데이트하세요.
+> Visual Studio에서 만들어졌으며 AAD 조직 디렉터리에서 계정을 지원하도록 구성된 Blazor WebAssembly 앱에 대해, Visual Studio는 현재 프로젝트 생성 시 솔루션의 프로젝트 또는 Azure Portal 앱 등록을 올바르게 구성하지 않습니다. 이 문제는 Visual Studio의 이후 릴리스에서 해결될 예정입니다.
+>
+> 이 문서에서는 .NET CLI `dotnet new` 명령을 사용하여 솔루션 및 Azure 앱 포털 등록을 만드는 방법과 Azure Portal에서 앱 등록을 수동으로 만드는 방법을 보여 줍니다.
+>
+> IDE가 업데이트되기 전에 Visual Studio를 사용하여 솔루션 및 Azure 앱 등록을 만들려면 **‘이 문서의 각 섹션’** 을 참조하고 Visual Studio가 솔루션을 만든 후에 앱의 구성 및 앱의 등록을 확인 또는 업데이트하세요.
 
 ::: moniker-end
 
@@ -50,8 +54,8 @@ ms.locfileid: "93234480"
 [빠른 시작: Microsoft ID 플랫폼에 애플리케이션 등록](/azure/active-directory/develop/quickstart-register-app) 및 후속 Azure AAD 항목의 지침에 따라 ‘서버 API 앱’에 대해 AAD 앱을 등록하고 다음을 수행합니다.
 
 1. **Azure Active Directory** > **앱 등록** 에서 **새 등록** 을 선택합니다.
-1. 앱의 **이름** 을 지정합니다(예: **Blazor Server AAD** ).
-1. **지원되는 계정 유형** 을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만** (단일 테넌트)을 선택합니다.
+1. 앱의 **이름** 을 지정합니다(예: **Blazor Server AAD**).
+1. **지원되는 계정 유형** 을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만**(단일 테넌트)을 선택합니다.
 1. 이 시나리오에서는 ‘서버 API 앱’에 **리디렉션 URI** 가 필요하지 않으므로 드롭다운이 **웹** 으로 설정된 상태로 두고 리디렉션 URI를 입력하지 않습니다.
 1. **권한** > **openid 및 offline_access 권한에 대한 관리자 동의 허용** 확인란의 선택을 취소합니다.
 1. **등록** 을 선택합니다.
@@ -86,8 +90,8 @@ ms.locfileid: "93234480"
 ::: moniker range=">= aspnetcore-5.0"
 
 1. **Azure Active Directory** > **앱 등록** 에서 **새 등록** 을 선택합니다.
-1. 앱의 **이름** 을 지정합니다(예: **Blazor 클라이언트 AAD** ).
-1. **지원되는 계정 유형** 을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만** (단일 테넌트)을 선택합니다.
+1. 앱의 **이름** 을 지정합니다(예: **Blazor 클라이언트 AAD**).
+1. **지원되는 계정 유형** 을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만**(단일 테넌트)을 선택합니다.
 1. **리디렉션 URI** 드롭다운은 **SPA(단일 페이지 애플리케이션)** 으로 설정하고 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다. Kestrel에서 실행되는 앱의 기본 포트는 5001입니다. 앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다. IIS Express의 경우 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 *`Server`* 앱 속성에서 확인할 수 있습니다. 이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요. [앱 만들기](#create-the-app) 섹션에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.
 1. **사용 권한**>**openid 및 offline_access 권한에 대한 관리자 동의 허용** 확인란을 선택 해제합니다.
 1. **등록** 을 선택합니다.
@@ -106,8 +110,8 @@ ms.locfileid: "93234480"
 ::: moniker range="< aspnetcore-5.0"
 
 1. **Azure Active Directory** > **앱 등록** 에서 **새 등록** 을 선택합니다.
-1. 앱의 **이름** 을 지정합니다(예: **Blazor 클라이언트 AAD** ).
-1. **지원되는 계정 유형** 을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만** (단일 테넌트)을 선택합니다.
+1. 앱의 **이름** 을 지정합니다(예: **Blazor 클라이언트 AAD**).
+1. **지원되는 계정 유형** 을 선택합니다. 이 환경에서는 **이 조직 디렉터리의 계정만**(단일 테넌트)을 선택합니다.
 1. **리디렉션 URI** 드롭다운은 **웹** 으로 설정된 상태로 두고, 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다. Kestrel에서 실행되는 앱의 기본 포트는 5001입니다. 앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다. IIS Express의 경우 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 *`Server`* 앱 속성에서 확인할 수 있습니다. 이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요. [앱 만들기](#create-the-app) 섹션에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.
 1. **사용 권한**>**openid 및 offline_access 권한에 대한 관리자 동의 허용** 확인란을 선택 해제합니다.
 1. **등록** 을 선택합니다.
@@ -127,7 +131,7 @@ ms.locfileid: "93234480"
 
 1. 앱에 **Microsoft Graph** > **User.Read** 사용 권한이 있는지 확인합니다.
 1. **사용 권한 추가** 를 선택하고 **내 API** 를 선택합니다.
-1. **이름** 열에서 ‘서버 API 앱’을 선택합니다(예: **Blazor Server AAD** ).
+1. **이름** 열에서 ‘서버 API 앱’을 선택합니다(예: **Blazor Server AAD**).
 1. **API** 목록을 엽니다.
 1. API에 대한 액세스를 사용하도록 설정합니다(예: `API.Access`).
 1. **권한 추가** 를 선택합니다.
@@ -331,7 +335,7 @@ services.Configure<JwtBearerOptions>(
 
 ### <a name="weatherforecast-controller"></a>WeatherForecast 컨트롤러
 
-WeatherForecast 컨트롤러( *Controllers/WeatherForecastController.cs* )는 컨트롤러에 적용된 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성을 사용하여, 보호된 API를 노출합니다. 다음과 같은 사항을 이해하는 것이 **중요합니다**.
+WeatherForecast 컨트롤러(*Controllers/WeatherForecastController.cs*)는 컨트롤러에 적용된 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성을 사용하여, 보호된 API를 노출합니다. 다음과 같은 사항을 이해하는 것이 **중요합니다**.
 
 * 이 API 컨트롤러의 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성은 무단 액세스로부터 이 API 컨트롤러를 보호하는 유일한 항목입니다.
 * Blazor WebAssembly 앱에서 사용되는 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성은 앱이 올바르게 작동하려면 사용자에게 권한이 부여되어야 한다는 힌트만 앱에 전달합니다.

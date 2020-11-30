@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/request-features
-ms.openlocfilehash: d906474b0fd291cc4a68390f390b2bf538e21eff
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 88e97d88341789a76a79da8d92098c2e00396fe7
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053711"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95870427"
 ---
 # <a name="request-features-in-aspnet-core"></a>ASP.NET Core의 요청 기능
 
 작성자: [Steve Smith](https://ardalis.com/)
 
-애플리케이션과 미들웨어에서 요청을 처리하는 데 사용하는 `HttpContext` API에는 아래에 기능 인터페이스라는 추상화 계층이 있습니다. 각 기능 인터페이스는 `HttpContext`에 의해 노출된 기능의 세분화된 하위 집합을 제공합니다. 이러한 인터페이스는 전체 `HttpContext`를 구현하지 않고도 요청이 처리될 때 서버 또는 미들웨어에 의해 추가, 수정, 래핑, 대체 또는 제거될 수 있습니다. 테스트 시 모의 기능을 만드는 데도 사용할 수 있습니다.
+애플리케이션과 미들웨어에서 요청을 처리하는 데 사용하는 `HttpContext` API에는 아래에 ‘기능 인터페이스’라는 추상화 계층이 있습니다. 각 기능 인터페이스는 `HttpContext`에 의해 노출된 기능의 세분화된 하위 집합을 제공합니다. 이러한 인터페이스는 전체 `HttpContext`를 구현하지 않고도 요청이 처리될 때 서버 또는 미들웨어에 의해 추가, 수정, 래핑, 대체 또는 제거될 수 있습니다. 테스트 시 모의 기능을 만드는 데도 사용할 수 있습니다.
 
 ## <a name="feature-collections"></a>기능 컬렉션
 

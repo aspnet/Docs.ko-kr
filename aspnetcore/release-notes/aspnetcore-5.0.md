@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: 84747e2d13275a23e83dc2dc0f666cb0c8d001b1
-ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
+ms.openlocfilehash: 8e848ef57a9164501fd3c4f29f47ad7c72118507
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634628"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417554"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>ASP.NET Core 5.0의 새로운 기능
 
@@ -148,7 +148,7 @@ Blazor에는 통합 유효성 검사를 통해 라디오 단추 그룹에 대한
 
 ### <a name="component-virtualization"></a>구성 요소 가상화
 
-Blazor 프레임워크의 기본 제공 가상화 지원을 사용하여 구성 요소 렌더링의 인식된 성능을 향상합니다. 자세한 내용은 <xref:blazor/forms-validation#radio-buttons>를 참조하세요.
+Blazor 프레임워크의 기본 제공 가상화 지원을 사용하여 구성 요소 렌더링의 인식된 성능을 향상합니다. 자세한 내용은 <xref:blazor/components/virtualization>를 참조하세요.
 
 ### <a name="ontoggle-event-support"></a>`ontoggle` 이벤트 지원
 
@@ -361,7 +361,7 @@ SNI(서버 이름 표시)는 SSL 협상의 일부로 가상 도메인을 포함�
 
 ### <a name="azure-active-directory-authentication-with-microsoftno-locidentityweb"></a>Microsoft.Identity.Web을 사용한 Azure Active Directory 인증
 
-이제 ASP.NET Core 프로젝트 템플릿이 <xref:Microsoft.Identity.Web?displayProperty=fullName>와 통합되어 [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)(Azure AD)를 사용하여 인증을 처리합니다. [Microsoft.Identity.Web 패키지](https://www.nuget.org/packages/Microsoft.Identity.Web/)는 다음을 제공합니다.
+이제 ASP.NET Core 프로젝트 템플릿이 <xref:Microsoft.Identity.Web?displayProperty=fullName>과 통합되어 [Azure AD](/azure/active-directory/fundamentals/active-directory-whatis)(Azure Active Directory)를 사용하여 인증을 처리합니다. [Microsoft.Identity.Web 패키지](https://www.nuget.org/packages/Microsoft.Identity.Web/)는 다음을 제공합니다.
 
 * Azure AD를 통한 향상된 인증 환경.
 * [Microsoft Graph](/graph/overview) 등 사용자를 대신하여 Azure 리소스에 액세스하는 더 쉬운 방법. 기본 로그인에서 시작하여 다중 테넌시, Azure API 사용, Microsoft Graph 사용, 자체 API 보호를 차례로 다루는 [Microsoft.Identity.Web 샘플](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)을 참조하세요. `Microsoft.Identity.Web`은 .NET 5와 함께 사용할 수 있습니다.

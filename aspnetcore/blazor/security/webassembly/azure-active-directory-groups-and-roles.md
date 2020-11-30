@@ -19,16 +19,19 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 680b44a705b66be0aab824487119cdb118b44d0f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ded70f028b3021574ba260838837d9b23abd72f1
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055310"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981884"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Azure Active Directory(AAD) 그룹, 관리자 역할, 사용자 정의 역할
 
 작성자: [Luke Latham](https://github.com/guardrex) 및 [Javier Calvarro Nelson](https://github.com/javiercn)
+
+> [!NOTE]
+> 이 문서는 Microsoft Identity v1.0을 사용하는 Blazor ASP.NET Core 앱 버전 3.1에 적용되며 Identity v 2.0을 사용하는 5.0으로 업데이트되도록 예약되어 있습니다. 자세한 내용은 [Blazor WASM with AAD/B2C groups and roles(dotnet/AspNetCore.Docs #17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683)를 참조하세요.
 
 AAD(Azure Active Directory)는 ASP.NET Core Identity와 결합할 수 있는 몇 가지 권한 부여 방법을 제공합니다.
 
@@ -515,7 +518,7 @@ AAD 역할 개체 ID의 전체 목록은 [AAD 관리자 역할 개체 ID](#aad-a
 
 ### <a name="azure-configuration"></a>Azure 구성
 
-* ‘서버’ 앱 등록에 보안 그룹의 최소 권한 액세스 수준인 `Directory.Read.All`에 대한 **애플리케이션** ( **위임** 이 아님) Graph API 범위가 지정되었는지 확인합니다. 범위 할당을 수행한 후 관리자 동의가 범위에 적용되는지 확인합니다.
+* ‘서버’ 앱 등록에 보안 그룹의 최소 권한 액세스 수준인 `Directory.Read.All`에 대한 **애플리케이션**(**위임** 이 아님) Graph API 범위가 지정되었는지 확인합니다. 범위 할당을 수행한 후 관리자 동의가 범위에 적용되는지 확인합니다.
 * 서버 앱에 새 클라이언트 암호를 할당합니다. [앱 설정](#app-settings) 섹션에서 앱 구성을 위한 암호를 확인합니다.
 
 ### <a name="app-settings"></a>앱 설정

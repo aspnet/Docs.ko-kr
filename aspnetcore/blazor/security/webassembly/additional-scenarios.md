@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: baed18df2d127b592f420aac0432e0b28f076d46
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: bb502533bca24e82792db8814b75b16407f20339
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94508047"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95870388"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly 추가 보안 시나리오
 
@@ -884,6 +884,31 @@ app.UseEndpoints(endpoints =>
 
 서버 앱에서 `Pages` 폴더가 없으면 이 폴더를 만듭니다. 서버 앱의 `Pages` 폴더 안에 `_Host.cshtml` 페이지를 만듭니다. *`Client`* 앱의 `wwwroot/index.html` 파일 콘텐츠를 `Pages/_Host.cshtml` 파일에 붙여넣습니다. 다음과 같이 파일 콘텐츠를 업데이트합니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
+* `@page "_Host"`를 파일의 맨 위에 추가합니다.
+* `<div id="app">Loading...</div>` 태그를 다음으로 바꿉니다.
+
+  ```cshtml
+  <div id="app">
+      @if (!HttpContext.Request.Path.StartsWithSegments("/authentication"))
+      {
+          <component type="typeof({CLIENT APP ASSEMBLY NAME}.App)" 
+              render-mode="Static" />
+      }
+      else
+      {
+          <text>Loading...</text>
+      }
+  </div>
+  ```
+  
+  앞의 예제에서 자리 표시자 `{CLIENT APP ASSEMBLY NAME}`는 클라이언트 앱의 어셈블리 이름입니다(예: `BlazorSample.Client`).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 * `@page "_Host"`를 파일의 맨 위에 추가합니다.
 * `<app>Loading...</app>` 태그를 다음으로 바꿉니다.
 
@@ -891,7 +916,7 @@ app.UseEndpoints(endpoints =>
   <app>
       @if (!HttpContext.Request.Path.StartsWithSegments("/authentication"))
       {
-          <component type="typeof(Wasm.Authentication.Client.App)" 
+          <component type="typeof({CLIENT APP ASSEMBLY NAME}.App)" 
               render-mode="Static" />
       }
       else
@@ -900,6 +925,10 @@ app.UseEndpoints(endpoints =>
       }
   </app>
   ```
+  
+  앞의 예제에서 자리 표시자 `{CLIENT APP ASSEMBLY NAME}`는 클라이언트 앱의 어셈블리 이름입니다(예: `BlazorSample.Client`).
+
+::: moniker-end
   
 ## <a name="options-for-hosted-apps-and-third-party-login-providers"></a>호스트된 앱 및 타사 로그인 공급자에 대한 옵션
 
