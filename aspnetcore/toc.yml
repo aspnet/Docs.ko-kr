@@ -1301,6 +1301,8 @@
       uid: mvc/compatibility-version
     - name: 쓰기 미들웨어
       uid: fundamentals/middleware/write
+    - name: Route-to-code를 사용한 기본 JSON API
+      uid: web-api/route-to-code
     - name: 요청 및 응답 작업
       displayName: middleware
       uid: fundamentals/middleware/request-response
