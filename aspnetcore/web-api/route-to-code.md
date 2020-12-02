@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 - Route-to-code
 uid: web-api/route-to-code
-ms.openlocfilehash: 49eaa3ceb47c41226b7a50782436ec270e6e1b7b
-ms.sourcegitcommit: 619200f2981656ede6d89adb6a22ad1a0e16da22
+ms.openlocfilehash: 1f5f532053f8f5ca7f73df8c1a910a484e2488d9
+ms.sourcegitcommit: 0bcc0d6df3145a0727da7c4be2f4bda8f27eeaa3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96335598"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96513098"
 ---
 # <a name="basic-json-apis-with-no-locroute-to-code-in-aspnet-core"></a>ASP.NET Core의 기본 JSON Api Route-to-code
 
@@ -54,7 +54,7 @@ ASP.NET Core은 JSON 웹 Api를 쉽게 만들 도우미 메서드를 제공 합�
 
 [!code-csharp[](route-to-code/sample/Startup3.cs?name=snippet&highlight=6)]
 
-위의 코드는
+앞의 코드가 하는 역할은 다음과 같습니다.
 
 * 을 경로 템플릿으로 사용 하 여 HTTP GET API 끝점을 추가 `/hello/{name:alpha}` 합니다.
 * 경로가 일치 하는 경우 API는 `name` 요청에서 경로 값을 읽습니다.
@@ -66,7 +66,7 @@ ASP.NET Core은 JSON 웹 Api를 쉽게 만들 도우미 메서드를 제공 합�
 
 [!code-csharp[](route-to-code/sample/Startup2.cs?name=snippet&highlight=5,11)]
 
-위의 코드는
+앞의 코드가 하는 역할은 다음과 같습니다.
 
 * 을 경로 템플릿으로 사용 하 여 HTTP POST API 끝점을 추가 `/weather` 합니다.
 * 경로가 일치 하면는 `HasJsonContentType` 요청 콘텐츠 형식의 유효성을 검사 합니다. 비 JSON 콘텐츠 형식이 415 상태 코드를 반환 합니다.
@@ -111,6 +111,21 @@ DI를 광범위 하 게 사용 하는 Api는 DI를 지 원하는 ASP.NET Core �
 `Startup.Configure`메서드에서 `Map` 메서드 및 다른 클래스의 정적 메서드는에서 호출 됩니다 `UseEndpoints` .
 
 [!code-csharp[](route-to-code/sample/Startup5.cs?name=snippet)]
+
+## <a name="notable-missing-features-compared-to-web-api"></a>Web API와 비교 하 여 주목할 만한 누락 기능
+
+Route-to-code 는 기본 JSON Api 용으로 설계 되었습니다. ASP.NET Core Web API에서 제공 하는 다양 한 고급 기능을 지원 하지 않습니다.
+
+에서 제공 하지 않는 기능에 Route-to-code 는 다음이 포함 됩니다.
+
+* 모델 바인딩
+* 모델 유효성 검사
+* OpenAPI/Swagger
+* 콘텐츠 협상
+* 생성자 종속성 주입
+* `ProblemDetails` ([https://tools.ietf.org/html/rfc7807](RFC 7807))
+
+[ASP.NET Core WEB api](xref:web-api/index) 를 사용 하 여 위의 목록에 있는 일부 기능이 필요한 경우 api를 만드는 것이 좋습니다.
 
 ## <a name="additional-resources"></a>추가 리소스
 
