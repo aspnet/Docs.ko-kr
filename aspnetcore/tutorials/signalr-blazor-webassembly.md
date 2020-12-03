@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 2975ee699a2535cdf63ef2f5af5790f178a09f93
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: 89aeb20d5566447ff86581dfa1d7946d20b9ed2d
+ms.sourcegitcommit: 94c8cc1a8ce2bdba0ebdd9d37c155bf42d3cc62b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637732"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96473718"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-a-hosted-no-locblazor-webassembly-app"></a>호스트된 Blazor WebAssembly 앱을 활용하여 ASP.NET Core SignalR 사용
 
@@ -242,7 +242,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 ::: moniker range=">= aspnetcore-5.0"
 
-   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
+   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,6-10)]
 
 ::: moniker-end
 
@@ -259,7 +259,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 ::: moniker range=">= aspnetcore-5.0"
 
-   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
+   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,26)]
 
 ::: moniker-end
 

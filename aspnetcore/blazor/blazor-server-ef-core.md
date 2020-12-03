@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/blazor-server-ef-core
-ms.openlocfilehash: bfc8f334b9229fed54e6b9841e4fb255ed18249a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 6a74b8c5668a37082f648ae74210d90684c4559c
+ms.sourcegitcommit: 43a540e703b9096921de27abc6b66bc0783fe905
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056623"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96320111"
 ---
 # <a name="aspnet-core-no-locblazor-server-with-entity-framework-core-efcore"></a>EFCore(Entity Framework Core)를 사용한 ASP.NET Core Blazor Server
 
@@ -57,7 +57,7 @@ Blazor Server는 상태 저장 앱 프레임워크입니다. 앱은 서버에 �
 EF Core에서는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 사용하여 [데이터베이스 액세스를 구성](/ef/core/miscellaneous/configuring-dbcontext)하고 [‘작업 단위’](https://martinfowler.com/eaaCatalog/unitOfWork.html) 역할을 합니다. EF Core는 컨텍스트를 기본적으로 ‘범위가 지정된’ 서비스로 등록하는 ASP.NET Core 앱에 대한 <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> 확장을 제공합니다. Blazor Server 앱에서는 사용자 회로 내의 구성 요소 간에 인스턴스가 공유되므로 범위가 지정된 서비스 등록을 사용할 경우 문제가 될 수 있습니다. <xref:Microsoft.EntityFrameworkCore.DbContext>는 스레드로부터 안전하지 않고 동시 사용을 위해 설계되지 않았습니다. 기존 수명은 다음과 같은 이유로 적합하지 않습니다.
 
 * **Singleton** 은 앱의 모든 사용자에 대한 상태를 공유하고 부적절한 동시 사용을 초래합니다.
-* **범위 지정** (기본값)은 동일한 사용자에 대한 구성 요소 간에 유사한 문제를 초래합니다.
+* **범위 지정**(기본값)은 동일한 사용자에 대한 구성 요소 간에 유사한 문제를 초래합니다.
 * **임시** 는 요청별로 새 인스턴스를 생성하지만 구성 요소가 오래 지속될 수 있으므로 의도한 것보다 수명이 긴 컨텍스트가 생성됩니다.
 
 다음 권장 사항은 Blazor Server 앱에서 EF Core를 사용하는 일관된 방법을 제공하도록 설계되었습니다.
@@ -65,7 +65,7 @@ EF Core에서는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 사용하여 
 * 기본적으로 작업당 하나의 컨텍스트를 사용하는 것이 좋습니다. 이 컨텍스트는 빠르고 낮은 오버헤드 인스턴스화를 위해 설계되었습니다.
 
   ```csharp
-  var using context = new MyContext();
+  using var context = new MyContext();
 
   return await context.MyEntities.ToListAsync();
   ```
@@ -188,7 +188,7 @@ Blazor Server는 상태 저장 앱 프레임워크입니다. 앱은 서버에 �
 EF Core에서는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 사용하여 [데이터베이스 액세스를 구성](/ef/core/miscellaneous/configuring-dbcontext)하고 [‘작업 단위’](https://martinfowler.com/eaaCatalog/unitOfWork.html) 역할을 합니다. EF Core는 컨텍스트를 기본적으로 ‘범위가 지정된’ 서비스로 등록하는 ASP.NET Core 앱에 대한 <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> 확장을 제공합니다. Blazor Server 앱에서는 사용자 회로 내의 구성 요소 간에 인스턴스가 공유되므로 이 경우 문제가 될 수 있습니다. <xref:Microsoft.EntityFrameworkCore.DbContext>는 스레드로부터 안전하지 않고 동시 사용을 위해 설계되지 않았습니다. 기존 수명은 다음과 같은 이유로 적합하지 않습니다.
 
 * **Singleton** 은 앱의 모든 사용자에 대한 상태를 공유하고 부적절한 동시 사용을 초래합니다.
-* **범위 지정** (기본값)은 동일한 사용자에 대한 구성 요소 간에 유사한 문제를 초래합니다.
+* **범위 지정**(기본값)은 동일한 사용자에 대한 구성 요소 간에 유사한 문제를 초래합니다.
 * **임시** 는 요청별로 새 인스턴스를 생성하지만 구성 요소가 오래 지속될 수 있으므로 의도한 것보다 수명이 긴 컨텍스트가 생성됩니다.
 
 다음 권장 사항은 Blazor Server 앱에서 EF Core를 사용하는 일관된 방법을 제공하도록 설계되었습니다.
@@ -196,7 +196,7 @@ EF Core에서는 <xref:Microsoft.EntityFrameworkCore.DbContext>를 사용하여 
 * 기본적으로 작업당 하나의 컨텍스트를 사용하는 것이 좋습니다. 이 컨텍스트는 빠르고 낮은 오버헤드 인스턴스화를 위해 설계되었습니다.
 
   ```csharp
-  var using context = new MyContext();
+  using var context = new MyContext();
 
   return await context.MyEntities.ToListAsync();
   ```

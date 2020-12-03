@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 12/05/2019
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 00c1be2704d92c7d4f868e6eaa346bd8e9901dbf
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: 3b95fe117895555ebcd44f971e7bb9d1173e1697
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360844"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96419982"
 ---
 # <a name="part-6-add-search-to-aspnet-core-no-locrazor-pages"></a>6부. ASP.NET Core Razor Pages에 검색 추가
 

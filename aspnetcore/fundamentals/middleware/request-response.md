@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/request-response
-ms.openlocfilehash: cc701343cb3859f0f76ebc62bd54aa2e4431d522
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5ad39821778ea58097169def85a940a06f1d036e
+ms.sourcegitcommit: 0bcc0d6df3145a0727da7c4be2f4bda8f27eeaa3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061030"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96513111"
 ---
 # <a name="request-and-response-operations-in-aspnet-core"></a>ASP.NET Core의 요청 및 응답 작업
 
@@ -44,6 +44,8 @@ ms.locfileid: "93061030"
 스트림이 프레임워크에서 제거되지 않습니다. 스트림은 .NET 전체에서 계속 사용되며, `FileStreams` 및 `ResponseCompression`과 같이 상응하는 파이프 항목이 없는 스트림 형식도 많습니다.
 
 ## <a name="stream-examples"></a>스트림 예제
+
+<!-- see "fundamentals\middleware\request-response\static\TestPipes.JPG for testing sample -->
 
 새 줄에서 분할하여 전체 요청 본문을 문자열 목록으로 읽는 미들웨어를 만들려 한다고 가정해 보겠습니다. 단순 스트림 구현은 다음 예제와 같이 표시될 수 있습니다.
 
