@@ -1,7 +1,7 @@
-<span data-ttu-id="c5539-101">`RedirectToLogin` 구성 요소(`Shared/RedirectToLogin.razor`)는 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="c5539-101">The `RedirectToLogin` component (`Shared/RedirectToLogin.razor`):</span></span>
+<span data-ttu-id="fa1e4-101">`RedirectToLogin` 구성 요소(`Shared/RedirectToLogin.razor`)는 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="fa1e4-101">The `RedirectToLogin` component (`Shared/RedirectToLogin.razor`):</span></span>
 
-* <span data-ttu-id="c5539-102">로그인 페이지로의 권한 없는 사용자 리디렉션을 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="c5539-102">Manages redirecting unauthorized users to the login page.</span></span>
-* <span data-ttu-id="c5539-103">사용자가 인증에 성공하면 해당 페이지로 되돌아올 수 있도록 사용자가 액세스하려고 하는 현재 URL을 유지합니다.</span><span class="sxs-lookup"><span data-stu-id="c5539-103">Preserves the current URL that the user is attempting to access so that they can be returned to that page if authentication is successful.</span></span>
+* <span data-ttu-id="fa1e4-102">로그인 페이지로의 권한 없는 사용자 리디렉션을 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="fa1e4-102">Manages redirecting unauthorized users to the login page.</span></span>
+* <span data-ttu-id="fa1e4-103">사용자가 인증에 성공하면 해당 페이지로 되돌아올 수 있도록 사용자가 액세스하려고 하는 현재 URL을 유지합니다.</span><span class="sxs-lookup"><span data-stu-id="fa1e4-103">Preserves the current URL that the user is attempting to access so that they can be returned to that page if authentication is successful.</span></span>
 
 ```razor
 @inject NavigationManager Navigation

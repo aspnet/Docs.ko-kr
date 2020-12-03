@@ -1,9 +1,9 @@
-<span data-ttu-id="4bc79-101">`LoginDisplay` 구성 요소(`Shared/LoginDisplay.razor`)는 `MainLayout` 구성 요소(`Shared/MainLayout.razor`)에서 렌더링되고 다음 동작을 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="4bc79-101">The `LoginDisplay` component (`Shared/LoginDisplay.razor`) is rendered in the `MainLayout` component (`Shared/MainLayout.razor`) and manages the following behaviors:</span></span>
+<span data-ttu-id="58eec-101">`LoginDisplay` 구성 요소(`Shared/LoginDisplay.razor`)는 `MainLayout` 구성 요소(`Shared/MainLayout.razor`)에서 렌더링되고 다음 동작을 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="58eec-101">The `LoginDisplay` component (`Shared/LoginDisplay.razor`) is rendered in the `MainLayout` component (`Shared/MainLayout.razor`) and manages the following behaviors:</span></span>
 
-* <span data-ttu-id="4bc79-102">인증된 사용자의 경우:</span><span class="sxs-lookup"><span data-stu-id="4bc79-102">For authenticated users:</span></span>
-  * <span data-ttu-id="4bc79-103">현재 사용자 이름을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="4bc79-103">Displays the current username.</span></span>
-  * <span data-ttu-id="4bc79-104">앱에서 로그아웃하는 단추를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bc79-104">Offers a button to log out of the app.</span></span>
-* <span data-ttu-id="4bc79-105">익명 사용자의 경우, 로그인 옵션을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4bc79-105">For anonymous users, offers the option to log in.</span></span>
+* <span data-ttu-id="58eec-102">인증된 사용자의 경우:</span><span class="sxs-lookup"><span data-stu-id="58eec-102">For authenticated users:</span></span>
+  * <span data-ttu-id="58eec-103">현재 사용자 이름을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="58eec-103">Displays the current username.</span></span>
+  * <span data-ttu-id="58eec-104">앱에서 로그아웃하는 단추를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="58eec-104">Offers a button to log out of the app.</span></span>
+* <span data-ttu-id="58eec-105">익명 사용자의 경우, 로그인 옵션을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="58eec-105">For anonymous users, offers the option to log in.</span></span>
 
 ```razor
 @using Microsoft.AspNetCore.Components.Authorization
