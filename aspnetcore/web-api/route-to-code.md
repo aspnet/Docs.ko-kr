@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 - Route-to-code
 uid: web-api/route-to-code
-ms.openlocfilehash: 1f5f532053f8f5ca7f73df8c1a910a484e2488d9
-ms.sourcegitcommit: 0bcc0d6df3145a0727da7c4be2f4bda8f27eeaa3
+ms.openlocfilehash: f8a3804a887ebfa0f5284d8991e903c978b18208
+ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96513098"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96556608"
 ---
 # <a name="basic-json-apis-with-no-locroute-to-code-in-aspnet-core"></a>ASP.NET Core의 기본 JSON Api Route-to-code
 
@@ -76,14 +76,14 @@ ASP.NET Core은 JSON 웹 Api를 쉽게 만들 도우미 메서드를 제공 합�
 
 JSON serialization을 사용자 지정 하는 방법에는 다음 두 가지가 있습니다.
 
-* 메서드에서 기본 직렬화 옵션을 구성할 수 있습니다 `JsonOptions` `Startup.ConfigureServices` .
-* `WriteAsJsonAsync` 및에는 `ReadFromJsonAsync` 개체를 허용 하는 오버 로드가 있습니다 `JsonSerializerOptions` . 이 `JsonSerializerOptions` 개체는 기본 옵션을 재정의 합니다.
+* 메서드에서 기본 직렬화 옵션을 구성할 수 있습니다 <xref:Microsoft.AspNetCore.Http.Json.JsonOptions> `Startup.ConfigureServices` .
+* `WriteAsJsonAsync` 및에는 `ReadFromJsonAsync` 개체를 허용 하는 오버 로드가 있습니다 <xref:System.Text.Json.JsonSerializerOptions> . 이 옵션 개체는 기본 옵션을 재정의 합니다.
 
 [!code-csharp[](route-to-code/sample/Startup6.cs?name=snippet)]
 
 ## <a name="authentication-and-authorization"></a>인증 및 권한 부여
 
-Route-to-code 인증 및 권한 부여를 지원 합니다. 및와 같은 특성 `[Authorize]` `[AllowAnonymous]` 은 요청 대리자에 매핑되는 끝점에 배치할 수 없습니다. 대신 및 확장 메서드를 사용 하 여 권한 부여 메타 데이터를 추가 `RequireAuthorization` `AllowAnonymous` 합니다.
+Route-to-code 인증 및 권한 부여를 지원 합니다. 및와 같은 특성 `[Authorize]` `[AllowAnonymous]` 은 요청 대리자에 매핑되는 끝점에 배치할 수 없습니다. 대신 및 확장 메서드를 사용 하 여 권한 부여 메타 데이터를 추가 <xref:Microsoft.AspNetCore.Builder.AuthorizationEndpointConventionBuilderExtensions.RequireAuthorization%2A> <xref:Microsoft.AspNetCore.Builder.AuthorizationEndpointConventionBuilderExtensions.AllowAnonymous%2A> 합니다.
 
 [!code-csharp[](route-to-code/sample/Startup.cs?name=snippet&highlight=30)]
 
@@ -123,7 +123,7 @@ Route-to-code 는 기본 JSON Api 용으로 설계 되었습니다. ASP.NET Core
 * OpenAPI/Swagger
 * 콘텐츠 협상
 * 생성자 종속성 주입
-* `ProblemDetails` ([https://tools.ietf.org/html/rfc7807](RFC 7807))
+* `ProblemDetails` ([RFC 7807](https://tools.ietf.org/html/rfc7807))
 
 [ASP.NET Core WEB api](xref:web-api/index) 를 사용 하 여 위의 목록에 있는 일부 기능이 필요한 경우 api를 만드는 것이 좋습니다.
 
