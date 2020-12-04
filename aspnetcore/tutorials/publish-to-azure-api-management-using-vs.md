@@ -4,14 +4,14 @@ author: codemillmatt
 description: Visual Studio를 사용하여 Azure API Management에 ASP.NET Core 웹 API를 게시하는 방법을 알아봅니다.
 ms.author: masoucou
 ms.custom: devx-track-csharp, mvc
-ms.date: 08/26/2020
+ms.date: 11/22/2020
 uid: tutorials/publish-to-azure-api-management-using-vs
-ms.openlocfilehash: 3cc6b8c0bd93f133151e1c8ad18a55b11975a9be
-ms.sourcegitcommit: 47c9a59ff8a359baa6bca2637d3af87ddca1245b
+ms.openlocfilehash: 395b5981a3018486235c38f032893f985ab71383
+ms.sourcegitcommit: 619200f2981656ede6d89adb6a22ad1a0e16da22
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88945517"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96332229"
 ---
 # <a name="publish-an-aspnet-core-web-api-to-azure-api-management-with-visual-studio"></a>Visual Studio를 사용하여 Azure API Management에 ASP.NET Core 웹 API 게시
 
@@ -77,11 +77,11 @@ ASP.NET Core 웹 API에 Swagger 정의를 추가하면 Azure API Management에�
 
 다음 단계를 완료하여 Azure API Management에 ASP.NET Core 웹 API를 게시합니다.
 
-1. **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **게시**를 선택합니다.
+1. **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **게시** 를 선택합니다.
 
     ![강조 표시된 게시 링크로 열린 바로 가기 메뉴](publish-to-azure-api-management-using-vs/_static/publish_menu.png)
 
-1. **게시** 대화 상자에서 **Azure**를 선택하고 **다음** 단추를 선택합니다.
+1. **게시** 대화 상자에서 **Azure** 를 선택하고 **다음** 단추를 선택합니다.
 
     ![게시 대화 상자](publish-to-azure-api-management-using-vs/_static/publish_dialog.png)
 
@@ -89,7 +89,7 @@ ASP.NET Core 웹 API에 Swagger 정의를 추가하면 Azure API Management에�
 
     ![게시 대화 상자: App Service 선택](publish-to-azure-api-management-using-vs/_static/publish_dialog_app_svc.png)
 
-1. **새 Azure App Service 만들기**를 선택합니다.
+1. **새 Azure App Service 만들기** 를 선택합니다.
 
     ![게시 대화 상자: Azure Service 인스턴스 선택](publish-to-azure-api-management-using-vs/_static/publish_dialog_create_new_app_svc.png)
 
@@ -108,11 +108,15 @@ ASP.NET Core 웹 API에 Swagger 정의를 추가하면 Azure API Management에�
 
 1. 이전에 Azure Portal에서 만든 API Management 서비스 인스턴스를 엽니다. **API** 블레이드를 선택합니다.
 
-    ![API Management 서비스 인스턴스에서 선택한 API 블레이드](publish-to-azure-api-management-using-vs/_static/portal_api_overview.png)
+  ![API Management 서비스 인스턴스에서 선택한 API 블레이드](publish-to-azure-api-management-using-vs/_static/portal_api_overview.png)
+
+1. **Echo API** 옆의 3개 점을 선택하고 팝업 메뉴에서 **삭제** 를 선택하여 제거합니다.
+
+  ![API Management 서비스 인스턴스에서 Echo API 삭제](publish-to-azure-api-management-using-vs/_static/portal_delete_echo.png)
 
 1. **새 API 추가** 패널에서 **빈 API** 타일을 선택합니다.
 
-    ![빈 API 타일이 강조 표시된 화면](publish-to-azure-api-management-using-vs/_static/portal_api_create_blank.png)
+  ![빈 API 타일이 강조 표시된 화면](publish-to-azure-api-management-using-vs/_static/portal_api_create_blank.png)
 
 1. **빈 API 만들기** 대화 상자가 나타나면 다음 값을 입력합니다.    
 
@@ -156,7 +160,7 @@ ASP.NET Core 웹 API에 Swagger 정의를 추가하면 Azure API Management에�
 
 ### <a name="configure-the-published-api-name"></a>게시된 API 이름 구성
 
-API의 이름이 명명한 것과 다르다는 것을 알 수 있습니다. 게시된 API의 이름은 *WeatherAPI*이지만, 만들 때 지정한 이름은 *WeatherForecasts*입니다. 이름을 수정하려면 다음 단계를 완료합니다.
+API의 이름이 명명한 것과 다르다는 것을 알 수 있습니다. 게시된 API의 이름은 *WeatherAPI* 이지만, 만들 때 지정한 이름은 *WeatherForecasts* 입니다. 이름을 수정하려면 다음 단계를 완료합니다.
 
 ![채워진 API에서 다른 이름이 강조된 스크린샷](publish-to-azure-api-management-using-vs/_static/deployed_to_azure_api_mgmt_wrong_name.png)
 
@@ -179,7 +183,7 @@ API의 이름이 명명한 것과 다르다는 것을 알 수 있습니다. 게�
     });
     ```
 
-1. 새로 만든 게시 프로필을 엽니다. **솔루션 탐색기**에서 *Properties/PublishProfiles* 폴더를 찾으면 됩니다.
+1. 새로 만든 게시 프로필을 엽니다. **솔루션 탐색기** 에서 *Properties/PublishProfiles* 폴더를 찾으면 됩니다.
 
     ![게시 프로필 파일 위치를 강조하여 보여 주는 스크린샷](publish-to-azure-api-management-using-vs/_static/vs_publish_profile_highlighted.png)
 
@@ -198,7 +202,7 @@ Azure Portal에서 다음 단계에 따라 Azure API Management에 배포된 ASP
 
 1. **테스트** 탭을 엽니다.
 1. **/** 또는 **Get** 작업을 선택합니다.
-1. **보내기**를 선택합니다.
+1. **보내기** 를 선택합니다.
 
     ![테스트 전의 포털 스크린샷](publish-to-azure-api-management-using-vs/_static/portal_pre_test.png)
 
@@ -210,15 +214,15 @@ Azure Portal에서 다음 단계에 따라 Azure API Management에 배포된 ASP
 
 앱 테스트를 완료하면 [Azure Portal](https://portal.azure.com/)로 이동하고 앱을 삭제합니다.
 
-1. **리소스 그룹**을 선택한 다음 만든 리소스 그룹을 선택합니다.
+1. **리소스 그룹** 을 선택한 다음 만든 리소스 그룹을 선택합니다.
 
     ![Azure Portal: 사이드바 메뉴에 있는 리소스 그룹](publish-to-azure-api-management-using-vs/_static/portalrg.png)
 
-1. **리소스 그룹** 페이지에서 **삭제**를 선택합니다.
+1. **리소스 그룹** 페이지에서 **삭제** 를 선택합니다.
 
     ![Azure Portal: 리소스 그룹 페이지](publish-to-azure-api-management-using-vs/_static/rgd.png)
 
-1. 리소스 그룹의 이름을 입력하고 **삭제**를 선택합니다. 이 자습서에서 만든 앱과 다른 모든 리소스는 이제 Azure에서 삭제됩니다.
+1. 리소스 그룹의 이름을 입력하고 **삭제** 를 선택합니다. 이 자습서에서 만든 앱과 다른 모든 리소스는 이제 Azure에서 삭제됩니다.
 
 ## <a name="next-steps"></a>다음 단계
 

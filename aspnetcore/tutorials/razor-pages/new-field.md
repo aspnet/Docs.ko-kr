@@ -7,8 +7,6 @@ ms.custom: mvc
 ms.date: 09/28/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -21,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 2dca5a9552dd2800212f8cd78ace0578b3d38cdb
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: 6b6856731c61957a9e23f76e2bc15befe56ea57d
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360881"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420008"
 ---
 # <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>7부. ASP.NET Core의 Razor Page에 새 필드 추가
 
@@ -63,7 +61,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
    [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie50/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
 
 1. 다음 페이지를 업데이트합니다.
-   1. Delete 및 세부 정보 페이지에 `Rating` 필드를 추가합니다.
+   1. 삭제 및 세부 정보 페이지에 `Rating` 필드를 추가합니다.
    1. [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.
    1. 편집 페이지에 `Rating` 필드를 추가합니다.
 
@@ -108,7 +106,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 `Add-Migration` 명령은 프레임워크에 다음 작업을 지시합니다.
 
 * `Movie` 모델을 `Movie` 데이터베이스 스키마와 비교합니다.
-* 데이터베이스 스키마를 새 모델로 마이그레이션하도록 코드를 Create합니다.
+* 데이터베이스 스키마를 새 모델로 마이그레이션하도록 코드를 작성합니다.
 
 "Rating" 이름은 임의로 지정되며 마이그레이션 파일의 이름을 지정하는 데 사용됩니다. 마이그레이션 파일에 의미 있는 이름을 사용하는 것이 좋습니다.
 
@@ -121,7 +119,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 다른 옵션은 데이터베이스를 삭제하고 마이그레이션을 사용하여 데이터베이스를 다시 만드는 것입니다. SSOX에서 데이터베이스를 삭제하려면:
 
 1. SSOX에서 데이터베이스를 선택합니다.
-1. 데이터베이스를 마우스 오른쪽 단추로 클릭하고 **Delete** 를 선택합니다.
+1. 데이터베이스를 마우스 오른쪽 단추로 클릭하고 **삭제** 를 선택합니다.
 1. **기존 연결 닫기** 를 선택합니다.
 1. **확인** 을 선택합니다.
 1. [PMC](xref:tutorials/razor-pages/new-field#pmc)에서 데이터베이스를 업데이트합니다.
@@ -151,7 +149,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 > * [데이터 시드](/ef/core/modeling/data-seeding)
 > * [SQLite ALTER TABLE 문](https://sqlite.org/lang_altertable.html)
 
-1. 마이그레이션 폴더를 Delete합니다.  
+1. 마이그레이션 폴더를 삭제합니다.  
 
 1. 다음 명령을 사용하여 데이터베이스를 다시 만듭니다.
 
@@ -204,7 +202,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
    [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
 
 1. 다음 페이지를 업데이트합니다.
-   1. Delete 및 세부 정보 페이지에 `Rating` 필드를 추가합니다.
+   1. 삭제 및 세부 정보 페이지에 `Rating` 필드를 추가합니다.
    1. [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.
    1. 편집 페이지에 `Rating` 필드를 추가합니다.
 
@@ -249,7 +247,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 `Add-Migration` 명령은 프레임워크에 다음 작업을 지시합니다.
 
 * `Movie` 모델을 `Movie` 데이터베이스 스키마와 비교합니다.
-* 데이터베이스 스키마를 새 모델로 마이그레이션하도록 코드를 Create합니다.
+* 데이터베이스 스키마를 새 모델로 마이그레이션하도록 코드를 작성합니다.
 
 "Rating" 이름은 임의로 지정되며 마이그레이션 파일의 이름을 지정하는 데 사용됩니다. 마이그레이션 파일에 의미 있는 이름을 사용하는 것이 좋습니다.
 
@@ -262,7 +260,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 다른 옵션은 데이터베이스를 삭제하고 마이그레이션을 사용하여 데이터베이스를 다시 만드는 것입니다. SSOX에서 데이터베이스를 삭제하려면:
 
 * SSOX에서 데이터베이스를 선택합니다.
-* 데이터베이스를 마우스 오른쪽 단추로 클릭하고 **Delete** 를 선택합니다.
+* 데이터베이스를 마우스 오른쪽 단추로 클릭하고 **삭제** 를 선택합니다.
 * **기존 연결 닫기** 를 선택합니다.
 * **확인** 을 선택합니다.
 * [PMC](xref:tutorials/razor-pages/new-field#pmc)에서 데이터베이스를 업데이트합니다.
@@ -292,7 +290,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 > * [데이터 시드](/ef/core/modeling/data-seeding)
 > * [SQLite ALTER TABLE 문](https://sqlite.org/lang_altertable.html)
 
-1. 마이그레이션 폴더를 Delete합니다.  
+1. 마이그레이션 폴더를 삭제합니다.  
 
 1. 다음 명령을 사용하여 데이터베이스를 다시 만듭니다.
 
@@ -344,7 +342,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 다음 페이지를 업데이트합니다.
 
-* Delete 및 세부 정보 페이지에 `Rating` 필드를 추가합니다.
+* 삭제 및 세부 정보 페이지에 `Rating` 필드를 추가합니다.
 * [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.
 * 편집 페이지에 `Rating` 필드를 추가합니다.
 
@@ -389,7 +387,7 @@ Update-Database
 `Add-Migration` 명령은 프레임워크에 다음 작업을 지시합니다.
 
 * `Movie` 모델을 `Movie` 데이터베이스 스키마와 비교합니다.
-* 데이터베이스 스키마를 새 모델로 마이그레이션하도록 코드를 Create합니다.
+* 데이터베이스 스키마를 새 모델로 마이그레이션하도록 코드를 작성합니다.
 
 "Rating" 이름은 임의로 지정되며 마이그레이션 파일의 이름을 지정하는 데 사용됩니다. 마이그레이션 파일에 의미 있는 이름을 사용하는 것이 좋습니다.
 
@@ -402,7 +400,7 @@ Update-Database
 다른 옵션은 데이터베이스를 삭제하고 마이그레이션을 사용하여 데이터베이스를 다시 만드는 것입니다. SSOX에서 데이터베이스를 삭제하려면:
 
 * SSOX에서 데이터베이스를 선택합니다.
-* 데이터베이스를 마우스 오른쪽 단추로 클릭하고 **Delete** 를 선택합니다.
+* 데이터베이스를 마우스 오른쪽 단추로 클릭하고 **삭제** 를 선택합니다.
 * **기존 연결 닫기** 를 선택합니다.
 * **확인** 을 선택합니다.
 * [PMC](xref:tutorials/razor-pages/new-field#pmc)에서 데이터베이스를 업데이트합니다.
@@ -432,7 +430,7 @@ Update-Database
 > * [데이터 시드](/ef/core/modeling/data-seeding)
 > * [SQLite ALTER TABLE 문](https://sqlite.org/lang_altertable.html)
 
-데이터베이스를 Delete하고 마이그레이션을 사용하여 데이터베이스를 다시 만듭니다. 데이터베이스를 삭제하려면 데이터베이스 파일(*MvcMovie.db*)을 삭제합니다. 그런 다음, `ef database update` 명령을 실행합니다.
+데이터베이스를 삭제하고 마이그레이션을 사용하여 데이터베이스를 다시 만듭니다. 데이터베이스를 삭제하려면 데이터베이스 파일(*MvcMovie.db*)을 삭제합니다. 그런 다음, `ef database update` 명령을 실행합니다.
 
 ```dotnetcli
 dotnet ef database update

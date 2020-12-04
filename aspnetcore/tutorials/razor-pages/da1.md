@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 09/20/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 7146c1955a578502a63578de4f1abce932cb8b32
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: 460950413d1dd2d3539c1d62b0eb11f6bb5144a9
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360610"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96419969"
 ---
 # <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a>5부. ASP.NET Core 앱에서 생성된 페이지 업데이트
 
@@ -55,7 +53,7 @@ ms.locfileid: "94360610"
 
 ![브라우저 창에서 편집 링크에 마우스를 가져가면 https://localhost:1234/Movies/Edit/5 의 링크 Url이 표시됩니다.](~/tutorials/razor-pages/da1/edit7.png)
 
-**편집**, **세부 정보**, **Delete** 링크는 *Pages/Movies/Index.cshtml* 파일의 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.
+**편집**, **세부 정보** 및 **삭제** 링크는 *Pages/Movies/Index.cshtml* 파일에서 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
@@ -77,7 +75,7 @@ ms.locfileid: "94360610"
 
 ### <a name="add-route-template"></a>경로 템플릿 추가
 
-`{id:int}` 경로 템플릿을 사용하도록 편집, 세부 정보, Delete Razor Pages를 업데이트합니다. 이러한 각 페이지에 대한 page 지시문을 `@page`에서 `@page "{id:int}"`로 변경합니다. 앱을 실행한 다음 소스를 봅니다.
+`{id:int}` 경로 템플릿을 사용하도록 편집, 세부 정보 및 삭제 Razor Pages를 업데이트합니다. 이러한 각 페이지에 대한 page 지시문을 `@page`에서 `@page "{id:int}"`로 변경합니다. 앱을 실행한 다음 소스를 봅니다.
 
 생성된 HTML에서 URL의 경로 부분에 ID를 추가합니다.
 
@@ -117,7 +115,7 @@ ms.locfileid: "94360610"
 
 1. `catch (DbUpdateConcurrencyException)`에서 중단점을 설정합니다.
 1. 동영상에 대한 **편집** 을 선택하고, 변경하지만 **저장** 을 입력하지 않습니다.
-1. 다른 브라우저 창에서 동일한 영화의 **Delete** 링크를 선택한 다음 영화를 삭제합니다.
+1. 다른 브라우저 창에서 동일한 동영상에 대한 **삭제** 링크를 선택한 다음 동영상을 삭제합니다.
 1. 이전 브라우저 창에서 동영상에 변경 내용을 게시합니다.
 
 프로덕션 코드는 동시성 충돌을 검색할 수 있습니다. 자세한 내용은 [동시성 충돌 처리](xref:data/ef-rp/concurrency)를 참조하세요.
@@ -146,7 +144,7 @@ Movies/Edit 페이지(예: `https://localhost:5001/Movies/Edit/3`)에 HTTP GET �
 * 모델 상태에 오류가 있는 경우(예: `ReleaseDate`를 날짜로 변환할 수 없는 경우) 양식은 제출된 값으로 다시 표시됩니다.
 * 모델 오류가 없는 경우 동영상이 저장됩니다.
 
-Index, Create, Delete Razor 페이지의 HTTP GET 메서드는 유사한 패턴을 따릅니다. Create Razor 페이지의 HTTP POST `OnPostAsync` 메서드는 Razor 편집 페이지의 `OnPostAsync` 메서드와 유사한 패턴을 따릅니다.
+Index, 만들기 및 삭제 Razor Pages의 HTTP GET 메서드는 유사한 패턴을 따릅니다. 만들기 Razor 페이지에서 HTTP POST `OnPostAsync` 메서드는 편집 Razor 페이지의 `OnPostAsync` 메서드와 유사한 패턴을 따릅니다.
 
 ## <a name="additional-resources"></a>추가 리소스
 
@@ -176,7 +174,7 @@ Index, Create, Delete Razor 페이지의 HTTP GET 메서드는 유사한 패턴�
 
 ![브라우저 창에서 편집 링크에 마우스를 가져가면 http://localhost:1234/Movies/Edit/5 의 링크 Url이 표시됩니다.](~/tutorials/razor-pages/da1/edit7.png)
 
-**편집**, **세부 정보**, **Delete** 링크는 *Pages/Movies/Index.cshtml* 파일의 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.
+**편집**, **세부 정보** 및 **삭제** 링크는 *Pages/Movies/Index.cshtml* 파일에서 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
@@ -194,7 +192,7 @@ Index, Create, Delete Razor 페이지의 HTTP GET 메서드는 유사한 패턴�
 
 동적으로 생성된 링크는 쿼리 문자열이 포함된 영화 ID를 전달합니다. `https://localhost:5001/Movies/Details?id=1`의 `?id=1`이 그 예입니다.
 
-"{id:int}" 경로 템플릿을 사용하도록 편집, 세부 정보, Delete Razor Pages를 업데이트합니다. 이러한 각 페이지에 대한 page 지시문을 `@page`에서 `@page "{id:int}"`로 변경합니다. 앱을 실행한 다음 소스를 봅니다. 생성된 HTML에서 URL의 경로 부분에 ID를 추가합니다.
+편집, 세부 정보 및 삭제 Razor Pages를 “{id:int}” 경로 템플릿을 사용하도록 업데이트합니다. 이러한 각 페이지에 대한 page 지시문을 `@page`에서 `@page "{id:int}"`로 변경합니다. 앱을 실행한 다음 소스를 봅니다. 생성된 HTML에서 URL의 경로 부분에 ID를 추가합니다.
 
 ```html
 <td>
@@ -232,7 +230,7 @@ Index, Create, Delete Razor 페이지의 HTTP GET 메서드는 유사한 패턴�
 
 * `catch (DbUpdateConcurrencyException)`에서 중단점 설정
 * 동영상에 대한 **편집** 을 선택하고, 변경하지만 **저장** 을 입력하지 않습니다.
-* 다른 브라우저 창에서 동일한 영화의 **Delete** 링크를 선택한 다음 영화를 삭제합니다.
+* 다른 브라우저 창에서 동일한 동영상에 대한 **삭제** 링크를 선택한 다음 동영상을 삭제합니다.
 * 이전 브라우저 창에서 동영상에 변경 내용을 게시합니다.
 
 프로덕션 코드는 동시성 충돌을 검색할 수 있습니다. 자세한 내용은 [동시성 충돌 처리](xref:data/ef-rp/concurrency)를 참조하세요.
@@ -261,7 +259,7 @@ Movies/Edit 페이지(예: `https://localhost:5001/Movies/Edit/3`)에 HTTP GET �
 * 모델 상태에 오류가 있는 경우(예: `ReleaseDate`를 날짜로 변환할 수 없는 경우) 양식은 제출된 값으로 표시됩니다.
 * 모델 오류가 없는 경우 동영상이 저장됩니다.
 
-Index, Create, Delete Razor 페이지의 HTTP GET 메서드는 유사한 패턴을 따릅니다. Create Razor 페이지의 HTTP POST `OnPostAsync` 메서드는 Razor 편집 페이지의 `OnPostAsync` 메서드와 유사한 패턴을 따릅니다.
+Index, 만들기 및 삭제 Razor Pages의 HTTP GET 메서드는 유사한 패턴을 따릅니다. 만들기 Razor 페이지에서 HTTP POST `OnPostAsync` 메서드는 편집 Razor 페이지의 `OnPostAsync` 메서드와 유사한 패턴을 따릅니다.
 
 검색은 다음 자습서에 추가됩니다.
 

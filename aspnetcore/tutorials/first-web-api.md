@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: ab06f2d347d7f05e9c72a85e0c6e0fbc67fe48a7
-ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
+ms.openlocfilehash: ccbfc27eb89e23938a69f0ab4cb306d6a4136889
+ms.sourcegitcommit: fe2e3174c34bee1e425c6e52dd8f663fe52b8756
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550714"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175054"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>자습서: ASP.NET Core를 사용하여 웹 API 만들기
 
@@ -149,7 +149,7 @@ Ctrl+F5를 눌러 디버거 없이 실행합니다.
   Visual Studio에서 다음을 시작합니다.
 
 * IIS Express 웹 서버.
-* 기본 브라우저를 시작하고 `https://localhost:<port>/https://localhost:5001/swagger/index.html`로 이동합니다. 여기서 `<port>`는 임의로 선택한 포트 번호입니다.
+* 기본 브라우저를 시작하고 `https://localhost:<port>/swagger/index.html`로 이동합니다. 여기서 `<port>`는 임의로 선택한 포트 번호입니다.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -270,10 +270,8 @@ Swagger가 제거되었기 때문에 위의 태그는 다음 섹션에 추가된
 ### <a name="add-nuget-packages"></a>NuGet 패키지 추가
 
 * **도구** 메뉴에서 **NuGet 패키지 관리자 > 솔루션용 NuGet 패키지 관리** 를 선택합니다.
-* **찾아보기** 탭을 선택하고 **Microsoft.
-**EntityFrameworkCore.SqlServer** 를 검색 상자에 입력합니다.
+* **찾아보기** 탭을 선택한 다음 검색 상자에 **Microsoft.EntityFrameworkCore.SqlServer** 를 입력합니다.
 <!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Delete this line at RTM -->
-* 5\.0 RC 버전을 사용할 수 있도록 **시험판 포함** 확인란을 선택합니다. 
 * 왼쪽 창에서 **Microsoft.EntityFrameworkCore.SqlServer** 를 선택합니다.
 * 오른쪽 창에서 **프로젝트** 확인란을 선택하고 **설치** 를 선택합니다.
 * 앞의 지침을 사용하여 **Microsoft.EntityFrameworkCore.InMemory** NuGet 패키지를 추가합니다.
@@ -330,8 +328,8 @@ ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주�
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet tool update -g Dotnet-aspnet-codegenerator
+dotnet tool install -g dotnet-aspnet-codegenerator
+dotnet tool update -g dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
 ```
 
@@ -536,7 +534,7 @@ DTO는 다음과 같은 용도로 사용할 수 있습니다.
 
 DTO 방법을 설명하려면 비밀 필드를 포함하도록 `TodoItem` 클래스를 업데이트합니다.
 
-[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=6)]
+[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=8)]
 
 이 앱에서는 숨겨진 필드를 숨겨야 하지만, 관리 앱은 숨겨진 필드를 공개할 수 있습니다.
 
@@ -1364,7 +1362,7 @@ ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주�
 
 * 프로젝트를 빌드합니다.
 * Postman에서 HTTP 메서드를 `POST`로 설정합니다.
-* URI를 `https://localhost:<port>/api/TodoItem`으로 설정합니다. 예: `https://localhost:5001/api/TodoItem`.
+* URI를 `https://localhost:<port>/api/Todo`으로 설정합니다. 예: `https://localhost:5001/api/Todo`.
 * **본문** 탭을 선택합니다.
 * **원시** 라디오 단추를 선택합니다.
 * 유형을 **JSON(application/json)** 으로 설정합니다.

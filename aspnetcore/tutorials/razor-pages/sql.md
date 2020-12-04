@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 09/26/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 2c5bc221901d9e41984fb591755a8ad94e7e1420
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 6627825239d815d2c8bcad98e22340f07f921ab9
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570239"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420021"
 ---
 # <a name="part-4-of-tutorial-series-on-no-locrazor-pages"></a>Razor Pages에 대한 자습서 시리즈의 4부
 
@@ -118,7 +116,7 @@ LocalDB는 프로그램 개발용으로 대상이 지정된 간단한 버전의 
 
 ## <a name="seed-the-database"></a>데이터베이스 시드
 
-다음 코드를 사용하여 *Models* 폴더에 `SeedData`라는 새 클래스를 Create합니다.
+다음 코드를 사용하여 *Models* 폴더에 `SeedData`라는 새 클래스를 만듭니다.
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedData.cs?name=snippet_1)]
 
@@ -154,7 +152,7 @@ if (context.Movie.Any())
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 데이터베이스의 모든 레코드를 Delete합니다. 브라우저에서 또는 [SSOX](xref:tutorials/razor-pages/new-field#ssox)에서 삭제 링크를 사용합니다.
+1. 데이터베이스의 모든 레코드를 삭제합니다. 브라우저에서 또는 [SSOX](xref:tutorials/razor-pages/new-field#ssox)에서 삭제 링크를 사용합니다.
 
 1. `Startup` 클래스에서 메서드를 호출하여 앱을 강제로 초기화하면 시드 메서드가 실행됩니다. 초기화를 적용하려면 IIS Express를 중지하고 다시 시작해야 합니다. 다음 중 한 가지 방법을 사용하여 IIS를 중지했다가 다시 시작합니다.
 
@@ -169,7 +167,7 @@ if (context.Movie.Any())
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
-데이터베이스의 모든 레코드를 Delete하면 시드 메서드가 실행됩니다. 앱을 중지 및 시작하여 데이터베이스를 시드합니다.
+데이터베이스의 모든 레코드를 삭제하면 시드 메서드가 실행됩니다. 앱을 중지 및 시작하여 데이터베이스를 시드합니다.
 
 ---
 
@@ -272,7 +270,7 @@ LocalDB는 프로그램 개발용으로 대상이 지정된 간단한 버전의 
 
 ## <a name="seed-the-database"></a>데이터베이스 시드
 
-다음 코드를 사용하여 *Models* 폴더에 `SeedData`라는 새 클래스를 Create합니다.
+다음 코드를 사용하여 *Models* 폴더에 `SeedData`라는 새 클래스를 만듭니다.
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedData.cs?name=snippet_1)]
 
@@ -308,7 +306,7 @@ if (context.Movie.Any())
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 데이터베이스의 모든 레코드를 Delete합니다. 브라우저에서 또는 [SSOX](xref:tutorials/razor-pages/new-field#ssox)에서 삭제 링크를 사용합니다.
+* 데이터베이스의 모든 레코드를 삭제합니다. 브라우저에서 또는 [SSOX](xref:tutorials/razor-pages/new-field#ssox)에서 삭제 링크를 사용합니다.
 * `Startup` 클래스에서 메서드를 호출하여 앱을 강제로 초기화하면 시드 메서드가 실행됩니다. 초기화를 적용하려면 IIS Express를 중지하고 다시 시작해야 합니다. 다음 중 한 가지 방법을 사용하여 IIS를 중지했다가 다시 시작합니다.
 
   * 알림 영역에서 IIS Express 시스템 트레이 아이콘을 마우스 오른쪽 단추로 클릭하고 **종료** 또는 **사이트 중지** 를 탭합니다.
@@ -322,7 +320,7 @@ if (context.Movie.Any())
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
-데이터베이스의 모든 레코드를 Delete하면 시드 메서드가 실행됩니다. 앱을 중지 및 시작하여 데이터베이스를 시드합니다.
+데이터베이스의 모든 레코드를 삭제하면 시드 메서드가 실행됩니다. 앱을 중지 및 시작하여 데이터베이스를 시드합니다.
 
 ---
 
@@ -416,7 +414,7 @@ LocalDB는 프로그램 개발용으로 대상이 지정된 간단한 버전의 
 
 ## <a name="seed-the-database"></a>데이터베이스 시드
 
-다음 코드를 사용하여 *Models* 폴더에 `SeedData`라는 새 클래스를 Create합니다.
+다음 코드를 사용하여 *Models* 폴더에 `SeedData`라는 새 클래스를 만듭니다.
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedData.cs?name=snippet_1)]
 
@@ -452,7 +450,7 @@ SqlException: 로그인에서 요청한 “RazorPagesMovieContext-21” 데이�
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 데이터베이스의 모든 레코드를 Delete합니다. 브라우저 또는 [SSOX](xref:tutorials/razor-pages/new-field#ssox)에서 삭제 링크를 사용하여 이를 수행할 수 있습니다.
+* 데이터베이스의 모든 레코드를 삭제합니다. 브라우저 또는 [SSOX](xref:tutorials/razor-pages/new-field#ssox)에서 삭제 링크를 사용하여 이를 수행할 수 있습니다.
 * `Startup` 클래스에서 메서드를 호출하여 앱을 강제로 초기화하면 시드 메서드가 실행됩니다. 초기화를 적용하려면 IIS Express를 중지하고 다시 시작해야 합니다. 다음 중 한 가지 방법을 사용하여 이를 수행할 수 있습니다.
 
   * 알림 영역에서 IIS Express 시스템 트레이 아이콘을 마우스 오른쪽 단추로 클릭하고 **종료** 또는 **사이트 중지** 를 탭합니다.
@@ -466,11 +464,11 @@ SqlException: 로그인에서 요청한 “RazorPagesMovieContext-21” 데이�
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-데이터베이스의 모든 레코드를 Delete하면 시드 메서드가 실행됩니다. 앱을 중지 및 시작하여 데이터베이스를 시드합니다.
+데이터베이스의 모든 레코드를 삭제하면 시드 메서드가 실행됩니다. 앱을 중지 및 시작하여 데이터베이스를 시드합니다.
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-데이터베이스의 모든 레코드를 Delete하면 시드 메서드가 실행됩니다. 앱을 중지 및 시작하여 데이터베이스를 시드합니다.
+데이터베이스의 모든 레코드를 삭제하면 시드 메서드가 실행됩니다. 앱을 중지 및 시작하여 데이터베이스를 시드합니다.
 
 ---
 

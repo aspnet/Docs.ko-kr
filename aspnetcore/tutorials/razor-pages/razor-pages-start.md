@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 09/15/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: fa113a3e0a2a69fb4aa1318056dcfc6e261490f6
-ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
+ms.openlocfilehash: 4b8bd9c886e615add6b0d3e372843a8ddb33ae18
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96025030"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420047"
 ---
 # <a name="tutorial-get-started-with-no-locrazor-pages-in-aspnet-core"></a>자습서: ASP.NET Core에서 Razor Pages 시작
 
@@ -43,7 +41,7 @@ ASP.NET Core Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설�
 이 자습서에서는 다음과 같은 작업을 수행합니다.
 
 > [!div class="checklist"]
-> * Razor Pages 웹앱을 Create합니다.
+> * Razor Pages 웹앱을 만듭니다.
 > * 앱을 실행합니다.
 > * 프로젝트 파일을 검사합니다.
 
@@ -67,25 +65,25 @@ ASP.NET Core Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설�
 
 ---
 
-## <a name="no-loccreate-a-no-locrazor-pages-web-app"></a>Razor Pages 웹앱 Create
+## <a name="create-a-no-locrazor-pages-web-app"></a>Razor Pages 웹앱 만들기
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Visual Studio를 시작하고 **새 프로젝트 Create** 를 선택합니다. 자세한 내용은 [Visual Studio에서 새 프로젝트 Create](/visualstudio/ide/create-new-project)를 참조하세요.
+1. Visual Studio를 시작하고 **새 프로젝트 만들기** 를 선택합니다. 자세한 내용은 [Visual Studio에서 새 프로젝트 만들기](/visualstudio/ide/create-new-project)를 참조하세요.
 
-   ![시작 창에서 새 프로젝트 Create](razor-pages-start/_static/5/start-window-create-new-project.png)
+   ![시작 창에서 새 프로젝트 만들기](razor-pages-start/_static/5/start-window-create-new-project.png)
 
-1. **새 프로젝트 Create** 대화 상자에서 **ASP.NET Core 웹 애플리케이션** 을 선택한 후, **다음** 을 선택합니다.
+1. **새 프로젝트 만들기** 대화 상자에서 **ASP.NET Core 웹 애플리케이션** 을 선택한 후, **다음** 을 선택합니다.
 
     ![새 ASP.NET Core 웹 응용 프로그램](razor-pages-start/_static/5/np.png)
     
 1. **새 프로젝트 구성** 대화 상자에서 **프로젝트 이름** 으로 `RazorPagesMovie`를 입력합니다. 대문자 표시를 포함하여 프로젝트 이름을 *RazorPagesMovie* 로 지정해야 예제 코드를 복사해 붙여넣을 때 네임스페이스가 일치합니다.
 
-1. **Create** 을 선택합니다.
+1. **만들기** 를 선택합니다.
 
     ![새 ASP.NET Core 웹 응용 프로그램](razor-pages-start/_static/config.png)
 
-1. **새 ASP.NET Core 애플리케이션 Create** 대화 상자에서 다음을 선택합니다.
+1. **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 다음을 선택합니다.
     1. 드롭다운에서 **.NET Core** 와 **ASP.NET Core 5.0** 을 선택합니다.
     1. **웹 애플리케이션**
     1. **Create**.
@@ -128,7 +126,7 @@ ASP.NET Core Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설�
     1. **대상 프레임워크** 를 선택하는 옵션이 제공되는 경우 최신 .NET 5.x 버전을 선택합니다.
     1. **다음** 을 선택합니다.
 
-1. 프로젝트 이름을 *RazorPagesMovie* 로 지정하고, **Create** 를 선택합니다.
+1. 프로젝트 이름을 *RazorPagesMovie* 로 지정하고 **만들기** 를 선택합니다.
 
     ![macOS 프로젝트 이름 지정](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -191,7 +189,7 @@ ASP.NET Core Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설�
 이 자습서에서는 다음과 같은 작업을 수행합니다.
 
 > [!div class="checklist"]
-> * Razor Pages 웹앱을 Create합니다.
+> * Razor Pages 웹앱을 만듭니다.
 > * 앱을 실행합니다.
 > * 프로젝트 파일을 검사합니다.
 
@@ -215,17 +213,17 @@ ASP.NET Core Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설�
 
 ---
 
-## <a name="no-loccreate-a-no-locrazor-pages-web-app"></a>Razor Pages 웹앱 Create
+## <a name="create-a-no-locrazor-pages-web-app"></a>Razor Pages 웹앱 만들기
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트** 를 선택합니다.
-* 새 ASP.NET Core 웹 애플리케이션을 Create하고 **다음** 을 선택합니다.
+* 새 ASP.NET Core 웹 애플리케이션을 만들고 **다음** 을 선택합니다.
   ![새 ASP.NET Core 웹 애플리케이션](razor-pages-start/_static/np_2.1.png)
 * 프로젝트 이름을 **RazorPagesMovie** 로 지정합니다. 코드를 복사하여 붙여 넣을 때 네임스페이스가 일치하도록 프로젝트 이름을 *RazorPagesMovie* 로 지정해야 합니다.
   ![새 ASP.NET Core 웹 애플리케이션](razor-pages-start/_static/config.png)
 
-* 드롭다운에서 **ASP.NET Core 3.1** 을 선택하고 **웹 애플리케이션** 을 선택한 다음 **Create** 를 선택합니다.
+* 드롭다운에서 **ASP.NET Core 3.1** 을 선택하고 **웹 애플리케이션** 을 선택한 다음, **만들기** 를 선택합니다.
 
 ![새 ASP.NET Core 웹 응용 프로그램](razor-pages-start/_static/3/npx.png)
 
@@ -270,7 +268,7 @@ ASP.NET Core Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설�
 
   **새로 만들기** 를 선택합니다.
 
-* 프로젝트 이름을 **RazorPagesMovie** 로 지정한 다음 **Create** 를 선택합니다.
+* 프로젝트 이름을 **RazorPagesMovie** 로 지정하고 **만들기** 를 선택합니다.
 
   ![macOS 프로젝트 이름 지정](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -333,7 +331,7 @@ HTML 파일, JavaScript 파일, CSS 파일과 같은 정적 파일을 포함합�
 이 자습서에서는 다음과 같은 작업을 수행합니다.
 
 > [!div class="checklist"]
-> * Razor Pages 웹앱을 Create합니다.
+> * Razor Pages 웹앱을 만듭니다.
 > * 앱을 실행합니다.
 > * 프로젝트 파일을 검사합니다.
 
@@ -357,13 +355,13 @@ HTML 파일, JavaScript 파일, CSS 파일과 같은 정적 파일을 포함합�
 
 ---
 
-## <a name="no-loccreate-a-no-locrazor-pages-web-app"></a>Razor Pages 웹앱 Create
+## <a name="create-a-no-locrazor-pages-web-app"></a>Razor Pages 웹앱 만들기
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Visual Studio **파일** 메뉴에서 **새로 만들기** >**프로젝트** 를 선택합니다.
 
-* 새 ASP.NET Core 웹 애플리케이션을 Create하고 **다음** 을 선택합니다.
+* 새 ASP.NET Core 웹 애플리케이션을 만들고 **다음** 을 선택합니다.
 
   ![새 ASP.NET Core 웹 응용 프로그램](razor-pages-start/_static/np_2.1.png)
 
@@ -371,7 +369,7 @@ HTML 파일, JavaScript 파일, CSS 파일과 같은 정적 파일을 포함합�
 
   ![새 ASP.NET Core 웹 응용 프로그램](razor-pages-start/_static/config.png)
 
-* 드롭다운에서 **ASP.NET Core 2.2** 를 선택하고 **웹 애플리케이션** 을 선택한 다음 **Create** 를 선택합니다.
+* 드롭다운에서 **ASP.NET Core 2.2** 를 선택하고 **웹 애플리케이션** 을 선택한 다음, **만들기** 를 선택합니다.
 
 ![새 ASP.NET Core 웹 응용 프로그램](razor-pages-start/_static/np_2_2.2.png)
 
@@ -414,7 +412,7 @@ HTML 파일, JavaScript 파일, CSS 파일과 같은 정적 파일을 포함합�
 
   **새로 만들기** 를 선택합니다.
 
-* 프로젝트 이름을 **RazorPagesMovie** 로 지정한 다음 **Create** 를 선택합니다.
+* 프로젝트 이름을 **RazorPagesMovie** 로 지정하고 **만들기** 를 선택합니다.
 
   ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
 

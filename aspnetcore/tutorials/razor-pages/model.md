@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 11/11/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 6244ac8798fb470a88802389961968fb52bd3c0a
-ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
+ms.openlocfilehash: b2e840e20d034b42b2dc4a525b1dd76e44bbe3a8
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550696"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420060"
 ---
 # <a name="part-2-add-a-model-to-a-no-locrazor-pages-app-in-aspnet-core"></a>2부. ASP.NET Core에서 Razor Pages 앱에 모델 추가
 
@@ -143,11 +141,11 @@ ms.locfileid: "94550696"
 
 ## <a name="scaffold-the-movie-model"></a>영화 모델 스캐폴드
 
-이 섹션에서는 영화 모델을 스캐폴드 합니다. 즉, 스캐폴딩 도구로 영화 모델에 대한 CRUD(Create, 읽기, 업데이트 및 Delete) 작업을 위한 페이지를 생성합니다.
+이 섹션에서는 영화 모델을 스캐폴드 합니다. 즉, 스캐폴드 도구로 영화 모델에 대한 CRUD(생성, 읽기, 수정 및 삭제) 작업을 위한 페이지를 생성합니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. *Pages/Movies* 폴더를 Create합니다.
+1. *Pages/Movies* 폴더를 만듭니다.
    1. *Pages* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더** 를 선택합니다.
    1. 폴더 이름을 *Movies* 로 지정합니다.
 
@@ -196,7 +194,7 @@ ms.locfileid: "94550696"
 | `-dc`  | 사용할 `DbContext` 클래스입니다. |
 | `-udl` | 기본 레이아웃을 사용합니다. |
 | `-outDir` | 뷰를 만들기 위한 상태 출력 폴더 경로입니다. |
-| `--referenceScriptLibraries` | 편집 및 Create 페이지에 `_ValidationScriptsPartial`을 추가합니다. |
+| `--referenceScriptLibraries` | Edit 및 Create 페이지에 `_ValidationScriptsPartial`을 추가합니다. |
 
 `-h` 옵션을 사용하여 `aspnet-codegenerator razorpage` 명령에 대한 도움말을 확인합니다.
 
@@ -214,7 +212,7 @@ SQLite를 선택하면 개발용 템플릿 생성 코드가 준비됩니다. 다
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-1. *Pages/Movies* 폴더를 Create합니다.
+1. *Pages/Movies* 폴더를 만듭니다.
    1. *Pages* 폴더를 Ctrl + 클릭하고 **추가** > **새 폴더** 를 선택합니다.
    1. 폴더 이름을 *Movies* 로 지정합니다.
 
@@ -248,7 +246,7 @@ SQLite를 선택하면 개발용 템플릿 생성 코드가 준비됩니다. 다
 
 스캐폴드 프로세스는 다음 파일을 생성하고 업데이트합니다.
 
-* *Pages/Movies*: Create, Delete, 세부 정보, 편집, Index.
+* *Pages/Movies*: 만들기, 삭제, 세부 정보, 편집 및 Index입니다.
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="updated"></a>업데이트됨
@@ -261,7 +259,7 @@ SQLite를 선택하면 개발용 템플릿 생성 코드가 준비됩니다. 다
 
 스캐폴드 프로세스는 다음 파일을 만듭니다.
 
-* *Pages/Movies*: Create, Delete, 세부 정보, 편집, Index.
+* *Pages/Movies*: 만들기, 삭제, 세부 정보, 편집 및 Index입니다.
 
 생성된 파일은 다음 섹션에서 설명합니다.
 
@@ -269,7 +267,7 @@ SQLite를 선택하면 개발용 템플릿 생성 코드가 준비됩니다. 다
 
 스캐폴드 프로세스는 다음 파일을 생성하고 업데이트합니다.
 
-* *Pages/Movies*: Create, Delete, 세부 정보, 편집, Index.
+* *Pages/Movies*: 만들기, 삭제, 세부 정보, 편집 및 Index입니다.
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="updated"></a>업데이트됨
@@ -282,11 +280,11 @@ SQLite를 선택하면 개발용 템플릿 생성 코드가 준비됩니다. 다
 
 <a name="pmc"></a>
 
-## <a name="no-loccreate-the-initial-database-schema-using-efs-migration-feature"></a>EF의 마이그레이션 기능을 사용하여 초기 데이터베이스 Create
+## <a name="create-the-initial-database-schema-using-efs-migration-feature"></a>EF의 마이그레이션 기능을 사용하여 초기 데이터베이스 스키마 만들기
 
 Entity Framework Core의 마이그레이션 기능은 다음을 수행하는 방법을 제공합니다.
 
-* 초기 데이터베이스 스키마를 Create합니다.
+* 초기 데이터베이스 스키마를 만듭니다.
 * 데이터베이스 스키마를 증분 방식으로 업데이트하여 애플리케이션의 데이터 모델과 동기화된 상태로 유지합니다.  데이터베이스의 기존 데이터는 그대로 유지됩니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
@@ -340,7 +338,7 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
 
-`RazorPagesMovieContext`는 `Movie` 모델에 대한 EF Core 기능(Create, 읽기, 업데이트, Delete)을 조정합니다. 데이터 컨텍스트(`RazorPagesMovieContext`)는 [Microsoft.EntityFrameworkCore.DbContext](xref:Microsoft.EntityFrameworkCore.DbContext)에서 파생됩니다. 데이터 컨텍스트는 데이터 모델에 포함되는 엔터티를 지정합니다.
+`RazorPagesMovieContext`는 `Movie` 모델에 대한 EF Core 기능(만들기, 읽기, 업데이트, 삭제)을 조정합니다. 데이터 컨텍스트(`RazorPagesMovieContext`)는 [Microsoft.EntityFrameworkCore.DbContext](xref:Microsoft.EntityFrameworkCore.DbContext)에서 파생됩니다. 데이터 컨텍스트는 데이터 모델에 포함되는 엔터티를 지정합니다.
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Data/RazorPagesMovieContext.cs)]
 
@@ -371,12 +369,12 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 1. **Create** 링크를 테스트합니다.
 
-   ![Create 페이지](model/_static/conan5.png)
+   ![페이지 만들기](model/_static/conan5.png)
 
    > [!NOTE]
    > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(",")를 사용하는 비 영어 로캘 및 비 US-English 날짜 형식에 대해[jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 세계화해야 합니다. 세계화 지침은 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)를 참조하세요.
 
-1. **편집**, **세부 정보**, **Delete** 링크를 테스트합니다.
+1. **Edit**, **Details** 및 **Delete** 링크를 테스트합니다.
 
 다음 자습서에서는 스캐폴딩을 통해 만들어진 파일을 설명합니다.
 
@@ -509,11 +507,11 @@ using Microsoft.EntityFrameworkCore;
 
 ## <a name="scaffold-the-movie-model"></a>영화 모델 스캐폴드
 
-이 섹션에서는 영화 모델을 스캐폴드 합니다. 즉, 스캐폴딩 도구로 영화 모델에 대한 CRUD(Create, 읽기, 업데이트 및 Delete) 작업을 위한 페이지를 생성합니다.
+이 섹션에서는 영화 모델을 스캐폴드 합니다. 즉, 스캐폴드 도구로 영화 모델에 대한 CRUD(생성, 읽기, 수정 및 삭제) 작업을 위한 페이지를 생성합니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-*Pages/Movies* 폴더를 Create합니다.
+*Pages/Movies* 폴더를 만듭니다.
 
 * *Pages* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더** 를 선택합니다.
 * 폴더 이름을 *Movies* 로 지정합니다.
@@ -563,7 +561,7 @@ using Microsoft.EntityFrameworkCore;
 | `-dc`  | 사용할 `DbContext` 클래스입니다. |
 | `-udl` | 기본 레이아웃을 사용합니다. |
 | `-outDir` | 뷰를 만들기 위한 상태 출력 폴더 경로입니다. |
-| `--referenceScriptLibraries` | 편집 및 Create 페이지에 `_ValidationScriptsPartial`을 추가합니다. |
+| `--referenceScriptLibraries` | Edit 및 Create 페이지에 `_ValidationScriptsPartial`을 추가합니다. |
 
 `-h` 옵션을 사용하여 `aspnet-codegenerator razorpage` 명령에 대한 도움말을 확인합니다.
 
@@ -581,7 +579,7 @@ SQLite를 선택하면 개발용 템플릿 생성 코드가 준비됩니다. 다
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-*Pages/Movies* 폴더를 Create합니다.
+*Pages/Movies* 폴더를 만듭니다.
 
 * *Pages* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더** 를 선택합니다.
 * 폴더 이름을 *Movies* 로 지정합니다.
@@ -628,7 +626,7 @@ SQLite를 선택하면 개발용 템플릿 생성 코드가 준비됩니다. 다
 
 스캐폴드 프로세스는 다음 파일을 생성하고 업데이트합니다.
 
-* *Pages/Movies*: Create, Delete, 세부 정보, 편집, Index.
+* *Pages/Movies*: 만들기, 삭제, 세부 정보, 편집 및 Index입니다.
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="updated"></a>업데이트됨
@@ -641,7 +639,7 @@ SQLite를 선택하면 개발용 템플릿 생성 코드가 준비됩니다. 다
 
 스캐폴드 프로세스는 다음 파일을 생성하고 업데이트합니다.
 
-* *Pages/Movies*: Create, Delete, 세부 정보, 편집, Index.
+* *Pages/Movies*: 만들기, 삭제, 세부 정보, 편집 및 Index입니다.
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="updated"></a>업데이트됨
@@ -654,7 +652,7 @@ SQLite를 선택하면 개발용 템플릿 생성 코드가 준비됩니다. 다
 
 스캐폴드 프로세스는 다음 파일을 만듭니다.
 
-* *Pages/Movies*: Create, Delete, 세부 정보, 편집, Index.
+* *Pages/Movies*: 만들기, 삭제, 세부 정보, 편집 및 Index입니다.
 
 생성된 파일은 다음 섹션에서 설명합니다.
 
@@ -715,7 +713,7 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
 
-`RazorPagesMovieContext`는 `Movie` 모델에 대한 EF Core 기능(Create, 읽기, 업데이트, Delete)을 조정합니다. 데이터 컨텍스트(`RazorPagesMovieContext`)는 [Microsoft.EntityFrameworkCore.DbContext](xref:Microsoft.EntityFrameworkCore.DbContext)에서 파생됩니다. 데이터 컨텍스트는 데이터 모델에 포함되는 엔터티를 지정합니다.
+`RazorPagesMovieContext`는 `Movie` 모델에 대한 EF Core 기능(만들기, 읽기, 업데이트, 삭제)을 조정합니다. 데이터 컨텍스트(`RazorPagesMovieContext`)는 [Microsoft.EntityFrameworkCore.DbContext](xref:Microsoft.EntityFrameworkCore.DbContext)에서 파생됩니다. 데이터 컨텍스트는 데이터 모델에 포함되는 엔터티를 지정합니다.
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Data/RazorPagesMovieContext.cs)]
 
@@ -746,12 +744,12 @@ Login failed for user 'User-name'.
 
 * **Create** 링크를 테스트합니다.
 
-  ![Create 페이지](model/_static/conan5.png)
+  ![페이지 만들기](model/_static/conan5.png)
 
   > [!NOTE]
   > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(",")를 사용하는 비 영어 로캘 및 비 US-English 날짜 형식에 대해[jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 세계화해야 합니다. 세계화 지침은 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)를 참조하세요.
 
-* **편집**, **세부 정보**, **Delete** 링크를 테스트합니다.
+* **Edit**, **Details** 및 **Delete** 링크를 테스트합니다.
 
 다음 자습서에서는 스캐폴딩을 통해 만들어진 파일을 설명합니다.
 
@@ -895,11 +893,11 @@ using Microsoft.EntityFrameworkCore;
 
 ## <a name="scaffold-the-movie-model"></a>영화 모델 스캐폴드
 
-이 섹션에서는 영화 모델을 스캐폴드 합니다. 즉, 스캐폴딩 도구로 영화 모델에 대한 CRUD(Create, 읽기, 업데이트 및 Delete) 작업을 위한 페이지를 생성합니다.
+이 섹션에서는 영화 모델을 스캐폴드 합니다. 즉, 스캐폴드 도구로 영화 모델에 대한 CRUD(생성, 읽기, 수정 및 삭제) 작업을 위한 페이지를 생성합니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-*Pages/Movies* 폴더를 Create합니다.
+*Pages/Movies* 폴더를 만듭니다.
 
 * *Pages* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **새 폴더** 를 선택합니다.
 * 폴더 이름을 *Movies* 로 지정합니다.
@@ -953,7 +951,7 @@ to use Data, it should not use models. That will make the namespace the same for
 | `-dc`  | 사용할 `DbContext` 클래스입니다. |
 | `-udl` | 기본 레이아웃을 사용합니다. |
 | `-outDir` | 뷰를 만들기 위한 상태 출력 폴더 경로입니다. |
-| `--referenceScriptLibraries` | 편집 및 Create 페이지에 `_ValidationScriptsPartial`을 추가합니다. |
+| `--referenceScriptLibraries` | Edit 및 Create 페이지에 `_ValidationScriptsPartial`을 추가합니다. |
 
 `-h` 옵션을 사용하여 `aspnet-codegenerator razorpage` 명령에 대한 도움말을 확인합니다.
 
@@ -965,7 +963,7 @@ dotnet-aspnet-codegenerator razorpage -h
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-*Pages/Movies* 폴더를 Create합니다.
+*Pages/Movies* 폴더를 만듭니다.
 
 * *Pages* 폴더를 Ctrl + 클릭하고 **추가** > **새 폴더** 를 선택합니다.
 * 폴더 이름을 *Movies* 로 지정합니다.
@@ -994,7 +992,7 @@ dotnet-aspnet-codegenerator razorpage -h
 
 ### <a name="files-created"></a>생성된 파일
 
-* *Pages/Movies*: Create, Delete, 세부 정보, 편집, Index.
+* *Pages/Movies*: 만들기, 삭제, 세부 정보, 편집 및 Index입니다.
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="file-updated"></a>파일 업데이트됨
@@ -1058,7 +1056,7 @@ ASP.NET Core는 [종속성 주입](xref:fundamentals/dependency-injection)을 �
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 
-`RazorPagesMovieContext`는 `Movie` 모델에 대한 EF Core 기능(Create, 읽기, 업데이트, Delete)을 조정합니다. 데이터 컨텍스트(`RazorPagesMovieContext`)는 [Microsoft.EntityFrameworkCore.DbContext](xref:Microsoft.EntityFrameworkCore.DbContext)에서 파생됩니다. 데이터 컨텍스트는 데이터 모델에 포함되는 엔터티를 지정합니다.
+`RazorPagesMovieContext`는 `Movie` 모델에 대한 EF Core 기능(만들기, 읽기, 업데이트, 삭제)을 조정합니다. 데이터 컨텍스트(`RazorPagesMovieContext`)는 [Microsoft.EntityFrameworkCore.DbContext](xref:Microsoft.EntityFrameworkCore.DbContext)에서 파생됩니다. 데이터 컨텍스트는 데이터 모델에 포함되는 엔터티를 지정합니다.
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 
@@ -1089,12 +1087,12 @@ Login failed for user 'User-name'.
 
 * **Create** 링크를 테스트합니다.
 
-  ![Create 페이지](model/_static/conan.png)
+  ![페이지 만들기](model/_static/conan.png)
 
   > [!NOTE]
   > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(",")를 사용하는 비 영어 로캘 및 비 US-English 날짜 형식에 대해[jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 세계화해야 합니다. 세계화 지침은 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)를 참조하세요.
 
-* **편집**, **세부 정보**, **Delete** 링크를 테스트합니다.
+* **Edit**, **Details** 및 **Delete** 링크를 테스트합니다.
 
 다음 자습서에서는 스캐폴딩을 통해 만들어진 파일을 설명합니다.
 

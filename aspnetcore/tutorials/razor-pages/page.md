@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 09/25/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: d655be26a794f87a0be07046ae1d6415256d592c
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: 4a5369b9e40de89ac9a1895466e7bdd7afb9d32e
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417632"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420034"
 ---
 # <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>3부. ASP.NET Core의 스캐폴드된 Razor Pages
 
@@ -47,7 +45,7 @@ ms.locfileid: "95417632"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="the-no-loccreate-no-locdelete-details-and-edit-pages"></a>Create, Delete, 세부 정보, 편집 페이지
+## <a name="the-create-delete-details-and-edit-pages"></a>만들기, 삭제, 세부 정보 및 편집 페이지
 
 *Pages/Movies/Index.cshtml.cs* 페이지 모델을 검사합니다.
 
@@ -151,7 +149,7 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 1. 변경 내용을 저장하고 **RpMovie** 링크를 선택하여 앱을 테스트합니다. 문제가 있는 경우 GitHub에서 [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml) 파일을 참조하세요.
 
-1. **홈**, **RpMovie**, **Create** , **편집**, **Delete** 링크를 테스트합니다. 각 페이지에서 설정되는 제목은 브라우저 탭에서 확인할 수 있습니다. 페이지의 책갈피를 지정하면 제목이 책갈피에 사용됩니다.
+1. **홈**, **RpMovie**, **만들기**, **편집** 및 **삭제** 링크를 테스트합니다. 각 페이지에서 설정되는 제목은 브라우저 탭에서 확인할 수 있습니다. 페이지의 책갈피를 지정하면 제목이 책갈피에 사용됩니다.
 
 > [!NOTE]
 > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(",")를 사용하는 비영어 로캘 및 비미국 영어 날짜 형식에 대해 [jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 세계화하는 단계를 수행해야 합니다. 소수점 추가에 대한 지침은 이 [GitHub 문제 4076](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)을 참조하세요.
@@ -162,15 +160,15 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 이전 태그는 *Pages* 폴더 아래에 있는 모든 Razor 파일에 대한 레이아웃 파일을 *Pages/Shared/_Layout.cshtml* 로 설정합니다. 자세한 내용은 [레이아웃](xref:razor-pages/index#layout)을 참조하세요.
 
-### <a name="the-no-loccreate-page-model"></a>Create 페이지 모델
+### <a name="the-create-page-model"></a>Create 페이지 모델
 
-*Pages/Movies/Create.cshtml.cs* 페이지 모델을 검사합니다.
+*Pages/Movies/Create.cshtml.cs* 페이지 모델을 살펴봅니다.
 
 [!code-csharp[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 
-`OnGet` 메서드는 페이지에 필요한 상태를 초기화합니다. Create 페이지에는 초기화할 상태가 없으므로 `Page`가 반환됩니다. 자습서의 뒷부분에서 상태를 초기화하는 `OnGet`의 예가 나와 있습니다. `Page` 메서드는 *Create.cshtml* 페이지를 렌더링하는 `PageResult` 개체를 만듭니다.
+`OnGet` 메서드는 페이지에 필요한 상태를 초기화합니다. 만들기 페이지에는 초기화할 상태가 없습니다. 따라서 `Page`가 반환됩니다. 자습서의 뒷부분에서 상태를 초기화하는 `OnGet`의 예가 나와 있습니다. `Page` 메서드는 *Create.cshtml* 페이지를 렌더링하는 `PageResult` 개체를 만듭니다.
 
-`Movie` 속성은 [BindProperty](xref:Microsoft.AspNetCore.Mvc.BindPropertyAttribute) 특성을 사용하여 [모델 바인딩](xref:mvc/models/model-binding)을 옵트인합니다. Create 양식이 양식 값을 게시하면 ASP.NET Core 런타임이 게시된 값을 `Movie` 모델에 바인딩합니다.
+`Movie` 속성은 [BindProperty](xref:Microsoft.AspNetCore.Mvc.BindPropertyAttribute) 특성을 사용하여 [모델 바인딩](xref:mvc/models/model-binding)을 옵트인합니다. 만들기 폼이 폼 값을 게시하면 ASP.NET Core 런타임이 게시된 값을 `Movie` 모델에 바인딩합니다.
 
 페이지에 폼 데이터가 게시되면 `OnPostAsync` 메서드가 실행됩니다.
 
@@ -183,9 +181,9 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 * 데이터가 저장됩니다.
 * 브라우저가 Index 페이지로 리디렉션됩니다.
 
-### <a name="the-no-loccreate-no-locrazor-page"></a>Razor Page Create
+### <a name="the-create-no-locrazor-page"></a>Create Razor Page
 
-*Pages/Movies/Create.cshtml* Razor 페이지 파일을 검사합니다.
+*Pages/Movies/Create.cshtml* Razor Page 파일을 살펴봅니다.
 
 [!code-cshtml[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Create.cshtml)]
 
@@ -199,7 +197,7 @@ Visual Studio에서는 다음 태그를 태그 도우미에 사용되는 독특�
 * `<input asp-for="Movie.Title" class="form-control" />`
 * `<span asp-validation-for="Movie.Title" class="text-danger"></span>`
 
-![Create.cshtml 페이지의 VS17 보기](page/_static/th3.png)
+![Create.cshtml 페이지의 VS17 뷰](page/_static/th3.png)
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
@@ -237,7 +235,7 @@ Visual Studio에서는 다음 태그를 태그 도우미에 사용되는 독특�
 
 ::: moniker range="< aspnetcore-3.0"
 
-## <a name="the-no-loccreate-no-locdelete-details-and-edit-pages"></a>Create, Delete, 세부 정보, 편집 페이지
+## <a name="the-create-delete-details-and-edit-pages"></a>만들기, 삭제, 세부 정보 및 편집 페이지
 
 *Pages/Movies/Index.cshtml.cs* 페이지 모델을 검사합니다.
 
@@ -326,7 +324,7 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 변경 내용을 저장하고 **RpMovie** 링크를 클릭하여 앱을 테스트합니다. 문제가 있는 경우 GitHub에서 [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml) 파일을 참조하세요.
 
-다른 링크(**홈**, **RpMovie**, **Create** , **편집**, **Delete** )를 테스트합니다. 각 페이지에서 설정되는 제목은 브라우저 탭에서 확인할 수 있습니다. 페이지의 책갈피를 지정하면 제목이 책갈피에 사용됩니다.
+다른 링크(**홈**, **RpMovie**, **만들기**, **편집** 및 **삭제**)를 테스트합니다. 각 페이지에서 설정되는 제목은 브라우저 탭에서 확인할 수 있습니다. 페이지의 책갈피를 지정하면 제목이 책갈피에 사용됩니다.
 
 > [!NOTE]
 > `Price` 필드에 소수점을 입력하지 못할 수도 있습니다. 소수점으로 쉼표(",")를 사용하는 비영어 로캘 및 비미국 영어 날짜 형식에 대해 [jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 세계화하는 단계를 수행해야 합니다. 소수점 추가에 대한 지침은 이 [GitHub 문제 4076](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420)에 나와 있습니다.
@@ -337,15 +335,15 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 이전 태그는 *Pages* 폴더 아래에 있는 모든 Razor 파일에 대한 레이아웃 파일을 *Pages/Shared/_Layout.cshtml* 로 설정합니다. 자세한 내용은 [레이아웃](xref:razor-pages/index#layout)을 참조하세요.
 
-### <a name="the-no-loccreate-page-model"></a>페이지 모델 Create
+### <a name="the-create-page-model"></a>Create 페이지 모델
 
-*Pages/Movies/Create.cshtml.cs* 페이지 모델을 검사합니다.
+*Pages/Movies/Create.cshtml.cs* 페이지 모델을 살펴봅니다.
 
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 
-`OnGet` 메서드는 페이지에 필요한 상태를 초기화합니다. Create 페이지에는 초기화할 상태가 없으므로 `Page`가 반환됩니다. 이 자습서의 뒷부분에서 `OnGet` 메서드 초기화 상태를 확인합니다. `Page` 메서드는 *Create.cshtml* 페이지를 렌더링하는 `PageResult` 개체를 만듭니다.
+`OnGet` 메서드는 페이지에 필요한 상태를 초기화합니다. 만들기 페이지에는 초기화할 상태가 없습니다. 따라서 `Page`가 반환됩니다. 이 자습서의 뒷부분에서 `OnGet` 메서드 초기화 상태를 확인합니다. `Page` 메서드는 *Create.cshtml* 페이지를 렌더링하는 `PageResult` 개체를 만듭니다.
 
-`Movie` 속성은 [BindProperty]<xref:Microsoft.AspNetCore.Mvc.BindPropertyAttribute> 특성을 사용하여 [모델 바인딩](xref:mvc/models/model-binding)을 옵트인합니다. Create 양식이 양식 값을 게시하면 ASP.NET Core 런타임이 게시된 값을 `Movie` 모델에 바인딩합니다.
+`Movie` 속성은 [BindProperty]<xref:Microsoft.AspNetCore.Mvc.BindPropertyAttribute> 특성을 사용하여 [모델 바인딩](xref:mvc/models/model-binding)을 옵트인합니다. 만들기 폼이 폼 값을 게시하면 ASP.NET Core 런타임이 게시된 값을 `Movie` 모델에 바인딩합니다.
 
 페이지에 폼 데이터가 게시되면 `OnPostAsync` 메서드가 실행됩니다.
 
@@ -355,9 +353,9 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 모델 오류가 없는 경우 데이터가 저장되고 브라우저가 Index 페이지로 리디렉션됩니다.
 
-### <a name="the-no-loccreate-no-locrazor-page"></a>Razor Page Create
+### <a name="the-create-no-locrazor-page"></a>Create Razor Page
 
-*Pages/Movies/Create.cshtml* Razor 페이지 파일을 검사합니다.
+*Pages/Movies/Create.cshtml* Razor Page 파일을 살펴봅니다.
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml)]
 
@@ -365,7 +363,7 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 
 Visual Studio에서는 `<form method="post">` 태그를 태그 도우미에 사용되는 독특한 굵은 글꼴로 표시합니다.
 
-![Create.cshtml 페이지의 VS17 보기](page/_static/th.png)
+![Create.cshtml 페이지의 VS17 뷰](page/_static/th.png)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 

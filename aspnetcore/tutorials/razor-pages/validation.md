@@ -7,8 +7,6 @@ ms.custom: mvc
 ms.date: 09/29/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -21,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: d69ab3452f4f15e916049e5c772a20fe9f9fac65
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: f155922c9cb5ea7fdbad0963221ceddd19f4fe60
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570226"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96419956"
 ---
 # <a name="part-8-of-tutorial-series-on-no-locrazor-pages"></a>Razor Pages에 대한 자습서 시리즈의 8부입니다.
 
@@ -85,7 +83,7 @@ Razor Pages와 Entity Framework에서 제공하는 유효성 검사 지원은 �
 
 앱을 실행하고 Pages/Movies로 이동합니다.
 
-**새로 Create** 링크를 선택합니다. 일부 잘못된 값으로 양식을 완성합니다. jQuery 클라이언트 쪽 유효성 검사에서 오류를 발견하면 오류 메시지를 표시합니다.
+**새로 만들기** 링크를 선택합니다. 일부 잘못된 값으로 양식을 완성합니다. jQuery 클라이언트 쪽 유효성 검사에서 오류를 발견하면 오류 메시지를 표시합니다.
 
 ![여러 jQuery 클라이언트 쪽 유효성 검사 오류가 있는 동영상 보기 양식](validation/_static/val.png)
 
@@ -93,11 +91,11 @@ Razor Pages와 Entity Framework에서 제공하는 유효성 검사 지원은 �
 
 양식에서 잘못된 값을 포함하는 각 필드에 유효성 검사 오류 메시지를 자동으로 렌더링하는 방법을 확인합니다. 오류는 클라이언트 쪽(JavaScript 및 jQuery 사용) 및 서버 쪽(사용자가 JavaScript를 사용하지 않도록 설정한 경우) 모두 적용됩니다.
 
-중요한 이점은 Create 또는 편집 페이지에서 코드 변경이 필요하지 **않았다는** 점입니다. 데이터 주석이 모델에 적용된 후 유효성 검사 UI가 활성화되었습니다. 이 자습서에서 만든 Razor Pages는 `Movie` 모델 클래스의 속성에서 유효성 검사 특성을 사용하여 자동으로 유효성 검사 규칙을 선택했습니다. 편집 페이지를 사용하는 테스트 유효성 검사는 동일한 유효성 검사가 적용됩니다.
+중요한 이점은 만들기 또는 편집 페이지에서 코드 변경이 필요하지 **않았다는** 점입니다. 데이터 주석이 모델에 적용된 후 유효성 검사 UI가 활성화되었습니다. 이 자습서에서 만든 Razor Pages는 `Movie` 모델 클래스의 속성에서 유효성 검사 특성을 사용하여 자동으로 유효성 검사 규칙을 선택했습니다. 편집 페이지를 사용하는 테스트 유효성 검사는 동일한 유효성 검사가 적용됩니다.
 
 양식 데이터는 클라이언트 쪽 유효성 검사 오류가 없을 때까지 서버에 게시되지 않습니다. 양식 데이터가 다음 방법 중 하나 이상으로 게시되지 않았는지 확인합니다.
 
-* `OnPostAsync` 메서드에 중단점을 배치합니다. **Create** 또는 **저장** 을 선택하여 양식을 제출합니다. 중단점은 적중되지 않습니다.
+* `OnPostAsync` 메서드에 중단점을 배치합니다. **만들기** 또는 **저장** 을 선택하여 양식을 제출합니다. 중단점은 적중되지 않습니다.
 * [Fiddler 도구](https://www.telerik.com/fiddler)를 사용합니다.
 * 브라우저 개발자 도구를 사용하여 네트워크 트래픽을 모니터링합니다.
 
@@ -108,7 +106,7 @@ Razor Pages와 Entity Framework에서 제공하는 유효성 검사 지원은 �
 선택 가능한 서버 쪽 유효성 검사 테스트:
 
 1. 브라우저에서 JavaScript를 비활성화합니다. 브라우저의 개발자 도구를 사용하여 JavaScript를 사용하지 않도록 설정할 수 있습니다. 브라우저에서 JavaScript를 사용하지 않도록 설정할 수 없는 경우 다른 브라우저를 시도하세요.
-1. Create 또는 편집 페이지의 `OnPostAsync` 메서드에 중단점을 설정합니다.
+1. 만들기 또는 편집 페이지의 `OnPostAsync` 메서드에서 중단점을 설정합니다.
 1. 잘못된 데이터가 포함된 양식을 제출합니다.
 1. 모델 상태가 유효하지 않은 것을 확인합니다.
 
@@ -121,7 +119,7 @@ Razor Pages와 Entity Framework에서 제공하는 유효성 검사 지원은 �
   
 또는 [서버에서 클라이언트 쪽 유효성 검사를 사용하지 않도록 설정](xref:mvc/models/validation#disable-client-side-validation)합니다.
 
-다음 코드는 자습서의 앞부분에서 스캐폴드한 *Create.cshtml* 페이지의 일부를 보여 줍니다. Create 및 편집 페이지에서 다음을 수행하는 데 사용됩니다.
+다음 코드는 자습서의 앞부분에서 스캐폴드한 *Create.cshtml* 페이지의 일부를 보여 줍니다. 만들기 및 편집 페이지에서 다음을 수행하는 데 사용됩니다.
 
 * 초기 양식을 표시합니다.
 * 오류가 발생한 경우 양식을 다시 표시합니다.
@@ -130,7 +128,7 @@ Razor Pages와 Entity Framework에서 제공하는 유효성 검사 지원은 �
 
 [입력 태그 도우미](xref:mvc/views/working-with-forms)는 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 특성을 사용하고 클라이언트 쪽의 jQuery 유효성 검사에 필요한 HTML 특성을 생성합니다. [유효성 검사 태그 도우미](xref:mvc/views/working-with-forms#the-validation-tag-helpers)는 유효성 검사 오류를 표시합니다. 자세한 내용은 [유효성 검사](xref:mvc/models/validation)를 참조하세요.
 
-Create 및 편집 페이지에는 유효성 검사 규칙이 없습니다. 유효성 검사 규칙 및 오류 문자열은 `Movie` 클래스에서만 지정됩니다. 이러한 유효성 검사 규칙은 `Movie` 모델을 편집하는 Razor Pages에 자동으로 적용됩니다.
+만들기 및 편집 페이지에 유효성 검사 규칙이 없습니다. 유효성 검사 규칙 및 오류 문자열은 `Movie` 클래스에서만 지정됩니다. 이러한 유효성 검사 규칙은 `Movie` 모델을 편집하는 Razor Pages에 자동으로 적용됩니다.
 
 유효성 검사 논리를 변경해야 하는 경우 모델에서만 수행됩니다. 유효성 검사는 애플리케이션에 걸쳐 일관되게 적용되고, 유효성 검사 논리는 한 위치에서 정의됩니다. 한 위치의 유효성 검사를 통해 코드를 깨끗이 유지하고 쉽게 유지 관리하고 업데이트할 수 있습니다.
 
