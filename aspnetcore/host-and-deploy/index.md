@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/index
-ms.openlocfilehash: 19e888859cea35624491a516404c57e30aa9db05
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4f3d4c29a189cf6aa14eb10f570f0b35d8ff9abc
+ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93057221"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96556621"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>ASP.NET Core 호스트 및 배포
 
@@ -39,6 +39,17 @@ ms.locfileid: "93057221"
 ## <a name="publish-to-a-folder"></a>폴더에 게시
 
 [dotnet publish](/dotnet/core/tools/dotnet-publish) 명령은 앱 코드를 컴파일하고 앱을 실행하는 데 필요한 파일을 *publish* 폴더로 복사합니다. Visual Studio에서 배포하는 경우에는 파일이 배포 대상으로 복사되기 전에 `dotnet publish` 단계가 자동으로 수행됩니다.
+
+## <a name="publish-settings-files"></a>설정 파일 게시
+
+`*.json` 파일은 기본적으로 게시됩니다. 다른 설정 파일을 게시하려면 프로젝트 파일의 [`<ItemGroup><Content Include= ... />`](/visualstudio/msbuild/common-msbuild-project-items#content) 요소에 해당 파일을 지정합니다. 다음 예에서는 XML 파일을 게시합니다.
+
+```xml
+<ItemGroup>
+  <Content Include="**\*.xml" Exclude="bin\**\*;obj\**\*"
+    CopyToOutputDirectory="PreserveNewest" />
+</ItemGroup>
+```
 
 ### <a name="folder-contents"></a>폴더 콘텐츠
 
