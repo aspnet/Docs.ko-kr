@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/graph-api
-ms.openlocfilehash: 6464b80d52837e7fe35efe5daac2193b77e21c84
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: 128ba34b1e2a9f8cc2986a8f1cb3fb8beba83b21
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637654"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855393"
 ---
 # <a name="use-graph-api-with-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly에서 Graph API 사용
 
@@ -351,7 +351,6 @@ Razor 구성 요소에서:
 @inject IAccessTokenProvider TokenProvider
 @inject IHttpClientFactory ClientFactory
 @inject ILogger<CallUser> Logger
-@inject ICallProcessor CallProcessor
 
 <h3>Call User</h3>
 
@@ -393,7 +392,7 @@ Razor 구성 요소에서:
 
             if (userInfo != null)
             {
-                CallProcessor.Send(userInfo.MobilePhone, callInfo.Message);
+                // Use userInfo.MobilePhone and callInfo.Message to make a call
 
                 formStatus = "Form successfully processed.";
                 Logger.LogInformation(
@@ -422,9 +421,6 @@ Razor 구성 요소에서:
     }
 }
 ```
-
-> [!NOTE]
-> 위의 예제에서 개발자는 사용자 지정 `ICallProcessor`(`CallProcessor`)를 구현하여 큐에 넣은 다음 자동화된 호출을 수행합니다.
 
 ### <a name="customize-user-claims-with-graph-api-and-a-named-client"></a>Graph API 및 명명된 클라이언트를 사용하여 사용자 클레임 사용자 지정
 
