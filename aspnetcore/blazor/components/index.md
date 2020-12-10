@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: b87986442bb8127f03df1f7ecff8167cafa27fdf
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: a2738ab40e2a463a0166ce8916ed6f1b05ea1d08
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035686"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855380"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>ASP.NET Core Razor 구성 요소 만들기 및 사용
 
@@ -274,6 +274,13 @@ namespace BlazorSample
 
 [!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=2,11-12)]
 
+구성 요소 매개 변수에는 기본값을 할당할 수 있습니다.
+
+```csharp
+[Parameter]
+public string Title { get; set; } = "Panel Title from Child";
+```
+
 샘플 앱의 다음 예제에서는 `ParentComponent`는 `ChildComponent`의 `Title` 속성 값을 설정합니다.
 
 `Pages/ParentComponent.razor`:
@@ -461,7 +468,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 }
 ```
 
-구성 요소가 렌더링되면 `loginDialog` 필드가 `MyLoginDialog` 자식 구성 요소 인스턴스로 채워집니다. 그런 다음, 구성 요소 인스턴스에서 .NET 메서드를 호출할 수 있습니다.
+구성 요소가 렌더링되면 `loginDialog` 필드가 `CustomLoginDialog` 자식 구성 요소 인스턴스로 채워집니다. 그런 다음, 구성 요소 인스턴스에서 .NET 메서드를 호출할 수 있습니다.
 
 > [!IMPORTANT]
 > `loginDialog` 변수는 구성 요소가 렌더링된 후에만 채워지고 출력에는 `MyLoginDialog` 요소가 포함됩니다. 구성 요소가 렌더링될 때까지는 참조할 요소가 없습니다.
