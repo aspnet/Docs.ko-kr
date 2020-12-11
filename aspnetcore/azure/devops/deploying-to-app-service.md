@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 52c4905ecb3a76f1dd10629f834b2b541b698774
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f1c7acba0b7fb7dc07da576b188e580328ff4b89
+ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052359"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96901160"
 ---
 # <a name="deploy-an-app-to-app-service"></a>App Service에 앱 배포
 
@@ -141,7 +141,7 @@ ms.locfileid: "93052359"
     git remote add azure-prod GIT_DEPLOYMENT_URL
     ```
 
-    b. 로컬 ‘마스터’ 분기를 *azure-prod* 원격의 ‘마스터’ 분기로 푸시합니다.  
+    b. 로컬 기본 분기(마스터)를 *azure-prod* 원격의 기본 분기(마스터)로 푸시합니다.
 
     ```console
     git push azure-prod master
@@ -214,7 +214,7 @@ Visual Studio에서 앱을 빌드하고 Azure에 배포합니다. 웹앱 URL로 
     git remote add azure-staging <Git_staging_deployment_URL>
     ```
 
-    b. 로컬 ‘마스터’ 분기를 *azure-staging* 원격의 ‘마스터’ 분기로 푸시합니다.  
+    b. 로컬 기본 분기(마스터)를 *azure-staging* 원격의 기본 분기(마스터)로 푸시합니다.
 
     ```console
     git push azure-staging master

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: a83637bb2690407dac5994bb63c765fcfa97462f
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: 3bfd623a206f260d24e2c9009acdb3b205b7ab2d
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981897"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855406"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>ASP.NET Core Blazor 라우팅
 
@@ -57,7 +57,7 @@ Blazor Server는 [ASP.NET Core 엔드포인트 라우팅](xref:fundamentals/rout
 </Router>
 ```
 
-`@page` 지시문을 포함하는 `.razor` 파일을 컴파일하면 생성된 클래스에 경로 템플릿을 지정하는 <xref:Microsoft.AspNetCore.Components.RouteAttribute>가 제공됩니다.
+`@page` 지시문을 포함하는 `.razor` 파일을 컴파일하면 생성된 클래스에 경로 템플릿을 지정하는 <xref:Microsoft.AspNetCore.Components.RouteAttribute>가 제공됩니다. 앱이 부팅되면 `AppAssembly`로 지정된 어셈블리를 검사하여 <xref:Microsoft.AspNetCore.Components.RouteAttribute>가 있는 모든 구성 요소에 대한 정보를 수집합니다.
 
 런타임에 <xref:Microsoft.AspNetCore.Components.RouteView> 구성 요소는 다음을 수행합니다.
 

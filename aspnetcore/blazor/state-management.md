@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 7e79836e3dd1da175a62a84e11dfd30fee7b2f1b
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 24f845bc1d98331f2ee54710d17beb6ffa95ad88
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570148"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855419"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>ASP.NET Core Blazor 상태 관리
 
@@ -43,6 +43,9 @@ Blazor WebAssembly 앱에서 만든 사용자 상태는 브라우저의 메모�
 * [JavaScript interop](xref:blazor/call-javascript-from-dotnet) 호출을 통해 설정된 값.
 
 사용자가 브라우저를 닫았다가 다시 열거나 페이지를 다시 로드하면 브라우저의 메모리에 저장된 사용자 상태가 손실됩니다.
+
+> [!NOTE]
+> [보호된 브라우저 스토리지](xref:blazor/state-management?pivots=server#aspnet-core-protected-browser-storage)(<xref:Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage?displayProperty=fullName> 네임스페이스)는 ASP.NET Core 데이터 보호를 사용하며, Blazor Server 앱에서만 지원됩니다.
 
 ## <a name="persist-state-across-browser-sessions"></a>브라우저 세션 간 상태 유지
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: c73de0e30b7b564915f30d75f754f89fecccdc78
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: a98537f53229d098328f5b14bf1d5060001ebd80
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035725"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855239"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor의 .NET 메서드에서 JavaScript 함수 호출
 
@@ -501,10 +501,7 @@ JS interop는 네트워킹 오류로 인해 실패할 수 있으며 신뢰할 �
 * .NET 메서드 호출
 * 반환 형식에 순환 참조가 있는 경우 C#에서 JavaScript 메서드 호출
 
-자세한 내용은 다음 문제를 참조하세요.
-
-* [순환 참조가 지원되지 않음, 두 가지 사용(dotnet/aspnetcore #20525)](https://github.com/dotnet/aspnetcore/issues/20525)
-* [제안: 직렬화할 때 순환 참조를 처리하는 메커니즘 추가(dotnet/runtime #30820)](https://github.com/dotnet/runtime/issues/30820)
+자세한 내용은 [순환 참조가 지원되지 않음, 두 가지 사용(dotnet/aspnetcore #20525)](https://github.com/dotnet/aspnetcore/issues/20525)을 참조하세요.
 
 ::: moniker range=">= aspnetcore-5.0"
 

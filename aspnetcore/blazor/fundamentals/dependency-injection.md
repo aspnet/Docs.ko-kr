@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/dependency-injection
-ms.openlocfilehash: 0cec9a1ea6f6df52103ab190c85518ddc42a573f
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: c68deb5237754872e11bfd9c83275b9a3b147319
+ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507930"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96556517"
 ---
 # <a name="aspnet-core-no-locblazor-dependency-injection"></a>ASP.NET Core Blazor 종속성 주입
 
@@ -154,7 +154,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 수명 | 설명 |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | Blazor WebAssembly 앱에는 현재, DI 범위에 대한 개념이 없습니다. `Scoped` 등록 서비스는 `Singleton` 서비스처럼 동작합니다. 그러나 Blazor Server 호스팅 모델은 `Scoped` 수명을 지원합니다. Blazor Server 앱에서 범위가 지정된 서비스 등록은 ‘연결’로 범위가 지정됩니다. 따라서 현재 의도가 Blazor WebAssembly 앱에서 브라우저의 클라이언트 쪽을 실행하는 것이더라도 현재 사용자로 범위를 지정해야 하는 서비스의 경우 범위가 지정된 서비스를 사용하는 것이 좋습니다. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | <p>Blazor WebAssembly 앱에는 현재, DI 범위에 대한 개념이 없습니다. `Scoped` 등록 서비스는 `Singleton` 서비스처럼 동작합니다.</p><p>Blazor Server 호스팅 모델은 HTTP 요청에서 `Scoped` 수명을 지원하지만 클라이언트에서 로드되는 구성 요소 간의 SignalR 연결/회로 메시지에서는 지원하지 않습니다. Razor Pages 또는 앱의 MVC 부분은 범위가 지정된 서비스를 정상적으로 처리하고, 페이지 또는 뷰 사이를 이동하거나 페이지 또는 뷰에서 구성 요소로 이동할 때 각 HTTP 요청에서 서비스를 다시 만듭니다. 클라이언트의 구성 요소 사이를 이동할 때는 범위가 지정된 서비스가 다시 구성되지 않습니다. 이 경우 서버와의 통신은 HTTP 요청을 통하지 않고 사용자 회로의 SignalR 연결을 통해 이루어집니다. 클라이언트에서 다음과 같은 구성 요소 시나리오에서는 사용자를 위해 새 회로가 만들어지므로 범위가 지정된 서비스가 다시 구성됩니다.</p><ul><li>사용자가 브라우저의 창을 닫습니다. 사용자가 새 창을 열고 앱으로 다시 이동합니다.</li><li>사용자가 브라우저 창에서 앱의 마지막 탭을 닫습니다. 사용자가 새 탭을 열고 앱으로 다시 이동합니다.</li><li>사용자가 브라우저의 다시 로드/새로 고침 단추를 선택합니다.</li></ul><p>Blazor Server 앱의 범위가 지정된 서비스에서 사용자 상태를 보존하는 방법에 대한 자세한 내용은 <xref:blazor/hosting-models?pivots=server>를 참조하세요.</p> |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | DI는 서비스의 *단일 인스턴스* 를 만듭니다. `Singleton` 서비스가 필요한 모든 구성 요소는 동일한 서비스의 인스턴스를 수신합니다. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | 구성 요소는 서비스 컨테이너에서 `Transient` 서비스의 인스턴스를 가져올 때마다 서비스의 *새 인스턴스* 을 받습니다. |
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 9462b73ad67394e79de08e7d2b13bf6a3145a04e
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: c6f9815f473380f96092d663cdd785fd19109701
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507969"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855302"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>ASP.NET Core Blazor 레이아웃
 
@@ -34,9 +34,9 @@ ms.locfileid: "94507969"
 
 기술적으로 레이아웃은 또 다른 구성 요소입니다. 레이아웃은 Razor 템플릿 또는 C# 코드에서 정의되며 [데이터 바인딩](xref:blazor/components/data-binding), [종속성 주입](xref:blazor/fundamentals/dependency-injection) 및 기타 구성 요소 시나리오를 사용할 수 있습니다.
 
-‘구성 요소’를 ‘레이아웃’으로 전환하기 위해 구성 요소는 다음을 수행합니다. 
+구성 요소를 레이아웃으로 변환하려면 다음을 수행합니다.
 
-* 레이아웃 내부에 렌더링된 콘텐츠의 <xref:Microsoft.AspNetCore.Components.LayoutComponentBase.Body> 속성을 정의하는 <xref:Microsoft.AspNetCore.Components.LayoutComponentBase>에서 상속합니다.
+* <xref:Microsoft.AspNetCore.Components.LayoutComponentBase>에서 구성 요소를 상속합니다. <xref:Microsoft.AspNetCore.Components.LayoutComponentBase>는 레이아웃 내부에 렌더링된 콘텐츠의 <xref:Microsoft.AspNetCore.Components.LayoutComponentBase.Body> 속성을 정의합니다.
 * Razor 구문 `@Body`를 사용하여 콘텐츠가 렌더링되는 위치를 레이아웃 태그에 지정합니다.
 
 다음 코드 샘플은 레이아웃 구성 요소인 `MainLayout.razor`의 Razor 템플릿을 보여 줍니다. 레이아웃은 <xref:Microsoft.AspNetCore.Components.LayoutComponentBase>를 상속하고 탐색 모음과 바닥글 사이에 `@Body`를 설정합니다.

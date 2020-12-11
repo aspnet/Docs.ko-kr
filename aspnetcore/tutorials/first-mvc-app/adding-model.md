@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 16cef6cc9e772f494515942072c2aaf58913ce91
-ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
+ms.openlocfilehash: d99d5bfd84c8c7e7d0c479964211591be434330c
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94688451"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855523"
 ---
 # <a name="part-4-add-a-model-to-an-aspnet-core-mvc-app"></a>4부. ASP.NET Core MVC 앱에 모델 추가
 
@@ -227,6 +227,12 @@ Visual Studio가 다음을 만듭니다
 ### <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
 * 프로젝트 디렉터리(*Program.cs*, *Startup.cs* 및 *.csproj* 파일이 포함된 디렉터리)에서 명령 창을 엽니다.
+
+* 스캐폴드 도구 경로를 내보냅니다.
+
+  ```console
+  export PATH=$HOME/.dotnet/tools:$PATH
+  ```
 
 * 다음 명령을 실행합니다.
 
@@ -550,11 +556,11 @@ using Microsoft.EntityFrameworkCore;
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-12)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-13)]
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Mac용 Visual Studio](#tab/visual-studio-code+visual-studio-mac)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-13)]
 
 ---
 

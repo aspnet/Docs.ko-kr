@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/crud
-ms.openlocfilehash: c5b9be64ea30cce7a3178bfbb244ef893e9639d2
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4a48fb094888d51aa6f881c82e4f20ffbc84c8e2
+ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053867"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96901173"
 ---
 # <a name="part-2-no-locrazor-pages-with-ef-core-in-aspnet-core---crud"></a>2부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - CRUD
 
@@ -52,7 +52,7 @@ ms.locfileid: "93053867"
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Details.cshtml.cs?name=snippet_OnGetAsync&highlight=8-12)]
 
-[Include](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.include) 및 [ThenInclude](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.theninclude#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_ThenInclude__3_Microsoft_EntityFrameworkCore_Query_IIncludableQueryable___0_System_Collections_Generic_IEnumerable___1___System_Linq_Expressions_Expression_System_Func___1___2___) 메서드로 인해 컨텍스트가 `Student.Enrollments` 탐색 속성 및 각 등록 내에서 `Enrollment.Course` 탐색 속성을 로드합니다. 이 메서드는 [읽기 관련 데이터](xref:data/ef-rp/read-related-data) 자습서에서 자세히 검토합니다.
+[Include](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.include) 및 [ThenInclude](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.theninclude#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_ThenInclude__3_Microsoft_EntityFrameworkCore_Query_IIncludableQueryable___0_System_Collections_Generic_IEnumerable___1___System_Linq_Expressions_Expression_System_Func___1___2___) 메서드로 인해 컨텍스트가 `Student.Enrollments` 탐색 속성 및 각 등록 내에서 `Enrollment.Course` 탐색 속성을 로드합니다. 이 메서드는 [관련 데이터 읽기](xref:data/ef-rp/read-related-data) 자습서에서 자세히 검토합니다.
 
 [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) 메서드는 반환된 엔터티가 현재 컨텍스트에서 업데이트되지 않는 시나리오에서 성능을 향상시킵니다. `AsNoTracking`은 이 자습서의 뒷부분에서 설명합니다.
 
@@ -345,9 +345,9 @@ ms.locfileid: "93053867"
 `OnPostAsync` 메서드는 선택한 엔터티를 검색한 다음, [Remove](/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#Microsoft_EntityFrameworkCore_DbContext_Remove_System_Object_) 메서드를 호출하여 엔터티의 상태를 `Deleted`로 설정합니다. `SaveChanges`가 호출되면 SQL DELETE 명령이 생성됩니다. `Remove`가 실패하는 경우:
 
 * 데이터베이스 예외가 catch되었습니다.
-* 삭제 페이지 `OnGetAsync` 메서드가 `saveChangesError=true`로 호출됩니다.
+* 삭제 페이지의 `OnGetAsync` 메서드가 `saveChangesError=true`와 함께 호출됩니다.
 
-삭제 Razor 페이지( *Pages/Students/Delete.cshtml* )에 오류 메시지를 추가합니다.
+삭제 Razor 페이지(*Pages/Students/Delete.cshtml*)에 오류 메시지를 추가합니다.
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Delete.cshtml?highlight=10)]
 
@@ -405,7 +405,7 @@ ms.locfileid: "93053867"
 
 ## <a name="customize-the-details-page"></a>세부 정보 사용자 지정 페이지
 
-`Pages/Students` 페이지로 이동합니다. **편집** , **세부 정보** 및 **삭제** 링크는 *Pages/Students/Index.cshtml* 파일에서 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.
+`Pages/Students` 페이지로 이동합니다. **편집**, **세부 정보** 및 **삭제** 링크는 *Pages/Students/Index.cshtml* 파일에서 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index1.cshtml?name=snippet)]
 
