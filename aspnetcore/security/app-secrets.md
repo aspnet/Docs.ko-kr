@@ -3,7 +3,7 @@ title: ASP.NET Core에서 개발 중인 앱 비밀 안전 저장소
 author: rick-anderson
 description: ASP.NET Core 앱을 개발 하는 동안 중요 한 정보를 저장 하 고 검색 하는 방법을 알아봅니다.
 ms.author: scaddie
-ms.custom: mvc, contperfq2
+ms.custom: mvc, contperf-fy21q2
 ms.date: 11/24/2020
 no-loc:
 - appsettings.json
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/app-secrets
-ms.openlocfilehash: 99b7b04076206f95c04da79283010beafdd1cc88
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: 63032895ce45ad096612a8c39a2709628c12790f
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035855"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486202"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>ASP.NET Core에서 개발 중인 앱 비밀 안전 저장소
 
@@ -101,7 +101,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 
 앞의 예제에서 콜론은 `Movies` 가 속성을 사용 하는 개체 리터럴이어야 함을 나타냅니다 `ServiceApiKey` .
 
-암호 관리자 도구는 다른 디렉터리 에서도 사용할 수 있습니다. 옵션을 사용 `--project` 하 여 프로젝트 파일이 있는 파일 시스템 경로를 제공 합니다. 다음은 그 예입니다.
+암호 관리자 도구는 다른 디렉터리 에서도 사용할 수 있습니다. 옵션을 사용 `--project` 하 여 프로젝트 파일이 있는 파일 시스템 경로를 제공 합니다. 예를 들어:
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
@@ -109,7 +109,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ### <a name="json-structure-flattening-in-visual-studio"></a>Visual Studio의 JSON 구조 평면화
 
-Visual Studio의 **사용자 비밀 관리** 제스처는 텍스트 편집기에서 파일 *에secrets.js* 를 엽니다. *secrets.js* 의 내용을 저장할 키-값 쌍으로 바꿉니다. 다음은 그 예입니다.
+Visual Studio의 **사용자 비밀 관리** 제스처는 텍스트 편집기에서 파일 *에secrets.js* 를 엽니다. *secrets.js* 의 내용을 저장할 키-값 쌍으로 바꿉니다. 예를 들어:
 
 ```json
 {
@@ -203,13 +203,13 @@ JSON 구조는 또는를 통해 수정 된 후에 결합 됩니다 `dotnet user-
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
-보다 안전한 방법은 암호를 비밀로 저장 하는 것입니다. 다음은 그 예입니다.
+보다 안전한 방법은 암호를 비밀로 저장 하는 것입니다. 예를 들어:
 
 ```dotnetcli
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-`Password`에서 연결 문자열의 키-값 쌍을 제거 합니다 *appsettings.json* . 다음은 그 예입니다.
+`Password`에서 연결 문자열의 키-값 쌍을 제거 합니다 *appsettings.json* . 예를 들어:
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings.json?highlight=3)]
 
@@ -361,7 +361,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 
 앞의 예제에서 콜론은 `Movies` 가 속성을 사용 하는 개체 리터럴이어야 함을 나타냅니다 `ServiceApiKey` .
 
-암호 관리자 도구는 다른 디렉터리 에서도 사용할 수 있습니다. 옵션을 사용 `--project` 하 여 프로젝트 파일이 있는 파일 시스템 경로를 제공 합니다. 다음은 그 예입니다.
+암호 관리자 도구는 다른 디렉터리 에서도 사용할 수 있습니다. 옵션을 사용 `--project` 하 여 프로젝트 파일이 있는 파일 시스템 경로를 제공 합니다. 예를 들어:
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
@@ -369,7 +369,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ### <a name="json-structure-flattening-in-visual-studio"></a>Visual Studio의 JSON 구조 평면화
 
-Visual Studio의 **사용자 비밀 관리** 제스처는 텍스트 편집기에서 파일 *에secrets.js* 를 엽니다. *secrets.js* 의 내용을 저장할 키-값 쌍으로 바꿉니다. 다음은 그 예입니다.
+Visual Studio의 **사용자 비밀 관리** 제스처는 텍스트 편집기에서 파일 *에secrets.js* 를 엽니다. *secrets.js* 의 내용을 저장할 키-값 쌍으로 바꿉니다. 예를 들어:
 
 ```json
 {
@@ -448,13 +448,13 @@ ASP.NET Core 2.0 이상에서는 프로젝트가를 호출할 때 사용자 암�
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
-보다 안전한 방법은 암호를 비밀로 저장 하는 것입니다. 다음은 그 예입니다.
+보다 안전한 방법은 암호를 비밀로 저장 하는 것입니다. 예를 들어:
 
 ```dotnetcli
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-`Password`에서 연결 문자열의 키-값 쌍을 제거 합니다 *appsettings.json* . 다음은 그 예입니다.
+`Password`에서 연결 문자열의 키-값 쌍을 제거 합니다 *appsettings.json* . 예를 들어:
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
