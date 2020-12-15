@@ -4,6 +4,7 @@ author: rick-anderson
 description: 이 시리즈의 자습서는 Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설명합니다.
 ms.author: riande
 ms.date: 09/14/2020
+ms.custom: contperf-fy21q2
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: cad4cf12e475c2f7db3e62a6ae78d53777710b6f
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: 2d673aef56be5701849a48f32fe9ffb36c34c0e3
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360569"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97485903"
 ---
 # <a name="tutorial-create-a-no-locrazor-pages-web-app-with-aspnet-core"></a>자습서: ASP.NET Core를 사용하여 Razor Pages 웹앱 만들기
 
