@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 6e5e9d866a1e03e69856cc63dcfe30284048dd6d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 49029bbd53b98425a05bdb82517238e3aa2e3b1f
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061316"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506632"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>ASP.NET Core의 로깅 및 진단 SignalR
 
@@ -35,7 +35,7 @@ ms.locfileid: "93061316"
 ## <a name="server-side-logging"></a>서버 쪽 로깅
 
 > [!WARNING]
-> 서버 쪽 로그에는 앱의 중요한 정보가 포함될 수 있습니다. 프로덕션 앱의 원시 로그를 GitHub와 같은 퍼블릭 포럼에 게시하면 **안 됩니다** .
+> 서버 쪽 로그에는 앱의 중요한 정보가 포함될 수 있습니다. 프로덕션 앱의 원시 로그를 GitHub와 같은 퍼블릭 포럼에 게시하면 **안 됩니다**.
 
 SignalR는 ASP.NET Core의 일부 이므로 ASP.NET Core 로깅 시스템을 사용 합니다. 기본 구성에서는 SignalR 매우 적은 정보를 기록 하지만이를 구성할 수 있습니다. ASP.NET Core 로깅을 구성하는 방법에 대한 자세한 내용은 [ASP.NET Core 로깅](xref:fundamentals/logging/index#configuration) 문서를 참조하세요.
 
@@ -84,7 +84,7 @@ Azure App Service 포털의 **진단 로그** 섹션에서 **응용 프로그램
 ## <a name="javascript-client-logging"></a>JavaScript 클라이언트 로깅
 
 > [!WARNING]
-> 클라이언트 쪽 로그에는 앱의 중요한 정보가 포함될 수 있습니다. 프로덕션 앱의 원시 로그를 GitHub와 같은 퍼블릭 포럼에 게시하면 **안 됩니다** .
+> 클라이언트 쪽 로그에는 앱의 중요한 정보가 포함될 수 있습니다. 프로덕션 앱의 원시 로그를 GitHub와 같은 퍼블릭 포럼에 게시하면 **안 됩니다**.
 
 JavaScript 클라이언트를 사용 하는 경우의 메서드를 사용 하 여 로깅 옵션을 구성할 수 있습니다 `configureLogging` `HubConnectionBuilder` .
 
@@ -106,18 +106,18 @@ JavaScript 클라이언트를 사용 하는 경우의 메서드를 사용 하 �
 
 자세한 정도를 구성 하면 로그가 브라우저 콘솔에 기록 되거나 NodeJS 앱의 표준 출력에 기록 됩니다.
 
-로그를 사용자 지정 로깅 시스템으로 전송 하려는 경우 인터페이스를 구현 하는 JavaScript 개체를 제공할 수 있습니다 `ILogger` . 구현 해야 하는 유일한 방법은 이벤트 `log` 의 수준 및 이벤트와 연결 된 메시지를 가져오는입니다. 다음은 그 예입니다.
+로그를 사용자 지정 로깅 시스템으로 전송 하려는 경우 인터페이스를 구현 하는 JavaScript 개체를 제공할 수 있습니다 `ILogger` . 구현 해야 하는 유일한 방법은 이벤트 `log` 의 수준 및 이벤트와 연결 된 메시지를 가져오는입니다. 예:
 
 [!code-typescript[](diagnostics/custom-logger.ts?highlight=3-7,13)]
 
 ## <a name="net-client-logging"></a> .NET 클라이언트 로깅
 
 > [!WARNING]
-> 클라이언트 쪽 로그에는 앱의 중요한 정보가 포함될 수 있습니다. 프로덕션 앱의 원시 로그를 GitHub와 같은 퍼블릭 포럼에 게시하면 **안 됩니다** .
+> 클라이언트 쪽 로그에는 앱의 중요한 정보가 포함될 수 있습니다. 프로덕션 앱의 원시 로그를 GitHub와 같은 퍼블릭 포럼에 게시하면 **안 됩니다**.
 
 에서 메서드를 사용 하 여 .NET 클라이언트에서 로그를 가져올 수 있습니다 `ConfigureLogging` `HubConnectionBuilder` . 이는 및에서 메서드와 동일한 방식으로 작동 합니다 `ConfigureLogging` `WebHostBuilder` `HostBuilder` . ASP.NET Core에서 사용 하는 것과 동일한 로깅 공급자를 구성할 수 있습니다. 그러나 개별 로깅 공급자에 대 한 NuGet 패키지를 수동으로 설치 하 고 사용 하도록 설정 해야 합니다.
 
-앱에 .NET 클라이언트 로깅을 추가 하려면 Blazor WebAssembly 를 참조 <xref:blazor/fundamentals/logging#blazor-webassembly-signalr-net-client-logging> 하세요.
+앱에 .NET 클라이언트 로깅을 추가 하려면 Blazor WebAssembly 를 참조 <xref:blazor/fundamentals/logging#signalr-net-client-logging> 하세요.
 
 ### <a name="console-logging"></a>콘솔 로깅
 
@@ -158,7 +158,7 @@ Fiddler는 HTTP 추적을 수집 하는 매우 강력한 도구입니다. [Teler
 
 HTTPS를 사용 하 여 연결 하는 경우 Fiddler에서 HTTPS 트래픽을 해독할 수 있는지 확인 하는 몇 가지 추가 단계가 있습니다. 자세한 내용은 [Fiddler 설명서](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)를 참조 하세요.
 
-추적을 수집한 후에는 **File**  >  **Save**  >  메뉴 모음에서 파일 **모든 세션** 저장을 선택 하 여 추적을 내보낼 수 있습니다.
+추적을 수집한 후에는   >    >  메뉴 모음에서 파일 **모든 세션** 저장을 선택 하 여 추적을 내보낼 수 있습니다.
 
 ![Fiddler에서 모든 세션 내보내기](diagnostics/fiddler-export.png)
 
@@ -226,7 +226,7 @@ tcpdump -i [interface] -w trace.pcap
 
 SignalR 서버 메트릭은 이벤트 원본에 보고 됩니다 <xref:Microsoft.AspNetCore.Http.Connections> .
 
-| Name                    | 설명                 |
+| 이름                    | 설명                 |
 |-------------------------|-----------------------------|
 | `connections-started`   | 시작 되는 총 연결   |
 | `connections-stopped`   | 중지 된 총 연결   |
