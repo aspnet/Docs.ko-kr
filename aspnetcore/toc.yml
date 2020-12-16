@@ -314,8 +314,8 @@
               uid: tutorials/build-a-blazor-app
             - name: Blazor WebAssembly를 사용한 SignalR
               uid: tutorials/signalr-blazor-webassembly
-        - name: 템플릿
-          uid: blazor/templates
+        - name: 프로젝트 구조
+          uid: blazor/project-structure
         - name: 기본 사항
           items:
             - name: 라우팅
@@ -437,7 +437,7 @@
         - name: 기본 제공 구성 요소
           items:
             - name: 앱
-              href: blazor/templates.md#blazor-project-structure
+              uid: blazor/project-structure
             - name: 인증
               href: blazor/security/webassembly/index.md#authentication-component
             - name: AuthorizeView
