@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: 209d055f6205eceb9efb5434427c303345791809
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: 3277fda0d1dcb5121a2172b3fc1e4869ed6f8430
+ms.sourcegitcommit: fc4cce2767e34f81079510f34bd54e9d0aa86497
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981962"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592871"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>ASP.NET Core에서 HTTPS 적용
 
@@ -93,7 +93,7 @@ API가 없으면 클라이언트가 첫 번째 요청에서 중요 한 데이터
 앞에서 강조 표시 된 코드:
 
 * 기본 [HttpsRedirectionOptions](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode) ([Status307TemporaryRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status307temporaryredirect))를 사용 합니다.
-* 는 [HttpsRedirectionOptions.HttpsPort](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.httpsport) `ASPNETCORE_HTTPS_PORT` 환경 변수 또는 [IServerAddressesFeature](/dotnet/api/microsoft.aspnetcore.hosting.server.features.iserveraddressesfeature)에 의해 재정의 되지 않는 한 기본 HttpsRedirectionOptions (null)를 사용 합니다.
+* 는 [](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.httpsport) `ASPNETCORE_HTTPS_PORT` 환경 변수 또는 [IServerAddressesFeature](/dotnet/api/microsoft.aspnetcore.hosting.server.features.iserveraddressesfeature)에 의해 재정의 되지 않는 한 기본 HttpsRedirectionOptions (null)를 사용 합니다.
 
 영구 리디렉션이 아닌 임시 리디렉션을 사용 하는 것이 좋습니다. 링크 캐싱은 개발 환경에서 불안정한 동작을 일으킬 수 있습니다. 앱이 개발 환경에 있지 않은 경우 영구 리디렉션 상태 코드를 보내려면 [프로덕션에서 영구 리디렉션 구성](#configure-permanent-redirects-in-production) 섹션을 참조 하세요. [Hsts](#http-strict-transport-security-protocol-hsts) 를 사용 하 여 보안 리소스 요청만 앱에 전송 되어야 한다는 것을 클라이언트에 알리는 것이 좋습니다 (프로덕션 환경 에서만).
 
@@ -396,6 +396,8 @@ WSL (Linux 용 Windows 하위 시스템)은 HTTPS 자체 서명 된 인증서를
 ## <a name="troubleshoot-certificate-problems"></a>인증서 문제 해결
 
 이 섹션에서는 ASP.NET Core HTTPS 개발 인증서를 [설치 하 고 신뢰할 수](#trust)있는 경우에 대 한 도움말을 제공 하지만 인증서를 신뢰할 수 없다는 브라우저 경고가 계속 표시 됩니다. ASP.NET Core HTTPS 개발 인증서는 [Kestrel](xref:fundamentals/servers/kestrel)에서 사용 됩니다.
+
+IIS Express 인증서를 복구 하려면 [이 Stackoverflow](https://stackoverflow.com/a/20048613/502537) 문제를 참조 하세요.
 
 ### <a name="all-platforms---certificate-not-trusted"></a>모든 플랫폼-인증서를 신뢰할 수 없음
 
