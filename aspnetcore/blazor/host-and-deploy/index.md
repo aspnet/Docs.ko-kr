@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/index
-ms.openlocfilehash: 082072d2b70abfe60da8e2cd40daa8b93ebcc9ac
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: a23bee120611ee603305a88dabac76566481fa4a
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055817"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97485890"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor"></a>ASP.NET Core 호스트 및 배포 Blazor
 
@@ -79,10 +79,18 @@ dotnet publish -c Release
 
 `CoolApp`에 대한 추가 구성을 지정하지 않으면 이 시나리오의 하위 앱은 서버에 상주하는 위치에 대해 알지 못합니다. 예를 들어 앱은 상대 URL 경로 `/CoolApp/`에 상주한다는 사실을 모르는 상태에서는 해당 리소스의 올바른 상대 URL을 생성할 수 없습니다.
 
-Blazor 앱의 기본 경로 `https://www.contoso.com/CoolApp/`에 대한 구성을 제공하기 위해 `<base>` 태그의 `href` 특성은 `Pages/_Host.cshtml` 파일(Blazor Server) 또는 `wwwroot/index.html` 파일(Blazor WebAssembly)의 상대 루트 경로로 설정됩니다.
+Blazor 앱의 기본 경로 `https://www.contoso.com/CoolApp/`에 대한 구성을 제공하기 위해 `<base>` 태그의 `href` 특성은 `wwwroot/index.html` 파일(Blazor WebAssembly) 또는 `Pages/_Host.cshtml` 파일(Blazor Server)의 상대 루트 경로로 설정됩니다.
+
+Blazor WebAssembly (`wwwroot/index.html`):
 
 ```html
 <base href="/CoolApp/">
+```
+
+Blazor Server (`Pages/_Host.cshtml`):
+
+```html
+<base href="~/CoolApp/">
 ```
 
 Blazor Server 앱은 `Startup.Configure`의 앱의 요청 파이프라인에서 <xref:Microsoft.AspNetCore.Builder.UsePathBaseExtensions.UsePathBase*>를 호출하여 서버 쪽 기본 경로를 추가로 설정합니다.
@@ -95,9 +103,9 @@ app.UsePathBase("/CoolApp");
 
 많은 호스팅 시나리오에서 앱에 대한 상대 URL 경로는 앱의 루트입니다. 이러한 경우 앱의 상대 URL 기본 경로는 Blazor 앱에 대한 기본 구성인 슬래시(`<base href="/" />`)입니다. GitHub 페이지 및 IIS 하위 앱 같은 다른 호스팅 시나리오에서는 앱 기본 경로를 앱에 대한 서버의 상대 URL 경로로 설정해야 합니다.
 
-앱의 기본 경로를 설정하려면 `Pages/_Host.cshtml` 파일(Blazor Server) 또는 `wwwroot/index.html` 파일(Blazor WebAssembly)의 `<head>` 태그 요소 내 `<base>` 태그를 업데이트합니다. `href` 특성 값을 `/{RELATIVE URL PATH}/`(뒤에 슬래시가 필요함)로 설정합니다. 여기서 `{RELATIVE URL PATH}`는 앱의 전체 상대 URL 경로입니다.
+앱의 기본 경로를 설정하려면 `Pages/_Host.cshtml` 파일(Blazor Server) 또는 `wwwroot/index.html` 파일(Blazor WebAssembly)의 `<head>` 태그 요소 내 `<base>` 태그를 업데이트합니다. `href` 특성 값을 `/{RELATIVE URL PATH}/`(Blazor WebAssembly) 또는 `~/{RELATIVE URL PATH}/`(Blazor Server)로 설정합니다. **후행 슬래시가 필요합니다.** 자리 표시자 `{RELATIVE URL PATH}`는 앱의 전체 상대 URL 경로입니다.
 
-루트가 아닌 상대 URL 경로를 가진 Blazor WebAssembly 앱(예: `<base href="/CoolApp/">`)의 경우, 앱은 로컬로 실행하면 해당 리소스를 찾지 못합니다. 로컬 개발 및 시험 중에 이 문제를 해결하려면 런타임에 `<base>` 태그의 `href` 값과 일치하는 *기본 경로* 인수를 제공할 수 있습니다. 후행 슬래시를 포함하지 않습니다. 앱을 로컬로 실행하는 경우 경로 기본 인수를 전달하려면 `--pathbase` 옵션을 통해 앱의 디렉터리에서 `dotnet run` 명령을 실행합니다.
+루트가 아닌 상대 URL 경로를 가진 Blazor WebAssembly 앱(예: `<base href="/CoolApp/">`)의 경우, 앱은 로컬로 실행하면 해당 리소스를 찾지 못합니다. 로컬 개발 및 시험 중에 이 문제를 해결하려면 런타임에 `<base>` 태그의 `href` 값과 일치하는 *기본 경로* 인수를 제공할 수 있습니다. **후행 슬래시를 포함하지 않습니다.** 앱을 로컬로 실행하는 경우 경로 기본 인수를 전달하려면 `--pathbase` 옵션을 통해 앱의 디렉터리에서 `dotnet run` 명령을 실행합니다.
 
 ```dotnetcli
 dotnet run --pathbase=/{RELATIVE URL PATH (no trailing slash)}
