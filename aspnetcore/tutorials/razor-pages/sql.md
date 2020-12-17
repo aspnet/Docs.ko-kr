@@ -4,6 +4,7 @@ author: rick-anderson
 description: Razor Pages에 대한 자습서 시리즈의 4부입니다.
 ms.author: riande
 ms.date: 09/26/2020
+ms.custom: contperf-fy21q2
 no-loc:
 - Index
 - appsettings.json
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 6627825239d815d2c8bcad98e22340f07f921ab9
-ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
+ms.openlocfilehash: 552a74016c281af248ce735c6ed6a5a55768a16a
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96420021"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486244"
 ---
 # <a name="part-4-of-tutorial-series-on-no-locrazor-pages"></a>Razor Pages에 대한 자습서 시리즈의 4부
 

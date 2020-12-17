@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/components/prerendering-and-integration
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: affca6c9b585b91787f94a13144d07bedfefdd37
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 3402117334548f9d90880d4f536e8baa288e7bc9
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431692"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506983"
 ---
 # <a name="prerender-and-integrate-aspnet-core-no-locrazor-components"></a>ASP.NET Core Razor 구성 요소 미리 렌더링 및 통합
 
@@ -308,6 +308,8 @@ Razor Pages 앱에서 라우팅 가능한 Razor 구성 요소를 지원하려면
    </Router>
    ```
 
+   [!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 1. 다음 콘텐츠를 사용하여 `Pages` 폴더에 `_Host.cshtml` 파일을 추가합니다.
 
    ```cshtml
@@ -376,6 +378,8 @@ MVC 앱에서 라우팅 가능한 Razor 구성 요소를 지원하려면 다음�
        </NotFound>
    </Router>
    ```
+
+   [!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 1. 다음 콘텐츠를 사용하여 `Views/Home` 폴더에 `_Host.cshtml` 파일을 추가합니다.
 

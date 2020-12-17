@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 8a2dc802a1d05ead7445e350e3aef0ce7dfb2bb8
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: b01b1c70be010ba0ad9bbd2c1114e5d8341b3261
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981923"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506866"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>ASP.NET Core Blazor 수명 주기
 
@@ -290,7 +290,7 @@ public class WeatherForecastService
 
 ## <a name="detect-when-the-app-is-prerendering"></a>앱을 미리 렌더링 중인 경우 검색
 
-[!INCLUDE[](~/includes/blazor-prerendering.md)]
+[!INCLUDE[](~/blazor/includes/prerendering.md)]
 
 ## <a name="component-disposal-with-idisposable"></a>IDisposable을 사용한 구성 요소 삭제
 

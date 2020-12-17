@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: 6a1feffb5341d432d6d1949a9e26b9537b85ba03
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 6e7fa6e231e97793fbf7e1ac1d208bf3013c6fce
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93054790"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506576"
 ---
 # <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly의 어셈블리 지연 로드
 
@@ -74,6 +74,8 @@ Blazor의 `Router` 구성 요소는 Blazor가 라우팅 가능한 구성 요소�
     }
 }
 ```
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 `OnNavigateAsync` 콜백이 처리되지 않은 예외를 throw하는 경우 [Blazor 오류 UI](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development)가 호출됩니다.
 
@@ -133,6 +135,8 @@ services.AddScoped<LazyAssemblyLoader>();
 ...
 ```
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 ### <a name="handle-cancellations-in-onnavigateasync"></a>`OnNavigateAsync`에서의 취소 처리
 
 `OnNavigateAsync` 콜백에 전달되는 `NavigationContext` 개체에는 새 탐색 이벤트가 발생할 때 설정되는 `CancellationToken`이 포함됩니다. 오래된 탐색에서 `OnNavigateAsync` 콜백을 계속 실행하지 않도록 이 취소 토큰이 설정된 경우 `OnNavigateAsync` 콜백이 throw해야 합니다.
@@ -169,6 +173,8 @@ services.AddScoped<LazyAssemblyLoader>();
     }
 }
 ```
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 > [!NOTE]
 > `NavigationContext`의 취소 토큰이 취소되는 경우 throw하지 않으면 이전 탐색에서 구성 요소를 렌더링하는 것과 같은 의도하지 않은 동작이 발생할 수 있습니다.
@@ -230,6 +236,8 @@ services.AddScoped<LazyAssemblyLoader>();
     }
 }
 ```
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 ## <a name="troubleshoot"></a>문제 해결
 
