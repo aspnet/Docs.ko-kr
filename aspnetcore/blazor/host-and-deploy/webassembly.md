@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 7edba338716a0545390ec53775f69eaef141d389
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: 5983cbc1e0256f7cf8e85fb07f9ba1bbc1bf08db
+ms.sourcegitcommit: c321518bfe367280ef262aecaada287f17fe1bc5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855289"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97011873"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core 호스트 및 배포 Blazor WebAssembly
 
@@ -910,9 +910,7 @@ Blazor WebAssembly는 앱의 시작 파일을 다운로드할 때 응답에 대�
 
 웹 서버가 예상된 SHA-256 해시와 일치하지 않는 응답을 반환하는 경우에는 브라우저의 개발자 콘솔에 다음과 같은 오류가 표시됩니다.
 
-```
-Failed to find a valid digest in the 'integrity' attribute for resource 'https://myapp.example.com/_framework/MyBlazorApp.dll' with computed SHA-256 integrity 'IIa70iwvmEg5WiDV17OpQ5eCztNYqL186J56852RpJY='. The resource has been blocked.
-```
+> 컴퓨팅된 SHA-256 무결성 ‘IIa70iwvmEg5WiDV17OpQ5eCztNYqL186J56852RpJY=’가 지정된 ‘ https://myapp.example.com/\_framework/MyBlazor App.dll’ 리소스의 ‘integrity’ 특성에서 유효한 다이제스트를 찾지 못했습니다. 리소스가 차단되었습니다.
 
 대부분의 경우에는 무결성 검사 자체에서 발생하는 문제가 ‘아닙니다’. 대신 일부 다른 문제가 있음을 의미하며 무결성 검사는 다른 문제에 관한 경고를 표시합니다.
 
@@ -961,6 +959,13 @@ PowerShell 명령 셸에서 다음 명령을 사용하여 스크립트를 호출
 
 * `{BASE URL}`: 배포된 앱의 URL입니다.
 * `{PUBLISH OUTPUT FOLDER}`: 앱의 `publish` 폴더 또는 배포를 위해 앱이 게시된 위치의 경로입니다.
+
+> [!NOTE]
+> [Bitdefender](https://www.bitdefender.com) 바이러스 스캐너를 사용하는 시스템에 `dotnet/AspNetCore.Docs` GitHub 리포지토리를 복제하려면 `integrity.ps1` 스크립트에 대한 예외를 Bitdefender에 추가합니다. 리포지토리에 복제하기 전에 Bitdefender에 예외를 추가하여 스크립트가 바이러스 스캐너에서 격리되지 않게 합니다. 다음 예제는 Windows 시스템에서 복제된 리포지토리의 일반적인 스크립트 경로입니다. 필요에 따라 경로를 조정합니다. 자리 표시자 `{USER}`는 사용자의 패스 세그먼트입니다.
+>
+> ```
+> C:\Users\{USER}\Documents\GitHub\AspNetCore.Docs\aspnetcore\blazor\host-and-deploy\webassembly\_samples\integrity.ps1
+> ```
 
 ### <a name="disable-integrity-checking-for-non-pwa-apps"></a>비 PWA 앱에 대한 무결성 검사 사용 안 함
 

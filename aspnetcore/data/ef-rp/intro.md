@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 0e81397d210518854939c6941e7f6da43ed48389
-ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
+ms.openlocfilehash: 86b57a9cad27673b72ad174a18741f5528f9f78a
+ms.sourcegitcommit: c321518bfe367280ef262aecaada287f17fe1bc5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "96855510"
+ms.locfileid: "97011860"
 ---
 # <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core에서 Entity Framework Core를 사용한 Razor Pages - 자습서 1/8
 
@@ -237,7 +237,8 @@ EF Core는 속성 이름이 `<navigation property name><primary key property nam
   * **모델 클래스** 드롭다운에서 **학생(ContosoUniversity.Models)** 을 선택합니다.
   * **데이터 컨텍스트 클래스** 행에서 **+** (더하기) 기호를 선택합니다.
     * 데이터 컨텍스트 이름을 `ContosoUniversityContext`가 아닌 `SchoolContext`로 끝나게 변경합니다. 업데이트된 컨텍스트 이름: `ContosoUniversity.Data.SchoolContext`
-   * **추가** 를 선택합니다.
+    * **추가** 를 선택하여 데이터 컨텍스트 클래스 추가를 마칩니다.
+   * **추가** 를 선택하여 **Razor 페이지 추가** 대화 상자를 마칩니다.
 
 다음 패키지가 자동으로 설치됩니다.
 

@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 500342ac979efdee824ac0d4b5757ca9804f3b30
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 29f1a1f211688a1edcd31c7230e7216df7c89eef
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93054816"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506814"
 ---
 # <a name="tooling-for-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor용 도구
 
@@ -43,7 +43,9 @@ ms.locfileid: "93054816"
 
 1. Blazor WebAssembly 환경의 경우 **Blazor WebAssembly 앱** 템플릿을 선택합니다. Blazor Server 환경의 경우 **Blazor Server 앱** 템플릿을 선택합니다. **만들기** 를 선택합니다.
 
-   두 가지 Blazor 호스팅 모델인 *Blazor WebAssembly* 및 *Blazor Server* 에 관한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.
+   호스트된 Blazor WebAssembly 환경의 경우 **ASP.NET Core 호스팅** 확인란을 선택합니다.
+
+   두 가지 Blazor 호스팅 모델인 *Blazor WebAssembly* (독립 실행형 및 호스팅) 및 *Blazor Server* 에 대한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.
 
 1. <kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 앱을 실행합니다.
 
@@ -69,13 +71,19 @@ ASP.NET Core HTTPS 개발 인증서 신뢰에 대한 자세한 내용은 <xref:s
    dotnet new blazorwasm -o WebApplication1
    ```
 
+   호스트된 Blazor WebAssembly 환경의 경우 호스트된 옵션(`-ho` 또는 `--hosted`)을 명령에 추가합니다.
+   
+   ```dotnetcli
+   dotnet new blazorwasm -o WebApplication1 -ho
+   ```
+   
    Blazor Server 환경의 경우 명령 셸에서 다음 명령을 실행합니다.
 
    ```dotnetcli
    dotnet new blazorserver -o WebApplication1
    ```
 
-   두 가지 Blazor 호스팅 모델인 *Blazor WebAssembly* 및 *Blazor Server* 에 관한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.
+   두 가지 Blazor 호스팅 모델인 *Blazor WebAssembly* (독립 실행형 및 호스팅) 및 *Blazor Server* 에 대한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.
 
 1. Visual Studio Code에서 `WebApplication1` 폴더를 엽니다.
 
@@ -105,9 +113,11 @@ Linux에서 인증서를 신뢰할 수 있는 중앙 집중식 방법은 없습�
 
    Blazor WebAssembly 환경의 경우 **Blazor WebAssembly 앱** 템플릿을 선택합니다. Blazor Server 환경의 경우 **Blazor Server 앱** 템플릿을 선택합니다. **새로 만들기** 를 선택합니다.
 
-   두 가지 Blazor 호스팅 모델인 *Blazor WebAssembly* 및 *Blazor Server* 에 관한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.
+   두 가지 Blazor 호스팅 모델인 *Blazor WebAssembly* (독립 실행형 및 호스팅) 및 *Blazor Server* 에 대한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.
 
 1. **인증** 이 **인증 없음** 으로 설정되었는지 확인합니다. **새로 만들기** 를 선택합니다.
+
+1. 호스트된 Blazor WebAssembly 환경의 경우 **ASP.NET Core 호스팅** 확인란을 선택합니다.
 
 1. **프로젝트 이름** 필드에서 앱 이름을 `WebApplication1`로 지정합니다. **만들기** 를 선택합니다.
 
@@ -116,3 +126,23 @@ Linux에서 인증서를 신뢰할 수 있는 중앙 집중식 방법은 없습�
 개발 인증서를 신뢰하라는 메시지가 표시되면 인증서를 신뢰하고 계속합니다. 인증서를 신뢰하려면 사용자 및 키 집합 암호가 필요합니다. ASP.NET Core HTTPS 개발 인증서 신뢰에 대한 자세한 내용은 <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos>를 참조하세요.
 
 ::: zone-end
+
+## <a name="use-visual-studio-code-for-cross-platform-no-locblazor-development"></a>플랫폼 간 Blazor 개발용 Visual Studio Code 사용
+
+[Visual Studio Code](https://code.visualstudio.com/)는 Blazor 앱을 개발하는 데 사용할 수 있는 오픈 소스 플랫폼 간 IDE(통합 개발 환경)입니다. .NET CLI를 사용하여 Visual Studio Code를 사용하여 개발할 새 Blazor 앱을 만들 수 있습니다. 자세한 내용은 [이 문서의 Linux 버전](/aspnet/core/blazor/tooling?pivots=linux)을 참조하세요.
+
+## <a name="no-locblazor-template-options"></a>Blazor 템플릿 옵션
+
+Blazor 프레임워크는 두 개의 각 Blazor 호스팅 모델용 새 앱을 만들기 위한 템플릿을 제공합니다. 템플릿은 Blazor 개발을 위해 선택하는 도구(Visual Studio, Mac용 Visual Studio, Visual Studio Code, .NET CLI 등)에 관계없이 새 Blazor 프로젝트와 솔루션을 만드는 데 사용됩니다.
+
+* Blazor WebAssembly 프로젝트 템플릿: `blazorwasm`
+* Blazor Server 프로젝트 템플릿: `blazorserver`
+
+Blazor의 호스팅 모델에 대한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.
+
+템플릿 옵션은 명령 셸에서 도움말 옵션(`-h` 또는 `--help`)을 [`dotnet new`](/dotnet/core/tools/dotnet-new) CLI 명령에 전달하여 사용할 수 있습니다.
+
+```dotnetcli
+dotnet new blazorwasm --h
+dotnet new blazorserver --h
+```
