@@ -5,6 +5,8 @@
     - name: 2020
       expanded: true
       items:
+        - name: 12월
+          href: 2020-12.md
         - name: 11월
           href: 2020-11.md
         - name: 10월
@@ -15,5 +17,3 @@
           href: 2020-08.md
         - name: 7월
           href: 2020-07.md
-        - name: 6월
-          href: 2020-06.md
