@@ -77,7 +77,7 @@ Markdown 파일 이름 및 이미지 파일 이름에는 소문자를 사용하�
 [!code-csharp[](configuration/index/sample/Program.cs)]
 ```
 
-줄 번호를 사용하여 파일의 일부를 코드 조각으로 렌더링하려면
+줄 번호를 사용하여 파일의 일부를 코드 조각으로 렌더링하려면:
 
 ```md
 [!code-csharp[](configuration/index/sample/Program.cs?range=1-10,20,30,40-50]
@@ -86,7 +86,7 @@ Markdown 파일 이름 및 이미지 파일 이름에는 소문자를 사용하�
 
 C# 코드 조각의 경우 [C# 지역](https://docs.microsoft.com/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-region)을 참조하세요. 가능할 때마다 줄 번호보다는 지역을 사용하세요. 코드 파일의 줄 번호는 변경되거나, Markdown의 줄 번호 참조와 비동기화될 가능성이 높습니다. C# 지역은 중첩할 수 있습니다. 외부 지역을 참조할 경우 내부 `#region` 및 `#endregion` 지시문은 코드 조각에 렌더링되지 않습니다. 
 
-"snippet_Example"이라는 C# 지역을 렌더링하려면
+"snippet_Example"이라는 C# 지역을 렌더링하려면:
 
 ```md
 [!code-csharp[](configuration/index/sample/Program.cs?name=snippet_Example)]
@@ -112,7 +112,7 @@ DocFX 요구 사항:
 
 ### <a name="windows-instructions"></a>Windows 지침
 
-* [DocFX 릴리스](https://github.com/dotnet/docfx/releases)에서 *docfx.zip*을 다운로드하고 압축을 풉니다.
+* [DocFX 릴리스](https://github.com/dotnet/docfx/releases)에서 *docfx.zip* 을 다운로드하고 압축을 풉니다.
 * PATH에 DocFX를 추가합니다.
 * 명령 셸에서 *docfx.json* 파일(ASP.NET 콘텐츠용 *aspnet* 또는 ASP.NET Core 콘텐츠용 *aspnetcore*)이 포함된 폴더로 이동하여 다음 명령을 실행합니다.
 
@@ -131,8 +131,8 @@ DocFX 요구 사항:
   ```
 
 * [최신 버전의 DocFX](https://github.com/dotnet/docfx/releases)를 다운로드합니다.
-* *$HOME/bin/docfx*에 보관 파일을 추출합니다.
-* bash 셸에서 **docfx**의 별칭 쌍을 만듭니다. 첫 번째 별칭은 문서를 작성하는 데 사용됩니다. 두 번째 별칭은 문서를 작성하고 서비스를 제공하는 데 사용됩니다.
+* *$HOME/bin/docfx* 에 보관 파일을 추출합니다.
+* bash 셸에서 **docfx** 의 별칭 쌍을 만듭니다. 첫 번째 별칭은 문서를 작성하는 데 사용됩니다. 두 번째 별칭은 문서를 작성하고 서비스를 제공하는 데 사용됩니다.
 
   ```console
   alias docfx='mono $HOME/bin/docfx/docfx.exe'
@@ -147,7 +147,7 @@ DocFX 요구 사항:
 
 * 브라우저에서 `http://localhost:8080/group1-dest/`로 이동합니다.
 
-## <a name="voice-and-tone"></a>어투 및 어조
+## <a name="voice-and-tone"></a>음성 및 톤
 
 가장 폭넓은 잠재 고객이 쉽게 이해할 수 있는 설명서를 작성하는 것이 목표입니다. 이에 따라 Microsoft는 기여자가 지켜주었으면 하는 문장체에 대한 지침을 정했습니다. 자세한 내용은 .NET 리포지토리에서 [어투 및 어조 지침](https://github.com/dotnet/docs/blob/master/styleguide/voice-tone.md)을 참조하세요.
 
