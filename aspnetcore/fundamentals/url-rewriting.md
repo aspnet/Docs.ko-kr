@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/url-rewriting
 ms.openlocfilehash: e7bd5f4d61661dd23eb0907f896d0d32b7799aac
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93061303"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core에서 URL 재작성 미들웨어
@@ -339,7 +339,7 @@ ASP.NET Core 2.x로 출시된 미들웨어는 다음과 같은 IIS URL 재작성
 
 예제 응용 프로그램은 *.xml* 로 끝나는 경로 요청을 리디렉션하는 메서드를 보여줍니다. `/file.xml`에 대한 요청이 수행되면 해당 요청이 `/xmlfiles/file.xml`로 리디렉션됩니다. 상태 코드는 *301 - 영구적으로 이동됨* 으로 설정됩니다. 브라우저에서 */xmlfiles/file.xml* 에 대한 새 요청이 수행되면 정적 파일 미들웨어에서 *wwwroot/xmlfiles* 폴더의 파일을 클라이언트에 제공합니다. 리디렉션의 경우 응답의 상태 코드를 명시적으로 설정합니다. 그렇지 않으면 *200 - 정상* 상태 코드가 반환되고 클라이언트에서 리디렉션이 수행되지 않습니다.
 
-*RewriteRules.cs* :
+*RewriteRules.cs*:
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/RewriteRules.cs?name=snippet_RedirectXmlFileRequests&highlight=14-18)]
 
@@ -347,7 +347,7 @@ ASP.NET Core 2.x로 출시된 미들웨어는 다음과 같은 IIS URL 재작성
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=15,22)]
 
-*RewriteRules.cs* :
+*RewriteRules.cs*:
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/RewriteRules.cs?name=snippet_RewriteTextFileRequests&highlight=7-8)]
 
@@ -357,7 +357,7 @@ ASP.NET Core 2.x로 출시된 미들웨어는 다음과 같은 IIS URL 재작성
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=16-17)]
 
-예제 응용 프로그램은 `extension` 및 `newPath` 매개 변수 값들이 다양한 조건을 만족하는지 검사합니다. `extension`매개 변수는 값을 포함하고 있어야 하고, 그 값은 *.png* , *.jpg* , 또는 *.gif* 중 하나이어야 합니다. 만약 `newPath`가 유효하지 않으면 <xref:System.ArgumentException>이 던져집니다. *image.png* 에 대한 요청이 수행되면 해당 요청이 `/png-images/image.png`으로 리디렉션됩니다. *image.jpg* 에 대한 요청이 수행되면 해당 요청이 `/jpg-images/image.jpg`로 리디렉션됩니다. 상태 코드는 *301 - 영구적으로 이동됨* 으로 설정되고, `context.Result`는 규칙 처리를 중지하고 응답을 보내도록 설정됩니다.
+예제 응용 프로그램은 `extension` 및 `newPath` 매개 변수 값들이 다양한 조건을 만족하는지 검사합니다. `extension`매개 변수는 값을 포함하고 있어야 하고, 그 값은 *.png*, *.jpg*, 또는 *.gif* 중 하나이어야 합니다. 만약 `newPath`가 유효하지 않으면 <xref:System.ArgumentException>이 던져집니다. *image.png* 에 대한 요청이 수행되면 해당 요청이 `/png-images/image.png`으로 리디렉션됩니다. *image.jpg* 에 대한 요청이 수행되면 해당 요청이 `/jpg-images/image.jpg`로 리디렉션됩니다. 상태 코드는 *301 - 영구적으로 이동됨* 으로 설정되고, `context.Result`는 규칙 처리를 중지하고 응답을 보내도록 설정됩니다.
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/RewriteRules.cs?name=snippet_RedirectImageRequests)]
 
@@ -693,7 +693,7 @@ ASP.NET Core 2.x로 출시된 미들웨어는 다음과 같은 IIS URL 재작성
 
 예제 응용 프로그램은 *.xml* 로 끝나는 경로 요청을 리디렉션하는 메서드를 보여줍니다. `/file.xml`에 대한 요청이 수행되면 해당 요청이 `/xmlfiles/file.xml`로 리디렉션됩니다. 상태 코드는 *301 - 영구적으로 이동됨* 으로 설정됩니다. 브라우저에서 */xmlfiles/file.xml* 에 대한 새 요청이 수행되면 정적 파일 미들웨어에서 *wwwroot/xmlfiles* 폴더의 파일을 클라이언트에 제공합니다. 리디렉션의 경우 응답의 상태 코드를 명시적으로 설정합니다. 그렇지 않으면 *200 - 정상* 상태 코드가 반환되고 클라이언트에서 리디렉션이 수행되지 않습니다.
 
-*RewriteRules.cs* :
+*RewriteRules.cs*:
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RedirectXmlFileRequests&highlight=14-18)]
 
@@ -701,7 +701,7 @@ ASP.NET Core 2.x로 출시된 미들웨어는 다음과 같은 IIS URL 재작성
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=15,22)]
 
-*RewriteRules.cs* :
+*RewriteRules.cs*:
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RewriteTextFileRequests&highlight=7-8)]
 
@@ -711,7 +711,7 @@ ASP.NET Core 2.x로 출시된 미들웨어는 다음과 같은 IIS URL 재작성
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=16-17)]
 
-예제 응용 프로그램은 `extension` 및 `newPath` 매개 변수 값들이 다양한 조건을 만족하는지 검사합니다. `extension`매개 변수는 값을 포함하고 있어야 하고, 그 값은 *.png* , *.jpg* , 또는 *.gif* 중 하나이어야 합니다. 만약 `newPath`가 유효하지 않으면 <xref:System.ArgumentException>이 던져집니다. *image.png* 에 대한 요청이 수행되면 해당 요청이 `/png-images/image.png`으로 리디렉션됩니다. *image.jpg* 에 대한 요청이 수행되면 해당 요청이 `/jpg-images/image.jpg`로 리디렉션됩니다. 상태 코드는 *301 - 영구적으로 이동됨* 으로 설정되고, `context.Result`는 규칙 처리를 중지하고 응답을 보내도록 설정됩니다.
+예제 응용 프로그램은 `extension` 및 `newPath` 매개 변수 값들이 다양한 조건을 만족하는지 검사합니다. `extension`매개 변수는 값을 포함하고 있어야 하고, 그 값은 *.png*, *.jpg*, 또는 *.gif* 중 하나이어야 합니다. 만약 `newPath`가 유효하지 않으면 <xref:System.ArgumentException>이 던져집니다. *image.png* 에 대한 요청이 수행되면 해당 요청이 `/png-images/image.png`으로 리디렉션됩니다. *image.jpg* 에 대한 요청이 수행되면 해당 요청이 `/jpg-images/image.jpg`로 리디렉션됩니다. 상태 코드는 *301 - 영구적으로 이동됨* 으로 설정되고, `context.Result`는 규칙 처리를 중지하고 응답을 보내도록 설정됩니다.
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RedirectImageRequests)]
 

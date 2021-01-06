@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: fundamentals/dependency-injection
 ms.openlocfilehash: 3f7cce475b5c7b0fcbb93644b2c39acd637a6f9d
-ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94595482"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>ASP.NET Core에서 종속성 주입
@@ -621,13 +621,13 @@ Scoped 수명 서비스(<xref:Microsoft.Extensions.DependencyInjection.ServiceCo
 
 서비스 등록 확장 메서드는 특정 시나리오에 유용한 오버로드를 제공합니다.
 
-| 방법 | 자동<br>개체<br>삭제 | 여러<br>구현 | 인수 전달 |
+| 메서드 | 자동<br>개체<br>삭제 | 여러<br>구현 | 인수 전달 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
-| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<IMyDep, MyDep>();` | 예 | 예 | 예 |
-| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>예:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 예 | 예 | 예 |
-| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<MyDep>();` | 예 | 예 | 예 |
-| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>예:<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 예 | 예 | 예 |
-| `AddSingleton(new {IMPLEMENTATION})`<br>예:<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | 예 | 예 | 예 |
+| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<IMyDep, MyDep>();` | 예 | 예 | 아니요 |
+| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>예제:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 예 | 예 | 예 |
+| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>예제:<br>`services.AddSingleton<MyDep>();` | 예 | 아니요 | 아니요 |
+| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>예제:<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 아니요 | 예 | 예 |
+| `AddSingleton(new {IMPLEMENTATION})`<br>예제:<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | 아니요 | 아니요 | 예 |
 
 형식 삭제에 대한 자세한 내용은 [서비스의 삭제](#disposal-of-services) 섹션을 참조하세요. 여러 구현에 대한 일반적인 시나리오는 [테스트용 모의 형식](xref:test/integration-tests#inject-mock-services)입니다.
 

@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
 ms.openlocfilehash: 1485e1a97e51bb4d12d0d74ca1550e5cf18258d8
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053789"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>ASP.NET Core와 함께 Visual Studio 및 Git을 사용하여 Azure에 지속적인 배포
@@ -138,7 +138,7 @@ Git은 Azure App Service 웹앱을 배포하는 데 사용할 수 있는 분산 
 
    ![팀 탐색기 연결 탭](azure-continuous-deployment/_static/10-team-explorer.png)
 
-1. **팀 탐색기** 에서 **홈** (홈 아이콘) > **설정** > **리포지토리 설정** 을 선택합니다.
+1. **팀 탐색기** 에서 **홈**(홈 아이콘) > **설정** > **리포지토리 설정** 을 선택합니다.
 
 1. **리포지토리 설정** 의 **원격** 섹션에서 **추가** 를 선택합니다. **원격 추가** 대화 상자가 표시됩니다.
 
@@ -153,7 +153,7 @@ Git은 Azure App Service 웹앱을 배포하는 데 사용할 수 있는 분산 
    >
    > `git remote add Azure-SampleApp https://me@sampleapp.scm.azurewebsites.net:443/SampleApp.git`
 
-1. **홈** (홈 아이콘) > **설정** > **전역 설정** 을 선택합니다. 이름 및 전자 메일 주소가 설정되었는지 확인합니다. 필요한 경우 **업데이트** 를 선택합니다.
+1. **홈**(홈 아이콘) > **설정** > **전역 설정** 을 선택합니다. 이름 및 전자 메일 주소가 설정되었는지 확인합니다. 필요한 경우 **업데이트** 를 선택합니다.
 
 1. **홈** > **변경 내용** 을 선택하여 **변경 내용** 보기로 돌아갑니다.
 

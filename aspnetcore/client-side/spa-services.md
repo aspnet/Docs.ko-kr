@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: client-side/spa-services
 ms.openlocfilehash: 1b9f5b4b4e066cdd3dd5fbfa666c7a087949979f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054647"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>JavaScript Services를 사용하여 ASP.NET Core에서 단일 페이지 애플리케이션 만들기
@@ -253,10 +253,10 @@ dotnet new angular
 
 다음과 같은 두 가지 기본 런타임 구성 모드가 있습니다.
 
-* **개발** :
+* **개발**:
   * 디버깅을 용이하게 하는 소스 맵을 포함합니다.
   * 성능을 위해 클라이언트 쪽 코드를 최적화하지 않습니다.
-* **프로덕션** :
+* **프로덕션**:
   * 소스 맵을 제외합니다.
   * 묶음 및 축소를 통해 클라이언트 쪽 코드를 최적화합니다.
 

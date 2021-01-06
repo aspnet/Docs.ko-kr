@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: test/integration-tests
 ms.openlocfilehash: f1ce6a209ef3ca85abe0a6f1ac61d85bec52d17a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93050825"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core의 통합 테스트
@@ -84,7 +84,7 @@ ASP.NET Core의 통합 테스트에는 다음이 필요합니다.
 * 테스트 프로젝트는 SUT에 대한 테스트 웹 호스트를 만들고 테스트 서버 클라이언트를 사용하여 SUT에서 요청 및 응답을 처리합니다.
 * Test Runner는 테스트를 실행하고 테스트 결과를 보고하는 데 사용됩니다.
 
-통합 테스트는 일반적인 *정렬* , *실행* 및 *어설션* 테스트 단계를 포함하는 이벤트 시퀀스를 따릅니다.
+통합 테스트는 일반적인 *정렬*, *실행* 및 *어설션* 테스트 단계를 포함하는 이벤트 시퀀스를 따릅니다.
 
 1. SUT의 웹 호스트가 구성되어 있습니다.
 1. 앱에 요청을 제출하는 테스트 서버 클라이언트가 만들어집니다.
@@ -100,7 +100,7 @@ ASP.NET Core의 통합 테스트에는 다음이 필요합니다.
 
 `Microsoft.AspNetCore.Mvc.Testing` 패키지는 다음 작업을 처리합니다.
 
-* SUT의 종속성 파일( *deps* )을 테스트 프로젝트의 *bin* 디렉터리로 복사합니다.
+* SUT의 종속성 파일(*deps*)을 테스트 프로젝트의 *bin* 디렉터리로 복사합니다.
 * 테스트를 실행하면 고정 파일 및 페이지/뷰를 찾을 수 있도록 [콘텐츠 루트](xref:fundamentals/index#content-root)를 SUT의 프로젝트 루트로 설정합니다.
 * `TestServer`에서 SUT 부트스트랩을 간소화하기 위해 [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) 클래스를 제공합니다.
 
@@ -140,7 +140,7 @@ SUT의 [환경](xref:fundamentals/environments)이 설정되지 않은 경우 �
 
 [WebApplicationFactory\<TEntryPoint>](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1)는 통합 테스트에 대한 [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver)를 만드는 데 사용됩니다. `TEntryPoint`는 SUT의 진입점 클래스로, 일반적으로 `Startup` 클래스입니다.
 
-테스트 클래스는 *클래스 픽스쳐* 인터페이스( [IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture))를 구현하여 클래스가 테스트를 포함하고 클래스의 테스트에서 공유 개체 인스턴스를 제공함을 나타냅니다.
+테스트 클래스는 *클래스 픽스쳐* 인터페이스([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture))를 구현하여 클래스가 테스트를 포함하고 클래스의 테스트에서 공유 개체 인스턴스를 제공함을 나타냅니다.
 
 다음 테스트 클래스 `BasicTests`에서는 `WebApplicationFactory`를 사용하여 SUT를 부트스트랩하고 [HttpClient](/dotnet/api/system.net.http.httpclient)를 테스트 메서드 `Get_EndpointsReturnSuccessAndCorrectContentType`에 제공합니다. 메서드는 응답 상태 코드가 성공(200-299 범위의 상태 코드)인지 `Content-Type` 헤더가 여러 앱 페이지에 대해 `text/html; charset=utf-8`인지를 확인합니다.
 
@@ -195,7 +195,7 @@ SUT에 대한 POST 요청은 앱의 [데이터 보호 위조 방지 시스템](x
 1. 위조 방지 cookie를 구문 분석하고 응답에서 유효성 검사 토큰을 요청합니다.
 1. 위조 방지 cookie 및 요청 유효성 검사 토큰을 사용하여 POST 요청을 수행합니다.
 
-[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)의 `SendAsync` 도우미 확장 메서드( *Helpers/HttpClientExtensions.cs* ) 및 `GetDocumentAsync` 도우미 메서드( *Helpers/HtmlHelpers.cs* )는 [AngleSharp](https://anglesharp.github.io/) 파서를 사용하여 다음 메서드를 사용한 위조 방지 확인을 처리합니다.
+[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)의 `SendAsync` 도우미 확장 메서드(*Helpers/HttpClientExtensions.cs*) 및 `GetDocumentAsync` 도우미 메서드(*Helpers/HtmlHelpers.cs*)는 [AngleSharp](https://anglesharp.github.io/) 파서를 사용하여 다음 메서드를 사용한 위조 방지 확인을 처리합니다.
 
 * `GetDocumentAsync`: [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage)를 수신하고 `IHtmlDocument`를 반환합니다. `GetDocumentAsync`는 원본 `HttpResponseMessage`에 따라 *가상 응답* 을 준비하는 팩터리를 사용합니다. 자세한 내용은 [AngleSharp 설명서](https://github.com/AngleSharp/AngleSharp#documentation)를 참조하세요.
 * `HttpClient`에 대한 `SendAsync` 확장 메서드는 [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage)를 작성하고 [SendAsync(HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_)를 호출하여 요청을 SUT에 제출합니다. `SendAsync`에 대한 오버로드는 HTML 양식(`IHtmlFormElement`) 및 다음을 허용합니다.
@@ -246,23 +246,23 @@ _client = _factory.CreateClient(clientOptions);
 
 샘플 SUT에는 따옴표를 반환하는 범위 지정 서비스가 포함되어 있습니다. 인덱스 페이지를 요청하면 따옴표가 인덱스 페이지의 숨겨진 필드에 포함됩니다.
 
-*Services/IQuoteService.cs* :
+*Services/IQuoteService.cs*:
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Services/IQuoteService.cs?name=snippet1)]
 
-*Services/QuoteService.cs* :
+*Services/QuoteService.cs*:
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Services/QuoteService.cs?name=snippet1)]
 
-*Startup.cs* :
+*Startup.cs*:
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet2)]
 
-*Pages/Index.cshtml.cs* :
+*Pages/Index.cshtml.cs*:
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml.cs?name=snippet1&highlight=4,9,20,26)]
 
-*Pages/Index.cs* :
+*Pages/Index.cs*:
 
 [!code-cshtml[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml?name=snippet_Quote)]
 
@@ -275,7 +275,7 @@ _client = _factory.CreateClient(clientOptions);
 
 통합 테스트에서 서비스 및 따옴표 주입을 테스트하기 위해, 테스트를 통해 모의 서비스가 SUT에 주입됩니다. 모의 서비스는 앱의 `QuoteService`를 `TestQuoteService`이라는 테스트 앱에서 제공하는 서비스로 바꿉니다.
 
-*IntegrationTests.IndexPageTests.cs* :
+*IntegrationTests.IndexPageTests.cs*:
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet4)]
 
@@ -343,7 +343,7 @@ protected override IWebHostBuilder CreateWebHostBuilder() =>
 
 ## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>테스트 인프라가 앱 콘텐츠 루트 경로를 유추하는 방법
 
-`WebApplicationFactory` 생성자는 `TEntryPoint` 어셈블리 `System.Reflection.Assembly.FullName`와 같은 키가 있는 통합 테스트를 포함하는 어셈블리에서 [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute)를 검색하여 앱 [콘텐츠 루트](xref:fundamentals/index#content-root) 경로를 유추합니다. 올바른 키를 포함하는 특성을 찾을 수 없는 경우 `WebApplicationFactory`는 솔루션 파일( *.sln* ) 검색으로 대체되고 `TEntryPoint` 어셈블리 이름을 솔루션 디렉터리에 추가합니다. 앱 루트 디렉터리(콘텐츠 루트 경로)는 뷰와 콘텐츠 파일을 검색하는 데 사용됩니다.
+`WebApplicationFactory` 생성자는 `TEntryPoint` 어셈블리 `System.Reflection.Assembly.FullName`와 같은 키가 있는 통합 테스트를 포함하는 어셈블리에서 [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute)를 검색하여 앱 [콘텐츠 루트](xref:fundamentals/index#content-root) 경로를 유추합니다. 올바른 키를 포함하는 특성을 찾을 수 없는 경우 `WebApplicationFactory`는 솔루션 파일( *.sln*) 검색으로 대체되고 `TEntryPoint` 어셈블리 이름을 솔루션 디렉터리에 추가합니다. 앱 루트 디렉터리(콘텐츠 루트 경로)는 뷰와 콘텐츠 파일을 검색하는 데 사용됩니다.
 
 ## <a name="disable-shadow-copying"></a>섀도 복사 사용 안 함
 
@@ -380,10 +380,10 @@ dotnet test
 
 SUT는 다음과 같은 특징을 가진 Razor Pages 메시지 시스템입니다.
 
-* 앱의 인덱스 페이지( *Pages/Index.cshtml* 및 *Pages/Index.cshtml.cs* )는 메시지의 추가, 삭제 및 분석을 제어하기 위한 UI 및 페이지 모델 메서드를 제공합니다(메시지당 평균 단어 수).
-* 메시지는 `Id`(키) 및 `Text`(메시지)의 두 가지 속성을 사용하여 `Message` 클래스( *Data/Message.cs* )에서 설명됩니다. `Text` 속성은 필수이며 200자로 제한됩니다.
+* 앱의 인덱스 페이지(*Pages/Index.cshtml* 및 *Pages/Index.cshtml.cs*)는 메시지의 추가, 삭제 및 분석을 제어하기 위한 UI 및 페이지 모델 메서드를 제공합니다(메시지당 평균 단어 수).
+* 메시지는 `Id`(키) 및 `Text`(메시지)의 두 가지 속성을 사용하여 `Message` 클래스(*Data/Message.cs*)에서 설명됩니다. `Text` 속성은 필수이며 200자로 제한됩니다.
 * 메시지는 [Entity Framework의 메모리 내 데이터베이스](/ef/core/providers/in-memory/)를 사용하여 저장됩니다.
-* 앱은 데이터베이스 컨텍스트 클래스 `AppDbContext`( *Data/AppDbContext* )에 DAL(데이터 액세스 계층)을 포함합니다.
+* 앱은 데이터베이스 컨텍스트 클래스 `AppDbContext`(*Data/AppDbContext*)에 DAL(데이터 액세스 계층)을 포함합니다.
 * 앱 시작 시 데이터베이스가 비어 있는 경우 메시지 저장소는 세 개의 메시지로 초기화됩니다.
 * 앱에는 인증된 사용자만 액세스할 수 있는 `/SecurePage`가 포함되어 있습니다.
 
@@ -472,7 +472,7 @@ ASP.NET Core의 통합 테스트에는 다음이 필요합니다.
 * 테스트 프로젝트는 SUT에 대한 테스트 웹 호스트를 만들고 테스트 서버 클라이언트를 사용하여 SUT에서 요청 및 응답을 처리합니다.
 * Test Runner는 테스트를 실행하고 테스트 결과를 보고하는 데 사용됩니다.
 
-통합 테스트는 일반적인 *정렬* , *실행* 및 *어설션* 테스트 단계를 포함하는 이벤트 시퀀스를 따릅니다.
+통합 테스트는 일반적인 *정렬*, *실행* 및 *어설션* 테스트 단계를 포함하는 이벤트 시퀀스를 따릅니다.
 
 1. SUT의 웹 호스트가 구성되어 있습니다.
 1. 앱에 요청을 제출하는 테스트 서버 클라이언트가 만들어집니다.
@@ -488,7 +488,7 @@ ASP.NET Core의 통합 테스트에는 다음이 필요합니다.
 
 `Microsoft.AspNetCore.Mvc.Testing` 패키지는 다음 작업을 처리합니다.
 
-* SUT의 종속성 파일( *deps* )을 테스트 프로젝트의 *bin* 디렉터리로 복사합니다.
+* SUT의 종속성 파일(*deps*)을 테스트 프로젝트의 *bin* 디렉터리로 복사합니다.
 * 테스트를 실행하면 고정 파일 및 페이지/뷰를 찾을 수 있도록 [콘텐츠 루트](xref:fundamentals/index#content-root)를 SUT의 프로젝트 루트로 설정합니다.
 * `TestServer`에서 SUT 부트스트랩을 간소화하기 위해 [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) 클래스를 제공합니다.
 
@@ -522,7 +522,7 @@ SUT의 [환경](xref:fundamentals/environments)이 설정되지 않은 경우 �
 
 [WebApplicationFactory\<TEntryPoint>](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1)는 통합 테스트에 대한 [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver)를 만드는 데 사용됩니다. `TEntryPoint`는 SUT의 진입점 클래스로, 일반적으로 `Startup` 클래스입니다.
 
-테스트 클래스는 *클래스 픽스쳐* 인터페이스( [IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture))를 구현하여 클래스가 테스트를 포함하고 클래스의 테스트에서 공유 개체 인스턴스를 제공함을 나타냅니다.
+테스트 클래스는 *클래스 픽스쳐* 인터페이스([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture))를 구현하여 클래스가 테스트를 포함하고 클래스의 테스트에서 공유 개체 인스턴스를 제공함을 나타냅니다.
 
 다음 테스트 클래스 `BasicTests`에서는 `WebApplicationFactory`를 사용하여 SUT를 부트스트랩하고 [HttpClient](/dotnet/api/system.net.http.httpclient)를 테스트 메서드 `Get_EndpointsReturnSuccessAndCorrectContentType`에 제공합니다. 메서드는 응답 상태 코드가 성공(200-299 범위의 상태 코드)인지 `Content-Type` 헤더가 여러 앱 페이지에 대해 `text/html; charset=utf-8`인지를 확인합니다.
 
@@ -558,7 +558,7 @@ SUT에 대한 POST 요청은 앱의 [데이터 보호 위조 방지 시스템](x
 1. 위조 방지 cookie를 구문 분석하고 응답에서 유효성 검사 토큰을 요청합니다.
 1. 위조 방지 cookie 및 요청 유효성 검사 토큰을 사용하여 POST 요청을 수행합니다.
 
-[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)의 `SendAsync` 도우미 확장 메서드( *Helpers/HttpClientExtensions.cs* ) 및 `GetDocumentAsync` 도우미 메서드( *Helpers/HtmlHelpers.cs* )는 [AngleSharp](https://anglesharp.github.io/) 파서를 사용하여 다음 메서드를 사용한 위조 방지 확인을 처리합니다.
+[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)의 `SendAsync` 도우미 확장 메서드(*Helpers/HttpClientExtensions.cs*) 및 `GetDocumentAsync` 도우미 메서드(*Helpers/HtmlHelpers.cs*)는 [AngleSharp](https://anglesharp.github.io/) 파서를 사용하여 다음 메서드를 사용한 위조 방지 확인을 처리합니다.
 
 * `GetDocumentAsync`: [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage)를 수신하고 `IHtmlDocument`를 반환합니다. `GetDocumentAsync`는 원본 `HttpResponseMessage`에 따라 *가상 응답* 을 준비하는 팩터리를 사용합니다. 자세한 내용은 [AngleSharp 설명서](https://github.com/AngleSharp/AngleSharp#documentation)를 참조하세요.
 * `HttpClient`에 대한 `SendAsync` 확장 메서드는 [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage)를 작성하고 [SendAsync(HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_)를 호출하여 요청을 SUT에 제출합니다. `SendAsync`에 대한 오버로드는 HTML 양식(`IHtmlFormElement`) 및 다음을 허용합니다.
@@ -609,23 +609,23 @@ _client = _factory.CreateClient(clientOptions);
 
 샘플 SUT에는 따옴표를 반환하는 범위 지정 서비스가 포함되어 있습니다. 인덱스 페이지를 요청하면 따옴표가 인덱스 페이지의 숨겨진 필드에 포함됩니다.
 
-*Services/IQuoteService.cs* :
+*Services/IQuoteService.cs*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Services/IQuoteService.cs?name=snippet1)]
 
-*Services/QuoteService.cs* :
+*Services/QuoteService.cs*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Services/QuoteService.cs?name=snippet1)]
 
-*Startup.cs* :
+*Startup.cs*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet2)]
 
-*Pages/Index.cshtml.cs* :
+*Pages/Index.cshtml.cs*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml.cs?name=snippet1&highlight=4,9,20,26)]
 
-*Pages/Index.cs* :
+*Pages/Index.cs*:
 
 [!code-cshtml[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml?name=snippet_Quote)]
 
@@ -638,7 +638,7 @@ _client = _factory.CreateClient(clientOptions);
 
 통합 테스트에서 서비스 및 따옴표 주입을 테스트하기 위해, 테스트를 통해 모의 서비스가 SUT에 주입됩니다. 모의 서비스는 앱의 `QuoteService`를 `TestQuoteService`이라는 테스트 앱에서 제공하는 서비스로 바꿉니다.
 
-*IntegrationTests.IndexPageTests.cs* :
+*IntegrationTests.IndexPageTests.cs*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet4)]
 
@@ -724,7 +724,7 @@ public class CustomWebApplicationFactory<TStartup>
 
 ## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>테스트 인프라가 앱 콘텐츠 루트 경로를 유추하는 방법
 
-`WebApplicationFactory` 생성자는 `TEntryPoint` 어셈블리 `System.Reflection.Assembly.FullName`와 같은 키가 있는 통합 테스트를 포함하는 어셈블리에서 [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute)를 검색하여 앱 [콘텐츠 루트](xref:fundamentals/index#content-root) 경로를 유추합니다. 올바른 키를 포함하는 특성을 찾을 수 없는 경우 `WebApplicationFactory`는 솔루션 파일( *.sln* ) 검색으로 대체되고 `TEntryPoint` 어셈블리 이름을 솔루션 디렉터리에 추가합니다. 앱 루트 디렉터리(콘텐츠 루트 경로)는 뷰와 콘텐츠 파일을 검색하는 데 사용됩니다.
+`WebApplicationFactory` 생성자는 `TEntryPoint` 어셈블리 `System.Reflection.Assembly.FullName`와 같은 키가 있는 통합 테스트를 포함하는 어셈블리에서 [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute)를 검색하여 앱 [콘텐츠 루트](xref:fundamentals/index#content-root) 경로를 유추합니다. 올바른 키를 포함하는 특성을 찾을 수 없는 경우 `WebApplicationFactory`는 솔루션 파일( *.sln*) 검색으로 대체되고 `TEntryPoint` 어셈블리 이름을 솔루션 디렉터리에 추가합니다. 앱 루트 디렉터리(콘텐츠 루트 경로)는 뷰와 콘텐츠 파일을 검색하는 데 사용됩니다.
 
 ## <a name="disable-shadow-copying"></a>섀도 복사 사용 안 함
 
@@ -771,10 +771,10 @@ dotnet test
 
 SUT는 다음과 같은 특징을 가진 Razor Pages 메시지 시스템입니다.
 
-* 앱의 인덱스 페이지( *Pages/Index.cshtml* 및 *Pages/Index.cshtml.cs* )는 메시지의 추가, 삭제 및 분석을 제어하기 위한 UI 및 페이지 모델 메서드를 제공합니다(메시지당 평균 단어 수).
-* 메시지는 `Id`(키) 및 `Text`(메시지)의 두 가지 속성을 사용하여 `Message` 클래스( *Data/Message.cs* )에서 설명됩니다. `Text` 속성은 필수이며 200자로 제한됩니다.
+* 앱의 인덱스 페이지(*Pages/Index.cshtml* 및 *Pages/Index.cshtml.cs*)는 메시지의 추가, 삭제 및 분석을 제어하기 위한 UI 및 페이지 모델 메서드를 제공합니다(메시지당 평균 단어 수).
+* 메시지는 `Id`(키) 및 `Text`(메시지)의 두 가지 속성을 사용하여 `Message` 클래스(*Data/Message.cs*)에서 설명됩니다. `Text` 속성은 필수이며 200자로 제한됩니다.
 * 메시지는 [Entity Framework의 메모리 내 데이터베이스](/ef/core/providers/in-memory/)를 사용하여 저장됩니다.
-* 앱은 데이터베이스 컨텍스트 클래스 `AppDbContext`( *Data/AppDbContext* )에 DAL(데이터 액세스 계층)을 포함합니다.
+* 앱은 데이터베이스 컨텍스트 클래스 `AppDbContext`(*Data/AppDbContext*)에 DAL(데이터 액세스 계층)을 포함합니다.
 * 앱 시작 시 데이터베이스가 비어 있는 경우 메시지 저장소는 세 개의 메시지로 초기화됩니다.
 * 앱에는 인증된 사용자만 액세스할 수 있는 `/SecurePage`가 포함되어 있습니다.
 

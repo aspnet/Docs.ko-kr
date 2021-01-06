@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/iis/hosting-bundle
 ms.openlocfilehash: a580c70d3141177be2508a0513f612eee56dbbf9
-ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93343639"
 ---
 # <a name="the-net-core-hosting-bundle"></a>.NET Core 호스팅 번들

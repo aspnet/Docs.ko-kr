@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/configuration
 ms.openlocfilehash: 5889d775c09ee23f19bf3ff59344c52d469c4bdc
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97485969"
 ---
 # <a name="aspnet-core-no-locblazor-configuration"></a>ASP.NET Core Blazor 구성

@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: client-side/libman/libman-cli
 ms.openlocfilehash: dad9136439b61ad98523061d181fe44d3bf1273d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054751"
 ---
 # <a name="use-the-libman-cli-with-aspnet-core"></a>ASP.NET Core에서 LibMan CLI 사용

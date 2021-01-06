@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: tutorials/razor-pages/validation
 ms.openlocfilehash: 9774607b641005145bdb1c98d850c9ce79a25476
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97486124"
 ---
 # <a name="part-8-of-tutorial-series-on-no-locrazor-pages"></a>Razor Pages에 대한 자습서 시리즈의 8부입니다.

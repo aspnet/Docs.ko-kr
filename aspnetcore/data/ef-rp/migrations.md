@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/migrations
 ms.openlocfilehash: e6d1b9f041e892aaa37840c28fdb3153bf098b0d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93061108"
 ---
 # <a name="part-4-no-locrazor-pages-with-ef-core-migrations-in-aspnet-core"></a>4부. ASP.NET Core에서 EF Core 마이그레이션을 사용한 Razor Pages
@@ -46,7 +46,7 @@ ms.locfileid: "93061108"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-SSOX( **SQL Server 개체 탐색기** )를 사용하여 데이터베이스를 삭제하거나, PMC( **패키지 관리자 콘솔** )에서 다음 명령을 실행합니다.
+SSOX(**SQL Server 개체 탐색기**)를 사용하여 데이터베이스를 삭제하거나, PMC(**패키지 관리자 콘솔**)에서 다음 명령을 실행합니다.
 
 ```powershell
 Drop-Database
@@ -186,11 +186,11 @@ DB를 데이터 모델과 동기화된 상태로 유지하는 이 접근 방식�
 
 ## <a name="drop-the-database"></a>데이터베이스 삭제
 
-SSOX( **SQL Server 개체 탐색기** ) 또는 `database drop` 명령을 사용합니다.
+SSOX(**SQL Server 개체 탐색기**) 또는 `database drop` 명령을 사용합니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-PMC( **패키지 관리자 콘솔** )에서 다음 명령을 입력합니다.
+PMC(**패키지 관리자 콘솔**)에서 다음 명령을 입력합니다.
 
 ```powershell
 Drop-Database

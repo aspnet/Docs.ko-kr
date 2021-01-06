@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/dotnet-watch
 ms.openlocfilehash: 27420fe00ba6375e15b67fb359be06df055eff1f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060042"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>파일 감시자를 사용하여 ASP.NET Core 앱 개발
@@ -32,7 +32,7 @@ ms.locfileid: "93060042"
 
 이 자습서에서는 합계를 반환하는 엔드포인트 및 제품을 반환하는 엔드포인트 등 두 개의 엔드포인트에서 기존 Web API를 사용합니다. 제품 메서드에는 버그가 있습니다. 이 문제가 이 자습서에서 해결되었습니다.
 
-[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)을 다운로드합니다. 다음 두 프로젝트로 구성되어 있습니다. *WebApp* (ASP.NET Core 웹 API) 및 *WebAppTests* (웹 API의 단위 테스트).
+[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)을 다운로드합니다. 다음 두 프로젝트로 구성되어 있습니다. *WebApp*(ASP.NET Core 웹 API) 및 *WebAppTests*(웹 API의 단위 테스트).
 
 명령 셸에서 *WebApp* 폴더로 이동합니다. 다음 명령을 실행합니다.
 

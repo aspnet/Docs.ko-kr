@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
 ms.openlocfilehash: 2cfd200c44290a0931cdeb2f68e99b90c11aa612
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059821"
 ---
 # <a name="visual-studio-container-tools-with-aspnet-core"></a>ASP.NET Core를 포함한 Visual Studio 컨테이너 도구
@@ -106,10 +106,10 @@ Visual Studio 2017 버전 15.8 또는 이후 버전에서는 지시하는 경우
 
 Visual Studio 컨테이너 도구는 다음 파일을 통해 솔루션에 *docker-compose* 프로젝트를 추가합니다.
 
-* *docker-compose.dcproj* : 프로젝트를 나타내는 파일입니다. 사용할 OS를 지정하는 `<DockerTargetOS>` 요소를 포함합니다.
-* *.dockerignore* : 빌드 컨텍스트를 생성할 때 제외할 파일 및 디렉터리 패턴을 나열합니다.
-* *docker-compose.yml* : `docker-compose build` 및 `docker-compose run`을 각각 사용하여 빌드하고 실행할 이미지 컬렉션을 정의하는 데 사용되는 기본 [Docker Compose](https://docs.docker.com/compose/overview/) 파일입니다.
-* *docker-compose.override.yml* : Docker Compose에서 읽은 선택적 파일로, 서비스에 대한 구성 재정의를 포함합니다. Visual Studio는 `docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml"`을 실행하여 이러한 파일을 병합합니다.
+* *docker-compose.dcproj*: 프로젝트를 나타내는 파일입니다. 사용할 OS를 지정하는 `<DockerTargetOS>` 요소를 포함합니다.
+* *.dockerignore*: 빌드 컨텍스트를 생성할 때 제외할 파일 및 디렉터리 패턴을 나열합니다.
+* *docker-compose.yml*: `docker-compose build` 및 `docker-compose run`을 각각 사용하여 빌드하고 실행할 이미지 컬렉션을 정의하는 데 사용되는 기본 [Docker Compose](https://docs.docker.com/compose/overview/) 파일입니다.
+* *docker-compose.override.yml*: Docker Compose에서 읽은 선택적 파일로, 서비스에 대한 구성 재정의를 포함합니다. Visual Studio는 `docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml"`을 실행하여 이러한 파일을 병합합니다.
 
 *docker-compose.yml* 파일에는 프로젝트를 실행할 때 생성되는 이미지의 이름을 참조합니다.
 
@@ -119,7 +119,7 @@ Visual Studio 컨테이너 도구는 다음 파일을 통해 솔루션에 *docke
 
 이미지가 레지스트리로 푸시되는 경우 이미지 이름 앞에 [Docker 허브](https://hub.docker.com/) 사용자 이름을 추가합니다(예: `dockerhubusername/hellodockertools`). 또는 구성에 따라 개인 레지스트리 URL을 포함하도록 이미지 이름을 변경합니다(예: `privateregistry.domain.com/hellodockertools`).
 
-빌드 구성(예: 디버그 또는 릴리스)에 따라 다른 동작을 원하는 경우 구성별 *docker-compose* 파일을 추가합니다. 파일은 빌드 구성에 따라 이름이 지정되어야(예: *docker-compose.vs.debug.yml* 및 *docker-compose.vs.release.yml* ) 하며 *docker-compose-override.yml* 파일과 동일한 위치에 배치됩니다. 
+빌드 구성(예: 디버그 또는 릴리스)에 따라 다른 동작을 원하는 경우 구성별 *docker-compose* 파일을 추가합니다. 파일은 빌드 구성에 따라 이름이 지정되어야(예: *docker-compose.vs.debug.yml* 및 *docker-compose.vs.release.yml*) 하며 *docker-compose-override.yml* 파일과 동일한 위치에 배치됩니다. 
 
 구성별 재정의 파일을 사용하여 디버그 및 릴리스 빌드 구성에 대해 서로 다른 구성 설정(예: 환경 변수 또는 진입점)을 지정할 수 있습니다.
 
@@ -161,7 +161,7 @@ Visual Studio 컨테이너 도구는 다음 작업을 수행합니다.
 * 앱이 컨테이너에 복사됩니다.
 * 컨테이너에 연결된 디버거와 함께 기본 브라우저가 시작되며 동적으로 할당된 포트를 사용합니다.
 
-앱의 최종 Docker 이미지는 *dev* 로 태그가 지정됩니다. 이미지는 *microsoft/dotnet* 기본 이미지의 *2.1-aspnetcore-runtime* 태그를 기반으로 합니다. **패키지 관리자 콘솔** (PMC) 창에서 `docker images` 명령을 실행합니다. 컴퓨터의 이미지가 표시됩니다.
+앱의 최종 Docker 이미지는 *dev* 로 태그가 지정됩니다. 이미지는 *microsoft/dotnet* 기본 이미지의 *2.1-aspnetcore-runtime* 태그를 기반으로 합니다. **패키지 관리자 콘솔**(PMC) 창에서 `docker images` 명령을 실행합니다. 컴퓨터의 이미지가 표시됩니다.
 
 ```console
 REPOSITORY        TAG                     IMAGE ID      CREATED         SIZE
@@ -179,7 +179,7 @@ microsoft/dotnet  2.1-aspnetcore-runtime  fcc3887985bb  6 days ago      255MB
 * 앱이 컨테이너에 복사됩니다.
 * 컨테이너에 연결된 디버거와 함께 기본 브라우저가 시작되며 동적으로 할당된 포트를 사용합니다.
 
-앱의 최종 Docker 이미지는 *dev* 로 태그가 지정됩니다. 이미지는 *microsoft/aspnetcore* 기본 이미지를 기반으로 합니다. **패키지 관리자 콘솔** (PMC) 창에서 `docker images` 명령을 실행합니다. 컴퓨터의 이미지가 표시됩니다.
+앱의 최종 Docker 이미지는 *dev* 로 태그가 지정됩니다. 이미지는 *microsoft/aspnetcore* 기본 이미지를 기반으로 합니다. **패키지 관리자 콘솔**(PMC) 창에서 `docker images` 명령을 실행합니다. 컴퓨터의 이미지가 표시됩니다.
 
 ```console
 REPOSITORY            TAG  IMAGE ID      CREATED        SIZE

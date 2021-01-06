@@ -4,7 +4,7 @@
 
 샘플을 실행하면, 규칙 중 하나가 요청 URL에 적용될 때 파일 외 응답이 다시 작성되거나 리디렉션된 URL로 돌아갑니다. XML 및 텍스트 파일 예제에서, 정적 파일 미들웨어는 미들웨어에서 요청 URL을 다시 작성한 후 파일을 제공합니다.
 
-## <a name="examples-in-this-sample"></a>이 샘플의 예제
+## <a name="examples-in-this-sample"></a>이 샘플의 예
 
 * `AddRedirect("redirect-rule/(.*)", "redirected/$1")`
   - 성공 상태 코드: 302(Found)
@@ -20,14 +20,14 @@
   - 예(다시 작성): **/iis-rules-rewrite/{capture_group}** 을 **/rewritten?id={capture_group}** 으로
 * `Add(RedirectXmlFileRequests)`
   - 성공 상태 코드: 301(영구적 이동)
-  - 예(리디렉션): **/file.xml**을 **/xmlfiles/file.xml**로
+  - 예(리디렉션): **/file.xml** 을 **/xmlfiles/file.xml** 로
 * `Add(RewriteTextFileRequests)`
   - 성공 상태 코드: 200(OK)
-  - 예(다시 작성): **/some_file.txt**를 **/file.txt**로
+  - 예(다시 작성): **/some_file.txt** 를 **/file.txt** 로
 * `Add(new RedirectImageRequests(".png", "/png-images")))`<br>`Add(new RedirectImageRequests(".jpg", "/jpg-images")))`
   - 성공 상태 코드: 301(영구적 이동)
-  - 예(리디렉션): **/image.png**를 **/png-images/image.png**로
-  - 예(리디렉션): **/image.jpg**를 **/jpg-images/image.jpg**로
+  - 예(리디렉션): **/image.png** 를 **/png-images/image.png** 로
+  - 예(리디렉션): **/image.jpg** 를 **/jpg-images/image.jpg** 로
 
 ## <a name="use-a-physicalfileprovider"></a>PhysicalFileProvider 사용
 

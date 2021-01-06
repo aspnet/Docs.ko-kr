@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/iis/app-offline
 ms.openlocfilehash: 29f3fc5ecd18196d914a46629bc9eb50b183bf61
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94431032"
 ---
 # <a name="app-offline-file-app_offlinehtm"></a>앱 오프라인 파일(`app_offline.htm`)

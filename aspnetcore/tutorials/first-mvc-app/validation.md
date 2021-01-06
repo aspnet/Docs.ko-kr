@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/validation
 ms.openlocfilehash: 340a66c4a561c6e00bf6f38bcf51abc795aa649c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059093"
 ---
 # <a name="part-9-add-validation-to-an-aspnet-core-mvc-app"></a>9부. ASP.NET Core MVC 앱에 유효성 검사 추가

@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: azure/devops/monitor
 ms.openlocfilehash: 74e789828bf5d54e3457f235657f8ed7086df80d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93056753"
 ---
 # <a name="monitor-and-debug"></a>모니터링 및 디버그
@@ -49,11 +49,11 @@ App Service 웹앱은 실시간으로 쉽게 모니터링할 수 있습니다. A
 
     ![개요 패널을 보여 주는 스크린샷](./media/monitoring/overview.png)
 
-    * **Http 5xx** : 서버 쪽 오류(일반적으로 ASP.NET Core 코드의 예외)입니다.
-    * **데이터 입력** : 웹앱으로의 데이터 수신입니다.
-    * **데이터 출력** : 웹앱에서 클라이언트로의 데이터 송신입니다.
-    * **요청** : HTTP 요청 수입니다.
-    * **평균 응답 시간** : 웹앱이 HTTP 요청에 응답하는 평균 시간입니다.
+    * **Http 5xx**: 서버 쪽 오류(일반적으로 ASP.NET Core 코드의 예외)입니다.
+    * **데이터 입력**: 웹앱으로의 데이터 수신입니다.
+    * **데이터 출력**: 웹앱에서 클라이언트로의 데이터 송신입니다.
+    * **요청**: HTTP 요청 수입니다.
+    * **평균 응답 시간**: 웹앱이 HTTP 요청에 응답하는 평균 시간입니다.
 
     이 페이지에는 문제 해결 및 최적화를 위한 여러 셀프 서비스 도구도 있습니다.
 
@@ -103,7 +103,7 @@ Application Insights는 추가 구성 없이 유용한 서버 쪽 정보를 제�
 
 1. **애플리케이션 로깅(파일 시스템)** 을 켭니다. 메시지가 표시되면 확장을 설치하여 웹앱에서 앱 로깅을 사용하도록 설정하기 위한 확인란을 클릭합니다.
 1. **웹 서버 로깅** 을 **파일 시스템** 으로 설정합니다.
-1. **보존 기간** (일)을 입력합니다. 예로 30을 들 수 있습니다.
+1. **보존 기간**(일)을 입력합니다. 예로 30을 들 수 있습니다.
 1. **저장** 을 클릭합니다.
 
 웹앱에 대해 ASP.NET Core 및 웹 서버(App Service) 로그가 생성됩니다. 표시된 FTP/FTPS 정보를 사용하여 다운로드할 수 있습니다. 암호는 이 가이드의 앞부분에서 만든 배포 자격 증명과 동일합니다. 로그는 [PowerShell 또는 Azure CLI를 사용하여 로컬 컴퓨터에 직접 스트리밍](/azure/app-service/web-sites-enable-diagnostic-log#download)할 수 있습니다. 로그를 [Application Insights에서 볼 수도 있습니다](/azure/app-service/web-sites-enable-diagnostic-log#how-to-view-logs-in-application-insights).

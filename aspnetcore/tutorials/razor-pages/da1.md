@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: tutorials/razor-pages/da1
 ms.openlocfilehash: 46fbfb50afd03f918f9e02bcc8c1dbde9a080ca4
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97485942"
 ---
 # <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a>5부. ASP.NET Core 앱에서 생성된 페이지 업데이트

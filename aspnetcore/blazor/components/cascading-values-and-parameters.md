@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/components/cascading-values-and-parameters
 ms.openlocfilehash: 56d70cea50a3a913b4483f6ea488438269aa58fe
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94507982"
 ---
 # <a name="aspnet-core-no-locblazor-cascading-values-and-parameters"></a>ASP.NET Core Blazor 연계 값 및 매개 변수

@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/working-with-sql
 ms.openlocfilehash: c082457258346637499b8ea8000dd8792931112f
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94422654"
 ---
 # <a name="part-5-work-with-a-database-in-an-aspnet-core-mvc-app"></a>5부. ASP.NET Core MVC 앱에서 데이터베이스 작업
@@ -58,7 +58,7 @@ ASP.NET Core [구성](xref:fundamentals/configuration/index) 시스템은 `Conne
 
 LocalDB는 프로그램 개발을 위한 SQL Server Express 데이터베이스 엔진의 간단 버전입니다. LocalDB는 요청 시 시작하고 사용자 모드에서 실행되므로 복잡한 구성이 없습니다. 기본적으로 LocalDB 데이터베이스는 *C:/Users/{user}* 디렉터리에 *.mdf* 파일을 만듭니다.
 
-* **보기** 메뉴에서 SSOX( **SQL Server 개체 탐색기** )를 엽니다.
+* **보기** 메뉴에서 SSOX(**SQL Server 개체 탐색기**)를 엽니다.
 
   ![보기 메뉴](working-with-sql/_static/ssox.png)
 
@@ -170,7 +170,7 @@ ASP.NET Core [구성](xref:fundamentals/configuration/index) 시스템은 `Conne
 
 LocalDB는 프로그램 개발을 위한 SQL Server Express 데이터베이스 엔진의 간단 버전입니다. LocalDB는 요청 시 시작하고 사용자 모드에서 실행되므로 복잡한 구성이 없습니다. 기본적으로 LocalDB 데이터베이스는 *C:/Users/{user}* 디렉터리에 *.mdf* 파일을 만듭니다.
 
-* **보기** 메뉴에서 SSOX( **SQL Server 개체 탐색기** )를 엽니다.
+* **보기** 메뉴에서 SSOX(**SQL Server 개체 탐색기**)를 엽니다.
 
   ![보기 메뉴](working-with-sql/_static/ssox.png)
 

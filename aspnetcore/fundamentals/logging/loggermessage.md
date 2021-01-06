@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/logging/loggermessage
 ms.openlocfilehash: 0224e768bd0e016eac5165dc4d9745f4b0867094
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060458"
 ---
 # <a name="high-performance-logging-with-loggermessage-in-aspnet-core"></a>ASP.NET Core에서 LoggerMessage를 사용한 고성능 로깅
@@ -47,7 +47,7 @@ ms.locfileid: "93060458"
 
 <xref:Microsoft.Extensions.Logging.LoggerMessage.Define*> 메서드에 제공된 문자열은 템플릿이며 보간된 문자열이 아닙니다. 자리 표시자는 형식이 지정된 순서로 채워집니다. 템플릿의 자리 표시자 이름은 템플릿에서 알기 쉽고 일관되어야 합니다. 구조적 로그 데이터 내에서 속성 이름으로 사용됩니다. 자리 표시자 이름으로 [파스칼식 대/소문자](/dotnet/standard/design-guidelines/capitalization-conventions)를 권장합니다. 예: `{Count}`, `{FirstName}`
 
-각 로그 메시지는 [LoggerMessage.Define](xref:Microsoft.Extensions.Logging.LoggerMessage.Define*)에서 만들어진 정적 필드에 보관된 <xref:System.Action>입니다. 예를 들어 샘플 앱은 인덱스 페이지의 GET 요청에 대한 로그 메시지를 설명하는 필드를 만듭니다( *Internal/LoggerExtensions.cs* ).
+각 로그 메시지는 [LoggerMessage.Define](xref:Microsoft.Extensions.Logging.LoggerMessage.Define*)에서 만들어진 정적 필드에 보관된 <xref:System.Action>입니다. 예를 들어 샘플 앱은 인덱스 페이지의 GET 요청에 대한 로그 메시지를 설명하는 필드를 만듭니다(*Internal/LoggerExtensions.cs*).
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet1)]
 
@@ -95,7 +95,7 @@ info: LoggerMessageSample.Pages.IndexModel[1]
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet10)]
 
-인덱스 페이지의 페이지 모델( *Pages/Index.cshtml.cs* )에서 `QuoteAdded`는 메시지를 기록하기 위해 호출됩니다.
+인덱스 페이지의 페이지 모델(*Pages/Index.cshtml.cs*)에서 `QuoteAdded`는 메시지를 기록하기 위해 호출됩니다.
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet3&highlight=6)]
 
@@ -108,7 +108,7 @@ info: LoggerMessageSample.Pages.IndexModel[2]
           consequences of avoiding reality. - Ayn Rand')
 ```
 
-샘플 앱은 견적 삭제를 위한 [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) 패턴을 구현합니다. 성공적인 삭제 작업에 대한 정보 메시지가 기록됩니다. 예외가 throw될 경우 삭제 작업에 대한 오류 메시지가 기록됩니다. 실패한 삭제 작업에 대한 로그 메시지는 예외 스택 추적( *Internal/LoggerExtensions.cs* )을 포함합니다.
+샘플 앱은 견적 삭제를 위한 [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) 패턴을 구현합니다. 성공적인 삭제 작업에 대한 정보 메시지가 기록됩니다. 예외가 throw될 경우 삭제 작업에 대한 오류 메시지가 기록됩니다. 실패한 삭제 작업에 대한 로그 메시지는 예외 스택 추적(*Internal/LoggerExtensions.cs*)을 포함합니다.
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet3)]
 
@@ -118,7 +118,7 @@ info: LoggerMessageSample.Pages.IndexModel[2]
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet11)]
 
-인덱스 페이지에 대한 페이지 모델에서 성공적인 견적 삭제는 로거에서 `QuoteDeleted` 메서드를 호출합니다. 삭제에 대한 견적을 찾을 수 없는 경우 <xref:System.ArgumentNullException>이 throw됩니다. 예외는 [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) 문에 의해 트래핑되고 [catch](/dotnet/csharp/language-reference/keywords/try-catch) 블록의 로거에서 `QuoteDeleteFailed` 메서드를 호출하여 기록됩니다( *Pages/Index.cshtml.cs* ).
+인덱스 페이지에 대한 페이지 모델에서 성공적인 견적 삭제는 로거에서 `QuoteDeleted` 메서드를 호출합니다. 삭제에 대한 견적을 찾을 수 없는 경우 <xref:System.ArgumentNullException>이 throw됩니다. 예외는 [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) 문에 의해 트래핑되고 [catch](/dotnet/csharp/language-reference/keywords/try-catch) 블록의 로거에서 `QuoteDeleteFailed` 메서드를 호출하여 기록됩니다(*Pages/Index.cshtml.cs*).
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet5&highlight=9,13)]
 
@@ -159,7 +159,7 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 
 [!code-json[](loggermessage/samples/3.x/LoggerMessageSample/appsettings.json?highlight=3-5)]
 
-로그 범위를 만들려면 범위에 대한 <xref:System.Func%601> 대리자를 보유하는 필드를 추가합니다. 샘플 앱은 `_allQuotesDeletedScope`라는 필드를 만듭니다( *Internal/LoggerExtensions.cs* ).
+로그 범위를 만들려면 범위에 대한 <xref:System.Func%601> 대리자를 보유하는 필드를 추가합니다. 샘플 앱은 `_allQuotesDeletedScope`라는 필드를 만듭니다(*Internal/LoggerExtensions.cs*).
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet4)]
 
@@ -213,7 +213,7 @@ info: LoggerMessageSample.Pages.IndexModel[4]
 
 <xref:Microsoft.Extensions.Logging.LoggerMessage.Define*> 메서드에 제공된 문자열은 템플릿이며 보간된 문자열이 아닙니다. 자리 표시자는 형식이 지정된 순서로 채워집니다. 템플릿의 자리 표시자 이름은 템플릿에서 알기 쉽고 일관되어야 합니다. 구조적 로그 데이터 내에서 속성 이름으로 사용됩니다. 자리 표시자 이름으로 [파스칼식 대/소문자](/dotnet/standard/design-guidelines/capitalization-conventions)를 권장합니다. 예: `{Count}`, `{FirstName}`
 
-각 로그 메시지는 [LoggerMessage.Define](xref:Microsoft.Extensions.Logging.LoggerMessage.Define*)에서 만들어진 정적 필드에 보관된 <xref:System.Action>입니다. 예를 들어 샘플 앱은 인덱스 페이지의 GET 요청에 대한 로그 메시지를 설명하는 필드를 만듭니다( *Internal/LoggerExtensions.cs* ).
+각 로그 메시지는 [LoggerMessage.Define](xref:Microsoft.Extensions.Logging.LoggerMessage.Define*)에서 만들어진 정적 필드에 보관된 <xref:System.Action>입니다. 예를 들어 샘플 앱은 인덱스 페이지의 GET 요청에 대한 로그 메시지를 설명하는 필드를 만듭니다(*Internal/LoggerExtensions.cs*).
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet1)]
 
@@ -261,7 +261,7 @@ info: LoggerMessageSample.Pages.IndexModel[1]
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet10)]
 
-인덱스 페이지의 페이지 모델( *Pages/Index.cshtml.cs* )에서 `QuoteAdded`는 메시지를 기록하기 위해 호출됩니다.
+인덱스 페이지의 페이지 모델(*Pages/Index.cshtml.cs*)에서 `QuoteAdded`는 메시지를 기록하기 위해 호출됩니다.
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet3&highlight=6)]
 
@@ -274,7 +274,7 @@ info: LoggerMessageSample.Pages.IndexModel[2]
           consequences of avoiding reality. - Ayn Rand')
 ```
 
-샘플 앱은 견적 삭제를 위한 [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) 패턴을 구현합니다. 성공적인 삭제 작업에 대한 정보 메시지가 기록됩니다. 예외가 throw될 경우 삭제 작업에 대한 오류 메시지가 기록됩니다. 실패한 삭제 작업에 대한 로그 메시지는 예외 스택 추적( *Internal/LoggerExtensions.cs* )을 포함합니다.
+샘플 앱은 견적 삭제를 위한 [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) 패턴을 구현합니다. 성공적인 삭제 작업에 대한 정보 메시지가 기록됩니다. 예외가 throw될 경우 삭제 작업에 대한 오류 메시지가 기록됩니다. 실패한 삭제 작업에 대한 로그 메시지는 예외 스택 추적(*Internal/LoggerExtensions.cs*)을 포함합니다.
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet3)]
 
@@ -284,7 +284,7 @@ info: LoggerMessageSample.Pages.IndexModel[2]
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet11)]
 
-인덱스 페이지에 대한 페이지 모델에서 성공적인 견적 삭제는 로거에서 `QuoteDeleted` 메서드를 호출합니다. 삭제에 대한 견적을 찾을 수 없는 경우 <xref:System.ArgumentNullException>이 throw됩니다. 예외는 [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) 문에 의해 트래핑되고 [catch](/dotnet/csharp/language-reference/keywords/try-catch) 블록의 로거에서 `QuoteDeleteFailed` 메서드를 호출하여 기록됩니다( *Pages/Index.cshtml.cs* ).
+인덱스 페이지에 대한 페이지 모델에서 성공적인 견적 삭제는 로거에서 `QuoteDeleted` 메서드를 호출합니다. 삭제에 대한 견적을 찾을 수 없는 경우 <xref:System.ArgumentNullException>이 throw됩니다. 예외는 [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) 문에 의해 트래핑되고 [catch](/dotnet/csharp/language-reference/keywords/try-catch) 블록의 로거에서 `QuoteDeleteFailed` 메서드를 호출하여 기록됩니다(*Pages/Index.cshtml.cs*).
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet5&highlight=14,18)]
 
@@ -327,7 +327,7 @@ Parameter name: entity
 
 [!code-json[](loggermessage/samples/2.x/LoggerMessageSample/appsettings.json?highlight=3-5)]
 
-로그 범위를 만들려면 범위에 대한 <xref:System.Func%601> 대리자를 보유하는 필드를 추가합니다. 샘플 앱은 `_allQuotesDeletedScope`라는 필드를 만듭니다( *Internal/LoggerExtensions.cs* ).
+로그 범위를 만들려면 범위에 대한 <xref:System.Func%601> 대리자를 보유하는 필드를 추가합니다. 샘플 앱은 `_allQuotesDeletedScope`라는 필드를 만듭니다(*Internal/LoggerExtensions.cs*).
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet4)]
 

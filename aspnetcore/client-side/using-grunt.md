@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: client-side/using-grunt
 ms.openlocfilehash: 374c23f440dcf301b3a1e1e9e6684dd050f218c6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054556"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>ASP.NET Core에서 Grunt 사용
@@ -32,17 +32,17 @@ Grunt는 스크립트 축소, TypeScript 컴파일, 코드 품질 “Lint” 도
 
 완성된 예제는 대상 배포 디렉터리 정리, JavaScript 파일 결합, 코드 품질 검사, JavaScript 파일 콘텐츠 압축 및 웹 애플리케이션 루트에 배포 작업을 수행합니다. 다음 패키지를 사용합니다.
 
-* **grunt** : Grunt 작업 실행기 패키지입니다.
+* **grunt**: Grunt 작업 실행기 패키지입니다.
 
-* **grunt-contrib-clean** : 파일 또는 디렉터리를 제거하는 플러그 인입니다.
+* **grunt-contrib-clean**: 파일 또는 디렉터리를 제거하는 플러그 인입니다.
 
-* **grunt-contrib-jshint** : JavaScript 코드 품질을 검토하는 플러그 인입니다.
+* **grunt-contrib-jshint**: JavaScript 코드 품질을 검토하는 플러그 인입니다.
 
-* **grunt-contrib-concat** : 파일을 단일 파일로 조인하는 플러그 인입니다.
+* **grunt-contrib-concat**: 파일을 단일 파일로 조인하는 플러그 인입니다.
 
-* **grunt-contrib-uglify** : 크기를 줄이기 위해 JavaScript를 축소하는 플러그 인입니다.
+* **grunt-contrib-uglify**: 크기를 줄이기 위해 JavaScript를 축소하는 플러그 인입니다.
 
-* **grunt-contrib-watch** : 파일 작업을 감시하는 플러그 인입니다.
+* **grunt-contrib-watch**: 파일 작업을 감시하는 플러그 인입니다.
 
 ## <a name="preparing-the-application"></a>애플리케이션 준비
 
@@ -108,7 +108,7 @@ grunt 및 grunt-tasks를 다운로드하도록 NPM을 구성합니다.
     > [!NOTE]
     > NPM은 [유의적 버전](https://semver.org/)을 사용하여 종속성을 구성합니다. SemVer이라는 유의적 버전은 번호 매기기 체계 \<major>.\<minor>.\<patch>를 사용하여 패키지를 확인합니다. Intellisense는 몇 가지 일반적인 선택 항목만 표시하여 유의적 버전을 간소화합니다. Intellisense 목록의 맨 위 항목(위 예제에서는 0.4.5)은 안정적인 최신 패키지 버전으로 간주됩니다. 캐럿(^) 기호는 가장 최근의 주 버전과 일치하고, 물결표(~)는 가장 최근의 부 버전과 일치합니다. SemVer에서 제공하는 전체 표현의 가이드로 [NPM semver 버전 파서 참조](https://www.npmjs.com/package/semver)를 참조하세요.
 
-3. 종속성을 더 추가하여 아래 예제와 같이 *clean* , *jshint* , *concat* , *uglify* , *watch* 용 grunt-contrib-\* 패키지를 로드합니다. 버전은 예제와 일치하지 않아도 됩니다.
+3. 종속성을 더 추가하여 아래 예제와 같이 *clean*, *jshint*, *concat*, *uglify*, *watch* 용 grunt-contrib-\* 패키지를 로드합니다. 버전은 예제와 일치하지 않아도 됩니다.
 
     ```json
     "devDependencies": {
@@ -285,7 +285,7 @@ grunt.loadNpmTasks('grunt-contrib-watch');
 
 ## <a name="binding-to-visual-studio-events"></a>Visual Studio 이벤트에 바인딩
 
-Visual Studio에서 작업할 때마다 수동으로 작업을 시작하려는 경우가 아니면, **빌드 전** , **빌드 후** , **정리** , **프로젝트 열기** 이벤트에 작업을 바인딩합니다.
+Visual Studio에서 작업할 때마다 수동으로 작업을 시작하려는 경우가 아니면, **빌드 전**, **빌드 후**, **정리**, **프로젝트 열기** 이벤트에 작업을 바인딩합니다.
 
 Visual Studio를 열 때마다 실행되도록 `watch`를 바인딩합니다. 작업 실행기 탐색기에서 조사식 작업을 마우스 오른쪽 단추로 클릭하고 상황에 맞는 메뉴에서 **바인딩** > **프로젝트 열기** 를 선택합니다.
 

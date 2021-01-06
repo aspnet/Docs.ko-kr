@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: client-side/libman/libman-vs
 ms.openlocfilehash: 1c97f5d7fbf64c5043e6d2277091b9a477833bf1
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054712"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>Visual Studio에서 ASP.NET Core와 함께 LibMan 사용
@@ -34,7 +34,7 @@ Visual Studio에는 ASP.NET Core 프로젝트의 [LibMan](xref:client-side/libma
 * 빌드에서 LibMan 복원 작업 구성 및 실행 지원
 * LibMan 복원 및 정리 작업을 트리거하기 위한 메뉴 항목
 * 라이브러리를 찾고 프로젝트에 파일을 추가하기 위한 검색 대화 상자
-* *libman.json* (LibMan 매니페스트 파일) 편집 지원
+* *libman.json*(LibMan 매니페스트 파일) 편집 지원
 
 [샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/client-side/libman/samples/)([다운로드 방법](xref:index#how-to-download-a-sample))
 
@@ -76,8 +76,8 @@ Visual Studio에는 ASP.NET Core 프로젝트의 [LibMan](xref:client-side/libma
   
   |시작 위치                           |제안된 폴더      |
   |------------------------------------------|----------------------|
-  |프로젝트 루트( *wwwroot* 가 있는 경우)        |*wwwroot/lib/jquery/* |
-  |프로젝트 루트( *wwwroot* 가 없는 경우) |*lib/jquery/*         |
+  |프로젝트 루트(*wwwroot* 가 있는 경우)        |*wwwroot/lib/jquery/* |
+  |프로젝트 루트(*wwwroot* 가 없는 경우) |*lib/jquery/*         |
   |프로젝트의 *Pages* 폴더                 |*Pages/jquery/*       |
 
 * **설치** 단추를 클릭하여 *libman.json* 의 구성에 따라 파일을 다운로드합니다.
@@ -96,7 +96,7 @@ Visual Studio에는 ASP.NET Core 프로젝트의 [LibMan](xref:client-side/libma
 
 ### <a name="manually-configure-libman-manifest-file-entries"></a>수동으로 LibMan 매니페스트 파일 항목 구성
 
-Visual Studio의 모든 LibMan 작업은 프로젝트 루트의 LibMan 매니페스트( *libman.json* ) 콘텐츠를 기반으로 합니다. *libman.json* 을 수동으로 편집하여 프로젝트의 라이브러리 파일을 구성할 수 있습니다. *libman.json* 을 저장하면 Visual Studio에서 모든 라이브러리 파일을 복원합니다.
+Visual Studio의 모든 LibMan 작업은 프로젝트 루트의 LibMan 매니페스트(*libman.json*) 콘텐츠를 기반으로 합니다. *libman.json* 을 수동으로 편집하여 프로젝트의 라이브러리 파일을 구성할 수 있습니다. *libman.json* 을 저장하면 Visual Studio에서 모든 라이브러리 파일을 복원합니다.
 
 편집을 위해 *libman.json* 을 열려는 경우 다음과 같은 옵션이 있습니다.
 
@@ -110,7 +110,7 @@ Visual Studio는 색 지정, 서식 지정, IntelliSense, 스키마 유효성 �
 
 다음 매니페스트 파일을 사용할 경우 LibMan은 `libraries` 속성에서 정의된 구성에 따라 파일을 검색합니다. `libraries` 내에서 정의된 개체 리터럴에 대한 설명은 다음과 같습니다.
 
-* [jQuery](https://jquery.com/) 버전 3.3.1의 하위 집합이 CDNJS 공급자에서 검색됩니다. 하위 집합은 `files` 속성( *jquery.min.js* , *jquery.js* , *jquery.min.map* )에서 정의됩니다. 파일은 프로젝트의 *wwwroot/lib/jquery* 폴더에 배치됩니다.
+* [jQuery](https://jquery.com/) 버전 3.3.1의 하위 집합이 CDNJS 공급자에서 검색됩니다. 하위 집합은 `files` 속성(*jquery.min.js*, *jquery.js*, *jquery.min.map*)에서 정의됩니다. 파일은 프로젝트의 *wwwroot/lib/jquery* 폴더에 배치됩니다.
 * [부트스트랩](https://getbootstrap.com/) 버전 4.1.3 전체가 검색되어 *wwwroot/lib/bootstrap* 폴더에 배치됩니다. 개체 리터럴의 `provider` 속성이 `defaultProvider` 속성 값을 재정의합니다. LibMan은 unpkg 공급자에서 부트스트랩 파일을 검색합니다.
 * 조직 내의 규제 기관이 [Lodash](https://lodash.com/)의 하위 집합을 승인했습니다. *lodash.js* 및 *lodash.min.js* 파일은 로컬 파일 시스템의 *C:\\temp\\lodash\\* 에서 검색됩니다. 프로젝트의 *wwwroot/lib/lodash* 폴더에 파일이 복사됩니다.
 
@@ -217,7 +217,7 @@ Clean libraries operation completed
 
   ![라이브러리 제거 상황에 맞는 메뉴 옵션](_static/uninstall-menu-option.png)
 
-또는 수동으로 LibMan 매니페스트( *libman.json* )를 편집하고 저장할 수 있습니다. 파일을 저장하면 [복원 작업](#restore-library-files)이 실행됩니다. *libman.json* 에서 더는 정의되지 않은 라이브러리 파일은 프로젝트에서 제거됩니다.
+또는 수동으로 LibMan 매니페스트(*libman.json*)를 편집하고 저장할 수 있습니다. 파일을 저장하면 [복원 작업](#restore-library-files)이 실행됩니다. *libman.json* 에서 더는 정의되지 않은 라이브러리 파일은 프로젝트에서 제거됩니다.
 
 ## <a name="update-library-version"></a>라이브러리 버전 업데이트
 

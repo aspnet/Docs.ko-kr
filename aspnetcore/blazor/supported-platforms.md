@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/supported-platforms
 ms.openlocfilehash: fe0734dbf6eb2647fa6c9b6f336063b9ec091139
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054959"
 ---
 # <a name="aspnet-core-no-locblazor-supported-platforms"></a>ASP.NET Core Blazor 지원 플랫폼

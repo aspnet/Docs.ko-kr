@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/change-tokens
 ms.openlocfilehash: f20d44c7767b284f727ce19a46224dae0cf6a5e1
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053776"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>ASP.NET Core에서 변경 토큰을 사용하여 변경 내용 검색
@@ -67,7 +67,7 @@ ms.locfileid: "93053776"
 
 ## <a name="monitor-for-configuration-changes"></a>구성 변경 모니터링
 
-기본적으로 ASP.NET Core 템플릿은 [JSON 구성 파일](xref:fundamentals/configuration/index#json-configuration-provider)( *appsettings.json* , *appsettings.Development.json* , *appsettings.Production.json* )을 사용하여 앱 구성 설정을 로드합니다.
+기본적으로 ASP.NET Core 템플릿은 [JSON 구성 파일](xref:fundamentals/configuration/index#json-configuration-provider)( *appsettings.json* , *appsettings.Development.json*, *appsettings.Production.json*)을 사용하여 앱 구성 설정을 로드합니다.
 
 이 파일은 `reloadOnChange` 매개 변수를 받아들이는 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>에 대해 [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) 확장 메서드를 사용하여 구성합니다. `reloadOnChange`는 파일 변경 시 구성을 다시 로드해야 하는지를 나타냅니다. 이 설정은 <xref:Microsoft.Extensions.Hosting.Host> 편의 메서드 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*>에 표시됩니다.
 
@@ -85,7 +85,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 구성 파일의 `FileSystemWatcher`는 단일 구성 파일 변경에 대해 토큰 콜백을 여러 개 트리거할 수 있습니다. 여러 토큰 콜백이 활성화될 때 사용자 지정 코드가 한 번만 실행 되도록 하기 위해 샘플의 구현은 파일 해시를 확인합니다. 샘플은 SHA1 파일 해시를 사용합니다. 재시도는 지수 백오프로 구현됩니다. 파일에서 새 해시를 일시적으로 컴퓨팅하지 못하게 하는 파일 잠금이 발생할 수 있으므로 재시도가 제공됩니다.
 
-*Utilities/Utilities.cs* :
+*Utilities/Utilities.cs*:
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Utilities/Utilities.cs?name=snippet1)]
 
@@ -101,7 +101,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Startup.cs?name=snippet3)]
 
-콜백의 `state`는 모니터링할 정확한 *appsettings* 의 구성 파일을 지정하는 데 유용한 `IWebHostEnvironment`를 전달하는 데 사용됩니다(예를 들어 개발 환경에서는 *appsettings.Development.json* ). 파일 해시는 구성 파일이 한 번만 변경된 경우 여러 토큰 콜백으로 인해 `WriteConsole` 문이 여러 번 실행되지 않도록 하는 데 사용됩니다.
+콜백의 `state`는 모니터링할 정확한 *appsettings* 의 구성 파일을 지정하는 데 유용한 `IWebHostEnvironment`를 전달하는 데 사용됩니다(예를 들어 개발 환경에서는 *appsettings.Development.json*). 파일 해시는 구성 파일이 한 번만 변경된 경우 여러 토큰 콜백으로 인해 `WriteConsole` 문이 여러 번 실행되지 않도록 하는 데 사용됩니다.
 
 이 시스템은 앱이 실행 중일 때 실행되며 사용자가 사용 중지할 수 없습니다.
 
@@ -115,7 +115,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 이 샘플은 `IConfigurationMonitor` 인터페이스를 설정합니다.
 
-*Extensions/ConfigurationMonitor.cs* :
+*Extensions/ConfigurationMonitor.cs*:
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Extensions/ConfigurationMonitor.cs?name=snippet1)]
 
@@ -141,7 +141,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 인덱스 페이지에서는 구성 모니터링을 통해 사용자 컨트롤을 제공합니다. `IConfigurationMonitor`의 인스턴스는 `IndexModel`에 삽입됩니다.
 
-*Pages/Index.cshtml.cs* :
+*Pages/Index.cshtml.cs*:
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Pages/Index.cshtml.cs?name=snippet1)]
 
@@ -153,13 +153,13 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 UI의 단추로 모니터링을 사용 설정 및 해제합니다.
 
-*Pages/Index.cshtml* :
+*Pages/Index.cshtml*:
 
 [!code-cshtml[](change-tokens/samples/3.x/SampleApp/Pages/Index.cshtml?name=snippet_Buttons)]
 
 ## <a name="monitor-cached-file-changes"></a>캐시된 파일 변경 모니터링
 
-파일 콘텐츠는 <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>를 사용하여 메모리 내에 캐시할 수 있습니다. 메모리 내 캐싱은 [메모리 내 캐시](xref:performance/caching/memory) 토픽에서 설명합니다. 아래에 설명된 구현과 같은 추가 단계를 수행하지 않으면 소스 데이터가 변경될 경우 캐시에서 *부실* (오래된) 데이터가 반환됩니다.
+파일 콘텐츠는 <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>를 사용하여 메모리 내에 캐시할 수 있습니다. 메모리 내 캐싱은 [메모리 내 캐시](xref:performance/caching/memory) 토픽에서 설명합니다. 아래에 설명된 구현과 같은 추가 단계를 수행하지 않으면 소스 데이터가 변경될 경우 캐시에서 *부실*(오래된) 데이터가 반환됩니다.
 
 예를 들어 [상대(sliding) 만료](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.SlidingExpiration) 기간을 갱신할 때 캐시된 소스 파일의 상태를 고려하지 않으면 부실 캐시 데이터가 발생합니다. 데이터에 대한 각 요청은 상대(sliding) 만료 기간을 갱신하지만 파일은 캐시에 다시 로드되지 않습니다. 파일의 캐시된 콘텐츠를 사용하는 모든 앱 기능은 부실 콘텐츠를 받을 수 있습니다.
 
@@ -170,11 +170,11 @@ UI의 단추로 모니터링을 사용 설정 및 해제합니다.
 * 파일 콘텐츠를 반환합니다.
 * 파일 잠금으로 인해 일시적으로 파일을 읽을 수 없는 경우를 처리하기 위해 지수 백오프를 사용하여 재시도 알고리즘을 구현합니다.
 
-*Utilities/Utilities.cs* :
+*Utilities/Utilities.cs*:
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Utilities/Utilities.cs?name=snippet2)]
 
-캐시된 파일 조회를 처리하기 위해 `FileService`가 생성됩니다. 서비스의 `GetFileContent` 메서드 호출은 메모리 내 캐시에서 파일 콘텐츠를 가져와 호출자( *Services/FileService.cs* )에게 반환하려고 합니다.
+캐시된 파일 조회를 처리하기 위해 `FileService`가 생성됩니다. 서비스의 `GetFileContent` 메서드 호출은 메모리 내 캐시에서 파일 콘텐츠를 가져와 호출자( *Services/FileService.cs*)에게 반환하려고 합니다.
 
 캐시 키를 사용하여 캐시된 콘텐츠를 찾을 수 없으면 다음 작업이 수행됩니다.
 
@@ -194,7 +194,7 @@ UI의 단추로 모니터링을 사용 설정 및 해제합니다.
 
 페이지 모델은 서비스를 사용하여 파일의 콘텐츠를 로드합니다.
 
-인덱스 페이지의 `OnGet` 메서드( *Pages/Index.cshtml.cs* ):
+인덱스 페이지의 `OnGet` 메서드(*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Pages/Index.cshtml.cs?name=snippet3)]
 
@@ -265,7 +265,7 @@ var compositeChangeToken =
 
 ## <a name="monitor-for-configuration-changes"></a>구성 변경 모니터링
 
-기본적으로 ASP.NET Core 템플릿은 [JSON 구성 파일](xref:fundamentals/configuration/index#json-configuration-provider)( *appsettings.json* , *appsettings.Development.json* , *appsettings.Production.json* )을 사용하여 앱 구성 설정을 로드합니다.
+기본적으로 ASP.NET Core 템플릿은 [JSON 구성 파일](xref:fundamentals/configuration/index#json-configuration-provider)( *appsettings.json* , *appsettings.Development.json*, *appsettings.Production.json*)을 사용하여 앱 구성 설정을 로드합니다.
 
 이 파일은 `reloadOnChange` 매개 변수를 받아들이는 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>에 대해 [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) 확장 메서드를 사용하여 구성합니다. `reloadOnChange`는 파일 변경 시 구성을 다시 로드해야 하는지를 나타냅니다. 이 설정은 <xref:Microsoft.AspNetCore.WebHost> 편의 메서드 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>에 표시됩니다.
 
@@ -283,7 +283,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 구성 파일의 `FileSystemWatcher`는 단일 구성 파일 변경에 대해 토큰 콜백을 여러 개 트리거할 수 있습니다. 여러 토큰 콜백이 활성화될 때 사용자 지정 코드가 한 번만 실행 되도록 하기 위해 샘플의 구현은 파일 해시를 확인합니다. 샘플은 SHA1 파일 해시를 사용합니다. 재시도는 지수 백오프로 구현됩니다. 파일에서 새 해시를 일시적으로 컴퓨팅하지 못하게 하는 파일 잠금이 발생할 수 있으므로 재시도가 제공됩니다.
 
-*Utilities/Utilities.cs* :
+*Utilities/Utilities.cs*:
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Utilities/Utilities.cs?name=snippet1)]
 
@@ -299,7 +299,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Startup.cs?name=snippet3)]
 
-콜백의 `state`는 모니터링할 정확한 *appsettings* 의 구성 파일을 지정하는 데 유용한 `IHostingEnvironment`를 전달하는 데 사용됩니다(예를 들어 개발 환경에서는 *appsettings.Development.json* ). 파일 해시는 구성 파일이 한 번만 변경된 경우 여러 토큰 콜백으로 인해 `WriteConsole` 문이 여러 번 실행되지 않도록 하는 데 사용됩니다.
+콜백의 `state`는 모니터링할 정확한 *appsettings* 의 구성 파일을 지정하는 데 유용한 `IHostingEnvironment`를 전달하는 데 사용됩니다(예를 들어 개발 환경에서는 *appsettings.Development.json*). 파일 해시는 구성 파일이 한 번만 변경된 경우 여러 토큰 콜백으로 인해 `WriteConsole` 문이 여러 번 실행되지 않도록 하는 데 사용됩니다.
 
 이 시스템은 앱이 실행 중일 때 실행되며 사용자가 사용 중지할 수 없습니다.
 
@@ -313,7 +313,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 이 샘플은 `IConfigurationMonitor` 인터페이스를 설정합니다.
 
-*Extensions/ConfigurationMonitor.cs* :
+*Extensions/ConfigurationMonitor.cs*:
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Extensions/ConfigurationMonitor.cs?name=snippet1)]
 
@@ -339,7 +339,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 인덱스 페이지에서는 구성 모니터링을 통해 사용자 컨트롤을 제공합니다. `IConfigurationMonitor`의 인스턴스는 `IndexModel`에 삽입됩니다.
 
-*Pages/Index.cshtml.cs* :
+*Pages/Index.cshtml.cs*:
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Pages/Index.cshtml.cs?name=snippet1)]
 
@@ -351,13 +351,13 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 UI의 단추로 모니터링을 사용 설정 및 해제합니다.
 
-*Pages/Index.cshtml* :
+*Pages/Index.cshtml*:
 
 [!code-cshtml[](change-tokens/samples/2.x/SampleApp/Pages/Index.cshtml?name=snippet_Buttons)]
 
 ## <a name="monitor-cached-file-changes"></a>캐시된 파일 변경 모니터링
 
-파일 콘텐츠는 <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>를 사용하여 메모리 내에 캐시할 수 있습니다. 메모리 내 캐싱은 [메모리 내 캐시](xref:performance/caching/memory) 토픽에서 설명합니다. 아래에 설명된 구현과 같은 추가 단계를 수행하지 않으면 소스 데이터가 변경될 경우 캐시에서 *부실* (오래된) 데이터가 반환됩니다.
+파일 콘텐츠는 <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>를 사용하여 메모리 내에 캐시할 수 있습니다. 메모리 내 캐싱은 [메모리 내 캐시](xref:performance/caching/memory) 토픽에서 설명합니다. 아래에 설명된 구현과 같은 추가 단계를 수행하지 않으면 소스 데이터가 변경될 경우 캐시에서 *부실*(오래된) 데이터가 반환됩니다.
 
 예를 들어 [상대(sliding) 만료](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.SlidingExpiration) 기간을 갱신할 때 캐시된 소스 파일의 상태를 고려하지 않으면 부실 캐시 데이터가 발생합니다. 데이터에 대한 각 요청은 상대(sliding) 만료 기간을 갱신하지만 파일은 캐시에 다시 로드되지 않습니다. 파일의 캐시된 콘텐츠를 사용하는 모든 앱 기능은 부실 콘텐츠를 받을 수 있습니다.
 
@@ -368,11 +368,11 @@ UI의 단추로 모니터링을 사용 설정 및 해제합니다.
 * 파일 콘텐츠를 반환합니다.
 * 파일 잠금으로 인해 일시적으로 파일을 읽을 수 없는 경우를 처리하기 위해 지수 백오프를 사용하여 재시도 알고리즘을 구현합니다.
 
-*Utilities/Utilities.cs* :
+*Utilities/Utilities.cs*:
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Utilities/Utilities.cs?name=snippet2)]
 
-캐시된 파일 조회를 처리하기 위해 `FileService`가 생성됩니다. 서비스의 `GetFileContent` 메서드 호출은 메모리 내 캐시에서 파일 콘텐츠를 가져와 호출자( *Services/FileService.cs* )에게 반환하려고 합니다.
+캐시된 파일 조회를 처리하기 위해 `FileService`가 생성됩니다. 서비스의 `GetFileContent` 메서드 호출은 메모리 내 캐시에서 파일 콘텐츠를 가져와 호출자( *Services/FileService.cs*)에게 반환하려고 합니다.
 
 캐시 키를 사용하여 캐시된 콘텐츠를 찾을 수 없으면 다음 작업이 수행됩니다.
 
@@ -392,7 +392,7 @@ UI의 단추로 모니터링을 사용 설정 및 해제합니다.
 
 페이지 모델은 서비스를 사용하여 파일의 콘텐츠를 로드합니다.
 
-인덱스 페이지의 `OnGet` 메서드( *Pages/Index.cshtml.cs* ):
+인덱스 페이지의 `OnGet` 메서드(*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Pages/Index.cshtml.cs?name=snippet3)]
 

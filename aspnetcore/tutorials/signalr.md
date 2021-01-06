@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: tutorials/signalr
 ms.openlocfilehash: 1dad2264250bf43ec6c1df679b8754a82a5addfd
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "95417671"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-no-locsignalr"></a>자습서: ASP.NET Core SignalR 시작하기

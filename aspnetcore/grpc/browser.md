@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/browser
 ms.openlocfilehash: 6456707620ae1c1f4d23f3562c78d1bf05d4844f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93058911"
 ---
 # <a name="use-grpc-in-browser-apps"></a>브라우저 앱에서 gRPC 사용
@@ -124,11 +124,11 @@ gRPC-Web을 사용하려면 다음을 수행합니다.
 
 `GrpcWebHandler`에는 다음과 같은 구성 옵션이 있습니다.
 
-* **InnerHandler** : gRPC HTTP 요청을 수행하는 기본 <xref:System.Net.Http.HttpMessageHandler>입니다(예: `HttpClientHandler`).
-* **GrpcWebMode** : gRPC HTTP 요청 `Content-Type`이 `application/grpc-web` 또는 `application/grpc-web-text`인지를 지정하는 열거형 형식입니다.
+* **InnerHandler**: gRPC HTTP 요청을 수행하는 기본 <xref:System.Net.Http.HttpMessageHandler>입니다(예: `HttpClientHandler`).
+* **GrpcWebMode**: gRPC HTTP 요청 `Content-Type`이 `application/grpc-web` 또는 `application/grpc-web-text`인지를 지정하는 열거형 형식입니다.
     * `GrpcWebMode.GrpcWeb`은 인코딩 없이 전송되도록 콘텐츠를 구성합니다. 기본값.
     * `GrpcWebMode.GrpcWebText`는 base64로 인코딩되도록 콘텐츠를 구성합니다. 브라우저에서 서버 스트리밍 호출을 수행하는 데 필요합니다.
-* **HttpVersion** : 기본 gRPC HTTP 요청에 [HttpRequestMessage.Version](xref:System.Net.Http.HttpRequestMessage.Version)을 설정하는 데 사용되는 HTTP 프로토콜 `Version`입니다. gRPC-Web은 특정 버전이 필요하지 않으며, 지정하지 않을 경우 기본값을 재정의하지 않습니다.
+* **HttpVersion**: 기본 gRPC HTTP 요청에 [HttpRequestMessage.Version](xref:System.Net.Http.HttpRequestMessage.Version)을 설정하는 데 사용되는 HTTP 프로토콜 `Version`입니다. gRPC-Web은 특정 버전이 필요하지 않으며, 지정하지 않을 경우 기본값을 재정의하지 않습니다.
 
 > [!IMPORTANT]
 > 생성된 gRPC 클라이언트에는 단항 메서드를 호출하기 위한 동기 및 비동기 메서드가 있습니다. 예를 들어 `SayHello`는 동기이고, `SayHelloAsync`는 비동기입니다. Blazor WebAssembly 앱에서 동기 메서드를 호출하면 앱이 응답하지 않게 됩니다. 비동기 메서드는 항상 Blazor WebAssembly에서 사용해야 합니다.

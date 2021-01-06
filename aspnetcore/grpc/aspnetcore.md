@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/aspnetcore
 ms.openlocfilehash: b120aa4ab6922445f2c53f3b1cb3bd5c159d8a84
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057832"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>ASP.NET Core를 사용하는 gRPC 서비스
@@ -67,7 +67,7 @@ gRPC를 사용하려면 [Grpc.AspNetCore](https://www.nuget.org/packages/Grpc.As
 
 ### <a name="configure-grpc"></a>gRPC 구성
 
-*Startup.cs* :
+*Startup.cs*:
 
 * `AddGrpc` 메서드를 통해 gRPC를 사용하도록 설정합니다.
 * `MapGrpcService` 메서드를 통해 라우팅 파이프라인에 각 gRPC 서비스를 추가합니다.

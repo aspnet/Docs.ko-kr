@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/blazor-server-ef-core
 ms.openlocfilehash: 10fc0afe84065f2c226d1e9c2f4314142369613a
-ms.sourcegitcommit: c321518bfe367280ef262aecaada287f17fe1bc5
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97011886"
 ---
 # <a name="aspnet-core-no-locblazor-server-with-entity-framework-core-efcore"></a>EFCore(Entity Framework Core)를 사용한 ASP.NET Core Blazor Server

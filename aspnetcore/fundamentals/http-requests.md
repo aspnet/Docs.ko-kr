@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/http-requests
 ms.openlocfilehash: 34c35daac3da845bac9156fe96078df7902a4cd0
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059496"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>ASP.NET Core에서 IHttpClientFactory를 사용하여 HTTP 요청 만들기
@@ -378,9 +378,9 @@ DI 지원 앱에서 `IHttpClientFactory`을(를) 사용하면 다음이 방지�
 
 `IHttpClientFactory`을 통해 만든 클라이언트는 모든 요청에 대한 로그 메시지를 기록합니다. 기본 로그 메시지를 보려면 로깅 구성에서 적절한 정보 수준을 사용하도록 설정합니다. 요청 헤더의 로깅 등과 같은 추가 로깅은 추적 수준에서만 포함됩니다.
 
-각 클라이언트에 사용되는 로그 범주는 클라이언트의 이름을 포함합니다. 예를 들어, *MyNamedClient* 라는 클라이언트는 “System.Net.Http.HttpClient. **MyNamedClient**.LogicalHandler”의 범주를 사용하여 메시지를 기록합니다. *LogicalHandler* 라는 접미사가 붙은 메시지는 요청 처리기 파이프라인 외부에서 발생합니다. 요청 시 파이프라인의 다른 모든 처리기에서 이를 처리하기 전에 메시지가 기록됩니다. 응답 시 다른 모든 파이프라인 처리기가 응답을 받은 후에 메시지가 기록됩니다.
+각 클라이언트에 사용되는 로그 범주는 클라이언트의 이름을 포함합니다. 예를 들어, *MyNamedClient* 라는 클라이언트는 “System.Net.Http.HttpClient.**MyNamedClient**.LogicalHandler”의 범주를 사용하여 메시지를 기록합니다. *LogicalHandler* 라는 접미사가 붙은 메시지는 요청 처리기 파이프라인 외부에서 발생합니다. 요청 시 파이프라인의 다른 모든 처리기에서 이를 처리하기 전에 메시지가 기록됩니다. 응답 시 다른 모든 파이프라인 처리기가 응답을 받은 후에 메시지가 기록됩니다.
 
-로깅은 요청 처리기 파이프라인 내부에서도 발생합니다. *MyNamedClient* 예제에서 해당 메시지는 로그 범주 “System.Net.Http.HttpClient. **MyNamedClient**.ClientHandler”에 대해 기록됩니다. 요청의 경우 이는 요청이 전송되기 직전 및 다른 모든 처리기가 실행된 후에 발생합니다. 응답 시 이 로깅은 처리기 파이프라인을 통해 응답이 다시 전달되기 전의 응답 상태를 포함합니다.
+로깅은 요청 처리기 파이프라인 내부에서도 발생합니다. *MyNamedClient* 예제에서 해당 메시지는 로그 범주 “System.Net.Http.HttpClient.**MyNamedClient**.ClientHandler”에 대해 기록됩니다. 요청의 경우 이는 요청이 전송되기 직전 및 다른 모든 처리기가 실행된 후에 발생합니다. 응답 시 이 로깅은 처리기 파이프라인을 통해 응답이 다시 전달되기 전의 응답 상태를 포함합니다.
 
 파이프라인 외부 및 내부에서 로깅을 사용하도록 설정하면 다른 파이프라인 처리기가 수행한 변경 내용을 검사할 수 있습니다. 여기에는 요청 헤더 또는 응답 상태 코드에 대한 변경이 포함될 수 있습니다.
 

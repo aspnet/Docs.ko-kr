@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: client-side/using-browserlink
 ms.openlocfilehash: 80f05acab55af973faf08b5db79ea4cbaf896b14
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054491"
 ---
 # <a name="browser-link-in-aspnet-core"></a>ASP.NET Core의 브라우저 링크
@@ -35,7 +35,7 @@ ms.locfileid: "93054491"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) 패키지를 프로젝트에 추가합니다. 또한 ASP.NET Core Razor Pages 또는 MVC 프로젝트의 경우, <xref:mvc/views/view-compilation>에 설명된 대로 Razor( *.cshtml* ) 파일의 런타임 컴파일을 사용하도록 설정합니다. Razor 구문 변경 내용은 런타임 컴파일을 사용하도록 설정한 경우에만 적용됩니다.
+[Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) 패키지를 프로젝트에 추가합니다. 또한 ASP.NET Core Razor Pages 또는 MVC 프로젝트의 경우, <xref:mvc/views/view-compilation>에 설명된 대로 Razor( *.cshtml*) 파일의 런타임 컴파일을 사용하도록 설정합니다. Razor 구문 변경 내용은 런타임 컴파일을 사용하도록 설정한 경우에만 적용됩니다.
 
 ::: moniker-end
 
@@ -47,7 +47,7 @@ ASP.NET Core 2.0 프로젝트를 ASP.NET Core 2.1로 변환하고 [Microsoft.Asp
 
 ::: moniker range="= aspnetcore-2.0"
 
-ASP.NET Core 2.0 **웹 애플리케이션** , **비어 있음** 및 **웹 API** 프로젝트 템플릿은 [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/)의 패키지 참조를 포함하는 [Microsoft.AspNetCore.All 메타패키지](xref:fundamentals/metapackage)를 사용합니다. 따라서 `Microsoft.AspNetCore.All` 메타패키지를 사용하는 경우, 브라우저 링크를 사용할 수 있도록 설정하는 추가 작업이 필요하지 않습니다.
+ASP.NET Core 2.0 **웹 애플리케이션**, **비어 있음** 및 **웹 API** 프로젝트 템플릿은 [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/)의 패키지 참조를 포함하는 [Microsoft.AspNetCore.All 메타패키지](xref:fundamentals/metapackage)를 사용합니다. 따라서 `Microsoft.AspNetCore.All` 메타패키지를 사용하는 경우, 브라우저 링크를 사용할 수 있도록 설정하는 추가 작업이 필요하지 않습니다.
 
 ::: moniker-end
 

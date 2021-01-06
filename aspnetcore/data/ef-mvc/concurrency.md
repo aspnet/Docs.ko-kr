@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/concurrency
 ms.openlocfilehash: d476c836e8d497ca1291992dda38da1fc9f59ed2
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054374"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>자습서: 동시성 처리 - ASP.NET MVC 및 EF Core 사용
@@ -117,7 +117,7 @@ Entity Framework에서 throw하는 `DbConcurrencyException` 예외를 처리하�
 
 `Timestamp` 특성은 데이터베이스에 전송된 Update 및 Delete 명령의 Where 절에 이 열이 포함되도록 지정합니다. SQL `rowversion`이 대체하기 전에 이전 버전의 SQL Server가 SQL `timestamp` 데이터 형식을 사용했으므로 특성을 `Timestamp`라고 합니다. `rowversion`에 대한 .NET 유형은 바이트 배열입니다.
 
-Fluent API를 사용하는 것을 선호하는 경우 `IsConcurrencyToken` 메서드( *Data/SchoolContext.cs* 에서)를 사용하여 다음 예제와 같이 추적 속성을 지정할 수 있습니다.
+Fluent API를 사용하는 것을 선호하는 경우 `IsConcurrencyToken` 메서드(*Data/SchoolContext.cs* 에서)를 사용하여 다음 예제와 같이 추적 속성을 지정할 수 있습니다.
 
 ```csharp
 modelBuilder.Entity<Department>()

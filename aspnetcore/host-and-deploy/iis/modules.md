@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/iis/modules
 ms.openlocfilehash: 47ba04f199f9b77cf6032de9f80f2410f5c69424
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057403"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>IIS 모듈 및 ASP.NET Core
@@ -60,7 +60,7 @@ ms.locfileid: "93057403"
 | **프로토콜 지원**<br>`ProtocolSupportModule`                                                  | 예 | |
 | **요청 필터링**<br>`RequestFilteringModule`                                                | 예 | [URL 재작성 미들웨어`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **요청 모니터**<br>`RequestMonitorModule`                                                    | 예 | |
-| **URL 재작성** &#8224;<br>`RewriteModule`                                                      | 예 | [URL 재작성 미들웨어](xref:fundamentals/url-rewriting) |
+| **URL 재작성**&#8224;<br>`RewriteModule`                                                      | 예 | [URL 재작성 미들웨어](xref:fundamentals/url-rewriting) |
 | **서버 쪽 포함**<br>`ServerSideIncludeModule`                                            | 아니요  | |
 | **정적 압축**<br>`StaticCompressionModule`                                              | 아니요  | [응답 압축 미들웨어](xref:performance/response-compression) |
 | **정적 콘텐츠**<br>`StaticFileModule`                                                         | 아니요  | [정적 파일 미들웨어](xref:fundamentals/static-files) |

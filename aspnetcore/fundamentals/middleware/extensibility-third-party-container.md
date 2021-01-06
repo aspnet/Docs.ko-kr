@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/middleware/extensibility-third-party-container
 ms.openlocfilehash: d322b1b3dda161c9948359253c3f7fee64a1f9ce
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057767"
 ---
 # <a name="middleware-activation-with-a-third-party-container-in-aspnet-core"></a>ASP.NET Core에서 타사 컨테이너를 사용한 미들웨어 활성화
@@ -53,11 +53,11 @@ ms.locfileid: "93057767"
 
 <xref:Microsoft.AspNetCore.Http.IMiddleware>는 앱의 요청 파이프라인에 대한 미들웨어를 정의합니다.
 
-`IMiddlewareFactory` 구현에 의해 활성화된 미들웨어( *Middleware/SimpleInjectorActivatedMiddleware.cs* ):
+`IMiddlewareFactory` 구현에 의해 활성화된 미들웨어(*Middleware/SimpleInjectorActivatedMiddleware.cs*):
 
 [!code-csharp[](extensibility-third-party-container/samples/3.x/SampleApp/Middleware/SimpleInjectorActivatedMiddleware.cs?name=snippet1)]
 
-미들웨어에 대한 확장( *Middleware/MiddlewareExtensions.cs* )이 생성됩니다.
+미들웨어에 대한 확장(*Middleware/MiddlewareExtensions.cs*)이 생성됩니다.
 
 [!code-csharp[](extensibility-third-party-container/samples/3.x/SampleApp/Middleware/MiddlewareExtensions.cs?name=snippet1)]
 
@@ -100,11 +100,11 @@ ms.locfileid: "93057767"
 
 <xref:Microsoft.AspNetCore.Http.IMiddleware>는 앱의 요청 파이프라인에 대한 미들웨어를 정의합니다.
 
-`IMiddlewareFactory` 구현에 의해 활성화된 미들웨어( *Middleware/SimpleInjectorActivatedMiddleware.cs* ):
+`IMiddlewareFactory` 구현에 의해 활성화된 미들웨어(*Middleware/SimpleInjectorActivatedMiddleware.cs*):
 
 [!code-csharp[](extensibility-third-party-container/samples/2.x/SampleApp/Middleware/SimpleInjectorActivatedMiddleware.cs?name=snippet1)]
 
-미들웨어에 대한 확장( *Middleware/MiddlewareExtensions.cs* )이 생성됩니다.
+미들웨어에 대한 확장(*Middleware/MiddlewareExtensions.cs*)이 생성됩니다.
 
 [!code-csharp[](extensibility-third-party-container/samples/2.x/SampleApp/Middleware/MiddlewareExtensions.cs?name=snippet1)]
 

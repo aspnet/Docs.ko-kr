@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/call-web-api
 ms.openlocfilehash: 85b3ded6ec25310a573e99cbedf0df005d92bdbe
-ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93234415"
 ---
 # <a name="call-a-web-api-from-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor에서 웹 API 호출

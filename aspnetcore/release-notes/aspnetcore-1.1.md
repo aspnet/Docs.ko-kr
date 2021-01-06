@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: aspnetcore-1.1
 ms.openlocfilehash: cc891280a6314dbc4c0838d5b4a8d2a20698eab6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059743"
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>ASP.NET Core 1.1의 새로운 기능

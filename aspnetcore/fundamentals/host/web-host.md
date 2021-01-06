@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/host/web-host
 ms.openlocfilehash: 904b57f95cbc48a8177174dc9be770e8a6abf146
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96035881"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core 웹 호스트

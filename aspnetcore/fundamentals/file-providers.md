@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/file-providers
 ms.openlocfilehash: 16e5ead9898125c804da4d60322510474201d897
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059444"
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core의 파일 공급자
@@ -115,7 +115,7 @@ var physicalProvider = _env.ContentRootFileProvider;
 
 *FileProviderSample* 샘플 앱은 `ManifestEmbeddedFileProvider`를 만들고 현재 실행 중인 어셈블리를 생성자에 전달합니다.
 
-*Startup.cs* :
+*Startup.cs*:
 
 ```csharp
 var manifestEmbeddedProvider = 
@@ -262,7 +262,7 @@ var physicalProvider = _env.ContentRootFileProvider;
 
 샘플 앱은 `ManifestEmbeddedFileProvider`를 생성하고 현재 실행 중인 어셈블리를 생성자에 전달합니다.
 
-*Startup.cs* :
+*Startup.cs*:
 
 ```csharp
 var manifestEmbeddedProvider = 

@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/read-related-data
 ms.openlocfilehash: e52e4aefc18b84f85bea28a9724894eed50ca54a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93061069"
 ---
 # <a name="part-6-no-locrazor-pages-with-ef-core-in-aspnet-core---read-related-data"></a>6부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 관련 데이터 읽기

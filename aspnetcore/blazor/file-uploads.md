@@ -20,10 +20,10 @@ no-loc:
 ms.date: 10/27/2020
 uid: blazor/file-uploads
 ms.openlocfilehash: 77c2874eef788b8083758c087913a7a04c55fa2b
-ms.sourcegitcommit: 54fdca99f30b18d69cf0753ca3c84c7dab8f2b0e
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94691172"
 ---
 # <a name="aspnet-core-no-locblazor-file-uploads"></a>ASP.NET Core Blazor 파일 업로드

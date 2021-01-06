@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/adding-view
 ms.openlocfilehash: ce2754d22b61578bdbe5e78a69e08bdc1e83190d
-ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94688364"
 ---
 # <a name="part-3-add-a-view-to-an-aspnet-core-mvc-app"></a>3부. ASP.NET Core MVC 앱에 뷰 추가

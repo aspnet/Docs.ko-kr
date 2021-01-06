@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: fundamentals/localization
 ms.openlocfilehash: 07e2f561b0e9db58780d6e8a271e32b00132b1b5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059522"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core에서 세계화 및 지역화
@@ -207,17 +207,17 @@ using Microsoft.Extensions.Localization;
 
 * *Welcome.fr-CA.resx*
 * *Welcome.fr.resx*
-* *Welcome.resx* (`NeutralResourcesLanguage`가 "fr-CA"인 경우)
+* *Welcome.resx*(`NeutralResourcesLanguage`가 "fr-CA"인 경우)
 
 예를 들어 ".fr" 문화권 지정자를 제거하고 프랑스어로 설정된 문화권이 있는 경우 기본 리소스 파일이 읽혀지고 문자열이 지역화됩니다. 리소스 관리자는 요청된 문화권에 맞지 않는 경우에 대한 기본 또는 대체 리소스를 지정합니다. 요청된 문화권에 대한 리소스가 없을 때 키를 반환하려는 경우 기본 리소스 파일이 없어야 합니다.
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Visual Studio를 사용하여 리소스 파일 생성
 
-파일 이름에 문화권이 없이(예: *Welcome.resx* ) Visual Studio에서 리소스 파일을 만드는 경우 Visual Studio는 각 문자열에 대한 속성이 있는 C# 클래스를 만듭니다. 일반적으로 이는 사용자가 ASP.NET Core에서 원하는 것은 아닙니다. 일반적으로 기본 *.resx* 리소스 파일(문화권 이름이 없는 *.resx* 파일)은 없습니다. 문화권 이름으로 *.resx* 파일을 만드는 것이 좋습니다(예: *Welcome.fr.resx* ). 문화권 이름으로 *.resx* 파일을 만드는 경우 Visual Studio는 클래스 파일을 생성하지 않습니다.
+파일 이름에 문화권이 없이(예: *Welcome.resx*) Visual Studio에서 리소스 파일을 만드는 경우 Visual Studio는 각 문자열에 대한 속성이 있는 C# 클래스를 만듭니다. 일반적으로 이는 사용자가 ASP.NET Core에서 원하는 것은 아닙니다. 일반적으로 기본 *.resx* 리소스 파일(문화권 이름이 없는 *.resx* 파일)은 없습니다. 문화권 이름으로 *.resx* 파일을 만드는 것이 좋습니다(예: *Welcome.fr.resx*). 문화권 이름으로 *.resx* 파일을 만드는 경우 Visual Studio는 클래스 파일을 생성하지 않습니다.
 
 ### <a name="add-other-cultures"></a>다른 문화권 추가
 
-각 언어 및 문화권 조합(기본 언어 이외)에는 고유한 리소스 파일이 필요합니다. ISO 언어 코드가 파일 이름의 일부인 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대한 리소스 파일을 만듭니다(예: **en-us** , **fr-ca** 및 **en-gb** ). 이러한 ISO 코드는 *Welcome.es-MX.resx* (스페인어/멕시코)처럼 파일 이름과 *.resx* 파일 확장명 사이에 위치합니다.
+각 언어 및 문화권 조합(기본 언어 이외)에는 고유한 리소스 파일이 필요합니다. ISO 언어 코드가 파일 이름의 일부인 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대한 리소스 파일을 만듭니다(예: **en-us**, **fr-ca** 및 **en-gb**). 이러한 ISO 코드는 *Welcome.es-MX.resx*(스페인어/멕시코)처럼 파일 이름과 *.resx* 파일 확장명 사이에 위치합니다.
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>각 요청에 대한 언어/문화권을 선택하는 전략 구현
 
@@ -561,17 +561,17 @@ using Microsoft.Extensions.Localization;
 
 * *Welcome.fr-CA.resx*
 * *Welcome.fr.resx*
-* *Welcome.resx* (`NeutralResourcesLanguage`가 "fr-CA"인 경우)
+* *Welcome.resx*(`NeutralResourcesLanguage`가 "fr-CA"인 경우)
 
 예를 들어 ".fr" 문화권 지정자를 제거하고 프랑스어로 설정된 문화권이 있는 경우 기본 리소스 파일이 읽혀지고 문자열이 지역화됩니다. 리소스 관리자는 요청된 문화권에 맞지 않는 경우에 대한 기본 또는 대체 리소스를 지정합니다. 요청된 문화권에 대한 리소스가 없을 때 키를 반환하려는 경우 기본 리소스 파일이 없어야 합니다.
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Visual Studio를 사용하여 리소스 파일 생성
 
-파일 이름에 문화권이 없이(예: *Welcome.resx* ) Visual Studio에서 리소스 파일을 만드는 경우 Visual Studio는 각 문자열에 대한 속성이 있는 C# 클래스를 만듭니다. 일반적으로 이는 사용자가 ASP.NET Core에서 원하는 것은 아닙니다. 일반적으로 기본 *.resx* 리소스 파일(문화권 이름이 없는 *.resx* 파일)은 없습니다. 문화권 이름으로 *.resx* 파일을 만드는 것이 좋습니다(예: *Welcome.fr.resx* ). 문화권 이름으로 *.resx* 파일을 만드는 경우 Visual Studio는 클래스 파일을 생성하지 않습니다.
+파일 이름에 문화권이 없이(예: *Welcome.resx*) Visual Studio에서 리소스 파일을 만드는 경우 Visual Studio는 각 문자열에 대한 속성이 있는 C# 클래스를 만듭니다. 일반적으로 이는 사용자가 ASP.NET Core에서 원하는 것은 아닙니다. 일반적으로 기본 *.resx* 리소스 파일(문화권 이름이 없는 *.resx* 파일)은 없습니다. 문화권 이름으로 *.resx* 파일을 만드는 것이 좋습니다(예: *Welcome.fr.resx*). 문화권 이름으로 *.resx* 파일을 만드는 경우 Visual Studio는 클래스 파일을 생성하지 않습니다.
 
 ### <a name="add-other-cultures"></a>다른 문화권 추가
 
-각 언어 및 문화권 조합(기본 언어 이외)에는 고유한 리소스 파일이 필요합니다. ISO 언어 코드가 파일 이름의 일부인 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대한 리소스 파일을 만듭니다(예: **en-us** , **fr-ca** 및 **en-gb** ). 이러한 ISO 코드는 *Welcome.es-MX.resx* (스페인어/멕시코)처럼 파일 이름과 *.resx* 파일 확장명 사이에 위치합니다.
+각 언어 및 문화권 조합(기본 언어 이외)에는 고유한 리소스 파일이 필요합니다. ISO 언어 코드가 파일 이름의 일부인 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대한 리소스 파일을 만듭니다(예: **en-us**, **fr-ca** 및 **en-gb**). 이러한 ISO 코드는 *Welcome.es-MX.resx*(스페인어/멕시코)처럼 파일 이름과 *.resx* 파일 확장명 사이에 위치합니다.
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>각 요청에 대한 언어/문화권을 선택하는 전략 구현
 
@@ -916,17 +916,17 @@ using Microsoft.Extensions.Localization;
 
 * *Welcome.fr-CA.resx*
 * *Welcome.fr.resx*
-* *Welcome.resx* (`NeutralResourcesLanguage`가 "fr-CA"인 경우)
+* *Welcome.resx*(`NeutralResourcesLanguage`가 "fr-CA"인 경우)
 
 예를 들어 ".fr" 문화권 지정자를 제거하고 프랑스어로 설정된 문화권이 있는 경우 기본 리소스 파일이 읽혀지고 문자열이 지역화됩니다. 리소스 관리자는 요청된 문화권에 맞지 않는 경우에 대한 기본 또는 대체 리소스를 지정합니다. 요청된 문화권에 대한 리소스가 없을 때 키를 반환하려는 경우 기본 리소스 파일이 없어야 합니다.
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Visual Studio를 사용하여 리소스 파일 생성
 
-파일 이름에 문화권이 없이(예: *Welcome.resx* ) Visual Studio에서 리소스 파일을 만드는 경우 Visual Studio는 각 문자열에 대한 속성이 있는 C# 클래스를 만듭니다. 일반적으로 이는 사용자가 ASP.NET Core에서 원하는 것은 아닙니다. 일반적으로 기본 *.resx* 리소스 파일(문화권 이름이 없는 *.resx* 파일)은 없습니다. 문화권 이름으로 *.resx* 파일을 만드는 것이 좋습니다(예: *Welcome.fr.resx* ). 문화권 이름으로 *.resx* 파일을 만드는 경우 Visual Studio는 클래스 파일을 생성하지 않습니다.
+파일 이름에 문화권이 없이(예: *Welcome.resx*) Visual Studio에서 리소스 파일을 만드는 경우 Visual Studio는 각 문자열에 대한 속성이 있는 C# 클래스를 만듭니다. 일반적으로 이는 사용자가 ASP.NET Core에서 원하는 것은 아닙니다. 일반적으로 기본 *.resx* 리소스 파일(문화권 이름이 없는 *.resx* 파일)은 없습니다. 문화권 이름으로 *.resx* 파일을 만드는 것이 좋습니다(예: *Welcome.fr.resx*). 문화권 이름으로 *.resx* 파일을 만드는 경우 Visual Studio는 클래스 파일을 생성하지 않습니다.
 
 ### <a name="add-other-cultures"></a>다른 문화권 추가
 
-각 언어 및 문화권 조합(기본 언어 이외)에는 고유한 리소스 파일이 필요합니다. ISO 언어 코드가 파일 이름의 일부인 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대한 리소스 파일을 만듭니다(예: **en-us** , **fr-ca** 및 **en-gb** ). 이러한 ISO 코드는 *Welcome.es-MX.resx* (스페인어/멕시코)처럼 파일 이름과 *.resx* 파일 확장명 사이에 위치합니다.
+각 언어 및 문화권 조합(기본 언어 이외)에는 고유한 리소스 파일이 필요합니다. ISO 언어 코드가 파일 이름의 일부인 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대한 리소스 파일을 만듭니다(예: **en-us**, **fr-ca** 및 **en-gb**). 이러한 ISO 코드는 *Welcome.es-MX.resx*(스페인어/멕시코)처럼 파일 이름과 *.resx* 파일 확장명 사이에 위치합니다.
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>각 요청에 대한 언어/문화권을 선택하는 전략 구현
 

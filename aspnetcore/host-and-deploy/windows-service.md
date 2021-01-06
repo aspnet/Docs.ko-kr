@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/windows-service
 ms.openlocfilehash: 31a738e7aa8779171dfa09a5678d7240b8f62343
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057234"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Windows 서비스에서 ASP.NET Core 호스트
@@ -97,7 +97,7 @@ Razor Pages 또는 MVC 프레임워크를 사용하는 웹앱 기반 서비스�
 
 ### <a name="framework-dependent-deployment-fdd"></a>FDD(프레임워크 종속 배포)
 
-FDD(프레임워크 종속 배포)에서는 대상 시스템에 .NET Core의 공유 시스템 차원 버전이 있어야 합니다. 이 문서의 지침에 따라 FDD 시나리오가 채택된 경우 SDK는 *프레임워크 종속 실행 파일* 이라는 실행 파일( *.exe* )을 생성합니다.
+FDD(프레임워크 종속 배포)에서는 대상 시스템에 .NET Core의 공유 시스템 차원 버전이 있어야 합니다. 이 문서의 지침에 따라 FDD 시나리오가 채택된 경우 SDK는 *프레임워크 종속 실행 파일* 이라는 실행 파일( *.exe*)을 생성합니다.
 
 [Web SDK](#sdk)를 사용할 경우 ASP.NET Core 앱을 게시할 때 일반적으로 생성되는 *web.config* 파일은 Windows 서비스 앱에 필요하지 않습니다. *web.config* 파일이 생성되지 않도록 하려면 `<IsTransformWebConfigDisabled>` 속성을 `true`로 설정합니다.
 
@@ -274,8 +274,8 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 * 이전 또는 시험판 버전의 PowerShell을 사용 중입니다.
 * 등록된 서비스가 [dotnet publish](/dotnet/core/tools/dotnet-publish) 명령에서 앱의 **게시된** 출력을 사용하지 않습니다. [dotnet build](/dotnet/core/tools/dotnet-build) 명령의 출력은 앱 배포에 지원되지 않습니다. 게시된 자산은 배포 유형에 따라 다음 폴더 중 하나에 있습니다.
-  * *bin/Release/{TARGET FRAMEWORK}/publish* (FDD)
-  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish* (SCD)
+  * *bin/Release/{TARGET FRAMEWORK}/publish*(FDD)
+  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish*(SCD)
 * 서비스가 실행 중 상태가 아닙니다.
 * 앱에서 사용하는 리소스(예: 인증서)의 경로가 올바르지 않습니다. Windows Service의 기본 경로는 *c:\\Windows\\System32* 입니다.
 * 사용자에게 *서비스로 로그온* 권한이 없습니다.
@@ -337,7 +337,7 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 #### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>앱 중단 시작 중에 실패 또는 정상적으로 실행
 
-앱이 *중단* (응답하지 않거나 충돌하지 않음), 시작 중에 실패 또는 정상적으로 실행되면 [사용자 모드 덤프 파일: 가장 적합한 도구 선택](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)을 참조하여 덤프를 생성할 적절한 도구를 선택합니다.
+앱이 *중단*(응답하지 않거나 충돌하지 않음), 시작 중에 실패 또는 정상적으로 실행되면 [사용자 모드 덤프 파일: 가장 적합한 도구 선택](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)을 참조하여 덤프를 생성할 적절한 도구를 선택합니다.
 
 #### <a name="analyze-the-dump"></a>덤프 분석
 
@@ -399,9 +399,9 @@ Razor Pages 또는 MVC 프레임워크를 사용하는 웹앱 기반 서비스�
 
 ### <a name="framework-dependent-deployment-fdd"></a>FDD(프레임워크 종속 배포)
 
-FDD(프레임워크 종속 배포)에서는 대상 시스템에 .NET Core의 공유 시스템 차원 버전이 있어야 합니다. 이 문서의 지침에 따라 FDD 시나리오가 채택된 경우 SDK는 *프레임워크 종속 실행 파일* 이라는 실행 파일( *.exe* )을 생성합니다.
+FDD(프레임워크 종속 배포)에서는 대상 시스템에 .NET Core의 공유 시스템 차원 버전이 있어야 합니다. 이 문서의 지침에 따라 FDD 시나리오가 채택된 경우 SDK는 *프레임워크 종속 실행 파일* 이라는 실행 파일( *.exe*)을 생성합니다.
 
-Windows [RID(런타임 식별자)](/dotnet/core/rid-catalog)([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier))에는 대상 프레임워크가 포함되어 있습니다. 다음 예제에서는 RID가 `win7-x64`로 설정됩니다. `<SelfContained>` 속성은 `false`로 설정됩니다. 해당 속성은 SDK에 Windows용 실행 파일( *.exe* )과 공유 .NET Core Framework에 종속되는 앱을 생성하도록 지시합니다.
+Windows [RID(런타임 식별자)](/dotnet/core/rid-catalog)([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier))에는 대상 프레임워크가 포함되어 있습니다. 다음 예제에서는 RID가 `win7-x64`로 설정됩니다. `<SelfContained>` 속성은 `false`로 설정됩니다. 해당 속성은 SDK에 Windows용 실행 파일( *.exe*)과 공유 .NET Core Framework에 종속되는 앱을 생성하도록 지시합니다.
 
 ASP.NET Core 앱을 게시할 때 일반적으로 생성되는 *web.config* 파일은 Windows 서비스 앱에 필요하지 않습니다. *web.config* 파일이 생성되지 않도록 하려면 `<IsTransformWebConfigDisabled>` 속성을 `true`로 설정합니다.
 
@@ -608,8 +608,8 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 * 이전 또는 시험판 버전의 PowerShell을 사용 중입니다.
 * 등록된 서비스가 [dotnet publish](/dotnet/core/tools/dotnet-publish) 명령에서 앱의 **게시된** 출력을 사용하지 않습니다. [dotnet build](/dotnet/core/tools/dotnet-build) 명령의 출력은 앱 배포에 지원되지 않습니다. 게시된 자산은 배포 유형에 따라 다음 폴더 중 하나에 있습니다.
-  * *bin/Release/{TARGET FRAMEWORK}/publish* (FDD)
-  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish* (SCD)
+  * *bin/Release/{TARGET FRAMEWORK}/publish*(FDD)
+  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish*(SCD)
 * 서비스가 실행 중 상태가 아닙니다.
 * 앱에서 사용하는 리소스(예: 인증서)의 경로가 올바르지 않습니다. Windows Service의 기본 경로는 *c:\\Windows\\System32* 입니다.
 * 사용자에게 *서비스로 로그온* 권한이 없습니다.
@@ -671,7 +671,7 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 #### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>앱 중단 시작 중에 실패 또는 정상적으로 실행
 
-앱이 *중단* (응답하지 않거나 충돌하지 않음), 시작 중에 실패 또는 정상적으로 실행되면 [사용자 모드 덤프 파일: 가장 적합한 도구 선택](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)을 참조하여 덤프를 생성할 적절한 도구를 선택합니다.
+앱이 *중단*(응답하지 않거나 충돌하지 않음), 시작 중에 실패 또는 정상적으로 실행되면 [사용자 모드 덤프 파일: 가장 적합한 도구 선택](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)을 참조하여 덤프를 생성할 적절한 도구를 선택합니다.
 
 #### <a name="analyze-the-dump"></a>덤프 분석
 
@@ -733,11 +733,11 @@ Razor Pages 또는 MVC 프레임워크를 사용하는 웹앱 기반 서비스�
 
 ### <a name="framework-dependent-deployment-fdd"></a>FDD(프레임워크 종속 배포)
 
-FDD(프레임워크 종속 배포)에서는 대상 시스템에 .NET Core의 공유 시스템 차원 버전이 있어야 합니다. 이 문서의 지침에 따라 FDD 시나리오가 채택된 경우 SDK는 *프레임워크 종속 실행 파일* 이라는 실행 파일( *.exe* )을 생성합니다.
+FDD(프레임워크 종속 배포)에서는 대상 시스템에 .NET Core의 공유 시스템 차원 버전이 있어야 합니다. 이 문서의 지침에 따라 FDD 시나리오가 채택된 경우 SDK는 *프레임워크 종속 실행 파일* 이라는 실행 파일( *.exe*)을 생성합니다.
 
-Windows [RID(런타임 식별자)](/dotnet/core/rid-catalog)([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier))에는 대상 프레임워크가 포함되어 있습니다. 다음 예제에서는 RID가 `win7-x64`로 설정됩니다. `<SelfContained>` 속성은 `false`로 설정됩니다. 해당 속성은 SDK에 Windows용 실행 파일( *.exe* )과 공유 .NET Core Framework에 종속되는 앱을 생성하도록 지시합니다.
+Windows [RID(런타임 식별자)](/dotnet/core/rid-catalog)([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier))에는 대상 프레임워크가 포함되어 있습니다. 다음 예제에서는 RID가 `win7-x64`로 설정됩니다. `<SelfContained>` 속성은 `false`로 설정됩니다. 해당 속성은 SDK에 Windows용 실행 파일( *.exe*)과 공유 .NET Core Framework에 종속되는 앱을 생성하도록 지시합니다.
 
-`<UseAppHost>` 속성은 `true`로 설정됩니다. 이 속성은 서비스에 FDD의 활성화 경로(실행 파일, *.exe* )를 제공합니다.
+`<UseAppHost>` 속성은 `true`로 설정됩니다. 이 속성은 서비스에 FDD의 활성화 경로(실행 파일, *.exe*)를 제공합니다.
 
 ASP.NET Core 앱을 게시할 때 일반적으로 생성되는 *web.config* 파일은 Windows 서비스 앱에 필요하지 않습니다. *web.config* 파일이 생성되지 않도록 하려면 `<IsTransformWebConfigDisabled>` 속성을 `true`로 설정합니다.
 
@@ -945,8 +945,8 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 * 이전 또는 시험판 버전의 PowerShell을 사용 중입니다.
 * 등록된 서비스가 [dotnet publish](/dotnet/core/tools/dotnet-publish) 명령에서 앱의 **게시된** 출력을 사용하지 않습니다. [dotnet build](/dotnet/core/tools/dotnet-build) 명령의 출력은 앱 배포에 지원되지 않습니다. 게시된 자산은 배포 유형에 따라 다음 폴더 중 하나에 있습니다.
-  * *bin/Release/{TARGET FRAMEWORK}/publish* (FDD)
-  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish* (SCD)
+  * *bin/Release/{TARGET FRAMEWORK}/publish*(FDD)
+  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish*(SCD)
 * 서비스가 실행 중 상태가 아닙니다.
 * 앱에서 사용하는 리소스(예: 인증서)의 경로가 올바르지 않습니다. Windows Service의 기본 경로는 *c:\\Windows\\System32* 입니다.
 * 사용자에게 *서비스로 로그온* 권한이 없습니다.
@@ -1008,7 +1008,7 @@ Windows Service 앱 문제를 해결하려면 <xref:test/troubleshoot>을 참조
 
 #### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>앱 중단 시작 중에 실패 또는 정상적으로 실행
 
-앱이 *중단* (응답하지 않거나 충돌하지 않음), 시작 중에 실패 또는 정상적으로 실행되면 [사용자 모드 덤프 파일: 가장 적합한 도구 선택](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)을 참조하여 덤프를 생성할 적절한 도구를 선택합니다.
+앱이 *중단*(응답하지 않거나 충돌하지 않음), 시작 중에 실패 또는 정상적으로 실행되면 [사용자 모드 덤프 파일: 가장 적합한 도구 선택](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)을 참조하여 덤프를 생성할 적절한 도구를 선택합니다.
 
 #### <a name="analyze-the-dump"></a>덤프 분석
 

@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/inheritance
 ms.openlocfilehash: 581a31bad4069523699fbbac63862c9dff12034d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054218"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>자습서: 상속 구현 - ASP.NET MVC 및 EF Core 사용
@@ -155,7 +155,7 @@ dotnet ef database update
 
 앱을 실행하고 다양한 페이지를 시도해 봅니다. 모든 항목이 이전과 같이 작동합니다.
 
-**SQL Server 개체 탐색기** 에서 **데이터 연결/SchoolContext** , **테이블** 을 차례로 확장하면 Student 및 Instructor 테이블이 Person 테이블로 바뀐 것을 확인할 수 있습니다. Person 테이블 디자이너를 열면 Student 및 Instructor 테이블에 있던 모든 열이 나타나는 것을 알 수 있습니다.
+**SQL Server 개체 탐색기** 에서 **데이터 연결/SchoolContext**, **테이블** 을 차례로 확장하면 Student 및 Instructor 테이블이 Person 테이블로 바뀐 것을 확인할 수 있습니다. Person 테이블 디자이너를 열면 Student 및 Instructor 테이블에 있던 모든 열이 나타나는 것을 알 수 있습니다.
 
 ![SSOX에서 Person 테이블](inheritance/_static/ssox-person-table.png)
 

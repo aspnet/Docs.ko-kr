@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/forms-validation
 ms.openlocfilehash: 979e2615080a4f07b6091f0498fc7efa62ea1563
-ms.sourcegitcommit: 43a540e703b9096921de27abc6b66bc0783fe905
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96320072"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>ASP.NET Core Blazor 양식 및 유효성 검사

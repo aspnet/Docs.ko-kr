@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/components/event-handling
 ms.openlocfilehash: 56306d305a61d549380e847ab2754fa41130e14e
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94507813"
 ---
 # <a name="aspnet-core-no-locblazor-event-handling"></a>ASP.NET Core Blazor 이벤트 처리

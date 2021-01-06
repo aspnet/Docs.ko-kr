@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/middleware/write
 ms.openlocfilehash: 5f33691cbcc00f407fff907ca62547fd80f2aa3c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057468"
 ---
 # <a name="write-custom-aspnet-core-middleware"></a>사용자 지정 ASP.NET Core 미들웨어 작성

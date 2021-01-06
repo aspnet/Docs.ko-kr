@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/httpapi
 ms.openlocfilehash: cb2855f0293a6bc800bb5758cd1a8400d4434a24
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96855466"
 ---
 # <a name="create-json-web-apis-from-grpc"></a>GRPC에서 JSON 웹 API 만들기

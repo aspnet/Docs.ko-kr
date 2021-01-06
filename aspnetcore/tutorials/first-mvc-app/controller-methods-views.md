@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/controller-methods-views
 ms.openlocfilehash: b4850821317b6907452793ef09194844c90c0137
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93050773"
 ---
 # <a name="part-6-controller-methods-and-views-in-aspnet-core"></a>6부. ASP.NET Core의 컨트롤러 메서드 및 보기
@@ -44,7 +44,7 @@ Entity Framework Core가 `Price`를 데이터베이스의 통화에 올바르게
 
 ![브라우저 창에서 편집 링크에 마우스를 가져가면 https://localhost:5001/Movies/Edit/5 의 링크 Url이 표시됩니다.](~/tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
-**Edit** , **Details** 및 **Delete** 링크는 *Views/Movies/Index.cshtml* 파일의 Core MVC 앵커 태그 도우미에 의해서 생성됩니다.
+**Edit**, **Details** 및 **Delete** 링크는 *Views/Movies/Index.cshtml* 파일의 Core MVC 앵커 태그 도우미에 의해서 생성됩니다.
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
@@ -108,7 +108,7 @@ ASP.NET Core는 `https://localhost:5001/Movies/Edit/4`를 매개 변수 `Id`가 
 
 `HttpPost` 특성은 이 `Edit` 메서드가 `POST` 요청에 *대해서만* 호출될 수 있음을 지정합니다. 첫 번째 Edit 메서드에도 `[HttpGet]` 특성을 적용할 수 있지만 `[HttpGet]`이 기본값이므로 그럴 필요가 없습니다.
 
-`ValidateAntiForgeryToken` 특성은 [요청 위조 방지](xref:security/anti-request-forgery)를 위해 사용되며 편집 보기 파일( *Views/Movies/Edit.cshtml* )에서 생성된 위조 방지 토큰과 쌍을 이룹니다. 편집 보기 파일은 [Form 태그 도우미](xref:mvc/views/working-with-forms)를 통해서 위조 방지 토큰을 생성합니다.
+`ValidateAntiForgeryToken` 특성은 [요청 위조 방지](xref:security/anti-request-forgery)를 위해 사용되며 편집 보기 파일(*Views/Movies/Edit.cshtml*)에서 생성된 위조 방지 토큰과 쌍을 이룹니다. 편집 보기 파일은 [Form 태그 도우미](xref:mvc/views/working-with-forms)를 통해서 위조 방지 토큰을 생성합니다.
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 

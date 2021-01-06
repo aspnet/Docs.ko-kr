@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/metapackage-app
 ms.openlocfilehash: 225bb1f55c099a476319191726c5a661f9a4893a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057806"
 ---
 # <a name="microsoftaspnetcoreapp-for-aspnet-core"></a>ASP.NET Core용 Microsoft.AspNetCore.App

@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp, mvc
 ms.date: 11/22/2020
 uid: tutorials/publish-to-azure-api-management-using-vs
 ms.openlocfilehash: 395b5981a3018486235c38f032893f985ab71383
-ms.sourcegitcommit: 619200f2981656ede6d89adb6a22ad1a0e16da22
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96332229"
 ---
 # <a name="publish-an-aspnet-core-web-api-to-azure-api-management-with-visual-studio"></a>Visual Studio를 사용하여 Azure API Management에 ASP.NET Core 웹 API 게시

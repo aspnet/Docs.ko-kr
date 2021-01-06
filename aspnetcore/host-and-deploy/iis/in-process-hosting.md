@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/iis/in-process-hosting
 ms.openlocfilehash: 47dc6f65f398ecce45c563c359dfde6e17d1dc1b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93058482"
 ---
 # <a name="in-process-hosting-with-iis-and-aspnet-core"></a>IIS 및 ASP.NET Core를 사용하는 In Process 호스팅 

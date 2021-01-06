@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: tutorials/publish-to-azure-webapp-using-vs
 ms.openlocfilehash: 817169503a80a771354e32123d65ba2bf388aa2d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060224"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Visual Studio를 사용하여 Azure에 ASP.NET Core 앱 게시
@@ -118,7 +118,7 @@ Visual Studio는 솔루션을 만듭니다.
 
 **App Service 만들기** 대화 상자가 나타납니다.
 
-* **앱 이름** , **리소스 그룹** 및 **App Service 계획** 항목 필드가 채워집니다. 이러한 이름을 유지하거나 변경할 수 있습니다.
+* **앱 이름**, **리소스 그룹** 및 **App Service 계획** 항목 필드가 채워집니다. 이러한 이름을 유지하거나 변경할 수 있습니다.
 * **만들기** 를 선택합니다.
 
 ![App Service 만들기 대화 상자](publish-to-azure-webapp-using-vs/_static/newrg1.png)
@@ -147,7 +147,7 @@ Visual Studio는 솔루션을 만듭니다.
 
 **Azure SQL 데이터베이스 만들기** 가 표시됩니다.
 
-* **데이터베이스 이름** , **리소스 그룹** , **데이터베이스 서버** 및 **App Service 계획** 항목 필드가 채워집니다. 채워진 값을 유지하거나 변경할 수 있습니다.
+* **데이터베이스 이름**, **리소스 그룹**, **데이터베이스 서버** 및 **App Service 계획** 항목 필드가 채워집니다. 채워진 값을 유지하거나 변경할 수 있습니다.
 * 선택한 **데이터베이스 서버** 에 대한 **데이터베이스 관리자 사용자 이름** 및 **데이터베이스 관리자 암호** 를 입력합니다. 사용하는 계정에 새 Azure SQL 데이터베이스를 만드는 데 필요한 권한이 있어야 합니다.
 * **만들기** 를 선택합니다.
 

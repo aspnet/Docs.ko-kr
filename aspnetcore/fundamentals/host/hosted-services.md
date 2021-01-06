@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/host/hosted-services
 ms.openlocfilehash: b8d6ec079ed39fb3a2c314816ebae6cea0847a36
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93061082"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>ASP.NET Core에서 호스팅되는 서비스를 사용하는 백그라운드 작업
@@ -54,7 +54,7 @@ ASP.NET Core Worker Service 템플릿은 장기간 실행되는 서비스 앱을
 
 ## <a name="package"></a>패키지
 
-Worker Service 템플릿을 기반으로 하는 앱은 `Microsoft.NET.Sdk.Worker` SDK를 사용하고 [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) 패키지에 대한 명시적 패키지 참조가 있습니다. 예를 들어 샘플 앱의 프로젝트 파일( *BackgroundTasksSample* )을 확인하세요.
+Worker Service 템플릿을 기반으로 하는 앱은 `Microsoft.NET.Sdk.Worker` SDK를 사용하고 [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) 패키지에 대한 명시적 패키지 참조가 있습니다. 예를 들어 샘플 앱의 프로젝트 파일(*BackgroundTasksSample*)을 확인하세요.
 
 `Microsoft.NET.Sdk.Web` SDK를 사용하는 웹앱의 경우, [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) 패키지는 공유 프레임워크에서 암시적으로 참조됩니다. 앱의 프로젝트 파일에 있는 명시적 패키지 참조는 필요하지 않습니다.
 
@@ -128,7 +128,7 @@ Worker Service 템플릿을 기반으로 하는 앱은 `Microsoft.NET.Sdk.Worker
 
 <xref:System.Threading.Timer>는 이전에 실행된 `DoWork`를 마칠 때까지 기다리지 않으므로 제시된 방법이 모든 시나리오에 적합한 것은 아닐 수 있습니다. [Interlocked.Increment](xref:System.Threading.Interlocked.Increment*)는 여러 스레드가 동시에 `executionCount`를 업데이트하지 않도록 하는 원자성 작업으로 실행 카운터를 증가시키는 데 사용됩니다.
 
-서비스는 `AddHostedService` 확장 메서드를 사용하여 `IHostBuilder.ConfigureServices`( *Program.cs* )에 등록됩니다.
+서비스는 `AddHostedService` 확장 메서드를 사용하여 `IHostBuilder.ConfigureServices`(*Program.cs*)에 등록됩니다.
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet1)]
 
@@ -147,7 +147,7 @@ Worker Service 템플릿을 기반으로 하는 앱은 `Microsoft.NET.Sdk.Worker
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/ConsumeScopedServiceHostedService.cs?name=snippet1&highlight=19,22-35)]
 
-서비스는 `IHostBuilder.ConfigureServices`( *Program.cs* )에 등록됩니다. 호스팅된 서비스는 `AddHostedService` 확장 메서드를 사용하여 등록됩니다.
+서비스는 `IHostBuilder.ConfigureServices`(*Program.cs*)에 등록됩니다. 호스팅된 서비스는 `AddHostedService` 확장 메서드를 사용하여 등록됩니다.
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet2)]
 
@@ -175,7 +175,7 @@ Worker Service 템플릿을 기반으로 하는 앱은 `Microsoft.NET.Sdk.Worker
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/MonitorLoop.cs?name=snippet_Monitor&highlight=7,33)]
 
-서비스는 `IHostBuilder.ConfigureServices`( *Program.cs* )에 등록됩니다. 호스팅된 서비스는 `AddHostedService` 확장 메서드를 사용하여 등록됩니다.
+서비스는 `IHostBuilder.ConfigureServices`(*Program.cs*)에 등록됩니다. 호스팅된 서비스는 `AddHostedService` 확장 메서드를 사용하여 등록됩니다.
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet3)]
 

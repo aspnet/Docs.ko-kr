@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/wcf
 ms.openlocfilehash: 26629b4aa5510f4ef5f53f57b64e45f6c32d4014
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93058690"
 ---
 # <a name="grpc-for-windows-communication-foundation-wcf-developers"></a>WCF(Windows Communication Foundation) 개발자용 gRPC

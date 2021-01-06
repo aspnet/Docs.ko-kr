@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/complex-data-model
 ms.openlocfilehash: 1ac9d6303daac82f3973c5d027fe1f453dc32e02
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054101"
 ---
 # <a name="part-5-no-locrazor-pages-with-ef-core-in-aspnet-core---data-model"></a>5부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - 데이터 모델
@@ -113,7 +113,7 @@ ms.locfileid: "93054101"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-**SQL Server 개체 탐색기** (SSOX)에서 **학생** 테이블을 두 번 클릭하여 학생 테이블 디자이너를 엽니다.
+**SQL Server 개체 탐색기**(SSOX)에서 **학생** 테이블을 두 번 클릭하여 학생 테이블 디자이너를 엽니다.
 
 ![마이그레이션 전 SSOX의 학생 테이블](complex-data-model/_static/ssox-before-migration.png)
 
@@ -605,7 +605,7 @@ EF Core가 새로운 데이터베이스를 만들도록 강제하려면 데이�
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* PMC( **패키지 관리자 콘솔** )에서 다음 명령을 입력합니다.
+* PMC(**패키지 관리자 콘솔**)에서 다음 명령을 입력합니다.
 
   ```powershell
   Drop-Database
@@ -705,7 +705,7 @@ SQLite 도구를 사용하여 데이터베이스를 검사합니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* PMC( **패키지 관리자 콘솔** )에서 다음 명령을 입력합니다.
+* PMC(**패키지 관리자 콘솔**)에서 다음 명령을 입력합니다.
 
   ```powershell
   Update-Database
@@ -811,7 +811,7 @@ https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 
 ![문자열 길이 오류를 보여 주는 학생 인덱스 페이지](complex-data-model/_static/string-length-errors.png)
 
-**SQL Server 개체 탐색기** (SSOX)에서 **학생** 테이블을 두 번 클릭하여 학생 테이블 디자이너를 엽니다.
+**SQL Server 개체 탐색기**(SSOX)에서 **학생** 테이블을 두 번 클릭하여 학생 테이블 디자이너를 엽니다.
 
 ![마이그레이션 전 SSOX의 학생 테이블](complex-data-model/_static/ssox-before-migration.png)
 
@@ -1290,7 +1290,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 기존 데이터베이스가 있으므로 향후 변경 내용을 적용하는 방법을 고려해야 합니다. 이 자습서에서는 두 가지 방법을 보여 줍니다.
 
 * [데이터베이스를 삭제하고 다시 만들기](#drop)
-* [기존 데이터베이스에 마이그레이션 적용](#applyexisting). 이 방법은 더 복잡하고 시간이 오래 걸리지만 실제 프로덕션 환경에 권장되는 방법입니다. **참고** : 이는 자습서의 선택적 섹션입니다. 삭제하고 다시 만들기 단계를 수행하고 이 섹션을 건너뛸 수 있습니다. 이 섹션의 단계를 수행하지 않으려면 삭제하고 다시 만들기 단계를 수행하지 마세요. 
+* [기존 데이터베이스에 마이그레이션 적용](#applyexisting). 이 방법은 더 복잡하고 시간이 오래 걸리지만 실제 프로덕션 환경에 권장되는 방법입니다. **참고**: 이는 자습서의 선택적 섹션입니다. 삭제하고 다시 만들기 단계를 수행하고 이 섹션을 건너뛸 수 있습니다. 이 섹션의 단계를 수행하지 않으려면 삭제하고 다시 만들기 단계를 수행하지 마세요. 
 
 <a name="drop"></a>
 
@@ -1300,7 +1300,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-PMC( **패키지 관리자 콘솔** )에서 다음 명령을 입력합니다.
+PMC(**패키지 관리자 콘솔**)에서 다음 명령을 입력합니다.
 
 ```powershell
 Drop-Database

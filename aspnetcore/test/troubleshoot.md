@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: test/troubleshoot
 ms.openlocfilehash: 8e6c640cd775e5d4cbe6e34c1cecc391baf57344
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059574"
 ---
 # <a name="troubleshoot-and-debug-aspnet-core-projects"></a>ASP.NET Core 프로젝트 문제 해결 및 디버깅

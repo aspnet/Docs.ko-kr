@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/routing
 ms.openlocfilehash: e134832ad00b10bb01239afa06acc74d86707af1
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94422563"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core에서 라우팅

@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/crud
 ms.openlocfilehash: 4a48fb094888d51aa6f881c82e4f20ffbc84c8e2
-ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96901173"
 ---
 # <a name="part-2-no-locrazor-pages-with-ef-core-in-aspnet-core---crud"></a>2부. ASP.NET Core에서 EF Core를 사용한 Razor Pages - CRUD

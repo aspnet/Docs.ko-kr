@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: tutorials/signalr-typescript-webpack
 ms.openlocfilehash: 949276bf4aae33c3af3fd1b8219a83868095f378
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93056844"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-typescript-and-webpack"></a>TypeScript 및 WebPack과 함께 ASP.NET Core SignalR 사용
@@ -81,7 +81,7 @@ Visual Studio의 구성이 완료되었습니다.
 
 프로젝트에 `Microsoft.TypeScript.MSBuild` 패키지를 추가:
 
-1. **솔루션 탐색기** (오른쪽 창)에서 프로젝트 노드를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다. **찾아보기** 탭에서 `Microsoft.TypeScript.MSBuild`를 검색한 다음 오른쪽에 있는 **설치** 를 클릭하여 패키지를 설치합니다.
+1. **솔루션 탐색기**(오른쪽 창)에서 프로젝트 노드를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다. **찾아보기** 탭에서 `Microsoft.TypeScript.MSBuild`를 검색한 다음 오른쪽에 있는 **설치** 를 클릭하여 패키지를 설치합니다.
 
 Visual Studio가 **솔루션 탐색기** 의 **종속성** 노드에 NuGet 패키지를 추가하여 프로젝트의 TypeScript 컴파일을 사용 설정합니다.
 

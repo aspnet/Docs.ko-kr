@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/middleware/request-response
 ms.openlocfilehash: 5ad39821778ea58097169def85a940a06f1d036e
-ms.sourcegitcommit: 0bcc0d6df3145a0727da7c4be2f4bda8f27eeaa3
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96513111"
 ---
 # <a name="request-and-response-operations-in-aspnet-core"></a>ASP.NET Core의 요청 및 응답 작업

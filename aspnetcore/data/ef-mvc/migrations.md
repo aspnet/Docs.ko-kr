@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/migrations
 ms.openlocfilehash: 7c8f562bcf0b7e2672f2f1ac244e0d9278e4c204
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97485929"
 ---
 # <a name="tutorial-part-5-apply-migrations-to-the-contoso-university-sample"></a>자습서: 5부, Contoso University 샘플에 마이그레이션 적용

@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: tutorials/web-api-javascript
 ms.openlocfilehash: c32c5befe0be3b1ad4bd87649d3cc74b0296a134
-ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94703711"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>자습서: JavaScript로 ASP.NET Core 웹 API 호출하기

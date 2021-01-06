@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: tutorials/web-api-help-pages-using-swagger
 ms.openlocfilehash: e5442c88048cf41e289fb476b4082cb6029b1b75
-ms.sourcegitcommit: 0d40fc4932531ce13fc4ee9432144584e03c2f1c
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93062456"
 ---
 # <a name="aspnet-core-web-api-documentation-with-swagger--openapi"></a>Swagger/OpenAPI를 사용한 ASP.NET Core 웹 API 설명서

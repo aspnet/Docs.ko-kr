@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/basics
 ms.openlocfilehash: 4968ac889cd3b4e0780ce73dc729d0107a416932
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93061017"
 ---
 # <a name="grpc-services-with-c"></a>C\#을 사용하는 gRPC 서비스
