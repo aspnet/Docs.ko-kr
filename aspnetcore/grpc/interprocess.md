@@ -6,34 +6,34 @@ monikerRange: '>= aspnetcore-5.0'
 ms.author: jamesnk
 ms.date: 09/16/2020
 no-loc:
-- 'appsettings.json'
-- 'ASP.NET Core Identity'
-- 'cookie'
-- 'Cookie'
-- 'Blazor'
-- 'Blazor Server'
-- 'Blazor WebAssembly'
-- 'Identity'
-- "Let's Encrypt"
-- 'Razor'
-- 'SignalR'
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: grpc/interprocess
 ms.openlocfilehash: d806a340d8540fce8af6ccc6ff68325e4b733922
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059886"
 ---
-# <a name="inter-process-communication-with-grpc"></a><span data-ttu-id="72a0e-103">gRPC와 프로세스 간 통신</span><span class="sxs-lookup"><span data-stu-id="72a0e-103">Inter-process communication with gRPC</span></span>
+# <a name="inter-process-communication-with-grpc"></a><span data-ttu-id="d4fc5-103">gRPC와 프로세스 간 통신</span><span class="sxs-lookup"><span data-stu-id="d4fc5-103">Inter-process communication with gRPC</span></span>
 
-<span data-ttu-id="72a0e-104">작성자: [James Newton-King](https://twitter.com/jamesnk)</span><span class="sxs-lookup"><span data-stu-id="72a0e-104">By [James Newton-King](https://twitter.com/jamesnk)</span></span>
+<span data-ttu-id="d4fc5-104">작성자: [James Newton-King](https://twitter.com/jamesnk)</span><span class="sxs-lookup"><span data-stu-id="d4fc5-104">By [James Newton-King](https://twitter.com/jamesnk)</span></span>
 
-<span data-ttu-id="72a0e-105">클라이언트와 서비스 간의 gRPC 호출은 일반적으로 TCP 소켓을 통해 전송됩니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-105">gRPC calls between a client and service are usually sent over TCP sockets.</span></span> <span data-ttu-id="72a0e-106">TCP는 네트워크를 통해 통신하도록 설계되었습니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-106">TCP was designed for communicating across a network.</span></span> <span data-ttu-id="72a0e-107">[IPC(프로세스 간 통신)](https://wikipedia.org/wiki/Inter-process_communication)는 클라이언트와 서비스가 같은 머신에 있는 경우 TCP보다 더 효율적입니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-107">[Inter-process communication (IPC)](https://wikipedia.org/wiki/Inter-process_communication) is more efficient than TCP when the client and service are on the same machine.</span></span> <span data-ttu-id="72a0e-108">이 문서에서는 IPC 시나리오에서 사용자 지정 전송에서 gRPC를 사용하는 방법을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-108">This document explains how to use gRPC with custom transports in IPC scenarios.</span></span>
+<span data-ttu-id="d4fc5-105">클라이언트와 서비스 간의 gRPC 호출은 일반적으로 TCP 소켓을 통해 전송됩니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-105">gRPC calls between a client and service are usually sent over TCP sockets.</span></span> <span data-ttu-id="d4fc5-106">TCP는 네트워크를 통해 통신하도록 설계되었습니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-106">TCP was designed for communicating across a network.</span></span> <span data-ttu-id="d4fc5-107">[IPC(프로세스 간 통신)](https://wikipedia.org/wiki/Inter-process_communication)는 클라이언트와 서비스가 같은 머신에 있는 경우 TCP보다 더 효율적입니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-107">[Inter-process communication (IPC)](https://wikipedia.org/wiki/Inter-process_communication) is more efficient than TCP when the client and service are on the same machine.</span></span> <span data-ttu-id="d4fc5-108">이 문서에서는 IPC 시나리오에서 사용자 지정 전송에서 gRPC를 사용하는 방법을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-108">This document explains how to use gRPC with custom transports in IPC scenarios.</span></span>
 
-## <a name="server-configuration"></a><span data-ttu-id="72a0e-109">서버 구성</span><span class="sxs-lookup"><span data-stu-id="72a0e-109">Server configuration</span></span>
+## <a name="server-configuration"></a><span data-ttu-id="d4fc5-109">서버 구성</span><span class="sxs-lookup"><span data-stu-id="d4fc5-109">Server configuration</span></span>
 
-<span data-ttu-id="72a0e-110">사용자 지정 전송은 [Kestrel](xref:fundamentals/servers/kestrel)에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-110">Custom transports are supported by [Kestrel](xref:fundamentals/servers/kestrel).</span></span> <span data-ttu-id="72a0e-111">Kestrel은 *Program.cs* 에서 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-111">Kestrel is configured in *Program.cs* :</span></span>
+<span data-ttu-id="d4fc5-110">사용자 지정 전송은 [Kestrel](xref:fundamentals/servers/kestrel)에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-110">Custom transports are supported by [Kestrel](xref:fundamentals/servers/kestrel).</span></span> <span data-ttu-id="d4fc5-111">Kestrel은 *Program.cs* 에서 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-111">Kestrel is configured in *Program.cs*:</span></span>
 
 ```csharp
 public static readonly string SocketPath = Path.Combine(Path.GetTempPath(), "socket.tmp");
@@ -54,21 +54,21 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-<span data-ttu-id="72a0e-112">위의 예제는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-112">The preceding example:</span></span>
+<span data-ttu-id="d4fc5-112">위의 예제는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-112">The preceding example:</span></span>
 
-* <span data-ttu-id="72a0e-113">`ConfigureKestrel`에서 Kestrel의 엔드포인트를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-113">Configures Kestrel's endpoints in `ConfigureKestrel`.</span></span>
-* <span data-ttu-id="72a0e-114"><xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*>을 호출하여 지정된 경로를 포함한 [UDS(Unix 도메인 소켓)](https://wikipedia.org/wiki/Unix_domain_socket)를 수신 대기합니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-114">Calls <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> to listen to a [Unix domain socket (UDS)](https://wikipedia.org/wiki/Unix_domain_socket) with the specified path.</span></span>
+* <span data-ttu-id="d4fc5-113">`ConfigureKestrel`에서 Kestrel의 엔드포인트를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-113">Configures Kestrel's endpoints in `ConfigureKestrel`.</span></span>
+* <span data-ttu-id="d4fc5-114"><xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*>을 호출하여 지정된 경로를 포함한 [UDS(Unix 도메인 소켓)](https://wikipedia.org/wiki/Unix_domain_socket)를 수신 대기합니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-114">Calls <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> to listen to a [Unix domain socket (UDS)](https://wikipedia.org/wiki/Unix_domain_socket) with the specified path.</span></span>
 
-<span data-ttu-id="72a0e-115">Kestrel은 UDS 엔드포인트에 대한 지원을 기본 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-115">Kestrel has built-in support for UDS endpoints.</span></span> <span data-ttu-id="72a0e-116">UDS는 Linux, macOS 및 [최신 버전의 Windows](https://devblogs.microsoft.com/commandline/af_unix-comes-to-windows/)에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-116">UDS are supported on Linux, macOS and [modern versions of Windows](https://devblogs.microsoft.com/commandline/af_unix-comes-to-windows/).</span></span>
+<span data-ttu-id="d4fc5-115">Kestrel은 UDS 엔드포인트에 대한 지원을 기본 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-115">Kestrel has built-in support for UDS endpoints.</span></span> <span data-ttu-id="d4fc5-116">UDS는 Linux, macOS 및 [최신 버전의 Windows](https://devblogs.microsoft.com/commandline/af_unix-comes-to-windows/)에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-116">UDS are supported on Linux, macOS and [modern versions of Windows](https://devblogs.microsoft.com/commandline/af_unix-comes-to-windows/).</span></span>
 
-## <a name="client-configuration"></a><span data-ttu-id="72a0e-117">클라이언트 구성</span><span class="sxs-lookup"><span data-stu-id="72a0e-117">Client configuration</span></span>
+## <a name="client-configuration"></a><span data-ttu-id="d4fc5-117">클라이언트 구성</span><span class="sxs-lookup"><span data-stu-id="d4fc5-117">Client configuration</span></span>
 
-<span data-ttu-id="72a0e-118">`GrpcChannel`은 사용자 지정 전송을 통한 gRPC 호출을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-118">`GrpcChannel` supports making gRPC calls over custom transports.</span></span> <span data-ttu-id="72a0e-119">채널을 만들 때 사용자 지정 `ConnectCallback`가 포함된 `SocketsHttpHandler`로 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-119">When a channel is created, it can be configured with a `SocketsHttpHandler` that has a custom `ConnectCallback`.</span></span> <span data-ttu-id="72a0e-120">콜백을 사용하면 클라이언트가 사용자 지정 전송을 통해 연결한 다음 해당 전송을 통해 HTTP 요청을 보낼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-120">The callback allows the client to make connections over custom transports and then send HTTP requests over that transport.</span></span>
+<span data-ttu-id="d4fc5-118">`GrpcChannel`은 사용자 지정 전송을 통한 gRPC 호출을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-118">`GrpcChannel` supports making gRPC calls over custom transports.</span></span> <span data-ttu-id="d4fc5-119">채널을 만들 때 사용자 지정 `ConnectCallback`가 포함된 `SocketsHttpHandler`로 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-119">When a channel is created, it can be configured with a `SocketsHttpHandler` that has a custom `ConnectCallback`.</span></span> <span data-ttu-id="d4fc5-120">콜백을 사용하면 클라이언트가 사용자 지정 전송을 통해 연결한 다음 해당 전송을 통해 HTTP 요청을 보낼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-120">The callback allows the client to make connections over custom transports and then send HTTP requests over that transport.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="72a0e-121">`SocketsHttpHandler.ConnectCallback`은 .NET 5 릴리스 후보 2의 새로운 API입니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-121">`SocketsHttpHandler.ConnectCallback` is a new API in .NET 5 release candidate 2.</span></span>
+> <span data-ttu-id="d4fc5-121">`SocketsHttpHandler.ConnectCallback`은 .NET 5 릴리스 후보 2의 새로운 API입니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-121">`SocketsHttpHandler.ConnectCallback` is a new API in .NET 5 release candidate 2.</span></span>
 
-<span data-ttu-id="72a0e-122">Unix 도메인 소켓 연결 팩터리의 예는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-122">Unix domain sockets connection factory example:</span></span>
+<span data-ttu-id="d4fc5-122">Unix 도메인 소켓 연결 팩터리의 예는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-122">Unix domain sockets connection factory example:</span></span>
 
 ```csharp
 public class UnixDomainSocketConnectionFactory
@@ -99,7 +99,7 @@ public class UnixDomainSocketConnectionFactory
 }
 ```
 
-<span data-ttu-id="72a0e-123">사용자 지정 연결 팩터리를 사용하여 채널을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-123">Using the custom connection factory to create a channel:</span></span>
+<span data-ttu-id="d4fc5-123">사용자 지정 연결 팩터리를 사용하여 채널을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-123">Using the custom connection factory to create a channel:</span></span>
 
 ```csharp
 public static readonly string SocketPath = Path.Combine(Path.GetTempPath(), "socket.tmp");
@@ -120,4 +120,4 @@ public static GrpcChannel CreateChannel()
 }
 ```
 
-<span data-ttu-id="72a0e-124">위의 코드를 사용하여 만든 채널은 Unix 도메인 소켓을 통해 gRPC 호출을 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-124">Channels created using the preceding code send gRPC calls over Unix domain sockets.</span></span> <span data-ttu-id="72a0e-125">다른 IPC 기술에 대한 지원은 Kestrel 및 `SocketsHttpHandler`의 확장성을 사용하여 구현할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="72a0e-125">Support for other IPC technologies can be implemented using the extensibility in Kestrel and `SocketsHttpHandler`.</span></span>
+<span data-ttu-id="d4fc5-124">위의 코드를 사용하여 만든 채널은 Unix 도메인 소켓을 통해 gRPC 호출을 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-124">Channels created using the preceding code send gRPC calls over Unix domain sockets.</span></span> <span data-ttu-id="d4fc5-125">다른 IPC 기술에 대한 지원은 Kestrel 및 `SocketsHttpHandler`의 확장성을 사용하여 구현할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d4fc5-125">Support for other IPC technologies can be implemented using the extensibility in Kestrel and `SocketsHttpHandler`.</span></span>

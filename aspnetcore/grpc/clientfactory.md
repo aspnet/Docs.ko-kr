@@ -6,38 +6,38 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 05/26/2020
 no-loc:
-- 'appsettings.json'
-- 'ASP.NET Core Identity'
-- 'cookie'
-- 'Cookie'
-- 'Blazor'
-- 'Blazor Server'
-- 'Blazor WebAssembly'
-- 'Identity'
-- "Let's Encrypt"
-- 'Razor'
-- 'SignalR'
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: grpc/clientfactory
 ms.openlocfilehash: c63bf495f558237ed801881d378953119791b8ce
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060952"
 ---
-# <a name="grpc-client-factory-integration-in-net-core"></a><span data-ttu-id="ce2b4-103">.NET Core의 gRPC 클라이언트 팩터리 통합</span><span class="sxs-lookup"><span data-stu-id="ce2b4-103">gRPC client factory integration in .NET Core</span></span>
+# <a name="grpc-client-factory-integration-in-net-core"></a><span data-ttu-id="6ad85-103">.NET Core의 gRPC 클라이언트 팩터리 통합</span><span class="sxs-lookup"><span data-stu-id="6ad85-103">gRPC client factory integration in .NET Core</span></span>
 
-<span data-ttu-id="ce2b4-104">`HttpClientFactory`와 gRPC 통합은 중앙에서 gRPC 클라이언트를 만드는 방법을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-104">gRPC integration with `HttpClientFactory` offers a centralized way to create gRPC clients.</span></span> <span data-ttu-id="ce2b4-105">[독립 실행형 gRPC 클라이언트 인스턴스를 구성](xref:grpc/client)하는 대신 이 방법을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-105">It can be used as an alternative to [configuring stand-alone gRPC client instances](xref:grpc/client).</span></span> <span data-ttu-id="ce2b4-106">팩터리 통합은 [Grpc.Net.ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) NuGet 패키지에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-106">Factory integration is available in the [Grpc.Net.ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) NuGet package.</span></span>
+<span data-ttu-id="6ad85-104">`HttpClientFactory`와 gRPC 통합은 중앙에서 gRPC 클라이언트를 만드는 방법을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-104">gRPC integration with `HttpClientFactory` offers a centralized way to create gRPC clients.</span></span> <span data-ttu-id="6ad85-105">[독립 실행형 gRPC 클라이언트 인스턴스를 구성](xref:grpc/client)하는 대신 이 방법을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-105">It can be used as an alternative to [configuring stand-alone gRPC client instances](xref:grpc/client).</span></span> <span data-ttu-id="6ad85-106">팩터리 통합은 [Grpc.Net.ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) NuGet 패키지에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-106">Factory integration is available in the [Grpc.Net.ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) NuGet package.</span></span>
 
-<span data-ttu-id="ce2b4-107">팩터리는 다음과 같은 이점을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-107">The factory offers the following benefits:</span></span>
+<span data-ttu-id="6ad85-107">팩터리는 다음과 같은 이점을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-107">The factory offers the following benefits:</span></span>
 
-* <span data-ttu-id="ce2b4-108">논리적 gRPC 클라이언트 인스턴스를 구성하기 위한 중앙 위치를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-108">Provides a central location for configuring logical gRPC client instances</span></span>
-* <span data-ttu-id="ce2b4-109">기본 `HttpClientMessageHandler`의 수명을 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-109">Manages the lifetime of the underlying `HttpClientMessageHandler`</span></span>
-* <span data-ttu-id="ce2b4-110">ASP.NET Core gRPC 서비스에서 최종 기한 및 취소 자동 전파</span><span class="sxs-lookup"><span data-stu-id="ce2b4-110">Automatic propagation of deadline and cancellation in an ASP.NET Core gRPC service</span></span>
+* <span data-ttu-id="6ad85-108">논리적 gRPC 클라이언트 인스턴스를 구성하기 위한 중앙 위치를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-108">Provides a central location for configuring logical gRPC client instances</span></span>
+* <span data-ttu-id="6ad85-109">기본 `HttpClientMessageHandler`의 수명을 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-109">Manages the lifetime of the underlying `HttpClientMessageHandler`</span></span>
+* <span data-ttu-id="6ad85-110">ASP.NET Core gRPC 서비스에서 최종 기한 및 취소 자동 전파</span><span class="sxs-lookup"><span data-stu-id="6ad85-110">Automatic propagation of deadline and cancellation in an ASP.NET Core gRPC service</span></span>
 
-## <a name="register-grpc-clients"></a><span data-ttu-id="ce2b4-111">gRPC 클라이언트 등록</span><span class="sxs-lookup"><span data-stu-id="ce2b4-111">Register gRPC clients</span></span>
+## <a name="register-grpc-clients"></a><span data-ttu-id="6ad85-111">gRPC 클라이언트 등록</span><span class="sxs-lookup"><span data-stu-id="6ad85-111">Register gRPC clients</span></span>
 
-<span data-ttu-id="ce2b4-112">gRPC 클라이언트를 등록하기 위해서 `Startup.ConfigureServices`에서 gRPC 형식 클라이언트 클래스 및 서비스 주소를 지정하여 제네릭 `AddGrpcClient` 확장 메서드를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-112">To register a gRPC client, the generic `AddGrpcClient` extension method can be used within `Startup.ConfigureServices`, specifying the gRPC typed client class and service address:</span></span>
+<span data-ttu-id="6ad85-112">gRPC 클라이언트를 등록하기 위해서 `Startup.ConfigureServices`에서 gRPC 형식 클라이언트 클래스 및 서비스 주소를 지정하여 제네릭 `AddGrpcClient` 확장 메서드를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-112">To register a gRPC client, the generic `AddGrpcClient` extension method can be used within `Startup.ConfigureServices`, specifying the gRPC typed client class and service address:</span></span>
 
 ```csharp
 services.AddGrpcClient<Greeter.GreeterClient>(o =>
@@ -46,7 +46,7 @@ services.AddGrpcClient<Greeter.GreeterClient>(o =>
 });
 ```
 
-<span data-ttu-id="ce2b4-113">gRPC 클라이언트 형식은 DI(종속성 주입)를 사용하여 일시적으로 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-113">The gRPC client type is registered as transient with dependency injection (DI).</span></span> <span data-ttu-id="ce2b4-114">이제 클라이언트는 DI를 사용하여 만든 형식으로 직접 주입하고 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-114">The client can now be injected and consumed directly in types created by DI.</span></span> <span data-ttu-id="ce2b4-115">ASP.NET Core MVC 컨트롤러, SignalR 허브 및 gRPC 서비스는 gRPC 클라이언트가 자동으로 주입될 수 있는 위치입니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-115">ASP.NET Core MVC controllers, SignalR hubs and gRPC services are places where gRPC clients can automatically be injected:</span></span>
+<span data-ttu-id="6ad85-113">gRPC 클라이언트 형식은 DI(종속성 주입)를 사용하여 일시적으로 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-113">The gRPC client type is registered as transient with dependency injection (DI).</span></span> <span data-ttu-id="6ad85-114">이제 클라이언트는 DI를 사용하여 만든 형식으로 직접 주입하고 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-114">The client can now be injected and consumed directly in types created by DI.</span></span> <span data-ttu-id="6ad85-115">ASP.NET Core MVC 컨트롤러, SignalR 허브 및 gRPC 서비스는 gRPC 클라이언트가 자동으로 주입될 수 있는 위치입니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-115">ASP.NET Core MVC controllers, SignalR hubs and gRPC services are places where gRPC clients can automatically be injected:</span></span>
 
 ```csharp
 public class AggregatorService : Aggregator.AggregatorBase
@@ -73,9 +73,9 @@ public class AggregatorService : Aggregator.AggregatorBase
 }
 ```
 
-## <a name="configure-httpclient"></a><span data-ttu-id="ce2b4-116">HttpClient 구성</span><span class="sxs-lookup"><span data-stu-id="ce2b4-116">Configure HttpClient</span></span>
+## <a name="configure-httpclient"></a><span data-ttu-id="6ad85-116">HttpClient 구성</span><span class="sxs-lookup"><span data-stu-id="6ad85-116">Configure HttpClient</span></span>
 
-<span data-ttu-id="ce2b4-117">`HttpClientFactory`는 gRPC 클라이언트에서 사용하는 `HttpClient`를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-117">`HttpClientFactory` creates the `HttpClient` used by the gRPC client.</span></span> <span data-ttu-id="ce2b4-118">표준 `HttpClientFactory` 메서드는 나가는 요청 미들웨어를 추가하거나 `HttpClient`의 기본 `HttpClientHandler`를 구성하는 데 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-118">Standard `HttpClientFactory` methods can be used to add outgoing request middleware or to configure the underlying `HttpClientHandler` of the `HttpClient`:</span></span>
+<span data-ttu-id="6ad85-117">`HttpClientFactory`는 gRPC 클라이언트에서 사용하는 `HttpClient`를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-117">`HttpClientFactory` creates the `HttpClient` used by the gRPC client.</span></span> <span data-ttu-id="6ad85-118">표준 `HttpClientFactory` 메서드는 나가는 요청 미들웨어를 추가하거나 `HttpClient`의 기본 `HttpClientHandler`를 구성하는 데 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-118">Standard `HttpClientFactory` methods can be used to add outgoing request middleware or to configure the underlying `HttpClientHandler` of the `HttpClient`:</span></span>
 
 ```csharp
 services
@@ -91,14 +91,14 @@ services
     });
 ```
 
-<span data-ttu-id="ce2b4-119">자세한 내용은 [IHttpClientFactory를 사용하여 HTTP 요청 만들기](xref:fundamentals/http-requests)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-119">For more information, see [Make HTTP requests using IHttpClientFactory](xref:fundamentals/http-requests).</span></span>
+<span data-ttu-id="6ad85-119">자세한 내용은 [IHttpClientFactory를 사용하여 HTTP 요청 만들기](xref:fundamentals/http-requests)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="6ad85-119">For more information, see [Make HTTP requests using IHttpClientFactory](xref:fundamentals/http-requests).</span></span>
 
-## <a name="configure-channel-and-interceptors"></a><span data-ttu-id="ce2b4-120">채널 및 인터셉터 구성</span><span class="sxs-lookup"><span data-stu-id="ce2b4-120">Configure Channel and Interceptors</span></span>
+## <a name="configure-channel-and-interceptors"></a><span data-ttu-id="6ad85-120">채널 및 인터셉터 구성</span><span class="sxs-lookup"><span data-stu-id="6ad85-120">Configure Channel and Interceptors</span></span>
 
-<span data-ttu-id="ce2b4-121">gRPC 관련 메서드는 다음에 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-121">gRPC-specific methods are available to:</span></span>
+<span data-ttu-id="6ad85-121">gRPC 관련 메서드는 다음에 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-121">gRPC-specific methods are available to:</span></span>
 
-* <span data-ttu-id="ce2b4-122">gRPC 클라이언트의 기본 채널을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-122">Configure a gRPC client's underlying channel.</span></span>
-* <span data-ttu-id="ce2b4-123">클라이언트에서 gRPC 호출을 만들 때 사용할 `Interceptor` 인스턴스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-123">Add `Interceptor` instances that the client will use when making gRPC calls.</span></span>
+* <span data-ttu-id="6ad85-122">gRPC 클라이언트의 기본 채널을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-122">Configure a gRPC client's underlying channel.</span></span>
+* <span data-ttu-id="6ad85-123">클라이언트에서 gRPC 호출을 만들 때 사용할 `Interceptor` 인스턴스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-123">Add `Interceptor` instances that the client will use when making gRPC calls.</span></span>
 
 ```csharp
 services
@@ -113,11 +113,11 @@ services
     });
 ```
 
-## <a name="deadline-and-cancellation-propagation"></a><span data-ttu-id="ce2b4-124">최종 기한 및 취소 전파</span><span class="sxs-lookup"><span data-stu-id="ce2b4-124">Deadline and cancellation propagation</span></span>
+## <a name="deadline-and-cancellation-propagation"></a><span data-ttu-id="6ad85-124">최종 기한 및 취소 전파</span><span class="sxs-lookup"><span data-stu-id="6ad85-124">Deadline and cancellation propagation</span></span>
 
-<span data-ttu-id="ce2b4-125">gRPC 서비스에서 팩터리로 만든 gRPC 클라이언트는 최종 기한 및 취소 토큰을 자식 호출에 자동으로 전파하도록 `EnableCallContextPropagation()`를 사용하여 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-125">gRPC clients created by the factory in a gRPC service can be configured with `EnableCallContextPropagation()` to automatically propagate the deadline and cancellation token to child calls.</span></span> <span data-ttu-id="ce2b4-126">`EnableCallContextPropagation()` 확장 메서드는 [Grpc.AspNetCore.Server.ClientFactory](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) NuGet 패키지에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-126">The `EnableCallContextPropagation()` extension method is available in the [Grpc.AspNetCore.Server.ClientFactory](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) NuGet package.</span></span>
+<span data-ttu-id="6ad85-125">gRPC 서비스에서 팩터리로 만든 gRPC 클라이언트는 최종 기한 및 취소 토큰을 자식 호출에 자동으로 전파하도록 `EnableCallContextPropagation()`를 사용하여 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-125">gRPC clients created by the factory in a gRPC service can be configured with `EnableCallContextPropagation()` to automatically propagate the deadline and cancellation token to child calls.</span></span> <span data-ttu-id="6ad85-126">`EnableCallContextPropagation()` 확장 메서드는 [Grpc.AspNetCore.Server.ClientFactory](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) NuGet 패키지에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-126">The `EnableCallContextPropagation()` extension method is available in the [Grpc.AspNetCore.Server.ClientFactory](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) NuGet package.</span></span>
 
-<span data-ttu-id="ce2b4-127">호출 컨텍스트 전파는 현재 gRPC 요청 컨텍스트에서 최종 기한 및 취소 토큰을 읽고 gRPC 클라이언트에서 수행한 나가는 호출에 자동으로 전파하는 방식으로 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-127">Call context propagation works by reading the deadline and cancellation token from the current gRPC request context and automatically propagating them to outgoing calls made by the gRPC client.</span></span> <span data-ttu-id="ce2b4-128">호출 컨텍스트 전파는 복잡한 중첩 gRPC 시나리오가 항상 최종 기한 및 취소를 전파하도록 하는 유용한 방법입니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-128">Call context propagation is an excellent way of ensuring that complex, nested gRPC scenarios always propagate the deadline and cancellation.</span></span>
+<span data-ttu-id="6ad85-127">호출 컨텍스트 전파는 현재 gRPC 요청 컨텍스트에서 최종 기한 및 취소 토큰을 읽고 gRPC 클라이언트에서 수행한 나가는 호출에 자동으로 전파하는 방식으로 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-127">Call context propagation works by reading the deadline and cancellation token from the current gRPC request context and automatically propagating them to outgoing calls made by the gRPC client.</span></span> <span data-ttu-id="6ad85-128">호출 컨텍스트 전파는 복잡한 중첩 gRPC 시나리오가 항상 최종 기한 및 취소를 전파하도록 하는 유용한 방법입니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-128">Call context propagation is an excellent way of ensuring that complex, nested gRPC scenarios always propagate the deadline and cancellation.</span></span>
 
 ```csharp
 services
@@ -128,7 +128,7 @@ services
     .EnableCallContextPropagation();
 ```
 
-<span data-ttu-id="ce2b4-129">기본적으로 클라이언트를 gRPC 호출 컨텍스트의 외부에서 사용하는 경우 `EnableCallContextPropagation` 오류가 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-129">By default, `EnableCallContextPropagation` raises an error if the client is used outside the context of a gRPC call.</span></span> <span data-ttu-id="ce2b4-130">이 오류는 전파할 호출 컨텍스트가 없다는 경고를 표시하기 위한 것입니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-130">The error is designed to alert you that there isn't a call context to propagate.</span></span> <span data-ttu-id="ce2b4-131">호출 컨텍스트 외부에서 클라이언트를 사용하려는 경우 `SuppressContextNotFoundErrors`를 사용하여 클라이언트를 구성하면 오류가 표시되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-131">If you want to use the client outside of a call context, suppress the error when the client is configured with `SuppressContextNotFoundErrors`:</span></span>
+<span data-ttu-id="6ad85-129">기본적으로 클라이언트를 gRPC 호출 컨텍스트의 외부에서 사용하는 경우 `EnableCallContextPropagation` 오류가 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-129">By default, `EnableCallContextPropagation` raises an error if the client is used outside the context of a gRPC call.</span></span> <span data-ttu-id="6ad85-130">이 오류는 전파할 호출 컨텍스트가 없다는 경고를 표시하기 위한 것입니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-130">The error is designed to alert you that there isn't a call context to propagate.</span></span> <span data-ttu-id="6ad85-131">호출 컨텍스트 외부에서 클라이언트를 사용하려는 경우 `SuppressContextNotFoundErrors`를 사용하여 클라이언트를 구성하면 오류가 표시되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="6ad85-131">If you want to use the client outside of a call context, suppress the error when the client is configured with `SuppressContextNotFoundErrors`:</span></span>
 
 ```csharp
 services
@@ -139,9 +139,9 @@ services
     .EnableCallContextPropagation(o => o.SuppressContextNotFoundErrors = true);
 ```
 
-<span data-ttu-id="ce2b4-132">최종 기한 및 RPC 취소에 대한 자세한 내용은 [RPC 수명 주기](https://www.grpc.io/docs/guides/concepts/#rpc-life-cycle)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ce2b4-132">For more information about deadlines and RPC cancellation, see [RPC life cycle](https://www.grpc.io/docs/guides/concepts/#rpc-life-cycle).</span></span>
+<span data-ttu-id="6ad85-132">최종 기한 및 RPC 취소에 대한 자세한 내용은 [RPC 수명 주기](https://www.grpc.io/docs/guides/concepts/#rpc-life-cycle)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="6ad85-132">For more information about deadlines and RPC cancellation, see [RPC life cycle](https://www.grpc.io/docs/guides/concepts/#rpc-life-cycle).</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="ce2b4-133">추가 자료</span><span class="sxs-lookup"><span data-stu-id="ce2b4-133">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="6ad85-133">추가 자료</span><span class="sxs-lookup"><span data-stu-id="6ad85-133">Additional resources</span></span>
 
 * <xref:grpc/client>
 * <xref:fundamentals/http-requests>
