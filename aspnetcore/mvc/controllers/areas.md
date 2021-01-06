@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/areas
-ms.openlocfilehash: 42eec406813adce4d7edbc1ab66a1f689c4aca0e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f3d76f612e67aeabf1f7fef694199332c732c593
+ms.sourcegitcommit: 53e01d6e9b70a18a05618f0011cf115a16633c21
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053529"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97878414"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core의 영역
 
@@ -66,9 +66,9 @@ ms.locfileid: "93053529"
 *Products* 및 *Services* 의 두 논리 그룹이 존재하는 앱을 고려해보세요. 영역을 사용할 경우 폴더 구조는 다음과 유사할 것입니다.
 
 * 프로젝트 이름
-  * Areas
+  * 영역
     * 제품
-      * Controllers
+      * 컨트롤러
         * HomeController.cs
         * ManageController.cs
       * 보기
@@ -78,7 +78,7 @@ ms.locfileid: "93053529"
           * Index.cshtml
           * About.cshtml
     * 서비스
-      * Controllers
+      * 컨트롤러
         * HomeController.cs
       * 보기
         * 홈
@@ -149,7 +149,7 @@ ms.locfileid: "93053529"
 
 ### <a name="_viewimportscshtml"></a>_ViewImports.cshtml
 
- */Views/_ViewImports* (MVC의 경우) 및/페이지에 대 한 */_ViewImports/* Razor 는 영역에서 뷰로 가져오지 않습니다. 다음 방법 중 하나를 사용 하 여 모든 보기에 대 한 보기 가져오기를 제공 합니다.
+ */Views/_ViewImports*(MVC의 경우) 및/페이지에 대 한 */_ViewImports/* Razor 는 영역에서 뷰로 가져오지 않습니다. 다음 방법 중 하나를 사용 하 여 모든 보기에 대 한 보기 가져오기를 제공 합니다.
 
 * [응용 프로그램 루트 폴더](#arf)에 *_ViewImports* 를 추가 합니다. 응용 프로그램 루트 폴더의 *_ViewImports* 는 앱의 모든 보기에 적용 됩니다.
 * *_ViewImports cshtml* 파일을 영역 아래의 적절 한 보기 폴더에 복사 합니다.
@@ -171,7 +171,7 @@ ms.locfileid: "93053529"
 페이지를 포함 하는 영역 Razor `Areas/<area name>/Pages` 에는 앱의 루트 폴더가 필요 합니다. [예제 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples)에서는 다음 폴더 구조가 사용됩니다.
 
 * 프로젝트 이름
-  * Areas
+  * 영역
     * 제품
       * 페이지
         * _ViewImports
@@ -211,7 +211,7 @@ ms.locfileid: "93053529"
 
 이전 태그에서:
 
-* 모델(`@model RPareas.Areas.Services.Pages.Manage.AboutModel`)을 지정하려면 정규화된 도메인 이름을 사용해야 합니다.
+* 정규화 된 클래스 이름을 사용 하 여 모델을 지정 해야 합니다 ( `@model RPareas.Areas.Services.Pages.Manage.AboutModel` ).
 * [태그 도우미](xref:mvc/views/tag-helpers/intro) 를 사용할 수 있습니다. `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers`
 
 예제 다운로드에서 Products 영역에는 다음과 같은 *_ViewImports.cshtml* 파일이 존재합니다.
@@ -268,9 +268,9 @@ ms.locfileid: "93053529"
 *Products* 및 *Services* 의 두 논리 그룹이 존재하는 앱을 고려해보세요. 영역을 사용할 경우 폴더 구조는 다음과 유사할 것입니다.
 
 * 프로젝트 이름
-  * Areas
+  * 영역
     * 제품
-      * Controllers
+      * 컨트롤러
         * HomeController.cs
         * ManageController.cs
       * 보기
@@ -280,7 +280,7 @@ ms.locfileid: "93053529"
           * Index.cshtml
           * About.cshtml
     * 서비스
-      * Controllers
+      * 컨트롤러
         * HomeController.cs
       * 보기
         * 홈
@@ -358,7 +358,7 @@ ASP.NET Core 2.2에서 `MapAreaRoute`를 사용하는 경우에는 [이 GitHub �
 페이지를 포함 하는 영역 Razor `Areas/<area name>/Pages` 에는 앱의 루트 폴더가 필요 합니다. [예제 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)에서는 다음 폴더 구조가 사용됩니다.
 
 * 프로젝트 이름
-  * Areas
+  * 영역
     * 제품
       * 페이지
         * _ViewImports

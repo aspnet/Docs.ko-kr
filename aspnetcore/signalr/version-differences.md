@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/version-differences
-ms.openlocfilehash: c4c0ff83cb789e9aa35085496daa461404615726
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c37f0a3c528b6285fbf35f41eed781fb76c68de4
+ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061212"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854602"
 ---
 # <a name="differences-between-aspnet-no-locsignalr-and-aspnet-core-no-locsignalr"></a>ASP.NET SignalR 와 ASP.NET Core 간의 차이점 SignalR
 
@@ -151,7 +151,7 @@ ASP.NET Core에서는 SignalR 연결 모델이 간소화 되었습니다. 여러
 
 ASP.NET Core는 SignalR 이제 허브에서 클라이언트로의 [스트리밍 데이터](xref:signalr/streaming) 를 지원 합니다.
 
-### <a name="state"></a>시스템 상태
+### <a name="state"></a>주
 
 클라이언트와 허브 (라고도 함) 간에 임의의 상태를 전달 하는 기능이 `HubState` 제거 되었으며 진행 메시지를 지원 합니다. 현재 허브 프록시의 대응 항목이 없습니다.
 
@@ -203,8 +203,8 @@ JQuery에 대 한 종속성이 제거 되었지만 프로젝트에서 jQuery를 
 
 ### <a name="internet-explorer-support"></a>Internet Explorer 지원
 
-ASP.NET Core SignalR 는 Microsoft internet explorer 11 이상을 지원 하지만 ASP.NET는 SignalR Microsoft internet explorer 8 이상을 지원 합니다.
-브라우저 지원에 대 한 자세한 내용은 [지원 되는 플랫폼](xref:signalr/supported-platforms#javascript-client)에서 찾을 수 있습니다.
+ASP.NET microsoft internet explorer 8 이상을 지원 SignalR 하는 반면, ASP.NET Core는 Microsoft Internet explorer를 지원 하지 않습니다 SignalR .
+자세한 내용은 <xref:signalr/supported-platforms#javascript-client>를 참조하세요.
 
 ### <a name="javascript-client-method-syntax"></a>JavaScript 클라이언트 메서드 구문
 

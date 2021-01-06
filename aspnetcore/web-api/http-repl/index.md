@@ -4,7 +4,7 @@ author: scottaddie
 description: HttpRepl .NET Core 전역 도구를 사용하여 ASP.NET Core 웹 API를 찾아보고 테스트하는 방법에 대해 알아보세요.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
-ms.custom: mvc, devx-track-azurecli
+ms.custom: mvc
 ms.date: 11/12/2020
 no-loc:
 - appsettings.json
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: c661141c1bec93c0f7b6404964dc0bca2319b529
-ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
+ms.openlocfilehash: 1027887738740d50c30e24e800c0402b1ce4ad02
+ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634615"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854667"
 ---
 # <a name="test-web-apis-with-the-httprepl"></a>HttpRepl을 사용하여 웹 API 테스트
 
@@ -62,7 +62,7 @@ dotnet tool install -g Microsoft.dotnet-httprepl
 
 [.NET Core 글로벌 도구](/dotnet/core/tools/global-tools#install-a-global-tool)가 [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl) NuGet 패키지에서 설치됩니다.
 
-## <a name="usage"></a>사용
+## <a name="usage"></a>사용량
 
 도구를 성공적으로 설치한 후 다음 명령을 실행하여 HttpRepl을 시작합니다.
 
@@ -1123,7 +1123,7 @@ https://localhost:5001/> clear
 https://localhost:5001/>
 ```
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [REST API 요청](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)
 * [HttpRepl GitHub 리포지토리](https://github.com/dotnet/HttpRepl)

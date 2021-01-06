@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: 7f5cd3de38f1e45d9b188c513a0e62ca658b2992
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: 4b035fe59b8576eb387ddce67943386ccab55492
+ms.sourcegitcommit: 8dfcd2b4be936950c228b4d98430622a04254cd7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035907"
+ms.lasthandoff: 12/26/2020
+ms.locfileid: "97792085"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core의 Azure Key Vault 구성 공급자
 
@@ -41,7 +41,10 @@ ms.locfileid: "96035907"
 
 ## <a name="packages"></a>패키지
 
-Azure.Extensions.AspNetCore.Configuration에 패키지 참조를 추가 [ 합니다. 비밀](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.Configuration.Secrets/) 패키지.
+다음 패키지에 대 한 패키지 참조를 추가 합니다.
+
+* [Azure.Extensions.AspNetCore.Configuration.Secrets](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.Configuration.Secrets)
+* [Microsoft.Identity](https://www.nuget.org/packages/Azure.Identity)
 
 ## <a name="sample-app"></a>샘플 앱
 
@@ -193,7 +196,7 @@ Azure CLI, PowerShell 또는 Azure Portal를 사용 하 여 **앱을 다시 시�
 
 * 클래스의 인스턴스를 만들고 `DefaultAzureCredential` , 자격 증명은 Azure 리소스에 대 한 환경에서 액세스 토큰을 가져오려고 시도 합니다.
 * 새 [`Azure.Security.KeyVault.Secrets.Secrets`](/dotnet/api/azure.security.keyvault.secrets) 이 인스턴스를 사용 하 여 만들어집니다 `DefaultAzureCredential` .
-* `Azure.Security.KeyVault.Secrets.Secrets`인스턴스는 `Azure.Extensions.Aspnetcore.Configuration.Secrets` 모든 비밀 값을 로드 하 고 `--` 키 이름에서 이중 대시 ()를 콜론 ()으로 대체 하는의 기본 구현과 함께 사용 됩니다 `:` .
+* `Azure.Security.KeyVault.Secrets.Secrets`인스턴스는 `Azure.Extensions.AspNetCore.Configuration.Secrets` 모든 비밀 값을 로드 하 고 `--` 키 이름에서 이중 대시 ()를 콜론 ()으로 대체 하는의 기본 구현과 함께 사용 됩니다 `:` .
 
 [!code-csharp[](key-vault-configuration/samples/3.x/SampleApp/Program.cs?name=snippet2&highlight=12-14)]
 
@@ -225,25 +228,25 @@ config.AddAzureKeyVault(new SecretClient(new URI("Your Key Vault Endpoint"), new
     });
 ```
 
-| 속성         | Description |
+| 속성         | 설명 |
 | ---------------- | ----------- |
-| `Manager`        | `Azure.Extensions.Aspnetcore.Configuration.Secrets` 비밀 로드를 제어 하는 데 사용 되는 인스턴스입니다. |
+| `Manager`        | `Azure.Extensions.AspNetCore.Configuration.Secrets` 비밀 로드를 제어 하는 데 사용 되는 인스턴스입니다. |
 | `ReloadInterval` | `Timespan` 변경에 대 한 주요 자격 증명 모음 폴링 시도 사이에 대기 합니다. 기본값은 `null` (구성이 다시 로드 되지 않음)입니다. |
 
 ## <a name="use-a-key-name-prefix"></a>키 이름 접두사 사용
 
-AddAzureKeyVault는의 구현을 허용 하는 오버 로드를 제공 하며,이를 `Azure.Extensions.Aspnetcore.Configuration.Secrets` 통해 키 자격 증명 모음 비밀이 구성 키로 변환 되는 방식을 제어할 수 있습니다. 예를 들어, 인터페이스를 구현 하 여 앱 시작 시 제공 하는 접두사 값에 따라 비밀 값을 로드할 수 있습니다. 예를 들어 앱의 버전에 따라 비밀을 로드할 수 있습니다.
+AddAzureKeyVault는의 구현을 허용 하는 오버 로드를 제공 하며,이를 `Azure.Extensions.AspNetCore.Configuration.Secrets` 통해 키 자격 증명 모음 비밀이 구성 키로 변환 되는 방식을 제어할 수 있습니다. 예를 들어, 인터페이스를 구현 하 여 앱 시작 시 제공 하는 접두사 값에 따라 비밀 값을 로드할 수 있습니다. 예를 들어 앱의 버전에 따라 비밀을 로드할 수 있습니다.
 
 > [!WARNING]
 > 키 자격 증명 모음 비밀에 대 한 접두사를 사용 하 여 여러 앱에 대 한 비밀을 동일한 주요 자격 증명 모음에 저장 하거나 환경 비밀 (예: *개발* 및 *프로덕션* 비밀)을 동일한 자격 증명 모음에 저장 하지 마세요. 앱과 개발/프로덕션 환경 마다 별도의 키 자격 증명 모음을 사용 하 여 가장 높은 수준의 보안을 위해 앱 환경을 격리 하는 것이 좋습니다.
 
 다음 예제에서는 키 자격 증명 모음 (및 개발 환경에 대 한 암호 관리자 도구 사용)에 대 한 비밀이 설정 됩니다 `5000-AppSecret` (마침표는 key vault 암호 이름에 사용할 수 없음). 이 암호는 앱의 버전 5.0.0.0 앱 암호를 나타냅니다. 5.1.0.0 앱의 다른 버전에 대해서는에 대해 비밀 관리자 도구를 사용 하 여 키 자격 증명 모음에 암호를 추가 `5100-AppSecret` 합니다. 각 앱 버전은 해당 버전의 보안 값을 해당 구성으로 구성 하 `AppSecret` 고, 암호를 로드할 때 버전을 제거 합니다.
 
-AddAzureKeyVault는 사용자 지정을 사용 하 여 호출 됩니다 `Azure.Extensions.Aspnetcore.Configuration.Secrets` .
+AddAzureKeyVault는 사용자 지정을 사용 하 여 호출 됩니다 `Azure.Extensions.AspNetCore.Configuration.Secrets` .
 
 [!code-csharp[](key-vault-configuration/samples_snapshot/Program.cs)]
 
-`Azure.Extensions.Aspnetcore.Configuration.Secrets`구현은 암호의 버전 접두사에 반응 하 여 적절 한 비밀을 구성으로 로드 합니다.
+`Azure.Extensions.AspNetCore.Configuration.Secrets`구현은 암호의 버전 접두사에 반응 하 여 적절 한 비밀을 구성으로 로드 합니다.
 
 * `Load` 이름이 접두사로 시작 하는 경우 비밀을 로드 합니다. 다른 암호는 로드 되지 않습니다.
 * `GetKey`:
