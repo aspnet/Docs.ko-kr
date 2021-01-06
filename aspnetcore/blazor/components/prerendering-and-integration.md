@@ -21,10 +21,10 @@ no-loc:
 uid: blazor/components/prerendering-and-integration
 zone_pivot_groups: blazor-hosting-models
 ms.openlocfilehash: 3402117334548f9d90880d4f536e8baa288e7bc9
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97506983"
 ---
 # <a name="prerender-and-integrate-aspnet-core-no-locrazor-components"></a>ASP.NET Core Razor 구성 요소 미리 렌더링 및 통합

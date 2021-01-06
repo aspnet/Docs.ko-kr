@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: b3c714ea8e741430df1f70b2df258f1e8f1c7ad5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0f70b5f12b9097f8710c9641404b3e085968fc3f
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060510"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97753155"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>IIS에 ASP.NET Core 앱 게시
 
@@ -47,8 +47,8 @@ ms.locfileid: "93060510"
 >
 > 이 자습서에서 다루지 않는 IIS 호스팅에 대한 중요한 시나리오는 다음과 같습니다.
 >
-> * [ASP.NET Core 데이터 보호에 대한 레지스트리 하이브 만들기](xref:host-and-deploy/iis/index#data-protection)
-> * [앱 풀의 ACL(액세스 제어 목록) 구성](xref:host-and-deploy/iis/index#application-pool-identity)
+> * [ASP.NET Core 데이터 보호에 대한 레지스트리 하이브 만들기](xref:host-and-deploy/iis/advanced#data-protection)
+> * [앱 풀의 ACL(액세스 제어 목록) 구성](xref:host-and-deploy/iis/advanced#application-pool-identity)
 > * IIS 배포 개념에 중점을 두기 위해 이 자습서에서는 IIS에서 HTTPS 보안을 구성하지 않고 앱을 배포합니다. HTTPS 프로토콜을 사용할 수 있는 앱을 호스트하는 방법에 대한 자세한 내용은 이 문서의 [추가 리소스](#additional-resources) 섹션에 있는 보안 항목을 참조하세요. ASP.NET Core 앱을 호스트하기 위한 추가 지침은 <xref:host-and-deploy/iis/index> 문서에 나와 있습니다.
 
 ## <a name="install-the-net-core-hosting-bundle"></a>.NET Core 호스팅 번들 설치
@@ -76,7 +76,7 @@ IIS 서버에 *.NET Core 호스팅 번들* 을 설치합니다. 번들은 .NET C
 
 1. 프로세스 모델 ID에 적절한 권한이 있는지 확인합니다.
 
-   앱 풀의 기본 ID( **프로세스 모델** >  **Identity** )가 `ApplicationPoolIdentity`에서 다른 ID로 변경되면, 새 ID에 앱의 폴더, 데이터베이스 및 기타 필요한 리소스에 액세스하는 데 필요한 권한이 있는지 확인합니다. 예를 들어 앱 풀에는 앱이 파일을 읽고 쓰는 폴더에 대한 읽기 및 쓰기 권한이 필요합니다.
+   앱 풀의 기본 ID(**프로세스 모델** >  **Identity** )가 `ApplicationPoolIdentity`에서 다른 ID로 변경되면, 새 ID에 앱의 폴더, 데이터베이스 및 기타 필요한 리소스에 액세스하는 데 필요한 권한이 있는지 확인합니다. 예를 들어 앱 풀에는 앱이 파일을 읽고 쓰는 폴더에 대한 읽기 및 쓰기 권한이 필요합니다.
 
 ## <a name="create-an-aspnet-core-no-locrazor-pages-app"></a>ASP.NET Core Razor Pages 앱 만들기
 
@@ -87,7 +87,7 @@ IIS 서버에 *.NET Core 호스팅 번들* 을 설치합니다. 번들은 .NET C
 ‘앱 게시’는 서버에서 호스트할 수 있는 컴파일된 앱을 생성하는 것을 의미합니다. ‘앱 배포’는 게시된 앱을 호스팅 시스템으로 이동하는 것을 의미합니다. 게시 단계는 [.NET Core SDK](/dotnet/core/sdk)에서 처리되지만, 배포 단계는 다양한 방법으로 처리될 수 있습니다. 이 자습서에서는 다음과 같은 ‘폴더’ 배포 방법을 채택합니다.
  
 * 앱은 폴더에 게시됩니다.
-* 폴더의 콘텐츠는 IIS 사이트의 폴더(IIS 관리자에 있는 사이트의 **실제 경로** )로 이동됩니다.
+* 폴더의 콘텐츠는 IIS 사이트의 폴더(IIS 관리자에 있는 사이트의 **실제 경로**)로 이동됩니다.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -95,7 +95,8 @@ IIS 서버에 *.NET Core 호스팅 번들* 을 설치합니다. 번들은 .NET C
 1. **게시 대상 선택** 대화 상자에서 **폴더** 게시 옵션을 선택합니다.
 1. **폴더 또는 파일 공유** 경로를 설정합니다.
    * 개발 머신에서 네트워크 공유로 사용할 수 있는 IIS 사이트의 폴더를 만든 경우 공유 경로를 제공합니다. 공유에 게시하려면 현재 사용자에게 쓰기 권한이 있어야 합니다.
-   * IIS 서버의 IIS 사이트 폴더에 직접 배포할 수 없는 경우 이동식 미디어의 폴더에 게시하고 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로** )로 게시된 앱을 실제로 이동합니다. `bin/Release/{TARGET FRAMEWORK}/publish` 폴더의 콘텐츠를 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로** )로 이동합니다.
+   * IIS 서버의 IIS 사이트 폴더에 직접 배포할 수 없는 경우 이동식 미디어의 폴더에 게시하고 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로**)로 게시된 앱을 실제로 이동합니다. `bin/Release/{TARGET FRAMEWORK}/publish` 폴더의 콘텐츠를 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로**)로 이동합니다.
+1. **게시** 단추를 선택합니다.
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -105,14 +106,15 @@ IIS 서버에 *.NET Core 호스팅 번들* 을 설치합니다. 번들은 .NET C
    dotnet publish --configuration Release
    ```
 
-1. `bin/Release/{TARGET FRAMEWORK}/publish` 폴더의 콘텐츠를 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로** )로 이동합니다.
+1. `bin/Release/{TARGET FRAMEWORK}/publish` 폴더의 콘텐츠를 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로**)로 이동합니다.
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
 1. **솔루션** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **게시** > **폴더에 게시** 를 선택합니다.
 1. **폴더 선택** 경로를 설정합니다.
    * 개발 머신에서 네트워크 공유로 사용할 수 있는 IIS 사이트의 폴더를 만든 경우 공유 경로를 제공합니다. 공유에 게시하려면 현재 사용자에게 쓰기 권한이 있어야 합니다.
-   * IIS 서버의 IIS 사이트 폴더에 직접 배포할 수 없는 경우 이동식 미디어의 폴더에 게시하고 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로** )로 게시된 앱을 실제로 이동합니다. `bin/Release/{TARGET FRAMEWORK}/publish` 폴더의 콘텐츠를 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로** )로 이동합니다.
+   * IIS 서버의 IIS 사이트 폴더에 직접 배포할 수 없는 경우 이동식 미디어의 폴더에 게시하고 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로**)로 게시된 앱을 실제로 이동합니다. `bin/Release/{TARGET FRAMEWORK}/publish` 폴더의 콘텐츠를 서버의 IIS 사이트 폴더(IIS 관리자에서 사이트의 **실제 경로**)로 이동합니다.
+1. **게시** 단추를 선택합니다.
 
 ---
 

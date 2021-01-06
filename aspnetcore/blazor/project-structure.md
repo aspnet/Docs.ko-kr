@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/project-structure
 ms.openlocfilehash: 6df84366dc3fc99d31a8a0e614ca860a50df7f5c
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97513536"
 ---
 # <a name="aspnet-core-no-locblazor-project-structure"></a>ASP.NET Core Blazor 프로젝트 구조

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: 98dfd539171807cbf94d4ac8746458152c809495
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: eae4a19042efded03f10e9ebd17122232f0323eb
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93057572"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854641"
 ---
 # <a name="visual-studio-publish-profiles-pubxml-for-aspnet-core-app-deployment"></a>ASP.NET Core 앱 배포용 Visual Studio 게시 프로필(.pubxml)
 
@@ -73,7 +73,7 @@ MSBuild 또는 Visual Studio가 프로젝트를 로드하면 다음 높은 수�
 Visual Studio에서 **게시** 단추를 선택하거나 명령줄에서 게시할 경우:
 
 * 속성/항목이 계산됩니다(빌드하는 데 필요한 파일).
-* **Visual Studio 전용** : NuGet 패키지가 복원됩니다. (CLI에서 사용자가 명시적으로 복원해야 합니다.)
+* **Visual Studio 전용**: NuGet 패키지가 복원됩니다. (CLI에서 사용자가 명시적으로 복원해야 합니다.)
 * 프로젝트가 빌드됩니다.
 * 게시 항목이 계산됩니다(게시하는 데 필요한 파일).
 * 프로젝트가 게시됩니다(계산된 파일이 게시 대상에 복사됨).
@@ -223,7 +223,7 @@ dotnet build WebApplication.csproj /p:DeployOnBuild=true /p:PublishProfile=<MsDe
 *FolderProfile* 이라는 프로필을 사용하여 게시할 경우 다음 명령 중 하나를 사용하세요.
 
 ```dotnetcli
-dotnet publish /p:Configuration=Release /p:PublishProfile=FolderProfile`
+dotnet publish /p:Configuration=Release /p:PublishProfile=FolderProfile
 ```
 
 ```dotnetcli
@@ -307,7 +307,7 @@ msbuild {PATH}
 * `{PROFILE}`: 게시 프로필의 이름입니다.
 * `{USERNAME}`: MSDeploy 사용자 이름입니다. `{USERNAME}`은 게시 프로필에서 찾을 수 있습니다.
 * `{PASSWORD}`: MSDeploy 암호입니다. *{PROFILE}.PublishSettings* 파일에서 `{PASSWORD}`를 가져옵니다. 다음 위치에서 *.PublishSettings* 파일을 다운로드합니다.
-  * **솔루션 탐색기** : **보기** > **클라우드 탐색기** 를 선택합니다. Azure 구독으로 연결합니다. **App Services** 를 엽니다. 앱을 마우스 오른쪽 단추로 클릭합니다. **게시 프로필 다운로드** 를 선택합니다.
+  * **솔루션 탐색기**: **보기** > **클라우드 탐색기** 를 선택합니다. Azure 구독으로 연결합니다. **App Services** 를 엽니다. 앱을 마우스 오른쪽 단추로 클릭합니다. **게시 프로필 다운로드** 를 선택합니다.
   * Azure Portal: 웹앱의 **개요** 패널에서 **게시 프로필 가져오기** 를 선택합니다.
 
 다음 예제에서는 *AzureWebApp - 웹 배포* 라는 게시 프로필을 사용합니다.
@@ -335,7 +335,7 @@ dotnet msbuild "AzureWebApp.csproj"
 
 ## <a name="set-the-environment"></a>환경 설정
 
-`<EnvironmentName>` 속성을 게시 프로필( *.pubxml* ) 또는 프로젝트 파일에 포함하여 앱의 [환경](xref:fundamentals/environments)을 설정합니다.
+`<EnvironmentName>` 속성을 게시 프로필( *.pubxml*) 또는 프로젝트 파일에 포함하여 앱의 [환경](xref:fundamentals/environments)을 설정합니다.
 
 ```xml
 <PropertyGroup>
@@ -351,11 +351,11 @@ ASP.NET Core 웹앱을 게시하는 경우 다음 자산이 포함됩니다.
 
 * 빌드 아티팩트
 * 다음 와일드카드 사용 패턴과 일치하는 폴더 및 파일:
-  * `**\*.config`(예: *web.config* )
+  * `**\*.config`(예: *web.config*)
   * `**\*.json`(예를 들어 *appsettings.json* )
   * `wwwroot\**`
 
-MSBuild는 [와일드카드 사용 패턴](https://gruntjs.com/configuring-tasks#globbing-patterns)을 지원합니다. 예를 들어 다음 `<Content>` 요소는 *wwwroot\content* 폴더와 모든 하위 폴더에 있는 텍스트( *.txt* ) 파일의 복사를 표시하지 않습니다.
+MSBuild는 [와일드카드 사용 패턴](https://gruntjs.com/configuring-tasks#globbing-patterns)을 지원합니다. 예를 들어 다음 `<Content>` 요소는 *wwwroot\content* 폴더와 모든 하위 폴더에 있는 텍스트( *.txt*) 파일의 복사를 표시하지 않습니다.
 
 ```xml
 <ItemGroup>
