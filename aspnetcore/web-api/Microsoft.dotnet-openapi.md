@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/Microsoft.dotnet-openapi
-ms.openlocfilehash: 28a71c7040667c7544cc17c1184c09b5b39959b9
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5d9f1684aa333c38c73673138a703b04d318c6df
+ms.sourcegitcommit: b64c44ba5e3abb4ad4d50de93b7e282bf0f251e4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052554"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97972030"
 ---
 # <a name="develop-aspnet-core-apps-using-openapi-tools"></a>OpenAPI 도구를 사용한 ASP.NET Core 앱 개발
 
@@ -88,7 +88,7 @@ dotnet tool install -g Microsoft.dotnet-openapi
 |-------|------|-------------|---------|
 | -p|--updateProject | 작동할 프로젝트입니다. |dotnet openapi add url *--updateProject .\Ref.csproj* `https://contoso.com/openapi.json` |
 | -o|--output-file | OpenAPI 파일의 로컬 복사본을 저장할 위치입니다. |dotnet openapi add url `https://contoso.com/openapi.json` *--output-file myclient.json* |
-| -c|--code-generator| 참조에 적용할 코드 생성기입니다. 옵션은 `NSwagCSharp` 및 `NSwagTypeScript`입니다. |dotnet openapi add file .\OpenApi.json --code-generator
+| -c|--code-generator| 참조에 적용할 코드 생성기입니다. 옵션은 `NSwagCSharp` 및 `NSwagTypeScript`입니다. |dotnet openapi url 추가 `https://contoso.com/openapi.json` -코드 생성기
 | -H|--help|도움말 정보를 표시합니다.|dotnet openapi add url --help|
 
 #### <a name="arguments"></a>인수

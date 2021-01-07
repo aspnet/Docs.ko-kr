@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/configuration
-ms.openlocfilehash: 7dac8c84683553a52e07ecc61c8bcf8616e77dc6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: cef05b32731e0930d7a3cfc6fe4502236b07a236
+ms.sourcegitcommit: b64c44ba5e3abb4ad4d50de93b7e282bf0f251e4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061238"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97972069"
 ---
 # <a name="aspnet-core-no-locsignalr-configuration"></a>ASP.NET Core SignalR 구성
 
@@ -199,7 +199,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 다음 표에서는 사용 가능한 로그 수준을 나열 합니다. 사용자가 지정 하는 값은 `configureLogging` 로깅할 **최소** 로그 수준을 설정 합니다. 이 수준에서 기록 되 **는 메시지 또는 테이블의 이후 나열 된 수준** 에 기록 됩니다.
 
-| String                      | LogLevel               |
+| 문자열                      | LogLevel               |
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
@@ -293,7 +293,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-SignalRJava 클라이언트에서 [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java)에 액세스 토큰 팩터리를 제공 하 여 인증에 사용할 전달자 토큰을 구성할 수 있습니다. [WithAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) 를 사용 하 여 [rxjava](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html)을 제공 합니다. [단일. 지연](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)에 대 한 호출을 사용 하 여 클라이언트에 대 한 액세스 토큰을 생성 하는 논리를 작성할 수 있습니다.
+SignalRJava 클라이언트에서 [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java)에 액세스 토큰 팩터리를 제공 하 여 인증에 사용할 전달자 토큰을 구성할 수 있습니다. [WithAccessTokenFactory](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) 를 사용 하 여 [rxjava](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html)을 제공 합니다. [단일. 지연](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)에 대 한 호출을 사용 하 여 클라이언트에 대 한 액세스 토큰을 생성 하는 논리를 작성할 수 있습니다.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -343,7 +343,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | .NET 옵션 |  기본값 | 설명 |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
-| `SkipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `SkipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 | `ClientCertificates` | Empty | 인증 요청에 보낼 TLS 인증서 컬렉션입니다. |
 | `Cookies` | Empty | cookie모든 http 요청과 함께 보낼 http s의 컬렉션입니다. |
 | `Credentials` | Empty | 모든 HTTP 요청과 함께 전송할 자격 증명입니다. |
@@ -362,7 +362,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>연결에 사용할 전송을 지정 하는 값입니다. |
 | `headers` | `null` | 모든 HTTP 요청과 함께 전송 되는 헤더의 사전입니다. 브라우저에서 헤더 보내기가 Websocket 또는 스트림에 대해 작동 하지 않습니다 <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType.ServerSentEvents> . |
 | `logMessageContent` | `null` | `true`클라이언트에서 보내고 받은 메시지의 바이트/문자를 기록 하려면로 설정 합니다. |
-| `skipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `skipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 | `withCredentials` | `true` | CORS 요청과 함께 자격 증명을 보낼지 여부를 지정 합니다. Azure App Service는 cookie 고정 세션에 s를 사용 하 고 올바르게 작동 하려면이 옵션을 사용 하도록 설정 해야 합니다. CORS에 대 한 자세한 SignalR 내용은을 참조 하십시오 <xref:signalr/security#cross-origin-resource-sharing> . |
 
 # <a name="java"></a>[Java](#tab/java)
@@ -370,7 +370,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | Java 옵션 | 기본값 | 설명 |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
-| `shouldSkipNegotiate` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `shouldSkipNegotiate` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 | `withHeader` `withHeaders` | Empty | 모든 HTTP 요청과 함께 보낼 추가 HTTP 헤더의 맵입니다. |
 
 ---
@@ -411,7 +411,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
         .build();
 ```
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * <xref:tutorials/signalr>
 * <xref:signalr/hubs>
@@ -591,7 +591,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 다음 표에서는 사용 가능한 로그 수준을 나열 합니다. 사용자가 지정 하는 값은 `configureLogging` 로깅할 **최소** 로그 수준을 설정 합니다. 이 수준에서 기록 되 **는 메시지 또는 테이블의 이후 나열 된 수준** 에 기록 됩니다.
 
-| String                      | LogLevel               |
+| 문자열                      | LogLevel               |
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
@@ -685,7 +685,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-SignalRJava 클라이언트에서 [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java)에 액세스 토큰 팩터리를 제공 하 여 인증에 사용할 전달자 토큰을 구성할 수 있습니다. [WithAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) 를 사용 하 여 [rxjava](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html)을 제공 합니다. [단일. 지연](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)에 대 한 호출을 사용 하 여 클라이언트에 대 한 액세스 토큰을 생성 하는 논리를 작성할 수 있습니다.
+SignalRJava 클라이언트에서 [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java)에 액세스 토큰 팩터리를 제공 하 여 인증에 사용할 전달자 토큰을 구성할 수 있습니다. [WithAccessTokenFactory](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) 를 사용 하 여 [rxjava](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html)을 제공 합니다. [단일. 지연](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)에 대 한 호출을 사용 하 여 클라이언트에 대 한 액세스 토큰을 생성 하는 논리를 작성할 수 있습니다.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -735,7 +735,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | .NET 옵션 |  기본값 | 설명 |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
-| `SkipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `SkipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 | `ClientCertificates` | Empty | 인증 요청에 보낼 TLS 인증서 컬렉션입니다. |
 | `Cookies` | Empty | cookie모든 http 요청과 함께 보낼 http s의 컬렉션입니다. |
 | `Credentials` | Empty | 모든 HTTP 요청과 함께 전송할 자격 증명입니다. |
@@ -753,14 +753,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | `accessTokenFactory` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>연결에 사용할 전송을 지정 하는 값입니다. |
 | `logMessageContent` | `null` | `true`클라이언트에서 보내고 받은 메시지의 바이트/문자를 기록 하려면로 설정 합니다. |
-| `skipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `skipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Java 옵션 | 기본값 | 설명 |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
-| `shouldSkipNegotiate` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `shouldSkipNegotiate` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 | `withHeader` `withHeaders` | Empty | 모든 HTTP 요청과 함께 보낼 추가 HTTP 헤더의 맵입니다. |
 
 ---
@@ -798,7 +798,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
         .build();
 ```
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * <xref:tutorials/signalr>
 * <xref:signalr/hubs>
@@ -977,7 +977,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 다음 표에서는 사용 가능한 로그 수준을 나열 합니다. 사용자가 지정 하는 값은 `configureLogging` 로깅할 **최소** 로그 수준을 설정 합니다. 이 수준에서 기록 되 **는 메시지 또는 테이블의 이후 나열 된 수준** 에 기록 됩니다.
 
-| String                      | LogLevel               |
+| 문자열                      | LogLevel               |
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
@@ -1071,7 +1071,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-SignalRJava 클라이언트에서 [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java)에 액세스 토큰 팩터리를 제공 하 여 인증에 사용할 전달자 토큰을 구성할 수 있습니다. [WithAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) 를 사용 하 여 [rxjava](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html)을 제공 합니다. [단일. 지연](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)에 대 한 호출을 사용 하 여 클라이언트에 대 한 액세스 토큰을 생성 하는 논리를 작성할 수 있습니다.
+SignalRJava 클라이언트에서 [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java)에 액세스 토큰 팩터리를 제공 하 여 인증에 사용할 전달자 토큰을 구성할 수 있습니다. [WithAccessTokenFactory](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) 를 사용 하 여 [rxjava](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html)을 제공 합니다. [단일. 지연](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)에 대 한 호출을 사용 하 여 클라이언트에 대 한 액세스 토큰을 생성 하는 논리를 작성할 수 있습니다.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -1121,7 +1121,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | .NET 옵션 |  기본값 | 설명 |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
-| `SkipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `SkipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 | `ClientCertificates` | Empty | 인증 요청에 보낼 TLS 인증서 컬렉션입니다. |
 | `Cookies` | Empty | cookie모든 http 요청과 함께 보낼 http s의 컬렉션입니다. |
 | `Credentials` | Empty | 모든 HTTP 요청과 함께 전송할 자격 증명입니다. |
@@ -1139,14 +1139,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | `accessTokenFactory` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>연결에 사용할 전송을 지정 하는 값입니다. |
 | `logMessageContent` | `null` | `true`클라이언트에서 보내고 받은 메시지의 바이트/문자를 기록 하려면로 설정 합니다. |
-| `skipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `skipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Java 옵션 | 기본값 | 설명 |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
-| `shouldSkipNegotiate` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `shouldSkipNegotiate` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 | `withHeader` `withHeaders` | Empty | 모든 HTTP 요청과 함께 보낼 추가 HTTP 헤더의 맵입니다. |
 
 ---
@@ -1184,7 +1184,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
         .build();
 ```
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * <xref:tutorials/signalr>
 * <xref:signalr/hubs>
@@ -1421,7 +1421,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-SignalRJava 클라이언트에서 [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java)에 액세스 토큰 팩터리를 제공 하 여 인증에 사용할 전달자 토큰을 구성할 수 있습니다. [WithAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) 를 사용 하 여 [rxjava](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html)을 제공 합니다. [단일. 지연](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)에 대 한 호출을 사용 하 여 클라이언트에 대 한 액세스 토큰을 생성 하는 논리를 작성할 수 있습니다.
+SignalRJava 클라이언트에서 [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java)에 액세스 토큰 팩터리를 제공 하 여 인증에 사용할 전달자 토큰을 구성할 수 있습니다. [WithAccessTokenFactory](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) 를 사용 하 여 [rxjava](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html)을 제공 합니다. [단일. 지연](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)에 대 한 호출을 사용 하 여 클라이언트에 대 한 액세스 토큰을 생성 하는 논리를 작성할 수 있습니다.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -1471,7 +1471,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | .NET 옵션 |  기본값 | 설명 |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
-| `SkipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `SkipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 | `ClientCertificates` | Empty | 인증 요청에 보낼 TLS 인증서 컬렉션입니다. |
 | `Cookies` | Empty | cookie모든 http 요청과 함께 보낼 http s의 컬렉션입니다. |
 | `Credentials` | Empty | 모든 HTTP 요청과 함께 전송할 자격 증명입니다. |
@@ -1489,14 +1489,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | `accessTokenFactory` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>연결에 사용할 전송을 지정 하는 값입니다. |
 | `logMessageContent` | `null` | `true`클라이언트에서 보내고 받은 메시지의 바이트/문자를 기록 하려면로 설정 합니다. |
-| `skipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `skipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Java 옵션 | 기본값 | 설명 |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
-| `shouldSkipNegotiate` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `shouldSkipNegotiate` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 | `withHeader` `withHeaders` | Empty | 모든 HTTP 요청과 함께 보낼 추가 HTTP 헤더의 맵입니다. |
 
 ---
@@ -1534,7 +1534,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
         .build();
 ```
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * <xref:tutorials/signalr>
 * <xref:signalr/hubs>
@@ -1768,7 +1768,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-SignalRJava 클라이언트에서 [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java)에 액세스 토큰 팩터리를 제공 하 여 인증에 사용할 전달자 토큰을 구성할 수 있습니다. [WithAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) 를 사용 하 여 [rxjava](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html)을 제공 합니다. [단일. 지연](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)에 대 한 호출을 사용 하 여 클라이언트에 대 한 액세스 토큰을 생성 하는 논리를 작성할 수 있습니다.
+SignalRJava 클라이언트에서 [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java)에 액세스 토큰 팩터리를 제공 하 여 인증에 사용할 전달자 토큰을 구성할 수 있습니다. [WithAccessTokenFactory](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) 를 사용 하 여 [rxjava](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html)을 제공 합니다. [단일. 지연](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)에 대 한 호출을 사용 하 여 클라이언트에 대 한 액세스 토큰을 생성 하는 논리를 작성할 수 있습니다.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -1815,7 +1815,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | .NET 옵션 |  기본값 | 설명 |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
-| `SkipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `SkipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 | `ClientCertificates` | Empty | 인증 요청에 보낼 TLS 인증서 컬렉션입니다. |
 | `Cookies` | Empty | cookie모든 http 요청과 함께 보낼 http s의 컬렉션입니다. |
 | `Credentials` | Empty | 모든 HTTP 요청과 함께 전송할 자격 증명입니다. |
@@ -1833,14 +1833,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | `accessTokenFactory` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>연결에 사용할 전송을 지정 하는 값입니다. |
 | `logMessageContent` | `null` | `true`클라이언트에서 보내고 받은 메시지의 바이트/문자를 기록 하려면로 설정 합니다. |
-| `skipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `skipNegotiation` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Java 옵션 | 기본값 | 설명 |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | HTTP 요청에서 전달자 인증 토큰으로 제공 되는 문자열을 반환 하는 함수입니다. |
-| `shouldSkipNegotiate` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다** . Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
+| `shouldSkipNegotiate` | `false` | 협상 단계를 건너뛰려면이를로 설정 `true` 합니다. **Websocket 전송이 유일 하 게 설정 된 전송 인 경우에만 지원 됩니다**. Azure 서비스를 사용 하는 경우이 설정을 사용 하도록 설정할 수 없습니다 SignalR . |
 | `withHeader` `withHeaders` | Empty | 모든 HTTP 요청과 함께 보낼 추가 HTTP 헤더의 맵입니다. |
 
 ---
@@ -1878,7 +1878,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
         .build();
 ```
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * <xref:tutorials/signalr>
 * <xref:signalr/hubs>
