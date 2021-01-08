@@ -766,6 +766,8 @@
       uid: grpc/interprocess
     - name: GRPC에서 JSON 웹 API 만들기
       uid: grpc/httpapi
+    - name: Code First gRPC 서비스 및 클라이언트
+      uid: grpc/code-first
     - name: dotnet-grpc를 사용하여 Protobuf 참조를 관리하세요.
       uid: grpc/dotnet-grpc
     - name: gRPCurl로 gRPC 서비스 테스트
