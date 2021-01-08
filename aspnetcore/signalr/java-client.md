@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/java-client
-ms.openlocfilehash: da6876e0540579dac5fb9e92362b38a398bca4d5
-ms.sourcegitcommit: b64c44ba5e3abb4ad4d50de93b7e282bf0f251e4
+ms.openlocfilehash: 92941d21820de90eb2ae8fb76c21c588ed9f1ffb
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97972082"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024758"
 ---
 # <a name="aspnet-core-no-locsignalr-java-client"></a>ASP.NET Core SignalR Java 클라이언트
 
@@ -108,12 +108,43 @@ HubConnection hubConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
     })).build();
 ```
 
+::: moniker range=">= aspnetcore-5.0"
+
+### <a name="passing-class-information-in-java"></a>Java로 클래스 정보 전달
+
+`on` `invoke` Java 클라이언트에서의, 또는 메서드를 호출 하는 경우 `stream` `HubConnection` 사용자는 `Type` 개체 대신 개체를 전달 하 여 `Class<?>` 메서드에 전달 된 제네릭을 설명 해야 합니다 `Object` . `Type`제공 된 클래스를 사용 하 여을 가져올 수 있습니다 `TypeReference` . 예를 들어 라는 사용자 지정 제네릭 클래스를 사용 하는 경우 `Foo<T>` 다음 코드는를 가져옵니다 `Type` .
+
+```java
+Type fooType = new TypeReference<Foo<String>>() { }).getType();
+```
+
+기본 형식을 사용 하는 경우와 같이 제네릭이 아닌 경우에 `String` 는 기본 제공만 사용 하면 됩니다 `.class` .
+
+하나 이상의 개체 형식을 사용 하 여 이러한 메서드 중 하나를 호출 하는 경우 메서드를 호출할 때 제네릭 구문을 사용 합니다. 예를 들어 `on` 문자열 및 개체를 인수로 사용 하는 라는 메서드에 대 한 처리기를 등록 하는 경우 `func` `Foo<String>` 다음 코드를 사용 하 여 인수를 인쇄 하는 작업을 설정 합니다.
+
+```java
+hubConnection.<String, Foo<String>>on("func", (param1, param2) ->{
+    System.out.println(param1);
+    System.out.println(param2);
+}, String.class, fooType);
+```
+
+이 규칙은 `Object.getClass` Java에서 형식 지우기로 인해 메서드를 사용 하 여 복합 형식에 대 한 전체 정보를 검색할 수 없기 때문에 필요 합니다. 예를 들어,에 대해를 호출 하면가 반환 되지 않고,이를 위해 `getClass` `ArrayList<String>` `Class<ArrayList<String>>` `Class<ArrayList>` 역직렬 변환기에 들어오는 메시지를 올바르게 deserialize 할 수 있는 충분 한 정보가 제공 되지 않습니다. 사용자 지정 개체의 경우에도 마찬가지입니다.
+
+::: moniker-end
+
 ## <a name="known-limitations"></a>알려진 제한 사항
 
-::: moniker range=">= aspnetcore-3.0"
+::: moniker range=">= aspnetcore-5.0"
 
-* JSON 프로토콜만 지원 됩니다.
 * 전송 대체 (fallback) 및 전송 된 서버 전송 이벤트 전송은 지원 되지 않습니다.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
+
+* 전송 대체 (fallback) 및 전송 된 서버 전송 이벤트 전송은 지원 되지 않습니다.
+* JSON 프로토콜만 지원 됩니다.
 
 ::: moniker-end
 
@@ -125,7 +156,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [Java API 참조](/java/api/com.microsoft.signalr?view=aspnet-signalr-java)
 * <xref:signalr/hubs>

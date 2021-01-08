@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/client-features
-ms.openlocfilehash: 1d1778f95c53179ca05eaced3d1913f208220df4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 65ad619bb943a0e5ffbaec7ec80243972dafc49f
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050981"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024667"
 ---
 # <a name="aspnet-core-no-locsignalr-clients"></a>ASP.NET Core SignalR 클라이언트
 
@@ -41,7 +41,7 @@ SignalR클라이언트는 서버 구성 요소와 함께 제공 되며 일치 �
 | 1.1. x | 2.2. x | 수명 종료 | 2019 년 12 월 23 일 |
 | 3(sp3) 이상 | *버전과 동일 SignalR* | [.Net Core 지원 정책](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) 을 참조 하세요. |
 
-**참고:** ASP.NET Core 3.0에서 JavaScript 클라이언트는 *moved* `@microsoft/signalr` npm 패키지로 이동 했습니다.
+**참고:** ASP.NET Core 3.0에서 JavaScript 클라이언트는  `@microsoft/signalr` npm 패키지로 이동 했습니다.
 
 ## <a name="feature-distribution"></a>기능 배포
 
@@ -57,7 +57,7 @@ SignalR클라이언트는 서버 구성 요소와 함께 제공 되며 일치 �
 | Server-Sent 이벤트 전송 |2.1.0|1.0.0|1.0.0|❌|
 | 긴 폴링 전송 |2.1.0|1.0.0|1.0.0|3.0.0|
 | JSON 허브 프로토콜 |2.1.0|1.0.0|1.0.0|1.0.0|
-| MessagePack 허브 프로토콜 |2.1.0|1.0.0|1.0.0|❌|
+| MessagePack 허브 프로토콜 |2.1.0|1.0.0|1.0.0|5.0.0|
 
 추가 클라이언트 기능 사용에 대 한 지원은 [문제 추적기](https://github.com/dotnet/AspNetCore/issues)에서 추적 됩니다.
 

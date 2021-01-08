@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: e7d19a42e48048d2be4b87d6b0ac1ba6b2596ff1
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7c3640e9cd2c5d392400a115813584861f789554
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058170"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024693"
 ---
 # <a name="use-messagepack-hub-protocol-in-no-locsignalr-for-aspnet-core"></a>ASP.NET Core에 대해에서 MessagePack Hub 프로토콜 사용 SignalR
 
@@ -120,6 +120,26 @@ const connection = new signalR.HubConnectionBuilder()
 > [!NOTE]
 > 이번에는 JavaScript 클라이언트에 MessagePack 프로토콜에 대 한 구성 옵션이 없습니다.
 
+### <a name="java-client"></a>Java 클라이언트
+
+Java로 MessagePack를 사용 하도록 설정 하려면 `com.microsoft.signalr.messagepack` 패키지를 설치 합니다. Gradle를 사용 하는 경우 `dependencies` *Gradle* 파일의 섹션에 다음 줄을 추가 합니다.
+
+```gradle
+implementation 'com.microsoft.signalr.messagepack:signalr-messagepack:5.0.0'
+```
+
+Maven를 사용 하는 경우 `<dependencies>` *pom.xml* 파일의 요소 내에 다음 줄을 추가 합니다.
+
+[!code-xml[pom.xml dependency element messagePack](java-client/sample/pom.xml?name=snippet_dependencyElement_messagePack)]
+
+`withHubProtocol(new MessagePackHubProtocol())`에 대해를 호출 `HubConnectionBuilder` 합니다.
+
+```java
+HubConnection messagePackConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
+    .withHubProtocol(new MessagePackHubProtocol())
+    .build();
+```
+
 ## <a name="messagepack-quirks"></a>MessagePack 특수
 
 MessagePack Hub 프로토콜을 사용할 때 알아야 할 몇 가지 문제가 있습니다.
@@ -136,7 +156,7 @@ public class ChatMessage
 }
 ```
 
-JavaScript 클라이언트에서 전송 하는 경우 `PascalCased` 대/소문자 구분이 c # 클래스와 정확 하 게 일치 해야 하므로 속성 이름을 사용 해야 합니다. 다음은 그 예입니다.
+JavaScript 클라이언트에서 전송 하는 경우 `PascalCased` 대/소문자 구분이 c # 클래스와 정확 하 게 일치 해야 하므로 속성 이름을 사용 해야 합니다. 예를 들면 다음과 같습니다.
 
 ```javascript
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
@@ -188,7 +208,11 @@ InvalidDataException: Error binding arguments. Make sure that the types of the p
 
 이 제한 사항에 대 한 자세한 내용은 GitHub 문제 [aspnet/ SignalR #2937](https://github.com/aspnet/SignalR/issues/2937)를 참조 하세요.
 
-## <a name="related-resources"></a>관련 리소스
+### <a name="chars-and-strings-in-java"></a>Java의 문자 및 문자열
+
+Java 클라이언트에서 `char` 개체는 단일 문자 개체로 serialize 됩니다 `String` . 이는 c # 및 JavaScript 클라이언트와 달리 개체로 serialize 합니다 `short` . MessagePack 사양 자체는 개체에 대 한 동작을 정의 하지 않으므로 `char` 라이브러리 작성자가이를 serialize 하는 방법을 결정 하는 것이 좋습니다. 클라이언트 간의 동작 차이는 구현에 사용한 라이브러리의 결과입니다.
+
+## <a name="related-resources"></a>관련 참고 자료
 
 * [시작](xref:tutorials/signalr)
 * [.NET 클라이언트](xref:signalr/dotnet-client)
@@ -316,7 +340,7 @@ public class ChatMessage
 }
 ```
 
-JavaScript 클라이언트에서 전송 하는 경우 `PascalCased` 대/소문자 구분이 c # 클래스와 정확 하 게 일치 해야 하므로 속성 이름을 사용 해야 합니다. 다음은 그 예입니다.
+JavaScript 클라이언트에서 전송 하는 경우 `PascalCased` 대/소문자 구분이 c # 클래스와 정확 하 게 일치 해야 하므로 속성 이름을 사용 해야 합니다. 예를 들면 다음과 같습니다.
 
 ```javascript
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
@@ -368,7 +392,7 @@ InvalidDataException: Error binding arguments. Make sure that the types of the p
 
 이 제한 사항에 대 한 자세한 내용은 GitHub 문제 [aspnet/ SignalR #2937](https://github.com/aspnet/SignalR/issues/2937)를 참조 하세요.
 
-## <a name="related-resources"></a>관련 리소스
+## <a name="related-resources"></a>관련 참고 자료
 
 * [시작](xref:tutorials/signalr)
 * [.NET 클라이언트](xref:signalr/dotnet-client)
@@ -496,7 +520,7 @@ public class ChatMessage
 }
 ```
 
-JavaScript 클라이언트에서 전송 하는 경우 `PascalCased` 대/소문자 구분이 c # 클래스와 정확 하 게 일치 해야 하므로 속성 이름을 사용 해야 합니다. 다음은 그 예입니다.
+JavaScript 클라이언트에서 전송 하는 경우 `PascalCased` 대/소문자 구분이 c # 클래스와 정확 하 게 일치 해야 하므로 속성 이름을 사용 해야 합니다. 예를 들면 다음과 같습니다.
 
 ```javascript
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
@@ -548,7 +572,7 @@ InvalidDataException: Error binding arguments. Make sure that the types of the p
 
 이 제한 사항에 대 한 자세한 내용은 GitHub 문제 [aspnet/ SignalR #2937](https://github.com/aspnet/SignalR/issues/2937)를 참조 하세요.
 
-## <a name="related-resources"></a>관련 리소스
+## <a name="related-resources"></a>관련 참고 자료
 
 * [시작](xref:tutorials/signalr)
 * [.NET 클라이언트](xref:signalr/dotnet-client)
