@@ -5,7 +5,7 @@ description: ASP.NET Core 웹 API를 사용한 오류 처리에 대해 알아봅
 monikerRange: '>= aspnetcore-2.1'
 ms.author: prkrishn
 ms.custom: mvc
-ms.date: 07/23/2020
+ms.date: 1/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/handle-errors
-ms.openlocfilehash: 0efcf1bbeeb65cf7f4420f8c50fb4adf7d1d016d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 92e9350a7892f8f38f64d4ebd68d54a97ec7e994
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052528"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058378"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>ASP.NET Core 웹 API에서 오류 처리
 
@@ -80,7 +80,7 @@ Host: localhost:44312
 User-Agent: curl/7.55.1
 ```
 
-HTML 형식의 응답을 대신 표시하려면 `Accept` HTTP 요청 헤더를 `text/html` 미디어 유형으로 설정합니다. 다음은 그 예입니다.
+HTML 형식의 응답을 대신 표시하려면 `Accept` HTTP 요청 헤더를 `text/html` 미디어 유형으로 설정합니다. 예를 들면 다음과 같습니다.
 
 ```bash
 curl -i -H "Accept: text/html" https://localhost:5001/weatherforecast/chicago
@@ -127,7 +127,9 @@ HTML 형식 응답은 Postman과 같은 도구를 사용하여 테스트하는 �
 ::: moniker-end
 
 > [!WARNING]
-> **앱이 개발 환경에서 실행 중인 경우에만** 개발자 예외 페이지를 사용하도록 설정하세요. 프로덕션 환경에서 앱을 실행할 때 자세한 예외 정보를 공개적으로 공유하기를 원하지는 않을 것입니다. 환경 구성 방법에 대한 자세한 내용은 <xref:fundamentals/environments>를 참조하세요.
+> **앱이 개발 환경에서 실행 중인 경우에만** 개발자 예외 페이지를 사용하도록 설정하세요. 앱이 프로덕션 환경에서 실행 되는 경우 자세한 예외 정보를 공개적으로 공유 하지 마세요. 환경 구성 방법에 대한 자세한 내용은 <xref:fundamentals/environments>를 참조하세요.
+>
+> 오류 처리기 작업 메서드를 `HttpGet`와 같은 HTTP 메서드 특성을 사용하여 표시하지 마세요. 명시적 동사는 일부 요청이 작업 메서드에 도달하지 못하도록 합니다. 인증 되지 않은 사용자에 게 오류가 표시 되는 경우 메서드에 대 한 익명 액세스를 허용 합니다.
 
 ## <a name="exception-handler"></a>예외 처리기
 
@@ -222,6 +224,8 @@ HTML 형식 응답은 Postman과 같은 도구를 사용하여 테스트하는 �
 
     ::: moniker-end
 
+    위의 코드는 [Controllerbase. 문제](xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A) 를 호출 하 여 응답을 만듭니다. <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>
+
 ## <a name="use-exceptions-to-modify-the-response"></a>예외를 사용하여 응답 수정
 
 응답의 내용은 컨트롤러 외부에서 수정할 수 있습니다. ASP.NET 4.x Web API에서 이것을 수행하는 한 가지 방법은 <xref:System.Web.Http.HttpResponseException> 형식을 사용하는 것입니다. ASP.NET Core에는 동일한 형식이 포함되지 않습니다. 다음 단계로 `HttpResponseException`에 대한 지원을 추가할 수 있습니다.
@@ -234,7 +238,7 @@ HTML 형식 응답은 Postman과 같은 도구를 사용하여 테스트하는 �
 
     [!code-csharp[](handle-errors/samples/3.x/Filters/HttpResponseExceptionFilter.cs?name=snippet_HttpResponseExceptionFilter)]
 
-    위의 필터에서 매직 number 10은 최대 정수 값에서 뺍니다. 이 숫자를 빼면 파이프라인의 끝에서 다른 필터를 실행할 수 있습니다.
+    위의 필터는 `Order` 최대 정수 값에서 10을 뺀 값을 지정 합니다. 이렇게 하면 파이프라인 끝에서 다른 필터를 실행할 수 있습니다.
 
 1. `Startup.ConfigureServices`에서 필터 컬렉션에 작업 필터를 추가합니다.
 
@@ -337,3 +341,7 @@ public void ConfigureServices(IServiceCollection serviceCollection)
 [!code-csharp[](index/samples/2.x/2.2/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=9-10)]
 
 ::: moniker-end
+
+## <a name="custom-middleware-to-handle-exceptions"></a>예외를 처리 하는 사용자 지정 미들웨어
+
+예외 처리 미들웨어의 기본값은 대부분의 앱에서 잘 작동 합니다. 특수 한 예외 처리를 필요로 하는 앱의 경우 [예외 처리 미들웨어를 사용자 지정 하는](xref:fundamentals/error-handling#exception-handler-lambda)것이 좋습니다.

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: 91e35a7cbd97e2bd6e77566362f02409915de7d7
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: cb9ffab19062bf726dd519c782d502f76e372073
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035712"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058287"
 ---
 # <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor ASP.NET Core에 대 한 구문 참조
 
@@ -399,7 +399,7 @@ Razor 에는 lock 문을 사용 하 여 중요 한 섹션을 보호할 수 있�
 }
 ```
 
-### <a name="comments"></a>의견
+### <a name="comments"></a>설명
 
 Razor c # 및 HTML 주석을 지원 합니다.
 
@@ -497,7 +497,7 @@ Razor구성 요소의 경우 `@code` 는의 별칭이 [`@functions`](#functions)
 
 ::: moniker-end
 
-다음은 그 예입니다.
+예를 들면 다음과 같습니다.
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -611,7 +611,7 @@ Razor구성 요소의 경우 `@code` 는의 별칭이 [`@functions`](#functions)
 
 *이 시나리오는 Razor 구성 요소 (razor)에만 적용 됩니다.*
 
-`@layout`지시문은 구성 요소에 대 한 레이아웃을 지정 합니다 Razor . 레이아웃 구성 요소는 코드 중복 및 불일치를 방지하는 데 사용됩니다. 자세한 내용은 <xref:blazor/layouts>를 참조하세요.
+`@layout`지시문은 Razor 지시문을 포함 하는 라우팅 가능한 구성 요소에 대 한 레이아웃을 지정 합니다 [`@page`](#page) . 레이아웃 구성 요소는 코드 중복 및 불일치를 방지하는 데 사용됩니다. 자세한 내용은 <xref:blazor/layouts>를 참조하세요.
 
 ::: moniker-end
 
@@ -705,9 +705,9 @@ Razor다음 표에 표시 된 페이지 예:
 
 (기본값)로 설정 된 경우 `false` Razor 다음의 경우 구성 요소 ()에서 렌더링 된 태그의 공백이 `.razor` 제거 됩니다.
 
-* 요소 내에서 선행 또는 후행입니다.
-* 매개 변수 내에서 선행 또는 후행 `RenderFragment` 입니다. 예를 들어 자식 콘텐츠는 다른 구성 요소로 전달 됩니다.
-* 또는와 같은 c # 코드 블록 앞 이나 뒤에 `@if` 나옵니다 `@foreach` .
+* 요소 내의 선행 또는 후행 공백.
+* `RenderFragment` 매개 변수 내의 선행 또는 후행 공백. 예: 자식 콘텐츠가 다른 구성 요소로 전달됨.
+* C# 코드 블록(예: `@if` 또는 `@foreach`)의 앞 또는 뒤에 있는 공백.
 
 ::: moniker-end
 
@@ -898,7 +898,7 @@ public class Pet
 
 [태그 도우미](xref:mvc/views/tag-helpers/intro)와 관련된 세 가지 지시문이 있습니다.
 
-| 지시문 | 기능 |
+| 지시문 | 함수 |
 | --------- | -------- |
 | [`@addTagHelper`](xref:mvc/views/tag-helpers/intro#add-helper-label) | 보기에 태그 도우미를 제공합니다. |
 | [`@removeTagHelper`](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | 보기에서 이전에 추가된 태그 도우미를 제거합니다. |
