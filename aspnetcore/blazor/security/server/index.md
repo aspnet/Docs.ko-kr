@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: 108fb3a8a24295cad43fd8c83303abd95a7ecd33
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: aa24def1a003a2c2608691e6168066c740f47205
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055479"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024628"
 ---
 # <a name="secure-aspnet-core-no-locblazor-server-apps"></a>ASP.NET Core Blazor Server 앱 보호
 
@@ -45,7 +45,7 @@ Blazor Server 앱은 ASP.NET Core 앱과 동일한 방식으로 보안이 구성
 다른 ASP.NET Core 프로젝트에 사용할 수 있는 것과 동일한 인증 메커니즘 세트를 제공하는 대화 상자가 열립니다.
 
 * **인증 없음**
-* **개별 사용자 계정** : 사용자 계정은 다음과 같이 저장될 수 있습니다.
+* **개별 사용자 계정**: 사용자 계정은 다음과 같이 저장될 수 있습니다.
   * ASP.NET Core의 [Identity](xref:security/authentication/identity) 시스템을 사용하는 앱 내에 저장
   * [Azure AD B2C](xref:security/authentication/azure-ad-b2c) 사용
 * **회사 또는 학교 계정**
@@ -131,3 +131,6 @@ Blazor Server 프로젝트에 Identity를 스캐폴드합니다.
 
 * [빠른 시작: ASP.NET Core 웹앱에 Microsoft로 로그인 추가](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp)
 * [빠른 시작: Microsoft ID 플랫폼을 사용하여 ASP.NET Core 웹 API 보호](/azure/active-directory/develop/quickstart-v2-aspnet-core-web-api)
+* <xref:host-and-deploy/proxy-load-balancer>: 다음 사항에 대한 지침을 포함합니다.
+  * 전달된 헤더 미들웨어를 사용하여 프록시 서버와 내부 네트워크에서 HTTPS 체계 정보 유지.
+  * 수동 체계 구성, 올바른 요청 라우팅에 대한 요청 경로 변경, Linux 및 비 IIS 역방향 프록시에 대한 요청 체계 전달을 포함한 추가 시나리오 및 사용 사례.
