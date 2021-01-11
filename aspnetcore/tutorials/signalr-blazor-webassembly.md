@@ -19,49 +19,49 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 89aeb20d5566447ff86581dfa1d7946d20b9ed2d
-ms.sourcegitcommit: 94c8cc1a8ce2bdba0ebdd9d37c155bf42d3cc62b
+ms.openlocfilehash: b2f58fb29e451628aead4ad35c7272a1409cf3d8
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96473718"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97797355"
 ---
-# <a name="use-aspnet-core-no-locsignalr-with-a-hosted-no-locblazor-webassembly-app"></a><span data-ttu-id="cde69-103">호스트된 Blazor WebAssembly 앱을 활용하여 ASP.NET Core SignalR 사용</span><span class="sxs-lookup"><span data-stu-id="cde69-103">Use ASP.NET Core SignalR with a hosted Blazor WebAssembly app</span></span>
+# <a name="use-aspnet-core-no-locsignalr-with-a-hosted-no-locblazor-webassembly-app"></a><span data-ttu-id="a22ee-103">호스트된 Blazor WebAssembly 앱을 활용하여 ASP.NET Core SignalR 사용</span><span class="sxs-lookup"><span data-stu-id="a22ee-103">Use ASP.NET Core SignalR with a hosted Blazor WebAssembly app</span></span>
 
-<span data-ttu-id="cde69-104">작성자: [Daniel Roth](https://github.com/danroth27) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="cde69-104">By [Daniel Roth](https://github.com/danroth27) and [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="a22ee-104">작성자: [Daniel Roth](https://github.com/danroth27) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="a22ee-104">By [Daniel Roth](https://github.com/danroth27) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="cde69-105">이 자습서에서는 Blazor WebAssembly와 함께 SignalR을 이용해서 실시간 앱을 구현하기 위한 기본 사항을 알려 줍니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-105">This tutorial teaches the basics of building a real-time app using SignalR with Blazor WebAssembly.</span></span> <span data-ttu-id="cde69-106">다음과 같은 작업을 수행하는 방법을 살펴봅니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-106">You learn how to:</span></span>
+<span data-ttu-id="a22ee-105">이 자습서에서는 Blazor WebAssembly와 함께 SignalR을 이용해서 실시간 앱을 구현하기 위한 기본 사항을 알려 줍니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-105">This tutorial teaches the basics of building a real-time app using SignalR with Blazor WebAssembly.</span></span> <span data-ttu-id="a22ee-106">다음과 같은 작업을 수행하는 방법을 살펴봅니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-106">You learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="cde69-107">Blazor WebAssembly 호스트된 앱 프로젝트 만들기</span><span class="sxs-lookup"><span data-stu-id="cde69-107">Create a Blazor WebAssembly Hosted app project</span></span>
-> * <span data-ttu-id="cde69-108">SignalR 클라이언트 라이브러리 추가</span><span class="sxs-lookup"><span data-stu-id="cde69-108">Add the SignalR client library</span></span>
-> * <span data-ttu-id="cde69-109">SignalR 허브 추가</span><span class="sxs-lookup"><span data-stu-id="cde69-109">Add a SignalR hub</span></span>
-> * <span data-ttu-id="cde69-110">SignalR 서비스 및 SignalR 허브에 대한 엔드포인트 추가</span><span class="sxs-lookup"><span data-stu-id="cde69-110">Add SignalR services and an endpoint for the SignalR hub</span></span>
-> * <span data-ttu-id="cde69-111">채팅을 위한 Razor 구성 요소 코드 추가</span><span class="sxs-lookup"><span data-stu-id="cde69-111">Add Razor component code for chat</span></span>
+> * <span data-ttu-id="a22ee-107">Blazor WebAssembly 호스트된 앱 프로젝트 만들기</span><span class="sxs-lookup"><span data-stu-id="a22ee-107">Create a Blazor WebAssembly Hosted app project</span></span>
+> * <span data-ttu-id="a22ee-108">SignalR 클라이언트 라이브러리 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-108">Add the SignalR client library</span></span>
+> * <span data-ttu-id="a22ee-109">SignalR 허브 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-109">Add a SignalR hub</span></span>
+> * <span data-ttu-id="a22ee-110">SignalR 서비스 및 SignalR 허브에 대한 엔드포인트 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-110">Add SignalR services and an endpoint for the SignalR hub</span></span>
+> * <span data-ttu-id="a22ee-111">채팅을 위한 Razor 구성 요소 코드 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-111">Add Razor component code for chat</span></span>
 
-<span data-ttu-id="cde69-112">이 모든 과정을 마치면 채팅 앱을 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-112">At the end of this tutorial, you'll have a working chat app.</span></span>
+<span data-ttu-id="a22ee-112">이 모든 과정을 마치면 채팅 앱을 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-112">At the end of this tutorial, you'll have a working chat app.</span></span>
 
-<span data-ttu-id="cde69-113">[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="cde69-113">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="a22ee-113">[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="a22ee-113">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="cde69-114">사전 요구 사항</span><span class="sxs-lookup"><span data-stu-id="cde69-114">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="a22ee-114">사전 요구 사항</span><span class="sxs-lookup"><span data-stu-id="a22ee-114">Prerequisites</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-# <a name="visual-studio"></a>[<span data-ttu-id="cde69-115">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cde69-115">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="a22ee-115">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a22ee-115">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="cde69-116">[Visual Studio 2019 16.8 이상](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)과 **ASP.NET 및 웹 개발** 워크로드</span><span class="sxs-lookup"><span data-stu-id="cde69-116">[Visual Studio 2019 16.8 or later](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) with the **ASP.NET and web development** workload</span></span>
+* <span data-ttu-id="a22ee-116">[Visual Studio 2019 16.8 이상](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)과 **ASP.NET 및 웹 개발** 워크로드</span><span class="sxs-lookup"><span data-stu-id="a22ee-116">[Visual Studio 2019 16.8 or later](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) with the **ASP.NET and web development** workload</span></span>
 * [!INCLUDE [.NET Core 5.0 SDK](~/includes/5.0-SDK.md)]
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="cde69-117">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="cde69-117">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="a22ee-117">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="a22ee-117">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-5.0.md)]
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="cde69-118">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cde69-118">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="a22ee-118">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a22ee-118">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* [<span data-ttu-id="cde69-119">Mac용 Visual Studio 버전 8.8 이상</span><span class="sxs-lookup"><span data-stu-id="cde69-119">Visual Studio for Mac version 8.8 or later</span></span>](https://visualstudio.microsoft.com/vs/mac/)
+* [<span data-ttu-id="a22ee-119">Mac용 Visual Studio 버전 8.8 이상</span><span class="sxs-lookup"><span data-stu-id="a22ee-119">Visual Studio for Mac version 8.8 or later</span></span>](https://visualstudio.microsoft.com/vs/mac/)
 * [!INCLUDE [.NET Core 5.0 SDK](~/includes/5.0-SDK.md)]
 
-# <a name="net-core-cli"></a>[<span data-ttu-id="cde69-120">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="cde69-120">.NET Core CLI</span></span>](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[<span data-ttu-id="a22ee-120">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="a22ee-120">.NET Core CLI</span></span>](#tab/netcore-cli/)
 
 [!INCLUDE[](~/includes/5.0-SDK.md)]
 
@@ -71,21 +71,21 @@ ms.locfileid: "96473718"
 
 ::: moniker range="< aspnetcore-5.0"
 
-# <a name="visual-studio"></a>[<span data-ttu-id="cde69-121">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cde69-121">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="a22ee-121">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a22ee-121">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="cde69-122">[Visual Studio 2019 16.6 이상](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)과 **ASP.NET 및 웹 개발** 워크로드</span><span class="sxs-lookup"><span data-stu-id="cde69-122">[Visual Studio 2019 16.6 or later](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) with the **ASP.NET and web development** workload</span></span>
+* <span data-ttu-id="a22ee-122">[Visual Studio 2019 16.6 이상](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)과 **ASP.NET 및 웹 개발** 워크로드</span><span class="sxs-lookup"><span data-stu-id="a22ee-122">[Visual Studio 2019 16.6 or later](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) with the **ASP.NET and web development** workload</span></span>
 * [!INCLUDE [.NET Core 3.1 SDK](~/includes/3.1-SDK.md)]
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="cde69-123">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="cde69-123">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="a22ee-123">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="a22ee-123">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="cde69-124">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cde69-124">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="a22ee-124">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a22ee-124">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* [<span data-ttu-id="cde69-125">Mac용 Visual Studio 버전 8.6 이상</span><span class="sxs-lookup"><span data-stu-id="cde69-125">Visual Studio for Mac version 8.6 or later</span></span>](https://visualstudio.microsoft.com/vs/mac/)
+* [<span data-ttu-id="a22ee-125">Mac용 Visual Studio 버전 8.6 이상</span><span class="sxs-lookup"><span data-stu-id="a22ee-125">Visual Studio for Mac version 8.6 or later</span></span>](https://visualstudio.microsoft.com/vs/mac/)
 * [!INCLUDE [.NET Core 3.1 SDK](~/includes/3.1-SDK.md)]
 
-# <a name="net-core-cli"></a>[<span data-ttu-id="cde69-126">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="cde69-126">.NET Core CLI</span></span>](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[<span data-ttu-id="a22ee-126">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="a22ee-126">.NET Core CLI</span></span>](#tab/netcore-cli/)
 
 [!INCLUDE[](~/includes/3.1-SDK.md)]
 
@@ -93,71 +93,71 @@ ms.locfileid: "96473718"
 
 ::: moniker-end
 
-## <a name="create-a-hosted-no-locblazor-webassembly-app-project"></a><span data-ttu-id="cde69-127">호스트된 Blazor WebAssembly 앱 프로젝트 만들기</span><span class="sxs-lookup"><span data-stu-id="cde69-127">Create a hosted Blazor WebAssembly app project</span></span>
+## <a name="create-a-hosted-no-locblazor-webassembly-app-project"></a><span data-ttu-id="a22ee-127">호스트된 Blazor WebAssembly 앱 프로젝트 만들기</span><span class="sxs-lookup"><span data-stu-id="a22ee-127">Create a hosted Blazor WebAssembly app project</span></span>
 
-<span data-ttu-id="cde69-128">선택한 도구의 지침을 따르세요.</span><span class="sxs-lookup"><span data-stu-id="cde69-128">Follow the guidance for your choice of tooling:</span></span>
+<span data-ttu-id="a22ee-128">선택한 도구의 지침을 따르세요.</span><span class="sxs-lookup"><span data-stu-id="a22ee-128">Follow the guidance for your choice of tooling:</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="cde69-129">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cde69-129">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="a22ee-129">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a22ee-129">Visual Studio</span></span>](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-5.0"
 
 > [!NOTE]
-> <span data-ttu-id="cde69-130">Visual Studio 16.8 이상 및 .NET Core SDK 5.0.0 이상이 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-130">Visual Studio 16.8 or later and .NET Core SDK 5.0.0 or later are required.</span></span>
+> <span data-ttu-id="a22ee-130">Visual Studio 16.8 이상 및 .NET Core SDK 5.0.0 이상이 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-130">Visual Studio 16.8 or later and .NET Core SDK 5.0.0 or later are required.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
 > [!NOTE]
-> <span data-ttu-id="cde69-131">Visual Studio 16.6 이상 및 .NET Core SDK 3.1.300 이상이 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-131">Visual Studio 16.6 or later and .NET Core SDK 3.1.300 or later are required.</span></span>
+> <span data-ttu-id="a22ee-131">Visual Studio 16.6 이상 및 .NET Core SDK 3.1.300 이상이 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-131">Visual Studio 16.6 or later and .NET Core SDK 3.1.300 or later are required.</span></span>
 
 ::: moniker-end
 
-1. <span data-ttu-id="cde69-132">새 프로젝트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-132">Create a new project.</span></span>
+1. <span data-ttu-id="a22ee-132">새 프로젝트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-132">Create a new project.</span></span>
 
-1. <span data-ttu-id="cde69-133">**Blazor 앱** 를 선택하고 **다음** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-133">Select **Blazor App** and select **Next**.</span></span>
+1. <span data-ttu-id="a22ee-133">**Blazor 앱** 를 선택하고 **다음** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-133">Select **Blazor App** and select **Next**.</span></span>
 
-1. <span data-ttu-id="cde69-134">**프로젝트 이름** 필드에 `BlazorSignalRApp`을 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-134">Type `BlazorSignalRApp` in the **Project name** field.</span></span> <span data-ttu-id="cde69-135">**위치** 항목이 올바른지 확인하거나 프로젝트의 위치를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-135">Confirm the **Location** entry is correct or provide a location for the project.</span></span> <span data-ttu-id="cde69-136">**만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-136">Select **Create**.</span></span>
+1. <span data-ttu-id="a22ee-134">**프로젝트 이름** 필드에 `BlazorSignalRApp`을 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-134">Type `BlazorSignalRApp` in the **Project name** field.</span></span> <span data-ttu-id="a22ee-135">**위치** 항목이 올바른지 확인하거나 프로젝트의 위치를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-135">Confirm the **Location** entry is correct or provide a location for the project.</span></span> <span data-ttu-id="a22ee-136">**만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-136">Select **Create**.</span></span>
 
-1. <span data-ttu-id="cde69-137">**Blazor WebAssembly 앱** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-137">Choose the **Blazor WebAssembly App** template.</span></span>
+1. <span data-ttu-id="a22ee-137">**Blazor WebAssembly 앱** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-137">Choose the **Blazor WebAssembly App** template.</span></span>
 
-1. <span data-ttu-id="cde69-138">**고급** 에서 **ASP.NET Core 호스팅** 확인란을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-138">Under **Advanced**, select the **ASP.NET Core hosted** check box.</span></span>
+1. <span data-ttu-id="a22ee-138">**고급** 에서 **ASP.NET Core 호스팅** 확인란을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-138">Under **Advanced**, select the **ASP.NET Core hosted** check box.</span></span>
 
-1. <span data-ttu-id="cde69-139">**만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-139">Select **Create**.</span></span>
+1. <span data-ttu-id="a22ee-139">**만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-139">Select **Create**.</span></span>
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="cde69-140">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="cde69-140">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="a22ee-140">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="a22ee-140">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-1. <span data-ttu-id="cde69-141">명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-141">In a command shell, execute the following command:</span></span>
+1. <span data-ttu-id="a22ee-141">명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-141">In a command shell, execute the following command:</span></span>
 
    ```dotnetcli
    dotnet new blazorwasm --hosted --output BlazorSignalRApp
    ```
 
-1. <span data-ttu-id="cde69-142">Visual Studio Code에서 앱의 프로젝트 폴더를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-142">In Visual Studio Code, open the app's project folder.</span></span>
+1. <span data-ttu-id="a22ee-142">Visual Studio Code에서 앱의 프로젝트 폴더를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-142">In Visual Studio Code, open the app's project folder.</span></span>
 
-1. <span data-ttu-id="cde69-143">앱을 빌드하고 디버그할 자산을 추가하기 위한 대화 상자가 나타나면 **예** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-143">When the dialog appears to add assets to build and debug the app, select **Yes**.</span></span> <span data-ttu-id="cde69-144">Visual Studio Code는 생성된 `launch.json` 및 `tasks.json` 파일이 포함된 `.vscode` 폴더를 자동으로 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-144">Visual Studio Code automatically adds the `.vscode` folder with generated `launch.json` and `tasks.json` files.</span></span>
+1. <span data-ttu-id="a22ee-143">앱을 빌드하고 디버그할 자산을 추가하기 위한 대화 상자가 나타나면 **예** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-143">When the dialog appears to add assets to build and debug the app, select **Yes**.</span></span> <span data-ttu-id="a22ee-144">Visual Studio Code는 생성된 `launch.json` 및 `tasks.json` 파일이 포함된 `.vscode` 폴더를 자동으로 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-144">Visual Studio Code automatically adds the `.vscode` folder with generated `launch.json` and `tasks.json` files.</span></span>
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="cde69-145">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cde69-145">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="a22ee-145">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a22ee-145">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-1. <span data-ttu-id="cde69-146">최신 버전의 [Mac용 Visual Studio](https://visualstudio.microsoft.com/vs/mac/)를 설치하고 다음 단계를 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-146">Install the latest version of [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) and perform the following steps:</span></span>
+1. <span data-ttu-id="a22ee-146">최신 버전의 [Mac용 Visual Studio](https://visualstudio.microsoft.com/vs/mac/)를 설치하고 다음 단계를 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-146">Install the latest version of [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) and perform the following steps:</span></span>
 
-1. <span data-ttu-id="cde69-147">**파일** > **새 솔루션** 을 선택하거나 **시작 창** 에서 **새** 프로젝트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-147">Select **File** > **New Solution** or create a **New** project from the **Start Window**.</span></span>
+1. <span data-ttu-id="a22ee-147">**파일** > **새 솔루션** 을 선택하거나 **시작 창** 에서 **새** 프로젝트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-147">Select **File** > **New Solution** or create a **New** project from the **Start Window**.</span></span>
 
-1. <span data-ttu-id="cde69-148">사이드바에서 **웹 및 콘솔** > **앱** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-148">In the sidebar, select **Web and Console** > **App**.</span></span>
+1. <span data-ttu-id="a22ee-148">사이드바에서 **웹 및 콘솔** > **앱** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-148">In the sidebar, select **Web and Console** > **App**.</span></span>
 
-1. <span data-ttu-id="cde69-149">**Blazor WebAssembly 앱** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-149">Choose the **Blazor WebAssembly App** template.</span></span> <span data-ttu-id="cde69-150">**새로 만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-150">Select **Next**.</span></span>
+1. <span data-ttu-id="a22ee-149">**Blazor WebAssembly 앱** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-149">Choose the **Blazor WebAssembly App** template.</span></span> <span data-ttu-id="a22ee-150">**새로 만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-150">Select **Next**.</span></span>
 
-1. <span data-ttu-id="cde69-151">**인증** 이 **인증 없음** 으로 설정되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-151">Confirm that **Authentication** is set to **No Authentication**.</span></span> <span data-ttu-id="cde69-152">**ASP.NET Core에서 호스트** 확인란을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-152">Select the **ASP.NET Core Hosted** check box.</span></span> <span data-ttu-id="cde69-153">**새로 만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-153">Select **Next**.</span></span>
+1. <span data-ttu-id="a22ee-151">**인증** 이 **인증 없음** 으로 설정되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-151">Confirm that **Authentication** is set to **No Authentication**.</span></span> <span data-ttu-id="a22ee-152">**ASP.NET Core에서 호스트** 확인란을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-152">Select the **ASP.NET Core Hosted** check box.</span></span> <span data-ttu-id="a22ee-153">**새로 만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-153">Select **Next**.</span></span>
 
-1. <span data-ttu-id="cde69-154">**프로젝트 이름** 필드에서 앱 이름을 `BlazorSignalRApp`로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-154">In the **Project Name** field, name the app `BlazorSignalRApp`.</span></span> <span data-ttu-id="cde69-155">**만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-155">Select **Create**.</span></span>
+1. <span data-ttu-id="a22ee-154">**프로젝트 이름** 필드에서 앱 이름을 `BlazorSignalRApp`로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-154">In the **Project Name** field, name the app `BlazorSignalRApp`.</span></span> <span data-ttu-id="a22ee-155">**만들기** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-155">Select **Create**.</span></span>
 
-   <span data-ttu-id="cde69-156">개발 인증서를 신뢰하라는 메시지가 표시되면 인증서를 신뢰하고 계속합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-156">If a prompt appears to trust the development certificate, trust the certificate and continue.</span></span> <span data-ttu-id="cde69-157">인증서를 신뢰하려면 사용자 및 키 집합 암호가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-157">The user and keychain passwords are required to trust the certificate.</span></span>
+   <span data-ttu-id="a22ee-156">개발 인증서를 신뢰하라는 메시지가 표시되면 인증서를 신뢰하고 계속합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-156">If a prompt appears to trust the development certificate, trust the certificate and continue.</span></span> <span data-ttu-id="a22ee-157">인증서를 신뢰하려면 사용자 및 키 집합 암호가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-157">The user and keychain passwords are required to trust the certificate.</span></span>
 
-1. <span data-ttu-id="cde69-158">프로젝트 폴더로 이동하고 프로젝트의 솔루션 파일(`.sln`)을 열어 프로젝트를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-158">Open the project by navigating to the project folder and opening the project's solution file (`.sln`).</span></span>
+1. <span data-ttu-id="a22ee-158">프로젝트 폴더로 이동하고 프로젝트의 솔루션 파일(`.sln`)을 열어 프로젝트를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-158">Open the project by navigating to the project folder and opening the project's solution file (`.sln`).</span></span>
 
-# <a name="net-core-cli"></a>[<span data-ttu-id="cde69-159">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="cde69-159">.NET Core CLI</span></span>](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[<span data-ttu-id="a22ee-159">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="a22ee-159">.NET Core CLI</span></span>](#tab/netcore-cli/)
 
-<span data-ttu-id="cde69-160">명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-160">In a command shell, execute the following command:</span></span>
+<span data-ttu-id="a22ee-160">명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-160">In a command shell, execute the following command:</span></span>
 
 ```dotnetcli
 dotnet new blazorwasm --hosted --output BlazorSignalRApp
@@ -165,45 +165,45 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 ---
 
-## <a name="add-the-no-locsignalr-client-library"></a><span data-ttu-id="cde69-161">SignalR 클라이언트 라이브러리 추가</span><span class="sxs-lookup"><span data-stu-id="cde69-161">Add the SignalR client library</span></span>
+## <a name="add-the-no-locsignalr-client-library"></a><span data-ttu-id="a22ee-161">SignalR 클라이언트 라이브러리 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-161">Add the SignalR client library</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="cde69-162">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cde69-162">Visual Studio</span></span>](#tab/visual-studio/)
+# <a name="visual-studio"></a>[<span data-ttu-id="a22ee-162">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a22ee-162">Visual Studio</span></span>](#tab/visual-studio/)
 
-1. <span data-ttu-id="cde69-163">**솔루션 탐색기** 에서 `BlazorSignalRApp.Client` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-163">In **Solution Explorer**, right-click the `BlazorSignalRApp.Client` project and select **Manage NuGet Packages**.</span></span>
+1. <span data-ttu-id="a22ee-163">**솔루션 탐색기** 에서 `BlazorSignalRApp.Client` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-163">In **Solution Explorer**, right-click the `BlazorSignalRApp.Client` project and select **Manage NuGet Packages**.</span></span>
 
-1. <span data-ttu-id="cde69-164">**NuGet 패키지 관리** 대화 상자에서 **패키지 원본** 이 `nuget.org`로 설정되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-164">In the **Manage NuGet Packages** dialog, confirm that the **Package source** is set to `nuget.org`.</span></span>
+1. <span data-ttu-id="a22ee-164">**NuGet 패키지 관리** 대화 상자에서 **패키지 원본** 이 `nuget.org`로 설정되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-164">In the **Manage NuGet Packages** dialog, confirm that the **Package source** is set to `nuget.org`.</span></span>
 
-1. <span data-ttu-id="cde69-165">**찾아보기** 를 선택하고 검색 상자에 `Microsoft.AspNetCore.SignalR.Client`를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-165">With **Browse** selected, type `Microsoft.AspNetCore.SignalR.Client` in the search box.</span></span>
+1. <span data-ttu-id="a22ee-165">**찾아보기** 를 선택하고 검색 상자에 `Microsoft.AspNetCore.SignalR.Client`를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-165">With **Browse** selected, type `Microsoft.AspNetCore.SignalR.Client` in the search box.</span></span>
 
-1. <span data-ttu-id="cde69-166">검색 결과에서 [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) 패키지를 선택하고 **설치** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-166">In the search results, select the [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) package and select **Install**.</span></span>
+1. <span data-ttu-id="a22ee-166">검색 결과에서 [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) 패키지를 선택하고 **설치** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-166">In the search results, select the [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) package and select **Install**.</span></span>
 
-1. <span data-ttu-id="cde69-167">**변경 내용 미리 보기** 대화 상자가 표시되면 **확인** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-167">If the **Preview Changes** dialog appears, select **OK**.</span></span>
+1. <span data-ttu-id="a22ee-167">**변경 내용 미리 보기** 대화 상자가 표시되면 **확인** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-167">If the **Preview Changes** dialog appears, select **OK**.</span></span>
 
-1. <span data-ttu-id="cde69-168">**라이선스 승인** 대화 상자가 나타나면 사용 조건에 동의하는 경우 **동의함** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-168">If the **License Acceptance** dialog appears, select **I Accept** if you agree with the license terms.</span></span>
+1. <span data-ttu-id="a22ee-168">**라이선스 승인** 대화 상자가 나타나면 사용 조건에 동의하는 경우 **동의함** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-168">If the **License Acceptance** dialog appears, select **I Accept** if you agree with the license terms.</span></span>
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="cde69-169">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="cde69-169">Visual Studio Code</span></span>](#tab/visual-studio-code/)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="a22ee-169">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="a22ee-169">Visual Studio Code</span></span>](#tab/visual-studio-code/)
 
-<span data-ttu-id="cde69-170">**통합 터미널**(도구 모음에서 **보기** > **터미널**)에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-170">In the **Integrated Terminal** (**View** > **Terminal** from the toolbar), execute the following commands:</span></span>
+<span data-ttu-id="a22ee-170">**통합 터미널**(도구 모음에서 **보기** > **터미널**)에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-170">In the **Integrated Terminal** (**View** > **Terminal** from the toolbar), execute the following commands:</span></span>
 
 ```dotnetcli
 dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 ```
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="cde69-171">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cde69-171">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="a22ee-171">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a22ee-171">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-1. <span data-ttu-id="cde69-172">**솔루션** 사이드바에서 `BlazorSignalRApp.Client` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-172">In the **Solution** sidebar, right-click the `BlazorSignalRApp.Client` project and select **Manage NuGet Packages**.</span></span>
+1. <span data-ttu-id="a22ee-172">**솔루션** 사이드바에서 `BlazorSignalRApp.Client` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-172">In the **Solution** sidebar, right-click the `BlazorSignalRApp.Client` project and select **Manage NuGet Packages**.</span></span>
 
-1. <span data-ttu-id="cde69-173">**NuGet 패키지 관리** 대화 상자에서 원본 드롭다운이 `nuget.org`로 설정되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-173">In the **Manage NuGet Packages** dialog, confirm that the source drop-down is set to `nuget.org`.</span></span>
+1. <span data-ttu-id="a22ee-173">**NuGet 패키지 관리** 대화 상자에서 원본 드롭다운이 `nuget.org`로 설정되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-173">In the **Manage NuGet Packages** dialog, confirm that the source drop-down is set to `nuget.org`.</span></span>
 
-1. <span data-ttu-id="cde69-174">**찾아보기** 를 선택하고 검색 상자에 `Microsoft.AspNetCore.SignalR.Client`를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-174">With **Browse** selected, type `Microsoft.AspNetCore.SignalR.Client` in the search box.</span></span>
+1. <span data-ttu-id="a22ee-174">**찾아보기** 를 선택하고 검색 상자에 `Microsoft.AspNetCore.SignalR.Client`를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-174">With **Browse** selected, type `Microsoft.AspNetCore.SignalR.Client` in the search box.</span></span>
 
-1. <span data-ttu-id="cde69-175">검색 결과에서 [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) 패키지 옆의 확인란을 선택하고 **패키지 추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-175">In the search results, select the check box next to the [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) package and select **Add Package**.</span></span>
+1. <span data-ttu-id="a22ee-175">검색 결과에서 [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) 패키지 옆의 확인란을 선택하고 **패키지 추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-175">In the search results, select the check box next to the [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) package and select **Add Package**.</span></span>
 
-1. <span data-ttu-id="cde69-176">**라이선스 승인** 대화 상자가 나타나면 사용 조건에 동의하는 경우 **동의함** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-176">If the **License Acceptance** dialog appears, select **Accept** if you agree with the license terms.</span></span>
+1. <span data-ttu-id="a22ee-176">**라이선스 승인** 대화 상자가 나타나면 사용 조건에 동의하는 경우 **동의함** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-176">If the **License Acceptance** dialog appears, select **Accept** if you agree with the license terms.</span></span>
 
-# <a name="net-core-cli"></a>[<span data-ttu-id="cde69-177">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="cde69-177">.NET Core CLI</span></span>](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[<span data-ttu-id="a22ee-177">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="a22ee-177">.NET Core CLI</span></span>](#tab/netcore-cli/)
 
-<span data-ttu-id="cde69-178">명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-178">In a command shell, execute the following commands:</span></span>
+<span data-ttu-id="a22ee-178">명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-178">In a command shell, execute the following commands:</span></span>
 
 ```dotnetcli
 cd BlazorSignalRApp
@@ -212,9 +212,63 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 ---
 
-## <a name="add-a-no-locsignalr-hub"></a><span data-ttu-id="cde69-179">SignalR 허브 추가</span><span class="sxs-lookup"><span data-stu-id="cde69-179">Add a SignalR hub</span></span>
+::: moniker range="< aspnetcore-5.0"
 
-<span data-ttu-id="cde69-180">`BlazorSignalRApp.Server` 프로젝트에서 `Hubs`(복수형) 폴더를 만들고 다음 `ChatHub` 클래스(`Hubs/ChatHub.cs`)를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-180">In the `BlazorSignalRApp.Server` project, create a `Hubs` (plural) folder and add the following `ChatHub` class (`Hubs/ChatHub.cs`):</span></span>
+## <a name="add-the-systemtextencodingsweb-package"></a><span data-ttu-id="a22ee-179">System.Text.Encodings.Web 패키지 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-179">Add the System.Text.Encodings.Web package</span></span>
+
+<span data-ttu-id="a22ee-180">ASP.NET Core 3.1 앱에서 [`System.Text.Json`](https://www.nuget.org/packages/System.Text.Json) 5.0.0을 사용하는 경우 패키지 확인 문제로 인해 `BlazorSignalRApp.Server` 프로젝트에 [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web)에 대한 패키지 참조가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-180">Due to a package resolution issue when using [`System.Text.Json`](https://www.nuget.org/packages/System.Text.Json) 5.0.0 in an ASP.NET Core 3.1 app, the `BlazorSignalRApp.Server` project requires a package reference for [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web).</span></span> <span data-ttu-id="a22ee-181">기본 문제는 .NET 5의 이후 패치 릴리스에서 해결될 예정입니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-181">The underlying issue will be resolved in a future patch release of .NET 5.</span></span> <span data-ttu-id="a22ee-182">자세한 내용은 [System.Text.Json defines netcoreapp3.0 with no dependencies (dotnet/runtime #45560)](https://github.com/dotnet/runtime/issues/45560)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="a22ee-182">For more information, see [System.Text.Json defines netcoreapp3.0 with no dependencies (dotnet/runtime #45560)](https://github.com/dotnet/runtime/issues/45560).</span></span>
+
+<span data-ttu-id="a22ee-183">ASP.NET Core 3.1 호스트 Blazor 솔루션의 `BlazorSignalRApp.Server` 프로젝트에 [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web)을 추가하려면 선택한 도구의 지침을 따르세요.</span><span class="sxs-lookup"><span data-stu-id="a22ee-183">To add [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web) to the `BlazorSignalRApp.Server` project of the ASP.NET Core 3.1 hosted Blazor solution, follow the guidance for your choice of tooling:</span></span>
+
+# <a name="visual-studio"></a>[<span data-ttu-id="a22ee-184">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a22ee-184">Visual Studio</span></span>](#tab/visual-studio/)
+
+1. <span data-ttu-id="a22ee-185">**솔루션 탐색기** 에서 `BlazorSignalRApp.Server` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-185">In **Solution Explorer**, right-click the `BlazorSignalRApp.Server` project and select **Manage NuGet Packages**.</span></span>
+
+1. <span data-ttu-id="a22ee-186">**NuGet 패키지 관리** 대화 상자에서 **패키지 원본** 이 `nuget.org`로 설정되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-186">In the **Manage NuGet Packages** dialog, confirm that the **Package source** is set to `nuget.org`.</span></span>
+
+1. <span data-ttu-id="a22ee-187">**찾아보기** 를 선택하고 검색 상자에 `System.Text.Encodings.Web`를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-187">With **Browse** selected, type `System.Text.Encodings.Web` in the search box.</span></span>
+
+1. <span data-ttu-id="a22ee-188">검색 결과에서 [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web) 패키지를 선택하고 **설치** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-188">In the search results, select the [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web) package and select **Install**.</span></span>
+
+1. <span data-ttu-id="a22ee-189">**변경 내용 미리 보기** 대화 상자가 표시되면 **확인** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-189">If the **Preview Changes** dialog appears, select **OK**.</span></span>
+
+1. <span data-ttu-id="a22ee-190">**라이선스 승인** 대화 상자가 나타나면 사용 조건에 동의하는 경우 **동의함** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-190">If the **License Acceptance** dialog appears, select **I Accept** if you agree with the license terms.</span></span>
+
+# <a name="visual-studio-code"></a>[<span data-ttu-id="a22ee-191">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="a22ee-191">Visual Studio Code</span></span>](#tab/visual-studio-code/)
+
+<span data-ttu-id="a22ee-192">**통합 터미널**(도구 모음에서 **보기** > **터미널**)에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-192">In the **Integrated Terminal** (**View** > **Terminal** from the toolbar), execute the following commands:</span></span>
+
+```dotnetcli
+dotnet add Server package System.Text.Encodings.Web
+```
+
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="a22ee-193">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a22ee-193">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+
+1. <span data-ttu-id="a22ee-194">**솔루션** 사이드바에서 `BlazorSignalRApp.Server` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-194">In the **Solution** sidebar, right-click the `BlazorSignalRApp.Server` project and select **Manage NuGet Packages**.</span></span>
+
+1. <span data-ttu-id="a22ee-195">**NuGet 패키지 관리** 대화 상자에서 원본 드롭다운이 `nuget.org`로 설정되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-195">In the **Manage NuGet Packages** dialog, confirm that the source drop-down is set to `nuget.org`.</span></span>
+
+1. <span data-ttu-id="a22ee-196">**찾아보기** 를 선택하고 검색 상자에 `System.Text.Encodings.Web`를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-196">With **Browse** selected, type `System.Text.Encodings.Web` in the search box.</span></span>
+
+1. <span data-ttu-id="a22ee-197">검색 결과에서 [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web) 패키지 옆의 확인란을 선택하고 **패키지 추가** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-197">In the search results, select the check box next to the [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web) package and select **Add Package**.</span></span>
+
+1. <span data-ttu-id="a22ee-198">**라이선스 승인** 대화 상자가 나타나면 사용 조건에 동의하는 경우 **동의함** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-198">If the **License Acceptance** dialog appears, select **Accept** if you agree with the license terms.</span></span>
+
+# <a name="net-core-cli"></a>[<span data-ttu-id="a22ee-199">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="a22ee-199">.NET Core CLI</span></span>](#tab/netcore-cli/)
+
+<span data-ttu-id="a22ee-200">명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-200">In a command shell, execute the following command:</span></span>
+
+```dotnetcli
+dotnet add Server package System.Text.Encodings.Web
+```
+
+---
+
+::: moniker-end
+
+## <a name="add-a-no-locsignalr-hub"></a><span data-ttu-id="a22ee-201">SignalR 허브 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-201">Add a SignalR hub</span></span>
+
+<span data-ttu-id="a22ee-202">`BlazorSignalRApp.Server` 프로젝트에서 `Hubs`(복수형) 폴더를 만들고 다음 `ChatHub` 클래스(`Hubs/ChatHub.cs`)를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-202">In the `BlazorSignalRApp.Server` project, create a `Hubs` (plural) folder and add the following `ChatHub` class (`Hubs/ChatHub.cs`):</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -228,36 +282,26 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 ::: moniker-end
 
-## <a name="add-services-and-an-endpoint-for-the-no-locsignalr-hub"></a><span data-ttu-id="cde69-181">서비스 및 SignalR 허브에 대한 엔드포인트 추가</span><span class="sxs-lookup"><span data-stu-id="cde69-181">Add services and an endpoint for the SignalR hub</span></span>
+## <a name="add-services-and-an-endpoint-for-the-no-locsignalr-hub"></a><span data-ttu-id="a22ee-203">서비스 및 SignalR 허브에 대한 엔드포인트 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-203">Add services and an endpoint for the SignalR hub</span></span>
 
-1. <span data-ttu-id="cde69-182">`BlazorSignalRApp.Server` 프로젝트에서 `Startup.cs` 파일을 엽니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-182">In the `BlazorSignalRApp.Server` project, open the `Startup.cs` file.</span></span>
+1. <span data-ttu-id="a22ee-204">`BlazorSignalRApp.Server` 프로젝트에서 `Startup.cs` 파일을 엽니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-204">In the `BlazorSignalRApp.Server` project, open the `Startup.cs` file.</span></span>
 
-1. <span data-ttu-id="cde69-183">`ChatHub` 클래스에 대한 네임스페이스를 파일의 맨 위에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-183">Add the namespace for the `ChatHub` class to the top of the file:</span></span>
+1. <span data-ttu-id="a22ee-205">`ChatHub` 클래스에 대한 네임스페이스를 파일의 맨 위에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-205">Add the namespace for the `ChatHub` class to the top of the file:</span></span>
 
    ```csharp
    using BlazorSignalRApp.Server.Hubs;
    ```
 
-1. <span data-ttu-id="cde69-184">`Startup.ConfigureServices`에 SignalR 및 응답 압축 미들웨어 서비스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-184">Add SignalR and Response Compression Middleware services to `Startup.ConfigureServices`:</span></span>
-
 ::: moniker range=">= aspnetcore-5.0"
+
+1. <span data-ttu-id="a22ee-206">`Startup.ConfigureServices`에 SignalR 및 응답 압축 미들웨어 서비스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-206">Add SignalR and Response Compression Middleware services to `Startup.ConfigureServices`:</span></span>
 
    [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,6-10)]
+   
+1. <span data-ttu-id="a22ee-207">`Startup.Configure`의 경우</span><span class="sxs-lookup"><span data-stu-id="a22ee-207">In `Startup.Configure`:</span></span>
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-5.0"
-
-   [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
-
-::: moniker-end
-
-1. <span data-ttu-id="cde69-185">`Startup.Configure`의 경우</span><span class="sxs-lookup"><span data-stu-id="cde69-185">In `Startup.Configure`:</span></span>
-
-   * <span data-ttu-id="cde69-186">처리 파이프라인 구성의 위쪽에서 응답 압축 미들웨어를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-186">Use Response Compression Middleware at the top of the processing pipeline's configuration.</span></span>
-   * <span data-ttu-id="cde69-187">컨트롤러와 클라이언트 쪽 대체에 대한 엔드포인트 사이에 허브에 대한 엔드포인트를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-187">Between the endpoints for controllers and the client-side fallback, add an endpoint for the hub.</span></span>
-
-::: moniker range=">= aspnetcore-5.0"
+   * <span data-ttu-id="a22ee-208">처리 파이프라인 구성의 위쪽에서 응답 압축 미들웨어를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-208">Use Response Compression Middleware at the top of the processing pipeline's configuration.</span></span>
+   * <span data-ttu-id="a22ee-209">컨트롤러와 클라이언트 쪽 대체에 대한 엔드포인트 사이에 허브에 대한 엔드포인트를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-209">Between the endpoints for controllers and the client-side fallback, add an endpoint for the hub.</span></span>
 
    [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,26)]
 
@@ -265,17 +309,26 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 ::: moniker range="< aspnetcore-5.0"
 
+1. <span data-ttu-id="a22ee-210">`Startup.ConfigureServices`에 SignalR 및 응답 압축 미들웨어 서비스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-210">Add SignalR and Response Compression Middleware services to `Startup.ConfigureServices`:</span></span>
+
+   [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
+   
+1. <span data-ttu-id="a22ee-211">`Startup.Configure`의 경우</span><span class="sxs-lookup"><span data-stu-id="a22ee-211">In `Startup.Configure`:</span></span>
+
+   * <span data-ttu-id="a22ee-212">처리 파이프라인 구성의 위쪽에서 응답 압축 미들웨어를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-212">Use Response Compression Middleware at the top of the processing pipeline's configuration.</span></span>
+   * <span data-ttu-id="a22ee-213">컨트롤러와 클라이언트 쪽 대체에 대한 엔드포인트 사이에 허브에 대한 엔드포인트를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-213">Between the endpoints for controllers and the client-side fallback, add an endpoint for the hub.</span></span>
+
    [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
 
 ::: moniker-end
 
-## <a name="add-no-locrazor-component-code-for-chat"></a><span data-ttu-id="cde69-188">채팅을 위한 Razor 구성 요소 코드 추가</span><span class="sxs-lookup"><span data-stu-id="cde69-188">Add Razor component code for chat</span></span>
+## <a name="add-no-locrazor-component-code-for-chat"></a><span data-ttu-id="a22ee-214">채팅을 위한 Razor 구성 요소 코드 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-214">Add Razor component code for chat</span></span>
 
-1. <span data-ttu-id="cde69-189">`BlazorSignalRApp.Client` 프로젝트에서 `Pages/Index.razor` 파일을 엽니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-189">In the `BlazorSignalRApp.Client` project, open the `Pages/Index.razor` file.</span></span>
-
-1. <span data-ttu-id="cde69-190">태그를 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-190">Replace the markup with the following code:</span></span>
+1. <span data-ttu-id="a22ee-215">`BlazorSignalRApp.Client` 프로젝트에서 `Pages/Index.razor` 파일을 엽니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-215">In the `BlazorSignalRApp.Client` project, open the `Pages/Index.razor` file.</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
+
+1. <span data-ttu-id="a22ee-216">태그를 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-216">Replace the markup with the following code:</span></span>
 
    [!code-razor[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Client/Pages/Index.razor)]
 
@@ -283,31 +336,33 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 ::: moniker range="< aspnetcore-5.0"
 
+1. <span data-ttu-id="a22ee-217">태그를 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-217">Replace the markup with the following code:</span></span>
+
    [!code-razor[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Client/Pages/Index.razor)]
 
 ::: moniker-end
 
-## <a name="run-the-app"></a><span data-ttu-id="cde69-191">앱 실행</span><span class="sxs-lookup"><span data-stu-id="cde69-191">Run the app</span></span>
+## <a name="run-the-app"></a><span data-ttu-id="a22ee-218">앱 실행</span><span class="sxs-lookup"><span data-stu-id="a22ee-218">Run the app</span></span>
 
-1. <span data-ttu-id="cde69-192">선택한 도구의 지침을 따르세요.</span><span class="sxs-lookup"><span data-stu-id="cde69-192">Follow the guidance for your tooling:</span></span>
+<span data-ttu-id="a22ee-219">선택한 도구의 지침을 따르세요.</span><span class="sxs-lookup"><span data-stu-id="a22ee-219">Follow the guidance for your tooling:</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="cde69-193">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cde69-193">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="a22ee-220">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a22ee-220">Visual Studio</span></span>](#tab/visual-studio)
 
-1. <span data-ttu-id="cde69-194">**솔루션 탐색기** 에서 `BlazorSignalRApp.Server` 프로젝트를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-194">In **Solution Explorer**, select the `BlazorSignalRApp.Server` project.</span></span> <span data-ttu-id="cde69-195"><kbd>F5</kbd> 키를 눌러 디버깅이 설정된 상태로 앱을 실행하거나 <kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 디버깅 없이 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-195">Press <kbd>F5</kbd> to run the app with debugging or <kbd>Ctrl</kbd>+<kbd>F5</kbd> to run the app without debugging.</span></span>
+1. <span data-ttu-id="a22ee-221">**솔루션 탐색기** 에서 `BlazorSignalRApp.Server` 프로젝트를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-221">In **Solution Explorer**, select the `BlazorSignalRApp.Server` project.</span></span> <span data-ttu-id="a22ee-222"><kbd>F5</kbd> 키를 눌러 디버깅이 설정된 상태로 앱을 실행하거나 <kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 디버깅 없이 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-222">Press <kbd>F5</kbd> to run the app with debugging or <kbd>Ctrl</kbd>+<kbd>F5</kbd> to run the app without debugging.</span></span>
 
-1. <span data-ttu-id="cde69-196">주소 표시줄에서 URL을 복사하고, 다른 브라우저 인스턴스 또는 탭을 열고, 주소 표시줄에 URL을 붙여넣습니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-196">Copy the URL from the address bar, open another browser instance or tab, and paste the URL in the address bar.</span></span>
+1. <span data-ttu-id="a22ee-223">주소 표시줄에서 URL을 복사하고, 다른 브라우저 인스턴스 또는 탭을 열고, 주소 표시줄에 URL을 붙여넣습니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-223">Copy the URL from the address bar, open another browser instance or tab, and paste the URL in the address bar.</span></span>
 
-1. <span data-ttu-id="cde69-197">브라우저 중 하나를 선택하고, 이름 및 메시지를 입력하고, 메시지를 보내는 단추를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-197">Choose either browser, enter a name and message, and select the button to send the message.</span></span> <span data-ttu-id="cde69-198">이름과 메시지는 두 페이지 모두에 즉시 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-198">The name and message are displayed on both pages instantly:</span></span>
+1. <span data-ttu-id="a22ee-224">브라우저 중 하나를 선택하고, 이름 및 메시지를 입력하고, 메시지를 보내는 단추를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-224">Choose either browser, enter a name and message, and select the button to send the message.</span></span> <span data-ttu-id="a22ee-225">이름과 메시지는 두 페이지 모두에 즉시 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-225">The name and message are displayed on both pages instantly:</span></span>
 
    ![SignalR Blazor WebAssembly 샘플 앱은 오가는 메시지를 표시하는 두 개의 브라우저 창에서 열립니다.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
-   <span data-ttu-id="cde69-200">인용: *스타 트렉 6: 미지의 세계* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span><span class="sxs-lookup"><span data-stu-id="cde69-200">Quotes: *Star Trek VI: The Undiscovered Country* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span></span>
+   <span data-ttu-id="a22ee-227">인용: *스타 트렉 6: 미지의 세계* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span><span class="sxs-lookup"><span data-stu-id="a22ee-227">Quotes: *Star Trek VI: The Undiscovered Country* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span></span>
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="cde69-201">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="cde69-201">Visual Studio Code</span></span>](#tab/visual-studio-code)
-
-1. <span data-ttu-id="cde69-202">서버 앱의 시작 프로필을 만들기 위한 VS Code가 제공되는 경우(`.vscode/launch.json`), `program` 항목은 다음과 유사하게 표시되어 앱의 어셈블리(`{APPLICATION NAME}.Server.dll`)를 가리킵니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-202">When VS Code offers to create a launch profile for the Server app (`.vscode/launch.json`), the `program` entry appears similar to the following to point to the app's assembly (`{APPLICATION NAME}.Server.dll`):</span></span>
+# <a name="visual-studio-code"></a>[<span data-ttu-id="a22ee-228">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="a22ee-228">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 ::: moniker range=">= aspnetcore-5.0"
+
+1. <span data-ttu-id="a22ee-229">서버 앱의 시작 프로필을 만들기 위한 VS Code가 제공되는 경우(`.vscode/launch.json`), `program` 항목은 다음과 유사하게 표시되어 앱의 어셈블리(`{APPLICATION NAME}.Server.dll`)를 가리킵니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-229">When VS Code offers to create a launch profile for the Server app (`.vscode/launch.json`), the `program` entry appears similar to the following to point to the app's assembly (`{APPLICATION NAME}.Server.dll`):</span></span>
 
    ```json
    "program": "${workspaceFolder}/Server/bin/Debug/net5.0/{APPLICATION NAME}.Server.dll"
@@ -317,72 +372,74 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 ::: moniker range="< aspnetcore-5.0"
 
+1. <span data-ttu-id="a22ee-230">서버 앱의 시작 프로필을 만들기 위한 VS Code가 제공되는 경우(`.vscode/launch.json`), `program` 항목은 다음과 유사하게 표시되어 앱의 어셈블리(`{APPLICATION NAME}.Server.dll`)를 가리킵니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-230">When VS Code offers to create a launch profile for the Server app (`.vscode/launch.json`), the `program` entry appears similar to the following to point to the app's assembly (`{APPLICATION NAME}.Server.dll`):</span></span>
+
    ```json
    "program": "${workspaceFolder}/Server/bin/Debug/netcoreapp3.1/{APPLICATION NAME}.Server.dll"
    ```
 
 ::: moniker-end
 
-1. <span data-ttu-id="cde69-203"><kbd>F5</kbd> 키를 눌러 디버깅이 설정된 상태로 앱을 실행하거나 <kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 디버깅 없이 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-203">Press <kbd>F5</kbd> to run the app with debugging or <kbd>Ctrl</kbd>+<kbd>F5</kbd> to run the app without debugging.</span></span>
+1. <span data-ttu-id="a22ee-231"><kbd>F5</kbd> 키를 눌러 디버깅이 설정된 상태로 앱을 실행하거나 <kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 디버깅 없이 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-231">Press <kbd>F5</kbd> to run the app with debugging or <kbd>Ctrl</kbd>+<kbd>F5</kbd> to run the app without debugging.</span></span>
 
-1. <span data-ttu-id="cde69-204">주소 표시줄에서 URL을 복사하고, 다른 브라우저 인스턴스 또는 탭을 열고, 주소 표시줄에 URL을 붙여넣습니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-204">Copy the URL from the address bar, open another browser instance or tab, and paste the URL in the address bar.</span></span>
+1. <span data-ttu-id="a22ee-232">주소 표시줄에서 URL을 복사하고, 다른 브라우저 인스턴스 또는 탭을 열고, 주소 표시줄에 URL을 붙여넣습니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-232">Copy the URL from the address bar, open another browser instance or tab, and paste the URL in the address bar.</span></span>
 
-1. <span data-ttu-id="cde69-205">브라우저 중 하나를 선택하고, 이름 및 메시지를 입력하고, 메시지를 보내는 단추를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-205">Choose either browser, enter a name and message, and select the button to send the message.</span></span> <span data-ttu-id="cde69-206">이름과 메시지는 두 페이지 모두에 즉시 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-206">The name and message are displayed on both pages instantly:</span></span>
-
-   ![SignalR Blazor WebAssembly 샘플 앱은 오가는 메시지를 표시하는 두 개의 브라우저 창에서 열립니다.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
-
-   <span data-ttu-id="cde69-208">인용: *스타 트렉 6: 미지의 세계* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span><span class="sxs-lookup"><span data-stu-id="cde69-208">Quotes: *Star Trek VI: The Undiscovered Country* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span></span>
-
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="cde69-209">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cde69-209">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
-
-1. <span data-ttu-id="cde69-210">**솔루션** 사이드바에서 `BlazorSignalRApp.Server` 프로젝트를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-210">In the **Solution** sidebar, select the `BlazorSignalRApp.Server` project.</span></span> <span data-ttu-id="cde69-211"><kbd>⌘</kbd>+<kbd>↩</kbd>를 눌러 디버깅이 설정된 상태로 앱을 실행하거나 <kbd>⌥</kbd>+<kbd>⌘</kbd>+<kbd>↩</kbd>를 눌러 디버깅 없이 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-211">Press <kbd>⌘</kbd>+<kbd>↩</kbd> to run the app with debugging or <kbd>⌥</kbd>+<kbd>⌘</kbd>+<kbd>↩</kbd> to run the app without debugging.</span></span>
-
-1. <span data-ttu-id="cde69-212">주소 표시줄에서 URL을 복사하고, 다른 브라우저 인스턴스 또는 탭을 열고, 주소 표시줄에 URL을 붙여넣습니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-212">Copy the URL from the address bar, open another browser instance or tab, and paste the URL in the address bar.</span></span>
-
-1. <span data-ttu-id="cde69-213">브라우저 중 하나를 선택하고, 이름 및 메시지를 입력하고, 메시지를 보내는 단추를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-213">Choose either browser, enter a name and message, and select the button to send the message.</span></span> <span data-ttu-id="cde69-214">이름과 메시지는 두 페이지 모두에 즉시 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-214">The name and message are displayed on both pages instantly:</span></span>
+1. <span data-ttu-id="a22ee-233">브라우저 중 하나를 선택하고, 이름 및 메시지를 입력하고, 메시지를 보내는 단추를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-233">Choose either browser, enter a name and message, and select the button to send the message.</span></span> <span data-ttu-id="a22ee-234">이름과 메시지는 두 페이지 모두에 즉시 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-234">The name and message are displayed on both pages instantly:</span></span>
 
    ![SignalR Blazor WebAssembly 샘플 앱은 오가는 메시지를 표시하는 두 개의 브라우저 창에서 열립니다.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
-   <span data-ttu-id="cde69-216">인용: *스타 트렉 6: 미지의 세계* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span><span class="sxs-lookup"><span data-stu-id="cde69-216">Quotes: *Star Trek VI: The Undiscovered Country* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span></span>
+   <span data-ttu-id="a22ee-236">인용: *스타 트렉 6: 미지의 세계* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span><span class="sxs-lookup"><span data-stu-id="a22ee-236">Quotes: *Star Trek VI: The Undiscovered Country* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span></span>
 
-# <a name="net-core-cli"></a>[<span data-ttu-id="cde69-217">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="cde69-217">.NET Core CLI</span></span>](#tab/netcore-cli/)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="a22ee-237">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a22ee-237">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-1. <span data-ttu-id="cde69-218">명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-218">In a command shell, execute the following commands:</span></span>
+1. <span data-ttu-id="a22ee-238">**솔루션** 사이드바에서 `BlazorSignalRApp.Server` 프로젝트를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-238">In the **Solution** sidebar, select the `BlazorSignalRApp.Server` project.</span></span> <span data-ttu-id="a22ee-239"><kbd>⌘</kbd>+<kbd>↩</kbd>를 눌러 디버깅이 설정된 상태로 앱을 실행하거나 <kbd>⌥</kbd>+<kbd>⌘</kbd>+<kbd>↩</kbd>를 눌러 디버깅 없이 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-239">Press <kbd>⌘</kbd>+<kbd>↩</kbd> to run the app with debugging or <kbd>⌥</kbd>+<kbd>⌘</kbd>+<kbd>↩</kbd> to run the app without debugging.</span></span>
+
+1. <span data-ttu-id="a22ee-240">주소 표시줄에서 URL을 복사하고, 다른 브라우저 인스턴스 또는 탭을 열고, 주소 표시줄에 URL을 붙여넣습니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-240">Copy the URL from the address bar, open another browser instance or tab, and paste the URL in the address bar.</span></span>
+
+1. <span data-ttu-id="a22ee-241">브라우저 중 하나를 선택하고, 이름 및 메시지를 입력하고, 메시지를 보내는 단추를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-241">Choose either browser, enter a name and message, and select the button to send the message.</span></span> <span data-ttu-id="a22ee-242">이름과 메시지는 두 페이지 모두에 즉시 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-242">The name and message are displayed on both pages instantly:</span></span>
+
+   ![SignalR Blazor WebAssembly 샘플 앱은 오가는 메시지를 표시하는 두 개의 브라우저 창에서 열립니다.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+
+   <span data-ttu-id="a22ee-244">인용: *스타 트렉 6: 미지의 세계* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span><span class="sxs-lookup"><span data-stu-id="a22ee-244">Quotes: *Star Trek VI: The Undiscovered Country* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span></span>
+
+# <a name="net-core-cli"></a>[<span data-ttu-id="a22ee-245">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="a22ee-245">.NET Core CLI</span></span>](#tab/netcore-cli/)
+
+1. <span data-ttu-id="a22ee-246">명령 셸에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-246">In a command shell, execute the following commands:</span></span>
 
    ```dotnetcli
    cd Server
    dotnet run
    ```
 
-1. <span data-ttu-id="cde69-219">주소 표시줄에서 URL을 복사하고, 다른 브라우저 인스턴스 또는 탭을 열고, 주소 표시줄에 URL을 붙여넣습니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-219">Copy the URL from the address bar, open another browser instance or tab, and paste the URL in the address bar.</span></span>
+1. <span data-ttu-id="a22ee-247">주소 표시줄에서 URL을 복사하고, 다른 브라우저 인스턴스 또는 탭을 열고, 주소 표시줄에 URL을 붙여넣습니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-247">Copy the URL from the address bar, open another browser instance or tab, and paste the URL in the address bar.</span></span>
 
-1. <span data-ttu-id="cde69-220">브라우저 중 하나를 선택하고, 이름 및 메시지를 입력하고, 메시지를 보내는 단추를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-220">Choose either browser, enter a name and message, and select the button to send the message.</span></span> <span data-ttu-id="cde69-221">이름과 메시지는 두 페이지 모두에 즉시 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-221">The name and message are displayed on both pages instantly:</span></span>
+1. <span data-ttu-id="a22ee-248">브라우저 중 하나를 선택하고, 이름 및 메시지를 입력하고, 메시지를 보내는 단추를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-248">Choose either browser, enter a name and message, and select the button to send the message.</span></span> <span data-ttu-id="a22ee-249">이름과 메시지는 두 페이지 모두에 즉시 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-249">The name and message are displayed on both pages instantly:</span></span>
 
    ![SignalR Blazor WebAssembly 샘플 앱은 오가는 메시지를 표시하는 두 개의 브라우저 창에서 열립니다.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
-   <span data-ttu-id="cde69-223">인용: *스타 트렉 6: 미지의 세계* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span><span class="sxs-lookup"><span data-stu-id="cde69-223">Quotes: *Star Trek VI: The Undiscovered Country* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span></span>
+   <span data-ttu-id="a22ee-251">인용: *스타 트렉 6: 미지의 세계* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span><span class="sxs-lookup"><span data-stu-id="a22ee-251">Quotes: *Star Trek VI: The Undiscovered Country* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)</span></span>
 
 ---
 
-## <a name="next-steps"></a><span data-ttu-id="cde69-224">다음 단계</span><span class="sxs-lookup"><span data-stu-id="cde69-224">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="a22ee-252">다음 단계</span><span class="sxs-lookup"><span data-stu-id="a22ee-252">Next steps</span></span>
 
-<span data-ttu-id="cde69-225">본 자습서에서는 다음 작업에 관한 방법을 학습했습니다.</span><span class="sxs-lookup"><span data-stu-id="cde69-225">In this tutorial, you learned how to:</span></span>
+<span data-ttu-id="a22ee-253">본 자습서에서는 다음 작업에 관한 방법을 학습했습니다.</span><span class="sxs-lookup"><span data-stu-id="a22ee-253">In this tutorial, you learned how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="cde69-226">Blazor WebAssembly 호스트된 앱 프로젝트 만들기</span><span class="sxs-lookup"><span data-stu-id="cde69-226">Create a Blazor WebAssembly Hosted app project</span></span>
-> * <span data-ttu-id="cde69-227">SignalR 클라이언트 라이브러리 추가</span><span class="sxs-lookup"><span data-stu-id="cde69-227">Add the SignalR client library</span></span>
-> * <span data-ttu-id="cde69-228">SignalR 허브 추가</span><span class="sxs-lookup"><span data-stu-id="cde69-228">Add a SignalR hub</span></span>
-> * <span data-ttu-id="cde69-229">SignalR 서비스 및 SignalR 허브에 대한 엔드포인트 추가</span><span class="sxs-lookup"><span data-stu-id="cde69-229">Add SignalR services and an endpoint for the SignalR hub</span></span>
-> * <span data-ttu-id="cde69-230">채팅을 위한 Razor 구성 요소 코드 추가</span><span class="sxs-lookup"><span data-stu-id="cde69-230">Add Razor component code for chat</span></span>
+> * <span data-ttu-id="a22ee-254">Blazor WebAssembly 호스트된 앱 프로젝트 만들기</span><span class="sxs-lookup"><span data-stu-id="a22ee-254">Create a Blazor WebAssembly Hosted app project</span></span>
+> * <span data-ttu-id="a22ee-255">SignalR 클라이언트 라이브러리 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-255">Add the SignalR client library</span></span>
+> * <span data-ttu-id="a22ee-256">SignalR 허브 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-256">Add a SignalR hub</span></span>
+> * <span data-ttu-id="a22ee-257">SignalR 서비스 및 SignalR 허브에 대한 엔드포인트 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-257">Add SignalR services and an endpoint for the SignalR hub</span></span>
+> * <span data-ttu-id="a22ee-258">채팅을 위한 Razor 구성 요소 코드 추가</span><span class="sxs-lookup"><span data-stu-id="a22ee-258">Add Razor component code for chat</span></span>
 
-<span data-ttu-id="cde69-231">Blazor 앱 빌드에 대한 자세한 내용은 Blazor 설명서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="cde69-231">To learn more about building Blazor apps, see the Blazor documentation:</span></span>
+<span data-ttu-id="a22ee-259">Blazor 앱 빌드에 대한 자세한 내용은 Blazor 설명서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="a22ee-259">To learn more about building Blazor apps, see the Blazor documentation:</span></span>
 
 > [!div class="nextstepaction"]
-> <span data-ttu-id="cde69-232"><xref:blazor/index>
-> [Identity 서버, WebSocket 및 Server-Sent 이벤트를 사용하는 전달자 토큰 인증](xref:signalr/authn-and-authz#bearer-token-authentication)</span><span class="sxs-lookup"><span data-stu-id="cde69-232"><xref:blazor/index>
+> <span data-ttu-id="a22ee-260"><xref:blazor/index>
+> [Identity 서버, WebSocket 및 Server-Sent 이벤트를 사용하는 전달자 토큰 인증](xref:signalr/authn-and-authz#bearer-token-authentication)</span><span class="sxs-lookup"><span data-stu-id="a22ee-260"><xref:blazor/index>
 [Bearer token authentication with Identity Server, WebSockets, and Server-Sent Events](xref:signalr/authn-and-authz#bearer-token-authentication)</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="cde69-233">추가 자료</span><span class="sxs-lookup"><span data-stu-id="cde69-233">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="a22ee-261">추가 자료</span><span class="sxs-lookup"><span data-stu-id="a22ee-261">Additional resources</span></span>
 
 * <xref:signalr/introduction>
-* [<span data-ttu-id="cde69-234">SignalR 인증에 대한 원본 간 협상</span><span class="sxs-lookup"><span data-stu-id="cde69-234">SignalR cross-origin negotiation for authentication</span></span>](xref:blazor/fundamentals/additional-scenarios#signalr-cross-origin-negotiation-for-authentication)
+* [<span data-ttu-id="a22ee-262">SignalR 인증에 대한 원본 간 협상</span><span class="sxs-lookup"><span data-stu-id="a22ee-262">SignalR cross-origin negotiation for authentication</span></span>](xref:blazor/fundamentals/additional-scenarios#signalr-cross-origin-negotiation-for-authentication)
