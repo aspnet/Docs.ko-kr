@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/graph-api
-ms.openlocfilehash: 128ba34b1e2a9f8cc2986a8f1cb3fb8beba83b21
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: 58c201d6d1172c1ff82521589f988e33d5c984ae
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855393"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854498"
 ---
 # <a name="use-graph-api-with-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly에서 Graph API 사용
 
@@ -107,7 +107,7 @@ internal static class GraphClientExtensions
             var result = await TokenProvider.RequestAccessToken(
                 new AccessTokenRequestOptions()
                 {
-                    Scopes = {STRING ARRAY OF SCOPES}
+                    Scopes = new[] { "{SCOPE 1}", "{SCOPE 2}", ... "{SCOPE X}" }
                 });
 
             if (result.TryGetToken(out var token))
@@ -150,7 +150,7 @@ internal static class GraphClientExtensions
 }
 ```
 
-위 코드의 `{STRING ARRAY OF SCOPES}` 자리 표시자는 허용되는 범위의 문자열 배열입니다. 예를 들어 이 문서의 다음 섹션에 있는 예제의 `User.Read` 범위로 `Scopes`를 설정합니다.
+이전 코드의 범위 자리 표시자 `"{SCOPE 1}", "{SCOPE 2}", ... "{SCOPE X}"`는 하나 이상의 허용된 범위를 나타냅니다. 예를 들어 이 문서의 다음 섹션에 있는 예제의 경우 `User.Read` 범위 하나의 문자열 배열로 `Scopes`를 설정합니다.
 
 ```csharp
 Scopes = new[] { "https://graph.microsoft.com/User.Read" }
@@ -159,10 +159,10 @@ Scopes = new[] { "https://graph.microsoft.com/User.Read" }
 `Program.Main`(`Program.cs`)에서 `AddGraphClient` 확장 메서드를 사용하여 Graph 클라이언트 서비스 및 구성을 추가합니다.
 
 ```csharp
-builder.Services.AddGraphClient({STRING ARRAY OF SCOPES});
+builder.Services.AddGraphClient("{SCOPE 1}", "{SCOPE 2}", ... "{SCOPE X}");
 ```
 
-위 코드의 `{STRING ARRAY OF SCOPES}` 자리 표시자는 허용되는 범위의 문자열 배열입니다. 예를 들어 이 문서의 다음 섹션에 있는 예제의 `AddGraphClient`로 `User.Read` 범위를 전달합니다.
+이전 코드의 범위 자리 표시자 `"{SCOPE 1}", "{SCOPE 2}", ... "{SCOPE X}"`는 하나 이상의 허용된 범위를 나타냅니다. 예를 들어 이 문서의 다음 섹션에 있는 예제의 `AddGraphClient`로 `User.Read` 범위를 전달합니다.
 
 ```csharp
 builder.Services.AddGraphClient("https://graph.microsoft.com/User.Read");

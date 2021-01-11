@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 56ac6635639eed93a84f47fc915c7013c6ed2381
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5c9e1717ad603687343f015826a113e6945e4a41
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052333"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854615"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core에서 Kestrel 웹 서버 구현
 
@@ -531,7 +531,7 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 다음 *appsettings.json* 예제에서
 
 * 잘못된 인증서 사용을 허가하려면 **AllowInvalid** 를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
-* 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert** )는 **인증서** > **기본** 에서 정의된 인증서 또는 개발 인증서로 대체합니다.
+* 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert**)는 **인증서** > **기본** 에서 정의된 인증서 또는 개발 인증서로 대체합니다.
 
 ```json
 {
@@ -919,37 +919,6 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 코드에서 지정한 프로토콜이 구성에서 설정된 값을 재정의합니다.
 
-## <a name="transport-configuration"></a>전송 구성
-
-Libuv를 사용해야 하는 프로젝트의 경우(<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*>):
-
-* [Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv/) 패키지에 대한 종속성을 앱의 프로젝트 파일에 추가합니다.
-
-   ```xml
-   <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv"
-                     Version="{VERSION}" />
-   ```
-
-* `IWebHostBuilder`에서 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*> 호출:
-
-   ```csharp
-   public class Program
-   {
-       public static void Main(string[] args)
-       {
-           CreateHostBuilder(args).Build().Run();
-       }
-
-       public static IHostBuilder CreateHostBuilder(string[] args) =>
-           Host.CreateDefaultBuilder(args)
-               .ConfigureWebHostDefaults(webBuilder =>
-               {
-                   webBuilder.UseLibuv();
-                   webBuilder.UseStartup<Startup>();
-               });
-   }
-   ```
-
 ### <a name="url-prefixes"></a>URL 접두사
 
 `UseUrls`, `--urls` 명령줄 인수, `urls` 호스트 구성 키 또는 `ASPNETCORE_URLS` 환경 변수를 사용하는 경우 URL 접두사는 다음 형식 중 하나일 수 있습니다.
@@ -1004,7 +973,7 @@ Kestrel은 `http://example.com:5000`과 같은 접두사에 따라 구성을 지
 
 호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json* /*appsettings.\<EnvironmentName>.json* 에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
 
-*appsettings.json* :
+*appsettings.json*:
 
 ```json
 {
@@ -1016,6 +985,49 @@ Kestrel은 `http://example.com:5000`과 같은 접두사에 따라 구성을 지
 > [전달된 헤더 미들웨어](xref:host-and-deploy/proxy-load-balancer)에는 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.AllowedHosts> 옵션도 있습니다. 전달된 헤더 미들웨어 및 호스트 필터링 미들웨어는 다양한 시나리오에 대해 유사한 기능을 제공합니다. 전달된 헤더 미들웨어를 사용하여 `AllowedHosts`를 설정하는 작업은 역방향 프록시 서버 또는 부하 분산 장치를 사용하여 요청을 전달하는 동안 `Host` 헤더가 유지되지 않는 경우에 적합합니다. 호스트 필터링 미들웨어를 사용하여 `AllowedHosts`를 설정하는 작업은 Kestrel을 공용 에지 서버로 사용하는 경우 또는 `Host` 헤더를 직접 전달하는 경우에 적합합니다.
 >
 > 전달된 헤더 미들웨어에 대한 자세한 내용은 <xref:host-and-deploy/proxy-load-balancer>를 참조하세요.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+## <a name="libuv-transport-configuration"></a>Libuv 전송 구성
+
+ASP.NET Core 5.0 기준으로 Kestrel의 Libuv 전송은 사용되지 않습니다. Libuv 전송은 Windows ARM64와 같은 새로운 OS 플랫폼을 지원하는 업데이트를 수신하지 않으며, 이후 릴리스에서 제거될 예정입니다. 사용되지 않는 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv%2A> 메서드에 대한 모든 호출을 제거하고 대신 Kestrel의 기본 소켓 전송을 사용하세요.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
+
+## <a name="libuv-transport-configuration"></a>Libuv 전송 구성
+
+Libuv를 사용해야 하는 프로젝트의 경우(<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv%2A>):
+
+* 앱의 프로젝트 파일에 [`Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv`](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv) 패키지에 대한 종속성을 추가합니다.
+
+  ```xml
+  <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv"
+                    Version="{VERSION}" />
+  ```
+
+* `IWebHostBuilder`에서 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv%2A> 호출:
+
+  ```csharp
+  public class Program
+  {
+      public static void Main(string[] args)
+      {
+          CreateHostBuilder(args).Build().Run();
+      }
+
+      public static IHostBuilder CreateHostBuilder(string[] args) =>
+          Host.CreateDefaultBuilder(args)
+              .ConfigureWebHostDefaults(webBuilder =>
+              {
+                  webBuilder.UseLibuv();
+                  webBuilder.UseStartup<Startup>();
+              });
+  }
+  ```
 
 ::: moniker-end
 
@@ -1519,7 +1531,7 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 다음 *appsettings.json* 예제에서
 
 * 잘못된 인증서 사용을 허가하려면 **AllowInvalid** 를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
-* 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert** )는 **인증서** > **기본** 에서 정의된 인증서 또는 개발 인증서로 대체합니다.
+* 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert**)는 **인증서** > **기본** 에서 정의된 인증서 또는 개발 인증서로 대체합니다.
 
 ```json
 {
@@ -1868,7 +1880,7 @@ private class TlsFilterAdapter : IConnectionAdapter
 
 코드에서 지정한 프로토콜이 구성에서 설정된 값을 재정의합니다.
 
-## <a name="transport-configuration"></a>전송 구성
+## <a name="libuv-transport-configuration"></a>Libuv 전송 구성
 
 ASP.NET Core 2.1 릴리스에서 Kestrel의 기본 전송은 더 이상 Libuv에 기반하지 않으며 대신 관리 소켓에 기반합니다. <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*>를 호출하고 다음 패키지 중 하나를 사용하는 2.1로 업그레이드된 ASP.NET Core 2.0 앱의 주요 변경 내용입니다.
 
@@ -1955,7 +1967,7 @@ Kestrel은 `http://example.com:5000`과 같은 접두사에 따라 구성을 지
 
 호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json* /*appsettings.\<EnvironmentName>.json* 에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
 
-*appsettings.json* :
+*appsettings.json*:
 
 ```json
 {
@@ -2383,7 +2395,7 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 다음 *appsettings.json* 예제에서
 
 * 잘못된 인증서 사용을 허가하려면 **AllowInvalid** 를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
-* 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert** )는 **인증서** > **기본** 에서 정의된 인증서 또는 개발 인증서로 대체합니다.
+* 인증서를 지정하지 않는 모든 HTTPS 엔드포인트(다음 예제에서 **HttpsDefaultCert**)는 **인증서** > **기본** 에서 정의된 인증서 또는 개발 인증서로 대체합니다.
 
 ```json
 {
@@ -2658,7 +2670,7 @@ Listening on the following addresses: http://127.0.0.1:48508
 
 IIS를 사용하는 경우 IIS 재정의 바인딩에 대한 URL 바인딩은 `Listen` 또는 `UseUrls`에 의해 설정됩니다. 자세한 내용은 [ASP.NET Core 모듈](xref:host-and-deploy/aspnet-core-module) 항목을 참조하세요.
 
-## <a name="transport-configuration"></a>전송 구성
+## <a name="libuv-transport-configuration"></a>Libuv 전송 구성
 
 ASP.NET Core 2.1 릴리스에서 Kestrel의 기본 전송은 더 이상 Libuv에 기반하지 않으며 대신 관리 소켓에 기반합니다. <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*>를 호출하고 다음 패키지 중 하나를 사용하는 2.1로 업그레이드된 ASP.NET Core 2.0 앱의 주요 변경 내용입니다.
 
@@ -2745,7 +2757,7 @@ Kestrel은 `http://example.com:5000`과 같은 접두사에 따라 구성을 지
 
 호스트 필터링 미들웨어는 기본적으로 비활성화됩니다. 미들웨어를 활성화하려면 *appsettings.json* /*appsettings.\<EnvironmentName>.json* 에서 `AllowedHosts` 키를 정의합니다. 값은 포트 번호 없이 세미콜론으로 구분된 호스트 이름 목록입니다.
 
-*appsettings.json* :
+*appsettings.json*:
 
 ```json
 {

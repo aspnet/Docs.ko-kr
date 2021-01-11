@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: 259b5bf9bf2a6de987494b5771897355e3ea67db
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: d264aaee7889ec1c8ee0fe6b1f52ccc4cf355745
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93057315"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854628"
 ---
 # <a name="transform-webconfig"></a>web.config 변환
 
@@ -118,7 +118,7 @@ dotnet publish --configuration Release /p:PublishProfile=FolderProfile
 
 *web.config* 변환이 필요한 각 [환경](xref:fundamentals/environments)에 사용할 *web.{ENVIRONMENT}.config* 파일을 포함합니다.
 
-다음 예제에서는 환경별 환경 변수가 프로덕션 환경에 대한 *web.Production.config* 에서 설정됩니다.
+다음 예제에서는 환경별 환경 변수가 프로덕션 환경의 *web.Production.config* 에서 설정됩니다.
 
 ```xml
 <?xml version="1.0"?>

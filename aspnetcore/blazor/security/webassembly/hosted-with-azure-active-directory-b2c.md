@@ -5,7 +5,7 @@ description: Azure Active Directory B2C를 사용하여 ASP.NET Core Blazor WebA
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/02/2020
+ms.date: 12/26/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: 8727fa52acbcf59549c326bd5106e5dfe23c36be
-ms.sourcegitcommit: fe2e3174c34bee1e425c6e52dd8f663fe52b8756
+ms.openlocfilehash: dac2203d63b2d924ee6ae4f7012e9c33739e6213
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174319"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97792071"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Azure Active Directory B2C를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호
 
@@ -36,13 +36,13 @@ ms.locfileid: "96174319"
 
 ### <a name="create-a-tenant"></a>테넌트 만들기
 
-[자습서: Azure Active Directory B2C 테넌트 만들기](/azure/active-directory-b2c/tutorial-create-tenant)의 지침에 따라 AAD B2C 테넌트를 만듭니다.
+[자습서: Azure Active Directory B2C 테넌트 만들기](/azure/active-directory-b2c/tutorial-create-tenant)의 지침에 따라 AAD B2C 테넌트를 만듭니다. 사용할 테넌트를 만들거나 식별한 직후 이 문서로 돌아옵니다.
 
 AAD B2C 인스턴스를 기록해 둡니다(예: 후행 슬래시를 포함하는 `https://contoso.b2clogin.com/`). 이 인스턴스는 Azure B2C 앱 등록의 스키마 및 호스트로, Azure Portal의 **앱 등록** 페이지에서 **엔드포인트** 창을 열어 찾을 수 있습니다.
 
 ### <a name="register-a-server-api-app"></a>서버 API 앱 등록
 
-[자습서: Azure Active Directory B2C에서 애플리케이션 등록](/azure/active-directory-b2c/tutorial-register-applications)의 지침에 따라 ‘서버 API 앱’에 대해 AAD 앱을 등록하고 다음을 수행합니다.
+서버 API 앱을 위한 AAD B2C 앱을 등록합니다.
 
 1. **Azure Active Directory** > **앱 등록** 에서 **새 등록** 을 선택합니다.
 1. 앱의 **이름** 을 지정합니다(예: **Blazor Server AAD B2C**).
@@ -73,7 +73,7 @@ AAD B2C 인스턴스를 기록해 둡니다(예: 후행 슬래시를 포함하�
 
 ### <a name="register-a-client-app"></a>클라이언트 앱 등록
 
-다시 한번 [자습서: Azure Active Directory B2C에서 애플리케이션 등록](/azure/active-directory-b2c/tutorial-register-applications)의 지침에 따라 *`Client`* 앱에 대해 AAD 앱을 등록하고 다음을 수행합니다.
+클라이언트 앱을 위한 AAD B2C 앱을 등록합니다.
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -171,6 +171,24 @@ dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" 
 
 ### <a name="authentication-package"></a>인증 패키지
 
+::: moniker range=">= aspnetcore-5.0"
+
+Microsoft Identity 플랫폼을 통한 ASP.NET Core Web API에 대한 호출의 권한 부여 및 인증 지원은 다음 패키지에서 제공합니다.
+
+* [`Microsoft.Identity.Web`](https://www.nuget.org/packages/Microsoft.Identity.Web)
+* [`Microsoft.Identity.Web.UI`](https://www.nuget.org/packages/Microsoft.Identity.Web.UI)
+
+```xml
+<PackageReference Include="Microsoft.Identity.Web" Version="{VERSION}" />
+<PackageReference Include="Microsoft.Identity.Web.UI" Version="{VERSION}" />
+```
+
+자리 표시자 `{VERSION}`의 경우 앱의 공유 프레임워크 버전과 일치하는 안정적인 최신 버전의 패키지를 NuGet.org의 패키지 **버전 기록** 에서 찾을 수 있습니다.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 ASP.NET Core Web API에 대한 호출의 인증 및 권한 부여 지원은 [`Microsoft.AspNetCore.Authentication.AzureADB2C.UI`](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.AzureADB2C.UI) 패키지에서 제공합니다.
 
 ```xml
@@ -180,7 +198,22 @@ ASP.NET Core Web API에 대한 호출의 인증 및 권한 부여 지원은 [`Mi
 
 자리 표시자 `{VERSION}`의 경우 애플리케이션의 공유 프레임워크 버전과 일치하는 안정적인 최신 버전의 패키지를 [NuGet.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.AzureAD.UI)의 패키지 **버전 기록** 에서 찾을 수 있습니다.
 
+::: moniker-end
+
 ### <a name="authentication-service-support"></a>인증 서비스 지원
+
+::: moniker range=">= aspnetcore-5.0"
+
+`AddAuthentication` 메서드는 앱 내에서 인증 서비스를 설정하고 JWT 전달자 처리기를 기본 인증 메서드로 구성합니다. <xref:Microsoft.Identity.Web.MicrosoftIdentityWebApiAuthenticationBuilderExtensions.AddMicrosoftIdentityWebApi%2A> 메서드는 Microsoft Identity 플랫폼 v2.0을 사용하여 웹 API를 보호하도록 서비스를 구성합니다. 이 메서드에는 인증 옵션을 초기화하는 데 필요한 설정을 포함하는 앱 구성의 `AzureAdB2C` 섹션이 필요합니다.
+
+```csharp
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAdB2C"));
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 `AddAuthentication` 메서드는 앱 내에서 인증 서비스를 설정하고 JWT 전달자 처리기를 기본 인증 메서드로 구성합니다. <xref:Microsoft.AspNetCore.Authentication.AzureADB2CAuthenticationBuilderExtensions.AddAzureADB2CBearer%2A> 메서드는 JWT 전달자 처리기에서 Azure Active Directory B2C에서 내보낸 토큰의 유효성을 검사하는 데 필요한 특정 매개 변수를 설정합니다.
 
@@ -188,6 +221,8 @@ ASP.NET Core Web API에 대한 호출의 인증 및 권한 부여 지원은 [`Mi
 services.AddAuthentication(AzureADB2CDefaults.BearerAuthenticationScheme)
     .AddAzureADB2CBearer(options => Configuration.Bind("AzureAdB2C", options));
 ```
+
+::: moniker-end
 
 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication%2A> 및 <xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization%2A>은 다음을 수행합니다.
 
@@ -203,19 +238,41 @@ app.UseAuthorization();
 
 기본적으로 `User.Identity.Name`은 채워지지 않습니다.
 
-앱이 `name` 클레임 유형으로부터 값을 받도록 구성하려면 `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>의 <xref:Microsoft.IdentityModel.Tokens.TokenValidationParameters.NameClaimType?displayProperty=nameWithType>을 구성합니다.
+`name` 클레임 유형에서 값을 받도록 앱을 구성하려면 다음을 수행합니다.
 
-```csharp
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+* <xref:Microsoft.AspNetCore.Authentication.JwtBearer?displayProperty=fullName>의 네임스페이스를 `Startup.cs`에 추가합니다.
 
-...
+  ```csharp
+  using Microsoft.AspNetCore.Authentication.JwtBearer;
+  ```
 
-services.Configure<JwtBearerOptions>(
-    AzureADB2CDefaults.JwtBearerAuthenticationScheme, options =>
-    {
-        options.TokenValidationParameters.NameClaimType = "name";
-    });
-```
+::: moniker range=">= aspnetcore-5.0"
+
+* `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>의 <xref:Microsoft.IdentityModel.Tokens.TokenValidationParameters.NameClaimType?displayProperty=nameWithType>을 구성합니다.
+
+  ```csharp
+  services.Configure<JwtBearerOptions>(
+      JwtBearerDefaults.AuthenticationScheme, options =>
+      {
+          options.TokenValidationParameters.NameClaimType = "name";
+      });
+  ```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+* `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>의 <xref:Microsoft.IdentityModel.Tokens.TokenValidationParameters.NameClaimType?displayProperty=nameWithType>을 구성합니다.
+
+  ```csharp
+  services.Configure<JwtBearerOptions>(
+      AzureADB2CDefaults.JwtBearerAuthenticationScheme, options =>
+      {
+          options.TokenValidationParameters.NameClaimType = "name";
+      });
+  ```
+
+::: moniker-end
 
 ### <a name="app-settings"></a>앱 설정
 
@@ -395,37 +452,37 @@ options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 
 ### <a name="login-mode"></a>로그인 모드
 
-[!INCLUDE[](~/includes/blazor-security/msal-login-mode.md)]
+[!INCLUDE[](~/blazor/includes/security/msal-login-mode.md)]
 
 ::: moniker-end
 
 ### <a name="imports-file"></a>Imports 파일
 
-[!INCLUDE[](~/includes/blazor-security/imports-file-hosted.md)]
+[!INCLUDE[](~/blazor/includes/security/imports-file-hosted.md)]
 
 ### <a name="index-page"></a>인덱스 페이지
 
-[!INCLUDE[](~/includes/blazor-security/index-page-msal.md)]
+[!INCLUDE[](~/blazor/includes/security/index-page-msal.md)]
 
 ### <a name="app-component"></a>App 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/app-component.md)]
+[!INCLUDE[](~/blazor/includes/security/app-component.md)]
 
 ### <a name="redirecttologin-component"></a>RedirectToLogin 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/redirecttologin-component.md)]
+[!INCLUDE[](~/blazor/includes/security/redirecttologin-component.md)]
 
 ### <a name="logindisplay-component"></a>LoginDisplay 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/logindisplay-component.md)]
+[!INCLUDE[](~/blazor/includes/security/logindisplay-component.md)]
 
 ### <a name="authentication-component"></a>Authentication 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/authentication-component.md)]
+[!INCLUDE[](~/blazor/includes/security/authentication-component.md)]
 
 ### <a name="fetchdata-component"></a>FetchData 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/fetchdata-component.md)]
+[!INCLUDE[](~/blazor/includes/security/fetchdata-component.md)]
 
 ## <a name="run-the-app"></a>앱 실행
 
@@ -435,12 +492,12 @@ options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 * **솔루션 탐색기** 에서 서버 프로젝트를 선택하고 도구 모음에서 **실행** 단추를 선택하거나 **디버그** 메뉴에서 앱을 시작합니다.
 
 <!-- HOLD
-[!INCLUDE[](~/includes/blazor-security/usermanager-signinmanager.md)]
+[!INCLUDE[](~/blazor/includes/security/usermanager-signinmanager.md)]
 -->
 
-[!INCLUDE[](~/includes/blazor-security/wasm-aad-b2c-userflows.md)]
+[!INCLUDE[](~/blazor/includes/security/wasm-aad-b2c-userflows.md)]
 
-[!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
+[!INCLUDE[](~/blazor/includes/security/troubleshoot.md)]
 
 ## <a name="additional-resources"></a>추가 자료
 
@@ -448,4 +505,5 @@ options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 * [보안 기본 클라이언트가 있는 앱의 인증되지 않거나 권한이 부여되지 않은 웹 API 요청](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:security/authentication/azure-ad-b2c>
 * [자습서: Azure Active Directory B2C 테넌트 만들기](/azure/active-directory-b2c/tutorial-create-tenant)
+* [자습서: Azure Active Directory B2C에서 애플리케이션 등록](/azure/active-directory-b2c/tutorial-register-applications)
 * [Microsoft ID 플랫폼 설명서](/azure/active-directory/develop/)

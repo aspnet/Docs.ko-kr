@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/error-handling
-ms.openlocfilehash: c8174c7e253a596d02dbc6cec183453b3723bc24
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ad9920ccd830b93d083f3c5ede03702164842b6e
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060471"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97753116"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>ASP.NET Core에서 오류 처리
 
@@ -66,7 +66,7 @@ _ 스택 추적
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=5-9)]
 
-Razor Pages 앱 템플릿은 *Pages* 폴더에 오류 페이지( *.cshtml* ) 및 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 클래스(`ErrorModel`)를 제공합니다. MVC 앱의 프로젝트 템플릿에는 홈 컨트롤러에 대한 `Error` 작업 메서드와 오류 보기가 포함됩니다.
+Razor Pages 앱 템플릿은 *Pages* 폴더에 오류 페이지( *.cshtml*) 및 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 클래스(`ErrorModel`)를 제공합니다. MVC 앱의 프로젝트 템플릿에는 홈 컨트롤러에 대한 `Error` 작업 메서드와 오류 보기가 포함됩니다.
 
 오류 처리기 작업 메서드를 `HttpGet`와 같은 HTTP 메서드 특성을 사용하여 표시하지 마세요. 명시적 동사는 일부 요청이 작업 메서드에 도달하지 못하도록 합니다. 인증되지 않은 사용자에게 오류 보기를 표시해야 하는 경우 메서드에 대한 익명 액세스를 허용합니다.
 
@@ -108,15 +108,9 @@ In the preceding code, `await context.Response.WriteAsync(new string(' ', 512));
 
 ## <a name="usestatuscodepages"></a>UseStatusCodePages
 
-기본적으로 ASP.NET Core 앱은 ‘404 - 찾을 수 없음’과 같은 HTTP 오류 상태 코드에 대한 상태 코드 페이지를 제공하지 않습니다. 앱에서 본문이 없는 HTTP 400-499 오류 상태가 발생하면 상태 코드와 빈 응답 본문을 반환합니다. 상태 코드 페이지를 제공하려면 상태 코드 페이지 미들웨어를 사용합니다. 일반적인 오류 상태 코드에 대해 기본 텍스트 전용 처리기를 사용하려면 `Startup.Configure` 메서드에서 <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages%2A>를 호출합니다.
+기본적으로 ASP.NET Core 앱은 ‘404 - 찾을 수 없음’과 같은 HTTP 오류 상태 코드에 대한 상태 코드 페이지를 제공하지 않습니다. 앱에서 본문이 없는 HTTP 400-599 오류 상태 코드가 발생하면 상태 코드와 빈 응답 본문이 반환됩니다. 상태 코드 페이지를 제공하려면 상태 코드 페이지 미들웨어를 사용합니다. 일반적인 오류 상태 코드에 대해 기본 텍스트 전용 처리기를 사용하려면 `Startup.Configure` 메서드에서 <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages%2A>를 호출합니다.
 
 [!code-csharp[](error-handling/samples/5.x/ErrorHandlingSample/StartupUseStatusCodePages.cs?name=snippet&highlight=13)]
-
-<!-- Review: 
-When you comment out // UseExceptionHandler("/Error");`
-you get a browser dependant error, not the codepage as I expected.
-call /index/2 -> return StatusCode(500); -> you get the codepage 
--->
 
 요청 처리 미들웨어보다 먼저 `UseStatusCodePages`를 호출합니다. 예를 들어 정적 파일 미들웨어 및 엔드포인트 미들웨어보다 먼저 `UseStatusCodePages`를 호출합니다.
 
@@ -133,6 +127,9 @@ Status Code: 404; Not Found
 * 환경을 프로덕션으로 설정합니다.
 * *Program.cs* 의 `webBuilder.UseStartup<StartupUseStatusCodePages>();`에서 주석을 제거합니다.
 * 홈페이지에서 링크를 선택합니다.
+
+> [!NOTE]
+> 상태 코드 페이지 미들웨어는 예외를 catch하지 **않습니다**. 사용자 지정 오류 처리 페이지를 제공하려면 [예외 처리기 페이지](#exception-handler-page)를 사용하세요.
 
 ### <a name="usestatuscodepages-with-format-string"></a>형식 문자열을 사용하는 UseStatusCodePages
 
@@ -314,7 +311,7 @@ MVC 앱에서는 예외 필터를 전역으로 구성하거나 컨트롤러별 �
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=5-9)]
 
-Razor Pages 앱 템플릿은 *Pages* 폴더에 오류 페이지( *.cshtml* ) 및 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 클래스(`ErrorModel`)를 제공합니다. MVC 앱의 프로젝트 템플릿에는 홈 컨트롤러에 대한 오류 작업 메서드와 오류 보기가 포함됩니다.
+Razor Pages 앱 템플릿은 *Pages* 폴더에 오류 페이지( *.cshtml*) 및 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 클래스(`ErrorModel`)를 제공합니다. MVC 앱의 프로젝트 템플릿에는 홈 컨트롤러에 대한 오류 작업 메서드와 오류 보기가 포함됩니다.
 
 오류 처리기 작업 메서드를 `HttpGet`와 같은 HTTP 메서드 특성을 사용하여 표시하지 마세요. 명시적 동사는 일부 요청이 메서드에 도달하지 못하게 방해합니다. 인증되지 않은 사용자에게 오류 보기를 표시해야 하는 경우 메서드에 대한 익명 액세스를 허용합니다.
 

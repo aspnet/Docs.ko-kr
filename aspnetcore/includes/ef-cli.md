@@ -1,4 +1,4 @@
-`dotnet ef`가 설치 되지 않은 경우 전역 도구로 설치 합니다.
+`dotnet ef`가 설치되지 않은 경우 전역 도구로 설치합니다.
 
 ```dotnetcli
   dotnet tool install --global dotnet-ef

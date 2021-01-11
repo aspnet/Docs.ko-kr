@@ -4,7 +4,7 @@ author: jamesnk
 description: .NET gRPC 클라이언트를 사용하여 gRPC 서비스를 호출하는 방법을 알아봅니다.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 07/27/2020
+ms.date: 12/18/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/client
-ms.openlocfilehash: 9322020083ce25b00b2979633ae8a692cfd4da4a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 39f9b3fde19e31ca970668552e5829308705f513
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060965"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97699140"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>.NET 클라이언트를 사용하여 gRPC 서비스 호출
 
@@ -43,7 +43,7 @@ var channel = GrpcChannel.ForAddress("https://localhost:5001");
 var client = new Greet.GreeterClient(channel);
 ```
 
-채널은 gRPC 서비스에 대한 장기 연결을 나타냅니다. 채널이 생성되면 서비스 호출과 관련된 옵션을 사용하여 구성합니다. 예를 들어 호출, 최대 전송 및 수신 메시지 크기, 로깅을 수행하는 데 사용되는 `HttpClient`를 `GrpcChannelOptions`에서 지정하고 `GrpcChannel.ForAddress`와 함께 사용할 수 있습니다. 전체 옵션 목록은 [클라이언트 구성 옵션](xref:grpc/configuration#configure-client-options)을 참조하세요.
+채널은 gRPC 서비스에 대한 장기 연결을 나타냅니다. 채널은 생성될 때 서비스 호출과 관련된 옵션으로 구성됩니다. 예를 들어 호출, 최대 전송 및 수신 메시지 크기, 로깅을 수행하는 데 사용되는 `HttpClient`를 `GrpcChannelOptions`에서 지정하고 `GrpcChannel.ForAddress`와 함께 사용할 수 있습니다. 전체 옵션 목록은 [클라이언트 구성 옵션](xref:grpc/configuration#configure-client-options)을 참조하세요.
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");
@@ -201,11 +201,33 @@ await readTask;
 
 양방향 스트리밍 호출 중에 클라이언트와 서비스는 언제든지 서로에게 메시지를 보낼 수 있습니다. 양방향 호출과 상호 작용하는 데 가장 적합한 클라이언트 논리는 서비스 논리에 따라 다릅니다.
 
+## <a name="access-grpc-headers"></a>gRPC 헤더 액세스
+
+gRPC 호출은 응답 헤더를 반환합니다. HTTP 응답 헤더는 반환된 메시지와 관련이 없는 호출에 대한 이름/값 메타데이터를 전달합니다.
+
+메타데이터의 컬렉션을 반환하는 `ResponseHeadersAsync`를 사용하여 헤더에 액세스할 수 있습니다. 헤더는 일반적으로 응답 메시지와 함께 반환되므로 대기해야 합니다.
+
+```csharp
+var client = new Greet.GreeterClient(channel);
+using var call = client.SayHelloAsync(new HelloRequest { Name = "World" });
+
+var headers = await call.ResponseHeadersAsync;
+var myValue = headers.GetValue("my-trailer-name");
+
+var response = await call.ResponseAsync;
+```
+
+`ResponseHeadersAsync` 사용:
+
+* 헤더 컬렉션을 가져오려면 `ResponseHeadersAsync`의 결과를 대기해야 합니다.
+* `ResponseAsync`(또는 스트리밍하는 경우 응답 스트림) 전에는 액세스할 필요가 없습니다. 응답이 반환된 후 `ResponseHeadersAsync`가 헤더를 즉시 반환합니다.
+* 연결 또는 서버 오류가 발생하고 gRPC 호출에 대해 헤더가 반환되지 않은 경우 예외를 throw합니다.
+
 ## <a name="access-grpc-trailers"></a>gRPC 트레일러 액세스
 
-gRPC 호출은 gRPC 트레일러를 반환할 수 있습니다. gRPC 트레일러는 호출에 대한 이름/값 메타데이터를 제공하는 데 사용됩니다. 트레일러는 HTTP 헤더와 유사한 기능을 제공하지만 호출이 끝날 때 수신됩니다.
+gRPC 호출은 응답 트레일러를 반환할 수 있습니다. 트레일러는 호출에 대한 이름/값 메타데이터를 제공하는 데 사용됩니다. 트레일러는 HTTP 헤더와 유사한 기능을 제공하지만 호출이 끝날 때 수신됩니다.
 
-gRPC 트레일러는 메타데이터의 컬렉션을 반환하는 `GetTrailers()`를 사용하여 액세스할 수 있습니다. 응답이 완료된 후 트레일러가 반환되므로 모든 응답 메시지를 대기한 이후에 트레일러에 액세스해야 합니다.
+메타데이터의 컬렉션을 반환하는 `GetTrailers()`를 사용하여 트레일러에 액세스할 수 있습니다. 트레일러는 응답이 완료된 후 반환됩니다. 따라서 트레일러에 액세스하기 전에 모든 응답 메시지를 대기해야 합니다.
 
 단항 및 클라이언트 스트리밍 호출은 `GetTrailers()`를 호출하기 전에 `ResponseAsync`를 대기해야 합니다.
 
@@ -237,7 +259,7 @@ var trailers = call.GetTrailers();
 var myValue = trailers.GetValue("my-trailer-name");
 ```
 
-`RpcException`에서도 gRPC 트레일러에 액세스할 수 있습니다. 서비스에서 비정상 gRPC 상태와 함께 트레일러를 반환할 수 있습니다. 이 경우에는 gRPC 클라이언트에서 throw된 예외에서 트레일러가 검색됩니다.
+`RpcException`에서도 트레일러에 액세스할 수 있습니다. 서비스에서 비정상 gRPC 상태와 함께 트레일러를 반환할 수 있습니다. 이 경우에는 gRPC 클라이언트에서 throw된 예외에서 트레일러가 검색됩니다.
 
 ```csharp
 var client = new Greet.GreeterClient(channel);

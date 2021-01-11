@@ -5,7 +5,7 @@ description: Blazor 앱이 구성 요소에 서비스를 주입할 수 있는 �
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/11/2020
+ms.date: 12/19/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/dependency-injection
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: af6b645fc3c398414c85c78e1cfeb213e538c2a6
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: 3f2b4eff5422acbec80b2fd9b801101271cc3f75
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506801"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97808727"
 ---
 # <a name="aspnet-core-no-locblazor-dependency-injection"></a>ASP.NET Core Blazor 종속성 주입
 
@@ -106,7 +106,7 @@ DI 시스템은 ASP.NET Core에서 DI 시스템을 기준으로 합니다. 자�
 
 ## <a name="request-a-service-in-a-component"></a>구성 요소에서 서비스 요청
 
-서비스 컬렉션에 서비스를 추가한 후에는 [\@inject](xref:mvc/views/razor#inject) Razor 지시문을 사용하여 서비스를 구성 요소에 주입합니다. [`@inject`](xref:mvc/views/razor#inject)에는 다음 두 개의 매개 변수가 사용됩니다.
+서비스 컬렉션에 서비스를 추가한 후에는 다음 두 개의 매개 변수를 포함하는 [`@inject`](xref:mvc/views/razor#inject) Razor 지시문을 사용하여 서비스를 구성 요소에 주입합니다.
 
 * 유형: 주입할 서비스의 유형입니다.
 * 속성: 주입된 앱 서비스를 받는 속성의 이름입니다. 이 속성은 수동으로 만들 필요가 없습니다. 컴파일러에서 속성을 만들기 때문입니다.
@@ -192,8 +192,6 @@ Blazor 앱에서 서비스 수명을 제한하는 방법은 <xref:Microsoft.AspN
 
 자세한 내용은 <xref:blazor/blazor-server-ef-core>를 참조하세요.
 
-::: moniker range="< aspnetcore-5.0"
-
 ## <a name="detect-transient-disposables"></a>임시 삭제 가능 항목 검색
 
 다음 예제에서는 <xref:Microsoft.AspNetCore.Components.OwningComponentBase>를 사용해야 하는 앱에서 삭제 가능한 임시 서비스를 검색하는 방법을 보여 줍니다. 자세한 내용은 [DI 범위를 관리하는 유틸리티 기본 구성 요소 클래스](#utility-base-component-classes-to-manage-a-di-scope) 섹션을 참조하세요.
@@ -206,17 +204,17 @@ Blazor 앱에서 서비스 수명을 제한하는 방법은 <xref:Microsoft.AspN
 
 다음 예제에서 `TransientDisposable`이 검색되었습니다(`Program.cs`).
 
-<!-- moniker range=">= aspnetcore-5.0"
+::: moniker range=">= aspnetcore-5.0"
 
 [!code-csharp[](dependency-injection/samples_snapshot/5.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-wasm-program.cs?highlight=6,9,17,22-25)]
 
-moniker-end 
+::: moniker-end 
 
-moniker range="< aspnetcore-5.0" -->
+::: moniker range="< aspnetcore-5.0"
 
 [!code-csharp[](dependency-injection/samples_snapshot/3.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-wasm-program.cs?highlight=6,9,17,22-25)]
 
-<!-- moniker-end -->
+::: moniker-end
 
 ::: zone-end
 
@@ -242,7 +240,20 @@ using Microsoft.Extensions.DependencyInjection;
 
 ::: zone-end
 
-::: moniker-end
+앱은 예외를 throw하지 않고 삭제 가능한 임시 서비스를 등록할 수 있습니다. 그러나 다음 예제에 나와 있는 것처럼 삭제 가능한 임시 서비스를 확인하려는 경우 <xref:System.InvalidOperationException>이 발생합니다.
+
+`Pages/TransientDisposable.razor`:
+
+```razor
+@page "/transient-disposable"
+@inject TransientDisposable TransientDisposable
+
+<h1>Transient Disposable Detection</h1>
+```
+
+`/transient-disposable`에 있는 `TransientDisposable` 구성 요소로 이동하면 프레임워크가 `TransientDisposable`의 인스턴스를 생성하려고 할 때 <xref:System.InvalidOperationException>이 throw됩니다.
+
+> System.InvalidOperationException: 잘못된 범위에서 삭제 가능한 임시 서비스 TransientDisposable을 확인하려고 합니다. 확인하려는 서비스 'T'에 'OwningComponentBase\<T>' 구성 요소 기본 클래스를 사용합니다.
 
 ## <a name="additional-resources"></a>추가 자료
 

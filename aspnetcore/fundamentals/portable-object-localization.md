@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 2e28ebaf1962ebd834c43f1cfbc28929b1937c40
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f9c0ecd32f0e5c05782c2db76eff92bb64845db7
+ms.sourcegitcommit: 53e01d6e9b70a18a05618f0011cf115a16633c21
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053724"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97878401"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>ASP.NET Core에서 이식 가능 개체 지역화 구성
 
@@ -38,7 +38,7 @@ ms.locfileid: "93053724"
 
 ## <a name="what-is-a-po-file"></a>PO 파일이란?
 
-PO 파일은 지정된 언어에 대한 번역된 문자열을 포함하는 텍스트 파일로 배포됩니다. *.resx* 파일 대신 PO 파일을 사용하는 몇 가지 이점은 다음을 포함합니다.
+PO 파일은 지정된 언어에 대한 번역된 문자열을 포함하는 텍스트 파일로 배포됩니다. *.resx* 파일 대신 PO 파일을 사용하면 다음과 같은 몇 가지 이점이 있습니다.
 - PO 파일은 복수화를 지원합니다. *.resx* 파일은 복수화를 지원하지 않습니다.
 - PO 파일은 *.resx* 파일처럼 컴파일되지 않습니다. 이와 같이 특수화된 도구 및 빌드 단계는 필요하지 않습니다.
 - PO 파일은 공동 온라인 편집 도구와 함께 잘 작동합니다.

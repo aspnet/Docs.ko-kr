@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: 14eda03419e22538e17b7b4d6fa697d61cb384c8
-ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
+ms.openlocfilehash: 679f14642f4a611a5e65a7f472c68663fc1fb16b
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343711"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97764711"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Azure Active Directory B2C를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
 
@@ -32,19 +32,19 @@ ms.locfileid: "93343711"
 
 이 문서에서는 인증을 위해 [Azure Active Directory(AAD) B2C](/azure/active-directory-b2c/overview)를 사용하는 [독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만드는 방법을 다룹니다.
 
-[AAD B2C 테넌트 만들기(Azure 설명서)](/azure/active-directory-b2c/tutorial-create-tenant) 문서에 따라 테넌트를 만들거나 Azure Portal에서 앱이 사용할 기존 B2C 테넌트를 식별하세요.
+[AAD B2C 테넌트 만들기(Azure 설명서)](/azure/active-directory-b2c/tutorial-create-tenant) 문서에 따라 테넌트를 만들거나 Azure Portal에서 앱이 사용할 기존 B2C 테넌트를 식별하세요. 사용할 테넌트를 만들거나 식별한 직후 이 문서로 돌아옵니다.
 
 다음과 같은 정보를 기록해 둡니다.
 
 * AAD B2C 인스턴스(예: 후행 슬래시를 포함하는 `https://contoso.b2clogin.com/`): 이 인스턴스는 Azure B2C 앱 등록의 스키마 및 호스트로, Azure Portal의 **앱 등록** 페이지에서 **엔드포인트** 창을 열어 찾을 수 있습니다.
 * AAD B2C 주/게시자/테넌트 도메인(예: `contoso.onmicrosoft.com`): 도메인은 Azure Portal에서 등록된 앱의 **브랜딩** 블레이드에 **게시자 도메인** 으로 표시되어 있습니다.
 
-AAD B2C 앱을 등록합니다(Azure 설명서: [자습서: Azure Active Directory B2C에서 애플리케이션 등록](/azure/active-directory-b2c/tutorial-register-applications)의 관련 지침).
+AAD B2C 앱을 등록합니다.
 
 ::: moniker range=">= aspnetcore-5.0"
 
 1. **Azure Active Directory** > **앱 등록** 에서 **새 등록** 을 선택합니다.
-1. 앱의 **이름** 을 지정합니다(예: **Blazor 독립 실행형 AAD B2C** ).
+1. 앱의 **이름** 을 지정합니다(예: **Blazor 독립 실행형 AAD B2C**).
 1. **지원되는 계정 유형** 으로 다중 테넌트 옵션 **조직 디렉터리 또는 ID 공급자의 계정. Azure AD B2C를 사용하여 사용자 인증** 을 선택합니다.
 1. **리디렉션 URI** 드롭다운은 **SPA(단일 페이지 애플리케이션)** 으로 설정하고 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다. Kestrel에서 실행되는 앱의 기본 포트는 5001입니다. 앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다. IIS Express의 경우, 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 앱 속성에서 확인할 수 있습니다. 이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요. 이 항목의 뒷부분에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.
 1. **권한** > **openid 및 offline_access 권한에 대한 관리자 동의 허용** 이 선택되었는지 확인합니다.
@@ -64,7 +64,7 @@ AAD B2C 앱을 등록합니다(Azure 설명서: [자습서: Azure Active Directo
 ::: moniker range="< aspnetcore-5.0"
 
 1. **Azure Active Directory** > **앱 등록** 에서 **새 등록** 을 선택합니다.
-1. 앱의 **이름** 을 지정합니다(예: **Blazor 독립 실행형 AAD B2C** ).
+1. 앱의 **이름** 을 지정합니다(예: **Blazor 독립 실행형 AAD B2C**).
 1. **지원되는 계정 유형** 으로 다중 테넌트 옵션 **조직 디렉터리 또는 ID 공급자의 계정. Azure AD B2C를 사용하여 사용자 인증** 을 선택합니다.
 1. **리디렉션 URI** 드롭다운은 **웹** 으로 설정된 상태로 두고, 리디렉션 URI를 `https://localhost:{PORT}/authentication/login-callback`으로 지정합니다. Kestrel에서 실행되는 앱의 기본 포트는 5001입니다. 앱이 다른 Kestrel 포트에서 실행되는 경우 해당 앱의 포트를 사용합니다. IIS Express의 경우, 앱에 대해 임의로 생성되는 포트를 **디버그** 패널의 앱 속성에서 확인할 수 있습니다. 이 시점에는 앱이 존재하지 않고 IIS Express 포트가 알려지지 않았으므로 앱이 만들어진 후에 이 단계로 돌아와서 리디렉션 URI를 업데이트하세요. 이 항목의 뒷부분에서 IIS Express 사용자에게 리디렉션 URI를 업데이트하라고 알려 주는 설명이 표시됩니다.
 1. **권한** > **openid 및 offline_access 권한에 대한 관리자 동의 허용** 이 선택되었는지 확인합니다.
@@ -114,7 +114,7 @@ dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" 
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[!INCLUDE[](~/includes/blazor-security/additional-scopes-standalone-nonAAD.md)]
+[!INCLUDE[](~/blazor/includes/security/additional-scopes-standalone-nonAAD.md)]
 
 ::: moniker-end
 
@@ -206,37 +206,37 @@ options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 
 ## <a name="login-mode"></a>로그인 모드
 
-[!INCLUDE[](~/includes/blazor-security/msal-login-mode.md)]
+[!INCLUDE[](~/blazor/includes/security/msal-login-mode.md)]
 
 ::: moniker-end
 
 ## <a name="imports-file"></a>Imports 파일
 
-[!INCLUDE[](~/includes/blazor-security/imports-file-standalone.md)]
+[!INCLUDE[](~/blazor/includes/security/imports-file-standalone.md)]
 
 ## <a name="index-page"></a>인덱스 페이지
 
-[!INCLUDE[](~/includes/blazor-security/index-page-msal.md)]
+[!INCLUDE[](~/blazor/includes/security/index-page-msal.md)]
 
 ## <a name="app-component"></a>App 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/app-component.md)]
+[!INCLUDE[](~/blazor/includes/security/app-component.md)]
 
 ## <a name="redirecttologin-component"></a>RedirectToLogin 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/redirecttologin-component.md)]
+[!INCLUDE[](~/blazor/includes/security/redirecttologin-component.md)]
 
 ## <a name="logindisplay-component"></a>LoginDisplay 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/logindisplay-component.md)]
+[!INCLUDE[](~/blazor/includes/security/logindisplay-component.md)]
 
 ## <a name="authentication-component"></a>Authentication 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/authentication-component.md)]
+[!INCLUDE[](~/blazor/includes/security/authentication-component.md)]
 
-[!INCLUDE[](~/includes/blazor-security/wasm-aad-b2c-userflows.md)]
+[!INCLUDE[](~/blazor/includes/security/wasm-aad-b2c-userflows.md)]
 
-[!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
+[!INCLUDE[](~/blazor/includes/security/troubleshoot.md)]
 
 ## <a name="additional-resources"></a>추가 자료
 
@@ -244,4 +244,5 @@ options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 * [보안 기본 클라이언트가 있는 앱의 인증되지 않거나 권한이 부여되지 않은 웹 API 요청](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:security/authentication/azure-ad-b2c>
 * [자습서: Azure Active Directory B2C 테넌트 만들기](/azure/active-directory-b2c/tutorial-create-tenant)
+* [자습서: Azure Active Directory B2C에서 애플리케이션 등록](/azure/active-directory-b2c/tutorial-register-applications)
 * [Microsoft ID 플랫폼 설명서](/azure/active-directory/develop/)

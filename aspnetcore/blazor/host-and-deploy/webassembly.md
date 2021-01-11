@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 5983cbc1e0256f7cf8e85fb07f9ba1bbc1bf08db
-ms.sourcegitcommit: c321518bfe367280ef262aecaada287f17fe1bc5
+ms.openlocfilehash: 55289dd7048c08ac61432c7cc062e74d2e69ee24
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97011873"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97753129"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core 호스트 및 배포 Blazor WebAssembly
 
@@ -135,9 +135,17 @@ Azure App Service 배포에 대한 자세한 내용은 <xref:tutorials/publish-t
 
 ### <a name="app-configuration"></a>앱 구성
 
-여러 Blazor WebAssembly 앱을 제공하도록 호스트된 Blazor 솔루션을 구성하려면 다음을 수행합니다.
+호스트된 Blazor 솔루션은 여러 Blazor WebAssembly 앱을 제공할 수 있습니다.
 
-* 호스트된 기존 Blazor 솔루션을 사용하거나 Blazor 호스트 프로젝트 템플릿에서 새 솔루션을 만듭니다.
+> [!NOTE]
+> 이 섹션의 예제는 Visual Studio  솔루션 사용을 참조하지만 호스트된 Blazor WebAssembly 앱 시나리오에서 여러 클라이언트 앱이 작동하기 위해 Visual Studio 및 Visual Studio 솔루션을 사용하지 않아도 됩니다. Visual Studio를 사용하지 않는 경우 `{SOLUTION NAME}.sln` 파일 및 Visual Studio용으로 만든 다른 파일을 무시하세요.
+
+다음 예제에서는
+
+* 초기(첫 번째) 클라이언트 앱은 Blazor WebAssembly 프로젝트 템플릿에서 만든 솔루션의 기본 클라이언트 프로젝트입니다. 첫 번째 클라이언트 앱은 포트가 5001이거나 호스트가 `firstapp.com`인 URL `/FirstApp`에서 브라우저로 액세스할 수 있습니다.
+* 두 번째 클라이언트 앱은 `SecondBlazorApp.Client` 솔루션에 추가됩니다. 두 번째 클라이언트 앱은 포트가 5002이거나 호스트가 `secondapp.com`인 URL `/SecondApp`에서 브라우저로 액세스할 수 있습니다.
+
+호스트된 기존 Blazor 솔루션을 사용하거나 Blazor 호스트 프로젝트 템플릿에서 새 솔루션을 만듭니다.
 
 * 클라이언트 앱의 프로젝트 파일에서 값이 `FirstApp`인 `<PropertyGroup>`에 `<StaticWebAssetBasePath>` 속성을 추가하여 프로젝트의 정적 자산에 대한 기본 경로를 설정합니다.
 
@@ -150,9 +158,19 @@ Azure App Service 배포에 대한 자세한 내용은 <xref:tutorials/publish-t
 
 * 두 번째 클라이언트 앱을 솔루션에 추가합니다.
 
-  * `SecondClient`라는 폴더를 솔루션의 폴더에 추가합니다.
+  * `SecondClient`라는 폴더를 솔루션의 폴더에 추가합니다. 프로젝트 템플릿에서 만든 솔루션 폴더에는 `SecondClient` 폴더 추가 후 다음 솔루션 파일 및 폴더가 포함됩니다.
+  
+    * `Client`(폴더)
+    * `SecondClient`(폴더)
+    * `Server`(폴더)
+    * `Shared`(폴더)
+    * `{SOLUTION NAME}.sln`(파일)
+    
+    자리 표시자 `{SOLUTION NAME}`은 솔루션의 이름입니다.
+
   * Blazor WebAssembly 프로젝트 템플릿의 `SecondClient` 폴더에 `SecondBlazorApp.Client`라는 Blazor WebAssembly 앱을 만듭니다.
-  * 앱의 프로젝트 파일에서:
+
+  * `SecondBlazorApp.Client` 앱의 프로젝트 파일에서 다음을 수행합니다.
 
     * `SecondApp` 값을 사용하여 `<PropertyGroup>`에 `<StaticWebAssetBasePath>` 속성을 추가합니다.
 
@@ -173,14 +191,17 @@ Azure App Service 배포에 대한 자세한 내용은 <xref:tutorials/publish-t
 
       자리 표시자 `{SOLUTION NAME}`은 솔루션의 이름입니다.
 
-* 서버 앱의 프로젝트 파일에서 추가된 클라이언트 앱에 대한 프로젝트 참조를 만듭니다.
+* 서버 앱의 프로젝트 파일에서 추가된 `SecondBlazorApp.Client` 클라이언트 앱에 대한 프로젝트 참조를 만듭니다.
 
   ```xml
   <ItemGroup>
-    ...
+    <ProjectReference Include="..\Client\{SOLUTION NAME}.Client.csproj" />
     <ProjectReference Include="..\SecondClient\SecondBlazorApp.Client.csproj" />
+    <ProjectReference Include="..\Shared\{SOLUTION NAME}.Shared.csproj" />
   </ItemGroup>
   ```
+  
+  자리 표시자 `{SOLUTION NAME}`은 솔루션의 이름입니다.
 
 * 서버 앱의 `Properties/launchSettings.json` 파일에서 포트 5001 및 5002의 클라이언트 앱에 액세스하도록 Kestrel 프로필(`{SOLUTION NAME}.Server`)의 `applicationUrl`을 구성합니다.
 

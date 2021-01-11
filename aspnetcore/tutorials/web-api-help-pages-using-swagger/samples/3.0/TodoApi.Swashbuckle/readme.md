@@ -11,10 +11,10 @@ products:
 - vs-mac
 urlFragment: getstarted-swashbuckle-aspnetcore
 ms.openlocfilehash: e02247325f430b0ce23dbb3f5bc344a60a1a164a
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "78647589"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 및 ASP.NET Core 시작
@@ -132,7 +132,7 @@ XML 주석은 다음 방법으로 사용하도록 설정할 수 있습니다.
 
 #### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **<project_name>.csproj 편집**을 선택합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **<project_name>.csproj 편집** 을 선택합니다.
 * 강조 표시된 줄을 *.csproj* 파일에 수동으로 추가합니다.
 
 ```xml
@@ -144,7 +144,7 @@ XML 주석은 다음 방법으로 사용하도록 설정할 수 있습니다.
 
 #### <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* *Solution Pad*에서 **control** 키를 누르고 프로젝트 이름을 클릭합니다. **도구** > **파일 편집**으로 이동합니다.
+* *Solution Pad* 에서 **control** 키를 누르고 프로젝트 이름을 클릭합니다. **도구** > **파일 편집** 으로 이동합니다.
 * 강조 표시된 줄을 *.csproj* 파일에 수동으로 추가합니다.
 
 ```xml
@@ -241,7 +241,7 @@ public void ConfigureServices(IServiceCollection services)
 
 이전 코드에서 [리플렉션](/dotnet/csharp/programming-guide/concepts/reflection)은 웹 API 프로젝트의 이름과 일치하는 XML 파일 이름을 빌드하는 데 사용됩니다. [AppContext.BaseDirectory](/dotnet/api/system.appcontext.basedirectory) 속성은 XML 파일에 대한 경로를 생성하는 데 사용됩니다. 일부 Swagger 기능(예: 각 특성에서 입력 매개 변수 또는 HTTP 메서드와 응답 코드의 schemata)은 XML 문서 파일을 사용하지 않고 작동합니다. 대부분 기능, 메서드 요약 및 매개 변수/응답 코드 설명의 경우 XML 파일을 사용해야 합니다.
 
-작업에 3중 슬래시 주석을 추가하면 섹션 헤더에 설명이 추가되어 Swagger UI가 향상됩니다. `Delete` 작업 위에 [\<요약>](/dotnet/csharp/programming-guide/xmldoc/summary) 요소를 추가합니다.
+작업에 3중 슬래시 주석을 추가하면 섹션 헤더에 설명이 추가되어 Swagger UI가 향상됩니다. `Delete` 작업 위에 [\<summary>](/dotnet/csharp/programming-guide/xmldoc/summary) 요소를 추가합니다.
 
 ```csharp
 /// <summary>
@@ -296,7 +296,7 @@ UI는 생성된 JSON 스키마에 의해 구동됩니다.
     }
 }
 ```
-[\<설명>](/dotnet/csharp/programming-guide/xmldoc/remarks) 요소를 `Create` 작업 메서드 문서에 추가합니다. 이는 `<summary>` 요소에 지정된 정보를 보충하고 더 강력한 Swagger UI를 제공합니다. `<remarks>` 요소 콘텐츠는 텍스트, JSON 또는 XML로 구성될 수 있습니다.
+[\<remarks>](/dotnet/csharp/programming-guide/xmldoc/remarks) 요소를 `Create` 작업 메서드 문서에 추가합니다. 이는 `<summary>` 요소에 지정된 정보를 보충하고 더 강력한 Swagger UI를 제공합니다. `<remarks>` 요소 콘텐츠는 텍스트, JSON 또는 XML로 구성될 수 있습니다.
 
 ```csharp
 /// <summary>
@@ -383,7 +383,7 @@ namespace TodoApi.Models
 },
 ```
 
-API 컨트롤러에 `[Produces("application/json")]` 특성을 추가합니다. 이 특성은 컨트롤러 동작이 *application/json*의 응답 콘텐츠 형식을 지원함을 선언하는 데 사용됩니다.
+API 컨트롤러에 `[Produces("application/json")]` 특성을 추가합니다. 이 특성은 컨트롤러 동작이 *application/json* 의 응답 콘텐츠 형식을 지원함을 선언하는 데 사용됩니다.
 
 ```csharp
 [Produces("application/json")]

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 89aeb20d5566447ff86581dfa1d7946d20b9ed2d
-ms.sourcegitcommit: 94c8cc1a8ce2bdba0ebdd9d37c155bf42d3cc62b
+ms.openlocfilehash: b2f58fb29e451628aead4ad35c7272a1409cf3d8
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96473718"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97797355"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-a-hosted-no-locblazor-webassembly-app"></a>호스트된 Blazor WebAssembly 앱을 활용하여 ASP.NET Core SignalR 사용
 
@@ -212,6 +212,60 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 ---
 
+::: moniker range="< aspnetcore-5.0"
+
+## <a name="add-the-systemtextencodingsweb-package"></a>System.Text.Encodings.Web 패키지 추가
+
+ASP.NET Core 3.1 앱에서 [`System.Text.Json`](https://www.nuget.org/packages/System.Text.Json) 5.0.0을 사용하는 경우 패키지 확인 문제로 인해 `BlazorSignalRApp.Server` 프로젝트에 [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web)에 대한 패키지 참조가 필요합니다. 기본 문제는 .NET 5의 이후 패치 릴리스에서 해결될 예정입니다. 자세한 내용은 [System.Text.Json defines netcoreapp3.0 with no dependencies (dotnet/runtime #45560)](https://github.com/dotnet/runtime/issues/45560)를 참조하세요.
+
+ASP.NET Core 3.1 호스트 Blazor 솔루션의 `BlazorSignalRApp.Server` 프로젝트에 [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web)을 추가하려면 선택한 도구의 지침을 따르세요.
+
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
+
+1. **솔루션 탐색기** 에서 `BlazorSignalRApp.Server` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다.
+
+1. **NuGet 패키지 관리** 대화 상자에서 **패키지 원본** 이 `nuget.org`로 설정되어 있는지 확인합니다.
+
+1. **찾아보기** 를 선택하고 검색 상자에 `System.Text.Encodings.Web`를 입력합니다.
+
+1. 검색 결과에서 [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web) 패키지를 선택하고 **설치** 를 선택합니다.
+
+1. **변경 내용 미리 보기** 대화 상자가 표시되면 **확인** 을 선택합니다.
+
+1. **라이선스 승인** 대화 상자가 나타나면 사용 조건에 동의하는 경우 **동의함** 을 선택합니다.
+
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
+
+**통합 터미널**(도구 모음에서 **보기** > **터미널**)에서 다음 명령을 실행합니다.
+
+```dotnetcli
+dotnet add Server package System.Text.Encodings.Web
+```
+
+# <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
+
+1. **솔루션** 사이드바에서 `BlazorSignalRApp.Server` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리** 를 선택합니다.
+
+1. **NuGet 패키지 관리** 대화 상자에서 원본 드롭다운이 `nuget.org`로 설정되어 있는지 확인합니다.
+
+1. **찾아보기** 를 선택하고 검색 상자에 `System.Text.Encodings.Web`를 입력합니다.
+
+1. 검색 결과에서 [`System.Text.Encodings.Web`](https://www.nuget.org/packages/System.Text.Encodings.Web) 패키지 옆의 확인란을 선택하고 **패키지 추가** 를 선택합니다.
+
+1. **라이선스 승인** 대화 상자가 나타나면 사용 조건에 동의하는 경우 **동의함** 을 선택합니다.
+
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+
+명령 셸에서 다음 명령을 실행합니다.
+
+```dotnetcli
+dotnet add Server package System.Text.Encodings.Web
+```
+
+---
+
+::: moniker-end
+
 ## <a name="add-a-no-locsignalr-hub"></a>SignalR 허브 추가
 
 `BlazorSignalRApp.Server` 프로젝트에서 `Hubs`(복수형) 폴더를 만들고 다음 `ChatHub` 클래스(`Hubs/ChatHub.cs`)를 추가합니다.
@@ -238,32 +292,31 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
    using BlazorSignalRApp.Server.Hubs;
    ```
 
-1. `Startup.ConfigureServices`에 SignalR 및 응답 압축 미들웨어 서비스를 추가합니다.
-
 ::: moniker range=">= aspnetcore-5.0"
 
+1. `Startup.ConfigureServices`에 SignalR 및 응답 압축 미들웨어 서비스를 추가합니다.
+
    [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,6-10)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-5.0"
-
-   [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
-
-::: moniker-end
-
+   
 1. `Startup.Configure`의 경우
 
    * 처리 파이프라인 구성의 위쪽에서 응답 압축 미들웨어를 사용합니다.
    * 컨트롤러와 클라이언트 쪽 대체에 대한 엔드포인트 사이에 허브에 대한 엔드포인트를 추가합니다.
-
-::: moniker range=">= aspnetcore-5.0"
 
    [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,26)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
+
+1. `Startup.ConfigureServices`에 SignalR 및 응답 압축 미들웨어 서비스를 추가합니다.
+
+   [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
+   
+1. `Startup.Configure`의 경우
+
+   * 처리 파이프라인 구성의 위쪽에서 응답 압축 미들웨어를 사용합니다.
+   * 컨트롤러와 클라이언트 쪽 대체에 대한 엔드포인트 사이에 허브에 대한 엔드포인트를 추가합니다.
 
    [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
 
@@ -273,9 +326,9 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. `BlazorSignalRApp.Client` 프로젝트에서 `Pages/Index.razor` 파일을 엽니다.
 
-1. 태그를 다음 코드로 바꿉니다.
-
 ::: moniker range=">= aspnetcore-5.0"
+
+1. 태그를 다음 코드로 바꿉니다.
 
    [!code-razor[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Client/Pages/Index.razor)]
 
@@ -283,13 +336,15 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 ::: moniker range="< aspnetcore-5.0"
 
+1. 태그를 다음 코드로 바꿉니다.
+
    [!code-razor[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Client/Pages/Index.razor)]
 
 ::: moniker-end
 
 ## <a name="run-the-app"></a>앱 실행
 
-1. 선택한 도구의 지침을 따르세요.
+선택한 도구의 지침을 따르세요.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -305,9 +360,9 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-1. 서버 앱의 시작 프로필을 만들기 위한 VS Code가 제공되는 경우(`.vscode/launch.json`), `program` 항목은 다음과 유사하게 표시되어 앱의 어셈블리(`{APPLICATION NAME}.Server.dll`)를 가리킵니다.
-
 ::: moniker range=">= aspnetcore-5.0"
+
+1. 서버 앱의 시작 프로필을 만들기 위한 VS Code가 제공되는 경우(`.vscode/launch.json`), `program` 항목은 다음과 유사하게 표시되어 앱의 어셈블리(`{APPLICATION NAME}.Server.dll`)를 가리킵니다.
 
    ```json
    "program": "${workspaceFolder}/Server/bin/Debug/net5.0/{APPLICATION NAME}.Server.dll"
@@ -316,6 +371,8 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
+
+1. 서버 앱의 시작 프로필을 만들기 위한 VS Code가 제공되는 경우(`.vscode/launch.json`), `program` 항목은 다음과 유사하게 표시되어 앱의 어셈블리(`{APPLICATION NAME}.Server.dll`)를 가리킵니다.
 
    ```json
    "program": "${workspaceFolder}/Server/bin/Debug/netcoreapp3.1/{APPLICATION NAME}.Server.dll"

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: b23e4814daaabbe2c8660d49cc5b6940a9cc3b4f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 920a23aee0d0555e93c829142700709d5881afd2
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056168"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97753098"
 ---
 # <a name="aspnet-core-no-locblazor-component-virtualization"></a>ASP.NET Core Blazor 구성 요소 가상화
 
@@ -89,7 +89,9 @@ Blazor 프레임워크의 기본 제공 가상화 지원을 사용하여 구성 
 </Virtualize>
 ```
 
-항목 공급자는 `ItemsProviderRequest`를 수신하고 필요한 항목 수를 특정 시작 인덱스에서 시작하여 지정합니다. 그런 다음 항목 공급자는 데이터베이스나 다른 서비스에서 요청된 항목을 검색하여 총 항목 수와 함께 `ItemsProviderResult<TItem>`으로 반환합니다. 항목 공급자는 각 요청으로 항목을 검색하거나 캐시하여 쉽게 사용 가능하도록 할 수 있습니다. 항목 공급자를 사용하고 동일한 `Virtualize` 구성 요소에 대한 `Items`에 컬렉션을 할당하려고 하지 마세요.
+항목 공급자는 `ItemsProviderRequest`를 수신하고 필요한 항목 수를 특정 시작 인덱스에서 시작하여 지정합니다. 그런 다음 항목 공급자는 데이터베이스나 다른 서비스에서 요청된 항목을 검색하여 총 항목 수와 함께 `ItemsProviderResult<TItem>`으로 반환합니다. 항목 공급자는 각 요청으로 항목을 검색하거나 캐시하여 쉽게 사용 가능하도록 할 수 있습니다.
+
+`Virtualize` 구성 요소는 매개 변수에서 **한 항목 원본** 만 허용할 수 있으므로 항목 공급자를 동시에 사용하여 컬렉션을 `Items`에 할당하려 하지 마세요. 둘 다 할당되면 런타임에 구성 요소의 매개 변수가 설정될 때 <xref:System.InvalidOperationException>이 throw됩니다.
 
 다음 예제에서는 `EmployeeService`에서 직원을 로드합니다.
 

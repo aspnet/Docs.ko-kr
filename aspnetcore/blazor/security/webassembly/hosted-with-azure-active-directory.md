@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: 0542e7556b82c22a8844f4d1f4b2ba852a420246
-ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
+ms.openlocfilehash: e65be6e2ddc1a9de6f0ba20fe50f63b650e0bff5
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025071"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97792045"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>Azure Active Directory를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호
 
@@ -51,7 +51,7 @@ ms.locfileid: "96025071"
 
 ### <a name="register-a-server-api-app"></a>서버 API 앱 등록
 
-[빠른 시작: Microsoft ID 플랫폼에 애플리케이션 등록](/azure/active-directory/develop/quickstart-register-app) 및 후속 Azure AAD 항목의 지침에 따라 ‘서버 API 앱’에 대해 AAD 앱을 등록하고 다음을 수행합니다.
+서버 API 앱을 위한 AAD 앱을 등록합니다.
 
 1. **Azure Active Directory** > **앱 등록** 에서 **새 등록** 을 선택합니다.
 1. 앱의 **이름** 을 지정합니다(예: **Blazor Server AAD**).
@@ -85,7 +85,7 @@ ms.locfileid: "96025071"
 
 ### <a name="register-a-client-app"></a>클라이언트 앱 등록
 
-[빠른 시작: Microsoft ID 플랫폼에 애플리케이션 등록](/azure/active-directory/develop/quickstart-register-app) 및 후속 Azure AAD 항목의 지침에 따라 *`Client`* 앱에 대해 AAD 앱을 등록하고 다음을 수행합니다.
+클라이언트 앱을 위한 AAD 앱을 등록합니다.
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -253,19 +253,41 @@ app.UseAuthorization();
 
 기본적으로 *`Server`* 앱 API는 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` 클레임 유형의 값을 사용하여 `User.Identity.Name`을 채웁니다(예: `2d64b3da-d9d5-42c6-9352-53d8df33d770@contoso.onmicrosoft.com`).
 
-앱이 `name` 클레임 유형으로부터 값을 받도록 구성하려면 `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>의 <xref:Microsoft.IdentityModel.Tokens.TokenValidationParameters.NameClaimType?displayProperty=nameWithType>을 구성합니다.
+`name` 클레임 유형에서 값을 받도록 앱을 구성하려면 다음을 수행합니다.
 
-```csharp
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+* <xref:Microsoft.AspNetCore.Authentication.JwtBearer?displayProperty=fullName>의 네임스페이스를 `Startup.cs`에 추가합니다.
 
-...
+  ```csharp
+  using Microsoft.AspNetCore.Authentication.JwtBearer;
+  ```
 
-services.Configure<JwtBearerOptions>(
-    AzureADDefaults.JwtBearerAuthenticationScheme, options =>
-    {
-        options.TokenValidationParameters.NameClaimType = "name";
-    });
-```
+::: moniker range=">= aspnetcore-5.0"
+
+* `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>의 <xref:Microsoft.IdentityModel.Tokens.TokenValidationParameters.NameClaimType?displayProperty=nameWithType>을 구성합니다.
+
+  ```csharp
+  services.Configure<JwtBearerOptions>(
+      JwtBearerDefaults.AuthenticationScheme, options =>
+      {
+          options.TokenValidationParameters.NameClaimType = "name";
+      });
+  ```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+* `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>의 <xref:Microsoft.IdentityModel.Tokens.TokenValidationParameters.NameClaimType?displayProperty=nameWithType>을 구성합니다.
+
+  ```csharp
+  services.Configure<JwtBearerOptions>(
+      AzureADDefaults.JwtBearerAuthenticationScheme, options =>
+      {
+          options.TokenValidationParameters.NameClaimType = "name";
+      });
+  ```
+
+::: moniker-end
 
 ### <a name="app-settings"></a>앱 설정
 
@@ -299,7 +321,7 @@ services.Configure<JwtBearerOptions>(
 }
 ```
 
-[!INCLUDE[](~/includes/blazor-security/azure-scope-5x.md)]
+[!INCLUDE[](~/blazor/includes/security/azure-scope-5x.md)]
 
 ::: moniker-end
 
@@ -476,7 +498,7 @@ options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 
 ::: moniker range="< aspnetcore-5.0"
 
-[!INCLUDE[](~/includes/blazor-security/azure-scope-3x.md)]
+[!INCLUDE[](~/blazor/includes/security/azure-scope-3x.md)]
 
 ::: moniker-end
 
@@ -489,37 +511,37 @@ options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 
 ### <a name="login-mode"></a>로그인 모드
 
-[!INCLUDE[](~/includes/blazor-security/msal-login-mode.md)]
+[!INCLUDE[](~/blazor/includes/security/msal-login-mode.md)]
 
 ::: moniker-end
 
 ### <a name="imports-file"></a>Imports 파일
 
-[!INCLUDE[](~/includes/blazor-security/imports-file-hosted.md)]
+[!INCLUDE[](~/blazor/includes/security/imports-file-hosted.md)]
 
 ### <a name="index-page"></a>인덱스 페이지
 
-[!INCLUDE[](~/includes/blazor-security/index-page-msal.md)]
+[!INCLUDE[](~/blazor/includes/security/index-page-msal.md)]
 
 ### <a name="app-component"></a>App 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/app-component.md)]
+[!INCLUDE[](~/blazor/includes/security/app-component.md)]
 
 ### <a name="redirecttologin-component"></a>RedirectToLogin 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/redirecttologin-component.md)]
+[!INCLUDE[](~/blazor/includes/security/redirecttologin-component.md)]
 
 ### <a name="logindisplay-component"></a>LoginDisplay 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/logindisplay-component.md)]
+[!INCLUDE[](~/blazor/includes/security/logindisplay-component.md)]
 
 ### <a name="authentication-component"></a>Authentication 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/authentication-component.md)]
+[!INCLUDE[](~/blazor/includes/security/authentication-component.md)]
 
 ### <a name="fetchdata-component"></a>FetchData 구성 요소
 
-[!INCLUDE[](~/includes/blazor-security/fetchdata-component.md)]
+[!INCLUDE[](~/blazor/includes/security/fetchdata-component.md)]
 
 ## <a name="run-the-app"></a>앱 실행
 
@@ -529,10 +551,10 @@ options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 * **솔루션 탐색기** 에서 서버 프로젝트를 선택하고 도구 모음에서 **실행** 단추를 선택하거나 **디버그** 메뉴에서 앱을 시작합니다.
 
 <!-- HOLD
-[!INCLUDE[](~/includes/blazor-security/usermanager-signinmanager.md)]
+[!INCLUDE[](~/blazor/includes/security/usermanager-signinmanager.md)]
 -->
 
-[!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
+[!INCLUDE[](~/blazor/includes/security/troubleshoot.md)]
 
 ## <a name="additional-resources"></a>추가 자료
 
@@ -541,3 +563,4 @@ options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 * <xref:blazor/security/webassembly/aad-groups-roles>
 * <xref:security/authentication/azure-active-directory/index>
 * [Microsoft ID 플랫폼 설명서](/azure/active-directory/develop/)
+* [빠른 시작: Microsoft ID 플랫폼에 애플리케이션 등록](/azure/active-directory/develop/quickstart-register-app)
