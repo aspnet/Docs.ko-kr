@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 80196945bc6891d5517d7da0e07ca1b0debddd28
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: fdd7eb3c4a3b07022760a43cbde80838bfaf7c84
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97854689"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024797"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Identity 서버를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호
 
@@ -575,3 +575,6 @@ Get-ChildItem -path Cert:\CurrentUser\My -Recurse | Format-List DnsNameList, Sub
 * [Key Vault에서 인증서 가져오기(Azure 설명서)](/azure/app-service/configure-ssl-certificate#import-a-certificate-from-key-vault)
 * <xref:blazor/security/webassembly/additional-scenarios>
 * [보안 기본 클라이언트가 있는 앱의 인증되지 않거나 권한이 부여되지 않은 웹 API 요청](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
+* <xref:host-and-deploy/proxy-load-balancer>: 다음 사항에 대한 지침을 포함합니다.
+  * 전달된 헤더 미들웨어를 사용하여 프록시 서버와 내부 네트워크에서 HTTPS 체계 정보 유지.
+  * 수동 체계 구성, 올바른 요청 라우팅에 대한 요청 경로 변경, Linux 및 비 IIS 역방향 프록시에 대한 요청 체계 전달을 포함한 추가 시나리오 및 사용 사례.

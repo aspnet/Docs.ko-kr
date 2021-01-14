@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: b2f58fb29e451628aead4ad35c7272a1409cf3d8
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 2f5630eac65b880bdefff2a4baf4f1878e981536
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97797355"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058391"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-a-hosted-no-locblazor-webassembly-app"></a>호스트된 Blazor WebAssembly 앱을 활용하여 ASP.NET Core SignalR 사용
 
@@ -360,26 +360,6 @@ dotnet add Server package System.Text.Encodings.Web
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-::: moniker range=">= aspnetcore-5.0"
-
-1. 서버 앱의 시작 프로필을 만들기 위한 VS Code가 제공되는 경우(`.vscode/launch.json`), `program` 항목은 다음과 유사하게 표시되어 앱의 어셈블리(`{APPLICATION NAME}.Server.dll`)를 가리킵니다.
-
-   ```json
-   "program": "${workspaceFolder}/Server/bin/Debug/net5.0/{APPLICATION NAME}.Server.dll"
-   ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-5.0"
-
-1. 서버 앱의 시작 프로필을 만들기 위한 VS Code가 제공되는 경우(`.vscode/launch.json`), `program` 항목은 다음과 유사하게 표시되어 앱의 어셈블리(`{APPLICATION NAME}.Server.dll`)를 가리킵니다.
-
-   ```json
-   "program": "${workspaceFolder}/Server/bin/Debug/netcoreapp3.1/{APPLICATION NAME}.Server.dll"
-   ```
-
-::: moniker-end
-
 1. <kbd>F5</kbd> 키를 눌러 디버깅이 설정된 상태로 앱을 실행하거나 <kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 디버깅 없이 실행합니다.
 
 1. 주소 표시줄에서 URL을 복사하고, 다른 브라우저 인스턴스 또는 탭을 열고, 주소 표시줄에 URL을 붙여넣습니다.
@@ -442,3 +422,4 @@ Blazor 앱 빌드에 대한 자세한 내용은 Blazor 설명서를 참조하세
 
 * <xref:signalr/introduction>
 * [SignalR 인증에 대한 원본 간 협상](xref:blazor/fundamentals/additional-scenarios#signalr-cross-origin-negotiation-for-authentication)
+* <xref:blazor/debug>

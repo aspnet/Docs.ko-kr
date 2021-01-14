@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: b16533ef662b341053498162ce4ecb62445f2061
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a4f3234aa4b4b02244d17615a9033db3094d3580
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97854429"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024784"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>인증 라이브러리를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
 
@@ -189,3 +189,6 @@ builder.Services.AddOidcAuthentication(options =>
 
 * <xref:blazor/security/webassembly/additional-scenarios>
 * [보안 기본 클라이언트가 있는 앱의 인증되지 않거나 권한이 부여되지 않은 웹 API 요청](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
+* <xref:host-and-deploy/proxy-load-balancer>: 다음 사항에 대한 지침을 포함합니다.
+  * 전달된 헤더 미들웨어를 사용하여 프록시 서버와 내부 네트워크에서 HTTPS 체계 정보 유지.
+  * 수동 체계 구성, 올바른 요청 라우팅에 대한 요청 경로 변경, Linux 및 비 IIS 역방향 프록시에 대한 요청 체계 전달을 포함한 추가 시나리오 및 사용 사례.
