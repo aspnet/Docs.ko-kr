@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/index
-ms.openlocfilehash: a27fdd70963830d22b3501972d6150dde5e1ea54
-ms.sourcegitcommit: fe2e3174c34bee1e425c6e52dd8f663fe52b8756
+ms.openlocfilehash: 49e299ed00ea0e5d54c1ba795971da379cd5b695
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174599"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253139"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core의 웹 서버 구현
 
@@ -176,7 +176,30 @@ IDE(통합 개발 환경)이나 편집기가 앱을 시작하는 경우 서버�
 
 [HTTP/2](https://httpwg.org/specs/rfc7540.html)는 다음과 같은 배포 시나리오에서 ASP.NET Core에서 지원됩니다.
 
-::: moniker range=">= aspnetcore-2.2"
+::: moniker range=">= aspnetcore-5.0"
+
+* [Kestrel](xref:fundamentals/servers/kestrel/http2)
+  * 운영 체제
+    * Windows Server 2016/Windows 10 이상&dagger;
+    * Linux 및 OpenSSL 1.0.2 이상(예: Ubuntu 16.04 이상)
+    * macOS에서는 이후 릴리스에서 HTTP/2가 지원됩니다.
+  * 대상 프레임워크: .NET Core 2.2 이상
+* [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
+  * Windows Server 2016/Windows 10 이상
+  * 대상 프레임워크: HTTP.sys 배포에는 적용되지 않습니다.
+* [IIS(In-Process)](xref:host-and-deploy/iis/index#http2-support)
+  * Windows Server 2016/Windows 10 이상, IIS 10 이상
+  * 대상 프레임워크: .NET Core 2.2 이상
+* [IIS(Out-of-Process)](xref:host-and-deploy/iis/index#http2-support)
+  * Windows Server 2016/Windows 10 이상, IIS 10 이상
+  * 공개 에지 서버 연결은 HTTP/2를 사용하지만 Kestrel에 대한 역방향 프록시 연결은 HTTP/1.1을 사용합니다.
+  * 대상 프레임워크: IIS Out-of-Process 배포에는 적용되지 않습니다.
+
+&dagger;Kestrel은 Windows Server 2012 R2와 Windows 8.1에서의 HTTP/2 지원을 제한했습니다. 이러한 운영 체제에서 사용할 수 있는 지원 가능 TLS 암호 그룹 목록이 제한되므로 지원이 제한됩니다. TLS 연결을 보호하는 데 ECDSA(타원 곡선 디지털 서명 알고리즘)를 사용하여 생성된 인증서가 필요할 수 있습니다.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2 < aspnetcore-5.0"
 
 * [Kestrel](xref:fundamentals/servers/kestrel#http2-support)
   * 운영 체제
