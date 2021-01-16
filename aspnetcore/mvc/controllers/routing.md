@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: a163c87fdb9a02c1b074ab32c19c11932c66cfd4
-ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
+ms.openlocfilehash: 44c507fb5e0ff4477a84bfc1e4d0c62180c8dd37
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854537"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252840"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>ASP.NET Core의 컨트롤러 작업에 라우팅
 
@@ -43,7 +43,7 @@ ASP.NET Core 컨트롤러는 라우팅 [미들웨어](xref:fundamentals/middlewa
 * MVC와 라우팅 간의 상호 작용에 대해 설명 합니다.
   * 일반적인 MVC 앱이 라우팅 기능을 사용 하는 방법입니다.
   * 모두 포함:
-    * 일반적으로 컨트롤러 및 뷰에 사용 되는 [라우팅](#cr) 입니다.
+    * 일반적으로 컨트롤러 및 뷰에서 사용 되는 [기본 라우팅](#cr) 입니다.
     * REST Api와 함께 사용 되는 *특성 라우팅* 입니다. 주로 REST Api에 대 한 라우팅에 관심이 있는 경우 [Rest api에 대 한 특성 라우팅](#ar) 섹션으로 이동 합니다.
   * 라우팅 고급 라우팅에 대 한 자세한 내용은 [라우팅](xref:fundamentals/routing) 을 참조 하세요.
 * ASP.NET Core 3.0에 추가 된 기본 라우팅 시스템 (끝점 라우팅 이라고 함)을 참조 합니다. 호환성을 위해 이전 버전의 라우팅으로 컨트롤러를 사용할 수 있습니다. 지침은 [2.2-3.0 마이그레이션 가이드](xref:migration/22-to-30) 를 참조 하세요. 레거시 라우팅 시스템에 대 한 참조 자료는 [이 문서의 2.2 버전](xref:mvc/controllers/routing?view=aspnetcore-2.2) 을 참조 하세요.
@@ -430,11 +430,11 @@ REST Api는 특성 라우팅을 사용 하 여 응용 프로그램의 기능을 
 
 다음 표에서는 `[Route]` 위의 코드에 있는 특성에 대해 설명 합니다.
 
-| attribute               | 와 결합 `[Route("Home")]` | 경로 템플릿을 정의 합니다. |
+| 특성               | 와 결합 `[Route("Home")]` | 경로 템플릿을 정의 합니다. |
 | ----------------- | ------------ | --------- |
 | `[Route("")]` | 예 | `"Home"` |
 | `[Route("Index")]` | 예 | `"Home/Index"` |
-| `[Route("/")]` | **No** | `""` |
+| `[Route("/")]` | **아니요** | `""` |
 | `[Route("About")]` | 예 | `"Home/About"` |
 
 <a name="routing-ordering-ref-label"></a>
@@ -570,7 +570,7 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet8&highlight=3)]
 
-위의 코드에서는 `[HttpPost("product/{id:int}")]` 경로 제약 조건을 적용 합니다. `ProductsController.ShowProduct`작업은와 같은 URL 경로만 일치 시킵니다 `/product/3` . 경로 템플릿 부분은 `{id:int}` 해당 세그먼트를 정수로 제한 합니다.
+위의 코드에서는 `[HttpPost("product14/{id:int}")]` 경로 제약 조건을 적용 합니다. `Products14Controller.ShowProduct`작업은와 같은 URL 경로만 일치 시킵니다 `/product14/3` . 경로 템플릿 부분은 `{id:int}` 해당 세그먼트를 정수로 제한 합니다.
 
 경로 템플릿 구문에 대한 자세한 설명은 [경로 템플릿 참조](xref:fundamentals/routing#route-template-reference)를 참조하세요.
 
@@ -720,7 +720,7 @@ result: /UrlGeneration/Destination
 
 기본 경로를 사용 하 여이 문제가 발생할 수 있습니다 `{controller}/{action}/{id?}` . `Url.Action`항상 명시적으로 및 값을 지정 하기 때문에이 문제는 드물게 발생 `controller` `action` 합니다.
 
-Url의 여러 오버 로드. Action은 경로 값 개체를 사용 하 여 및 이외의 경로 매개 변수에 대 한 값을 제공 [합니다.](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) `controller` `action` 경로 값 개체는와 함께 자주 사용 됩니다 `id` . 예들 들어 `Url.Action("Buy", "Products", new { id = 17 })`입니다. 경로 값 개체:
+Url의 여러 오버 로드. Action은 경로 값 개체를 사용 하 여 및 이외의 경로 매개 변수에 대 한 값을 제공 [합니다.](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) `controller` `action` 경로 값 개체는와 함께 자주 사용 됩니다 `id` . 예를 들어, `Url.Action("Buy", "Products", new { id = 17 })`를 입력합니다. 경로 값 개체:
 
 * 규칙에 따라 일반적으로 무명 형식의 개체입니다.
 * `IDictionary<>`또는 [POCO](https://wikipedia.org/wiki/Plain_old_CLR_object)일 수 있습니다.

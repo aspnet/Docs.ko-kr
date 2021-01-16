@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: 4f8330521bb9114f6639c1889cc15ebd18adc0ed
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: d63364b0c052ba7f9e745e1ad829b8d1ca9122d2
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061134"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253126"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a>ASP.NET Core의 환경 태그 도우미
 
@@ -39,13 +39,13 @@ ms.locfileid: "93061134"
 
 `names`는 포함된 콘텐츠의 렌더링을 트리거하는 단일 호스팅 환경 이름 또는 쉼표로 구분된 호스팅 환경 이름 목록을 허용합니다.
 
-환경 값은 [IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*)에서 반환된 현재 값과 비교됩니다. 이 비교에서 대/소문자는 무시됩니다.
+환경 값은 [Iwebhostenvironment. 환경 이름](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*)에서 반환 된 현재 값과 비교 됩니다. 이 비교에서 대/소문자는 무시됩니다.
 
 다음 예제는 환경 태그 도우미를 사용합니다. 호스팅 환경이 스테이징 또는 프로덕션일 경우 콘텐츠가 렌더링됩니다.
 
 ```cshtml
 <environment names="Staging,Production">
-    <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
+    <strong>IWebHostEnvironment.EnvironmentName is Staging or Production</strong>
 </environment>
 ```
 
@@ -57,11 +57,11 @@ ms.locfileid: "93061134"
 
 ### <a name="include"></a>include
 
-`include` 속성은 `names` 특성과 유사한 동작을 보여줍니다. `include` 특성 값에 나열된 환경과 앱의 호스팅 환경([IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*))이 일치해야만 `<environment>` 태그의 콘텐츠를 렌더링할 수 있습니다.
+`include` 속성은 `names` 특성과 유사한 동작을 보여줍니다. 특성 값에 나열 된 환경은 `include` 태그의 콘텐츠를 렌더링 하는 앱의 호스팅 환경 ([Iwebhostenvironment. 환경 이름](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*))과 일치 해야 합니다. `<environment>`
 
 ```cshtml
 <environment include="Staging,Production">
-    <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
+    <strong>IWebHostEnvironment.EnvironmentName is Staging or Production</strong>
 </environment>
 ```
 
@@ -71,7 +71,7 @@ ms.locfileid: "93061134"
 
 ```cshtml
 <environment exclude="Development">
-    <strong>HostingEnvironment.EnvironmentName is not Development</strong>
+    <strong>IWebHostEnvironment.EnvironmentName is not Development</strong>
 </environment>
 ```
 

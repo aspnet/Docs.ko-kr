@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/partial
-ms.openlocfilehash: 01fb87205f7855f0995cbcd135b6b01f15835e3b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 3a7b054adc50be57028dfa0364f80ae8733b02f7
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060601"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252710"
 ---
 # <a name="partial-views-in-aspnet-core"></a>ASP.NET Core의 부분 보기
 
 작성자: [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Scott Sauber](https://twitter.com/scottsauber)
 
-부분 뷰는 [Razor](xref:mvc/views/razor) *.cshtml* [`@page`](xref:mvc/views/razor#page) 다른 태그 파일의 렌더링 된 출력 *내에서* HTML 출력을 렌더링 하는 지시문이 없는 태그 파일 (cshtml)입니다.
+부분 뷰는 [Razor](xref:mvc/views/razor)  [`@page`](xref:mvc/views/razor#page) 다른 태그 파일의 렌더링 된 출력 *내에서* HTML 출력을 렌더링 하는 지시문이 없는 태그 파일 (cshtml)입니다.
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -58,7 +58,7 @@ ms.locfileid: "93060601"
 
 ::: moniker range=">= aspnetcore-2.0"
 
-부분 뷰는 *.cshtml* [`@page`](xref:mvc/views/razor#page) *Views* 폴더 (MVC) 또는 *pages* 폴더 (페이지) 내에서 지시문을 유지 하지 않고. s t a t 마크업 파일입니다 Razor .
+부분 뷰는  [`@page`](xref:mvc/views/razor#page) *Views* 폴더 (MVC) 또는 *pages* 폴더 (페이지) 내에서 지시문을 유지 하지 않고. s t a t 마크업 파일입니다 Razor .
 
 ASP.NET Core MVC에서 컨트롤러의 <xref:Microsoft.AspNetCore.Mvc.ViewResult>는 보기 또는 부분 보기를 반환할 수 있습니다. Razor페이지에서는 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 개체로 표시 된 부분 뷰를 반환할 수 있습니다 <xref:Microsoft.AspNetCore.Mvc.PartialViewResult> . 부분 보기 참조 및 렌더링은 [부분 보기 참조](#reference-a-partial-view) 섹션에 설명되어 있습니다.
 
@@ -70,7 +70,7 @@ MVC 보기 또는 페이지 렌더링과 달리 부분 보기는 *_ViewStart.csh
 
 ::: moniker range="< aspnetcore-2.0"
 
-부분 보기는 ‘보기’ 폴더에서 유지 관리되는 
+부분 보기는 ‘보기’ 폴더에서 유지 관리되는 *.cshtml* 태그 파일입니다.
 
 컨트롤러의 <xref:Microsoft.AspNetCore.Mvc.ViewResult>는 보기 또는 부분 보기를 반환할 수 있습니다. 부분 보기 참조 및 렌더링은 [부분 보기 참조](#reference-a-partial-view) 섹션에 설명되어 있습니다.
 
@@ -282,7 +282,7 @@ HTML 도우미를 사용할 때 가장 좋은 방법은 <xref:Microsoft.AspNetCo
 
 ## <a name="access-data-from-partial-views"></a>부분 보기에서 데이터 액세스
 
-부분 보기가 인스턴스화되면 부모의 `ViewData` 사전의 ‘사본’을 수신합니다.  부분 보기 내에서 데이터에 대한 업데이트는 부모 보기에 유지되지 않습니다. 부분 보기에서 변경된 `ViewData`는 부분 보기가 반환될 때 손실됩니다.
+부분 보기가 인스턴스화되면 부모의 `ViewData` 사전의 ‘사본’을 수신합니다. 부분 보기 내에서 데이터에 대한 업데이트는 부모 보기에 유지되지 않습니다. 부분 보기에서 변경된 `ViewData`는 부분 보기가 반환될 때 손실됩니다.
 
 다음 예는 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 인스턴스를 부분 보기에 전달하는 방법을 보여 줍니다.
 
@@ -353,7 +353,7 @@ HTML 도우미를 사용할 때 가장 좋은 방법은 <xref:Microsoft.AspNetCo
 
 ::: moniker range=">= aspnetcore-2.1"
 
-* <xref:mvc/views/razor>
+* [Razor ASP.NET Core에 대 한 구문 참조](xref:mvc/views/razor)
 * <xref:mvc/views/tag-helpers/intro>
 * <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>
 * <xref:mvc/views/view-components>
@@ -363,7 +363,7 @@ HTML 도우미를 사용할 때 가장 좋은 방법은 <xref:Microsoft.AspNetCo
 
 ::: moniker range="< aspnetcore-2.1"
 
-* <xref:mvc/views/razor>
+* [Razor ASP.NET Core에 대 한 구문 참조](xref:mvc/views/razor)
 * <xref:mvc/views/view-components>
 * <xref:mvc/controllers/areas>
 

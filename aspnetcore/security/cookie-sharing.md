@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cookie-sharing
-ms.openlocfilehash: 8f54f2e4894328f8471d5f80c8184839ce47add6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0d43bbbc44015aff040b12dfacb260fe50492e54
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059691"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252996"
 ---
 # <a name="share-authentication-no-loccookies-among-aspnet-apps"></a>cookieASP.NET apps 간에 인증 공유
 
@@ -65,6 +65,8 @@ services.ConfigureApplicationCookie(options => {
     options.Cookie.Name = ".AspNet.SharedCookie";
 });
 ```
+
+**참고:** 위의 지침은 ()에서 작동 하지 않습니다 `ITicketStore` `CookieAuthenticationOptions.SessionStore` .  자세한 내용은 [이 GitHub 이슈](https://github.com/dotnet/AspNetCore.Docs/issues/21163)를 참조하세요.
 
 ## <a name="share-authentication-no-loccookies-without-no-locaspnet-core-identity"></a>다음을 사용 cookie 하지 않고 인증 공유 ASP.NET Core Identity
 
@@ -135,7 +137,7 @@ cookieASP.NET 4.x 앱과 ASP.NET Core 앱 간의 인증을 공유 하려면 [ co
 
 및를 설정 하지 않으면 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` `http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider` <xref:System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier> 고유한 사용자를 구별 하는 클레임으로 설정 합니다.
 
-*App_Start/startup.auth.cs* :
+*App_Start/startup.auth.cs*:
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -170,7 +172,7 @@ System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier =
 
 사용자 id를 생성 하는 경우 인증 유형 ( `Identity.Application` )이 `AuthenticationType` `UseCookieAuthentication` *App_Start/startup.auth.cs* 의로 설정 된에 정의 된 유형과 일치 해야 합니다.
 
-*모델/ Identity Models.cs* :
+*모델/ Identity Models.cs*:
 
 ```csharp
 public class ApplicationUser : IdentityUser
