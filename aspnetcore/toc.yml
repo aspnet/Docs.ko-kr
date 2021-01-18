@@ -344,6 +344,8 @@
               uid: blazor/components/event-handling
             - name: 수명 주기
               uid: blazor/components/lifecycle
+            - name: 렌더링
+              uid: blazor/components/rendering
             - name: 구성 요소 가상화
               uid: blazor/components/virtualization
             - name: 템플릿 기반 구성 요소
@@ -970,8 +972,29 @@
           displayName: 'deploy, publish'
           uid: host-and-deploy/iis/protocols
     - name: Kestrel
-      uid: fundamentals/servers/kestrel
       displayName: 'deploy, publish, server'
+      items:
+        - name: 개요
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel
+        - name: 엔드포인트
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel/endpoints
+        - name: 옵션
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel/options
+        - name: HTTP/2
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel/http2
+        - name: 역방향 프록시를 사용하는 경우
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel/when-to-use-a-reverse-proxy
+        - name: 호스트 필터링
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel/host-filtering
+        - name: 요청 드레이닝
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel/request-draining
     - name: HTTP.sys
       displayName: 'deploy, publish, server'
       uid: fundamentals/servers/httpsys

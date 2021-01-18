@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: a2738ab40e2a463a0166ce8916ed6f1b05ea1d08
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: 12a1f528bdff0230bbf17075284d27de654a423e
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855380"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252424"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>ASP.NET Core Razor 구성 요소 만들기 및 사용
 
@@ -40,7 +40,7 @@ Blazor 앱은 *구성 요소* 를 사용하여 빌드됩니다. 구성 요소는
 
 ### <a name="no-locrazor-syntax"></a>Razor 구문
 
-Blazor 앱의 Razor 구성 요소는 Razor 구문을 광범위하게 사용합니다. Razor 태그 언어에 익숙하지 않은 경우 계속하기 전에 <xref:mvc/views/razor>를 읽는 것이 좋습니다.
+Blazor 앱의 Razor 구성 요소는 Razor 구문을 광범위하게 사용합니다. Razor 태그 언어에 익숙하지 않은 경우 계속하기 전에 [ASP.NET Core용 Razor 구문 참조](xref:mvc/views/razor)를 읽는 것이 좋습니다.
 
 Razor 구문에서 콘텐츠에 액세스하는 경우 다음 섹션에 특히 주의해야 합니다.
 
@@ -81,7 +81,7 @@ Blazor의 라우팅은 앱에서 액세스 가능한 각 구성 요소에 경로
 }
 ```
 
-구성 요소가 처음 렌더링되면 구성 요소는 이벤트에 대한 응답으로 렌더링 트리를 다시 생성합니다. 그런 후 Blazor는 새로운 렌더링 트리를 이전 렌터링 트리와 비교하여 수정 사항을 브라우저 DOM(문서 개체 모델)에 적용합니다.
+구성 요소가 처음 렌더링되면 구성 요소는 이벤트에 대한 응답으로 렌더링 트리를 다시 생성합니다. 그런 후 Blazor는 새로운 렌더링 트리를 이전 렌터링 트리와 비교하여 수정 사항을 브라우저 DOM(문서 개체 모델)에 적용합니다. 추가 세부 정보는 <xref:blazor/components/rendering>에서 제공됩니다.
 
 구성 요소는 일반 C# 클래스이며 프로젝트 내의 어느 위치에나 배치할 수 있습니다. 웹 페이지를 생성하는 구성 요소는 일반적으로 `Pages` 폴더에 있습니다. 페이지와 무관한 구성 요소는 `Shared` 폴더 또는 프로젝트에 추가된 사용자 지정 폴더에 자주 배치됩니다.
 
@@ -293,7 +293,7 @@ public string Title { get; set; } = "Panel Title from Child";
 * 메서드의 결과: `Title="@{METHOD}"`, 여기서 `{METHOD}` 자리 표시자는 부모 구성 요소의 C# 메서드입니다.
 * [암시적 또는 명시적 식](xref:mvc/views/razor#implicit-razor-expressions): `Title="@({EXPRESSION})"`, 여기서 `{EXPRESSION}` 자리 표시자는 C# 식입니다.
   
-자세한 내용은 <xref:mvc/views/razor>를 참조하세요.
+자세한 내용은 [ASP.NET Core용 Razor 구문 참조](xref:mvc/views/razor)를 참조하세요.
 
 > [!WARNING]
 > 자체 *구성 요소 매개 변수* 에 쓰는 구성 요소를 만들지 말고 대신 private 필드를 사용합니다. 자세한 내용은 [덮어쓴 매개 변수](#overwritten-parameters) 섹션을 참조하세요.
@@ -579,7 +579,7 @@ public class NotifierService
 }
 ```
 
-위의 예제에서 `NotifierService`는 Blazor의 동기화 컨텍스트 외부에서 구성 요소의 `OnNotify` 메서드를 호출합니다. `InvokeAsync`는 올바른 컨텍스트로 전환하고 렌더링을 큐에 대기하는 데 사용됩니다.
+위의 예제에서 `NotifierService`는 Blazor의 동기화 컨텍스트 외부에서 구성 요소의 `OnNotify` 메서드를 호출합니다. `InvokeAsync`는 올바른 컨텍스트로 전환하고 렌더링을 큐에 대기하는 데 사용됩니다. 자세한 내용은 <xref:blazor/components/rendering>를 참조하세요.
 
 ## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>\@ 키를 사용하여 요소 및 구성 요소 유지
 
@@ -801,7 +801,7 @@ HTML 요소 특성은 .NET 값에 따라 조건부로 렌더링됩니다. 값이
 <input type="checkbox" />
 ```
 
-자세한 내용은 <xref:mvc/views/razor>를 참조하세요.
+자세한 내용은 [ASP.NET Core용 Razor 구문 참조](xref:mvc/views/razor)를 참조하세요.
 
 > [!WARNING]
 > [`aria-pressed`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons) 같은 일부 HTML 특성은 .NET 형식이 `bool`일 경우 제대로 작동하지 않습니다. 이러한 경우 `bool` 대신 `string` 형식을 사용합니다.
@@ -957,13 +957,13 @@ Blazor는 HTML을 렌더링하므로 SVG(Scalable Vector Graphics) 이미지(`.s
 * <xref:blazor/security/server/threat-mitigation>: 리소스를 소모하지 않도록 하는 Blazor Server 앱을 빌드하는 방법에 대한 지침을 포함합니다.
 
 <!--Reference links in article-->
-[1]: <xref:mvc/views/razor#code>
-[2]: <xref:mvc/views/razor#using>
-[3]: <xref:mvc/views/razor#attributes>
-[4]: <xref:mvc/views/razor#ref>
-[5]: <xref:mvc/views/razor#key>
-[6]: <xref:mvc/views/razor#inherits>
-[7]: <xref:mvc/views/razor#attribute>
-[8]: <xref:mvc/views/razor#namespace>
-[9]: <xref:mvc/views/razor#page>
-[10]: <xref:mvc/views/razor#bind>
+[1]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#code)
+[2]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#using)
+[3]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#attributes)
+[4]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#ref)
+[5]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#key)
+[6]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#inherits)
+[7]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#attribute)
+[8]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#namespace)
+[9]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#page)
+[10]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#bind)
