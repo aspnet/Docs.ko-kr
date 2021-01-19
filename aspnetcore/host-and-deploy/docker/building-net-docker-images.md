@@ -1,10 +1,10 @@
 ---
 title: ASP.NET Core의 Docker 이미지
 author: rick-anderson
-description: Docker 레지스트리에서 게시된 .NET Core Docker 이미지를 사용하는 방법을 알아봅니다. 이미지를 끌어오고 고유한 이미지를 빌드합니다.
+description: Docker 레지스트리에서 게시된 ASP.NET Core Docker 이미지를 사용하는 방법을 알아봅니다. 고유한 이미지를 풀하고 빌드합니다.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/12/2020
+ms.date: 01/04/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 81daa1d4a996519f44e513b4f61c27cdf2b6ef5e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 2cd21722082af88e536bc1001b606ee96e7cf59b
+ms.sourcegitcommit: b64c44ba5e3abb4ad4d50de93b7e282bf0f251e4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059808"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97972056"
 ---
 # <a name="docker-images-for-aspnet-core"></a>ASP.NET Core의 Docker 이미지
 
@@ -31,7 +31,7 @@ ms.locfileid: "93059808"
 
 이 자습서에서는 다음과 같은 작업을 수행합니다.
 > [!div class="checklist"]
-> * Microsoft .NET Core Docker 이미지에 대해 알아보기
+> * ASP.NET Core Docker 이미지에 관해 알아보기
 > * ASP.NET Core 샘플 앱 다운로드
 > * 샘플 앱을 로컬로 실행
 > * Linux 컨테이너에서 샘플 앱 실행
@@ -44,23 +44,53 @@ ms.locfileid: "93059808"
 
 샘플 Dockerfile은 [Docker 다단계 빌드 기능](https://docs.docker.com/engine/userguide/eng-image/multistage-build/)을 사용하여 서로 다른 컨테이너에서 빌드 및 실행합니다. 빌드 및 실행 컨테이너는 Microsoft에서 Docker 허브에 제공한 이미지를 기반으로 만들어집니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
+* `dotnet/sdk`
+
+  샘플에서는 앱을 빌드하는 데 이 이미지를 사용합니다. 이미지는 CLI(명령줄 도구)가 포함된 .NET SDK를 포함합니다. 이미지는 로컬 개발, 디버깅 및 유닛 테스트에 최적화되어 있습니다. 개발 및 컴파일용으로 설치된 도구는 이미지를 비교적 크게 만듭니다.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 * `dotnet/core/sdk`
 
-  샘플에서는 앱을 빌드하는 데 이 이미지를 사용합니다. 이미지는 CLI(명령줄 도구)가 포함된 .NET Core SDK를 포함합니다. 이미지는 로컬 개발, 디버깅 및 유닛 테스트에 최적화되어 있습니다. 개발 및 컴파일용으로 설치된 도구는 이 이미지를 비교적 큰 이미지로 만듭니다. 
+  샘플에서는 앱을 빌드하는 데 이 이미지를 사용합니다. 이미지는 CLI(명령줄 도구)가 포함된 .NET Core SDK를 포함합니다. 이미지는 로컬 개발, 디버깅 및 유닛 테스트에 최적화되어 있습니다. 개발 및 컴파일용으로 설치된 도구는 이미지를 비교적 크게 만듭니다.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+* `dotnet/aspnet`
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 * `dotnet/core/aspnet`
 
-   샘플에서는 앱을 실행하는 데 이 이미지를 사용합니다. 이 이미지는 ASP.NET Core 런타임 및 라이브러리를 포함하며 프로덕션에서 실행 중인 앱에 최적화되어 있습니다. 배포 및 앱 시작 속도를 위해 디자인된 이 이미지는 비교적 작기 때문에 Docker 레지스트리에서 Docker 호스트까지 네트워크 성능이 최적화됩니다. 앱을 실행하는 데 필요한 이진 파일 및 콘텐츠만 컨테이너에 복사됩니다. 콘텐츠를 실행할 준비가 되면 `Docker run`부터 앱 시작까지 가장 빠른 시간에 수행할 수 있습니다. 동적 코드 컴파일은 Docker 모델에 필요하지 않습니다.
+::: moniker-end
+
+   샘플에서는 앱을 실행하는 데 이 이미지를 사용합니다. 이 이미지는 ASP.NET Core 런타임 및 라이브러리를 포함하며 프로덕션에서 실행 중인 앱에 최적화되어 있습니다. 배포 및 앱 시작 속도를 위해 디자인된 이 이미지는 비교적 작기 때문에 Docker 레지스트리에서 Docker 호스트까지 네트워크 성능이 최적화됩니다. 앱을 실행하는 데 필요한 이진 파일 및 콘텐츠만 컨테이너에 복사됩니다. 콘텐츠를 실행할 준비가 되면 `docker run`부터 앱 시작까지 가장 빠른 시간에 수행할 수 있습니다. 동적 코드 컴파일은 Docker 모델에 필요하지 않습니다.
 
 ## <a name="prerequisites"></a>사전 요구 사항
+
+::: moniker range=">= aspnetcore-5.0"
+
+* [.NET SDK 5.0](https://dotnet.microsoft.com/download)
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
+
+* [.NET Core SDK 3.1](https://dotnet.microsoft.com/download)
+
+::: moniker-end
+
 ::: moniker range="< aspnetcore-3.0"
 
 * [.NET Core 2.2 SDK](https://dotnet.microsoft.com/download/dotnet-core)
-::: moniker-end
-
-::: moniker range=">= aspnetcore-3.0"
-
-* [.NET Core SDK 3.0](https://dotnet.microsoft.com/download)
 
 ::: moniker-end
 
@@ -78,7 +108,7 @@ ms.locfileid: "93059808"
 
 ## <a name="download-the-sample-app"></a>샘플 앱 다운로드
 
-* [.NET Core Docker 리포지토리](https://github.com/dotnet/dotnet-docker)를 복제하여 샘플을 다운로드합니다. 
+* [.NET Docker 리포지토리](https://github.com/dotnet/dotnet-docker)를 복제하여 샘플을 다운로드합니다. 
 
   ```console
   git clone https://github.com/dotnet/dotnet-docker
@@ -156,7 +186,7 @@ ms.locfileid: "93059808"
 
 ## <a name="build-and-deploy-manually"></a>수동으로 빌드 및 배포
 
-일부 시나리오에서는 런타임에 필요한 애플리케이션 파일을 컨테이너에 복사하여 앱을 컨테이너에 배포할 수 있습니다. 이 섹션에서는 수동으로 배포하는 방법을 보여 줍니다.
+일부 시나리오에서는 런타임에 필요한 앱의 자산을 컨테이너에 복사하여 앱을 컨테이너에 배포할 수 있습니다. 이 섹션에서는 수동으로 배포하는 방법을 보여 줍니다.
 
 * *dotnet-docker/samples/aspnetapp/aspnetapp* 에 있는 프로젝트 폴더로 이동합니다.
 
@@ -167,10 +197,10 @@ ms.locfileid: "93059808"
   ```
 
   명령 인수:
-  * 릴리스 모드에서 애플리케이션을 빌드합니다(기본값은 디버그 모드).
-  * *published* 폴더에서 파일을 만듭니다.
+  * 릴리스 모드에서 앱을 빌드합니다(기본값은 디버그 모드).
+  * ‘게시된’ 폴더에 자산을 만듭니다.
 
-* 애플리케이션을 실행합니다.
+* 앱을 실행합니다.
 
   * Windows:
 
@@ -186,12 +216,12 @@ ms.locfileid: "93059808"
 
 * `http://localhost:5000`으로 이동하여 홈페이지를 표시합니다.
 
-Docker 컨테이너 내에서 수동으로 게시된 애플리케이션을 사용하려면 새 Dockerfile을 만들고 `docker build .` 명령을 사용하여 컨테이너를 빌드합니다.
+Docker 컨테이너 내에서 수동으로 게시된 앱을 사용하려면 새 *Dockerfile* 을 만들고 `docker build .` 명령을 사용하여 컨테이너를 빌드합니다.
 
-::: moniker range="< aspnetcore-3.0"
+::: moniker range=">= aspnetcore-5.0"
 
 ```dockerfile
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS runtime
 WORKDIR /app
 COPY published/aspnetapp.dll ./
 ENTRYPOINT ["dotnet", "aspnetapp.dll"]
@@ -202,8 +232,9 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 이전에 실행한 `docker build` 명령에서 사용되는 *Dockerfile* 은 다음과 같습니다.  이 섹션에서 빌드 및 배포하기 위해 사용한 것과 동일한 방식으로 `dotnet publish`를 사용합니다.  
 
 ```dockerfile
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
-WORKDIR /app
+# https://hub.docker.com/_/microsoft-dotnet
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
@@ -212,18 +243,21 @@ RUN dotnet restore
 
 # copy everything else and build app
 COPY aspnetapp/. ./aspnetapp/
-WORKDIR /app/aspnetapp
-RUN dotnet publish -c Release -o out
+WORKDIR /source/aspnetapp
+RUN dotnet publish -c release -o /app --no-restore
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
+# final stage/image
+FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
-COPY --from=build /app/aspnetapp/out ./
+COPY --from=build /app ./
 ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 ```
 
+위의 *Dockerfile* 에서 `*.csproj` 파일은 개별 ‘계층’으로 복사 및 복원됩니다. `docker build` 명령은 이미지를 빌드할 때 기본 제공 캐시를 사용합니다. `docker build` 명령을 마지막으로 실행한 후 `*.csproj` 파일이 변경되지 않았다면 `dotnet restore` 명령을 다시 실행할 필요가 없습니다. 대신 해당 `dotnet restore` 계층에 대한 기본 제공 캐시가 다시 사용됩니다. 자세한 내용은 [Dockerfiles 작성에 대한 모범 사례](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache)를 참조하세요.
+
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-3.0"
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
@@ -257,6 +291,41 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 ```
 
 위의 Dockerfile에 설명된 것처럼 `*.csproj` 파일은 개별 ‘계층’으로서 복사 및 복원됩니다.  `docker build` 명령은 이미지를 빌드할 때 기본 제공 캐시를 사용합니다. `docker build` 명령을 마지막으로 실행한 후 `*.csproj` 파일이 변경되지 않았다면 `dotnet restore` 명령을 다시 실행할 필요가 없습니다. 대신 해당 `dotnet restore` 계층에 대한 기본 제공 캐시가 다시 사용됩니다. 자세한 내용은 [Dockerfiles 작성에 대한 모범 사례](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache)를 참조하세요.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+```dockerfile
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
+WORKDIR /app
+COPY published/aspnetapp.dll ./
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+```
+
+### <a name="the-dockerfile"></a>Dockerfile
+
+이전에 실행한 `docker build` 명령에서 사용되는 *Dockerfile* 은 다음과 같습니다. 이 섹션에서 빌드 및 배포하기 위해 사용한 것과 동일한 방식으로 `dotnet publish`를 사용합니다.  
+
+```dockerfile
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
+WORKDIR /app
+
+# copy csproj and restore as distinct layers
+COPY *.sln .
+COPY aspnetapp/*.csproj ./aspnetapp/
+RUN dotnet restore
+
+# copy everything else and build app
+COPY aspnetapp/. ./aspnetapp/
+WORKDIR /app/aspnetapp
+RUN dotnet publish -c Release -o out
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
+WORKDIR /app
+COPY --from=build /app/aspnetapp/out ./
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+```
 
 ::: moniker-end
 

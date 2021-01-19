@@ -19,19 +19,22 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: ded70f028b3021574ba260838837d9b23abd72f1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 96a7dde9a5a756e40125ffda4c54fbf24fdc616a
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94981884"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058261"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Azure Active Directory(AAD) 그룹, 관리자 역할, 사용자 정의 역할
 
 작성자: [Luke Latham](https://github.com/guardrex) 및 [Javier Calvarro Nelson](https://github.com/javiercn)
 
 > [!NOTE]
-> 이 문서는 Microsoft Identity v1.0을 사용하는 Blazor ASP.NET Core 앱 버전 3.1에 적용되며 Identity v 2.0을 사용하는 5.0으로 업데이트되도록 예약되어 있습니다. 자세한 내용은 [Blazor WASM with AAD/B2C groups and roles(dotnet/AspNetCore.Docs #17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683)를 참조하세요.
+> 이 문서는 Microsoft Identity 1.0을 사용하는 Blazor ASP.NET Core 앱 버전 3.1에 적용되며 Identity 2.0을 사용하는 5.0으로 업데이트될 예정입니다. 자세한 내용은 다음 GitHub 이슈 및 끌어오기 요청을 참조하세요. 끌어오기 요청의 **변경된 파일** 탭에는 문서 업데이트의 초안 텍스트와 예제가 포함됩니다. 검토 및 최종 업데이트 후에는 끌어오기 요청이 라이브 설명서 세트에 병합됩니다.
+>
+> * 문제: [AAD 그룹 및 역할을 사용하는 Blazor WASM(dotnet/AspNetCore #17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683)
+> * 끌어오기 요청: [Blazor AAD 그룹 및 역할 항목 5.0(dotnet/AspNetCore #20856)](https://github.com/dotnet/AspNetCore.Docs/pull/20856)
 
 AAD(Azure Active Directory)는 ASP.NET Core Identity와 결합할 수 있는 몇 가지 권한 부여 방법을 제공합니다.
 

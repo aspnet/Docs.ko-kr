@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: b01b1c70be010ba0ad9bbd2c1114e5d8341b3261
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e5f9a07db742ce2e26f03c0b6e1caa1904e4e0d9
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506866"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058235"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>ASP.NET Core Blazor 수명 주기
 
@@ -53,7 +53,9 @@ DOM(문서 개체 모델) 이벤트 처리:
 
 `Render` 수명 주기:
 
-1. 이것이 구성 요소의 첫 번째 렌더링이 아니거나 [`ShouldRender`](#suppress-ui-refreshing)가 `false`로 평가되는 경우에는 구성 요소에서 추가 작업을 수행하지 마세요.
+1. 다음의 경우에 구성 요소에서 추가 렌더링 작업을 중지합니다.
+   * 첫 번째 렌더링 이후
+   * [`ShouldRender`](#suppress-ui-refreshing)가 `false`인 경우
 1. 렌더링 트리 diff(차이)를 빌드하고 구성 요소를 렌더링합니다.
 1. DOM이 업데이트될 때까지 기다립니다.
 1. [`OnAfterRender{Async}`](#after-component-render)를 호출합니다.

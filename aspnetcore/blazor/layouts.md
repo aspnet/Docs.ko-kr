@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 3cb7c6184c13a003b4f4294f887d8938caa42f97
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 417f69e797296cdcd01fc4ce326388512a406368
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506905"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058274"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>ASP.NET Core Blazor 레이아웃
 
@@ -32,7 +32,7 @@ ms.locfileid: "97506905"
 
 메뉴, 저작권 메시지, 회사 로고 등의 일부 앱 요소는 일반적으로 앱의 전체 레이아웃에 포함되며 앱의 모든 구성 요소에서 사용됩니다. 이러한 요소의 코드를 앱의 모든 구성 요소에 복사하는 것은 효율적이지 않습니다. 요소 중 하나에 업데이트가 필요할 때마다 모든 구성 요소를 업데이트해야 합니다. 해당 중복은 유지 관리하기 어렵고, 시간이 지남에 따라 일관성 없는 콘텐츠가 발생할 수 있습니다. ‘레이아웃’을 통해 이 문제를 해결할 수 있습니다.
 
-기술적으로 레이아웃은 또 다른 구성 요소입니다. 레이아웃은 Razor 템플릿 또는 C# 코드에서 정의되며 [데이터 바인딩](xref:blazor/components/data-binding), [종속성 주입](xref:blazor/fundamentals/dependency-injection) 및 기타 구성 요소 시나리오를 사용할 수 있습니다.
+기술적으로 레이아웃은 또 다른 구성 요소입니다. 레이아웃은 Razor 템플릿 또는 C# 코드에서 정의되며 [데이터 바인딩](xref:blazor/components/data-binding), [종속성 주입](xref:blazor/fundamentals/dependency-injection) 및 기타 구성 요소 시나리오를 사용할 수 있습니다. 레이아웃은 [`@page`](xref:mvc/views/razor#page) 지시문이 있는 라우팅할 수 있는 Razor 구성 요소에만 적용됩니다.
 
 구성 요소를 레이아웃으로 변환하려면 다음을 수행합니다.
 
@@ -79,7 +79,7 @@ Blazor 프로젝트 템플릿 중 하나를 기반으로 하는 앱에서 `MainL
 
 ## <a name="specify-a-layout-in-a-component"></a>구성 요소에서 레이아웃 지정
 
-Razor 지시문 `@layout`을 사용하여 구성 요소에 레이아웃을 적용할 수 있습니다. 컴파일러는 `@layout`을 구성 요소 클래스에 적용되는 <xref:Microsoft.AspNetCore.Components.LayoutAttribute>로 변환합니다.
+[`@layout`](xref:mvc/views/razor#layout) Razor 지시문을 사용하여 [`@page`](xref:mvc/views/razor#page) 지시문을 포함하는 라우팅 가능한 Razor 구성 요소에 레이아웃을 적용합니다. 컴파일러는 `@layout`을 구성 요소 클래스에 적용되는 <xref:Microsoft.AspNetCore.Components.LayoutAttribute>로 변환합니다.
 
 다음 `MasterList` 구성 요소의 콘텐츠는 `MasterLayout`의 `@Body` 위치에 삽입됩니다.
 
@@ -105,6 +105,9 @@ Razor 지시문 `@layout`을 사용하여 구성 요소에 레이아웃을 적�
 
 > [!WARNING]
 > 루트 `_Imports.razor` 파일에 Razor `@layout` 지시어를 추가하지 **마세요**. 그러면 앱에서 레이아웃의 무한 루프가 발생합니다. 기본 앱 레이아웃을 제어하려면 `Router` 구성 요소에서 레이아웃을 지정합니다. 자세한 내용은 [기본 레이아웃](#default-layout) 섹션을 참조하세요.
+
+> [!NOTE]
+> [`@layout`](xref:mvc/views/razor#layout) Razor 지시문은 [`@page`](xref:mvc/views/razor#page) 지시문을 사용하여 라우팅할 수 있는 Razor 구성 요소에만 레이아웃을 적용합니다.
 
 ## <a name="nested-layouts"></a>중첩된 레이아웃
 

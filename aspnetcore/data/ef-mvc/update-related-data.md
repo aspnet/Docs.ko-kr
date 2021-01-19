@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: f41d0b1d7ba46ef4867e0d160dc61f21042ce403
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 9ad0de9984b42c2b14dfaf48c74660915de93be1
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93053945"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058326"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>자습서: 관련 데이터 업데이트 - ASP.NET MVC 및 EF Core 사용
 
@@ -91,7 +91,7 @@ HttpGet `Edit` 메서드는 편집 중인 강좌에 이미 할당되어 있는 �
 
 *Views/Courses/Create.cshtml* 에서 **부서** 드롭다운 목록에 "부서 선택" 옵션을 추가하고, **DepartmentID** 에서  **부서** 로 캡션을 변경하고, 유효성 검사 메시지를 추가합니다.
 
-[!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-35)]
 
 *Views/Courses/Edit.cshtml* 에서 부서 필드에 대해 *Create.cshtml* 에서 수행한 동일한 변경 내용을 만듭니다.
 
