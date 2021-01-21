@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 904b57f95cbc48a8177174dc9be770e8a6abf146
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 98be96bf60441cf09a315dbd1c60e109a7a08afe
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96035881"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253113"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core 웹 호스트
 
@@ -66,7 +66,12 @@ public class Program
 
 `CreateDefaultBuilder`는 다음 작업을 수행합니다.
 
+::: moniker range=">= aspnetcore-5.0"
+* 앱의 호스팅 구성 공급자를 사용하여 [Kestrel](xref:fundamentals/servers/kestrel) 서버를 웹 서버로 구성합니다. Kestrel 서버의 기본 옵션은 <xref:fundamentals/servers/kestrel/options>을 참조하세요.
+::: moniker-end
+::: moniker range="< aspnetcore-5.0"
 * 앱의 호스팅 구성 공급자를 사용하여 [Kestrel](xref:fundamentals/servers/kestrel) 서버를 웹 서버로 구성합니다. Kestrel 서버의 기본 옵션은 <xref:fundamentals/servers/kestrel#kestrel-options>을 참조하세요.
+::: moniker-end
 * [콘텐츠 루트](xref:fundamentals/index#content-root)를 [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)에서 반환된 경로로 설정합니다.
 * 다음에서 [호스트 구성](#host-configuration-values)을 로드합니다.
   * 접두사가 `ASPNETCORE_`인 환경 변수(예: `ASPNETCORE_ENVIRONMENT`).
@@ -345,7 +350,12 @@ WebHost.CreateDefaultBuilder(args)
     .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
 ```
 
+::: moniker range=">= aspnetcore-5.0"
+Kestrel에는 자체 엔드포인트 구성 API가 있습니다. 자세한 내용은 <xref:fundamentals/servers/kestrel/endpoints>를 참조하세요.
+::: moniker-end
+::: moniker range="< aspnetcore-5.0"
 Kestrel에는 자체 엔드포인트 구성 API가 있습니다. 자세한 내용은 <xref:fundamentals/servers/kestrel#endpoint-configuration>를 참조하세요.
+::: moniker-end
 
 ### <a name="shutdown-timeout"></a>시스템 종료 제한 시간
 

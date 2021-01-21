@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/troubleshoot
-ms.openlocfilehash: cbce85caf7ba792253ba62c6be084c8905acd00f
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 61d4d2204886f26b4ff55bc876825012809f1dfa
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058716"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253100"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>.NET Core에서 gRPC 문제 해결
 
@@ -126,7 +126,13 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
+::: moniker range=">= aspnetcore-5.0"
+TLS 없이 HTTP/2 엔드포인트를 구성한 경우 엔드포인트의 [ListenOptions.Protocols](xref:fundamentals/servers/kestrel/endpoints#listenoptionsprotocols)를 `HttpProtocols.Http2`로 설정해야 합니다. HTTP/2를 협상하려면 TLS가 필요하기 때문에 `HttpProtocols.Http1AndHttp2`를 사용할 수 없습니다. TLS가 없을 경우 모든 엔드포인트 연결은 기본적으로 HTTP/1.1로 설정되며 gRPC 호출이 실패합니다.
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 TLS 없이 HTTP/2 엔드포인트를 구성한 경우 엔드포인트의 [ListenOptions.Protocols](xref:fundamentals/servers/kestrel#listenoptionsprotocols)를 `HttpProtocols.Http2`로 설정해야 합니다. HTTP/2를 협상하려면 TLS가 필요하기 때문에 `HttpProtocols.Http1AndHttp2`를 사용할 수 없습니다. TLS가 없을 경우 모든 엔드포인트 연결은 기본적으로 HTTP/1.1로 설정되며 gRPC 호출이 실패합니다.
+::: moniker-end
 
 또한 TLS를 사용하지 않도록 gRPC 클라이언트를 구성해야 합니다. 자세한 내용은 [.NET Core 클라이언트를 사용하여 안전하지 않은 gRPC 서비스 호출](#call-insecure-grpc-services-with-net-core-client)을 참조하세요.
 

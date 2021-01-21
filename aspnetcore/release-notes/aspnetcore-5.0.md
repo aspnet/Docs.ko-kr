@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: d7ffcb67637593ab2909885a9e1f6de74a78361b
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5caa412773bf9c8e3bed5ebc529d48b886de6956
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96855497"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253074"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>ASP.NET Core 5.0의 새로운 기능
 
@@ -333,7 +333,7 @@ SNI(서버 이름 표시)는 SSL 협상의 일부로 가상 도메인을 포함�
 ### <a name="http2"></a>HTTP/2
 
 * HTTP/2 코드 경로에서 할당 크게 축소.
-* [Kestrel](xref:fundamentals/servers/kestrel)에서 HTTP/2 응답 헤더의 [HPack 동적 압축](https://tools.ietf.org/html/rfc7541) 지원. 자세한 내용은 [헤더 테이블 크기](xref:fundamentals/servers/kestrel#header-table-size) 및 [HPACK: the silent killer (feature) of HTTP/2](https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2/)를 참조하세요.
+* [Kestrel](xref:fundamentals/servers/kestrel)에서 HTTP/2 응답 헤더의 [HPack 동적 압축](https://tools.ietf.org/html/rfc7541) 지원. 자세한 내용은 [헤더 테이블 크기](xref:fundamentals/servers/kestrel/options#header-table-size) 및 [HPACK: the silent killer (feature) of HTTP/2](https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2/)를 참조하세요.
 * HTTP/2 PING 프레임 전송: HTTP/2에는 PING 프레임을 전송하여 유휴 연결이 계속해서 작동하는지 확인하는 메커니즘이 있습니다. 사용 가능한 연결을 보장하는 것은 gRPC 스트림과 같이 대체로 유휴 상태이면서 간헐적으로 활동을 보이는 수명이 긴 스트림 작업 시 특히 유용합니다. 앱은 <xref:Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions>에 제한을 설정하여 [Kestrel](xref:fundamentals/servers/kestrel)에서 주기적 PING 프레임을 보낼 수 있습니다.
 
    ```csharp

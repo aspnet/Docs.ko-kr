@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/migration
-ms.openlocfilehash: 1a230e470fa666b2aa6761b4d5dabd09264d2aae
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 27c53dd4b41d6c99e45fccb5af79bab1ed5dc1b9
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059834"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253152"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>C Core에서 ASP.NET Core로 gRPC 서비스 마이그레이션
 
@@ -90,7 +90,13 @@ public class GreeterService : Greeter.GreeterBase
 
 ## <a name="https"></a>HTTPS
 
+::: moniker range=">= aspnetcore-5.0"
+C Core 기반 앱은 [Server.Ports 속성](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server_Ports)을 통해 HTTPS를 구성합니다. ASP.NET Core에서 서버를 구성하는 경우에도 유사한 개념이 사용됩니다. 예를 들어 Kestrel은 이 기능을 위해 [엔드포인트 구성](xref:fundamentals/servers/kestrel/endpoints)을 사용합니다.
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 C Core 기반 앱은 [Server.Ports 속성](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server_Ports)을 통해 HTTPS를 구성합니다. ASP.NET Core에서 서버를 구성하는 경우에도 유사한 개념이 사용됩니다. 예를 들어 Kestrel은 이 기능을 위해 [엔드포인트 구성](xref:fundamentals/servers/kestrel#endpoint-configuration)을 사용합니다.
+::: moniker-end
 
 ## <a name="grpc-interceptors-vs-middleware"></a>gRPC 인터셉터 대 미들웨어
 

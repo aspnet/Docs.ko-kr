@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 4813668f5278473fbaae36d572e69700b3fe771a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5901a1cb693dfe8e34e62ce2a28456bcf584221c
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97764239"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252268"
 ---
 # <a name="tooling-for-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor용 도구
 
@@ -129,7 +129,7 @@ Linux에서 인증서를 신뢰할 수 있는 중앙 집중식 방법은 없습�
 
 ## <a name="use-visual-studio-code-for-cross-platform-no-locblazor-development"></a>플랫폼 간 Blazor 개발용 Visual Studio Code 사용
 
-[Visual Studio Code](https://code.visualstudio.com/)는 Blazor 앱을 개발하는 데 사용할 수 있는 오픈 소스 플랫폼 간 IDE(통합 개발 환경)입니다. .NET CLI를 사용하여 Visual Studio Code를 사용하여 개발할 새 Blazor 앱을 만들 수 있습니다. 자세한 내용은 [이 문서의 Linux 버전](/aspnet/core/blazor/tooling?pivots=linux)을 참조하세요.
+[Visual Studio Code](https://code.visualstudio.com/)는 Blazor 앱을 개발하는 데 사용할 수 있는 오픈 소스 플랫폼 간 IDE(통합 개발 환경)입니다. .NET CLI를 사용하여 Visual Studio Code를 사용하여 개발할 새 Blazor 앱을 만들 수 있습니다. 자세한 내용은 [이 문서의 Linux 버전](?pivots=linux)을 참조하세요.
 
 ## <a name="no-locblazor-template-options"></a>Blazor 템플릿 옵션
 

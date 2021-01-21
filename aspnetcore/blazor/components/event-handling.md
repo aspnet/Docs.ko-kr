@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: 56306d305a61d549380e847ab2754fa41130e14e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: fe50b95dda14afeae35c4922d0ae3470280bfd02
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94507813"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252528"
 ---
 # <a name="aspnet-core-no-locblazor-event-handling"></a>ASP.NET Core Blazor 이벤트 처리
 
@@ -208,7 +208,7 @@ private void ShowMessage(MouseEventArgs e)
 `ChildComponent`에서 단추를 선택한 경우
 
 * `ParentComponent`의 `ShowMessage` 메서드가 호출됩니다. `messageText`가 업데이트되고 `ParentComponent`에 표시됩니다.
-* [`StateHasChanged`](xref:blazor/components/lifecycle#state-changes) 호출은 콜백의 메서드(`ShowMessage`)에 필요하지 않습니다. 자식 이벤트가 자식 내에서 실행되는 이벤트 처리기에서 다시 렌더링되는 구성 요소를 트리거하는 것처럼 `ParentComponent`를 다시 렌더링하기 위해 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>가 자동으로 호출됩니다.
+* [`StateHasChanged`](xref:blazor/components/lifecycle#state-changes) 호출은 콜백의 메서드(`ShowMessage`)에 필요하지 않습니다. 자식 이벤트가 자식 내에서 실행되는 이벤트 처리기에서 다시 렌더링되는 구성 요소를 트리거하는 것처럼 `ParentComponent`를 다시 렌더링하기 위해 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>가 자동으로 호출됩니다. 자세한 내용은 <xref:blazor/components/rendering>를 참조하세요.
 
 <xref:Microsoft.AspNetCore.Components.EventCallback> 및 <xref:Microsoft.AspNetCore.Components.EventCallback%601>는 비동기 대리자를 허용합니다. <xref:Microsoft.AspNetCore.Components.EventCallback>은 약한 형식이며 `InvokeAsync(Object)`에서 모든 형식 인수를 전달할 수 있습니다. <xref:Microsoft.AspNetCore.Components.EventCallback%601>은 강력한 형식이며 `InvokeAsync(T)`에서 `TValue`에 할당할 수 있는 `T` 인수를 전달해야 합니다.
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 263c7713166005dfdec8ede6bfa9b03b730dede7
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: b99b0f0ab6e67ac84bf1232ff6681c5edd54ffb9
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96035816"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253178"
 ---
 # <a name="net-generic-host-in-aspnet-core"></a>ASP.NET Core의 .NET 일반 호스트
 
@@ -129,8 +129,8 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> 메서드는 다음 작업을 수행합니다.
 
 * 접두사가 `ASPNETCORE_`인 환경 변수에서 호스트 구성을 로드합니다.
-* [Kestrel](xref:fundamentals/servers/kestrel) 서버를 웹 서버로 설정하고 앱의 호스팅 구성 공급자를 사용하여 구성합니다. Kestrel 서버의 기본 옵션은 <xref:fundamentals/servers/kestrel#kestrel-options>을 참조하세요.
-* [호스트 필터링 미들웨어](xref:fundamentals/servers/kestrel#host-filtering)를 추가합니다.
+* [Kestrel](xref:fundamentals/servers/kestrel) 서버를 웹 서버로 설정하고 앱의 호스팅 구성 공급자를 사용하여 구성합니다. Kestrel 서버의 기본 옵션은 <xref:fundamentals/servers/kestrel/options>을 참조하세요.
+* [호스트 필터링 미들웨어](xref:fundamentals/servers/kestrel/host-filtering)를 추가합니다.
 * `ASPNETCORE_FORWARDEDHEADERS_ENABLED`가 `true`와 같으면 [전달된 헤더 미들웨어](xref:host-and-deploy/proxy-load-balancer#forwarded-headers)를 추가합니다.
 * IIS 통합을 사용합니다. IIS 기본 옵션은 <xref:host-and-deploy/iis/index#iis-options>를 참조하세요.
 
@@ -437,7 +437,7 @@ webBuilder.UseStartup<Startup>();
 webBuilder.UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002");
 ```
 
-Kestrel에는 자체 엔드포인트 구성 API가 있습니다. 자세한 내용은 <xref:fundamentals/servers/kestrel#endpoint-configuration>를 참조하세요.
+Kestrel에는 자체 엔드포인트 구성 API가 있습니다. 자세한 내용은 <xref:fundamentals/servers/kestrel/endpoints>를 참조하세요.
 
 ### <a name="webroot"></a>WebRoot
 
