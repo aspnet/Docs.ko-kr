@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: dc70cfe7cb0c0f044f5f1e7ee68a293b3ea7507f
-ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
+ms.openlocfilehash: ebd3c0dc9baa63b30f142773d7a3d621ce4082d9
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854654"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689307"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>권한 부여로 보호 되는 사용자 데이터를 사용 하 여 ASP.NET Core 웹 앱 만들기
 
@@ -75,7 +75,7 @@ ms.locfileid: "97854654"
 * `ContactManagerAuthorizationHandler`: 관리자가 연락처를 승인 하거나 거부할 수 있습니다.
 * `ContactAdministratorsAuthorizationHandler`: 관리자가 연락처를 승인 또는 거부 하 고 연락처를 편집/삭제할 수 있습니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 이 자습서는 고급입니다. 다음에 대해 잘 알고 있어야 합니다.
 
@@ -129,6 +129,8 @@ dotnet ef database update
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
 위의 강조 표시 된 코드는 [대체 인증 정책을](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy)설정 합니다. 대체 인증 정책에는 ** Razor 인증 특성이 있는 페이지, 컨트롤러 또는 작업 메서드를 제외 하 고 * 모든 _ 사용자를 인증 해야 합니다. 예를 들어 Razor 또는를 사용 하는 페이지, 컨트롤러 또는 작업 메서드 `[AllowAnonymous]` `[Authorize(PolicyName="MyPolicy")]` 는 대체 인증 정책 대신 적용 된 인증 특성을 사용 합니다.
+
+<xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> 현재 <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> 사용자가 인증 되도록 적용 하는 현재 인스턴스에를 추가 합니다.
 
 대체 인증 정책:
 
@@ -332,7 +334,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * 관리자는 연락처 데이터를 승인/거부할 수 있습니다. `Details`보기는 **승인** 및 **거부** 단추를 표시 합니다.
 * 관리자는 모든 데이터를 승인/거부 하 고 편집/삭제할 수 있습니다.
 
-| 사용자                | 앱에서 시드 | 옵션                                  |
+| User                | 앱에서 시드 | 옵션                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
 | test@example.com    | 아니요                | 자신의 데이터를 편집/삭제 합니다.                |
 | manager@contoso.com | 예               | 자신의 데이터를 승인/거부 하 고 편집/삭제 합니다. |
@@ -429,7 +431,7 @@ dotnet ef database update
 * `ContactManagerAuthorizationHandler`: 관리자가 연락처를 승인 하거나 거부할 수 있습니다.
 * `ContactAdministratorsAuthorizationHandler`: 관리자가 연락처를 승인 또는 거부 하 고 연락처를 편집/삭제할 수 있습니다.
 
-## <a name="prerequisites"></a>사전 요구 사항
+## <a name="prerequisites"></a>필수 구성 요소
 
 이 자습서는 고급입니다. 다음에 대해 잘 알고 있어야 합니다.
 
@@ -659,7 +661,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * 관리자는 연락처 데이터를 승인/거부할 수 있습니다. `Details`보기는 **승인** 및 **거부** 단추를 표시 합니다.
 * 관리자는 모든 데이터를 승인/거부 하 고 편집/삭제할 수 있습니다.
 
-| 사용자                | 앱에서 시드 | 옵션                                  |
+| User                | 앱에서 시드 | 옵션                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
 | test@example.com    | 아니요                | 자신의 데이터를 편집/삭제 합니다.                |
 | manager@contoso.com | 예               | 자신의 데이터를 승인/거부 하 고 편집/삭제 합니다. |
