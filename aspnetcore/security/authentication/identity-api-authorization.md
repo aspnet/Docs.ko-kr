@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 8acc34c88bf62b3da1b920acc7318c94435c100e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5a6c160ebdda3ec600980aa839770f4f22a9c2fc
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051982"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658666"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>SPAs에 대 한 인증 및 권한 부여
 
@@ -36,13 +36,13 @@ ASP.NET Core 3.1 이상 템플릿은 API 권한 부여에 대 한 지원을 사�
 
 사용자 인증 및 권한 부여는 모두와 함께 사용할 수 있습니다. 명령 셸을 열고 다음 명령을 실행 합니다.
 
-**각도** :
+**각도**:
 
 ```dotnetcli
 dotnet new angular -o <output_directory_name> -au Individual
 ```
 
-**반응** :
+**반응**:
 
 ```dotnetcli
 dotnet new react -o <output_directory_name> -au Individual
@@ -98,6 +98,27 @@ dotnet new react -o <output_directory_name> -au Individual
     app.UseIdentityServer();
     ```
 
+### <a name="azure-app-service-on-linux"></a>Linux의 Azure App Service
+
+Linux에서 Azure App Service 배포의 경우에서 명시적으로 발급자를 지정 합니다 `Startup.ConfigureServices` .
+
+```csharp
+services.Configure<JwtBearerOptions>(
+    IdentityServerJwtConstants.IdentityServerJwtBearerScheme, 
+    options =>
+    {
+        options.Authority = "{AUTHORITY}";
+    });
+```
+
+위의 코드에서 `{AUTHORITY}` 자리 표시자는 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions.Authority> openid connect Connect 호출을 만들 때 사용할입니다.
+
+예:
+
+```csharp
+options.Authority = "https://contoso-service.azurewebsites.net";
+```
+
 ### <a name="addapiauthorization"></a>AddApiAuthorization
 
 이 도우미 메서드는 Identity 지원 되는 구성을 사용 하도록 서버를 구성 합니다. IdentityServer는 앱 보안 문제를 처리하는 강력하고 확장성 있는 프레임워크입니다. 이와 동시에는 가장 일반적인 시나리오에 대 한 불필요 한 복잡성을 노출 합니다. 따라서 규칙 집합 및 구성 옵션이 적절 한 시작 지점으로 간주 되는 사용자에 게 제공 됩니다. 인증을 변경 해야 하는 경우에는 요구 사항에 Identity 맞게 인증을 사용자 지정할 수 있도록 서버의 전체 기능을 계속 사용할 수 있습니다.
@@ -151,9 +172,9 @@ dotnet new react -o <output_directory_name> -au Individual
 각도 템플릿에서 인증 및 API 권한 부여 지원은 *Clientapp\src\api\ac-authentication* 디렉터리의 자체 각도 모듈에 있습니다. 모듈은 다음 요소로 구성 됩니다.
 
 * 3 개 구성 요소:
-  * *login. component. ts* : 앱의 로그인 흐름을 처리 합니다.
-  * *logout* . s a t: 응용 프로그램의 로그 아웃 흐름을 처리 합니다.
-  * *login-menu. component* : 다음 링크 집합 중 하나를 표시 하는 위젯:
+  * *login. component. ts*: 앱의 로그인 흐름을 처리 합니다.
+  * *logout*. s a t: 응용 프로그램의 로그 아웃 흐름을 처리 합니다.
+  * *login-menu. component*: 다음 링크 집합 중 하나를 표시 하는 위젯:
     * 사용자가 인증 되 면 사용자 프로필 관리 및 로그 아웃 링크를 사용 합니다.
     * 사용자가 인증 되지 않은 경우 등록 및 로그인 링크.
 * 경로 `AuthorizeGuard` 에 추가할 수 있으며 경로를 방문 하기 전에 사용자를 인증 해야 하는 경로 가드입니다.
@@ -166,12 +187,12 @@ dotnet new react -o <output_directory_name> -au Individual
 반응 템플릿에서 인증 및 API 권한 부여에 대 한 지원은 *ClientApp\src\components\api-authorization* 디렉터리에 있습니다. 다음 요소로 구성 됩니다.
 
 * 4 구성 요소:
-  * *Login.js* : 앱의 로그인 흐름을 처리 합니다.
-  * *Logout.js* : 응용 프로그램의 로그 아웃 흐름을 처리 합니다.
-  * *LoginMenu.js* : 다음 링크 집합 중 하나를 표시 하는 위젯:
+  * *Login.js*: 앱의 로그인 흐름을 처리 합니다.
+  * *Logout.js*: 응용 프로그램의 로그 아웃 흐름을 처리 합니다.
+  * *LoginMenu.js*: 다음 링크 집합 중 하나를 표시 하는 위젯:
     * 사용자가 인증 되 면 사용자 프로필 관리 및 로그 아웃 링크를 사용 합니다.
     * 사용자가 인증 되지 않은 경우 등록 및 로그인 링크.
-  * *AuthorizeRoute.js* : 매개 변수에 표시 된 구성 요소를 렌더링 하기 전에 사용자를 인증 해야 하는 경로 구성 요소입니다 `Component` .
+  * *AuthorizeRoute.js*: 매개 변수에 표시 된 구성 요소를 렌더링 하기 전에 사용자를 인증 해야 하는 경로 구성 요소입니다 `Component` .
 * `authService` `AuthorizeService` 인증 프로세스의 하위 수준 정보를 처리 하 고 인증 된 사용자에 대 한 정보를 사용 하기 위해 나머지 앱에 노출 하는 클래스의 내보낸 인스턴스입니다.
 
 이제 솔루션의 주요 구성 요소를 살펴보았으므로 앱에 대 한 개별 시나리오를 자세히 살펴볼 수 있습니다.
@@ -198,7 +219,7 @@ services.Configure<JwtBearerOptions>(
 
 API의 JWT 처리기는를 사용 하 여 인증 프로세스를 제어할 수 있는 이벤트를 발생 시킵니다 `JwtBearerEvents` . API 권한 부여에 대 한 지원을 제공 하기 위해는 `AddIdentityServerJwt` 자체 이벤트 처리기를 등록 합니다.
 
-이벤트 처리를 사용자 지정 하려면 필요한 만큼 추가 논리를 사용 하 여 기존 이벤트 처리기를 래핑합니다. 다음은 그 예입니다.
+이벤트 처리를 사용자 지정 하려면 필요한 만큼 추가 논리를 사용 하 여 기존 이벤트 처리기를 래핑합니다. 다음은 그 예입니다. 
 
 ```csharp
 services.Configure<JwtBearerOptions>(
@@ -285,7 +306,7 @@ async populateWeatherData() {
 
 ### <a name="example-deploy-to-a-non-azure-web-hosting-provider"></a>예: 비 Azure 웹 호스팅 공급자에 배포
 
-웹 호스팅 패널에서 인증서를 만들거나 로드 합니다. 그런 다음 앱의 *appsettings.json* 파일에서 섹션을 수정 `IdentityServer` 하 여 키 세부 정보를 포함 합니다. 다음은 그 예입니다.
+웹 호스팅 패널에서 인증서를 만들거나 로드 합니다. 그런 다음 앱의 *appsettings.json* 파일에서 섹션을 수정 `IdentityServer` 하 여 키 세부 정보를 포함 합니다. 다음은 그 예입니다. 
 
 ```json
 "IdentityServer": {
