@@ -57,8 +57,6 @@
         - name: MVC
           displayName: tutorial
           items:
-            - name: 개요
-              uid: tutorials/first-mvc-app/index
             - name: 시작
               uid: tutorials/first-mvc-app/start-mvc
             - name: 컨트롤러 추가
@@ -262,8 +260,6 @@
           uid: mvc/overview
         - name: 자습서
           items:
-            - name: 개요
-              uid: tutorials/first-mvc-app/index
             - name: 시작
               uid: tutorials/first-mvc-app/start-mvc
             - name: 컨트롤러 추가
