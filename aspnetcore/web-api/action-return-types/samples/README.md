@@ -4,8 +4,8 @@
 
 | 디렉터리                   | 목적 |
 |-----------------------------|------------------------------------------------------------|
-| *3x/WebApiSample.Api.30*    | An ASP.NET Core 3.0 웹 API 프로젝트.                       |
-| *3x/WebApiSample.DataAccess*| .NET Standard 2.1 데이터 액세스 계층 프로젝트는 ASP.NET Core 3.x 웹 API 프로젝트에 사용됩니다.|
+| *3 x/웹 Apis.*    | ASP.NET Core 3.1 웹 API 프로젝트입니다.                       |
+| *3x/WebApiSample.DataAccess*| ASP.NET Core 3.1 웹 API 프로젝트에서 사용 하는 .NET Standard 2.1 데이터 액세스 계층 프로젝트입니다.|
 | *2x/WebApiSample.Api.21*    | An ASP.NET Core 2.1 웹 API 프로젝트.                         |
 | *2x/WebApiSample.Api.Pre21* | ASP.NET Core 2.0 웹 API 프로젝트.                         |
 | *2x/WebApiSample.DataAccess*| .NET Standard 2.0 데이터 액세스 계층 프로젝트는 ASP.NET Core 2.x 웹 API 프로젝트에 사용됩니다.|

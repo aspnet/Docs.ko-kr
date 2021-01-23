@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/action-return-types
-ms.openlocfilehash: a2866970a20785ae8fa306d484972697817b7f92
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 62c8227ca770a3a9adbe780685b140bc0e86841e
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058950"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710700"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>ASP.NET Core 웹 API에서 컨트롤러 작업 반환 형식
 
@@ -92,11 +92,11 @@ public IEnumerable<Product> GetOnSaleProducts() =>
 
 다음과 같은 판매 가격이 책정된 제품 레코드를 `IEnumerable<Product>`로 반환하는 작업을 살펴보겠습니다.
 
-[!code-csharp[](../web-api/action-return-types/samples/3x/WebApiSample.Api.30/Controllers/ProductsController.cs?name=snippet_GetOnSaleProducts)]
+[!code-csharp[](../web-api/action-return-types/samples/3x/WebApiSample.Api.31/Controllers/ProductsController.cs?name=snippet_GetOnSaleProducts)]
 
 다음은 위 작업의 `IAsyncEnumerable<Product>`에 해당합니다.
 
-[!code-csharp[](../web-api/action-return-types/samples/3x/WebApiSample.Api.30/Controllers/ProductsController.cs?name=snippet_GetOnSaleProductsAsync)]
+[!code-csharp[](../web-api/action-return-types/samples/3x/WebApiSample.Api.31/Controllers/ProductsController.cs?name=snippet_GetOnSaleProductsAsync)]
 
 위의 두 작업은 모두 ASP.NET Core 3.0 기준으로 비차단입니다.
 
