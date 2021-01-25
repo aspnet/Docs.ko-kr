@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: e134832ad00b10bb01239afa06acc74d86707af1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1355fdaeae58b6f4e0cf8d41a74b1c28aee0e8fe
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94422563"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253087"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core에서 라우팅
 
@@ -663,7 +663,7 @@ URL 생성 프로세스는 [LinkGenerator. GetPathByAddress](xref:Microsoft.AspN
 
 첫 번째 단계에서는 주소를 사용하여 주소의 형식과 일치하는 [`IEndpointAddressScheme<TAddress>`](xref:Microsoft.AspNetCore.Routing.IEndpointAddressScheme`1)을 사용하는 후보 엔드포인트 집합을 확인합니다.
 
-주소 체계에 따라 후보 집합을 찾으면 URL 생성 작업이 성공할 때까지 엔드포인트가 순서 지정되고 반복적으로 처리됩니다. URL 생성에서는 모호성을 확인하지 **않으며**, 반환되는 첫 번째 결과가 최종 결과입니다.
+주소 체계에 따라 후보 세트를 찾으면 URL 생성 작업이 성공할 때까지 엔드포인트가 순서 지정되고 반복적으로 처리됩니다. URL 생성에서는 모호성을 확인하지 **않으며**, 반환되는 첫 번째 결과가 최종 결과입니다.
 
 ### <a name="troubleshooting-url-generation-with-logging"></a>로깅을 사용하여 URL 생성 문제 해결
 

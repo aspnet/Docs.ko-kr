@@ -5,7 +5,7 @@ description: 최신 브라우저 기능을 사용하여 데스크톱 앱과 같�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/10/2020
+ms.date: 01/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: f400319ef81b3d7768bdbdab84f46d3f9c50bb46
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 196e19528341e98ac06cefb08ba92f9e47d265ea
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96855445"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252476"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly를 사용하여 프로그레시브 웹 애플리케이션 빌드
 
@@ -59,15 +59,109 @@ ms.locfileid: "96855445"
 
 # <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code/.NET Core CLI](#tab/visual-studio-code+netcore-cli)
 
-명령 셸에서 `--pwa` 스위치를 사용하여 PWA 프로젝트를 만듭니다.
+다음 명령을 사용하여 명령 셸에서 `--pwa` 스위치를 사용하여 PWA 프로젝트를 만듭니다.
 
 ```dotnetcli
-dotnet new blazorwasm -o MyNewProject --pwa
+dotnet new blazorwasm -o MyBlazorPwa --pwa
 ```
+
+이전 명령에서 `-o|--output` 옵션은 `MyBlazorPwa`라는 앱의 새 폴더를 만듭니다.
 
 ---
 
 필요에 따라 ASP.NET Core에 호스트된 템플릿에서 만든 앱에 대해 PWA를 구성할 수 있습니다. PWA 시나리오는 호스팅 모델과 관계없습니다.
+
+## <a name="convert-an-existing-no-locblazor-webassembly-app-into-a-pwa"></a>기존 Blazor WebAssembly 앱을 PWA로 변환
+
+이 섹션의 지침에 따라 기존 Blazor WebAssembly 앱을 PWA로 변환합니다.
+
+앱의 프로젝트 파일에서:
+
+* 다음 `ServiceWorkerAssetsManifest` 속성을 `PropertyGroup`에 추가합니다.
+
+  ```xml
+    ...
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+  </PropertyGroup>
+   ```
+
+* 다음 `ServiceWorker` 항목을 `ItemGroup`에 추가합니다.
+
+  ```xml
+  <ItemGroup>
+    <ServiceWorker Include="wwwroot\service-worker.js" 
+      PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
+  ```
+
+정적 자산을 얻으려면 다음 접근 방식 중 **하나** 를 사용합니다.
+
+::: moniker range=">= aspnetcore-5.0"
+
+* 명령 셸에서 [`dotnet new`](/dotnet/core/tools/dotnet-new) 명령을 사용하여 별도의 새 PWA 프로젝트를 만듭니다.
+
+  ```dotnetcli
+  dotnet new blazorwasm -o MyBlazorPwa --pwa
+  ```
+  
+  이전 명령에서 `-o|--output` 옵션은 `MyBlazorPwa`라는 앱의 새 폴더를 만듭니다.
+  
+  최신 릴리스용 앱을 변환하지 않는 경우 `-f|--framework` 옵션을 전달합니다. 다음 예제에서는 ASP.NET Core 버전 3.1용 앱을 만듭니다.
+  
+  ```dotnetcli
+  dotnet new blazorwasm -o MyBlazorPwa --pwa -f netcoreapp3.1
+  ```
+
+* 5\.0 릴리스 참조 소스 및 자산에 연결되는 다음 URL에서 ASP.NET Core GitHub 리포지토리로 이동합니다. 5\.0 릴리스용 앱을 변환하지 않는 경우에는 앱에 적용되는 **스위치 분기 또는 태그** 드롭다운 목록에서 작업 중인 릴리스를 선택합니다.
+
+  [dotnet/aspnetcore(릴리스 5.0)Blazor WebAssembly 프로젝트 템플릿 `wwwroot` 폴더](https://github.com/dotnet/aspnetcore/tree/release/5.0/src/ProjectTemplates/Web.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+* 명령 셸에서 [`dotnet new`](/dotnet/core/tools/dotnet-new) 명령을 사용하여 별도의 새 PWA 프로젝트를 만듭니다. `-f|--framework` 옵션을 전달하여 버전을 선택합니다. 다음 예제에서는 ASP.NET Core 버전 3.1용 앱을 만듭니다.
+  
+  ```dotnetcli
+  dotnet new blazorwasm -o MyBlazorPwa --pwa -f netcoreapp3.1
+  ```
+  
+  이전 명령에서 `-o|--output` 옵션은 `MyBlazorPwa`라는 앱의 새 폴더를 만듭니다.
+
+* 3\.1 릴리스 참조 소스 및 자산에 연결되는 다음 URL에서 ASP.NET Core GitHub 리포지토리로 이동합니다.
+
+  [dotnet/aspnetcore(릴리스 3.1) Blazor WebAssembly 프로젝트 템플릿 `wwwroot` 폴더](https://github.com/dotnet/aspnetcore/tree/release/3.1/src/ProjectTemplates/ComponentsWebAssembly.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+
+  > [!NOTE]
+  > ASP.NET Core 3.1 릴리스 후에 변경된 Blazor WebAssembly 프로젝트 템플릿의 URL 5\.0 이상의 참조 자산은 다음 URL에서 사용할 수 있습니다.
+  >
+  > [dotnet/aspnetcore(릴리스 5.0)Blazor WebAssembly 프로젝트 템플릿 `wwwroot` 폴더](https://github.com/dotnet/aspnetcore/tree/release/5.0/src/ProjectTemplates/Web.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+
+::: moniker-end
+
+직접 만든 앱 또는 `dotnet/aspnetcore` GitHub 리포지토리의 참조 자산에서 소스 `wwwroot` 폴더에서 다음 파일을 앱의 `wwwroot` 폴더에 복사합니다.
+
+* `icon-512.png`
+* `manifest.json`
+* `service-worker.js`
+* `service-worker.published.js`
+
+앱의 `wwwroot/index.html` 파일에서:
+
+* 매니페스트 및 앱 아이콘의 `<link>` 요소를 추가합니다.
+
+  ```html
+  <link href="manifest.json" rel="manifest" />
+  <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+  ```
+
+* `blazor.webassembly.js` 스크립트 태그 바로 뒤에 있는 닫는 `</body>` 태그 안에 다음 `<script>` 태그를 추가합니다.
+
+  ```html
+      ...
+      <script>navigator.serviceWorker.register('service-worker.js');</script>
+  </body>
+  ```
 
 ## <a name="installation-and-app-manifest"></a>설치 및 앱 매니페스트
 

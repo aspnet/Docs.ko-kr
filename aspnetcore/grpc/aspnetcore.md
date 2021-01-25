@@ -4,7 +4,7 @@ author: juntaoluo
 description: ASP.NET Core로 gRPC 서비스를 작성하는 경우의 기본 개념을 알아봅니다.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 09/03/2019
+ms.date: 01/14/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/aspnetcore
-ms.openlocfilehash: b120aa4ab6922445f2c53f3b1cb3bd5c159d8a84
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 44a6f1d2a25314460fa4bce469f697a2fa4c0825
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057832"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252853"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>ASP.NET Core를 사용하는 gRPC 서비스
 
@@ -77,6 +77,8 @@ gRPC를 사용하려면 [Grpc.AspNetCore](https://www.nuget.org/packages/Grpc.As
 
 ASP.NET Core 미들웨어와 기능은 라우팅 파이프라인을 공유하므로 추가 요청 처리기를 제공하도록 앱을 구성할 수 있습니다. MVC 컨트롤러와 같은 추가 요청 처리기는 구성된 gRPC 서비스와 병렬로 작동합니다.
 
+::: moniker range=">= aspnetcore-5.0"
+
 ### <a name="configure-kestrel"></a>Kestrel 구성
 
 Kestrel gRPC 엔드포인트:
@@ -86,7 +88,47 @@ Kestrel gRPC 엔드포인트:
 
 #### <a name="http2"></a>HTTP/2
 
-gRPC에는 HTTP/2가 필요합니다. ASP.NET Core용 gRPC는 [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*)이 `HTTP/2`인지 확인합니다.
+gRPC에는 HTTP/2가 필요합니다. ASP.NET Core용 gRPC는 [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol%2A)이 `HTTP/2`인지 확인합니다.
+
+Kestrel은 대부분의 최신 운영 체제에서 [HTTP/2를 지원](xref:fundamentals/servers/kestrel/http2)합니다. Kestrel 엔드포인트는 기본적으로 HTTP/1.1 및 HTTP/2 연결을 지원하도록 구성됩니다.
+
+#### <a name="tls"></a>TLS
+
+gRPC에 사용되는 Kestrel 엔드포인트는 TLS로 보호해야 합니다. 개발에서는 ASP.NET Core 개발 인증서가 있을 경우 TLS로 보호된 엔드포인트가 `https://localhost:5001`에 자동으로 생성됩니다. 구성이 필요하지 않습니다. `https` 접두사는 Kestrel 엔드포인트가 TLS를 사용하는지 확인합니다.
+
+프로덕션에서는 TLS를 명시적으로 구성해야 합니다. 다음 *appsettings.json* 예제에서는 TLS로 보호되는 HTTP/2 엔드포인트가 제공됩니다.
+
+[!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
+
+또는 *Program.cs* 에서 Kestrel 엔드포인트를 구성할 수 있습니다.
+
+[!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
+
+#### <a name="protocol-negotiation"></a>프로토콜 협상
+
+TLS는 통신 보호 이상의 용도로 사용됩니다. TLS [ALPN](https://tools.ietf.org/html/rfc7301#section-3)(Application-Layer Protocol Negotiation) 핸드셰이크는 엔드포인트가 여러 프로토콜을 지원하는 경우 클라이언트와 서버 간의 연결 프로토콜을 협상하는 데 사용됩니다. 이 협상은 연결에서 HTTP/1.1 또는 HTTP/2를 사용할 것인지를 결정합니다.
+
+TLS 없이 HTTP/2 엔드포인트를 구성한 경우 엔드포인트의 [ListenOptions.Protocols](xref:fundamentals/servers/kestrel/endpoints#listenoptionsprotocols)를 `HttpProtocols.Http2`로 설정해야 합니다. 협상이 없기 때문에 여러 프로토콜이 있는 엔드포인트(예: `HttpProtocols.Http1AndHttp2`)는 TLS 없이 사용할 수 없습니다. 안전하지 않은 엔드포인트에 대한 모든 연결은 기본적으로 HTTP/1.1로 설정되며 gRPC 호출이 실패합니다.
+
+Kestrel을 통해 HTTP/2 및 TLS를 사용하도록 설정하는 방법에 대한 자세한 내용은 [Kestrel 엔드포인트 구성](xref:fundamentals/servers/kestrel/endpoints)을 참조하세요.
+
+> [!NOTE]
+> macOS는 TLS를 사용하는 ASP.NET Core gRPC를 지원하지 않습니다. macOS에서 gRPC 서비스를 성공적으로 실행하려면 추가 구성이 필요합니다. 자세한 내용은 [macOS에서 ASP.NET Core gRPC 앱을 시작할 수 없음](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos)을 참조하세요.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+### <a name="configure-kestrel"></a>Kestrel 구성
+
+Kestrel gRPC 엔드포인트:
+
+* HTTP/2가 필요합니다.
+* [TLS](https://tools.ietf.org/html/rfc5246)(전송 계층 보안)로 보호해야 합니다.
+
+#### <a name="http2"></a>HTTP/2
+
+gRPC에는 HTTP/2가 필요합니다. ASP.NET Core용 gRPC는 [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol%2A)이 `HTTP/2`인지 확인합니다.
 
 Kestrel은 대부분의 최신 운영 체제에서 [HTTP/2를 지원](xref:fundamentals/servers/kestrel#http2-support)합니다. Kestrel 엔드포인트는 기본적으로 HTTP/1.1 및 HTTP/2 연결을 지원하도록 구성됩니다.
 
@@ -112,6 +154,8 @@ Kestrel을 통해 HTTP/2 및 TLS를 사용하도록 설정하는 방법에 대�
 
 > [!NOTE]
 > macOS는 TLS를 사용하는 ASP.NET Core gRPC를 지원하지 않습니다. macOS에서 gRPC 서비스를 성공적으로 실행하려면 추가 구성이 필요합니다. 자세한 내용은 [macOS에서 ASP.NET Core gRPC 앱을 시작할 수 없음](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos)을 참조하세요.
+
+::: moniker-end
 
 ## <a name="integration-with-aspnet-core-apis"></a>ASP.NET Core API와 통합
 

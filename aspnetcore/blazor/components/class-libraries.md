@@ -5,7 +5,7 @@ description: 외부 구성 요소 라이브러리의 구성 요소를 Blazor 앱
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/27/2020
+ms.date: 01/12/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/class-libraries
-ms.openlocfilehash: 24a5b93a18cfe36c50d9739ba56d12aca41615c0
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 14370f9bbf45079fd3654d3e55af4178691cf4f5
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94570161"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252554"
 ---
 # <a name="aspnet-core-no-locrazor-components-class-libraries"></a>ASP.NET Core Razor 구성 요소 클래스 라이브러리
 
@@ -50,7 +50,7 @@ ms.locfileid: "94570161"
    1. 솔루션을 마우스 오른쪽 단추로 클릭합니다. **추가** > **기존 프로젝트** 를 선택합니다.
    1. RCL의 프로젝트 파일로 이동합니다.
    1. RCL의 프로젝트 파일(`.csproj`)을 선택합니다.
-1. 앱에서 RCL 참조를 추가합니다.
+1. 앱에서 RCL에 대한 참조를 추가합니다.
    1. 앱 프로젝트를 마우스 오른쪽 단추로 클릭합니다. **추가** > **참조** 를 선택합니다.
    1. RCL 프로젝트를 선택합니다. **확인** 을 선택합니다.
 
@@ -121,11 +121,13 @@ Welcome to your new app.
 
 원하는 경우 최상위 `_Import.razor` 파일에 `@using ComponentLibrary` 지시문을 포함하여 전체 프로젝트에서 라이브러리 구성 요소를 사용할 수 있게 합니다. 임의 수준의 `_Import.razor` 파일에 지시문을 추가하여 폴더 내의 단일 구성 요소 또는 구성 요소 집합에 네임스페이스를 적용합니다.
 
-<!-- HOLD for reactivation at 5.x
-
 ::: moniker range=">= aspnetcore-5.0"
 
-To provide `Component1`'s `my-component` CSS class to the component, link to the library's stylesheet using the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) in `Component1.razor`:
+[CSS 격리](xref:blazor/components/css-isolation)를 사용하는 라이브러리 구성 요소의 경우 라이브러리를 사용하는 앱에서 라이브러리의 개별 구성 요소 스타일시트를 명시적으로 연결할 필요가 없습니다. 구성 요소 스타일은 사용 앱에 자동으로 제공됩니다.
+
+<!-- REACTIVATE WHEN HEAD COMPONENTS COME BACK AT 6.0
+
+To provide additional library component styles from stylesheets in the library's `wwwroot` folder, link the stylesheets using the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) in `Component1.razor`:
 
 ```razor
 <div class="my-component">
@@ -137,25 +139,31 @@ To provide `Component1`'s `my-component` CSS class to the component, link to the
 </div>
 ```
 
-To provide the stylesheet across the app, you can alternatively link to the library's stylesheet in the app's `wwwroot/index.html` file (Blazor WebAssembly) or `Pages/_Host.cshtml` file (Blazor Server):
+NEXT PARAGRAPH: RECAST TO 'CAN ALSO ADOPT ...'
+
+-->
+
+라이브러리의 `wwwroot` 폴더에 있는 스타일시트에서 추가 라이브러리 구성 요소 스타일을 제공하려면 사용 앱의 `wwwroot/index.html` 파일(Blazor WebAssembly) 또는 `Pages/_Host.cshtml` 파일(Blazor Server)에서 스타일시트를 연결합니다.
 
 ```html
 <head>
     ...
-    <link href="_content/ComponentLibrary/styles.css" rel="stylesheet" />
+    <link href="_content/ComponentLibrary/additionalStyles.css" rel="stylesheet" />
 </head>
 ```
+
+<!-- REACTIVATE WHEN HEAD COMPONENTS COME BACK AT 6.0
 
 When the `Link` component is used in a child component, the linked asset is also available to any other child component of the parent component as long as the child with the `Link` component is rendered. The distinction between using the `Link` component in a child component and placing a `<link>` HTML tag in `wwwroot/index.html` or `Pages/_Host.cshtml` is that a framework component's rendered HTML tag:
 
 * Can be modified by application state. A hard-coded `<link>` HTML tag can't be modified by application state.
 * Is removed from the HTML `<head>` when the parent component is no longer rendered.
 
+-->
+
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
-
--->
 
 `Component1`의 `my-component` CSS 클래스를 제공하려면 앱의 `wwwroot/index.html` 파일(Blazor WebAssembly) 또는 `Pages/_Host.cshtml` 파일(Blazor Server)에서 라이브러리의 스타일시트에 연결합니다.
 
@@ -166,11 +174,7 @@ When the `Link` component is used in a child component, the linked asset is also
 </head>
 ```
 
-<!-- HOLD for reactivation at 5.x
-
 ::: moniker-end
-
--->
 
 ## <a name="create-a-no-locrazor-components-class-library-with-static-assets"></a>정적 자산을 사용하여 Razor 구성 요소 클래스 라이브러리 만들기
 

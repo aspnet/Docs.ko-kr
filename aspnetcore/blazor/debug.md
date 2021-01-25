@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 990882c03ddc14c664aa8da0518fb36087199aca
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5bdfcc5660b4c897d3552d4cf25e43dade71541c
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94550519"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252515"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly 디버그
 
@@ -50,6 +50,7 @@ Blazor WebAssembly 앱은 Chromium 기반 브라우저(Edge/Chrome)의 브라우
 * 처리되지 않은 예외에서 중단합니다.
 * 디버그 프록시가 실행되기 전에 앱을 시작하는 동안 중단점에 적중합니다. 여기에는 `Program.Main`(`Program.cs`)의 중단점과 애플리케이션에서 요청하는 첫 페이지에서 로드되는 구성 요소의 [`OnInitialized{Async}` 메서드](xref:blazor/components/lifecycle#component-initialization-methods)의 중단점이 포함됩니다.
 * 비로컬 시나리오(예: [Linux용 Windows 하위 시스템(WSL)](/windows/wsl/) 또는 [Visual Studio Codespaces](/visualstudio/codespaces/overview/what-is-vsonline))에서 디버그합니다.
+* 예를 들어 [`dotnet watch run`](xref:tutorials/dotnet-watch)으로 앱을 실행하여 디버그하는 동안 호스트된 Blazor 솔루션의 백 엔드 `*Server*` 앱을 자동으로 다시 빌드합니다.
 
 ## <a name="prerequisites"></a>필수 구성 요소
 

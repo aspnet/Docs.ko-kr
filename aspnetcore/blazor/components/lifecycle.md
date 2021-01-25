@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: e5f9a07db742ce2e26f03c0b6e1caa1904e4e0d9
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: acaa276efda9fb4d09a5c1b1ca59c6abde1b64ec
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058235"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252394"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>ASP.NET Core Blazor 수명 주기
 
@@ -53,7 +53,7 @@ DOM(문서 개체 모델) 이벤트 처리:
 
 `Render` 수명 주기:
 
-1. 다음의 경우에 구성 요소에서 추가 렌더링 작업을 중지합니다.
+1. 다음의 경우에 구성 요소에서 추가 렌더링 작업을 방지합니다.
    * 첫 번째 렌더링 이후
    * [`ShouldRender`](#suppress-ui-refreshing)가 `false`인 경우
 1. 렌더링 트리 diff(차이)를 빌드하고 구성 요소를 렌더링합니다.
@@ -62,7 +62,7 @@ DOM(문서 개체 모델) 이벤트 처리:
 
 ![렌더링 수명 주기](lifecycle/_static/lifecycle3.png)
 
-개발자가 [`StateHasChanged`](#state-changes)를 호출하면 렌더러가 생성됩니다.
+개발자가 [`StateHasChanged`](#state-changes)를 호출하면 렌더러가 생성됩니다. 자세한 내용은 <xref:blazor/components/rendering>를 참조하세요.
 
 ## <a name="lifecycle-methods"></a>수명 주기 메서드
 
@@ -215,6 +215,8 @@ protected override bool ShouldRender()
 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>는 구성 요소에 상태가 변경되었음을 알립니다. 해당하는 경우, <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>를 호출하면 구성 요소가 다시 렌더링됩니다.
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>는 <xref:Microsoft.AspNetCore.Components.EventCallback> 메서드에 대해 자동으로 호출됩니다. 자세한 내용은 <xref:blazor/components/event-handling#eventcallback>를 참조하세요.
+
+자세한 내용은 <xref:blazor/components/rendering>를 참조하세요.
 
 ## <a name="handle-incomplete-async-actions-at-render"></a>렌더링 시 불완전한 비동기 작업 처리
 

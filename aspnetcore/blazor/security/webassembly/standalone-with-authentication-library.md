@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: a4f3234aa4b4b02244d17615a9033db3094d3580
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: 3da9ea045de996602ead052f6f13ffc999273a50
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024784"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252489"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>인증 라이브러리를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
 
@@ -33,6 +33,9 @@ ms.locfileid: "98024784"
 ‘AAD(Azure Active Directory) 및 AAD B2C(Azure Active Directory B2C)의 경우에는 이 항목의 지침을 따르지 않습니다. 목차 노드 테이블에서 AAD 및 AAD B2C 항목을 참조하세요.’
 
 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) 라이브러리를 사용하는 [독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만들려면 선택한 도구에 대한 지침을 따르세요.
+
+> [!NOTE]
+> IP(Identity 공급자)는 [OIDC(OpenID Connect)](https://openid.net/connect/)를 사용해야 합니다. 예를 들어, Facebook의 IP는 OIDC 규격 공급자가 아니므로 Facebook IP에는 이 항목의 지침이 적용되지 않습니다. 자세한 내용은 <xref:blazor/security/webassembly/index#authentication-library>를 참조하세요.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -99,12 +102,28 @@ builder.Services.AddOidcAuthentication(options =>
 
 ```json
 {
-    "Local": {
-        "Authority": "{AUTHORITY}",
-        "ClientId": "{CLIENT ID}"
-    }
+  "Local": {
+    "Authority": "{AUTHORITY}",
+    "ClientId": "{CLIENT ID}"
+  }
 }
 ```
+
+Google OAuth 2.0 OIDC 예제:
+
+```json
+{
+  "Local": {
+    "Authority": "https://accounts.google.com/",
+    "ClientId": "2.......7-e.....................q.apps.googleusercontent.com",
+    "PostLogoutRedirectUri": "https://localhost:5001/authentication/logout-callback",
+    "RedirectUri": "https://localhost:5001/authentication/login-callback",
+    "ResponseType": "id_token"
+  }
+}
+```
+
+리디렉션 URI(`https://localhost:5001/authentication/login-callback`)는 **자격 증명** >  **`{NAME}`**  > **권한 있는 리디렉션 URI** 의 [Google API 콘솔](https://console.developers.google.com/apis/dashboard)에 등록됩니다. 여기서 `{NAME}`은 Google API 콘솔의 **OAuth 2.0 클라이언트 ID** 앱 목록에 있는 앱의 클라이언트 이름입니다.
 
 독립 실행형 앱에 대한 인증 지원은 OIDC(OpenID Connect)를 사용하여 제공됩니다. <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> 메서드는 콜백을 받아서 OIDC를 사용하여 앱을 인증하는 데 필요한 매개 변수를 구성합니다. 앱을 구성하는 데 필요한 값은 OIDC 규격 IP에서 얻을 수 있습니다. 앱을 등록할 때 값을 확인하세요. 앱 등록은 보통 온라인 포털에서 진행됩니다.
 

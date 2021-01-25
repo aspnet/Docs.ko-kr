@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: c4e0d70b41221f272bb4b1fe82cfa531ec6fcf15
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 6a8fd8e3498dda9b7c10834791e64df6276e2823
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94431069"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253022"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Nginx를 사용하여 Linux에서 ASP.NET Core 호스트
 
@@ -97,7 +97,7 @@ Kestrel은 ASP.NET Core에서 동적 콘텐츠를 제공하는 데 유용합니�
 
 [!INCLUDE[](~/includes/ForwardedHeaders.md)]
 
-다른 미들웨어를 호출하기 전에 `Startup.Configure`의 맨 위에 있는 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 메서드를 호출합니다. `X-Forwarded-For` 및 `X-Forwarded-Proto` 헤더를 전달하도록 미들웨어를 구성합니다.
+다른 미들웨어를 호출하기 전에 `Startup.Configure`의 맨 위에 있는 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders%2A> 메서드를 호출합니다. `X-Forwarded-For` 및 `X-Forwarded-Proto` 헤더를 전달하도록 미들웨어를 구성합니다.
 
 ```csharp
 using Microsoft.AspNetCore.HttpOverrides;
@@ -114,7 +114,7 @@ app.UseAuthentication();
 
 미들웨어에 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>가 지정되지 않은 경우 전달할 기본 헤더는 `None`입니다.
 
-표준 localhost 주소(`127.0.0.1`)를 포함하여 루프백 주소(`127.0.0.0/8`, `[::1]`)에서 실행 중인 프록시는 기본적으로 신뢰할 수 있습니다. 조직 내의 다른 신뢰할 수 있는 프록시 또는 네트워크가 인터넷과 웹 서버 간의 요청을 처리하는 경우 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>를 사용하여 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> 또는 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> 목록에 추가합니다. 다음 예제는 IP 주소 10.0.0.100의 신뢰할 수 있는 프록시 서버를 `Startup.ConfigureServices`의 전달된 헤더 미들웨어 `KnownProxies`에 추가합니다.
+표준 localhost 주소(`127.0.0.1`)를 포함하여 루프백 주소(`127.0.0.0/8`, `[::1]`)에서 실행 중인 프록시는 기본적으로 신뢰할 수 있습니다. 조직 내의 다른 신뢰할 수 있는 프록시 또는 네트워크가 인터넷과 웹 서버 간의 요청을 처리하는 경우 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>를 사용하여 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies%2A> 또는 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks%2A> 목록에 추가합니다. 다음 예제는 IP 주소 10.0.0.100의 신뢰할 수 있는 프록시 서버를 `Startup.ConfigureServices`의 전달된 헤더 미들웨어 `KnownProxies`에 추가합니다.
 
 ```csharp
 using System.Net;
@@ -146,7 +146,7 @@ sudo service nginx start
 
 ### <a name="configure-nginx"></a>Nginx 구성
 
-Nginx를 역방향 프록시로 구성하여 HTTP 요청을 ASP.NET Core 앱에 전달하려면 `/etc/nginx/sites-available/default`를 수정합니다. 텍스트 편집기에서 해당 항목을 열고 콘텐츠를 다음으로 바꿉니다.
+Nginx를 역방향 프록시로 구성하여 HTTP 요청을 ASP.NET Core 앱에 전달하려면 `/etc/nginx/sites-available/default`를 수정합니다. 텍스트 편집기에서 해당 항목을 열고 콘텐츠를 다음 코드 조각으로 바꿉니다.
 
 ```nginx
 server {
@@ -165,7 +165,7 @@ server {
 }
 ```
 
-앱이 SignalR 또는 Blazor Server 앱인 경우, 자세한 내용은 각각 <xref:signalr/scale#linux-with-nginx> 및 <xref:blazor/host-and-deploy/server#linux-with-nginx>를 참조하세요.
+SignalR 또는 Blazor Server 앱인 경우 자세한 내용은 각각 <xref:signalr/scale#linux-with-nginx> 및 <xref:blazor/host-and-deploy/server#linux-with-nginx>를 참조하세요.
 
 `server_name`이 일치하지 않으면 Nginx는 기본 서버를 사용합니다. 기본 서버가 정의되지 않은 경우 구성 파일의 첫 번째 서버는 기본 서버입니다. 구성 파일에 있는 444 상태 코드를 반환하는 특정 기본 서버를 추가하는 것이 좋습니다. 기본 서버 구성 예제는 다음과 같습니다.
 
@@ -177,7 +177,17 @@ server {
 }
 ```
 
-이전 구성 파일과 기본 서버를 사용하여 Nginx는 포트 80에서 호스트 헤더 `example.com` 또는 `*.example.com`가 포함된 공용 트래픽을 허용합니다. 이러한 호스트와 일치하지 않는 요청은 Kestrel로 전달되지 않습니다. Nginx는 일치하는 요청을 `http://localhost:5000`의 Kestrel에 전달합니다. 자세한 내용은 [How nginx processes a request](https://nginx.org/docs/http/request_processing.html)(nginx가 요청을 처리하는 방법)를 참조하세요. Kestrel의 IP/포트를 변경하려면 [Kestrel: 엔드포인트 구성](xref:fundamentals/servers/kestrel#endpoint-configuration)을 참조하세요.
+::: moniker range=">= aspnetcore-5.0"
+
+이전 구성 파일과 기본 서버를 사용하여 Nginx는 포트 80에서 호스트 헤더 `example.com` 또는 `*.example.com`가 포함된 공용 트래픽을 허용합니다. 이러한 호스트와 일치하지 않는 요청은 Kestrel로 전달되지 않습니다. Nginx는 일치하는 요청을 `http://localhost:5000`의 Kestrel에 전달합니다. 자세한 내용은 [Nginx가 요청을 처리하는 방법](https://nginx.org/docs/http/request_processing.html)을 참조하세요. Kestrel의 IP/포트를 변경하려면 [Kestrel: 엔드포인트 구성](xref:fundamentals/servers/kestrel/endpoints)을 참조하세요.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+이전 구성 파일과 기본 서버를 사용하여 Nginx는 포트 80에서 호스트 헤더 `example.com` 또는 `*.example.com`가 포함된 공용 트래픽을 허용합니다. 이러한 호스트와 일치하지 않는 요청은 Kestrel로 전달되지 않습니다. Nginx는 일치하는 요청을 `http://localhost:5000`의 Kestrel에 전달합니다. 자세한 내용은 [Nginx가 요청을 처리하는 방법](https://nginx.org/docs/http/request_processing.html)을 참조하세요. Kestrel의 IP/포트를 변경하려면 [Kestrel: 엔드포인트 구성](xref:fundamentals/servers/kestrel#endpoint-configuration)을 참조하세요.
+
+::: moniker-end
 
 > [!WARNING]
 > 적절한 [server_name 지시문](https://nginx.org/docs/http/server_names.html)을 지정하지 않으면 앱이 보안 취약성에 노출됩니다. 전체 부모 도메인을 제어하는 경우 하위 도메인 와일드카드 바인딩(예: `*.example.com`)에는 이러한 보안 위험이 발생하지 않습니다(취약한 `*.com`과 반대임). 자세한 내용은 [rfc7230 섹션-5.4](https://tools.ietf.org/html/rfc7230#section-5.4)를 참조하세요.
@@ -191,11 +201,11 @@ Nginx 구성이 설정되면 `sudo nginx -t`를 실행하여 구성 파일의 �
 
 앱이 서버에서 실행되지만 인터넷을 통해 응답하지 않는 경우 서버의 방화벽을 확인하고 포트 80이 열려 있는지 확인합니다. Ubuntu Azure VM을 사용하는 경우 인바운드 포트 80 트래픽을 사용하는 NSG(네트워크 보안 그룹) 규칙을 추가합니다. 인바운드 규칙을 사용할 때 아웃바운드 트래픽이 자동으로 부여되므로 아웃바운드 포트 80 규칙을 사용하도록 설정할 필요가 없습니다.
 
-앱 테스트를 완료한 후에 명령 프롬프트에서 `Ctrl+C`를 사용하여 앱을 종료합니다.
+앱 테스트를 완료한 후에 명령 프롬프트에서 <kbd>Ctrl</kbd> + <kbd>C</kbd>를 사용하여 앱을 종료합니다.
 
 ## <a name="monitor-the-app"></a>앱 모니터링
 
-서버는 `http://<serveraddress>:80`에 대해 실행된 요청을 `http://127.0.0.1:5000`의 Kestrel에서 실행되는 ASP.NET Core 앱에 전달하도록 설정됩니다. 그러나 Nginx는 Kestrel 프로세스를 관리하도록 설정되지 않습니다. `systemd`를 사용하여 기본 웹앱을 시작 및 모니터링하기 위한 서비스 파일을 만들 수 있습니다. `systemd`는 프로세스를 시작, 중지 및 관리하기 위한 다양하고 강력한 기능을 제공하는 init 시스템입니다. 
+서버는 `http://<serveraddress>:80`에 보낸 요청을 `http://127.0.0.1:5000`의 Kestrel에서 실행되는 ASP.NET Core 앱에 전달하도록 설정됩니다. 그러나 Nginx는 Kestrel 프로세스를 관리하도록 설정되지 않습니다. `systemd`를 사용하여 기본 웹앱을 시작 및 모니터링하기 위한 서비스 파일을 만들 수 있습니다. `systemd`는 프로세스를 시작, 중지 및 관리하기 위한 다양하고 강력한 기능을 제공하는 init 시스템입니다. 
 
 ### <a name="create-the-service-file"></a>서비스 파일 만들기
 
@@ -205,7 +215,7 @@ Nginx 구성이 설정되면 `sudo nginx -t`를 실행하여 구성 파일의 �
 sudo nano /etc/systemd/system/kestrel-helloapp.service
 ```
 
-앱에 대한 예제 서비스 파일은 다음과 같습니다.
+다음 예제는 앱의 서비스 파일입니다.
 
 ```ini
 [Unit]
@@ -298,7 +308,7 @@ Kestrel을 사용하는 웹앱은 `systemd`를 사용하여 관리되므로 모�
 sudo journalctl -fu kestrel-helloapp.service
 ```
 
-추가 필터링을 위해 `--since today`, `--until 1 hour ago` 같은 시간 옵션이나 이러한 옵션의 조합을 사용하여 반환되는 항목 수를 줄일 수 있습니다.
+추가 필터링을 위해 `--since today`, `--until 1 hour ago` 같은 시간 옵션을 사용하거나 이러한 옵션을 조합하여 반환되는 항목 수를 줄일 수 있습니다.
 
 ```bash
 sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-10-18 04:00"
@@ -335,11 +345,11 @@ sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-
 
 ### <a name="enable-apparmor"></a>AppArmor 사용
 
-LSM(Linux Security Modules)은 Linux 2.6 이후 Linux 커널에 포함된 프레임워크입니다. LSM은 보안 모듈의 다양한 구현을 지원합니다. [AppArmor](https://wiki.ubuntu.com/AppArmor)는 프로그램을 제한된 리소스 집합으로 한정할 수 있는 필수 Access Control 시스템을 구현하는 LSM입니다. AppArmor가 사용하도록 설정되고 제대로 구성되어 있는지 확인합니다.
+LSM(Linux Security Modules)은 Linux 2.6 이후 Linux 커널에 포함된 프레임워크입니다. LSM은 보안 모듈의 다양한 구현을 지원합니다. [AppArmor](https://wiki.ubuntu.com/AppArmor)는 프로그램을 제한된 리소스 세트로 한정할 수 있는 필수 Access Control 시스템을 구현하는 LSM입니다. AppArmor가 사용하도록 설정되고 제대로 구성되어 있는지 확인합니다.
 
 ### <a name="configure-the-firewall"></a>방화벽 구성
 
-사용되지 않는 모든 외부 포트를 닫습니다. 복잡하지 않은 방화벽(ufw)은 방화벽을 구성하기 위한 CLI를 제공하여 `iptables`에 대한 프런트 엔드를 제공합니다.
+사용하지 않는 모든 외부 포트를 닫습니다. 복잡하지 않은 방화벽(ufw)은 방화벽을 구성하기 위한 CLI를 제공하여 `iptables`에 대한 프런트 엔드를 제공합니다.
 
 > [!WARNING]
 > 방화벽이 올바르게 구성되지 않으면 전체 시스템에 대한 액세스가 차단됩니다. 올바른 SSH 포트를 지정하지 못하면 SSH를 사용하여 시스템에 연결하는 경우 실직적으로 시스템에 액세스할 수 없게 됩니다. 기본 포트는 22입니다. 자세한 내용은 [ufw 소개](https://help.ubuntu.com/community/UFW) 및 [매뉴얼](https://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html)을 참조하세요.
@@ -375,18 +385,29 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 **보안(HTTPS) 로컬 연결을 위해 앱 구성**
 
-[dotnet 실행](/dotnet/core/tools/dotnet-run) 명령은 `applicationUrl` 속성(예: `https://localhost:5001;http://localhost:5000`)이 제공하는 URL에서 수신 대기하도록 앱을 구성하는 앱의 `Properties/launchSettings.json` 파일을 사용합니다.
+[dotnet run](/dotnet/core/tools/dotnet-run) 명령은 `applicationUrl` 속성이 제공하는 URL에서 수신 대기하도록 앱을 구성하는 앱의 *Properties/launchSettings.json* 파일을 사용합니다. 예들 들어 `https://localhost:5001;http://localhost:5000`입니다.
 
 다음 방법 중 하나를 사용하여 `dotnet run` 명령 또는 개발 환경(Visual Studio Code에서 <kbd>F5</kbd> 또는 <kbd>Ctrl</kbd>+<kbd>F5</kbd>)에 개발 중인 인증서를 사용하도록 앱을 구성합니다.
+
+::: moniker range=">= aspnetcore-5.0"
+
+* [구성에서 기본 인증서를 바꿈](xref:fundamentals/servers/kestrel/endpoints#configuration)(*권장*)
+* [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel/endpoints#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 * [구성에서 기본 인증서를 바꿈](xref:fundamentals/servers/kestrel#configuration)(*권장*)
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
+::: moniker-end
+
 **보안 (HTTPS) 클라이언트 연결을 위해 역방향 프록시 구성**
 
-* 신뢰할 수 있는 CA(인증 기관)에서 발급된 유효한 인증서를 지정하여 포트 `443`에서 HTTPS 트래픽을 수신 대기하도록 서버를 구성합니다.
+* 신뢰할 수 있는 CA(인증 기관)에서 발급된 유효한 인증서를 지정하여 포트 443에서 HTTPS 트래픽을 수신 대기하도록 서버를 구성합니다.
 
-* 다음 `/etc/nginx/nginx.conf` 파일에 설명된 일부 사례를 채택하여 보안을 강화합니다. 예를 들어 더 강력한 암호화를 선택하고 HTTP를 사용한 모든 트래픽을 HTTPS로 리디렉션합니다.
+* 다음 */etc/nginx/nginx.conf* 파일에 설명된 일부 사례를 채택하여 보안을 강화합니다. 예를 들어 더 강력한 암호화를 선택하고 HTTP를 사용한 모든 트래픽을 HTTPS로 리디렉션합니다.
 
   > [!NOTE]
   > 개발 환경에서는 영구 리디렉션(301)보다 임시 리디렉션(302)을 사용하는 것이 좋습니다. 링크 캐싱은 개발 환경에서 불안정한 동작을 일으킬 수 있습니다.
@@ -400,11 +421,11 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
   * HSTS 헤더를 추가하지 않습니다.
   * 짧은 `max-age` 값을 선택합니다.
 
-`/etc/nginx/proxy.conf` 구성 파일을 추가합니다.
+*/etc/nginx/proxy.conf* 구성 파일을 추가합니다.
 
 [!code-nginx[](linux-nginx/proxy.conf)]
 
-`/etc/nginx/nginx.conf` 구성 파일의 내용을 다음 파일로 **바꿉니다**. 예제에서는 `http` 및 `server` 섹션이 하나의 구성 파일에 포함됩니다.
+*/etc/nginx/nginx.conf* 구성 파일의 내용을 다음 파일로 **바꿉니다**. 예제에서는 `http` 및 `server` 섹션이 하나의 구성 파일에 포함됩니다.
 
 [!code-nginx[](linux-nginx/nginx.conf?highlight=2)]
 
@@ -417,7 +438,7 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 클릭재킹 공격을 완화하려면:
 
-1. `nginx.conf` 파일을 편집합니다.
+1. *nginx.conf* 파일을 편집합니다.
 
    ```bash
    sudo nano /etc/nginx/nginx.conf
@@ -432,7 +453,7 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 이 헤더는 응답 콘텐츠 형식을 재정의하지 않도록 브라우저에 지시하므로 대부분의 브라우저에서 선언된 콘텐츠 형식이 아닌 응답에 대한 MIME 검색을 차단합니다. `nosniff` 옵션을 사용하면 서버에 콘텐츠가 `text/html`이라고 표시될 경우 브라우저가 이를`text/html`로 렌더링합니다.
 
-1. `nginx.conf` 파일을 편집합니다.
+1. *nginx.conf* 파일을 편집합니다.
 
    ```bash
    sudo nano /etc/nginx/nginx.conf

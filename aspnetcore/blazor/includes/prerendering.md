@@ -37,7 +37,7 @@ Blazor 서버 앱을 미리 렌더링 중이면 브라우저에 연결되어 있
 
 <xref:Microsoft.JSInterop.JSRuntime.InvokeAsync%2A?displayProperty=nameWithType>가 호출될 경우, 구성 요소가 렌더링되기 전까지는 JavaScript 요소가 없으므로 `ElementRef`는 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A>에서만 사용되고 그 전의 수명 주기 메서드에서는 사용되지 않습니다.
 
-JavaScript interop 호출에서 얻은 새 상태로 구성 요소를 다시 렌더링하도록 [StateHasChanged](xref:blazor/components/lifecycle#state-changes)가 호출됩니다. `StateHasChanged`는 `infoFromJs`가 `null`인 경우에만 호출되기 때문에 이 코드는 무한 루프를 만들지 않습니다.
+JavaScript interop 호출에서 얻은 새 상태로 구성 요소를 다시 렌더링하도록 [StateHasChanged](xref:blazor/components/lifecycle#state-changes)가 호출됩니다(자세한 내용은 <xref:blazor/components/rendering> 참조). `StateHasChanged`는 `infoFromJs`가 `null`인 경우에만 호출되기 때문에 이 코드는 무한 루프를 만들지 않습니다.
 
 ```cshtml
 @page "/prerendered-interop"
