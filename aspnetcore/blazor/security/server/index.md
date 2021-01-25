@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: aa24def1a003a2c2608691e6168066c740f47205
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: 5031273c3395be4365b3a6d239ebce7aaf9b66ac
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024628"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658640"
 ---
 # <a name="secure-aspnet-core-no-locblazor-server-apps"></a>ASP.NET Core Blazor Server 앱 보호
 
@@ -127,7 +127,11 @@ Blazor Server 프로젝트에 Identity를 스캐폴드합니다.
 * [기존 권한 없음](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-without-existing-authorization).
 * [권한 있음](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-with-authorization).
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Identity Server를 사용한 Azure App Service on Linux
+
+Identity Server를 사용하여 Azure App Service on Linux에 배포할 때 발급자를 명시적으로 지정합니다. 자세한 내용은 <xref:security/authentication/identity/spa#azure-app-service-on-linux>를 참조하세요.
+
+## <a name="additional-resources"></a>추가 자료
 
 * [빠른 시작: ASP.NET Core 웹앱에 Microsoft로 로그인 추가](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp)
 * [빠른 시작: Microsoft ID 플랫폼을 사용하여 ASP.NET Core 웹 API 보호](/azure/active-directory/develop/quickstart-v2-aspnet-core-web-api)
