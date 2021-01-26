@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 12a1f528bdff0230bbf17075284d27de654a423e
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: fe30c3b3be92c30dea6d0cb97e642eec1da6328b
+ms.sourcegitcommit: 72c8ada9b9644ee4751ed6869e892a8558dd8e66
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252424"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723514"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>ASP.NET Core Razor 구성 요소 만들기 및 사용
 
@@ -957,13 +957,13 @@ Blazor는 HTML을 렌더링하므로 SVG(Scalable Vector Graphics) 이미지(`.s
 * <xref:blazor/security/server/threat-mitigation>: 리소스를 소모하지 않도록 하는 Blazor Server 앱을 빌드하는 방법에 대한 지침을 포함합니다.
 
 <!--Reference links in article-->
-[1]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#code)
-[2]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#using)
-[3]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#attributes)
-[4]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#ref)
-[5]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#key)
-[6]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#inherits)
-[7]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#attribute)
-[8]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#namespace)
-[9]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#page)
-[10]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#bind)
+[1]: <xref:mvc/views/razor#code> "ASP.NET Core에 대한 Razor 구문 참조"
+[2]: <xref:mvc/views/razor#using> "ASP.NET Core에 대한 Razor 구문 참조"
+[3]: <xref:mvc/views/razor#attributes> "ASP.NET Core에 대한 Razor 구문 참조"
+[4]: <xref:mvc/views/razor#ref> "ASP.NET Core에 대한 Razor 구문 참조"
+[5]: <xref:mvc/views/razor#key> "ASP.NET Core에 대한 Razor 구문 참조"
+[6]: <xref:mvc/views/razor#inherits> "ASP.NET Core에 대한 Razor 구문 참조"
+[7]: <xref:mvc/views/razor#attribute> "ASP.NET Core에 대한 Razor 구문 참조"
+[8]: <xref:mvc/views/razor#namespace> "ASP.NET Core에 대한 Razor 구문 참조"
+[9]: <xref:mvc/views/razor#page> "ASP.NET Core에 대한 Razor 구문 참조"
+[10]: <xref:mvc/views/razor#bind> "ASP.NET Core에 대한 Razor 구문 참조"
