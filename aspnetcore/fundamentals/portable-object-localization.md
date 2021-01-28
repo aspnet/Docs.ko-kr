@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: f9c0ecd32f0e5c05782c2db76eff92bb64845db7
-ms.sourcegitcommit: 53e01d6e9b70a18a05618f0011cf115a16633c21
+ms.openlocfilehash: 175614c426c564ce91068e18035ce05311432698
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97878401"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689242"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>ASP.NET Core에서 이식 가능 개체 지역화 구성
 
@@ -81,7 +81,7 @@ PO 파일 사양은 [여기](https://www.gnu.org/savannah-checkouts/gnu/gettext/
 
 ### <a name="referencing-the-package"></a>패키지 참조
 
-`OrchardCore.Localization.Core` NuGet 패키지에 대한 참조를 추가합니다. 패키지 소스 https://www.myget.org/F/orchardcore-preview/api/v3/index.json 의 [MyGet](https://www.myget.org/)에서 사용할 수 있습니다.
+`OrchardCore.Localization.Core` NuGet 패키지에 대한 참조를 추가합니다.
 
 이제 *.csproj* 파일은 다음과 비슷한 줄을 포함합니다(버전 번호가 달라질 수 있음).
 
@@ -296,7 +296,7 @@ PO 파일 사양은 [여기](https://www.gnu.org/savannah-checkouts/gnu/gettext/
 
 ### <a name="referencing-the-package"></a>패키지 참조
 
-`OrchardCore.Localization.Core` NuGet 패키지에 대한 참조를 추가합니다. 패키지 소스 https://www.myget.org/F/orchardcore-preview/api/v3/index.json 의 [MyGet](https://www.myget.org/)에서 사용할 수 있습니다.
+`OrchardCore.Localization.Core` NuGet 패키지에 대한 참조를 추가합니다.
 
 이제 *.csproj* 파일은 다음과 비슷한 줄을 포함합니다(버전 번호가 달라질 수 있음).
 

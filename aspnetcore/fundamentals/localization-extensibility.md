@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization-extensibility
-ms.openlocfilehash: a6ef5a547e6ccba6771cdf892a9636f83d6796b1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c41ebc0506a565666963d9b4c70ed73df389c826
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93053737"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751655"
 ---
 # <a name="localization-extensibility"></a>지역화 확장성
 
@@ -151,7 +151,7 @@ public class AppSettingsRequestCultureProvider : RequestCultureProvider
 
 ASP.NET Core 지역화에서는 <xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer>를 제공합니다. <xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer>는 `resx`를 사용하여 지역화 리소스를 저장하는 <xref:Microsoft.Extensions.Localization.IStringLocalizer>의 구현입니다.
 
-`resx` 파일만 사용하도록 제한되지 않습니다. `IStringLocalized`를 구현하여 모든 데이터 소스를 사용할 수 있습니다.
+`resx` 파일만 사용하도록 제한되지 않습니다. `IStringLocalizer`를 구현하여 모든 데이터 소스를 사용할 수 있습니다.
 
 다음 예제 프로젝트에서는 <xref:Microsoft.Extensions.Localization.IStringLocalizer>를 구현합니다. 
 

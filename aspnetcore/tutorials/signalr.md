@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: 1dad2264250bf43ec6c1df679b8754a82a5addfd
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1c77648f809562389667da452bdbf3f25f67c558
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "95417671"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689320"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-no-locsignalr"></a>자습서: ASP.NET Core SignalR 시작하기
 
@@ -62,23 +62,18 @@ ms.locfileid: "95417671"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* 메뉴에서 **파일 > 새 프로젝트** 를 선택합니다.
-
-* **새 프로젝트 만들기** 대화 상자에서 **ASP.NET Core 웹 애플리케이션** 을 선택한 후, **다음** 을 선택합니다.
-
-* **새 프로젝트 구성** 대화 상자에서 *SignalRChat* 프로젝트 이름을 지정한 다음, **만들기** 를 선택합니다.
-
-* **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 3.1** 을 선택합니다. 
-
-* Razor Pages를 사용하는 프로젝트를 생성하려면 **웹 애플리케이션** 을 선택한 다음, **만들기** 를 선택합니다.
+  * 메뉴에서 **파일 > 새 프로젝트** 를 선택합니다.
+  * **새 프로젝트 만들기** 대화 상자에서 **ASP.NET Core 웹 애플리케이션** 을 선택한 후, **다음** 을 선택합니다.
+  * **새 프로젝트 구성** 대화 상자에서 *SignalRChat* 프로젝트 이름을 지정한 다음, **만들기** 를 선택합니다.
+  * **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **.NET Core** 및 **ASP.NET Core 3.1** 을 선택합니다.
+  * Razor Pages를 사용하는 프로젝트를 생성하려면 **웹 애플리케이션** 을 선택한 다음, **만들기** 를 선택합니다.
 
   ![Visual Studio의 새 프로젝트 대화 상자](signalr/_static/3.x/signalr-new-project-dialog.png)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-* 새 프로젝트 폴더를 만들 폴더에 대한 [통합 터미널](https://code.visualstudio.com/docs/editor/integrated-terminal)을 엽니다.
-
-* 다음 명령을 실행합니다.
+  * 새 프로젝트 폴더를 만들 폴더에 대한 [통합 터미널](https://code.visualstudio.com/docs/editor/integrated-terminal)을 엽니다.
+  * 다음 명령을 실행합니다.
 
    ```dotnetcli
    dotnet new webapp -o SignalRChat
@@ -88,13 +83,10 @@ ms.locfileid: "95417671"
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 메뉴에서 **파일 > 새 솔루션** 을 선택합니다.
-
-* **.NET Core > 앱 > 웹 애플리케이션** (**웹 애플리케이션(Model-View-Controller)** 선택 안 함)을 선택한 후, **다음** 을 선택합니다.
-
-* **대상 프레임워크** 가 **.NET Core 3.1** 로 설정되어 있는지 확인한 후 **다음** 을 선택합니다.
-
-* 프로젝트 이름을 *SignalRChat* 으로 지정한 다음, **만들기** 를 선택합니다.
+  * 메뉴에서 **파일 > 새 솔루션** 을 선택합니다.
+  * **.NET Core > 앱 > 웹 애플리케이션** (**웹 애플리케이션(Model-View-Controller)** 선택 안 함)을 선택한 후, **다음** 을 선택합니다.
+  * **대상 프레임워크** 가 **.NET Core 3.1** 로 설정되어 있는지 확인한 후 **다음** 을 선택합니다.
+  * 프로젝트 이름을 *SignalRChat* 으로 지정한 다음, **만들기** 를 선택합니다.
 
 ---
 
@@ -104,15 +96,11 @@ SignalR 서버 라이브러리는 ASP.NET Core 3.1 공유 프레임워크에 포
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **클라이언트 쪽 라이브러리** 를 선택합니다.
-
-* **클라이언트 쪽 라이브러리 추가** 대화 상자에서 **공급자** 로 **unpkg** 를 선택합니다.
-
-* **라이브러리** 인 경우 `@microsoft/signalr@latest`를 입력합니다.
-
-* **특정 파일 선택** 을 선택하고 *dist/browser* 폴더를 확장한 다음 *signalr.js* 및 *signalr.min.js* 를 선택합니다.
-
-* **대상 위치** 를 *wwwroot/js/signalr/* 로 설정하고 **설치** 를 선택합니다.
+  * **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **클라이언트 쪽 라이브러리** 를 선택합니다.
+  * **클라이언트 쪽 라이브러리 추가** 대화 상자에서 **공급자** 로 **unpkg** 를 선택합니다.
+  * **라이브러리** 인 경우 `@microsoft/signalr@latest`를 입력합니다.
+  * **특정 파일 선택** 을 선택하고 *dist/browser* 폴더를 확장한 다음 *signalr.js* 및 *signalr.min.js* 를 선택합니다.
+  * **대상 위치** 를 *wwwroot/js/signalr/* 로 설정하고 **설치** 를 선택합니다.
 
   ![클라이언트 쪽 라이브러리 추가 대화 상자 - 라이브러리 선택](signalr/_static/3.x/find-signalr-client-libs-select-files.png)
 
@@ -120,13 +108,13 @@ SignalR 서버 라이브러리는 ASP.NET Core 3.1 공유 프레임워크에 포
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-* 통합 터미널에서 다음 명령을 실행하여 LibMan을 설치합니다.
+  * 통합 터미널에서 다음 명령을 실행하여 LibMan을 설치합니다.
 
   ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
-* 다음 명령을 실행하고 LibMan을 사용하여 SignalR 클라이언트 라이브러리를 가져옵니다. 출력이 표시되기 전에 잠시 기다려야 할 수도 있습니다.
+  * 다음 명령을 실행하고 LibMan을 사용하여 SignalR 클라이언트 라이브러리를 가져옵니다. 출력이 표시되기 전에 잠시 기다려야 할 수도 있습니다.
 
   ```console
   libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
@@ -147,15 +135,15 @@ SignalR 서버 라이브러리는 ASP.NET Core 3.1 공유 프레임워크에 포
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* **터미널** 에서 다음 명령을 실행하여 LibMan을 설치합니다.
+  * **터미널** 에서 다음 명령을 실행하여 LibMan을 설치합니다.
 
   ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
-* 프로젝트 폴더( *SignalRChat.csproj* 파일을 포함하는 폴더)로 이동합니다.
+  * 프로젝트 폴더( *SignalRChat.csproj* 파일을 포함하는 폴더)로 이동합니다.
 
-* 다음 명령을 실행하고 LibMan을 사용하여 SignalR 클라이언트 라이브러리를 가져옵니다.
+  * 다음 명령을 실행하고 LibMan을 사용하여 SignalR 클라이언트 라이브러리를 가져옵니다.
 
   ```console
   libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
@@ -180,9 +168,8 @@ SignalR 서버 라이브러리는 ASP.NET Core 3.1 공유 프레임워크에 포
 
 *허브* 는 클라이언트-서버 통신을 처리하는 높은 수준의 파이프라인으로 제공되는 클래스입니다.
 
-* SignalRChat 프로젝트 폴더에 *Hubs* 폴더를 만듭니다.
-
-* *Hubs* 폴더에 다음 코드를 사용하여 *ChatHub.cs* 파일을 만듭니다.
+  * SignalRChat 프로젝트 폴더에 *Hubs* 폴더를 만듭니다.
+  * *Hubs* 폴더에 다음 코드를 사용하여 *ChatHub.cs* 파일을 만듭니다.
 
   [!code-csharp[ChatHub](signalr/sample-snapshot/3.x/ChatHub.cs)]
 
@@ -238,14 +225,12 @@ SignalR에 SignalR 요청을 전달하도록 SignalR 서버를 구성해야 합�
 
 # <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
-* 메뉴에서 **실행 > 디버깅하지 않고 시작** 을 선택합니다.
+  * 메뉴에서 **실행 > 디버깅하지 않고 시작** 을 선택합니다.
 
 ---
 
-* 주소 표시줄에서 URL을 복사하고, 다른 브라우저 인스턴스 또는 탭을 열고, 주소 표시줄에 URL을 붙여넣습니다.
-
-* 브라우저 중 하나를 선택하고, 이름 및 메시지를 입력하고, **보내기 메시지** 단추를 선택합니다.
-
+  * 주소 표시줄에서 URL을 복사하고, 다른 브라우저 인스턴스 또는 탭을 열고, 주소 표시줄에 URL을 붙여넣습니다.
+  * 브라우저 중 하나를 선택하고, 이름 및 메시지를 입력하고, **보내기 메시지** 단추를 선택합니다.
   이름과 메시지는 두 페이지 모두에 즉시 표시됩니다.
 
   ![SignalR 샘플 앱](signalr/_static/3.x/signalr-get-started-finished.png)

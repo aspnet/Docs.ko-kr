@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 95ac4784634d38add5e28644d42b0182e15c6de9
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 192784b4f2cb3b80511814de4f777c4a49fc594b
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93060029"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710739"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>ASP.NET 4.x와 ASP.NET Core 중에서 선택
 
@@ -56,7 +56,7 @@ ASP.NET 4.x는 Windows에서 엔터프라이즈급 서버 기반 웹앱을 빌�
 
 ## <a name="aspnet-core-scenarios"></a>ASP.NET Core 시나리오
 
-* [웹 사이트](xref:tutorials/first-mvc-app/index)
+* [웹 사이트](xref:tutorials/first-mvc-app/start-mvc)
 * [API](xref:tutorials/first-web-api)
 * [실시간](xref:signalr/introduction)
 * [Azure에 ASP.NET Core 앱 배포](/azure/app-service/app-service-web-get-started-dotnet)

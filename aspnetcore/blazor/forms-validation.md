@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 979e2615080a4f07b6091f0498fc7efa62ea1563
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1287ab5ce61e58848329c96393c3ee8c37610245
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96320072"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658692"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>ASP.NET Core Blazor 양식 및 유효성 검사
 
@@ -294,7 +294,7 @@ public class Starship
 * 구성 요소는 `BirthDate` 속성에 `DateTime` 형식으로 바인딩됩니다.
 
 ```razor
-<InputDate @bind-Value="@BirthDate" DisplayName="birthday" />
+<InputDate @bind-Value="BirthDate" DisplayName="birthday" />
 
 @code {
     public DateTime BirthDate { get; set; }
