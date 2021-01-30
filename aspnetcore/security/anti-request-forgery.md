@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/anti-request-forgery
-ms.openlocfilehash: 197954965ee57b2a44ad0217d79ba142114e7df6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 3bb3c059eafa8e948fe2e719207927c009902e59
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060848"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057449"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>ASP.NET Core에서 교차 사이트 요청 위조 (XSRF/CSRF) 공격 방지
 
@@ -91,7 +91,7 @@ Cookie기반 인증은 널리 사용 되는 인증 형식입니다. 토큰 기�
 
 ### <a name="token-based-authentication"></a>토큰 기반 인증
 
-사용자가 인증 되 면 토큰 (위조 방지 토큰이 아님)이 발급 됩니다. 토큰에는 [클레임](/dotnet/framework/security/claims-based-identity-model) 형식의 사용자 정보 또는 앱이 앱에서 유지 관리 되는 사용자 상태를 가리키는 참조 토큰이 포함 됩니다. 사용자가 인증을 요구 하는 리소스에 액세스 하려고 하면 토큰은 전달자 토큰의 형태로 추가 권한 부여 헤더를 사용 하 여 앱으로 전송 됩니다. 그러면 앱 상태 비저장이 수행 됩니다. 각 후속 요청에서 토큰은 서버 쪽 유효성 검사에 대 한 요청에 전달 됩니다. 이 토큰은 *암호화* 되지 않습니다. *인코딩됩니다* . 서버에서 토큰은 정보에 액세스 하기 위해 디코딩됩니다. 후속 요청에서 토큰을 보내려면 브라우저의 로컬 저장소에 토큰을 저장 합니다. 토큰이 브라우저의 로컬 저장소에 저장 된 경우 CSRF 취약성에 대해 걱정 하지 마세요. CSRF는 토큰을에 저장 하는 경우에 문제가 됩니다 cookie . 자세한 내용은 GitHub 문제 [SPA 코드 샘플 2 개 추가 cookie ](https://github.com/dotnet/AspNetCore.Docs/issues/13369)를 참조 하세요.
+사용자가 인증 되 면 토큰 (위조 방지 토큰이 아님)이 발급 됩니다. 토큰에는 [클레임](/dotnet/framework/security/claims-based-identity-model) 형식의 사용자 정보 또는 앱이 앱에서 유지 관리 되는 사용자 상태를 가리키는 참조 토큰이 포함 됩니다. 사용자가 인증을 요구 하는 리소스에 액세스 하려고 하면 토큰은 전달자 토큰의 형태로 추가 권한 부여 헤더를 사용 하 여 앱으로 전송 됩니다. 그러면 앱 상태 비저장이 수행 됩니다. 각 후속 요청에서 토큰은 서버 쪽 유효성 검사에 대 한 요청에 전달 됩니다. 이 토큰은 *암호화* 되지 않습니다. *인코딩됩니다*. 서버에서 토큰은 정보에 액세스 하기 위해 디코딩됩니다. 후속 요청에서 토큰을 보내려면 브라우저의 로컬 저장소에 토큰을 저장 합니다. 토큰이 브라우저의 로컬 저장소에 저장 된 경우 CSRF 취약성에 대해 걱정 하지 마세요. CSRF는 토큰을에 저장 하는 경우에 문제가 됩니다 cookie . 자세한 내용은 GitHub 문제 [SPA 코드 샘플 2 개 추가 cookie ](https://github.com/dotnet/AspNetCore.Docs/issues/13369)를 참조 하세요.
 
 ### <a name="multiple-apps-hosted-at-one-domain"></a>한 도메인에서 호스트 되는 여러 앱
 
@@ -222,7 +222,7 @@ services.AddAntiforgery(options =>
 
 &dagger;`Cookie` [ Cookie 작성기](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder) 클래스의 속성을 사용 하 여 위조 방지 속성을 설정 합니다.
 
-| 옵션 | 설명 |
+| 옵션 | Description |
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | 위조 방지를 만드는 데 사용 되는 설정을 결정 합니다 cookie . |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | 위조 방지 시스템이 뷰에서 위조 방지 토큰을 렌더링 하는 데 사용 하는 숨겨진 양식 필드의 이름입니다. |
@@ -246,12 +246,12 @@ services.AddAntiforgery(options =>
 });
 ```
 
-| 옵션 | 설명 |
+| 옵션 | Description |
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | 위조 방지를 만드는 데 사용 되는 설정을 결정 합니다 cookie . |
 | [Cookie도메인](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | 의 도메인 cookie 입니다. 기본값은 `null`입니다. 이 속성은 사용 되지 않으며 이후 버전에서 제거 될 예정입니다. 대신를 사용할 것을 권장 합니다 Cookie . 도메인. |
-| [CookieName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | cookie의 이름입니다. 설정 하지 않으면 시스템은 [기본 Cookie 접두사](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (")로 시작 하는 고유한 이름을 생성 합니다. AspNetCore. "). 이 속성은 사용 되지 않으며 이후 버전에서 제거 될 예정입니다. 대신를 사용할 것을 권장 합니다 Cookie . 이름의. |
-| [CookiePath](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | 에 설정 된 경로 cookie 입니다. 이 속성은 사용 되지 않으며 이후 버전에서 제거 될 예정입니다. 대신를 사용할 것을 권장 합니다 Cookie . Path. |
+| [Cookie이름](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | cookie의 이름입니다. 설정 하지 않으면 시스템은 [기본 Cookie 접두사](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (")로 시작 하는 고유한 이름을 생성 합니다. AspNetCore. "). 이 속성은 사용 되지 않으며 이후 버전에서 제거 될 예정입니다. 대신를 사용할 것을 권장 합니다 Cookie . 이름의. |
+| [Cookie경로](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | 에 설정 된 경로 cookie 입니다. 이 속성은 사용 되지 않으며 이후 버전에서 제거 될 예정입니다. 대신를 사용할 것을 권장 합니다 Cookie . Path. |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | 위조 방지 시스템이 뷰에서 위조 방지 토큰을 렌더링 하는 데 사용 하는 숨겨진 양식 필드의 이름입니다. |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | 위조 방지 시스템에서 사용 하는 헤더의 이름입니다. 이면 `null` 시스템은 폼 데이터만 고려 합니다. |
 | [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | 위조 방지 시스템에 HTTPS가 필요한 지 여부를 지정 합니다. 이면 `true` HTTPS가 아닌 요청이 실패 합니다. 기본값은 `false`입니다. 이 속성은 사용 되지 않으며 이후 버전에서 제거 될 예정입니다. 대신를 설정 하는 것이 좋습니다 Cookie . SecurePolicy. |
@@ -489,11 +489,15 @@ public void ConfigureServices(IServiceCollection services)
 
 [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
+## <a name="windows-authentication-and-antiforgery-no-loccookies"></a>Windows 인증 cookie 및 위조 방지
+
+Windows 인증을 사용 하는 경우 응용 프로그램 끝점은 s에 대해 수행 되는 것과 동일한 방식으로 CSRF 공격 으로부터 보호 되어야 합니다 cookie .  브라우저는 서버에 인증 컨텍스트를 암시적으로 전송 하므로 CSRF 공격 으로부터 끝점을 보호 해야 합니다.
+
 ## <a name="extend-antiforgery"></a>위조 방지 확장
 
 [IAntiForgeryAdditionalDataProvider](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider) 형식을 사용 하면 개발자가 각 토큰에서 추가 데이터를 라운드트립 하 여 csrf 시스템의 동작을 확장할 수 있습니다. [Getadditionaldata](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider.getadditionaldata) 메서드는 필드 토큰이 생성 될 때마다 호출 되며 반환 값은 생성 된 토큰에 포함 됩니다. 구현자는 타임 스탬프, nonce 또는 다른 값을 반환 하 고, 토큰의 유효성을 검사할 때 [Validateadditionaldata](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider.validateadditionaldata) 를 호출 하 여이 데이터의 유효성을 검사할 수 있습니다. 클라이언트의 사용자 이름이 이미 생성 된 토큰에 포함 되어 있으므로이 정보를 포함할 필요가 없습니다. 토큰에 추가 데이터가 포함 되어 있지만가 구성 되지 않은 경우 `IAntiForgeryAdditionalDataProvider` 보충 데이터의 유효성이 검사 되지 않습니다.
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * OWASP ( [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) )의 [csrf](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))
 * <xref:host-and-deploy/web-farm>

@@ -1,10 +1,10 @@
 ---
 title: ASP.NET Core Web API에서 응답 데이터 서식 지정
-author: ardalis
+author: rick-anderson
 description: ASP.NET Core Web API에서 응답 데이터의 서식을 지정하는 방법을 알아봅니다.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 04/17/2020
+ms.date: 1/28/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 89e3e51373db5f7cff974b7a8c69d06bedf856ca
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5d228af00ee34e7f8ca60a5085872fdb93842367
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052515"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057501"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>ASP.NET Core Web API에서 응답 데이터 서식 지정
 
@@ -88,7 +88,7 @@ ASP.NET Core MVC는 응답 데이터 서식 지정을 지원합니다. 응답 �
 
 클라이언트의 요청을 충족할 수 있는 포맷터가 없는 경우 ASP.NET Core는 다음을 수행합니다.
 
-* <xref:Microsoft.AspNetCore.Mvc.MvcOptions>이 설정된 경우 `406 Not Acceptable`을 반환하거나
+* `406 Not Acceptable` <xref:Microsoft.AspNetCore.Mvc.MvcOptions.ReturnHttpNotAcceptable?displayProperty=nameWithType> 가 또는로 설정 된 경우를 반환 합니다. `true`
 * 응답을 생성할 수 있는 첫 번째 포맷터를 찾으려고 시도합니다.
 
 요청된 형식에 대해 포맷터가 구성되지 않은 경우에는 개체의 서식을 지정할 수 있는 첫 번째 포맷터가 사용됩니다. 요청에 `Accept` 헤더가 표시되지 않을 경우 다음이 수행됩니다.
@@ -132,9 +132,22 @@ Accept 헤더에 `*/*`가 포함되는 경우, `RespectBrowserAcceptHeader`가 <
 
 위의 코드를 사용할 때 컨트롤러 메서드는 요청의 `Accept` 헤더에 따라 적절한 형식을 반환합니다.
 
-### <a name="configure-systemtextjson-based-formatters"></a>System.Text.Json 기반 포맷터 구성
+### <a name="configure-systemtextjson-based-formatters"></a>기반 포맷터에 System.Text.Js구성
 
-`System.Text.Json` 기반 포맷터의 기능은 `Microsoft.AspNetCore.Mvc.JsonOptions.SerializerOptions`를 사용하여 구성할 수 있습니다.
+기반 포맷터의 기능은를 `System.Text.Json` 사용 하 여 구성할 수 있습니다 <xref:Microsoft.AspNetCore.Mvc.JsonOptions.JsonSerializerOptions?displayProperty=fullName> . 기본 형식은 camelCase입니다. 다음 강조 표시 된 코드는 대/소문자 서식 지정을 설정 합니다.
+
+[!code-csharp[](./formatting/5.0samples/WebAPI5PascalCase/Startup.cs?name=snippet&highlight=4-5)]
+
+다음 동작 메서드는 [Controllerbase. 문제](xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A) 를 호출 하 여 응답을 만듭니다. <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>
+
+[!code-csharp[](formatting/5.0samples/WebAPI5PascalCase/Controllers/WeatherForecastController.cs?name=snippet&highlight=4)]
+
+이전 코드를 사용 하는 경우:
+
+  * `https://localhost:5001/WeatherForecast/temperature` 는 대/소문자를 반환 합니다.
+  * `https://localhost:5001/WeatherForecast/error` camelCase를 반환 합니다. 앱에서 형식을 camelCase로 설정 하는 경우에도 오류 응답은 항상 유효 하지 않습니다. `ProblemDetails` 는 소문자를 지정 하는 [RFC 7807](https://tools.ietf.org/html/rfc7807#appendix-A)을 따릅니다.
+
+다음 코드는 사용자 지정 변환기를 설정 하 고 사용자 지정 변환기를 추가 합니다.
 
 ```csharp
 services.AddControllers().AddJsonOptions(options =>
@@ -147,7 +160,7 @@ services.AddControllers().AddJsonOptions(options =>
 });
 ```
 
-`JsonResult`를 사용하여 동작 단위로 출력 serialization 옵션을 구성할 수 있습니다. 다음은 그 예입니다.
+`JsonResult`를 사용하여 동작 단위로 출력 serialization 옵션을 구성할 수 있습니다. 예를 들면 다음과 같습니다.
 
 ```csharp
 public IActionResult Get()
@@ -175,7 +188,7 @@ ASP.NET Core 3.0 이전에는 `Newtonsoft.Json` 패키지를 사용하여 구현
 
 일부 기능은 `System.Text.Json` 기반 포맷터와 잘 호환되지 않고 `Newtonsoft.Json` 기반 포맷터에 대한 참조를 필요로 할 수 있습니다. 앱이 다음과 같은 경우 `Newtonsoft.Json` 기반 포맷터를 계속해서 사용합니다.
 
-* `Newtonsoft.Json` 속성을 사용합니다. 예를 들어 `[JsonProperty]` 또는 `[JsonIgnore]`입니다.
+* `Newtonsoft.Json` 속성을 사용합니다. 예를 들어 `[JsonProperty]` 또는 `[JsonIgnore]`로 이름을 지정할 수 있습니다.
 * 직렬화 설정을 사용자 지정합니다.
 * `Newtonsoft.Json`은 제공하는 기능에 의존합니다.
 * `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`를 구성하는 경우. ASP.NET Core 3.0 이전의 `JsonResult.SerializerSettings`는 `Newtonsoft.Json` 고유의 `JsonSerializerSettings`의 인스턴스를 허용합니다.
@@ -194,7 +207,7 @@ services.AddControllers().AddNewtonsoftJson(options =>
 });
 ```
 
-`JsonResult`를 사용하여 동작 단위로 출력 serialization 옵션을 구성할 수 있습니다. 다음은 그 예입니다.
+`JsonResult`를 사용하여 동작 단위로 출력 serialization 옵션을 구성할 수 있습니다. 예를 들면 다음과 같습니다.
 
 ```csharp
 public IActionResult Get()
@@ -239,7 +252,7 @@ XML 형식 지정은 [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget
 
 ### <a name="special-case-formatters"></a>특수한 사례 포맷터
 
-일부 특수한 경우 기본 제공 포맷터를 사용하여 구현됩니다. 기본적으로 `string` 반환 형식은 *text/plain* (`Accept` 헤더를 통해 요청된 경우 *text/html* )으로 형식이 지정됩니다. 이 동작은 <xref:Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter>를 제거하여 삭제할 수 있습니다. 포맷터들은 `ConfigureServices` 방법에서 제거됩니다. 모델 개체 반환 형식이 있는 작업은 `null`을 반환하는 경우 `204 No Content`를 반환합니다. 이 동작은 <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter>를 제거하여 삭제할 수 있습니다. 다음 코드를 `StringOutputFormatter` 및 `HttpNoContentOutputFormatter`를 제거합니다.
+일부 특수한 경우 기본 제공 포맷터를 사용하여 구현됩니다. 기본적으로 `string` 반환 형식은 *text/plain*(`Accept` 헤더를 통해 요청된 경우 *text/html*)으로 형식이 지정됩니다. 이 동작은 <xref:Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter>를 제거하여 삭제할 수 있습니다. 포맷터들은 `ConfigureServices` 방법에서 제거됩니다. 모델 개체 반환 형식이 있는 작업은 `null`을 반환하는 경우 `204 No Content`를 반환합니다. 이 동작은 <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter>를 제거하여 삭제할 수 있습니다. 다음 코드를 `StringOutputFormatter` 및 `HttpNoContentOutputFormatter`를 제거합니다.
 
 ::: moniker range=">= aspnetcore-3.0"
 [!code-csharp[](./formatting/3.0sample/StartupStringOutputFormatter.cs?name=snippet)]
@@ -250,7 +263,7 @@ XML 형식 지정은 [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget
 
 `StringOutputFormatter`가 없으면 기본 제공 JSON 포맷터가 `string` 반환 형식의 형식을 지정합니다. 기본 제공 JSON 포맷터가 제거되고 XML 포맷터를 사용할 수 있는 경우, XML 포맷터가 `string` 반환 형식의 형식을 지정합니다. 그렇지 않으면 `string` 반환 형식이 `406 Not Acceptable`을 반환합니다.
 
-`HttpNoContentOutputFormatter`가 없으면 null 개체는 구성된 포맷터를 사용하여 서식이 지정됩니다. 다음은 그 예입니다.
+`HttpNoContentOutputFormatter`가 없으면 null 개체는 구성된 포맷터를 사용하여 서식이 지정됩니다. 예를 들면 다음과 같습니다.
 
 * JSON 포맷터는 `null`의 본문이 포함된 응답을 반환합니다.
 * XML 포맷터는 `xsi:nil="true"`로 설정된 특성을 사용하여 빈 XML 요소를 반환합니다.
@@ -262,7 +275,7 @@ XML 형식 지정은 [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget
 * 쿼리 문자열 또는 경로의 부분에서.
 * .Xml 또는 .json과 같은 서식 지정 파일 확장명을 사용하여.
 
-요청 경로의 매핑은 API가 사용하는 경로에 지정해야 합니다. 다음은 그 예입니다.
+요청 경로의 매핑은 API가 사용하는 경로에 지정해야 합니다. 예를 들면 다음과 같습니다.
 
 [!code-csharp[](./formatting/sample/Controllers/ProductsController.cs?name=snippet)]
 

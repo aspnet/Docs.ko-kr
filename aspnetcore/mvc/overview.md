@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/overview
-ms.openlocfilehash: 4f0e98057c03769a672ef350cc3ec724a4f7e721
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 642a7b26a3ba0a79a35437a5c19ee0be63a367af
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431063"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057319"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 개요
 
@@ -88,7 +88,7 @@ ASP.NET Core MVC는 다음과 같은 기능을 포함하고 있습니다.
 
 ASP.NET Core MVC는 [ASP.NET Core 라우팅](../fundamentals/routing.md)을 기반으로 하며, 알기 쉽고 검색 가능한 URL이 있는 애플리케이션을 빌드할 수 있는 강력한 URL 매핑 구성 요소입니다. 웹 서버에 있는 파일의 구성 방식에 관계없이 SEO(검색 엔진 최적화) 및 링크 생성에 적합한 애플리케이션 URL 이름 지정 패턴을 정의할 수 있습니다. 경로 값 제약 조건, 기본값 및 선택적 값을 지원하는 편리한 경로 템플릿 구문을 사용하여 경로를 정의할 수 있습니다.
 
-*규칙 기반 라우팅* 을 사용하면 응용 프로그램이 허용하는 URL 형식과 이러한 각 형식이 특정 컨트롤러의 특정 작업 메서드에 매핑되는 방식을 전체적으로 정의할 수 있습니다. 들어오는 요청이 수신되면 라우팅 엔진이 URL을 구문 분석하여 정의된 URL 형식 중 하나와 매칭한 후 관련 컨트롤러의 작업 메서드를 호출합니다.
+*규칙 기반 라우팅을* 사용 하면 응용 프로그램에서 허용 하는 URL 형식과 이러한 형식의 각 형식이 지정 된 컨트롤러의 특정 작업 메서드에 매핑되는 방식을 전역적으로 정의할 수 있습니다. 들어오는 요청이 수신되면 라우팅 엔진이 URL을 구문 분석하여 정의된 URL 형식 중 하나와 매칭한 후 관련 컨트롤러의 작업 메서드를 호출합니다.
 
 ```csharp
 routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id?}");
@@ -182,7 +182,7 @@ ASP.NET Core는 기본적으로 [DI(종속성 주입 )](../fundamentals/dependen
 public class AccountController : Controller
 ```
 
-### <a name="areas"></a>영역
+### <a name="areas"></a>Areas
 
 [영역](controllers/areas.md)은 대규모 ASP.NET Core MVC 웹앱을 더 작은 기능 그룹으로 분할하는 방법을 제공합니다. 영역은 애플리케이션 내부의 MVC 구조입니다. MVC 프로젝트에서 모델, 컨트롤러, 보기와 같은 논리적 구성 요소는 서로 다른 폴더에 보관되며 MVC는 명명 규칙을 사용하여 이러한 구성 요소 간의 관계를 만듭니다. 대형 앱의 경우 앱을 별도의 고급 기능 영역으로 나누는 것이 좋습니다. 예를 들어 체크 아웃, 대금 청구, 검색 등의 여러 사업부를 포함 하는 전자 상거래 앱입니다. 이러한 각 단위에는 고유한 논리적 구성 요소 뷰, 컨트롤러 및 모델이 있습니다.
 
@@ -269,5 +269,5 @@ Razor MVC의 뷰는 모델을 기반으로 강력 하 게 형식화 될 수 있�
 
 ## <a name="additional-resources"></a>추가 자료
 
-* [AspNetCore-ASP.NET CORE mvc에 대 한 흐름 테스트 라이브러리](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): 강력한 형식의 단위 테스트 라이브러리로, mvc 및 web API 앱 테스트를 위한 흐름 인터페이스를 제공 합니다. ( *Microsoft에서 유지 관리하거나 지원하지 않습니다.* )
+* [AspNetCore-ASP.NET CORE mvc에 대 한 흐름 테스트 라이브러리](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): 강력한 형식의 단위 테스트 라이브러리로, mvc 및 web API 앱 테스트를 위한 흐름 인터페이스를 제공 합니다. (*Microsoft에서 유지 관리하거나 지원하지 않습니다.* )
 * <xref:blazor/components/prerendering-and-integration>
