@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cross-site-scripting
-ms.openlocfilehash: 1c90a786efe8c3c205a729a2da9d3a99d0222012
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: a7a0c0ff44de5b04d7fa9a8f2f16f7c9f786f64b
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053087"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057072"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>ASP.NET Core에서 XSS (교차 사이트 스크립팅) 방지
 
@@ -69,7 +69,7 @@ RazorMVC에서 사용 하는 엔진은이를 방지 하기 위해 정말로 작�
 
 ## <a name="javascript-encoding-using-no-locrazor"></a>JavaScript Encoding 사용 Razor
 
-JavaScript에 값을 삽입 하 여 보기에서 처리할 수 있는 경우가 있을 수 있습니다. 두 가지 방법으로 이 작업을 수행할 수 있습니다. 값을 삽입 하는 가장 안전한 방법은 태그의 데이터 특성에 값을 추가 하 고 JavaScript에서 검색 하는 것입니다. 다음은 그 예입니다.
+JavaScript에 값을 삽입 하 여 보기에서 처리할 수 있는 경우가 있을 수 있습니다. 두 가지 방법으로 이 작업을 수행할 수 있습니다. 값을 삽입 하는 가장 안전한 방법은 태그의 데이터 특성에 값을 추가 하 고 JavaScript에서 검색 하는 것입니다. 예를 들면 다음과 같습니다.
 
 ```cshtml
 @{
@@ -162,9 +162,9 @@ JavaScript에 값을 삽입 하 여 보기에서 처리할 수 있는 경우가 
 ```
 
 >[!WARNING]
-> JavaScript에서 **NOT** 신뢰할 수 없는 입력을 연결 하 여 DOM 요소를 만들거나 `document.write()` 동적으로 생성 된 콘텐츠에서를 사용 하지 마세요.
+> JavaScript에서신뢰할 수 없는 입력을 연결 하 여 DOM 요소를 만들거나 `document.write()` 동적으로 생성 된 콘텐츠에서를 사용 하지 마세요.
 >
-> 다음 방법 중 하나를 사용 하 여 코드가 DOM 기반 XSS에 노출 되지 않도록 하 고, `createElement()` 또는 노드와 같은 적절 한 메서드 또는 속성을 사용 하 여 속성 값을 할당 합니다. `node.textContent=` InnerText = '.
+> 다음 방법 중 하나를 사용 하 여 코드가 DOM 기반 XSS에 노출 되지 않도록 하 고, `createElement()` 또는와 같은 적절 한 메서드 또는 속성을 사용 하 여 속성 값을 할당 `node.textContent=` `node.InnerText=` 합니다.
 > * `document.CreateTextNode()` 적절 한 DOM 위치에 추가 합니다.
 > * `element.SetAttribute()`
 > * `element[attribute]=`
@@ -173,7 +173,7 @@ JavaScript에 값을 삽입 하 여 보기에서 처리할 수 있는 경우가 
 
 HTML, JavaScript 및 URL 인코더를 두 가지 방법으로 사용할 수 있습니다. [종속성 주입](xref:fundamentals/dependency-injection) 을 통해 코드를 삽입 하거나 네임 스페이스에 포함 된 기본 인코더를 사용할 수 있습니다 `System.Text.Encodings.Web` . 기본 인코더를 사용 하는 경우 안전 하지 않은 것으로 간주 되는 문자 범위에 적용 된 모든 것이 적용 되지 않습니다. 기본 인코더는 가능한 가장 안전한 인코딩 규칙을 사용 합니다.
 
-DI를 통해 구성 가능한 인코더를 사용 하려면 생성자는 *htmlencoder* , *JavaScriptEncoder* 및 *urlencoder* 매개 변수를 적절 하 게 사용 해야 합니다. 예를 들면 다음과 같습니다.
+DI를 통해 구성 가능한 인코더를 사용 하려면 생성자는 *htmlencoder*, *JavaScriptEncoder* 및 *urlencoder* 매개 변수를 적절 하 게 사용 해야 합니다. 예를 들면 다음과 같습니다.
 
 ```csharp
 public class HomeController : Controller
