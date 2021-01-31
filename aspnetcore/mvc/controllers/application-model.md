@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/application-model
-ms.openlocfilehash: a7a654eb43c0dbf375af911d8d5353ac4c04a825
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: cf16536284ee9c88913257607df837ad6e50ea2c
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060939"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217377"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>ASP.NET Core에서 애플리케이션 모델 작업
 
@@ -32,7 +32,7 @@ ASP.NET Core MVC는 MVC 앱의 구성 요소를 나타내는 *응용 프로그�
 
 ## <a name="models-and-providers"></a>모델 및 공급자
 
-ASP.NET Core MVC 애플리케이션 모델은 MVC 애플리케이션을 설명하는 추상 인터페이스와 구체적인 구현 클래스를 모두 포함하고 있습니다. 이 모델은 기본 규칙에 따라 MVC가 앱의 컨트롤러, 작업, 작업 매개 변수, 경로 및 필터를 검색한 결과입니다. 애플리케이션 모델을 사용하여 기본 MVC 동작과 다른 규칙을 따르도록 앱을 수정할 수 있습니다. 매개 변수, 이름, 경로 및 필터는 모두 작업 및 컨트롤러에 대한 구성 데이터로 사용됩니다.
+ASP.NET Core MVC 응용 프로그램 모델에는 추상 인터페이스와 MVC 응용 프로그램을 설명 하는 구체적 구현 클래스가 모두 포함 됩니다. 이 모델은 기본 규칙에 따라 MVC가 앱의 컨트롤러, 작업, 작업 매개 변수, 경로 및 필터를 검색한 결과입니다. 애플리케이션 모델을 사용하여 기본 MVC 동작과 다른 규칙을 따르도록 앱을 수정할 수 있습니다. 매개 변수, 이름, 경로 및 필터는 모두 작업 및 컨트롤러에 대한 구성 데이터로 사용됩니다.
 
 ASP.NET Core MVC 응용 프로그램 모델의 구조는 다음과 같습니다.
 

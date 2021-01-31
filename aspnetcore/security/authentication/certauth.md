@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 71f05163c075a2ef88d5c606814925cdcef879d2
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: c862bc8bff6c4cc80696d92067e814889d6e7782
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253048"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217533"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>ASP.NET Core에서 인증서 인증 구성
 
@@ -40,7 +40,7 @@ ms.locfileid: "98253048"
 
 프록시 및 부하 분산 장치를 사용 하는 환경에서 인증서 인증에 대 한 대안은 OIDC (Openid connect Connect)를 사용 하는 페더레이션 서비스 (ADFS) Active Directory입니다.
 
-## <a name="get-started"></a>시작
+## <a name="get-started"></a>시작하기
 
 HTTPS 인증서를 획득 하 고 적용 한 다음 인증서를 요구 하도록 [서버를 구성](#configure-your-server-to-require-certificates) 합니다.
 
@@ -618,7 +618,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-기본 캐싱 구현에서는 결과를 메모리에 저장 합니다. `ICertificateValidationCache`종속성 주입을 사용 하 여 구현 하 고 등록 하 여 자체 캐시를 제공할 수 있습니다. 예를 들어, `services.AddSingleton<ICertificateValidationCache, YourCache>()`를 입력합니다.
+기본 캐싱 구현에서는 결과를 메모리에 저장 합니다. `ICertificateValidationCache`종속성 주입을 사용 하 여 구현 하 고 등록 하 여 자체 캐시를 제공할 수 있습니다. 예들 들어 `services.AddSingleton<ICertificateValidationCache, YourCache>()`입니다.
 
 ::: moniker-end
 
@@ -650,7 +650,7 @@ ASP.NET Core 5 preview 7 이상에서는 선택적 클라이언트 인증서에 
     * IIS
       * [IIS 호스팅](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [IIS에 대 한 보안 구성](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
-    * Http.Sys: [Windows Server 구성](xref:fundamentals/servers/httpsys#configure-windows-server)
+    * HTTP.sys: [Windows Server 구성](xref:fundamentals/servers/httpsys#configure-windows-server)
 
 ::: moniker-end
 
@@ -666,7 +666,7 @@ ASP.NET Core 5 preview 7 이상에서는 선택적 클라이언트 인증서에 
     * IIS
       * [IIS 호스팅](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [IIS에 대 한 보안 구성](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
-    * Http.Sys: [Windows Server 구성](xref:fundamentals/servers/httpsys#configure-windows-server)
+    * HTTP.sys: [Windows Server 구성](xref:fundamentals/servers/httpsys#configure-windows-server)
 
 ::: moniker-end
 
