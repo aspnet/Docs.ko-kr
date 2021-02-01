@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/index
-ms.openlocfilehash: 49e299ed00ea0e5d54c1ba795971da379cd5b695
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 2acddd212639ac0a82b3c46f2225ff66d0999dd0
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253139"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217559"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core의 웹 서버 구현
 
@@ -32,31 +32,13 @@ ms.locfileid: "98253139"
 
 ASP.NET Core 앱은 In-Process HTTP 서버 구현을 사용하여 실행됩니다. 서버 구현은 HTTP 요청을 수신하고 <xref:Microsoft.AspNetCore.Http.HttpContext>에 구성된 일련의 [요청 기능](xref:fundamentals/request-features)으로 앱에 표시합니다.
 
-## <a name="kestrel"></a>Kestrel
-
-Kestrel은 ASP.NET Core 프로젝트 템플릿에서 지정된 기본 웹 서버입니다.
-
-다음과 같이 Kestrel을 사용할 수 있습니다.
-
-* 인터넷을 포함한 네트워크의 요청을 직접 처리하는 에지 서버로 단독 사용합니다.
-
-  ![Kestrel이 역방향 프록시 서버 없이 직접 인터넷과 통신합니다.](kestrel/_static/kestrel-to-internet2.png)
-
-* [IIS(인터넷 정보 서비스)](https://www.iis.net/), [Nginx](https://nginx.org) 또는 [Apache](https://httpd.apache.org/) 같은 *역방향 프록시 서버* 와 함께 사용합니다. 역방향 프록시 서버는 인터넷에서 HTTP 요청을 받아서 Kestrel에 전달합니다.
-
-  ![Kestrel이 IIS, Nginx 또는 Apache 같은 역방향 프록시 서버를 통해 간접적으로 인터넷과 통신합니다.](kestrel/_static/kestrel-to-internet.png)
-
-&mdash;역방향 프록시 서버가 있는 구성과 없는 구성 모두&mdash; 지원되는 호스팅 구성입니다.
-
-Kestrel을 역방향 프록시 구성에서 사용하는 경우에 대한 Kestrel 구성 지침 및 정보는 <xref:fundamentals/servers/kestrel>을 참조하세요.
-
 ::: moniker range=">= aspnetcore-2.2"
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
 ASP.NET Core는 다음과 함께 제공됩니다.
 
-* [Kestrel 서버](xref:fundamentals/servers/kestrel)는 기본 플랫폼 간 HTTP 서버 구현입니다.
+* [Kestrel 서버](xref:fundamentals/servers/kestrel)는 기본 플랫폼 간 HTTP 서버 구현입니다. Kestrel은 최상의 성능과 메모리 사용률을 제공하지만 HTTP.sys의 고급 기능 중 일부를 제공하지 않습니다. 자세한 내용은 이 문서의 [Kestrel 및 HTTP.sys](#korh)를 참조하세요.
 * IIS HTTP 서버는 IIS의 [In-Process 서버](#hosting-models)입니다.
 * [HTTP.sys 서버](xref:fundamentals/servers/httpsys)는 [Http.Sys 커널 드라이버 및 HTTP Server API](/windows/desktop/Http/http-api-start-page)를 기반으로 하는 Windows 전용 HTTP 서버입니다.
 
@@ -66,6 +48,26 @@ ASP.NET Core는 다음과 함께 제공됩니다.
 * IIS 작업자 프로세스와 다른 별도의 프로세스에서 [Kestrel 서버](#kestrel)를 사용하여 실행됩니다([Out-of-Process 호스팅 모델](#hosting-models)).
 
 [ASP.NET Core 모듈](xref:host-and-deploy/aspnet-core-module)은 IIS와 In-Process IIS HTTP 서버 또는 Kestrel 간의 네이티브 IIS 요청을 처리하는 네이티브 IIS 모듈입니다. 자세한 내용은 <xref:host-and-deploy/aspnet-core-module>를 참조하세요.
+
+<a name="korh"></a>
+
+## <a name="kestrel-vs-httpsys"></a>Kestrel 및 HTTP.sys
+
+Kestrel은 HTTP.sys에 비해 다음과 같은 이점이 있습니다.
+
+  * 향상된 성능 및 메모리 사용률.
+  * 플랫폼 간
+  * 민첩성 - OS와 독립적으로 개발되고 패치됨.
+  * 프로그래밍 방식 포트 및 TLS 구성
+  * [PPv2](https://github.com/aspnet/AspLabs/blob/master/src/ProxyProtocol/ProxyProtocol.Sample/ProxyProtocol.cs)와 같은 프로토콜 및 대체 전송을 허용하는 확장성.
+
+Http.Sys는 kestrel에서 제공하지 않는 다음과 같은 기능을 사용하여 공유 커널 모드 구성 요소로 작동합니다.
+
+  * 포트 공유
+  * 커널 모드 Windows 인증. [Kestrel은 사용자 모드 인증만 지원](xref:security/authentication/windowsauth#kestrel)합니다.
+  * 큐 전송을 통한 빠른 프록시 처리
+  * 직접 파일 전송
+  * 응답 캐싱
 
 ## <a name="hosting-models"></a>호스팅 모델
 
@@ -89,6 +91,24 @@ ASP.NET Core는 기본 플랫폼 간 HTTP 서버인 [Kestrel 서버](xref:fundam
 ---
 
 ::: moniker-end
+
+## <a name="kestrel"></a>Kestrel
+
+ [Kestrel 서버](xref:fundamentals/servers/kestrel)는 기본 플랫폼 간 HTTP 서버 구현입니다. Kestrel은 최상의 성능과 메모리 사용률을 제공하지만 HTTP.sys의 고급 기능 중 일부를 제공하지 않습니다. 자세한 내용은 이 문서의 [Kestrel 및 HTTP.sys](#korh)를 참조하세요.
+
+다음과 같이 Kestrel을 사용할 수 있습니다.
+
+* 인터넷을 포함한 네트워크의 요청을 직접 처리하는 에지 서버로 단독 사용합니다.
+
+  ![Kestrel이 역방향 프록시 서버 없이 직접 인터넷과 통신합니다.](kestrel/_static/kestrel-to-internet2.png)
+
+* [IIS(인터넷 정보 서비스)](https://www.iis.net/), [Nginx](https://nginx.org) 또는 [Apache](https://httpd.apache.org/) 같은 *역방향 프록시 서버* 와 함께 사용합니다. 역방향 프록시 서버는 인터넷에서 HTTP 요청을 받아서 Kestrel에 전달합니다.
+
+  ![Kestrel이 IIS, Nginx 또는 Apache 같은 역방향 프록시 서버를 통해 간접적으로 인터넷과 통신합니다.](kestrel/_static/kestrel-to-internet.png)
+
+&mdash;역방향 프록시 서버가 있는 구성과 없는 구성 모두&mdash; 지원되는 호스팅 구성입니다.
+
+Kestrel을 역방향 프록시 구성에서 사용하는 경우에 대한 Kestrel 구성 지침 및 정보는 <xref:fundamentals/servers/kestrel>을 참조하세요.
 
 ::: moniker range="< aspnetcore-2.2"
 
@@ -140,7 +160,7 @@ Linux에서 Kestrel에 대한 역방향 프록시 서버로 Apache를 사용하�
 
 ## <a name="httpsys"></a>HTTP.sys
 
-Windows에서 ASP.NET Core 앱을 실행할 경우 Kestrel 대신 HTTP.sys를 사용할 수 있습니다. 최상의 성능을 위해 일반적으로 Kestrel을 사용하는 것이 좋습니다. 앱이 인터넷에 노출되고 필수 기능이 Kestrel이 아닌 HTTP.sys에서 지원되는 시나리오에서 HTTP.sys를 사용할 수 있습니다. 자세한 내용은 <xref:fundamentals/servers/httpsys>를 참조하세요.
+Windows에서 ASP.NET Core 앱을 실행할 경우 Kestrel 대신 HTTP.sys를 사용할 수 있습니다. Kestrel에서 제공하지 않는 기능이 앱에 필요하지 않는 한 HTTP.sys보다 Kestrel을 사용하는 것이 좋습니다. 자세한 내용은 <xref:fundamentals/servers/httpsys>를 참조하세요.
 
 ![HTTP.sys는 인터넷과 직접 통신합니다.](httpsys/_static/httpsys-to-internet.png)
 

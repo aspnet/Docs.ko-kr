@@ -1,5 +1,5 @@
 ---
-title: .NET Core에서 gRPC 소개
+title: .NET에서 gRPC 소개
 author: juntaoluo
 description: Kestrel 서버 및 ASP.NET Core 스택을 사용하는 gRPC 서비스에 대해 알아봅니다.
 monikerRange: '>= aspnetcore-3.0'
@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/index
-ms.openlocfilehash: 80f44e3845cc1e3c87d5d657807a318eb65e6c6f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5820049aba90a2fbd06a23756b12ac9656c3b2c4
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059899"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057514"
 ---
-# <a name="introduction-to-grpc-on-net-core"></a>.NET Core에서 gRPC 소개
+# <a name="introduction-to-grpc-on-net"></a>.NET에서 gRPC 소개
 
 작성자: [John Luo](https://github.com/juntaoluo) 및 [James Newton-King](https://twitter.com/jamesnk)
 

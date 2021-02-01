@@ -4,7 +4,7 @@ author: mjrousos
 description: ASP.NET Core의 인증에 대해 알아봅니다.
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/03/2020
+ms.date: 1/24/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/index
-ms.openlocfilehash: e9e4ca11d20557666c75b84e56af825d002df0f1
-ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
+ms.openlocfilehash: 72036e9c4c92ee5dd82ac4a67e766fb0e5c8f924
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94464005"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057293"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>ASP.NET Core 인증 개요
 
@@ -62,7 +62,19 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 ## <a name="authentication-concepts"></a>인증 개념
 
+인증은 사용 권한을 결정할 권한 부여에 대해 <xref:System.Security.Claims.ClaimsPrincipal>을 제공합니다. 올바른 클레임 세트 생성을 담당하는 인증 처리기를 선택하는 방법으로 여러 가지 인증 체계가 있습니다.
+
+  * [인증 체계](xref:security/authorization/limitingidentitybyscheme) - 다음 섹션에서도 설명합니다.
+  * 기본 인증 체계 - 다음 섹션에서 설명합니다.
+  * [HttpContext.User](xref:Microsoft.AspNetCore.Http.HttpContext.User)를 직접 설정.
+
+체계는 자동으로 검색되지 않습니다. 기본 체계를 지정하지 않은 경우 권한 부여 특성에서 체계를 지정해야 합니다. 그러지 않으면 다음 오류가 throw됩니다.
+
+  InvalidOperationException: authenticationScheme이 지정되지 않았으며 DefaultAuthenticateScheme을 찾을 수 없습니다. 기본 체계는 AddAuthentication(문자열 defaultScheme) 또는 AddAuthentication(Action&lt;AuthenticationOptions&gt; configureOptions)를 사용하여 설정할 수 있습니다.
+
 ### <a name="authentication-scheme"></a>인증 체계
+
+[인증 체계](xref:security/authorization/limitingidentitybyscheme)는 올바른 클레임 세트 생성을 담당하는 인증 처리기를 선택할 수 있습니다. 자세한 내용은 [특정 체계로 권한 부여](xref:security/authorization/limitingidentitybyscheme)를 참조하세요.
 
 인증 체계는 다음에 해당하는 이름입니다.
 
