@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 2df938f3ace47472536020f9848e954fc4446f15
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: 0b555ad7befe882c4ffd06e2505a9edc1263eee2
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658588"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057085"
 ---
 # <a name="secure-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly 보호
 
@@ -110,6 +110,14 @@ Blazor WebAssembly 앱에서는 사용자가 클라이언트 쪽 코드를 모�
 ## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Identity Server를 사용한 Azure App Service on Linux
 
 Identity Server를 사용하여 Azure App Service on Linux에 배포할 때 발급자를 명시적으로 지정합니다. 자세한 내용은 <xref:security/authentication/identity/spa#azure-app-service-on-linux>를 참조하세요.
+
+## <a name="windows-authentication"></a>Windows 인증
+
+Blazor Webassembly 또는 다른 모든 SPA 프레임워크에서는 Windows 인증을 사용하지 않는 것이 좋습니다. Windows 인증 대신 ADFS(Active Directory Federation Services)를 사용하는 OIDC 같은 토큰 기반 프로토콜을 사용하는 것이 좋습니다.
+
+Blazor Webassembly 또는 다른 모든 SPA 프레임워크에서 Windows 인증을 사용하는 경우 CSRF(교차 사이트 요청 위조) 토큰으로부터 앱을 보호하려면 추가적인 방법이 필요합니다. Windows 인증에서 원본 간에 인증 컨텍스트를 공유하지 못하도록 하는 메커니즘을 제공하지 않을 뿐만 아니라 cookie에 적용되는 것과 동일한 문제가 Windows 인증에도 적용됩니다. CSRF로부터 보호하는 추가 방법 없이 Windows 인증을 사용하는 앱은 최소한 조직의 인트라넷으로 제한되어야 하며 인터넷에서는 사용하면 안 됩니다.
+
+자세한 내용은 <xref:security/anti-request-forgery>를 참조하세요.
 
 ## <a name="implementation-guidance"></a>구현 지침
 
