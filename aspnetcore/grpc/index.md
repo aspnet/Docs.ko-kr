@@ -1,53 +1,53 @@
 ---
-title: .NET Core에서 gRPC 소개
+title: .NET에서 gRPC 소개
 author: juntaoluo
 description: Kestrel 서버 및 ASP.NET Core 스택을 사용하는 gRPC 서비스에 대해 알아봅니다.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/20/2019
 no-loc:
-- 'appsettings.json'
-- 'ASP.NET Core Identity'
-- 'cookie'
-- 'Cookie'
-- 'Blazor'
-- 'Blazor Server'
-- 'Blazor WebAssembly'
-- 'Identity'
-- "Let's Encrypt"
-- 'Razor'
-- 'SignalR'
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: grpc/index
-ms.openlocfilehash: 80f44e3845cc1e3c87d5d657807a318eb65e6c6f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5820049aba90a2fbd06a23756b12ac9656c3b2c4
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059899"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057514"
 ---
-# <a name="introduction-to-grpc-on-net-core"></a><span data-ttu-id="b2a03-103">.NET Core에서 gRPC 소개</span><span class="sxs-lookup"><span data-stu-id="b2a03-103">Introduction to gRPC on .NET Core</span></span>
+# <a name="introduction-to-grpc-on-net"></a><span data-ttu-id="9b83c-103">.NET에서 gRPC 소개</span><span class="sxs-lookup"><span data-stu-id="9b83c-103">Introduction to gRPC on .NET</span></span>
 
-<span data-ttu-id="b2a03-104">작성자: [John Luo](https://github.com/juntaoluo) 및 [James Newton-King](https://twitter.com/jamesnk)</span><span class="sxs-lookup"><span data-stu-id="b2a03-104">By [John Luo](https://github.com/juntaoluo) and [James Newton-King](https://twitter.com/jamesnk)</span></span>
+<span data-ttu-id="9b83c-104">작성자: [John Luo](https://github.com/juntaoluo) 및 [James Newton-King](https://twitter.com/jamesnk)</span><span class="sxs-lookup"><span data-stu-id="9b83c-104">By [John Luo](https://github.com/juntaoluo) and [James Newton-King](https://twitter.com/jamesnk)</span></span>
 
-<span data-ttu-id="b2a03-105">[gRPC](https://grpc.io/docs/guides/)는 언어에 제약 받지 않는 고성능 RPC(원격 프로시저 호출) 프레임워크입니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-105">[gRPC](https://grpc.io/docs/guides/) is a language agnostic, high-performance Remote Procedure Call (RPC) framework.</span></span>
+<span data-ttu-id="9b83c-105">[gRPC](https://grpc.io/docs/guides/)는 언어에 제약 받지 않는 고성능 RPC(원격 프로시저 호출) 프레임워크입니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-105">[gRPC](https://grpc.io/docs/guides/) is a language agnostic, high-performance Remote Procedure Call (RPC) framework.</span></span>
 
-<span data-ttu-id="b2a03-106">gRPC의 주요 이점은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-106">The main benefits of gRPC are:</span></span>
-* <span data-ttu-id="b2a03-107">최신 고성능 경량 RPC 프레임워크.</span><span class="sxs-lookup"><span data-stu-id="b2a03-107">Modern, high-performance, lightweight RPC framework.</span></span>
-* <span data-ttu-id="b2a03-108">기본적으로 프로토콜 버퍼를 사용하는 계약 중심 API 개발로 언어에 구애받지 않는 구현이 가능합니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-108">Contract-first API development, using Protocol Buffers by default, allowing for language agnostic implementations.</span></span>
-* <span data-ttu-id="b2a03-109">여러 언어에서 강력한 형식의 서버 및 클라이언트를 생성할 수 있는 도구입니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-109">Tooling available for many languages to generate strongly-typed servers and clients.</span></span>
-* <span data-ttu-id="b2a03-110">클라이언트, 서버 및 양방향 스트리밍 호출을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-110">Supports client, server, and bi-directional streaming calls.</span></span>
-* <span data-ttu-id="b2a03-111">Protobuf 이진 직렬화를 사용하여 네트워크 사용량이 감소합니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-111">Reduced network usage with Protobuf binary serialization.</span></span>
+<span data-ttu-id="9b83c-106">gRPC의 주요 이점은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-106">The main benefits of gRPC are:</span></span>
+* <span data-ttu-id="9b83c-107">최신 고성능 경량 RPC 프레임워크.</span><span class="sxs-lookup"><span data-stu-id="9b83c-107">Modern, high-performance, lightweight RPC framework.</span></span>
+* <span data-ttu-id="9b83c-108">기본적으로 프로토콜 버퍼를 사용하는 계약 중심 API 개발로 언어에 구애받지 않는 구현이 가능합니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-108">Contract-first API development, using Protocol Buffers by default, allowing for language agnostic implementations.</span></span>
+* <span data-ttu-id="9b83c-109">여러 언어에서 강력한 형식의 서버 및 클라이언트를 생성할 수 있는 도구입니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-109">Tooling available for many languages to generate strongly-typed servers and clients.</span></span>
+* <span data-ttu-id="9b83c-110">클라이언트, 서버 및 양방향 스트리밍 호출을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-110">Supports client, server, and bi-directional streaming calls.</span></span>
+* <span data-ttu-id="9b83c-111">Protobuf 이진 직렬화를 사용하여 네트워크 사용량이 감소합니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-111">Reduced network usage with Protobuf binary serialization.</span></span>
 
-<span data-ttu-id="b2a03-112">이러한 이점으로 인해 gRPC는 다음과 같은 분야에 이상적입니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-112">These benefits make gRPC ideal for:</span></span>
-* <span data-ttu-id="b2a03-113">효율성이 중요한 경량 마이크로 서비스.</span><span class="sxs-lookup"><span data-stu-id="b2a03-113">Lightweight microservices where efficiency is critical.</span></span>
-* <span data-ttu-id="b2a03-114">개발을 위해 여러 언어가 필요한 다중 언어 시스템.</span><span class="sxs-lookup"><span data-stu-id="b2a03-114">Polyglot systems where multiple languages are required for development.</span></span>
-* <span data-ttu-id="b2a03-115">스트리밍 요청 또는 응답을 처리해야 하는 지점 간 실시간 서비스.</span><span class="sxs-lookup"><span data-stu-id="b2a03-115">Point-to-point real-time services that need to handle streaming requests or responses.</span></span>
+<span data-ttu-id="9b83c-112">이러한 이점으로 인해 gRPC는 다음과 같은 분야에 이상적입니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-112">These benefits make gRPC ideal for:</span></span>
+* <span data-ttu-id="9b83c-113">효율성이 중요한 경량 마이크로 서비스.</span><span class="sxs-lookup"><span data-stu-id="9b83c-113">Lightweight microservices where efficiency is critical.</span></span>
+* <span data-ttu-id="9b83c-114">개발을 위해 여러 언어가 필요한 다중 언어 시스템.</span><span class="sxs-lookup"><span data-stu-id="9b83c-114">Polyglot systems where multiple languages are required for development.</span></span>
+* <span data-ttu-id="9b83c-115">스트리밍 요청 또는 응답을 처리해야 하는 지점 간 실시간 서비스.</span><span class="sxs-lookup"><span data-stu-id="9b83c-115">Point-to-point real-time services that need to handle streaming requests or responses.</span></span>
 
 [!INCLUDE[](~/includes/gRPCazure.md)]
 
-## <a name="c-tooling-support-for-proto-files"></a><span data-ttu-id="b2a03-116">.proto 파일에 대한 C# 도구 지원</span><span class="sxs-lookup"><span data-stu-id="b2a03-116">C# Tooling support for .proto files</span></span>
+## <a name="c-tooling-support-for-proto-files"></a><span data-ttu-id="9b83c-116">.proto 파일에 대한 C# 도구 지원</span><span class="sxs-lookup"><span data-stu-id="9b83c-116">C# Tooling support for .proto files</span></span>
 
-<span data-ttu-id="b2a03-117">gRPC는 API 개발에 계약 중심 접근 방식을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-117">gRPC uses a contract-first approach to API development.</span></span> <span data-ttu-id="b2a03-118">서비스 및 메시지는 다음과 같은 *\*.proto* 파일에 정의됩니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-118">Services and messages are defined in *\*.proto* files:</span></span>
+<span data-ttu-id="9b83c-117">gRPC는 API 개발에 계약 중심 접근 방식을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-117">gRPC uses a contract-first approach to API development.</span></span> <span data-ttu-id="9b83c-118">서비스 및 메시지는 다음과 같은 *\*.proto* 파일에 정의됩니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-118">Services and messages are defined in *\*.proto* files:</span></span>
 
 ```protobuf
 syntax = "proto3";
@@ -65,10 +65,10 @@ message HelloReply {
 }
 ```
 
-<span data-ttu-id="b2a03-119">프로젝트에 *\*.proto* 파일을 포함하면 서비스, 클라이언트 및 메시지에 대한 .NET 형식이 자동으로 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-119">.NET types for services, clients and messages are automatically generated by including *\*.proto* files in a project:</span></span>
+<span data-ttu-id="9b83c-119">프로젝트에 *\*.proto* 파일을 포함하면 서비스, 클라이언트 및 메시지에 대한 .NET 형식이 자동으로 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-119">.NET types for services, clients and messages are automatically generated by including *\*.proto* files in a project:</span></span>
 
-* <span data-ttu-id="b2a03-120">[Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/) 패키지에 대한 패키지 참조를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-120">Add a package reference to [Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/) package.</span></span>
-* <span data-ttu-id="b2a03-121">`<Protobuf>` 항목 그룹에 *\*.proto* 파일을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-121">Add *\*.proto* files to the `<Protobuf>` item group.</span></span>
+* <span data-ttu-id="9b83c-120">[Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/) 패키지에 대한 패키지 참조를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-120">Add a package reference to [Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/) package.</span></span>
+* <span data-ttu-id="9b83c-121">`<Protobuf>` 항목 그룹에 *\*.proto* 파일을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-121">Add *\*.proto* files to the `<Protobuf>` item group.</span></span>
 
 ```xml
 <ItemGroup>
@@ -76,13 +76,13 @@ message HelloReply {
 </ItemGroup>
 ```
 
-<span data-ttu-id="b2a03-122">gRPC 도구 지원에 대한 자세한 내용은 <xref:grpc/basics> 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="b2a03-122">For more information on gRPC tooling support, see <xref:grpc/basics>.</span></span>
+<span data-ttu-id="9b83c-122">gRPC 도구 지원에 대한 자세한 내용은 <xref:grpc/basics> 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="9b83c-122">For more information on gRPC tooling support, see <xref:grpc/basics>.</span></span>
 
-## <a name="grpc-services-on-aspnet-core"></a><span data-ttu-id="b2a03-123">ASP.NET Core의 gRPC 서비스</span><span class="sxs-lookup"><span data-stu-id="b2a03-123">gRPC services on ASP.NET Core</span></span>
+## <a name="grpc-services-on-aspnet-core"></a><span data-ttu-id="9b83c-123">ASP.NET Core의 gRPC 서비스</span><span class="sxs-lookup"><span data-stu-id="9b83c-123">gRPC services on ASP.NET Core</span></span>
 
-<span data-ttu-id="b2a03-124">gRPC 서비스는 ASP.NET Core에서 호스팅될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-124">gRPC services can be hosted on ASP.NET Core.</span></span> <span data-ttu-id="b2a03-125">서비스는 로깅, DI(종속성 주입), 인증 및 권한 부여와 같은 널리 사용되는 ASP.NET Core 기능과 완벽하게 통합됩니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-125">Services have full integration with popular ASP.NET Core features such as logging, dependency injection (DI), authentication and authorization.</span></span>
+<span data-ttu-id="9b83c-124">gRPC 서비스는 ASP.NET Core에서 호스팅될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-124">gRPC services can be hosted on ASP.NET Core.</span></span> <span data-ttu-id="9b83c-125">서비스는 로깅, DI(종속성 주입), 인증 및 권한 부여와 같은 널리 사용되는 ASP.NET Core 기능과 완벽하게 통합됩니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-125">Services have full integration with popular ASP.NET Core features such as logging, dependency injection (DI), authentication and authorization.</span></span>
 
-<span data-ttu-id="b2a03-126">gRPC 서비스 프로젝트 템플릿은 다음과 같은 시작 서비스를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-126">The gRPC service project template provides a starter service:</span></span>
+<span data-ttu-id="9b83c-126">gRPC 서비스 프로젝트 템플릿은 다음과 같은 시작 서비스를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-126">The gRPC service project template provides a starter service:</span></span>
 
 ```csharp
 public class GreeterService : Greeter.GreeterBase
@@ -106,7 +106,7 @@ public class GreeterService : Greeter.GreeterBase
 }
 ```
 
-<span data-ttu-id="b2a03-127">`GreeterService`는 *\*.proto* 파일의 `Greeter` 서비스에서 생성되는 `GreeterBase` 형식에서 상속됩니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-127">`GreeterService` inherits from the `GreeterBase` type, which is generated from the `Greeter` service in the *\*.proto* file.</span></span> <span data-ttu-id="b2a03-128">이 서비스는 *Startup.cs* 에서 클라이언트가 액세스할 수 있게 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-128">The service is made accessible to clients in *Startup.cs* :</span></span>
+<span data-ttu-id="9b83c-127">`GreeterService`는 *\*.proto* 파일의 `Greeter` 서비스에서 생성되는 `GreeterBase` 형식에서 상속됩니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-127">`GreeterService` inherits from the `GreeterBase` type, which is generated from the `Greeter` service in the *\*.proto* file.</span></span> <span data-ttu-id="9b83c-128">이 서비스는 *Startup.cs* 에서 클라이언트가 액세스할 수 있게 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-128">The service is made accessible to clients in *Startup.cs*:</span></span>
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -115,11 +115,11 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-<span data-ttu-id="b2a03-129">ASP.NET Core의 gRPC 서비스에 대한 자세한 내용은 <xref:grpc/aspnetcore> 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="b2a03-129">To learn more about gRPC services on ASP.NET Core, see <xref:grpc/aspnetcore>.</span></span>
+<span data-ttu-id="9b83c-129">ASP.NET Core의 gRPC 서비스에 대한 자세한 내용은 <xref:grpc/aspnetcore> 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="9b83c-129">To learn more about gRPC services on ASP.NET Core, see <xref:grpc/aspnetcore>.</span></span>
 
-## <a name="call-grpc-services-with-a-net-client"></a><span data-ttu-id="b2a03-130">.NET 클라이언트로 gRPC 서비스 호출</span><span class="sxs-lookup"><span data-stu-id="b2a03-130">Call gRPC services with a .NET client</span></span>
+## <a name="call-grpc-services-with-a-net-client"></a><span data-ttu-id="9b83c-130">.NET 클라이언트로 gRPC 서비스 호출</span><span class="sxs-lookup"><span data-stu-id="9b83c-130">Call gRPC services with a .NET client</span></span>
 
-<span data-ttu-id="b2a03-131">gRPC 클라이언트는 [ *\*.proto* 파일에서 생성](xref:grpc/basics#generated-c-assets)되는 구체적인 클라이언트 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-131">gRPC clients are concrete client types that are [generated from *\*.proto* files](xref:grpc/basics#generated-c-assets).</span></span> <span data-ttu-id="b2a03-132">구체적인 gRPC 클라이언트에는 *\*.proto* 파일에서 gRPC 서비스로 변환되는 메서드가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-132">The concrete gRPC client has methods that translate to the gRPC service in the *\*.proto* file.</span></span>
+<span data-ttu-id="9b83c-131">gRPC 클라이언트는 [ *\*.proto* 파일에서 생성](xref:grpc/basics#generated-c-assets)되는 구체적인 클라이언트 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-131">gRPC clients are concrete client types that are [generated from *\*.proto* files](xref:grpc/basics#generated-c-assets).</span></span> <span data-ttu-id="9b83c-132">구체적인 gRPC 클라이언트에는 *\*.proto* 파일에서 gRPC 서비스로 변환되는 메서드가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-132">The concrete gRPC client has methods that translate to the gRPC service in the *\*.proto* file.</span></span>
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");
@@ -131,11 +131,11 @@ var response = await client.SayHelloAsync(
 Console.WriteLine(response.Message);
 ```
 
-<span data-ttu-id="b2a03-133">gRPC 클라이언트는 gRPC 서비스에 대한 수명이 긴 연결을 나타내는 채널을 사용하여 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-133">A gRPC client is created using a channel, which represents a long-lived connection to a gRPC service.</span></span> <span data-ttu-id="b2a03-134">`GrpcChannel.ForAddress`를 사용하여 채널을 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b2a03-134">A channel can be created using `GrpcChannel.ForAddress`.</span></span>
+<span data-ttu-id="9b83c-133">gRPC 클라이언트는 gRPC 서비스에 대한 수명이 긴 연결을 나타내는 채널을 사용하여 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-133">A gRPC client is created using a channel, which represents a long-lived connection to a gRPC service.</span></span> <span data-ttu-id="9b83c-134">`GrpcChannel.ForAddress`를 사용하여 채널을 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="9b83c-134">A channel can be created using `GrpcChannel.ForAddress`.</span></span>
 
-<span data-ttu-id="b2a03-135">클라이언트를 만들고 다른 서비스 메서드를 호출하는 방법에 대한 자세한 내용은 <xref:grpc/client> 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="b2a03-135">For more information on creating clients, and calling different service methods, see <xref:grpc/client>.</span></span>
+<span data-ttu-id="9b83c-135">클라이언트를 만들고 다른 서비스 메서드를 호출하는 방법에 대한 자세한 내용은 <xref:grpc/client> 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="9b83c-135">For more information on creating clients, and calling different service methods, see <xref:grpc/client>.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="b2a03-136">추가 자료</span><span class="sxs-lookup"><span data-stu-id="b2a03-136">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="9b83c-136">추가 자료</span><span class="sxs-lookup"><span data-stu-id="9b83c-136">Additional resources</span></span>
 
 * <xref:grpc/basics>
 * <xref:grpc/aspnetcore>
