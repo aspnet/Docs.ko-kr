@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: 72ee8f5dfdf8ffd6cfcb74b13fa0738893d8e214
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.openlocfilehash: ee30ef89c5d7aeae83f23a81eb02235397c89ac2
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97486137"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238322"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core에서 필터링
 
@@ -192,12 +192,12 @@ ASP.NET Core에는 서브클래싱 및 사용자 지정할 수 있는 기본 제
 
 | 시퀀스 | 필터 범위 | 필터 메서드 |
 |:--------:|:------------:|:-------------:|
-| 1 | 전역 | `OnActionExecuting` |
+| 1 | Global | `OnActionExecuting` |
 | 2 | 컨트롤러 또는 Razor 페이지| `OnActionExecuting` |
 | 3 | 메서드 | `OnActionExecuting` |
 | 4 | 메서드 | `OnActionExecuted` |
 | 5 | 컨트롤러 또는 Razor 페이지 | `OnActionExecuted` |
-| 6 | 전역 | `OnActionExecuted` |
+| 6 | Global | `OnActionExecuted` |
 
 ### <a name="controller-level-filters"></a>컨트롤러 수준 필터
 
@@ -565,7 +565,8 @@ ASP.NET Core 런타임은 다음을 보장하지 않습니다.
 _ 필터의 단일 인스턴스가 생성 됩니다.
 * 나중에 DI 컨테이너에서 필터가 다시 요청되지 않음.
 
-[!WARNING]`IFilterFactory.IsReusable` `true` 필터 원본이 모호 하 고, 필터가 상태 비저장 이며, 여러 HTTP 요청에서 사용할 수 있는 경우에만를 반환 하도록를 구성 합니다. 예를 들어,가를 반환 하는 경우 범위 지정 또는 임시로 등록 된 DI에서 필터를 반환 하지 않습니다. `IFilterFactory.IsReusable``true`
+> [!WARNING] 
+> <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.IsReusable?displayProperty=nameWithType> `true` 필터의 소스가 모호 하 고, 필터가 상태 비저장 이며, 여러 HTTP 요청에서 필터를 안전 하 게 사용할 수 있는 경우에만를 반환 하도록 구성 합니다. 예를 들어,가를 반환 하는 경우 범위 지정 또는 임시로 등록 된 DI에서 필터를 반환 하지 않습니다 `IFilterFactory.IsReusable` `true` .
 
 필터를 만드는 다른 방법으로 사용자 지정 특성 구현을 사용하여 `IFilterFactory`를 구현할 수 있습니다.
 
@@ -750,12 +751,12 @@ ASP.NET Core에는 서브클래싱 및 사용자 지정할 수 있는 기본 제
 
 | 시퀀스 | 필터 범위 | 필터 메서드 |
 |:--------:|:------------:|:-------------:|
-| 1 | 전역 | `OnActionExecuting` |
+| 1 | Global | `OnActionExecuting` |
 | 2 | 컨트롤러 | `OnActionExecuting` |
 | 3 | 메서드 | `OnActionExecuting` |
 | 4 | 메서드 | `OnActionExecuted` |
 | 5 | 컨트롤러 | `OnActionExecuted` |
-| 6 | 전역 | `OnActionExecuted` |
+| 6 | Global | `OnActionExecuted` |
 
 이 시퀀스는 다음을 보여 줍니다.
 
@@ -812,8 +813,8 @@ Razor페이지는 [ Razor 필터 메서드를 재정의 하 여 페이지 필터
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | 메서드 | 0 | `OnActionExecuting` |
 | 2 | 컨트롤러 | 1  | `OnActionExecuting` |
-| 3 | 전역 | 2  | `OnActionExecuting` |
-| 4 | 전역 | 2  | `OnActionExecuted` |
+| 3 | Global | 2  | `OnActionExecuting` |
+| 4 | Global | 2  | `OnActionExecuted` |
 | 5 | 컨트롤러 | 1  | `OnActionExecuted` |
 | 6 | 메서드 | 0  | `OnActionExecuted` |
 
