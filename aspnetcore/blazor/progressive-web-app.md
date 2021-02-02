@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 196e19528341e98ac06cefb08ba92f9e47d265ea
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 1706d3502dc68f1c25e0c35ba8f5dd44b55ce690
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252476"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658653"
 ---
-# <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly를 사용하여 프로그레시브 웹 애플리케이션 빌드
+# <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>ASP.NET Core Blazor WebAssembly를 사용하여 프로그레시브 웹 애플리케이션 빌드
 
 작성자: [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -71,7 +71,7 @@ dotnet new blazorwasm -o MyBlazorPwa --pwa
 
 필요에 따라 ASP.NET Core에 호스트된 템플릿에서 만든 앱에 대해 PWA를 구성할 수 있습니다. PWA 시나리오는 호스팅 모델과 관계없습니다.
 
-## <a name="convert-an-existing-no-locblazor-webassembly-app-into-a-pwa"></a>기존 Blazor WebAssembly 앱을 PWA로 변환
+## <a name="convert-an-existing-blazor-webassembly-app-into-a-pwa"></a>기존 Blazor WebAssembly 앱을 PWA로 변환
 
 이 섹션의 지침에 따라 기존 Blazor WebAssembly 앱을 PWA로 변환합니다.
 
@@ -272,10 +272,20 @@ const shouldServeIndexHtml = event.request.mode === 'navigate';
 
 ```javascript
 const shouldServeIndexHtml = event.request.mode === 'navigate'
-    && !event.request.url.includes('/Identity/');
+  && !event.request.url.includes('/Identity/');
 ```
 
 이렇게 하지 않으면 네트워크 연결과 관계없이 서비스 작업자는 URL에 대한 요청을 가로채서 `/index.html`을 사용하여 이를 확인합니다.
+
+외부 인증 공급자를 위한 추가 엔드포인트를 검사에 추가합니다. 다음 예제에서는 Google 인증을 위한 `/signin-google`이 검사에 추가 됩니다.
+
+```javascript
+const shouldServeIndexHtml = event.request.mode === 'navigate'
+  && !event.request.url.includes('/Identity/')
+  && !event.request.url.includes('/signin-google');
+```
+
+콘텐츠를 항상 네트워크에서 가져오는 개발 환경에는 아무 작업도 필요하지 않습니다.
 
 ### <a name="control-asset-caching"></a>자산 캐싱 제어
 

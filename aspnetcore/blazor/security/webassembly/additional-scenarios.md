@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: bb502533bca24e82792db8814b75b16407f20339
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: fb5b6f75959d9933e228b0288e70498ef05efc4a
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "95870388"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710635"
 ---
-# <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly 추가 보안 시나리오
+# <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly 추가 보안 시나리오
 
 작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)
 
@@ -1077,6 +1077,17 @@ Server response: <strong>@serverResponse</strong>
 자리 표시자 `{APP ASSEMBLY}`는 앱의 어셈블리 이름입니다(예: `BlazorSample`). `Status.DebugException` 속성을 사용하려면 [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client) 버전 2.30.0 이상을 사용합니다.
 
 자세한 내용은 <xref:grpc/browser>를 참조하세요.
+
+## <a name="build-a-custom-version-of-the-authenticationmsal-javascript-library"></a>Authentication.MSAL JavaScript 라이브러리의 사용자 지정 버전 빌드
+
+앱에 [JavaScript용 Microsoft 인증 라이브러리(MSAL.js)](https://www.npmjs.com/package/@azure/msal-browser)의 사용자 지정 버전이 필요한 경우 다음 단계를 수행합니다.
+
+1. 시스템에 최신 개발자 .NET SDK가 있는지 확인하거나 [.NET Core SDK: 설치 프로그램 및 이진 파일](https://github.com/dotnet/installer#installers-and-binaries)을 받아 최신 개발자 SDK를 설치합니다. 이 시나리오에서는 내부 NuGet 피드의 구성이 필요하지 않습니다.
+1. [Build ASP.NET Core from Source](https://github.com/dotnet/aspnetcore/blob/main/docs/BuildFromSource.md)에 있는 문서에 따라 개발용 `dotnet/aspnetcore` GitHub 리포지토리를 설정합니다. [dotnet/aspnetcore GitHub 리포지토리](https://github.com/dotnet/aspnetcore)의 ZIP 보관 파일을 포크 및 클론하거나 다운로드합니다.
+1. `src/Components/WebAssembly/Authentication.Msal/src/Interop/package.json` 파일을 열고 원하는 `@azure/msal-browser`버전을 설정합니다. 릴리스된 버전 목록을 보려면 [`@azure/msal-browser` npm 웹 사이트](https://www.npmjs.com/package/@azure/msal-browser)를 방문하여 **버전** 탭을 선택합니다.
+1. 명령 셸에서 `yarn build` 명령을 사용하여 `src/Components/WebAssembly/Authentication.Msal/src` 폴더에 `Authentication.Msal` 프로젝트를 빌드합니다.
+1. 앱이 [압축된 자산(Brotli/Gzip)](xref:blazor/host-and-deploy/webassembly#compression)을 사용하는 경우 `Interop/dist/Release/AuthenticationService.js` 파일을 압축합니다.
+1. `AuthenticationService.js` 파일과 해당 파일의 압축된 버전(`.br`/`.gz`)(생성된 경우)을 `Interop/dist/Release` 폴더에서 앱의 게시된 자산에 있는 앱의 `publish/wwwroot/_content/Microsoft.Authentication.WebAssembly.Msal` 폴더에 복사합니다.
 
 ## <a name="additional-resources"></a>추가 자료
 

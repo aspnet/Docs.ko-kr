@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: d0ed36731d78d3e98aa294aca50492f0a3ac8174
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 4256e90ca5f185992a73d1e43460ca5d27159d6f
+ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506697"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758278"
 ---
-# <a name="threat-mitigation-guidance-for-aspnet-core-no-locblazor-server"></a>ASP.NET Core Blazor Server를 위한 위협 완화 지침
+# <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>ASP.NET Core Blazor Server를 위한 위협 완화 지침
 
 작성자: [Javier Calvarro Nelson](https://github.com/javiercn)
 
@@ -41,7 +41,7 @@ JS interop은 인터넷을 통해 실행되고 클라이언트가 원격 브라�
 * 제한된 환경에 적용되지 않을 수 있습니다.
 * 제한된 환경의 보안 위험이 낮기 때문에 구현 비용을 투입할 가치가 없을 수 있습니다.
 
-## <a name="no-locblazor-and-shared-state"></a>Blazor 및 공유 상태
+## <a name="blazor-and-shared-state"></a>Blazor 및 공유 상태
 
 [!INCLUDE[](~/blazor/includes/security/blazor-shared-state.md)]
 
@@ -306,12 +306,7 @@ ASP.NET Core 앱을 보호하기 위한 지침은 Blazor Server 앱에도 적용
 
 서버에서 오류가 발생할 경우 프레임워크가 이를 클라이언트에 알리고 세션을 중단합니다. 기본적으로 클라이언트는 일반 오류 메시지를 수신하며, 이 메시지는 브라우저의 개발자 도구에서 볼 수 있습니다.
 
-클라이언트 쪽 오류는 호출 스택을 포함하지 않으며 오류의 원인에 대한 세부 정보를 제공하지 않지만 서버 로그에는 이러한 정보가 포함되어 있습니다. 개발 단계에서는 세부 오류를 사용하도록 설정하여 클라이언트에서 중요한 오류 정보를 볼 수 있도록 설정할 수 있습니다.
-
-JavaScript에서 다음을 사용하여 세부 오류를 사용하도록 설정합니다.
-
-* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DetailedErrors?displayProperty=nameWithType>.
-* `DetailedErrors` 구성 키를 `true`로 설정합니다. 구성 키는 앱 설정 파일(`appsettings.json`)에서 설정할 수 있습니다. `ASPNETCORE_DETAILEDERRORS` 환경 변수의 값을 `true`로 설정하여 키를 설정할 수도 있습니다.
+클라이언트 쪽 오류는 호출 스택을 포함하지 않으며 오류의 원인에 대한 세부 정보를 제공하지 않지만 서버 로그에는 이러한 정보가 포함되어 있습니다. 개발 단계에서는 [자세한 오류를 사용하도록 설정](xref:blazor/fundamentals/handle-errors#blazor-server-detailed-circuit-errors)하여 클라이언트에서 중요한 오류 정보를 볼 수 있도록 설정할 수 있습니다.
 
 > [!WARNING]
 > 인터넷에서 사용되는 클라이언트로 오류 정보를 노출하는 것은 항상 피해야 하는 보안 위험입니다.
@@ -336,7 +331,7 @@ XSS(교차 사이트 스크립팅)를 사용하면 권한이 없는 주체가 �
 Blazor Server 프레임워크는 위와 같은 위협으로부터 보호하기 위한 단계를 수행합니다.
 
 * 클라이언트에서 렌더링 일괄 처리를 승인하지 않는 경우 새 UI 업데이트의 생성을 중지합니다. <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.MaxBufferedUnacknowledgedRenderBatches?displayProperty=nameWithType>으로 구성됩니다.
-* 클라이언트에서 응답을 받지 않은 상태에서 1분이 지나면 .NET에서 JavaScript로의 호출을 시간 초과 처리합니다. <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.JSInteropDefaultCallTimeout?displayProperty=nameWithType>으로 구성됩니다.
+* 클라이언트에서 응답을 받지 않은 상태에서 1분이 지나면 .NET에서 JavaScript로의 호출을 시간 초과 처리합니다. <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.JSInteropDefaultCallTimeout?displayProperty=nameWithType>로 구성됩니다.
 * JS interop 중에 브라우저에서 들어오는 모든 입력에 대해 다음과 같은 기본적인 유효성 검사를 수행합니다.
   * .NET 참조가 유효하며 .NET 메서드에 예상하는 형식입니다.
   * 데이터 형식이 잘못되지 않았습니다.

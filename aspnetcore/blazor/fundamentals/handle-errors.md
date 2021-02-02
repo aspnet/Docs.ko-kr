@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: c789928252417ef1cf95c60deb7edef24d58126e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5a255c2d3535311cecd6b7219447e80d1ae78877
+ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93055999"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758255"
 ---
-# <a name="handle-errors-in-aspnet-core-no-locblazor-apps"></a>ASP.NET Core Blazor 앱에서 오류 처리
+# <a name="handle-errors-in-aspnet-core-blazor-apps"></a>ASP.NET Core Blazor 앱에서 오류 처리
 
 작성자: [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -89,7 +89,36 @@ Blazor Server 앱에서 `Pages/_Host.cshtml` 파일의 환경을 사용자 지�
 }
 ```
 
-## <a name="how-a-no-locblazor-server-app-reacts-to-unhandled-exceptions"></a>Blazor Server 앱이 처리되지 않은 예외에 반응하는 방법
+## <a name="blazor-server-detailed-circuit-errors"></a>Blazor Server 자세한 회로 오류
+
+클라이언트 쪽 오류는 호출 스택을 포함하지 않으며 오류의 원인에 대한 세부 정보를 제공하지 않지만 서버 로그에는 이러한 정보가 포함되어 있습니다. 개발 단계에서는 자세한 오류를 사용하도록 설정하여 클라이언트에서 중요한 회로 오류 정보를 볼 수 있도록 설정할 수 있습니다.
+
+다음 방법을 사용하여 Blazor Server 자세한 오류를 사용하도록 설정합니다.
+
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DetailedErrors?displayProperty=nameWithType>.
+* `DetailedErrors` 구성 키를 `true`로 설정합니다. 구성 키는 앱의 개발 설정 파일(`appsettings.Development.json`)에서 설정할 수 있습니다. `ASPNETCORE_DETAILEDERRORS` 환경 변수의 값을 `true`로 설정하여 키를 설정할 수도 있습니다.
+* 자세한 SignalR 로깅을 위해 [SignalR 서버 쪽 로깅](xref:signalr/diagnostics#server-side-logging)(`Microsoft.AspNetCore.SignalR`)을 [디버그](xref:Microsoft.Extensions.Logging.LogLevel) 또는 [추적](xref:Microsoft.Extensions.Logging.LogLevel)으로 설정할 수 있습니다.
+
+`appsettings.Development.json`:
+
+```json
+{
+  "DetailedErrors": true,
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information",
+      "Microsoft.AspNetCore.SignalR": "Debug"
+    }
+  }
+}
+```
+
+> [!WARNING]
+> 인터넷에서 사용되는 클라이언트로 오류 정보를 노출하는 것은 항상 피해야 하는 보안 위험입니다.
+
+## <a name="how-a-blazor-server-app-reacts-to-unhandled-exceptions"></a>Blazor Server 앱이 처리되지 않은 예외에 반응하는 방법
 
 Blazor Server는 상태 저장 프레임워크입니다. 사용자가 앱과 상호 작용하는 동안 *회로* 라는 서버에 대한 연결이 유지됩니다. 회로는 활성 구성 요소 인스턴스와 다음과 같은 상태의 여러 다양한 측면을 포함합니다.
 
@@ -225,7 +254,7 @@ Blazor가 구성 요소의 인스턴스를 만들 경우
 * <xref:blazor/call-javascript-from-dotnet>
 * <xref:blazor/call-dotnet-from-javascript>
 
-### <a name="no-locblazor-server-prerendering"></a>Blazor Server 미리 렌더링
+### <a name="blazor-server-prerendering"></a>Blazor Server 미리 렌더링
 
 렌더링된 HTML 태그가 사용자의 초기 HTTP 요청 일부로 반환되도록 [구성 요소 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper)를 사용하여 Blazor 구성 요소를 미리 렌더링할 수 있습니다. 이 작업은 다음을 통해 진행됩니다.
 

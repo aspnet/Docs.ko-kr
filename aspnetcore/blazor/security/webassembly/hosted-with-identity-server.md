@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: fdd7eb3c4a3b07022760a43cbde80838bfaf7c84
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: d35dd0acf626a6305f00e295e7918c82c7d6a912
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024797"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658705"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Identity 서버를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Identity 서버를 사용하여 ASP.NET Core Blazor WebAssembly 호스트된 앱 보호
 
 작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)
 
@@ -130,11 +130,15 @@ dotnet new blazorwasm -au Individual -ho -o {APP NAME}
     app.UseAuthorization();
     ```
 
+### <a name="azure-app-service-on-linux"></a>Linux의 Azure App Service
+
+Azure App Service on Linux에 배포할 때 발급자를 명시적으로 지정합니다. 자세한 내용은 <xref:security/authentication/identity/spa#azure-app-service-on-linux>를 참조하세요.
+
 ### <a name="addapiauthorization"></a>AddApiAuthorization
 
 <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> 도우미 메서드는 ASP.NET Core 시나리오에 대해 [IdentityServer](https://identityserver.io/)를 구성합니다. IdentityServer는 앱 보안 문제를 처리하는 강력하고 확장성 있는 프레임워크입니다. IdentityServer는 대부분의 일반적인 시나리오에서 불필요한 복잡성을 노출합니다. 따라서 좋은 출발점이라고 생각되는 몇 가지 규칙과 구성 옵션 세트가 제공됩니다. 인증에 변경이 필요할 경우 IdentityServer의 모든 기능을 사용하여 앱의 요구 사항에 맞게 인증을 사용자 지정할 수 있습니다.
 
-### <a name="addno-locidentityserverjwt"></a>AddIdentityServerJwt
+### <a name="addidentityserverjwt"></a>AddIdentityServerJwt
 
 <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> 도우미 메서드는 앱의 정책 체계를 기본 인증 처리기로서 구성합니다. 정책은 Identity가 Identity URL 공간 `/Identity`에 있는 모든 하위 경로로 라우팅된 모든 요청을 처리할 수 있도록 구성됩니다. <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler>는 다른 모든 요청을 처리합니다. 이 메서드는 또한
 
@@ -370,7 +374,7 @@ services.AddDefaultIdentity<ApplicationUser>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>();
 ```
 
-### <a name="configure-no-locidentity-server"></a>Identity Server 구성
+### <a name="configure-identity-server"></a>Identity Server 구성
 
 다음 방법 중 **하나** 를 사용합니다.
 
@@ -468,9 +472,12 @@ services.AddTransient<IProfileService, ProfileService>();
 
 [!INCLUDE[](~/blazor/includes/security/usermanager-signinmanager.md)]
 
-## <a name="host-in-azure-app-service-with-a-custom-domain"></a>사용자 지정 도메인을 사용하는 Azure App Service에서 호스트
+## <a name="host-in-azure-app-service-with-a-custom-domain-and-certificate"></a>사용자 지정 도메인과 인증서를 사용하여 Azure App Service에서 호스트
 
-다음 지침에서는 Identity 서버와 함께 호스티드 Blazor WebAssembly 앱을 사용자 지정 도메인을 사용하는 [Azure App Service](https://azure.microsoft.com/services/app-service/)에 배포하는 방법을 설명합니다.
+다음 지침에서 설명하는 것은 아래와 같습니다.
+
+* Identity 서버와 함께 호스트형 Blazor WebAssembly 앱을 사용자 지정 도메인을 사용하는 [Azure App Service](https://azure.microsoft.com/services/app-service/)에 배포하는 방법.
+* 브라우저와의 HTTPS 프로토콜 통신을 위해 TLS 인증서를 만들고 사용하는 방법. 이 지침은 사용자 지정 도메인에 이 인증서를 사용하는 방법을 중점적으로 설명하지만 `contoso.azurewebsites.net`와 같은 기본 Azure 앱 도메인을 사용하는 경우에도 똑같이 적용할 수 있습니다.
 
 이 호스팅 시나리오에서는 [Identity 서버의 토큰 서명 키](https://docs.identityserver.io/en/latest/topics/crypto.html#token-signing-and-validation) 및 브라우저에 대한 사이트의 HTTPS 보안 통신에 동일한 인증서를 사용하지 **않습니다**.
 

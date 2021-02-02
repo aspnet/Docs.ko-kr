@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel/endpoints
-ms.openlocfilehash: 780250feab456fa3eedee4e023c9bc774e748291
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 5fec573013da5bcb5039b7a189fd84d964349b3a
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253874"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658744"
 ---
 # <a name="configure-endpoints-for-the-aspnet-core-kestrel-web-server"></a>ASP.NET Core Kestrel 웹 서버의 엔드포인트 구성
 
@@ -169,7 +169,7 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 다음 *appsettings.json* 예제에서
 
 * 잘못된 인증서 사용을 허가하려면 `AllowInvalid`를 `true`으로 설정합니다(예를 들어, 자체 서명된 인증서).
-* 인증서를 지정하지 않은 임의의 HTTPS 엔드포인트(다음 예제에서 `HttpsDefaultCert`)는 `Certificates` > `Default`에서 정의된 인증서 또는 개발 인증서를 사용합니다.
+* 인증서를 지정하지 않은 임의의 HTTPS 엔드포인트(다음 예제에서 `HttpsDefaultCert`)는 `Certificates:Default`에서 정의된 인증서 또는 개발 인증서를 사용합니다.
 
 ```json
 {
@@ -185,8 +185,16 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
           "Password": "<certificate password>"
         }
       },
-      "HttpsInlineCertStore": {
+      "HttpsInlineCertAndKeyFile": {
         "Url": "https://localhost:5002",
+        "Certificate": {
+          "Path": "<path to .pem/.crt file>",
+          "KeyPath": "<path to .key file>",
+          "Password": "<certificate password>"
+        }
+      },
+      "HttpsInlineCertStore": {
+        "Url": "https://localhost:5003",
         "Certificate": {
           "Subject": "<subject; required>",
           "Store": "<certificate store; required>",
@@ -195,14 +203,7 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
         }
       },
       "HttpsDefaultCert": {
-        "Url": "https://localhost:5003"
-      },
-      "Https": {
-        "Url": "https://*:5004",
-        "Certificate": {
-          "Path": "<path to .pfx file>",
-          "Password": "<certificate password>"
-        }
+        "Url": "https://localhost:5004"
       }
     },
     "Certificates": {
@@ -215,7 +216,24 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 }
 ```
 
-모든 인증서 노드에 대해 `Path` 및 `Password`를 사용하는 대신 인증서 저장소 필드를 지정합니다. 예를 들어, `Certificates` > `Default` 인증서는 다음과 같이 지정될 수 있습니다.
+스키마 참고 사항:
+
+* 엔드포인트 이름은 [대/소문자를 구분하지 않습니다](xref:fundamentals/configuration/index#configuration-keys-and-values). 예를 들어 `HTTPS` and `Https` 와 동일합니다.
+* `Url` 매개 변수는 각 엔드포인트에 대해 필요합니다. 이 매개 변수에 대한 형식은 단일 값으로 제한된 경우를 제외하고 최상위 `Urls` 구성 매개 변수와 동일합니다.
+* 이러한 엔드포인트는 추가하기보다는 최상위 `Urls` 구성에서 정의된 엔드포인트를 바꿉니다. `Listen`을 통해 코드에서 정의된 엔드포인트는 구성 섹션에서 정의된 엔드포인트로 누적됩니다.
+* `Certificate` 섹션은 선택 사항입니다. `Certificate` 섹션이 지정되지 않은 경우 `Certificates:Default`에 정의된 기본값이 사용됩니다. 사용할 수 있는 기본값이 없으면 개발 인증서가 사용됩니다. 기본값이 없고 개발 인증서가 없는 경우 서버가 예외를 throw하고 시작에 실패합니다.
+* `Certificate` 섹션은 여러 [인증서 원본](#certificate-sources)을 지원합니다.
+* 포트 충돌을 일으키지 않는 한 [구성](xref:fundamentals/configuration/index)에서 원하는 수의 엔드포인트를 정의할 수 있습니다.
+
+#### <a name="certificate-sources"></a>인증서 원본
+
+인증서 노드를 구성하여 여러 원본에서 인증서를 로드할 수 있습니다.
+
+* `Path` 및 `Password`: *.pfx* 파일 로드.
+* `Path`, `KeyPath` 및 `Password`: *.pem*/ *.crt* 및 *.key* 파일 로드.
+* `Subject` 및 `Store`: 인증서 저장소에서 로드.
+
+예를 들어, `Certificates:Default` 인증서는 다음과 같이 지정될 수 있습니다.
 
 ```json
 "Default": {
@@ -226,15 +244,9 @@ Kestrel은 `http://localhost:5000` 및 `https://localhost:5001`에서 수신 대
 }
 ```
 
-스키마 참고 사항:
+#### <a name="configurationloader"></a>ConfigurationLoader
 
-* 엔드포인트 이름은 대/소문자를 구분하지 않습니다. 예를 들어, `HTTPS` 및 `Https`는 유효합니다.
-* `Url` 매개 변수는 각 엔드포인트에 대해 필요합니다. 이 매개 변수에 대한 형식은 단일 값으로 제한된 경우를 제외하고 최상위 `Urls` 구성 매개 변수와 동일합니다.
-* 이러한 엔드포인트는 추가하기보다는 최상위 `Urls` 구성에서 정의된 엔드포인트를 바꿉니다. `Listen`을 통해 코드에서 정의된 엔드포인트는 구성 섹션에서 정의된 엔드포인트로 누적됩니다.
-* `Certificate` 섹션은 선택 사항입니다. `Certificate` 섹션이 지정되지 않은 경우 이전 시나리오에서 정의된 기본값이 사용됩니다. 기본값이 사용 가능하지 않은 경우 서버는 예외를 throw하고 시작되지 않습니다.
-* `Certificate` 섹션은 `Path`&ndash;`Password` 및 `Subject`&ndash;`Store` 인증서 모두를 지원합니다.
-* 많은 엔드포인트가 포트 충돌을 일으키지 않는 한 이런 방식으로 정의될 수 있습니다.
-* `options.Configure(context.Configuration.GetSection("{SECTION}"))`은 구성된 엔드포인트의 설정을 보완하는 데 사용될 수 있는 `.Endpoint(string name, listenOptions => { })` 메서드를 통해 `KestrelConfigurationLoader`를 반환합니다.
+`options.Configure(context.Configuration.GetSection("{SECTION}"))`은 구성된 엔드포인트의 설정을 보완하는 데 사용될 수 있는 `.Endpoint(string name, listenOptions => { })` 메서드를 통해 <xref:Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader>를 반환합니다.
 
 ```csharp
 webBuilder.UseKestrel((context, serverOptions) =>

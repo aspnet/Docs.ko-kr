@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 2502f43f4eaf245996827f704462ec340bbb8e07
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 53b702cddca778e06e617df3798bffb21677d36b
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252541"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751652"
 ---
-# <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor의 .NET 메서드에서 JavaScript 함수 호출
+# <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>ASP.NET Core Blazor의 .NET 메서드에서 JavaScript 함수 호출
 
 작성자: [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Pranav Krishnamoorthy](https://github.com/pranavkm) 및 [Luke Latham](https://github.com/guardrex)
 
@@ -35,6 +35,9 @@ Blazor 앱은 .NET 메서드에서 JavaScript 함수를 호출하고 JavaScript 
 이 문서에서는 .NET에서 JavaScript 함수를 호출하는 방법을 설명합니다. JavaScript에서 .NET 메서드를 호출하는 방법에 대한 자세한 내용은 <xref:blazor/call-dotnet-from-javascript>를 참조하세요.
 
 [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+
+> [!NOTE]
+> `wwwroot/index.html` 파일(Blazor WebAssembly) 또는 `Pages/_Host.cshtml` 파일(Blazor Server)의 닫는 `</body>` 태그 앞에 JS 파일(`<script>` 태그)을 추가합니다. JS interop 메서드가 있는 JS 파일은 Blazor 프레임워크 JS 파일 전에 포함되어야 합니다.
 
 .NET에서 JavaScript를 호출하려면 <xref:Microsoft.JSInterop.IJSRuntime> 추상화를 사용합니다. JS interop 호출을 실행하려면 구성 요소에 <xref:Microsoft.JSInterop.IJSRuntime> 추상화를 주입합니다. <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A>는 원하는 수의 JSON 직렬화 가능 인수와 함께 호출하려는 JavaScript 함수에 대한 식별자를 사용합니다. 함수 식별자는 전역 범위(`window`)를 기준으로 합니다. `window.someScope.someFunction`을 호출하려는 경우 식별자는 `someScope.someFunction`입니다. 호출되기 전에 함수를 등록할 필요는 없습니다. 반환 형식 `T` 또한 JSON 직렬화 가능해야 합니다. `T`는 반환되는 JSON 형식에 가장 잘 매핑되는 .NET 형식과 일치해야 합니다.
 
@@ -170,7 +173,7 @@ JavaScript 파일을 참조하는 `<script>` 태그를 `wwwroot/index.html` 파�
 * [void(0)/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void) 또는 [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined)를 반환하는 JavaScript 함수
 * .NET에서 JavaScript 호출 결과를 읽을 필요가 없는 경우
 
-## <a name="detect-when-a-no-locblazor-server-app-is-prerendering"></a>Blazor Server 앱을 미리 렌더링 중인 경우 검색
+## <a name="detect-when-a-blazor-server-app-is-prerendering"></a>Blazor Server 앱을 미리 렌더링 중인 경우 검색
  
 [!INCLUDE[](~/blazor/includes/prerendering.md)]
 
@@ -505,7 +508,7 @@ JS interop는 네트워킹 오류로 인해 실패할 수 있으며 신뢰할 �
 
 ::: moniker range=">= aspnetcore-5.0"
 
-## <a name="no-locblazor-javascript-isolation-and-object-references"></a>Blazor JavaScript 격리 및 개체 참조
+## <a name="blazor-javascript-isolation-and-object-references"></a>Blazor JavaScript 격리 및 개체 참조
 
 Blazor에서는 표준 [JavaScript 모듈](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)에서 JavaScript 격리를 사용하도록 설정합니다. JavaScript 격리는 다음과 같은 이점을 제공합니다.
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: 0fb50f07153f5f9953b667fe32062ad24b2bd66d
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1ec553d54a9cad170cb322bc186bb67ac8bbded4
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059951"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658731"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>gRPC 서비스와 HTTP API 비교
 
@@ -61,7 +61,7 @@ HTTP/2는 gRPC에만 국한되지 않습니다. JSON을 사용한 HTTP API를 �
 
 ### <a name="code-generation"></a>코드 생성
 
-모든 gRPC 프레임워크는 코드 생성에 대한 최고 수준의 지원을 제공합니다. gRPC 개발에 대한 핵심 파일은 gRPC 서비스 및 메시지의 계약을 정의하는 [.proto file](https://developers.google.com/protocol-buffers/docs/proto3)입니다. 이 파일에서 gRPC 프레임워크는 서비스 기본 클래스, 메시지 및 전체 클라이언트를 코드 생성합니다.
+모든 gRPC 프레임워크는 코드 생성에 대한 최고 수준의 지원을 제공합니다. gRPC 개발의 핵심 파일은 gRPC 서비스 및 메시지의 계약을 정의하는 [`.proto` 파일](https://developers.google.com/protocol-buffers/docs/proto3)입니다. gRPC 프레임워크는 이 파일에서 서비스 기본 클래스, 메시지, 전체 클라이언트를 생성합니다.
 
 서버와 클라이언트 간에 *proto* 파일을 공유하여 메시지와 클라이언트 코드를 종단 간에 생성할 수 있습니다. 클라이언트의 코드 생성은 클라이언트와 서버에서 메시지의 중복을 제거하고 강력한 형식의 클라이언트를 만듭니다. 클라이언트를 작성하지 않아도 되므로 많은 서비스를 갖춘 응용 프로그램의 개발 시간이 상당히 절감됩니다.
 

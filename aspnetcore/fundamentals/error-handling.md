@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/error-handling
-ms.openlocfilehash: ad9920ccd830b93d083f3c5ede03702164842b6e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e65983fb1a440057283111ea5a79a79b765607b7
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97753116"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751691"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>ASP.NET Core에서 오류 처리
 
@@ -68,7 +68,14 @@ _ 스택 추적
 
 Razor Pages 앱 템플릿은 *Pages* 폴더에 오류 페이지( *.cshtml*) 및 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 클래스(`ErrorModel`)를 제공합니다. MVC 앱의 프로젝트 템플릿에는 홈 컨트롤러에 대한 `Error` 작업 메서드와 오류 보기가 포함됩니다.
 
-오류 처리기 작업 메서드를 `HttpGet`와 같은 HTTP 메서드 특성을 사용하여 표시하지 마세요. 명시적 동사는 일부 요청이 작업 메서드에 도달하지 못하도록 합니다. 인증되지 않은 사용자에게 오류 보기를 표시해야 하는 경우 메서드에 대한 익명 액세스를 허용합니다.
+예외 처리 미들웨어는 원래 HTTP 메서드를 사용하여 요청을 다시 실행합니다. 오류 처리기 엔드포인트가 특정 HTTP 메서드 집합으로 제한되는 경우 해당 HTTP 메서드에 대해서만 실행됩니다. 예를 들어 `[HttpGet]` 특성을 사용하는 MVC 컨트롤러 작업은 GET 요청에 대해서만 실행됩니다. 모든 요청이 사용자 지정 오류 처리 페이지에 도달되도록 하려면 특정 HTTP 메서드 집합으로 제한하지 마세요.
+
+원래 HTTP 메서드에 따라 예외를 서로 다르게 처리하려면 다음을 수행합니다.
+
+* Razor Pages의 경우 여러 처리기 메서드를 만듭니다. 예를 들어 `OnGet`을 사용하여 GET 예외를 처리하고 `OnPost`를 사용하여 POST 예외를 처리합니다.
+* MVC의 경우 여러 작업에 HTTP 동사 특성을 적용합니다. 예를 들어 `[HttpGet]`을 사용하여 GET 예외를 처리하고 `[HttpPost]`를 사용하여 POST 예외를 처리합니다.
+
+인증되지 않은 사용자가 사용자 지정 오류 처리 페이지를 볼 수 있도록 하려면 익명 액세스를 지원해야 합니다.
 
 ### <a name="access-the-exception"></a>예외에 액세스
 

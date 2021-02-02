@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 1f22468c2c9bfb5c3c184e8686f1a8d1b486536d
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e873fdd201cf0cdc809030fde30c6a8da2899861
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97486072"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751557"
 ---
-# <a name="aspnet-core-no-locblazor-data-binding"></a>ASP.NET Core Blazor 데이터 바인딩
+# <a name="aspnet-core-blazor-data-binding"></a>ASP.NET Core Blazor 데이터 바인딩
 
 작성자: [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -426,7 +426,7 @@ Password:
 }
 ```
 
-중첩이 필요하지 않은 구성 요소 간에 메모리 내 데이터를 공유하는 데 적합한 다른 방법은 <xref:blazor/state-management>의 ‘메모리 내 상태 컨테이너 서비스’ 섹션을 참조하세요.
+중첩되지 않을 수도 있는 구성 요소 간에 메모리 내 데이터를 공유하는 데 적합한 다른 방법은 <xref:blazor/state-management> 문서의 메모리 내 상태 컨테이너 서비스 섹션을 참조하세요.
 
 ## <a name="additional-resources"></a>추가 자료
 

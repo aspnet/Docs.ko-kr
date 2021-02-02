@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: 2e25af03a8a6aaff5b343885711c6ebb68340fac
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: d97caeffc6e8beebddb01a5bd126d61ba988de65
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057858"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689294"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core의 정적 파일
 
@@ -54,7 +54,7 @@ HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 기본적으로 A
 
 ### <a name="serve-files-in-web-root"></a>웹 루트의 파일 제공
 
-기본 웹앱 템플릿은 `Startup.Configure`에서 <xref:Owin.StaticFileExtensions.UseStaticFiles%2A> 메서드를 호출하여 정적 파일을 제공할 수 있습니다.
+기본 웹앱 템플릿은 `Startup.Configure`에서 <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> 메서드를 호출하여 정적 파일을 제공할 수 있습니다.
 
 [!code-csharp[](~/fundamentals/static-files/samples/3.x/StaticFilesSample/Startup.cs?name=snippet_Configure&highlight=15)]
 
@@ -104,23 +104,31 @@ HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 기본적으로 A
 
 ## <a name="static-file-authorization"></a>정적 파일 권한 부여
 
-정적 파일 미들웨어는 권한 부여 검사를 제공하지 않습니다. `wwwroot` 아래의 항목을 비롯한 제공되는 모든 파일은 공개적으로 액세스할 수 있습니다. 권한 부여를 기반으로 파일을 제공하려면 다음을 수행합니다.
+ASP.NET Core 템플릿은 <xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization%2A>을 호출하기 전에 <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A>를 호출합니다. 대부분의 앱은 이 패턴을 따릅니다. 정적 파일 미들웨어가 권한 부여 미들웨어 전에 호출되는 경우:
 
-* 파일을 `wwwroot` 외부의 기본 정적 파일 미들웨어에 액세스할 수 있는 임의의 디렉터리에 저장합니다.
-* `UseAuthorization` 다음에 `UseStaticFiles`를 호출하고 경로를 지정합니다.
-
-  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet2)]
+  * 정적 파일에서 권한 부여 검사가 수행되지 않습니다.
+  * `wwwroot` 아래에 있는 정적 파일과 같이 정적 파일 미들웨어가 제공하는 정적 파일은 공개적으로 액세스할 수 있습니다.
   
-  위의 방법을 사용하려면 사용자를 인증해야 합니다.
+권한 부여를 기반으로 정적 파일을 제공하려면 다음을 수행합니다.
 
-  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet1&highlight=20-99)]
+  * `wwwroot` 외부에 정적 파일을 저장합니다.
+  * `UseAuthorization`을 호출한 후 경로를 지정하여 `UseStaticFiles`를 호출합니다.
+  * [대체 권한 부여 정책](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy)을 설정합니다.
 
-   [!INCLUDE[](~/includes/requireAuth.md)]
+  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet2&highlight=24-29)]
+  
+  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet1&highlight=20-25)]
 
-권한 부여를 기반으로 파일을 제공하는 대체 방법:
+  앞의 코드에서 대체 권한 부여 정책은 **모든** 사용자가 인증하도록 요구합니다. 자체 권한 부여 요구 사항을 지정하는 컨트롤러, Razor Pages 등과 같은 엔드포인트는 대체 권한 부여 정책을 사용하지 않습니다. 예를 들어 `[AllowAnonymous]` 또는 `[Authorize(PolicyName="MyPolicy")]`가 있는 Razor Pages, 컨트롤러 또는 작업 메서드는 대체 권한 부여 정책이 아닌 적용된 권한 부여 특성을 사용합니다.
 
-* 파일을 `wwwroot` 외부의 정적 파일 미들웨어에 액세스할 수 있는 임의의 디렉터리에 저장합니다.
-* 권한 부여가 적용되는 작업 메서드를 통해 파일을 제공하고 <xref:Microsoft.AspNetCore.Mvc.FileResult> 개체를 반환합니다.
+  <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A>는 <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement>를 현재 인스턴스에 추가하여 현재 사용자가 인증될 것을 요구합니다.
+
+  기본 정적 파일 미들웨어(`app.UseStaticFiles();`)가 `UseAuthentication` 전에 호출되기 때문에 `wwwroot` 아래의 정적 자산은 공개적으로 액세스할 수 있습니다. _MyStaticFiles* 폴더의 정적 자산에는 인증이 필요합니다. [샘플 코드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples)는 이를 보여 줍니다.
+
+권한 부여를 기반으로 파일을 제공하는 대체 방법은 다음과 같습니다.
+
+  * 파일을 `wwwroot` 외부의 정적 파일 미들웨어에 액세스할 수 있는 임의의 디렉터리에 저장합니다.
+  * 권한 부여가 적용되는 작업 메서드를 통해 파일을 제공하고 <xref:Microsoft.AspNetCore.Mvc.FileResult> 개체를 반환합니다.
 
   [!code-csharp[](static-files/samples/3.x/StaticFilesSample/Controllers/HomeController.cs?name=snippet_BannerImage)]
 

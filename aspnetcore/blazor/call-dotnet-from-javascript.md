@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-dotnet-from-javascript
-ms.openlocfilehash: 5a00bfb87b8cfe0fb3e2a832a553b8a4cd45ee6d
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: e602f29e6932280f4625ade64201ff232e02150d
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252502"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751639"
 ---
-# <a name="call-net-methods-from-javascript-functions-in-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor의 JavaScript 함수에서 .NET 메서드 호출
+# <a name="call-net-methods-from-javascript-functions-in-aspnet-core-blazor"></a>ASP.NET Core Blazor의 JavaScript 함수에서 .NET 메서드 호출
 
 작성자: [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Shashikant Rudrawadi](http://wisne.co) 및 [Luke Latham](https://github.com/guardrex)
 
@@ -35,6 +35,9 @@ Blazor 앱은 .NET 메서드에서 JavaScript 함수를 호출하고 JavaScript 
 이 문서에서는 JavaScript에서 .NET 메서드를 호출하는 방법을 설명합니다. .NET에서 JavaScript 함수를 호출하는 방법에 대한 내용은 <xref:blazor/call-javascript-from-dotnet>을 참조하세요.
 
 [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+
+> [!NOTE]
+> `wwwroot/index.html` 파일(Blazor WebAssembly) 또는 `Pages/_Host.cshtml` 파일(Blazor Server)의 닫는 `</body>` 태그 앞에 JS 파일(`<script>` 태그)을 추가합니다. JS interop 메서드가 있는 JS 파일은 Blazor 프레임워크 JS 파일 전에 포함되어야 합니다.
 
 ## <a name="static-net-method-call"></a>정적 .NET 메서드 호출
 

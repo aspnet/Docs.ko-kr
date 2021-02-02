@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: ec183f4aadc6bafd8e77f9d97291ba3d47bd92f5
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 74886eae7431045e56de535b5221040bd56cdc2d
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506931"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751570"
 ---
-# <a name="aspnet-core-no-locblazor-routing"></a>ASP.NET Core Blazor 라우팅
+# <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 라우팅
 
 [Luke Latham](https://github.com/guardrex)으로
 
@@ -326,11 +326,11 @@ catch-all 경로 매개 변수는 ASP.NET Core 5.0 이상에서 지원됩니다.
 요청의 쿼리 문자열은 <xref:Microsoft.AspNetCore.Components.NavigationManager.Uri?displayProperty=nameWithType> 속성에서 가져옵니다.
 
 ```razor
-@inject NavigationManager Navigation
+@inject NavigationManager NavigationManager
 
 ...
 
-var query = new Uri(Navigation.Uri).Query;
+var query = new Uri(NavigationManager.Uri).Query;
 ```
 
 쿼리 문자열의 매개 변수를 구문 분석하려면
@@ -354,7 +354,7 @@ var query = new Uri(Navigation.Uri).Query;
 
 ::: moniker-end
 
-## <a name="navlink-component"></a>`NavLink` 구성 요소
+## <a name="navlink-and-navmenu-components"></a>`NavLink` 및 `NavMenu` 구성 요소
 
 탐색 링크를 만드는 경우 HTML 하이퍼링크 요소(`<a>`) 대신 <xref:Microsoft.AspNetCore.Components.Routing.NavLink> 구성 요소를 사용합니다. <xref:Microsoft.AspNetCore.Components.Routing.NavLink> 구성 요소는 `href`가 현재 URL과 일치하는지 아닌지에 따라 `active` CSS 클래스를 전환한다는 점을 제외하고 `<a>` 요소처럼 동작합니다. `active` 클래스는 사용자가 표시되는 탐색 링크 중에서 활성 페이지를 파악하는 데 도움이 됩니다. 현재 경로가 `href`와 일치하는 경우, 필요에 따라 <xref:Microsoft.AspNetCore.Components.Routing.NavLink.ActiveClass?displayProperty=nameWithType>에 CSS 클래스 이름을 할당하여 렌더링된 링크에 사용자 지정 CSS 클래스를 적용합니다.
 
