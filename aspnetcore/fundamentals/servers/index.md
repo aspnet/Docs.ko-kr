@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/index
-ms.openlocfilehash: 2acddd212639ac0a82b3c46f2225ff66d0999dd0
-ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
+ms.openlocfilehash: a49388c73f2ec0ea03b35dbba1575ce70a4e1512
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217559"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238330"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core의 웹 서버 구현
 
@@ -38,7 +38,7 @@ ASP.NET Core 앱은 In-Process HTTP 서버 구현을 사용하여 실행됩니�
 
 ASP.NET Core는 다음과 함께 제공됩니다.
 
-* [Kestrel 서버](xref:fundamentals/servers/kestrel)는 기본 플랫폼 간 HTTP 서버 구현입니다. Kestrel은 최상의 성능과 메모리 사용률을 제공하지만 HTTP.sys의 고급 기능 중 일부를 제공하지 않습니다. 자세한 내용은 이 문서의 [Kestrel 및 HTTP.sys](#korh)를 참조하세요.
+* [Kestrel 서버](xref:fundamentals/servers/kestrel)는 기본 플랫폼 간 HTTP 서버 구현입니다. Kestrel은 최상의 성능과 메모리 사용률을 제공하지만 HTTP.sys의 고급 기능 중 일부를 제공하지 않습니다. 자세한 내용은 이 문서의 [Kestrel 및 다음 섹션에서 HTTP.sys](#korh)를 살펴봅니다.
 * IIS HTTP 서버는 IIS의 [In-Process 서버](#hosting-models)입니다.
 * [HTTP.sys 서버](xref:fundamentals/servers/httpsys)는 [Http.Sys 커널 드라이버 및 HTTP Server API](/windows/desktop/Http/http-api-start-page)를 기반으로 하는 Windows 전용 HTTP 서버입니다.
 

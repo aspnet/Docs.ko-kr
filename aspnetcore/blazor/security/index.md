@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 35620299b1138ca45a6ebf1d789a9f4aa9b29518
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 0a271b2e306e2969530248fe820ed8aab2fa45e0
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751603"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238181"
 ---
-# <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>ASP.NET Core Blazor 인증 및 권한 부여
+# <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 인증 및 권한 부여
 
 작성자: [Steve Sanderson](https://github.com/SteveSandersonMS) 및 [Luke Latham](https://github.com/guardrex)
 
@@ -48,7 +48,7 @@ Blazor WebAssembly 앱이 클라이언트에서 실행됩니다. 권한 부여�
 
 Blazor는 기존 ASP.NET Core 인증 메커니즘을 사용하여 사용자 ID를 설정합니다. 정확한 메커니즘은 Blazor 앱이 호스트되는 방법, Blazor WebAssembly 또는 Blazor Server에 따라 달라집니다.
 
-### <a name="no-locblazor-webassembly-authentication"></a>Blazor WebAssembly 인증
+### <a name="blazor-webassembly-authentication"></a>Blazor WebAssembly 인증
 
 Blazor WebAssembly 앱에서는 사용자가 클라이언트 쪽 코드를 모두 수정할 수 있기 때문에 인증 확인을 무시할 수 있습니다. JavaScript SPA 프레임워크 또는 모든 운영 체제의 네이티브 앱을 포함하여 모든 클라이언트 쪽 앱 기술에는 동일하게 적용됩니다.
 
@@ -61,7 +61,7 @@ Blazor WebAssembly 앱에서는 사용자가 클라이언트 쪽 코드를 모�
 
 앱 및 구성을 만드는 방법에 대한 자세한 내용은 <xref:blazor/security/webassembly/index> 문서를 참조하세요.
 
-### <a name="no-locblazor-server-authentication"></a>Blazor Server 인증
+### <a name="blazor-server-authentication"></a>Blazor Server 인증
 
 Blazor Server 앱은 SignalR를 사용하여 생성된 실시간 연결을 통해 작동합니다. [SignalR 기반 앱](xref:signalr/authn-and-authz)의 인증은 연결 시 처리됩니다. 인증은 cookie 또는 다른 전달자 토큰을 기반으로 할 수 있습니다.
 
@@ -391,9 +391,9 @@ You can only see this if you're signed in.
 
 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> 구성 요소와 함께 <xref:Microsoft.AspNetCore.Components.Routing.Router> 구성 요소를 사용하면 다음과 같은 경우 앱이 사용자 지정 콘텐츠를 지정할 수 있습니다.
 
-* 콘텐츠를 찾을 수 없는 경우
-* 사용자가 구성 요소에 적용된 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 조건을 충족하지 못하는 경우 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성은 [`[Authorize]` 속성](#authorize-attribute) 섹션에서 설명합니다.
-* 비동기 인증이 진행 중인 경우
+* 사용자가 구성 요소에 적용된 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 조건을 충족하지 못하는 경우 [`<NotAuthorized>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.NotAuthorized?displayProperty=nameWithType) 요소의 태그가 표시됩니다. [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성은 [`[Authorize]` 속성](#authorize-attribute) 섹션에서 설명합니다.
+* 비동기 권한 부여가 진행 중이며 이는 일반적으로 사용자를 인증하는 프로세스가 진행되고 있음을 의미합니다. [`<Authorizing>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing?displayProperty=nameWithType) 요소의 태그가 표시됩니다.
+* 콘텐츠를 찾을 수 없는 경우 [`<NotFound>`](xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound?displayProperty=nameWithType) 요소의 태그가 표시됩니다.
 
 기본 Blazor Server 프로젝트 템플릿에서 `App` 구성 요소(`App.razor`)는 사용자 지정 콘텐츠를 설정하는 방법을 보여 줍니다.
 
@@ -409,8 +409,8 @@ You can only see this if you're signed in.
                     <p>You may need to log in as a different user.</p>
                 </NotAuthorized>
                 <Authorizing>
-                    <h1>Authentication in progress</h1>
-                    <p>Only visible while authentication is in progress.</p>
+                    <h1>Authorization in progress</h1>
+                    <p>Only visible while authorization is in progress.</p>
                 </Authorizing>
             </AuthorizeRouteView>
         </Found>
