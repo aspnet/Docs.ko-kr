@@ -6,12 +6,12 @@ ms.author: masoucou
 ms.custom: devx-track-csharp, mvc
 ms.date: 11/22/2020
 uid: tutorials/publish-to-azure-api-management-using-vs
-ms.openlocfilehash: 395b5981a3018486235c38f032893f985ab71383
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: ddff54bbd146c98cf83a865910401df26e7ac4ec
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96332229"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217585"
 ---
 # <a name="publish-an-aspnet-core-web-api-to-azure-api-management-with-visual-studio"></a>Visual Studio를 사용하여 Azure API Management에 ASP.NET Core 웹 API 게시
 
@@ -175,9 +175,9 @@ API의 이름이 명명한 것과 다르다는 것을 알 수 있습니다. 게�
     ```csharp
     services.AddSwaggerGen(config =>
     {
-        config.SwaggerDoc("WeatherForecasts", new Microsoft.OpenApi.Models.OpenApiInfo
+        config.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
         {
-            Title = "Weather Forecasts",
+            Title = "WeatherForecasts",
             Version = "v1"
         });
     });

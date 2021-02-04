@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/templated-components
-ms.openlocfilehash: f818a0b7f1ba6d4dd6affeeba785c5e288568dd8
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 28f98596046877672b2935cb1f0feb508548398d
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94507956"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99529932"
 ---
-# <a name="aspnet-core-no-locblazor-templated-components"></a>ASP.NET Core Blazor 템플릿 기반 구성 요소
+# <a name="aspnet-core-blazor-templated-components"></a>ASP.NET Core Blazor 템플릿 기반 구성 요소
 
 작성자: [Luke Latham](https://github.com/guardrex) 및 [Daniel Roth](https://github.com/danroth27)
 
@@ -161,3 +161,7 @@ ms.locfileid: "94507956"
     ...
 }
 ```
+
+## <a name="additional-resources"></a>추가 자료
+
+* <xref:blazor/webassembly-performance-best-practices#define-reusable-renderfragments-in-code>
