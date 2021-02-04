@@ -18,78 +18,56 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/httpapi
-ms.openlocfilehash: cb2855f0293a6bc800bb5758cd1a8400d4434a24
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 78247a9b775ec8c9a3bc4a58209f09e5b714c07d
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96855466"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217520"
 ---
-# <a name="create-json-web-apis-from-grpc"></a><span data-ttu-id="314e5-103">GRPC에서 JSON 웹 API 만들기</span><span class="sxs-lookup"><span data-stu-id="314e5-103">Create JSON Web APIs from gRPC</span></span>
+# <a name="create-json-web-apis-from-grpc"></a><span data-ttu-id="d5325-103">GRPC에서 JSON 웹 API 만들기</span><span class="sxs-lookup"><span data-stu-id="d5325-103">Create JSON Web APIs from gRPC</span></span>
 
-<span data-ttu-id="314e5-104">작성자: [James Newton-King](https://twitter.com/jamesnk)</span><span class="sxs-lookup"><span data-stu-id="314e5-104">By [James Newton-King](https://twitter.com/jamesnk)</span></span>
+<span data-ttu-id="d5325-104">작성자: [James Newton-King](https://twitter.com/jamesnk)</span><span class="sxs-lookup"><span data-stu-id="d5325-104">By [James Newton-King](https://twitter.com/jamesnk)</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="314e5-105">gRPC HTTP API는 커밋된 제품이 아니라 실험적 프로젝트입니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-105">gRPC HTTP API is an experimental project, not a committed product.</span></span> <span data-ttu-id="314e5-106">다음 작업을 수행하려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-106">We want to:</span></span>
+> <span data-ttu-id="d5325-105">gRPC HTTP API는 커밋된 제품이 아니라 실험적 프로젝트입니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-105">gRPC HTTP API is an experimental project, not a committed product.</span></span> <span data-ttu-id="d5325-106">다음 작업을 수행하려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-106">We want to:</span></span>
 >
-> * <span data-ttu-id="314e5-107">gRPC 서비스용 JSON 웹 API를 만드는 방법이 작동하는지 테스트합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-107">Test that our approach to creating JSON Web APIs for gRPC services works.</span></span>
-> * <span data-ttu-id="314e5-108">이 방법이 .NET 개발자에게 유용한지에 관한 피드백을 받으세요.</span><span class="sxs-lookup"><span data-stu-id="314e5-108">Get feedback on if this approach is useful to .NET developers.</span></span>
+> * <span data-ttu-id="d5325-107">gRPC 서비스용 JSON 웹 API를 만드는 방법이 작동하는지 테스트합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-107">Test that our approach to creating JSON Web APIs for gRPC services works.</span></span>
+> * <span data-ttu-id="d5325-108">이 방법이 .NET 개발자에게 유용한지에 관한 피드백을 받으세요.</span><span class="sxs-lookup"><span data-stu-id="d5325-108">Get feedback on if this approach is useful to .NET developers.</span></span>
 >
-> <span data-ttu-id="314e5-109">개발자가 좋아하고 생산성을 높일 수 있는 제품을 빌드할 수 있도록 [피드백을 남겨](https://github.com/grpc/grpc-dotnet/issues/167) 주시기 바랍니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-109">Please [leave feedback](https://github.com/grpc/grpc-dotnet/issues/167) to ensure we build something that developers like and are productive with.</span></span>
+> <span data-ttu-id="d5325-109">개발자가 좋아하고 생산성을 높일 수 있는 제품을 빌드할 수 있도록 [피드백을 남겨](https://github.com/grpc/grpc-dotnet/issues/167) 주시기 바랍니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-109">Please [leave feedback](https://github.com/grpc/grpc-dotnet/issues/167) to ensure we build something that developers like and are productive with.</span></span>
 
-<span data-ttu-id="314e5-110">gRPC는 앱 간에 통신하는 최신 방법입니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-110">gRPC is a modern way to communicate between apps.</span></span> <span data-ttu-id="314e5-111">gRPC는 HTTP/2, 스트리밍, Protobuf 및 메시지 계약을 사용하여 고성능 실시간 서비스를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-111">gRPC uses HTTP/2, streaming, Protobuf and message contracts to create high-performance, real-time services.</span></span>
+<span data-ttu-id="d5325-110">gRPC는 앱 간에 통신하는 최신 방법입니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-110">gRPC is a modern way to communicate between apps.</span></span> <span data-ttu-id="d5325-111">gRPC는 HTTP/2, 스트리밍, Protobuf 및 메시지 계약을 사용하여 고성능 실시간 서비스를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-111">gRPC uses HTTP/2, streaming, Protobuf and message contracts to create high-performance, real-time services.</span></span>
 
-<span data-ttu-id="314e5-112">gRPC의 한 가지 제한 사항은 일부 플랫폼에서 gRPC를 사용할 수 없다는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-112">One limitation with gRPC is not every platform can use it.</span></span> <span data-ttu-id="314e5-113">브라우저는 HTTP/2를 완전히 지원하지 않으므로 브라우저 앱으로 데이터를 가져오는 기본 방법으로 REST 및 JSON을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-113">Browsers don't fully support HTTP/2, making REST and JSON the primary way to get data into browser apps.</span></span> <span data-ttu-id="314e5-114">gRPC가 제공하는 혜택이 있지만 REST 및 JSON은 최신 앱에서 중요합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-114">Even with the benefits that gRPC brings, REST and JSON have an important place in modern apps.</span></span> <span data-ttu-id="314e5-115">gRPC **및** JSON 웹 API를 빌드하면 앱 개발에 원치 않는 오버헤드가 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-115">Building gRPC \***and** _ JSON Web APIs adds unwanted overhead to app development.</span></span>
+<span data-ttu-id="d5325-112">gRPC의 한 가지 제한 사항은 일부 플랫폼에서 gRPC를 사용할 수 없다는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-112">One limitation with gRPC is not every platform can use it.</span></span> <span data-ttu-id="d5325-113">브라우저는 HTTP/2를 완전히 지원하지 않으므로 브라우저 앱으로 데이터를 가져오는 기본 방법으로 REST 및 JSON을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-113">Browsers don't fully support HTTP/2, making REST and JSON the primary way to get data into browser apps.</span></span> <span data-ttu-id="d5325-114">gRPC가 제공하는 혜택이 있지만 REST 및 JSON은 최신 앱에서 중요합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-114">Even with the benefits that gRPC brings, REST and JSON have an important place in modern apps.</span></span> <span data-ttu-id="d5325-115">gRPC **및** JSON 웹 API를 빌드하면 앱 개발에 원치 않는 오버헤드가 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-115">Building gRPC \***and** _ JSON Web APIs adds unwanted overhead to app development.</span></span>
 
-<span data-ttu-id="314e5-116">이 문서에서는 gRPC 서비스를 사용하여 JSON 웹 API를 만드는 방법을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-116">This document discusses how to create JSON Web APIs using gRPC services.</span></span>
+<span data-ttu-id="d5325-116">이 문서에서는 gRPC 서비스를 사용하여 JSON 웹 API를 만드는 방법을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-116">This document discusses how to create JSON Web APIs using gRPC services.</span></span>
 
-## <a name="grpc-http-api"></a><span data-ttu-id="314e5-117">gRPC HTTP API</span><span class="sxs-lookup"><span data-stu-id="314e5-117">gRPC HTTP API</span></span>
+## <a name="grpc-http-api"></a><span data-ttu-id="d5325-117">gRPC HTTP API</span><span class="sxs-lookup"><span data-stu-id="d5325-117">gRPC HTTP API</span></span>
 
-<span data-ttu-id="314e5-118">gRPC HTTP API는 gRPC 서비스용 RESTful JSON API를 만드는 ASP.NET Core의 실험적 확장입니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-118">gRPC HTTP API is an experimental extension for ASP.NET Core that creates RESTful JSON APIs for gRPC services.</span></span> <span data-ttu-id="314e5-119">구성된 후 gRPC HTTP API를 사용하면 앱에서 친숙한 HTTP 개념으로 gRPC 서비스를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-119">Once configured, gRPC HTTP API allows apps to call gRPC services with familiar HTTP concepts:</span></span>
+<span data-ttu-id="d5325-118">gRPC HTTP API는 gRPC 서비스용 RESTful JSON API를 만드는 ASP.NET Core의 실험적 확장입니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-118">gRPC HTTP API is an experimental extension for ASP.NET Core that creates RESTful JSON APIs for gRPC services.</span></span> <span data-ttu-id="d5325-119">구성된 후 gRPC HTTP API를 사용하면 앱에서 친숙한 HTTP 개념으로 gRPC 서비스를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-119">Once configured, gRPC HTTP API allows apps to call gRPC services with familiar HTTP concepts:</span></span>
 
-<span data-ttu-id="314e5-120">HTTP 동사</span><span class="sxs-lookup"><span data-stu-id="314e5-120">_ HTTP verbs</span></span>
-* <span data-ttu-id="314e5-121">URL 매개 변수 바인딩</span><span class="sxs-lookup"><span data-stu-id="314e5-121">URL parameter binding</span></span>
-* <span data-ttu-id="314e5-122">JSON 요청/응답</span><span class="sxs-lookup"><span data-stu-id="314e5-122">JSON requests/responses</span></span>
+<span data-ttu-id="d5325-120">HTTP 동사</span><span class="sxs-lookup"><span data-stu-id="d5325-120">_ HTTP verbs</span></span>
+* <span data-ttu-id="d5325-121">URL 매개 변수 바인딩</span><span class="sxs-lookup"><span data-stu-id="d5325-121">URL parameter binding</span></span>
+* <span data-ttu-id="d5325-122">JSON 요청/응답</span><span class="sxs-lookup"><span data-stu-id="d5325-122">JSON requests/responses</span></span>
 
-<span data-ttu-id="314e5-123">서비스를 호출하는 데 gRPC를 계속 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-123">gRPC can still be used to call services.</span></span>
+<span data-ttu-id="d5325-123">서비스를 호출하는 데 gRPC를 계속 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-123">gRPC can still be used to call services.</span></span>
 
-### <a name="usage"></a><span data-ttu-id="314e5-124">사용</span><span class="sxs-lookup"><span data-stu-id="314e5-124">Usage</span></span>
+### <a name="usage"></a><span data-ttu-id="d5325-124">사용</span><span class="sxs-lookup"><span data-stu-id="d5325-124">Usage</span></span>
 
-1. <span data-ttu-id="314e5-125">[Microsoft.AspNetCore.Grpc.HttpApi](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.HttpApi)에 패키지 참조를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-125">Add a package reference to [Microsoft.AspNetCore.Grpc.HttpApi](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.HttpApi).</span></span>
-1. <span data-ttu-id="314e5-126">*Startup.cs* 의 서비스를 `AddGrpcHttpApi`에 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-126">Register services in *Startup.cs* with `AddGrpcHttpApi`.</span></span>
-1. <span data-ttu-id="314e5-127">[google/api/http.proto](https://github.com/aspnet/AspLabs/blob/c1e59cacf7b9606650d6ec38e54fa3a82377f360/src/GrpcHttpApi/sample/Proto/google/api/http.proto) 및 [google/api/annotations.proto](https://github.com/aspnet/AspLabs/blob/c1e59cacf7b9606650d6ec38e54fa3a82377f360/src/GrpcHttpApi/sample/Proto/google/api/annotations.proto) 파일을 프로젝트에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-127">Add [google/api/http.proto](https://github.com/aspnet/AspLabs/blob/c1e59cacf7b9606650d6ec38e54fa3a82377f360/src/GrpcHttpApi/sample/Proto/google/api/http.proto) and [google/api/annotations.proto](https://github.com/aspnet/AspLabs/blob/c1e59cacf7b9606650d6ec38e54fa3a82377f360/src/GrpcHttpApi/sample/Proto/google/api/annotations.proto) files to your project.</span></span>
-1. <span data-ttu-id="314e5-128">HTTP 바인딩 및 경로가 포함된 *.proto* 파일에서 gRPC 메서드에 주석을 답니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-128">Annotate gRPC methods in your *.proto* files with HTTP bindings and routes:</span></span>
+1. <span data-ttu-id="d5325-125">[Microsoft.AspNetCore.Grpc.HttpApi](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.HttpApi)에 패키지 참조를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-125">Add a package reference to [Microsoft.AspNetCore.Grpc.HttpApi](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.HttpApi).</span></span>
+1. <span data-ttu-id="d5325-126">*Startup.cs* 의 서비스를 `AddGrpcHttpApi`에 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-126">Register services in *Startup.cs* with `AddGrpcHttpApi`.</span></span>
+1. <span data-ttu-id="d5325-127">[google/api/http.proto](https://github.com/aspnet/AspLabs/blob/c1e59cacf7b9606650d6ec38e54fa3a82377f360/src/GrpcHttpApi/sample/Proto/google/api/http.proto) 및 [google/api/annotations.proto](https://github.com/aspnet/AspLabs/blob/c1e59cacf7b9606650d6ec38e54fa3a82377f360/src/GrpcHttpApi/sample/Proto/google/api/annotations.proto) 파일을 프로젝트에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-127">Add [google/api/http.proto](https://github.com/aspnet/AspLabs/blob/c1e59cacf7b9606650d6ec38e54fa3a82377f360/src/GrpcHttpApi/sample/Proto/google/api/http.proto) and [google/api/annotations.proto](https://github.com/aspnet/AspLabs/blob/c1e59cacf7b9606650d6ec38e54fa3a82377f360/src/GrpcHttpApi/sample/Proto/google/api/annotations.proto) files to your project.</span></span>
+1. <span data-ttu-id="d5325-128">HTTP 바인딩 및 경로가 포함된 *.proto* 파일에서 gRPC 메서드에 주석을 답니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-128">Annotate gRPC methods in your *.proto* files with HTTP bindings and routes:</span></span>
 
-```protobuf
-syntax = "proto3";
+[!code-protobuf[](~/grpc/httpapi/greet.proto?highlight=3,9-11)]
 
-import "google/api/annotations.proto";
+<span data-ttu-id="d5325-129">이제 `SayHello` gRPC 메서드를 gRPC+Protobuf 및 HTTP API로 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-129">The `SayHello` gRPC method can now be invoked as gRPC+Protobuf and as an HTTP API:</span></span>
 
-package greet;
+* <span data-ttu-id="d5325-130">요청: `HTTP/1.1 GET /v1/greeter/world`</span><span class="sxs-lookup"><span data-stu-id="d5325-130">Request: `HTTP/1.1 GET /v1/greeter/world`</span></span>
+* <span data-ttu-id="d5325-131">응답: `{ "message": "Hello world" }`</span><span class="sxs-lookup"><span data-stu-id="d5325-131">Response: `{ "message": "Hello world" }`</span></span>
 
-service Greeter {
-  rpc SayHello (HelloRequest) returns (HelloReply) {
-    option (google.api.http) = {
-      get: "/v1/greeter/{name}"
-    };
-  }
-}
-
-message HelloRequest {
-  string name = 1;
-}
-
-message HelloReply {
-  string message = 1;
-}
-```
-
-<span data-ttu-id="314e5-129">이제 `SayHello` gRPC 메서드를 gRPC+Protobuf 및 HTTP API로 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-129">The `SayHello` gRPC method can now be invoked as gRPC+Protobuf and as an HTTP API:</span></span>
-
-* <span data-ttu-id="314e5-130">요청: `HTTP/1.1 GET /v1/greeter/world`</span><span class="sxs-lookup"><span data-stu-id="314e5-130">Request: `HTTP/1.1 GET /v1/greeter/world`</span></span>
-* <span data-ttu-id="314e5-131">응답: `{ "message": "Hello world" }`</span><span class="sxs-lookup"><span data-stu-id="314e5-131">Response: `{ "message": "Hello world" }`</span></span>
-
-<span data-ttu-id="314e5-132">서버 로그는 gRPC 서비스에서 HTTP 호출을 실행한다는 것을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-132">Server logs show that the HTTP call is executed by a gRPC service.</span></span> <span data-ttu-id="314e5-133">gRPC HTTP API는 들어오는 HTTP 요청을 gRPC 메시지에 매핑한 다음, 응답 메시지를 JSON으로 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-133">gRPC HTTP API maps the incoming HTTP request to a gRPC message, and then converts the response message to JSON.</span></span>
+<span data-ttu-id="d5325-132">서버 로그는 gRPC 서비스에서 HTTP 호출을 실행한다는 것을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-132">Server logs show that the HTTP call is executed by a gRPC service.</span></span> <span data-ttu-id="d5325-133">gRPC HTTP API는 들어오는 HTTP 요청을 gRPC 메시지에 매핑한 다음, 응답 메시지를 JSON으로 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-133">gRPC HTTP API maps the incoming HTTP request to a gRPC message, and then converts the response message to JSON.</span></span>
 
 ```
 info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
@@ -104,31 +82,31 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
       Request finished in 1.996ms 200 application/json
 ```
 
-<span data-ttu-id="314e5-134">이는 기본 예제입니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-134">This is a basic example.</span></span> <span data-ttu-id="314e5-135">추가적인 사용자 지정 옵션은 [HttpRule](https://cloud.google.com/service-infrastructure/docs/service-management/reference/rpc/google.api#google.api.HttpRule)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="314e5-135">See [HttpRule](https://cloud.google.com/service-infrastructure/docs/service-management/reference/rpc/google.api#google.api.HttpRule) for more customization options.</span></span>
+<span data-ttu-id="d5325-134">이는 기본 예제입니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-134">This is a basic example.</span></span> <span data-ttu-id="d5325-135">추가적인 사용자 지정 옵션은 [HttpRule](https://cloud.google.com/service-infrastructure/docs/service-management/reference/rpc/google.api#google.api.HttpRule)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d5325-135">See [HttpRule](https://cloud.google.com/service-infrastructure/docs/service-management/reference/rpc/google.api#google.api.HttpRule) for more customization options.</span></span>
 
-### <a name="enable-swaggeropenapi-support"></a><span data-ttu-id="314e5-136">Swagger/OpenAPI 지원 사용</span><span class="sxs-lookup"><span data-stu-id="314e5-136">Enable Swagger/OpenAPI support</span></span>
+### <a name="enable-swaggeropenapi-support"></a><span data-ttu-id="d5325-136">Swagger/OpenAPI 지원 사용</span><span class="sxs-lookup"><span data-stu-id="d5325-136">Enable Swagger/OpenAPI support</span></span>
 
-<span data-ttu-id="314e5-137">Swagger(OpenAPI)는 REST API를 설명하는 언어 중립적 사양입니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-137">Swagger (OpenAPI) is a language-agnostic specification for describing REST APIs.</span></span> <span data-ttu-id="314e5-138">gRPC HTTP API는 [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)과 통합되어 RESTful gRPC 서비스용 Swagger 엔드포인트를 생성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-138">gRPC HTTP API can integrate with [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) to generate a Swagger endpoint for RESTful gRPC services.</span></span> <span data-ttu-id="314e5-139">그러면 Swagger 엔드포인트를 [Swagger UI](https://swagger.io/swagger-ui/) 및 기타 도구에 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-139">The Swagger endpoint can then be used with [Swagger UI](https://swagger.io/swagger-ui/) and other tooling.</span></span>
+<span data-ttu-id="d5325-137">Swagger(OpenAPI)는 REST API를 설명하는 언어 중립적 사양입니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-137">Swagger (OpenAPI) is a language-agnostic specification for describing REST APIs.</span></span> <span data-ttu-id="d5325-138">gRPC HTTP API는 [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)과 통합되어 RESTful gRPC 서비스용 Swagger 엔드포인트를 생성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-138">gRPC HTTP API can integrate with [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) to generate a Swagger endpoint for RESTful gRPC services.</span></span> <span data-ttu-id="d5325-139">그러면 Swagger 엔드포인트를 [Swagger UI](https://swagger.io/swagger-ui/) 및 기타 도구에 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-139">The Swagger endpoint can then be used with [Swagger UI](https://swagger.io/swagger-ui/) and other tooling.</span></span>
 
-<span data-ttu-id="314e5-140">gRPC HTTP API로 Swagger를 사용하도록 설정하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-140">To enable Swagger with gRPC HTTP API:</span></span>
+<span data-ttu-id="d5325-140">gRPC HTTP API로 Swagger를 사용하도록 설정하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-140">To enable Swagger with gRPC HTTP API:</span></span>
 
-1. <span data-ttu-id="314e5-141">[Microsoft.AspNetCore.Grpc.Swagger](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.Swagger)에 패키지 참조를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-141">Add a package reference to [Microsoft.AspNetCore.Grpc.Swagger](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.Swagger).</span></span>
-2. <span data-ttu-id="314e5-142">*Startup.cs* 에서 Swashbuckle을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-142">Configure Swashbuckle in *Startup.cs*.</span></span> <span data-ttu-id="314e5-143">`AddGrpcSwagger` 메서드는 gRPC HTTP API 엔드포인트를 포함하도록 Swashbuckle을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-143">The `AddGrpcSwagger` method configures Swashbuckle to include gRPC HTTP API endpoints.</span></span>
+1. <span data-ttu-id="d5325-141">[Microsoft.AspNetCore.Grpc.Swagger](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.Swagger)에 패키지 참조를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-141">Add a package reference to [Microsoft.AspNetCore.Grpc.Swagger](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.Swagger).</span></span>
+2. <span data-ttu-id="d5325-142">*Startup.cs* 에서 Swashbuckle을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-142">Configure Swashbuckle in *Startup.cs*.</span></span> <span data-ttu-id="d5325-143">`AddGrpcSwagger` 메서드는 gRPC HTTP API 엔드포인트를 포함하도록 Swashbuckle을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-143">The `AddGrpcSwagger` method configures Swashbuckle to include gRPC HTTP API endpoints.</span></span>
 
 [!code-csharp[](~/grpc/httpapi/Startup.cs?name=snippet_1&highlight=6-10,15-19)]
 
-<span data-ttu-id="314e5-144">Swashbuckle이 RESTful gRPC 서비스를 위한 Swagger를 생성하고 있는지 확인하려면 앱을 시작하고 Swagger UI 페이지로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-144">To confirm that Swashbuckle is generating Swagger for the RESTful gRPC services, start the app and navigate to the Swagger UI page:</span></span>
+<span data-ttu-id="d5325-144">Swashbuckle이 RESTful gRPC 서비스를 위한 Swagger를 생성하고 있는지 확인하려면 앱을 시작하고 Swagger UI 페이지로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-144">To confirm that Swashbuckle is generating Swagger for the RESTful gRPC services, start the app and navigate to the Swagger UI page:</span></span>
 
 ![Swagger UI](~/grpc/httpapi/static/swaggerui.png)
 
-### <a name="grpc-http-api-vs-grpc-web"></a><span data-ttu-id="314e5-146">gRPC HTTP API 및 gRPC-Web 비교</span><span class="sxs-lookup"><span data-stu-id="314e5-146">gRPC HTTP API vs gRPC-Web</span></span>
+### <a name="grpc-http-api-vs-grpc-web"></a><span data-ttu-id="d5325-146">gRPC HTTP API 및 gRPC-Web 비교</span><span class="sxs-lookup"><span data-stu-id="d5325-146">gRPC HTTP API vs gRPC-Web</span></span>
 
-<span data-ttu-id="314e5-147">gRPC HTTP API 및 gRPC-Web을 둘 다 사용하여 브라우저에서 gRPC 서비스를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-147">Both gRPC HTTP API and gRPC-Web allow gRPC services to be called from a browser.</span></span> <span data-ttu-id="314e5-148">그러나 각각 해당 작업을 수행하는 방법은 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-148">However, the way each does this is different:</span></span>
+<span data-ttu-id="d5325-147">gRPC HTTP API 및 gRPC-Web을 둘 다 사용하여 브라우저에서 gRPC 서비스를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-147">Both gRPC HTTP API and gRPC-Web allow gRPC services to be called from a browser.</span></span> <span data-ttu-id="d5325-148">그러나 각각 해당 작업을 수행하는 방법은 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-148">However, the way each does this is different:</span></span>
 
-* <span data-ttu-id="314e5-149">gRPC-Web을 사용하면 브라우저 앱은 gRPC-Web 클라이언트 및 Protobuf를 사용하여 브라우저에서 gRPC 서비스를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-149">gRPC-Web lets browser apps call gRPC services from the browser with the gRPC-Web client and Protobuf.</span></span> <span data-ttu-id="314e5-150">gRPC-Web을 사용하려면 브라우저 앱이 gRPC 클라이언트를 생성해야 하며 gRPC-Web에는 작고 빠른 Protobuf 메시지를 보내는 이점이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-150">gRPC-Web requires the browser app generate a gRPC client, and has the advantage of sending small, fast Protobuf messages.</span></span>
-* <span data-ttu-id="314e5-151">gRPC HTTP API를 사용하면 브라우저 앱은 JSON을 사용하는 RESTful API인 것처럼 gRPC 서비스를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-151">gRPC HTTP API allows browser apps to call gRPC services as if they were RESTful APIs with JSON.</span></span> <span data-ttu-id="314e5-152">브라우저 앱에서 gRPC 클라이언트를 생성하거나 gRPC에 관해 알고 있을 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-152">The browser app doesn't need to generate a gRPC client or know anything about gRPC.</span></span>
+* <span data-ttu-id="d5325-149">gRPC-Web을 사용하면 브라우저 앱은 gRPC-Web 클라이언트 및 Protobuf를 사용하여 브라우저에서 gRPC 서비스를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-149">gRPC-Web lets browser apps call gRPC services from the browser with the gRPC-Web client and Protobuf.</span></span> <span data-ttu-id="d5325-150">gRPC-Web을 사용하려면 브라우저 앱이 gRPC 클라이언트를 생성해야 하며 gRPC-Web에는 작고 빠른 Protobuf 메시지를 보내는 이점이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-150">gRPC-Web requires the browser app generate a gRPC client, and has the advantage of sending small, fast Protobuf messages.</span></span>
+* <span data-ttu-id="d5325-151">gRPC HTTP API를 사용하면 브라우저 앱은 JSON을 사용하는 RESTful API인 것처럼 gRPC 서비스를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-151">gRPC HTTP API allows browser apps to call gRPC services as if they were RESTful APIs with JSON.</span></span> <span data-ttu-id="d5325-152">브라우저 앱에서 gRPC 클라이언트를 생성하거나 gRPC에 관해 알고 있을 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-152">The browser app doesn't need to generate a gRPC client or know anything about gRPC.</span></span>
 
-<span data-ttu-id="314e5-153">생성된 클라이언트는 gRPC HTTP API를 위해 만들어진 것이 아닙니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-153">No generated client is created for gRPC HTTP API.</span></span> <span data-ttu-id="314e5-154">이전 `Greeter` 서비스는 브라우저 JavaScript API를 사용하여 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-154">The previous `Greeter` service can be called using browser JavaScript APIs:</span></span>
+<span data-ttu-id="d5325-153">생성된 클라이언트는 gRPC HTTP API를 위해 만들어진 것이 아닙니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-153">No generated client is created for gRPC HTTP API.</span></span> <span data-ttu-id="d5325-154">이전 `Greeter` 서비스는 브라우저 JavaScript API를 사용하여 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-154">The previous `Greeter` service can be called using browser JavaScript APIs:</span></span>
 
 ```javascript
 var name = nameInput.value;
@@ -140,21 +118,21 @@ fetch("/v1/greeter/" + name).then(function (response) {
 });
 ```
 
-### <a name="experimental-status"></a><span data-ttu-id="314e5-155">실험적 상태</span><span class="sxs-lookup"><span data-stu-id="314e5-155">Experimental status</span></span>
+### <a name="experimental-status"></a><span data-ttu-id="d5325-155">실험적 상태</span><span class="sxs-lookup"><span data-stu-id="d5325-155">Experimental status</span></span>
 
-<span data-ttu-id="314e5-156">gRPC HTTP API는 실험입니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-156">gRPC HTTP API is an experiment.</span></span> <span data-ttu-id="314e5-157">완료되지 않았으며 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-157">It is not complete and it is not supported.</span></span> <span data-ttu-id="314e5-158">Microsoft는 이 기술과 함께, gRPC 및 JSON 서비스를 동시에 빠르게 만들기 위해 앱 개발자에게 제공하는 기능에 관심이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-158">We're interested in this technology, and the ability it gives app developers to quickly create gRPC and JSON services at the same time.</span></span> <span data-ttu-id="314e5-159">gRPC HTTP API를 완료한다는 보장은 없습니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-159">There is no commitment to completing the gRPC HTTP API.</span></span>
+<span data-ttu-id="d5325-156">gRPC HTTP API는 실험입니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-156">gRPC HTTP API is an experiment.</span></span> <span data-ttu-id="d5325-157">완료되지 않았으며 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-157">It is not complete and it is not supported.</span></span> <span data-ttu-id="d5325-158">Microsoft는 이 기술과 함께, gRPC 및 JSON 서비스를 동시에 빠르게 만들기 위해 앱 개발자에게 제공하는 기능에 관심이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-158">We're interested in this technology, and the ability it gives app developers to quickly create gRPC and JSON services at the same time.</span></span> <span data-ttu-id="d5325-159">gRPC HTTP API를 완료한다는 보장은 없습니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-159">There is no commitment to completing the gRPC HTTP API.</span></span>
 
-<span data-ttu-id="314e5-160">gRPC HTTP API에 관한 개발자의 관심을 측정하려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-160">We want to gauge developer interest in gRPC HTTP API.</span></span> <span data-ttu-id="314e5-161">gRPC HTTP API에 관심이 있는 경우 [피드백을 보내](https://github.com/grpc/grpc-dotnet/issues/167) 주세요.</span><span class="sxs-lookup"><span data-stu-id="314e5-161">If gRPC HTTP API is interesting to you then please [give feedback](https://github.com/grpc/grpc-dotnet/issues/167).</span></span>
+<span data-ttu-id="d5325-160">gRPC HTTP API에 관한 개발자의 관심을 측정하려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-160">We want to gauge developer interest in gRPC HTTP API.</span></span> <span data-ttu-id="d5325-161">gRPC HTTP API에 관심이 있는 경우 [피드백을 보내](https://github.com/grpc/grpc-dotnet/issues/167) 주세요.</span><span class="sxs-lookup"><span data-stu-id="d5325-161">If gRPC HTTP API is interesting to you then please [give feedback](https://github.com/grpc/grpc-dotnet/issues/167).</span></span>
 
-## <a name="grpc-gateway"></a><span data-ttu-id="314e5-162">grpc-gateway</span><span class="sxs-lookup"><span data-stu-id="314e5-162">grpc-gateway</span></span>
+## <a name="grpc-gateway"></a><span data-ttu-id="d5325-162">grpc-gateway</span><span class="sxs-lookup"><span data-stu-id="d5325-162">grpc-gateway</span></span>
 
-<span data-ttu-id="314e5-163">[grpc-gateway](https://grpc-ecosystem.github.io/grpc-gateway/)는 gRPC 서비스에서 RESTful JSON API를 만들 수 있는 또 다른 기술입니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-163">[grpc-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) is another technology for creating RESTful JSON APIs from gRPC services.</span></span> <span data-ttu-id="314e5-164">동일한 *.proto* 주석을 사용하여 HTTP 개념을 gRPC 서비스에 매핑합니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-164">It uses the same *.proto* annotations to map HTTP concepts to gRPC services.</span></span>
+<span data-ttu-id="d5325-163">[grpc-gateway](https://grpc-ecosystem.github.io/grpc-gateway/)는 gRPC 서비스에서 RESTful JSON API를 만들 수 있는 또 다른 기술입니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-163">[grpc-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) is another technology for creating RESTful JSON APIs from gRPC services.</span></span> <span data-ttu-id="d5325-164">동일한 *.proto* 주석을 사용하여 HTTP 개념을 gRPC 서비스에 매핑합니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-164">It uses the same *.proto* annotations to map HTTP concepts to gRPC services.</span></span>
 
-<span data-ttu-id="314e5-165">grpc-gateway와 gRPC HTTP API의 가장 큰 차이점은 grpc-gateway는 코드 생성을 사용하여 역방향 프록시 서버를 만든다는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-165">The biggest difference between grpc-gateway and gRPC HTTP API is grpc-gateway uses code generation to create a reverse-proxy server.</span></span> <span data-ttu-id="314e5-166">역방향 프록시는 RESTful 호출을 gRPC로 변환한 다음, gRPC 서비스로 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="314e5-166">The reverse-proxy translates RESTful calls into gRPC and then sends them on to the gRPC service.</span></span>
+<span data-ttu-id="d5325-165">grpc-gateway와 gRPC HTTP API의 가장 큰 차이점은 grpc-gateway는 코드 생성을 사용하여 역방향 프록시 서버를 만든다는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-165">The biggest difference between grpc-gateway and gRPC HTTP API is grpc-gateway uses code generation to create a reverse-proxy server.</span></span> <span data-ttu-id="d5325-166">역방향 프록시는 RESTful 호출을 gRPC로 변환한 다음, gRPC 서비스로 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="d5325-166">The reverse-proxy translates RESTful calls into gRPC and then sends them on to the gRPC service.</span></span>
 
-<span data-ttu-id="314e5-167">grpc-gateway 설치 및 사용에 대해서는 [grpc-gateway 추가 정보](https://github.com/grpc-ecosystem/grpc-gateway/#grpc-gateway)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="314e5-167">For installation and usage of grpc-gateway, see the [grpc-gateway README](https://github.com/grpc-ecosystem/grpc-gateway/#grpc-gateway).</span></span>
+<span data-ttu-id="d5325-167">grpc-gateway 설치 및 사용에 대해서는 [grpc-gateway 추가 정보](https://github.com/grpc-ecosystem/grpc-gateway/#grpc-gateway)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d5325-167">For installation and usage of grpc-gateway, see the [grpc-gateway README](https://github.com/grpc-ecosystem/grpc-gateway/#grpc-gateway).</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="314e5-168">추가 자료</span><span class="sxs-lookup"><span data-stu-id="314e5-168">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="d5325-168">추가 자료</span><span class="sxs-lookup"><span data-stu-id="d5325-168">Additional resources</span></span>
 
-* [<span data-ttu-id="314e5-169">google.api.HttpRule 문서</span><span class="sxs-lookup"><span data-stu-id="314e5-169">google.api.HttpRule documentation</span></span>](https://cloud.google.com/service-infrastructure/docs/service-management/reference/rpc/google.api#google.api.HttpRule)
+* [<span data-ttu-id="d5325-169">google.api.HttpRule 문서</span><span class="sxs-lookup"><span data-stu-id="d5325-169">google.api.HttpRule documentation</span></span>](https://cloud.google.com/service-infrastructure/docs/service-management/reference/rpc/google.api#google.api.HttpRule)
 * <xref:grpc/browser>
