@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: 77d49710b9d69f6fbbe92970f1c455de32489444
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: d6fa7e4524a8afdc23d4ad46354d9d8b395656a3
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056961"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530192"
 ---
-# <a name="model-validation-in-aspnet-core-mvc-and-no-locrazor-pages"></a>MVC 및 페이지 ASP.NET Core의 모델 유효성 검사 Razor
+# <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>MVC 및 페이지 ASP.NET Core의 모델 유효성 검사 Razor
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -76,13 +76,13 @@ ms.locfileid: "93056961"
 
 ### <a name="error-messages"></a>오류 메시지
 
-유효성 검사 특성을 사용하여 잘못된 입력에 대해 표시할 오류 메시지를 지정할 수 있습니다. 다음은 그 예입니다.
+유효성 검사 특성을 사용하여 잘못된 입력에 대해 표시할 오류 메시지를 지정할 수 있습니다. 예를 들면 다음과 같습니다.
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-내부적으로 이 특성은 필드 이름에 대한 자리 표시자 및 경우에 따라 추가 자리 표시자를 사용하여 `String.Format`을 호출합니다. 다음은 그 예입니다.
+내부적으로 이 특성은 필드 이름에 대한 자리 표시자 및 경우에 따라 추가 자리 표시자를 사용하여 `String.Format`을 호출합니다. 예를 들면 다음과 같습니다.
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -92,9 +92,27 @@ ms.locfileid: "93056961"
 
 특정 특성의 오류 메시지에 대해 `String.Format` 에 전달되는 매개 변수를 알아보려면 [DataAnnotations 소스 코드](https://github.com/dotnet/runtime/tree/master/src/libraries/System.ComponentModel.Annotations/src/System/ComponentModel/DataAnnotations)를 참조하세요.
 
-## <a name="required-attribute"></a>[Required] 특성
+## <a name="non-nullable-reference-types-and-required-attribute"></a>Nullable이 아닌 참조 형식 및 [Required] 특성
 
-.NET Core 3.0 이상의 유효성 검사 시스템은 Null을 허용하지 않는 매개 변수 또는 바인딩된 속성을 `[Required]` 특성을 포함한 것처럼 처리합니다. `decimal` 및 `int`와 같은 [값 형식](/dotnet/csharp/language-reference/keywords/value-types)은 Null을 허용하지 않습니다. `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Mvc.MvcOptions.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes>를 구성하여 이 동작을 사용하지 않도록 설정할 수 있습니다.
+유효성 검사 시스템은 특성이 없는 것 처럼 nullable이 아닌 매개 변수 또는 바인딩된 속성을 처리 합니다 `[Required]` . [ `Nullable` 컨텍스트를 사용 하도록 설정](/dotnet/csharp/nullable-references#nullable-contexts)하면 MVC에서 암시적으로 null을 허용 하지 않는 속성 또는 매개 변수의 유효성 검사를 특성으로 특성을 사용 하는 것 처럼 시작 합니다 `[Required]` . 다음 코드를 생각해 봅시다.
+
+```csharp
+public class Person
+{
+    public string Name { get; set; }
+}
+```
+
+앱이로 빌드된 경우 `<Nullable>enable</Nullable>` `Name` JSON 또는 폼 게시의 값이 누락 되 면 유효성 검사 오류가 발생 합니다. Nullable 참조 형식을 사용 하 여 속성에 null 또는 누락 된 값을 지정할 수 `Name` 있습니다.
+
+```csharp
+public class Person
+{
+    public string? Name { get; set; }
+}
+```
+
+. `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Mvc.MvcOptions.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes>를 구성하여 이 동작을 사용하지 않도록 설정할 수 있습니다.
 
 ```csharp
 services.AddControllers(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
@@ -210,7 +228,7 @@ public string MiddleName { get; set; }
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAgeSignature)]
 
-기간 확인 페이지( *CheckAge.cshtml* )에는 두 가지 양식이 있습니다. 첫 번째 양식은 `99`의 `Age` 값을 쿼리 문자열 매개 변수(`https://localhost:5001/Users/CheckAge?Age=99`)로 제출합니다.
+기간 확인 페이지(*CheckAge.cshtml*)에는 두 가지 양식이 있습니다. 첫 번째 양식은 `99`의 `Age` 값을 쿼리 문자열 매개 변수(`https://localhost:5001/Users/CheckAge?Age=99`)로 제출합니다.
 
 쿼리 문자열에서 올바른 서식이 지정된 `age` 매개 변수를 제출하면 양식이 유효성을 검사합니다.
 
@@ -357,7 +375,7 @@ $.get({
 
 이 HTML `data-` 특성 렌더링 방법은 샘플 앱의 `ClassicMovie` 특성에 사용됩니다. 이 방법을 사용하여 클라이언트 유효성 검사를 추가하려면:
 
-1. 사용자 지정 유효성 검사 특성에 대한 특성 어댑터 클래스를 생성합니다. [Attributeadapterbase \<T> ](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2)에서 클래스를 파생 시킵니다. 이 예제와 같이 렌더링된 출력에 `data-` 특성을 추가하는 `AddValidation` 메서드를 생성합니다.
+1. 사용자 지정 유효성 검사 특성에 대한 특성 어댑터 클래스를 생성합니다. <xref:Microsoft.AspNetCore.Mvc.DataAnnotations.AttributeAdapterBase%601>에서 클래스를 파생합니다. 이 예제와 같이 렌더링된 출력에 `data-` 특성을 추가하는 `AddValidation` 메서드를 생성합니다.
 
    [!code-csharp[](validation/samples/3.x/ValidationSample/Validation/ClassicMovieAttributeAdapter.cs?name=snippet_Class)]
 
@@ -446,13 +464,13 @@ $.get({
 
 ### <a name="error-messages"></a>오류 메시지
 
-유효성 검사 특성을 사용하여 잘못된 입력에 대해 표시할 오류 메시지를 지정할 수 있습니다. 다음은 그 예입니다.
+유효성 검사 특성을 사용하여 잘못된 입력에 대해 표시할 오류 메시지를 지정할 수 있습니다. 예를 들면 다음과 같습니다.
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-내부적으로 이 특성은 필드 이름에 대한 자리 표시자 및 경우에 따라 추가 자리 표시자를 사용하여 `String.Format`을 호출합니다. 다음은 그 예입니다.
+내부적으로 이 특성은 필드 이름에 대한 자리 표시자 및 경우에 따라 추가 자리 표시자를 사용하여 `String.Format`을 호출합니다. 예를 들면 다음과 같습니다.
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -573,7 +591,7 @@ public string MiddleName { get; set; }
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAge)]
 
-기간 확인 페이지( *CheckAge.cshtml* )에는 두 가지 양식이 있습니다. 첫 번째 양식은 `99`의 `Age` 값을 쿼리 문자열(`https://localhost:5001/Users/CheckAge?Age=99`)로 제출합니다.
+기간 확인 페이지(*CheckAge.cshtml*)에는 두 가지 양식이 있습니다. 첫 번째 양식은 `99`의 `Age` 값을 쿼리 문자열(`https://localhost:5001/Users/CheckAge?Age=99`)로 제출합니다.
 
 쿼리 문자열에서 올바른 서식이 지정된 `age` 매개 변수를 제출하면 양식이 유효성을 검사합니다.
 
@@ -728,7 +746,7 @@ $.get({
 
 이 HTML `data-` 특성 렌더링 방법은 샘플 앱의 `ClassicMovie` 특성에 사용됩니다. 이 방법을 사용하여 클라이언트 유효성 검사를 추가하려면:
 
-1. 사용자 지정 유효성 검사 특성에 대한 특성 어댑터 클래스를 생성합니다. [Attributeadapterbase \<T> ](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2)에서 클래스를 파생 시킵니다. 이 예제와 같이 렌더링된 출력에 `data-` 특성을 추가하는 `AddValidation` 메서드를 생성합니다.
+1. 사용자 지정 유효성 검사 특성에 대한 특성 어댑터 클래스를 생성합니다. <xref:Microsoft.AspNetCore.Mvc.DataAnnotations.AttributeAdapterBase%601>에서 클래스를 파생합니다. 이 예제와 같이 렌더링된 출력에 `data-` 특성을 추가하는 `AddValidation` 메서드를 생성합니다.
 
    [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/ClassicMovieAttributeAdapter.cs?name=snippet_ClassicMovieAttributeAdapter)]
 
@@ -760,7 +778,7 @@ $.get({
 
 클라이언트 유효성 검사를 사용하지 않도록 설정하는 또 다른 방법은 사용자의 *.cshtml* 파일에서 `_ValidationScriptsPartial` 참조를 주석으로 처리하는 것입니다.
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * [System.ComponentModel.DataAnnotations 네임스페이스](xref:System.ComponentModel.DataAnnotations)
 * [모델 바인딩](model-binding.md)

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 0bbf740cb49b77b476e7e015afee311110bbe5ea
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4e86241771e884ba9079bcdf9a09eebc6acd62c8
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060991"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530218"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>ASP.NET Core를 사용하여 네이티브 모바일 앱용 백 엔드 서비스 만들기
 
@@ -164,6 +164,9 @@ Postman으로 테스트하려면 동사를 PUT으로 변경합니다. 요청의 
 
 API에 대한 일반적인 정책을 식별했으면 [필터](../mvc/controllers/filters.md)에서 캡슐화할 수 있습니다. [ASP.NET Core MVC 애플리케이션에서 일반적인 API 정책을 캡슐화하는 방법](/archive/msdn-magazine/2016/august/asp-net-core-real-world-asp-net-core-mvc-filters)에 대해 자세히 알아봅니다.
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
-* [인증 및 권한 부여](/xamarin/xamarin-forms/enterprise-application-patterns/authentication-and-authorization)
+- [Xamarin.ios: 웹 서비스 인증](/xamarin/xamarin-forms/data-cloud/authentication/)
+- [Xamarin.ios: RESTful 웹 서비스 사용](/xamarin/xamarin-forms/data-cloud/web-services/rest)
+- [Microsoft Learn: Xamarin 앱에서 REST 웹 서비스 사용](/learn/modules/consume-rest-services/)
+- [Microsoft Learn: ASP.NET Core를 사용 하 여 web API 만들기](/learn/modules/build-web-api-aspnet-core/)

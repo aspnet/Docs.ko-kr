@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/background-services
-ms.openlocfilehash: 810eff7ccb08ecc22ea255bf0a9fe3d22637179f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4b877c64a881fec15ac9e9bd74ffdde0b5fa60f9
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060107"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530179"
 ---
-# <a name="host-aspnet-core-no-locsignalr-in-background-services"></a>SignalR백그라운드 서비스의 호스트 ASP.NET Core
+# <a name="host-aspnet-core-signalr-in-background-services"></a>SignalR백그라운드 서비스의 호스트 ASP.NET Core
 
 [Brady Gaster](https://twitter.com/bradygaster)
 
@@ -46,7 +46,7 @@ ms.locfileid: "93060107"
 
 ::: moniker-end
 
-## <a name="enable-no-locsignalr-in-startup"></a>SignalR시작 시 사용
+## <a name="enable-signalr-in-startup"></a>SignalR시작 시 사용
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -94,7 +94,7 @@ SignalR백그라운드 작업자 프로세스의 컨텍스트에서 ASP.NET Core
 
 ::: moniker-end
 
-## <a name="call-a-no-locsignalr-hub-from-a-background-service"></a>SignalR백그라운드 서비스에서 허브 호출
+## <a name="call-a-signalr-hub-from-a-background-service"></a>SignalR백그라운드 서비스에서 허브 호출
 
 시작 중에 `Worker` 는를 `BackgroundService` 사용 하 여 클래스를 사용할 수 `AddHostedService` 있습니다.
 
@@ -117,9 +117,9 @@ SignalR는 단계 중에도 활성화 되므로 `Startup` 각 허브는 ASP.NET 
 
 `ExecuteAsync`메서드가 백그라운드 서비스에서 반복적으로 호출 되 면 서버의 현재 날짜 및 시간이를 사용 하 여 연결 된 클라이언트에 전송 됩니다 `ClockHub` .
 
-## <a name="react-to-no-locsignalr-events-with-background-services"></a>SignalR백그라운드 서비스를 사용 하 여 이벤트에 대응
+## <a name="react-to-signalr-events-with-background-services"></a>SignalR백그라운드 서비스를 사용 하 여 이벤트에 대응
 
-또는 .NET 데스크톱 응용 프로그램에서 JavaScript 클라이언트를 사용 하는 단일 페이지 앱과 마찬가지로를 사용 하 여를 사용할 SignalR 수 있습니다 <xref:signalr/dotnet-client> `BackgroundService` . 또는 구현을 사용 하 여 `IHostedService` 허브에 연결 하 SignalR 고 이벤트에 응답할 수도 있습니다.
+용 JavaScript 클라이언트를 사용 하는 단일 페이지 앱 SignalR 또는를 사용 하는 .net 데스크톱 응용 프로그램 처럼 <xref:signalr/dotnet-client> `BackgroundService` `IHostedService` 허브에 연결 하 SignalR 고 이벤트에 응답 하는 데 또는 구현을 사용할 수도 있습니다.
 
 `ClockHubClient`클래스는 인터페이스와 인터페이스를 둘 다 구현 `IClock` `IHostedService` 합니다. 이러한 방식으로 `Startup` 에서 계속 실행 하 고 서버에서 허브 이벤트에 응답 하는 데 사용할 수 있습니다.
 
@@ -158,7 +158,7 @@ public partial class ClockHubClient : IClock, IHostedService
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * [시작](xref:tutorials/signalr)
 * [허브](xref:signalr/hubs)
