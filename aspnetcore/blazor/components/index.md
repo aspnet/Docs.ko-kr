@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: fe30c3b3be92c30dea6d0cb97e642eec1da6328b
-ms.sourcegitcommit: 72c8ada9b9644ee4751ed6869e892a8558dd8e66
+ms.openlocfilehash: efc73022d0bd8c29595f9bed1c06fe07002eb54a
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723514"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530101"
 ---
-# <a name="create-and-use-aspnet-core-no-locrazor-components"></a>ASP.NET Core Razor 구성 요소 만들기 및 사용
+# <a name="create-and-use-aspnet-core-razor-components"></a>ASP.NET Core Razor 구성 요소 만들기 및 사용
 
 작성자: [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), [Scott Addie](https://github.com/scottaddie), 및 [Tobias Bartsch](https://www.aveo-solutions.com/)
 
@@ -38,7 +38,7 @@ Blazor 앱은 *구성 요소* 를 사용하여 빌드됩니다. 구성 요소는
 
 구성 요소는 C# 및 HTML 태그 조합을 사용하여 [Razor](xref:mvc/views/razor) 구성 요소 파일(`.razor`)에서 구현됩니다. Blazor의 구성 요소는 공식적으로 ‘Razor 구성 요소’라고 합니다.
 
-### <a name="no-locrazor-syntax"></a>Razor 구문
+### <a name="razor-syntax"></a>Razor 구문
 
 Blazor 앱의 Razor 구성 요소는 Razor 구문을 광범위하게 사용합니다. Razor 태그 언어에 익숙하지 않은 경우 계속하기 전에 [ASP.NET Core용 Razor 구문 참조](xref:mvc/views/razor)를 읽는 것이 좋습니다.
 
@@ -339,6 +339,11 @@ Blazor가 자식 콘텐츠를 렌더링하는 방식 때문에 `for` 루프 내�
 >     </ChildComponent>
 > }
 > ```
+
+Razor 구성 요소 UI에 대해 <xref:Microsoft.AspNetCore.Components.RenderFragment>이 템플릿으로 사용될 수 있는 방법을 자세히 알아보려면 다음 문서를 참조하십시오.
+
+* <xref:blazor/components/templated-components>
+* <xref:blazor/webassembly-performance-best-practices#define-reusable-renderfragments-in-code>
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>특성 스플래팅 및 임의 매개 변수
 
@@ -824,7 +829,7 @@ HTML 요소 특성은 .NET 값에 따라 조건부로 렌더링됩니다. 값이
 }
 ```
 
-## <a name="no-locrazor-templates"></a>Razor 템플릿
+## <a name="razor-templates"></a>Razor 템플릿
 
 렌더링 조각은 Razor 템플릿 구문을 사용하여 정의할 수 있습니다. Razor 템플릿은 UI 코드 조각을 정의하는 방법으로, 다음 형식을 가정합니다.
 
