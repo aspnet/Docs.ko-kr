@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/index
-ms.openlocfilehash: 51f76bc33d2da6097d26c1ffe17b1c93046a7b88
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 03debcb211a8cb8f0ebd6d5e67fbc8de7b574e27
+ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052463"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551663"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>ASP.NET Core로 Web API 만들기
 
@@ -440,3 +440,4 @@ public IActionResult CreateProduct(Product product)
 * <xref:web-api/advanced/formatting>
 * <xref:tutorials/web-api-help-pages-using-swagger>
 * <xref:mvc/controllers/routing>
+* [Microsoft Learn: ASP.NET Core를 사용하여 웹 API 만들기](/learn/modules/build-web-api-aspnet-core/)
