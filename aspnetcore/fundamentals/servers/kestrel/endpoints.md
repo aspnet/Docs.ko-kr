@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel/endpoints
-ms.openlocfilehash: 5fec573013da5bcb5039b7a189fd84d964349b3a
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: f9d82409f4b31a5564c7cdfa48beb303d784e213
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658744"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057150"
 ---
 # <a name="configure-endpoints-for-the-aspnet-core-kestrel-web-server"></a>ASP.NET Core Kestrel 웹 서버의 엔드포인트 구성
 
@@ -76,24 +76,6 @@ webBuilder.ConfigureKestrel(serverOptions =>
 > [!NOTE]
 > <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureEndpointDefaults%2A>를 호출하기 **전에** <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen%2A>을 호출하여 생성된 엔드포인트는 기본값이 적용되지 않습니다.
 
-## <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults(Action\<HttpsConnectionAdapterOptions>)
-
-각 HTTPS 엔드포인트에 대해 실행할 구성 `Action`을 지정합니다. `ConfigureHttpsDefaults`의 여러 차례 호출은 `Action`에 앞서 마지막으로 지정된 `Action`으로 바꿉니다.
-
-```csharp
-webBuilder.ConfigureKestrel(serverOptions =>
-{
-    serverOptions.ConfigureHttpsDefaults(listenOptions =>
-    {
-        // certificate is an X509Certificate2
-        listenOptions.ServerCertificate = certificate;
-    });
-});
-```
-
-> [!NOTE]
-> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults%2A>를 호출하기 **전에** <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen%2A>을 호출하여 생성된 엔드포인트는 기본값이 적용되지 않습니다.
-
 ## <a name="configureiconfiguration"></a>Configure(IConfiguration)
 
 입력으로 <xref:Microsoft.Extensions.Configuration.IConfiguration>을 사용하는 Kestrel를 설정하기 위한 구성 로더를 만듭니다. 구성은 Kestrel용 구성 섹션에 대해 범위를 지정해야 합니다.
@@ -118,6 +100,24 @@ webBuilder.ConfigureKestrel(serverOptions =>
   }
 }
 ```
+
+## <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults(Action\<HttpsConnectionAdapterOptions>)
+
+각 HTTPS 엔드포인트에 대해 실행할 구성 `Action`을 지정합니다. `ConfigureHttpsDefaults`의 여러 차례 호출은 `Action`에 앞서 마지막으로 지정된 `Action`으로 바꿉니다.
+
+```csharp
+webBuilder.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ConfigureHttpsDefaults(listenOptions =>
+    {
+        // certificate is an X509Certificate2
+        listenOptions.ServerCertificate = certificate;
+    });
+});
+```
+
+> [!NOTE]
+> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults%2A>를 호출하기 **전에** <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen%2A>을 호출하여 생성된 엔드포인트는 기본값이 적용되지 않습니다.
 
 ## <a name="listenoptionsusehttps"></a>ListenOptions.UseHttps
 
@@ -335,6 +335,21 @@ SNI 지원에는 다음 항목이 필요합니다.
 * 대상 프레임워크 `netcoreapp2.1` 이상에서 실행합니다. `net461` 이상에서 콜백이 호출되지만 `name`는 항상 `null`입니다. 클라이언트가 TLS 핸드셰이크에서 호스트 이름 매개 변수를 제공하지 않는 경우 `name`은 또한 `null`입니다.
 * 모든 웹 사이트는 동일한 Kestrel 인스턴스에서 실행합니다. Kestrel은 역방향 프록시 없이 여러 인스턴스에서 IP 주소와 포트를 공유하도록 지원하지 않습니다.
 
+## <a name="ssltls-protocols"></a>SSL/TLS 프로토콜
+
+SSL 프로토콜은 두 피어(일반적으로 클라이언트와 서버) 간 트래픽 암호화 및 암호 해독에 사용되는 프로토콜입니다.
+
+```csharp
+webBuilder.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ConfigureHttpsDefaults(listenOptions =>
+    {
+        listenOptions.SslProtocols = SslProtocols.Tls13;
+    });
+});
+```
+
+기본 값인 `SslProtocols.None`은 Kestrel이 최상의 프로토콜을 선택하는 기본값을 운영 체제로 사용하도록 합니다. 프로토콜을 선택해야 할 특별한 이유가 없으면 기본값을 사용합니다.
 ## <a name="connection-logging"></a>연결 로깅
 
 <xref:Microsoft.AspNetCore.Hosting.ListenOptionsConnectionLoggingExtensions.UseConnectionLogging%2A>을 호출하여 연결에 대한 바이트 수준 통신을 위한 디버그 수준을 내보냅니다. 연결 로깅은 낮은 수준 통신(예: TLS 암호화 중에, 프록시 뒤에서 등)에서 문제 해결을 진행하는 데 유용합니다. `UseConnectionLogging`이 `UseHttps` 앞에 오면 암호화된 트래픽이 로깅됩니다. `UseConnectionLogging`이 `UseHttps` 뒤에 오면 암호 해독된 트래픽이 로깅됩니다. 이는 기본 제공 [연결 미들웨어](#connection-middleware)입니다.

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 53b702cddca778e06e617df3798bffb21677d36b
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: ca42b611a61fc394655e396f914e8e050c578e6a
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751652"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530088"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>ASP.NET Core Blazor의 .NET 메서드에서 JavaScript 함수 호출
 
@@ -523,14 +523,14 @@ export function showPrompt(message) {
 }
 ```
 
-위의 JavaScript 모듈을 .NET 라이브러리에 정적 웹 자산(`wwwroot/exampleJsInterop.js`)으로 추가한 다음, <xref:Microsoft.JSInterop.IJSRuntime> 서비스를 사용하여 .NET 코드로 모듈을 가져옵니다. 다음 예제에서는 서비스가 `js`(표시되지 않음)으로 삽입됩니다.
+위의 JavaScript 모듈을 .NET 라이브러리에 정적 웹 자산(`wwwroot/exampleJsInterop.js`)으로 추가한 다음, <xref:Microsoft.JSInterop.IJSRuntime> 서비스에서 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A>를 호출하여 .NET 코드로 모듈을 가져옵니다. 다음 예제에서는 서비스가 `js`(표시되지 않음)으로 삽입됩니다.
 
 ```csharp
 var module = await js.InvokeAsync<IJSObjectReference>(
     "import", "./_content/MyComponents/exampleJsInterop.js");
 ```
 
-위 예제에서 `import` 식별자는 JavaScript 모듈을 가져오기 위해 특별히 사용되는 특수 식별자입니다. 안정적인 정적 웹 자산 경로 `./_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}`를 사용하여 모듈을 지정합니다. JavaScript 파일의 올바른 정적 자산 경로를 만들려면 현재 디렉터리의 패스 세그먼트(`./`)가 필요합니다. `{LIBRARY NAME}` 자리 표시자는 라이브러리 이름입니다. `{PATH UNDER WWWROOT}` 자리 표시자는 `wwwroot` 아래의 스크립트에 대한 경로입니다.
+위 예제에서 `import` 식별자는 JavaScript 모듈을 가져오기 위해 특별히 사용되는 특수 식별자입니다. 안정적인 정적 웹 자산 경로 `./_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}`를 사용하여 모듈을 지정합니다. JavaScript 파일의 올바른 정적 자산 경로를 만들려면 현재 디렉터리의 패스 세그먼트(`./`)가 필요합니다. 모듈을 동적으로 가져오려면 네트워크 요청이 필요하므로 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A>를 호출하여 비동기적으로 수행해야 합니다. `{LIBRARY NAME}` 자리 표시자는 라이브러리 이름입니다. `{PATH UNDER WWWROOT}` 자리 표시자는 `wwwroot` 아래의 스크립트에 대한 경로입니다.
 
 <xref:Microsoft.JSInterop.IJSRuntime>은 모듈을 `IJSObjectReference`로 가져와 .NET 코드에서 JavaScript 개체에 대한 참조를 나타냅니다. `IJSObjectReference`를 사용하여 모듈에서 내보낸 JavaScript 함수를 호출합니다.
 

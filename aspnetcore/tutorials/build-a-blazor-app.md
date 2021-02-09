@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 6659b075f54292d9546466919f6842b920e6ece1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 106e1119db777074b5eae24f5d7e216e6127ca13
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97808740"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238309"
 ---
-# <a name="build-a-no-locblazor-todo-list-app"></a>Blazor 할 일 목록 앱 빌드
+# <a name="build-a-blazor-todo-list-app"></a>Blazor 할 일 목록 앱 빌드
 
 작성자: [Daniel Roth](https://github.com/danroth27) 및 [Luke Latham](https://github.com/guardrex)
 
@@ -54,7 +54,7 @@ ms.locfileid: "97808740"
 
 ::: moniker-end
 
-## <a name="create-a-todo-list-no-locblazor-app"></a>할 일 목록 Blazor 앱 만들기
+## <a name="create-a-todo-list-blazor-app"></a>할 일 목록 Blazor 앱 만들기
 
 1. 명령 셸에서 `TodoList`라는 새 Blazor 앱을 만듭니다.
 
@@ -108,6 +108,12 @@ ms.locfileid: "97808740"
    `TodoItem.cs`:
 
    [!code-csharp[](build-a-blazor-app/samples_snapshot/TodoItem.cs)]
+   
+   > [!NOTE]
+   > Visual Studio를 사용하여 `ToDoItem.cs` 파일 및 `ToDoItem` 클래스를 만드는 경우 다음 방식 중 하나를 사용합니다.
+   >
+   > * Visual Studio가 클래스에 대해 생성하는 네임스페이스를 제거합니다.
+   > * 앞의 코드 블록에 있는 **복사** 단추를 사용하여 Visual Studio가 생성한 파일의 모든 콘텐츠를 바꿉니다.
 
 1. `Todo` 구성 요소로 돌아가서 다음 작업을 수행합니다.
 

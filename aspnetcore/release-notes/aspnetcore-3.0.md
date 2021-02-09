@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 235daac5c08248ca2052de6b44e66a8162ce23ad
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 161d6aeefe1882b86ce97cdcfa7e5b23048693f0
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93051241"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217507"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>ASP.NET Core 3.0의 새로운 기능
 
@@ -53,11 +53,11 @@ Blazor 프레임워크 지원 시나리오:
 
 Blazor는 UI 업데이트 적용 방법에서 구성 요소 렌더링 논리를 분리합니다. Blazor Server에서는 ASP.NET Core 앱의 서버에서 Razor 구성 요소를 호스팅할 수 있도록 지원합니다. UI 업데이트는 SignalR 연결을 통해 처리됩니다. Blazor Server는 ASP.NET Core 3.0에서 지원됩니다.
 
-### <a name="no-locblazor-webassembly-preview"></a>Blazor WebAssembly(미리 보기)
+### <a name="blazor-webassembly-preview"></a>Blazor WebAssembly(미리 보기)
 
 Blazor 앱은 WebAssembly 기반 .NET 런타임을 사용하여 브라우저에서 직접 실행할 수도 있습니다. Blazor WebAssembly는 미리 보기로 제공되며, ASP.NET Core 3.0에서 지원되지 ‘않습니다’. Blazor WebAssembly는 ASP.NET Core의 이후 릴리스에서 지원될 예정입니다.
 
-### <a name="no-locrazor-components"></a>Razor 구성 요소
+### <a name="razor-components"></a>Razor 구성 요소
 
 Blazor 앱은 구성 요소에서 빌드됩니다. 구성 요소는 페이지, 대화 상자 또는 양식과 같은 UI(사용자 인터페이스)의 자체 포함 청크입니다. 구성 요소는 UI 렌더링 논리 및 클라이언트 쪽 이벤트 처리기를 정의하는 일반적인 .NET 클래스입니다. JavaScript 없이 풍부한 대화형 웹앱을 만들 수 있습니다.
 
@@ -324,14 +324,14 @@ ASP.NET Core 3.0은 이제 JSON 직렬화를 위해 기본적으로 <xref:System
 
 Json.NET을 ASP.NET Core 3.0에 추가하려면 [Newtonsoft.Json 기반 JSON 형식 지원](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support)을 참조하세요.
 
-## <a name="new-no-locrazor-directives"></a>새 Razor 지시문
+## <a name="new-razor-directives"></a>새 Razor 지시문
 
 다음 목록에는 새 Razor 지시문이 포함되어 있습니다.
 
 * [`@attribute`](xref:mvc/views/razor#attribute): `@attribute` 지시문은 지정된 특성을 생성된 페이지 또는 보기의 클래스에 추가합니다. 예: `@attribute [Authorize]`.
 * [`@implements`](xref:mvc/views/razor#implements): `@implements` 지시문은 생성된 클래스의 인터페이스를 구현합니다. 예: `@implements IDisposable`.
 
-## <a name="no-locidentityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4의 웹 API 및 SPA에 대한 인증 및 권한 부여 지원
+## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4의 웹 API 및 SPA에 대한 인증 및 권한 부여 지원
 
 ASP.NET Core 3.0에서는 웹 API 권한 부여에 대한 지원을 사용하여 SPA(단일 페이지 앱)의 인증을 제공합니다. 사용자를 인증하고 저장하기 위한 ASP.NET Core Identity는 OpenID Connect 구현을 위해 [IdentityServer4](https://identityserver.io/)와 통합됩니다.
 
@@ -376,7 +376,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 본 사용자 계정은 인증서 속성으로부터 생성됩니다. 사용자 계정에는 해당 계정을 보완하거나 대체할 수 있게 해주는 이벤트가 포함되어 있습니다. 자세한 내용은 <xref:security/authentication/certauth>를 참조하세요.
 
-[Windows 인증](/windows-server/security/windows-authentication/windows-authentication-overview)이 Linux 및 macOS로 확장되었습니다. 이전 버전에서 Windows 인증은 [IIS](xref:host-and-deploy/iis/index) 및 [HttpSys](xref:fundamentals/servers/httpsys)로 제한되었습니다. ASP.NET Core 3.0에서 [Kestrel](xref:fundamentals/servers/kestrel)은 Windows 도메인 가입 호스트로 Negotiate, [Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview), [NTLM on Windows](/windows-server/security/kerberos/ntlm-overview), Linux 및 macOS를 사용할 수 있습니다. 이러한 인증 체계의 Kestrel 지원은 [Microsoft.AspNetCore.Authentication.Negotiate NuGet](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate) 패키지에서 제공합니다. 다른 인증 서비스와 마찬가지로 인증 앱 전체를 구성한 다음 해당 서비스를 구성합니다.
+[Windows 인증](/windows-server/security/windows-authentication/windows-authentication-overview)이 Linux 및 macOS로 확장되었습니다. 이전 버전에서 Windows 인증은 [IIS](xref:host-and-deploy/iis/index) 및 [HTTP.sys](xref:fundamentals/servers/httpsys)로 제한되었습니다. ASP.NET Core 3.0에서 [Kestrel](xref:fundamentals/servers/kestrel)은 Windows 도메인 가입 호스트로 Negotiate, [Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview), [NTLM on Windows](/windows-server/security/kerberos/ntlm-overview), Linux 및 macOS를 사용할 수 있습니다. 이러한 인증 체계의 Kestrel 지원은 [Microsoft.AspNetCore.Authentication.Negotiate NuGet](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate) 패키지에서 제공합니다. 다른 인증 서비스와 마찬가지로 인증 앱 전체를 구성한 다음 해당 서비스를 구성합니다.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

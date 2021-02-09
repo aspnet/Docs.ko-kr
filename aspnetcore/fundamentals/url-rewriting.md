@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: e7bd5f4d61661dd23eb0907f896d0d32b7799aac
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 55993f951bfe910fb179fdb25b8d04f81d4ee2c9
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93061303"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057462"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core에서 URL 재작성 미들웨어
 
@@ -290,7 +290,7 @@ IIS URL 재작성 모듈에 적용되는 것과 동일한 규칙 세트를 사�
 
 #### <a name="unsupported-features"></a>지원되지 않는 기능
 
-ASP.NET Core 2.x로 출시된 미들웨어는 다음과 같은 IIS URL 재작성 모듈 기능을 지원하지 않습니다.
+미들웨어는 다음과 같은 IIS URL 재작성 모듈 기능을 지원하지 않습니다:
 
 * 아웃바운드 규칙
 * 사용자 지정 서버 변수

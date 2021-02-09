@@ -105,9 +105,9 @@
         - name: TypeScript를 사용한 SignalR
           displayName: tutorial
           uid: tutorials/signalr-typescript-webpack
-        - name: Blazor WebAssembly를 사용한 SignalR
+        - name: Blazor를 사용한 SignalR
           displayName: tutorial
-          uid: tutorials/signalr-blazor-webassembly
+          uid: tutorials/signalr-blazor
     - name: 원격 프로시저 호출 앱
       items:
         - name: gRPC 서비스 시작
@@ -308,8 +308,8 @@
           items:
             - name: Blazor 할 일 목록 앱 빌드
               uid: tutorials/build-a-blazor-app
-            - name: Blazor WebAssembly를 사용한 SignalR
-              uid: tutorials/signalr-blazor-webassembly
+            - name: Blazor를 사용한 SignalR
+              uid: tutorials/signalr-blazor
         - name: 프로젝트 구조
           uid: blazor/project-structure
         - name: 기본 사항
@@ -625,8 +625,8 @@
           uid: tutorials/signalr
         - name: TypeScript를 사용한 SignalR
           uid: tutorials/signalr-typescript-webpack
-        - name: Blazor WebAssembly를 사용한 SignalR
-          uid: tutorials/signalr-blazor-webassembly
+        - name: Blazor를 사용한 SignalR
+          uid: tutorials/signalr-blazor
     - name: 샘플
       href: 'https://github.com/aspnet/SignalR-samples'
       displayName: signalr

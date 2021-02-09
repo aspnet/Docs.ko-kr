@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: e873fdd201cf0cdc809030fde30c6a8da2899861
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 67a63f1b4f705a4857dea2e6d1a942d4f21469f5
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751557"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057098"
 ---
 # <a name="aspnet-core-blazor-data-binding"></a>ASP.NET Core Blazor 데이터 바인딩
 
@@ -146,7 +146,7 @@ Blazor에서는 기본적으로 날짜 형식을 지정할 수 있도록 지원�
 
 일반적인 시나리오는 자식 구성 요소의 속성을 부모의 속성에 바인딩하는 것입니다. 여러 수준의 바인딩이 동시에 발생하기 때문에 이 시나리오를 *체인 바인딩* 이라고 합니다.
 
-[구성 요소 매개 변수](xref:blazor/components/index#component-parameters)는 `@bind-{PROPERTY OR FIELD}` 구문을 사용하여 부모 구성 요소의 속성 및 필드 바인딩을 허용합니다.
+[구성 요소 매개 변수](xref:blazor/components/index#component-parameters)는 `@bind-{PROPERTY}` 구문을 사용하여 부모 구성 요소의 속성 바인딩을 허용합니다.
 
 자식 구성 요소에 [`@bind`](xref:mvc/views/razor#bind) 구문을 사용하여 체인 바인딩을 구현할 수 없습니다. 자식 구성 요소에서 부모의 속성 업데이트를 지원하려면 이벤트 처리기와 값을 별도로 지정해야 합니다.
 

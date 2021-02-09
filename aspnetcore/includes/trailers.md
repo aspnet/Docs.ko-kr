@@ -1,4 +1,4 @@
-HTTP 트레일러는 응답 본문이 전송된 후에 전송된다는 점을 제외하고 HTTP 헤더와 유사합니다. IIS 및 HTTP.SYS의 경우 HTTP/2 응답 트레일러만 지원됩니다.
+HTTP 트레일러는 응답 본문이 전송된 후에 전송된다는 점을 제외하고 HTTP 헤더와 유사합니다. IIS 및 HTTP.sys의 경우 HTTP/2 응답 트레일러만 지원됩니다.
 
 ```csharp
 if (httpContext.Response.SupportsTrailers())

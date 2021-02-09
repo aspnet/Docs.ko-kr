@@ -5,7 +5,7 @@ description: IHttpClientFactory 인터페이스를 사용하여 ASP.NET Core에�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/09/2020
+ms.date: 1/21/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/http-requests
-ms.openlocfilehash: 34c35daac3da845bac9156fe96078df7902a4cd0
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1cf3029452f87a396847f969f0f3136a75874752
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059496"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057332"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>ASP.NET Core에서 IHttpClientFactory를 사용하여 HTTP 요청 만들기
 
 ::: moniker range=">= aspnetcore-3.0"
 
-작성자: [Glenn Condron](https://github.com/glennc), [Ryan Nowak](https://github.com/rynowak),  [Steve Gordon](https://github.com/stevejgordon), [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Kirk Larkin](https://github.com/serpent5)
+작성자: [Kirk Larkin](https://github.com/serpent5), [Steve Gordon](https://github.com/stevejgordon), [Glenn Condron](https://github.com/glennc) 및 [Ryan Nowak](https://github.com/rynowak).
 
 앱에서 <xref:System.Net.Http.IHttpClientFactory>를 등록하여 <xref:System.Net.Http.HttpClient> 인스턴스를 구성하고 만드는 데 사용할 수 있습니다. `IHttpClientFactory`는 다음과 같은 이점을 제공합니다.
 
@@ -58,7 +58,7 @@ ms.locfileid: "93059496"
 
 `AddHttpClient`를 호출하여 `IHttpClientFactory`를 등록할 수 있습니다.
 
-[!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
+[!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet1&highlight=13)]
 
 [종속성 주입(DI)](xref:fundamentals/dependency-injection)을 사용하여 `IHttpClientFactory`를 요청할 수 있습니다. 다음 코드는 `IHttpClientFactory`를 사용하여 `HttpClient` 인스턴스를 만듭니다.
 
@@ -238,16 +238,15 @@ public class ValuesController : ControllerBase
 
 `HttpClient`에는 나가는 HTTP 요청을 위해 함께 연결될 수 있는 위임 처리기라는 개념이 있습니다. `IHttpClientFactory`:
 
-* 각 명명된 클라이언트에 적용할 처리기를 쉽게 정의할 수 있습니다.
-* 나가는 요청 미들웨어 파이프라인을 만들기 위한 여러 처리기의 등록 및 연결을 지원합니다. 이러한 처리기 각각은 나가는 요청 전후에 작업을 수행할 수 있습니다. 이 패턴은
-
-  * ASP.NET Core의 인바운드 미들웨어 파이프라인과 비슷합니다.
-  * 다음과 같은 HTTP 요청을 둘러싼 횡단 관심사를 관리하기 위한 메커니즘을 제공합니다.
-
-    * 캐싱
-    * 오류 처리
-    * 직렬화
-    * 로깅
+  * 각 명명된 클라이언트에 적용할 처리기를 쉽게 정의할 수 있습니다.
+  * 나가는 요청 미들웨어 파이프라인을 만들기 위한 여러 처리기의 등록 및 연결을 지원합니다. 이러한 처리기 각각은 나가는 요청 전후에 작업을 수행할 수 있습니다. 이 패턴은
+  
+    * ASP.NET Core의 인바운드 미들웨어 파이프라인과 비슷합니다.
+    * 다음과 같은 HTTP 요청을 둘러싼 횡단 관심사를 관리하기 위한 메커니즘을 제공합니다.
+      * 캐싱
+      * 오류 처리
+      * 직렬화
+      * 로깅
 
 위임 처리기를 만들려면 다음을 수행합니다.
 
@@ -262,13 +261,31 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup2.cs?name=snippet1)]
 
-위의 코드에서 `ValidateHeaderHandler`는 DI에 등록됩니다. `IHttpClientFactory`는 각 처리기에 대해 별도의 DI 범위를 만듭니다. 처리기는 모든 범위의 서비스에서 사용할 수 있습니다. 처리기가 삭제되면 처리기가 사용하는 서비스가 삭제됩니다.
-
-일단 등록되면 처리기의 형식을 전달하여 <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*>를 호출할 수 있습니다.
+위의 코드에서 `ValidateHeaderHandler`는 DI에 등록됩니다. 일단 등록되면 처리기의 형식을 전달하여 <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*>를 호출할 수 있습니다.
 
 여러 처리기를 실행해야 하는 순서에 따라 등록할 수 있습니다. 각 처리기는 최종 `HttpClientHandler`가 요청을 실행할 때까지 다음 처리기를 래핑합니다.
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet6)]
+
+### <a name="use-di-in-outgoing-request-middleware"></a>나가는 요청 미들웨어에 DI 사용
+
+`IHttpClientFactory`는 새 위임 처리기를 만들 때 처리기의 생성자 매개 변수를 충족시키기 위해 DI를 사용합니다. `IHttpClientFactory`는 각 처리기에 대해 **별도의** DI 범위를 만들기 때문에 처리기가 범위가 지정된 서비스를 사용할 때 놀라운 동작이 발생할 수 있습니다.
+
+예를 들어 다음의 식별자가 포함된 연산자로 작업을 나타내는 다음의 인터페이스 및 구현을 고려합니다. `OperationId`:
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Models/OperationScoped.cs?name=snippet_Types)]
+
+이름에서 알 수 있듯 `IOperationScoped`는 범위가 지정된 수명을 사용하여 DI에 등록됩니다.
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Startup.cs?name=snippet_IOperationScoped&highlight=18,26)]
+
+다음 위임 처리기는 `IOperationScoped`를 사용하여 `X-OPERATION-ID` 나가는 요청의 헤더를 설정합니다.
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Handlers/OperationHandler.cs?name=snippet_Class&highlight=13)]
+
+[`HttpRequestsSample` 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples/3.x/HttpRequestsSample)]에서 `/Operation`으로 이동한 뒤 페이지를 새로 고칩니다. 요청 범위 값은 각 요청마다 변경되지만 처리기 범위 값은 5초마다 변경됩니다.
+
+처리기는 모든 범위의 서비스에서 사용할 수 있습니다. 처리기가 삭제되면 처리기가 사용하는 서비스가 삭제됩니다.
 
 다음 방법 중 하나를 사용하여 메시지 처리기와 요청별 상태를 공유하세요.
 
@@ -363,7 +380,7 @@ DI 지원 앱에서 `IHttpClientFactory`을(를) 사용하면 다음이 방지�
 - `SocketsHttpHandler`은(는) `HttpClient` 인스턴스 간에 연결을 공유합니다. 이와 같이 공유하면 소켓이 소모되지 않도록 합니다.
 - 오래된 DNS 문제를 방지하기 위해 `SocketsHttpHandler`에서 `PooledConnectionLifetime`에 따라 연결을 순환합니다.
 
-### <a name="no-loccookies"></a>Cookies
+### <a name="cookies"></a>Cookies
 
 풀링된 `HttpMessageHandler` 인스턴스는 `CookieContainer` 개체를 공유합니다. 예상치 못한 `CookieContainer` 개체 공유로 잘못된 코드가 발생하는 경우가 많습니다. cookie가 필요한 앱의 경우 다음 중 하나를 고려하세요.
 
@@ -681,7 +698,7 @@ DI 지원 앱에서 `IHttpClientFactory`을(를) 사용하면 다음이 방지�
 - `SocketsHttpHandler`은(는) `HttpClient` 인스턴스 간에 연결을 공유합니다. 이와 같이 공유하면 소켓이 소모되지 않도록 합니다.
 - 오래된 DNS 문제를 방지하기 위해 `SocketsHttpHandler`에서 `PooledConnectionLifetime`에 따라 연결을 순환합니다.
 
-### <a name="no-loccookies"></a>Cookies
+### <a name="cookies"></a>Cookies
 
 풀링된 `HttpMessageHandler` 인스턴스는 `CookieContainer` 개체를 공유합니다. 예상치 못한 `CookieContainer` 개체 공유로 잘못된 코드가 발생하는 경우가 많습니다. cookie가 필요한 앱의 경우 다음 중 하나를 고려하세요.
 
@@ -989,7 +1006,7 @@ DI 지원 앱에서 `IHttpClientFactory`을(를) 사용하면 다음이 방지�
 - `SocketsHttpHandler`은(는) `HttpClient` 인스턴스 간에 연결을 공유합니다. 이와 같이 공유하면 소켓이 소모되지 않도록 합니다.
 - 오래된 DNS 문제를 방지하기 위해 `SocketsHttpHandler`에서 `PooledConnectionLifetime`에 따라 연결을 순환합니다.
 
-### <a name="no-loccookies"></a>Cookies
+### <a name="cookies"></a>Cookies
 
 풀링된 `HttpMessageHandler` 인스턴스는 `CookieContainer` 개체를 공유합니다. 예상치 못한 `CookieContainer` 개체 공유로 잘못된 코드가 발생하는 경우가 많습니다. cookie가 필요한 앱의 경우 다음 중 하나를 고려하세요.
 

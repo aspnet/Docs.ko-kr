@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 0753ef0f1cde7bbb45ecc09b97fecb5ce364811c
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: 58a87bc5413523fdf052a9e1c41196bb8b0ab457
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024654"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99529971"
 ---
-# <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>ASP.NET Core Blazor WebAssembly 성능 모범 사례
+# <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>ASP.NET Core Blazor WebAssembly 성능 모범 사례
 
 작성자: [Pranav Krishnamoorthy](https://github.com/pranavkm) 및 [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -191,7 +191,7 @@ Blazor WebAssembly는 세심하게 디자인되고 최적화되어 가장 현실
 @RenderWelcomeInfo
 
 @code {
-    RenderFragment RenderWelcomeInfo = __builder =>
+    private RenderFragment RenderWelcomeInfo = __builder =>
     {
         <div>
             <p>Welcome to your new app!</p>
@@ -221,12 +221,12 @@ public static RenderFragment SayHello = __builder =>
 <div class="chat">
     @foreach (var message in messages)
     {
-        @DisplayChatMessage(message)
+        @ChatMessageDisplay(message)
     }
 </div>
 
 @code {
-    RenderFragment<ChatMessage> DisplayChatMessage = message => __builder =>
+    private RenderFragment<ChatMessage> ChatMessageDisplay = message => __builder =>
     {
         <div class="chat-message">
             <span class="author">@message.Author</span>
@@ -237,6 +237,17 @@ public static RenderFragment SayHello = __builder =>
 ```
 
 이 접근 방식은 구성 요소별 오버헤드 없이 렌더링 논리를 다시 사용하는 이점을 제공합니다. 그러나 UI의 하위 트리를 독립적으로 새로 고칠 수 있는 이점이 없으며 구성 요소 경계가 없기 때문에 부모를 렌더링할 때 UI의 해당 하위 트리 렌더링을 건너뛰는 기능도 없습니다.
+
+다음 예제의 `TitleTemplate`과 같이 필드 이니셜라이저가 참조할 수 없는 비정적 필드, 메서드 또는 속성의 경우, <xref:Microsoft.AspNetCore.Components.RenderFragment>의 필드 대신 속성을 사용합니다.
+
+```csharp
+protected RenderFragment DisplayTitle => __builder =>
+{
+    <div>
+        @TitleTemplate
+    </div>   
+};
+```
 
 #### <a name="dont-receive-too-many-parameters"></a>너무 많은 매개 변수를 수신하지 않음
 

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: 07e2f561b0e9db58780d6e8a271e32b00132b1b5
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 67f245b7f4e4aa97b30c5318c73732617aea44c7
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059522"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217572"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core에서 세계화 및 지역화
 
@@ -134,7 +134,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="supportedcultures-and-supporteduicultures"></a>SupportedCultures 및 SupportedUICultures
 
-ASP.NET Core를 사용하면 두 문화권 값 `SupportedCultures` 및 `SupportedUICultures`를 지정할 수 있습니다. `SupportedCultures`에 대한 [CultureInfo](/dotnet/api/system.globalization.cultureinfo) 개체는 날짜, 시간, 숫자 및 통화 형식과 같은 문화권 종속 함수의 결과를 결정합니다. `SupportedCultures`는 또한 텍스트, 대/소문자 규칙 및 문자열 비교의 정렬 순서를 결정합니다. 서버가 문화권을 가져오는 방법에 대한 자세한 내용은 [CultureInfo.CurrentCulture](/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture)를 참조하세요. `SupportedUICultures`는 [ResourceManager](/dotnet/api/system.resources.resourcemanager)에서 조회하는 번역된 문자열( *.resx* 파일에서)을 결정합니다. `ResourceManager`는 `CurrentUICulture`에서 결정되는 문화권별 문자열을 단순히 조회합니다. .NET의 모든 스레드에는 `CurrentCulture` 및 `CurrentUICulture` 개체가 있습니다. ASP.NET Core는 문화권 종속 기능을 렌더링할 때 이러한 값을 검사합니다. 예를 들어 현재 스레드의 문화권이 "en-US"(영어, 미국)로 설정되어 있으면 `DateTime.Now.ToLongDateString()`은 "Thursday, February 18, 2016"을 표시하지만 `CurrentCulture`가 "es-ES"(스페인어, 스페인)로 설정되어 있으면 출력은 "jueves, 18 de febrero de 2016"이 됩니다.
+ASP.NET Core를 사용하면 두 문화권 값 <xref:Microsoft.AspNetCore.Builder.RequestLocalizationOptions.SupportedCultures> 및 <xref:Microsoft.AspNetCore.Builder.RequestLocalizationOptions.SupportedUICultures>를 지정할 수 있습니다. `SupportedCultures`에 대한 <xref:System.Globalization.CultureInfo> 개체는 날짜, 시간, 숫자 및 통화 형식과 같은 문화권 종속 함수의 결과를 결정합니다. `SupportedCultures`는 또한 텍스트, 대/소문자 규칙 및 문자열 비교의 정렬 순서를 결정합니다. 서버가 문화권을 가져오는 방법에 대한 자세한 내용은 <xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=nameWithType> 및 <xref:System.Globalization.CultureInfo.CurrentUICulture?displayProperty=nameWithType>를 참조하세요. `SupportedUICultures`는 <xref:System.Resources.ResourceManager>에서 조회하는 번역된 문자열( `.resx` 파일에서)을 결정합니다. `ResourceManager`는 `CurrentUICulture`에서 결정되는 문화권별 문자열을 조회합니다. .NET의 모든 스레드에는 `CurrentCulture` 및 `CurrentUICulture` 개체가 있습니다. 프레임워크는 문화권 종속 기능을 렌더링할 때 이러한 값을 검사합니다. 현재 스레드의 문화권이 `en-US`(영어, 미국)로 설정된 경우, `DateTime.Now.ToLongDateString()`에는 `Thursday, February 18, 2016`이 표시되지만 `CurrentCulture`가 `es-ES`(스페인어, 스페인)로 설정된 경우 출력은 `jueves, 18 de febrero de 2016`입니다.
 
 ## <a name="resource-files"></a>리소스 파일
 
@@ -177,7 +177,7 @@ Razor 뷰에서 `@inject IViewLocalizer`를 사용하는 리소스 파일은 유
 
 ### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
 
-[RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) 속성은 어셈블리의 루트 네임 스페이스가 어셈블리 이름과 다른 경우 어셈블리의 루트 네임 스페이스를 제공합니다. 
+<xref:Microsoft.Extensions.Localization.RootNamespaceAttribute> 속성은 어셈블리의 루트 네임 스페이스가 어셈블리 이름과 다른 경우 어셈블리의 루트 네임 스페이스를 제공합니다. 
 
 > [!WARNING]
 > 이 오류는 프로젝트 이름이 유효한 .NET 식별자가 아닌 경우 발생할 수 있습니다. 예를 들어 `my-project-name.csproj`가 루트 네임스페이스 `my_project_name`과 어셈블리 이름 `my-project-name`을 사용하면 이 오류가 발생합니다. 
@@ -261,7 +261,7 @@ using Microsoft.Extensions.Localization;
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
 프로덕션 앱은 종종 메커니즘을 제공하여 ASP.NET Core 문화권 cookie로 문화권을 설정합니다. `MakeCookieValue` 메서드를 사용하여 cookie를 만듭니다.
 
@@ -531,7 +531,7 @@ Razor 뷰에서 `@inject IViewLocalizer`를 사용하는 리소스 파일은 유
 
 ### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
 
-[RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) 속성은 어셈블리의 루트 네임 스페이스가 어셈블리 이름과 다른 경우 어셈블리의 루트 네임 스페이스를 제공합니다. 
+<xref:Microsoft.Extensions.Localization.RootNamespaceAttribute> 속성은 어셈블리의 루트 네임 스페이스가 어셈블리 이름과 다른 경우 어셈블리의 루트 네임 스페이스를 제공합니다. 
 
 > [!WARNING]
 > 이 오류는 프로젝트 이름이 유효한 .NET 식별자가 아닌 경우 발생할 수 있습니다. 예를 들어 `my-project-name.csproj`가 루트 네임스페이스 `my_project_name`과 어셈블리 이름 `my-project-name`을 사용하면 이 오류가 발생합니다. 
@@ -617,7 +617,7 @@ http://localhost:5000/?culture=es-MX&ui-culture=es-MX
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
 프로덕션 앱은 종종 메커니즘을 제공하여 ASP.NET Core 문화권 cookie로 문화권을 설정합니다. `MakeCookieValue` 메서드를 사용하여 cookie를 만듭니다.
 
@@ -886,7 +886,7 @@ Razor 뷰에서 `@inject IViewLocalizer`를 사용하는 리소스 파일은 유
 
 ### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
 
-[RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) 속성은 어셈블리의 루트 네임 스페이스가 어셈블리 이름과 다른 경우 어셈블리의 루트 네임 스페이스를 제공합니다. 
+<xref:Microsoft.Extensions.Localization.RootNamespaceAttribute> 속성은 어셈블리의 루트 네임 스페이스가 어셈블리 이름과 다른 경우 어셈블리의 루트 네임 스페이스를 제공합니다. 
 
 > [!WARNING]
 > 이 오류는 프로젝트 이름이 유효한 .NET 식별자가 아닌 경우 발생할 수 있습니다. 예를 들어 `my-project-name.csproj`가 루트 네임스페이스 `my_project_name`과 어셈블리 이름 `my-project-name`을 사용하면 이 오류가 발생합니다. 
@@ -972,7 +972,7 @@ http://localhost:5000/?culture=es-MX&ui-culture=es-MX
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
 프로덕션 앱은 종종 메커니즘을 제공하여 ASP.NET Core 문화권 cookie로 문화권을 설정합니다. `MakeCookieValue` 메서드를 사용하여 cookie를 만듭니다.
 
