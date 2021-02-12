@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/memory
-ms.openlocfilehash: 9b19c782d1d42ddaba590f05bab31899402f681a
-ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
+ms.openlocfilehash: 19e8dc0ae4d5f8fd28d03d5be87c0b1bbf32d940
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96901225"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107222"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>ASP.NET Core 메모리 내 캐시
 
@@ -51,7 +51,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 [I
 * .NET Standard 2.0 이상을 대상으로 하는 [.net 구현](/dotnet/standard/net-standard#net-implementation-support) 예를 들어 ASP.NET Core 2.0 이상입니다.
 * .NET Framework 4.5 이상
 
-[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` 이 문서에 설명 된 대로, `System.Runtime.Caching` / `MemoryCache` ASP.NET Core에 더 잘 통합 되기 때문에이 문서에 설명 되어 있는 것이 좋습니다. 예를 들어은 `IMemoryCache` ASP.NET Core [종속성 주입](xref:fundamentals/dependency-injection)을 기본적으로 사용 합니다.
+[](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` 이 문서에 설명 된 대로, `System.Runtime.Caching` / `MemoryCache` ASP.NET Core에 더 잘 통합 되기 때문에이 문서에 설명 되어 있는 것이 좋습니다. 예를 들어은 `IMemoryCache` ASP.NET Core [종속성 주입](xref:fundamentals/dependency-injection)을 기본적으로 사용 합니다.
 
 `System.Runtime.Caching` / `MemoryCache` ASP.NET 4.x에서 ASP.NET Core로 코드를 이식할 때 호환성 브리지로를 사용 합니다.
 
@@ -125,7 +125,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 [I
 
 `MemoryCache`인스턴스는 필요에 따라 크기 제한을 지정 하 고 적용할 수 있습니다. 캐시 크기 제한에는 항목의 크기를 측정 하는 메커니즘이 없기 때문에 정의 된 측정 단위가 없습니다. 캐시 크기 제한이 설정 된 경우 모든 항목의 크기를 지정 해야 합니다. ASP.NET Core 런타임은 메모리 압력에 따라 캐시 크기를 제한 하지 않습니다. 캐시 크기를 제한 하는 것은 개발자에 게 있습니다. 지정 된 크기는 개발자가 선택 하는 단위입니다.
 
-예를 들어:
+예를 들어 다음과 같습니다.
 
 * 웹 앱이 주로 문자열을 캐싱하는 경우 각 캐시 엔트리 크기는 문자열 길이가 될 수 있습니다.
 * 앱은 모든 항목의 크기를 1로 지정 하 고, 크기 제한은 항목 수를 지정 합니다.
@@ -179,7 +179,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 [I
 
 를 사용 <xref:System.Threading.CancellationTokenSource> 하면 여러 캐시 항목을 하나의 그룹으로 제거할 수 있습니다. `using`위의 코드에서 패턴을 사용 하 여 블록 내에 만들어진 캐시 항목 `using` 은 트리거와 만료 설정을 상속 합니다.
 
-## <a name="additional-notes"></a>추가적인 참고 사항
+## <a name="additional-notes"></a>추가 참고 사항
 
 * 만료는 백그라운드에서 발생 하지 않습니다. 만료 된 항목에 대 한 캐시를 적극적으로 검색 하는 타이머가 없습니다. 캐시의 모든 작업 ( `Get` , `Set` ,)은 만료 된 `Remove` 항목에 대 한 백그라운드 검색을 트리거할 수 있습니다. `CancellationTokenSource`또한 ()의 타이머는 <xref:System.Threading.CancellationTokenSource.CancelAfter*> 항목을 제거 하 고 만료 된 항목에 대 한 검색을 트리거합니다. 다음 예에서는 등록 된 토큰에 대해 [CancellationTokenSource (TimeSpan)](/dotnet/api/system.threading.cancellationtokensource.-ctor) 을 사용 합니다. 이 토큰이 발생 하면 엔트리를 즉시 제거 하 고 제거 콜백을 발생 시킵니다.
 
@@ -199,7 +199,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 [I
 
 과 같은 [백그라운드 서비스](xref:fundamentals/host/hosted-services) 를 사용 <xref:Microsoft.Extensions.Hosting.IHostedService> 하 여 캐시를 업데이트 합니다. 백그라운드 서비스는 항목을 다시 계산 하 고 준비 된 경우에만 캐시에 할당할 수 있습니다.
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * <xref:performance/caching/distributed>
 * <xref:fundamentals/change-tokens>
@@ -235,7 +235,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 �
 * .NET Standard 2.0 이상을 대상으로 하는 [.net 구현](/dotnet/standard/net-standard#net-implementation-support) 예를 들어 ASP.NET Core 2.0 이상입니다.
 * .NET Framework 4.5 이상
 
-[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` 이 문서에 설명 된 대로, `System.Runtime.Caching` / `MemoryCache` ASP.NET Core에 더 잘 통합 되기 때문에이 문서에 설명 되어 있는 것이 좋습니다. 예를 들어은 `IMemoryCache` ASP.NET Core [종속성 주입](xref:fundamentals/dependency-injection)을 기본적으로 사용 합니다.
+[](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` 이 문서에 설명 된 대로, `System.Runtime.Caching` / `MemoryCache` ASP.NET Core에 더 잘 통합 되기 때문에이 문서에 설명 되어 있는 것이 좋습니다. 예를 들어은 `IMemoryCache` ASP.NET Core [종속성 주입](xref:fundamentals/dependency-injection)을 기본적으로 사용 합니다.
 
 `System.Runtime.Caching` / `MemoryCache` ASP.NET 4.x에서 ASP.NET Core로 코드를 이식할 때 호환성 브리지로를 사용 합니다.
 
@@ -301,7 +301,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 �
 
 `MemoryCache`인스턴스는 필요에 따라 크기 제한을 지정 하 고 적용할 수 있습니다. 캐시 크기 제한에는 항목의 크기를 측정 하는 메커니즘이 없기 때문에 정의 된 측정 단위가 없습니다. 캐시 크기 제한이 설정 된 경우 모든 항목의 크기를 지정 해야 합니다. ASP.NET Core 런타임은 메모리 압력에 따라 캐시 크기를 제한 하지 않습니다. 캐시 크기를 제한 하는 것은 개발자에 게 있습니다. 지정 된 크기는 개발자가 선택 하는 단위입니다.
 
-예를 들어:
+예를 들어 다음과 같습니다.
 
 * 웹 앱이 주로 문자열을 캐싱하는 경우 각 캐시 엔트리 크기는 문자열 길이가 될 수 있습니다.
 * 앱은 모든 항목의 크기를 1로 지정 하 고, 크기 제한은 항목 수를 지정 합니다.
@@ -355,7 +355,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 �
 
 를 사용 `CancellationTokenSource` 하면 여러 캐시 항목을 하나의 그룹으로 제거할 수 있습니다. `using`위의 코드에서 패턴을 사용 하 여 블록 내에 만들어진 캐시 항목 `using` 은 트리거와 만료 설정을 상속 합니다.
 
-## <a name="additional-notes"></a>추가적인 참고 사항
+## <a name="additional-notes"></a>추가 참고 사항
 
 * 콜백을 사용 하 여 캐시 항목을 다시 채우는 경우:
 
@@ -370,7 +370,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 �
 
 과 같은 [백그라운드 서비스](xref:fundamentals/host/hosted-services) 를 사용 <xref:Microsoft.Extensions.Hosting.IHostedService> 하 여 캐시를 업데이트 합니다. 백그라운드 서비스는 항목을 다시 계산 하 고 준비 된 경우에만 캐시에 할당할 수 있습니다.
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * <xref:performance/caching/distributed>
 * <xref:fundamentals/change-tokens>

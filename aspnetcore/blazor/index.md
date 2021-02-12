@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: bd42ba41c6f599d7c0308febbbde71e0d060cc84
-ms.sourcegitcommit: 20a41c8e40a2e69e99291e2fe18caa04c02e7109
+ms.openlocfilehash: d42136de00ccc9b7565c5ae088e1ecf4560a63c5
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99578297"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106884"
 ---
 # <a name="introduction-to-aspnet-core-blazor"></a>ASP.NET Core Blazor 소개
 
@@ -148,8 +148,9 @@ Blazor WebAssembly 앱이 빌드되고 브라우저에서 실행되는 경우:
 
 Blazor는 UI 업데이트 적용 방법에서 구성 요소 렌더링 논리를 분리합니다. *Blazor Server* 에서는 ASP.NET Core 앱의 서버에서 Razor 구성 요소를 호스팅할 수 있도록 지원합니다. UI 업데이트는 [SignalR](xref:signalr/introduction) 연결을 통해 처리됩니다.
 
-런타임은 다음을 처리합니다.
+런타임은 서버에 유지되고 다음을 처리합니다.
 
+* 앱의 C# 코드를 실행합니다.
 * 브라우저에서 서버로 UI 이벤트를 보냅니다.
 * 서버에서 다시 보낸 렌더링된 구성 요소에 UI 업데이트를 적용합니다.
 

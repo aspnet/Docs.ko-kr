@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: efc73022d0bd8c29595f9bed1c06fe07002eb54a
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 111512916cb7f0a4fc1f17648e2f9c69e366dff3
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530101"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107053"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>ASP.NET Core Razor 구성 요소 만들기 및 사용
 
@@ -268,7 +268,7 @@ namespace BlazorSample
 
 ### <a name="component-parameters"></a>구성 요소 매개 변수
 
-구성 요소에는 [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) 특성이 지정된 구성 요소 클래스의 퍼블릭 단순 또는 복합 속성을 사용하여 정의되는 구성 요소 매개 변수가 있을 수 있습니다. 특성을 사용하여 태그에서 구성 요소의 인수를 지정합니다.
+구성 요소에는 [`[Parameter]` 특성](xref:Microsoft.AspNetCore.Components.ParameterAttribute)이 있는 구성 요소 클래스의 퍼블릭 단순 속성 또는 복합 속성을 사용하여 정의되는 *구성 요소 매개 변수* 가 있을 수 있습니다. 특성을 사용하여 태그에서 구성 요소의 인수를 지정합니다.
 
 `Components/ChildComponent.razor`:
 
@@ -396,7 +396,7 @@ Razor 구성 요소 UI에 대해 <xref:Microsoft.AspNetCore.Components.RenderFra
        size="50">
 ```
 
-임의 특성을 허용하려면 <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> 속성이 `true`로 설정된 상태로 [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) 특성을 사용하여 구성 요소 매개 변수를 정의합니다.
+임의 특성을 허용하려면 <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> 속성이 `true`로 설정된 [`[Parameter]` 특성](xref:Microsoft.AspNetCore.Components.ParameterAttribute)을 사용하여 구성 요소 매개 변수를 정의합니다.
 
 ```razor
 @code {
@@ -584,7 +584,10 @@ public class NotifierService
 }
 ```
 
-위의 예제에서 `NotifierService`는 Blazor의 동기화 컨텍스트 외부에서 구성 요소의 `OnNotify` 메서드를 호출합니다. `InvokeAsync`는 올바른 컨텍스트로 전환하고 렌더링을 큐에 대기하는 데 사용됩니다. 자세한 내용은 <xref:blazor/components/rendering>를 참조하세요.
+앞의 예제에서:
+
+* `NotifierService`는 Blazor의 동기화 컨텍스트 외부에서 구성 요소의 `OnNotify` 메서드를 호출합니다. `InvokeAsync`는 올바른 컨텍스트로 전환하고 렌더링을 큐에 대기하는 데 사용됩니다. 자세한 내용은 <xref:blazor/components/rendering>를 참조하세요.
+* 구성 요소는 <xref:System.IDisposable>을 구현하고, `OnNotify` 대리자는 구성 요소가 삭제될 때 프레임워크에서 호출되는 `Dispose` 메서드에서 구독 취소됩니다. 자세한 내용은 <xref:blazor/components/lifecycle#component-disposal-with-idisposable>를 참조하세요.
 
 ## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>\@ 키를 사용하여 요소 및 구성 요소 유지
 
@@ -772,7 +775,7 @@ Blazor 프레임워크는 일반적으로 안전한 부모-자식 매개 변수 
 
 ## <a name="apply-an-attribute"></a>특성 적용
 
-[`@attribute`][7] 지시문을 사용하여 Razor 구성 요소에 특성을 적용할 수 있습니다. 다음 예제에서는 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성을 구성 요소 클래스에 적용합니다.
+[`@attribute`][7] 지시문을 사용하여 Razor 구성 요소에 특성을 적용할 수 있습니다. 다음 예제에서는 [`[Authorize]` 특성](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)을 구성 요소 클래스에 적용합니다.
 
 ```razor
 @page "/"

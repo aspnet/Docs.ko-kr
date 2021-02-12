@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: ee30ef89c5d7aeae83f23a81eb02235397c89ac2
-ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
+ms.openlocfilehash: 79457d55e0dcda342bc0017bb386c23525666657
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99238322"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107196"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core에서 필터링
 
@@ -192,12 +192,12 @@ ASP.NET Core에는 서브클래싱 및 사용자 지정할 수 있는 기본 제
 
 | 시퀀스 | 필터 범위 | 필터 메서드 |
 |:--------:|:------------:|:-------------:|
-| 1 | Global | `OnActionExecuting` |
+| 1 | 전역 | `OnActionExecuting` |
 | 2 | 컨트롤러 또는 Razor 페이지| `OnActionExecuting` |
 | 3 | 메서드 | `OnActionExecuting` |
 | 4 | 메서드 | `OnActionExecuted` |
 | 5 | 컨트롤러 또는 Razor 페이지 | `OnActionExecuted` |
-| 6 | Global | `OnActionExecuted` |
+| 6 | 전역 | `OnActionExecuted` |
 
 ### <a name="controller-level-filters"></a>컨트롤러 수준 필터
 
@@ -403,7 +403,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 리소스 필터 예제:
 
 * 이전에 살펴본 [단락 리소스 필터](#short-circuiting-resource-filter).
-* [DisableFormValueModelBindingAttribute](https://github.com/aspnet/Entropy/blob/rel/2.0.0-preview2/samples/Mvc.FileUpload/Filters/DisableFormValueModelBindingAttribute.cs):
+* [DisableFormValueModelBindingAttribute](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.FileUpload/Filters/DisableFormValueModelBindingAttribute.cs):
 
   * 모델 바인딩이 양식 데이터에 액세스하는 것을 방지합니다.
   * 대용량 파일 업로드에서 양식 데이터를 메모리로 읽어들이는 것을 방지하기 위해서 사용됩니다.
@@ -558,11 +558,11 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 `IFilterFactory.IsReusable`:
 
 * 팩터리에서 생성 된 요청 범위 외부에서 팩터리에서 만든 필터 인스턴스를 다시 사용할 수 있음을 팩터리에서 힌트 합니다.
-* Singleton 이외의 수명으로 서비스에 의존 하는 필터와 함께 사용 **하면 안 됩니다**.
+* Singleton 이외의 수명으로 서비스에 의존 하는 필터와 함께 ***사용 하면 안 됩니다.***
 
 ASP.NET Core 런타임은 다음을 보장하지 않습니다.
 
-_ 필터의 단일 인스턴스가 생성 됩니다.
+* 필터의 단일 인스턴스 생성.
 * 나중에 DI 컨테이너에서 필터가 다시 요청되지 않음.
 
 > [!WARNING] 
@@ -751,19 +751,19 @@ ASP.NET Core에는 서브클래싱 및 사용자 지정할 수 있는 기본 제
 
 | 시퀀스 | 필터 범위 | 필터 메서드 |
 |:--------:|:------------:|:-------------:|
-| 1 | Global | `OnActionExecuting` |
+| 1 | 전역 | `OnActionExecuting` |
 | 2 | 컨트롤러 | `OnActionExecuting` |
 | 3 | 메서드 | `OnActionExecuting` |
 | 4 | 메서드 | `OnActionExecuted` |
 | 5 | 컨트롤러 | `OnActionExecuted` |
-| 6 | Global | `OnActionExecuted` |
+| 6 | 전역 | `OnActionExecuted` |
 
 이 시퀀스는 다음을 보여 줍니다.
 
 * 메서드 필터는 컨트롤러 필터 내에서 중첩됩니다.
 * 컨트롤러 필터는 전역 필터 내에서 중첩됩니다.
 
-### <a name="controller-and-no-locrazor-page-level-filters"></a>컨트롤러 및 Razor 페이지 수준 필터
+### <a name="controller-and-razor-page-level-filters"></a>컨트롤러 및 Razor 페이지 수준 필터
 
 <xref:Microsoft.AspNetCore.Mvc.Controller> 기본 클래스에서 상속되는 모든 컨트롤러에는 [Controller.OnActionExecuting](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuting*), [Controller.OnActionExecutionAsync](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecutionAsync*) 및 [Controller.OnActionExecuted](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuted*)
 `OnActionExecuted` 메서드가 포함됩니다. 이러한 메서드는: 다음 메서드는
@@ -813,8 +813,8 @@ Razor페이지는 [ Razor 필터 메서드를 재정의 하 여 페이지 필터
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | 메서드 | 0 | `OnActionExecuting` |
 | 2 | 컨트롤러 | 1  | `OnActionExecuting` |
-| 3 | Global | 2  | `OnActionExecuting` |
-| 4 | Global | 2  | `OnActionExecuted` |
+| 3 | 전역 | 2  | `OnActionExecuting` |
+| 4 | 전역 | 2  | `OnActionExecuted` |
 | 5 | 컨트롤러 | 1  | `OnActionExecuted` |
 | 6 | 메서드 | 0  | `OnActionExecuted` |
 
