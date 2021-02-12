@@ -326,8 +326,10 @@
               uid: blazor/fundamentals/logging
             - name: 오류 처리
               uid: blazor/fundamentals/handle-errors
-            - name: 추가 시나리오
-              uid: blazor/fundamentals/additional-scenarios
+            - name: SignalR
+              uid: blazor/fundamentals/signalr
+            - name: 정적 파일
+              uid: blazor/fundamentals/static-files
         - name: 구성 요소
           items:
             - name: 개요
@@ -440,6 +442,8 @@
               href: blazor/security/webassembly/index.md#authentication-component
             - name: AuthorizeView
               href: blazor/security/index.md#authorizeview-component
+            - name: CascadingValue
+              href: blazor/components/cascading-values-and-parameters.md#cascadingvalue-component
             - name: InputCheckbox
               href: blazor/forms-validation.md#built-in-forms-components
             - name: InputDate
