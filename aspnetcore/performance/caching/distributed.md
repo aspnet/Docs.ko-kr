@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: 6d87c8de66bf5600189465b96dee903841106b6f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 6f89046f2e1805111dd81b3282253a72a7c6ea09
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061147"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100281021"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>ASP.NET Core 분산 캐싱
 
@@ -129,12 +129,12 @@ Table and index were created successfully.
 
 [NCache](https://github.com/Alachisoft/NCache) 는 .NET 및 .net Core에서 기본적으로 개발 된 오픈 소스 메모리 내 분산 캐시입니다. NCache는 로컬에서 작동 하 고 Azure 또는 다른 호스팅 플랫폼에서 실행 되는 ASP.NET Core 앱에 대 한 분산 캐시 클러스터로 구성 됩니다.
 
-로컬 컴퓨터에 NCache를 설치 및 구성 하려면 [NCache 시작 가이드 For Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/)를 참조 하십시오.
+로컬 컴퓨터에 NCache를 설치 및 구성 하려면 [Windows 용 시작 가이드 (.net 및 .Net Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/)를 참조 하세요.
 
 NCache를 구성 하려면:
 
 1. [NCache 오픈 소스 NuGet](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/)을 설치 합니다.
-1. [Ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html)에서 캐시 클러스터를 구성 합니다.
+1. [Ncconf](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html)에서 캐시 클러스터를 구성 합니다.
 1. 다음 코드를 `Startup.ConfigureServices`에 추가합니다.
 
    ```csharp
@@ -182,7 +182,7 @@ NCache를 구성 하려면:
 
 SQL Server를 분산 캐시 백업 저장소로 사용 하는 경우 캐시에 대해 동일한 데이터베이스를 사용 하 고 앱의 일반 데이터 저장 및 검색을 사용 하면 두 성능에 부정적인 영향을 줄 수 있습니다. 분산 캐시 백업 저장소에 전용 SQL Server 인스턴스를 사용 하는 것이 좋습니다.
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * [Azure의 Redis Cache](/azure/azure-cache-for-redis/)
 * [Azure의 SQL Database](/azure/sql-database/)
@@ -299,12 +299,12 @@ Table and index were created successfully.
 
 [NCache](https://github.com/Alachisoft/NCache) 는 .NET 및 .net Core에서 기본적으로 개발 된 오픈 소스 메모리 내 분산 캐시입니다. NCache는 로컬에서 작동 하 고 Azure 또는 다른 호스팅 플랫폼에서 실행 되는 ASP.NET Core 앱에 대 한 분산 캐시 클러스터로 구성 됩니다.
 
-로컬 컴퓨터에 NCache를 설치 및 구성 하려면 [NCache 시작 가이드 For Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/)를 참조 하십시오.
+로컬 컴퓨터에 NCache를 설치 및 구성 하려면 [Windows 용 시작 가이드 (.net 및 .Net Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/)를 참조 하세요.
 
 NCache를 구성 하려면:
 
 1. [NCache 오픈 소스 NuGet](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/)을 설치 합니다.
-1. [Ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html)에서 캐시 클러스터를 구성 합니다.
+1. [Ncconf](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html)에서 캐시 클러스터를 구성 합니다.
 1. 다음 코드를 `Startup.ConfigureServices`에 추가합니다.
 
    ```csharp
@@ -352,7 +352,7 @@ NCache를 구성 하려면:
 
 SQL Server를 분산 캐시 백업 저장소로 사용 하는 경우 캐시에 대해 동일한 데이터베이스를 사용 하 고 앱의 일반 데이터 저장 및 검색을 사용 하면 두 성능에 부정적인 영향을 줄 수 있습니다. 분산 캐시 백업 저장소에 전용 SQL Server 인스턴스를 사용 하는 것이 좋습니다.
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * [Azure의 Redis Cache](/azure/azure-cache-for-redis/)
 * [Azure의 SQL Database](/azure/sql-database/)
@@ -475,12 +475,12 @@ services.AddDistributedRedisCache(options =>
 
 [NCache](https://github.com/Alachisoft/NCache) 는 .NET 및 .net Core에서 기본적으로 개발 된 오픈 소스 메모리 내 분산 캐시입니다. NCache는 로컬에서 작동 하 고 Azure 또는 다른 호스팅 플랫폼에서 실행 되는 ASP.NET Core 앱에 대 한 분산 캐시 클러스터로 구성 됩니다.
 
-로컬 컴퓨터에 NCache를 설치 및 구성 하려면 [NCache 시작 가이드 For Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/)를 참조 하십시오.
+로컬 컴퓨터에 NCache를 설치 및 구성 하려면 [Windows 용 시작 가이드 (.net 및 .Net Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/)를 참조 하세요.
 
 NCache를 구성 하려면:
 
 1. [NCache 오픈 소스 NuGet](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/)을 설치 합니다.
-1. [Ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html)에서 캐시 클러스터를 구성 합니다.
+1. [Ncconf](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html)에서 캐시 클러스터를 구성 합니다.
 1. 다음 코드를 `Startup.ConfigureServices`에 추가합니다.
 
    ```csharp
@@ -528,7 +528,7 @@ NCache를 구성 하려면:
 
 SQL Server를 분산 캐시 백업 저장소로 사용 하는 경우 캐시에 대해 동일한 데이터베이스를 사용 하 고 앱의 일반 데이터 저장 및 검색을 사용 하면 두 성능에 부정적인 영향을 줄 수 있습니다. 분산 캐시 백업 저장소에 전용 SQL Server 인스턴스를 사용 하는 것이 좋습니다.
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * [Azure의 Redis Cache](/azure/azure-cache-for-redis/)
 * [Azure의 SQL Database](/azure/sql-database/)

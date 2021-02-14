@@ -19,20 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: 5031273c3395be4365b3a6d239ebce7aaf9b66ac
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: 5a3d3c6e06653de7f0d01565444d37013f347a5b
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658640"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280320"
 ---
-# <a name="secure-aspnet-core-no-locblazor-server-apps"></a>ASP.NET Core Blazor Server 앱 보호
-
-[Luke Latham](https://github.com/guardrex)으로
+# <a name="secure-aspnet-core-blazor-server-apps"></a>ASP.NET Core Blazor Server 앱 보호
 
 Blazor Server 앱은 ASP.NET Core 앱과 동일한 방식으로 보안이 구성됩니다. 자세한 내용은 <xref:security/index>의 문서를 참조하세요. 이 개요의 항목은 Blazor Server에만 적용됩니다.
 
-## <a name="no-locblazor-server-project-template"></a>Blazor Server 프로젝트 템플릿
+## <a name="blazor-server-project-template"></a>Blazor Server 프로젝트 템플릿
 
 프로젝트를 만들 때 인증을 위해 Blazor Server 프로젝트 템플릿을 구성할 수 있습니다.
 
@@ -120,14 +118,14 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 ---
 
-## <a name="scaffold-no-locidentity"></a>스캐폴드 Identity
+## <a name="scaffold-identity"></a>스캐폴드 Identity
 
 Blazor Server 프로젝트에 Identity를 스캐폴드합니다.
 
 * [기존 권한 없음](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-without-existing-authorization).
 * [권한 있음](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-with-authorization).
 
-## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Identity Server를 사용한 Azure App Service on Linux
+## <a name="azure-app-service-on-linux-with-identity-server"></a>Identity Server를 사용한 Azure App Service on Linux
 
 Identity Server를 사용하여 Azure App Service on Linux에 배포할 때 발급자를 명시적으로 지정합니다. 자세한 내용은 <xref:security/authentication/identity/spa#azure-app-service-on-linux>를 참조하세요.
 
