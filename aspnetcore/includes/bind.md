@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 30baab0649268f4abf0dbd6c99dfeef3f43d0054
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536308"
+---
 관련 구성 값을 읽는 기본 방법은 [옵션 패턴](xref:fundamentals/configuration/options)를 사용하는 것입니다. 예를 들어 다음 구성 값을 읽으려면:
 
 ```json
@@ -15,11 +35,11 @@
 
 * 매개 변수가 없는 public 생성자를 사용하는 비추상이어야 합니다.
 * 형식의 모든 공용 읽기-쓰기 속성이 바인딩됩니다.
-* 필드가 바인딩되지 **않습니다**. 위 코드에서 `Position`은 바운딩되지 않습니다. `Position` 속성을 사용하므로 클래스를 구성 공급자에 바인딩할 때 문자열 `"Position"`을 앱에서 하드 코딩하지 않아도 됩니다.
+* 필드가 바인딩되지 ***않았습니다***. 위 코드에서 `Position`은 바운딩되지 않습니다. `Position` 속성을 사용하므로 클래스를 구성 공급자에 바인딩할 때 문자열 `"Position"`을 앱에서 하드 코딩하지 않아도 됩니다.
 
 코드는 다음과 같습니다.
 
-[ConfigurationBinder.Bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*)를 호출하여 `PositionOptions` 클래스를 `Position` 섹션에 바인딩합니다.
+* [ConfigurationBinder.Bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*)를 호출하여 `PositionOptions` 클래스를 `Position` 섹션에 바인딩합니다.
 * `Position` 구성 데이터를 표시합니다.
 
 [!code-csharp[](~/fundamentals/configuration/index/samples/3.x/ConfigSample/Pages/Test22.cshtml.cs?name=snippet)]

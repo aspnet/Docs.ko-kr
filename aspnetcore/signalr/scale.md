@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: d3e9cd23a55702bcf9b002dcce556428683afeca
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e70f3143159a1817e326a95b30e7369a5c9ab025
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052775"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564012"
 ---
-# <a name="aspnet-core-no-locsignalr-hosting-and-scaling"></a>ASP.NET Core SignalR 호스팅 및 크기 조정
+# <a name="aspnet-core-signalr-hosting-and-scaling"></a>ASP.NET Core SignalR 호스팅 및 크기 조정
 
 [Andrew Stanton-간호사](https://twitter.com/anurse), [Brady Gaster](https://twitter.com/bradygaster)및 [Tom Dykstra](https://github.com/tdykstra)
 
@@ -52,7 +52,7 @@ SignalR 특정 연결에 대 한 모든 HTTP 요청을 동일한 서버 프로�
 
 에서 연결 관련 리소스를 많이 사용 하는 SignalR 것은 동일한 서버에서 호스트 되는 다른 웹 앱에 영향을 줄 수 있습니다. SignalR가 열리고 사용 가능한 마지막 TCP 연결을 보유 하는 경우 동일한 서버의 다른 웹 앱에도 더 이상 사용할 수 있는 연결이 없습니다.
 
-서버에 연결 되지 않은 경우 임의의 소켓 오류 및 연결 다시 설정 오류가 표시 됩니다. 다음은 그 예입니다.
+서버에 연결 되지 않은 경우 임의의 소켓 오류 및 연결 다시 설정 오류가 표시 됩니다. 예를 들면 다음과 같습니다.
 
 ```
 An attempt was made to access a socket in a way forbidden by its access permissions...
@@ -70,7 +70,7 @@ SignalR다른 웹 앱에서 리소스를 사용 하 여 오류가 발생 하는 
 
 이 문제를 해결 하기 위한 옵션은 [Azure SignalR 서비스](#azure-signalr-service) 및 [Redis 후면판](#redis-backplane)입니다.
 
-## <a name="azure-no-locsignalr-service"></a>Azure SignalR 서비스
+## <a name="azure-signalr-service"></a>Azure SignalR 서비스
 
 Azure SignalR 서비스는 후면판이 아닌 프록시입니다. 클라이언트는 서버에 대 한 연결을 시작할 때마다 서비스에 연결 하기 위해 리디렉션됩니다. 이 프로세스는 다음 다이어그램에 설명 되어 있습니다.
 
@@ -201,10 +201,11 @@ Nginx를 통한 Websocket에 대 한 자세한 내용은 [Nginx as a Websocket P
 Nginx와 ASP.NET Core에 대 한 자세한 내용은 다음 문서를 참조 하세요.
 * <xref:host-and-deploy/linux-nginx>
 
-## <a name="third-party-no-locsignalr-backplane-providers"></a>타사 SignalR 후면판 공급자
+## <a name="third-party-signalr-backplane-providers"></a>타사 SignalR 후면판 공급자
 
 * [NCache](https://www.alachisoft.com/ncache/asp-net-core-signalr.html)
 * [Orleans](https://github.com/OrleansContrib/SignalR.Orleans)
+* [Rebus](https://github.com/rebus-org/Rebus.SignalR)
 
 ## <a name="next-steps"></a>다음 단계
 
