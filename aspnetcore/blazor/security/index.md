@@ -19,63 +19,61 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: c786c00892772f9f0ce80c903bde495d4f2523f2
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 9a14a8e16d8e50b47c479cf4d973459fbf61cec7
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100106741"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280374"
 ---
-# <a name="aspnet-core-blazor-authentication-and-authorization"></a><span data-ttu-id="fa799-103">ASP.NET Core Blazor 인증 및 권한 부여</span><span class="sxs-lookup"><span data-stu-id="fa799-103">ASP.NET Core Blazor authentication and authorization</span></span>
+# <a name="aspnet-core-blazor-authentication-and-authorization"></a><span data-ttu-id="4a882-103">ASP.NET Core Blazor 인증 및 권한 부여</span><span class="sxs-lookup"><span data-stu-id="4a882-103">ASP.NET Core Blazor authentication and authorization</span></span>
 
-<span data-ttu-id="fa799-104">작성자: [Steve Sanderson](https://github.com/SteveSandersonMS) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="fa799-104">By [Steve Sanderson](https://github.com/SteveSandersonMS) and [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="4a882-104">ASP.NET Core는 Blazor 앱의 보안 구성 및 관리를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-104">ASP.NET Core supports the configuration and management of security in Blazor apps.</span></span>
 
-<span data-ttu-id="fa799-105">ASP.NET Core는 Blazor 앱의 보안 구성 및 관리를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-105">ASP.NET Core supports the configuration and management of security in Blazor apps.</span></span>
+<span data-ttu-id="4a882-105">Blazor Server와 Blazor WebAssembly 앱은 보안 시나리오가 서로 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-105">Security scenarios differ between Blazor Server and Blazor WebAssembly apps.</span></span> <span data-ttu-id="4a882-106">Blazor Server 앱은 서버에서 실행되기 때문에 권한 부여 확인을 통해 다음을 결정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-106">Because Blazor Server apps run on the server, authorization checks are able to determine:</span></span>
 
-<span data-ttu-id="fa799-106">Blazor Server와 Blazor WebAssembly 앱은 보안 시나리오가 서로 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-106">Security scenarios differ between Blazor Server and Blazor WebAssembly apps.</span></span> <span data-ttu-id="fa799-107">Blazor Server 앱은 서버에서 실행되기 때문에 권한 부여 확인을 통해 다음을 결정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-107">Because Blazor Server apps run on the server, authorization checks are able to determine:</span></span>
+* <span data-ttu-id="4a882-107">사용자에게 표시되는 UI 옵션(예: 사용자가 사용할 수 있는 메뉴 항목)</span><span class="sxs-lookup"><span data-stu-id="4a882-107">The UI options presented to a user (for example, which menu entries are available to a user).</span></span>
+* <span data-ttu-id="4a882-108">앱 영역과 구성 요소의 액세스 규칙</span><span class="sxs-lookup"><span data-stu-id="4a882-108">Access rules for areas of the app and components.</span></span>
 
-* <span data-ttu-id="fa799-108">사용자에게 표시되는 UI 옵션(예: 사용자가 사용할 수 있는 메뉴 항목)</span><span class="sxs-lookup"><span data-stu-id="fa799-108">The UI options presented to a user (for example, which menu entries are available to a user).</span></span>
-* <span data-ttu-id="fa799-109">앱 영역과 구성 요소의 액세스 규칙</span><span class="sxs-lookup"><span data-stu-id="fa799-109">Access rules for areas of the app and components.</span></span>
+<span data-ttu-id="4a882-109">Blazor WebAssembly 앱이 클라이언트에서 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-109">Blazor WebAssembly apps run on the client.</span></span> <span data-ttu-id="4a882-110">권한 부여는 표시할 UI 옵션을 결정하는 ‘용도로만’ 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-110">Authorization is *only* used to determine which UI options to show.</span></span> <span data-ttu-id="4a882-111">사용자가 클라이언트 쪽 확인을 수정하거나 무시할 수 있기 때문에 Blazor WebAssembly 앱은 권한 부여 액세스 규칙을 적용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-111">Since client-side checks can be modified or bypassed by a user, a Blazor WebAssembly app can't enforce authorization access rules.</span></span>
 
-<span data-ttu-id="fa799-110">Blazor WebAssembly 앱이 클라이언트에서 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-110">Blazor WebAssembly apps run on the client.</span></span> <span data-ttu-id="fa799-111">권한 부여는 표시할 UI 옵션을 결정하는 ‘용도로만’ 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-111">Authorization is *only* used to determine which UI options to show.</span></span> <span data-ttu-id="fa799-112">사용자가 클라이언트 쪽 확인을 수정하거나 무시할 수 있기 때문에 Blazor WebAssembly 앱은 권한 부여 액세스 규칙을 적용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-112">Since client-side checks can be modified or bypassed by a user, a Blazor WebAssembly app can't enforce authorization access rules.</span></span>
-
-<span data-ttu-id="fa799-113">[Razor Pages 권한 부여 규칙](xref:security/authorization/razor-pages-authorization)은 라우팅 가능한 Razor 구성 요소에 적용되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-113">[Razor Pages authorization conventions](xref:security/authorization/razor-pages-authorization) don't apply to routable Razor components.</span></span> <span data-ttu-id="fa799-114">라우팅할 수 없는 Razor 구성 요소가 [페이지에 포함](xref:blazor/components/prerendering-and-integration)된 경우 페이지의 권한 부여 규칙은 페이지 콘텐츠의 나머지 부분과 함께 Razor 구성 요소에 간접적으로 영향을 미칩니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-114">If a non-routable Razor component is [embedded in a page](xref:blazor/components/prerendering-and-integration), the page's authorization conventions indirectly affect the Razor component along with the rest of the page's content.</span></span>
+<span data-ttu-id="4a882-112">[Razor Pages 권한 부여 규칙](xref:security/authorization/razor-pages-authorization)은 라우팅 가능한 Razor 구성 요소에 적용되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-112">[Razor Pages authorization conventions](xref:security/authorization/razor-pages-authorization) don't apply to routable Razor components.</span></span> <span data-ttu-id="4a882-113">라우팅할 수 없는 Razor 구성 요소가 [페이지에 포함](xref:blazor/components/prerendering-and-integration)된 경우 페이지의 권한 부여 규칙은 페이지 콘텐츠의 나머지 부분과 함께 Razor 구성 요소에 간접적으로 영향을 미칩니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-113">If a non-routable Razor component is [embedded in a page](xref:blazor/components/prerendering-and-integration), the page's authorization conventions indirectly affect the Razor component along with the rest of the page's content.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="fa799-115"><xref:Microsoft.AspNetCore.Identity.SignInManager%601> 및 <xref:Microsoft.AspNetCore.Identity.UserManager%601>는 Razor 구성 요소에서 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-115"><xref:Microsoft.AspNetCore.Identity.SignInManager%601> and <xref:Microsoft.AspNetCore.Identity.UserManager%601> aren't supported in Razor components.</span></span>
+> <span data-ttu-id="4a882-114"><xref:Microsoft.AspNetCore.Identity.SignInManager%601> 및 <xref:Microsoft.AspNetCore.Identity.UserManager%601>는 Razor 구성 요소에서 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-114"><xref:Microsoft.AspNetCore.Identity.SignInManager%601> and <xref:Microsoft.AspNetCore.Identity.UserManager%601> aren't supported in Razor components.</span></span>
 
-## <a name="authentication"></a><span data-ttu-id="fa799-116">인증</span><span class="sxs-lookup"><span data-stu-id="fa799-116">Authentication</span></span>
+## <a name="authentication"></a><span data-ttu-id="4a882-115">인증</span><span class="sxs-lookup"><span data-stu-id="4a882-115">Authentication</span></span>
 
-<span data-ttu-id="fa799-117">Blazor는 기존 ASP.NET Core 인증 메커니즘을 사용하여 사용자 ID를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-117">Blazor uses the existing ASP.NET Core authentication mechanisms to establish the user's identity.</span></span> <span data-ttu-id="fa799-118">정확한 메커니즘은 Blazor 앱이 호스트되는 방법, Blazor WebAssembly 또는 Blazor Server에 따라 달라집니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-118">The exact mechanism depends on how the Blazor app is hosted, Blazor WebAssembly or Blazor Server.</span></span>
+<span data-ttu-id="4a882-116">Blazor는 기존 ASP.NET Core 인증 메커니즘을 사용하여 사용자 ID를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-116">Blazor uses the existing ASP.NET Core authentication mechanisms to establish the user's identity.</span></span> <span data-ttu-id="4a882-117">정확한 메커니즘은 Blazor 앱이 호스트되는 방법, Blazor WebAssembly 또는 Blazor Server에 따라 달라집니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-117">The exact mechanism depends on how the Blazor app is hosted, Blazor WebAssembly or Blazor Server.</span></span>
 
-### <a name="blazor-webassembly-authentication"></a><span data-ttu-id="fa799-119">Blazor WebAssembly 인증</span><span class="sxs-lookup"><span data-stu-id="fa799-119">Blazor WebAssembly authentication</span></span>
+### <a name="blazor-webassembly-authentication"></a><span data-ttu-id="4a882-118">Blazor WebAssembly 인증</span><span class="sxs-lookup"><span data-stu-id="4a882-118">Blazor WebAssembly authentication</span></span>
 
-<span data-ttu-id="fa799-120">Blazor WebAssembly 앱에서는 사용자가 클라이언트 쪽 코드를 모두 수정할 수 있기 때문에 인증 확인을 무시할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-120">In Blazor WebAssembly apps, authentication checks can be bypassed because all client-side code can be modified by users.</span></span> <span data-ttu-id="fa799-121">JavaScript SPA 프레임워크 또는 모든 운영 체제의 네이티브 앱을 포함하여 모든 클라이언트 쪽 앱 기술에는 동일하게 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-121">The same is true for all client-side app technologies, including JavaScript SPA frameworks or native apps for any operating system.</span></span>
+<span data-ttu-id="4a882-119">Blazor WebAssembly 앱에서는 사용자가 클라이언트 쪽 코드를 모두 수정할 수 있기 때문에 인증 확인을 무시할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-119">In Blazor WebAssembly apps, authentication checks can be bypassed because all client-side code can be modified by users.</span></span> <span data-ttu-id="4a882-120">JavaScript SPA 프레임워크 또는 모든 운영 체제의 네이티브 앱을 포함하여 모든 클라이언트 쪽 앱 기술에는 동일하게 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-120">The same is true for all client-side app technologies, including JavaScript SPA frameworks or native apps for any operating system.</span></span>
 
-<span data-ttu-id="fa799-122">다음을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-122">Add the following:</span></span>
+<span data-ttu-id="4a882-121">다음을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-121">Add the following:</span></span>
 
-* <span data-ttu-id="fa799-123">앱의 프로젝트 파일에 대한 [`Microsoft.AspNetCore.Components.Authorization`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization) 패키지 참조</span><span class="sxs-lookup"><span data-stu-id="fa799-123">A package reference for [`Microsoft.AspNetCore.Components.Authorization`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization) to the app's project file.</span></span>
-* <span data-ttu-id="fa799-124">앱의 `_Imports.razor` 파일에 대한 `Microsoft.AspNetCore.Components.Authorization` 네임스페이스</span><span class="sxs-lookup"><span data-stu-id="fa799-124">The `Microsoft.AspNetCore.Components.Authorization` namespace to the app's `_Imports.razor` file.</span></span>
+* <span data-ttu-id="4a882-122">앱의 프로젝트 파일에 대한 [`Microsoft.AspNetCore.Components.Authorization`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization) 패키지 참조</span><span class="sxs-lookup"><span data-stu-id="4a882-122">A package reference for [`Microsoft.AspNetCore.Components.Authorization`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization) to the app's project file.</span></span>
+* <span data-ttu-id="4a882-123">앱의 `_Imports.razor` 파일에 대한 `Microsoft.AspNetCore.Components.Authorization` 네임스페이스</span><span class="sxs-lookup"><span data-stu-id="4a882-123">The `Microsoft.AspNetCore.Components.Authorization` namespace to the app's `_Imports.razor` file.</span></span>
 
-<span data-ttu-id="fa799-125">인증을 처리하려면 이어지는 섹션에서 설명하는 기본 제공 또는 사용자 지정 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 서비스의 사용 방법을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fa799-125">To handle authentication, use of a built-in or custom <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> service is covered in the following sections.</span></span>
+<span data-ttu-id="4a882-124">인증을 처리하려면 이어지는 섹션에서 설명하는 기본 제공 또는 사용자 지정 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 서비스의 사용 방법을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4a882-124">To handle authentication, use of a built-in or custom <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> service is covered in the following sections.</span></span>
 
-<span data-ttu-id="fa799-126">앱 및 구성을 만드는 방법에 대한 자세한 내용은 <xref:blazor/security/webassembly/index> 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fa799-126">For more information on creating apps and configuration, see <xref:blazor/security/webassembly/index>.</span></span>
+<span data-ttu-id="4a882-125">앱 및 구성을 만드는 방법에 대한 자세한 내용은 <xref:blazor/security/webassembly/index> 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4a882-125">For more information on creating apps and configuration, see <xref:blazor/security/webassembly/index>.</span></span>
 
-### <a name="blazor-server-authentication"></a><span data-ttu-id="fa799-127">Blazor Server 인증</span><span class="sxs-lookup"><span data-stu-id="fa799-127">Blazor Server authentication</span></span>
+### <a name="blazor-server-authentication"></a><span data-ttu-id="4a882-126">Blazor Server 인증</span><span class="sxs-lookup"><span data-stu-id="4a882-126">Blazor Server authentication</span></span>
 
-<span data-ttu-id="fa799-128">Blazor Server 앱은 SignalR를 사용하여 생성된 실시간 연결을 통해 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-128">Blazor Server apps operate over a real-time connection that's created using SignalR.</span></span> <span data-ttu-id="fa799-129">[SignalR 기반 앱](xref:signalr/authn-and-authz)의 인증은 연결 시 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-129">[Authentication in SignalR-based apps](xref:signalr/authn-and-authz) is handled when the connection is established.</span></span> <span data-ttu-id="fa799-130">인증은 cookie 또는 다른 전달자 토큰을 기반으로 할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-130">Authentication can be based on a cookie or some other bearer token.</span></span>
+<span data-ttu-id="4a882-127">Blazor Server 앱은 SignalR를 사용하여 생성된 실시간 연결을 통해 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-127">Blazor Server apps operate over a real-time connection that's created using SignalR.</span></span> <span data-ttu-id="4a882-128">[SignalR 기반 앱](xref:signalr/authn-and-authz)의 인증은 연결 시 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-128">[Authentication in SignalR-based apps](xref:signalr/authn-and-authz) is handled when the connection is established.</span></span> <span data-ttu-id="4a882-129">인증은 cookie 또는 다른 전달자 토큰을 기반으로 할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-129">Authentication can be based on a cookie or some other bearer token.</span></span>
 
-<span data-ttu-id="fa799-131">Blazor Server 앱용 기본 제공 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 서비스는 ASP.NET Core의 `HttpContext.User`에서 인증 상태 데이터를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-131">The built-in <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> service for Blazor Server apps obtains authentication state data from ASP.NET Core's `HttpContext.User`.</span></span> <span data-ttu-id="fa799-132">이것이 바로 인증 상태가 기존의 ASP.NET Core 인증 메커니즘과 통합되는 방식입니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-132">This is how authentication state integrates with existing ASP.NET Core authentication mechanisms.</span></span>
+<span data-ttu-id="4a882-130">Blazor Server 앱용 기본 제공 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 서비스는 ASP.NET Core의 `HttpContext.User`에서 인증 상태 데이터를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-130">The built-in <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> service for Blazor Server apps obtains authentication state data from ASP.NET Core's `HttpContext.User`.</span></span> <span data-ttu-id="4a882-131">이것이 바로 인증 상태가 기존의 ASP.NET Core 인증 메커니즘과 통합되는 방식입니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-131">This is how authentication state integrates with existing ASP.NET Core authentication mechanisms.</span></span>
 
-<span data-ttu-id="fa799-133">앱 및 구성을 만드는 방법에 대한 자세한 내용은 <xref:blazor/security/server/index> 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fa799-133">For more information on creating apps and configuration, see <xref:blazor/security/server/index>.</span></span>
+<span data-ttu-id="4a882-132">앱 및 구성을 만드는 방법에 대한 자세한 내용은 <xref:blazor/security/server/index> 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4a882-132">For more information on creating apps and configuration, see <xref:blazor/security/server/index>.</span></span>
 
-## <a name="authenticationstateprovider-service"></a><span data-ttu-id="fa799-134">AuthenticationStateProvider 서비스</span><span class="sxs-lookup"><span data-stu-id="fa799-134">AuthenticationStateProvider service</span></span>
+## <a name="authenticationstateprovider-service"></a><span data-ttu-id="4a882-133">AuthenticationStateProvider 서비스</span><span class="sxs-lookup"><span data-stu-id="4a882-133">AuthenticationStateProvider service</span></span>
 
-<span data-ttu-id="fa799-135"><xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>는 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소와 <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> 구성 요소가 인증 상태를 가져오는 데 사용하는 기본 서비스입니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-135"><xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> is the underlying service used by the <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> component and <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> component to get the authentication state.</span></span>
+<span data-ttu-id="4a882-134"><xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>는 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소와 <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> 구성 요소가 인증 상태를 가져오는 데 사용하는 기본 서비스입니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-134"><xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> is the underlying service used by the <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> component and <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> component to get the authentication state.</span></span>
 
-<span data-ttu-id="fa799-136">일반적으로 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>를 직접 사용하지는 않습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-136">You don't typically use <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> directly.</span></span> <span data-ttu-id="fa799-137">이 문서의 뒷부분에서 설명하는 [`AuthorizeView` 구성 요소](#authorizeview-component) 또는 [`Task<AuthenticationState>`](#expose-the-authentication-state-as-a-cascading-parameter) 접근 방식을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-137">Use the [`AuthorizeView` component](#authorizeview-component) or [`Task<AuthenticationState>`](#expose-the-authentication-state-as-a-cascading-parameter) approaches described later in this article.</span></span> <span data-ttu-id="fa799-138"><xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>를 직접 사용하는 경우의 주요 단점은 기본 인증 상태 데이터가 변경될 때 구성 요소가 자동으로 알림을 받지 못하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-138">The main drawback to using <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> directly is that the component isn't notified automatically if the underlying authentication state data changes.</span></span>
+<span data-ttu-id="4a882-135">일반적으로 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>를 직접 사용하지는 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-135">You don't typically use <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> directly.</span></span> <span data-ttu-id="4a882-136">이 문서의 뒷부분에서 설명하는 [`AuthorizeView` 구성 요소](#authorizeview-component) 또는 [`Task<AuthenticationState>`](#expose-the-authentication-state-as-a-cascading-parameter) 접근 방식을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-136">Use the [`AuthorizeView` component](#authorizeview-component) or [`Task<AuthenticationState>`](#expose-the-authentication-state-as-a-cascading-parameter) approaches described later in this article.</span></span> <span data-ttu-id="4a882-137"><xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>를 직접 사용하는 경우의 주요 단점은 기본 인증 상태 데이터가 변경될 때 구성 요소가 자동으로 알림을 받지 못하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-137">The main drawback to using <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> directly is that the component isn't notified automatically if the underlying authentication state data changes.</span></span>
 
-<span data-ttu-id="fa799-139"><xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 서비스는 다음 예제와 같이 현재 사용자의 <xref:System.Security.Claims.ClaimsPrincipal> 데이터를 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-139">The <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> service can provide the current user's <xref:System.Security.Claims.ClaimsPrincipal> data, as shown in the following example:</span></span>
+<span data-ttu-id="4a882-138"><xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 서비스는 다음 예제와 같이 현재 사용자의 <xref:System.Security.Claims.ClaimsPrincipal> 데이터를 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-138">The <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> service can provide the current user's <xref:System.Security.Claims.ClaimsPrincipal> data, as shown in the following example:</span></span>
 
 ```razor
 @page "/"
@@ -126,13 +124,13 @@ ms.locfileid: "100106741"
 }
 ```
 
-<span data-ttu-id="fa799-140">`user.Identity.IsAuthenticated`가 `true`이면, 사용자가 <xref:System.Security.Claims.ClaimsPrincipal>이므로 클레임을 열거하고 역할의 멤버 자격을 평가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-140">If `user.Identity.IsAuthenticated` is `true` and because the user is a <xref:System.Security.Claims.ClaimsPrincipal>, claims can be enumerated and membership in roles evaluated.</span></span>
+<span data-ttu-id="4a882-139">`user.Identity.IsAuthenticated`가 `true`이면, 사용자가 <xref:System.Security.Claims.ClaimsPrincipal>이므로 클레임을 열거하고 역할의 멤버 자격을 평가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-139">If `user.Identity.IsAuthenticated` is `true` and because the user is a <xref:System.Security.Claims.ClaimsPrincipal>, claims can be enumerated and membership in roles evaluated.</span></span>
 
-<span data-ttu-id="fa799-141">DI(종속성 주입) 및 서비스에 대한 자세한 내용은 <xref:blazor/fundamentals/dependency-injection> 및 <xref:fundamentals/dependency-injection>을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fa799-141">For more information on dependency injection (DI) and services, see <xref:blazor/fundamentals/dependency-injection> and <xref:fundamentals/dependency-injection>.</span></span>
+<span data-ttu-id="4a882-140">DI(종속성 주입) 및 서비스에 대한 자세한 내용은 <xref:blazor/fundamentals/dependency-injection> 및 <xref:fundamentals/dependency-injection>을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4a882-140">For more information on dependency injection (DI) and services, see <xref:blazor/fundamentals/dependency-injection> and <xref:fundamentals/dependency-injection>.</span></span>
 
-## <a name="implement-a-custom-authenticationstateprovider"></a><span data-ttu-id="fa799-142">사용자 지정 AuthenticationStateProvider 구현</span><span class="sxs-lookup"><span data-stu-id="fa799-142">Implement a custom AuthenticationStateProvider</span></span>
+## <a name="implement-a-custom-authenticationstateprovider"></a><span data-ttu-id="4a882-141">사용자 지정 AuthenticationStateProvider 구현</span><span class="sxs-lookup"><span data-stu-id="4a882-141">Implement a custom AuthenticationStateProvider</span></span>
 
-<span data-ttu-id="fa799-143">앱에 사용자 지정 공급자가 필요한 경우 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>를 구현하고 `GetAuthenticationStateAsync`를 재정의합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-143">If the app requires a custom provider, implement <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> and override `GetAuthenticationStateAsync`:</span></span>
+<span data-ttu-id="4a882-142">앱에 사용자 지정 공급자가 필요한 경우 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>를 구현하고 `GetAuthenticationStateAsync`를 재정의합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-142">If the app requires a custom provider, implement <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> and override `GetAuthenticationStateAsync`:</span></span>
 
 ```csharp
 using System.Security.Claims;
@@ -155,7 +153,7 @@ public class CustomAuthStateProvider : AuthenticationStateProvider
 }
 ```
 
-<span data-ttu-id="fa799-144">Blazor WebAssembly 앱에서 `CustomAuthStateProvider` 서비스는 `Program.cs`의 `Main`에 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-144">In a Blazor WebAssembly app, the `CustomAuthStateProvider` service is registered in `Main` of `Program.cs`:</span></span>
+<span data-ttu-id="4a882-143">Blazor WebAssembly 앱에서 `CustomAuthStateProvider` 서비스는 `Program.cs`의 `Main`에 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-143">In a Blazor WebAssembly app, the `CustomAuthStateProvider` service is registered in `Main` of `Program.cs`:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Components.Authorization;
@@ -165,7 +163,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 ```
 
-<span data-ttu-id="fa799-145">Blazor Server 앱에서 `CustomAuthStateProvider` 서비스는 `Startup.ConfigureServices`에 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-145">In a Blazor Server app, the `CustomAuthStateProvider` service is registered in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="4a882-144">Blazor Server 앱에서 `CustomAuthStateProvider` 서비스는 `Startup.ConfigureServices`에 등록됩니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-144">In a Blazor Server app, the `CustomAuthStateProvider` service is registered in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Components.Authorization;
@@ -175,11 +173,11 @@ using Microsoft.AspNetCore.Components.Authorization;
 services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 ```
 
-<span data-ttu-id="fa799-146">모든 사용자는 앞에 나온 예제의 `CustomAuthStateProvider`를 사용하여 사용자 이름 `mrfibuli`로 인증되었습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-146">Using the `CustomAuthStateProvider` in the preceding example, all users are authenticated with the username `mrfibuli`.</span></span>
+<span data-ttu-id="4a882-145">모든 사용자는 앞에 나온 예제의 `CustomAuthStateProvider`를 사용하여 사용자 이름 `mrfibuli`로 인증되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-145">Using the `CustomAuthStateProvider` in the preceding example, all users are authenticated with the username `mrfibuli`.</span></span>
 
-## <a name="expose-the-authentication-state-as-a-cascading-parameter"></a><span data-ttu-id="fa799-147">인증 상태를 연계 매개 변수로 공개</span><span class="sxs-lookup"><span data-stu-id="fa799-147">Expose the authentication state as a cascading parameter</span></span>
+## <a name="expose-the-authentication-state-as-a-cascading-parameter"></a><span data-ttu-id="4a882-146">인증 상태를 연계 매개 변수로 공개</span><span class="sxs-lookup"><span data-stu-id="4a882-146">Expose the authentication state as a cascading parameter</span></span>
 
-<span data-ttu-id="fa799-148">사용자가 실행한 작업을 수행하는 경우와 같이 절차적 논리에 인증 상태 데이터가 필요한 경우 `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` 형식의 연계 매개 변수를 정의하여 인증 상태 데이터를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-148">If authentication state data is required for procedural logic, such as when performing an action triggered by the user, obtain the authentication state data by defining a cascading parameter of type `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>`:</span></span>
+<span data-ttu-id="4a882-147">사용자가 실행한 작업을 수행하는 경우와 같이 절차적 논리에 인증 상태 데이터가 필요한 경우 `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` 형식의 연계 매개 변수를 정의하여 인증 상태 데이터를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-147">If authentication state data is required for procedural logic, such as when performing an action triggered by the user, obtain the authentication state data by defining a cascading parameter of type `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>`:</span></span>
 
 ```razor
 @page "/"
@@ -211,9 +209,9 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 }
 ```
 
-<span data-ttu-id="fa799-149">`user.Identity.IsAuthenticated`가 `true`이면, 클레임을 열거하고 역할의 멤버 자격을 평가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-149">If `user.Identity.IsAuthenticated` is `true`, claims can be enumerated and membership in roles evaluated.</span></span>
+<span data-ttu-id="4a882-148">`user.Identity.IsAuthenticated`가 `true`이면, 클레임을 열거하고 역할의 멤버 자격을 평가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-148">If `user.Identity.IsAuthenticated` is `true`, claims can be enumerated and membership in roles evaluated.</span></span>
 
-<span data-ttu-id="fa799-150">`App` 구성 요소(`App.razor`)에서 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> 및 <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> 구성 요소를 사용하여 `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` 연계 매개 변수를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-150">Set up the `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` cascading parameter using the <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> and <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> components in the `App` component (`App.razor`):</span></span>
+<span data-ttu-id="4a882-149">`App` 구성 요소(`App.razor`)에서 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> 및 <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> 구성 요소를 사용하여 `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` 연계 매개 변수를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-149">Set up the `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` cascading parameter using the <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> and <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> components in the `App` component (`App.razor`):</span></span>
 
 ```razor
 <CascadingAuthenticationState>
@@ -233,33 +231,33 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
 [!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
-<span data-ttu-id="fa799-151">Blazor WebAssembly 앱에서 옵션 및 권한 부여 서비스를 `Program.Main`에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-151">In a Blazor WebAssembly App, add services for options and authorization to `Program.Main`:</span></span>
+<span data-ttu-id="4a882-150">Blazor WebAssembly 앱에서 옵션 및 권한 부여 서비스를 `Program.Main`에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-150">In a Blazor WebAssembly App, add services for options and authorization to `Program.Main`:</span></span>
 
 ```csharp
 builder.Services.AddOptions();
 builder.Services.AddAuthorizationCore();
 ```
 
-<span data-ttu-id="fa799-152">Blazor Server 앱에는 옵션 및 권한 부여 서비스가 이미 있으므로 추가 작업이 필요하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-152">In a Blazor Server app, services for options and authorization are already present, so no further action is required.</span></span>
+<span data-ttu-id="4a882-151">Blazor Server 앱에는 옵션 및 권한 부여 서비스가 이미 있으므로 추가 작업이 필요하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-151">In a Blazor Server app, services for options and authorization are already present, so no further action is required.</span></span>
 
-## <a name="authorization"></a><span data-ttu-id="fa799-153">권한 부여</span><span class="sxs-lookup"><span data-stu-id="fa799-153">Authorization</span></span>
+## <a name="authorization"></a><span data-ttu-id="4a882-152">권한 부여</span><span class="sxs-lookup"><span data-stu-id="4a882-152">Authorization</span></span>
 
-<span data-ttu-id="fa799-154">사용자가 인증되면, 사용자가 수행할 수 있는 작업을 제어하기 위해 ‘권한 부여’ 규칙이 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-154">After a user is authenticated, *authorization* rules are applied to control what the user can do.</span></span>
+<span data-ttu-id="4a882-153">사용자가 인증되면, 사용자가 수행할 수 있는 작업을 제어하기 위해 ‘권한 부여’ 규칙이 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-153">After a user is authenticated, *authorization* rules are applied to control what the user can do.</span></span>
 
-<span data-ttu-id="fa799-155">일반적으로 다음 여부에 따라 액세스가 허용 또는 거부됩니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-155">Access is typically granted or denied based on whether:</span></span>
+<span data-ttu-id="4a882-154">일반적으로 다음 여부에 따라 액세스가 허용 또는 거부됩니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-154">Access is typically granted or denied based on whether:</span></span>
 
-* <span data-ttu-id="fa799-156">사용자가 인증(로그인)되었는지 여부</span><span class="sxs-lookup"><span data-stu-id="fa799-156">A user is authenticated (signed in).</span></span>
-* <span data-ttu-id="fa799-157">사용자가 ‘역할’에 속하는지 여부</span><span class="sxs-lookup"><span data-stu-id="fa799-157">A user is in a *role*.</span></span>
-* <span data-ttu-id="fa799-158">사용자에게 ‘클레임’이 있는지 여부</span><span class="sxs-lookup"><span data-stu-id="fa799-158">A user has a *claim*.</span></span>
-* <span data-ttu-id="fa799-159">‘정책’이 충족되었는지 여부</span><span class="sxs-lookup"><span data-stu-id="fa799-159">A *policy* is satisfied.</span></span>
+* <span data-ttu-id="4a882-155">사용자가 인증(로그인)되었는지 여부</span><span class="sxs-lookup"><span data-stu-id="4a882-155">A user is authenticated (signed in).</span></span>
+* <span data-ttu-id="4a882-156">사용자가 ‘역할’에 속하는지 여부</span><span class="sxs-lookup"><span data-stu-id="4a882-156">A user is in a *role*.</span></span>
+* <span data-ttu-id="4a882-157">사용자에게 ‘클레임’이 있는지 여부</span><span class="sxs-lookup"><span data-stu-id="4a882-157">A user has a *claim*.</span></span>
+* <span data-ttu-id="4a882-158">‘정책’이 충족되었는지 여부</span><span class="sxs-lookup"><span data-stu-id="4a882-158">A *policy* is satisfied.</span></span>
 
-<span data-ttu-id="fa799-160">이러한 각 개념은 ASP.NET Core MVC 또는 Razor Pages 앱에서와 동일합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-160">Each of these concepts is the same as in an ASP.NET Core MVC or Razor Pages app.</span></span> <span data-ttu-id="fa799-161">ASP.NET Core 보안에 대한 자세한 내용은 [ASP.NET Core 보안 및 Identity](xref:security/index)의 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fa799-161">For more information on ASP.NET Core security, see the articles under [ASP.NET Core Security and Identity](xref:security/index).</span></span>
+<span data-ttu-id="4a882-159">이러한 각 개념은 ASP.NET Core MVC 또는 Razor Pages 앱에서와 동일합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-159">Each of these concepts is the same as in an ASP.NET Core MVC or Razor Pages app.</span></span> <span data-ttu-id="4a882-160">ASP.NET Core 보안에 대한 자세한 내용은 [ASP.NET Core 보안 및 Identity](xref:security/index)의 문서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4a882-160">For more information on ASP.NET Core security, see the articles under [ASP.NET Core Security and Identity](xref:security/index).</span></span>
 
-## <a name="authorizeview-component"></a><span data-ttu-id="fa799-162">AuthorizeView 구성 요소</span><span class="sxs-lookup"><span data-stu-id="fa799-162">AuthorizeView component</span></span>
+## <a name="authorizeview-component"></a><span data-ttu-id="4a882-161">AuthorizeView 구성 요소</span><span class="sxs-lookup"><span data-stu-id="4a882-161">AuthorizeView component</span></span>
 
-<span data-ttu-id="fa799-163"><xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소는 사용자에게 권한이 있는지에 따라 선택적으로 UI 콘텐츠를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-163">The <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> component selectively displays UI content depending on whether the user is authorized.</span></span> <span data-ttu-id="fa799-164">이 접근 방식은 사용자에게 데이터를 ‘표시’하기만 하면 되고 절차적 논리에 사용자 ID를 사용할 필요가 없는 경우에 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-164">This approach is useful when you only need to *display* data for the user and don't need to use the user's identity in procedural logic.</span></span>
+<span data-ttu-id="4a882-162"><xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소는 사용자에게 권한이 있는지에 따라 선택적으로 UI 콘텐츠를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-162">The <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> component selectively displays UI content depending on whether the user is authorized.</span></span> <span data-ttu-id="4a882-163">이 접근 방식은 사용자에게 데이터를 ‘표시’하기만 하면 되고 절차적 논리에 사용자 ID를 사용할 필요가 없는 경우에 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-163">This approach is useful when you only need to *display* data for the user and don't need to use the user's identity in procedural logic.</span></span>
 
-<span data-ttu-id="fa799-165">이 구성 요소는 로그인한 사용자 정보에 액세스하는 데 사용할 수 있는 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState> 형식의 `context` 변수를 공개합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-165">The component exposes a `context` variable of type <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>, which you can use to access information about the signed-in user:</span></span>
+<span data-ttu-id="4a882-164">이 구성 요소는 로그인한 사용자 정보에 액세스하는 데 사용할 수 있는 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState> 형식의 `context` 변수를 공개합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-164">The component exposes a `context` variable of type <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>, which you can use to access information about the signed-in user:</span></span>
 
 ```razor
 <AuthorizeView>
@@ -268,7 +266,7 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-<span data-ttu-id="fa799-166">사용자가 권한이 없는 경우에 표시할 다른 콘텐츠를 제공할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-166">You can also supply different content for display if the user isn't authorized:</span></span>
+<span data-ttu-id="4a882-165">사용자가 권한이 없는 경우에 표시할 다른 콘텐츠를 제공할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-165">You can also supply different content for display if the user isn't authorized:</span></span>
 
 ```razor
 <AuthorizeView>
@@ -288,24 +286,73 @@ builder.Services.AddAuthorizationCore();
 }
 ```
 
-<span data-ttu-id="fa799-167">`<Authorized>` 및 `<NotAuthorized>` 태그의 콘텐츠에는 다른 대화형 구성 요소와 같은 임의 항목이 포함될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-167">The content of `<Authorized>` and `<NotAuthorized>` tags can include arbitrary items, such as other interactive components.</span></span>
+<span data-ttu-id="4a882-166">`<Authorized>` 및 `<NotAuthorized>` 태그의 콘텐츠에는 다른 대화형 구성 요소와 같은 임의 항목이 포함될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-166">The content of `<Authorized>` and `<NotAuthorized>` tags can include arbitrary items, such as other interactive components.</span></span>
 
-<span data-ttu-id="fa799-168">이전 예제의 `<button>` 요소에 대한 `SecureMethod` 메서드와 같이 권한 있는 요소에 대한 기본 이벤트 처리기는 권한 있는 사용자만 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-168">A default event handler for an authorized element, such as the `SecureMethod` method for the `<button>` element in the preceding example, can only be invoked by an authorized user.</span></span>
+<span data-ttu-id="4a882-167">이전 예제의 `<button>` 요소에 대한 `SecureMethod` 메서드와 같이 권한 있는 요소에 대한 기본 이벤트 처리기는 권한 있는 사용자만 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-167">A default event handler for an authorized element, such as the `SecureMethod` method for the `<button>` element in the preceding example, can only be invoked by an authorized user.</span></span>
 
-<span data-ttu-id="fa799-169">UI 옵션이나 액세스를 제어하는 역할 또는 정책과 같은 권한 부여 조건은 [권한 부여](#authorization) 섹션에서 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-169">Authorization conditions, such as roles or policies that control UI options or access, are covered in the [Authorization](#authorization) section.</span></span>
+<span data-ttu-id="4a882-168">UI 옵션이나 액세스를 제어하는 역할 또는 정책과 같은 권한 부여 조건은 [권한 부여](#authorization) 섹션에서 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-168">Authorization conditions, such as roles or policies that control UI options or access, are covered in the [Authorization](#authorization) section.</span></span>
 
-<span data-ttu-id="fa799-170">권한 부여 조건을 지정하지 않으면 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>는 기본 정책을 사용하고 다음과 같이 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-170">If authorization conditions aren't specified, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> uses a default policy and treats:</span></span>
+<span data-ttu-id="4a882-169">권한 부여 조건을 지정하지 않으면 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>는 기본 정책을 사용하고 다음과 같이 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-169">If authorization conditions aren't specified, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> uses a default policy and treats:</span></span>
 
-* <span data-ttu-id="fa799-171">인증(로그인)된 사용자를 권한 있는 사용자로 처리</span><span class="sxs-lookup"><span data-stu-id="fa799-171">Authenticated (signed-in) users as authorized.</span></span>
-* <span data-ttu-id="fa799-172">인증되지 않은(로그아웃된) 사용자를 권한 없는 사용자로 처리</span><span class="sxs-lookup"><span data-stu-id="fa799-172">Unauthenticated (signed-out) users as unauthorized.</span></span>
+* <span data-ttu-id="4a882-170">인증(로그인)된 사용자를 권한 있는 사용자로 처리</span><span class="sxs-lookup"><span data-stu-id="4a882-170">Authenticated (signed-in) users as authorized.</span></span>
+* <span data-ttu-id="4a882-171">인증되지 않은(로그아웃된) 사용자를 권한 없는 사용자로 처리</span><span class="sxs-lookup"><span data-stu-id="4a882-171">Unauthenticated (signed-out) users as unauthorized.</span></span>
 
-<span data-ttu-id="fa799-173"><xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소는 `NavMenu` 구성 요소(`Shared/NavMenu.razor`)에서 [`NavLink` 구성 요소](xref:blazor/fundamentals/routing#navlink-and-navmenu-components)(<xref:Microsoft.AspNetCore.Components.Routing.NavLink>)에 대한 목록 항목(`<li>...</li>`)을 표시하는 데 사용할 수 있지만, 이 방법은 렌더링된 출력에서 목록 항목을 제거할 뿐입니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-173">The <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> component can be used in the `NavMenu` component (`Shared/NavMenu.razor`) to display a list item (`<li>...</li>`) for a [`NavLink` component](xref:blazor/fundamentals/routing#navlink-and-navmenu-components) (<xref:Microsoft.AspNetCore.Components.Routing.NavLink>), but note that this approach only removes the list item from the rendered output.</span></span> <span data-ttu-id="fa799-174">사용자가 해당 구성 요소로 이동하는 것을 방지하지는 않습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-174">It doesn't prevent the user from navigating to the component.</span></span>
+<span data-ttu-id="4a882-172"><xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소는 `NavMenu` 구성 요소(`Shared/NavMenu.razor`)에서 [`NavLink` 구성 요소](xref:blazor/fundamentals/routing#navlink-and-navmenu-components)(<xref:Microsoft.AspNetCore.Components.Routing.NavLink>)에 대한 목록 항목(`<li>...</li>`)을 표시하는 데 사용할 수 있지만, 이 방법은 렌더링된 출력에서 목록 항목을 제거할 뿐입니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-172">The <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> component can be used in the `NavMenu` component (`Shared/NavMenu.razor`) to display a list item (`<li>...</li>`) for a [`NavLink` component](xref:blazor/fundamentals/routing#navlink-and-navmenu-components) (<xref:Microsoft.AspNetCore.Components.Routing.NavLink>), but note that this approach only removes the list item from the rendered output.</span></span> <span data-ttu-id="4a882-173">사용자가 해당 구성 요소로 이동하는 것을 방지하지는 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-173">It doesn't prevent the user from navigating to the component.</span></span>
 
-### <a name="role-based-and-policy-based-authorization"></a><span data-ttu-id="fa799-175">역할 기반 및 정책 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="fa799-175">Role-based and policy-based authorization</span></span>
+<span data-ttu-id="4a882-174">인증을 포함하는 Blazor 프로젝트 템플릿으로 만든 앱은 `AuthorizeView` 구성 요소에 종속되는 `LoginDisplay` 구성 요소를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-174">Apps created from a Blazor project template that include authentication use a `LoginDisplay` component that depends on an `AuthorizeView` component.</span></span> <span data-ttu-id="4a882-175">`AuthorizeView` 구성 요소는 Identity 관련 작업을 위해 사용자에게 선택적으로 콘텐츠를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-175">The `AuthorizeView` component selectively displays content to users for Identity-related work.</span></span> <span data-ttu-id="4a882-176">다음 예제는 Blazor WebAssembly 프로젝트 템플릿에서 가져온 것입니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-176">The following example is from the Blazor WebAssembly project template.</span></span>
 
-<span data-ttu-id="fa799-176"><xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소는 ‘역할 기반’ 또는 ‘정책 기반’ 권한 부여를 지원합니다. </span><span class="sxs-lookup"><span data-stu-id="fa799-176">The <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> component supports *role-based* or *policy-based* authorization.</span></span>
+<span data-ttu-id="4a882-177">`Shared/LoginDisplay.razor`:</span><span class="sxs-lookup"><span data-stu-id="4a882-177">`Shared/LoginDisplay.razor`:</span></span>
 
-<span data-ttu-id="fa799-177">역할 기반 권한 부여의 경우 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles> 매개 변수를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-177">For role-based authorization, use the <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles> parameter:</span></span>
+```razor
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+@inject NavigationManager Navigation
+@inject SignOutSessionStateManager SignOutManager
+
+<AuthorizeView>
+    <Authorized>
+        Hello, @context.User.Identity.Name!
+        <button class="nav-link btn btn-link" @onclick="BeginLogout">Log out</button>
+    </Authorized>
+    <NotAuthorized>
+        <a href="authentication/login">Log in</a>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code{
+    private async Task BeginLogout(MouseEventArgs args)
+    {
+        await SignOutManager.SetSignOutState();
+        Navigation.NavigateTo("authentication/logout");
+    }
+}
+```
+
+<span data-ttu-id="4a882-178">다음 예제는 Blazor Server 프로젝트 템플릿에서 가져왔으며 앱의 `Identity` 영역에서 ASP.NET Core Identity 엔드포인트를 사용해 Identity 관련 작업을 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-178">The following example is from the Blazor Server project template and uses ASP.NET Core Identity endpoints in the `Identity` area of the app to process Identity-related work.</span></span>
+
+<span data-ttu-id="4a882-179">`Shared/LoginDisplay.razor`:</span><span class="sxs-lookup"><span data-stu-id="4a882-179">`Shared/LoginDisplay.razor`:</span></span>
+
+```razor
+<AuthorizeView>
+    <Authorized>
+        <a href="Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>
+        <form method="post" action="Identity/Account/LogOut">
+            <button type="submit" class="nav-link btn btn-link">Log out</button>
+        </form>
+    </Authorized>
+    <NotAuthorized>
+        <a href="Identity/Account/Register">Register</a>
+        <a href="Identity/Account/Login">Log in</a>
+    </NotAuthorized>
+</AuthorizeView>
+```
+
+### <a name="role-based-and-policy-based-authorization"></a><span data-ttu-id="4a882-180">역할 기반 및 정책 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="4a882-180">Role-based and policy-based authorization</span></span>
+
+<span data-ttu-id="4a882-181"><xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소는 ‘역할 기반’ 또는 ‘정책 기반’ 권한 부여를 지원합니다. </span><span class="sxs-lookup"><span data-stu-id="4a882-181">The <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> component supports *role-based* or *policy-based* authorization.</span></span>
+
+<span data-ttu-id="4a882-182">역할 기반 권한 부여의 경우 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles> 매개 변수를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-182">For role-based authorization, use the <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles> parameter:</span></span>
 
 ```razor
 <AuthorizeView Roles="admin, superuser">
@@ -313,9 +360,9 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-<span data-ttu-id="fa799-178">자세한 내용은 <xref:security/authorization/roles>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fa799-178">For more information, see <xref:security/authorization/roles>.</span></span>
+<span data-ttu-id="4a882-183">자세한 내용은 <xref:security/authorization/roles>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4a882-183">For more information, see <xref:security/authorization/roles>.</span></span>
 
-<span data-ttu-id="fa799-179">정책 기반 권한 부여의 경우 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy> 매개 변수를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-179">For policy-based authorization, use the <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy> parameter:</span></span>
+<span data-ttu-id="4a882-184">정책 기반 권한 부여의 경우 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy> 매개 변수를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-184">For policy-based authorization, use the <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy> parameter:</span></span>
 
 ```razor
 <AuthorizeView Policy="content-editor">
@@ -323,17 +370,17 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-<span data-ttu-id="fa799-180">클레임 기반 권한 부여는 정책 기반 권한 부여의 특별한 경우입니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-180">Claims-based authorization is a special case of policy-based authorization.</span></span> <span data-ttu-id="fa799-181">예를 들어 사용자에게 특정 클레임이 있어야 하는 정책을 정의할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-181">For example, you can define a policy that requires users to have a certain claim.</span></span> <span data-ttu-id="fa799-182">자세한 내용은 <xref:security/authorization/policies>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="fa799-182">For more information, see <xref:security/authorization/policies>.</span></span>
+<span data-ttu-id="4a882-185">클레임 기반 권한 부여는 정책 기반 권한 부여의 특별한 경우입니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-185">Claims-based authorization is a special case of policy-based authorization.</span></span> <span data-ttu-id="4a882-186">예를 들어 사용자에게 특정 클레임이 있어야 하는 정책을 정의할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-186">For example, you can define a policy that requires users to have a certain claim.</span></span> <span data-ttu-id="4a882-187">자세한 내용은 <xref:security/authorization/policies>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4a882-187">For more information, see <xref:security/authorization/policies>.</span></span>
 
-<span data-ttu-id="fa799-183">이러한 API는 Blazor Server 또는 Blazor WebAssembly 앱에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-183">These APIs can be used in either Blazor Server or Blazor WebAssembly apps.</span></span>
+<span data-ttu-id="4a882-188">이러한 API는 Blazor Server 또는 Blazor WebAssembly 앱에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-188">These APIs can be used in either Blazor Server or Blazor WebAssembly apps.</span></span>
 
-<span data-ttu-id="fa799-184"><xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles> 또는 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy>를 지정하지 않으면 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>는 기본 정책을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-184">If neither <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles> nor <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy> is specified, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> uses the default policy.</span></span>
+<span data-ttu-id="4a882-189"><xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles> 또는 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy>를 지정하지 않으면 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>는 기본 정책을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-189">If neither <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles> nor <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy> is specified, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> uses the default policy.</span></span>
 
-### <a name="content-displayed-during-asynchronous-authentication"></a><span data-ttu-id="fa799-185">비동기 인증 중에 표시되는 콘텐츠</span><span class="sxs-lookup"><span data-stu-id="fa799-185">Content displayed during asynchronous authentication</span></span>
+### <a name="content-displayed-during-asynchronous-authentication"></a><span data-ttu-id="4a882-190">비동기 인증 중에 표시되는 콘텐츠</span><span class="sxs-lookup"><span data-stu-id="4a882-190">Content displayed during asynchronous authentication</span></span>
 
-<span data-ttu-id="fa799-186">Blazor에서는 인증 상태를 *비동기적으로* 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-186">Blazor allows for authentication state to be determined *asynchronously*.</span></span> <span data-ttu-id="fa799-187">이 접근 방식의 주요 시나리오는 Blazor WebAssembly 앱이 외부 엔드포인트에 인증 요청을 하는 경우입니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-187">The primary scenario for this approach is in Blazor WebAssembly apps that make a request to an external endpoint for authentication.</span></span>
+<span data-ttu-id="4a882-191">Blazor에서는 인증 상태를 *비동기적으로* 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-191">Blazor allows for authentication state to be determined *asynchronously*.</span></span> <span data-ttu-id="4a882-192">이 접근 방식의 주요 시나리오는 Blazor WebAssembly 앱이 외부 엔드포인트에 인증 요청을 하는 경우입니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-192">The primary scenario for this approach is in Blazor WebAssembly apps that make a request to an external endpoint for authentication.</span></span>
 
-<span data-ttu-id="fa799-188">인증이 진행되는 동안 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>는 기본적으로 아무 콘텐츠도 표시하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-188">While authentication is in progress, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> displays no content by default.</span></span> <span data-ttu-id="fa799-189">인증 중에 콘텐츠를 표시하려면 `<Authorizing>` 태그를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-189">To display content while authentication occurs, use the `<Authorizing>` tag:</span></span>
+<span data-ttu-id="4a882-193">인증이 진행되는 동안 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>는 기본적으로 아무 콘텐츠도 표시하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-193">While authentication is in progress, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> displays no content by default.</span></span> <span data-ttu-id="4a882-194">인증 중에 콘텐츠를 표시하려면 `<Authorizing>` 태그를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-194">To display content while authentication occurs, use the `<Authorizing>` tag:</span></span>
 
 ```razor
 <AuthorizeView>
@@ -348,11 +395,11 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-<span data-ttu-id="fa799-190">이 접근 방식은 일반적으로 Blazor Server 앱에 적용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-190">This approach isn't normally applicable to Blazor Server apps.</span></span> <span data-ttu-id="fa799-191">Blazor Server 앱은 상태가 설정되는 즉시 인증 상태를 알 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-191">Blazor Server apps know the authentication state as soon as the state is established.</span></span> <span data-ttu-id="fa799-192">Blazor Server 앱의 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소에 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeViewCore.Authorizing> 콘텐츠를 제공할 수는 있지만, 이 콘텐츠는 표시되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-192"><xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeViewCore.Authorizing> content can be provided in a Blazor Server app's <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> component, but the content is never displayed.</span></span>
+<span data-ttu-id="4a882-195">이 접근 방식은 일반적으로 Blazor Server 앱에 적용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-195">This approach isn't normally applicable to Blazor Server apps.</span></span> <span data-ttu-id="4a882-196">Blazor Server 앱은 상태가 설정되는 즉시 인증 상태를 알 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-196">Blazor Server apps know the authentication state as soon as the state is established.</span></span> <span data-ttu-id="4a882-197">Blazor Server 앱의 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소에 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeViewCore.Authorizing> 콘텐츠를 제공할 수는 있지만, 이 콘텐츠는 표시되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-197"><xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeViewCore.Authorizing> content can be provided in a Blazor Server app's <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> component, but the content is never displayed.</span></span>
 
-## <a name="authorize-attribute"></a><span data-ttu-id="fa799-193">[Authorize] 특성</span><span class="sxs-lookup"><span data-stu-id="fa799-193">[Authorize] attribute</span></span>
+## <a name="authorize-attribute"></a><span data-ttu-id="4a882-198">[Authorize] 특성</span><span class="sxs-lookup"><span data-stu-id="4a882-198">[Authorize] attribute</span></span>
 
-<span data-ttu-id="fa799-194">[`[Authorize]` 특성](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)은 Razor 구성 요소에서 사용될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-194">The [`[Authorize]` attribute](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) can be used in Razor components:</span></span>
+<span data-ttu-id="4a882-199">[`[Authorize]` 특성](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)은 Razor 구성 요소에서 사용될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-199">The [`[Authorize]` attribute](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) can be used in Razor components:</span></span>
 
 ```razor
 @page "/"
@@ -362,9 +409,9 @@ You can only see this if you're signed in.
 ```
 
 > [!IMPORTANT]
-> <span data-ttu-id="fa799-195">Blazor 라우터를 통해 연결된 `@page` 구성 요소에서만 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-195">Only use [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) on `@page` components reached via the Blazor Router.</span></span> <span data-ttu-id="fa799-196">권한 부여는 라우팅의 일부로만 수행되고, 페이지에 렌더링된 자식 구성 요소에 대해서는 수행되지 ‘않습니다’.</span><span class="sxs-lookup"><span data-stu-id="fa799-196">Authorization is only performed as an aspect of routing and *not* for child components rendered within a page.</span></span> <span data-ttu-id="fa799-197">페이지 내의 특정 파트 표시 권한을 부여하려면 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>를 대신 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-197">To authorize the display of specific parts within a page, use <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> instead.</span></span>
+> <span data-ttu-id="4a882-200">Blazor 라우터를 통해 연결된 `@page` 구성 요소에서만 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-200">Only use [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) on `@page` components reached via the Blazor Router.</span></span> <span data-ttu-id="4a882-201">권한 부여는 라우팅의 일부로만 수행되고, 페이지에 렌더링된 자식 구성 요소에 대해서는 수행되지 ‘않습니다’.</span><span class="sxs-lookup"><span data-stu-id="4a882-201">Authorization is only performed as an aspect of routing and *not* for child components rendered within a page.</span></span> <span data-ttu-id="4a882-202">페이지 내의 특정 파트 표시 권한을 부여하려면 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>를 대신 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-202">To authorize the display of specific parts within a page, use <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> instead.</span></span>
 
-<span data-ttu-id="fa799-198">[`[Authorize]` 특성](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)은 역할 기반 또는 정책 기반 권한 부여도 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-198">The [`[Authorize]` attribute](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) also supports role-based or policy-based authorization.</span></span> <span data-ttu-id="fa799-199">역할 기반 권한 부여의 경우 <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Roles> 매개 변수를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-199">For role-based authorization, use the <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Roles> parameter:</span></span>
+<span data-ttu-id="4a882-203">[`[Authorize]` 특성](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)은 역할 기반 또는 정책 기반 권한 부여도 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-203">The [`[Authorize]` attribute](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) also supports role-based or policy-based authorization.</span></span> <span data-ttu-id="4a882-204">역할 기반 권한 부여의 경우 <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Roles> 매개 변수를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-204">For role-based authorization, use the <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Roles> parameter:</span></span>
 
 ```razor
 @page "/"
@@ -373,7 +420,7 @@ You can only see this if you're signed in.
 <p>You can only see this if you're in the 'admin' or 'superuser' role.</p>
 ```
 
-<span data-ttu-id="fa799-200">정책 기반 권한 부여의 경우 <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy> 매개 변수를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-200">For policy-based authorization, use the <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy> parameter:</span></span>
+<span data-ttu-id="4a882-205">정책 기반 권한 부여의 경우 <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy> 매개 변수를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-205">For policy-based authorization, use the <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy> parameter:</span></span>
 
 ```razor
 @page "/"
@@ -382,20 +429,20 @@ You can only see this if you're signed in.
 <p>You can only see this if you satisfy the 'content-editor' policy.</p>
 ```
 
-<span data-ttu-id="fa799-201"><xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Roles> 또는 <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy>를 지정하지 않으면 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)는 기본적으로 다음과 같이 처리하는 기본 정책을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-201">If neither <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Roles> nor <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy> is specified, [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) uses the default policy, which by default is to treat:</span></span>
+<span data-ttu-id="4a882-206"><xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Roles> 또는 <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy>를 지정하지 않으면 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)는 기본적으로 다음과 같이 처리하는 기본 정책을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-206">If neither <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Roles> nor <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy> is specified, [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) uses the default policy, which by default is to treat:</span></span>
 
-* <span data-ttu-id="fa799-202">인증(로그인)된 사용자를 권한 있는 사용자로 처리</span><span class="sxs-lookup"><span data-stu-id="fa799-202">Authenticated (signed-in) users as authorized.</span></span>
-* <span data-ttu-id="fa799-203">인증되지 않은(로그아웃된) 사용자를 권한 없는 사용자로 처리</span><span class="sxs-lookup"><span data-stu-id="fa799-203">Unauthenticated (signed-out) users as unauthorized.</span></span>
+* <span data-ttu-id="4a882-207">인증(로그인)된 사용자를 권한 있는 사용자로 처리</span><span class="sxs-lookup"><span data-stu-id="4a882-207">Authenticated (signed-in) users as authorized.</span></span>
+* <span data-ttu-id="4a882-208">인증되지 않은(로그아웃된) 사용자를 권한 없는 사용자로 처리</span><span class="sxs-lookup"><span data-stu-id="4a882-208">Unauthenticated (signed-out) users as unauthorized.</span></span>
 
-## <a name="customize-unauthorized-content-with-the-router-component"></a><span data-ttu-id="fa799-204">Router 구성 요소를 사용하여 권한 없는 콘텐츠 사용자 지정</span><span class="sxs-lookup"><span data-stu-id="fa799-204">Customize unauthorized content with the Router component</span></span>
+## <a name="customize-unauthorized-content-with-the-router-component"></a><span data-ttu-id="4a882-209">Router 구성 요소를 사용하여 권한 없는 콘텐츠 사용자 지정</span><span class="sxs-lookup"><span data-stu-id="4a882-209">Customize unauthorized content with the Router component</span></span>
 
-<span data-ttu-id="fa799-205"><xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> 구성 요소와 함께 <xref:Microsoft.AspNetCore.Components.Routing.Router> 구성 요소를 사용하면 다음과 같은 경우 앱이 사용자 지정 콘텐츠를 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-205">The <xref:Microsoft.AspNetCore.Components.Routing.Router> component, in conjunction with the <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> component, allows the app to specify custom content if:</span></span>
+<span data-ttu-id="4a882-210"><xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> 구성 요소와 함께 <xref:Microsoft.AspNetCore.Components.Routing.Router> 구성 요소를 사용하면 다음과 같은 경우 앱이 사용자 지정 콘텐츠를 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-210">The <xref:Microsoft.AspNetCore.Components.Routing.Router> component, in conjunction with the <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> component, allows the app to specify custom content if:</span></span>
 
-* <span data-ttu-id="fa799-206">사용자가 구성 요소에 적용된 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 조건을 충족하지 못하는 경우</span><span class="sxs-lookup"><span data-stu-id="fa799-206">The user fails an [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) condition applied to the component.</span></span> <span data-ttu-id="fa799-207">[`<NotAuthorized>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.NotAuthorized?displayProperty=nameWithType) 요소의 태그가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-207">The markup of the [`<NotAuthorized>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.NotAuthorized?displayProperty=nameWithType) element is displayed.</span></span> <span data-ttu-id="fa799-208">[`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성은 [`[Authorize]` 속성](#authorize-attribute) 섹션에서 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-208">The [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute is covered in the [`[Authorize]` attribute](#authorize-attribute) section.</span></span>
-* <span data-ttu-id="fa799-209">비동기 권한 부여가 진행 중이며 이는 일반적으로 사용자를 인증하는 프로세스가 진행되고 있음을 의미합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-209">Asynchronous authorization is in progress, which usually means that the process of authenticating the user is in progress.</span></span> <span data-ttu-id="fa799-210">[`<Authorizing>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing?displayProperty=nameWithType) 요소의 태그가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-210">The markup of the [`<Authorizing>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing?displayProperty=nameWithType) element is displayed.</span></span>
-* <span data-ttu-id="fa799-211">콘텐츠를 찾을 수 없는 경우</span><span class="sxs-lookup"><span data-stu-id="fa799-211">Content isn't found.</span></span> <span data-ttu-id="fa799-212">[`<NotFound>`](xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound?displayProperty=nameWithType) 요소의 태그가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-212">The markup of the [`<NotFound>`](xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound?displayProperty=nameWithType) element is displayed.</span></span>
+* <span data-ttu-id="4a882-211">사용자가 구성 요소에 적용된 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 조건을 충족하지 못하는 경우</span><span class="sxs-lookup"><span data-stu-id="4a882-211">The user fails an [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) condition applied to the component.</span></span> <span data-ttu-id="4a882-212">[`<NotAuthorized>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.NotAuthorized?displayProperty=nameWithType) 요소의 태그가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-212">The markup of the [`<NotAuthorized>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.NotAuthorized?displayProperty=nameWithType) element is displayed.</span></span> <span data-ttu-id="4a882-213">[`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 특성은 [`[Authorize]` 속성](#authorize-attribute) 섹션에서 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-213">The [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute is covered in the [`[Authorize]` attribute](#authorize-attribute) section.</span></span>
+* <span data-ttu-id="4a882-214">비동기 권한 부여가 진행 중이며 이는 일반적으로 사용자를 인증하는 프로세스가 진행되고 있음을 의미합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-214">Asynchronous authorization is in progress, which usually means that the process of authenticating the user is in progress.</span></span> <span data-ttu-id="4a882-215">[`<Authorizing>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing?displayProperty=nameWithType) 요소의 태그가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-215">The markup of the [`<Authorizing>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing?displayProperty=nameWithType) element is displayed.</span></span>
+* <span data-ttu-id="4a882-216">콘텐츠를 찾을 수 없는 경우</span><span class="sxs-lookup"><span data-stu-id="4a882-216">Content isn't found.</span></span> <span data-ttu-id="4a882-217">[`<NotFound>`](xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound?displayProperty=nameWithType) 요소의 태그가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-217">The markup of the [`<NotFound>`](xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound?displayProperty=nameWithType) element is displayed.</span></span>
 
-<span data-ttu-id="fa799-213">기본 Blazor Server 프로젝트 템플릿에서 `App` 구성 요소(`App.razor`)는 사용자 지정 콘텐츠를 설정하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-213">In the default Blazor Server project template, the `App` component (`App.razor`) demonstrates how to set custom content:</span></span>
+<span data-ttu-id="4a882-218">기본 Blazor Server 프로젝트 템플릿에서 `App` 구성 요소(`App.razor`)는 사용자 지정 콘텐츠를 설정하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-218">In the default Blazor Server project template, the `App` component (`App.razor`) demonstrates how to set custom content:</span></span>
 
 ```razor
 <CascadingAuthenticationState>
@@ -426,21 +473,21 @@ You can only see this if you're signed in.
 
 [!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
-<span data-ttu-id="fa799-214">`<NotFound>`, `<NotAuthorized>` 및 `<Authorizing>` 태그의 콘텐츠에는 다른 대화형 구성 요소와 같은 임의 항목이 포함될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-214">The content of `<NotFound>`, `<NotAuthorized>`, and `<Authorizing>` tags can include arbitrary items, such as other interactive components.</span></span>
+<span data-ttu-id="4a882-219">`<NotFound>`, `<NotAuthorized>` 및 `<Authorizing>` 태그의 콘텐츠에는 다른 대화형 구성 요소와 같은 임의 항목이 포함될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-219">The content of `<NotFound>`, `<NotAuthorized>`, and `<Authorizing>` tags can include arbitrary items, such as other interactive components.</span></span>
 
-<span data-ttu-id="fa799-215">`<NotAuthorized>` 태그를 지정하지 않으면, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView>는 다음 대체 메시지를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-215">If the `<NotAuthorized>` tag isn't specified, the <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> uses the following fallback message:</span></span>
+<span data-ttu-id="4a882-220">`<NotAuthorized>` 태그를 지정하지 않으면, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView>는 다음 대체 메시지를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-220">If the `<NotAuthorized>` tag isn't specified, the <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> uses the following fallback message:</span></span>
 
 ```html
 Not authorized.
 ```
 
-## <a name="notification-about-authentication-state-changes"></a><span data-ttu-id="fa799-216">인증 상태 변경 알림</span><span class="sxs-lookup"><span data-stu-id="fa799-216">Notification about authentication state changes</span></span>
+## <a name="notification-about-authentication-state-changes"></a><span data-ttu-id="4a882-221">인증 상태 변경 알림</span><span class="sxs-lookup"><span data-stu-id="4a882-221">Notification about authentication state changes</span></span>
 
-<span data-ttu-id="fa799-217">예를 들어 사용자가 로그아웃했거나 다른 사용자가 해당 역할을 변경하여 기본 인증 상태 데이터가 변경되었음을 앱이 확인하면, [사용자 지정 `AuthenticationStateProvider`](#implement-a-custom-authenticationstateprovider)는 필요에 따라 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 기본 클래스에서 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider.NotifyAuthenticationStateChanged%2A> 메서드를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-217">If the app determines that the underlying authentication state data has changed (for example, because the user signed out or another user has changed their roles), a [custom `AuthenticationStateProvider`](#implement-a-custom-authenticationstateprovider) can optionally invoke the method <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider.NotifyAuthenticationStateChanged%2A> on the <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> base class.</span></span> <span data-ttu-id="fa799-218">그러면 인증 상태 데이터의 소비자(예: <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>)가 새 데이터를 사용하여 다시 렌더링하라는 알림을 받습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-218">This notifies consumers of the authentication state data (for example, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>) to rerender using the new data.</span></span>
+<span data-ttu-id="4a882-222">예를 들어 사용자가 로그아웃했거나 다른 사용자가 해당 역할을 변경하여 기본 인증 상태 데이터가 변경되었음을 앱이 확인하면, [사용자 지정 `AuthenticationStateProvider`](#implement-a-custom-authenticationstateprovider)는 필요에 따라 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 기본 클래스에서 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider.NotifyAuthenticationStateChanged%2A> 메서드를 호출할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-222">If the app determines that the underlying authentication state data has changed (for example, because the user signed out or another user has changed their roles), a [custom `AuthenticationStateProvider`](#implement-a-custom-authenticationstateprovider) can optionally invoke the method <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider.NotifyAuthenticationStateChanged%2A> on the <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> base class.</span></span> <span data-ttu-id="4a882-223">그러면 인증 상태 데이터의 소비자(예: <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>)가 새 데이터를 사용하여 다시 렌더링하라는 알림을 받습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-223">This notifies consumers of the authentication state data (for example, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>) to rerender using the new data.</span></span>
 
-## <a name="procedural-logic"></a><span data-ttu-id="fa799-219">절차적 논리</span><span class="sxs-lookup"><span data-stu-id="fa799-219">Procedural logic</span></span>
+## <a name="procedural-logic"></a><span data-ttu-id="4a882-224">절차적 논리</span><span class="sxs-lookup"><span data-stu-id="4a882-224">Procedural logic</span></span>
 
-<span data-ttu-id="fa799-220">앱이 절차적 논리의 일부로 권한 부여 규칙을 확인해야 하는 경우, `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` 형식의 연계 매개 변수를 사용하여 사용자의 <xref:System.Security.Claims.ClaimsPrincipal>을 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-220">If the app is required to check authorization rules as part of procedural logic, use a cascaded parameter of type `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` to obtain the user's <xref:System.Security.Claims.ClaimsPrincipal>.</span></span> <span data-ttu-id="fa799-221">`IAuthorizationService` 등의 다른 서비스와 `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>`를 결합하여 정책을 평가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-221">`Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` can be combined with other services, such as `IAuthorizationService`, to evaluate policies.</span></span>
+<span data-ttu-id="4a882-225">앱이 절차적 논리의 일부로 권한 부여 규칙을 확인해야 하는 경우, `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` 형식의 연계 매개 변수를 사용하여 사용자의 <xref:System.Security.Claims.ClaimsPrincipal>을 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-225">If the app is required to check authorization rules as part of procedural logic, use a cascaded parameter of type `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` to obtain the user's <xref:System.Security.Claims.ClaimsPrincipal>.</span></span> <span data-ttu-id="4a882-226">`IAuthorizationService` 등의 다른 서비스와 `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>`를 결합하여 정책을 평가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-226">`Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` can be combined with other services, such as `IAuthorizationService`, to evaluate policies.</span></span>
 
 ```razor
 @using Microsoft.AspNetCore.Authorization
@@ -477,24 +524,24 @@ Not authorized.
 ```
 
 > [!NOTE]
-> <span data-ttu-id="fa799-222">Blazor WebAssembly 앱 구성 요소에서 <xref:Microsoft.AspNetCore.Authorization> 및 <xref:Microsoft.AspNetCore.Components.Authorization> 네임스페이스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-222">In a Blazor WebAssembly app component, add the <xref:Microsoft.AspNetCore.Authorization> and <xref:Microsoft.AspNetCore.Components.Authorization> namespaces:</span></span>
+> <span data-ttu-id="4a882-227">Blazor WebAssembly 앱 구성 요소에서 <xref:Microsoft.AspNetCore.Authorization> 및 <xref:Microsoft.AspNetCore.Components.Authorization> 네임스페이스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-227">In a Blazor WebAssembly app component, add the <xref:Microsoft.AspNetCore.Authorization> and <xref:Microsoft.AspNetCore.Components.Authorization> namespaces:</span></span>
 >
 > ```razor
 > @using Microsoft.AspNetCore.Authorization
 > @using Microsoft.AspNetCore.Components.Authorization
 > ```
 >
-> <span data-ttu-id="fa799-223">이러한 네임스페이스는 앱의 `_Imports.razor` 파일에 추가하여 전역적으로 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-223">These namespaces can be provided globally by adding them to the app's `_Imports.razor` file.</span></span>
+> <span data-ttu-id="4a882-228">이러한 네임스페이스는 앱의 `_Imports.razor` 파일에 추가하여 전역적으로 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-228">These namespaces can be provided globally by adding them to the app's `_Imports.razor` file.</span></span>
 
-## <a name="troubleshoot-errors"></a><span data-ttu-id="fa799-224">오류 문제 해결</span><span class="sxs-lookup"><span data-stu-id="fa799-224">Troubleshoot errors</span></span>
+## <a name="troubleshoot-errors"></a><span data-ttu-id="4a882-229">오류 문제 해결</span><span class="sxs-lookup"><span data-stu-id="4a882-229">Troubleshoot errors</span></span>
 
-<span data-ttu-id="fa799-225">일반적인 오류:</span><span class="sxs-lookup"><span data-stu-id="fa799-225">Common errors:</span></span>
+<span data-ttu-id="4a882-230">일반적인 오류:</span><span class="sxs-lookup"><span data-stu-id="4a882-230">Common errors:</span></span>
 
-* <span data-ttu-id="fa799-226">**권한을 부여하려면 `Task\<AuthenticationState>` 형식의 연계 매개 변수가 필요합니다. `CascadingAuthenticationState`를 사용하여 이 변수를 제공하는 방법을 고려하세요.**</span><span class="sxs-lookup"><span data-stu-id="fa799-226">**Authorization requires a cascading parameter of type `Task\<AuthenticationState>`. Consider using `CascadingAuthenticationState` to supply this.**</span></span>
+* <span data-ttu-id="4a882-231">**권한을 부여하려면 `Task\<AuthenticationState>` 형식의 연계 매개 변수가 필요합니다. `CascadingAuthenticationState`를 사용하여 이 변수를 제공하는 방법을 고려하세요.**</span><span class="sxs-lookup"><span data-stu-id="4a882-231">**Authorization requires a cascading parameter of type `Task\<AuthenticationState>`. Consider using `CascadingAuthenticationState` to supply this.**</span></span>
 
-* <span data-ttu-id="fa799-227">**`authenticationStateTask`에 대해 `null` 값을 받았습니다.**</span><span class="sxs-lookup"><span data-stu-id="fa799-227">**`null` value is received for `authenticationStateTask`**</span></span>
+* <span data-ttu-id="4a882-232">**`authenticationStateTask`에 대해 `null` 값을 받았습니다.**</span><span class="sxs-lookup"><span data-stu-id="4a882-232">**`null` value is received for `authenticationStateTask`**</span></span>
 
-<span data-ttu-id="fa799-228">인증을 사용할 수 있는 Blazor Server 템플릿으로 프로젝트를 만들지 않았을 가능성이 큽니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-228">It's likely that the project wasn't created using a Blazor Server template with authentication enabled.</span></span> <span data-ttu-id="fa799-229">UI 트리의 일부를 `<CascadingAuthenticationState>`로 래핑합니다. 다음은 `App` 구성 요소(`App.razor`)를 래핑한 예제입니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-229">Wrap a `<CascadingAuthenticationState>` around some part of the UI tree, for example in the `App` component (`App.razor`) as follows:</span></span>
+<span data-ttu-id="4a882-233">인증을 사용할 수 있는 Blazor Server 템플릿으로 프로젝트를 만들지 않았을 가능성이 큽니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-233">It's likely that the project wasn't created using a Blazor Server template with authentication enabled.</span></span> <span data-ttu-id="4a882-234">UI 트리의 일부를 `<CascadingAuthenticationState>`로 래핑합니다. 다음은 `App` 구성 요소(`App.razor`)를 래핑한 예제입니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-234">Wrap a `<CascadingAuthenticationState>` around some part of the UI tree, for example in the `App` component (`App.razor`) as follows:</span></span>
 
 ```razor
 <CascadingAuthenticationState>
@@ -506,11 +553,11 @@ Not authorized.
 
 [!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
-<span data-ttu-id="fa799-230"><xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState>는 기본 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> DI 서비스로부터 받은 `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` 연계 매개 변수를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="fa799-230">The <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> supplies the `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` cascading parameter, which in turn it receives from the underlying <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> DI service.</span></span>
+<span data-ttu-id="4a882-235"><xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState>는 기본 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> DI 서비스로부터 받은 `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` 연계 매개 변수를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4a882-235">The <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> supplies the `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>` cascading parameter, which in turn it receives from the underlying <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> DI service.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="fa799-231">추가 자료</span><span class="sxs-lookup"><span data-stu-id="fa799-231">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="4a882-236">추가 자료</span><span class="sxs-lookup"><span data-stu-id="4a882-236">Additional resources</span></span>
 
 * <xref:security/index>
 * <xref:security/authentication/windowsauth>
-* [<span data-ttu-id="fa799-232">Authentication.MSAL JavaScript 라이브러리의 사용자 지정 버전 빌드</span><span class="sxs-lookup"><span data-stu-id="fa799-232">Build a custom version of the Authentication.MSAL JavaScript library</span></span>](xref:blazor/security/webassembly/additional-scenarios#build-a-custom-version-of-the-authenticationmsal-javascript-library)
-* <span data-ttu-id="fa799-233">[Awesome Blazor: 인증](https://github.com/AdrienTorris/awesome-blazor#authentication) 커뮤니티 샘플 링크</span><span class="sxs-lookup"><span data-stu-id="fa799-233">[Awesome Blazor: Authentication](https://github.com/AdrienTorris/awesome-blazor#authentication) community sample links</span></span>
+* [<span data-ttu-id="4a882-237">Authentication.MSAL JavaScript 라이브러리의 사용자 지정 버전 빌드</span><span class="sxs-lookup"><span data-stu-id="4a882-237">Build a custom version of the Authentication.MSAL JavaScript library</span></span>](xref:blazor/security/webassembly/additional-scenarios#build-a-custom-version-of-the-authenticationmsal-javascript-library)
+* <span data-ttu-id="4a882-238">[Awesome Blazor: 인증](https://github.com/AdrienTorris/awesome-blazor#authentication) 커뮤니티 샘플 링크</span><span class="sxs-lookup"><span data-stu-id="4a882-238">[Awesome Blazor: Authentication](https://github.com/AdrienTorris/awesome-blazor#authentication) community sample links</span></span>
