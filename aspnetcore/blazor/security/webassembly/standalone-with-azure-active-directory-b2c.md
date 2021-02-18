@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: 68b1162ea35b401c47f89b7a930b6f0d5c3ab6c5
-ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
+ms.openlocfilehash: dd32db8eaac70cfb3dfb3872c43c28aed6a87657
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98710535"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280904"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Azure Active Directory B2C를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
-
-작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Azure Active Directory B2C를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
 
 이 문서에서는 인증을 위해 [Azure Active Directory(AAD) B2C](/azure/active-directory-b2c/overview)를 사용하는 [독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만드는 방법을 다룹니다.
 

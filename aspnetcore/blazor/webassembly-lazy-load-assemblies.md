@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: 6e7fa6e231e97793fbf7e1ac1d208bf3013c6fce
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e8589a1e288c39b487673fafc04c59fa07916335
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506576"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280672"
 ---
-# <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly의 어셈블리 지연 로드
-
-[Safia Abdalla](https://safia.rocks) 및 [Luke Latham](https://github.com/guardrex)
+# <a name="lazy-load-assemblies-in-aspnet-core-blazor-webassembly"></a>ASP.NET Core Blazor WebAssembly의 어셈블리 지연 로드
 
 일부 애플리케이션 어셈블리의 로드를 연기(지연 로드라고 함)하여 Blazor WebAssembly 앱 시작 성능을 향상시킬 수 있습니다. 예를 들어 단일 구성 요소를 렌더링하는 데만 사용되는 어셈블리는 사용자가 해당 구성 요소로 이동하는 경우에만 로드되도록 설정할 수 있습니다. 로드 후 어셈블리는 클라이언트 쪽에서 캐시되며 이후의 모든 탐색에 사용할 수 있습니다.
 

@@ -5,7 +5,7 @@ description: Blazor 앱을 단계별로 빌드합니다.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/14/2020
+ms.date: 02/12/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,18 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 106e1119db777074b5eae24f5d7e216e6127ca13
-ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
+ms.openlocfilehash: 939841ca7214e212a2f197ea1e00b0f6152c471e
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99238309"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280511"
 ---
 # <a name="build-a-blazor-todo-list-app"></a>Blazor 할 일 목록 앱 빌드
 
-작성자: [Daniel Roth](https://github.com/danroth27) 및 [Luke Latham](https://github.com/guardrex)
-
-이 자습서에서는 Blazor 앱을 만들고 수정하는 방법을 보여줍니다. 다음과 같은 작업을 수행하는 방법을 살펴봅니다.
+이 자습서에서는 Blazor 앱을 만들고 수정하는 방법을 보여줍니다. 다음 방법을 알아봅니다.
 
 > [!div class="checklist"]
 > * 할 일 목록 Blazor 앱 프로젝트 만들기
@@ -83,7 +81,17 @@ ms.locfileid: "99238309"
 
    `Pages/Todo.razor`:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo0.razor?highlight=1)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo0.razor?highlight=1)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo0.razor?highlight=1)]
+
+   ::: moniker-end
 
    `Pages/Todo.razor` 파일을 저장합니다.
 
@@ -95,7 +103,17 @@ ms.locfileid: "99238309"
 
    `Shared/NavMenu.razor`의 경우
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/NavMenu.razor?highlight=5-9)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Shared/build-a-blazor-app/NavMenu.razor?highlight=5-9)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Shared/build-a-blazor-app/NavMenu.razor?highlight=5-9)]
+
+   ::: moniker-end
 
    `Shared/NavMenu.razor` 파일을 저장합니다.
 
@@ -107,8 +125,18 @@ ms.locfileid: "99238309"
 
    `TodoItem.cs`:
 
-   [!code-csharp[](build-a-blazor-app/samples_snapshot/TodoItem.cs)]
-   
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-csharp[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/build-a-blazor-app/TodoItem.cs)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-csharp[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/build-a-blazor-app/TodoItem.cs)]
+
+   ::: moniker-end
+
    > [!NOTE]
    > Visual Studio를 사용하여 `ToDoItem.cs` 파일 및 `ToDoItem` 클래스를 만드는 경우 다음 방식 중 하나를 사용합니다.
    >
@@ -122,11 +150,31 @@ ms.locfileid: "99238309"
 
    `Pages/Todo.razor`:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo2.razor?highlight=5-10,13)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo2.razor?highlight=5-10,13)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo2.razor?highlight=5-10,13)]
+
+   ::: moniker-end
 
 1. 목록에 할 일 항목을 추가하려면 앱에 UI 요소가 필요합니다. 순서가 지정되지 않은 목록(`<ul>...</ul>`) 아래에 텍스트 입력(`<input>`)과 단추(`<button>`)를 추가합니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo3.razor?highlight=12-13)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo3.razor?highlight=12-13)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo3.razor?highlight=12-13)]
+
+   ::: moniker-end
 
 1. `TodoItem.cs` 파일 및 업데이트된 `Pages/Todo.razor` 파일을 저장합니다. 명령 셸에서는 파일이 저장될 때 앱이 자동으로 다시 빌드됩니다. 브라우저에서는 앱에 대한 연결이 일시적으로 해제되고 연결이 다시 설정되면 페이지를 다시 로드합니다.
 
@@ -134,11 +182,31 @@ ms.locfileid: "99238309"
 
 1. `Todo` 구성 요소에 `AddTodo` 메서드를 추가하고 `@onclick` 특성을 사용하여 단추에 메서드를 등록합니다. 단추가 선택되면 `AddTodo` C# 메서드가 호출됩니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo4.razor?highlight=2,7-10)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo4.razor?highlight=2,7-10)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo4.razor?highlight=2,7-10)]
+
+   ::: moniker-end
 
 1. 새 todo 항목의 제목을 가져오려면 `@code` 블록 맨 위에 `newTodo` 문자열 필드를 추가합니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo5.razor?highlight=3)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo5.razor?highlight=3)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo5.razor?highlight=3)]
+
+   ::: moniker-end
 
    텍스트 `<input>` 요소를 수정하여 `newTodo`를 `@bind` 특성과 바인딩합니다.
 
@@ -148,13 +216,33 @@ ms.locfileid: "99238309"
 
 1. `AddTodo` 메서드를 수정하여 지정한 제목으로 `TodoItem`을 목록에 추가합니다. `newTodo`를 빈 문자열로 설정하여 텍스트 입력 값을 지웁니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo6.razor?highlight=19-26)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo6.razor?highlight=19-26)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo6.razor?highlight=19-26)]
+
+   ::: moniker-end
 
 1. `Pages/Todo.razor` 파일을 저장합니다. 앱은 명령 셸에서 자동으로 다시 빌드됩니다. 브라우저가 앱에 다시 연결한 후에 브라우저에서 페이지가 다시 로드됩니다.
 
 1. 각 할 일 항목의 제목 텍스트를 편집 가능하게 설정하고 확인란을 통해 사용자가 완료된 항목을 추적하도록 도울 수 있습니다. 각 할 일 항목의 확인란 입력을 추가하고 해당 값을 `IsDone` 속성에 바인딩합니다. `@todo.Title`을 `@bind`를 사용하여 `todo.Title`에 바인딩된 `<input>` 요소로 변경합니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo7.razor?highlight=4-7)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo7.razor?name=snippet&highlight=4-7)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo7.razor?name=snippet&highlight=4-7)]
+
+   ::: moniker-end
 
 1. `<h3>` 헤더를 업데이트하여 완료되지 않은(`IsDone`이 `false`) todo 항목의 수를 표시합니다.
 
@@ -164,7 +252,17 @@ ms.locfileid: "99238309"
 
 1. 완료된 `Todo` 구성 요소(`Pages/Todo.razor`)는 다음과 같습니다.
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo1.razor)]
+   ::: moniker range=">= aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo1.razor)]
+
+   ::: moniker-end
+
+   ::: moniker range="< aspnetcore-5.0"
+
+   [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/build-a-blazor-app/Todo1.razor)]
+
+   ::: moniker-end
 
 1. `Pages/Todo.razor` 파일을 저장합니다. 앱은 명령 셸에서 자동으로 다시 빌드됩니다. 브라우저가 앱에 다시 연결한 후에 브라우저에서 페이지가 다시 로드됩니다.
 

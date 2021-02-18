@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/blazor-server-ef-core
-ms.openlocfilehash: 10fc0afe84065f2c226d1e9c2f4314142369613a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 6fc8913640a0a8d506e2c00002912897edbfd826
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97011886"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280483"
 ---
-# <a name="aspnet-core-no-locblazor-server-with-entity-framework-core-efcore"></a>EFCore(Entity Framework Core)를 사용한 ASP.NET Core Blazor Server
-
-기준: [Jeremy Likness](https://github.com/JeremyLikness)
+# <a name="aspnet-core-blazor-server-with-entity-framework-core-efcore"></a>EFCore(Entity Framework Core)를 사용한 ASP.NET Core Blazor Server
 
 :::moniker range=">= aspnetcore-5.0"
 

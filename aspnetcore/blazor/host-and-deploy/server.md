@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: a209109210ef5e335734a974ceb0c2af7cb8e1a1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 75682171a59a610a24364778616774c49257d2ad
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94595443"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279851"
 ---
-# <a name="host-and-deploy-no-locblazor-server"></a>Blazor Server 호스트 및 배포
-
-작성자: [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com) 및 [Daniel Roth](https://github.com/danroth27)
+# <a name="host-and-deploy-blazor-server"></a>Blazor Server 호스트 및 배포
 
 ## <a name="host-configuration-values"></a>호스트 구성 값
 
@@ -58,13 +56,13 @@ Blazor Server 앱에 사용 가능한 인프라를 최대한 활용하도록 배
 
 각 회로는 최소 *Hello World* 와 같은 앱에 약 250KB의 메모리를 사용합니다. 회로의 크기는 앱의 코드 및 각 구성 요소와 연결된 상태 유지 관리 요구 사항에 따라 달라집니다. 애플리케이션 및 인프라를 개발하는 도중에 리소스 요구를 측정하는 것이 좋지만, 다음 기준은 배포 대상을 계획할 때 출발점으로 삼을 수 있습니다. 앱에서 5,000명의 동시 사용자를 지원할 것으로 예상되는 경우 앱에 최소 1.3GB(또는 사용자당 273KB)의 서버 메모리를 예산하는 것이 좋습니다.
 
-### <a name="no-locsignalr-configuration"></a>SignalR 구성
+### <a name="signalr-configuration"></a>SignalR 구성
 
 Blazor Server 앱은 ASP.NET Core SignalR을 사용하여 브라우저와 통신합니다. [SignalR의 호스팅 및 크기 조정 조건](xref:signalr/publish-to-azure-web-app)이 Blazor Server 앱에 적용됩니다.
 
 Blazor는 짧은 대기 시간, 안정성 및 [보안](xref:signalr/security) 덕분에 WebSocket을 SignalR 전송으로 사용하는 경우에 가장 효과적입니다. WebSocket을 사용할 수 없거나 앱이 긴 폴링을 사용하도록 명시적으로 구성된 경우 SignalR에서 긴 폴링을 사용합니다. Azure App Service에 배포하는 경우 서비스에 대한 Azure Portal 설정에서 WebSocket을 사용하도록 앱을 구성합니다. Azure App Service에 대해 앱을 구성하는 방법에 대한 자세한 내용은 [SignalR 게시 지침](xref:signalr/publish-to-azure-web-app)을 참조하세요.
 
-#### <a name="azure-no-locsignalr-service"></a>Azure SignalR 서비스
+#### <a name="azure-signalr-service"></a>Azure SignalR 서비스
 
 Blazor Server 앱에 [Azure SignalR Service](xref:signalr/scale#azure-signalr-service)를 사용하는 것이 좋습니다. 이 서비스를 사용하면 Blazor Server 앱을 다수의 동시 SignalR 연결로 스케일 업할 수 있습니다. 또한 SignalR 서비스의 글로벌 및 고성능 데이터 센터는 지리적 위치로 인한 대기 시간을 줄이는 데 큰 도움이 됩니다.
 
@@ -102,7 +100,7 @@ Azure SignalR Service에 대해 앱을 구성하려면 앱은 [사전 렌더링�
 
      * Azure Portal에서 앱 서비스의 **구성** > **애플리케이션 설정**(**이름**: `Azure__SignalR__StickyServerMode`, **값**: `Required`). 이 방법은 [Azure SignalR Service를 프로비저닝](#provision-the-azure-signalr-service)하는 경우 자동으로 앱에 적용됩니다.
 
-### <a name="provision-the-azure-no-locsignalr-service"></a>Azure SignalR Service 프로비저닝
+### <a name="provision-the-azure-signalr-service"></a>Azure SignalR Service 프로비저닝
 
 Visual Studio에서 앱에 대해 Azure SignalR Service를 프로비저닝하려면 다음을 수행합니다.
 

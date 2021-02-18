@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/class-libraries
-ms.openlocfilehash: 14370f9bbf45079fd3654d3e55af4178691cf4f5
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: fed5d26ecd73a4710ee794c413fd51e0b4cb4913
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252554"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280203"
 ---
-# <a name="aspnet-core-no-locrazor-components-class-libraries"></a>ASP.NET Core Razor 구성 요소 클래스 라이브러리
-
-작성자: [Simon Timms](https://github.com/stimms)
+# <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET Core Razor 구성 요소 클래스 라이브러리
 
 프로젝트 간에 [RCL(Razor 클래스 라이브러리)](xref:razor-pages/ui-class)의 구성 요소를 공유할 수 있습니다. 다음 위치에서 ‘Razor 구성 요소 클래스 라이브러리’를 포함할 수 있습니다.
 
@@ -127,7 +125,7 @@ Welcome to your new app.
 
 <!-- REACTIVATE WHEN HEAD COMPONENTS COME BACK AT 6.0
 
-To provide additional library component styles from stylesheets in the library's `wwwroot` folder, link the stylesheets using the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) in `Component1.razor`:
+To provide additional library component styles from stylesheets in the library's `wwwroot` folder, link the stylesheets using the framework's [`Link` component](xref:blazor/fundamentals/signalr#influence-html-head-tag-elements) in `Component1.razor`:
 
 ```razor
 <div class="my-component">
@@ -176,17 +174,17 @@ When the `Link` component is used in a child component, the linked asset is also
 
 ::: moniker-end
 
-## <a name="create-a-no-locrazor-components-class-library-with-static-assets"></a>정적 자산을 사용하여 Razor 구성 요소 클래스 라이브러리 만들기
+## <a name="create-a-razor-components-class-library-with-static-assets"></a>정적 자산을 사용하여 Razor 구성 요소 클래스 라이브러리 만들기
 
 RCL에는 정적 자산이 포함될 수 있습니다. 정적 자산은 라이브러리를 사용하는 모든 앱에서 제공됩니다. 자세한 내용은 <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>를 참조하세요.
 
-## <a name="supply-components-and-static-assets-to-multiple-hosted-no-locblazor-apps"></a>호스트된 여러 Blazor 앱에 구성 요소 및 정적 자산 제공
+## <a name="supply-components-and-static-assets-to-multiple-hosted-blazor-apps"></a>호스트된 여러 Blazor 앱에 구성 요소 및 정적 자산 제공
 
 자세한 내용은 <xref:blazor/host-and-deploy/webassembly#static-assets-and-class-libraries>를 참조하세요.
 
 ::: moniker range=">= aspnetcore-5.0"
 
-## <a name="browser-compatibility-analyzer-for-no-locblazor-webassembly"></a>Blazor WebAssembly용 브라우저 호환성 분석기
+## <a name="browser-compatibility-analyzer-for-blazor-webassembly"></a>Blazor WebAssembly용 브라우저 호환성 분석기
 
 Blazor WebAssembly 앱은 전체 .NET API 노출 영역을 대상으로 하지만 일부 .NET API는 브라우저 샌드박스 제약 조건으로 인해 WebAssembly에서 지원되지 않습니다. 지원되지 않는 API는 WebAssembly에서 실행될 때 <xref:System.PlatformNotSupportedException>을 throw합니다. 플랫폼 호환성 분석기는 앱이 앱의 대상 플랫폼에서 지원하지 않는 API를 사용하는 경우 개발자에게 경고합니다. Blazor WebAssembly 앱에서는 API가 브라우저에서 지원되는지를 확인한다는 의미입니다. 호환성 분석기용 .NET Framework API에 주석 달기는 지속적인 프로세스이므로 일부 .NET Framework API에는 현재 주석이 달려 있지 않습니다.
 
@@ -210,7 +208,7 @@ private static string GetLoggingDirectory()
 
 자세한 내용은 [Annotating APIs as unsupported on specific platforms(dotnet/designs GitHub repository](https://github.com/dotnet/designs/blob/main/accepted/2020/platform-exclusion/platform-exclusion.md#build-configuration-for-platforms)(특정 플랫폼에서 지원되지 않음으로 API에 주석 달기(dotnet/designs GitHub 리포지토리))를 참조하세요.
 
-## <a name="no-locblazor-javascript-isolation-and-object-references"></a>Blazor JavaScript 격리 및 개체 참조
+## <a name="blazor-javascript-isolation-and-object-references"></a>Blazor JavaScript 격리 및 개체 참조
 
 Blazor에서는 표준 [JavaScript 모듈](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)에서 JavaScript 격리를 사용하도록 설정합니다. JavaScript 격리는 다음과 같은 이점을 제공합니다.
 

@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/configuration
-ms.openlocfilehash: 5889d775c09ee23f19bf3ff59344c52d469c4bdc
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 48d78f40e9254bac182ffbc534550157664bcc5b
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97485969"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106936"
 ---
-# <a name="aspnet-core-no-locblazor-configuration"></a>ASP.NET Core Blazor 구성
+# <a name="aspnet-core-blazor-configuration"></a>ASP.NET Core Blazor 구성
 
 > [!NOTE]
 > 이 항목은 Blazor WebAssembly에 적용됩니다. ASP.NET Core 앱 구성에 대한 일반적인 지침은 <xref:fundamentals/configuration/index>의 내용을 참조하세요.
@@ -102,57 +102,6 @@ using var response = await http.GetAsync("cars.json");
 using var stream = await response.Content.ReadAsStreamAsync();
 
 builder.Configuration.AddJsonStream(stream);
-```
-
-## <a name="custom-configuration-provider-with-ef-core"></a>EF Core가 포함된 사용자 지정 구성 공급자
-
-<xref:fundamentals/configuration/index#custom-configuration-provider>에 설명된 EF Core가 포함된 사용자 지정 구성 공급자는 Blazor WebAssembly 앱에서 작동합니다.
-
-> [!WARNING]
-> Blazor WebAssembly 앱에 로드된 데이터베이스 연결 문자열과 데이터베이스는 안전하지 않으며 중요한 데이터를 저장하는 데 사용하면 안 됩니다.
-
-[`Microsoft.EntityFrameworkCore`](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore) 및 [`Microsoft.EntityFrameworkCore.InMemory`](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.InMemory)에 대한 패키지 참조를 앱의 프로젝트 파일에 추가합니다.
-
-<xref:fundamentals/configuration/index#custom-configuration-provider>에 설명된 EF Core 구성 클래스를 추가합니다.
-
-<xref:Microsoft.EntityFrameworkCore?displayProperty=fullName> 및 <xref:Microsoft.Extensions.Configuration.Memory?displayProperty=fullName>의 네임스페이스를 `Program.cs`에 추가합니다.
-
-```csharp
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration.Memory;
-```
-
-`Program.cs`의 `Program.Main`에서 다음을 수행합니다.
-
-```csharp
-builder.Configuration.AddEFConfiguration(
-    options => options.UseInMemoryDatabase("InMemoryDb"));
-```
-
-<xref:Microsoft.Extensions.Configuration.IConfiguration> 인스턴스를 구성 요소에 삽입하여 구성 데이터에 액세스합니다.
-
-`Pages/EFCoreConfig.razor`:
-
-```razor
-@page "/efcore-config"
-@using Microsoft.Extensions.Configuration
-@inject IConfiguration Configuration
-
-<h1>EF Core configuration example</h1>
-
-<h2>Quotes</h2>
-
-<ul>
-    <li>@Configuration["quote1"]</li>
-    <li>@Configuration["quote2"]</li>
-    <li>@Configuration["quote3"]</li>
-</ul>
-
-<p>
-    Quotes &copy;2005 
-    <a href="https://www.uphe.com/">Universal Pictures</a>: 
-    <a href="https://www.uphe.com/movies/serenity">Serenity</a>
-</p>
 ```
 
 ## <a name="memory-configuration-source"></a>메모리 구성 소스

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/graph-api
-ms.openlocfilehash: 58c201d6d1172c1ff82521589f988e33d5c984ae
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 997d4dec05ddb6b9d0acb5ed36a6510c0836a4fb
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97854498"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280499"
 ---
-# <a name="use-graph-api-with-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly에서 Graph API 사용
-
-작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)
+# <a name="use-graph-api-with-aspnet-core-blazor-webassembly"></a>ASP.NET Core Blazor WebAssembly에서 Graph API 사용
 
 ::: moniker range=">= aspnetcore-5.0"
 

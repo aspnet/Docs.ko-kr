@@ -20,16 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/components/prerendering-and-integration
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 3402117334548f9d90880d4f536e8baa288e7bc9
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: d120440c292d15b7741260ed31af92d60db2261c
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506983"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280074"
 ---
-# <a name="prerender-and-integrate-aspnet-core-no-locrazor-components"></a>ASP.NET Core Razor 구성 요소 미리 렌더링 및 통합
-
-작성자: [Luke Latham](https://github.com/guardrex) 및 [Daniel Roth](https://github.com/danroth27)
+# <a name="prerender-and-integrate-aspnet-core-razor-components"></a>ASP.NET Core Razor 구성 요소 미리 렌더링 및 통합
 
 ::: zone pivot="webassembly"
 
@@ -284,7 +282,7 @@ Blazor Server 앱에서 Razor 구성 요소를 Razor Pages 및 MVC 앱에 통합
 
 1. 페이지 또는 뷰에 구성 요소를 통합합니다. 자세한 내용은 [페이지 또는 뷰에서 구성 요소 렌더링](#render-components-from-a-page-or-view) 섹션을 참조하세요.
 
-## <a name="use-routable-components-in-a-no-locrazor-pages-app"></a>Razor Pages 앱에서 라우팅 가능한 구성 요소 사용
+## <a name="use-routable-components-in-a-razor-pages-app"></a>Razor Pages 앱에서 라우팅 가능한 구성 요소 사용
 
 ‘이 섹션에서는 사용자 요청에서 직접 라우팅할 수 있는 구성 요소를 추가하는 방법을 설명합니다.’
 

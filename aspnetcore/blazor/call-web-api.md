@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: 18afa7faa254f89ef664e0188be357a85c790523
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: b3c783623252512621a0cee7a3607c69cb6d09bb
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252437"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280272"
 ---
-# <a name="call-a-web-api-from-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor에서 웹 API 호출
-
-작성자: [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27) 및 [Juan De la Cruz](https://github.com/juandelacruz23)
+# <a name="call-a-web-api-from-aspnet-core-blazor"></a>ASP.NET Core Blazor에서 웹 API 호출
 
 > [!NOTE]
 > 이 항목은 Blazor WebAssembly에 적용됩니다. [Blazor Server](xref:blazor/hosting-models#blazor-server) 앱은 일반적으로 <xref:System.Net.Http.IHttpClientFactory>를 사용하여 만드는 <xref:System.Net.Http.HttpClient> 인스턴스를 사용하여 웹 API를 호출합니다. Blazor Server에 적용되는 지침은 <xref:fundamentals/http-requests>를 참조하세요.
@@ -190,7 +188,7 @@ JSON 도우미 메서드는 URI(다음 예제의 웹 API)에 요청을 보내고
 
 프로젝트 파일에서 [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) NuGet 패키지를 참조합니다.
 
-`Program.Main`(`Program.cs`):
+`Program.Main` (`Program.cs`):
 
 ```csharp
 builder.Services.AddHttpClient("ServerAPI", client => 
@@ -256,7 +254,7 @@ public class WeatherForecastHttpClient
 }
 ```
 
-`Program.Main`(`Program.cs`):
+`Program.Main` (`Program.cs`):
 
 ```csharp
 builder.Services.AddHttpClient<WeatherForecastHttpClient>(client => 

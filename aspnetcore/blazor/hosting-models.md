@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: a6f1c88b8e93c0d8ccfebca482895ebab8d18a81
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 780161090d376f08b849fadb47127810d6661d0c
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506918"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279753"
 ---
-# <a name="aspnet-core-no-locblazor-hosting-models"></a>ASP.NET Core Blazor 호스팅 모델
-
-작성자: [Daniel Roth](https://github.com/danroth27)
+# <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 호스팅 모델
 
 Blazor는 [WebAssembly](https://webassembly.org/) 기반 .NET 런타임( *Blazor WebAssembly* )의 브라우저에서 클라이언트 쪽을 실행하거나 ASP.NET Core( *Blazor Server* )에서 서버 쪽을 실행하도록 설계된 웹 프레임워크입니다. 호스팅 모델에 관계없이 앱 및 구성 요소 모델은 ‘동일합니다’.
 
@@ -38,7 +36,7 @@ Blazor는 [WebAssembly](https://webassembly.org/) 기반 .NET 런타임( *Blazor
 
 ![Blazor WebAssembly: Blazor 앱은 브라우저 내의 UI 스레드에서 실행됩니다.](hosting-models/_static/blazor-webassembly.png)
 
-해당 파일을 제공하는 백 엔드 ASP.NET Core 앱을 사용하지 않는 배포용으로 Blazor WebAssembly 앱을 만드는 경우 ‘독립 실행형’ Blazor WebAssembly 앱이라고 합니다. 해당 파일을 제공하는 백 엔드 앱을 사용하는 배포용으로 앱을 만드는 경우 ‘호스트된’ Blazor WebAssembly 앱이라고 합니다. 호스트된 Blazor WebAssembly 앱은 일반적으로 웹 API 호출 또는 [SignalR](xref:signalr/introduction)(<xref:tutorials/signalr-blazor-webassembly>)을 사용하여 네트워크를 통해 서버와 상호 작용합니다.
+해당 파일을 제공하는 백 엔드 ASP.NET Core 앱을 사용하지 않는 배포용으로 Blazor WebAssembly 앱을 만드는 경우 ‘독립 실행형’ Blazor WebAssembly 앱이라고 합니다. 해당 파일을 제공하는 백 엔드 앱을 사용하는 배포용으로 앱을 만드는 경우 ‘호스트된’ Blazor WebAssembly 앱이라고 합니다. 호스트된 Blazor WebAssembly 앱은 일반적으로 웹 API 호출 또는 [SignalR](xref:signalr/introduction)(<xref:tutorials/signalr-blazor>)을 사용하여 네트워크를 통해 서버와 상호 작용합니다.
 
 `blazor.webassembly.js` 스크립트는 프레임워크 및 핸들에서 제공됩니다.
 
@@ -160,5 +158,5 @@ IIS를 사용하는 경우 ‘애플리케이션 요청 라우팅’을 사용�
 
 * <xref:blazor/tooling>
 * <xref:signalr/introduction>
-* <xref:blazor/fundamentals/additional-scenarios>
-* <xref:tutorials/signalr-blazor-webassembly>
+* <xref:blazor/fundamentals/signalr>
+* <xref:tutorials/signalr-blazor>

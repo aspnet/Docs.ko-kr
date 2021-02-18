@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: fe50b95dda14afeae35c4922d0ae3470280bfd02
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: f6a93eb9d95182d29a60cc1a5c48122b9166aa84
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252528"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280149"
 ---
-# <a name="aspnet-core-no-locblazor-event-handling"></a>ASP.NET Core Blazor 이벤트 처리
-
-작성자: [Luke Latham](https://github.com/guardrex) 및 [Daniel Roth](https://github.com/danroth27)
+# <a name="aspnet-core-blazor-event-handling"></a>ASP.NET Core Blazor 이벤트 처리
 
 Razor 구성 요소는 이벤트 처리 기능을 제공합니다. 대리자 형식 값을 사용하는 [`@on{EVENT}`](xref:mvc/views/razor#onevent)(예: `@onclick`)라는 HTML 요소 특성의 경우 Razor 구성 요소는 특성 값을 이벤트 처리기로 취급합니다.
 

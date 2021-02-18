@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/configure-linker
-ms.openlocfilehash: 0c99056053356133e901d6cf468fec8034dfb845
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c720747983da4ef6997d95d77c3f5305cfd7d3c0
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93055830"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279927"
 ---
-# <a name="configure-the-linker-for-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor용 링커 구성
-
-[Luke Latham](https://github.com/guardrex)으로
+# <a name="configure-the-linker-for-aspnet-core-blazor"></a>ASP.NET Core Blazor용 링커 구성
 
 Blazor WebAssembly는 빌드 중에 [IL(중간 언어)](/dotnet/standard/managed-code#intermediate-language--execution) 연결을 수행하여 앱의 출력 어셈블리에서 불필요한 IL을 잘라냅니다. 디버그 구성에서 빌드할 때 링커를 사용할 수 없습니다. 링커를 사용하도록 설정하려면 앱이 릴리스 구성으로 빌드해야 합니다. Blazor WebAssembly 앱을 배포할 때 릴리스에서 빌드하는 것이 좋습니다. 
 

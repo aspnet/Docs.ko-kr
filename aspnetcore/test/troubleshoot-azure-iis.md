@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: d51a4a43f585b0a0b7e3aab2c5de1b2d215de494
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a8bb659a72e8370c31cc9c213689399e74f11b5c
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059600"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564062"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Azure App Service 및 IIS에서 ASP.NET Core 문제 해결
 
@@ -275,7 +275,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 ASP.NET Core {VERSION}(x86) 런타임 사이트 확장을 설치해야 합니다.
 
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32`(`{X.Y}`는 런타임 버전임)
-1. 앱 실행: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
+1. 앱을 실행합니다. `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
 오류를 표시하는 앱의 콘솔 출력이 Kudu 콘솔에 파이프됩니다.
 
@@ -288,7 +288,7 @@ ASP.NET Core {VERSION}(x86) 런타임 사이트 확장을 설치해야 합니다
   1. 앱 실행: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 * 앱이 [자체 포함 배포](/dotnet/core/deploying/#self-contained-deployments-scd)인 경우:
   1. `cd D:\home\site\wwwroot`
-  1. 앱 실행: `{ASSEMBLY NAME}.exe`
+  1. 앱을 실행합니다. `{ASSEMBLY NAME}.exe`
 
 오류를 표시하는 앱의 콘솔 출력이 Kudu 콘솔에 파이프됩니다.
 
@@ -297,7 +297,7 @@ ASP.NET Core {VERSION}(x86) 런타임 사이트 확장을 설치해야 합니다
 ASP.NET Core {VERSION}(x64) 런타임 사이트 확장을 설치해야 합니다.
 
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64`(`{X.Y}`는 런타임 버전임)
-1. 앱 실행: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
+1. 앱을 실행합니다. `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
 오류를 표시하는 앱의 콘솔 출력이 Kudu 콘솔에 파이프됩니다.
 
@@ -321,6 +321,8 @@ ASP.NET Core 모듈 stdout 로그는 종종 애플리케이션 이벤트 로그�
 문제 해결이 완료되면 stdout 로깅을 사용하지 않도록 `stdoutLogEnabled="false"`를 설정합니다.
 
 자세한 내용은 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>를 참조하세요.
+
+<a name="enhanced-diagnostic-logs"></a>
 
 ### <a name="aspnet-core-module-debug-log-azure-app-service"></a>ASP.NET Core 모듈 디버그 로그(Azure App Service)
 
@@ -512,7 +514,7 @@ stdout 로그를 사용하고 보려면:
 
 1. `c:\dumps`에 크래시 덤프 파일을 저장할 폴더를 만듭니다. 앱 풀에는 폴더에 대한 쓰기 액세스 권한이 있어야 합니다.
 1. [EnableDumps PowerShell 스크립트](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/EnableDumps.ps1) 실행:
-   * 앱에서 [ 호스팅 모델](xref:host-and-deploy/iis/index#in-process-hosting-model)을 사용하는 경우 *w3wp.exe* 에 대한 스크립트 실행:
+   * 앱에서 [in-process 호스팅 모델](xref:host-and-deploy/iis/index#in-process-hosting-model)을 사용하는 경우 *w3wp.exe* 에 대한 스크립트 실행:
 
      ```console
      .\EnableDumps w3wp.exe c:\dumps
@@ -760,7 +762,7 @@ ASP.NET Core {VERSION}(x86) 런타임 사이트 확장을 설치해야 합니다
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32`(`{X.Y}`는 런타임 버전임)
 1. 앱을 실행합니다. `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-오류를 표시하는 앱의 콘솔 출력이 Kudu 콘솔로 파이프됩니다.
+오류를 표시하는 앱의 콘솔 출력이 Kudu 콘솔에 파이프됩니다.
 
 #### <a name="test-a-64-bit-x64-app"></a>64비트(x64) 앱 테스트
 
@@ -773,7 +775,7 @@ ASP.NET Core {VERSION}(x86) 런타임 사이트 확장을 설치해야 합니다
   1. `cd D:\home\site\wwwroot`
   1. 앱을 실행합니다. `{ASSEMBLY NAME}.exe`
 
-오류를 표시하는 앱의 콘솔 출력이 Kudu 콘솔로 파이프됩니다.
+오류를 표시하는 앱의 콘솔 출력이 Kudu 콘솔에 파이프됩니다.
 
 **미리 보기 릴리스에서 실행되는 프레임워크 종속 배포**
 
@@ -1005,7 +1007,7 @@ stdout 로그를 사용하고 보려면:
 
 1. `c:\dumps`에 크래시 덤프 파일을 저장할 폴더를 만듭니다. 앱 풀에는 폴더에 대한 쓰기 액세스 권한이 있어야 합니다.
 1. [EnableDumps PowerShell 스크립트](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/EnableDumps.ps1) 실행:
-   * 앱에서 [ 호스팅 모델](xref:host-and-deploy/iis/index#in-process-hosting-model)을 사용하는 경우 *w3wp.exe* 에 대한 스크립트 실행:
+   * 앱에서 [in-process 호스팅 모델](xref:host-and-deploy/iis/index#in-process-hosting-model)을 사용하는 경우 *w3wp.exe* 에 대한 스크립트 실행:
 
      ```console
      .\EnableDumps w3wp.exe c:\dumps
@@ -1238,7 +1240,7 @@ ASP.NET Core {VERSION}(x86) 런타임 사이트 확장을 설치해야 합니다
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32`(`{X.Y}`는 런타임 버전임)
 1. 앱을 실행합니다. `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-오류를 표시하는 앱의 콘솔 출력이 Kudu 콘솔로 파이프됩니다.
+오류를 표시하는 앱의 콘솔 출력이 Kudu 콘솔에 파이프됩니다.
 
 #### <a name="test-a-64-bit-x64-app"></a>64비트(x64) 앱 테스트
 
@@ -1251,7 +1253,7 @@ ASP.NET Core {VERSION}(x86) 런타임 사이트 확장을 설치해야 합니다
   1. `cd D:\home\site\wwwroot`
   1. 앱을 실행합니다. `{ASSEMBLY NAME}.exe`
 
-오류를 표시하는 앱의 콘솔 출력이 Kudu 콘솔로 파이프됩니다.
+오류를 표시하는 앱의 콘솔 출력이 Kudu 콘솔에 파이프됩니다.
 
 **미리 보기 릴리스에서 실행되는 프레임워크 종속 배포**
 
@@ -1436,7 +1438,7 @@ stdout 로그를 사용하고 보려면:
 
 1. `c:\dumps`에 크래시 덤프 파일을 저장할 폴더를 만듭니다. 앱 풀에는 폴더에 대한 쓰기 액세스 권한이 있어야 합니다.
 1. [EnableDumps PowerShell 스크립트](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/EnableDumps.ps1) 실행:
-   * 앱에서 [ 호스팅 모델](xref:host-and-deploy/iis/index#in-process-hosting-model)을 사용하는 경우 *w3wp.exe* 에 대한 스크립트 실행:
+   * 앱에서 [in-process 호스팅 모델](xref:host-and-deploy/iis/index#in-process-hosting-model)을 사용하는 경우 *w3wp.exe* 에 대한 스크립트 실행:
 
      ```console
      .\EnableDumps w3wp.exe c:\dumps

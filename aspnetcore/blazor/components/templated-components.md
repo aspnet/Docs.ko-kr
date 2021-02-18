@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/templated-components
-ms.openlocfilehash: 28f98596046877672b2935cb1f0feb508548398d
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 579cabd9e6b7141ec6af4c6e221b805272a2fe40
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99529932"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280034"
 ---
 # <a name="aspnet-core-blazor-templated-components"></a>ASP.NET Core Blazor 템플릿 기반 구성 요소
-
-작성자: [Luke Latham](https://github.com/guardrex) 및 [Daniel Roth](https://github.com/danroth27)
 
 템플릿 기반 구성 요소는 하나 이상의 UI 템플릿을 매개 변수로 허용한 다음, 이 매개 변수를 구성 요소 렌더링 논리의 일부로 사용할 수 있는 구성 요소입니다. 템플릿 기반 구성 요소를 사용하면 일반 구성 요소보다 재사용하기 쉬운 상위 수준 구성 요소를 작성할 수 있습니다. 몇 가지 예는 다음과 같습니다.
 

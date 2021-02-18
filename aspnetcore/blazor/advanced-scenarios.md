@@ -19,18 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: 95714b3c0d21d3b348a9a8a984e2a42e7708499e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: ba2bf91f3318225383ec9d164c34be9124aa311b
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93056558"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280847"
 ---
-# <a name="aspnet-core-no-locblazor-advanced-scenarios"></a>ASP.NET Core Blazor 고급 시나리오
+# <a name="aspnet-core-blazor-advanced-scenarios"></a>ASP.NET Core Blazor 고급 시나리오
 
-작성자: [Luke Latham](https://github.com/guardrex) 및 [Daniel Roth](https://github.com/danroth27)
-
-## <a name="no-locblazor-server-circuit-handler"></a>Blazor Server 회로 처리기
+## <a name="blazor-server-circuit-handler"></a>Blazor Server 회로 처리기
 
 Blazor Server에서는 코드를 통해 사용자 회로 상태 변경 시 코드를 실행할 수 있게 해주는 ‘회로 처리기’를 정의할 수 있습니다. 회로 처리기는 `CircuitHandler`에서 파생되고 앱의 서비스 컨테이너에 클래스를 등록하여 구현됩니다. 다음 회로 처리기 예제에서는 열린 SignalR 연결을 추적합니다.
 

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-microsoft-accounts
-ms.openlocfilehash: 268debd51b6828aad0bcfe917bdf95b691ac7365
-ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
+ms.openlocfilehash: cddde7d3125dba1a250563085c366122eb26e509
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98710521"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280916"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-microsoft-accounts"></a>Microsoft 계정을 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
-
-작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-microsoft-accounts"></a>Microsoft 계정을 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
 
 이 문서에서는 인증을 위해 [Microsoft 계정과 Azure Active Directory(AAD)](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)를 사용하는 [독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만드는 방법을 다룹니다.
 

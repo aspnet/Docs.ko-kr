@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 744449240fabc3dae317d0d7bc9090311521c224
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: f44f348947e31864f5d0d44c9caf1a3aa9c3b1d4
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94570122"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280343"
 ---
-# <a name="enforce-a-content-security-policy-for-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor에 콘텐츠 보안 정책 적용
-
-작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)
+# <a name="enforce-a-content-security-policy-for-aspnet-core-blazor"></a>ASP.NET Core Blazor에 콘텐츠 보안 정책 적용
 
 [XSS(교차 사이트 스크립팅)](xref:security/cross-site-scripting)는 공격자가 앱의 렌더링된 콘텐츠에 하나 이상의 악성 클라이언트 쪽 스크립트를 배치하는 보안 취약성입니다. CSP(콘텐츠 보안 정책)는 브라우저에 다음을 알림으로써 XSS 공격을 막아내는 데 도움을 줍니다.
 

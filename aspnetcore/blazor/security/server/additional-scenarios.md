@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/additional-scenarios
-ms.openlocfilehash: 56b226f8e4a10aa996b0344f10c76dad2ae32b51
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: d47cfba75b640f57cc713049594d4e8acd1fcd0e
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93234440"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280330"
 ---
-# <a name="aspnet-core-no-locblazor-server-additional-security-scenarios"></a>ASP.NET Core Blazor Server 추가 보안 시나리오
-
-작성자: [Javier Calvarro Nelson](https://github.com/javiercn)
+# <a name="aspnet-core-blazor-server-additional-security-scenarios"></a>ASP.NET Core Blazor Server 추가 보안 시나리오
 
 ::: moniker range=">= aspnetcore-5.0"
 

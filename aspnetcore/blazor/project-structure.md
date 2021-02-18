@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/project-structure
-ms.openlocfilehash: 958fa23a1befac3696d850d5409d4021dd109c22
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 94b5a3d8c0f5b94ecac32e6fc5f94efeb8337f37
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751544"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280361"
 ---
 # <a name="aspnet-core-blazor-project-structure"></a>ASP.NET Core Blazor 프로젝트 구조
-
-작성자: [Daniel Roth](https://github.com/danroth27) 및 [Luke Latham](https://github.com/guardrex)
 
 이 문서에서는 Blazor 프로젝트 템플릿에서 생성된 Blazor 앱을 구성하는 파일과 폴더를 설명합니다.
 

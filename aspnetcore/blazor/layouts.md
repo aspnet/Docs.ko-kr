@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 417f69e797296cdcd01fc4ce326388512a406368
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: d1f3e2028ca120b5901aca0b24802d872ae52597
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058274"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279728"
 ---
-# <a name="aspnet-core-no-locblazor-layouts"></a>ASP.NET Core Blazor 레이아웃
-
-작성자: [Rainer Stropek](https://www.timecockpit.com) 및 [Luke Latham](https://github.com/guardrex)
+# <a name="aspnet-core-blazor-layouts"></a>ASP.NET Core Blazor 레이아웃
 
 메뉴, 저작권 메시지, 회사 로고 등의 일부 앱 요소는 일반적으로 앱의 전체 레이아웃에 포함되며 앱의 모든 구성 요소에서 사용됩니다. 이러한 요소의 코드를 앱의 모든 구성 요소에 복사하는 것은 효율적이지 않습니다. 요소 중 하나에 업데이트가 필요할 때마다 모든 구성 요소를 업데이트해야 합니다. 해당 중복은 유지 관리하기 어렵고, 시간이 지남에 따라 일관성 없는 콘텐츠가 발생할 수 있습니다. ‘레이아웃’을 통해 이 문제를 해결할 수 있습니다.
 
@@ -125,7 +123,7 @@ Blazor 프로젝트 템플릿 중 하나를 기반으로 하는 앱에서 `MainL
 
 [!code-razor[](layouts/sample_snapshot/3.x/MasterLayout.razor?highlight=6)]
 
-## <a name="share-a-no-locrazor-pages-layout-with-integrated-components"></a>통합 구성 요소와 Razor Pages 레이아웃 공유
+## <a name="share-a-razor-pages-layout-with-integrated-components"></a>통합 구성 요소와 Razor Pages 레이아웃 공유
 
 라우팅 가능한 구성 요소가 Razor Pages 앱에 통합된 경우 구성 요소와 함께 앱의 공유 레이아웃을 사용할 수 있습니다. 자세한 내용은 <xref:blazor/components/prerendering-and-integration>를 참조하세요.
 

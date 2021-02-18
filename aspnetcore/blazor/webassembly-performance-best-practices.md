@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 58a87bc5413523fdf052a9e1c41196bb8b0ab457
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 1860a36ba4122fb39ca92797da9a44b282afa793
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99529971"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280660"
 ---
 # <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>ASP.NET Core Blazor WebAssembly 성능 모범 사례
-
-작성자: [Pranav Krishnamoorthy](https://github.com/pranavkm) 및 [Steve Sanderson](https://github.com/SteveSandersonMS)
 
 Blazor WebAssembly는 세심하게 디자인되고 최적화되어 가장 현실적인 애플리케이션 UI 시나리오에서 고성능을 구현합니다. 하지만 개발자가 적합한 패턴과 기능을 사용해야만 최적의 결과를 얻을 수 있습니다. 다음 측면을 고려합니다.
 
@@ -91,7 +89,7 @@ Blazor WebAssembly는 세심하게 디자인되고 최적화되어 가장 현실
         prevInboundFlightId = InboundFlight.FlightId;
     }
 
-    protected override void ShouldRender() => shouldRender;
+    protected override bool ShouldRender() => shouldRender;
 
     // Note that 
 }
@@ -545,7 +543,7 @@ function jsInteropCall() {
 
 ### <a name="intermediate-language-il-trimming"></a>IL(중간 언어) 트리밍
 
-[Blazor WebAssembly 앱에서 사용되지 않는 어셈블리를 트리밍](xref:blazor/host-and-deploy/configure-trimmer)하면 앱의 이진 파일에서 사용되지 않는 코드를 제거하여 앱 크기를 줄일 수 있습니다. 기본적으로 트리머는 애플리케이션을 게시할 때 실행됩니다. 트리밍의 장점을 활용하려면 [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 명령에서 [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) 옵션을 `Release`로 설정하여 배포용 앱을 게시합니다.
+Blazor WebAssembly 앱에서 사용되지 않는 어셈블리를 트리밍하면 앱의 이진 파일에서 사용되지 않는 코드를 제거하여 앱 크기를 줄일 수 있습니다. 자세한 내용은 <xref:blazor/host-and-deploy/configure-trimmer>를 참조하세요.
 
 ::: moniker-end
 
@@ -555,11 +553,11 @@ function jsInteropCall() {
 
 [Blazor WebAssembly 앱을 연결](xref:blazor/host-and-deploy/configure-linker)하면 앱의 이진 파일에서 사용되지 않는 코드를 잘라내어 앱 크기를 줄일 수 있습니다. 기본적으로 IL(중간 언어) 링커는 `Release` 구성으로 빌드할 때만 사용할 수 있습니다. 이 기능의 이점을 활용하려면 [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 명령에서 [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) 옵션을 `Release`로 설정하여 배포를 위해 앱을 게시합니다.
 
-::: moniker-end
-
 ```dotnetcli
 dotnet publish -c Release
 ```
+
+::: moniker-end
 
 ### <a name="use-systemtextjson"></a>System.Text.Json 사용
 

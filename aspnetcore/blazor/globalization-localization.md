@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: f8f261f25d854a9bf36ad3299f4af392d5c4fafd
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 8baee9bc0a8e569174f33dac6a406b2162d09552
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93055882"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279912"
 ---
-# <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>ASP.NET Core Blazor 세계화 및 지역화
-
-작성자: [Luke Latham](https://github.com/guardrex) 및 [Daniel Roth](https://github.com/danroth27)
+# <a name="aspnet-core-blazor-globalization-and-localization"></a>ASP.NET Core Blazor 세계화 및 지역화
 
 여러 문화권과 언어의 사용자가 Razor 구성 요소에 액세스할 수 있습니다. 다음 .NET 세계화 및 지역화 시나리오를 사용할 수 있습니다.
 
@@ -127,7 +125,7 @@ Blazor Server 앱은 [지역화 미들웨어](xref:fundamentals/localization#loc
 
 자세한 내용과 예제를 보려면 <xref:fundamentals/localization>을 참조하십시오.
 
-#### <a name="no-loccookies"></a>Cookies
+#### <a name="cookies"></a>Cookies
 
 지역화 문화권 cookie는 사용자의 문화권을 유지할 수 있습니다. 지역화 미들웨어는 후속 요청에서 cookie를 읽어 사용자의 문화권을 설정합니다. 
 

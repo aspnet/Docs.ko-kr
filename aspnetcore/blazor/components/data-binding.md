@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 67a63f1b4f705a4857dea2e6d1a942d4f21469f5
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 76cc0ddc46dd08a5b8b88cf6045b84beab57c295
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057098"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280134"
 ---
 # <a name="aspnet-core-blazor-data-binding"></a>ASP.NET Core Blazor 데이터 바인딩
-
-작성자: [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), [Steve Sanderson](https://github.com/SteveSandersonMS)
 
 Razor 구성 요소는 필드, 속성 또는 Razor 식 값을 사용하여 [`@bind`](xref:mvc/views/razor#bind)라는 HTML 요소 특성을 통해 데이터 바인딩 기능을 제공합니다.
 
