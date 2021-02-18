@@ -1,12 +1,32 @@
-<span data-ttu-id="aa770-101">이 자습서에서는 컨트롤러와 보기를 통해 ASP.NET Core MVC 및 Entity Framework Core에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="aa770-101">This tutorial teaches ASP.NET Core MVC and Entity Framework Core with controllers and views.</span></span> <span data-ttu-id="aa770-102">[Razor Pages](xref:razor-pages/index)는 대체 프로그래밍 모델입니다.</span><span class="sxs-lookup"><span data-stu-id="aa770-102">[Razor Pages](xref:razor-pages/index) is an alternative programming model.</span></span> <span data-ttu-id="aa770-103">새로 개발하는 경우에는 컨트롤러와 보기를 통해 MVC를 사용하는 것보다 Razor Pages를 사용할 것을 권장합니다.</span><span class="sxs-lookup"><span data-stu-id="aa770-103">For new development, we recommend Razor Pages over MVC with controllers and views.</span></span> <span data-ttu-id="aa770-104">이 자습서의 [Razor Pages](xref:data/ef-rp/intro) 버전을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="aa770-104">See the [Razor Pages](xref:data/ef-rp/intro) version of this tutorial.</span></span> <span data-ttu-id="aa770-105">각 자습서는 다른 자습서에서 다루지 않는 일부 내용을 다룹니다.</span><span class="sxs-lookup"><span data-stu-id="aa770-105">Each tutorial covers some material the other doesn't:</span></span>
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 6808c71b1ca43755eea4958ff9409f40e8685694
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551828"
+---
+<span data-ttu-id="bd04f-101">이 자습서에서는 컨트롤러와 보기를 통해 ASP.NET Core MVC 및 Entity Framework Core에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="bd04f-101">This tutorial teaches ASP.NET Core MVC and Entity Framework Core with controllers and views.</span></span> <span data-ttu-id="bd04f-102">[Razor Pages](xref:razor-pages/index)는 대체 프로그래밍 모델입니다.</span><span class="sxs-lookup"><span data-stu-id="bd04f-102">[Razor Pages](xref:razor-pages/index) is an alternative programming model.</span></span> <span data-ttu-id="bd04f-103">새로 개발하는 경우에는 컨트롤러와 보기를 통해 MVC를 사용하는 것보다 Razor Pages를 사용할 것을 권장합니다.</span><span class="sxs-lookup"><span data-stu-id="bd04f-103">For new development, we recommend Razor Pages over MVC with controllers and views.</span></span> <span data-ttu-id="bd04f-104">이 자습서의 [Razor Pages](xref:data/ef-rp/intro) 버전을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="bd04f-104">See the [Razor Pages](xref:data/ef-rp/intro) version of this tutorial.</span></span> <span data-ttu-id="bd04f-105">각 자습서는 다른 자습서에서 다루지 않는 일부 내용을 다룹니다.</span><span class="sxs-lookup"><span data-stu-id="bd04f-105">Each tutorial covers some material the other doesn't:</span></span>
 
-<span data-ttu-id="aa770-106">이 MVC 자습서에는 Razor Pages 자습서에서 다루지 않는 몇 가지 사항이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="aa770-106">Some things this MVC tutorial has that the Razor Pages tutorial doesn't:</span></span>
+<span data-ttu-id="bd04f-106">이 MVC 자습서에는 Razor Pages 자습서에서 다루지 않는 몇 가지 사항이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bd04f-106">Some things this MVC tutorial has that the Razor Pages tutorial doesn't:</span></span>
 
-* <span data-ttu-id="aa770-107">데이터 모델에서 상속 구현</span><span class="sxs-lookup"><span data-stu-id="aa770-107">Implement inheritance in the data model</span></span>
-* <span data-ttu-id="aa770-108">원시 SQL 쿼리 수행</span><span class="sxs-lookup"><span data-stu-id="aa770-108">Perform raw SQL queries</span></span>
-* <span data-ttu-id="aa770-109">동적 LINQ를 사용하여 코드 단순화</span><span class="sxs-lookup"><span data-stu-id="aa770-109">Use dynamic LINQ to simplify code</span></span>
+* <span data-ttu-id="bd04f-107">데이터 모델에서 상속 구현</span><span class="sxs-lookup"><span data-stu-id="bd04f-107">Implement inheritance in the data model</span></span>
+* <span data-ttu-id="bd04f-108">원시 SQL 쿼리 수행</span><span class="sxs-lookup"><span data-stu-id="bd04f-108">Perform raw SQL queries</span></span>
+* <span data-ttu-id="bd04f-109">동적 LINQ를 사용하여 코드 단순화</span><span class="sxs-lookup"><span data-stu-id="bd04f-109">Use dynamic LINQ to simplify code</span></span>
 
-<span data-ttu-id="aa770-110">Razor Pages 자습서에는 여기에서 다루지 않는 몇 가지 사항이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="aa770-110">Some things the Razor Pages tutorial has that this one doesn't:</span></span>
+<span data-ttu-id="bd04f-110">Razor Pages 자습서에는 여기에서 다루지 않는 몇 가지 사항이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bd04f-110">Some things the Razor Pages tutorial has that this one doesn't:</span></span>
 
-* <span data-ttu-id="aa770-111">Select 메서드를 사용하여 관련 데이터 로드</span><span class="sxs-lookup"><span data-stu-id="aa770-111">Use Select method to load related data</span></span>
-* <span data-ttu-id="aa770-112">EF 모범 사례</span><span class="sxs-lookup"><span data-stu-id="aa770-112">Best practices for EF.</span></span>
+* <span data-ttu-id="bd04f-111">Select 메서드를 사용하여 관련 데이터 로드</span><span class="sxs-lookup"><span data-stu-id="bd04f-111">Use Select method to load related data</span></span>
+* <span data-ttu-id="bd04f-112">EF 모범 사례</span><span class="sxs-lookup"><span data-stu-id="bd04f-112">Best practices for EF.</span></span>
