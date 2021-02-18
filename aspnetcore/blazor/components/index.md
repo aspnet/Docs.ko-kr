@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 823c24620b369874fdbc3e314b5b08952df83c8b
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 7b4438b4003916488c17d389b9817b5e09d1086c
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280103"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536222"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>ASP.NET Core Razor 구성 요소 만들기 및 사용
 
@@ -285,16 +285,168 @@ public string Title { get; set; } = "Panel Title from Child";
 
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=5-6)]
 
-규칙에 따라 C# 코드로 구성되는 특성 값은 [Razor의 예약된 `@` 기호](xref:mvc/views/razor#razor-syntax)를 사용하여 매개 변수에 할당됩니다.
+[Razor의 예약된 `@` 기호](xref:mvc/views/razor#razor-syntax)를 사용하여 구성 요소 매개 변수에 C# 필드, 속성 및 메서드를 HTML 특성 값으로 할당합니다.
 
-* 부모 필드 또는 속성: `Title="@{FIELD OR PROPERTY}`, 여기서 `{FIELD OR PROPERTY}` 자리 표시자는 부모 구성 요소의 C# 필드 또는 속성입니다.
-* 메서드의 결과: `Title="@{METHOD}"`, 여기서 `{METHOD}` 자리 표시자는 부모 구성 요소의 C# 메서드입니다.
-* [암시적 또는 명시적 식](xref:mvc/views/razor#implicit-razor-expressions): `Title="@({EXPRESSION})"`, 여기서 `{EXPRESSION}` 자리 표시자는 C# 식입니다.
+* 부모 구성 요소의 필드, 속성 또는 메서드를 자식 구성 요소의 매개 변수에 할당하려면 필드, 속성 또는 메서드 이름에 `@` 기호를 접두사로 사용합니다. [암시적 C# 식](xref:mvc/views/razor#implicit-razor-expressions)의 결과를 매개 변수에 할당하려면 암시적인 식에 `@` 기호를 접두사로 사용합니다.
+
+  다음 부모 구성 요소는 위 `ChildComponent` 구성 요소의 인스턴스 4개를 표시하고 해당 `Title` 매개 변수 값을 다음 값으로 설정합니다.
+
+  * `title` 필드의 값
+  * `GetTitle` C# 메서드의 결과
+  * <xref:System.DateTime.ToLongDateString%2A>를 사용하는 긴 형식의 현재 현지 날짜
+  * `person` 개체의 `Name` 속성
+
+  `Pages/ParentComponent.razor`:
+  
+  ```razor
+  <ChildComponent Title="@title">
+      Title from field.
+  </ChildComponent>
+  
+  <ChildComponent Title="@GetTitle()">
+      Title from method.
+  </ChildComponent>
+  
+  <ChildComponent Title="@DateTime.Now.ToLongDateString()">
+      Title from implicit Razor expression.
+  </ChildComponent>
+  
+  <ChildComponent Title="@person.Name">
+      Title from implicit Razor expression.
+  </ChildComponent>
+  
+  @code {
+      private string title = "Panel Title from Parent";
+      private Person person = new Person();
+      
+      private string GetTitle()
+      {
+          return "Panel Title from Parent";
+      }
+      
+      private class Person
+      {
+          public string Name { get; set; } = "Dr. Who";
+      }
+  }
+  ```
+  
+  Razor 페이지(`.cshtml`)에서와 달리 Blazor는 구성 요소를 렌더링하는 동안 Razor 식에서 비동기 작업을 수행할 수 없습니다. 이는 Blazor가 대화형 Ui를 렌더링하는 용도로 설계되었기 때문입니다. 대화형 UI에서 화면은 항상 무언가를 표시해야 하므로 렌더링 흐름을 차단하는 것은 적합하지 않습니다. 대신 비동기 작업은 [비동기 수명 주기 이벤트](xref:blazor/components/lifecycle) 중 하나에서 수행됩니다. 각 비동기 수명 주기 이벤트 이후 구성 요소가 다시 렌더링될 수 있습니다. 다음 Razor 구문은 지원되지 **않습니다**.
+  
+  ```razor
+  <ChildComponent Title="@await ...">
+      ...
+  </ChildComponent>
+  ```
+  
+  위 예제의 코드는 앱이 빌드되면 컴파일러 오류를 생성합니다.
+  
+  > 'Await' 연산자는 비동기 메서드 내에서만 사용할 수 있습니다. 이 메서드를 'Async' 한정자로 표시하고 해당 반환 형식을 'Task'로 변경하세요.
+
+  위 예제의 `Title` 매개 변수에 대한 값을 비동기식으로 가져오려면 다음 예제와 같이 구성 요소에서 [`OnInitializedAsync` 수명 주기 이벤트](xref:blazor/components/lifecycle#component-initialization-methods)를 사용할 수 있습니다.
+  
+  ```razor
+  <ChildComponent Title="@title">
+      Title from implicit Razor expression.
+  </ChildComponent>
+  
+  @code {
+      private string title;
+      
+      protected override async Task OnInitializedAsync()
+      {
+          title = await ...;
+      }
+  }
+  ```
+  
+* 부모 구성 요소의 [명시적 C# 식](xref:mvc/views/razor#explicit-razor-expressions) 결과를 자식 구성 요소의 매개 변수에 할당하려면 식을 괄호로 묶고 `@` 기호를 접두사로 사용합니다.
+
+  다음 자식 구성 요소에는 <xref:System.DateTime> 구성 요소 매개 변수인 `ShowItemsSinceDate`가 있습니다.
+  
+  `Shared/ChildComponent.razor`:
+  
+  ```razor
+  <div class="panel panel-default">
+      <div class="panel-heading">Explicit DateTime Expression Example</div>
+      <div class="panel-body">
+          <p>@ChildContent</p>
+          <p>One week ago date: @ShowItemsSinceDate</p>
+      </div>
+  </div>
+
+  @code {
+      [Parameter]
+      public DateTime ShowItemsSinceDate { get; set; }
+
+      [Parameter]
+      public RenderFragment ChildContent { get; set; }
+  }
+  ```
+  
+  다음 부모 구성 요소는 자식 요소의 `ShowItemsSinceDate` 매개 변수에 할당하기 위해 이전에는 1주였던 명시적 C# 식으로 날짜를 계산합니다.
+  
+  `Pages/ParentComponent.razor`:
+
+  ```razor
+  <ChildComponent ShowItemsSinceDate="@(DateTime.Now - TimeSpan.FromDays(7))">
+      Title from explicit Razor expression.
+  </ChildComponent>
+  ```
+
+  식 결과와 텍스트를 연결하여 매개 변수에 할당하기 위한 명시적 식의 사용은 지원되지 **않습니다**. 다음 예제에서는 "SKU-" 텍스트를 부모 구성 요소의 `product` 개체에서 제공하는 제품 재고 번호(`SKU` 속성, "재고 관리 단위")와 연결하려고 합니다. 이 구문은 Razor 페이지(`.cshtml`)에서 지원되지만 자식 요소의 `Title` 매개 변수에 할당하는 데 유효하지 않습니다.
+  
+  ```razor
+  <ChildComponent Title="SKU-@(product.SKU)">
+      Title from composed Razor expression. This doesn't compile.
+  </ChildComponent>
+  ```
+  
+  위 예제의 코드는 앱이 빌드되면 컴파일러 오류를 생성합니다.
+  
+  > 구성 요소 특성은 복합 콘텐츠(C# 및 마크업 혼합)를 지원하지 않습니다.
+  
+  구성된 값의 할당을 지원하려면 메서드, 필드 또는 속성을 사용합니다. 다음 예제에서는 `GetTitle` C# 메서드에서 "SKU-"와 제품 재고 번호의 연결을 수행합니다.
+  
+  ```razor
+  <ChildComponent Title="@GetTitle()">
+      Composed title from method.
+  </ChildComponent>
+  
+  @code {
+      private Product product = new Product();
+
+      private string GetTitle() => $"SKU-{product.SKU}";
+      
+      private class Product
+      {
+          public string SKU { get; set; } = "12345";
+      }
+  }
+  ```
   
 자세한 내용은 [ASP.NET Core용 Razor 구문 참조](xref:mvc/views/razor)를 참조하세요.
 
 > [!WARNING]
 > 자체 *구성 요소 매개 변수* 에 쓰는 구성 요소를 만들지 말고 대신 private 필드를 사용합니다. 자세한 내용은 [덮어쓴 매개 변수](#overwritten-parameters) 섹션을 참조하세요.
+
+#### <a name="component-parameters-should-be-auto-properties"></a>구성 요소 매개 변수는 auto 속성이어야 함
+
+구성 요소 매개 변수는 auto 속성으로 선언되어야 합니다. 즉, getter 또는 setter에 사용자 지정 논리를 포함하지 않아야 합니다. 예를 들어 다음 `StartData` 속성은 auto 속성입니다.
+
+```csharp
+[Parameter]
+public DateTime StartData { get; set; }
+```
+
+구성 요소 매개 변수는 순전히 부모 구성 요소에서 자식 구성 요소로 정보를 전달하는 통로로서 사용하기 위한 것이므로 사용자 지정 논리를 `get` 또는 `set` 접근자에 배치하지 마세요. 자식 구성 요소 속성의 setter가 부모 구성 요소의 렌더링을 야기하는 논리를 포함하는 경우 무한 렌더링 루프가 발생합니다.
+
+받은 매개 변수 값을 변환해야 하는 경우 다음을 수행합니다.
+
+* 매개 변수 속성을 순수 auto 속성으로 남겨 두어 제공된 원시 데이터를 표시합니다.
+* 매개 변수 속성을 기반으로 변환된 데이터를 제공하는 다른 속성 또는 메서드를 만듭니다.
+
+`OnParametersSetAsync`를 재정의하여 새 데이터를 받을 때마다 받은 매개 변수를 변환할 수 있습니다.
 
 ## <a name="child-content"></a>자식 콘텐츠
 

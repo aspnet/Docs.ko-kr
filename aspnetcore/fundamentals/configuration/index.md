@@ -5,7 +5,7 @@ description: 구성 API를 사용하여 ASP.NET Core 앱을 구성하는 방법�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/24/2020
+ms.date: 1/29/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 62c9d1a58e0f771d91e2bc57f39ec5ebb25baaed
-ms.sourcegitcommit: 37186f76e4a50d7fb7389026dd0e5e234b51ebb2
+ms.openlocfilehash: 0f069b049889f7caade493e238ac7a23db5e79af
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99541370"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536310"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core의 구성
 
@@ -232,9 +232,30 @@ setx Logging__1__Name=ToConsole
 setx Logging__1__Level=Information
 ```
 
-### <a name="environment-variables-set-in-launchsettingsjson"></a>launchSettings.json에 설정된 환경 변수
+### <a name="environment-variables-set-in-generated-launchsettingsjson"></a>생성된 launchSettings.json에 설정된 환경 변수
 
-*launchSettings.json* 에 설정된 환경 변수는 시스템 환경에 설정된 변수를 재정의합니다.
+*launchSettings.json* 에 설정된 환경 변수는 시스템 환경에 설정된 변수를 재정의합니다. 예를 들어 ASP.NET Core 웹 템플릿은 엔드포인트 구성을 다음으로 설정하는 *launchSettings.json* 파일을 생성합니다.
+
+```json
+"applicationUrl": "https://localhost:5001;http://localhost:5000"
+```
+
+`applicationUrl` 구성은 `ASPNETCORE_URLS` 환경 변수를 설정하고 환경에 설정된 값을 재정의합니다.
+
+### <a name="escape-environment-variables-on-linux"></a>Linux에서 환경 변수 이스케이프
+
+Linux에서는 URL 환경 변수의 값을 이스케이프 처리하여 `systemd`가 구문 분석을 할 수 있도록 해야 합니다. `http:--localhost:5001`을 생성하는 Linux 도구 `systemd-escape`를 사용하세요.
+ 
+ ```cmd
+ groot@terminus:~$ systemd-escape http://localhost:5001
+ http:--localhost:5001
+ ```
+
+### <a name="display-environment-variables"></a>환경 변수 표시
+
+다음 코드는 애플리케이션 시작 시 환경 설정을 디버그할 때 도움이 될 수 있는 환경 변수 및 값을 표시합니다.
+
+[!code-csharp[](~/fundamentals/configuration/index/samples_snippets/5.x/Program.cs?name=snippet)]
 
 <a name="clcp"></a>
 
@@ -556,6 +577,38 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 `MemoryConfigurationProvider`를 사용하는 또 다른 예제는 [배열 바인딩](#boa)을 참조하세요.
 
+::: moniker-end
+::: moniker range=">= aspnetcore-5.0"
+
+<a name="kestrel"></a>
+
+## <a name="kestrel-endpoint-configuration"></a>Kestrel 엔드포인트 구성
+
+Kestrel 관련 엔드포인트 구성은 모든 [서버 간](xref:fundamentals/servers/index) 엔드포인트 구성을 재정의합니다. 서버 간 엔드포인트 구성에는 다음이 포함됩니다.
+
+  * [UseUrls](xref:fundamentals/host/web-host#server-urls)
+  * [명령줄](xref:fundamentals/configuration/index#command-line)의 `--urls`
+  * [환경 변수](xref:fundamentals/configuration/index#environment-variables) `ASPNETCORE_URLS`
+
+ASP.NET Core 웹 앱에서 사용되는 다음 *appsettings.json* 파일을 고려합니다.
+
+[!code-json[](~/fundamentals/configuration/index/samples_snippets/5.x/appsettings.json?highlight=2-8)]
+
+위에 강조 표시된 마크업을 ASP.NET Core 웹 앱에 사용 ***하면서*** 다음과 같은 서버 간 엔드포인트 구성을 사용하여 명령줄에서 앱을 시작하는 경우,
+
+`dotnet run --urls="https://localhost:7777"`
+
+Kestrel은 *appsettings.json* 파일(`https://localhost:9999`)에서 Kestrel용으로 특별히 구성된 엔드포인트에 바인딩됩니다(`https://localhost:7777` 아님).
+
+환경 변수로 구성된 Kestrel 관련 엔드포인트를 고려합니다.
+
+`set Kestrel__Endpoints__Https__Url=https://localhost:8888`
+
+위 환경 변수에서 `Https`는 Kestrel 관련 엔드포인트의 이름입니다. 또한 위 *appsettings.json* 파일은 `Https`라는 Kestrel 관련 엔드포인트를 정의합니다. [기본적으로](#default-configuration) [환경 변수 구성 공급자](#evcp)를 사용하는 환경 변수는 *appsettings.* `Environment` *.json* 이후에 읽혀지므로 위 환경 변수는 `Https` 엔드포인트에 사용됩니다.
+
+::: moniker-end
+::: moniker range=">= aspnetcore-3.0"
+
 ## <a name="getvalue"></a>GetValue
 
 [`ConfigurationBinder.GetValue<T>`](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*)는 지정된 키를 사용하여 구성에서 단일 값을 추출하고 해당 값을 지정된 형식으로 변환합니다.
@@ -773,7 +826,7 @@ Index: 5  Value: value5
 
 ## <a name="default-host-configuration"></a>기본 호스트 구성
 
-[웹 호스트](xref:fundamentals/host/web-host)를 사용하는 경우 기본 구성에 대한 자세한 내용은 [이 항목의 ASP.NET Core 2.2 버전](?view=aspnetcore-2.2)을 참조하세요.
+[웹 호스트](xref:fundamentals/host/web-host)를 사용하는 경우 기본 구성에 대한 자세한 내용은 [이 항목의 ASP.NET Core 2.2 버전](?view=aspnetcore-2.2&preserve-view=true)을 참조하세요.
 
 * 호스트 구성은 다음에 의해 제공됩니다.
   * [환경 변수 구성 공급자](#environment-variables)를 사용하는 `DOTNET_` 접두사가 붙은 환경 변수(예: `DOTNET_ENVIRONMENT`). 구성 키-값 쌍이 로드되면 접두사(`DOTNET_`)는 제거됩니다.
