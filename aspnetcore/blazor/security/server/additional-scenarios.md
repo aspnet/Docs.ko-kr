@@ -19,24 +19,22 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/additional-scenarios
-ms.openlocfilehash: 56b226f8e4a10aa996b0344f10c76dad2ae32b51
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: d47cfba75b640f57cc713049594d4e8acd1fcd0e
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93234440"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280330"
 ---
-# <a name="aspnet-core-no-locblazor-server-additional-security-scenarios"></a><span data-ttu-id="5cbe6-103">ASP.NET Core Blazor Server 추가 보안 시나리오</span><span class="sxs-lookup"><span data-stu-id="5cbe6-103">ASP.NET Core Blazor Server additional security scenarios</span></span>
-
-<span data-ttu-id="5cbe6-104">작성자: [Javier Calvarro Nelson](https://github.com/javiercn)</span><span class="sxs-lookup"><span data-stu-id="5cbe6-104">By [Javier Calvarro Nelson](https://github.com/javiercn)</span></span>
+# <a name="aspnet-core-blazor-server-additional-security-scenarios"></a><span data-ttu-id="ad09c-103">ASP.NET Core Blazor Server 추가 보안 시나리오</span><span class="sxs-lookup"><span data-stu-id="ad09c-103">ASP.NET Core Blazor Server additional security scenarios</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-<h2 id="pass-tokens-to-a-blazor-server-app"><span data-ttu-id="5cbe6-105">Blazor Server 앱으로 토큰 전달</span><span class="sxs-lookup"><span data-stu-id="5cbe6-105">Pass tokens to a Blazor Server app</span></span></h2>
+<h2 id="pass-tokens-to-a-blazor-server-app"><span data-ttu-id="ad09c-104">Blazor Server 앱으로 토큰 전달</span><span class="sxs-lookup"><span data-stu-id="ad09c-104">Pass tokens to a Blazor Server app</span></span></h2>
 
-<span data-ttu-id="5cbe6-106">Blazor Server 앱의 Razor 구성 요소 외부에서 사용할 수 있는 토큰은 이 섹션에서 설명하는 방법을 통해 구성 요소로 전달할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-106">Tokens available outside of the Razor components in a Blazor Server app can be passed to components with the approach described in this section.</span></span>
+<span data-ttu-id="ad09c-105">Blazor Server 앱의 Razor 구성 요소 외부에서 사용할 수 있는 토큰은 이 섹션에서 설명하는 방법을 통해 구성 요소로 전달할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-105">Tokens available outside of the Razor components in a Blazor Server app can be passed to components with the approach described in this section.</span></span>
 
-<span data-ttu-id="5cbe6-107">일반 Razor Pages나 MVC 앱을 인증하는 것처럼 Blazor Server 앱을 인증합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-107">Authenticate the Blazor Server app as you would with a regular Razor Pages or MVC app.</span></span> <span data-ttu-id="5cbe6-108">토큰을 프로비저닝하고 인증 cookie에 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-108">Provision and save the tokens to the authentication cookie.</span></span> <span data-ttu-id="5cbe6-109">예를 들어:</span><span class="sxs-lookup"><span data-stu-id="5cbe6-109">For example:</span></span>
+<span data-ttu-id="ad09c-106">일반 Razor Pages나 MVC 앱을 인증하는 것처럼 Blazor Server 앱을 인증합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-106">Authenticate the Blazor Server app as you would with a regular Razor Pages or MVC app.</span></span> <span data-ttu-id="ad09c-107">토큰을 프로비저닝하고 인증 cookie에 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-107">Provision and save the tokens to the authentication cookie.</span></span> <span data-ttu-id="ad09c-108">예를 들어:</span><span class="sxs-lookup"><span data-stu-id="ad09c-108">For example:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -53,9 +51,9 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =
 });
 ```
 
-<span data-ttu-id="5cbe6-110">필요에 따라 `options.Scope.Add("{SCOPE}");`를 사용하여 추가 범위가 추가됩니다. 여기서 자리 표시자 `{SCOPE}`는 추가할 추가 범위입니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-110">Optionally, additional scopes are added with `options.Scope.Add("{SCOPE}");`, where the placeholder `{SCOPE}` is the additional scope to add.</span></span>
+<span data-ttu-id="ad09c-109">필요에 따라 `options.Scope.Add("{SCOPE}");`를 사용하여 추가 범위가 추가됩니다. 여기서 자리 표시자 `{SCOPE}`는 추가할 추가 범위입니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-109">Optionally, additional scopes are added with `options.Scope.Add("{SCOPE}");`, where the placeholder `{SCOPE}` is the additional scope to add.</span></span>
 
-<span data-ttu-id="5cbe6-111">Blazor 앱 내에서 [DI(종속성 주입)](xref:blazor/fundamentals/dependency-injection)로부터 토큰을 확인하는 데 사용할 수 있는 **범위가 지정된** 토큰 공급자 서비스를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-111">Define a **scoped** token provider service that can be used within the Blazor app to resolve the tokens from [dependency injection (DI)](xref:blazor/fundamentals/dependency-injection):</span></span>
+<span data-ttu-id="ad09c-110">Blazor 앱 내에서 [DI(종속성 주입)](xref:blazor/fundamentals/dependency-injection)로부터 토큰을 확인하는 데 사용할 수 있는 **범위가 지정된** 토큰 공급자 서비스를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-110">Define a **scoped** token provider service that can be used within the Blazor app to resolve the tokens from [dependency injection (DI)](xref:blazor/fundamentals/dependency-injection):</span></span>
 
 ```csharp
 public class TokenProvider
@@ -65,7 +63,7 @@ public class TokenProvider
 }
 ```
 
-<span data-ttu-id="5cbe6-112">`Startup.ConfigureServices`에서 다음 서비스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-112">In `Startup.ConfigureServices`, add services for:</span></span>
+<span data-ttu-id="ad09c-111">`Startup.ConfigureServices`에서 다음 서비스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-111">In `Startup.ConfigureServices`, add services for:</span></span>
 
 * `IHttpClientFactory`
 * `TokenProvider`
@@ -75,7 +73,7 @@ services.AddHttpClient();
 services.AddScoped<TokenProvider>();
 ```
 
-<span data-ttu-id="5cbe6-113">액세스 토큰 및 새로 고침 토큰과 함께 초기 앱 상태를 전달하는 클래스를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-113">Define a class to pass in the initial app state with the access and refresh tokens:</span></span>
+<span data-ttu-id="ad09c-112">액세스 토큰 및 새로 고침 토큰과 함께 초기 앱 상태를 전달하는 클래스를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-112">Define a class to pass in the initial app state with the access and refresh tokens:</span></span>
 
 ```csharp
 public class InitialApplicationState
@@ -85,7 +83,7 @@ public class InitialApplicationState
 }
 ```
 
-<span data-ttu-id="5cbe6-114">`_Host.cshtml` 파일에서 `InitialApplicationState`의 인스턴스를 만들어 앱에 매개 변수로 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-114">In the `_Host.cshtml` file, create and instance of `InitialApplicationState` and pass it as a parameter to the app:</span></span>
+<span data-ttu-id="ad09c-113">`_Host.cshtml` 파일에서 `InitialApplicationState`의 인스턴스를 만들어 앱에 매개 변수로 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-113">In the `_Host.cshtml` file, create and instance of `InitialApplicationState` and pass it as a parameter to the app:</span></span>
 
 ```cshtml
 @using Microsoft.AspNetCore.Authentication
@@ -104,7 +102,7 @@ public class InitialApplicationState
     render-mode="ServerPrerendered" />
 ```
 
-<span data-ttu-id="5cbe6-115">`App` 구성 요소(`App.razor`)에서 서비스를 확인하고 매개 변수로 받은 데이터를 사용하여 초기화합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-115">In the `App` component (`App.razor`), resolve the service and initialize it with the data from the parameter:</span></span>
+<span data-ttu-id="ad09c-114">`App` 구성 요소(`App.razor`)에서 서비스를 확인하고 매개 변수로 받은 데이터를 사용하여 초기화합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-114">In the `App` component (`App.razor`), resolve the service and initialize it with the data from the parameter:</span></span>
 
 ```razor
 @inject TokenProvider TokenProvider
@@ -125,9 +123,9 @@ public class InitialApplicationState
 }
 ```
 
-<span data-ttu-id="5cbe6-116">[`Microsoft.AspNet.WebApi.Client`](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client) NuGet 패키지용 앱에 패키지 참조를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-116">Add a package reference to the app for the [`Microsoft.AspNet.WebApi.Client`](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client) NuGet package.</span></span>
+<span data-ttu-id="ad09c-115">[`Microsoft.AspNet.WebApi.Client`](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client) NuGet 패키지용 앱에 패키지 참조를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-115">Add a package reference to the app for the [`Microsoft.AspNet.WebApi.Client`](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client) NuGet package.</span></span>
 
-<span data-ttu-id="5cbe6-117">보안 API 요청을 만드는 서비스에서 토큰 공급자를 삽입하고 API 요청의 토큰을 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-117">In the service that makes a secure API request, inject the token provider and retrieve the token for the API request:</span></span>
+<span data-ttu-id="ad09c-116">보안 API 요청을 만드는 서비스에서 토큰 공급자를 삽입하고 API 요청의 토큰을 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-116">In the service that makes a secure API request, inject the token provider and retrieve the token for the API request:</span></span>
 
 ```csharp
 using System;
@@ -160,9 +158,9 @@ public class WeatherForecastService
 }
 ```
 
-<h2 id="set-the-authentication-scheme"><span data-ttu-id="5cbe6-118">인증 체계 설정</span><span class="sxs-lookup"><span data-stu-id="5cbe6-118">Set the authentication scheme</span></span></h2>
+<h2 id="set-the-authentication-scheme"><span data-ttu-id="ad09c-117">인증 체계 설정</span><span class="sxs-lookup"><span data-stu-id="ad09c-117">Set the authentication scheme</span></span></h2>
 
-<span data-ttu-id="5cbe6-119">여러 인증 미들웨어를 사용하여 인증 체계가 두 개 이상인 앱의 경우 Blazor가 사용하는 체계를 `Startup.Configure`의 엔드포인트 구성에서 명시적으로 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-119">For an app that uses more than one Authentication Middleware and thus has more than one authentication scheme, the scheme that Blazor uses can be explicitly set in the endpoint configuration of `Startup.Configure`.</span></span> <span data-ttu-id="5cbe6-120">다음 예제에서는 Azure Active Directory 체계를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-120">The following example sets the Azure Active Directory scheme:</span></span>
+<span data-ttu-id="ad09c-118">여러 인증 미들웨어를 사용하여 인증 체계가 두 개 이상인 앱의 경우 Blazor가 사용하는 체계를 `Startup.Configure`의 엔드포인트 구성에서 명시적으로 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-118">For an app that uses more than one Authentication Middleware and thus has more than one authentication scheme, the scheme that Blazor uses can be explicitly set in the endpoint configuration of `Startup.Configure`.</span></span> <span data-ttu-id="ad09c-119">다음 예제에서는 Azure Active Directory 체계를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-119">The following example sets the Azure Active Directory scheme:</span></span>
 
 ```csharp
 endpoints.MapBlazorHub().RequireAuthorization(
@@ -176,11 +174,11 @@ endpoints.MapBlazorHub().RequireAuthorization(
 
 ::: moniker range="< aspnetcore-5.0"
 
-<h2 id="pass-tokens-to-a-blazor-server-app"><span data-ttu-id="5cbe6-121">Blazor Server 앱으로 토큰 전달</span><span class="sxs-lookup"><span data-stu-id="5cbe6-121">Pass tokens to a Blazor Server app</span></span></h2>
+<h2 id="pass-tokens-to-a-blazor-server-app"><span data-ttu-id="ad09c-120">Blazor Server 앱으로 토큰 전달</span><span class="sxs-lookup"><span data-stu-id="ad09c-120">Pass tokens to a Blazor Server app</span></span></h2>
 
-<span data-ttu-id="5cbe6-122">Blazor Server 앱의 Razor 구성 요소 외부에서 사용할 수 있는 토큰은 이 섹션에서 설명하는 방법을 통해 구성 요소로 전달할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-122">Tokens available outside of the Razor components in a Blazor Server app can be passed to components with the approach described in this section.</span></span>
+<span data-ttu-id="ad09c-121">Blazor Server 앱의 Razor 구성 요소 외부에서 사용할 수 있는 토큰은 이 섹션에서 설명하는 방법을 통해 구성 요소로 전달할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-121">Tokens available outside of the Razor components in a Blazor Server app can be passed to components with the approach described in this section.</span></span>
 
-<span data-ttu-id="5cbe6-123">일반 Razor Pages나 MVC 앱을 인증하는 것처럼 Blazor Server 앱을 인증합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-123">Authenticate the Blazor Server app as you would with a regular Razor Pages or MVC app.</span></span> <span data-ttu-id="5cbe6-124">토큰을 프로비저닝하고 인증 cookie에 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-124">Provision and save the tokens to the authentication cookie.</span></span> <span data-ttu-id="5cbe6-125">예를 들어:</span><span class="sxs-lookup"><span data-stu-id="5cbe6-125">For example:</span></span>
+<span data-ttu-id="ad09c-122">일반 Razor Pages나 MVC 앱을 인증하는 것처럼 Blazor Server 앱을 인증합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-122">Authenticate the Blazor Server app as you would with a regular Razor Pages or MVC app.</span></span> <span data-ttu-id="ad09c-123">토큰을 프로비저닝하고 인증 cookie에 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-123">Provision and save the tokens to the authentication cookie.</span></span> <span data-ttu-id="ad09c-124">예를 들어:</span><span class="sxs-lookup"><span data-stu-id="ad09c-124">For example:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -197,15 +195,15 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =
 });
 ```
 
-<span data-ttu-id="5cbe6-126">필요에 따라 `options.Scope.Add("{SCOPE}");`를 사용하여 추가 범위가 추가됩니다. 여기서 자리 표시자 `{SCOPE}`는 추가할 추가 범위입니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-126">Optionally, additional scopes are added with `options.Scope.Add("{SCOPE}");`, where the placeholder `{SCOPE}` is the additional scope to add.</span></span>
+<span data-ttu-id="ad09c-125">필요에 따라 `options.Scope.Add("{SCOPE}");`를 사용하여 추가 범위가 추가됩니다. 여기서 자리 표시자 `{SCOPE}`는 추가할 추가 범위입니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-125">Optionally, additional scopes are added with `options.Scope.Add("{SCOPE}");`, where the placeholder `{SCOPE}` is the additional scope to add.</span></span>
 
-<span data-ttu-id="5cbe6-127">필요에 따라 리소스는 `options.Resource = "{RESOURCE}";`를 사용하여 지정됩니다. 여기서 자리 표시자 `{RESOURCE}`는 리소스입니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-127">Optionally, the resource is specified with `options.Resource = "{RESOURCE}";`, where the placeholder `{RESOURCE}` is the resource.</span></span> <span data-ttu-id="5cbe6-128">예를 들어:</span><span class="sxs-lookup"><span data-stu-id="5cbe6-128">For example:</span></span>
+<span data-ttu-id="ad09c-126">필요에 따라 리소스는 `options.Resource = "{RESOURCE}";`를 사용하여 지정됩니다. 여기서 자리 표시자 `{RESOURCE}`는 리소스입니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-126">Optionally, the resource is specified with `options.Resource = "{RESOURCE}";`, where the placeholder `{RESOURCE}` is the resource.</span></span> <span data-ttu-id="ad09c-127">예를 들어:</span><span class="sxs-lookup"><span data-stu-id="ad09c-127">For example:</span></span>
 
 ```csharp
 options.Resource = "https://graph.microsoft.com";
 ```
 
-<span data-ttu-id="5cbe6-129">액세스 토큰 및 새로 고침 토큰과 함께 초기 앱 상태를 전달하는 클래스를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-129">Define a class to pass in the initial app state with the access and refresh tokens:</span></span>
+<span data-ttu-id="ad09c-128">액세스 토큰 및 새로 고침 토큰과 함께 초기 앱 상태를 전달하는 클래스를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-128">Define a class to pass in the initial app state with the access and refresh tokens:</span></span>
 
 ```csharp
 public class InitialApplicationState
@@ -215,7 +213,7 @@ public class InitialApplicationState
 }
 ```
 
-<span data-ttu-id="5cbe6-130">Blazor 앱 내에서 [DI(종속성 주입)](xref:blazor/fundamentals/dependency-injection)로부터 토큰을 확인하는 데 사용할 수 있는 **범위가 지정된** 토큰 공급자 서비스를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-130">Define a **scoped** token provider service that can be used within the Blazor app to resolve the tokens from [dependency injection (DI)](xref:blazor/fundamentals/dependency-injection):</span></span>
+<span data-ttu-id="ad09c-129">Blazor 앱 내에서 [DI(종속성 주입)](xref:blazor/fundamentals/dependency-injection)로부터 토큰을 확인하는 데 사용할 수 있는 **범위가 지정된** 토큰 공급자 서비스를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-129">Define a **scoped** token provider service that can be used within the Blazor app to resolve the tokens from [dependency injection (DI)](xref:blazor/fundamentals/dependency-injection):</span></span>
 
 ```csharp
 public class TokenProvider
@@ -225,7 +223,7 @@ public class TokenProvider
 }
 ```
 
-<span data-ttu-id="5cbe6-131">`Startup.ConfigureServices`에서 다음 서비스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-131">In `Startup.ConfigureServices`, add services for:</span></span>
+<span data-ttu-id="ad09c-130">`Startup.ConfigureServices`에서 다음 서비스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-130">In `Startup.ConfigureServices`, add services for:</span></span>
 
 * `IHttpClientFactory`
 * `TokenProvider`
@@ -235,7 +233,7 @@ services.AddHttpClient();
 services.AddScoped<TokenProvider>();
 ```
 
-<span data-ttu-id="5cbe6-132">`_Host.cshtml` 파일에서 `InitialApplicationState`의 인스턴스를 만들어 앱에 매개 변수로 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-132">In the `_Host.cshtml` file, create and instance of `InitialApplicationState` and pass it as a parameter to the app:</span></span>
+<span data-ttu-id="ad09c-131">`_Host.cshtml` 파일에서 `InitialApplicationState`의 인스턴스를 만들어 앱에 매개 변수로 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-131">In the `_Host.cshtml` file, create and instance of `InitialApplicationState` and pass it as a parameter to the app:</span></span>
 
 ```cshtml
 @using Microsoft.AspNetCore.Authentication
@@ -256,7 +254,7 @@ services.AddScoped<TokenProvider>();
 </app>
 ```
 
-<span data-ttu-id="5cbe6-133">`App` 구성 요소(`App.razor`)에서 서비스를 확인하고 매개 변수로 받은 데이터를 사용하여 초기화합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-133">In the `App` component (`App.razor`), resolve the service and initialize it with the data from the parameter:</span></span>
+<span data-ttu-id="ad09c-132">`App` 구성 요소(`App.razor`)에서 서비스를 확인하고 매개 변수로 받은 데이터를 사용하여 초기화합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-132">In the `App` component (`App.razor`), resolve the service and initialize it with the data from the parameter:</span></span>
 
 ```razor
 @inject TokenProvider TokenProvider
@@ -277,9 +275,9 @@ services.AddScoped<TokenProvider>();
 }
 ```
 
-<span data-ttu-id="5cbe6-134">[`Microsoft.AspNet.WebApi.Client`](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client) NuGet 패키지용 앱에 패키지 참조를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-134">Add a package reference to the app for the [`Microsoft.AspNet.WebApi.Client`](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client) NuGet package.</span></span>
+<span data-ttu-id="ad09c-133">[`Microsoft.AspNet.WebApi.Client`](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client) NuGet 패키지용 앱에 패키지 참조를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-133">Add a package reference to the app for the [`Microsoft.AspNet.WebApi.Client`](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client) NuGet package.</span></span>
 
-<span data-ttu-id="5cbe6-135">보안 API 요청을 만드는 서비스에서 토큰 공급자를 삽입하고 API 요청의 토큰을 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-135">In the service that makes a secure API request, inject the token provider and retrieve the token for the API request:</span></span>
+<span data-ttu-id="ad09c-134">보안 API 요청을 만드는 서비스에서 토큰 공급자를 삽입하고 API 요청의 토큰을 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-134">In the service that makes a secure API request, inject the token provider and retrieve the token for the API request:</span></span>
 
 ```csharp
 using System;
@@ -312,9 +310,9 @@ public class WeatherForecastService
 }
 ```
 
-<h2 id="set-the-authentication-scheme"><span data-ttu-id="5cbe6-136">인증 체계 설정</span><span class="sxs-lookup"><span data-stu-id="5cbe6-136">Set the authentication scheme</span></span></h2>
+<h2 id="set-the-authentication-scheme"><span data-ttu-id="ad09c-135">인증 체계 설정</span><span class="sxs-lookup"><span data-stu-id="ad09c-135">Set the authentication scheme</span></span></h2>
 
-<span data-ttu-id="5cbe6-137">여러 인증 미들웨어를 사용하여 인증 체계가 두 개 이상인 앱의 경우 Blazor가 사용하는 체계를 `Startup.Configure`의 엔드포인트 구성에서 명시적으로 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-137">For an app that uses more than one Authentication Middleware and thus has more than one authentication scheme, the scheme that Blazor uses can be explicitly set in the endpoint configuration of `Startup.Configure`.</span></span> <span data-ttu-id="5cbe6-138">다음 예제에서는 Azure Active Directory 체계를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-138">The following example sets the Azure Active Directory scheme:</span></span>
+<span data-ttu-id="ad09c-136">여러 인증 미들웨어를 사용하여 인증 체계가 두 개 이상인 앱의 경우 Blazor가 사용하는 체계를 `Startup.Configure`의 엔드포인트 구성에서 명시적으로 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-136">For an app that uses more than one Authentication Middleware and thus has more than one authentication scheme, the scheme that Blazor uses can be explicitly set in the endpoint configuration of `Startup.Configure`.</span></span> <span data-ttu-id="ad09c-137">다음 예제에서는 Azure Active Directory 체계를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-137">The following example sets the Azure Active Directory scheme:</span></span>
 
 ```csharp
 endpoints.MapBlazorHub().RequireAuthorization(
@@ -324,9 +322,9 @@ endpoints.MapBlazorHub().RequireAuthorization(
     });
 ```
 
-## <a name="use-openid-connect-oidc-v20-endpoints"></a><span data-ttu-id="5cbe6-139">OIDC(OpenID Connect) v2.0 엔드포인트 사용</span><span class="sxs-lookup"><span data-stu-id="5cbe6-139">Use OpenID Connect (OIDC) v2.0 endpoints</span></span>
+## <a name="use-openid-connect-oidc-v20-endpoints"></a><span data-ttu-id="ad09c-138">OIDC(OpenID Connect) v2.0 엔드포인트 사용</span><span class="sxs-lookup"><span data-stu-id="ad09c-138">Use OpenID Connect (OIDC) v2.0 endpoints</span></span>
 
-<span data-ttu-id="5cbe6-140">5\.0 이전 버전의 ASP.NET Core에서 인증 라이브러리 및 Blazor 템플릿은 OIDC(OpenID Connect) v1.0 엔드포인트를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-140">In versions of ASP.NET Core prior to 5.0, the authentication library and Blazor templates use OpenID Connect (OIDC) v1.0 endpoints.</span></span> <span data-ttu-id="5cbe6-141">5\.0 이전 버전의 ASP.NET Core에서 v2.0 엔드포인트를 사용하려면 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>에서 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> 옵션을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-141">To use a v2.0 endpoint with versions of ASP.NET Core prior to 5.0, configure the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> option in the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:</span></span>
+<span data-ttu-id="ad09c-139">5\.0 이전 버전의 ASP.NET Core에서 인증 라이브러리 및 Blazor 템플릿은 OIDC(OpenID Connect) v1.0 엔드포인트를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-139">In versions of ASP.NET Core prior to 5.0, the authentication library and Blazor templates use OpenID Connect (OIDC) v1.0 endpoints.</span></span> <span data-ttu-id="ad09c-140">5\.0 이전 버전의 ASP.NET Core에서 v2.0 엔드포인트를 사용하려면 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>에서 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> 옵션을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-140">To use a v2.0 endpoint with versions of ASP.NET Core prior to 5.0, configure the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> option in the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:</span></span>
 
 ```csharp
 services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, 
@@ -336,7 +334,7 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme,
     }
 ```
 
-<span data-ttu-id="5cbe6-142">또는 앱 설정(`appsettings.json`) 파일에서 설정을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-142">Alternatively, the setting can be made in the app settings (`appsettings.json`) file:</span></span>
+<span data-ttu-id="ad09c-141">또는 앱 설정(`appsettings.json`) 파일에서 설정을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-141">Alternatively, the setting can be made in the app settings (`appsettings.json`) file:</span></span>
 
 ```json
 {
@@ -347,12 +345,12 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme,
 }
 ```
 
-<span data-ttu-id="5cbe6-143">인증 기관에 대한 세그먼트의 추적이 앱의 OIDC 공급자에 적합하지 않은 경우(예: 비 AAD 공급자) <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> 속성을 직접 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-143">If tacking on a segment to the authority isn't appropriate for the app's OIDC provider, such as with non-AAD providers, set the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> property directly.</span></span> <span data-ttu-id="5cbe6-144"><xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> 또는 앱 설정 파일에서 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> 키를 사용하여 속성을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-144">Either set the property in <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> or in the app settings file with the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> key.</span></span>
+<span data-ttu-id="ad09c-142">인증 기관에 대한 세그먼트의 추적이 앱의 OIDC 공급자에 적합하지 않은 경우(예: 비 AAD 공급자) <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> 속성을 직접 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-142">If tacking on a segment to the authority isn't appropriate for the app's OIDC provider, such as with non-AAD providers, set the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> property directly.</span></span> <span data-ttu-id="ad09c-143"><xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> 또는 앱 설정 파일에서 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> 키를 사용하여 속성을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-143">Either set the property in <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> or in the app settings file with the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> key.</span></span>
 
-### <a name="code-changes"></a><span data-ttu-id="5cbe6-145">코드 변경 내용</span><span class="sxs-lookup"><span data-stu-id="5cbe6-145">Code changes</span></span>
+### <a name="code-changes"></a><span data-ttu-id="ad09c-144">코드 변경 내용</span><span class="sxs-lookup"><span data-stu-id="ad09c-144">Code changes</span></span>
 
-* <span data-ttu-id="5cbe6-146">ID 토큰의 클레임 목록은 v2.0 엔드포인트의 경우 변경됩니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-146">The list of claims in the ID token changes for v2.0 endpoints.</span></span> <span data-ttu-id="5cbe6-147">자세한 내용은 Azure 설명서에서 [Microsoft ID 플랫폼(v2.0)으로 업데이트하는 이유](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)를</span><span class="sxs-lookup"><span data-stu-id="5cbe6-147">For more information, see [Why update to Microsoft identity platform (v2.0)?](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)</span></span> <span data-ttu-id="5cbe6-148">참조하세요.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-148">in the Azure documentation.</span></span>
-* <span data-ttu-id="5cbe6-149">v2.0 엔드포인트의 경우 범위 URI에 리소스가 지정되어 있으므로 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>에서 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Resource?displayProperty=nameWithType> 속성 설정을 제거합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-149">Since resources are specified in scope URIs for v2.0 endpoints, remove the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Resource?displayProperty=nameWithType> property setting in <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:</span></span>
+* <span data-ttu-id="ad09c-145">ID 토큰의 클레임 목록은 v2.0 엔드포인트의 경우 변경됩니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-145">The list of claims in the ID token changes for v2.0 endpoints.</span></span> <span data-ttu-id="ad09c-146">자세한 내용은 Azure 설명서에서 [Microsoft ID 플랫폼(v2.0)으로 업데이트하는 이유](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)를</span><span class="sxs-lookup"><span data-stu-id="ad09c-146">For more information, see [Why update to Microsoft identity platform (v2.0)?](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)</span></span> <span data-ttu-id="ad09c-147">참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ad09c-147">in the Azure documentation.</span></span>
+* <span data-ttu-id="ad09c-148">v2.0 엔드포인트의 경우 범위 URI에 리소스가 지정되어 있으므로 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>에서 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Resource?displayProperty=nameWithType> 속성 설정을 제거합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-148">Since resources are specified in scope URIs for v2.0 endpoints, remove the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Resource?displayProperty=nameWithType> property setting in <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:</span></span>
 
   ```csharp
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options => 
@@ -363,15 +361,15 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme,
       }
   ```
 
-  <span data-ttu-id="5cbe6-150">자세한 내용은 Azure 설명서의 [리소스가 아닌 범위](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#scopes-not-resources)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-150">For more information, see [Scopes, not resources](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#scopes-not-resources) in the Azure documentation.</span></span>
+  <span data-ttu-id="ad09c-149">자세한 내용은 Azure 설명서의 [리소스가 아닌 범위](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#scopes-not-resources)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ad09c-149">For more information, see [Scopes, not resources](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#scopes-not-resources) in the Azure documentation.</span></span>
 
-### <a name="app-id-uri"></a><span data-ttu-id="5cbe6-151">앱 ID URI</span><span class="sxs-lookup"><span data-stu-id="5cbe6-151">App ID URI</span></span>
+### <a name="app-id-uri"></a><span data-ttu-id="ad09c-150">앱 ID URI</span><span class="sxs-lookup"><span data-stu-id="ad09c-150">App ID URI</span></span>
 
-* <span data-ttu-id="5cbe6-152">v2.0 엔드포인트를 사용할 경우 API는 API의 고유 식별자를 나타내는 *`App ID URI`* 를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-152">When using v2.0 endpoints, APIs define an *`App ID URI`*, which is meant to represent a unique identifier for the API.</span></span>
-* <span data-ttu-id="5cbe6-153">모든 범위에는 앱 ID URI가 접두어로 포함되며 v2.0 엔드포인트는 앱 ID URI를 대상으로 하는 액세스 토큰을 내보냅니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-153">All scopes include the App ID URI as a prefix, and v2.0 endpoints emit access tokens with the App ID URI as the audience.</span></span>
-* <span data-ttu-id="5cbe6-154">V2.0 엔드포인트를 사용할 경우 서버 API에 구성된 클라이언트 ID가 API 애플리케이션 ID(클라이언트 ID)에서 앱 ID URI로 변경됩니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-154">When using V2.0 endpoints, the client ID configured in the Server API changes from the API Application ID (Client ID) to the App ID URI.</span></span>
+* <span data-ttu-id="ad09c-151">v2.0 엔드포인트를 사용할 경우 API는 API의 고유 식별자를 나타내는 *`App ID URI`* 를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-151">When using v2.0 endpoints, APIs define an *`App ID URI`*, which is meant to represent a unique identifier for the API.</span></span>
+* <span data-ttu-id="ad09c-152">모든 범위에는 앱 ID URI가 접두어로 포함되며 v2.0 엔드포인트는 앱 ID URI를 대상으로 하는 액세스 토큰을 내보냅니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-152">All scopes include the App ID URI as a prefix, and v2.0 endpoints emit access tokens with the App ID URI as the audience.</span></span>
+* <span data-ttu-id="ad09c-153">V2.0 엔드포인트를 사용할 경우 서버 API에 구성된 클라이언트 ID가 API 애플리케이션 ID(클라이언트 ID)에서 앱 ID URI로 변경됩니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-153">When using V2.0 endpoints, the client ID configured in the Server API changes from the API Application ID (Client ID) to the App ID URI.</span></span>
 
-<span data-ttu-id="5cbe6-155">`appsettings.json`:</span><span class="sxs-lookup"><span data-stu-id="5cbe6-155">`appsettings.json`:</span></span>
+<span data-ttu-id="ad09c-154">`appsettings.json`:</span><span class="sxs-lookup"><span data-stu-id="ad09c-154">`appsettings.json`:</span></span>
 
 ```json
 {
@@ -383,6 +381,6 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme,
 }
 ```
 
-<span data-ttu-id="5cbe6-156">OIDC 공급자 앱 등록 설명에서 사용해야 하는 앱 ID URI를 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5cbe6-156">You can find the App ID URI to use in the OIDC provider app registration description.</span></span>
+<span data-ttu-id="ad09c-155">OIDC 공급자 앱 등록 설명에서 사용해야 하는 앱 ID URI를 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ad09c-155">You can find the App ID URI to use in the OIDC provider app registration description.</span></span>
 
 ::: moniker-end
