@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/target-aspnetcore
 ms.openlocfilehash: c012658a6f48247af60c8bfd56a7d987f6aa8a68
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 02/05/2021
 ms.locfileid: "93061511"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>클래스 라이브러리에서 ASP.NET Core API 사용
@@ -52,7 +52,7 @@ ASP.NET Core를 참조하려면 프로젝트 파일에 다음 `<FrameworkReferen
 
 이러한 방식의 ASP.NET Core 참조는 .NET Core 3.x를 대상으로 하는 프로젝트에만 지원됩니다.
 
-## <a name="include-no-locblazor-extensibility"></a>Blazor 확장성 포함
+## <a name="include-blazor-extensibility"></a>Blazor 확장성 포함
 
 Blazor는 WASM(WebAssembly) 및 Server [호스팅 모델](xref:blazor/hosting-models)을 지원합니다. 특별한 이유가 없는 한 [Razor 구성 요소](xref:blazor/components/index) 라이브러리에서 두 호스팅 모델을 모두 지원해야 합니다. Razor 구성 요소 라이브러리는 [Microsoft.NET.Sdk.Razor SDK](xref:razor-pages/sdk)를 사용해야 합니다.
 
@@ -113,7 +113,7 @@ Razor 구성 요소가 포함된 라이브러리에 대한 자세한 내용은 [
 
 이 섹션에서는 여러 버전의 MVC를 지원하는 멀티 타기팅에 대해서는 설명하지 않습니다. 여러 ASP.NET Core 버전을 지원하는 방법에 대한 지침은 [여러 ASP.NET Core 버전 지원](#support-multiple-aspnet-core-versions)을 참조하세요.
 
-### <a name="no-locrazor-views-or-no-locrazor-pages"></a>Razor 보기 또는 Razor Pages
+### <a name="razor-views-or-razor-pages"></a>Razor 보기 또는 Razor Pages
 
 [Razor 보기](xref:mvc/views/overview) 또는 [Razor Pages](xref:razor-pages/index)를 포함하는 프로젝트는 [Microsoft.NET.Sdk.Razor SDK](xref:razor-pages/sdk)를 사용해야 합니다.
 

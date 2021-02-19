@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/app-state
 ms.openlocfilehash: c11b748f9d79235b14c9541019da6e1fb3428af6
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 02/05/2021
 ms.locfileid: "93051410"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>ASP.NET Core의 세션 및 상태 관리
@@ -49,7 +49,7 @@ HTTP는 상태 비저장 프로토콜입니다. 기본적으로 HTTP 요청은 �
 | [HttpContext.Items](#httpcontextitems) | 서버 쪽 앱 코드 |
 | [캐시](#cache) | 서버 쪽 앱 코드 |
 
-## <a name="no-loccookies"></a>Cookies
+## <a name="cookies"></a>Cookies
 
 Cookie는 요청 간에 데이터를 저장합니다. cookie는 모든 요청과 함께 전송되므로 해당 크기는 최소로 유지되어야 합니다. 이상적으로 식별자만 앱에 저장된 데이터와 함께 cookie에 저장되어야 합니다. 대부분의 브라우저는 cookie 크기를 4,096바이트로 제한합니다. 제한된 수의 cookie만 각 도메인에 사용할 수 있습니다.
 
@@ -288,7 +288,7 @@ cookie 기반 TempData 공급자는 기본적으로 활성화됩니다.
 
 오류를 확인하는 권장 방법은 앱이 세션에 기록을 마쳤을 때 `await feature.Session.CommitAsync`를 호출하는 것입니다. 백업 저장소를 사용할 수 없는 경우 <xref:Microsoft.AspNetCore.Http.ISession.CommitAsync*>에서 예외를 throw합니다. `CommitAsync`가 실패하면 앱에서 예외를 처리할 수 있습니다. 데이터 저장소를 사용할 수 없는 경우에는 동일한 조건에서 <xref:Microsoft.AspNetCore.Http.ISession.LoadAsync*>가 throw합니다.
   
-## <a name="no-locsignalr-and-session-state"></a>SignalR과 세션 상태
+## <a name="signalr-and-session-state"></a>SignalR과 세션 상태
 
 SignalR 앱은 세션 상태를 사용하여 정보를 저장해서는 안 됩니다. SignalR 앱은 허브에서 `Context.Items`의 연결 상태별로 저장할 수 있습니다. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
@@ -320,7 +320,7 @@ HTTP는 상태 비저장 프로토콜입니다. HTTP 요청은 추가 단계를 
 | [캐시](#cache) | 서버 쪽 앱 코드 |
 | [종속성 주입](#dependency-injection) | 서버 쪽 앱 코드 |
 
-## <a name="no-loccookies"></a>Cookies
+## <a name="cookies"></a>Cookies
 
 Cookie는 요청 간에 데이터를 저장합니다. cookie는 모든 요청과 함께 전송되므로 해당 크기는 최소로 유지되어야 합니다. 이상적으로 식별자만 앱에 저장된 데이터와 함께 cookie에 저장되어야 합니다. 대부분의 브라우저는 cookie 크기를 4,096바이트로 제한합니다. 제한된 수의 cookie만 각 도메인에 사용할 수 있습니다.
 
@@ -599,7 +599,7 @@ app.Run(async (context) =>
 
   권장되는 오류 확인 방법은 앱이 세션에 작성을 완료하면 앱 코드에서 `await feature.Session.CommitAsync();`를 호출하는 것입니다. 백업 저장소를 사용할 수 없는 경우 `CommitAsync`에서 예외를 throw합니다. `CommitAsync`가 실패하면 앱에서 예외를 처리할 수 있습니다. `LoadAsync`는 같은 조건에서 데이터 저장소를 사용할 수 없는 경우 throw됩니다.
   
-## <a name="no-locsignalr-and-session-state"></a>SignalR과 세션 상태
+## <a name="signalr-and-session-state"></a>SignalR과 세션 상태
 
 SignalR 앱은 세션 상태를 사용하여 정보를 저장해서는 안 됩니다. SignalR 앱은 허브에서 `Context.Items`의 연결 상태별로 저장할 수 있습니다. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
