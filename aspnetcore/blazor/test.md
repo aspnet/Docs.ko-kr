@@ -19,16 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/test
-ms.openlocfilehash: cd4aee66fd6df6cc0ce520d8ca66e0a2cf130eff
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 67ebfcd322ae08acf2fddae9bd6101f13fa77e7e
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93054868"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280702"
 ---
-# <a name="test-components-in-aspnet-core-no-locblazor"></a>ASP.NET Core에서 구성 요소 테스트Blazor
+# <a name="test-components-in-aspnet-core-blazor"></a>ASP.NET Core에서 구성 요소 테스트Blazor
 
-[Egil Hansen](https://egilhansen.com/)
+작성자: [Egil Hansen](https://egilhansen.com/)
 
 테스트는 안정적이고 유지 관리 가능한 소프트웨어를 구축하는 데 있어 중요한 측면입니다.
 

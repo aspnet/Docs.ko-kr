@@ -16,7 +16,7 @@
 * PR에 'cla-required' 레이블이 할당되어 있으면 [CLA(기여 사용권 계약)를 작성](https://cla.dotnetfoundation.org/)하세요.
 * PR 피드백에 응답합니다.
 
-예를 들어 이 프로세스를 통해 새 문서가 게시되는 경우 .NET Docs 리포지토리에서 [문제 &num;67](https://github.com/dotnet/docs/issues/67) 및 [끌어오기 요청 &num;798](https://github.com/dotnet/docs/pull/798)을 참조하세요. 새 문서는 [코드 문서화](https://docs.microsoft.com/dotnet/articles/csharp/codedoc)입니다.
+예를 들어 이 프로세스를 통해 새 문서가 게시되는 경우 .NET Docs 리포지토리에서 [이슈 1477](https://github.com/dotnet/docs/issues/1477) 및 [끌어오기 요청 18955](https://github.com/dotnet/docs/pull/18955)를 참조하세요. 새 문서는 [유닛 테스트에 코드 검사 사용](/dotnet/core/testing/unit-testing-code-coverage)입니다.
 
 ## <a name="docs-authoring-pack-extension-in-visual-studio-code"></a>Visual Studio Code에서 Docs Authoring Pack 확장
 

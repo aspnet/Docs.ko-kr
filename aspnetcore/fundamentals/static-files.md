@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: d97caeffc6e8beebddb01a5bd126d61ba988de65
-ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
+ms.openlocfilehash: fad569ab06735600299d8051a258651e329db8ce
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689294"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107183"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core의 정적 파일
 
@@ -119,11 +119,11 @@ ASP.NET Core 템플릿은 <xref:Microsoft.AspNetCore.Builder.AuthorizationAppBui
   
   [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet1&highlight=20-25)]
 
-  앞의 코드에서 대체 권한 부여 정책은 **모든** 사용자가 인증하도록 요구합니다. 자체 권한 부여 요구 사항을 지정하는 컨트롤러, Razor Pages 등과 같은 엔드포인트는 대체 권한 부여 정책을 사용하지 않습니다. 예를 들어 `[AllowAnonymous]` 또는 `[Authorize(PolicyName="MyPolicy")]`가 있는 Razor Pages, 컨트롤러 또는 작업 메서드는 대체 권한 부여 정책이 아닌 적용된 권한 부여 특성을 사용합니다.
+  위 코드에서 대체 권한 부여 정책은 모든 사용자를 인증하도록 요구합니다. 자체 권한 부여 요구 사항을 지정하는 컨트롤러, Razor Pages 등과 같은 엔드포인트는 대체 권한 부여 정책을 사용하지 않습니다. 예를 들어 `[AllowAnonymous]` 또는 `[Authorize(PolicyName="MyPolicy")]`가 있는 Razor Pages, 컨트롤러 또는 작업 메서드는 대체 권한 부여 정책이 아닌 적용된 권한 부여 특성을 사용합니다.
 
   <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A>는 <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement>를 현재 인스턴스에 추가하여 현재 사용자가 인증될 것을 요구합니다.
 
-  기본 정적 파일 미들웨어(`app.UseStaticFiles();`)가 `UseAuthentication` 전에 호출되기 때문에 `wwwroot` 아래의 정적 자산은 공개적으로 액세스할 수 있습니다. _MyStaticFiles* 폴더의 정적 자산에는 인증이 필요합니다. [샘플 코드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples)는 이를 보여 줍니다.
+  기본 정적 파일 미들웨어(`app.UseStaticFiles();`)가 `UseAuthentication` 전에 호출되기 때문에 `wwwroot` 아래의 정적 자산은 공개적으로 액세스할 수 있습니다. *MyStaticFiles* 폴더의 정적 자산에는 인증이 필요합니다. [샘플 코드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples)는 이를 보여 줍니다.
 
 권한 부여를 기반으로 파일을 제공하는 대체 방법은 다음과 같습니다.
 
@@ -469,7 +469,7 @@ URL은 파일 계층 구조 및 이전 코드를 사용하여 다음과 같이 �
 
 [MIME 콘텐츠 형식](https://www.iana.org/assignments/media-types/media-types.xhtml)을 참조하세요.
 
-사용자 지정 <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider>를 사용하거나 Blazor Server 앱에서 다른 <xref:Microsoft.AspNetCore.Builder.StaticFileOptions>를 구성하는 방법에 대한 자세한 내용은 <xref:blazor/fundamentals/additional-scenarios#static-files>를 참조하세요.
+사용자 지정 <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider>를 사용하거나 Blazor Server 앱에서 다른 <xref:Microsoft.AspNetCore.Builder.StaticFileOptions>를 구성하는 방법에 대한 자세한 내용은 <xref:blazor/fundamentals/static-files>를 참조하세요.
 
 ## <a name="non-standard-content-types"></a>비표준 콘텐츠 형식
 

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: 4256e90ca5f185992a73d1e43460ca5d27159d6f
-ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
+ms.openlocfilehash: 524a1f85838d083ed2f01afd96601bcd5e6ce12b
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98758278"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280984"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>ASP.NET Core Blazor Server를 위한 위협 완화 지침
-
-작성자: [Javier Calvarro Nelson](https://github.com/javiercn)
 
 Blazor Server 앱은 ‘상태 저장’ 데이터 처리 모델을 사용합니다. 이 모델에서는 서버와 클라이언트가 장기적으로 지속되는 관계를 유지합니다. 영구 상태는 [회로](xref:blazor/state-management)에 의해 유지 관리되는데, 회로는 역시 장기적으로 지속되는 여러 연결을 포괄할 수 있습니다.
 
@@ -108,20 +106,18 @@ Blazor 클라이언트는 세션당 단일 연결을 설정하고 브라우저 �
 
 ## <a name="denial-of-service-dos-attacks"></a>DoS(서비스 거부) 공격
 
-DoS(서비스 거부) 공격에서는 클라이언트가 서버로 하여금 하나 이상의 리소스를 소모하도록 하여 앱을 사용할 수 없도록 만듭니다. Blazor Server 앱은 몇 가지 기본 제한을 포함하며, 다른 ASP.NET Core 및 <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions>에 설정된 SignalR 제한을 사용하여 DoS 공격으로부터 보호합니다.
+DoS(서비스 거부) 공격에서는 클라이언트가 서버로 하여금 하나 이상의 리소스를 소모하도록 하여 앱을 사용할 수 없도록 만듭니다. Blazor Server 앱에는 기본 제한이 있으며 <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions>에 설정된 다른 ASP.NET Core 및 SignalR 제한을 사용하여 DoS 공격으로부터 보호합니다.
 
-| Blazor Server 앱 제한 | 설명 | 기본값 |
-| --- | --- | --- |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitMaxRetained> | 지정된 서버에서 한 번에 메모리에 저장하는 연결되지 않은 최대 회로 수입니다. | 100 |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitRetentionPeriod> | 연결이 끊긴 회로가 메모리에서 해제되기 전까지 메모리에 저장되는 최대 시간입니다. | 3분 |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.JSInteropDefaultCallTimeout> | 비동기 JavaScript 함수 호출이 시간 초과할 때까지 서버가 대기하는 최대 시간입니다. | 1분 |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.MaxBufferedUnacknowledgedRenderBatches> | 임의의 시간에 서버가 강력한 재연결을 지원하기 위해 회로 하나당 메모리에 저장하는 승인되지 않은 최대 렌더링 일괄 처리 수입니다. 제한에 도달하면 클라이언트에서 하나 이상의 일괄 처리를 승인할 때까지 서버가 새 렌더링 일괄 처리의 생성을 중지합니다. | 10 |
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitMaxRetained?displayProperty=nameWithType>
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitRetentionPeriod?displayProperty=nameWithType>
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.JSInteropDefaultCallTimeout?displayProperty=nameWithType>
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.MaxBufferedUnacknowledgedRenderBatches?displayProperty=nameWithType>
+* <xref:Microsoft.AspNetCore.SignalR.HubConnectionContextOptions.MaximumReceiveMessageSize?displayProperty=nameWithType>
 
-<xref:Microsoft.AspNetCore.SignalR.HubConnectionContextOptions>를 사용하여 단일 수신 허브 메시지의 최대 메시지 크기를 설정합니다.
+자세한 내용 및 구성 코딩 예제는 다음 문서를 참조하세요.
 
-| SignalR 및 ASP.NET Core 제한 | 설명 | 기본값 |
-| --- | --- | --- |
-| <xref:Microsoft.AspNetCore.SignalR.HubConnectionContextOptions.MaximumReceiveMessageSize?displayProperty=nameWithType> | 개별 메시지의 메시지 크기입니다. | 32KB |
+* <xref:blazor/fundamentals/signalr>
+* <xref:signalr/configuration>
 
 ## <a name="interactions-with-the-browser-client"></a>브라우저와의 상호 작용(클라이언트)
 
@@ -330,7 +326,7 @@ XSS(교차 사이트 스크립팅)를 사용하면 권한이 없는 주체가 �
 
 Blazor Server 프레임워크는 위와 같은 위협으로부터 보호하기 위한 단계를 수행합니다.
 
-* 클라이언트에서 렌더링 일괄 처리를 승인하지 않는 경우 새 UI 업데이트의 생성을 중지합니다. <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.MaxBufferedUnacknowledgedRenderBatches?displayProperty=nameWithType>으로 구성됩니다.
+* 클라이언트에서 렌더링 일괄 처리를 승인하지 않는 경우 새 UI 업데이트의 생성을 중지합니다. <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.MaxBufferedUnacknowledgedRenderBatches?displayProperty=nameWithType>로 구성됩니다.
 * 클라이언트에서 응답을 받지 않은 상태에서 1분이 지나면 .NET에서 JavaScript로의 호출을 시간 초과 처리합니다. <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.JSInteropDefaultCallTimeout?displayProperty=nameWithType>로 구성됩니다.
 * JS interop 중에 브라우저에서 들어오는 모든 입력에 대해 다음과 같은 기본적인 유효성 검사를 수행합니다.
   * .NET 참조가 유효하며 .NET 메서드에 예상하는 형식입니다.

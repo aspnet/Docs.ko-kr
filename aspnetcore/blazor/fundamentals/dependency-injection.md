@@ -20,14 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/dependency-injection
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 3f2b4eff5422acbec80b2fd9b801101271cc3f75
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 30edffedf1faf96ed54d5380762c8558e478966c
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97808727"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106923"
 ---
-# <a name="aspnet-core-no-locblazor-dependency-injection"></a>ASP.NET Core Blazor 종속성 주입
+# <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core Blazor 종속성 주입
 
 작성자: [Rainer Stropek](https://www.timecockpit.com) 및 [Mike Rousos](https://github.com/mjrousos)
 
@@ -38,7 +38,7 @@ ms.locfileid: "97808727"
 
 ## <a name="default-services"></a>기본 서비스
 
-다음 표에 나온 서비스는 Blazor 앱에서 일반적으로 사용됩니다.
+다음 표에 표시된 서비스는 일반적으로 Blazor 앱에서 사용됩니다.
 
 | 서비스 | 수명 | 설명 |
 | ------- | -------- | ----------- |
@@ -119,7 +119,7 @@ DI 시스템은 ASP.NET Core에서 DI 시스템을 기준으로 합니다. 자�
 
 [!code-razor[](dependency-injection/samples_snapshot/CustomerList.razor?highlight=2-3,20)]
 
-내부적으로 생성된 속성(`DataRepository`)은 [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) 특성을 사용합니다. 일반적으로 이 특성은 직접 사용되지 않습니다. 구성 요소에 기본 클래스가 필요하고 주입된 속성이 기본 클래스에도 필요하면 [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) 특성을 수동으로 추가합니다.
+내부적으로 생성된 속성(`DataRepository`)은 [`[Inject]` 특성](xref:Microsoft.AspNetCore.Components.InjectAttribute)을 사용합니다. 일반적으로 이 특성은 직접 사용되지 않습니다. 구성 요소에 기본 클래스가 필요하고 기본 클래스에 주입된 속성도 필요하면 [`[Inject]` 특성](xref:Microsoft.AspNetCore.Components.InjectAttribute)을 수동으로 추가합니다.
 
 ```csharp
 using Microsoft.AspNetCore.Components;
@@ -144,7 +144,7 @@ public class ComponentBase : IComponent
 
 ## <a name="use-di-in-services"></a>서비스에서 DI 사용
 
-복잡한 서비스에는 추가 서비스가 필요할 수 있습니다. 다음 예제에서는 `DataAccess`에 <xref:System.Net.Http.HttpClient> 기본 서비스가 필요합니다. 서비스에서는 [`@inject`](xref:mvc/views/razor#inject)(또는 [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) 특성)를 사용할 수 없습니다. 대신 *생성자 주입* 을 사용해야 합니다. 서비스의 생성자에 매개 변수를 추가하여 필요한 서비스를 추가합니다. DI는 서비스를 만들 때 생성자에 필요한 서비스를 인식하고 적절히 제공합니다. 다음 예제에서 생성자는 DI를 통해 <xref:System.Net.Http.HttpClient>를 받습니다. <xref:System.Net.Http.HttpClient>는 기본 서비스입니다.
+복잡한 서비스에는 추가 서비스가 필요할 수 있습니다. 다음 예제에서는 `DataAccess`에 <xref:System.Net.Http.HttpClient> 기본 서비스가 필요합니다. [`@inject`](xref:mvc/views/razor#inject)(또는 [`[Inject]` 특성](xref:Microsoft.AspNetCore.Components.InjectAttribute))는 서비스에서 사용할 수 없습니다. 대신 *생성자 주입* 을 사용해야 합니다. 서비스의 생성자에 매개 변수를 추가하여 필요한 서비스를 추가합니다. DI는 서비스를 만들 때 생성자에 필요한 서비스를 인식하고 적절히 제공합니다. 다음 예제에서 생성자는 DI를 통해 <xref:System.Net.Http.HttpClient>를 받습니다. <xref:System.Net.Http.HttpClient>는 기본 서비스입니다.
 
 ```csharp
 using System.Net.Http;
@@ -180,7 +180,7 @@ Blazor 앱에서 서비스 수명을 제한하는 방법은 <xref:Microsoft.AspN
 
 * <xref:Microsoft.AspNetCore.Components.OwningComponentBase>는 <xref:System.IServiceProvider> 형식의 보호된 <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> 속성을 사용하여 <xref:Microsoft.AspNetCore.Components.ComponentBase> 형식의 삭제 가능한 추상 자식입니다. 이 공급자는 구성 요소의 수명으로 범위가 지정된 서비스를 확인하는 데 사용할 수 있습니다.
 
-  [`@inject`](xref:mvc/views/razor#inject) 또는 [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) 특성을 사용하여 구성 요소에 주입된 DI 서비스는 구성 요소의 범위에서 만들어지지 않습니다. 구성 요소의 범위를 사용하려면 <xref:Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService%2A> 또는 <xref:System.IServiceProvider.GetService%2A>를 사용하여 서비스를 확인해야 합니다. <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> 공급자를 사용하여 확인된 모든 서비스에는 동일한 범위에서 종속성이 제공됩니다.
+  [`@inject`](xref:mvc/views/razor#inject) 또는 [`[Inject]` 특성](xref:Microsoft.AspNetCore.Components.InjectAttribute)을 사용하여 구성 요소에 주입된 DI 서비스는 구성 요소의 범위에 만들어지지 않습니다. 구성 요소의 범위를 사용하려면 <xref:Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService%2A> 또는 <xref:System.IServiceProvider.GetService%2A>를 사용하여 서비스를 확인해야 합니다. <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> 공급자를 사용하여 확인된 모든 서비스에는 동일한 범위에서 종속성이 제공됩니다.
 
   [!code-razor[](dependency-injection/samples_snapshot/Preferences.razor?highlight=3,20-21)]
 

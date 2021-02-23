@@ -5,7 +5,7 @@ description: Blazor 앱을 빌드하는 데 사용할 수 있는 도구에 대�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/28/2020
+ms.date: 02/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -20,16 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 5901a1cb693dfe8e34e62ce2a28456bcf584221c
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 6b61d9a4645d273b0c78fae0388d569771c43a2d
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252268"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536248"
 ---
-# <a name="tooling-for-aspnet-core-no-locblazor"></a>ASP.NET Core Blazor용 도구
-
-작성자: [Daniel Roth](https://github.com/danroth27) 및 [Luke Latham](https://github.com/guardrex)
+# <a name="tooling-for-aspnet-core-blazor"></a>ASP.NET Core Blazor용 도구
 
 ::: zone pivot="windows"
 
@@ -50,6 +48,8 @@ ms.locfileid: "98252268"
 1. <kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 앱을 실행합니다.
 
 ASP.NET Core HTTPS 개발 인증서 신뢰에 대한 자세한 내용은 <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos>를 참조하세요.
+
+호스트된 Blazor WebAssembly 앱을 실행하는 경우 솔루션의 **`Server`** 프로젝트에서 앱을 실행합니다.
 
 ::: zone-end
 
@@ -72,11 +72,11 @@ ASP.NET Core HTTPS 개발 인증서 신뢰에 대한 자세한 내용은 <xref:s
    ```
 
    호스트된 Blazor WebAssembly 환경의 경우 호스트된 옵션(`-ho` 또는 `--hosted`)을 명령에 추가합니다.
-   
+
    ```dotnetcli
    dotnet new blazorwasm -o WebApplication1 -ho
    ```
-   
+
    Blazor Server 환경의 경우 명령 셸에서 다음 명령을 실행합니다.
 
    ```dotnetcli
@@ -88,6 +88,57 @@ ASP.NET Core HTTPS 개발 인증서 신뢰에 대한 자세한 내용은 <xref:s
 1. Visual Studio Code에서 `WebApplication1` 폴더를 엽니다.
 
 1. IDE에서 프로젝트를 빌드 및 디버그하기 위한 자산을 추가하도록 요청합니다. **Yes** 를 선택합니다.
+
+   **호스트된 Blazor WebAssembly 시작 및 작업 구성**
+
+   호스트된 Blazor WebAssembly 솔루션의 경우 `launch.json` 및 `tasks.json` 파일이 포함된 `.vscode` 폴더를 솔루션의 부모 폴더에 추가(또는 이동)합니다. 이 폴더는 `Client`, `Server` 및 `Shared`의 일반적인 프로젝트 폴더 이름을 포함하는 폴더입니다. `launch.json` 및 `tasks.json` 파일의 구성이 **`Server`** 프로젝트에서 호스트된 Blazor WebAssembly 앱을 실행하는지 확인하거나 업데이트합니다.
+
+   **`.vscode/launch.json`** (`launch` 구성):
+
+   ```json
+   ...
+   "cwd": "${workspaceFolder}/{SERVER APP FOLDER}",
+   ...
+   ```
+
+   현재 작업 디렉터리(`cwd`)에 대한 위 구성에서 `{SERVER APP FOLDER}` 자리 표시자는 **`Server`** 프로젝트의 폴더(일반적으로 “`Server`”)입니다.
+
+   Microsoft Edge를 사용하고 Google Chrome이 시스템에 설치되지 않은 경우 `"browser": "edge"`의 추가 속성을 구성에 추가합니다.
+
+   `Server`의 프로젝트 폴더 및 기본 브라우저 Google Chrome 대신 디버그 실행용 브라우저로 Microsoft Edge를 생성하는 예제:
+
+   ```json
+   ...
+   "cwd": "${workspaceFolder}/Server",
+   "browser": "edge"
+   ...
+   ```
+
+   **`.vscode/tasks.json`** ([`dotnet` 명령](/dotnet/core/tools/dotnet) 인수):
+
+   ```json
+   ...
+   "${workspaceFolder}/{SERVER APP FOLDER}/{PROJECT NAME}.csproj",
+   ...
+   ```
+
+   위의 인수는 다음과 같습니다.
+
+   * `{SERVER APP FOLDER}` 자리 표시자는 **`Server`** 프로젝트의 폴더(일반적으로 “`Server`”)입니다.
+   * `{PROJECT NAME}` 자리 표시자는 앱의 이름이며, 일반적으로 Blazor 프로젝트 템플릿에서 생성된 앱에서 솔루션 이름과 그 뒤에 오는 “`.Server`”를 기반으로 합니다.
+
+   [Blazor WebAssembly 앱에서 SignalR 사용에 대한 자습서](xref:tutorials/signalr-blazor)의 다음 예제에서는 `Server`의 프로젝트 폴더 이름과 `BlazorWebAssemblySignalRApp.Server`의 프로젝트 이름을 사용합니다.
+
+   ```json
+   ...
+   "args": [
+     "build",
+       "${workspaceFolder}/Server/BlazorWebAssemblySignalRApp.Server.csproj",
+       "/property:GenerateFullPaths=true",
+       "/consoleloggerparameters:NoSummary"
+   ],
+   ...
+   ```
 
 1. <kbd>Ctrl</kbd>+<kbd>F5</kbd>를 눌러 앱을 실행합니다.
 
@@ -125,13 +176,15 @@ Linux에서 인증서를 신뢰할 수 있는 중앙 집중식 방법은 없습�
 
 개발 인증서를 신뢰하라는 메시지가 표시되면 인증서를 신뢰하고 계속합니다. 인증서를 신뢰하려면 사용자 및 키 집합 암호가 필요합니다. ASP.NET Core HTTPS 개발 인증서 신뢰에 대한 자세한 내용은 <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos>를 참조하세요.
 
+호스트된 Blazor WebAssembly 앱을 실행하는 경우 솔루션의 **`Server`** 프로젝트에서 앱을 실행합니다.
+
 ::: zone-end
 
-## <a name="use-visual-studio-code-for-cross-platform-no-locblazor-development"></a>플랫폼 간 Blazor 개발용 Visual Studio Code 사용
+## <a name="use-visual-studio-code-for-cross-platform-blazor-development"></a>플랫폼 간 Blazor 개발용 Visual Studio Code 사용
 
 [Visual Studio Code](https://code.visualstudio.com/)는 Blazor 앱을 개발하는 데 사용할 수 있는 오픈 소스 플랫폼 간 IDE(통합 개발 환경)입니다. .NET CLI를 사용하여 Visual Studio Code를 사용하여 개발할 새 Blazor 앱을 만들 수 있습니다. 자세한 내용은 [이 문서의 Linux 버전](?pivots=linux)을 참조하세요.
 
-## <a name="no-locblazor-template-options"></a>Blazor 템플릿 옵션
+## <a name="blazor-template-options"></a>Blazor 템플릿 옵션
 
 Blazor 프레임워크는 두 개의 각 Blazor 호스팅 모델용 새 앱을 만들기 위한 템플릿을 제공합니다. 템플릿은 Blazor 개발을 위해 선택하는 도구(Visual Studio, Mac용 Visual Studio, Visual Studio Code, .NET CLI 등)에 관계없이 새 Blazor 프로젝트와 솔루션을 만드는 데 사용됩니다.
 

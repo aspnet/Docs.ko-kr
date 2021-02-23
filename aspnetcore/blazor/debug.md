@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 5bdfcc5660b4c897d3552d4cf25e43dade71541c
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 9214fa10a2bf7d53a4cb12263a3fa69bded84b29
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252515"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536235"
 ---
-# <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core Blazor WebAssembly 디버그
-
-[Daniel Roth](https://github.com/danroth27)
+# <a name="debug-aspnet-core-blazor-webassembly"></a>ASP.NET Core Blazor WebAssembly 디버그
 
 Blazor WebAssembly 앱은 Chromium 기반 브라우저(Edge/Chrome)의 브라우저 개발 도구를 사용하여 디버그할 수 있습니다. 또한 다음과 같은 IDE(통합 개발 환경)를 사용하여 앱을 디버그할 수 있습니다.
 
@@ -164,6 +162,8 @@ Blazor WebAssembly 앱에서의 사용자 지정 앱 기본 경로 사용에 대
 
 <h2 id="vscode">독립 실행형 Blazor WebAssembly 디버그</h2>
 
+`.vscode` 폴더에서 VS Code 자산 구성에 대한 자세한 내용은 <xref:blazor/tooling>의 **Linux** 운영 체제 지침을 참조하세요.
+
 1. VS Code에서 독립 실행형 Blazor WebAssembly 앱을 엽니다.
 
    디버깅을 사용하기 위해 추가 설정이 필요하다는 알림이 표시될 수 있습니다.
@@ -192,13 +192,15 @@ Blazor WebAssembly 앱에서의 사용자 지정 앱 기본 경로 사용에 대
 > [!NOTE]
 > 앱 시작 도중 디버그 프록시가 실행되기 전에 중단점이 적중되지 **않습니다**. 여기에는 `Program.Main`(`Program.cs`)의 중단점과 애플리케이션에서 요청하는 첫 페이지에서 로드되는 구성 요소의 [`OnInitialized{Async}` 메서드](xref:blazor/components/lifecycle#component-initialization-methods)의 중단점이 포함됩니다.
 
-## <a name="debug-hosted-no-locblazor-webassembly"></a>호스트된 Blazor WebAssembly 디버그
+## <a name="debug-hosted-blazor-webassembly"></a>호스트된 Blazor WebAssembly 디버그
 
 1. VS Code에서 호스트된 Blazor WebAssembly 앱의 솔루션 폴더를 엽니다.
 
 1. 프로젝트에 대한 시작 구성 집합이 없는 경우 다음과 같은 알림이 나타납니다. **예** 를 선택합니다.
 
    > 빌드 및 디버그에 필요한 자산이 ‘{APPLICATION NAME}’에서 누락되었습니다. 추가할까요?
+
+   `.vscode` 폴더에서 VS Code 자산 구성에 대한 자세한 내용은 <xref:blazor/tooling>의 **Linux** 운영 체제 지침을 참조하세요.
 
 1. 창의 맨 위에 있는 명령 팔레트에서 호스트된 솔루션 내의 서버 프로젝트를 선택합니다.
 
@@ -238,7 +240,7 @@ Blazor WebAssembly 앱에서의 사용자 지정 앱 기본 경로 사용에 대
 
 ## <a name="example-launch-configurations"></a>시작 구성 예제
 
-### <a name="launch-and-debug-a-standalone-no-locblazor-webassembly-app"></a>독립 실행형 Blazor WebAssembly 앱 시작 및 디버그
+### <a name="launch-and-debug-a-standalone-blazor-webassembly-app"></a>독립 실행형 Blazor WebAssembly 앱 시작 및 디버그
 
 ```json
 {
@@ -259,7 +261,7 @@ Blazor WebAssembly 앱에서의 사용자 지정 앱 기본 경로 사용에 대
 }
 ```
 
-### <a name="launch-and-debug-a-hosted-no-locblazor-webassembly-app-with-microsoft-edge"></a>Microsoft Edge를 사용하여 호스트된 Blazor WebAssembly 앱 시작 및 디버그
+### <a name="launch-and-debug-a-hosted-blazor-webassembly-app-with-microsoft-edge"></a>Microsoft Edge를 사용하여 호스트된 Blazor WebAssembly 앱 시작 및 디버그
 
 브라우저 구성의 기본값은 Google Chrome입니다. 디버깅에 Microsoft Edge를 사용하는 경우 `browser`를 `edge`로 설정합니다. Google Chrome을 사용하려면 `browser` 옵션을 설정하거나 옵션의 값을 `chrome`로 설정하지 마세요.
 

@@ -4,7 +4,7 @@ author: rick-anderson
 description: ASP.NET Core를 사용하여 웹 API를 빌드하는 방법을 알아봅니다.
 ms.author: riande
 ms.custom: mvc, devx-track-js
-ms.date: 08/13/2020
+ms.date: 02/04/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: ccbfc27eb89e23938a69f0ab4cb306d6a4136889
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1f7c7db857090ff0a174d37b86e1265bab40b4fd
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96175054"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564084"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>자습서: ASP.NET Core를 사용하여 웹 API 만들기
 
@@ -97,7 +97,6 @@ ms.locfileid: "96175054"
    ```dotnetcli
    dotnet new webapi -o TodoApi
    cd TodoApi
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    code -r ../TodoApi
    ```
@@ -130,7 +129,6 @@ ms.locfileid: "96175054"
 프로젝트 폴더에서 명령 터미널을 열고 다음 명령을 실행합니다.
 
    ```dotnetcli
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    ```
 
@@ -270,13 +268,10 @@ Swagger가 제거되었기 때문에 위의 태그는 다음 섹션에 추가된
 ### <a name="add-nuget-packages"></a>NuGet 패키지 추가
 
 * **도구** 메뉴에서 **NuGet 패키지 관리자 > 솔루션용 NuGet 패키지 관리** 를 선택합니다.
-* **찾아보기** 탭을 선택한 다음 검색 상자에 **Microsoft.EntityFrameworkCore.SqlServer** 를 입력합니다.
-<!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Delete this line at RTM -->
-* 왼쪽 창에서 **Microsoft.EntityFrameworkCore.SqlServer** 를 선택합니다.
+* **찾아보기** 탭을 선택한 다음, 검색 상자에 **Microsoft.EntityFrameworkCore.InMemory** 를 입력합니다.
+* 왼쪽 창에서 **Microsoft.EntityFrameworkCore.InMemory** 를 선택합니다.
 * 오른쪽 창에서 **프로젝트** 확인란을 선택하고 **설치** 를 선택합니다.
-* 앞의 지침을 사용하여 **Microsoft.EntityFrameworkCore.InMemory** NuGet 패키지를 추가합니다.
 
-<!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Update this image at RTM -->
 ![NuGet 패키지 관리자](first-web-api/_static/5/vsNuGet.png)
 
 ## <a name="add-the-todocontext-database-context"></a>TodoContext 데이터베이스 컨텍스트 추가
@@ -355,7 +350,7 @@ ASP.NET Core 템플릿과 관련해서 다음 사항을 확인합니다.
 
 ## <a name="update-the-posttodoitem-create-method"></a>PostTodoItem 만들기 메서드 업데이트
 
-`PostTodoItem`의 return 문이 [nameof](/dotnet/csharp/language-reference/operators/nameof) 연산자를 사용하도록 바꿉니다.
+[nameof](/dotnet/csharp/language-reference/operators/nameof) 연산자를 사용하도록 `PostTodoItem`의 return 문을 업데이트합니다.
 
 [!code-csharp[](first-web-api/samples/5.x/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Create)]
 
@@ -621,7 +616,6 @@ DTO 모델을 만듭니다.
    ```dotnetcli
    dotnet new webapi -o TodoApi
    cd TodoApi
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    code -r ../TodoApi
    ```
@@ -654,7 +648,6 @@ DTO 모델을 만듭니다.
 프로젝트 폴더에서 명령 터미널을 열고 다음 명령을 실행합니다.
 
    ```dotnetcli
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    ```
 
@@ -764,10 +757,9 @@ Ctrl+F5 키를 눌러 앱을 실행합니다. 브라우저에서 `https://localh
 ### <a name="add-nuget-packages"></a>NuGet 패키지 추가
 
 * **도구** 메뉴에서 **NuGet 패키지 관리자 > 솔루션용 NuGet 패키지 관리** 를 선택합니다.
-* **찾아보기** 탭을 선택한 다음 검색 상자에 **Microsoft.EntityFrameworkCore.SqlServer** 를 입력합니다.
-* 왼쪽 창에서 **Microsoft.EntityFrameworkCore.SqlServer** 를 선택합니다.
+* **찾아보기** 탭을 선택한 다음, 검색 상자에 **Microsoft.EntityFrameworkCore.InMemory** 를 입력합니다.
+* 왼쪽 창에서 **Microsoft.EntityFrameworkCore.InMemory** 를 선택합니다.
 * 오른쪽 창에서 **프로젝트** 확인란을 선택하고 **설치** 를 선택합니다.
-* 앞의 지침을 사용하여 **Microsoft.EntityFrameworkCore.InMemory** NuGet 패키지를 추가합니다.
 
 ![NuGet 패키지 관리자](first-web-api/_static/vs3NuGet.png)
 

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 3591ba18351b89e2d5dfaef796777273c97ce98b
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 03a49c827a1f70e6b721adf293857bb33475ed36
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751624"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107079"
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>ASP.NET Core Blazor 수명 주기
-
-작성자: [Luke Latham](https://github.com/guardrex) 및 [Daniel Roth](https://github.com/danroth27)
 
 Blazor 프레임워크는 동기 및 비동기 수명 주기 메서드를 포함합니다. 구성 요소 초기화 및 렌더링 중에 구성 요소에서 추가 작업을 수행하려면 수명 주기 메서드를 재정의합니다.
 
@@ -70,7 +68,9 @@ DOM(문서 개체 모델) 이벤트 처리:
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A>는 렌더링 트리 또는 경로 매개 변수에서 구성 요소의 부모가 제공하는 매개 변수를 설정합니다. 메서드를 재정의하면 개발자 코드가 <xref:Microsoft.AspNetCore.Components.ParameterView>의 매개 변수와 직접 상호 작용할 수 있습니다.
 
-다음 예제에서 `Param`의 경로 매개 변수 구문 분석이 성공하는 경우 <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A?displayProperty=nameWithType>는 `Param` 매개 변수의 값을 `value`에 할당합니다. `value`가 `null`이 아니면 해당 값이 `SetParametersAsyncExample` 구성 요소에 의해 표시됩니다.
+다음 예제에서 `Param`의 경로 매개 변수 구문 분석이 성공하는 경우 <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A?displayProperty=nameWithType>는 `Param` 매개 변수의 값을 `value`에 할당합니다. `value`가 `null`이 아니면 값이 구성 요소에 의해 표시됩니다.
+
+[경로 매개 변수 일치는 대/소문자를 구분하지 않지만](xref:blazor/fundamentals/routing#route-parameters) <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A>는 경로 템플릿에서 대/소문자를 구분하는 매개 변수 이름만 일치시킵니다. 다음 예제에서 값을 가져오려면 `/{param?}`가 아닌 `/{Param?}`를 사용해야 합니다. 이 시나리오에서 `/{param?}`를 사용하면 <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A>는 `false`를 반환하고 `message`는 문자열 중 하나로 설정되지 않습니다.
 
 `Pages/SetParametersAsyncExample.razor`:
 
@@ -91,11 +91,14 @@ DOM(문서 개체 모델) 이벤트 처리:
     {
         if (parameters.TryGetValue<string>(nameof(Param), out var value))
         {
-            message = $"The value of 'Param' is {value}.";
-        }
-        else 
-        {
-            message = "The value of 'Param' is null.";
+            if (value is null)
+            {
+                message = "The value of 'Param' is null.";
+            }
+            else
+            {
+                message = $"The value of 'Param' is {value}.";
+            }
         }
 
         await base.SetParametersAsync(parameters);
@@ -105,7 +108,7 @@ DOM(문서 개체 모델) 이벤트 처리:
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A>를 호출할 때마다 <xref:Microsoft.AspNetCore.Components.ParameterView>에 구성 요소의 매개 변수 값 세트가 포함됩니다.
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A>의 기본 구현에서는 <xref:Microsoft.AspNetCore.Components.ParameterView>에 해당 값이 있는 [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) 또는 [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) 특성을 사용하여 각 속성의 값을 설정합니다. <xref:Microsoft.AspNetCore.Components.ParameterView>에 해당 값이 없는 매개 변수는 변경되지 않고 그대로 유지됩니다.
+<xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A>의 기본 구현에서는 <xref:Microsoft.AspNetCore.Components.ParameterView>에 해당 값이 있는 [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) 또는 [`[CascadingParameter]` 특성](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute)으로 각 속성의 값을 설정합니다. <xref:Microsoft.AspNetCore.Components.ParameterView>에 해당 값이 없는 매개 변수는 변경되지 않고 그대로 유지됩니다.
 
 [`base.SetParametersAsync`](xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A)를 호출하지 않은 경우, 사용자 지정 코드는 들어오는 매개 변수 값을 필요한 방식으로 해석할 수 있습니다. 예를 들어 들어오는 매개 변수를 클래스의 속성에 할당해야 하는 요구 사항이 없습니다.
 
@@ -135,7 +138,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-[콘텐츠를 미리 렌더링](xref:blazor/fundamentals/additional-scenarios#render-mode)하는 Blazor Server 앱이 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>를 ‘두 번’ 호출합니다.
+[콘텐츠를 미리 렌더링](xref:blazor/fundamentals/signalr#render-mode)하는 Blazor Server 앱이 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>를 ‘두 번’ 호출합니다.
 
 * 첫 번째 호출: 구성 요소가 처음에 페이지 일부로 정적 렌더링될 때
 * 두 번째 호출: 브라우저가 서버에 다시 연결할 때
@@ -314,7 +317,7 @@ public class WeatherForecastService
 }
 ```
 
-<xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode>에 대한 자세한 내용은 <xref:blazor/fundamentals/additional-scenarios#render-mode>를 참조하세요.
+<xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode>에 대한 자세한 내용은 <xref:blazor/fundamentals/signalr#render-mode>를 참조하세요.
 
 ## <a name="detect-when-the-app-is-prerendering"></a>앱을 미리 렌더링 중인 경우 검색
 
@@ -338,7 +341,45 @@ public class WeatherForecastService
 }
 ```
 
-비동기 삭제 작업의 경우 이전 예제의 `Dispose` 대신 `DisposeAsync`를 사용합니다.
+개체를 삭제해야 하는 경우 <xref:System.IDisposable.Dispose%2A?displayProperty=nameWithType>를 호출할 때 람다를 사용하여 개체를 삭제할 수 있습니다.
+
+`Pages/CounterWithTimerDisposal.razor`:
+
+```razor
+@page "/counter-with-timer-disposal"
+@using System.Timers
+@implements IDisposable
+
+<h1>Counter with <code>Timer</code> disposal</h1>
+
+<p>Current count: @currentCount</p>
+
+@code {
+    private int currentCount = 0;
+    private Timer timer = new Timer(1000);
+
+    protected override void OnInitialized()
+    {
+        timer.Elapsed += (sender, eventArgs) => OnTimerCallback();
+        timer.Start();
+    }
+
+    private void OnTimerCallback()
+    {
+        _ = InvokeAsync(() =>
+        {
+            currentCount++;
+            StateHasChanged();
+        });
+    }
+
+    public void IDisposable.Dispose() => timer.Dispose();
+}
+```
+
+위 예제는 <xref:blazor/components/rendering#receiving-a-call-from-something-external-to-the-blazor-rendering-and-event-handling-system>에 표시됩니다.
+
+비동기 삭제 작업에는 <xref:System.IDisposable.Dispose> 대신 `DisposeAsync`를 사용합니다.
 
 ```csharp
 public async ValueTask DisposeAsync()
@@ -350,7 +391,7 @@ public async ValueTask DisposeAsync()
 > [!NOTE]
 > `Dispose`에서 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> 호출은 지원되지 않습니다. 렌더러를 삭제하는 과정에서 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>가 호출될 수 있으므로, 해당 시점에 UI 업데이트를 요청할 수는 없습니다.
 
-.NET 이벤트에서 이벤트 처리기의 구독을 취소합니다. 다음 [Blazor 양식](xref:blazor/forms-validation) 예제에서는 `Dispose` 메서드에서 이벤트 처리기를 언후크하는 방법을 보여 줍니다.
+.NET 이벤트에서 이벤트 처리기의 구독을 취소합니다. 다음 [Blazor 양식](xref:blazor/forms-validation) 예제에서는 `Dispose` 메서드에서 이벤트 처리기를 구독 취소하는 방법을 보여 줍니다.
 
 * 프라이빗 필드 및 람다 접근 방식
 
@@ -359,7 +400,47 @@ public async ValueTask DisposeAsync()
 * 프라이빗 메서드 접근 방식
 
   [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-2.razor?highlight=16,26)]
-  
+
+[익명 함수](/dotnet/csharp/programming-guide/statements-expressions-operators/anonymous-functions), 메서드 또는 식이 사용되는 경우에는 <xref:System.IDisposable>을 구현하고 대리자를 구독 취소할 필요가 없습니다. 그러나 대리자를 구독 취소하지 못하면 **이벤트를 노출하는 개체가 대리자를 등록하는 구성 요소보다 수명이 긴 경우** 문제가 됩니다. 이 경우 등록된 대리자가 원래 개체를 활성 상태로 유지하기 때문에 메모리 누수가 발생합니다. 따라서 이벤트 대리자가 신속하게 삭제됨을 알고 있는 경우에만 다음 접근 방식을 사용합니다. 삭제해야 하는 개체의 수명이 확실하지 않으면 대리자 메서드를 구독하고 위 예제에 표시된 대로 대리자를 적절하게 삭제합니다.
+
+* 익명 람다 메서드 접근 방식(명시적 삭제 필요하지 않음)
+
+  ```csharp
+  private void HandleFieldChanged(object sender, FieldChangedEventArgs e)
+  {
+      formInvalid = !editContext.Validate();
+      StateHasChanged();
+  }
+
+  protected override void OnInitialized()
+  {
+      editContext = new EditContext(starship);
+      editContext.OnFieldChanged += (s, e) => HandleFieldChanged((editContext)s, e);
+  }
+  ```
+
+* 익명 람다 식 접근 방식(명시적 삭제 필요하지 않음)
+
+  ```csharp
+  private ValidationMessageStore messageStore;
+
+  [CascadingParameter]
+  private EditContext CurrentEditContext { get; set; }
+
+  protected override void OnInitialized()
+  {
+      ...
+
+      messageStore = new ValidationMessageStore(CurrentEditContext);
+
+      CurrentEditContext.OnValidationRequested += (s, e) => messageStore.Clear();
+      CurrentEditContext.OnFieldChanged += (s, e) => 
+          messageStore.Clear(e.FieldIdentifier);
+  }
+  ```
+
+  익명 람다 식이 포함된 위 코드의 전체 예제는 <xref:blazor/forms-validation#validator-components>에 표시됩니다.
+
 자세한 내용은 [관리되지 않는 리소스 정리](/dotnet/standard/garbage-collection/unmanaged)와 `Dispose` 및 `DisposeAsync` 메서드 구현에 이어지는 토픽을 참조하세요.
 
 ## <a name="cancelable-background-work"></a>취소할 수 있는 백그라운드 작업
@@ -434,4 +515,4 @@ public async ValueTask DisposeAsync()
 
 ## <a name="blazor-server-reconnection-events"></a>Blazor Server 재연결 이벤트
 
-이 문서에서 설명하는 구성 요소 수명 주기 이벤트는 [Blazor Server의 재연결 이벤트 처리기](xref:blazor/fundamentals/additional-scenarios#reflect-the-connection-state-in-the-ui)와 별도로 작동합니다. Blazor Server 앱의 클라이언트에 대한 SignalR 연결이 끊어지는 경우 UI 업데이트만 중단됩니다. UI 업데이트는 연결이 다시 설정될 때 다시 시작됩니다. 회로 처리기 이벤트 및 구성에 대한 자세한 내용은 <xref:blazor/fundamentals/additional-scenarios> 문서를 참조하세요.
+이 문서에서 설명하는 구성 요소 수명 주기 이벤트는 [Blazor Server의 재연결 이벤트 처리기](xref:blazor/fundamentals/signalr#reflect-the-connection-state-in-the-ui)와 별도로 작동합니다. Blazor Server 앱의 클라이언트에 대한 SignalR 연결이 끊어지는 경우 UI 업데이트만 중단됩니다. UI 업데이트는 연결이 다시 설정될 때 다시 시작됩니다. 회로 처리기 이벤트 및 구성에 대한 자세한 내용은 <xref:blazor/fundamentals/signalr> 문서를 참조하세요.

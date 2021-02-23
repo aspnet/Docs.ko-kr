@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: 72b33bc3c2861380551915b1e8caab49122e8fab
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: d9fc767a4b5160c616053b075ba92194bcffa275
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99529919"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280013"
 ---
 # <a name="aspnet-core-blazor-component-virtualization"></a>ASP.NET Core Blazor 구성 요소 가상화
-
-작성자: [Daniel Roth](https://github.com/danroth27)
 
 Blazor 프레임워크의 기본 제공 가상화 지원을 사용하여 구성 요소 렌더링의 인식된 성능을 향상합니다. 가상화는 UI 렌더링을 현재 표시되는 부분으로만 제한하는 기술입니다. 예를 들어 가상화는 앱에서 긴 항목 목록을 렌더링해야 하고 지정된 시간에 항목의 하위 집합만 표시해야 하는 경우에 유용합니다. Blazor는 앱의 구성 요소에 가상화를 추가하는 데 사용할 수 있는 [`Virtualize` 구성 요소](xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601)를 제공합니다.
 
@@ -156,6 +154,8 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
     ...
 </Virtualize>
 ```
+
+기본적으로 `Virtualize` 구성 요소는 초기 렌더링이 수행된 ‘후’에 실제 렌더링 크기를 측정합니다. 정확한 초기 렌더링 성능을 지원하고 페이지 다시 로드에 적합한 스크롤 위치를 보장하려면 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A>를 사용하여 정확한 항목 크기를 미리 제공합니다. 기본 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A>를 사용하여 일부 항목이 현재 표시된 뷰 외부에서 렌더링되는 경우 두 번째 다시 렌더링이 트리거됩니다. 가상화된 목록에서 브라우저의 스크롤 위치를 올바르게 유지 관리하려면 초기 렌더링이 정확해야 합니다. 그렇지 않으면 사용자에게 잘못된 항목이 표시될 수 있습니다. 
 
 ## <a name="overscan-count"></a>오버스캔 개수
 

@@ -5,7 +5,7 @@ description: 인증 라이브러리를 사용하여 ASP.NET Core Blazor WebAssem
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/27/2020
+ms.date: 02/10/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,20 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: 3da9ea045de996602ead052f6f13ffc999273a50
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: a198606caf55232c221f1d1f1224918d3f87f04c
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252489"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280886"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>인증 라이브러리를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
-
-작성자: [Javier Calvarro Nelson](https://github.com/javiercn) 및 [Luke Latham](https://github.com/guardrex)
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>인증 라이브러리를 사용하여 ASP.NET Core Blazor WebAssembly 독립 실행형 앱 보호
 
 ‘AAD(Azure Active Directory) 및 AAD B2C(Azure Active Directory B2C)의 경우에는 이 항목의 지침을 따르지 않습니다. 목차 노드 테이블에서 AAD 및 AAD B2C 항목을 참조하세요.’
 
-[`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) 라이브러리를 사용하는 [독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만들려면 선택한 도구에 대한 지침을 따르세요.
+[`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) 라이브러리를 사용하는 [독립 실행형 Blazor WebAssembly 앱](xref:blazor/hosting-models#blazor-webassembly)을 만들려면 선택한 도구에 대한 지침을 따르세요. 인증에 대한 지원을 추가하려면 이 문서의 다음 섹션에서 앱 설정 및 구성에 대한 지침을 참조하세요.
 
 > [!NOTE]
 > IP(Identity 공급자)는 [OIDC(OpenID Connect)](https://openid.net/connect/)를 사용해야 합니다. 예를 들어, Facebook의 IP는 OIDC 규격 공급자가 아니므로 Facebook IP에는 이 항목의 지침이 적용되지 않습니다. 자세한 내용은 <xref:blazor/security/webassembly/index#authentication-library>를 참조하세요.
@@ -43,11 +41,11 @@ ms.locfileid: "98252489"
 
 1. **새 ASP.NET Core 웹 애플리케이션 만들기** 대화 상자에서 **Blazor WebAssembly 앱** 템플릿을 선택한 후 **인증** 에서 **변경** 을 선택합니다.
 
-1. **개별 사용자 계정** 을 **사용자 계정 앱 내 저장** 옵션과 함께 선택하여 ASP.NET Core의 [Identity](xref:security/authentication/identity) 시스템을 사용해 앱 내에 사용자를 저장합니다.
+1. ASP.NET Core의 [Identity](xref:security/authentication/identity) 시스템을 사용하려면 **사용자 계정 앱 내 저장** 옵션과 함께 **개별 사용자 계정** 을 선택합니다. 이렇게 선택하면 인증 지원이 추가되고 사용자가 데이터베이스에 저장되지 않습니다. 이 문서의 다음 섹션에서는 추가 세부 정보를 제공합니다.
 
 # <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code/.NET Core CLI](#tab/visual-studio-code+netcore-cli)
 
-인증 메커니즘을 사용하여 빈 폴더에 새 Blazor WebAssembly 프로젝트를 만듭니다. ASP.NET Core의 [Identity](xref:security/authentication/identity) 시스템을 사용하여 앱 내에 사용자를 저장하려면 `-au|--auth` 옵션을 사용하여 `Individual` 인증 메커니즘을 지정합니다.
+인증 메커니즘을 사용하여 빈 폴더에 새 Blazor WebAssembly 프로젝트를 만듭니다. ASP.NET Core의 [Identity](xref:security/authentication/identity) 시스템을 사용하려면 `-au|--auth` 옵션과 함께 `Individual` 인증 메커니즘을 지정합니다. 이렇게 선택하면 인증 지원이 추가되고 사용자가 데이터베이스에 저장되지 않습니다. 이 문서의 다음 섹션에서는 추가 세부 정보를 제공합니다.
 
 ```dotnetcli
 dotnet new blazorwasm -au Individual -o {APP NAME}
@@ -67,7 +65,7 @@ dotnet new blazorwasm -au Individual -o {APP NAME}
 
 1. **새 Blazor WebAssembly 앱 구성** 단계의 **인증** 드롭다운에서 **개별 인증(앱 내)** 을 선택합니다.
 
-1. ASP.NET Core [Identity](xref:security/authentication/identity)를 사용하여 앱에 저장된 개별 사용자에 대한 앱이 만들어집니다.
+1. 앱이 ASP.NET Core [Identity](xref:security/authentication/identity)를 사용하도록 만들어지고 사용자가 데이터베이스에 저장되지 않습니다. 이 문서의 다음 섹션에서는 추가 세부 정보를 제공합니다.
 
 ---
 
@@ -88,6 +86,8 @@ dotnet new blazorwasm -au Individual -o {APP NAME}
 ## <a name="authentication-service-support"></a>인증 서비스 지원
 
 사용자 인증에 대한 지원은 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) 패키지에서 제공하는 <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> 확장 메서드를 통해 서비스 컨테이너에 등록됩니다. 이 메서드는 앱이 IP(Identity 공급자)와 상호 작용하는 데 필요한 서비스를 설정합니다.
+
+새 앱인 경우 다음 구성에서 `{AUTHORITY}` 및 `{CLIENT ID}` 자리 표시자에 대한 값을 제공합니다. 앱의 IP에서 사용하는 데 필요한 기타 구성 값을 제공합니다. 예제는 Google에 대한 것이며 `PostLogoutRedirectUri`, `RedirectUri` 및 `ResponseType`이 필요합니다. 앱에 인증을 추가하려면 자리 표시자에 대한 값과 기타 구성 값을 사용하여 다음 코드 및 구성을 앱에 수동으로 추가합니다.
 
 `Program.cs`:
 
@@ -131,7 +131,9 @@ Google OAuth 2.0 OIDC 예제:
 
 Blazor WebAssembly 템플릿은 `openid` 및 `profile`의 기본 범위를 자동으로 구성합니다.
 
-Blazor WebAssembly 템플릿은 앱이 보안 API에 대한 액세스 토큰을 요청하도록 자동으로 구성하지 않습니다. 로그인 흐름의 일부로 액세스 토큰을 프로비저닝하려면 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>의 기본 토큰 범위에 해당 범위를 추가해야 합니다.
+Blazor WebAssembly 템플릿은 앱이 보안 API에 대한 액세스 토큰을 요청하도록 자동으로 구성하지 않습니다. 로그인 흐름의 일부로 액세스 토큰을 프로비저닝하려면 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>의 기본 토큰 범위에 범위를 추가합니다. 앱에 인증을 추가하려면 다음 코드를 수동으로 추가하고 범위 URI를 구성합니다.
+
+`Program.cs`:
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>

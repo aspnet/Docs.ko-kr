@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/rendering
-ms.openlocfilehash: 1a4d4116b8a6d9266bbacbbdd8f20dc49b4e1db0
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: e1222981d4af3f4e233cdc0c57bb96a71972af15
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253859"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280044"
 ---
-# <a name="aspnet-core-no-locblazor-component-rendering"></a>ASP.NET Core Blazor 구성 요소 렌더링
-
-작성자: [Steve Sanderson](https://github.com/SteveSandersonMS)
+# <a name="aspnet-core-blazor-component-rendering"></a>ASP.NET Core Blazor 구성 요소 렌더링
 
 구성 요소는 부모 구성 요소에 의해 구성 요소 계층 구조에 처음 추가될 때 렌더링‘되어야’ 합니다. 구성 요소는 이 시점에만 엄격하게 렌더링해야 합니다.
 
@@ -109,18 +107,20 @@ ms.locfileid: "98253859"
 
 .NET에서 작업이 정의되는 방식으로 인해 <xref:System.Threading.Tasks.Task>의 수신자는 중간 비동기 상태가 아니라 최종 완료만 관찰할 수 있습니다. 따라서 <xref:Microsoft.AspNetCore.Components.ComponentBase>는 <xref:System.Threading.Tasks.Task>가 처음 반환될 경우와 <xref:System.Threading.Tasks.Task>가 마지막으로 완료될 경우에만 다시 렌더링을 트리거할 수 있습니다. 다른 중간 지점에 다시 렌더링하는 것은 알 수 없습니다. 중간 지점에서 다시 렌더링하려면 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>를 사용합니다.
 
-### <a name="receiving-a-call-from-something-external-to-the-no-locblazor-rendering-and-event-handling-system"></a>Blazor 렌더링 및 이벤트 처리 시스템 외부에서 호출 수신
+### <a name="receiving-a-call-from-something-external-to-the-blazor-rendering-and-event-handling-system"></a>Blazor 렌더링 및 이벤트 처리 시스템 외부에서 호출 수신
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase>는 자체 수명 주기 메서드 및 Blazor 트리거 이벤트만 알 수 있습니다. <xref:Microsoft.AspNetCore.Components.ComponentBase>는 코드에서 발생할 수 있는 다른 이벤트를 알 수 없습니다. 예를 들어, 사용자 지정 데이터 저장소에서 발생한 C# 이벤트는 Blazor에서 알 수 없습니다. 해당 이벤트가 다시 렌더링을 트리거하여 UI에 업데이트된 값을 표시하게 하려면 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>를 사용합니다.
 
 다른 사용 사례에서는 <xref:System.Timers.Timer?displayProperty=fullName>를 사용하여 정기적으로 개수를 업데이트하고 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>를 호출하여 UI를 업데이트하는 다음 `Counter` 구성 요소를 고려합니다.
 
-`Pages/Counter.razor`:
+`Pages/CounterWithTimerDisposal.razor`:
 
 ```razor
-@page "/counter"
+@page "/counter-with-timer-disposal"
 @using System.Timers
 @implements IDisposable
+
+<h1>Counter with <code>Timer</code> disposal</h1>
 
 <p>Current count: @currentCount</p>
 
@@ -134,7 +134,7 @@ ms.locfileid: "98253859"
         timer.Start();
     }
 
-    void OnTimerCallback()
+    private void OnTimerCallback()
     {
         _ = InvokeAsync(() =>
         {
@@ -143,11 +143,14 @@ ms.locfileid: "98253859"
         });
     }
 
-    void IDisposable.Dispose() => timer.Dispose();
+    public void IDisposable.Dispose() => timer.Dispose();
 }
 ```
 
-앞의 예제에서 Blazor는 콜백에서 `currentCount`의 변경 내용을 인식하지 못하기 때문에 `OnTimerCallback`은 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>를 호출해야 합니다. `OnTimerCallback`은 Blazor 관리형 렌더링 흐름 또는 이벤트 알림 외부에서 실행됩니다.
+앞의 예제에서:
+
+* Blazor가 콜백에서 `currentCount`의 변경 내용을 인식하지 못하기 때문에 `OnTimerCallback`은 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>를 호출해야 합니다. `OnTimerCallback`은 Blazor 관리형 렌더링 흐름 또는 이벤트 알림 외부에서 실행됩니다.
+* 구성 요소는 <xref:System.IDisposable>을 구현합니다. 여기서 <xref:System.Timers.Timer>는 프레임워크가 `Dispose` 메서드를 호출할 때 삭제됩니다. 자세한 내용은 <xref:blazor/components/lifecycle#component-disposal-with-idisposable>를 참조하세요.
 
 마찬가지로, 콜백이 Blazor의 동기화 컨텍스트 외부에서 호출되기 때문에 <xref:Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync%2A?displayProperty=nameWithType>로 논리를 래핑하여 렌더러의 동기화 컨텍스트로 이동해야 합니다. <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>는 렌더러의 동기화 컨텍스트에서만 호출할 수 있으며 이외의 경우에는 예외를 throw합니다. 이는 다른 UI 프레임워크의 UI 스레드로 마샬링하는 것과 같습니다.
 

@@ -4,7 +4,7 @@ author: jamesnk
 description: .NET 앱에 대한 Protobuf 메시지를 만드는 방법을 알아봅니다.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 08/23/2020
+ms.date: 02/12/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: b70a5ee00405eecfce900b86dc631a54682dce1a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: adb048c9b20e172ef8a7bc13f9b56928b1d4bf77
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058898"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280291"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>.NET 앱에 대한 Protobuf 메시지 만들기
 
@@ -48,6 +48,8 @@ message Person {
 ```
 
 위의 메시지 정의는 세 필드를 이름-값 쌍으로 지정합니다. .NET 형식의 속성과 마찬가지로 각 필드에는 이름과 형식이 있습니다. 필드 형식은 [Protobuf 스칼라 값 형식](#scalar-value-types)(예: `int32` 또는 다른 메시지)일 수 있습니다.
+
+[Protobuf 스타일 가이드](https://developers.google.com/protocol-buffers/docs/style)에서는 필드 이름에 `underscore_separated_names`를 사용하도록 권장합니다. .NET 앱용으로 생성된 새 Protobuf 메시지는 Protobuf 스타일 지침을 따라야 합니다. .NET 도구는 .NET 명명 표준을 사용하는 .NET 형식을 자동으로 생성합니다. 예를 들어 `first_name` Protobuf 필드는 `FirstName` .NET 속성을 생성합니다.
 
 메시지 정의의 각 필드에는 이름 외에도 고유한 번호가 있습니다. 필드 번호는 메시지가 Protobuf로 직렬화될 때 필드를 식별하는 데 사용됩니다. 작은 수를 직렬화하는 것은 전체 필드 이름을 직렬화하는 것보다 더 빠릅니다. 필드 번호는 필드를 식별하기 때문에 필드를 변경할 때는 주의해야 합니다. Protobuf 메시지 변경에 대한 자세한 내용은 <xref:grpc/versioning>를 참조하세요.
 

@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 7ea28e0ecad410335c37c603c8ec1eb5e6e41d33
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 92bfda330399b43871b3ae0e6b609726f7ad4a91
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97485994"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564055"
 ---
-# <a name="part-2-add-a-model-to-a-no-locrazor-pages-app-in-aspnet-core"></a>2부. ASP.NET Core에서 Razor Pages 앱에 모델 추가
+# <a name="part-2-add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>2부. ASP.NET Core에서 Razor Pages 앱에 모델 추가
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -161,7 +161,7 @@ ms.locfileid: "97485994"
 1. **Entity Framework(CRUD)를 사용하여 Razor Pages 추가** 대화 상자를 완료합니다.
    1. **모델 클래스** 드롭다운에서 **동영상(RazorPagesMovie.Models)** 을 선택합니다.
    1. **데이터 컨텍스트 클래스** 행에서 **+** (더하기) 기호를 선택합니다.
-      1. **데이터 컨텍스트 추가** 대화 상자에서 클래스 이름 *RazorPagesMovie.Data.RazorPagesMovieContext* 가 생성됩니다.
+      1. **데이터 컨텍스트 추가** 대화 상자에서 클래스 이름 `RazorPagesMovie.Data.RazorPagesMovieContext`가 생성됩니다.
    1. **추가** 를 선택합니다.
 
    ![이전 지침의 이미지입니다.](model/_static/3/arp.png)
@@ -226,7 +226,7 @@ SQLite를 선택하면 개발용 템플릿 생성 코드가 준비됩니다. 다
    ![이전 지침의 이미지입니다.](model/_static/add_scaffoldMac.png)
 
 1. **Entity Framework(CRUD)를 사용하여 Razor Pages 추가** 대화 상자를 완료합니다.
-   1. **DbContext Class to use:** 열에서 클래스 이름을 *RazorPagesMovie.Data.RazorPagesMovieContext* 로 지정합니다.
+   1. **사용할 DbContext 클래스:** 행에서 클래스 이름을 `RazorPagesMovie.Data.RazorPagesMovieContext`로 지정합니다.
    1. **마침** 을 선택합니다.
 
    ![이전 지침의 이미지입니다.](model/_static/5/arpMac.png)
