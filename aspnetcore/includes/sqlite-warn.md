@@ -1,19 +1,39 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: cf20722e8c8669fb17af8db032d4064ca2be2f4c
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552951"
+---
 > [!NOTE]
 > 
-> <span data-ttu-id="7f0a9-101">**SQLite 제한 사항**</span><span class="sxs-lookup"><span data-stu-id="7f0a9-101">**SQLite limitations**</span></span>
+> <span data-ttu-id="3c286-101">**SQLite 제한 사항**</span><span class="sxs-lookup"><span data-stu-id="3c286-101">**SQLite limitations**</span></span>
 >
-> <span data-ttu-id="7f0a9-102">이 자습서에서는 가능한 경우 Entity Framework Core ‘마이그레이션’ 기능을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-102">This tutorial uses the Entity Framework Core *migrations* feature where possible.</span></span> <span data-ttu-id="7f0a9-103">마이그레이션은 데이터 모델의 변경 내용과 일치하도록 데이터베이스 스키마를 수정합니다.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-103">Migrations updates the database schema to match changes in the data model.</span></span> <span data-ttu-id="7f0a9-104">그러나 마이그레이션은 데이터베이스 엔진에서 지원하는 종류의 변경만 수행하며 SQLite의 스키마 변경 기능은 제한됩니다.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-104">However, migrations only does the kinds of changes that the database engine supports, and SQLite's schema change capabilities are limited.</span></span> <span data-ttu-id="7f0a9-105">예를 들어 열 추가는 지원되지만 열 제거는 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-105">For example, adding a column is supported, but removing a column is not supported.</span></span> <span data-ttu-id="7f0a9-106">열을 제거하기 위해 마이그레이션을 만들면 `ef migrations add` 명령은 성공하지만 `ef database update` 명령은 실패합니다.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-106">If a migration is created to remove a column, the `ef migrations add` command succeeds but the `ef database update` command fails.</span></span> 
+> <span data-ttu-id="3c286-102">이 자습서에서는 가능한 경우 Entity Framework Core ‘마이그레이션’ 기능을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="3c286-102">This tutorial uses the Entity Framework Core *migrations* feature where possible.</span></span> <span data-ttu-id="3c286-103">마이그레이션은 데이터 모델의 변경 내용과 일치하도록 데이터베이스 스키마를 수정합니다.</span><span class="sxs-lookup"><span data-stu-id="3c286-103">Migrations updates the database schema to match changes in the data model.</span></span> <span data-ttu-id="3c286-104">그러나 마이그레이션은 데이터베이스 엔진에서 지원하는 종류의 변경만 수행하며 SQLite의 스키마 변경 기능은 제한됩니다.</span><span class="sxs-lookup"><span data-stu-id="3c286-104">However, migrations only does the kinds of changes that the database engine supports, and SQLite's schema change capabilities are limited.</span></span> <span data-ttu-id="3c286-105">예를 들어 열 추가는 지원되지만 열 제거는 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3c286-105">For example, adding a column is supported, but removing a column is not supported.</span></span> <span data-ttu-id="3c286-106">열을 제거하기 위해 마이그레이션을 만들면 `ef migrations add` 명령은 성공하지만 `ef database update` 명령은 실패합니다.</span><span class="sxs-lookup"><span data-stu-id="3c286-106">If a migration is created to remove a column, the `ef migrations add` command succeeds but the `ef database update` command fails.</span></span> 
 >
-> <span data-ttu-id="7f0a9-107">SQLite 제한 사항에 대한 해결 방법은 테이블의 내용이 변경되면 테이블을 다시 빌드하기 위해 수동으로 마이그레이션 코드를 작성하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-107">The workaround for the SQLite limitations is to manually write migrations code to perform a table rebuild when something in the table changes.</span></span> <span data-ttu-id="7f0a9-108">이 코드는 마이그레이션을 위해 `Up` 및 `Down` 메서드로 이동하고 다음을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-108">The code would go in the `Up` and `Down` methods for a migration and would involve:</span></span>
+> <span data-ttu-id="3c286-107">SQLite 제한 사항에 대한 해결 방법은 테이블의 내용이 변경되면 테이블을 다시 빌드하기 위해 수동으로 마이그레이션 코드를 작성하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="3c286-107">The workaround for the SQLite limitations is to manually write migrations code to perform a table rebuild when something in the table changes.</span></span> <span data-ttu-id="3c286-108">이 코드는 마이그레이션을 위해 `Up` 및 `Down` 메서드로 이동하고 다음을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="3c286-108">The code would go in the `Up` and `Down` methods for a migration and would involve:</span></span>
 >
-> * <span data-ttu-id="7f0a9-109">새 테이블 만들기.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-109">Creating a new table.</span></span>
-> * <span data-ttu-id="7f0a9-110">이전 테이블에서 새 테이블로 데이터 복사.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-110">Copying data from the old table to the new table.</span></span>
-> * <span data-ttu-id="7f0a9-111">이전 테이블 삭제.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-111">Dropping the old table.</span></span>
-> * <span data-ttu-id="7f0a9-112">새 테이블 이름 바꾸기.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-112">Renaming the new table.</span></span>
+> * <span data-ttu-id="3c286-109">새 테이블 만들기.</span><span class="sxs-lookup"><span data-stu-id="3c286-109">Creating a new table.</span></span>
+> * <span data-ttu-id="3c286-110">이전 테이블에서 새 테이블로 데이터 복사.</span><span class="sxs-lookup"><span data-stu-id="3c286-110">Copying data from the old table to the new table.</span></span>
+> * <span data-ttu-id="3c286-111">이전 테이블 삭제.</span><span class="sxs-lookup"><span data-stu-id="3c286-111">Dropping the old table.</span></span>
+> * <span data-ttu-id="3c286-112">새 테이블 이름 바꾸기.</span><span class="sxs-lookup"><span data-stu-id="3c286-112">Renaming the new table.</span></span>
 >
-> <span data-ttu-id="7f0a9-113">이 형식의 데이터베이스 관련 코드를 작성하는 방법은 이 자습서에서 다루지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-113">Writing database-specific code of this type is outside the scope of this tutorial.</span></span> <span data-ttu-id="7f0a9-114">대신, 이 자습서에서는 마이그레이션을 적용하려는 시도가 실패할 때마다 데이터베이스를 삭제하고 다시 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-114">Instead, this tutorial drops and re-creates the database whenever an attempt to apply a migration would fail.</span></span> <span data-ttu-id="7f0a9-115">자세한 내용은 다음 자료를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="7f0a9-115">For more information, see the following resources:</span></span>
+> <span data-ttu-id="3c286-113">이 형식의 데이터베이스 관련 코드를 작성하는 방법은 이 자습서에서 다루지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3c286-113">Writing database-specific code of this type is outside the scope of this tutorial.</span></span> <span data-ttu-id="3c286-114">대신, 이 자습서에서는 마이그레이션을 적용하려는 시도가 실패할 때마다 데이터베이스를 삭제하고 다시 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="3c286-114">Instead, this tutorial drops and re-creates the database whenever an attempt to apply a migration would fail.</span></span> <span data-ttu-id="3c286-115">자세한 내용은 다음 자료를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="3c286-115">For more information, see the following resources:</span></span>
 >
-> * [<span data-ttu-id="7f0a9-116">SQLite EF Core 데이터베이스 공급자 제한 사항</span><span class="sxs-lookup"><span data-stu-id="7f0a9-116">SQLite EF Core Database Provider Limitations</span></span>](/ef/core/providers/sqlite/limitations)
-> * [<span data-ttu-id="7f0a9-117">마이그레이션 코드 사용자 지정</span><span class="sxs-lookup"><span data-stu-id="7f0a9-117">Customize migration code</span></span>](/ef/core/managing-schemas/migrations/#customize-migration-code)
-> * [<span data-ttu-id="7f0a9-118">데이터 시드</span><span class="sxs-lookup"><span data-stu-id="7f0a9-118">Data seeding</span></span>](/ef/core/modeling/data-seeding)
-> * [<span data-ttu-id="7f0a9-119">SQLite ALTER TABLE 문</span><span class="sxs-lookup"><span data-stu-id="7f0a9-119">SQLite ALTER TABLE statement</span></span>](https://sqlite.org/lang_altertable.html)
+> * [<span data-ttu-id="3c286-116">SQLite EF Core 데이터베이스 공급자 제한 사항</span><span class="sxs-lookup"><span data-stu-id="3c286-116">SQLite EF Core Database Provider Limitations</span></span>](/ef/core/providers/sqlite/limitations)
+> * [<span data-ttu-id="3c286-117">마이그레이션 코드 사용자 지정</span><span class="sxs-lookup"><span data-stu-id="3c286-117">Customize migration code</span></span>](/ef/core/managing-schemas/migrations/#customize-migration-code)
+> * [<span data-ttu-id="3c286-118">데이터 시드</span><span class="sxs-lookup"><span data-stu-id="3c286-118">Data seeding</span></span>](/ef/core/modeling/data-seeding)
+> * [<span data-ttu-id="3c286-119">SQLite ALTER TABLE 문</span><span class="sxs-lookup"><span data-stu-id="3c286-119">SQLite ALTER TABLE statement</span></span>](https://sqlite.org/lang_altertable.html)
