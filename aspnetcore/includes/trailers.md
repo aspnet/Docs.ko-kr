@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: d5e1630d6a9e412c40831aa3a66aaed7524ff501
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551399"
+---
 HTTP 트레일러는 응답 본문이 전송된 후에 전송된다는 점을 제외하고 HTTP 헤더와 유사합니다. IIS 및 HTTP.sys의 경우 HTTP/2 응답 트레일러만 지원됩니다.
 
 ```csharp

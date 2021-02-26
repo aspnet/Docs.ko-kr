@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 8c9d0d9c24e0ce81925ccde463bcf085531b665e
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: fa1060ae1a046a40d55e9fef4a094aa9e51a18af
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024740"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101173"
 ---
-# <a name="part-4-of-tutorial-series-on-no-locrazor-pages"></a>Razor Pages에 대한 자습서 시리즈의 4부
+# <a name="part-4-of-tutorial-series-on-razor-pages"></a>Razor Pages에 대한 자습서 시리즈의 4부
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Joe Audette](https://twitter.com/joeaudette)
 
@@ -142,7 +142,7 @@ if (context.Movie.Any())
 
 * 종속성 주입 컨테이너에서 데이터베이스 컨텍스트 인스턴스를 가져옵니다.
 * `seedData.Initialize` 메서드를 호출하여 데이터베이스 컨텍스트 인스턴스에 전달합니다.
-* 시드 메서드가 완료되면 컨텍스트를 삭제합니다. [using 문](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement)은 컨텍스트가 삭제되도록 합니다.
+* 시드 메서드가 완료되면 컨텍스트를 삭제합니다. [using 문](/dotnet/csharp/language-reference/keywords/using-statement)은 컨텍스트가 삭제되도록 합니다.
 
 `Update-Database`가 실행되지 않은 경우 다음 예외가 발생합니다.
 
@@ -296,7 +296,7 @@ if (context.Movie.Any())
 
 * 종속성 주입 컨테이너에서 데이터베이스 컨텍스트 인스턴스를 가져옵니다.
 * `seedData.Initialize` 메서드를 호출하여 데이터베이스 컨텍스트 인스턴스에 전달합니다.
-* 시드 메서드가 완료되면 컨텍스트를 삭제합니다. [using 문](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement)은 컨텍스트가 삭제되도록 합니다.
+* 시드 메서드가 완료되면 컨텍스트를 삭제합니다. [using 문](/dotnet/csharp/language-reference/keywords/using-statement)은 컨텍스트가 삭제되도록 합니다.
 
 `Update-Database`가 실행되지 않은 경우 다음 예외가 발생합니다.
 
@@ -440,7 +440,7 @@ if (context.Movie.Any())
 
 * 종속성 주입 컨테이너에서 데이터베이스 컨텍스트 인스턴스를 가져옵니다.
 * `seedData.Initialize` 메서드를 호출하여 데이터베이스 컨텍스트 인스턴스에 전달합니다.
-* 시드 메서드가 완료되면 컨텍스트를 삭제합니다. [using 문](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement)은 컨텍스트가 삭제되도록 합니다.
+* 시드 메서드가 완료되면 컨텍스트를 삭제합니다. [using 문](/dotnet/csharp/language-reference/keywords/using-statement)은 컨텍스트가 삭제되도록 합니다.
 
 프로덕션 앱은 `Database.Migrate`를 호출하지 않습니다. `Update-Database`가 실행되지 않는 경우 다음 예외를 방지하기 위해 위의 코드에 추가됩니다.
 

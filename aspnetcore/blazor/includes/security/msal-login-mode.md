@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 1b045d437d1a16eabc0ab41573c8b66d9c4bb77e
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551832"
+---
 프레임워크는 기본적으로 팝업 로그인 모드로 설정되며 팝업을 열 수 없는 경우 리디렉션 로그인 모드로 대체됩니다. <xref:Microsoft.Authentication.WebAssembly.Msal.Models.MsalProviderOptions>의 `LoginMode` 속성을 `redirect`로 설정하여 리디렉션 로그인 모드를 사용하도록 MSAL을 구성합니다.
 
 ```csharp

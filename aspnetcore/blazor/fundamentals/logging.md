@@ -20,14 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/logging
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 10c96bd2d0cc64f3bd035e7079b0996eb5768595
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e87b1a0dd54eb03dc1bdfdc7f2189a59df272026
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97666835"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101030"
 ---
-# <a name="aspnet-core-no-locblazor-logging"></a>ASP.NET Core Blazor 로깅
+# <a name="aspnet-core-blazor-logging"></a>ASP.NET Core Blazor 로깅
 
 ::: zone pivot="webassembly"
 
@@ -52,7 +52,7 @@ builder.Logging.AddProvider(new CustomLoggingProvider());
 
 로깅 구성은 앱 설정 파일에서 로드할 수 있습니다. 자세한 내용은 <xref:blazor/fundamentals/configuration#logging-configuration>를 참조하세요.
 
-## <a name="no-locsignalr-net-client-logging"></a>SignalR .NET 클라이언트 로깅
+## <a name="signalr-net-client-logging"></a>SignalR .NET 클라이언트 로깅
 
 <xref:Microsoft.Extensions.Logging.ILoggerProvider>를 삽입하여 <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder>로 전달된 로깅 공급자에 `WebAssemblyConsoleLogger`를 추가합니다. 기존의 <xref:Microsoft.Extensions.Logging.Console.ConsoleLogger>와 달리 `WebAssemblyConsoleLogger`는 브라우저별 로깅 API 주위의 래퍼입니다(예: `console.log`). `WebAssemblyConsoleLogger`를 사용하면 브라우저 컨텍스트의 Mono 내에서 로깅을 수행할 수 있습니다.
 
@@ -83,7 +83,7 @@ Blazor Server와 관련된 일반적인 ASP.NET Core 로깅 지침은 <xref:fund
 
 ::: zone-end
 
-## <a name="log-in-no-locrazor-components"></a>Razor 구성 요소의 로그
+## <a name="log-in-razor-components"></a>Razor 구성 요소의 로그
 
 로거는 앱 시작 구성을 사용합니다.
 
@@ -93,13 +93,33 @@ Blazor Server와 관련된 일반적인 ASP.NET Core 로깅 지침은 <xref:fund
 
 `Pages/Counter.razor`:
 
-[!code-razor[](logging/samples_snapshot/Counter1.razor?highlight=3,16)]
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/logging/Counter1.razor?highlight=3,16)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/logging/Counter1.razor?highlight=3,16)]
+
+::: moniker-end
 
 다음 예제에서는 구성 요소에서 <xref:Microsoft.Extensions.Logging.ILoggerFactory>를 사용하여 로깅하는 방법을 보여 줍니다.
 
 `Pages/Counter.razor`:
 
-[!code-razor[](logging/samples_snapshot/Counter2.razor?highlight=3,16-17)]
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/logging/Counter2.razor?highlight=3,16-17)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/logging/Counter2.razor?highlight=3,16-17)]
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>추가 자료
 

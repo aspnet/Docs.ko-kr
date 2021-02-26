@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 2961fcaa8bbb93527eb80f5aa7b18ef04761fb50
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 852c26f89b229d89797d9ce6fce2983319defe9c
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97486163"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101148"
 ---
-# <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>7부. ASP.NET Core의 Razor Page에 새 필드 추가
+# <a name="part-7-add-a-new-field-to-a-razor-page-in-aspnet-core"></a>7부. ASP.NET Core의 Razor Page에 새 필드 추가
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -41,7 +41,7 @@ ms.locfileid: "97486163"
 
 EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 Code First는
 
-* 데이터베이스에 [`__EFMigrationsHistory`](https://docs.microsoft.com/ef/core/managing-schemas/migrations/history-table) 테이블을 추가하여 데이터베이스의 스키마가 생성된 모델 클래스와 동기화되어 있는지 여부를 추적합니다.
+* 데이터베이스에 [`__EFMigrationsHistory`](/ef/core/managing-schemas/migrations/history-table) 테이블을 추가하여 데이터베이스의 스키마가 생성된 모델 클래스와 동기화되어 있는지 여부를 추적합니다.
 * 모델 클래스가 데이터베이스와 동기화되지 않으면 EF는 예외를 throw합니다.
 
 스키마와 모델의 동기화를 자동 확인하면 일관성이 없는 데이터베이스 코드 문제를 쉽게 찾을 수 있습니다.
@@ -182,7 +182,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 Code First는
 
-* 데이터베이스에 [`__EFMigrationsHistory`](https://docs.microsoft.com/ef/core/managing-schemas/migrations/history-table) 테이블을 추가하여 데이터베이스의 스키마가 생성된 모델 클래스와 동기화되어 있는지 여부를 추적합니다.
+* 데이터베이스에 [`__EFMigrationsHistory`](/ef/core/managing-schemas/migrations/history-table) 테이블을 추가하여 데이터베이스의 스키마가 생성된 모델 클래스와 동기화되어 있는지 여부를 추적합니다.
 * 모델 클래스가 데이터베이스와 동기화되지 않으면 EF는 예외를 throw합니다.
 
 스키마와 모델의 동기화를 자동 확인하면 일관성이 없는 데이터베이스 코드 문제를 쉽게 찾을 수 있습니다.
@@ -323,7 +323,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 Code First는
 
-* 데이터베이스에 [`__EFMigrationsHistory`](https://docs.microsoft.com/ef/core/managing-schemas/migrations/history-table) 테이블을 추가하여 데이터베이스의 스키마가 생성된 모델 클래스와 동기화되어 있는지 여부를 추적합니다.
+* 데이터베이스에 [`__EFMigrationsHistory`](/ef/core/managing-schemas/migrations/history-table) 테이블을 추가하여 데이터베이스의 스키마가 생성된 모델 클래스와 동기화되어 있는지 여부를 추적합니다.
 * 모델 클래스가 데이터베이스와 동기화되지 않으면 EF는 예외를 throw합니다.
 
 스키마와 모델의 동기화를 자동 확인하면 일관성이 없는 데이터베이스 코드 문제를 쉽게 찾을 수 있습니다.

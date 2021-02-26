@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: c1f859e0113d5bff65c7075ad1eb03088429174e
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: f7cac477e2c5bca54e24ae3faeadff9b51bdcd0f
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100279966"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101063"
 ---
 # <a name="handle-errors-in-aspnet-core-blazor-apps"></a>ASP.NET Core Blazor 앱에서 오류 처리
 
@@ -193,7 +193,17 @@ Blazor가 구성 요소의 인스턴스를 만들 경우
   * `loadFailed`가 사용자에게 오류 메시지를 표시하는 데 사용되는 `true`로 설정됩니다.
   * 오류가 로깅됩니다.
 
-[!code-razor[](handle-errors/samples_snapshot/3.x/product-details.razor?highlight=11,27-39)]
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/handle-errors/ProductDetails.razor?name=snippet&highlight=11,27-39)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/handle-errors/ProductDetails.razor?name=snippet&highlight=11,27-39)]
+
+::: moniker-end
 
 ### <a name="rendering-logic"></a>렌더링 논리
 
@@ -203,7 +213,17 @@ Blazor가 구성 요소의 인스턴스를 만들 경우
 
 렌더링 논리에서 null 참조 예외가 발생하지 않도록 하려면 해당 멤버에 액세스하기 전에 `null` 개체를 확인합니다. 다음 예제에서 `person.Address`가 `null`인 경우 `person.Address` 속성에 액세스되지 않습니다.
 
-[!code-razor[](handle-errors/samples_snapshot/3.x/person-example.razor?highlight=1)]
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/handle-errors/PersonExample.razor?name=snippet&highlight=1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/handle-errors/PersonExample.razor?name=snippet&highlight=1)]
+
+::: moniker-end
 
 위의 코드는 `person`이 `null`이 아니라고 가정합니다. 일반적으로 이 코드의 구조에 따르면 구성 요소가 렌더링될 때 개체가 확실히 존재하게 됩니다. 이러한 경우에는 렌더링 논리에서 `null`이 있는지 확인하지 않아도 됩니다. 이전 예제에서는 구성 요소가 인스턴스화될 때 `person`이 만들어지기 때문에 `person`가 존재한다고 보장할 수 있습니다.
 

@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: d6c3c1800bd341cc1c21ec6ec80421932dae61df
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552382"
+---
 ## <a name="usermanager-and-signinmanager"></a>UserManager 및 SignInManager
 
 서버 앱에 다음이 필요한 경우 사용자 ID 클레임 유형을 설정합니다.

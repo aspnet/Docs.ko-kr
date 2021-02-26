@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/environments
-ms.openlocfilehash: 3d9b0cab42a826c7a5868324d891e597cd9ed986
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a5ead59e467da331b585e8daefb1d7d259c7edba
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97678296"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101050"
 ---
-# <a name="aspnet-core-no-locblazor-environments"></a>ASP.NET Core Blazor 환경
+# <a name="aspnet-core-blazor-environments"></a>ASP.NET Core Blazor 환경
 
 > [!NOTE]
 > 이 항목은 Blazor WebAssembly에 적용됩니다. Blazor Server 앱에 사용할 접근 방식을 설명하는 ASP.NET Core 앱 구성에 관한 일반 지침은 <xref:fundamentals/environments>을 참조하세요.
@@ -62,7 +62,17 @@ ms.locfileid: "97678296"
 
 `Pages/ReadEnvironment.razor`:
 
-[!code-razor[](environments/samples_snapshot/ReadEnvironment.razor?highlight=3,7)]
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/environments/ReadEnvironment.razor?highlight=3,7)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/environments/ReadEnvironment.razor?highlight=3,7)]
+
+::: moniker-end
 
 시작하는 동안 <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder>는 <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder.HostEnvironment> 속성을 통해 <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment>를 노출하므로 호스트 빌더 코드에 환경 관련 논리를 사용할 수 있습니다.
 

@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 34e12afd6bc7015e4609fbdf773259ed5545809b
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552101"
+---
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 새 프로젝트를 만듭니다.
@@ -5,7 +25,7 @@
 1. **프로젝트 이름** 필드에 프로젝트 이름을 제공하거나 기본 프로젝트 이름을 수락합니다. **만들기** 를 선택합니다.
 1. **작업자 서비스 만들기** 대화 상자에서 **만들기** 선택합니다.
 
-# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Mac용 Visual Studio](#tab/visual-studio-mac)
 
 1. 새 프로젝트를 만듭니다.
 1. 사이드바에서 **.NET Core** 아래에 있는 **앱** 을 선택합니다.

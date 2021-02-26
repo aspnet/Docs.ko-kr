@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: ae5d8cf64c0db9402a5457cec1df8402f4db103c
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551257"
+---
 Azure Portal은 AAD 테넌트에 [확인되거나 확인되지 않은 게시자 도메인](/azure/active-directory/develop/howto-configure-publisher-domain)이 있는지 여부를 기준으로 다음 앱 ID URI 형식 중 하나를 제공합니다.
 
 * `api://{SERVER API APP CLIENT ID OR CUSTOM VALUE}`

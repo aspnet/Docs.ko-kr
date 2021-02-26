@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 939841ca7214e212a2f197ea1e00b0f6152c471e
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: d984023a1c46c5383d47a1634c54e61747b83d60
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280511"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101212"
 ---
 # <a name="build-a-blazor-todo-list-app"></a>Blazor 할 일 목록 앱 빌드
 
@@ -117,7 +117,7 @@ ms.locfileid: "100280511"
 
    `Shared/NavMenu.razor` 파일을 저장합니다.
 
-1. `TodoList` 폴더의 명령 셸에서 [`dotnet watch run`](/aspnet/core/tutorials/dotnet-watch) 명령을 실행하여 앱을 빌드하고 실행합니다. 앱이 실행되면 앱의 탐색 모음에서 **`Todo`** 링크를 선택하여 새 Todo 페이지를 방문합니다. 그러면 `/todo`의 페이지가 로드됩니다.
+1. `TodoList` 폴더의 명령 셸에서 [`dotnet watch run`](xref:tutorials/dotnet-watch) 명령을 실행하여 앱을 빌드하고 실행합니다. 앱이 실행되면 앱의 탐색 모음에서 **`Todo`** 링크를 선택하여 새 Todo 페이지를 방문합니다. 그러면 `/todo`의 페이지가 로드됩니다.
 
    앱에서 명령 셸을 실행 중인 상태로 둡니다. 파일을 저장할 때마다 앱이 자동으로 다시 빌드됩니다. 브라우저는 컴파일하고 다시 시작하는 동안 앱과의 연결이 일시적으로 끊깁니다. 연결이 다시 설정되면 브라우저의 페이지가 자동으로 다시 로드됩니다.
 
