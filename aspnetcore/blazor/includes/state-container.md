@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 76dbf3cae1c264fa474101bc4398da28f45a1c10
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100254385"
+---
 중첩된 구성 요소는 일반적으로 <xref:blazor/components/data-binding>에서 설명하는 것처럼 *체인 바인딩* 을 사용하여 데이터를 바인딩합니다. 중첩된 구성 요소와 중첩되지 않은 구성 요소는 등록된 메모리 내 상태 컨테이너를 사용하여 데이터에 대한 액세스를 공유할 수 있습니다. 사용자 지정 상태 컨테이너 클래스는 할당 가능한 <xref:System.Action>을 사용하여 앱의 서로 다른 구성 요소에게 상태 변경을 알립니다. 다음 예제에서는
 
 * 구성 요소 쌍은 상태 컨테이너를 사용하여 속성을 추적합니다.
@@ -22,13 +42,13 @@ public class StateContainer
 }
 ```
 
-`Program.Main`(Blazor WebAssembly):
+`Program.Main`(Blazor WebAssembly)에서:
 
 ```csharp
 builder.Services.AddSingleton<StateContainer>();
 ```
 
-`Startup.ConfigureServices`(Blazor Server):
+`Startup.ConfigureServices`(Blazor Server)에서:
 
 ```csharp
 services.AddSingleton<StateContainer>();
@@ -59,7 +79,7 @@ services.AddSingleton<StateContainer>();
 
     private void ChangePropertyValue()
     {
-        StateContainer.SetProperty($"New value set in Component 1 {DateTime.Now}");
+        StateContainer.SetProperty($"New value set in Component 1: {DateTime.Now}");
     }
 
     public void Dispose()
@@ -91,7 +111,7 @@ services.AddSingleton<StateContainer>();
 
     private void ChangePropertyValue()
     {
-        StateContainer.SetProperty($"New value set in Component 2 {DateTime.Now}");
+        StateContainer.SetProperty($"New value set in Component 2: {DateTime.Now}");
     }
 
     public void Dispose()
@@ -100,3 +120,5 @@ services.AddSingleton<StateContainer>();
     }
 }
 ```
+
+이전 구성 요소는 <xref:System.IDisposable>을 구현하며 `OnChange` 대리자는 구성 요소가 삭제될 때 프레임워크에서 호출하는 `Dispose` 메서드에서 구독 취소됩니다. 자세한 내용은 <xref:blazor/components/lifecycle#component-disposal-with-idisposable>를 참조하세요.

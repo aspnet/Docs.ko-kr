@@ -1,9 +1,29 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 8772f383a830936881564ca95a7f034ba08a5798
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551590"
+---
 `FetchData` 구성 요소는 다음을 수행하는 방법을 보여 줍니다.
 
 * 액세스 토큰을 프로비저닝합니다.
 * 액세스 토큰을 사용하여 ‘서버’ 앱에서 보호된 리소스 API를 호출합니다.
 
-[`@attribute [Authorize]`](xref:mvc/views/razor#attribute) 지시문은 사용자가 이 구성 요소에 방문하기 위해 권한을 부여받아야 하는 Blazor WebAssembly 권한 부여 시스템을 나타냅니다. `Client` 앱에 특성이 있으면 서버에 있는 API가 적절한 자격 증명 없이 호출되는 것을 방지하지 않습니다. 또한 `Server` 앱은 적절한 엔드포인트에서 `[Authorize]`를 사용하여 올바로 보호해야 합니다.
+[`@attribute [Authorize]`](xref:mvc/views/razor#attribute) 지시문은 사용자가 이 구성 요소에 액세스하기 위해 권한을 부여받아야 한다는 것을 Blazor WebAssembly 권한 부여 시스템에 나타냅니다. `Client` 앱에 특성이 있으면 서버에 있는 API가 적절한 자격 증명 없이 호출되는 것을 방지하지 않습니다. 또한 `Server` 앱은 적절한 엔드포인트에서 `[Authorize]`를 사용하여 올바로 보호해야 합니다.
 
 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.IAccessTokenProvider.RequestAccessToken%2A?displayProperty=nameWithType>은 API를 호출하는 요청에 추가할 수 있는 액세스 토큰을 요청하는 작업을 처리합니다. 토큰이 캐시되었거나 서비스에서 사용자 개입 없이 새 액세스 토큰을 프로비저닝할 수 있으면 토큰 요청이 성공합니다. 그러지 않으면 토큰 요청이 실패하고 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException>이 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 문에 catch됩니다.
 

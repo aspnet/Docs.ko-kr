@@ -1,11 +1,31 @@
-Blazor 서버 앱은 서버 메모리에 존재합니다. 즉, 동일한 프로세스 내에서 호스트되는 여러 앱이 있습니다. 각 앱 세션에서 Blazor는 자체 DI 컨테이너 범위를 포함하는 회로를 시작합니다. 즉, 범위가 지정된 서비스는 Blazor 세션별로 고유합니다.
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 5ff4e4368d9e6d7c8525ae4ef0625d176a256a85
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552180"
+---
+Blazor 서버 앱은 서버 메모리에 있습니다. 즉, 동일한 프로세스 내에서 호스트되는 여러 앱이 있습니다. 각 앱 세션에서 Blazor는 자체 DI 컨테이너 범위를 포함하는 회로를 시작합니다. 즉, 범위가 지정된 서비스는 Blazor 세션별로 고유합니다.
 
 > [!WARNING]
 > 매우 주의하지 않는 한 싱글톤 서비스를 사용하는 동일한 서버 공유 상태에서는 앱을 사용하지 않는 것이 좋습니다. 회로 간 사용자 상태 누수와 같은 보안 취약성이 도입될 수 있기 때문입니다.
 
-특별히 해당 용도로 설계된 경우 Blazor 앱에서 상태 저장 싱글톤 서비스를 사용할 수 있습니다. 예를 들어 사용자가 사용되는 캐시 키를 제어할 수 없는 경우 지정된 항목에 액세스하는 데 키가 필요하므로 메모리 캐시를 싱글톤으로 사용할 수 있습니다.
+특별히 설계된 경우 Blazor 앱에서 상태 저장 singleton 서비스를 사용할 수 있습니다. 예를 들어 사용자가 사용되는 캐시 키를 제어할 수 없는 경우 지정된 항목에 액세스하는 데 키가 필요하므로 메모리 캐시를 싱글톤으로 사용할 수 있습니다.
 
-**또한 보안상의 이유로 다시 Blazor 앱 내에서 <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor>를 사용하면 안 됩니다.** Blazor 앱은 ASP.NET Core 파이프라인의 컨텍스트 외부에서 실행됩니다. <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> 내에서의 <xref:Microsoft.AspNetCore.Http.HttpContext> 사용은 보장되지 않으며 Blazor 앱을 시작하는 컨텍스트 유지도 보장되지 않습니다.
+**또한 역시 보안상의 이유로 Blazor 앱 내에서 <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor>를 사용하면 안 됩니다.** Blazor 앱은 ASP.NET Core 파이프라인의 컨텍스트 외부에서 실행됩니다. <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> 내에서의 <xref:Microsoft.AspNetCore.Http.HttpContext> 사용은 보장되지 않으며 Blazor 앱을 시작하는 컨텍스트 유지도 보장되지 않습니다.
 
 Blazor 앱에 요청 상태를 전달하려면 앱을 처음 렌더링할 때 루트 구성 요소에 대한 매개 변수를 사용하는 것이 좋습니다.
 

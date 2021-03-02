@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 4e7c0e9b0a164e0181af5d6baaedf0669c1c06aa
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552530"
+---
 ## <a name="troubleshoot"></a>문제 해결
 
 ::: moniker range=">= aspnetcore-5.0"
@@ -16,22 +36,22 @@
   오류를 해결하려면:
 
   1. Azure Portal에서 [앱의 매니페스트](/azure/active-directory/develop/reference-app-manifest)에 액세스합니다.
-  1. [`allowPublicClient`](/azure/active-directory/develop/reference-app-manifest#allowpublicclient-attribute) 특성을 `null` 또는 `true`로 설정합니다.
+  1. [`allowPublicClient` 특성](/azure/active-directory/develop/reference-app-manifest#allowpublicclient-attribute)을 `null` 또는 `true`로 설정합니다.
 
 ::: moniker-end
 
-### <a name="cookies-and-site-data"></a>쿠키 및 사이트 데이터
+### <a name="cookies-and-site-data"></a>Cookie 및 사이트 데이터
 
-쿠키 및 사이트 데이터가 앱을 업데이트할 때에도 유지되어 테스트 및 문제 해결에 방해가 될 수 있습니다. 앱 코드를 변경하거나 공급자를 사용하여 사용자 계정을 변경하거나 공급자 앱 구성을 변경하는 경우 다음을 지우세요.
+Cookie 및 사이트 데이터가 앱을 업데이트할 때에도 유지되어 테스트 및 문제 해결에 방해가 될 수 있습니다. 앱 코드를 변경하거나 공급자를 사용하여 사용자 계정을 변경하거나 공급자 앱 구성을 변경하는 경우 다음을 지우세요.
 
-* 사용자 로그인 쿠키
-* 앱 쿠키
+* 사용자 로그인 cookie
+* 앱 cookie
 * 캐시되고 저장된 사이트 데이터
 
-남겨진 쿠키 및 사이트 데이터로 인해 테스트 및 문제 해결이 지장을 받지 않도록 하려면 다음을 수행합니다.
+남겨진 cookie 및 사이트 데이터로 인해 테스트 및 문제 해결이 지장을 받지 않도록 하려면 다음을 수행합니다.
 
 * 브라우저 구성
-  * 브라우저에서 브라우저를 닫을 때마다 모든 쿠키 및 사이트 데이터를 삭제하도록 구성할 수 있는지 테스트합니다.
+  * 브라우저에서 브라우저를 닫을 때마다 모든 cookie 및 사이트 데이터를 삭제하도록 구성할 수 있는지 테스트합니다.
   * 앱, 테스트 사용자 또는 공급자 구성을 변경할 때 수동으로 또는 IDE를 통해 브라우저를 닫습니다.
 * 사용자 지정 명령을 사용하여 Visual Studio에서 시크릿 또는 프라이빗 모드로 브라우저를 엽니다.
   * Visual Studio의 **실행** 단추를 통해 **브라우저 선택** 대화 상자를 엽니다.
