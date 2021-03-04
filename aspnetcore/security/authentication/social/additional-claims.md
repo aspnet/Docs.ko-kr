@@ -5,7 +5,7 @@ description: 외부 공급자에서 추가 클레임 및 토큰을 설정 하는
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/30/2020
+ms.date: 02/18/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: 4503291ff887f79b1ad6eacd4e56943ce23335bc
-ms.sourcegitcommit: 5156eab2118584405eb663e1fcd82f8bd7764504
+ms.openlocfilehash: 9c04ca466566e956b5e6dfec8131096c3995bc14
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/31/2020
-ms.locfileid: "93141510"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102110146"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>ASP.NET Core의 외부 공급자에서 추가 클레임 및 토큰 유지
 
@@ -80,7 +80,7 @@ options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
 
 에서 `Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync` <xref:Microsoft.AspNetCore.Identity.IdentityUser> ()는 `ApplicationUser` 를 사용 하 여 앱에 로그인 됩니다 <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*> . 로그인 프로세스 중에는 <xref:Microsoft.AspNetCore.Identity.UserManager%601> `ApplicationUser` 에서 사용할 수 있는 사용자 데이터에 대 한 클레임을 저장할 수 있습니다 <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*> .
 
-샘플 앱에서 `OnPostConfirmationAsync` ( *Account/externallogin. cshtml* )는 `urn:google:locale` 에 대 한 클레임을 포함 하 여 로그인에 대 한 로캘 () 및 그림 ( `urn:google:picture` ) 클레임을 `ApplicationUser` 설정 합니다. <xref:System.Security.Claims.ClaimTypes.GivenName>
+샘플 앱에서 `OnPostConfirmationAsync` (*Account/externallogin. cshtml*)는 `urn:google:locale` 에 대 한 클레임을 포함 하 여 로그인에 대 한 로캘 () 및 그림 ( `urn:google:picture` ) 클레임을 `ApplicationUser` 설정 합니다. <xref:System.Security.Claims.ClaimTypes.GivenName>
 
 [!code-csharp[](additional-claims/samples/3.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=35-51)]
 
@@ -108,9 +108,12 @@ options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
 
 [!code-csharp[](additional-claims/samples/3.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=54-56)]
 
+> [!NOTE]
+> 응용 프로그램의 구성 요소에 토큰을 전달 하는 방법에 대 한 자세한 내용은 Razor Blazor Server 을 참조 하십시오 <xref:blazor/security/server/additional-scenarios#pass-tokens-to-a-blazor-server-app> .
+
 ## <a name="how-to-add-additional-custom-tokens"></a>추가 사용자 지정 토큰을 추가 하는 방법
 
-의 일부로 저장 된 사용자 지정 토큰을 추가 하는 방법을 보여 주기 위해 `SaveTokens` 샘플 앱은 <xref:Microsoft.AspNetCore.Authentication.AuthenticationToken> AuthenticationToken.Name의 현재와 함께를 추가 합니다 <xref:System.DateTime> [AuthenticationToken.Name](xref:Microsoft.AspNetCore.Authentication.AuthenticationToken.Name*) `TicketCreated` .
+의 일부로 저장 된 사용자 지정 토큰을 추가 하는 방법을 보여 주기 위해 `SaveTokens` 샘플 앱은 <xref:Microsoft.AspNetCore.Authentication.AuthenticationToken> AuthenticationToken.Name의 현재와 함께를 추가 합니다 <xref:System.DateTime> [](xref:Microsoft.AspNetCore.Authentication.AuthenticationToken.Name*) `TicketCreated` .
 
 [!code-csharp[](additional-claims/samples/3.x/ClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=17-30)]
 
@@ -121,6 +124,131 @@ options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
 사용자는 추상 메서드를 파생 시키고 구현 하 여 사용자 지정 작업을 정의할 수 있습니다 <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction> <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.Run*> .
 
 자세한 내용은 <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>를 참조하세요.
+
+## <a name="add-and-update-user-claims"></a>사용자 클레임 추가 및 업데이트
+
+클레임은 로그인이 아닌 첫 번째 등록 시 외부 공급자에서 사용자 데이터베이스로 복사 됩니다. 사용자가 앱을 사용 하도록 등록 한 후 앱에서 추가 클레임을 사용 하도록 설정 하는 경우 사용자에 대해 [SignInManager](xref:Microsoft.AspNetCore.Identity.SignInManager%601) 를 호출 하 여 새 인증을 강제로 생성 합니다 cookie .
+
+테스트 사용자 계정을 사용 하 여 작업 하는 개발 환경에서는 사용자 계정을 삭제 하 고 다시 만들 수 있습니다. 프로덕션 시스템의 경우 앱에 추가 된 새 클레임을 사용자 계정으로 백필 수 있습니다. 에서 응용 프로그램으로 [ `ExternalLogin` 페이지의 스 캐 폴딩](xref:security/authentication/scaffold-identity) 후 `Areas/Pages/Identity/Account/Manage` 파일의에 다음 코드를 추가 합니다 `ExternalLoginModel` `ExternalLogin.cshtml.cs` .
+
+추가 된 클레임의 사전을 추가 합니다. 사전 키를 사용 하 여 클레임 유형을 보유 하 고 값을 사용 하 여 기본값을 유지 합니다. 클래스의 맨 위에 다음 줄을 추가 합니다. 다음 예에서는 일반 헤드 샷 이미지를 기본값으로 사용 하 여 사용자의 Google 그림에 대해 하나의 클레임이 추가 된 것으로 가정 합니다.
+
+```csharp
+private readonly IReadOnlyDictionary<string, string> _claimsToSync = 
+    new Dictionary<string, string>()
+    {
+        { "urn:google:picture", "https://localhost:5001/headshot.png" },
+    };
+```
+
+메서드의 기본 코드를 `OnGetCallbackAsync` 다음 코드로 바꿉니다. 이 코드는 클레임 사전을 반복 합니다. 각 사용자에 대해 클레임이 추가 (백필) 되거나 업데이트 됩니다. 클레임이 추가 되거나 업데이트 되 면 사용자 로그인은를 사용 하 여 새로 고쳐지고 <xref:Microsoft.AspNetCore.Identity.SignInManager%601> 기존 인증 속성 ()이 유지 됩니다 `AuthenticationProperties` .
+
+```csharp
+public async Task<IActionResult> OnGetCallbackAsync(
+    string returnUrl = null, string remoteError = null)
+{
+    returnUrl = returnUrl ?? Url.Content("~/");
+
+    if (remoteError != null)
+    {
+        ErrorMessage = $"Error from external provider: {remoteError}";
+
+        return RedirectToPage("./Login", new {ReturnUrl = returnUrl });
+    }
+
+    var info = await _signInManager.GetExternalLoginInfoAsync();
+
+    if (info == null)
+    {
+        ErrorMessage = "Error loading external login information.";
+        return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
+    }
+
+    // Sign in the user with this external login provider if the user already has a 
+    // login.
+    var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, 
+        info.ProviderKey, isPersistent: false, bypassTwoFactor : true);
+
+    if (result.Succeeded)
+    {
+        _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", 
+            info.Principal.Identity.Name, info.LoginProvider);
+
+        if (_claimsToSync.Count > 0)
+        {
+            var user = await _userManager.FindByLoginAsync(info.LoginProvider, 
+                info.ProviderKey);
+            var userClaims = await _userManager.GetClaimsAsync(user);
+            bool refreshSignIn = false;
+
+            foreach (var addedClaim in _claimsToSync)
+            {
+                var userClaim = userClaims
+                    .FirstOrDefault(c => c.Type == addedClaim.Key);
+
+                if (info.Principal.HasClaim(c => c.Type == addedClaim.Key))
+                {
+                    var externalClaim = info.Principal.FindFirst(addedClaim.Key);
+
+                    if (userClaim == null)
+                    {
+                        await _userManager.AddClaimAsync(user, 
+                            new Claim(addedClaim.Key, externalClaim.Value));
+                        refreshSignIn = true;
+                    }
+                    else if (userClaim.Value != externalClaim.Value)
+                    {
+                        await _userManager
+                            .ReplaceClaimAsync(user, userClaim, externalClaim);
+                        refreshSignIn = true;
+                    }
+                }
+                else if (userClaim == null)
+                {
+                    // Fill with a default value
+                    await _userManager.AddClaimAsync(user, new Claim(addedClaim.Key, 
+                        addedClaim.Value));
+                    refreshSignIn = true;
+                }
+            }
+
+            if (refreshSignIn)
+            {
+                await _signInManager.RefreshSignInAsync(user);
+            }
+        }
+
+        return LocalRedirect(returnUrl);
+    }
+
+    if (result.IsLockedOut)
+    {
+        return RedirectToPage("./Lockout");
+    }
+    else
+    {
+        // If the user does not have an account, then ask the user to create an 
+        // account.
+        ReturnUrl = returnUrl;
+        ProviderDisplayName = info.ProviderDisplayName;
+
+        if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
+        {
+            Input = new InputModel
+            {
+                Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+            };
+        }
+
+        return Page();
+    }
+}
+```
+
+사용자가 로그인 하는 동안 클레임이 변경 되는 경우에도 유사한 방법을 사용할 수 있지만 백필 단계가 필요 하지 않습니다. 사용자의 클레임을 업데이트 하려면 사용자에 대해 다음을 호출 합니다.
+
+* Id 데이터베이스에 저장 된 클레임에 대 한 사용자 [ReplaceClaimAsync](xref:Microsoft.AspNetCore.Identity.UserManager%601) 입니다.
+* 새 인증을 강제로 생성 하도록 사용자에 대 한 [RefreshSignInAsync를 SignInManager.](xref:Microsoft.AspNetCore.Identity.SignInManager%601) cookie
 
 ## <a name="removal-of-claim-actions-and-claims"></a>클레임 작업 및 클레임 제거
 
@@ -220,7 +348,7 @@ options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
 
 에서 `Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync` <xref:Microsoft.AspNetCore.Identity.IdentityUser> ()는 `ApplicationUser` 를 사용 하 여 앱에 로그인 됩니다 <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*> . 로그인 프로세스 중에는 <xref:Microsoft.AspNetCore.Identity.UserManager%601> `ApplicationUser` 에서 사용할 수 있는 사용자 데이터에 대 한 클레임을 저장할 수 있습니다 <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*> .
 
-샘플 앱에서 `OnPostConfirmationAsync` ( *Account/externallogin. cshtml* )는 `urn:google:locale` 에 대 한 클레임을 포함 하 여 로그인에 대 한 로캘 () 및 그림 ( `urn:google:picture` ) 클레임을 `ApplicationUser` 설정 합니다. <xref:System.Security.Claims.ClaimTypes.GivenName>
+샘플 앱에서 `OnPostConfirmationAsync` (*Account/externallogin. cshtml*)는 `urn:google:locale` 에 대 한 클레임을 포함 하 여 로그인에 대 한 로캘 () 및 그림 ( `urn:google:picture` ) 클레임을 `ApplicationUser` 설정 합니다. <xref:System.Security.Claims.ClaimTypes.GivenName>
 
 [!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=35-51)]
 
@@ -250,7 +378,7 @@ options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
 
 ## <a name="how-to-add-additional-custom-tokens"></a>추가 사용자 지정 토큰을 추가 하는 방법
 
-의 일부로 저장 된 사용자 지정 토큰을 추가 하는 방법을 보여 주기 위해 `SaveTokens` 샘플 앱은 <xref:Microsoft.AspNetCore.Authentication.AuthenticationToken> AuthenticationToken.Name의 현재와 함께를 추가 합니다 <xref:System.DateTime> [AuthenticationToken.Name](xref:Microsoft.AspNetCore.Authentication.AuthenticationToken.Name*) `TicketCreated` .
+의 일부로 저장 된 사용자 지정 토큰을 추가 하는 방법을 보여 주기 위해 `SaveTokens` 샘플 앱은 <xref:Microsoft.AspNetCore.Authentication.AuthenticationToken> AuthenticationToken.Name의 현재와 함께를 추가 합니다 <xref:System.DateTime> [](xref:Microsoft.AspNetCore.Authentication.AuthenticationToken.Name*) `TicketCreated` .
 
 [!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=17-30)]
 
@@ -308,6 +436,6 @@ Authentication Properties
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 자료
 
 * [dotnet/AspNetCore 공학적 AspNetCore Alsample 앱](https://github.com/dotnet/AspNetCore/tree/master/src/Security/Authentication/samples/SocialSample): 연결 된 샘플 앱은 [Dotnet/GitHub 리포지토리의](https://github.com/dotnet/AspNetCore) `master` 엔지니어링 분기에 있습니다. 분기에는 `master` ASP.NET Core의 다음 릴리스에 대해 활성 개발 중인 코드가 포함 됩니다. ASP.NET Core의 릴리스 버전에 대 한 샘플 앱 버전을 보려면 **분기** 드롭다운 목록을 사용 하 여 릴리스 분기 (예:)를 선택 `release/{X.Y}` 합니다.

@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/samesite/mvc21
-ms.openlocfilehash: 61878af0f9af72284b43ffd46cca42b0cf043326
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 8f819d283e136a63ad9f82d6432a93866210b36b
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051553"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102110107"
 ---
-# <a name="aspnet-core-21-mvc-samesite-no-loccookie-sample"></a>ASP.NET Core 2.1 MVC SameSite cookie 샘플
+# <a name="aspnet-core-21-mvc-samesite-cookie-sample"></a>ASP.NET Core 2.1 MVC SameSite cookie 샘플
 
 ASP.NET Core 2.1는 [SameSite](https://www.owasp.org/index.php/SameSite) 특성에 대 한 기본 제공 지원을 제공 하지만 원래 표준에 기록 되었습니다. [패치 된 동작이](https://github.com/dotnet/aspnetcore/issues/8212) 의 의미를 변경 `SameSite.None` 하 여 값을 `None` 전혀 내보내지 않고 sameSite 특성을 값으로 내보냅니다. 값을 내보내지 않으려면의 `SameSite` 속성을 cookie -1로 설정할 수 있습니다.
 
@@ -36,7 +36,7 @@ ASP.NET Core 2.1는 [SameSite](https://www.owasp.org/index.php/SameSite) 특성�
 
 다음은에 SameSite 특성을 작성 하는 방법의 예입니다 cookie .
 
-```c#
+```csharp
 var cookieOptions = new CookieOptions
 {
     // Set the secure flag, which Chrome's changes will require for SameSite none.
@@ -56,11 +56,11 @@ var cookieOptions = new CookieOptions
 Response.Cookies.Append(CookieName, "cookieValue", cookieOptions);
 ```
 
-## <a name="setting-no-loccookie-authentication-and-session-state-no-loccookies"></a>Cookie인증 및 세션 상태 설정 cookie
+## <a name="setting-cookie-authentication-and-session-state-cookies"></a>Cookie인증 및 세션 상태 설정 cookie
 
 Cookie 인증, 세션 상태 및 [다양 한 기타 구성 요소가](../samesite.md?view=aspnetcore-2.1) 옵션을 통해 sameSite 옵션 Cookie 을 설정 합니다. 예를 들면
 
-```c#
+```csharp
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -87,13 +87,13 @@ services.AddSession(options =>
 
 위의 이미지에서 볼 수 있습니다. 예를 들어 cookie "SameSite 만들기" 단추를 클릭 하면 샘플 Cookie `Lax` [코드](#sampleCode)에 설정 된 값과 일치 하는 SameSite 특성 값이 있습니다.
 
-## <a name="intercepting-no-loccookies"></a><a name="interception"></a>가로채기 cookie
+## <a name="intercepting-cookies"></a><a name="interception"></a>가로채기 cookie
 
 를 가로채 고 cookie 사용자의 브라우저 에이전트에서 지원에 따라 없음 값을 조정 하려면 미들웨어를 사용 해야 합니다 `CookiePolicy` . 을 작성 하 고 내에서 구성 된 구성 요소 **보다 먼저** http 요청 파이프라인에 배치 해야 합니다 cookie `ConfigureServices()` .
 
-`app.UseCookiePolicy()` `Configure(IApplicationBuilder, IHostingEnvironment)` [Startup.cs](https://github.com/blowdart/AspNetSameSiteSamples/blob/master/AspNetCore21MVC/Startup.cs)의 메서드에서 파이프라인 사용에 삽입 합니다. 다음은 그 예입니다.
+`app.UseCookiePolicy()` `Configure(IApplicationBuilder, IHostingEnvironment)` [Startup.cs](https://github.com/blowdart/AspNetSameSiteSamples/blob/master/AspNetCore21MVC/Startup.cs)의 메서드에서 파이프라인 사용에 삽입 합니다. 예를 들면 다음과 같습니다.
 
-```c#
+```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     if (env.IsDevelopment())
@@ -121,9 +121,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-그런 다음를 `ConfigureServices(IServiceCollection services)` cookie 추가 하거나 삭제 하면에서 도우미 클래스를 호출 하도록 정책을 구성 합니다 cookie . 다음은 그 예입니다.
+그런 다음를 `ConfigureServices(IServiceCollection services)` cookie 추가 하거나 삭제 하면에서 도우미 클래스를 호출 하도록 정책을 구성 합니다 cookie . 예를 들면 다음과 같습니다.
 
-```c#
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.Configure<CookiePolicyOptions>(options =>
@@ -159,9 +159,9 @@ private void CheckSameSite(HttpContext httpContext, CookieOptions options)
 
 ## <a name="targeting-net-framework"></a>대상 지정 .NET Framework
 
-ASP.NET Core 및 System.web (ASP.NET 클래식)에는 SameSite의 독립적인 구현이 있습니다. .NET Framework에 대 한 SameSite KB 패치는 ASP.NET Core를 사용 하는 경우에는 필요 하지 않으며 SameSite에 대 한 최소 프레임 워크 버전 요구 사항 (.NET 4.7.2)이 ASP.NET Core에 적용 됩니다.
+ASP.NET Core 및 System.web (ASP.NET 4.x)에는 SameSite의 독립적인 구현이 있습니다. .NET Framework에 대 한 SameSite KB 패치는 ASP.NET Core를 사용 하는 경우 필요 하지 않으며 SameSite 4.7.2 .NET Framework (최소 프레임 워크 버전 요구 사항)이 ASP.NET Core에 적용 됩니다.
 
-.NET의 ASP.NET Core 적절 한 수정을 얻으려면 nuget 패키지 종속성을 업데이트 해야 합니다.
+.NET의 ASP.NET Core 적절 한 수정을 얻으려면 NuGet 패키지 종속성을 업데이트 해야 합니다.
 
 .NET Framework에 대 한 ASP.NET Core 변경 내용을 얻으려면 패치 된 패키지 및 버전 (2.1.14 이상 2.1 버전)에 대 한 직접 참조를 확인 합니다.
 

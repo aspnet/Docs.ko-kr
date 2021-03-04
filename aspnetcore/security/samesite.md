@@ -19,14 +19,14 @@ no-loc:
 - SignalR
 - Electron
 uid: security/samesite
-ms.openlocfilehash: f1aa388015bd540a6fda263eac53753ada63bf79
-ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
+ms.openlocfilehash: e06c73edfc999053e0aa37f05d984a2b428f69a9
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94673993"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109938"
 ---
-# <a name="work-with-samesite-no-loccookies-in-aspnet-core"></a>cookieASP.NET Core에서 SameSite s 작업
+# <a name="work-with-samesite-cookies-in-aspnet-core"></a>cookieASP.NET Core에서 SameSite s 작업
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -42,17 +42,17 @@ SameSite은 CSRF (교차 사이트 요청 위조) 공격에 대 한 보호를 �
 
 를 내보내는 각 ASP.NET Core 구성 요소는 cookie SameSite가 적절 한지 결정 해야 합니다.
 
-## <a name="samesite-and-no-locidentity"></a>SameSite 및 Identity
+## <a name="samesite-and-identity"></a>SameSite 및 Identity
 
 [!INCLUDE[](~/includes/SameSiteIdentity.md)]
 
 ## <a name="samesite-test-sample-code"></a>SameSite 테스트 샘플 코드
 
- ::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
+::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
 
 다음 샘플을 다운로드 하 고 테스트할 수 있습니다.
 
-| 예제               | 문서 |
+| 샘플               | 문서 |
 | ----------------- | ------------ |
 | [.NET Core MVC](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21MVC)  | <xref:security/samesite/mvc21> |
 | [.NET Core Razor 페이지](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21RazorPages)  | <xref:security/samesite/rp21> |
@@ -63,8 +63,7 @@ SameSite은 CSRF (교차 사이트 요청 위조) 공격에 대 한 보호를 �
 
 다음 샘플을 다운로드 하 고 테스트할 수 있습니다.
 
-
-| 예제               | 문서 |
+| 샘플               | 문서 |
 | ----------------- | ------------ |
 | [.NET Core Razor 페이지](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages)  | <xref:security/samesite/rp31> |
 
@@ -160,7 +159,7 @@ SameSite 지원은 [2016 초안 표준을](https://tools.ietf.org/html/draft-wes
 
 2016 SameSite 표준에서는 알 수 없는 값을 값으로 처리 해야 합니다 `SameSite=Strict` . 2016 SameSite 표준을 지 원하는 이전 브라우저에서 액세스 된 앱은 값이 인 SameSite 속성을 가져올 때 손상 될 수 있습니다 `None` . 웹 앱은 이전 브라우저를 지원 하려는 경우 브라우저 검색을 구현 해야 합니다. ASP.NET Core은 User-Agents 값이 매우 휘발성 이며 자주 변경 되기 때문에 브라우저 검색을 구현 하지 않습니다. 의 확장 지점은 User-Agent 특정 논리를 연결 하는 것을 <xref:Microsoft.AspNetCore.CookiePolicy> 허용 합니다.
 
-에서 `Startup.Configure` 를 <xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*> 호출 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 하거나을 (를) 쓰는 *any* 메서드를 호출 하는 코드를 추가 합니다 cookie .
+에서 `Startup.Configure` 를 <xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*> 호출 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 하거나을 (를) 쓰는  메서드를 호출 하는 코드를 추가 합니다 cookie .
 
 [!code-csharp[](samesite/sample/Startup.cs?name=snippet5&highlight=18-19)]
 
@@ -227,7 +226,7 @@ Edge는 이전 SameSite 표준을 지원 합니다. Edge 버전 44에는 새로�
 
 SameSite 플래그는 페이지에 설정 되어 `edge://flags/#same-site-by-default-cookies` 있습니다. Edge Chromium에서 호환성 문제가 검색 되지 않았습니다.
 
-### <a name="test-with-no-locelectron"></a>테스트 Electron
+### <a name="test-with-electron"></a>테스트 Electron
 
 버전에는 Electron 이전 버전의 Chromium가 포함 되어 있습니다. 예를 들어 팀에서 사용 하는의 버전은 Electron Chromium 66 이며,이는 이전 동작을 보여 주는 것입니다. 제품 버전을 사용 하 여 사용자 고유의 호환성 테스트를 수행 해야 합니다 Electron . 다음 섹션에서 [이전 브라우저 지원](#sob) 을 참조 하세요.
 
@@ -239,7 +238,7 @@ SameSite 플래그는 페이지에 설정 되어 `edge://flags/#same-site-by-def
 
  ::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
 
-| 예제               | 문서 |
+| 샘플               | 문서 |
 | ----------------- | ------------ |
 | [.NET Core MVC](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21MVC)  | <xref:security/samesite/mvc21> |
 | [.NET Core Razor 페이지](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21RazorPages)  | <xref:security/samesite/rp21> |
@@ -248,7 +247,7 @@ SameSite 플래그는 페이지에 설정 되어 `edge://flags/#same-site-by-def
 
  ::: moniker range=">= aspnetcore-3.0"
 
-| 예제               | 문서 |
+| 샘플               | 문서 |
 | ----------------- | ------------ |
 | [.NET Core Razor 페이지](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages)  | <xref:security/samesite/rp31> |
 
