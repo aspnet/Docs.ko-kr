@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 5d228af00ee34e7f8ca60a5085872fdb93842367
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 5fa7bc15bac2609c89fea54f8a788aaf9f5ad055
+ms.sourcegitcommit: 3982ff9dabb5b12aeb0a61cde2686b5253364f5d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057501"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119034"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>ASP.NET Core Web API에서 응답 데이터 서식 지정
 
@@ -132,7 +132,7 @@ Accept 헤더에 `*/*`가 포함되는 경우, `RespectBrowserAcceptHeader`가 <
 
 위의 코드를 사용할 때 컨트롤러 메서드는 요청의 `Accept` 헤더에 따라 적절한 형식을 반환합니다.
 
-### <a name="configure-systemtextjson-based-formatters"></a>기반 포맷터에 System.Text.Js구성
+### <a name="configure-systemtextjson-based-formatters"></a>`System.Text.Json`기반 포맷터 구성
 
 기반 포맷터의 기능은를 `System.Text.Json` 사용 하 여 구성할 수 있습니다 <xref:Microsoft.AspNetCore.Mvc.JsonOptions.JsonSerializerOptions?displayProperty=fullName> . 기본 형식은 camelCase입니다. 다음 강조 표시 된 코드는 대/소문자 서식 지정을 설정 합니다.
 
@@ -188,7 +188,7 @@ ASP.NET Core 3.0 이전에는 `Newtonsoft.Json` 패키지를 사용하여 구현
 
 일부 기능은 `System.Text.Json` 기반 포맷터와 잘 호환되지 않고 `Newtonsoft.Json` 기반 포맷터에 대한 참조를 필요로 할 수 있습니다. 앱이 다음과 같은 경우 `Newtonsoft.Json` 기반 포맷터를 계속해서 사용합니다.
 
-* `Newtonsoft.Json` 속성을 사용합니다. 예를 들어 `[JsonProperty]` 또는 `[JsonIgnore]`로 이름을 지정할 수 있습니다.
+* `Newtonsoft.Json` 속성을 사용합니다. 예를 들어 `[JsonProperty]` 또는 `[JsonIgnore]`입니다.
 * 직렬화 설정을 사용자 지정합니다.
 * `Newtonsoft.Json`은 제공하는 기능에 의존합니다.
 * `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`를 구성하는 경우. ASP.NET Core 3.0 이전의 `JsonResult.SerializerSettings`는 `Newtonsoft.Json` 고유의 `JsonSerializerSettings`의 인스턴스를 허용합니다.
