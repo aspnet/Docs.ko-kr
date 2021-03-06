@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 266781d0abc564952e124bc6eca3805c07592251
-ms.sourcegitcommit: 50d3e939a90c5480df480f651dda032901468dd5
+ms.openlocfilehash: 4fa49f795b78b88e00bd32d04f74acd8689383b2
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99819057"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394475"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET Core 소개 Identity
 
@@ -81,7 +81,7 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 ---
 
-생성 된 프로젝트는을 [ASP.NET Core Identity](xref:security/authentication/identity) [ Razor 클래스 라이브러리로](xref:razor-pages/ui-class)제공 합니다. Identity Razor 클래스 라이브러리는 영역을 사용 하 여 끝점을 노출 `Identity` 합니다. 예를 들어:
+생성 된 프로젝트는을 [ASP.NET Core Identity](xref:security/authentication/identity) [ Razor 클래스 라이브러리로](xref:razor-pages/ui-class)제공 합니다. Identity Razor 클래스 라이브러리는 영역을 사용 하 여 끝점을 노출 `Identity` 합니다. 예를 들면 다음과 같습니다.
 
 * /Identity/Account/Login
 * /Identity/계정/로그 아웃
@@ -329,7 +329,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-생성 된 프로젝트는을 [ASP.NET Core Identity](xref:security/authentication/identity) [ Razor 클래스 라이브러리로](xref:razor-pages/ui-class)제공 합니다. Identity Razor 클래스 라이브러리는 영역을 사용 하 여 끝점을 노출 `Identity` 합니다. 예를 들어:
+생성 된 프로젝트는을 [ASP.NET Core Identity](xref:security/authentication/identity) [ Razor 클래스 라이브러리로](xref:razor-pages/ui-class)제공 합니다. Identity Razor 클래스 라이브러리는 영역을 사용 하 여 끝점을 노출 `Identity` 합니다. 예를 들면 다음과 같습니다.
 
 * /Identity/Account/Login
 * /Identity/계정/로그 아웃
@@ -386,6 +386,15 @@ Register, Login 및 LogOut 파일을 추가 합니다.
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 **WebApp1** 이름으로 프로젝트를 만든 경우 다음 명령을 실행 합니다. 그렇지 않으면에 대해 올바른 네임 스페이스를 사용 합니다 `ApplicationDbContext` .
+
+SQLite를 사용 하는 경우 `--useSqLite` 다음을 지정 해야 합니다.
+
+```dotnetcli
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout" --useSqLite
+```
+
+SQL Express를 사용 하 여 다음 명령을 사용 합니다.
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
