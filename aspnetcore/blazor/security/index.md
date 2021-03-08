@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 9a14a8e16d8e50b47c479cf4d973459fbf61cec7
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: a840e5d54d48441e10c2a58af591a530c8fd7de9
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280374"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394891"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 인증 및 권한 부여
 
@@ -299,7 +299,7 @@ UI 옵션이나 액세스를 제어하는 역할 또는 정책과 같은 권한 
 
 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 구성 요소는 `NavMenu` 구성 요소(`Shared/NavMenu.razor`)에서 [`NavLink` 구성 요소](xref:blazor/fundamentals/routing#navlink-and-navmenu-components)(<xref:Microsoft.AspNetCore.Components.Routing.NavLink>)에 대한 목록 항목(`<li>...</li>`)을 표시하는 데 사용할 수 있지만, 이 방법은 렌더링된 출력에서 목록 항목을 제거할 뿐입니다. 사용자가 해당 구성 요소로 이동하는 것을 방지하지는 않습니다.
 
-인증을 포함하는 Blazor 프로젝트 템플릿으로 만든 앱은 `AuthorizeView` 구성 요소에 종속되는 `LoginDisplay` 구성 요소를 사용합니다. `AuthorizeView` 구성 요소는 Identity 관련 작업을 위해 사용자에게 선택적으로 콘텐츠를 표시합니다. 다음 예제는 Blazor WebAssembly 프로젝트 템플릿에서 가져온 것입니다.
+인증을 포함하는 [Blazor 프로젝트 템플릿](xref:blazor/project-structure)으로 만든 앱은 `AuthorizeView` 구성 요소에 종속되는 `LoginDisplay` 구성 요소를 사용합니다. `AuthorizeView` 구성 요소는 Identity 관련 작업을 위해 사용자에게 선택적으로 콘텐츠를 표시합니다. 다음 예제는 [Blazor WebAssembly 프로젝트 템플릿](xref:blazor/project-structure)에서 가져온 것입니다.
 
 `Shared/LoginDisplay.razor`:
 
@@ -329,7 +329,7 @@ UI 옵션이나 액세스를 제어하는 역할 또는 정책과 같은 권한 
 }
 ```
 
-다음 예제는 Blazor Server 프로젝트 템플릿에서 가져왔으며 앱의 `Identity` 영역에서 ASP.NET Core Identity 엔드포인트를 사용해 Identity 관련 작업을 처리합니다.
+다음 예제는 [Blazor Server 프로젝트 템플릿](xref:blazor/project-structure)에서 가져왔으며 앱의 `Identity` 영역에서 ASP.NET Core Identity 엔드포인트를 사용해 Identity 관련 작업을 처리합니다.
 
 `Shared/LoginDisplay.razor`:
 
@@ -442,7 +442,7 @@ You can only see this if you're signed in.
 * 비동기 권한 부여가 진행 중이며 이는 일반적으로 사용자를 인증하는 프로세스가 진행되고 있음을 의미합니다. [`<Authorizing>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing?displayProperty=nameWithType) 요소의 태그가 표시됩니다.
 * 콘텐츠를 찾을 수 없는 경우 [`<NotFound>`](xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound?displayProperty=nameWithType) 요소의 태그가 표시됩니다.
 
-기본 Blazor Server 프로젝트 템플릿에서 `App` 구성 요소(`App.razor`)는 사용자 지정 콘텐츠를 설정하는 방법을 보여 줍니다.
+기본 [Blazor Server 프로젝트 템플릿](xref:blazor/project-structure)에서 `App` 구성 요소(`App.razor`)는 사용자 지정 콘텐츠를 설정하는 방법을 보여 줍니다.
 
 ```razor
 <CascadingAuthenticationState>
