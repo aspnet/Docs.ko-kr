@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 4d4e50f8acea73859f5e839616f13f90a42291c4
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 61ff4edfaedb22ea88d6bb0be2390ff734879942
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97486228"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588440"
 ---
-# <a name="tutorial-get-started-with-no-locrazor-pages-in-aspnet-core"></a>자습서: ASP.NET Core에서 Razor Pages 시작
+# <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>자습서: ASP.NET Core에서 Razor Pages 시작
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -37,7 +37,7 @@ ASP.NET Core Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설�
 
 시리즈가 끝나면 영화의 데이터베이스를 관리하는 앱이 생성됩니다.  
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
 
 이 자습서에서는 다음과 같은 작업을 수행합니다.
 
@@ -66,7 +66,7 @@ ASP.NET Core Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설�
 
 ---
 
-## <a name="create-a-no-locrazor-pages-web-app"></a>Razor Pages 웹앱 만들기
+## <a name="create-a-razor-pages-web-app"></a>Razor Pages 웹앱 만들기
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -185,7 +185,7 @@ ASP.NET Core Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설�
 
 시리즈가 끝나면 영화의 데이터베이스를 관리하는 앱이 생성됩니다.  
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
 
 이 자습서에서는 다음과 같은 작업을 수행합니다.
 
@@ -214,7 +214,7 @@ ASP.NET Core Razor Pages 웹앱을 빌드하는 작업의 기본 사항을 설�
 
 ---
 
-## <a name="create-a-no-locrazor-pages-web-app"></a>Razor Pages 웹앱 만들기
+## <a name="create-a-razor-pages-web-app"></a>Razor Pages 웹앱 만들기
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -327,7 +327,7 @@ HTML 파일, JavaScript 파일, CSS 파일과 같은 정적 파일을 포함합�
 
 시리즈가 끝나면 영화의 데이터베이스를 관리하는 앱이 생성됩니다.  
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
 
 이 자습서에서는 다음과 같은 작업을 수행합니다.
 
@@ -356,7 +356,7 @@ HTML 파일, JavaScript 파일, CSS 파일과 같은 정적 파일을 포함합�
 
 ---
 
-## <a name="create-a-no-locrazor-pages-web-app"></a>Razor Pages 웹앱 만들기
+## <a name="create-a-razor-pages-web-app"></a>Razor Pages 웹앱 만들기
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

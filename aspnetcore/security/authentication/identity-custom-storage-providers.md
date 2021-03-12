@@ -18,24 +18,24 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: c89098bf0b2c4396f9856aca2be9967af5df0cb7
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f1c4366e4e4afa3dd86a816a649ad0a8b2ce817b
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051904"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588629"
 ---
-# <a name="custom-storage-providers-for-no-locaspnet-core-identity"></a>사용자 지정 저장소 공급자 ASP.NET Core Identity
+# <a name="custom-storage-providers-for-aspnet-core-identity"></a>사용자 지정 저장소 공급자 ASP.NET Core Identity
 
 작성자: [Steve Smith](https://ardalis.com/)
 
 ASP.NET Core Identity 는 사용자 지정 저장소 공급자를 만들어 앱에 연결 하는 데 사용할 수 있는 확장 가능한 시스템입니다. 이 항목에서는에 대 한 사용자 지정 저장소 공급자를 만드는 방법에 대해 설명 합니다 ASP.NET Core Identity . 사용자 고유의 저장소 공급자를 만드는 데 중요 한 개념을 설명 하지만 단계별 연습은 아닙니다.
 
-[GitHub에서 샘플 보기 또는 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample)
+[GitHub에서 샘플 보기 또는 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample)
 
 ## <a name="introduction"></a>소개
 
-기본적으로 시스템은 ASP.NET Core Identity Entity Framework Core를 사용 하 여 SQL Server 데이터베이스에 사용자 정보를 저장 합니다. 이 접근 방식은 많은 앱에서 잘 작동 합니다. 그러나 다른 지 속성 메커니즘 또는 데이터 스키마를 사용 하는 것이 좋습니다. 다음은 그 예입니다.
+기본적으로 시스템은 ASP.NET Core Identity Entity Framework Core를 사용 하 여 SQL Server 데이터베이스에 사용자 정보를 저장 합니다. 이 접근 방식은 많은 앱에서 잘 작동 합니다. 그러나 다른 지 속성 메커니즘 또는 데이터 스키마를 사용 하는 것이 좋습니다. 예를 들면 다음과 같습니다.
 
 * [Azure Table Storage](/azure/storage/) 또는 다른 데이터 저장소를 사용 합니다.
 * 데이터베이스 테이블의 구조가 다릅니다. 
@@ -51,7 +51,7 @@ ASP.NET Core Identity 는 "개별 사용자 계정" 옵션을 사용 하 여 Vis
 dotnet new mvc -au Individual
 ```
 
-## <a name="the-no-locaspnet-core-identity-architecture"></a>ASP.NET Core Identity아키텍처
+## <a name="the-aspnet-core-identity-architecture"></a>ASP.NET Core Identity아키텍처
 
 ASP.NET Core Identity 는 관리자 및 저장소 라는 클래스로 구성 됩니다. *관리자* 는 앱 개발자가 사용자 만들기와 같은 작업을 수행 하는 데 사용 하는 상위 수준 클래스입니다 Identity . *저장소* 는 사용자 및 역할과 같은 엔터티를 유지 하는 방법을 지정 하는 하위 수준 클래스입니다. 저장소는 리포지토리 패턴을 따르고 지 속성 메커니즘과 긴밀 하 게 결합 됩니다. 관리자는 저장소에서 분리 됩니다. 즉, 구성을 제외 하 고 응용 프로그램 코드를 변경 하지 않고 지 속성 메커니즘을 바꿀 수 있습니다.
 
@@ -65,7 +65,7 @@ ASP.NET Core Identity 는 관리자 및 저장소 라는 클래스로 구성 됩
 
 [새 저장소 공급자를 사용 하도록 앱 다시 구성](#reconfigure-app-to-use-a-new-storage-provider) `UserManager` `RoleManager` 사용자 지정 저장소로 및를 인스턴스화하는 방법을 보여 줍니다.
 
-## <a name="no-locaspnet-core-identity-stores-data-types"></a>ASP.NET Core Identity 데이터 형식을 저장 합니다.
+## <a name="aspnet-core-identity-stores-data-types"></a>ASP.NET Core Identity 데이터 형식을 저장 합니다.
 
 [ASP.NET Core Identity](https://github.com/aspnet/identity) 데이터 형식은 다음 섹션에 자세히 설명 되어 있습니다.
 
@@ -150,7 +150,7 @@ ASP.NET Core Identity 는 관리자 및 저장소 라는 클래스로 구성 됩
 * [IUserTwoFactorStore](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)
 * [IUserLockoutStore](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)
 
-선택적 인터페이스는에서 상속 `IUserStore<TUser>` 합니다. [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)에서 부분적으로 구현 된 샘플 사용자 저장소를 볼 수 있습니다.
+선택적 인터페이스는에서 상속 `IUserStore<TUser>` 합니다. [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)에서 부분적으로 구현 된 샘플 사용자 저장소를 볼 수 있습니다.
 
 클래스 내에서 `UserStore` 작업을 수행 하기 위해 만든 데이터 액세스 클래스를 사용 합니다. 이러한는 종속성 주입을 사용 하 여 전달 됩니다. 예를 들어, Dapper 구현이 포함 된 SQL Server 클래스에는 `UserStore` `CreateAsync` 의 인스턴스를 사용 하 여 `DapperUsersTable` 새 레코드를 삽입 하는 메서드가 있습니다.
 
@@ -181,7 +181,7 @@ ASP.NET Core Identity 는 관리자 및 저장소 라는 클래스로 구성 됩
 * **IQueryableUserStore**  
  [Iqueryableuserstore &lt; tuser &gt; ](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) 인터페이스는 쿼리 가능한 사용자 저장소를 제공 하기 위해 구현 하는 멤버를 정의 합니다.
 
-앱에 필요한 인터페이스만 구현 합니다. 다음은 그 예입니다.
+앱에 필요한 인터페이스만 구현 합니다. 예를 들면 다음과 같습니다.
 
 ```csharp
 public class UserStore : IUserStore<IdentityUser>,
@@ -195,7 +195,7 @@ public class UserStore : IUserStore<IdentityUser>,
 }
 ```
 
-### <a name="no-locidentityuserclaim-no-locidentityuserlogin-and-no-locidentityuserrole"></a>IdentityUserClaim, Identity userclaim 및 Identity UserRole
+### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>IdentityUserClaim, Identity userclaim 및 Identity UserRole
 
 `Microsoft.AspNet.Identity.EntityFramework`네임 스페이스에는 [ Identity userclaim](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1), [ Identity userclaim](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin)및 [ Identity UserRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) 클래스의 구현이 포함 되어 있습니다. 이러한 기능을 사용 하는 경우 이러한 클래스의 고유한 버전을 만들고 앱에 대 한 속성을 정의 하는 것이 좋습니다. 그러나 기본 작업 (예: 사용자의 클레임 추가 또는 제거)을 수행할 때 이러한 엔터티를 메모리로 로드 하지 않는 것이 더 효율적일 수 있습니다. 대신 백엔드 저장소 클래스는 데이터 소스에서 이러한 작업을 직접 실행할 수 있습니다. 예를 들어 `UserStore.GetClaimsAsync` 메서드를 호출 하 여 `userClaimTable.FindByUserId(user.Id)` 해당 테이블에 대 한 쿼리를 직접 실행 하 고 클레임 목록을 반환할 수 있습니다.
 
@@ -250,4 +250,4 @@ public void ConfigureServices(IServiceCollection services)
 ## <a name="references"></a>참조
 
 * [ASP.NET 4.x의 사용자 지정 저장소 공급자 Identity](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
-* [ASP.NET Core Identity](https://github.com/dotnet/AspNetCore/tree/master/src/Identity):이 리포지토리에는 커뮤니티에서 유지 관리 하는 저장소 공급자에 대 한 링크가 포함 되어 있습니다.
+* [ASP.NET Core Identity](https://github.com/dotnet/AspNetCore/tree/main/src/Identity):이 리포지토리에는 커뮤니티에서 유지 관리 하는 저장소 공급자에 대 한 링크가 포함 되어 있습니다.

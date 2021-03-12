@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/background-services
-ms.openlocfilehash: 4b877c64a881fec15ac9e9bd74ffdde0b5fa60f9
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 9d95d7c9a33bcf2f4a603d815269752124133ee6
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530179"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589701"
 ---
 # <a name="host-aspnet-core-signalr-in-background-services"></a>SignalR백그라운드 서비스의 호스트 ASP.NET Core
 
@@ -37,12 +37,12 @@ ms.locfileid: "99530179"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/samples/3.x)[(다운로드 방법)](xref:index#how-to-download-a-sample)
+[샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/background-service/samples/3.x)[(다운로드 방법)](xref:index#how-to-download-a-sample)
 
 ::: moniker-end
 ::: moniker range="<= aspnetcore-2.2"
 
-[샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/samples/2.2)[(다운로드 방법)](xref:index#how-to-download-a-sample)
+[샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/background-service/samples/2.2)[(다운로드 방법)](xref:index#how-to-download-a-sample)
 
 ::: moniker-end
 
@@ -158,7 +158,7 @@ public partial class ClockHubClient : IClock, IHostedService
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [시작](xref:tutorials/signalr)
 * [허브](xref:signalr/hubs)

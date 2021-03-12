@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 55993f951bfe910fb179fdb25b8d04f81d4ee2c9
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 44e6570090de9c5f3550d18a30fcde758fb16f85
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057462"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588525"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core에서 URL 재작성 미들웨어
 
@@ -47,7 +47,7 @@ URL 재작성은 하나 이상의 미리 정의된 규칙을 기반으로 하는
 > [!NOTE]
 > URL 재작성은 응용 프로그램의 성능을 저하시킬 수 있습니다. 가능한 경우 규칙의 수와 복잡성을 제한합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="url-redirect-and-url-rewrite"></a>URL 리디렉션 및 URL 재작성
 
@@ -77,7 +77,7 @@ URL 재작성은 하나 이상의 미리 정의된 규칙을 기반으로 하는
 
 ## <a name="url-rewriting-sample-app"></a>URL 재작성 예제 응용 프로그램
 
-[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)을 사용하면 URL 재작성 미들웨어의 기능을 살펴볼 수 있습니다. 이 앱은 리디렉션 및 재작성 규칙을 적용하고, 여러 시나리오에 대해 리디렉션되거나 다시 작성된 URL을 표시합니다.
+[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/)을 사용하면 URL 재작성 미들웨어의 기능을 살펴볼 수 있습니다. 이 앱은 리디렉션 및 재작성 규칙을 적용하고, 여러 시나리오에 대해 리디렉션되거나 다시 작성된 URL을 표시합니다.
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>URL 재작성 미들웨어를 사용해야 하는 경우
 
@@ -399,7 +399,7 @@ URL 재작성은 하나 이상의 미리 정의된 규칙을 기반으로 하는
 > [!NOTE]
 > URL 재작성은 응용 프로그램의 성능을 저하시킬 수 있습니다. 가능한 경우 규칙의 수와 복잡성을 제한합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="url-redirect-and-url-rewrite"></a>URL 리디렉션 및 URL 재작성
 
@@ -429,7 +429,7 @@ URL 재작성은 하나 이상의 미리 정의된 규칙을 기반으로 하는
 
 ## <a name="url-rewriting-sample-app"></a>URL 재작성 예제 응용 프로그램
 
-[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)을 사용하면 URL 재작성 미들웨어의 기능을 살펴볼 수 있습니다. 이 앱은 리디렉션 및 재작성 규칙을 적용하고, 여러 시나리오에 대해 리디렉션되거나 다시 작성된 URL을 표시합니다.
+[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/)을 사용하면 URL 재작성 미들웨어의 기능을 살펴볼 수 있습니다. 이 앱은 리디렉션 및 재작성 규칙을 적용하고, 여러 시나리오에 대해 리디렉션되거나 다시 작성된 URL을 표시합니다.
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>URL 재작성 미들웨어를 사용해야 하는 경우
 

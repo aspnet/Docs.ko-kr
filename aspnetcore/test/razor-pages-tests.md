@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: test/razor-pages-tests
-ms.openlocfilehash: 2486eb8c9fd0fc33ea77b0fedd99795218d7f4ca
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a67f51561d0a165db04418f2040ffe68e3ebe8ce
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058040"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588492"
 ---
-# <a name="no-locrazor-pages-unit-tests-in-aspnet-core"></a>ASP.NET Core의 Razor Pages 단위 테스트
+# <a name="razor-pages-unit-tests-in-aspnet-core"></a>ASP.NET Core의 Razor Pages 단위 테스트
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -43,7 +43,7 @@ ASP.NET Core는 Razor Pages 앱의 단위 테스트를 지원합니다. DAL(데�
 * <xref:tutorials/razor-pages/razor-pages-start>
 * [dotnet 테스트 및 xUnit을 사용하여 .NET Core에서 C# 단위 테스트](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/test/razor-pages-tests/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 샘플 프로젝트는 다음 두 앱으로 구성됩니다.
 
@@ -227,7 +227,7 @@ ASP.NET Core는 Razor Pages 앱의 단위 테스트를 지원합니다. DAL(데�
 * <xref:tutorials/razor-pages/razor-pages-start>
 * [dotnet 테스트 및 xUnit을 사용하여 .NET Core에서 C# 단위 테스트](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/test/razor-pages-tests/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 샘플 프로젝트는 다음 두 앱으로 구성됩니다.
 

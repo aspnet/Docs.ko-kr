@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: 412f95e67fa35e952a907db328395183f1698b9e
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: 21f2a65bd93c08f16de988381e648768debde438
+ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102587218"
+ms.locfileid: "102605596"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>MVC 및 페이지 ASP.NET Core의 모델 유효성 검사 Razor
 
@@ -90,7 +90,7 @@ ms.locfileid: "102587218"
 
 `Name` 속성에 적용할 경우 위의 코드에 의해 생성되는 오류 메시지는 "이름의 길이는 6문자에서 8문자 사이여야 합니다"일 것입니다.
 
-특정 특성의 오류 메시지에 대해 `String.Format` 에 전달되는 매개 변수를 알아보려면 [DataAnnotations 소스 코드](https://github.com/dotnet/runtime/tree/master/src/libraries/System.ComponentModel.Annotations/src/System/ComponentModel/DataAnnotations)를 참조하세요.
+특정 특성의 오류 메시지에 대해 `String.Format` 에 전달되는 매개 변수를 알아보려면 [DataAnnotations 소스 코드](https://github.com/dotnet/runtime/tree/main/src/libraries/System.ComponentModel.Annotations/src/System/ComponentModel/DataAnnotations)를 참조하세요.
 
 ## <a name="non-nullable-reference-types-and-required-attribute"></a>Nullable이 아닌 참조 형식 및 [Required] 특성
 
