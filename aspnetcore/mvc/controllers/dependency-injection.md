@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 1282cd984584be423fba755e64e5d2f1afd2af89
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f3654e008733c57b4cd4cd34a52b747af2258be1
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060614"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589077"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>ASP.NET Core의 컨트롤러에 종속성 주입
 
@@ -32,7 +32,7 @@ ms.locfileid: "93060614"
 
 ASP.NET Core MVC 컨트롤러는 생성자를 통해 명시적으로 종속성을 요청합니다. ASP.NET Core는 기본적으로 [DI(종속성 주입 )](xref:fundamentals/dependency-injection)를 지원합니다. DI를 사용하면 앱의 테스트와 유지 관리가 쉬워집니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/dependency-injection/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="constructor-injection"></a>생성자 주입
 
@@ -66,7 +66,7 @@ ASP.NET Core MVC 컨트롤러는 생성자를 통해 명시적으로 종속성�
 
 컨트롤러 내에서 앱 또는 구성 설정에 액세스하는 것은 일반적인 패턴입니다. <xref:fundamentals/configuration/options>에 설명된 *옵션 패턴* 은 설정을 관리하기 위해 선호되는 방법입니다. 일반적으로 컨트롤러에 <xref:Microsoft.Extensions.Configuration.IConfiguration>을 직접 주입하지 마세요.
 
-옵션을 나타내는 클래스를 만듭니다. 다음은 그 예입니다.
+옵션을 나타내는 클래스를 만듭니다. 예를 들면 다음과 같습니다.
 
 [!code-csharp[](dependency-injection/3.1sample/ControllerDI/Models/SampleWebSettings.cs?name=snippet)]
 
@@ -96,7 +96,7 @@ JSON 형식 파일에서 설정을 읽도록 앱을 구성합니다.
 
 ASP.NET Core MVC 컨트롤러는 생성자를 통해 명시적으로 종속성을 요청합니다. ASP.NET Core는 기본적으로 [DI(종속성 주입 )](xref:fundamentals/dependency-injection)를 지원합니다. DI를 사용하면 앱의 테스트와 유지 관리가 쉬워집니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/dependency-injection/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="constructor-injection"></a>생성자 주입
 
@@ -130,7 +130,7 @@ ASP.NET Core MVC 컨트롤러는 생성자를 통해 명시적으로 종속성�
 
 컨트롤러 내에서 앱 또는 구성 설정에 액세스하는 것은 일반적인 패턴입니다. <xref:fundamentals/configuration/options>에 설명된 *옵션 패턴* 은 설정을 관리하기 위해 선호되는 방법입니다. 일반적으로 컨트롤러에 <xref:Microsoft.Extensions.Configuration.IConfiguration>을 직접 주입하지 마세요.
 
-옵션을 나타내는 클래스를 만듭니다. 다음은 그 예입니다.
+옵션을 나타내는 클래스를 만듭니다. 예를 들면 다음과 같습니다.
 
 [!code-csharp[](dependency-injection/sample/ControllerDI/Models/SampleWebSettings.cs?name=snippet)]
 

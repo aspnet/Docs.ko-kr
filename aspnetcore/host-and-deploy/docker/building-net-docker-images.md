@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 2cd21722082af88e536bc1001b606ee96e7cf59b
-ms.sourcegitcommit: b64c44ba5e3abb4ad4d50de93b7e282bf0f251e4
+ms.openlocfilehash: b29ce03366e5c0e815de0874f5b96efb9ba5326c
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97972056"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585957"
 ---
 # <a name="docker-images-for-aspnet-core"></a>ASP.NET Core의 Docker 이미지
 
@@ -341,7 +341,7 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 
 ## <a name="next-steps"></a>다음 단계
 
-샘플 앱이 포함된 Git 리포지토리도 문서를 포함합니다. 리포지토리에서 사용 가능한 리소스의 개요를 보려면 [README 파일](https://github.com/dotnet/dotnet-docker/blob/master/samples/aspnetapp/README.md)을 참조하세요. 특히, HTTPS를 구현하는 방법을 알아봅니다.
+샘플 앱이 포함된 Git 리포지토리도 문서를 포함합니다. 리포지토리에서 사용 가능한 리소스의 개요를 보려면 [README 파일](https://github.com/dotnet/dotnet-docker/blob/main/samples/aspnetapp/README.md)을 참조하세요. 특히, HTTPS를 구현하는 방법을 알아봅니다.
 
 > [!div class="nextstepaction"]
-> [Developing ASP.NET Core Applications with Docker over HTTPS](https://github.com/dotnet/dotnet-docker/blob/master/samples/run-aspnetcore-https-development.md)(HTTPS를 통해 Docker를 사용하여 ASP.NET Core 애플리케이션 개발)
+> [Developing ASP.NET Core Applications with Docker over HTTPS](https://github.com/dotnet/dotnet-docker/blob/main/samples/run-aspnetcore-https-development.md)(HTTPS를 통해 Docker를 사용하여 ASP.NET Core 애플리케이션 개발)

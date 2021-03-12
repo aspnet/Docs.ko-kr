@@ -19,22 +19,22 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/dotnet-client
-ms.openlocfilehash: 7849322e50aeceda0850d94f9c9bcda79a6051c8
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: db2bfa6d3aa440615c5a9c17ae843dbe22755c97
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061225"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589246"
 ---
-# <a name="aspnet-core-no-locsignalr-net-client"></a>ASP.NET Core SignalR .Net 클라이언트
+# <a name="aspnet-core-signalr-net-client"></a>ASP.NET Core SignalR .Net 클라이언트
 
 ASP.NET Core SignalR .net 클라이언트 라이브러리를 사용 하면 SignalR .net 앱에서 허브와 통신할 수 있습니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/dotnet-client/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 이 문서의 코드 샘플은 ASP.NET Core .Net 클라이언트를 사용 하는 WPF 앱입니다 SignalR .
 
-## <a name="install-the-no-locsignalr-net-client-package"></a>.Net 클라이언트 패키지를 설치 합니다. SignalR
+## <a name="install-the-signalr-net-client-package"></a>.Net 클라이언트 패키지를 설치 합니다. SignalR
 
 [AspNetCore. SignalR 클라이언트](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) 패키지는 .net 클라이언트에서 허브에 연결 하는 데 필요 SignalR 합니다.
 

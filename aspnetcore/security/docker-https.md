@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-https
-ms.openlocfilehash: a4aac2ce06fee20bdef157efc361f3099a217b1a
-ms.sourcegitcommit: 619200f2981656ede6d89adb6a22ad1a0e16da22
+ms.openlocfilehash: 3af2aff477604eb19ac211753f848d08d0c67c72
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96332156"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588642"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-over-https"></a>HTTPS를 통해 Docker를 사용 하 여 ASP.NET Core 이미지 호스팅
 
@@ -33,11 +33,11 @@ ASP.NET Core는 [기본적으로 HTTPS를](./enforcing-ssl.md)사용 합니다. 
 
 이 문서에서는 HTTPS를 사용 하 여 미리 작성 된 컨테이너 이미지를 실행 하는 방법을 설명 합니다.
 
-개발 시나리오는 [HTTPS를 통해 Docker를 사용 하 여 ASP.NET Core 응용 프로그램 개발](https://github.com/dotnet/dotnet-docker/blob/master/samples/run-aspnetcore-https-development.md) 을 참조 하세요.
+개발 시나리오는 [HTTPS를 통해 Docker를 사용 하 여 ASP.NET Core 응용 프로그램 개발](https://github.com/dotnet/dotnet-docker/blob/main/samples/run-aspnetcore-https-development.md) 을 참조 하세요.
 
-이 샘플에는 docker [클라이언트](https://www.docker.com/products/docker)의 [docker 17.06](https://docs.docker.com/release-notes/docker-ce) 이상이 필요 합니다.
+이 샘플에서는 [Docker 17.06](https://docs.docker.com/release-notes/docker-ce) 이상의 [Docker 클라이언트](https://www.docker.com/products/docker)가 필요합니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 이 문서의 지침 중 일부에는 [.Net Core 2.2 SDK](https://dotnet.microsoft.com/download) 이상이 필요 합니다.
 
@@ -54,7 +54,7 @@ ASP.NET Core는 [기본적으로 HTTPS를](./enforcing-ssl.md)사용 합니다. 
 * `dotnet dev-certs`도구는 필요 하지 않습니다.
 * 지침에 사용 되는 위치에 인증서를 저장할 필요가 없습니다. 사이트 디렉터리 내에 인증서를 저장 하지 않는 것이 좋지만 모든 위치는 작동 해야 합니다.
 
-다음 섹션에 포함 된 지침은 Docker의 명령줄 옵션을 사용 하 여 컨테이너에 인증서를 탑재 합니다 `-v` . Dockerfile의 명령을 사용 하 여 컨테이너 이미지에 인증서를 추가할 수 `COPY` 있지만 권장 되지는 않습니다. *Dockerfile* 다음과 같은 이유로 인증서를 이미지로 복사 하는 것은 권장 되지 않습니다.
+다음 섹션에 포함 된 지침은 Docker의 명령줄 옵션을 사용 하 여 컨테이너에 인증서를 탑재 합니다 `-v` . Dockerfile의 명령을 사용 하 여 컨테이너 이미지에 인증서를 추가할 수 `COPY` 있지만 권장 되지는 않습니다.  다음과 같은 이유로 인증서를 이미지로 복사 하는 것은 권장 되지 않습니다.
 
 * 개발자 인증서를 사용 하 여 테스트 하는 데 동일한 이미지를 사용 하는 것은 어렵습니다.
 * 프로덕션 인증서를 사용 하 여 호스트 하는 데 동일한 이미지를 사용 하는 것은 어렵습니다.
@@ -102,7 +102,7 @@ dotnet dev-certs https --trust
 
 위의 명령에서을 암호로 바꿉니다 `{ password here }` .
 
-HTTPS에 대해 구성 된 ASP.NET Core를 사용 하 여 컨테이너 이미지를 실행 합니다.
+HTTPS용으로 구성된 ASP.NET Core를 사용하여 컨테이너 이미지를 실행합니다.
 
 ```console
 docker pull mcr.microsoft.com/dotnet/core/samples:aspnetapp
@@ -122,7 +122,7 @@ dotnet dev-certs https --trust
 
 위의 명령에서을 암호로 바꿉니다 `{ password here }` . [PowerShell](/powershell/scripting/overview)을 사용 하는 경우를 `%USERPROFILE%` 로 바꿉니다 `$env:USERPROFILE` .
 
-HTTPS에 대해 구성 된 ASP.NET Core를 사용 하 여 컨테이너 이미지를 실행 합니다.
+HTTPS용으로 구성된 ASP.NET Core를 사용하여 컨테이너 이미지를 실행합니다.
 
 ```console
 docker pull mcr.microsoft.com/dotnet/core/samples:aspnetapp

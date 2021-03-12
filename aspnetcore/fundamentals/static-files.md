@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: fad569ab06735600299d8051a258651e329db8ce
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 807cffb2f9b3bf89ff06c62e76d51d4040b8d91a
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100107183"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589012"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core의 정적 파일
 
@@ -31,7 +31,7 @@ ms.locfileid: "100107183"
 
 HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 기본적으로 ASP.NET Core 앱이 클라이언트에 직접 제공하는 자산입니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/static-files/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="serve-static-files"></a>정적 파일 제공
 
@@ -123,7 +123,7 @@ ASP.NET Core 템플릿은 <xref:Microsoft.AspNetCore.Builder.AuthorizationAppBui
 
   <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A>는 <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement>를 현재 인스턴스에 추가하여 현재 사용자가 인증될 것을 요구합니다.
 
-  기본 정적 파일 미들웨어(`app.UseStaticFiles();`)가 `UseAuthentication` 전에 호출되기 때문에 `wwwroot` 아래의 정적 자산은 공개적으로 액세스할 수 있습니다. *MyStaticFiles* 폴더의 정적 자산에는 인증이 필요합니다. [샘플 코드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples)는 이를 보여 줍니다.
+  기본 정적 파일 미들웨어(`app.UseStaticFiles();`)가 `UseAuthentication` 전에 호출되기 때문에 `wwwroot` 아래의 정적 자산은 공개적으로 액세스할 수 있습니다. *MyStaticFiles* 폴더의 정적 자산에는 인증이 필요합니다. [샘플 코드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/static-files/samples)는 이를 보여 줍니다.
 
 권한 부여를 기반으로 파일을 제공하는 대체 방법은 다음과 같습니다.
 
@@ -289,7 +289,7 @@ URL은 파일 계층 구조 및 이전 코드를 사용하여 다음과 같이 �
 
 HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 ASP.NET Core 앱이 클라이언트에 직접 제공하는 자산입니다. 일부 구성은 이러한 파일을 제공하는 데 필수적입니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/static-files/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="serve-static-files"></a>정적 파일 제공
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 03a49c827a1f70e6b721adf293857bb33475ed36
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 6e9d2c3180fb9e4c3e5ccc0b6d8e17183f78d698
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100107079"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109847"
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>ASP.NET Core Blazor 수명 주기
 
@@ -253,11 +253,21 @@ Blazor 템플릿의 `FetchData` 구성 요소에서 <xref:Microsoft.AspNetCore.C
 
 Blazor Server 템플릿의 `Pages/FetchData.razor`:
 
-[!code-razor[](lifecycle/samples_snapshot/FetchData.razor?highlight=9,21,25)]
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_Server/Pages/components-lifecycle/FetchData.razor?name=snippet&highlight=9,21,25)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_Server/Pages/components-lifecycle/FetchData.razor?name=snippet&highlight=9,21,25)]
+
+::: moniker-end
 
 ## <a name="handle-errors"></a>오류 처리
 
-수명 주기 메서드 실행 중의 오류 처리 방법에 대한 자세한 내용은 <xref:blazor/fundamentals/handle-errors#lifecycle-methods>를 참조하세요.
+수명 주기 메서드 실행 중의 오류 처리 방법에 대한 자세한 내용은 <xref:blazor/fundamentals/handle-errors>를 참조하세요.
 
 ## <a name="stateful-reconnection-after-prerendering"></a>미리 렌더링 후의 상태 저장 다시 연결
 
@@ -395,11 +405,31 @@ public async ValueTask DisposeAsync()
 
 * 프라이빗 필드 및 람다 접근 방식
 
-  [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-1.razor?highlight=23,28)]
+  ::: moniker range=">= aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/components-lifecycle/EventHandlerDisposal1.razor?name=snippet&highlight=24,29)]
+
+  ::: moniker-end
+
+  ::: moniker range="< aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/components-lifecycle/EventHandlerDisposal1.razor?name=snippet&highlight=24,29)]
+
+  ::: moniker-end
 
 * 프라이빗 메서드 접근 방식
 
-  [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-2.razor?highlight=16,26)]
+  ::: moniker range=">= aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/components-lifecycle/EventHandlerDisposal2.razor?name=snippet&highlight=16,26)]
+
+  ::: moniker-end
+
+  ::: moniker range="< aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/components-lifecycle/EventHandlerDisposal2.razor?name=snippet&highlight=16,26)]
+
+  ::: moniker-end
 
 [익명 함수](/dotnet/csharp/programming-guide/statements-expressions-operators/anonymous-functions), 메서드 또는 식이 사용되는 경우에는 <xref:System.IDisposable>을 구현하고 대리자를 구독 취소할 필요가 없습니다. 그러나 대리자를 구독 취소하지 못하면 **이벤트를 노출하는 개체가 대리자를 등록하는 구성 요소보다 수명이 긴 경우** 문제가 됩니다. 이 경우 등록된 대리자가 원래 개체를 활성 상태로 유지하기 때문에 메모리 누수가 발생합니다. 따라서 이벤트 대리자가 신속하게 삭제됨을 알고 있는 경우에만 다음 접근 방식을 사용합니다. 삭제해야 하는 개체의 수명이 확실하지 않으면 대리자 메서드를 구독하고 위 예제에 표시된 대로 대리자를 적절하게 삭제합니다.
 

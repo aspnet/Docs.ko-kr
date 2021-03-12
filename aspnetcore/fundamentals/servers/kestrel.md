@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: d53cafb605939fd85bdbb71b2fbf13e7bd7a9b7b
-ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
+ms.openlocfilehash: 54d7304430c2a77347b6e3279f638cf6d7add77e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98571001"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589047"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core에서 Kestrel 웹 서버 구현
 
@@ -45,7 +45,7 @@ Kestrel에서는 다음 시나리오를 지원합니다.
 
 Kestrel은 .NET Core에서 지원하는 모든 플랫폼 및 버전에서 지원됩니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/5.x) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/5.x) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="get-started"></a>시작하기
 
@@ -93,7 +93,7 @@ Kestrel에서는 다음 시나리오를 지원합니다.
 
 Kestrel은 .NET Core에서 지원하는 모든 플랫폼 및 버전에서 지원됩니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/3.x) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/3.x) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="http2-support"></a>HTTP/2 지원
 
@@ -1092,7 +1092,7 @@ Kestrel에서는 다음 시나리오를 지원합니다.
 
 Kestrel은 .NET Core에서 지원하는 모든 플랫폼 및 버전에서 지원됩니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="http2-support"></a>HTTP/2 지원
 
@@ -2078,7 +2078,7 @@ Kestrel에서는 다음 시나리오를 지원합니다.
 
 Kestrel은 .NET Core에서 지원하는 모든 플랫폼 및 버전에서 지원됩니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Kestrel을 역방향 프록시와 함께 사용하는 경우
 

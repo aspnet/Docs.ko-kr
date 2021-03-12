@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/environments
-ms.openlocfilehash: a5ead59e467da331b585e8daefb1d7d259c7edba
-ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
+ms.openlocfilehash: 86484fe2e2ce8e20e397a78f118d8b1bbe0cc88a
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101101050"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395112"
 ---
 # <a name="aspnet-core-blazor-environments"></a>ASP.NET Core Blazor 환경
 
@@ -33,7 +33,7 @@ ms.locfileid: "101101050"
 
 앱을 로컬에서 실행하면 환경이 기본적으로 개발로 설정됩니다. 앱이 게시되면 환경이 기본적으로 프로덕션으로 설정됩니다.
 
-호스트된 Blazor WebAssembly 솔루션의 클라이언트 쪽 Blazor 앱( *`Client`* )은 브라우저에 환경을 전달하는 미들웨어를 통해 솔루션의 *`Server`* 앱에서 환경을 결정합니다. *`Server`* 앱은 환경이 포함된 `blazor-environment`라는 헤더를 헤더 값으로 추가합니다. *`Client`* 앱은 헤더를 읽습니다. 솔루션의 *`Server`* 앱은 ASP.NET Core 앱이므로 환경을 구성하는 방법에 대한 자세한 내용은 <xref:fundamentals/environments>을 참조하세요.
+호스트된 Blazor WebAssembly 솔루션의 클라이언트 쪽 Blazor 앱( **`Client`** )은 브라우저에 환경을 전달하는 미들웨어를 통해 솔루션의 **`Server`** 앱에서 환경을 결정합니다. **`Server`** 앱은 환경이 포함된 `blazor-environment`라는 헤더를 헤더 값으로 추가합니다. **`Client`** 앱은 헤더를 읽습니다. 솔루션의 **`Server`** 앱은 ASP.NET Core 앱이므로 환경을 구성하는 방법에 대한 자세한 내용은 <xref:fundamentals/environments>을 참조하세요.
 
 로컬에서 실행되는 독립 실행형 Blazor WebAssembly 앱의 경우 개발 서버는 `blazor-environment` 헤더를 추가하여 개발 환경을 지정합니다. 다른 호스팅 환경을 위한 환경을 지정하려면 `blazor-environment` 헤더를 추가합니다.
 

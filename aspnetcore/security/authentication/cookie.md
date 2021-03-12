@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/cookie
-ms.openlocfilehash: 04469e0e75c433b40b364873a7e72e30421936f4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5b1f1bb3de7126c401a81b89b99a45c7e45f8f8d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061355"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586295"
 ---
-# <a name="use-no-loccookie-authentication-without-no-locaspnet-core-identity"></a>인증을 사용 cookie 하지 않고 사용 ASP.NET Core Identity
+# <a name="use-cookie-authentication-without-aspnet-core-identity"></a>인증을 사용 cookie 하지 않고 사용 ASP.NET Core Identity
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -33,11 +33,11 @@ ms.locfileid: "93061355"
 
 ASP.NET Core Identity 는 로그인을 만들고 유지 관리 하기 위한 완전 한 기능을 갖춘 완전 한 인증 공급자입니다. 그러나를 cookie 사용 하지 않는 기반 인증 공급자를 ASP.NET Core Identity 사용할 수 있습니다. 자세한 내용은 <xref:security/authentication/identity>를 참조하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/cookie/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 샘플 앱의 데모용으로, 가상 사용자 (민 Rodriguez)의 사용자 계정이 앱에 하드 코딩 됩니다. **전자 메일** 주소 `maria.rodriguez@contoso.com` 및 암호를 사용 하 여 사용자를 로그인 합니다. 사용자는 `AuthenticateUser` *Pages/Account/Login. cshtml* 파일의 메서드에서 인증 됩니다. 실제 예제에서는 사용자가 데이터베이스에 대해 인증 됩니다.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>구성
 
 `Startup.ConfigureServices`메서드에서 및 메서드를 사용 하 여 인증 미들웨어 서비스를 <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> 만듭니다 <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> .
 
@@ -65,7 +65,7 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     });
 ```
 
-## <a name="no-loccookie-policy-middleware"></a>Cookie 정책 미들웨어
+## <a name="cookie-policy-middleware"></a>Cookie 정책 미들웨어
 
 [ Cookie 정책 미들웨어](xref:Microsoft.AspNetCore.CookiePolicy.CookiePolicyMiddleware) cookie 를 통해 정책 기능을 사용할 수 있습니다. 응용 프로그램 처리 파이프라인에 미들웨어를 추가 하는 것은 순서를 구분 하기 때문에 &mdash; 파이프라인에 등록 된 다운스트림 구성 요소에만 영향을 줍니다.
 
@@ -92,7 +92,7 @@ Cookie의 정책 미들웨어 설정은 `MinimumSameSitePolicy` `Cookie.SameSite
 | SameSiteMode.Lax      | SameSiteMode.None<br>SameSiteMode.Lax<br>SameSiteMode.Strict | SameSiteMode.Lax<br>SameSiteMode.Lax<br>SameSiteMode.Strict |
 | SameSiteMode.Strict   | SameSiteMode.None<br>SameSiteMode.Lax<br>SameSiteMode.Strict | SameSiteMode.Strict<br>SameSiteMode.Strict<br>SameSiteMode.Strict |
 
-## <a name="create-an-authentication-no-loccookie"></a>인증 만들기 cookie
+## <a name="create-an-authentication-cookie"></a>인증 만들기 cookie
 
 cookie보유 사용자 정보를 만들려면를 구성 <xref:System.Security.Claims.ClaimsPrincipal> 합니다. 사용자 정보는 serialize 되 고에 저장 됩니다 cookie . 
 
@@ -209,7 +209,7 @@ services.AddScoped<CustomCookieAuthenticationEvents>();
 > [!WARNING]
 > 여기에 설명 된 방법은 모든 요청에서 트리거됩니다. 모든 cookie 요청에서 모든 사용자에 대 한 인증의 유효성을 검사 하면 앱에 대 한 성능 저하가 발생할 수 있습니다.
 
-## <a name="persistent-no-loccookies"></a>영구 cookie s
+## <a name="persistent-cookies"></a>영구 cookie s
 
 가 cookie 브라우저 세션에서 지속 되도록 할 수 있습니다. 이 지 속성은 로그인 또는 유사한 메커니즘에서 "사용자 이름" 확인란을 사용 하 여 명시적인 사용자 동의로만 설정 해야 합니다. 
 
@@ -229,7 +229,7 @@ await HttpContext.SignInAsync(
     });
 ```
 
-## <a name="absolute-no-loccookie-expiration"></a>절대 cookie 만료
+## <a name="absolute-cookie-expiration"></a>절대 cookie 만료
 
 절대 만료 시간은를 사용 하 여 설정할 수 있습니다 <xref:Microsoft.AspNetCore.Authentication.AuthenticationProperties.ExpiresUtc> . 영구을 만들려면 cookie `IsPersistent` 도 설정 해야 합니다. 그렇지 않은 경우는 cookie 세션 기반 수명으로 생성 되며 보유 한 인증 티켓 전이나 후에 만료 될 수 있습니다. `ExpiresUtc`가 설정 되 면 <xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions.ExpireTimeSpan> 설정 된 경우의 옵션 값을 재정의 합니다 <xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> .
 
@@ -254,11 +254,11 @@ await HttpContext.SignInAsync(
 
 ASP.NET Core Identity 는 로그인을 만들고 유지 관리 하기 위한 완전 한 기능을 갖춘 완전 한 인증 공급자입니다. 그러나를 cookie 사용 하지 않는 기반 인증 공급자를 ASP.NET Core Identity 사용할 수 있습니다. 자세한 내용은 <xref:security/authentication/identity>를 참조하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/cookie/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 샘플 앱의 데모용으로, 가상 사용자 (민 Rodriguez)의 사용자 계정이 앱에 하드 코딩 됩니다. **전자 메일** 주소 `maria.rodriguez@contoso.com` 및 암호를 사용 하 여 사용자를 로그인 합니다. 사용자는 `AuthenticateUser` *Pages/Account/Login. cshtml* 파일의 메서드에서 인증 됩니다. 실제 예제에서는 사용자가 데이터베이스에 대해 인증 됩니다.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>구성
 
 앱이 [AspNetCore 메타 패키지](xref:fundamentals/metapackage-app)를 사용 하지 않는 경우 프로젝트 파일에서 [AspNetCore Cookie 에 대 한 패키지 참조를 만듭니다. s](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/) 패키지.
 
@@ -288,7 +288,7 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     });
 ```
 
-## <a name="no-loccookie-policy-middleware"></a>Cookie 정책 미들웨어
+## <a name="cookie-policy-middleware"></a>Cookie 정책 미들웨어
 
 [ Cookie 정책 미들웨어](xref:Microsoft.AspNetCore.CookiePolicy.CookiePolicyMiddleware) cookie 를 통해 정책 기능을 사용할 수 있습니다. 응용 프로그램 처리 파이프라인에 미들웨어를 추가 하는 것은 순서를 구분 하기 때문에 &mdash; 파이프라인에 등록 된 다운스트림 구성 요소에만 영향을 줍니다.
 
@@ -315,7 +315,7 @@ Cookie의 정책 미들웨어 설정은 `MinimumSameSitePolicy` `Cookie.SameSite
 | SameSiteMode.Lax      | SameSiteMode.None<br>SameSiteMode.Lax<br>SameSiteMode.Strict | SameSiteMode.Lax<br>SameSiteMode.Lax<br>SameSiteMode.Strict |
 | SameSiteMode.Strict   | SameSiteMode.None<br>SameSiteMode.Lax<br>SameSiteMode.Strict | SameSiteMode.Strict<br>SameSiteMode.Strict<br>SameSiteMode.Strict |
 
-## <a name="create-an-authentication-no-loccookie"></a>인증 만들기 cookie
+## <a name="create-an-authentication-cookie"></a>인증 만들기 cookie
 
 cookie보유 사용자 정보를 만들려면를 구성 <xref:System.Security.Claims.ClaimsPrincipal> 합니다. 사용자 정보는 serialize 되 고에 저장 됩니다 cookie . 
 
@@ -426,7 +426,7 @@ services.AddScoped<CustomCookieAuthenticationEvents>();
 > [!WARNING]
 > 여기에 설명 된 방법은 모든 요청에서 트리거됩니다. 모든 cookie 요청에서 모든 사용자에 대 한 인증의 유효성을 검사 하면 앱에 대 한 성능 저하가 발생할 수 있습니다.
 
-## <a name="persistent-no-loccookies"></a>영구 cookie s
+## <a name="persistent-cookies"></a>영구 cookie s
 
 가 cookie 브라우저 세션에서 지속 되도록 할 수 있습니다. 이 지 속성은 로그인 또는 유사한 메커니즘에서 "사용자 이름" 확인란을 사용 하 여 명시적인 사용자 동의로만 설정 해야 합니다. 
 
@@ -446,7 +446,7 @@ await HttpContext.SignInAsync(
     });
 ```
 
-## <a name="absolute-no-loccookie-expiration"></a>절대 cookie 만료
+## <a name="absolute-cookie-expiration"></a>절대 cookie 만료
 
 절대 만료 시간은를 사용 하 여 설정할 수 있습니다 <xref:Microsoft.AspNetCore.Authentication.AuthenticationProperties.ExpiresUtc> . 영구을 만들려면 cookie `IsPersistent` 도 설정 해야 합니다. 그렇지 않은 경우는 cookie 세션 기반 수명으로 생성 되며 보유 한 인증 티켓 전이나 후에 만료 될 수 있습니다. `ExpiresUtc`가 설정 되 면 <xref:Microsoft.AspNetCore.Builder.CookieAuthenticationOptions.ExpireTimeSpan> 설정 된 경우의 옵션 값을 재정의 합니다 <xref:Microsoft.AspNetCore.Builder.CookieAuthenticationOptions> .
 

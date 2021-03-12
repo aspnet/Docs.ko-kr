@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: ebd3c0dc9baa63b30f142773d7a3d621ce4082d9
-ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
+ms.openlocfilehash: 662456af59c453df66ca48139a6de40d0e2cbf0d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689307"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589194"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>권한 부여로 보호 되는 사용자 데이터를 사용 하 여 ASP.NET Core 웹 앱 만들기
 
@@ -75,7 +75,7 @@ ms.locfileid: "98689307"
 * `ContactManagerAuthorizationHandler`: 관리자가 연락처를 승인 하거나 거부할 수 있습니다.
 * `ContactAdministratorsAuthorizationHandler`: 관리자가 연락처를 승인 또는 거부 하 고 연락처를 편집/삭제할 수 있습니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 이 자습서는 고급입니다. 다음에 대해 잘 알고 있어야 합니다.
 
@@ -87,11 +87,11 @@ ms.locfileid: "98689307"
 
 ## <a name="the-starter-and-completed-app"></a>시작 및 완료 된 앱
 
-[완성](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) 된 앱을 [다운로드](xref:index#how-to-download-a-sample) 합니다. 보안 기능에 익숙해질 수 있도록 완성 된 앱을 [테스트](#test-the-completed-app) 합니다.
+[완성](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples) 된 앱을 [다운로드](xref:index#how-to-download-a-sample) 합니다. 보안 기능에 익숙해질 수 있도록 완성 된 앱을 [테스트](#test-the-completed-app) 합니다.
 
 ### <a name="the-starter-app"></a>시작 앱
 
-[시작](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) 앱을 [다운로드](xref:index#how-to-download-a-sample) 합니다.
+[시작](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples/) 앱을 [다운로드](xref:index#how-to-download-a-sample) 합니다.
 
 앱을 실행 하 고, 연락처 **관리자** 링크를 탭 하 고, 연락처를 만들고, 편집 하 고, 삭제할 수 있는지 확인 합니다. 시작 앱을 만들려면 [스타터 앱 만들기](#create-the-starter-app)를 참조 하세요.
 
@@ -114,7 +114,7 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-no-locidentity"></a>역할 서비스 추가 Identity
+### <a name="add-role-services-to-identity"></a>역할 서비스 추가 Identity
 
 역할 서비스를 추가 하려면 [Addroles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) 를 추가 합니다.
 
@@ -128,13 +128,13 @@ dotnet ef database update
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
-위의 강조 표시 된 코드는 [대체 인증 정책을](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy)설정 합니다. 대체 인증 정책에는 ** Razor 인증 특성이 있는 페이지, 컨트롤러 또는 작업 메서드를 제외 하 고 * 모든 _ 사용자를 인증 해야 합니다. 예를 들어 Razor 또는를 사용 하는 페이지, 컨트롤러 또는 작업 메서드 `[AllowAnonymous]` `[Authorize(PolicyName="MyPolicy")]` 는 대체 인증 정책 대신 적용 된 인증 특성을 사용 합니다.
+위의 강조 표시 된 코드는 [대체 인증 정책을](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy)설정 합니다. 대체 인증 정책에서는  Razor 인증 특성이 있는 페이지, 컨트롤러 또는 작업 메서드를 제외 하 고 모든 사용자를 인증 해야 합니다. 예를 들어 Razor 또는를 사용 하는 페이지, 컨트롤러 또는 작업 메서드 `[AllowAnonymous]` `[Authorize(PolicyName="MyPolicy")]` 는 대체 인증 정책 대신 적용 된 인증 특성을 사용 합니다.
 
-<xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> 현재 <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> 사용자가 인증 되도록 적용 하는 현재 인스턴스에를 추가 합니다.
+<xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A>는 <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement>를 현재 인스턴스에 추가하여 현재 사용자가 인증될 것을 요구합니다.
 
 대체 인증 정책:
 
-_는 인증 정책을 명시적으로 지정 하지 않는 모든 요청에 적용 됩니다. 끝점 라우팅을 통해 처리 되는 요청의 경우 권한 부여 특성을 지정 하지 않는 끝점이 여기에 포함 됩니다. [정적 파일과](xref:fundamentals/static-files)같이 권한 부여 미들웨어 후 다른 미들웨어에서 처리 하는 요청의 경우 모든 요청에 정책을 적용 합니다.
+* 는 인증 정책을 명시적으로 지정 하지 않는 모든 요청에 적용 됩니다. 끝점 라우팅을 통해 처리 되는 요청의 경우 권한 부여 특성을 지정 하지 않는 끝점이 여기에 포함 됩니다. [정적 파일과](xref:fundamentals/static-files)같이 권한 부여 미들웨어 후 다른 미들웨어에서 처리 하는 요청의 경우 모든 요청에 정책을 적용 합니다.
 
 사용자를 인증 하도록 요구 하는 대체 인증 정책을 설정 하면 새로 추가 된 Razor 페이지와 컨트롤러를 보호 합니다. 기본적으로 인증을 요구 하는 것은 특성을 포함 하는 새 컨트롤러 및 페이지에 의존 하는 것 보다 안전 Razor 합니다 `[Authorize]` .
 
@@ -221,7 +221,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[](secure-data/samples/final3/Authorization/ContactOperations.cs)]
 
-### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a>연락처 페이지에 대 한 기본 클래스 만들기 Razor
+### <a name="create-a-base-class-for-the-contacts-razor-pages"></a>연락처 페이지에 대 한 기본 클래스 만들기 Razor
 
 연락처 페이지에 사용 되는 서비스를 포함 하는 기본 클래스를 만듭니다 Razor . 기본 클래스는 초기화 코드를 한 위치에 배치 합니다.
 
@@ -306,7 +306,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[](secure-data/samples/final3/Pages/Contacts/Details2.cshtml.cs?name=snippet)]
 
-앞의 코드에서 다음을 확인할 수 있습니다.
+위의 코드에서
 
 * 사용자가 인증 **되지 않은** 경우 `ChallengeResult` 이 반환 됩니다. 가 반환 되 면 `ChallengeResult` 사용자가 로그인 페이지로 리디렉션됩니다.
 * 사용자가 인증 되었지만 권한이 부여 되지 않은 경우 `ForbidResult` 이 반환 됩니다. 가 반환 되 면 `ForbidResult` 사용자가 액세스 거부 페이지로 리디렉션됩니다.
@@ -334,11 +334,11 @@ dotnet user-secrets set SeedUserPW <PW>
 * 관리자는 연락처 데이터를 승인/거부할 수 있습니다. `Details`보기는 **승인** 및 **거부** 단추를 표시 합니다.
 * 관리자는 모든 데이터를 승인/거부 하 고 편집/삭제할 수 있습니다.
 
-| User                | 앱에서 시드 | 옵션                                  |
+| 사용자                | 앱에서 시드 | 옵션                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | 아니요                | 자신의 데이터를 편집/삭제 합니다.                |
-| manager@contoso.com | 예               | 자신의 데이터를 승인/거부 하 고 편집/삭제 합니다. |
-| admin@contoso.com   | 예               | 모든 데이터를 승인/거부 하 고 편집/삭제 합니다. |
+| test@example.com    | No                | 자신의 데이터를 편집/삭제 합니다.                |
+| manager@contoso.com | Yes               | 자신의 데이터를 승인/거부 하 고 편집/삭제 합니다. |
+| admin@contoso.com   | Yes               | 모든 데이터를 승인/거부 하 고 편집/삭제 합니다. |
 
 관리자의 브라우저에서 연락처를 만듭니다. 관리자 연락처에서 삭제 및 편집에 대 한 URL을 복사 합니다. 이러한 링크를 테스트 사용자의 브라우저에 붙여넣어 테스트 사용자가 이러한 작업을 수행할 수 없는지 확인 합니다.
 
@@ -381,7 +381,7 @@ dotnet ef database update
 
 ### <a name="seed-the-database"></a>데이터베이스 시드
 
-*데이터* 폴더에 [SeedData](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) 클래스를 추가 합니다.
+*데이터* 폴더에 [SeedData](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) 클래스를 추가 합니다.
 
 [!code-csharp[](secure-data/samples/starter3/Data/SeedData.cs)]
 
@@ -431,7 +431,7 @@ dotnet ef database update
 * `ContactManagerAuthorizationHandler`: 관리자가 연락처를 승인 하거나 거부할 수 있습니다.
 * `ContactAdministratorsAuthorizationHandler`: 관리자가 연락처를 승인 또는 거부 하 고 연락처를 편집/삭제할 수 있습니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 이 자습서는 고급입니다. 다음에 대해 잘 알고 있어야 합니다.
 
@@ -443,11 +443,11 @@ dotnet ef database update
 
 ## <a name="the-starter-and-completed-app"></a>시작 및 완료 된 앱
 
-[완성](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) 된 앱을 [다운로드](xref:index#how-to-download-a-sample) 합니다. 보안 기능에 익숙해질 수 있도록 완성 된 앱을 [테스트](#test-the-completed-app) 합니다.
+[완성](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples) 된 앱을 [다운로드](xref:index#how-to-download-a-sample) 합니다. 보안 기능에 익숙해질 수 있도록 완성 된 앱을 [테스트](#test-the-completed-app) 합니다.
 
 ### <a name="the-starter-app"></a>시작 앱
 
-[시작](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) 앱을 [다운로드](xref:index#how-to-download-a-sample) 합니다.
+[시작](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples/) 앱을 [다운로드](xref:index#how-to-download-a-sample) 합니다.
 
 앱을 실행 하 고, 연락처 **관리자** 링크를 탭 하 고, 연락처를 만들고, 편집 하 고, 삭제할 수 있는지 확인 합니다.
 
@@ -470,7 +470,7 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-no-locidentity"></a>역할 서비스 추가 Identity
+### <a name="add-role-services-to-identity"></a>역할 서비스 추가 Identity
 
 역할 서비스를 추가 하려면 [Addroles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) 를 추가 합니다.
 
@@ -557,7 +557,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[](secure-data/samples/final2.1/Authorization/ContactOperations.cs)]
 
-### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a>연락처 페이지에 대 한 기본 클래스 만들기 Razor
+### <a name="create-a-base-class-for-the-contacts-razor-pages"></a>연락처 페이지에 대 한 기본 클래스 만들기 Razor
 
 연락처 페이지에 사용 되는 서비스를 포함 하는 기본 클래스를 만듭니다 Razor . 기본 클래스는 초기화 코드를 한 위치에 배치 합니다.
 
@@ -661,11 +661,11 @@ dotnet user-secrets set SeedUserPW <PW>
 * 관리자는 연락처 데이터를 승인/거부할 수 있습니다. `Details`보기는 **승인** 및 **거부** 단추를 표시 합니다.
 * 관리자는 모든 데이터를 승인/거부 하 고 편집/삭제할 수 있습니다.
 
-| User                | 앱에서 시드 | 옵션                                  |
+| 사용자                | 앱에서 시드 | 옵션                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | 아니요                | 자신의 데이터를 편집/삭제 합니다.                |
-| manager@contoso.com | 예               | 자신의 데이터를 승인/거부 하 고 편집/삭제 합니다. |
-| admin@contoso.com   | 예               | 모든 데이터를 승인/거부 하 고 편집/삭제 합니다. |
+| test@example.com    | No                | 자신의 데이터를 편집/삭제 합니다.                |
+| manager@contoso.com | Yes               | 자신의 데이터를 승인/거부 하 고 편집/삭제 합니다. |
+| admin@contoso.com   | Yes               | 모든 데이터를 승인/거부 하 고 편집/삭제 합니다. |
 
 관리자의 브라우저에서 연락처를 만듭니다. 관리자 연락처에서 삭제 및 편집에 대 한 URL을 복사 합니다. 이러한 링크를 테스트 사용자의 브라우저에 붙여넣어 테스트 사용자가 이러한 작업을 수행할 수 없는지 확인 합니다.
 
@@ -704,7 +704,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ### <a name="seed-the-database"></a>데이터베이스 시드
 
-*데이터* 폴더에 [SeedData](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs) 클래스를 추가 합니다.
+*데이터* 폴더에 [SeedData](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs) 클래스를 추가 합니다.
 
 `SeedData.Initialize`다음에서 호출 `Main` :
 

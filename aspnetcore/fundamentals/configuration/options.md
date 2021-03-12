@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/options
-ms.openlocfilehash: dedc17d7d793a6fd2eac1c8017b704d98a86f1cb
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: cb78147050ebdafc7de4ad150ae2644689d6efbc
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93061095"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586217"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core의 옵션 패턴
 
@@ -41,7 +41,7 @@ ms.locfileid: "93061095"
 
 이 항목에서는 ASP.NET Core의 옵션 패턴 정보를 제공합니다. 콘솔 앱에서 옵션 패턴을 사용하는 방법에 관한 자세한 내용은 [.NET의 옵션 패턴](/dotnet/core/extensions/options)을 참조하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/options/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 <a name="optpat"></a>
 
@@ -55,7 +55,8 @@ ms.locfileid: "93061095"
 
 <xref:Microsoft.Extensions.Options.IOptions%601>:
 
-* 지원하지 **않음**: 앱이 시작된 후 구성 데이터 읽기.
+* 다음을 지원하지 않습니다.
+  * 앱이 시작된 후 구성 데이터 읽기
   * [명명된 옵션](#named)
 * [Singleton](xref:fundamentals/dependency-injection#singleton)으로 등록되며 [서비스 수명](xref:fundamentals/dependency-injection#service-lifetimes)에 주입할 수 있습니다.
 
@@ -291,7 +292,7 @@ public void Configure(IApplicationBuilder app,
 
 옵션은 구성 데이터의 유효성을 검사하는 메커니즘도 제공합니다. 자세한 내용은 [옵션 유효성 검사](#options-validation) 섹션을 참조하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/options/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>사전 요구 사항
 
@@ -713,7 +714,7 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 
 옵션은 구성 데이터의 유효성을 검사하는 메커니즘도 제공합니다. 자세한 내용은 [옵션 유효성 검사](#options-validation) 섹션을 참조하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/options/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>사전 요구 사항
 

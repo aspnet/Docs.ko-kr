@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: 416fc292d82cf841b2134e23a8e494e3e8d945ca
-ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
+ms.openlocfilehash: b53b017e63ada62438e352a6c5112b7584ff0b26
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100563987"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589103"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core에서 필터링
 
@@ -45,7 +45,7 @@ ASP.NET Core에서 *필터* 를 사용하면 요청 처리 파이프라인의 �
 * 구성 요소가 페이지 또는 보기에 포함되어 있는 경우
 * 페이지 또는 컨트롤러/보기에서 필터를 사용하는 경우
 
-[예제 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample)([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/3.1sample)([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="how-filters-work"></a>필터 작동 방법
 
@@ -88,7 +88,7 @@ ASP.NET Core에서 *필터* 를 사용하면 요청 처리 파이프라인의 �
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/MySampleActionFilter.cs?name=snippet_ActionFilter)]
 
-위의 코드에서 [Mydebug](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/filters/3.1sample/FiltersSample/Helper/MyDebug.cs) 는 [샘플 다운로드](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/filters/3.1sample/FiltersSample/Helper/MyDebug.cs)의 유틸리티 함수입니다.
+위의 코드에서 [Mydebug](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/controllers/filters/3.1sample/FiltersSample/Helper/MyDebug.cs) 는 [샘플 다운로드](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/controllers/filters/3.1sample/FiltersSample/Helper/MyDebug.cs)의 유틸리티 함수입니다.
 
 비동기 필터는 `On-Stage-ExecutionAsync` 메서드를 정의합니다. 예: <xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecutionAsync*>
 
@@ -232,7 +232,7 @@ ASP.NET Core에는 서브클래싱 및 사용자 지정할 수 있는 기본 제
   * `MySampleActionFilter.OnActionExecuted`
 * `TestController.OnActionExecuted`
 
-컨트롤러 수준 필터는 [Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) 속성을 `int.MinValue`로 설정합니다. 컨트롤러 수준 필터는 메서드에 적용된 후에 실행되도록 설정할 수 **없습니다**. 순서는 다음 섹션에 설명되어 있습니다.
+컨트롤러 수준 필터는 [Order](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) 속성을 `int.MinValue`로 설정합니다. 컨트롤러 수준 필터는 메서드에 적용된 후에 실행되도록 설정할 수 **없습니다**. 순서는 다음 섹션에 설명되어 있습니다.
 
 Razor페이지는 [ Razor 필터 메서드를 재정의 하 여 페이지 필터 구현](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods)을 참조 하세요.
 
@@ -265,7 +265,7 @@ Razor페이지는 [ Razor 필터 메서드를 재정의 하 여 페이지 필터
   * `MySampleActionFilter.OnActionExecuted`
 * `Test2Controller.OnActionExecuted`
 
-`Order` 속성은 필터가 실행되는 순서를 결정할 때 범위를 무시합니다. 필터가 순서에 따라 먼저 정렬된 다음, 범위는 연결을 끊는 데 사용됩니다. 모든 기본 제공 필터는 `IOrderedFilter`을 구현하고 기본 `Order` 값을 0으로 설정합니다. 앞서 언급했듯이 컨트롤러 수준 필터는 [Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) 속성을 `int.MinValue`로 설정합니다. 기본 제공 필터의 경우 `Order`가 0이 아닌 값으로 설정되지 않은 한 범위가 순서를 결정합니다.
+`Order` 속성은 필터가 실행되는 순서를 결정할 때 범위를 무시합니다. 필터가 순서에 따라 먼저 정렬된 다음, 범위는 연결을 끊는 데 사용됩니다. 모든 기본 제공 필터는 `IOrderedFilter`을 구현하고 기본 `Order` 값을 0으로 설정합니다. 앞서 언급했듯이 컨트롤러 수준 필터는 [Order](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) 속성을 `int.MinValue`로 설정합니다. 기본 제공 필터의 경우 `Order`가 0이 아닌 값으로 설정되지 않은 한 범위가 순서를 결정합니다.
 
 이전 코드에서 `MySampleActionFilter`는 전역 범위를 가지므로 컨트롤러 범위를 포함하는 `MyAction2FilterAttribute` 전에 실행됩니다. `MyAction2FilterAttribute`를 먼저 실행하려면 순서를 `int.MinValue`로 설정합니다.
 
@@ -576,7 +576,7 @@ ASP.NET Core 런타임은 다음을 보장하지 않습니다.
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet3&highlight=21)]
 
-[샘플 다운로드 샘플](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample)를 실행하여 이전 코드를 테스트할 수 있습니다.
+[샘플 다운로드 샘플](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/3.1sample)를 실행하여 이전 코드를 테스트할 수 있습니다.
 
 * F12 개발자 도구를 호출합니다.
 * `https://localhost:5001/Sample/HeaderWithFactory`로 이동합니다.
@@ -628,7 +628,7 @@ What's a non-named attribute?
 ## <a name="next-actions"></a>다음 작업
 
 * [ Razor 페이지에 대 한 필터 메서드를](xref:razor-pages/filter)참조 하세요.
-* 필터를 실험하려면 [GitHub 샘플을 다운로드하고, 테스트하고, 수정](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample)합니다.
+* 필터를 실험하려면 [GitHub 샘플을 다운로드하고, 테스트하고, 수정](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/3.1sample)합니다.
 
 ::: moniker-end
 
@@ -647,7 +647,7 @@ ASP.NET Core에서 *필터* 를 사용하면 요청 처리 파이프라인의 �
 
 이 문서 Razor 는 뷰가 있는 페이지, API 컨트롤러 및 컨트롤러에 적용 됩니다.
 
-[예제 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/sample)([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="how-filters-work"></a>필터 작동 방법
 
@@ -1099,7 +1099,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?name=snippet_IFilterFactory&highlight=1,4,5,6,7)]
 
-[다운로드 예제](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)를 실행하여 이전 코드를 테스트할 수 있습니다.
+[다운로드 예제](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/sample)를 실행하여 이전 코드를 테스트할 수 있습니다.
 
 * F12 개발자 도구를 호출합니다.
 * `https://localhost:5001/Sample/HeaderWithFactory`로 이동합니다.
@@ -1151,6 +1151,6 @@ What's a non-named attribute?
 ## <a name="next-actions"></a>다음 작업
 
 * [ Razor 페이지에 대 한 필터 메서드를](xref:razor-pages/filter)참조 하세요.
-* 필터를 실험하려면 [GitHub 샘플을 다운로드하고, 테스트하고, 수정](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)합니다.
+* 필터를 실험하려면 [GitHub 샘플을 다운로드하고, 테스트하고, 수정](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/sample)합니다.
 
 ::: moniker-end

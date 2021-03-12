@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-compose-https
-ms.openlocfilehash: 37a0142dac1e26afd26dbf2aad46bee20693652e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 69c449527a64ec928d436245e9e971ec49303489
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051644"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588759"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-compose-over-https"></a>HTTPS를 통해 Docker Compose를 사용 하 여 ASP.NET Core 이미지 호스팅
 
@@ -33,11 +33,11 @@ ASP.NET Core는 [기본적으로 HTTPS를](./enforcing-ssl.md)사용 합니다. 
 
 이 문서에서는 HTTPS를 사용 하 여 미리 작성 된 컨테이너 이미지를 실행 하는 방법을 설명 합니다.
 
-개발 시나리오는 [HTTPS를 통해 Docker를 사용 하 여 ASP.NET Core 응용 프로그램 개발](https://github.com/dotnet/dotnet-docker/blob/master/samples/run-aspnetcore-https-development.md) 을 참조 하세요.
+개발 시나리오는 [HTTPS를 통해 Docker를 사용 하 여 ASP.NET Core 응용 프로그램 개발](https://github.com/dotnet/dotnet-docker/blob/main/samples/run-aspnetcore-https-development.md) 을 참조 하세요.
 
-이 샘플에는 docker [클라이언트](https://www.docker.com/products/docker)의 [docker 17.06](https://docs.docker.com/release-notes/docker-ce) 이상이 필요 합니다.
+이 샘플에서는 [Docker 17.06](https://docs.docker.com/release-notes/docker-ce) 이상의 [Docker 클라이언트](https://www.docker.com/products/docker)가 필요합니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 이 문서의 지침 중 일부에는 [.Net Core 2.2 SDK](https://dotnet.microsoft.com/download) 이상이 필요 합니다.
 
@@ -52,7 +52,7 @@ ASP.NET Core는 [기본적으로 HTTPS를](./enforcing-ssl.md)사용 합니다. 
 * `dotnet dev-certs`도구는 필요 하지 않습니다.
 * 지침에 사용 되는 위치에 인증서를 저장할 필요가 없습니다. 사이트 디렉터리 외부의 모든 위치에 인증서를 저장 합니다.
 
-다음 섹션에 포함 된 지침은 `volumes` *docker-compose.ci.build.yml* 의 속성을 사용 하 여 컨테이너에 인증서를 탑재 합니다. Dockerfile의 명령을 사용 하 여 컨테이너 이미지에 인증서를 추가할 수 `COPY` 있지만 권장 되지는 않습니다. *Dockerfile* 다음과 같은 이유로 인증서를 이미지로 복사 하는 것은 권장 되지 않습니다.
+다음 섹션에 포함 된 지침은 `volumes` *docker-compose.ci.build.yml* 의 속성을 사용 하 여 컨테이너에 인증서를 탑재 합니다. Dockerfile의 명령을 사용 하 여 컨테이너 이미지에 인증서를 추가할 수 `COPY` 있지만 권장 되지는 않습니다.  다음과 같은 이유로 인증서를 이미지로 복사 하는 것은 권장 되지 않습니다.
 
 * 개발자 인증서를 사용 하 여 테스트 하는 데 동일한 이미지를 사용 하는 것은 어렵습니다.
 * 프로덕션 인증서를 사용 하 여 호스트 하는 데 동일한 이미지를 사용 하는 것은 어렵습니다.

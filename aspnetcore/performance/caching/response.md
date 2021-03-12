@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/response
-ms.openlocfilehash: 2864de5b9931ed255569cb087c67c71004c4df92
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 539ddb118279adb3a53394cdb0c2e5169092ebc0
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059015"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589233"
 ---
 # <a name="response-caching-in-aspnet-core"></a>ASP.NET Core의 응답 캐싱
 
 작성자, [John 루 오 어](https://github.com/JunTaoLuo), [Rick Anderson](https://twitter.com/RickAndMSFT)및 [Steve Smith](https://ardalis.com/)
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/response/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/response/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 응답 캐싱은 클라이언트 또는 프록시가 웹 서버에 대해 수행 하는 요청 수를 줄입니다. 응답 캐싱은 웹 서버에서 응답을 생성 하기 위해 수행 하는 작업의 양을 줄입니다. 응답 캐싱은 클라이언트, 프록시 및 미들웨어에서 응답을 캐시 하는 방법을 지정 하는 헤더에 의해 제어 됩니다.
 
@@ -48,12 +48,12 @@ HTTP 1.1 캐싱 사양을 따르는 서버 쪽 캐싱의 경우 [응답 캐싱 �
 | [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | 캐시에서 응답을 저장할 수 있습니다. |
 | [private](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | 응답은 공유 캐시에 저장 되지 않아야 합니다. 개인 캐시는 응답을 저장 하 고 다시 사용할 수 있습니다. |
 | [최대 사용 기간](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | 클라이언트는 나이가 지정 된 시간 (초) 보다 큰 응답을 수락 하지 않습니다. 예: `max-age=60` (60 초), `max-age=2592000` (1 개월) |
-| [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **요청 시** : 캐시가 저장 된 응답을 사용 하 여 요청을 충족 해서는 안 됩니다. 원본 서버는 클라이언트에 대 한 응답을 다시 생성 하 고 미들웨어는 캐시에 저장 된 응답을 업데이트 합니다.<br><br>**응답 시** : 원본 서버에서 유효성 검사 없이 후속 요청에 대 한 응답을 사용 하지 않아야 합니다. |
-| [저장소 없음](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **요청 시** : 캐시에서 요청을 저장 하지 않아야 합니다.<br><br>**응답 시** : 캐시가 응답의 일부를 저장 하지 않아야 합니다. |
+| [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **요청 시**: 캐시가 저장 된 응답을 사용 하 여 요청을 충족 해서는 안 됩니다. 원본 서버는 클라이언트에 대 한 응답을 다시 생성 하 고 미들웨어는 캐시에 저장 된 응답을 업데이트 합니다.<br><br>**응답 시**: 원본 서버에서 유효성 검사 없이 후속 요청에 대 한 응답을 사용 하지 않아야 합니다. |
+| [저장소 없음](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **요청 시**: 캐시에서 요청을 저장 하지 않아야 합니다.<br><br>**응답 시**: 캐시가 응답의 일부를 저장 하지 않아야 합니다. |
 
 캐시에서 역할을 수행 하는 다른 캐시 헤더는 다음 표에 나와 있습니다.
 
-| 헤더                                                     | 함수 |
+| header                                                     | 함수 |
 | ---------------------------------------------------------- | -------- |
 | [Age](https://tools.ietf.org/html/rfc7234#section-5.1)     | 응답을 생성 하거나 원본 서버에서 유효성을 검사 한 이후의 시간 (초)입니다. |
 | [기간이](https://tools.ietf.org/html/rfc7234#section-5.3) | 응답이 오래 된 것으로 간주 되는 시간입니다. |
@@ -211,7 +211,7 @@ Cache-Control: public,max-age=30
 ## <a name="additional-resources"></a>추가 리소스
 
 * [캐시에 응답 저장](https://tools.ietf.org/html/rfc7234#section-3)
-* [Cache-control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
+* [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
 * <xref:performance/caching/memory>
 * <xref:performance/caching/distributed>
 * <xref:fundamentals/change-tokens>

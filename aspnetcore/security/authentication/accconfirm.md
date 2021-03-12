@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 91148c67d5dc0bf97e2f926f50dcff5dd0708f4b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f71ae5e619b875c03401fa78320582c406875401
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052320"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586113"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>ASP.NET Core의 계정 확인 및 암호 복구
 
@@ -38,7 +38,7 @@ ms.locfileid: "93052320"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 [.NET Core 3.0 SDK 이상](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
@@ -71,7 +71,7 @@ SendGrid 계정에는 [발신자를 추가](https://sendgrid.com/docs/ui/sending
 
 #### <a name="configure-sendgrid-user-secrets"></a>SendGrid 사용자 비밀 구성
 
-`SendGridUser` `SendGridKey` [암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 및를 설정 합니다. 다음은 그 예입니다.
+`SendGridUser` `SendGridKey` [암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 및를 설정 합니다. 예를 들면 다음과 같습니다.
 
 ```dotnetcli
 dotnet user-secrets set SendGridUser RickAndMSFT
@@ -139,7 +139,7 @@ dotnet add package SendGrid
 [스 캐 폴드 Identity ](xref:security/authentication/scaffold-identity) 및 스 캐 폴드에 대 한 지침을 따릅니다 `RegisterConfirmation` .
 
 <!-- .NET 5 fixes this, see
-https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
+https://github.com/dotnet/aspnetcore/blob/main/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
 -->
 
 [!INCLUDE[](~/includes/disableVer.md)]
@@ -237,11 +237,11 @@ ASP.NET Core 5.0 이상에서는 **로그인** 페이지에서 **전자 메일 �
 
 ::: moniker range="< aspnetcore-3.0"
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 [.NET Core 2.2 SDK 이상](https://dotnet.microsoft.com/download/dotnet-core)
 
-## <a name="create-a-web--app-and-scaffold-no-locidentity"></a>웹 앱 및 스 캐 폴드 만들기 Identity
+## <a name="create-a-web--app-and-scaffold-identity"></a>웹 앱 및 스 캐 폴드 만들기 Identity
 
 다음 명령을 실행 하 여 인증을 사용 하는 웹 앱을 만듭니다.
 
@@ -293,7 +293,7 @@ dotnet run
 
 #### <a name="configure-sendgrid-user-secrets"></a>SendGrid 사용자 비밀 구성
 
-`SendGridUser` `SendGridKey` [암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 및를 설정 합니다. 다음은 그 예입니다.
+`SendGridUser` `SendGridKey` [암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 및를 설정 합니다. 예를 들면 다음과 같습니다.
 
 ```console
 C:/WebAppl>dotnet user-secrets set SendGridUser RickAndMSFT

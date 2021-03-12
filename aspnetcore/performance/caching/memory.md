@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/memory
-ms.openlocfilehash: 19e8dc0ae4d5f8fd28d03d5be87c0b1bbf32d940
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: d71678aeee9b3fca717129a2fbed1f75b593e010
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100107222"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586308"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>ASP.NET Core 메모리 내 캐시
 
@@ -31,7 +31,7 @@ ms.locfileid: "100107222"
 
 작성자, [Rick Anderson](https://twitter.com/RickAndMSFT), [John 루 오 어](https://github.com/JunTaoLuo)및 [Steve Smith](https://ardalis.com/)
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/3.0sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/memory/3.0sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="caching-basics"></a>캐싱 기본 사항
 
@@ -125,7 +125,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 [I
 
 `MemoryCache`인스턴스는 필요에 따라 크기 제한을 지정 하 고 적용할 수 있습니다. 캐시 크기 제한에는 항목의 크기를 측정 하는 메커니즘이 없기 때문에 정의 된 측정 단위가 없습니다. 캐시 크기 제한이 설정 된 경우 모든 항목의 크기를 지정 해야 합니다. ASP.NET Core 런타임은 메모리 압력에 따라 캐시 크기를 제한 하지 않습니다. 캐시 크기를 제한 하는 것은 개발자에 게 있습니다. 지정 된 크기는 개발자가 선택 하는 단위입니다.
 
-예를 들어 다음과 같습니다.
+예를 들면 다음과 같습니다.
 
 * 웹 앱이 주로 문자열을 캐싱하는 경우 각 캐시 엔트리 크기는 문자열 길이가 될 수 있습니다.
 * 앱은 모든 항목의 크기를 1로 지정 하 고, 크기 제한은 항목 수를 지정 합니다.
@@ -199,7 +199,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 [I
 
 과 같은 [백그라운드 서비스](xref:fundamentals/host/hosted-services) 를 사용 <xref:Microsoft.Extensions.Hosting.IHostedService> 하 여 캐시를 업데이트 합니다. 백그라운드 서비스는 항목을 다시 계산 하 고 준비 된 경우에만 캐시에 할당할 수 있습니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:performance/caching/distributed>
 * <xref:fundamentals/change-tokens>
@@ -215,7 +215,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 [I
 <!-- This is the 2.1 version -->
 작성자, [Rick Anderson](https://twitter.com/RickAndMSFT), [John 루 오 어](https://github.com/JunTaoLuo)및 [Steve Smith](https://ardalis.com/)
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/memory/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="caching-basics"></a>캐싱 기본 사항
 
@@ -301,7 +301,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 �
 
 `MemoryCache`인스턴스는 필요에 따라 크기 제한을 지정 하 고 적용할 수 있습니다. 캐시 크기 제한에는 항목의 크기를 측정 하는 메커니즘이 없기 때문에 정의 된 측정 단위가 없습니다. 캐시 크기 제한이 설정 된 경우 모든 항목의 크기를 지정 해야 합니다. ASP.NET Core 런타임은 메모리 압력에 따라 캐시 크기를 제한 하지 않습니다. 캐시 크기를 제한 하는 것은 개발자에 게 있습니다. 지정 된 크기는 개발자가 선택 하는 단위입니다.
 
-예를 들어 다음과 같습니다.
+예를 들면 다음과 같습니다.
 
 * 웹 앱이 주로 문자열을 캐싱하는 경우 각 캐시 엔트리 크기는 문자열 길이가 될 수 있습니다.
 * 앱은 모든 항목의 크기를 1로 지정 하 고, 크기 제한은 항목 수를 지정 합니다.
@@ -370,7 +370,7 @@ ASP.NET Core는 여러 캐시를 지원 합니다. 가장 간단한 캐시는 �
 
 과 같은 [백그라운드 서비스](xref:fundamentals/host/hosted-services) 를 사용 <xref:Microsoft.Extensions.Hosting.IHostedService> 하 여 캐시를 업데이트 합니다. 백그라운드 서비스는 항목을 다시 계산 하 고 준비 된 경우에만 캐시에 할당할 수 있습니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:performance/caching/distributed>
 * <xref:fundamentals/change-tokens>

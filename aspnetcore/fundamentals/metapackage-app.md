@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/metapackage-app
-ms.openlocfilehash: 225bb1f55c099a476319191726c5a661f9a4893a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5d9d9cd446a61cc3e573712a4626af04dc284e99
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057806"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589584"
 ---
 # <a name="microsoftaspnetcoreapp-for-aspnet-core"></a>ASP.NET Core용 Microsoft.AspNetCore.App
 
 ::: moniker range=">= aspnetcore-3.0"
 
- ASP.NET Core 공유 프레임워크(`Microsoft.AspNetCore.App`)에는 Microsoft에서 개발하고 지원하는 어셈블리가 포함되어 있습니다. `Microsoft.AspNetCore.App`은 [.NET Core 3.0 이상의 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0)가 설치된 경우에 설치됩니다. *공유 프레임워크* 는 머신에 설치된 어셈블리( *.dll* 파일) 세트이며 런타임 구성 요소 및 타기팅 팩을 포함합니다. 자세한 내용은 [공유 프레임워크](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/)를 참조하세요.
+ ASP.NET Core 공유 프레임워크(`Microsoft.AspNetCore.App`)에는 Microsoft에서 개발하고 지원하는 어셈블리가 포함되어 있습니다. `Microsoft.AspNetCore.App`은 [.NET Core 3.0 이상의 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0)가 설치된 경우에 설치됩니다. *공유 프레임워크* 는 머신에 설치된 어셈블리(*.dll* 파일) 세트이며 런타임 구성 요소 및 타기팅 팩을 포함합니다. 자세한 내용은 [공유 프레임워크](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/)를 참조하세요.
 
 * `Microsoft.NET.Sdk.Web` SDK를 대상으로 하는 프로젝트는 `Microsoft.AspNetCore.App` 프레임워크를 암시적으로 참조합니다.
 
@@ -55,7 +55,7 @@ ASP .NET Core 공유 프레임워크:
 
 이 기능을 사용하려면 .NET Core 2.x를 대상으로 하는 ASP.NET Core 2.x가 필요합니다.
 
-ASP.NET Core용 [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App) [메타패키지](/dotnet/core/packages#metapackages)와 관련해서 다음 사항을 확인합니다.
+ASP.NET Core용 [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App) [메타패키지](/dotnet/core/packages#metapackages):
 
 * [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/), [Remotion.Linq](https://www.nuget.org/packages/Remotion.Linq/) 및 [IX-Async](https://www.nuget.org/packages/System.Interactive.Async/)를 제외한 타사 종속성을 포함하지 마세요. 이러한 타사 종속성은 주요 프레임워크 기능이 작동하도록 하는 데 필요한 것으로 간주됩니다.
 * 이전에 언급한 것 이외의 타사 종속성을 포함하는 것을 제외하고 ASP.NET Core 팀에서 지원하는 모든 패키지를 포함합니다.
@@ -89,7 +89,7 @@ ASP.NET Core 2.x 및 Entity Framework Core 2.x의 모든 기능은 `Microsoft.As
 </Project>
 ```
 
-이전의 표시는 일반적인 ASP.NET Core 2.x 템플릿을 나타냅니다. `Microsoft.AspNetCore.App` 패키지 참조의 버전 번호는 지정하지 않습니다. 버전이 지정되지 않은 경우 SDK에서 [암시적](https://github.com/dotnet/core/blob/master/release-notes/1.0/sdk/1.0-rc3-implicit-package-refs.md) 버전, 즉 `Microsoft.NET.Sdk.Web`을 지정합니다. SDK에서 지정하는 암시적 버전을 사용하고, 패키지 참조에 버전 번호를 명시적으로 설정하지 않는 것이 좋습니다. 이 접근 방식에 대한 질문이 있는 경우 GitHub의 [Microsoft.AspNetCore.App 암시적 버전에 대한 토론](https://github.com/dotnet/AspNetCore.Docs/issues/6430)에 의견을 남겨 주세요.
+이전의 표시는 일반적인 ASP.NET Core 2.x 템플릿을 나타냅니다. `Microsoft.AspNetCore.App` 패키지 참조의 버전 번호는 지정하지 않습니다. 버전이 지정되지 않은 경우 SDK에서 [암시적](https://github.com/dotnet/core/blob/main/release-notes/1.0/sdk/1.0-rc3-implicit-package-refs.md) 버전, 즉 `Microsoft.NET.Sdk.Web`을 지정합니다. SDK에서 지정하는 암시적 버전을 사용하고, 패키지 참조에 버전 번호를 명시적으로 설정하지 않는 것이 좋습니다. 이 접근 방식에 대한 질문이 있는 경우 GitHub의 [Microsoft.AspNetCore.App 암시적 버전에 대한 토론](https://github.com/dotnet/AspNetCore.Docs/issues/6430)에 의견을 남겨 주세요.
 
 휴대용 앱의 암시적 버전은 `major.minor.0`으로 설정됩니다. 공유 프레임워크 롤포워드 메커니즘은 설치된 공유 프레임워크 중 최신 호환 버전에서 앱을 실행합니다. 개발, 테스트 및 프로덕션에서 동일한 버전이 사용되도록 하려면 모든 환경에 동일한 버전의 공유 프레임워크를 설치하도록 하세요. 자체 포함 앱의 경우 암시적 버전 번호가 설치된 SDK에 포함된 공유 프레임워크의 `major.minor.patch`로 설정됩니다.
 
@@ -119,7 +119,7 @@ ASP.NET Core 2.x 및 Entity Framework Core 2.x의 모든 기능은 `Microsoft.As
 
 ASP.NET Core를 업데이트하려면:
 
-* 개발 머신 및 빌드 서버: [.NET Core SDK](https://dotnet.microsoft.com/download)를 다운로드하여 설치합니다.
+* 개발 머신 및 빌드 서버: 다운로드 및 설치 합니다 [.NET Core SDK](https://dotnet.microsoft.com/download)를 다운로드하여 설치합니다.
 * 배포 서버: [.NET Core 런타임](https://dotnet.microsoft.com/download)을 다운로드하여 설치합니다.
 
  애플리케이션을 다시 시작하면 애플리케이션이 최신 설치 버전으로 롤포워드됩니다. 프로젝트 파일에서 `Microsoft.AspNetCore.App` 버전 번호를 업데이트할 필요는 없습니다. 자세한 내용은 [Framework 종속 앱 롤포워드](/dotnet/core/versions/selection#framework-dependent-apps-roll-forward)를 참조하세요.

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/index
-ms.openlocfilehash: 03debcb211a8cb8f0ebd6d5e67fbc8de7b574e27
-ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
+ms.openlocfilehash: fb7dfa53be1fee9904b4539a5c9da0700c2aa884
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551663"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585736"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>ASP.NET Core로 Web API 만들기
 
@@ -32,7 +32,7 @@ ms.locfileid: "99551663"
 
 ASP.NET Core는 C#를 사용하여 Web API라고도 하는 RESTful 서비스 만들기를 지원합니다. 요청을 처리하기 위해 Web API는 컨트롤러를 사용합니다. Web API의 *컨트롤러* 는 `ControllerBase`에서 파생되는 클래스입니다. 이 문서에서는 웹 API 요청을 처리하기 위해 컨트롤러를 사용하는 방법을 보여 줍니다.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/index/samples) ([다운로드하는 방법](xref:index#how-to-download-a-sample))
+[샘플 코드 보기 또는 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/index/samples) ([다운로드하는 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="controllerbase-class"></a>ControllerBase 클래스
 

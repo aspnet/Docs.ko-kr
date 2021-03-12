@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: 2947bf0b697ca01f17d260b9f31aa3cc79d457b6
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c75e2f1de522f80f4d8e13cf3f60c99cc6b7196a
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059873"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589415"
 ---
-# <a name="no-locrazor-pages-route-and-app-conventions-in-aspnet-core"></a>ASP.NET Core에서 Razor Pages 경로 및 앱 규칙
+# <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>ASP.NET Core에서 Razor Pages 경로 및 앱 규칙
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -38,7 +38,7 @@ ms.locfileid: "93059873"
 
 경로 세그먼트 또는 매개 변수 이름으로 사용할 수 없는 예약어가 있습니다. 자세한 내용은 [라우팅: 예약된 라우팅 이름](xref:mvc/controllers/routing#reserved-routing-names)을 참조하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 | 시나리오 | 샘플에서는 다음 사항을 보여줍니다. |
 | -------- | --------------------------- |
@@ -110,7 +110,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 가능하면 `Order`는 설정하지 않도록 합니다. 설정하면 `Order = 0`이 됩니다. 라우팅을 사용하여 올바른 경로를 선택합니다.
 
-<xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> 추가와 같은 Razor Pages 옵션은 Razor Pages가 `Startup.ConfigureServices`의 서비스 컬렉션에 추가될 때 추가됩니다. 예제는 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)을 참조하세요.
+<xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> 추가와 같은 Razor Pages 옵션은 Razor Pages가 `Startup.ConfigureServices`의 서비스 컬렉션에 추가될 때 추가됩니다. 예제는 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/razor-pages-conventions/samples/)을 참조하세요.
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -319,7 +319,7 @@ Razor Pages가 처리기 메서드를 사용하므로 MVC [작업 필터](xref:m
 
 경로 세그먼트 또는 매개 변수 이름으로 사용할 수 없는 예약어가 있습니다. 자세한 내용은 [라우팅: 예약된 라우팅 이름](xref:fundamentals/routing#reserved-routing-names)을 참조하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 | 시나리오 | 샘플에서는 다음 사항을 보여줍니다. |
 | -------- | --------------------------- |
@@ -392,7 +392,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 가능하면 `Order`는 설정하지 않도록 합니다. 설정하면 `Order = 0`이 됩니다. 라우팅을 사용하여 올바른 경로를 선택합니다.
 
-<xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> 추가와 같은 Razor Pages 옵션은 MVC가 `Startup.ConfigureServices`의 서비스 컬렉션에 추가될 때 추가됩니다. 예제는 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)을 참조하세요.
+<xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> 추가와 같은 Razor Pages 옵션은 MVC가 `Startup.ConfigureServices`의 서비스 컬렉션에 추가될 때 추가됩니다. 예제는 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/razor-pages-conventions/samples/)을 참조하세요.
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -609,7 +609,7 @@ Razor Pages가 처리기 메서드를 사용하므로 MVC [작업 필터](xref:m
 
 경로 세그먼트 또는 매개 변수 이름으로 사용할 수 없는 예약어가 있습니다. 자세한 내용은 [라우팅: 예약된 라우팅 이름](xref:fundamentals/routing#reserved-routing-names)을 참조하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 | 시나리오 | 샘플에서는 다음 사항을 보여줍니다. |
 | -------- | --------------------------- |
@@ -682,7 +682,7 @@ Razor Pages 라우팅과 MVC 컨트롤러 라우팅은 구현을 공유합니다
 
 가능하면 `Order`는 설정하지 않도록 합니다. 설정하면 `Order = 0`이 됩니다. 라우팅을 사용하여 올바른 경로를 선택합니다.
 
-<xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> 추가와 같은 Razor Pages 옵션은 MVC가 `Startup.ConfigureServices`의 서비스 컬렉션에 추가될 때 추가됩니다. 예제는 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)을 참조하세요.
+<xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> 추가와 같은 Razor Pages 옵션은 MVC가 `Startup.ConfigureServices`의 서비스 컬렉션에 추가될 때 추가됩니다. 예제는 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/razor-pages-conventions/samples/)을 참조하세요.
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet1)]
 

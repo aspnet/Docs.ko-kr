@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/configure-linker
-ms.openlocfilehash: c720747983da4ef6997d95d77c3f5305cfd7d3c0
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: af3c059e7192d6b0d2b0a902b6e3a6121fdf6709
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100279927"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395034"
 ---
 # <a name="configure-the-linker-for-aspnet-core-blazor"></a>ASP.NET Core Blazor용 링커 구성
 
@@ -91,7 +91,7 @@ XML 구성 파일을 제공하고 프로젝트 파일에서 해당 파일을 MSB
 </linker>
 ```
 
-자세한 내용 및 예제는 [데이터 형식](https://github.com/mono/linker/blob/master/docs/data-formats.md)(mono/linker GitHub 리포지토리)을 참조하세요.
+자세한 내용 및 예제는 [데이터 형식](https://github.com/mono/linker/blob/main/docs/data-formats.md)(mono/linker GitHub 리포지토리)을 참조하세요.
 
 ## <a name="add-an-xml-linker-configuration-file-to-a-library"></a>라이브러리에 XML 링커 구성 파일 추가
 

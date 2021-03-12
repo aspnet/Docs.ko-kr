@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: c180580ec56313e444f2daf2b7d08c4d909b498a
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: b725a60a310be23f7ceb626d4c543d0df6fadf62
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280522"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394761"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-app-roles"></a>AAD(Azure Active Directory) 그룹, 관리자 역할 및 앱 역할
 
@@ -46,8 +46,8 @@ AAD(Azure Active Directory)는 ASP.NET Core Identity와 결합할 수 있는 몇
 
 이 문서에서는 클라이언트 앱과 서버 앱에 대한 지침을 제공합니다.
 
-* **CLIENT**: 독립 실행형 Blazor WebAssembly 앱 또는 호스트된 Blazor 솔루션의 *`Client`* 앱입니다.
-* **서버**: 독립 실행형 ASP.NET Core 서버 API/웹 API 앱 또는 호스트된 Blazor 솔루션의 *`Server`* 앱입니다.
+* **CLIENT**: 독립 실행형 Blazor WebAssembly 앱 또는 호스트된 Blazor 솔루션의 **`Client`** 앱입니다.
+* **서버**: 독립 실행형 ASP.NET Core 서버 API/웹 API 앱 또는 호스트된 Blazor 솔루션의 **`Server`** 앱입니다.
 
 ## <a name="scopes"></a>범위
 

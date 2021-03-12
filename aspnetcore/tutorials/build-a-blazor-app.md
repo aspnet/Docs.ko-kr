@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: d984023a1c46c5383d47a1634c54e61747b83d60
-ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
+ms.openlocfilehash: 260d921316d6fadecbd42db11048593b19a5ddee
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101101212"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394436"
 ---
 # <a name="build-a-blazor-todo-list-app"></a>Blazor 할 일 목록 앱 빌드
 
@@ -138,7 +138,7 @@ ms.locfileid: "101101212"
    ::: moniker-end
 
    > [!NOTE]
-   > Visual Studio를 사용하여 `ToDoItem.cs` 파일 및 `ToDoItem` 클래스를 만드는 경우 다음 방식 중 하나를 사용합니다.
+   > Visual Studio를 사용하여 `TodoItem.cs` 파일 및 `TodoItem` 클래스를 만드는 경우 다음 방식 중 하나를 사용합니다.
    >
    > * Visual Studio가 클래스에 대해 생성하는 네임스페이스를 제거합니다.
    > * 앞의 코드 블록에 있는 **복사** 단추를 사용하여 Visual Studio가 생성한 파일의 모든 콘텐츠를 바꿉니다.

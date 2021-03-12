@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/add-user-data
-ms.openlocfilehash: a4e1fd780947cfa5f09fb1e03964595fa09f0f18
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 2d921a0c72fb7c03cd88966077e2d33e4b19ffa1
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061420"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585918"
 ---
-# <a name="add-download-and-delete-custom-user-data-to-no-locidentity-in-an-aspnet-core-project"></a>ASP.NET Core 프로젝트에서 사용자 지정 사용자 데이터 추가, 다운로드 및 삭제 Identity
+# <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>ASP.NET Core 프로젝트에서 사용자 지정 사용자 데이터 추가, 다운로드 및 삭제 Identity
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -36,7 +36,7 @@ ms.locfileid: "93061420"
 
 프로젝트 샘플은 Razor 페이지 웹 앱에서 생성 되지만 지침은 ASP.NET CORE MVC 웹 앱과 유사 합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/add-user-data) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>사전 요구 사항
 
@@ -52,7 +52,7 @@ ms.locfileid: "93061420"
 
 ::: moniker-end
 
-## <a name="create-a-no-locrazor-web-app"></a>Razor웹 앱 만들기
+## <a name="create-a-razor-web-app"></a>Razor웹 앱 만들기
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -85,18 +85,18 @@ dotnet new webapp -o WebApp1
 
 ---
 
-## <a name="run-the-no-locidentity-scaffolder"></a>스 캐 폴더 실행 Identity
+## <a name="run-the-identity-scaffolder"></a>스 캐 폴더 실행 Identity
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭 하 > **Add**  >  **새 스 캐 폴드 항목** 추가를 클릭 합니다.
-* **스 캐 폴드 추가** 대화 상자의 왼쪽 창에서 추가를 선택 **Identity**  >  **Add** 합니다.
+* **솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭 하 >   >  **새 스 캐 폴드 항목** 추가를 클릭 합니다.
+* **스 캐 폴드 추가** 대화 상자의 왼쪽 창에서 추가를 선택 **Identity**  >  합니다.
 * **추가 Identity** 대화 상자에서 다음 옵션을 선택 합니다.
   * 기존 레이아웃 파일  *~/Pages/Shared/_Layout를 선택 합니다.*
   * 재정의할 다음 파일 선택:
     * **계정/등록**
     * **계정/관리/인덱스**
-  * 단추를 선택 **+** 하 여 새 **데이터 컨텍스트 클래스** 를 만듭니다. 프로젝트 이름이 **WebApp1** 인 경우 형식 ( **WebApp1. WebApp1Context** )을 적용 합니다.
+  * 단추를 선택 **+** 하 여 새 **데이터 컨텍스트 클래스** 를 만듭니다. 프로젝트 이름이 **WebApp1** 인 경우 형식 (**WebApp1. WebApp1Context** )을 적용 합니다.
   * 단추를 선택 **+** 하 여 새 **사용자 클래스** 를 만듭니다. 형식 (프로젝트 이름이 **WebApp1** 인 경우 **WebApp1User** )을 적용 > **추가** 합니다.
 * **추가** 를 선택합니다.
 
@@ -141,7 +141,7 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
   * **다운로드** 단추를 선택 하 고 파일 *의PersonalData.js* 를 검사 합니다.
   * 로그온 한 사용자를 삭제 하는 **삭제** 단추를 테스트 합니다.
 
-## <a name="add-custom-user-data-to-the-no-locidentity-db"></a>DB에 사용자 지정 사용자 데이터 추가 Identity
+## <a name="add-custom-user-data-to-the-identity-db"></a>DB에 사용자 지정 사용자 데이터 추가 Identity
 
 `IdentityUser`사용자 지정 속성을 사용 하 여 파생 클래스를 업데이트 합니다. WebApp1 프로젝트의 이름을 지정 하는 경우 파일의 이름은 *Areas/ Identity /Data/WebApp1User.cs* 입니다. 다음 코드를 사용 하 여 파일을 업데이트 합니다.
 
@@ -241,7 +241,7 @@ dotnet ef database update
 * 페이지에서 사용자 지정 사용자 데이터를 봅니다 `/Identity/Account/Manage` .
 * 페이지에서 사용자 개인 데이터를 다운로드 하 여 봅니다 `/Identity/Account/Manage/PersonalData` .
 
-## <a name="add-claims-to-no-locidentity-using-iuserclaimsprincipalfactoryapplicationuser"></a>IUserClaimsPrincipalFactory를 사용 하 여 클레임 추가 Identity<ApplicationUser>
+## <a name="add-claims-to-identity-using-iuserclaimsprincipalfactoryapplicationuser"></a>IUserClaimsPrincipalFactory를 사용 하 여 클레임 추가 Identity<ApplicationUser>
 
 > [!NOTE]
 > 이 섹션은 이전 자습서의 확장이 아닙니다. 자습서를 사용 하 여 빌드한 앱에 다음 단계를 적용 하려면 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/18797)를 참조 하세요.

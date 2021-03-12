@@ -19,20 +19,20 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: 69e1d639aeb55ae64cc54b1cda402ed6bcbb04ab
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ffcb16b626773da69c45b8ab5dbd7c3cdc84bb5f
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060185"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589116"
 ---
-# <a name="no-locrazor-pages-authorization-conventions-in-aspnet-core"></a>Razor ASP.NET Core의 페이지 권한 부여 규칙
+# <a name="razor-pages-authorization-conventions-in-aspnet-core"></a>Razor ASP.NET Core의 페이지 권한 부여 규칙
 
 ::: moniker range=">= aspnetcore-3.0"
 
 페이지 앱에서 액세스를 제어 하는 한 가지 방법은 Razor 시작할 때 권한 부여 규칙을 사용 하는 것입니다. 이러한 규칙을 통해 사용자에 게 권한을 부여 하 고 익명 사용자가 페이지의 개별 페이지 또는 폴더에 액세스할 수 있습니다. 이 항목에서 설명 하는 규칙은 액세스를 제어 하는 [권한 부여 필터](xref:mvc/controllers/filters#authorization-filters) 를 자동으로 적용 합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/razor-pages-authorization/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 샘플 앱은 [ cookie 없이 ASP.NET Core Identity 인증 ](xref:security/authentication/cookie)을 사용 합니다. 이 항목에 표시 된 개념과 예제는를 사용 하는 앱에 동일 하 게 적용 ASP.NET Core Identity 됩니다. 를 사용 하려면 ASP.NET Core Identity 의 지침을 따르세요 <xref:security/authentication/identity> .
 
@@ -144,7 +144,7 @@ options.Conventions.AuthorizeAreaFolder("Identity", "/Manage", "AtLeast21");
 
 페이지 앱에서 액세스를 제어 하는 한 가지 방법은 Razor 시작할 때 권한 부여 규칙을 사용 하는 것입니다. 이러한 규칙을 통해 사용자에 게 권한을 부여 하 고 익명 사용자가 페이지의 개별 페이지 또는 폴더에 액세스할 수 있습니다. 이 항목에서 설명 하는 규칙은 액세스를 제어 하는 [권한 부여 필터](xref:mvc/controllers/filters#authorization-filters) 를 자동으로 적용 합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/razor-pages-authorization/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 샘플 앱은 [ cookie 없이 ASP.NET Core Identity 인증 ](xref:security/authentication/cookie)을 사용 합니다. 이 항목에 표시 된 개념과 예제는를 사용 하는 앱에 동일 하 게 적용 ASP.NET Core Identity 됩니다. 를 사용 하려면 ASP.NET Core Identity 의 지침을 따르세요 <xref:security/authentication/identity> .
 

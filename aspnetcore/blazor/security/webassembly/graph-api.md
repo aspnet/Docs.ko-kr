@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/graph-api
-ms.openlocfilehash: 997d4dec05ddb6b9d0acb5ed36a6510c0836a4fb
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: b9e95afc2ccff95c6acd215a70c8b0f92fb1b8c0
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280499"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394735"
 ---
 # <a name="use-graph-api-with-aspnet-core-blazor-webassembly"></a>ASP.NET Core Blazor WebAssembly에서 Graph API 사용
 
@@ -36,7 +36,7 @@ ms.locfileid: "100280499"
 
 [Microsoft Graph SDK](/graph/sdks/sdks-overview)는 Microsoft Graph에 액세스하는 고품질의 효율적이고 복원력 있는 애플리케이션 구축을 간소화하도록 설계되었습니다.
 
-이 섹션의 예제에서는 독립 실행형의 프로젝트 파일이나 *`Client`* 앱의 프로젝트 파일에서 다음 패키지에 대한 패키지 참조가 필요합니다.
+이 섹션의 예제에서는 독립 실행형의 프로젝트 파일이나 **`Client`** 앱의 프로젝트 파일에서 다음 패키지에 대한 패키지 참조가 필요합니다.
 
 * [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http)
 * [`Microsoft.Graph`](https://www.nuget.org/packages/Microsoft.Graph)
@@ -48,7 +48,7 @@ ms.locfileid: "100280499"
 
 Azure Portal의 AAD 영역에 Microsoft Graph API 범위를 추가한 후 다음을 수행합니다.
 
-* 독립 실행형 앱 또는 호스트된 Blazor 솔루션의 *`Client`* 앱에 다음 `GraphClientExtensions.cs` 클래스를 추가합니다.
+* 독립 실행형 앱 또는 호스트된 Blazor 솔루션의 **`Client`** 앱에 다음 `GraphClientExtensions.cs` 클래스를 추가합니다.
 * `AuthenticateRequestAsync` 메서드에서 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenRequestOptions>의 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenRequestOptions.Scopes> 속성에 필요한 범위를 제공합니다. 다음 예제에서는 이 문서의 이후 섹션에 나오는 예제와 일치하도록 `User.Read` 범위를 지정합니다.
 
 ```csharp
@@ -291,7 +291,7 @@ builder.Services.AddMsalAuthentication<RemoteAuthenticationState,
 
 이 섹션의 예제에서는 Graph API에 대해 명명된 <xref:System.Net.Http.HttpClient>를 사용하여 통화를 처리할 사용자의 휴대폰 번호를 가져옵니다.
 
-이 섹션의 예제에서는 독립 실행형의 프로젝트 파일이나 *`Client`* 앱의 프로젝트 파일에서 [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http)에 대한 패키지 참조가 필요합니다.
+이 섹션의 예제에서는 독립 실행형의 프로젝트 파일이나 **`Client`** 앱의 프로젝트 파일에서 [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http)에 대한 패키지 참조가 필요합니다.
 
 Graph API 작업을 위해 다음 클래스 및 프로젝트 구성을 만듭니다. 이 문서의 다음 각 하위 섹션에서 사용되는 클래스와 구성은 다음과 같습니다.
 

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 7675e95c43b9ee428ee5fda86ea3ead9815ed645
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: b674d3a034124a26e2e76f2a7f0220e3f0ecea56
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058469"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588772"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>ASP.NET Core의 사용자 지정 모델 바인딩
 
@@ -32,7 +32,7 @@ ms.locfileid: "93058469"
 
 모델 바인딩을 통해 컨트롤러 작업에서 HTTP 요청이 아닌 모델 형식(메서드 인수로 전달된)을 직접 작업할 수 있습니다. 들어오는 요청 데이터와 애플리케이션 모델 간의 매핑은 모델 바인더를 통해 처리됩니다. 개발자는 사용자 지정 모델 바인더를 구현하여 기본 모델 바인딩 기능을 확장할 수 있습니다(일반적으로 개발자가 고유의 공급자를 작성할 필요는 없음).
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/custom-model-binding/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/custom-model-binding/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="default-model-binder-limitations"></a>기본 모델 바인더 제한 사항
 
@@ -46,7 +46,7 @@ ms.locfileid: "93058469"
 
 ### <a name="working-with-the-bytearraymodelbinder"></a>ByteArrayModelBinder 사용
 
-Base64로 인코딩된 문자열은 이진 데이터를 나타내는 데 사용할 수 있습니다. 예를 들어 이미지를 문자열로 인코딩할 수 있습니다. 이 샘플에는 [Base64String.txt](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/3.x/CustomModelBindingSample/Base64String.txt)에 base64로 인코딩된 문자열로 이미지가 포함되어 있습니다.
+Base64로 인코딩된 문자열은 이진 데이터를 나타내는 데 사용할 수 있습니다. 예를 들어 이미지를 문자열로 인코딩할 수 있습니다. 이 샘플에는 [Base64String.txt](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/advanced/custom-model-binding/samples/3.x/CustomModelBindingSample/Base64String.txt)에 base64로 인코딩된 문자열로 이미지가 포함되어 있습니다.
 
 ASP.NET Core MVC는 base64로 인코드된 문자열을 가져온 후 `ByteArrayModelBinder`를 사용하여 바이트 배열로 변환할 수 있습니다. <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider>는 `byte[]` 인수를 `ByteArrayModelBinder`에 매핑합니다.
 
@@ -156,7 +156,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 모델 바인딩을 통해 컨트롤러 작업에서 HTTP 요청이 아닌 모델 형식(메서드 인수로 전달된)을 직접 작업할 수 있습니다. 들어오는 요청 데이터와 애플리케이션 모델 간의 매핑은 모델 바인더를 통해 처리됩니다. 개발자는 사용자 지정 모델 바인더를 구현하여 기본 모델 바인딩 기능을 확장할 수 있습니다(일반적으로 개발자가 고유의 공급자를 작성할 필요는 없음).
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/custom-model-binding/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/custom-model-binding/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="default-model-binder-limitations"></a>기본 모델 바인더 제한 사항
 
@@ -170,7 +170,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 ### <a name="working-with-the-bytearraymodelbinder"></a>ByteArrayModelBinder 사용
 
-Base64로 인코딩된 문자열은 이진 데이터를 나타내는 데 사용할 수 있습니다. 예를 들어 이미지를 문자열로 인코딩할 수 있습니다. 이 샘플에는 [Base64String.txt](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/2.x/CustomModelBindingSample/Base64String.txt)에 base64로 인코딩된 문자열로 이미지가 포함되어 있습니다.
+Base64로 인코딩된 문자열은 이진 데이터를 나타내는 데 사용할 수 있습니다. 예를 들어 이미지를 문자열로 인코딩할 수 있습니다. 이 샘플에는 [Base64String.txt](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/advanced/custom-model-binding/samples/2.x/CustomModelBindingSample/Base64String.txt)에 base64로 인코딩된 문자열로 이미지가 포함되어 있습니다.
 
 ASP.NET Core MVC는 base64로 인코드된 문자열을 가져온 후 `ByteArrayModelBinder`를 사용하여 바이트 배열로 변환할 수 있습니다. <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider>는 `byte[]` 인수를 `ByteArrayModelBinder`에 매핑합니다.
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: 1027887738740d50c30e24e800c0402b1ce4ad02
-ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
+ms.openlocfilehash: aeff3fd06719095660d1b3bb794ef74a8549f761
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854667"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585762"
 ---
 # <a name="test-web-apis-with-the-httprepl"></a>HttpRepl을 사용하여 웹 API 테스트
 
@@ -46,7 +46,7 @@ HTTP REPL(Read-Eval-Print Loop):
 * [POST](#test-http-post-requests)
 * [PUT](#test-http-put-requests)
 
-본 내용을 따라가려면 [샘플 ASP.NET Core 웹 API를 보거나 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples)([다운로드 방법](xref:index#how-to-download-a-sample))하세요.
+본 내용을 따라가려면 [샘플 ASP.NET Core 웹 API를 보거나 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/http-repl/samples)([다운로드 방법](xref:index#how-to-download-a-sample))하세요.
 
 ## <a name="prerequisites"></a>사전 요구 사항
 

@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: tutorials/signalr-blazor
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: f4e51b39c4c3b0c444b08025e9bd74eec0747541
-ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.openlocfilehash: e9bb79eb5bd8f56fe8014981de76e210eb35c2de
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100536388"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589532"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor"></a>Blazor와 함께 ASP.NET Core SignalR 사용
 
@@ -40,7 +40,7 @@ ms.locfileid: "100536388"
 
 이 모든 과정을 마치면 채팅 앱을 실행할 수 있습니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/signalr-blazor/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>사전 요구 사항
 
@@ -290,13 +290,13 @@ dotnet add Server package System.Text.Encodings.Web
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[!code-csharp[](signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Hubs/ChatHub.cs)]
+[!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Hubs/ChatHub.cs)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-[!code-csharp[](signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Hubs/ChatHub.cs)]
+[!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Hubs/ChatHub.cs)]
 
 ::: moniker-end
 
@@ -314,14 +314,14 @@ dotnet add Server package System.Text.Encodings.Web
 
 1. `Startup.ConfigureServices`에 SignalR 및 응답 압축 미들웨어 서비스를 추가합니다.
 
-   [!code-csharp[](signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,6-10)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,6-10)]
 
 1. `Startup.Configure`의 경우
 
    * 처리 파이프라인 구성의 위쪽에서 응답 압축 미들웨어를 사용합니다.
    * 컨트롤러와 클라이언트 쪽 대체에 대한 엔드포인트 사이에 허브에 대한 엔드포인트를 추가합니다.
 
-   [!code-csharp[](signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,26)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,26)]
 
 ::: moniker-end
 
@@ -329,14 +329,14 @@ dotnet add Server package System.Text.Encodings.Web
 
 1. `Startup.ConfigureServices`에 SignalR 및 응답 압축 미들웨어 서비스를 추가합니다.
 
-   [!code-csharp[](signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
 
 1. `Startup.Configure`의 경우
 
    * 처리 파이프라인 구성의 위쪽에서 응답 압축 미들웨어를 사용합니다.
    * 컨트롤러와 클라이언트 쪽 대체에 대한 엔드포인트 사이에 허브에 대한 엔드포인트를 추가합니다.
 
-   [!code-csharp[](signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
 
 ::: moniker-end
 
@@ -348,7 +348,7 @@ dotnet add Server package System.Text.Encodings.Web
 
 1. 태그를 다음 코드로 바꿉니다.
 
-   [!code-razor[](signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Client/Pages/Index.razor)]
+   [!code-razor[](~/tutorials/signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Client/Pages/Index.razor)]
 
 ::: moniker-end
 
@@ -356,7 +356,7 @@ dotnet add Server package System.Text.Encodings.Web
 
 1. 태그를 다음 코드로 바꿉니다.
 
-   [!code-razor[](signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Client/Pages/Index.razor)]
+   [!code-razor[](~/tutorials/signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Client/Pages/Index.razor)]
 
 ::: moniker-end
 
@@ -615,13 +615,13 @@ dotnet add package System.Text.Encodings.Web
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[!code-csharp[](signalr-blazor/samples/5.x/BlazorServerSignalRApp/Hubs/ChatHub.cs)]
+[!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorServerSignalRApp/Hubs/ChatHub.cs)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-[!code-csharp[](signalr-blazor/samples/3.x/BlazorServerSignalRApp/Hubs/ChatHub.cs)]
+[!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorServerSignalRApp/Hubs/ChatHub.cs)]
 
 ::: moniker-end
 
@@ -640,14 +640,14 @@ dotnet add package System.Text.Encodings.Web
 
 1. 응답 압축 미들웨어 서비스를 `Startup.ConfigureServices`에 추가합니다.
 
-   [!code-csharp[](signalr-blazor/samples/5.x/BlazorServerSignalRApp/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorServerSignalRApp/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
 
 1. `Startup.Configure`의 경우
 
    * 처리 파이프라인 구성의 위쪽에서 응답 압축 미들웨어를 사용합니다.
    * Blazor 허브를 매핑하기 위한 엔드포인트와 클라이언트 쪽 대체 사이에 허브에 대한 엔드포인트를 추가합니다.
 
-   [!code-csharp[](signalr-blazor/samples/5.x/BlazorServerSignalRApp/Startup.cs?name=snippet_Configure&highlight=3,23)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorServerSignalRApp/Startup.cs?name=snippet_Configure&highlight=3,23)]
 
 ::: moniker-end
 
@@ -655,14 +655,14 @@ dotnet add package System.Text.Encodings.Web
 
 1. 응답 압축 미들웨어 서비스를 `Startup.ConfigureServices`에 추가합니다.
 
-   [!code-csharp[](signalr-blazor/samples/3.x/BlazorServerSignalRApp/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorServerSignalRApp/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
 
 1. `Startup.Configure`의 경우
 
    * 처리 파이프라인 구성의 위쪽에서 응답 압축 미들웨어를 사용합니다.
    * Blazor 허브를 매핑하기 위한 엔드포인트와 클라이언트 쪽 대체 사이에 허브에 대한 엔드포인트를 추가합니다.
 
-   [!code-csharp[](signalr-blazor/samples/3.x/BlazorServerSignalRApp/Startup.cs?name=snippet_Configure&highlight=3,23)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorServerSignalRApp/Startup.cs?name=snippet_Configure&highlight=3,23)]
 
 ::: moniker-end
 
@@ -674,7 +674,7 @@ dotnet add package System.Text.Encodings.Web
 
 1. 태그를 다음 코드로 바꿉니다.
 
-   [!code-razor[](signalr-blazor/samples/5.x/BlazorServerSignalRApp/Pages/Index.razor)]
+   [!code-razor[](~/tutorials/signalr-blazor/samples/5.x/BlazorServerSignalRApp/Pages/Index.razor)]
 
 ::: moniker-end
 
@@ -682,7 +682,7 @@ dotnet add package System.Text.Encodings.Web
 
 1. 태그를 다음 코드로 바꿉니다.
 
-   [!code-razor[](signalr-blazor/samples/3.x/BlazorServerSignalRApp/Pages/Index.razor)]
+   [!code-razor[](~/tutorials/signalr-blazor/samples/3.x/BlazorServerSignalRApp/Pages/Index.razor)]
 
 ::: moniker-end
 

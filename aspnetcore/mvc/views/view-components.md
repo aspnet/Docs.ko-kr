@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-components
-ms.openlocfilehash: 61fcc07aeb30db15014fb716194328d366f27859
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: 1d0e0da3a5d047d7457e7ca7587c81029e33cb69
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058339"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586009"
 ---
 # <a name="view-components-in-aspnet-core"></a>ASP.NET Core의 보기 구성 요소
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/view-components/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="view-components"></a>보기 구성 요소
 
@@ -167,7 +167,7 @@ ASP.NET Core 1.1 이상에서는 뷰 구성 요소를 [태그 도우미](xref:mv
 
 ## <a name="walkthrough-creating-a-simple-view-component"></a>연습: 간단한 뷰 구성 요소 만들기
 
-시작 코드를 [다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample), 빌드 및 테스트합니다. `ToDo` *ToDo* 항목 목록을 표시 하는 컨트롤러를 포함 하는 간단한 프로젝트입니다.
+시작 코드를 [다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/view-components/sample), 빌드 및 테스트합니다. `ToDo` *ToDo* 항목 목록을 표시 하는 컨트롤러를 포함 하는 간단한 프로젝트입니다.
 
 ![ToDo 목록](view-components/_static/2dos.png)
 
@@ -193,7 +193,7 @@ ASP.NET Core 1.1 이상에서는 뷰 구성 요소를 [태그 도우미](xref:mv
 * `InvokeAsync`는 보기에서 호출할 수 있는 메서드를 노출하며 임의의 개수의 인수를 사용할 수 있습니다.
 * `InvokeAsync` 메서드는 `isDone` 및 `maxPriority` 매개 변수를 만족하는 `ToDo` 항목 집합을 반환합니다.
 
-### <a name="create-the-view-component-no-locrazor-view"></a>뷰 구성 요소 Razor 보기 만들기
+### <a name="create-the-view-component-razor-view"></a>뷰 구성 요소 Razor 보기 만들기
 
 * *Views/Shared/Components* 폴더를 만듭니다. 이 폴더의 이름은 *Components* 로 **지정되어야만** 합니다.
 
