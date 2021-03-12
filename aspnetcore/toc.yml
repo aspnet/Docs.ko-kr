@@ -723,9 +723,9 @@
       displayName: 'signalr, specs'
       items:
         - name: 허브 프로토콜
-          href: 'https://github.com/aspnet/AspNetCore/blob/master/src/SignalR/docs/specs/HubProtocol.md'
+          href: 'https://github.com/aspnet/AspNetCore/blob/main/src/SignalR/docs/specs/HubProtocol.md'
         - name: 전송 프로토콜
-          href: 'https://github.com/aspnet/AspNetCore/blob/master/src/SignalR/docs/specs/TransportProtocols.md'
+          href: 'https://github.com/aspnet/AspNetCore/blob/main/src/SignalR/docs/specs/TransportProtocols.md'
 - name: 원격 프로시저 호출 앱
   items:
     - name: gRPC 서비스 소개
@@ -752,6 +752,8 @@
           uid: grpc/clientfactory
         - name: 마감일 및 취소
           uid: grpc/deadlines-cancellation
+        - name: 일시적인 오류 처리
+          uid: grpc/retries
     - name: ASP.NET Core를 사용하는 gRPC 서비스
       uid: grpc/aspnetcore
     - name: 지원되는 플랫폼
@@ -1028,7 +1030,7 @@
           href: /visualstudio/containers/vs-azure-tools-docker-hosting-web-apps-in-docker
         - name: 샘플 Docker 이미지
           displayName: 'deploy, publish, docker'
-          href: 'https://github.com/dotnet/dotnet-docker/blob/master/samples/aspnetapp/README.md'
+          href: 'https://github.com/dotnet/dotnet-docker/blob/main/samples/aspnetapp/README.md'
     - name: 프록시 및 부하 분산 장치 구성
       displayName: 'deploy, publish'
       uid: host-and-deploy/proxy-load-balancer
@@ -1418,4 +1420,4 @@
 - name: API 참조
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: 참가
-  href: 'https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md'
+  href: 'https://github.com/dotnet/AspNetCore.Docs/blob/main/CONTRIBUTING.md'
