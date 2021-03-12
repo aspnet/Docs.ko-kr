@@ -18,66 +18,66 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: df9c78770f3494b1ae9e0d3604926d77cb1e67bb
-ms.sourcegitcommit: 20a41c8e40a2e69e99291e2fe18caa04c02e7109
+ms.openlocfilehash: fdec03422f4a4517950ff6de2a0400df5307b40f
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99578323"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588538"
 ---
-# <a name="get-started-with-swashbuckle-and-aspnet-core"></a><span data-ttu-id="74f48-103">Swashbuckle 및 ASP.NET Core 시작</span><span class="sxs-lookup"><span data-stu-id="74f48-103">Get started with Swashbuckle and ASP.NET Core</span></span>
+# <a name="get-started-with-swashbuckle-and-aspnet-core"></a><span data-ttu-id="13089-103">Swashbuckle 및 ASP.NET Core 시작</span><span class="sxs-lookup"><span data-stu-id="13089-103">Get started with Swashbuckle and ASP.NET Core</span></span>
 
-<span data-ttu-id="74f48-104">[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="74f48-104">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="13089-104">[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="13089-104">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="74f48-105">Swashbuckle에 대한 세 가지 주 구성 요소는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-105">There are three main components to Swashbuckle:</span></span>
+<span data-ttu-id="13089-105">Swashbuckle에 대한 세 가지 주 구성 요소는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="13089-105">There are three main components to Swashbuckle:</span></span>
 
-* <span data-ttu-id="74f48-106">[Swashbuckle.AspNetCore.Swagger](https://www.nuget.org/packages/Swashbuckle.AspNetCore.Swagger/): `SwaggerDocument` 개체를 JSON 엔드포인트로 노출하기 위한 Swagger 개체 모델 및 미들웨어.</span><span class="sxs-lookup"><span data-stu-id="74f48-106">[Swashbuckle.AspNetCore.Swagger](https://www.nuget.org/packages/Swashbuckle.AspNetCore.Swagger/): a Swagger object model and middleware to expose `SwaggerDocument` objects as JSON endpoints.</span></span>
+* <span data-ttu-id="13089-106">[Swashbuckle.AspNetCore.Swagger](https://www.nuget.org/packages/Swashbuckle.AspNetCore.Swagger/): `SwaggerDocument` 개체를 JSON 엔드포인트로 노출하기 위한 Swagger 개체 모델 및 미들웨어.</span><span class="sxs-lookup"><span data-stu-id="13089-106">[Swashbuckle.AspNetCore.Swagger](https://www.nuget.org/packages/Swashbuckle.AspNetCore.Swagger/): a Swagger object model and middleware to expose `SwaggerDocument` objects as JSON endpoints.</span></span>
 
-* <span data-ttu-id="74f48-107">[Swashbuckle.AspNetCore.SwaggerGen](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerGen/): 경로, 컨트롤러 및 모델에서 직접 `SwaggerDocument` 개체를 빌드하는 Swagger 생성기.</span><span class="sxs-lookup"><span data-stu-id="74f48-107">[Swashbuckle.AspNetCore.SwaggerGen](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerGen/): a Swagger generator that builds `SwaggerDocument` objects directly from your routes, controllers, and models.</span></span> <span data-ttu-id="74f48-108">일반적으로 Swagger 엔드포인트 미들웨어와 결합되어 자동으로 Swagger JSON을 노출합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-108">It's typically combined with the Swagger endpoint middleware to automatically expose Swagger JSON.</span></span>
+* <span data-ttu-id="13089-107">[Swashbuckle.AspNetCore.SwaggerGen](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerGen/): 경로, 컨트롤러 및 모델에서 직접 `SwaggerDocument` 개체를 빌드하는 Swagger 생성기.</span><span class="sxs-lookup"><span data-stu-id="13089-107">[Swashbuckle.AspNetCore.SwaggerGen](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerGen/): a Swagger generator that builds `SwaggerDocument` objects directly from your routes, controllers, and models.</span></span> <span data-ttu-id="13089-108">일반적으로 Swagger 엔드포인트 미들웨어와 결합되어 자동으로 Swagger JSON을 노출합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-108">It's typically combined with the Swagger endpoint middleware to automatically expose Swagger JSON.</span></span>
 
-* <span data-ttu-id="74f48-109">[Swashbuckle.AspNetCore.SwaggerUI](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerUI/): Swagger UI 도구의 포함된 버전.</span><span class="sxs-lookup"><span data-stu-id="74f48-109">[Swashbuckle.AspNetCore.SwaggerUI](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerUI/): an embedded version of the Swagger UI tool.</span></span> <span data-ttu-id="74f48-110">Swagger JSON을 해석하여 웹 API 기능을 설명하기 위한 다양한 사용자 지정 가능한 환경을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-110">It interprets Swagger JSON to build a rich, customizable experience for describing the web API functionality.</span></span> <span data-ttu-id="74f48-111">여기에는 공용 메서드에 대한 기본 제공 테스트 도구가 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-111">It includes built-in test harnesses for the public methods.</span></span>
+* <span data-ttu-id="13089-109">[Swashbuckle.AspNetCore.SwaggerUI](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerUI/): Swagger UI 도구의 포함된 버전.</span><span class="sxs-lookup"><span data-stu-id="13089-109">[Swashbuckle.AspNetCore.SwaggerUI](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerUI/): an embedded version of the Swagger UI tool.</span></span> <span data-ttu-id="13089-110">Swagger JSON을 해석하여 웹 API 기능을 설명하기 위한 다양한 사용자 지정 가능한 환경을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-110">It interprets Swagger JSON to build a rich, customizable experience for describing the web API functionality.</span></span> <span data-ttu-id="13089-111">여기에는 공용 메서드에 대한 기본 제공 테스트 도구가 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-111">It includes built-in test harnesses for the public methods.</span></span>
 
-## <a name="package-installation"></a><span data-ttu-id="74f48-112">패키지 설치</span><span class="sxs-lookup"><span data-stu-id="74f48-112">Package installation</span></span>
+## <a name="package-installation"></a><span data-ttu-id="13089-112">패키지 설치</span><span class="sxs-lookup"><span data-stu-id="13089-112">Package installation</span></span>
 
-<span data-ttu-id="74f48-113">다음 방법으로 Swashbuckle을 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-113">Swashbuckle can be added with the following approaches:</span></span>
+<span data-ttu-id="13089-113">다음 방법으로 Swashbuckle을 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="13089-113">Swashbuckle can be added with the following approaches:</span></span>
 
-### <a name="visual-studio"></a>[<span data-ttu-id="74f48-114">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="74f48-114">Visual Studio</span></span>](#tab/visual-studio)
+### <a name="visual-studio"></a>[<span data-ttu-id="13089-114">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="13089-114">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="74f48-115">**패키지 관리자 콘솔** 창에서:</span><span class="sxs-lookup"><span data-stu-id="74f48-115">From the **Package Manager Console** window:</span></span>
-  * <span data-ttu-id="74f48-116">**보기** > **다른 창** > **패키지 관리자 콘솔** 로 이동</span><span class="sxs-lookup"><span data-stu-id="74f48-116">Go to **View** > **Other Windows** > **Package Manager Console**</span></span>
-  * <span data-ttu-id="74f48-117">*TodoApi.csproj* 파일이 위치한 디렉터리로 이동</span><span class="sxs-lookup"><span data-stu-id="74f48-117">Navigate to the directory in which the *TodoApi.csproj* file exists</span></span>
-  * <span data-ttu-id="74f48-118">다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-118">Execute the following command:</span></span>
+* <span data-ttu-id="13089-115">**패키지 관리자 콘솔** 창에서:</span><span class="sxs-lookup"><span data-stu-id="13089-115">From the **Package Manager Console** window:</span></span>
+  * <span data-ttu-id="13089-116">**보기** > **다른 창** > **패키지 관리자 콘솔** 로 이동</span><span class="sxs-lookup"><span data-stu-id="13089-116">Go to **View** > **Other Windows** > **Package Manager Console**</span></span>
+  * <span data-ttu-id="13089-117">*TodoApi.csproj* 파일이 위치한 디렉터리로 이동</span><span class="sxs-lookup"><span data-stu-id="13089-117">Navigate to the directory in which the *TodoApi.csproj* file exists</span></span>
+  * <span data-ttu-id="13089-118">다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-118">Execute the following command:</span></span>
 
     ```powershell
     Install-Package Swashbuckle.AspNetCore -Version 5.6.3
     ```
 
-* <span data-ttu-id="74f48-119">**NuGet 패키지 관리** 대화 상자에서:</span><span class="sxs-lookup"><span data-stu-id="74f48-119">From the **Manage NuGet Packages** dialog:</span></span>
-  * <span data-ttu-id="74f48-120">**솔루션 탐색기** > **NuGet 패키지 관리** 에서 프로젝트를 마우스 오른쪽 단추로 클릭</span><span class="sxs-lookup"><span data-stu-id="74f48-120">Right-click the project in **Solution Explorer** > **Manage NuGet Packages**</span></span>
-  * <span data-ttu-id="74f48-121">**패키지 소스** 를 “nuget.org”로 설정</span><span class="sxs-lookup"><span data-stu-id="74f48-121">Set the **Package source** to "nuget.org"</span></span>
-  * <span data-ttu-id="74f48-122">"시험판 포함" 옵션을 사용하도록 설정했는지 확인</span><span class="sxs-lookup"><span data-stu-id="74f48-122">Ensure the "Include prerelease" option is enabled</span></span>
-  * <span data-ttu-id="74f48-123">검색 상자에 “Swashbuckle.AspNetCore” 입력</span><span class="sxs-lookup"><span data-stu-id="74f48-123">Enter "Swashbuckle.AspNetCore" in the search box</span></span>
-  * <span data-ttu-id="74f48-124">**찾아보기** 탭에서 최신 “Swashbuckle.AspNetCore” 패키지를 선택하고 **설치** 클릭</span><span class="sxs-lookup"><span data-stu-id="74f48-124">Select the latest "Swashbuckle.AspNetCore" package from the **Browse** tab and click **Install**</span></span>
+* <span data-ttu-id="13089-119">**NuGet 패키지 관리** 대화 상자에서:</span><span class="sxs-lookup"><span data-stu-id="13089-119">From the **Manage NuGet Packages** dialog:</span></span>
+  * <span data-ttu-id="13089-120">**솔루션 탐색기** > **NuGet 패키지 관리** 에서 프로젝트를 마우스 오른쪽 단추로 클릭</span><span class="sxs-lookup"><span data-stu-id="13089-120">Right-click the project in **Solution Explorer** > **Manage NuGet Packages**</span></span>
+  * <span data-ttu-id="13089-121">**패키지 소스** 를 “nuget.org”로 설정</span><span class="sxs-lookup"><span data-stu-id="13089-121">Set the **Package source** to "nuget.org"</span></span>
+  * <span data-ttu-id="13089-122">"시험판 포함" 옵션을 사용하도록 설정했는지 확인</span><span class="sxs-lookup"><span data-stu-id="13089-122">Ensure the "Include prerelease" option is enabled</span></span>
+  * <span data-ttu-id="13089-123">검색 상자에 “Swashbuckle.AspNetCore” 입력</span><span class="sxs-lookup"><span data-stu-id="13089-123">Enter "Swashbuckle.AspNetCore" in the search box</span></span>
+  * <span data-ttu-id="13089-124">**찾아보기** 탭에서 최신 “Swashbuckle.AspNetCore” 패키지를 선택하고 **설치** 클릭</span><span class="sxs-lookup"><span data-stu-id="13089-124">Select the latest "Swashbuckle.AspNetCore" package from the **Browse** tab and click **Install**</span></span>
 
-### <a name="visual-studio-for-mac"></a>[<span data-ttu-id="74f48-125">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="74f48-125">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+### <a name="visual-studio-for-mac"></a>[<span data-ttu-id="13089-125">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="13089-125">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="74f48-126">**Solution Pad** 에서 *Packages* 폴더를 마우스 오른쪽 단추로 클릭 > **패키지 추가...** 선택</span><span class="sxs-lookup"><span data-stu-id="74f48-126">Right-click the *Packages* folder in **Solution Pad** > **Add Packages...**</span></span>
-* <span data-ttu-id="74f48-127">**패키지 추가** 창의 **소스** 드롭다운을 “nuget.org”로 설정</span><span class="sxs-lookup"><span data-stu-id="74f48-127">Set the **Add Packages** window's **Source** drop-down to "nuget.org"</span></span>
-* <span data-ttu-id="74f48-128">"시험판 패키지 표시" 옵션을 사용하도록 설정했는지 확인</span><span class="sxs-lookup"><span data-stu-id="74f48-128">Ensure the "Show pre-release packages" option is enabled</span></span>
-* <span data-ttu-id="74f48-129">검색 상자에 “Swashbuckle.AspNetCore” 입력</span><span class="sxs-lookup"><span data-stu-id="74f48-129">Enter "Swashbuckle.AspNetCore" in the search box</span></span>
-* <span data-ttu-id="74f48-130">결과 창에서 최신 "Swashbuckle.AspNetCore" 패키지를 선택하고 **패키지 추가** 클릭</span><span class="sxs-lookup"><span data-stu-id="74f48-130">Select the latest "Swashbuckle.AspNetCore" package from the results pane and click **Add Package**</span></span>
+* <span data-ttu-id="13089-126">**Solution Pad** 에서 *Packages* 폴더를 마우스 오른쪽 단추로 클릭 > **패키지 추가...** 선택</span><span class="sxs-lookup"><span data-stu-id="13089-126">Right-click the *Packages* folder in **Solution Pad** > **Add Packages...**</span></span>
+* <span data-ttu-id="13089-127">**패키지 추가** 창의 **소스** 드롭다운을 “nuget.org”로 설정</span><span class="sxs-lookup"><span data-stu-id="13089-127">Set the **Add Packages** window's **Source** drop-down to "nuget.org"</span></span>
+* <span data-ttu-id="13089-128">"시험판 패키지 표시" 옵션을 사용하도록 설정했는지 확인</span><span class="sxs-lookup"><span data-stu-id="13089-128">Ensure the "Show pre-release packages" option is enabled</span></span>
+* <span data-ttu-id="13089-129">검색 상자에 “Swashbuckle.AspNetCore” 입력</span><span class="sxs-lookup"><span data-stu-id="13089-129">Enter "Swashbuckle.AspNetCore" in the search box</span></span>
+* <span data-ttu-id="13089-130">결과 창에서 최신 "Swashbuckle.AspNetCore" 패키지를 선택하고 **패키지 추가** 클릭</span><span class="sxs-lookup"><span data-stu-id="13089-130">Select the latest "Swashbuckle.AspNetCore" package from the results pane and click **Add Package**</span></span>
 
-### <a name="visual-studio-code"></a>[<span data-ttu-id="74f48-131">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="74f48-131">Visual Studio Code</span></span>](#tab/visual-studio-code)
+### <a name="visual-studio-code"></a>[<span data-ttu-id="13089-131">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="13089-131">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-<span data-ttu-id="74f48-132">**통합 터미널** 에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-132">Run the following command from the **Integrated Terminal**:</span></span>
+<span data-ttu-id="13089-132">**통합 터미널** 에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-132">Run the following command from the **Integrated Terminal**:</span></span>
 
 ```dotnetcli
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.6.3
 ```
 
-### <a name="net-core-cli"></a>[<span data-ttu-id="74f48-133">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="74f48-133">.NET Core CLI</span></span>](#tab/netcore-cli)
+### <a name="net-core-cli"></a>[<span data-ttu-id="13089-133">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="13089-133">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-<span data-ttu-id="74f48-134">다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-134">Run the following command:</span></span>
+<span data-ttu-id="13089-134">다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-134">Run the following command:</span></span>
 
 ```dotnetcli
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.6.3
@@ -85,9 +85,9 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.6.3
 
 ---
 
-## <a name="add-and-configure-swagger-middleware"></a><span data-ttu-id="74f48-135">Swagger 미들웨어 추가 및 구성</span><span class="sxs-lookup"><span data-stu-id="74f48-135">Add and configure Swagger middleware</span></span>
+## <a name="add-and-configure-swagger-middleware"></a><span data-ttu-id="13089-135">Swagger 미들웨어 추가 및 구성</span><span class="sxs-lookup"><span data-stu-id="13089-135">Add and configure Swagger middleware</span></span>
 
-<span data-ttu-id="74f48-136">`Startup.ConfigureServices` 메서드의 서비스 컬렉션에 Swagger 생성기를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-136">Add the Swagger generator to the services collection in the `Startup.ConfigureServices` method:</span></span>
+<span data-ttu-id="13089-136">`Startup.ConfigureServices` 메서드의 서비스 컬렉션에 Swagger 생성기를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-136">Add the Swagger generator to the services collection in the `Startup.ConfigureServices` method:</span></span>
 
 ::: moniker range="<= aspnetcore-2.0"
 
@@ -107,7 +107,7 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.6.3
 
 ::: moniker-end
 
-<span data-ttu-id="74f48-137">`Startup.Configure` 메서드에서 생성된 JSON 문서 및 Swagger UI를 지원하기 위해 미들웨어를 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-137">In the `Startup.Configure` method, enable the middleware for serving the generated JSON document and the Swagger UI:</span></span>
+<span data-ttu-id="13089-137">`Startup.Configure` 메서드에서 생성된 JSON 문서 및 Swagger UI를 지원하기 위해 미들웨어를 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-137">In the `Startup.Configure` method, enable the middleware for serving the generated JSON document and the Swagger UI:</span></span>
 
 ::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
@@ -122,31 +122,31 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.6.3
 ::: moniker-end
 
 > [!NOTE]
-> <span data-ttu-id="74f48-138">Swashbuckle은 MVC의 <xref:Microsoft.AspNetCore.Mvc.ApiExplorer>를 사용하여 경로 및 엔드포인트를 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-138">Swashbuckle relies on MVC's <xref:Microsoft.AspNetCore.Mvc.ApiExplorer> to discover the routes and endpoints.</span></span> <span data-ttu-id="74f48-139">프로젝트에서 <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc%2A>를 호출하면 경로 및 엔드포인트가 자동으로 검색됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-139">If the project calls <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc%2A>, routes and endpoints are discovered automatically.</span></span> <span data-ttu-id="74f48-140"><xref:Microsoft.Extensions.DependencyInjection.MvcCoreServiceCollectionExtensions.AddMvcCore%2A>를 호출하는 경우 <xref:Microsoft.Extensions.DependencyInjection.MvcApiExplorerMvcCoreBuilderExtensions.AddApiExplorer%2A> 메서드를 명시적으로 호출해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-140">When calling <xref:Microsoft.Extensions.DependencyInjection.MvcCoreServiceCollectionExtensions.AddMvcCore%2A>, the <xref:Microsoft.Extensions.DependencyInjection.MvcApiExplorerMvcCoreBuilderExtensions.AddApiExplorer%2A> method must be explicitly called.</span></span> <span data-ttu-id="74f48-141">자세한 내용은 [Swashbuckle, ApiExplorer 및 라우팅](https://github.com/domaindrivendev/Swashbuckle.AspNetCore#swashbuckle-apiexplorer-and-routing)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="74f48-141">For more information, see [Swashbuckle, ApiExplorer, and Routing](https://github.com/domaindrivendev/Swashbuckle.AspNetCore#swashbuckle-apiexplorer-and-routing).</span></span>
+> <span data-ttu-id="13089-138">Swashbuckle은 MVC의 <xref:Microsoft.AspNetCore.Mvc.ApiExplorer>를 사용하여 경로 및 엔드포인트를 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-138">Swashbuckle relies on MVC's <xref:Microsoft.AspNetCore.Mvc.ApiExplorer> to discover the routes and endpoints.</span></span> <span data-ttu-id="13089-139">프로젝트에서 <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc%2A>를 호출하면 경로 및 엔드포인트가 자동으로 검색됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-139">If the project calls <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc%2A>, routes and endpoints are discovered automatically.</span></span> <span data-ttu-id="13089-140"><xref:Microsoft.Extensions.DependencyInjection.MvcCoreServiceCollectionExtensions.AddMvcCore%2A>를 호출하는 경우 <xref:Microsoft.Extensions.DependencyInjection.MvcApiExplorerMvcCoreBuilderExtensions.AddApiExplorer%2A> 메서드를 명시적으로 호출해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-140">When calling <xref:Microsoft.Extensions.DependencyInjection.MvcCoreServiceCollectionExtensions.AddMvcCore%2A>, the <xref:Microsoft.Extensions.DependencyInjection.MvcApiExplorerMvcCoreBuilderExtensions.AddApiExplorer%2A> method must be explicitly called.</span></span> <span data-ttu-id="13089-141">자세한 내용은 [Swashbuckle, ApiExplorer 및 라우팅](https://github.com/domaindrivendev/Swashbuckle.AspNetCore#swashbuckle-apiexplorer-and-routing)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="13089-141">For more information, see [Swashbuckle, ApiExplorer, and Routing](https://github.com/domaindrivendev/Swashbuckle.AspNetCore#swashbuckle-apiexplorer-and-routing).</span></span>
 
-<span data-ttu-id="74f48-142">위의 `UseSwaggerUI` 메서드 호출은 [정적 파일 미들웨어](xref:fundamentals/static-files)를 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-142">The preceding `UseSwaggerUI` method call enables the [Static File Middleware](xref:fundamentals/static-files).</span></span> <span data-ttu-id="74f48-143">.NET Framework 또는 NET Core 1.x를 대상으로 하는 경우 [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) NuGet 패키지를 프로젝트에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-143">If targeting .NET Framework or .NET Core 1.x, add the [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) NuGet package to the project.</span></span>
+<span data-ttu-id="13089-142">위의 `UseSwaggerUI` 메서드 호출은 [정적 파일 미들웨어](xref:fundamentals/static-files)를 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-142">The preceding `UseSwaggerUI` method call enables the [Static File Middleware](xref:fundamentals/static-files).</span></span> <span data-ttu-id="13089-143">.NET Framework 또는 NET Core 1.x를 대상으로 하는 경우 [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) NuGet 패키지를 프로젝트에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-143">If targeting .NET Framework or .NET Core 1.x, add the [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) NuGet package to the project.</span></span>
 
-<span data-ttu-id="74f48-144">앱을 시작하고 `http://localhost:<port>/swagger/v1/swagger.json`으로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-144">Launch the app, and navigate to `http://localhost:<port>/swagger/v1/swagger.json`.</span></span> <span data-ttu-id="74f48-145">엔드포인트를 설명하는 생성된 문서는 [OpenAPI 사양(openapi.json)](xref:tutorials/web-api-help-pages-using-swagger#openapi-specification-openapijson)에 표시된 것과 같이 나타납니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-145">The generated document describing the endpoints appears as shown in [OpenAPI specification (openapi.json)](xref:tutorials/web-api-help-pages-using-swagger#openapi-specification-openapijson).</span></span>
+<span data-ttu-id="13089-144">앱을 시작하고 `http://localhost:<port>/swagger/v1/swagger.json`으로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-144">Launch the app, and navigate to `http://localhost:<port>/swagger/v1/swagger.json`.</span></span> <span data-ttu-id="13089-145">엔드포인트를 설명하는 생성된 문서는 [OpenAPI 사양(openapi.json)](xref:tutorials/web-api-help-pages-using-swagger#openapi-specification-openapijson)에 표시된 것과 같이 나타납니다.</span><span class="sxs-lookup"><span data-stu-id="13089-145">The generated document describing the endpoints appears as shown in [OpenAPI specification (openapi.json)](xref:tutorials/web-api-help-pages-using-swagger#openapi-specification-openapijson).</span></span>
 
-<span data-ttu-id="74f48-146">Swagger UI는 `http://localhost:<port>/swagger`에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-146">The Swagger UI can be found at `http://localhost:<port>/swagger`.</span></span> <span data-ttu-id="74f48-147">Swagger UI를 통해 API를 탐색하고 다른 프로그램에 통합합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-147">Explore the API via Swagger UI and incorporate it in other programs.</span></span>
+<span data-ttu-id="13089-146">Swagger UI는 `http://localhost:<port>/swagger`에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="13089-146">The Swagger UI can be found at `http://localhost:<port>/swagger`.</span></span> <span data-ttu-id="13089-147">Swagger UI를 통해 API를 탐색하고 다른 프로그램에 통합합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-147">Explore the API via Swagger UI and incorporate it in other programs.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="74f48-148">앱의 루트(`http://localhost:<port>/`)에서 Swagger UI를 제공하려면 `RoutePrefix` 속성을 빈 문자열로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-148">To serve the Swagger UI at the app's root (`http://localhost:<port>/`), set the `RoutePrefix` property to an empty string:</span></span>
+> <span data-ttu-id="13089-148">앱의 루트(`http://localhost:<port>/`)에서 Swagger UI를 제공하려면 `RoutePrefix` 속성을 빈 문자열로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-148">To serve the Swagger UI at the app's root (`http://localhost:<port>/`), set the `RoutePrefix` property to an empty string:</span></span>
 >
 > [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup3.cs?name=snippet_UseSwaggerUI&highlight=4)]
 
-<span data-ttu-id="74f48-149">IIS 또는 역방향 프록시에서 디렉터리를 사용하는 경우 `./` 접두사를 사용하여 Swagger 엔드포인트를 상대 경로로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-149">If using directories with IIS or a reverse proxy, set the Swagger endpoint to a relative path using the `./` prefix.</span></span> <span data-ttu-id="74f48-150">예: `./swagger/v1/swagger.json`.</span><span class="sxs-lookup"><span data-stu-id="74f48-150">For example, `./swagger/v1/swagger.json`.</span></span> <span data-ttu-id="74f48-151">`/swagger/v1/swagger.json`을 사용하면 앱이 URL의 실제 루트(사용되는 경우 경로 접두사)에서 JSON 파일을 찾도록 지시합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-151">Using `/swagger/v1/swagger.json` instructs the app to look for the JSON file at the true root of the URL (plus the route prefix, if used).</span></span> <span data-ttu-id="74f48-152">예를 들어 `http://localhost:<port>/<virtual_directory>/<route_prefix>/swagger/v1/swagger.json` 대신 `http://localhost:<port>/<route_prefix>/swagger/v1/swagger.json`을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-152">For example, use `http://localhost:<port>/<route_prefix>/swagger/v1/swagger.json` instead of `http://localhost:<port>/<virtual_directory>/<route_prefix>/swagger/v1/swagger.json`.</span></span>
+<span data-ttu-id="13089-149">IIS 또는 역방향 프록시에서 디렉터리를 사용하는 경우 `./` 접두사를 사용하여 Swagger 엔드포인트를 상대 경로로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-149">If using directories with IIS or a reverse proxy, set the Swagger endpoint to a relative path using the `./` prefix.</span></span> <span data-ttu-id="13089-150">예: `./swagger/v1/swagger.json`.</span><span class="sxs-lookup"><span data-stu-id="13089-150">For example, `./swagger/v1/swagger.json`.</span></span> <span data-ttu-id="13089-151">`/swagger/v1/swagger.json`을 사용하면 앱이 URL의 실제 루트(사용되는 경우 경로 접두사)에서 JSON 파일을 찾도록 지시합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-151">Using `/swagger/v1/swagger.json` instructs the app to look for the JSON file at the true root of the URL (plus the route prefix, if used).</span></span> <span data-ttu-id="13089-152">예를 들어 `http://localhost:<port>/<virtual_directory>/<route_prefix>/swagger/v1/swagger.json` 대신 `http://localhost:<port>/<route_prefix>/swagger/v1/swagger.json`을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-152">For example, use `http://localhost:<port>/<route_prefix>/swagger/v1/swagger.json` instead of `http://localhost:<port>/<virtual_directory>/<route_prefix>/swagger/v1/swagger.json`.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="74f48-153">기본적으로 Swashbuckle은 공식적으로 OpenAPI 사양이라고 하는 사양의 버전 3.0에서 Swagger JSON을 생성하고 공개합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-153">By default, Swashbuckle generates and exposes Swagger JSON in version 3.0 of the specification&mdash;officially called the OpenAPI Specification.</span></span> <span data-ttu-id="74f48-154">이전 버전과의 호환성을 지원하기 위해 2.0 형식으로 JSON을 공개하도록 옵트인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-154">To support backwards compatibility, you can opt into exposing JSON in the 2.0 format instead.</span></span> <span data-ttu-id="74f48-155">현재 OpenAPI 버전 2.0을 지원하는 Microsoft Power Apps 및 Microsoft Flow와 같은 통합의 경우 이 2.0 형식이 중요합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-155">This 2.0 format is important for integrations such as Microsoft Power Apps and Microsoft Flow that currently support OpenAPI version 2.0.</span></span> <span data-ttu-id="74f48-156">2\.0 형식을 옵트인하려면 `Startup.Configure`에서 `SerializeAsV2` 속성을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-156">To opt into the 2.0 format, set the `SerializeAsV2` property in `Startup.Configure`:</span></span>
+> <span data-ttu-id="13089-153">기본적으로 Swashbuckle은 공식적으로 OpenAPI 사양이라고 하는 사양의 버전 3.0에서 Swagger JSON을 생성하고 공개합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-153">By default, Swashbuckle generates and exposes Swagger JSON in version 3.0 of the specification&mdash;officially called the OpenAPI Specification.</span></span> <span data-ttu-id="13089-154">이전 버전과의 호환성을 지원하기 위해 2.0 형식으로 JSON을 공개하도록 옵트인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="13089-154">To support backwards compatibility, you can opt into exposing JSON in the 2.0 format instead.</span></span> <span data-ttu-id="13089-155">현재 OpenAPI 버전 2.0을 지원하는 Microsoft Power Apps 및 Microsoft Flow와 같은 통합의 경우 이 2.0 형식이 중요합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-155">This 2.0 format is important for integrations such as Microsoft Power Apps and Microsoft Flow that currently support OpenAPI version 2.0.</span></span> <span data-ttu-id="13089-156">2\.0 형식을 옵트인하려면 `Startup.Configure`에서 `SerializeAsV2` 속성을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-156">To opt into the 2.0 format, set the `SerializeAsV2` property in `Startup.Configure`:</span></span>
 >
 > [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/3.0/TodoApi.Swashbuckle/Startup3.cs?name=snippet_Configure&highlight=4-7)]
 
-## <a name="customize-and-extend"></a><span data-ttu-id="74f48-157">사용자 지정 및 확장</span><span class="sxs-lookup"><span data-stu-id="74f48-157">Customize and extend</span></span>
+## <a name="customize-and-extend"></a><span data-ttu-id="13089-157">사용자 지정 및 확장</span><span class="sxs-lookup"><span data-stu-id="13089-157">Customize and extend</span></span>
 
-<span data-ttu-id="74f48-158">Swagger는 개체 모델을 설명하고 테마와 일치하도록 UI를 사용자 지정하는 옵션을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-158">Swagger provides options for documenting the object model and customizing the UI to match your theme.</span></span>
+<span data-ttu-id="13089-158">Swagger는 개체 모델을 설명하고 테마와 일치하도록 UI를 사용자 지정하는 옵션을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-158">Swagger provides options for documenting the object model and customizing the UI to match your theme.</span></span>
 
-<span data-ttu-id="74f48-159">`Startup` 클래스에서 다음 네임스페이스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-159">In the `Startup` class, add the following namespaces:</span></span>
+<span data-ttu-id="13089-159">`Startup` 클래스에서 다음 네임스페이스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-159">In the `Startup` class, add the following namespaces:</span></span>
 
 ```csharp
 using System;
@@ -154,32 +154,32 @@ using System.Reflection;
 using System.IO;
 ```
 
-### <a name="api-info-and-description"></a><span data-ttu-id="74f48-160">API 정보 및 설명</span><span class="sxs-lookup"><span data-stu-id="74f48-160">API info and description</span></span>
+### <a name="api-info-and-description"></a><span data-ttu-id="13089-160">API 정보 및 설명</span><span class="sxs-lookup"><span data-stu-id="13089-160">API info and description</span></span>
 
-<span data-ttu-id="74f48-161">`AddSwaggerGen` 메서드에 전달되는 구성 작업은 작성자, 라이선스 및 설명과 같은 정보를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-161">The configuration action passed to the `AddSwaggerGen` method adds information such as the author, license, and description:</span></span>
+<span data-ttu-id="13089-161">`AddSwaggerGen` 메서드에 전달되는 구성 작업은 작성자, 라이선스 및 설명과 같은 정보를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-161">The configuration action passed to the `AddSwaggerGen` method adds information such as the author, license, and description:</span></span>
 
-<span data-ttu-id="74f48-162">`Startup` 클래스에서는 `OpenApiInfo` 클래스를 사용하기 위해 다음 네임스페이스를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-162">In the `Startup` class, import the following namespace to use the `OpenApiInfo` class:</span></span>
+<span data-ttu-id="13089-162">`Startup` 클래스에서는 `OpenApiInfo` 클래스를 사용하기 위해 다음 네임스페이스를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="13089-162">In the `Startup` class, import the following namespace to use the `OpenApiInfo` class:</span></span>
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup2.cs?name=snippet_InfoClassNamespace)]
 
-<span data-ttu-id="74f48-163">`OpenApiInfo` 클래스를 사용하여 UI에 표시되는 정보를 수정합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-163">Using the `OpenApiInfo` class, modify the information displayed in the UI:</span></span>
+<span data-ttu-id="13089-163">`OpenApiInfo` 클래스를 사용하여 UI에 표시되는 정보를 수정합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-163">Using the `OpenApiInfo` class, modify the information displayed in the UI:</span></span>
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup4.cs?name=snippet_AddSwaggerGen)]
 
-<span data-ttu-id="74f48-164">Swagger UI는 버전의 정보를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-164">The Swagger UI displays the version's information:</span></span>
+<span data-ttu-id="13089-164">Swagger UI는 버전의 정보를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-164">The Swagger UI displays the version's information:</span></span>
 
 ![버전 정보가 포함된 Swagger UI: 설명, 작성자 및 추가 링크 확인](web-api-help-pages-using-swagger/_static/custom-info.png)
 
-### <a name="xml-comments"></a><span data-ttu-id="74f48-166">XML 주석</span><span class="sxs-lookup"><span data-stu-id="74f48-166">XML comments</span></span>
+### <a name="xml-comments"></a><span data-ttu-id="13089-166">XML 주석</span><span class="sxs-lookup"><span data-stu-id="13089-166">XML comments</span></span>
 
-<span data-ttu-id="74f48-167">XML 주석은 다음 방법으로 사용하도록 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-167">XML comments can be enabled with the following approaches:</span></span>
+<span data-ttu-id="13089-167">XML 주석은 다음 방법으로 사용하도록 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="13089-167">XML comments can be enabled with the following approaches:</span></span>
 
-#### <a name="visual-studio"></a>[<span data-ttu-id="74f48-168">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="74f48-168">Visual Studio</span></span>](#tab/visual-studio)
+#### <a name="visual-studio"></a>[<span data-ttu-id="13089-168">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="13089-168">Visual Studio</span></span>](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* <span data-ttu-id="74f48-169">**솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **<project_name>.csproj 편집** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-169">Right-click the project in **Solution Explorer** and select **Edit <project_name>.csproj**.</span></span>
-* <span data-ttu-id="74f48-170">강조 표시된 줄을 *.csproj* 파일에 수동으로 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-170">Manually add the highlighted lines to the *.csproj* file:</span></span>
+* <span data-ttu-id="13089-169">**솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **<project_name>.csproj 편집** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-169">Right-click the project in **Solution Explorer** and select **Edit <project_name>.csproj**.</span></span>
+* <span data-ttu-id="13089-170">강조 표시된 줄을 *.csproj* 파일에 수동으로 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-170">Manually add the highlighted lines to the *.csproj* file:</span></span>
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
 
@@ -187,17 +187,17 @@ using System.IO;
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* <span data-ttu-id="74f48-171">**솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **속성** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-171">Right-click the project in **Solution Explorer** and select **Properties**.</span></span>
-* <span data-ttu-id="74f48-172">**빌드** 탭의 **출력** 섹션에서 **XML 설명서 파일** 상자를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-172">Check the **XML documentation file** box under the **Output** section of the **Build** tab.</span></span>
+* <span data-ttu-id="13089-171">**솔루션 탐색기** 에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **속성** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-171">Right-click the project in **Solution Explorer** and select **Properties**.</span></span>
+* <span data-ttu-id="13089-172">**빌드** 탭의 **출력** 섹션에서 **XML 설명서 파일** 상자를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-172">Check the **XML documentation file** box under the **Output** section of the **Build** tab.</span></span>
 
 ::: moniker-end
 
-#### <a name="visual-studio-for-mac"></a>[<span data-ttu-id="74f48-173">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="74f48-173">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+#### <a name="visual-studio-for-mac"></a>[<span data-ttu-id="13089-173">Mac용 Visual Studio</span><span class="sxs-lookup"><span data-stu-id="13089-173">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* <span data-ttu-id="74f48-174">*Solution Pad* 에서 **control** 키를 누르고 프로젝트 이름을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-174">From the *Solution Pad*, press **control** and click the project name.</span></span> <span data-ttu-id="74f48-175">**도구** > **파일 편집** 으로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-175">Navigate to **Tools** > **Edit File**.</span></span>
-* <span data-ttu-id="74f48-176">강조 표시된 줄을 *.csproj* 파일에 수동으로 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-176">Manually add the highlighted lines to the *.csproj* file:</span></span>
+* <span data-ttu-id="13089-174">*Solution Pad* 에서 **control** 키를 누르고 프로젝트 이름을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-174">From the *Solution Pad*, press **control** and click the project name.</span></span> <span data-ttu-id="13089-175">**도구** > **파일 편집** 으로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-175">Navigate to **Tools** > **Edit File**.</span></span>
+* <span data-ttu-id="13089-176">강조 표시된 줄을 *.csproj* 파일에 수동으로 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-176">Manually add the highlighted lines to the *.csproj* file:</span></span>
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
 
@@ -205,14 +205,14 @@ using System.IO;
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* <span data-ttu-id="74f48-177">**프로젝트 옵션** 대화 상자 > **빌드** > **컴파일러** 를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-177">Open the **Project Options** dialog > **Build** > **Compiler**</span></span>
-* <span data-ttu-id="74f48-178">**일반 옵션** 섹션에서 **XML 문서 생성** 상자 선택</span><span class="sxs-lookup"><span data-stu-id="74f48-178">Check the **Generate xml documentation** box under the **General Options** section</span></span>
+* <span data-ttu-id="13089-177">**프로젝트 옵션** 대화 상자 > **빌드** > **컴파일러** 를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="13089-177">Open the **Project Options** dialog > **Build** > **Compiler**</span></span>
+* <span data-ttu-id="13089-178">**일반 옵션** 섹션에서 **XML 문서 생성** 상자 선택</span><span class="sxs-lookup"><span data-stu-id="13089-178">Check the **Generate xml documentation** box under the **General Options** section</span></span>
 
 ::: moniker-end
 
-#### <a name="visual-studio-code"></a>[<span data-ttu-id="74f48-179">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="74f48-179">Visual Studio Code</span></span>](#tab/visual-studio-code)
+#### <a name="visual-studio-code"></a>[<span data-ttu-id="13089-179">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="13089-179">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-<span data-ttu-id="74f48-180">강조 표시된 줄을 *.csproj* 파일에 수동으로 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-180">Manually add the highlighted lines to the *.csproj* file:</span></span>
+<span data-ttu-id="13089-180">강조 표시된 줄을 *.csproj* 파일에 수동으로 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-180">Manually add the highlighted lines to the *.csproj* file:</span></span>
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -226,9 +226,9 @@ using System.IO;
 
 ::: moniker-end
 
-#### <a name="net-core-cli"></a>[<span data-ttu-id="74f48-181">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="74f48-181">.NET Core CLI</span></span>](#tab/netcore-cli)
+#### <a name="net-core-cli"></a>[<span data-ttu-id="13089-181">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="13089-181">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-<span data-ttu-id="74f48-182">강조 표시된 줄을 *.csproj* 파일에 수동으로 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-182">Manually add the highlighted lines to the *.csproj* file:</span></span>
+<span data-ttu-id="13089-182">강조 표시된 줄을 *.csproj* 파일에 수동으로 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-182">Manually add the highlighted lines to the *.csproj* file:</span></span>
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -244,13 +244,13 @@ using System.IO;
 
 ---
 
-<span data-ttu-id="74f48-183">XML 주석을 사용하면 문서화되지 않은 public 형식과 멤버에 대한 디버그 정보를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-183">Enabling XML comments provides debug information for undocumented public types and members.</span></span> <span data-ttu-id="74f48-184">문서화되지 않은 형식 및 멤버는 경고 메시지로 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-184">Undocumented types and members are indicated by the warning message.</span></span> <span data-ttu-id="74f48-185">예를 들어 다음 메시지는 경고 코드 1591 위반을 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-185">For example, the following message indicates a violation of warning code 1591:</span></span>
+<span data-ttu-id="13089-183">XML 주석을 사용하면 문서화되지 않은 public 형식과 멤버에 대한 디버그 정보를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-183">Enabling XML comments provides debug information for undocumented public types and members.</span></span> <span data-ttu-id="13089-184">문서화되지 않은 형식 및 멤버는 경고 메시지로 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-184">Undocumented types and members are indicated by the warning message.</span></span> <span data-ttu-id="13089-185">예를 들어 다음 메시지는 경고 코드 1591 위반을 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="13089-185">For example, the following message indicates a violation of warning code 1591:</span></span>
 
 ```text
 warning CS1591: Missing XML comment for publicly visible type or member 'TodoController.GetAll()'
 ```
 
-<span data-ttu-id="74f48-186">프로젝트 전반에서 경고를 표시하지 않으려면 프로젝트 파일에서 무시할 경고 코드의 세미콜론으로 구분된 목록을 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-186">To suppress warnings project-wide, define a semicolon-delimited list of warning codes to ignore in the project file.</span></span> <span data-ttu-id="74f48-187">`$(NoWarn);`에 경고 코드를 추가하면 [C# 기본값](https://github.com/dotnet/sdk/blob/2eb6c546931b5bcb92cd3128b93932a980553ea1/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.CSharp.props#L16)도 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-187">Appending the warning codes to `$(NoWarn);` applies the [C# default values](https://github.com/dotnet/sdk/blob/2eb6c546931b5bcb92cd3128b93932a980553ea1/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.CSharp.props#L16) too.</span></span>
+<span data-ttu-id="13089-186">프로젝트 전반에서 경고를 표시하지 않으려면 프로젝트 파일에서 무시할 경고 코드의 세미콜론으로 구분된 목록을 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-186">To suppress warnings project-wide, define a semicolon-delimited list of warning codes to ignore in the project file.</span></span> <span data-ttu-id="13089-187">`$(NoWarn);`에 경고 코드를 추가하면 [C# 기본값](https://github.com/dotnet/sdk/blob/2eb6c546931b5bcb92cd3128b93932a980553ea1/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.CSharp.props#L16)도 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-187">Appending the warning codes to `$(NoWarn);` applies the [C# default values](https://github.com/dotnet/sdk/blob/2eb6c546931b5bcb92cd3128b93932a980553ea1/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.CSharp.props#L16) too.</span></span>
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -264,7 +264,7 @@ warning CS1591: Missing XML comment for publicly visible type or member 'TodoCon
 
 ::: moniker-end
 
-<span data-ttu-id="74f48-188">특정 멤버에 대해서만 경고를 표시하지 않으려면 [#pragma warning](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning) 전처리기 지시문에 코드를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-188">To suppress warnings only for specific members, enclose the code in [#pragma warning](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning) preprocessor directives.</span></span> <span data-ttu-id="74f48-189">이 방법은 API 문서를 통해 노출하지 않아야 하는 코드에 유용합니다. 다음 예제에서는 전체 `Program` 클래스에 대해 경고 코드 CS1591이 무시됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-189">This approach is useful for code that shouldn't be exposed via the API docs. In the following example, warning code CS1591 is ignored for the entire `Program` class.</span></span> <span data-ttu-id="74f48-190">클래스 정의를 닫으면 경고 코드 적용이 복원됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-190">Enforcement of the warning code is restored at the close of the class definition.</span></span> <span data-ttu-id="74f48-191">여러 경고 코드는 쉼표로 구분된 목록으로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-191">Specify multiple warning codes with a comma-delimited list.</span></span>
+<span data-ttu-id="13089-188">특정 멤버에 대해서만 경고를 표시하지 않으려면 [#pragma warning](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning) 전처리기 지시문에 코드를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-188">To suppress warnings only for specific members, enclose the code in [#pragma warning](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning) preprocessor directives.</span></span> <span data-ttu-id="13089-189">이 방법은 API 문서를 통해 노출하지 않아야 하는 코드에 유용합니다. 다음 예제에서는 전체 `Program` 클래스에 대해 경고 코드 CS1591이 무시됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-189">This approach is useful for code that shouldn't be exposed via the API docs. In the following example, warning code CS1591 is ignored for the entire `Program` class.</span></span> <span data-ttu-id="13089-190">클래스 정의를 닫으면 경고 코드 적용이 복원됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-190">Enforcement of the warning code is restored at the close of the class definition.</span></span> <span data-ttu-id="13089-191">여러 경고 코드는 쉼표로 구분된 목록으로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-191">Specify multiple warning codes with a comma-delimited list.</span></span>
 
 ```csharp
 namespace TodoApi
@@ -284,7 +284,7 @@ namespace TodoApi
 }
 ```
 
-<span data-ttu-id="74f48-192">이전 지침에 따라 생성된 XML 파일을 사용하도록 Swagger를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-192">Configure Swagger to use the XML file that's generated with the preceding instructions.</span></span> <span data-ttu-id="74f48-193">Linux 또는 Windows가 아닌 운영 체제의 경우 파일 이름 및 경로는 대/소문자를 구분할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-193">For Linux or non-Windows operating systems, file names and paths can be case-sensitive.</span></span> <span data-ttu-id="74f48-194">예를 들어 *TodoApi.XML* 파일은 Windows에는 유효하지만 CentOS에는 그렇지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-194">For example, a *TodoApi.XML* file is valid on Windows but not CentOS.</span></span>
+<span data-ttu-id="13089-192">이전 지침에 따라 생성된 XML 파일을 사용하도록 Swagger를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-192">Configure Swagger to use the XML file that's generated with the preceding instructions.</span></span> <span data-ttu-id="13089-193">Linux 또는 Windows가 아닌 운영 체제의 경우 파일 이름 및 경로는 대/소문자를 구분할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="13089-193">For Linux or non-Windows operating systems, file names and paths can be case-sensitive.</span></span> <span data-ttu-id="13089-194">예를 들어 *TodoApi.XML* 파일은 Windows에는 유효하지만 CentOS에는 그렇지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="13089-194">For example, a *TodoApi.XML* file is valid on Windows but not CentOS.</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -310,17 +310,17 @@ namespace TodoApi
 
 ::: moniker-end
 
-<span data-ttu-id="74f48-195">이전 코드에서 [리플렉션](/dotnet/csharp/programming-guide/concepts/reflection)은 웹 API 프로젝트의 이름과 일치하는 XML 파일 이름을 빌드하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-195">In the preceding code, [Reflection](/dotnet/csharp/programming-guide/concepts/reflection) is used to build an XML file name matching that of the web API project.</span></span> <span data-ttu-id="74f48-196">[AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory*) 속성은 XML 파일에 대한 경로를 생성하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-196">The [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory*) property is used to construct a path to the XML file.</span></span> <span data-ttu-id="74f48-197">일부 Swagger 기능(예: 각 특성에서 입력 매개 변수 또는 HTTP 메서드와 응답 코드의 schemata)은 XML 문서 파일을 사용하지 않고 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-197">Some Swagger features (for example, schemata of input parameters or HTTP methods and response codes from the respective attributes) work without the use of an XML documentation file.</span></span> <span data-ttu-id="74f48-198">대부분 기능, 메서드 요약 및 매개 변수/응답 코드 설명의 경우 XML 파일을 사용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-198">For most features, namely method summaries and the descriptions of parameters and response codes, the use of an XML file is mandatory.</span></span>
+<span data-ttu-id="13089-195">이전 코드에서 [리플렉션](/dotnet/csharp/programming-guide/concepts/reflection)은 웹 API 프로젝트의 이름과 일치하는 XML 파일 이름을 빌드하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-195">In the preceding code, [Reflection](/dotnet/csharp/programming-guide/concepts/reflection) is used to build an XML file name matching that of the web API project.</span></span> <span data-ttu-id="13089-196">[AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory*) 속성은 XML 파일에 대한 경로를 생성하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-196">The [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory*) property is used to construct a path to the XML file.</span></span> <span data-ttu-id="13089-197">일부 Swagger 기능(예: 각 특성에서 입력 매개 변수 또는 HTTP 메서드와 응답 코드의 schemata)은 XML 문서 파일을 사용하지 않고 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-197">Some Swagger features (for example, schemata of input parameters or HTTP methods and response codes from the respective attributes) work without the use of an XML documentation file.</span></span> <span data-ttu-id="13089-198">대부분 기능, 메서드 요약 및 매개 변수/응답 코드 설명의 경우 XML 파일을 사용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-198">For most features, namely method summaries and the descriptions of parameters and response codes, the use of an XML file is mandatory.</span></span>
 
-<span data-ttu-id="74f48-199">작업에 3중 슬래시 주석을 추가하면 섹션 헤더에 설명이 추가되어 Swagger UI가 향상됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-199">Adding triple-slash comments to an action enhances the Swagger UI by adding the description to the section header.</span></span> <span data-ttu-id="74f48-200">`Delete` 작업 위에 [\<summary>](/dotnet/csharp/programming-guide/xmldoc/summary) 요소를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-200">Add a [\<summary>](/dotnet/csharp/programming-guide/xmldoc/summary) element above the `Delete` action:</span></span>
+<span data-ttu-id="13089-199">작업에 3중 슬래시 주석을 추가하면 섹션 헤더에 설명이 추가되어 Swagger UI가 향상됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-199">Adding triple-slash comments to an action enhances the Swagger UI by adding the description to the section header.</span></span> <span data-ttu-id="13089-200">`Delete` 작업 위에 [\<summary>](/dotnet/csharp/programming-guide/xmldoc/summary) 요소를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-200">Add a [\<summary>](/dotnet/csharp/programming-guide/xmldoc/summary) element above the `Delete` action:</span></span>
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Controllers/TodoController.cs?name=snippet_Delete&highlight=1-3)]
 
-<span data-ttu-id="74f48-201">Swagger UI는 이전 코드 `<summary>` 요소의 내부 텍스트를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-201">The Swagger UI displays the inner text of the preceding code's `<summary>` element:</span></span>
+<span data-ttu-id="13089-201">Swagger UI는 이전 코드 `<summary>` 요소의 내부 텍스트를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-201">The Swagger UI displays the inner text of the preceding code's `<summary>` element:</span></span>
 
 ![DELETE 메서드에 대한 XML 주석 ‘특정 TodoItem을 삭제합니다.’를 보여 주는](web-api-help-pages-using-swagger/_static/triple-slash-comments.png)
 
-<span data-ttu-id="74f48-204">UI는 생성된 JSON 스키마에 의해 구동됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-204">The UI is driven by the generated JSON schema:</span></span>
+<span data-ttu-id="13089-204">UI는 생성된 JSON 스키마에 의해 구동됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-204">The UI is driven by the generated JSON schema:</span></span>
 
 ```json
 "delete": {
@@ -349,7 +349,7 @@ namespace TodoApi
 }
 ```
 
-<span data-ttu-id="74f48-205">[\<remarks>](/dotnet/csharp/programming-guide/xmldoc/remarks) 요소를 `Create` 작업 메서드 문서에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-205">Add a [\<remarks>](/dotnet/csharp/programming-guide/xmldoc/remarks) element to the `Create` action method documentation.</span></span> <span data-ttu-id="74f48-206">이는 `<summary>` 요소에 지정된 정보를 보충하고 더 강력한 Swagger UI를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-206">It supplements information specified in the `<summary>` element and provides a more robust Swagger UI.</span></span> <span data-ttu-id="74f48-207">`<remarks>` 요소 콘텐츠는 텍스트, JSON 또는 XML로 구성될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-207">The `<remarks>` element content can consist of text, JSON, or XML.</span></span>
+<span data-ttu-id="13089-205">[\<remarks>](/dotnet/csharp/programming-guide/xmldoc/remarks) 요소를 `Create` 작업 메서드 문서에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-205">Add a [\<remarks>](/dotnet/csharp/programming-guide/xmldoc/remarks) element to the `Create` action method documentation.</span></span> <span data-ttu-id="13089-206">이는 `<summary>` 요소에 지정된 정보를 보충하고 더 강력한 Swagger UI를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-206">It supplements information specified in the `<summary>` element and provides a more robust Swagger UI.</span></span> <span data-ttu-id="13089-207">`<remarks>` 요소 콘텐츠는 텍스트, JSON 또는 XML로 구성될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="13089-207">The `<remarks>` element content can consist of text, JSON, or XML.</span></span>
 
 ::: moniker range="<= aspnetcore-2.0"
 
@@ -369,19 +369,19 @@ namespace TodoApi
 
 ::: moniker-end
 
-<span data-ttu-id="74f48-208">이러한 추가 주석이 포함된 향상된 UI 기능을 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-208">Notice the UI enhancements with these additional comments:</span></span>
+<span data-ttu-id="13089-208">이러한 추가 주석이 포함된 향상된 UI 기능을 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="13089-208">Notice the UI enhancements with these additional comments:</span></span>
 
 ![추가 주석이 표시된 Swagger UI](web-api-help-pages-using-swagger/_static/xml-comments-extended.png)
 
-### <a name="data-annotations"></a><span data-ttu-id="74f48-210">데이터 주석</span><span class="sxs-lookup"><span data-stu-id="74f48-210">Data annotations</span></span>
+### <a name="data-annotations"></a><span data-ttu-id="13089-210">데이터 주석</span><span class="sxs-lookup"><span data-stu-id="13089-210">Data annotations</span></span>
 
-<span data-ttu-id="74f48-211">[System.ComponentModel.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations) 네임스페이스에 있는 특성으로 모델을 표시하여 Swagger UI 구성 요소를 구동합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-211">Mark the model with attributes, found in the [System.ComponentModel.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations) namespace, to help drive the Swagger UI components.</span></span>
+<span data-ttu-id="13089-211">[System.ComponentModel.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations) 네임스페이스에 있는 특성으로 모델을 표시하여 Swagger UI 구성 요소를 구동합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-211">Mark the model with attributes, found in the [System.ComponentModel.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations) namespace, to help drive the Swagger UI components.</span></span>
 
-<span data-ttu-id="74f48-212">`[Required]` 특성을 `TodoItem` 클래스의 `Name` 속성에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-212">Add the `[Required]` attribute to the `Name` property of the `TodoItem` class:</span></span>
+<span data-ttu-id="13089-212">`[Required]` 특성을 `TodoItem` 클래스의 `Name` 속성에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-212">Add the `[Required]` attribute to the `Name` property of the `TodoItem` class:</span></span>
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Models/TodoItem.cs?highlight=10)]
 
-<span data-ttu-id="74f48-213">이 특성이 있으면 UI 동작이 변경되고 기본 JSON 스키마가 변경됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-213">The presence of this attribute changes the UI behavior and alters the underlying JSON schema:</span></span>
+<span data-ttu-id="13089-213">이 특성이 있으면 UI 동작이 변경되고 기본 JSON 스키마가 변경됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-213">The presence of this attribute changes the UI behavior and alters the underlying JSON schema:</span></span>
 
 ```json
 "definitions": {
@@ -407,7 +407,7 @@ namespace TodoApi
 },
 ```
 
-<span data-ttu-id="74f48-214">API 컨트롤러에 `[Produces("application/json")]` 특성을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-214">Add the `[Produces("application/json")]` attribute to the API controller.</span></span> <span data-ttu-id="74f48-215">이 특성은 컨트롤러 동작이 *application/json* 의 응답 콘텐츠 형식을 지원함을 선언하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-215">Its purpose is to declare that the controller's actions support a response content type of *application/json*:</span></span>
+<span data-ttu-id="13089-214">API 컨트롤러에 `[Produces("application/json")]` 특성을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-214">Add the `[Produces("application/json")]` attribute to the API controller.</span></span> <span data-ttu-id="13089-215">이 특성은 컨트롤러 동작이 *application/json* 의 응답 콘텐츠 형식을 지원함을 선언하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-215">Its purpose is to declare that the controller's actions support a response content type of *application/json*:</span></span>
 
 ::: moniker range="<= aspnetcore-2.0"
 
@@ -427,17 +427,17 @@ namespace TodoApi
 
 ::: moniker-end
 
-<span data-ttu-id="74f48-216">컨트롤러 GET 작업의 경우 **응답 콘텐츠 형식** 드롭다운에서 이 콘텐츠 형식이 기본값으로 선택됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-216">The **Response Content Type** drop-down selects this content type as the default for the controller's GET actions:</span></span>
+<span data-ttu-id="13089-216">컨트롤러 GET 작업의 경우 **응답 콘텐츠 형식** 드롭다운에서 이 콘텐츠 형식이 기본값으로 선택됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-216">The **Response Content Type** drop-down selects this content type as the default for the controller's GET actions:</span></span>
 
 ![기본 응답 콘텐츠 형식이 포함된 Swagger UI](web-api-help-pages-using-swagger/_static/json-response-content-type.png)
 
-<span data-ttu-id="74f48-218">웹 API에서 데이터 주석 사용이 증가하면 UI 및 API 도움말 페이지에는 더 자세한 설명과 유용한 정보가 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-218">As the usage of data annotations in the web API increases, the UI and API help pages become more descriptive and useful.</span></span>
+<span data-ttu-id="13089-218">웹 API에서 데이터 주석 사용이 증가하면 UI 및 API 도움말 페이지에는 더 자세한 설명과 유용한 정보가 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-218">As the usage of data annotations in the web API increases, the UI and API help pages become more descriptive and useful.</span></span>
 
-### <a name="describe-response-types"></a><span data-ttu-id="74f48-219">응답 형식 설명</span><span class="sxs-lookup"><span data-stu-id="74f48-219">Describe response types</span></span>
+### <a name="describe-response-types"></a><span data-ttu-id="13089-219">응답 형식 설명</span><span class="sxs-lookup"><span data-stu-id="13089-219">Describe response types</span></span>
 
-<span data-ttu-id="74f48-220">웹 API를 사용하는 개발자는 반환된 내용&mdash; 중에서도 특히 응답 형식 및 오류 코드(표준이 아닌 경우)를 가장 중요하게 생각합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-220">Developers consuming a web API are most concerned with what's returned&mdash;specifically response types and error codes (if not standard).</span></span> <span data-ttu-id="74f48-221">응답 형식 및 오류 코드는 XML 주석 및 데이터 주석에 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-221">The response types and error codes are denoted in the XML comments and data annotations.</span></span>
+<span data-ttu-id="13089-220">웹 API를 사용하는 개발자는 반환된 내용&mdash; 중에서도 특히 응답 형식 및 오류 코드(표준이 아닌 경우)를 가장 중요하게 생각합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-220">Developers consuming a web API are most concerned with what's returned&mdash;specifically response types and error codes (if not standard).</span></span> <span data-ttu-id="13089-221">응답 형식 및 오류 코드는 XML 주석 및 데이터 주석에 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-221">The response types and error codes are denoted in the XML comments and data annotations.</span></span>
 
-<span data-ttu-id="74f48-222">`Create` 작업은 성공 시 HTTP 201 상태 코드를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-222">The `Create` action returns an HTTP 201 status code on success.</span></span> <span data-ttu-id="74f48-223">게시된 요청 본문이 null일 경우 HTTP 400 상태 코드가 반환됩니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-223">An HTTP 400 status code is returned when the posted request body is null.</span></span> <span data-ttu-id="74f48-224">Swagger UI에 적절한 문서가 없으면 소비자는 이러한 예상 결과에 대한 정보를 알 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-224">Without proper documentation in the Swagger UI, the consumer lacks knowledge of these expected outcomes.</span></span> <span data-ttu-id="74f48-225">다음 예제에서 강조 표시된 줄을 추가하여 해당 문제를 해결합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-225">Fix that problem by adding the highlighted lines in the following example:</span></span>
+<span data-ttu-id="13089-222">`Create` 작업은 성공 시 HTTP 201 상태 코드를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-222">The `Create` action returns an HTTP 201 status code on success.</span></span> <span data-ttu-id="13089-223">게시된 요청 본문이 null일 경우 HTTP 400 상태 코드가 반환됩니다.</span><span class="sxs-lookup"><span data-stu-id="13089-223">An HTTP 400 status code is returned when the posted request body is null.</span></span> <span data-ttu-id="13089-224">Swagger UI에 적절한 문서가 없으면 소비자는 이러한 예상 결과에 대한 정보를 알 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="13089-224">Without proper documentation in the Swagger UI, the consumer lacks knowledge of these expected outcomes.</span></span> <span data-ttu-id="13089-225">다음 예제에서 강조 표시된 줄을 추가하여 해당 문제를 해결합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-225">Fix that problem by adding the highlighted lines in the following example:</span></span>
 
 ::: moniker range="<= aspnetcore-2.0"
 
@@ -457,31 +457,31 @@ namespace TodoApi
 
 ::: moniker-end
 
-<span data-ttu-id="74f48-226">이제 Swagger UI에서는 예상 HTTP 응답 코드를 분명히 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-226">The Swagger UI now clearly documents the expected HTTP response codes:</span></span>
+<span data-ttu-id="13089-226">이제 Swagger UI에서는 예상 HTTP 응답 코드를 분명히 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-226">The Swagger UI now clearly documents the expected HTTP response codes:</span></span>
 
 ![POST 응답 클래스 설명 ‘새로 만들어진 Todo 항목 반환’ 및 ‘400 - 응답 메시지에서 항목의 상태 코드 및 이유가 null인 경우’를 보여 주는 Swagger UI](web-api-help-pages-using-swagger/_static/data-annotations-response-types.png)
 
 ::: moniker range=">= aspnetcore-2.2"
 
-<span data-ttu-id="74f48-228">ASP.NET Core 2.2 이상에서는 `[ProducesResponseType]`을 사용하여 명시적으로 개별 작업을 데코레이팅하는 대신 규칙을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-228">In ASP.NET Core 2.2 or later, conventions can be used as an alternative to explicitly decorating individual actions with `[ProducesResponseType]`.</span></span> <span data-ttu-id="74f48-229">자세한 내용은 <xref:web-api/advanced/conventions>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="74f48-229">For more information, see <xref:web-api/advanced/conventions>.</span></span>
+<span data-ttu-id="13089-228">ASP.NET Core 2.2 이상에서는 `[ProducesResponseType]`을 사용하여 명시적으로 개별 작업을 데코레이팅하는 대신 규칙을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="13089-228">In ASP.NET Core 2.2 or later, conventions can be used as an alternative to explicitly decorating individual actions with `[ProducesResponseType]`.</span></span> <span data-ttu-id="13089-229">자세한 내용은 <xref:web-api/advanced/conventions>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="13089-229">For more information, see <xref:web-api/advanced/conventions>.</span></span>
 
-<span data-ttu-id="74f48-230">`[ProducesResponseType]` 데코레이션을 지원하기 위해 [Swashbuckle.AspNetCore.Annotations](https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/master/README.md#swashbuckleaspnetcoreannotations) 패키지는 응답, 스키마 및 매개 변수 메타데이터를 사용하도록 지원하고 보강하는 확장을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-230">To support the `[ProducesResponseType]` decoration, the [Swashbuckle.AspNetCore.Annotations](https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/master/README.md#swashbuckleaspnetcoreannotations) package offers extensions to enable and enrich the response, schema, and parameter metadata.</span></span>
+<span data-ttu-id="13089-230">`[ProducesResponseType]` 데코레이션을 지원하기 위해 [Swashbuckle.AspNetCore.Annotations](https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/master/README.md#swashbuckleaspnetcoreannotations) 패키지는 응답, 스키마 및 매개 변수 메타데이터를 사용하도록 지원하고 보강하는 확장을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-230">To support the `[ProducesResponseType]` decoration, the [Swashbuckle.AspNetCore.Annotations](https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/master/README.md#swashbuckleaspnetcoreannotations) package offers extensions to enable and enrich the response, schema, and parameter metadata.</span></span>
 
 ::: moniker-end
 
-### <a name="customize-the-ui"></a><span data-ttu-id="74f48-231">UI 사용자 지정</span><span class="sxs-lookup"><span data-stu-id="74f48-231">Customize the UI</span></span>
+### <a name="customize-the-ui"></a><span data-ttu-id="13089-231">UI 사용자 지정</span><span class="sxs-lookup"><span data-stu-id="13089-231">Customize the UI</span></span>
 
-<span data-ttu-id="74f48-232">기본 UI는 기능적이며 표시 가능합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-232">The default UI is both functional and presentable.</span></span> <span data-ttu-id="74f48-233">그러나 API 설명서 페이지는 브랜드 또는 테마를 나타내야 합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-233">However, API documentation pages should represent your brand or theme.</span></span> <span data-ttu-id="74f48-234">Swashbuckle 구성 요소를 브랜딩하려면 리소스를 추가하여 정적 파일을 지원하고 폴더 구조를 빌드하여 해당 파일을 호스트해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-234">Branding the Swashbuckle components requires adding the resources to serve static files and building the folder structure to host those files.</span></span>
+<span data-ttu-id="13089-232">기본 UI는 기능적이며 표시 가능합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-232">The default UI is both functional and presentable.</span></span> <span data-ttu-id="13089-233">그러나 API 설명서 페이지는 브랜드 또는 테마를 나타내야 합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-233">However, API documentation pages should represent your brand or theme.</span></span> <span data-ttu-id="13089-234">Swashbuckle 구성 요소를 브랜딩하려면 리소스를 추가하여 정적 파일을 지원하고 폴더 구조를 빌드하여 해당 파일을 호스트해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-234">Branding the Swashbuckle components requires adding the resources to serve static files and building the folder structure to host those files.</span></span>
 
-<span data-ttu-id="74f48-235">.NET Framework 또는 NET Core 1.x를 대상으로 하는 경우 [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles) NuGet 패키지를 프로젝트에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-235">If targeting .NET Framework or .NET Core 1.x, add the [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles) NuGet package to the project:</span></span>
+<span data-ttu-id="13089-235">.NET Framework 또는 NET Core 1.x를 대상으로 하는 경우 [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles) NuGet 패키지를 프로젝트에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-235">If targeting .NET Framework or .NET Core 1.x, add the [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles) NuGet package to the project:</span></span>
 
 ```xml
 <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
 ```
 
-<span data-ttu-id="74f48-236">이전 NuGet 패키지는 .NET Core 2.x를 대상으로 하고 [metapackage](xref:fundamentals/metapackage)를 사용하는 경우 이미 설치되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-236">The preceding NuGet package is already installed if targeting .NET Core 2.x and using the [metapackage](xref:fundamentals/metapackage).</span></span>
+<span data-ttu-id="13089-236">이전 NuGet 패키지는 .NET Core 2.x를 대상으로 하고 [metapackage](xref:fundamentals/metapackage)를 사용하는 경우 이미 설치되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="13089-236">The preceding NuGet package is already installed if targeting .NET Core 2.x and using the [metapackage](xref:fundamentals/metapackage).</span></span>
 
-<span data-ttu-id="74f48-237">정적 파일 미들웨어 사용:</span><span class="sxs-lookup"><span data-stu-id="74f48-237">Enable Static File Middleware:</span></span>
+<span data-ttu-id="13089-237">정적 파일 미들웨어 사용:</span><span class="sxs-lookup"><span data-stu-id="13089-237">Enable Static File Middleware:</span></span>
 
 ::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
@@ -495,7 +495,7 @@ namespace TodoApi
 
 ::: moniker-end
 
-<span data-ttu-id="74f48-238">CSS 스타일시트를 추가로 삽입하려면 프로젝트의 *wwwroot* 폴더에 추가하고 미들웨어 옵션에서 상대 경로를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="74f48-238">To inject additional CSS stylesheets, add them to the project's *wwwroot* folder and specify the relative path in the middleware options:</span></span>
+<span data-ttu-id="13089-238">CSS 스타일시트를 추가로 삽입하려면 프로젝트의 *wwwroot* 폴더에 추가하고 미들웨어 옵션에서 상대 경로를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="13089-238">To inject additional CSS stylesheets, add them to the project's *wwwroot* folder and specify the relative path in the middleware options:</span></span>
 
 ```csharp
 app.UseSwaggerUI(c =>
@@ -504,6 +504,6 @@ app.UseSwaggerUI(c =>
 }
 ```
 
-## <a name="additional-resources"></a><span data-ttu-id="74f48-239">추가 자료</span><span class="sxs-lookup"><span data-stu-id="74f48-239">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="13089-239">추가 자료</span><span class="sxs-lookup"><span data-stu-id="13089-239">Additional resources</span></span>
 
-* [<span data-ttu-id="74f48-240">Microsoft Learn: Swagger 문서화 기능을 사용하여 개발자의 API 환경 개선</span><span class="sxs-lookup"><span data-stu-id="74f48-240">Microsoft Learn: Improve the developer experience of an API with Swagger documentation</span></span>](/learn/modules/improve-api-developer-experience-with-swagger/)
+* [<span data-ttu-id="13089-240">Microsoft Learn: Swagger 문서화 기능을 사용하여 개발자의 API 환경 개선</span><span class="sxs-lookup"><span data-stu-id="13089-240">Microsoft Learn: Improve the developer experience of an API with Swagger documentation</span></span>](/learn/modules/improve-api-developer-experience-with-swagger/)
