@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/index
-ms.openlocfilehash: f8cdbbffae9b291923a6d425fef5526b0ec88f61
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 78b192cb2240046d16b1b766954ed4ca5229d888
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253191"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586711"
 ---
-# <a name="introduction-to-no-locrazor-pages-in-aspnet-core"></a>ASP.NET Core의 Razor Pages 소개
+# <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core의 Razor Pages 소개
 
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Ryan Nowak](https://github.com/rynowak)
@@ -78,7 +78,7 @@ Razor Pages를 사용하면 컨트롤러 및 뷰를 사용하는 것보다 더 �
 
 <a name="rpvs17"></a>
 
-## <a name="create-a-no-locrazor-pages-project"></a>Razor Pages 프로젝트 만들기
+## <a name="create-a-razor-pages-project"></a>Razor Pages 프로젝트 만들기
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -94,7 +94,7 @@ Razor Pages 프로젝트를 만드는 방법에 대한 자세한 내용은 [Razo
 
 ---
 
-## <a name="no-locrazor-pages"></a>Razor Pages
+## <a name="razor-pages"></a>Razor Pages
 
 Razor Pages는 *Startup.cs* 에서 사용할 수 있게 설정됩니다.
 
@@ -134,7 +134,7 @@ Razor Pages는 *Startup.cs* 에서 사용할 수 있게 설정됩니다.
 
 Razor Pages는 앱을 만들 때 웹 브라우저에서 사용되는 일반적인 패턴을 손쉽게 구현할 수 있도록 설계되었습니다. [모델 바인딩](xref:mvc/models/model-binding), [태그 도우미](xref:mvc/views/tag-helpers/intro) 및 HTML 도우미는 모두 Razor Page 클래스에 정의된 속성을 통해서 ‘정확하게 작동’합니다. `Contact` 모델에 대한 기본적인 "연락처" 양식을 구현하는 페이지를 생각해보겠습니다.
 
-이 문서의 예제에서 `DbContext`는 [Startup.cs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/razor-pages/index/3.0sample/RazorPagesContacts/Startup.cs#L23-L24) 파일에서 초기화됩니다.
+이 문서의 예제에서 `DbContext`는 [Startup.cs](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/razor-pages/index/3.0sample/RazorPagesContacts/Startup.cs#L23-L24) 파일에서 초기화됩니다.
 
 메모리 내 데이터베이스에는 `Microsoft.EntityFrameworkCore.InMemory` NuGet 패키지가 필요합니다.
 
@@ -369,13 +369,13 @@ Razor Pages는 기본적으로 비 `GET` 동사에 대해서만 속성을 바인
 
 <a name="xsrf"></a>
 
-## <a name="xsrfcsrf-and-no-locrazor-pages"></a>XSRF/CSRF 및 Razor Pages
+## <a name="xsrfcsrf-and-razor-pages"></a>XSRF/CSRF 및 Razor Pages
 
 [위조 방지 유효성 검사](xref:security/anti-request-forgery)를 통해 Razor Pages를 보호합니다. [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper)는 위조 방지 토큰을 HTML 양식 요소에 삽입합니다.
 
 <a name="layout"></a>
 
-## <a name="using-layouts-partials-templates-and-tag-helpers-with-no-locrazor-pages"></a>Razor Pages에서 레이아웃, 부분 뷰, 템플릿 및 태그 도우미 사용하기
+## <a name="using-layouts-partials-templates-and-tag-helpers-with-razor-pages"></a>Razor Pages에서 레이아웃, 부분 뷰, 템플릿 및 태그 도우미 사용하기
 
 Pages는 Razor 뷰 엔진의 모든 기능과 함께 작동합니다. 레이아웃, 부분 뷰, 템플릿, 태그 도우미, *_ViewStart.cshtml* 및 *_ViewImports.cshtml* 은 기존의 Razor 뷰와 동일한 방식으로 작동합니다.
 
@@ -614,13 +614,13 @@ URL에서 쿼리 문자열 `?handler=JoinList`를 사용하지 않으려면 경�
 
 뷰를 미리 컴파일하려면 [Razor 뷰 컴파일](xref:mvc/views/view-compilation)을 참조하세요.
 
-### <a name="specify-that-no-locrazor-pages-are-at-the-content-root"></a>Razor Pages가 컨텐츠 루트에 있도록 지정
+### <a name="specify-that-razor-pages-are-at-the-content-root"></a>Razor Pages가 컨텐츠 루트에 있도록 지정
 
 기본적으로 Razor Pages의 루트 경로는 */Pages* 디렉터리입니다. <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.WithRazorPagesAtContentRoot*>를 추가하여 Razor Pages가 앱의 [콘텐츠 루트](xref:fundamentals/index#content-root)(<xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootPath>)가 되도록 지정합니다.
 
 [!code-csharp[](index/3.0sample/RazorPagesContacts/StartupWithRazorPagesAtContentRoot.cs?name=snippet)]
 
-### <a name="specify-that-no-locrazor-pages-are-at-a-custom-root-directory"></a>Razor Pages가 사용자 지정 루트 디렉터리에 있도록 지정
+### <a name="specify-that-razor-pages-are-at-a-custom-root-directory"></a>Razor Pages가 사용자 지정 루트 디렉터리에 있도록 지정
 
 <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcCoreBuilderExtensions.WithRazorPagesRoot*>를 추가하여 Razor Pages가 앱의 사용자 지정 루트 디렉터리에 있도록 지정합니다(상대 경로 제공).
 
@@ -630,7 +630,7 @@ URL에서 쿼리 문자열 `?handler=JoinList`를 사용하지 않으려면 경�
 
 * 본문의 소개에 따라 빌드되는 [Razor Pages 시작하기](xref:tutorials/razor-pages/razor-pages-start)를 참조하세요.
 * [특성 및 Razor Pages 권한 부여](xref:security/authorization/simple#aarp)
-* [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/index/3.0sample)
+* [예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/index/3.0sample)
 * <xref:index>
 * [ASP.NET Core용 Razor 구문 참조](xref:mvc/views/razor)
 * <xref:mvc/controllers/areas>
@@ -661,7 +661,7 @@ URL에서 쿼리 문자열 `?handler=JoinList`를 사용하지 않으려면 경�
 
 <a name="rpvs17"></a>
 
-## <a name="create-a-no-locrazor-pages-project"></a>Razor Pages 프로젝트 만들기
+## <a name="create-a-razor-pages-project"></a>Razor Pages 프로젝트 만들기
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -679,7 +679,7 @@ Mac용 Visual Studio에서 생성된 *.csproj* 파일을 엽니다.
 
 ---
 
-## <a name="no-locrazor-pages"></a>Razor Pages
+## <a name="razor-pages"></a>Razor Pages
 
 Razor Pages는 *Startup.cs* 에서 사용할 수 있게 설정됩니다.
 
@@ -719,7 +719,7 @@ Razor Pages는 *Startup.cs* 에서 사용할 수 있게 설정됩니다.
 
 Razor Pages는 앱을 만들 때 웹 브라우저에서 사용되는 일반적인 패턴을 손쉽게 구현할 수 있도록 설계되었습니다. [모델 바인딩](xref:mvc/models/model-binding), [태그 도우미](xref:mvc/views/tag-helpers/intro) 및 HTML 도우미는 모두 Razor Page 클래스에 정의된 속성을 통해서 ‘정확하게 작동’합니다. `Contact` 모델에 대한 기본적인 "연락처" 양식을 구현하는 페이지를 생각해보겠습니다.
 
-이 문서의 예제에서 `DbContext`는 [Startup.cs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/razor-pages/index/sample/RazorPagesContacts/Startup.cs#L15-L16) 파일에서 초기화됩니다.
+이 문서의 예제에서 `DbContext`는 [Startup.cs](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/razor-pages/index/sample/RazorPagesContacts/Startup.cs#L15-L16) 파일에서 초기화됩니다.
 
 [!code-csharp[](index/sample/RazorPagesContacts/Startup.cs?highlight=15-16)]
 
@@ -879,13 +879,13 @@ services.AddMvc()
 
 <a name="xsrf"></a>
 
-## <a name="xsrfcsrf-and-no-locrazor-pages"></a>XSRF/CSRF 및 Razor Pages
+## <a name="xsrfcsrf-and-razor-pages"></a>XSRF/CSRF 및 Razor Pages
 
 [위조 방지 유효성 검사](xref:security/anti-request-forgery)에 대한 어떠한 코드도 작성할 필요가 없습니다. 위조 방지 토큰 생성 및 유효성 검사는 Razor Pages에 자동으로 포함됩니다.
 
 <a name="layout"></a>
 
-## <a name="using-layouts-partials-templates-and-tag-helpers-with-no-locrazor-pages"></a>Razor Pages에서 레이아웃, 부분 뷰, 템플릿 및 태그 도우미 사용하기
+## <a name="using-layouts-partials-templates-and-tag-helpers-with-razor-pages"></a>Razor Pages에서 레이아웃, 부분 뷰, 템플릿 및 태그 도우미 사용하기
 
 Pages는 Razor 뷰 엔진의 모든 기능과 함께 작동합니다. 레이아웃, 부분 뷰, 템플릿, 태그 도우미, *_ViewStart.cshtml*, *_ViewImports.cshtml* 은 기존의 Razor 뷰와 동일한 방식으로 작동합니다.
 
@@ -1109,11 +1109,11 @@ URL에서 쿼리 문자열 `?handler=JoinList`를 사용하지 않으려면 경�
 
 뷰를 미리 컴파일하려면 [Razor 뷰 컴파일](xref:mvc/views/view-compilation)을 참고하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/index/sample).
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/index/sample).
 
 본문의 소개에 따라 빌드되는 [Razor Pages 시작하기](xref:tutorials/razor-pages/razor-pages-start)를 참조하세요.
 
-### <a name="specify-that-no-locrazor-pages-are-at-the-content-root"></a>Razor Pages가 컨텐츠 루트에 있도록 지정
+### <a name="specify-that-razor-pages-are-at-the-content-root"></a>Razor Pages가 컨텐츠 루트에 있도록 지정
 
 기본적으로 Razor Pages의 루트 경로는 */Pages* 디렉터리입니다. [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_)에 [WithRazorPagesAtContentRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.withrazorpagesatcontentroot)를 추가하여 Razor Pages가 앱의 [콘텐츠 루트](xref:fundamentals/index#content-root)([ContentRootPath](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.contentrootpath))에 있도록 지정합니다.
 
@@ -1126,7 +1126,7 @@ services.AddMvc()
     .WithRazorPagesAtContentRoot();
 ```
 
-### <a name="specify-that-no-locrazor-pages-are-at-a-custom-root-directory"></a>Razor Pages가 사용자 지정 루트 디렉터리에 있도록 지정
+### <a name="specify-that-razor-pages-are-at-a-custom-root-directory"></a>Razor Pages가 사용자 지정 루트 디렉터리에 있도록 지정
 
 [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_)에 [WithRazorPagesRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvccorebuilderextensions.withrazorpagesroot)를 추가하여 Razor Pages가 앱의 사용자 지정 루트 디렉터리에 있도록 지정합니다(상대 경로 제공).
 

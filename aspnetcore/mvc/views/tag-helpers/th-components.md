@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: 15bddd8ce18546bef7ee7e6ec2e32e369d0858a3
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: fb0bda0cf8d225df4c58ae43f81ed0dce10c1adc
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060562"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587153"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>ASP.NET Core의 태그 도우미 구성 요소
 
@@ -33,7 +33,7 @@ ms.locfileid: "93060562"
 
 ASP.NET Core에는 두 개의 기본 제공 태그 도우미 구성 요소, 즉 `head` 및 `body`가 포함되어 있습니다. <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers>네임 스페이스는 네임 스페이스에 있으며 MVC와 페이지에서 모두 사용할 수 있습니다 Razor . 태그 도우미 구성 요소는 *_ViewImports.cshtml* 에서 앱을 등록할 필요가 없습니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/th-components/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/tag-helpers/th-components/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="use-cases"></a>사용 사례
 
@@ -50,7 +50,7 @@ HTML `<head>` 요소 내에서 CSS 파일은 일반적으로 HTML `<link>` 요�
 
 [!code-csharp[](th-components/samples/RazorPagesSample/TagHelpers/AddressStyleTagHelperComponent.cs)]
 
-앞의 코드에서 다음을 확인할 수 있습니다.
+위의 코드에서
 
 * `AddressStyleTagHelperComponent`는 <xref:Microsoft.AspNetCore.Razor.TagHelpers.TagHelperComponent>를 구현합니다. 추상은 다음과 같습니다.
   * <xref:Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext>를 사용한 클래스 초기화를 허용합니다.
@@ -84,7 +84,7 @@ HTML `<head>` 요소 내에서 CSS 파일은 일반적으로 HTML `<link>` 요�
 
 [!code-csharp[](th-components/samples/RazorPagesSample/Startup.cs?name=snippet_ConfigureServices&highlight=12-15)]
 
-### <a name="registration-via-no-locrazor-file"></a>File via 등록 Razor
+### <a name="registration-via-razor-file"></a>File via 등록 Razor
 
 태그 도우미 구성 요소가 DI를 사용 하 여 등록 되지 않은 경우 Razor 페이지 페이지나 MVC 뷰에서 등록할 수 있습니다. 이 기법은 파일에서 삽입 된 태그와 구성 요소 실행 순서를 제어 하는 데 사용 됩니다 Razor .
 
@@ -92,7 +92,7 @@ HTML `<head>` 요소 내에서 CSS 파일은 일반적으로 HTML `<link>` 요�
 
 [!code-cshtml[](th-components/samples/RazorPagesSample/Pages/Contact.cshtml?name=snippet_ITagHelperComponentManager)]
 
-앞의 코드에서 다음을 확인할 수 있습니다.
+위의 코드에서
 
 * `@inject` 지시문은 `ITagHelperComponentManager`의 인스턴스를 제공합니다. 인스턴스는 `manager` 파일의 access 다운스트림에 대해 라는 변수에 할당 됩니다 Razor .
 * `AddressTagHelperComponent` 인스턴스가 앱의 태그 도우미 구성 요소 컬렉션에 추가됩니다.
@@ -113,7 +113,7 @@ HTML `<head>` 요소 내에서 CSS 파일은 일반적으로 HTML `<link>` 요�
 
 [!code-csharp[](th-components/samples/RazorPagesSample/Pages/Index.cshtml.cs?name=snippet_IndexModelClass)]
 
-앞의 코드에서 다음을 확인할 수 있습니다.
+위의 코드에서
 
 * 생성자 주입은 `ITagHelperComponentManager`의 인스턴스에 액세스하는 데 사용됩니다.
 * `AddressTagHelperComponent` 인스턴스가 앱의 태그 도우미 구성 요소 컬렉션에 추가됩니다.
@@ -124,7 +124,7 @@ HTML `<head>` 요소 내에서 CSS 파일은 일반적으로 HTML `<link>` 요�
 
 * <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperComponentTagHelper>에서 파생된 공용 클래스를 만듭니다.
 * [`[HtmlTargetElement]`](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute)클래스에 특성을 적용 합니다. 대상 HTML 요소의 이름을 지정합니다.
-* *선택 사항* : [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) 클래스에 특성을 적용 하 여 IntelliSense에서 형식의 표시를 표시 하지 않습니다.
+* *선택 사항*: [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) 클래스에 특성을 적용 하 여 IntelliSense에서 형식의 표시를 표시 하지 않습니다.
 
 다음 코드는 `<address>` HTML 요소를 대상으로 하는 사용자 지정 태그 도우미 구성 요소를 만듭니다.
 

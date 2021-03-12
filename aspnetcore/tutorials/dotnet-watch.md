@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 27420fe00ba6375e15b67fb359be06df055eff1f
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 84cae3b3babe28c2ebf6dba50023b020112d1bb3
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93060042"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587582"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>파일 감시자를 사용하여 ASP.NET Core 앱 개발
 
@@ -32,7 +32,7 @@ ms.locfileid: "93060042"
 
 이 자습서에서는 합계를 반환하는 엔드포인트 및 제품을 반환하는 엔드포인트 등 두 개의 엔드포인트에서 기존 Web API를 사용합니다. 제품 메서드에는 버그가 있습니다. 이 문제가 이 자습서에서 해결되었습니다.
 
-[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)을 다운로드합니다. 다음 두 프로젝트로 구성되어 있습니다. *WebApp*(ASP.NET Core 웹 API) 및 *WebAppTests*(웹 API의 단위 테스트).
+[샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/dotnet-watch/sample)을 다운로드합니다. 다음 두 프로젝트로 구성되어 있습니다. *WebApp*(ASP.NET Core 웹 API) 및 *WebAppTests*(웹 API의 단위 테스트).
 
 명령 셸에서 *WebApp* 폴더로 이동합니다. 다음 명령을 실행합니다.
 
@@ -219,7 +219,3 @@ dotnet watch msbuild /t:Test
 | `DOTNET_WATCH_SUPPRESS_MSBUILD_INCREMENTALISM`   | 기본적으로 `dotnet watch`는 파일이 변경될 때마다 복원 실행이나 감시된 파일 집합 다시 평가와 같은 특정 작업이 수행되지 않도록 하여 빌드를 최적화합니다. “1” 또는 “true”로 설정하면 이러한 최적화를 사용할 수 없습니다. |
 | `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER`   | `dotnet watch run`은 *launchSettings.json* 에서 `launchBrowser`가 구성된 웹앱에 대해 브라우저를 시작하려고 합니다. “1” 또는 “true”로 설정하면 이 동작이 무시됩니다. |
 | `DOTNET_WATCH_SUPPRESS_BROWSER_REFRESH`   | `dotnet watch run`은 파일 변경 내용을 검색할 때 브라우저를 새로 고치려고 합니다. “1” 또는 “true”로 설정하면 이 동작이 무시됩니다. 이 동작은 `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER`가 설정된 경우에도 무시됩니다. |
-
-## <a name="dotnet-watch-in-github"></a>GitHub의 `dotnet-watch`
-
-`dotnet-watch`는 GitHub [dotnet/AspNetCore 리포지토리](https://github.com/dotnet/AspNetCore/tree/master/src/Tools/dotnet-watch)의 일부입니다.

@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/ui-class
-ms.openlocfilehash: a878a3485ecee0782b21ac69c5ec6ff832b9f06c
-ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
+ms.openlocfilehash: 88b3bae5d52e334dea7ffcfe245f49d2816047c3
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98571010"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588180"
 ---
-# <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a>ASP.NET Core에서 Razor 클래스 라이브러리 프로젝트를 사용하여 재사용 가능한 UI 만들기
+# <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>ASP.NET Core에서 Razor 클래스 라이브러리 프로젝트를 사용하여 재사용 가능한 UI 만들기
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -33,9 +33,9 @@ ms.locfileid: "98571010"
 
 RCL(Razor 클래스 라이브러리)에 Razor 뷰, 페이지, 컨트롤러, 페이지 모델, [Razor 구성 요소](xref:blazor/components/class-libraries), [뷰 구성 요소](xref:mvc/views/view-components) 및 데이터 모델을 기본적으로 빌드할 수 있습니다. RCL은 패키지되고 재사용될 수 있습니다. 애플리케이션은 RCL 포함할 수 있고 RCL이 포함하는 보기 및 페이지를 재정의할 수 있습니다. 뷰, 부분 뷰 또는 Razor 페이지가 웹앱 및 RCL 모두에 있는 경우 웹앱에서 Razor 태그( *.cshtml* 파일)가 우선으로 적용됩니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/ui-class/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
-## <a name="create-a-class-library-containing-no-locrazor-ui"></a>Razor UI를 포함하는 클래스 라이브러리 만들기
+## <a name="create-a-class-library-containing-razor-ui"></a>Razor UI를 포함하는 클래스 라이브러리 만들기
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -208,9 +208,9 @@ RCL을 빌드하면 정적 웹 자산 위치를 설명하는 매니페스트가 
 
 RCL(Razor 클래스 라이브러리)에 Razor 뷰, 페이지, 컨트롤러, 페이지 모델, [Razor 구성 요소](xref:blazor/components/class-libraries), [뷰 구성 요소](xref:mvc/views/view-components) 및 데이터 모델을 기본적으로 빌드할 수 있습니다. RCL은 패키지되고 재사용될 수 있습니다. 애플리케이션은 RCL 포함할 수 있고 RCL이 포함하는 보기 및 페이지를 재정의할 수 있습니다. 뷰, 부분 뷰 또는 Razor 페이지가 웹앱 및 RCL 모두에 있는 경우 웹앱에서 Razor 태그( *.cshtml* 파일)가 우선으로 적용됩니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/ui-class/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
-## <a name="create-a-class-library-containing-no-locrazor-ui"></a>Razor UI를 포함하는 클래스 라이브러리 만들기
+## <a name="create-a-class-library-containing-razor-ui"></a>Razor UI를 포함하는 클래스 라이브러리 만들기
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -247,9 +247,9 @@ RCL은 다음에서 참조할 수 있습니다.
 * NuGet 패키지. [NuGet 패키지 만들기](/nuget/create-packages/creating-a-package), [dotnet 추가 패키지](/dotnet/core/tools/dotnet-add-package) 및 [NuGet 패키지 만들기 및 게시](/nuget/quickstart/create-and-publish-a-package-using-visual-studio)를 참조합니다.
 * *{ProjectName}.csproj*. [dotnet-add reference](/dotnet/core/tools/dotnet-add-reference)를 참조합니다.
 
-## <a name="walkthrough-create-an-rcl-project-and-use-from-a-no-locrazor-pages-project"></a>연습: RCL 프로젝트를 만들고 Razor Pages 프로젝트에서 사용
+## <a name="walkthrough-create-an-rcl-project-and-use-from-a-razor-pages-project"></a>연습: RCL 프로젝트를 만들고 Razor Pages 프로젝트에서 사용
 
-[전체 프로젝트](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples)를 다운로드하여 만들지 않고 테스트할 수 있습니다. 샘플 다운로드에는 프로젝트를 쉽게 테스트하게 하는 링크와 추가 코드가 포함됩니다. 샘플 다운로드 대 단계별 지침에 대한 주석을 사용하여 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/6098)에서 사용자 의견을 그대로 둘 수 있습니다.
+[전체 프로젝트](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/razor-pages/ui-class/samples)를 다운로드하여 만들지 않고 테스트할 수 있습니다. 샘플 다운로드에는 프로젝트를 쉽게 테스트하게 하는 링크와 추가 코드가 포함됩니다. 샘플 다운로드 대 단계별 지침에 대한 주석을 사용하여 [이 GitHub 문제](https://github.com/dotnet/AspNetCore.Docs/issues/6098)에서 사용자 의견을 그대로 둘 수 있습니다.
 
 ### <a name="test-the-download-app"></a>다운로드 앱 테스트
 
@@ -312,7 +312,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 ---
 
-### <a name="add-no-locrazor-files-and-folders-to-the-project"></a>프로젝트에 Razor 파일 및 폴더 추가
+### <a name="add-razor-files-and-folders-to-the-project"></a>프로젝트에 Razor 파일 및 폴더 추가
 
 * *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* 에서 태그를 다음 코드로 바꿉니다.
 
@@ -338,7 +338,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 빌드 출력은 *RazorUIClassLib.dll* 및 *RazorUIClassLib.Views.dll* 을 포함합니다. *RazorUIClassLib.Views.dll* 은 컴파일된 Razor 콘텐츠를 포함합니다.
 
-### <a name="use-the-no-locrazor-ui-library-from-a-no-locrazor-pages-project"></a>Razor Pages 프로젝트에서 Razor UI 라이브러리 사용
+### <a name="use-the-razor-ui-library-from-a-razor-pages-project"></a>Razor Pages 프로젝트에서 Razor UI 라이브러리 사용
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

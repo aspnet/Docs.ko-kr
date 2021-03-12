@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/extensibility-third-party-container
-ms.openlocfilehash: d322b1b3dda161c9948359253c3f7fee64a1f9ce
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: bbbfe0e9fba33eba9d69101e5615e931ea917bc1
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057767"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587374"
 ---
 # <a name="middleware-activation-with-a-third-party-container-in-aspnet-core"></a>ASP.NET Core에서 타사 컨테이너를 사용한 미들웨어 활성화
 
@@ -32,7 +32,7 @@ ms.locfileid: "93057767"
 
 이 문서에서는 <xref:Microsoft.AspNetCore.Http.IMiddlewareFactory> 및 <xref:Microsoft.AspNetCore.Http.IMiddleware>를 타사 컨테이너를 사용한 [미들웨어](xref:fundamentals/middleware/index) 활성화를 위한 확장 지점으로 사용하는 방법을 보여 줍니다. `IMiddlewareFactory` 및 `IMiddleware`에 대한 정보는 <xref:fundamentals/middleware/extensibility>를 참조하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/middleware/extensibility-third-party-container/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/middleware/extensibility-third-party-container/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 샘플 앱은 `IMiddlewareFactory` 구현 `SimpleInjectorMiddlewareFactory`를 사용한 미들웨어 활성화를 보여 줍니다. 이 샘플에서는 [간단한 인젝터](https://simpleinjector.org) DI(종속성 주입) 컨테이너를 사용합니다.
 
@@ -79,7 +79,7 @@ ms.locfileid: "93057767"
 
 이 문서에서는 <xref:Microsoft.AspNetCore.Http.IMiddlewareFactory> 및 <xref:Microsoft.AspNetCore.Http.IMiddleware>를 타사 컨테이너를 사용한 [미들웨어](xref:fundamentals/middleware/index) 활성화를 위한 확장 지점으로 사용하는 방법을 보여 줍니다. `IMiddlewareFactory` 및 `IMiddleware`에 대한 정보는 <xref:fundamentals/middleware/extensibility>를 참조하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/middleware/extensibility-third-party-container/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/middleware/extensibility-third-party-container/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 샘플 앱은 `IMiddlewareFactory` 구현 `SimpleInjectorMiddlewareFactory`를 사용한 미들웨어 활성화를 보여 줍니다. 이 샘플에서는 [간단한 인젝터](https://simpleinjector.org) DI(종속성 주입) 컨테이너를 사용합니다.
 

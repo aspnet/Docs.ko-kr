@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: c11b748f9d79235b14c9541019da6e1fb3428af6
-ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
+ms.openlocfilehash: ab09867a1b1aa73e423babbe295036e292fc733f
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "93051410"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586581"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>ASP.NET Core의 세션 및 상태 관리
 
@@ -33,7 +33,7 @@ ms.locfileid: "93051410"
 
 HTTP는 상태 비저장 프로토콜입니다. 기본적으로 HTTP 요청은 사용자 값을 유지하지 않는 독립적인 메시지입니다. 이 문서에서는 요청 간에 사용자 데이터를 유지하는 여러 가지 방법을 설명합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/app-state/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/app-state/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="state-management"></a>상태 관리
 
@@ -303,7 +303,7 @@ SignalR 앱은 세션 상태를 사용하여 정보를 저장해서는 안 됩�
 
 HTTP는 상태 비저장 프로토콜입니다. HTTP 요청은 추가 단계를 수행하지 않고 사용자 값 또는 앱 상태를 유지하지 않는 독립적인 메시지입니다. 이 문서에서는 요청 간 사용자 데이터와 앱 상태를 유지하는 몇 가지 방법에 대해 설명합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/app-state/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/app-state/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="state-management"></a>상태 관리
 

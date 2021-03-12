@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: b3c783623252512621a0cee7a3607c69cb6d09bb
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 9ac17e7c22b23ced7a8f12a6ef0d456f6244318b
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280272"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586763"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>ASP.NET Core Blazor에서 웹 API 호출
 
@@ -33,7 +33,7 @@ ms.locfileid: "100280272"
 
 [Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly) 앱은 미리 구성된 <xref:System.Net.Http.HttpClient> 서비스를 사용하여 웹 API를 호출합니다. Blazor JSON 도우미 또는 <xref:System.Net.Http.HttpRequestMessage>를 사용하여 JavaScript [Fetch API](https://developer.mozilla.org/docs/Web/API/Fetch_API) 옵션을 포함할 수 있는 요청을 작성합니다. Blazor WebAssembly 앱의 <xref:System.Net.Http.HttpClient> 서비스는 원본 서버에 대해 다시 요청을 수행하는 데 중점을 둡니다. 이 항목의 지침은 Blazor WebAssembly 앱에만 관련됩니다.
 
-[샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)([다운로드 방법](xref:index#how-to-download-a-sample)): `BlazorWebAssemblySample` 앱을 선택합니다.
+[샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/blazor/common/samples/)([다운로드 방법](xref:index#how-to-download-a-sample)): `BlazorWebAssemblySample` 앱을 선택합니다.
 
 `BlazorWebAssemblySample` 샘플 앱에서 다음 구성 요소를 참조하세요.
 
@@ -153,7 +153,7 @@ JSON 도우미 메서드는 URI(다음 예제의 웹 API)에 요청을 보내고
       }
 
       private async Task SaveItem() =>
-          await Http.PutAsJsonAsync($"api/TodoItems/{editItem.Id}, editItem);
+          await Http.PutAsJsonAsync($"api/TodoItems/{editItem.Id}", editItem);
   }
   ```
   
@@ -401,7 +401,7 @@ protected override async Task OnInitializedAsync()
 
 브라우저 보안 때문에 웹 페이지에서 해당 웹 페이지를 제공한 도메인이 아닌 다른 도메인에 요청을 수행할 수는 없습니다. 이러한 제한 사항을 *동일 원본 정책* 이라고 합니다. 동일 원본 정책은 악성 사이트에서 다른 사이트의 중요한 데이터를 읽지 못하도록 차단합니다. 브라우저에서 원본이 다른 엔드포인트로의 요청을 만들려면 *엔드포인트* 가 [CORS(원본 간 리소스 공유)](https://www.w3.org/TR/cors/)를 사용하도록 설정해야 합니다.
 
-[Blazor WebAssembly 샘플 앱(BlazorWebAssemblySample)](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)은 웹 API 호출 구성 요소(`Pages/CallWebAPI.razor`)에서 CORS를 사용하는 방법을 보여 줍니다.
+[Blazor WebAssembly 샘플 앱(BlazorWebAssemblySample)](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/blazor/common/samples/)은 웹 API 호출 구성 요소(`Pages/CallWebAPI.razor`)에서 CORS를 사용하는 방법을 보여 줍니다.
 
 Blazor 앱에서 보안 요청을 포함하는 CORS에 대한 자세한 내용은 <xref:blazor/security/webassembly/additional-scenarios#cross-origin-resource-sharing-cors>을 참조하세요.
 

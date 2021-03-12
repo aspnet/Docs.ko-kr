@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/java-client
-ms.openlocfilehash: 92941d21820de90eb2ae8fb76c21c588ed9f1ffb
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: bdfaf50895612e739eb5ca068a76755f97cf24c2
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024758"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588076"
 ---
-# <a name="aspnet-core-no-locsignalr-java-client"></a>ASP.NET Core SignalR Java 클라이언트
+# <a name="aspnet-core-signalr-java-client"></a>ASP.NET Core SignalR Java 클라이언트
 
 작성자: [Mikael Mengistu](https://twitter.com/MikaelM_12)
 
@@ -34,9 +34,9 @@ Java 클라이언트를 사용 하면 SignalR Android 앱을 비롯 한 java 코
 
 이 문서에서 참조 되는 샘플 Java 콘솔 앱은 SignalR java 클라이언트를 사용 합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/java-client/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/java-client/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
-## <a name="install-the-no-locsignalr-java-client-package"></a>Java 클라이언트 패키지를 설치 합니다. SignalR
+## <a name="install-the-signalr-java-client-package"></a>Java 클라이언트 패키지를 설치 합니다. SignalR
 
 *Signalr-1.0.0* JAR 파일을 사용 하면 클라이언트가 허브에 연결할 수 있습니다 SignalR . 최신 JAR 파일 버전 번호를 찾으려면 [Maven 검색 결과](https://search.maven.org/search?q=g:com.microsoft.signalr%20AND%20a:signalr)를 참조 하세요.
 

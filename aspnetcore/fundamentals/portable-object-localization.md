@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 175614c426c564ce91068e18035ce05311432698
-ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
+ms.openlocfilehash: ed41657b364c7f845491b3e452db8a4d5c5aa389
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689242"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587179"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>ASP.NET Core에서 이식 가능 개체 지역화 구성
 
@@ -34,7 +34,7 @@ ms.locfileid: "98689242"
 
 **참고:** Orchard Core는 Microsoft 제품이 아닙니다. 따라서 Microsoft는 이 기능에 대한 지원을 제공하지 않습니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/3.x/POLocalization) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/localization/sample/3.x/POLocalization) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>PO 파일이란?
 
@@ -249,7 +249,7 @@ PO 파일을 배치하는 데 더 복잡한 논리가 필요한 경우 서비스
 
 **참고:** Orchard Core는 Microsoft 제품이 아닙니다. 따라서 Microsoft는 이 기능에 대한 지원을 제공하지 않습니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/2.x/POLocalization) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/localization/sample/2.x/POLocalization) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>PO 파일이란?
 

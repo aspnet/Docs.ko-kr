@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/ip-safelist
-ms.openlocfilehash: dfc134b97bb0976bc682a53d536cd27785550c7d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f89191cff1faa5b55ee9031a6a6d0749a74e43c0
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059665"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587543"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>ASP.NET Core에 대 한 클라이언트 IP safelist
 
@@ -43,7 +43,7 @@ ms.locfileid: "93059665"
 
 배열에 IP 주소가 포함 되어 있으면 액세스가 허용 됩니다. 그렇지 않으면 HTTP 403 사용할 수 없음 상태 코드가 반환 됩니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/ip-safelist/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/ip-safelist/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="ip-address-safelist"></a>IP 주소 safelist
 
@@ -68,7 +68,7 @@ ms.locfileid: "93059665"
 
 ## <a name="action-filter"></a>작업 필터
 
-특정 MVC 컨트롤러나 작업 메서드에 대 한 safelist 기반 액세스 제어를 원하는 경우 작업 필터를 사용 합니다. 다음은 그 예입니다.
+특정 MVC 컨트롤러나 작업 메서드에 대 한 safelist 기반 액세스 제어를 원하는 경우 작업 필터를 사용 합니다. 예를 들면 다음과 같습니다.
 
 [!code-csharp[](ip-safelist/samples/Shared/ClientIpSafelistComponents/Filters/ClientIpCheckActionFilter.cs?name=snippet_ClassOnly)]
 
@@ -103,9 +103,9 @@ ms.locfileid: "93059665"
 
 * GET이 아닌 HTTP 요청 동사로 `AdminSafeListMiddleware` 미들웨어는 클라이언트 IP 주소의 유효성을 검사 합니다.
 
-## <a name="no-locrazor-pages-filter"></a>Razor 페이지 필터
+## <a name="razor-pages-filter"></a>Razor 페이지 필터
 
-페이지 앱에 대 한 safelist 기반 access control Razor 을 사용 하려면 Razor 페이지 필터를 사용 합니다. 다음은 그 예입니다.
+페이지 앱에 대 한 safelist 기반 access control Razor 을 사용 하려면 Razor 페이지 필터를 사용 합니다. 예를 들면 다음과 같습니다.
 
 [!code-csharp[](ip-safelist/samples/Shared/ClientIpSafelistComponents/Filters/ClientIpCheckPageFilter.cs?name=snippet_ClassOnly)]
 

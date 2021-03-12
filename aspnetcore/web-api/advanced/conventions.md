@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 0c5ea8ba69e4c6287afce1771ac9cee65bb188a8
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1e6526f46fbd177add3699fb5b667021b741c6a4
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052541"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587842"
 ---
 # <a name="use-web-api-conventions"></a>웹 API 규칙 사용
 
@@ -37,11 +37,11 @@ ASP.NET Core 2.2 이상에는 일반적인 [API 설명서](xref:tutorials/web-ap
 * 특정 유형의 작업에서 반환되는 가장 일반적인 반환 형식 및 상태 코드를 정의합니다.
 * 정의된 표준에서 벗어나는 작업을 식별합니다.
 
-ASP.NET Core MVC 2.2 이상에는 <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>의 기본 규칙 집합이 포함되어 있습니다. 규칙은 ASP.NET Core **API** 프로젝트 템플릿에서 제공되는 컨트롤러( *ValuesController.cs* )를 기반으로 합니다. 작업이 템플릿의 패턴을 따르는 경우, 기본 규칙을 성공적으로 사용해야 합니다. 기본 규칙이 요구 사항을 충족하지 못하는 경우 [웹 API 규칙 만들기](#create-web-api-conventions)를 참조하세요.
+ASP.NET Core MVC 2.2 이상에는 <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>의 기본 규칙 집합이 포함되어 있습니다. 규칙은 ASP.NET Core **API** 프로젝트 템플릿에서 제공되는 컨트롤러(*ValuesController.cs*)를 기반으로 합니다. 작업이 템플릿의 패턴을 따르는 경우, 기본 규칙을 성공적으로 사용해야 합니다. 기본 규칙이 요구 사항을 충족하지 못하는 경우 [웹 API 규칙 만들기](#create-web-api-conventions)를 참조하세요.
 
 런타임 시 <xref:Microsoft.AspNetCore.Mvc.ApiExplorer>가 규칙을 이해합니다. `ApiExplorer`는 [OpenAPI](https://www.openapis.org/)(Swagger라고도 함) 문서 생성기와 통신하기 위한 MVC의 추상화입니다. 적용된 규칙의 특성은 작업과 연결되며 작업의 OpenAPI 설명서에 포함됩니다. [API 분석기](xref:web-api/advanced/analyzers)도 규칙을 이해합니다. 작업이 색다른 경우(예를 들어 적용된 규칙에 의해 문서화되지 않은 상태 코드를 반환하는 경우) 경고는 상태 코드를 문서화할 것을 권장합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/conventions/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/advanced/conventions/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="apply-web-api-conventions"></a>웹 API 규칙 적용
 
@@ -85,7 +85,7 @@ ASP.NET Core MVC 2.2 이상에는 <xref:Microsoft.AspNetCore.Mvc.DefaultApiConve
 
 ### <a name="response-types"></a>응답 형식
 
-이러한 메서드에는 `[ProducesResponseType]` 또는 `[ProducesDefaultResponseType]` 특성으로 주석이 추가됩니다. 다음은 그 예입니다.
+이러한 메서드에는 `[ProducesResponseType]` 또는 `[ProducesDefaultResponseType]` 특성으로 주석이 추가됩니다. 예를 들면 다음과 같습니다.
 
 ```csharp
 public static class MyAppConventions
@@ -105,7 +105,7 @@ public static class MyAppConventions
 
 ### <a name="naming-requirements"></a>명명 요구 사항
 
-`[ApiConventionNameMatch]` 및 `[ApiConventionTypeMatch]` 특성은 적용할 작업을 결정하는 규칙 메서드에 적용될 수 있습니다. 다음은 그 예입니다.
+`[ApiConventionNameMatch]` 및 `[ApiConventionTypeMatch]` 특성은 적용할 작업을 결정하는 규칙 메서드에 적용될 수 있습니다. 예를 들면 다음과 같습니다.
 
 ```csharp
 [ProducesResponseType(StatusCodes.Status200OK)]

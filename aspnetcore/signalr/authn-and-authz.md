@@ -19,20 +19,20 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 0e220d72fe9ef4ada402b449ef20e31324f7bcd2
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 9a3102e4451bbc5cd9ff15e88bebd4e4f2c115f4
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060120"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588102"
 ---
-# <a name="authentication-and-authorization-in-aspnet-core-no-locsignalr"></a>ASP.NET Core의 인증 및 권한 부여 SignalR
+# <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>ASP.NET Core의 인증 및 권한 부여 SignalR
 
 [Andrew Stanton-간호사](https://twitter.com/anurse)
 
-[샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/)[(다운로드 방법)](xref:index#how-to-download-a-sample)
+[샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/authn-and-authz/sample/)[(다운로드 방법)](xref:index#how-to-download-a-sample)
 
-## <a name="authenticate-users-connecting-to-a-no-locsignalr-hub"></a>허브에 연결 하는 사용자 인증 SignalR
+## <a name="authenticate-users-connecting-to-a-signalr-hub"></a>허브에 연결 하는 사용자 인증 SignalR
 
 SignalR[ASP.NET Core 인증과](xref:security/authentication/identity) 함께 사용 하 여 사용자를 각 연결에 연결할 수 있습니다. 허브에서는 [HubConnectionContext](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) 속성을 사용 하 여 인증 데이터에 액세스할 수 있습니다. 인증을 통해 허브는 사용자와 연결 된 모든 연결에서 메서드를 호출할 수 있습니다. 자세한 내용은 [에서 SignalR 사용자 및 그룹 관리 ](xref:signalr/groups)를 참조 하세요. 단일 사용자에 게 여러 연결을 연결할 수 있습니다.
 
@@ -90,7 +90,7 @@ public void Configure(IApplicationBuilder app)
 
 ::: moniker-end
 
-### <a name="no-loccookie-authentication"></a>Cookie 인증
+### <a name="cookie-authentication"></a>Cookie 인증
 
 브라우저 기반 앱에서 cookie 인증을 사용 하면 기존 사용자 자격 증명이 자동으로 연결로 이동 SignalR 됩니다. 브라우저 클라이언트를 사용 하는 경우 추가 구성이 필요 하지 않습니다. 사용자가 앱에 로그인 한 경우에는 SignalR 연결이 자동으로이 인증을 상속 합니다.
 
@@ -131,7 +131,7 @@ var connection = new HubConnectionBuilder()
 > [!NOTE]
 > 쿼리 문자열은 브라우저 API 제한으로 인해 Websocket 및 Server-Sent 이벤트를 사용 하 여 연결할 때 브라우저에서 사용 됩니다. HTTPS를 사용 하는 경우 쿼리 문자열 값은 TLS 연결을 통해 보안이 유지 됩니다. 그러나 많은 서버에서 쿼리 문자열 값을 기록 합니다. 자세한 내용은 [ASP.NET Core SignalR 의 보안 고려 사항 ](xref:signalr/security)을 참조 하세요. SignalR 는 헤더를 사용 하 여 토큰 (예: .NET 및 Java 클라이언트)을 지 원하는 환경에서 토큰을 전송 합니다.
 
-#### <a name="no-locidentity-server-jwt-authentication"></a>Identity 서버 JWT 인증
+#### <a name="identity-server-jwt-authentication"></a>Identity 서버 JWT 인증
 
 서버를 사용 하는 경우 Identity <xref:Microsoft.Extensions.Options.PostConfigureOptions%601> 프로젝트에 서비스를 추가 합니다.
 
@@ -173,7 +173,7 @@ services.TryAddEnumerable(
         ConfigureJwtBearerOptions>());
 ```
 
-### <a name="no-loccookies-vs-bearer-tokens"></a>Cookies와 전달자 토큰 비교 
+### <a name="cookies-vs-bearer-tokens"></a>Cookies와 전달자 토큰 비교 
 
 Cookie는 브라우저에만 적용 됩니다. 다른 종류의 클라이언트에서 전송 하면 전달자 토큰 전송과 비교 하 여 복잡성이 증가 합니다. 따라서 cookie 앱이 브라우저 클라이언트에서 사용자를 인증 해야 하는 경우를 제외 하 고는 인증을 권장 하지 않습니다. 전달자 토큰 인증은 브라우저 클라이언트 이외의 클라이언트를 사용 하는 경우 권장 되는 방법입니다.
 

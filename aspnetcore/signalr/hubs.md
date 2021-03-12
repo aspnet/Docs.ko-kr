@@ -19,24 +19,24 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hubs
-ms.openlocfilehash: 4a31c16eb44e2244574d0df49c30e7a44b2bba6e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 872b88cc3c87137365de8c50a37bf5dd5fd9fe10
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050942"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587868"
 ---
-# <a name="use-hubs-in-no-locsignalr-for-aspnet-core"></a>SignalRASP.NET Core 용 허브 사용
+# <a name="use-hubs-in-signalr-for-aspnet-core"></a>SignalRASP.NET Core 용 허브 사용
 
 만든 사람 [Rachel Appel](https://twitter.com/rachelappel) 및 [Kevin Griffin](https://twitter.com/1kevgriff)
 
-[샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubs/sample/ )[(다운로드 방법)](xref:index#how-to-download-a-sample)
+[샘플 코드 보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/hubs/sample/ )[(다운로드 방법)](xref:index#how-to-download-a-sample)
 
-## <a name="what-is-a-no-locsignalr-hub"></a>SignalR허브 정의
+## <a name="what-is-a-signalr-hub"></a>SignalR허브 정의
 
 SignalR허브 API를 사용 하면 서버에서 연결 된 클라이언트의 메서드를 호출할 수 있습니다. 서버 코드에서 클라이언트에 의해 호출 되는 메서드를 정의 합니다. 클라이언트 코드에서는 서버에서 호출 되는 메서드를 정의 합니다. SignalR 에서는 실시간 클라이언트와 서버 간 통신을 가능 하 게 하는 백그라운드의 모든 작업을 처리 합니다.
 
-## <a name="configure-no-locsignalr-hubs"></a>SignalR허브 구성
+## <a name="configure-signalr-hubs"></a>SignalR허브 구성
 
 미들웨어에는 SignalR 를 호출 하 여 구성 되는 일부 서비스가 필요 합니다 `services.AddSignalR` .
 
@@ -156,7 +156,7 @@ public class ChatHub : Hub
 
 를 사용 `Hub<IChatClient>` 하면 클라이언트 메서드를 컴파일할 때 검사할 수 있습니다. 이렇게 하면 매직 문자열을 사용 하 여 발생 하는 문제를 방지할 수 있기 때문에는 `Hub<T>` 인터페이스에 정의 된 메서드에만 액세스할 수 있습니다.
 
-강력한 형식의를 사용 하면을 `Hub<T>` 사용할 수 없습니다 `SendAsync` . 인터페이스에 정의 된 메서드는 여전히 비동기로 정의 될 수 있습니다. 실제로 이러한 각 메서드는를 반환 해야 `Task` 합니다. 인터페이스 이므로 키워드를 사용 하지 마세요 `async` . 다음은 그 예입니다.
+강력한 형식의를 사용 하면을 `Hub<T>` 사용할 수 없습니다 `SendAsync` . 인터페이스에 정의 된 메서드는 여전히 비동기로 정의 될 수 있습니다. 실제로 이러한 각 메서드는를 반환 해야 `Task` 합니다. 인터페이스 이므로 키워드를 사용 하지 마세요 `async` . 예를 들면 다음과 같습니다.
 
 ```csharp
 public interface IClient
@@ -192,7 +192,7 @@ SignalR허브 API는 `OnConnectedAsync` `OnDisconnectedAsync` 연결을 관리 �
 
 [!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=23)]
 
-허브가 예외를 throw 하는 경우 연결이 닫혀 있지 않습니다. 기본적으로는 SignalR 일반 오류 메시지를 클라이언트에 반환 합니다. 다음은 그 예입니다.
+허브가 예외를 throw 하는 경우 연결이 닫혀 있지 않습니다. 기본적으로는 SignalR 일반 오류 메시지를 클라이언트에 반환 합니다. 예를 들면 다음과 같습니다.
 
 ```
 Microsoft.AspNetCore.SignalR.HubException: An unexpected error occurred invoking 'MethodName' on the server.

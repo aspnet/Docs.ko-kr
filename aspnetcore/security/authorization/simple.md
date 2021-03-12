@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/simple
-ms.openlocfilehash: 1678f1b4af2c65e3b10c66f7ccdbecf19156a834
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: eaf36822edc47f7238c356e167b05ac44f93175d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97865566"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587569"
 ---
 # <a name="simple-authorization-in-aspnet-core"></a>ASP.NET Core의 단순 권한 부여
 
@@ -90,20 +90,21 @@ public class AccountController : Controller
 
 <a name="aarp"></a>
 
-## <a name="authorize-attribute-and-no-locrazor-pages"></a>특성 및 Razor Pages 권한 부여
+## <a name="authorize-attribute-and-razor-pages"></a>특성 및 Razor Pages 권한 부여
 
-<xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute>페이지 처리기에는 *를 적용할 수 **없습니다** Razor . 예를 들어,, `[Authorize]` `OnGet` `OnPost` 또는 다른 페이지 처리기에는를 적용할 수 없습니다. 다른 처리기에 대 한 권한 부여 요구 사항이 서로 다른 페이지에는 ASP.NET Core MVC 컨트롤러를 사용 하는 것이 좋습니다.
+<xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute>페이지 처리기에는를 적용할 수 ***없습니다*** Razor . 예를 들어,, `[Authorize]` `OnGet` `OnPost` 또는 다른 페이지 처리기에는를 적용할 수 없습니다. 다른 처리기에 대 한 권한 부여 요구 사항이 서로 다른 페이지에는 ASP.NET Core MVC 컨트롤러를 사용 하는 것이 좋습니다.
 
 다음 두 가지 방법을 사용 하 여 페이지 처리기 메서드에 권한 부여를 적용할 수 있습니다 Razor .
 
-_ 다른 권한 부여를 필요로 하는 페이지 처리기의 경우 별도의 페이지를 사용 합니다. 공유 콘텐츠를 하나 이상의 [부분 뷰로](xref:mvc/views/partial)이동 합니다. 가능 하면 권장 되는 방법입니다.
-* 공용 페이지를 공유 해야 하는 콘텐츠의 경우 권한 부여를 Iasyncpagefilter의 일부로 수행 하는 필터를 작성 합니다 [. OnPageHandlerSelectionAsync](xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter.OnPageHandlerSelectionAsync%2A). [Pagehandlerauth](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth) GitHub 프로젝트는이 방법을 보여 줍니다.
-  * [AuthorizeIndexPageHandlerFilter](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth/AuthorizeIndexPageHandlerFilter.cs) 은 권한 부여 필터를 구현 합니다.[!code-csharp[](~/security/authorization/simple/samples/3.1/PageHandlerAuth/Pages/Index.cshtml.cs?name=snippet)]
+* 다른 권한 부여를 필요로 하는 페이지 처리기에 대해 별도의 페이지를 사용 합니다. 공유 콘텐츠를 하나 이상의 [부분 뷰로](xref:mvc/views/partial)이동 합니다. 가능 하면 권장 되는 방법입니다.
+* 공용 페이지를 공유 해야 하는 콘텐츠의 경우 권한 부여를 Iasyncpagefilter의 일부로 수행 하는 필터를 작성 합니다 [. OnPageHandlerSelectionAsync](xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter.OnPageHandlerSelectionAsync%2A). [Pagehandlerauth](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth) GitHub 프로젝트는이 방법을 보여 줍니다.
+  * [AuthorizeIndexPageHandlerFilter](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth/AuthorizeIndexPageHandlerFilter.cs) 은 권한 부여 필터를 구현 합니다.[!code-csharp[](~/security/authorization/simple/samples/3.1/PageHandlerAuth/Pages/Index.cshtml.cs?name=snippet)]
 
-  * [[AuthorizePageHandler]](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth/Pages/Index.cshtml.cs#L16) 특성은 페이지 처리기에 적용 됩니다 `OnGet` .[!code-csharp[](~/security/authorization/simple/samples/3.1/PageHandlerAuth/AuthorizeIndexPageHandlerFilter.cs?name=snippet)]
+  * [[AuthorizePageHandler]](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth/Pages/Index.cshtml.cs#L16) 특성은 페이지 처리기에 적용 됩니다 `OnGet` .[!code-csharp[](~/security/authorization/simple/samples/3.1/PageHandlerAuth/AuthorizeIndexPageHandlerFilter.cs?name=snippet)]
 
 > [!WARNING]
-> [Pagehandlerauth](https://github.com/pranavkm/PageHandlerAuth) 샘플 접근 방식은 페이지,페이지 모델 또는 전역에 적용 되는 권한 부여 특성을 사용 하 여 작성 합니다. 권한 부여 특성을 작성 하면 하나 이상의 `AuthorizeAttribute` 또는 `AuthorizeFilter` 인스턴스가 페이지에도 적용 될 때 인증 및 권한 부여가 여러 번 실행 됩니다.
+> [Pagehandlerauth](https://github.com/pranavkm/PageHandlerAuth) 샘플 방법은 다음을 수행 ***하지*** 않습니다.
+> * 페이지, 페이지 모델 또는 전역에 적용 되는 권한 부여 특성으로 구성 합니다. 권한 부여 특성을 작성 하면 하나 이상의 `AuthorizeAttribute` 또는 `AuthorizeFilter` 인스턴스가 페이지에도 적용 될 때 인증 및 권한 부여가 여러 번 실행 됩니다.
 > * ASP.NET Core 인증 및 권한 부여 시스템의 나머지 부분과 함께 작업 합니다. 응용 프로그램에서이 접근 방식을 사용 하는 것이 제대로 작동 하는지 확인 해야 합니다.
 
 페이지 처리기에서를 지원할 계획이 없습니다 `AuthorizeAttribute` Razor . 

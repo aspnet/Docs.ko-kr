@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cors
-ms.openlocfilehash: 03008f40fc1c4b323535d08a1bb4c4007bc145f7
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7afa8105e0ab007153d5c3e8238765d4e9f22641
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060822"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586802"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>ASP.NET Core에서 CORS (원본 간 요청) 사용
 
@@ -42,7 +42,7 @@ CORS ( [원본 간 리소스 공유](https://www.w3.org/TR/cors/) ):
 * 다른 서버를 거부 하는 동안 서버에서 일부 교차 원본 요청을 명시적으로 허용할 수 있습니다.
 * [JSONP](/dotnet/framework/wcf/samples/jsonp)와 같은 이전 기술 보다 안전 하 고 유연 합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/3.1sample/Cors/WebAPI) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="same-origin"></a>동일한 원점
 
@@ -127,7 +127,7 @@ CORS 미들웨어는 크로스-원본 요청을 처리 합니다. 다음 코드�
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupEndPt.cs?name=snippet2&highlight=3,7-15,32,40,43)]
 
-앞의 코드에서 다음을 확인할 수 있습니다.
+위의 코드에서
 
 * `app.UseCors` CORS 미들웨어를 사용 하도록 설정 합니다. 기본 정책은 구성 되지 않았기 때문에 `app.UseCors()` CORS를 사용 하도록 설정 하지 않습니다.
 * `/echo`및 컨트롤러 끝점은 지정 된 정책을 사용 하 여 원본 간 요청을 허용 합니다.
@@ -441,7 +441,7 @@ ASP.NET Core는 실행 전 옵션 요청에 응답 합니다.
 
 [CORS 사양](https://www.w3.org/TR/cors/) 에는 크로스-원본 요청을 가능 하 게 하는 몇 가지 새로운 HTTP 헤더가 도입 되었습니다. 브라우저에서 CORS를 지 원하는 경우 원본 간 요청에 대해 이러한 헤더를 자동으로 설정 합니다. CORS를 사용 하도록 설정 하는 데 사용자 지정 JavaScript 코드가 필요 하지 않습니다.
 
-배포 된 [샘플](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI) 에 대 한 [테스트 배치 단추](https://cors3.azurewebsites.net/test)
+배포 된 [샘플](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/3.1sample/Cors/WebAPI) 에 대 한 [테스트 배치 단추](https://cors3.azurewebsites.net/test)
 
 다음은 [값](https://cors3.azurewebsites.net/) 테스트 단추에서로의 원본 간 요청 예제입니다 `https://cors1.azurewebsites.net/api/values` . `Origin`헤더:
 
@@ -484,7 +484,7 @@ Sec-Fetch-Site: cross-site
 User-Agent: Mozilla/5.0 ...
 ```
 
-`OPTIONS`요청에서 서버는 응답에 **응답 헤더** 헤더를 설정 합니다 `Access-Control-Allow-Origin: {allowed origin}` . 예를 들어, 배포 된 [샘플](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI)인 [Delete [EnableCors]](https://cors1.azurewebsites.net/test?number=2) 단추 `OPTIONS` 요청은 다음 헤더를 포함 합니다.
+`OPTIONS`요청에서 서버는 응답에 **응답 헤더** 헤더를 설정 합니다 `Access-Control-Allow-Origin: {allowed origin}` . 예를 들어, 배포 된 [샘플](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/3.1sample/Cors/WebAPI)인 [Delete [EnableCors]](https://cors1.azurewebsites.net/test?number=2) 단추 `OPTIONS` 요청은 다음 헤더를 포함 합니다.
 
 **일반 헤더**
 
@@ -550,7 +550,7 @@ IIS에 배포할 때 서버에서 익명 액세스를 허용 하도록 구성 �
 
 ## <a name="test-cors"></a>CORS 테스트
 
-[샘플 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI) 에는 CORS를 테스트 하는 코드가 있습니다. [다운로드하는 방법](xref:index#how-to-download-a-sample)을 참조하세요. 이 샘플은 페이지가 추가 된 API 프로젝트입니다 Razor .
+[샘플 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/3.1sample/Cors/WebAPI) 에는 CORS를 테스트 하는 코드가 있습니다. [다운로드하는 방법](xref:index#how-to-download-a-sample)을 참조하세요. 이 샘플은 페이지가 추가 된 API 프로젝트입니다 Razor .
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupTest2.cs?name=snippet2)]
 
@@ -605,9 +605,9 @@ C:\Program Files\Git\mingw64\bin\
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/Controllers/TodoItems1Controller.cs?name=snippet2)]
 
-배포 된 [샘플](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI)의 [테스트 페이지](https://cors1.azurewebsites.net/test?number=1) 에서 이전 코드를 테스트 합니다.
+배포 된 [샘플](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/3.1sample/Cors/WebAPI)의 [테스트 페이지](https://cors1.azurewebsites.net/test?number=1) 에서 이전 코드를 테스트 합니다.
 
-끝점이 실행 전 요청에 응답 하 고이 요청에 응답 하기 때문에 **Delete [EnableCors]** 및 **GET [EnableCors]** 단추가 성공 합니다 `[EnableCors]` . 다른 끝점은 실패 합니다. [JavaScript](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI/wwwroot/js/MyJS.js) 가 다음을 보내기 때문에 **GET** 단추가 실패 합니다.
+끝점이 실행 전 요청에 응답 하 고이 요청에 응답 하기 때문에 **Delete [EnableCors]** 및 **GET [EnableCors]** 단추가 성공 합니다 `[EnableCors]` . 다른 끝점은 실패 합니다. [JavaScript](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/3.1sample/Cors/WebAPI/wwwroot/js/MyJS.js) 가 다음을 보내기 때문에 **GET** 단추가 실패 합니다.
 
 ```javascript
  headers: {
@@ -643,7 +643,7 @@ CORS ( [원본 간 리소스 공유](https://www.w3.org/TR/cors/) ):
 * 다른 서버를 거부 하는 동안 서버에서 일부 교차 원본 요청을 명시적으로 허용할 수 있습니다.
 * [JSONP](/dotnet/framework/wcf/samples/jsonp)와 같은 이전 기술 보다 안전 하 고 유연 합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="same-origin"></a>동일한 원점
 
@@ -724,7 +724,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 * 컨트롤러
 * 컨트롤러 동작 방법
 
-특성을 사용 하 여 컨트롤러/페이지-모델/작업에 다른 정책을 적용할 수 있습니다  `[EnableCors]` . `[EnableCors]`특성이 컨트롤러/페이지 모델/동작 메서드에 적용 되 고 CORS가 미들웨어에서 사용 하도록 설정 된 경우 두 정책이 **모두** 적용 됩니다. 정책을 결합 **하지 않는** 것이 좋습니다. `[EnableCors]`특성 또는 미들웨어를 사용 합니다 **not both** . 를 사용 하 `[EnableCors]` 는 경우 기본 정책을 정의 **하지** 마십시오.
+특성을 사용 하 여 컨트롤러/페이지-모델/작업에 다른 정책을 적용할 수 있습니다  `[EnableCors]` . `[EnableCors]`특성이 컨트롤러/페이지 모델/동작 메서드에 적용 되 고 CORS가 미들웨어에서 사용 하도록 설정 된 경우 두 정책이 **모두** 적용 됩니다. 정책을 결합 **하지 않는** 것이 좋습니다. `[EnableCors]`특성 또는 미들웨어를 사용 합니다 . 를 사용 하 `[EnableCors]` 는 경우 기본 정책을 정의 **하지** 마십시오.
 
 다음 코드는 각 메서드에 다른 정책을 적용 합니다.
 
@@ -991,8 +991,8 @@ Test message
 
 CORS를 테스트 하려면:
 
-1. [API 프로젝트를 만듭니다](xref:tutorials/first-web-api). 또는 [샘플을 다운로드할](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample/Cors)수 있습니다.
-1. 이 문서의 방법 중 하나를 사용 하 여 CORS를 사용 하도록 설정 합니다. 다음은 그 예입니다.
+1. [API 프로젝트를 만듭니다](xref:tutorials/first-web-api). 또는 [샘플을 다운로드할](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/cors/sample/Cors)수 있습니다.
+1. 이 문서의 방법 중 하나를 사용 하 여 CORS를 사용 하도록 설정 합니다. 예를 들면 다음과 같습니다.
 
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
 

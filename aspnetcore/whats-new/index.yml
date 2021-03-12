@@ -6,12 +6,12 @@ metadata:
   description: ASP.NET Core 문서의 새로운 내용과 업데이트된 내용에 대해 알아보세요.
   ms.topic: landing-page
   ms.date: 03/04/2021
-  ms.openlocfilehash: a4ef3edbf260c6f2ee34ac739884bd9a605bd396
-  ms.sourcegitcommit: 3982ff9dabb5b12aeb0a61cde2686b5253364f5d
+  ms.openlocfilehash: 5982d49321739b637e8a7352145da18c69705c88
+  ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
   ms.translationtype: HT
   ms.contentlocale: ko-KR
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102119008"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102605661"
 landingContent:
 - title: ASP.NET Core 문서 업데이트 찾기
   linkLists:
@@ -34,17 +34,17 @@ landingContent:
   - linkListType: overview
     links:
     - text: ASP.NET Core 문서 리포지토리
-      url: https://github.com/dotnet/AspNetCore.Docs/blob/master/README.md
+      url: https://github.com/dotnet/AspNetCore.Docs/blob/main/README.md
     - text: 문제 및 끌어오기 요청에 대한 프로젝트 구조 레이블
-      url: https://github.com/dotnet/docs/blob/master/styleguide/labels-projects.md
+      url: https://github.com/dotnet/docs/blob/main/styleguide/labels-projects.md
   - linkListType: concept
     links:
     - text: Microsoft 문서 기여자 가이드
       url: /contribute
     - text: ASP.NET Core 문서 기여자 가이드
-      url: https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md
+      url: https://github.com/dotnet/AspNetCore.Docs/blob/main/CONTRIBUTING.md
     - text: ASP.NET Core API 참조 문서 기여자 가이드
-      url: https://github.com/dotnet/AspNetApiDocs/blob/master/CONTRIBUTING.md
+      url: https://github.com/dotnet/AspNetApiDocs/blob/main/CONTRIBUTING.md
 - title: 커뮤니티
   linkLists:
   - linkListType: whats-new
@@ -58,11 +58,11 @@ landingContent:
     - text: Xamarin 문서 업데이트
       url: /xamarin/whats-new/
     - text: .NET Core 릴리스 정보
-      url: https://github.com/dotnet/core/blob/master/release-notes/README.md
+      url: https://github.com/dotnet/core/blob/main/release-notes/README.md
     - text: ASP.NET Core 릴리스 정보
       url: ../release-notes/aspnetcore-3.1.md
     - text: C# 컴파일러(Roslyn) 릴리스 정보
-      url: https://github.com/dotnet/roslyn/tree/master/docs/ide
+      url: https://github.com/dotnet/roslyn/tree/main/docs/ide
     - text: Visual Studio 릴리스 정보
       url: /visualstudio/releases/2019/release-notes
     - text: Mac용 Visual Studio 릴리스 정보

@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: b4b1bc6131a6676710adbf2503efe3f304d89a58
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1b5c89c1beaf36912766b3e08b9f16c4d33945f8
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050851"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588063"
 ---
-# <a name="aspnet-core-no-locsignalr-javascript-client"></a>SignalRJavaScript 클라이언트 ASP.NET Core
+# <a name="aspnet-core-signalr-javascript-client"></a>SignalRJavaScript 클라이언트 ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -34,9 +34,9 @@ ms.locfileid: "93050851"
 
 개발자는 ASP.NET Core SignalR JavaScript 클라이언트 라이브러리를 사용 하 여 서버 쪽 허브 코드를 호출할 수 있습니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/javascript-client/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
-## <a name="install-the-no-locsignalr-client-package"></a>클라이언트 패키지를 설치 합니다. SignalR
+## <a name="install-the-signalr-client-package"></a>클라이언트 패키지를 설치 합니다. SignalR
 
 SignalRJavaScript 클라이언트 라이브러리는 [npm](https://www.npmjs.com/) 패키지로 제공 됩니다. 다음 섹션에서는 클라이언트 라이브러리를 설치 하는 다양 한 방법에 대해 간략하게 설명 합니다.
 
@@ -51,7 +51,7 @@ npm install @microsoft/signalr
 
 npm 패키지 콘텐츠를 *node_modules \\ @microsoft\signalr\dist\browser* 폴더에 설치 합니다. *Wwwroot \\ lib* 폴더 아래에 *signalr* 라는 새 폴더를 만듭니다. *signalr.js* 파일을 *wwwroot\lib\signalr* 폴더에 복사 합니다.
 
-SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. 다음은 그 예입니다.
+SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. 예를 들면 다음과 같습니다.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -59,7 +59,7 @@ SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. �
 
 ### <a name="use-a-content-delivery-network-cdn"></a>CDN (Content Delivery Network) 사용
 
-Npm 필수 구성 요소 없이 클라이언트 라이브러리를 사용 하려면 클라이언트 라이브러리의 CDN 호스트 복사본을 참조 합니다. 다음은 그 예입니다.
+Npm 필수 구성 요소 없이 클라이언트 라이브러리를 사용 하려면 클라이언트 라이브러리의 CDN 호스트 복사본을 참조 합니다. 예를 들면 다음과 같습니다.
 
 [!code-html[](javascript-client/samples/3.x/SignalRChat/Pages/Index.cshtml?name=snippet_CDN)]
 
@@ -302,9 +302,9 @@ const connection = new signalR.HubConnectionBuilder()
 
 개발자는 ASP.NET Core SignalR JavaScript 클라이언트 라이브러리를 사용 하 여 서버 쪽 허브 코드를 호출할 수 있습니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/javascript-client/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
-## <a name="install-the-no-locsignalr-client-package"></a>클라이언트 패키지를 설치 합니다. SignalR
+## <a name="install-the-signalr-client-package"></a>클라이언트 패키지를 설치 합니다. SignalR
 
 SignalRJavaScript 클라이언트 라이브러리는 [npm](https://www.npmjs.com/) 패키지로 제공 됩니다. 다음 섹션에서는 클라이언트 라이브러리를 설치 하는 다양 한 방법에 대해 간략하게 설명 합니다.
 
@@ -319,7 +319,7 @@ npm install @aspnet/signalr
 
 npm 패키지 콘텐츠를 *node_modules \\ @aspnet\signalr\dist\browser* 폴더에 설치 합니다. *Wwwroot \\ lib* 폴더 아래에 *signalr* 라는 새 폴더를 만듭니다. *signalr.js* 파일을 *wwwroot\lib\signalr* 폴더에 복사 합니다.
 
-SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. 다음은 그 예입니다.
+SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. 예를 들면 다음과 같습니다.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -327,7 +327,7 @@ SignalR요소에서 JavaScript 클라이언트를 참조 `<script>` 합니다. �
 
 ### <a name="use-a-content-delivery-network-cdn"></a>CDN (Content Delivery Network) 사용
 
-Npm 필수 구성 요소 없이 클라이언트 라이브러리를 사용 하려면 클라이언트 라이브러리의 CDN 호스트 복사본을 참조 합니다. 다음은 그 예입니다.
+Npm 필수 구성 요소 없이 클라이언트 라이브러리를 사용 하려면 클라이언트 라이브러리의 CDN 호스트 복사본을 참조 합니다. 예를 들면 다음과 같습니다.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.3/signalr.min.js"></script>

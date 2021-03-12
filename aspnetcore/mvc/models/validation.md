@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: d6fa7e4524a8afdc23d4ad46354d9d8b395656a3
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 412f95e67fa35e952a907db328395183f1698b9e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530192"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587218"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>MVC 및 페이지 ASP.NET Core의 모델 유효성 검사 Razor
 
@@ -33,7 +33,7 @@ ms.locfileid: "99530192"
 
 이 문서에서는 ASP.NET Core MVC 또는 Pages 앱에서 사용자 입력의 유효성을 검사 하는 방법을 설명 합니다 Razor .
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/validation/samples) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
 
 ## <a name="model-state"></a>모델 상태
 
@@ -94,7 +94,7 @@ ms.locfileid: "99530192"
 
 ## <a name="non-nullable-reference-types-and-required-attribute"></a>Nullable이 아닌 참조 형식 및 [Required] 특성
 
-유효성 검사 시스템은 특성이 없는 것 처럼 nullable이 아닌 매개 변수 또는 바인딩된 속성을 처리 합니다 `[Required]` . [ `Nullable` 컨텍스트를 사용 하도록 설정](/dotnet/csharp/nullable-references#nullable-contexts)하면 MVC에서 암시적으로 null을 허용 하지 않는 속성 또는 매개 변수의 유효성 검사를 특성으로 특성을 사용 하는 것 처럼 시작 합니다 `[Required]` . 다음 코드를 생각해 봅시다.
+유효성 검사 시스템은 특성이 없는 것 처럼 nullable이 아닌 매개 변수 또는 바인딩된 속성을 처리 합니다 `[Required]` . [ `Nullable` 컨텍스트를 사용 하도록 설정](/dotnet/csharp/nullable-references#nullable-contexts)하면 MVC에서 암시적으로 null을 허용 하지 않는 속성 또는 매개 변수의 유효성 검사를 특성으로 특성을 사용 하는 것 처럼 시작 합니다 `[Required]` . 다음 코드를 살펴보세요.
 
 ```csharp
 public class Person
@@ -419,7 +419,7 @@ $.get({
 
 이 문서에서는 ASP.NET Core MVC 또는 Pages 앱에서 사용자 입력의 유효성을 검사 하는 방법을 설명 합니다 Razor .
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/validation/sample) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
 
 ## <a name="model-state"></a>모델 상태
 
@@ -439,7 +439,7 @@ $.get({
 
 ## <a name="validation-attributes"></a>유효성 검사 특성
 
-유효성 검사 특성을 사용하여 모델 속성에 대한 유효성 검사 규칙을 지정할 수 있습니다. [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample)의 다음 예제는 유효성 검사 특성으로 주석을 단 모델 클래스를 나타냅니다. `[ClassicMovie]` 특성은 사용자 지정 유효성 검사 특성이며 다른 특성은 기본 제공 특성입니다. 사용자 지정 특성을 구현하는 다른 방법을 보여 주는 `[ClassicMovie2]`는 표시되지 않습니다.
+유효성 검사 특성을 사용하여 모델 속성에 대한 유효성 검사 규칙을 지정할 수 있습니다. [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/validation/sample)의 다음 예제는 유효성 검사 특성으로 주석을 단 모델 클래스를 나타냅니다. `[ClassicMovie]` 특성은 사용자 지정 유효성 검사 특성이며 다른 특성은 기본 제공 특성입니다. 사용자 지정 특성을 구현하는 다른 방법을 보여 주는 `[ClassicMovie2]`는 표시되지 않습니다.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Models/Movie.cs?name=snippet_ModelClass)]
 
@@ -778,7 +778,7 @@ $.get({
 
 클라이언트 유효성 검사를 사용하지 않도록 설정하는 또 다른 방법은 사용자의 *.cshtml* 파일에서 `_ValidationScriptsPartial` 참조를 주석으로 처리하는 것입니다.
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [System.ComponentModel.DataAnnotations 네임스페이스](xref:System.ComponentModel.DataAnnotations)
 * [모델 바인딩](model-binding.md)

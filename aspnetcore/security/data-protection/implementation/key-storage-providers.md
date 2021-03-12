@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: d2f3e9dc7445b59c677f917bbd6c466b5037390c
-ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
+ms.openlocfilehash: 137cdabc12b7cd01b82f7fe9921c17a5be957eb7
+ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101101199"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102605531"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>ASP.NET Core의 키 저장소 공급자
 
@@ -125,7 +125,7 @@ public void ConfigureServices(IServiceCollection services)
 
 자세한 내용은 다음 항목을 참조하세요.
 
-* [StackExchange. Redis ConnectionMultiplexer](https://github.com/StackExchange/StackExchange.Redis/blob/master/docs/Basics.md)
+* [StackExchange. Redis ConnectionMultiplexer](https://github.com/StackExchange/StackExchange.Redis/blob/main/docs/Basics.md)
 * [Azure Redis 캐시(영문)](/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache#connect-to-the-cache)
 * [ASP.NET Core DataProtection 샘플](https://github.com/dotnet/AspNetCore/tree/2.2.0/src/DataProtection/samples)
 

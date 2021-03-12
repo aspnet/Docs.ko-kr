@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 1355fdaeae58b6f4e0cf8d41a74b1c28aee0e8fe
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 0ce89d2dee3fb2054655c003daddfda2ffa52696
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253087"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587284"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core에서 라우팅
 
@@ -53,7 +53,7 @@ ms.locfileid: "98253087"
 * 이전 버전의 버전 선택기
 * [ASP.NET Core 2.1 라우팅](?view=aspnetcore-2.1) 선택
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples/3.x) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples/3.x) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 이 문서의 다운로드 샘플은 특정 `Startup` 클래스를 통해 사용할 수 있습니다. 특정 샘플을 실행하려면 *Program.cs* 를 수정하여 원하는 `Startup` 클래스를 호출합니다.
 
@@ -261,7 +261,7 @@ ASP.NET Core 엔드포인트는 다음과 같습니다.
 
 터미널 미들웨어를 작성하기 전에 라우팅과 통합하는 것이 좋습니다.
 
-[또는](xref:fundamentals/middleware/index#branch-the-middleware-pipeline) <xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*>과 통합되는 기존 터미널 미들웨어는 일반적으로 라우팅 인식 엔드포인트로 전환될 수 있습니다. [MapHealthChecks](https://github.com/aspnet/AspNetCore/blob/master/src/Middleware/HealthChecks/src/Builder/HealthCheckEndpointRouteBuilderExtensions.cs#L16)는 다음과 같은 라우터 방식의 패턴을 보여 줍니다.
+[또는](xref:fundamentals/middleware/index#branch-the-middleware-pipeline) <xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*>과 통합되는 기존 터미널 미들웨어는 일반적으로 라우팅 인식 엔드포인트로 전환될 수 있습니다. [MapHealthChecks](https://github.com/dotnet/AspNetCore/blob/main/src/Middleware/HealthChecks/src/Builder/HealthCheckEndpointRouteBuilderExtensions.cs#L16)는 다음과 같은 라우터 방식의 패턴을 보여 줍니다.
 * <xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder>에 대한 확장 메서드를 작성합니다.
 * <xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder.CreateApplicationBuilder*>를 사용하여 중첩된 미들웨어 파이프라인을 만듭니다.
 * 새 파이프라인에 미들웨어를 연결합니다. 이 예제의 경우 <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>입니다.
@@ -345,7 +345,7 @@ URL 일치는 구성 가능한 일련의 단계로 작동합니다. 각 단계�
 
 ### <a name="route-template-precedence-and-endpoint-selection-order"></a>경로 템플릿 우선 순위 및 엔드포인트 선택 영역 순서
 
-[경로 템플릿 우선 순위](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Template/RoutePrecedence.cs#L16)는 얼마나 구체적인지를 기준으로 각 경로 템플릿에 값을 할당하는 시스템입니다. 경로 템플릿 우선 순위의 특징은 다음과 같습니다.
+[경로 템플릿 우선 순위](https://github.com/dotnet/aspnetcore/blob/main/src/Http/Routing/src/Template/RoutePrecedence.cs#L16)는 얼마나 구체적인지를 기준으로 각 경로 템플릿에 값을 할당하는 시스템입니다. 경로 템플릿 우선 순위의 특징은 다음과 같습니다.
 
 * 일반적인 사례에서 엔드포인트 순서를 조정할 필요가 없게 합니다.
 * 라우팅 동작에 관한 일반적인 기대에 맞추려고 합니다.
@@ -360,7 +360,7 @@ URL 일치는 구성 가능한 일련의 단계로 작동합니다. 각 단계�
 * 복잡한 세그먼트는 제약 조건이 있는 매개 변수 세그먼트만큼 구체적인 것으로 간주됩니다.
 * Catch-all 매개 변수가 가장 덜 구체적입니다. Catch-all 경로에 관한 중요한 내용은 [경로 템플릿 참조](#rtr)에서 **catch-all** 을 참조하세요.
 
-정확한 값 참조는 [source code on GitHub](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Template/RoutePrecedence.cs#L189)(GitHub의 소스 코드)을 참조하세요.
+정확한 값 참조는 [source code on GitHub](https://github.com/dotnet/aspnetcore/blob/main/src/Http/Routing/src/Template/RoutePrecedence.cs#L189)(GitHub의 소스 코드)을 참조하세요.
 
 <a name="lg"></a>
 
@@ -586,7 +586,7 @@ ASP.NET Core 프레임워크는 정규식 생성자에 `RegexOptions.IgnoreCase 
 
 사용자 지정 경로 제약 조건은 거의 필요하지 않습니다. 사용자 지정 경로 제약 조건을 구현하기 전에 모델 바인딩과 같은 다른 방식을 고려해 보세요.
 
-ASP.NET Core [Constraints](https://github.com/dotnet/aspnetcore/tree/master/src/Http/Routing/src/Constraints) 폴더는 제약 조건을 만드는 좋은 예제를 제공합니다. 예를 들어 [GuidRouteConstraint](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Constraints/GuidRouteConstraint.cs#L18)입니다.
+ASP.NET Core [Constraints](https://github.com/dotnet/aspnetcore/tree/main/src/Http/Routing/src/Constraints) 폴더는 제약 조건을 만드는 좋은 예제를 제공합니다. 예를 들어 [GuidRouteConstraint](https://github.com/dotnet/aspnetcore/blob/main/src/Http/Routing/src/Constraints/GuidRouteConstraint.cs#L18)입니다.
 
 사용자 지정 `IRouteConstraint`를 사용하려면 서비스 컨테이너에 있는 앱의 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap>에 경로 제약 조건 형식을 등록해야 합니다. `ConstraintMap`은 경로 제약 조건 키를 해당 제약 조건의 유효성을 검사하는 `IRouteConstraint` 구현과 매핑하는 사전입니다. `Startup.ConfigureServices`에서 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 호출의 일부로 또는 `services.Configure<RouteOptions>`를 사용하여 직접 <xref:Microsoft.AspNetCore.Routing.RouteOptions>를 구성하여 앱의 `ConstraintMap`을 수정할 수 있습니다. 예를 들어:
 
@@ -947,7 +947,7 @@ app.UseEndpoints(endpoints =>
 
 사용자 고유의 <xref:Microsoft.AspNetCore.Routing.EndpointDataSource>를 작성하는 것이 **좋습니다**. `EndpointDataSource`는 엔드포인트 컬렉션을 선언하고 업데이트하기 위한 하위 수준 기본 형식입니다. `EndpointDataSource`는 컨트롤러 및 Razor Pages에서 사용되는 강력한 API입니다.
 
-라우팅 테스트에는 업데이트되지 않는 데이터 원본의 [기본 예제](https://github.com/aspnet/AspNetCore/blob/master/src/Http/Routing/test/testassets/RoutingSandbox/Framework/FrameworkEndpointDataSource.cs#L17)가 있습니다.
+라우팅 테스트에는 업데이트되지 않는 데이터 원본의 [기본 예제](https://github.com/dotnet/AspNetCore/blob/main/src/Http/Routing/test/testassets/RoutingSandbox/Framework/FrameworkEndpointDataSource.cs#L17)가 있습니다.
 
 기본적으로 `EndpointDataSource`를 등록하지 **마세요**. 프레임워크를 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>에 등록하도록 사용자에게 요구하세요. 라우팅의 원리에 따르면 기본적으로 아무것도 포함되지 않으며 `UseEndpoints`가 엔드포인트를 등록하는 위치입니다.
 
@@ -1029,7 +1029,7 @@ services.AddMvc(options => options.EnableEndpointRouting = false)
 > [!IMPORTANT]
 > 이 문서에서는 낮은 수준의 ASP.NET Core 라우팅을 설명합니다. ASP.NET Core MVC 라우팅에 대한 내용은 <xref:mvc/controllers/routing>을 참조하세요. Razor Pages의 라우팅 규칙에 대한 내용은 <xref:razor-pages/razor-pages-conventions>을 참조하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>라우팅 기본 사항
 
@@ -1565,7 +1565,7 @@ ASP.NET Core는 생성된 경로와 함께 매개 변수 변환기를 사용하�
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-위의 샘플 끝부분에서 생성된 <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath>는 `/package/create/123`입니다. 사전은 "Track Package Route" 템플릿인 `package/{operation}/{id}`의 `operation` 및 `id` 경로 값을 제공합니다. 자세한 내용은 [라우팅 미들웨어 사용](#use-routing-middleware) 섹션의 샘플 코드 또는 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples)을 참조하세요.
+위의 샘플 끝부분에서 생성된 <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath>는 `/package/create/123`입니다. 사전은 "Track Package Route" 템플릿인 `package/{operation}/{id}`의 `operation` 및 `id` 경로 값을 제공합니다. 자세한 내용은 [라우팅 미들웨어 사용](#use-routing-middleware) 섹션의 샘플 코드 또는 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples)을 참조하세요.
 
 <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> 생성자에 대한 두 번째 매개 변수는 *앰비언트 값* 의 컬렉션입니다. 개발자가 요청 컨텍스트 내에서 지정해야 하는 값의 수를 제한하므로 앰비언트 값은 사용하기 편리합니다. 현재 요청의 현재 경로 값은 링크 생성에 대한 앰비언트 값으로 간주됩니다. ASP.NET Core MVC 앱의 `HomeController`에 대한 `About` 작업에서는 `Index` 작업에 연결하기 위해 컨트롤러 경로 값을 지정할 필요가 없으며, `Home`이라는 앰비언트 값이 사용됩니다.
 
@@ -1611,7 +1611,7 @@ services.AddMvc()
 > [!IMPORTANT]
 > 이 문서에서는 낮은 수준의 ASP.NET Core 라우팅을 설명합니다. ASP.NET Core MVC 라우팅에 대한 내용은 <xref:mvc/controllers/routing>을 참조하세요. Razor Pages의 라우팅 규칙에 대한 내용은 <xref:razor-pages/razor-pages-conventions>을 참조하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>라우팅 기본 사항
 
@@ -1971,7 +1971,7 @@ public ActionResult<string> Get(string id)
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-위의 샘플 끝부분에서 생성된 <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath>는 `/package/create/123`입니다. 사전은 "Track Package Route" 템플릿인 `package/{operation}/{id}`의 `operation` 및 `id` 경로 값을 제공합니다. 자세한 내용은 [라우팅 미들웨어 사용](#use-routing-middleware) 섹션의 샘플 코드 또는 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples)을 참조하세요.
+위의 샘플 끝부분에서 생성된 <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath>는 `/package/create/123`입니다. 사전은 "Track Package Route" 템플릿인 `package/{operation}/{id}`의 `operation` 및 `id` 경로 값을 제공합니다. 자세한 내용은 [라우팅 미들웨어 사용](#use-routing-middleware) 섹션의 샘플 코드 또는 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples)을 참조하세요.
 
 <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> 생성자에 대한 두 번째 매개 변수는 *앰비언트 값* 의 컬렉션입니다. 개발자가 요청 컨텍스트 내에서 지정해야 하는 값의 수를 제한하므로 앰비언트 값은 사용하기 편리합니다. 현재 요청의 현재 경로 값은 링크 생성에 대한 앰비언트 값으로 간주됩니다. ASP.NET Core MVC 앱의 `HomeController`에 대한 `About` 작업에서는 `Index` 작업에 연결하기 위해 컨트롤러 경로 값을 지정할 필요가 없으며, `Home`이라는 앰비언트 값이 사용됩니다.
 

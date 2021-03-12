@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 852c26f89b229d89797d9ce6fce2983319defe9c
-ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
+ms.openlocfilehash: cd637507e19735f020b4c28e6f22de0e7e772040
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101101148"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588323"
 ---
 # <a name="part-7-add-a-new-field-to-a-razor-page-in-aspnet-core"></a>7부. ASP.NET Core의 Razor Page에 새 필드 추가
 
@@ -32,7 +32,7 @@ ms.locfileid: "101101148"
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
 
 이 섹션에서는 [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First 마이그레이션으로 다음 작업을 수행합니다.
 
@@ -62,7 +62,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 1. 다음 페이지를 업데이트합니다.
    1. 삭제 및 세부 정보 페이지에 `Rating` 필드를 추가합니다.
-   1. [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.
+   1. [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.
    1. 편집 페이지에 `Rating` 필드를 추가합니다.
 
 새 필드를 포함하도록 데이터베이스가 업데이트될 때까지 앱은 작동하지 않습니다. 데이터베이스를 업데이트하지 않고 앱을 실행하면 `SqlException`이 throw됩니다.
@@ -85,7 +85,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-[완료된 SeedData.cs 파일](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs)을 참조하세요.
+[완료된 SeedData.cs 파일](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs)을 참조하세요.
 
 솔루션을 빌드합니다.
 
@@ -173,7 +173,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 ::: moniker range="< aspnetcore-5.0 >= aspnetcore-3.0"
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
 
 이 섹션에서는 [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First 마이그레이션으로 다음 작업을 수행합니다.
 
@@ -203,7 +203,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 1. 다음 페이지를 업데이트합니다.
    1. 삭제 및 세부 정보 페이지에 `Rating` 필드를 추가합니다.
-   1. [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.
+   1. [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.
    1. 편집 페이지에 `Rating` 필드를 추가합니다.
 
 새 필드를 포함하도록 데이터베이스가 업데이트될 때까지 앱은 작동하지 않습니다. 데이터베이스를 업데이트하지 않고 앱을 실행하면 `SqlException`이 throw됩니다.
@@ -226,7 +226,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-[완료된 SeedData.cs 파일](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs)을 참조하세요.
+[완료된 SeedData.cs 파일](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs)을 참조하세요.
 
 솔루션을 빌드합니다.
 
@@ -314,7 +314,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 ::: moniker range="< aspnetcore-3.0"
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
 
 이 섹션에서는 [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First 마이그레이션으로 다음 작업을 수행합니다.
 
@@ -343,7 +343,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 다음 페이지를 업데이트합니다.
 
 * 삭제 및 세부 정보 페이지에 `Rating` 필드를 추가합니다.
-* [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.
+* [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml)을 `Rating` 필드로 업데이트합니다.
 * 편집 페이지에 `Rating` 필드를 추가합니다.
 
 새 필드를 포함하도록 데이터베이스가 업데이트될 때까지 앱은 작동하지 않습니다. 앱을 지금 실행하면 앱은 `SqlException`을 throw합니다.
@@ -366,7 +366,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 경우 C
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-[완료된 SeedData.cs 파일](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs)을 참조하세요.
+[완료된 SeedData.cs 파일](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs)을 참조하세요.
 
 솔루션을 빌드합니다.
 

@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/entity-framework-6
-ms.openlocfilehash: 086418c161677f585b08ed360555c93d8575e701
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 44211ac7fa2acc7a7a9471ef362cff02f94fa2b6
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059457"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588271"
 ---
 # <a name="aspnet-core-and-entity-framework-6"></a>ASP.NET Core 및 Entity Framework 6
 ::: moniker range=">= aspnetcore-3.0"
@@ -30,7 +30,7 @@ ms.locfileid: "93059457"
 
 ## <a name="using-entity-framework-6-with-aspnet-core"></a>ASP.NET Core에서 Entity Framework 6 사용
 
-새로 개발하는 경우 [Entity Framework Core](/ef/)를 사용해야 합니다. [다운로드 샘플](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/3.xsample)에서는 종료된 앱을 ASP.NET Core로 마이그레이션하는 데 사용할 수 있는 [EF6(Entity Framework 6)](/ef/ef6)을 사용합니다.
+새로 개발하는 경우 [Entity Framework Core](/ef/)를 사용해야 합니다. [다운로드 샘플](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/entity-framework-6/3.xsample)에서는 종료된 앱을 ASP.NET Core로 마이그레이션하는 데 사용할 수 있는 [EF6(Entity Framework 6)](/ef/ef6)을 사용합니다.
 
 ## <a name="additional-resources"></a>추가 자료
 
@@ -48,7 +48,7 @@ ms.locfileid: "93059457"
 
 Entity Framework 6을 사용하려면 Entity Framework 6에서 .NET Core를 지원하지 않으므로 .NET Framework에 대해 프로젝트를 컴파일해야 합니다. 플랫폼 간 기능이 필요한 경우 [Entity Framework Core](/ef/)로 업그레이드해야 합니다.  
 
-ASP.NET Core 애플리케이션에서 Entity Framework 6을 사용하는 권장되는 방법은 EF6 컨텍스트 및 모델 클래스를 .NET Framework를 대상으로 하는 클래스 라이브러리 프로젝트에 넣는 것입니다. ASP.NET Core 프로젝트에서 클래스 라이브러리에 참조를 추가합니다. 샘플 [EF6 및 ASP.NET Core 프로젝트가 있는 Visual Studio 솔루션](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)을 참조하세요.  
+ASP.NET Core 애플리케이션에서 Entity Framework 6을 사용하는 권장되는 방법은 EF6 컨텍스트 및 모델 클래스를 .NET Framework를 대상으로 하는 클래스 라이브러리 프로젝트에 넣는 것입니다. ASP.NET Core 프로젝트에서 클래스 라이브러리에 참조를 추가합니다. 샘플 [EF6 및 ASP.NET Core 프로젝트가 있는 Visual Studio 솔루션](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/entity-framework-6/sample/)을 참조하세요.    
 
 .NET Core 프로젝트는 *Enable-Migrations* 와 같은 EF6 명령이 요구하는 모든 기능을 지원하지 않으므로 ASP.NET Core 프로젝트에 EF6 컨텍스트를 배치할 수 없습니다.    
 
@@ -86,7 +86,7 @@ Core 프로젝트의 *Startup.cs* 파일에서 `ConfigureServices`에 종속성 
 
 ## <a name="sample-application"></a>애플리케이션 예제   
 
-작업 중인 애플리케이션 예제는 이 문서와 함께 제공되는 [샘플 Visual Studio 솔루션](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)을 참조하세요.  
+작업 중인 애플리케이션 예제는 이 문서와 함께 제공되는 [샘플 Visual Studio 솔루션](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/entity-framework-6/sample/)을 참조하세요.    
 
 Visual Studio에서 다음 단계에 따라 이 샘플을 처음부터 만들 수 있습니다.    
 

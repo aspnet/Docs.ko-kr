@@ -1,1 +1,1 @@
-이 프로젝트는 [EF MVC Core 자습서 시리즈](https://docs.microsoft.com/aspnet/core/data/ef-mvc/intro)에 코드 조각을 제공하는 데 사용합니다. 자습서에 따라 빌드되는 샘플 프로젝트는 https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final에 있습니다.
+이 프로젝트는 [EF MVC Core 자습서 시리즈](https://docs.microsoft.com/aspnet/core/data/ef-mvc/intro)에 코드 조각을 제공하는 데 사용합니다. 자습서에 따라 빌드되는 샘플 프로젝트는 https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-mvc/intro/samples/cu-final에 있습니다.

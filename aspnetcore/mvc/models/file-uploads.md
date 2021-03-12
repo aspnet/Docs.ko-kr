@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: c32d20d4616650db004c78fb4d8ea9a4d5a3beab
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 90bde63ac94ba3fd29a067962989cf773ec613db
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252801"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587242"
 ---
 # <a name="upload-files-in-aspnet-core"></a>ASP.NET Core에서 파일 업로드
 
@@ -34,7 +34,7 @@ ms.locfileid: "98252801"
 
 ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩을 사용하여 하나 이상의 파일을 업로드하고, 대용량 파일의 경우에는 버퍼링되지 않은 스트리밍을 지원합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
@@ -113,7 +113,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 소용량 파일 버퍼링은 이 항목의 다음 섹션에서 설명합니다.
 
 * [물리적 스토리지](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [데이터베이스](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Database](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **스트리밍**
 
@@ -238,7 +238,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> 지금까지 제시한 예제에서는 보안 고려 사항을 감안하지 않습니다. 추가 정보는 다음 섹션과 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)에서 제공합니다.
+> 지금까지 제시한 예제에서는 보안 고려 사항을 감안하지 않습니다. 추가 정보는 다음 섹션과 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/)에서 제공합니다.
 >
 > * [보안 고려 사항](#security-considerations)
 > * [유효성 검사](#validation)
@@ -254,7 +254,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 > [!NOTE]
 > 바인딩은 이름을 기준으로 양식 파일을 일치시킵니다. 예를 들어 `<input type="file" name="formFile">`의 HTML `name` 값은 바인딩된 C# 매개 변수/속성(`FormFile`)과 일치해야 합니다. 자세한 내용은 [이름 특성 값을 POST 메서드의 매개 변수 이름과 일치](#match-name-attribute-value-to-parameter-name-of-post-method) 섹션을 참조하세요.
 
-다음 예제를 참조하세요.
+다음 예제가 하는 일:
 
 * 하나 이상의 업로드된 파일을 반복합니다.
 * [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*)을 사용하여 파일 이름을 포함하는 파일 전체 경로를 반환합니다. 
@@ -409,7 +409,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 >
 > 유효성 검사 없이 <xref:Microsoft.AspNetCore.Http.IFormFile>의 `FileName` 속성을 의존하거나 신뢰하지 마세요. `FileName` 속성은 반드시 HTML 인코딩 후 표시 목적으로만 사용해야 합니다.
 >
-> 제시한 예제에서는 보안 고려 사항을 감안하지 않습니다. 추가 정보는 다음 섹션과 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)에서 제공합니다.
+> 제시한 예제에서는 보안 고려 사항을 감안하지 않습니다. 추가 정보는 다음 섹션과 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/)에서 제공합니다.
 >
 > * [보안 고려 사항](#security-considerations)
 > * [유효성 검사](#validation)
@@ -758,7 +758,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩을 사용하여 하나 이상의 파일을 업로드하고, 대용량 파일의 경우에는 버퍼링되지 않은 스트리밍을 지원합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
@@ -837,7 +837,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 소용량 파일 버퍼링은 이 항목의 다음 섹션에서 설명합니다.
 
 * [물리적 스토리지](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [데이터베이스](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Database](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **스트리밍**
 
@@ -962,7 +962,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> 지금까지 제시한 예제에서는 보안 고려 사항을 감안하지 않습니다. 추가 정보는 다음 섹션과 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)에서 제공합니다.
+> 지금까지 제시한 예제에서는 보안 고려 사항을 감안하지 않습니다. 추가 정보는 다음 섹션과 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/)에서 제공합니다.
 >
 > * [보안 고려 사항](#security-considerations)
 > * [유효성 검사](#validation)
@@ -978,7 +978,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 > [!NOTE]
 > 바인딩은 이름을 기준으로 양식 파일을 일치시킵니다. 예를 들어 `<input type="file" name="formFile">`의 HTML `name` 값은 바인딩된 C# 매개 변수/속성(`FormFile`)과 일치해야 합니다. 자세한 내용은 [이름 특성 값을 POST 메서드의 매개 변수 이름과 일치](#match-name-attribute-value-to-parameter-name-of-post-method) 섹션을 참조하세요.
 
-다음 예제를 참조하세요.
+다음 예제가 하는 일:
 
 * 하나 이상의 업로드된 파일을 반복합니다.
 * [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*)을 사용하여 파일 이름을 포함하는 파일 전체 경로를 반환합니다. 
@@ -1133,7 +1133,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 >
 > 유효성 검사 없이 <xref:Microsoft.AspNetCore.Http.IFormFile>의 `FileName` 속성을 의존하거나 신뢰하지 마세요. `FileName` 속성은 반드시 HTML 인코딩 후 표시 목적으로만 사용해야 합니다.
 >
-> 제시한 예제에서는 보안 고려 사항을 감안하지 않습니다. 추가 정보는 다음 섹션과 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)에서 제공합니다.
+> 제시한 예제에서는 보안 고려 사항을 감안하지 않습니다. 추가 정보는 다음 섹션과 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/)에서 제공합니다.
 >
 > * [보안 고려 사항](#security-considerations)
 > * [유효성 검사](#validation)
@@ -1493,7 +1493,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩을 사용하여 하나 이상의 파일을 업로드하고, 대용량 파일의 경우에는 버퍼링되지 않은 스트리밍을 지원합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
@@ -1572,7 +1572,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 소용량 파일 버퍼링은 이 항목의 다음 섹션에서 설명합니다.
 
 * [물리적 스토리지](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [데이터베이스](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Database](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **스트리밍**
 
@@ -1697,7 +1697,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> 지금까지 제시한 예제에서는 보안 고려 사항을 감안하지 않습니다. 추가 정보는 다음 섹션과 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)에서 제공합니다.
+> 지금까지 제시한 예제에서는 보안 고려 사항을 감안하지 않습니다. 추가 정보는 다음 섹션과 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/)에서 제공합니다.
 >
 > * [보안 고려 사항](#security-considerations)
 > * [유효성 검사](#validation)
@@ -1713,7 +1713,7 @@ ASP.NET Core는 소용량 파일의 경우에는 버퍼링된 모델 바인딩�
 > [!NOTE]
 > 바인딩은 이름을 기준으로 양식 파일을 일치시킵니다. 예를 들어 `<input type="file" name="formFile">`의 HTML `name` 값은 바인딩된 C# 매개 변수/속성(`FormFile`)과 일치해야 합니다. 자세한 내용은 [이름 특성 값을 POST 메서드의 매개 변수 이름과 일치](#match-name-attribute-value-to-parameter-name-of-post-method) 섹션을 참조하세요.
 
-다음 예제를 참조하세요.
+다음 예제가 하는 일:
 
 * 하나 이상의 업로드된 파일을 반복합니다.
 * [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*)을 사용하여 파일 이름을 포함하는 파일 전체 경로를 반환합니다. 
@@ -1868,7 +1868,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 >
 > 유효성 검사 없이 <xref:Microsoft.AspNetCore.Http.IFormFile>의 `FileName` 속성을 의존하거나 신뢰하지 마세요. `FileName` 속성은 반드시 HTML 인코딩 후 표시 목적으로만 사용해야 합니다.
 >
-> 제시한 예제에서는 보안 고려 사항을 감안하지 않습니다. 추가 정보는 다음 섹션과 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)에서 제공합니다.
+> 제시한 예제에서는 보안 고려 사항을 감안하지 않습니다. 추가 정보는 다음 섹션과 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/)에서 제공합니다.
 >
 > * [보안 고려 사항](#security-considerations)
 > * [유효성 검사](#validation)

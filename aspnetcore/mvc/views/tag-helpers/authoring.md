@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 306416db3d9ae0219f859c3cf459eb08a5b778cf
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e0c9f450e4eded49694cbbb0e9fa2614a221ab14
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060926"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586828"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core의 작성자 태그 도우미
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="get-started-with-tag-helpers"></a>태그 도우미 시작
 
@@ -43,7 +43,7 @@ ms.locfileid: "93060926"
 
 ## <a name="a-minimal-tag-helper"></a>최소한의 태그 도우미
 
-이 섹션에서는 이메일 태그를 업데이트하는 태그 도우미를 작성합니다. 다음은 그 예입니다.
+이 섹션에서는 이메일 태그를 업데이트하는 태그 도우미를 작성합니다. 예를 들면 다음과 같습니다.
 
 ```html
 <email>Support</email>
@@ -94,7 +94,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
     [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
 -->
 
-FQN을 사용하여 뷰에 태그 도우미를 추가하려면 먼저 FQN(`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)을 추가한 후 **어셈블리 이름** ( *AuthoringTagHelpers* , 반드시 `namespace`는 아님)을 추가합니다. 대부분의 개발자는 와일드 카드 구문을 사용하는 방법을 선호합니다. [태그 도우미 소개](intro.md)에서는 태그 도우미 추가, 제거, 계층 구조 및 와일드 카드 구문에 대해 자세히 설명합니다.
+FQN을 사용하여 뷰에 태그 도우미를 추가하려면 먼저 FQN(`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)을 추가한 후 **어셈블리 이름**(*AuthoringTagHelpers*, 반드시 `namespace`는 아님)을 추가합니다. 대부분의 개발자는 와일드 카드 구문을 사용하는 방법을 선호합니다. [태그 도우미 소개](intro.md)에서는 태그 도우미 추가, 제거, 계층 구조 및 와일드 카드 구문에 대해 자세히 설명합니다.
 
 1. *Views/Home/Contact.cshtml* 파일에서 태그를 다음 변경 내용으로 업데이트합니다.
 

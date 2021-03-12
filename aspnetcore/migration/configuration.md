@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/configuration
-ms.openlocfilehash: d84204c8c791bfaf36432462cde3a42c294c7966
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c3957bf45dddcead24f7bb0f2702bf1a08950bdd
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059795"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587946"
 ---
 # <a name="migrate-configuration-to-aspnet-core"></a>구성을 ASP.NET Core로 마이그레이션
 
@@ -30,11 +30,11 @@ ms.locfileid: "93059795"
 
 이전 문서에서는 [ASP.NET mvc 프로젝트를 ASP.NET CORE mvc로 마이그레이션하기](xref:migration/mvc)시작 했습니다. 이 문서에서는 구성을 마이그레이션합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/migration/configuration/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/migration/configuration/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
 ## <a name="setup-configuration"></a>설정 구성
 
-ASP.NET Core는 이전 버전의 ASP.NET에서 사용 하는 *global.asax* 및 *web.config* 파일을 더 이상 사용 하지 않습니다. 이전 버전의 ASP.NET에서는 응용 프로그램 시작 논리가 global.asax 내의 메서드에 배치 되었습니다 `Application_StartUp` . *Global.asax* 나중에 ASP.NET MVC에서 *Startup.cs* 파일은 프로젝트의 루트에 포함 되었습니다. 응용 프로그램이 시작 될 때이 메서드를 호출 했습니다. ASP.NET Core는 모든 시작 논리를 *Startup.cs* 파일에 배치 하 여이 방법을 완전히 채택 했습니다.
+ASP.NET Core는 이전 버전의 ASP.NET에서 사용 하는 *global.asax* 및 *web.config* 파일을 더 이상 사용 하지 않습니다. 이전 버전의 ASP.NET에서는 응용 프로그램 시작 논리가 global.asax 내의 메서드에 배치 되었습니다 `Application_StartUp` .  나중에 ASP.NET MVC에서 *Startup.cs* 파일은 프로젝트의 루트에 포함 되었습니다. 응용 프로그램이 시작 될 때이 메서드를 호출 했습니다. ASP.NET Core는 모든 시작 논리를 *Startup.cs* 파일에 배치 하 여이 방법을 완전히 채택 했습니다.
 
 *web.config* 파일도 ASP.NET Core에서 바뀌었습니다. 이제 *Startup.cs* 에 설명 된 응용 프로그램 시작 절차의 일부로 구성 자체를 구성할 수 있습니다. 구성에서는 XML 파일을 계속 사용할 수 있지만 일반적으로 ASP.NET Core 프로젝트는와 같은 JSON 형식의 파일에 구성 값을 넣습니다 *appsettings.json* . ASP.NET Core 구성 시스템은 환경 변수에 [더 안전 하 고 강력한 위치](xref:security/app-secrets) 를 제공할 수 있는 환경 변수에 쉽게 액세스할 수도 있습니다. 이는 소스 제어로 체크 인하지 말아야 하는 연결 문자열 및 API 키와 같은 비밀의 경우 특히 그렇습니다. ASP.NET Core의 구성에 대 한 자세한 내용은 [구성](xref:fundamentals/configuration/index) 을 참조 하세요.
 

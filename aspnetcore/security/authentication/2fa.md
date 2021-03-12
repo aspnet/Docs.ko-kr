@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/2fa
-ms.openlocfilehash: 1ee9e656c2e631c9b5588149e0a75e07108baff1
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1f77f3f4b7e9dd558e9869992e2f1f4d185e5b10
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051267"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586854"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>ASP.NET Core SMS를 사용 하는 2 단계 인증
 
@@ -35,7 +35,7 @@ ms.locfileid: "93051267"
 
 이 자습서에서는 SMS를 사용 하 여 2 단계 인증 (2FA)을 설정 하는 방법을 보여 줍니다. 지침은 [twilio](https://www.twilio.com/) 및 관련 [sms](https://www.aspsms.com/asp.net/identity/core/testcredits/)에 제공 되지만 다른 sms 공급자를 사용할 수 있습니다. 이 자습서를 시작 하기 전에 [계정 확인 및 암호 복구](xref:security/authentication/accconfirm) 를 완료 하는 것이 좋습니다.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/2fa/sample/Web2FA) [다운로드 방법](xref:index#how-to-download-a-sample)
+[샘플 코드 보기 또는 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/2fa/sample/Web2FA) [다운로드 방법](xref:index#how-to-download-a-sample)
 
 ## <a name="create-a-new-aspnet-core-project"></a>새 ASP.NET Core 프로젝트 만들기
 
@@ -73,7 +73,7 @@ Twilio 계정의 대시보드 탭에서 **계정 SID** 및 **인증 토큰** 을
 
 [!code-csharp[](2fa/sample/Web2FA/Services/SMSoptions.cs)]
 
-을 ( `SMSAccountIdentification` 를 `SMSAccountPassword` `SMSAccountFrom` [) 암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 설정 합니다. 다음은 그 예입니다.
+을 ( `SMSAccountIdentification` 를 `SMSAccountPassword` `SMSAccountFrom` [) 암호 관리자 도구](xref:security/app-secrets)를 사용 하 여 설정 합니다. 예를 들면 다음과 같습니다.
 
 ```none
 C:/Web2FA/src/WebApp1>dotnet user-secrets set SMSAccountIdentification 12345

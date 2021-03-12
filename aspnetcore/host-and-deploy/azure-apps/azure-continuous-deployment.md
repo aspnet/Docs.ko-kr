@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 1485e1a97e51bb4d12d0d74ca1550e5cf18258d8
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 561f41dd9d50df0651c060fac4f75d9d59244029
+ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93053789"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102605648"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>ASP.NET Core와 함께 Visual Studio 및 Git을 사용하여 Azure에 지속적인 배포
 
@@ -172,7 +172,7 @@ Git은 Azure App Service 웹앱을 배포하는 데 사용할 수 있는 분산 
 
 1. 명령 창에서 다음 명령을 입력합니다.
 
-   `git push -u Azure-SampleApp master`
+   `git push -u Azure-SampleApp main`
 
 1. Azure에서 이전에 만든 Azure **배포 자격 증명** 암호를 입력합니다.
 
@@ -183,8 +183,8 @@ Git은 Azure App Service 웹앱을 배포하는 데 사용할 수 있는 분산 
    remote: Running post deployment command(s)...
    remote: Deployment successful.
    To https://username@samplewebappdemo01.scm.azurewebsites.net:443/SampleWebAppDemo01.git
-   * [new branch]      master -> master
-   Branch master set up to track remote branch master from Azure-SampleApp.
+   * [new branch]      main -> main
+   Branch main set up to track remote branch main from Azure-SampleApp.
    ```
 
    > [!NOTE]
@@ -232,7 +232,7 @@ Git은 Azure App Service 웹앱을 배포하는 데 사용할 수 있는 분산 
 > [!NOTE]
 > 대안으로 **명령 창** 을 열고, 프로젝트 디렉터리를 변경하고, git 명령을 입력하여 **명령 창** 의 변경 내용을 푸시합니다. 예:
 > 
-> `git push -u Azure-SampleApp master`
+> `git push -u Azure-SampleApp main`
 
 ## <a name="view-the-updated-web-app-in-azure"></a>Azure에서 업데이트된 웹앱 보기
 

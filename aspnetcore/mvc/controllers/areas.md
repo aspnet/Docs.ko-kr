@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/areas
-ms.openlocfilehash: f3d76f612e67aeabf1f7fef694199332c732c593
-ms.sourcegitcommit: 53e01d6e9b70a18a05618f0011cf115a16633c21
+ms.openlocfilehash: f3bd2d3eac97e0fd64d1e3a98a9d1750f7a607a8
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97878414"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588375"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core의 영역
 
@@ -44,7 +44,7 @@ ms.locfileid: "97878414"
 * 앱은 논리적으로 분리할 수 있는 여러 개의 고급 기능 구성 요소로 이루어져 있습니다.
 * 각 기능 영역을 독립적으로 작업할 수 있도록 앱을 나누고자 합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다. 다운로드 샘플은 테스트 영역에 대한 기본 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/31samples) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다. 다운로드 샘플은 테스트 영역에 대한 기본 앱을 제공합니다.
 
 페이지를 사용 하 Razor 는 경우이 문서의 [ Razor 페이지를 포함](#areas-with-razor-pages) 하는 영역을 참조 하세요.
 
@@ -66,9 +66,9 @@ ms.locfileid: "97878414"
 *Products* 및 *Services* 의 두 논리 그룹이 존재하는 앱을 고려해보세요. 영역을 사용할 경우 폴더 구조는 다음과 유사할 것입니다.
 
 * 프로젝트 이름
-  * 영역
+  * Areas
     * 제품
-      * 컨트롤러
+      * Controllers
         * HomeController.cs
         * ManageController.cs
       * 보기
@@ -78,7 +78,7 @@ ms.locfileid: "97878414"
           * Index.cshtml
           * About.cshtml
     * 서비스
-      * 컨트롤러
+      * Controllers
         * HomeController.cs
       * 보기
         * 홈
@@ -122,7 +122,7 @@ ms.locfileid: "97878414"
 
 ### <a name="link-generation-with-mvc-areas"></a>MVC 영역과 링크 생성
 
-[샘플 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples)의 다음 코드는 지정된 영역과 링크 생성을 보여줍니다.
+[샘플 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/31samples)의 다음 코드는 지정된 영역과 링크 생성을 보여줍니다.
 
 [!code-cshtml[](areas/31samples/MVCareas/Views/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -166,12 +166,12 @@ ms.locfileid: "97878414"
 
 <a name="arp"></a>
 
-## <a name="areas-with-no-locrazor-pages"></a>페이지가 있는 영역 Razor
+## <a name="areas-with-razor-pages"></a>페이지가 있는 영역 Razor
 
-페이지를 포함 하는 영역 Razor `Areas/<area name>/Pages` 에는 앱의 루트 폴더가 필요 합니다. [예제 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples)에서는 다음 폴더 구조가 사용됩니다.
+페이지를 포함 하는 영역 Razor `Areas/<area name>/Pages` 에는 앱의 루트 폴더가 필요 합니다. [예제 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/31samples)에서는 다음 폴더 구조가 사용됩니다.
 
 * 프로젝트 이름
-  * 영역
+  * Areas
     * 제품
       * 페이지
         * _ViewImports
@@ -183,9 +183,9 @@ ms.locfileid: "97878414"
           * 정보
           * 인덱스
 
-### <a name="link-generation-with-no-locrazor-pages-and-areas"></a>페이지 및 영역을 사용한 링크 생성 Razor
+### <a name="link-generation-with-razor-pages-and-areas"></a>페이지 및 영역을 사용한 링크 생성 Razor
 
-[예제 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas)의 다음 코드는 영역이 지정된(예: `asp-area="Products"`) 링크 생성을 보여줍니다.
+[예제 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples/RPareas)의 다음 코드는 영역이 지정된(예: `asp-area="Products"`) 링크 생성을 보여줍니다.
 
 [!code-cshtml[](areas/31samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -199,7 +199,7 @@ ms.locfileid: "97878414"
 
 * `<a asp-page="/Manage/About">`에서 생성된 링크는 `Services` 영역의 페이지를 마지막으로 요청한 경우에만 유효합니다. `/Services/Manage/`, `/Services/Manage/Index` 또는 `/Services/Manage/About`).
 * `<a asp-page="/About">`에서 생성된 링크는 `/Home`의 페이지를 마지막으로 요청한 경우에만 유효합니다.
-* 이 코드는 [예제 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples/RPareas)에서 가져온 것입니다.
+* 이 코드는 [예제 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/31samples/RPareas)에서 가져온 것입니다.
 
 ### <a name="import-namespace-and-tag-helpers-with-_viewimports-file"></a>_ViewImports 파일을 사용하여 네임스페이스 및 태그 도우미 가져오기
 
@@ -226,7 +226,7 @@ ms.locfileid: "97878414"
 
 자세한 내용은 [태그 도우미 범위 관리](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) 및 [공유 지시문 가져오기](xref:mvc/views/layout#importing-shared-directives)를 참조하세요.
 
-### <a name="shared-layout-for-no-locrazor-pages-areas"></a>페이지 영역에 대 한 공유 레이아웃 Razor
+### <a name="shared-layout-for-razor-pages-areas"></a>페이지 영역에 대 한 공유 레이아웃 Razor
 
 전체 앱의 일반적인 레이아웃을 공유하려면 *_ViewStart.cshtml* 을 애플리케이션 루트 폴더로 이동합니다.
 
@@ -246,7 +246,7 @@ ms.locfileid: "97878414"
 * 앱은 논리적으로 분리할 수 있는 여러 개의 고급 기능 구성 요소로 이루어져 있습니다.
 * 각 기능 영역을 독립적으로 작업할 수 있도록 앱을 나누고자 합니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다. 다운로드 샘플은 테스트 영역에 대한 기본 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다. 다운로드 샘플은 테스트 영역에 대한 기본 앱을 제공합니다.
 
 페이지를 사용 하 Razor 는 경우이 문서의 [ Razor 페이지를 포함](#areas-with-razor-pages) 하는 영역을 참조 하세요.
 
@@ -268,9 +268,9 @@ ms.locfileid: "97878414"
 *Products* 및 *Services* 의 두 논리 그룹이 존재하는 앱을 고려해보세요. 영역을 사용할 경우 폴더 구조는 다음과 유사할 것입니다.
 
 * 프로젝트 이름
-  * 영역
+  * Areas
     * 제품
-      * 컨트롤러
+      * Controllers
         * HomeController.cs
         * ManageController.cs
       * 보기
@@ -280,7 +280,7 @@ ms.locfileid: "97878414"
           * Index.cshtml
           * About.cshtml
     * 서비스
-      * 컨트롤러
+      * Controllers
         * HomeController.cs
       * 보기
         * 홈
@@ -323,7 +323,7 @@ ASP.NET Core 2.2에서 `MapAreaRoute`를 사용하는 경우에는 [이 GitHub �
 
 ### <a name="link-generation-with-mvc-areas"></a>MVC 영역과 링크 생성
 
-[샘플 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)의 다음 코드는 지정된 영역과 링크 생성을 보여줍니다.
+[샘플 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples)의 다음 코드는 지정된 영역과 링크 생성을 보여줍니다.
 
 [!code-cshtml[](areas/samples/MVCareas/Views/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -353,12 +353,12 @@ ASP.NET Core 2.2에서 `MapAreaRoute`를 사용하는 경우에는 [이 GitHub �
 
 <a name="arp"></a>
 
-## <a name="areas-with-no-locrazor-pages"></a>페이지가 있는 영역 Razor
+## <a name="areas-with-razor-pages"></a>페이지가 있는 영역 Razor
 
-페이지를 포함 하는 영역 Razor `Areas/<area name>/Pages` 에는 앱의 루트 폴더가 필요 합니다. [예제 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)에서는 다음 폴더 구조가 사용됩니다.
+페이지를 포함 하는 영역 Razor `Areas/<area name>/Pages` 에는 앱의 루트 폴더가 필요 합니다. [예제 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples)에서는 다음 폴더 구조가 사용됩니다.
 
 * 프로젝트 이름
-  * 영역
+  * Areas
     * 제품
       * 페이지
         * _ViewImports
@@ -370,9 +370,9 @@ ASP.NET Core 2.2에서 `MapAreaRoute`를 사용하는 경우에는 [이 GitHub �
           * 정보
           * 인덱스
 
-### <a name="link-generation-with-no-locrazor-pages-and-areas"></a>페이지 및 영역을 사용한 링크 생성 Razor
+### <a name="link-generation-with-razor-pages-and-areas"></a>페이지 및 영역을 사용한 링크 생성 Razor
 
-[예제 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas)의 다음 코드는 영역이 지정된(예: `asp-area="Products"`) 링크 생성을 보여줍니다.
+[예제 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples/RPareas)의 다음 코드는 영역이 지정된(예: `asp-area="Products"`) 링크 생성을 보여줍니다.
 
 [!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -388,7 +388,7 @@ ASP.NET Core 2.2에서 `MapAreaRoute`를 사용하는 경우에는 [이 GitHub �
 
 * `<a asp-page="/Manage/About">`에서 생성된 링크는 `Services` 영역의 페이지를 마지막으로 요청한 경우에만 유효합니다. `/Services/Manage/`, `/Services/Manage/Index` 또는 `/Services/Manage/About`).
 * `<a asp-page="/About">`에서 생성된 링크는 `/Home`의 페이지를 마지막으로 요청한 경우에만 유효합니다.
-* 이 코드는 [예제 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas)에서 가져온 것입니다.
+* 이 코드는 [예제 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples/RPareas)에서 가져온 것입니다.
 
 ### <a name="import-namespace-and-tag-helpers-with-_viewimports-file"></a>_ViewImports 파일을 사용하여 네임스페이스 및 태그 도우미 가져오기
 
@@ -415,7 +415,7 @@ ASP.NET Core 2.2에서 `MapAreaRoute`를 사용하는 경우에는 [이 GitHub �
 
 자세한 내용은 [태그 도우미 범위 관리](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) 및 [공유 지시문 가져오기](xref:mvc/views/layout#importing-shared-directives)를 참조하세요.
 
-### <a name="shared-layout-for-no-locrazor-pages-areas"></a>페이지 영역에 대 한 공유 레이아웃 Razor
+### <a name="shared-layout-for-razor-pages-areas"></a>페이지 영역에 대 한 공유 레이아웃 Razor
 
 전체 앱의 일반적인 레이아웃을 공유하려면 *_ViewStart.cshtml* 을 애플리케이션 루트 폴더로 이동합니다.
 

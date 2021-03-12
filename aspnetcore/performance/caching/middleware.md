@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 3c28b6c736f07c0d0483152eeec4300a5a92224c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0f1f5dfcb9595270a9659a02141f7d1eba5c44ef
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052112"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587699"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>ASP.NET Core의 응답 캐싱 미들웨어
 
@@ -34,9 +34,9 @@ ms.locfileid: "93052112"
 
 이 문서에서는 ASP.NET Core 앱에서 응답 캐싱 미들웨어를 구성 하는 방법을 설명 합니다. 미들웨어는 응답을 캐시할 시기를 결정 하 고, 응답을 저장 하 고, 캐시에서 응답을 제공 합니다. HTTP 캐싱 및 특성에 대 한 소개는 [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) [응답 캐싱](xref:performance/caching/response)을 참조 하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/middleware/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>구성
 
 응답 캐싱 미들웨어는 공유 프레임 워크를 통해 ASP.NET Core 앱에 대해 암시적으로 사용할 수 있습니다.
 
@@ -111,7 +111,7 @@ if (responseCachingFeature != null)
 
 다음 표에서는 응답 캐싱에 영향을 주는 HTTP 헤더에 대 한 정보를 제공 합니다.
 
-| 헤더 | 세부 정보 |
+| header | 세부 정보 |
 | ------ | ------- |
 | `Authorization` | 헤더가 있으면 응답이 캐시 되지 않습니다. |
 | `Cache-Control` | 미들웨어는 cache 지시문으로 표시 된 캐싱 응답만 고려 합니다 `public` . 다음 매개 변수를 사용 하 여 캐싱 제어:<ul><li>최대 사용 기간</li><li>최대-오래 된&#8224;</li><li>최소-새로</li><li>must-revalidate</li><li>no-cache</li><li>저장소 없음</li><li>-인 경우에만 캐시</li><li>private</li><li>public</li><li>s-maxage</li><li>프록시-유효성 검사&#8225;</li></ul>&#8224;에 대 한 제한이 지정 되지 않은 경우 `max-stale` 미들웨어는 아무 작업도 수행 하지 않습니다.<br>&#8225;는 `proxy-revalidate` 와 동일한 효과가 있습니다 `must-revalidate` .<br><br>자세한 내용은 [RFC 7231: Request Cache-Control 지시문](https://tools.ietf.org/html/rfc7234#section-5.2.1)을 참조 하십시오. |
@@ -181,9 +181,9 @@ if (responseCachingFeature != null)
 
 이 문서에서는 ASP.NET Core 앱에서 응답 캐싱 미들웨어를 구성 하는 방법을 설명 합니다. 미들웨어는 응답을 캐시할 시기를 결정 하 고, 응답을 저장 하 고, 캐시에서 응답을 제공 합니다. HTTP 캐싱 및 특성에 대 한 소개는 [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) [응답 캐싱](xref:performance/caching/response)을 참조 하세요.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/middleware/samples) ([다운로드 방법](xref:index#how-to-download-a-sample))
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>구성
 
 [AspNetCore 메타 패키지](xref:fundamentals/metapackage-app) 를 사용 하거나 [ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) 패키지에 대 한 패키지 참조를 추가 합니다.
 
@@ -255,7 +255,7 @@ if (responseCachingFeature != null)
 
 다음 표에서는 응답 캐싱에 영향을 주는 HTTP 헤더에 대 한 정보를 제공 합니다.
 
-| 헤더 | 세부 정보 |
+| header | 세부 정보 |
 | ------ | ------- |
 | `Authorization` | 헤더가 있으면 응답이 캐시 되지 않습니다. |
 | `Cache-Control` | 미들웨어는 cache 지시문으로 표시 된 캐싱 응답만 고려 합니다 `public` . 다음 매개 변수를 사용 하 여 캐싱 제어:<ul><li>최대 사용 기간</li><li>최대-오래 된&#8224;</li><li>최소-새로</li><li>must-revalidate</li><li>no-cache</li><li>저장소 없음</li><li>-인 경우에만 캐시</li><li>private</li><li>public</li><li>s-maxage</li><li>프록시-유효성 검사&#8225;</li></ul>&#8224;에 대 한 제한이 지정 되지 않은 경우 `max-stale` 미들웨어는 아무 작업도 수행 하지 않습니다.<br>&#8225;는 `proxy-revalidate` 와 동일한 효과가 있습니다 `must-revalidate` .<br><br>자세한 내용은 [RFC 7231: Request Cache-Control 지시문](https://tools.ietf.org/html/rfc7234#section-5.2.1)을 참조 하십시오. |

@@ -17,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: cb9ffab19062bf726dd519c782d502f76e372073
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: 60471232b3373039404b27c4afd1a1725d4d21eb
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058287"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586867"
 ---
-# <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor ASP.NET Core에 대 한 구문 참조
+# <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core용 Razor 구문 참조
 
 [Rick Anderson](https://twitter.com/RickAndMSFT), [Mullen](https://twitter.com/ntaylormullen)및 [Dan Vicarel](https://github.com/Rabadash8820)
 
@@ -34,7 +34,7 @@ Razor 서버 기반 코드를 웹 페이지에 포함 하는 태그 구문입니
 
 기본 Razor 언어는 HTML입니다. 태그에서 HTML을 렌더링 하 Razor 는 것은 html 파일에서 html을 렌더링 하는 것과는 다릅니다. *Cshtml* 파일의 HTML 태그 Razor 는 서버에서 변경 되지 않은 상태로 렌더링 됩니다.
 
-## <a name="no-locrazor-syntax"></a>Razor 구문
+## <a name="razor-syntax"></a>Razor 구문
 
 Razor 는 c #을 지원 하 고 기호를 사용 하 여 `@` HTML에서 c #으로 전환 합니다. Razor c # 식을 평가 하 고 HTML 출력으로 렌더링 합니다.
 
@@ -58,7 +58,7 @@ Razor 는 c #을 지원 하 고 기호를 사용 하 여 `@` HTML에서 c #으�
 <a href="mailto:Support@contoso.com">Support@contoso.com</a>
 ```
 
-## <a name="implicit-no-locrazor-expressions"></a>암시적 Razor 식
+## <a name="implicit-razor-expressions"></a>암시적 Razor 식
 
 암시적 Razor 식은로 시작 하 `@` 고 그 다음에 c # 코드를 사용 합니다.
 
@@ -86,7 +86,7 @@ C# `await` 키워드를 제외하고, 암시적 식에 공백이 있으면 안 �
 
 제네릭 메서드 호출은 [명시적 Razor 식](#explicit-razor-expressions) 또는 [ Razor 코드 블록](#razor-code-blocks)으로 래핑해야 합니다.
 
-## <a name="explicit-no-locrazor-expressions"></a>명시적 Razor 식
+## <a name="explicit-razor-expressions"></a>명시적 Razor 식
 
 명시적 Razor 식은 짝이 되는 `@` 괄호가 있는 기호로 구성 됩니다. 지난 주 시간을 렌더링 하려면 다음 Razor 태그가 사용 됩니다.
 
@@ -140,7 +140,7 @@ C# `await` 키워드를 제외하고, 암시적 식에 공백이 있으면 안 �
 
 HTML은 브라우저에서 일반 텍스트로 표시 됩니다.
 
-&lt;범위 &gt; Hello World &lt; /span&gt;
+&lt;범위 &gt; 헬로 월드 &lt; /span&gt;
 
 `HtmlHelper.Raw` 출력은 인코딩되지 않지만 HTML 태그로 렌더링됩니다.
 
@@ -157,7 +157,7 @@ HTML은 브라우저에서 일반 텍스트로 표시 됩니다.
 <span>Hello World</span>
 ```
 
-## <a name="no-locrazor-code-blocks"></a>Razor 코드 블록
+## <a name="razor-code-blocks"></a>Razor 코드 블록
 
 Razor 코드 블록은로 시작 `@` 하 고로 묶입니다 `{}` . 식과는 달리, 코드 블록 내부의 C# 코드는 렌더링되지 않습니다. 보기의 코드 블록과 식은 같은 범위를 공유하고 순서대로 정의됩니다.
 
@@ -399,7 +399,7 @@ Razor 에는 lock 문을 사용 하 여 중요 한 섹션을 보호할 수 있�
 }
 ```
 
-### <a name="comments"></a>설명
+### <a name="comments"></a>의견
 
 Razor c # 및 HTML 주석을 지원 합니다.
 
@@ -789,11 +789,11 @@ Razor 구성 요소에 대 한 이벤트 처리 기능을 제공 합니다. 자�
 
 *이 시나리오는 Razor 구성 요소 (razor)에만 적용 됩니다.*
 
-`@typeparam` 지시문은 생성된 구성 요소 클래스에 대한 제네릭 형식 매개 변수를 선언합니다. 자세한 내용은 <xref:blazor/components/templated-components#generic-typed-components>를 참조하세요.
+`@typeparam` 지시문은 생성된 구성 요소 클래스에 대한 제네릭 형식 매개 변수를 선언합니다. 자세한 내용은 <xref:blazor/components/templated-components>를 참조하세요.
 
 ::: moniker-end
 
-## <a name="templated-no-locrazor-delegates"></a>템플릿 Razor 대리자
+## <a name="templated-razor-delegates"></a>템플릿 Razor 대리자
 
 Razor 템플릿을 사용 하면 다음 형식의 UI 코드 조각을 정의할 수 있습니다.
 
@@ -904,9 +904,9 @@ public class Pet
 | [`@removeTagHelper`](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | 보기에서 이전에 추가된 태그 도우미를 제거합니다. |
 | [`@tagHelperPrefix`](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | 태그 도우미를 지원하고 태그 도우미 사용을 명시적으로 만들어주는 태그 접두사를 지정합니다. |
 
-## <a name="no-locrazor-reserved-keywords"></a>Razor 예약 된 키워드
+## <a name="razor-reserved-keywords"></a>Razor 예약 된 키워드
 
-### <a name="no-locrazor-keywords"></a>Razor 어
+### <a name="razor-keywords"></a>Razor 어
 
 * `page` (ASP.NET Core 2.1 이상 필요)
 * `namespace`
@@ -918,7 +918,7 @@ public class Pet
 
 Razor 키워드는로 이스케이프 됩니다 `@(Razor Keyword)` (예: `@(functions)` ).
 
-### <a name="c-no-locrazor-keywords"></a>C # Razor 키워드
+### <a name="c-razor-keywords"></a>C # Razor 키워드
 
 * `case`
 * `do`
@@ -937,11 +937,11 @@ Razor 키워드는로 이스케이프 됩니다 `@(Razor Keyword)` (예: `@(func
 
 C # Razor 키워드는를 사용 하 여 이중 이스케이프 되어야 합니다 `@(@C# Razor Keyword)` (예: `@(@case)` ). 첫 번째는 `@` 파서를 이스케이프 합니다 Razor . 두 번째 `@`은 C# 파서를 이스케이프합니다.
 
-### <a name="reserved-keywords-not-used-by-no-locrazor"></a>에서 사용 되지 않는 예약 된 키워드 Razor
+### <a name="reserved-keywords-not-used-by-razor"></a>에서 사용 되지 않는 예약 된 키워드 Razor
 
 * `class`
 
-## <a name="inspect-the-no-locrazor-c-class-generated-for-a-view"></a>Razor뷰에 대해 생성 된 c # 클래스를 검사 합니다.
+## <a name="inspect-the-razor-c-class-generated-for-a-view"></a>Razor뷰에 대해 생성 된 c # 클래스를 검사 합니다.
 
 ::: moniker range=">= aspnetcore-2.1"
 

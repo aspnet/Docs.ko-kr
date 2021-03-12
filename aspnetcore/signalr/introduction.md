@@ -19,16 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/introduction
-ms.openlocfilehash: 1810fef903362addcef4a6c9ec53264604f58d2b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5e3a96d38424b895fa8f34897a4f0a1d818ff479
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051475"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588089"
 ---
-# <a name="introduction-to-aspnet-core-no-locsignalr"></a>ASP.NET Core SignalR 소개
+# <a name="introduction-to-aspnet-core-signalr"></a>ASP.NET Core SignalR 소개
 
-## <a name="what-is-no-locsignalr"></a>SignalR란?
+## <a name="what-is-signalr"></a>SignalR란?
 
 ASP.NET Core SignalR 는 응용 프로그램에 실시간 웹 기능 추가를 간소화 하는 오픈 소스 라이브러리입니다. 실시간 웹 기능을 사용 하면 서버측 코드에서 클라이언트에 콘텐츠를 즉시 푸시할 수 있습니다.
 
@@ -48,7 +48,7 @@ SignalRASP.NET Core에 대 한 몇 가지 기능은 다음과 같습니다.
 * 특정 클라이언트나 클라이언트 그룹으로 메시지를 보냅니다.
 * 늘어난 트래픽을 처리 하도록 크기를 조정 합니다.
 
-소스는 [ SignalR GitHub의 리포지토리에서](https://github.com/dotnet/AspNetCore/tree/master/src/SignalR)호스팅됩니다.
+소스는 [ SignalR GitHub의 리포지토리에서](https://github.com/dotnet/AspNetCore/tree/main/src/SignalR)호스팅됩니다.
 
 ## <a name="transports"></a>전송
 
