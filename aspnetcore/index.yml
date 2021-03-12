@@ -10,12 +10,12 @@ metadata:
   author: WadePickett
   ms.author: wpickett
   ms.date: 06/05/2020
-  ms.openlocfilehash: b4da6289e2534e01f1d00d5d0812b6cd28f50229
-  ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
+  ms.openlocfilehash: 917e909bc9368a007dad22f992dc96819ebce988
+  ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
   ms.translationtype: HT
   ms.contentlocale: ko-KR
-  ms.lasthandoff: 02/18/2021
-  ms.locfileid: "101101136"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102588793"
 highlightedContent:
   items:
   - title: 아무 플랫폼에서 5분 만에 ASP.NET Core 앱 만들기
@@ -373,4 +373,4 @@ additionalContent:
         text: 일반 클라이언트측 웹 기술
       - url: /dotnet/architecture/modern-web-apps-azure/development-process-for-azure
         text: Azure 개발 프로세스
-  footer: ASP.NET Core 설명서에 참여합니다. [기여자 가이드](https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md)를 참조하세요.
+  footer: ASP.NET Core 설명서에 참여합니다. [기여자 가이드](https://github.com/dotnet/AspNetCore.Docs/blob/main/CONTRIBUTING.md)를 참조하세요.
