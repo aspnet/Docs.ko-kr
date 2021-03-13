@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 0f1f5dfcb9595270a9659a02141f7d1eba5c44ef
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: 11473bbf8b4e2d67d15798a5d87ee01761682f9a
+ms.sourcegitcommit: 07e7ee573fe4e12be93249a385db745d714ff6ae
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102587699"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103413472"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>ASP.NET Core의 응답 캐싱 미들웨어
 
@@ -49,7 +49,7 @@ ms.locfileid: "102587699"
 [!code-csharp[](middleware/samples/3.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=17)]
 
 > [!WARNING]
-> <xref:Owin.CorsExtensions.UseCors%2A><xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> [CORS 미들웨어](xref:security/cors)를 사용 하는 경우 먼저를 호출 해야 합니다.
+> <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors%2A><xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> [CORS 미들웨어](xref:security/cors)를 사용 하는 경우 먼저를 호출 해야 합니다.
 
 샘플 앱은 다음 요청에 대 한 캐싱을 제어 하는 헤더를 추가 합니다.
 
@@ -71,7 +71,7 @@ ms.locfileid: "102587699"
 
 응답 캐싱 옵션은 다음 표에 나와 있습니다.
 
-| 옵션 | 설명 |
+| 옵션 | Description |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> | 응답 본문에 대해 캐시할 수 있는 최대 크기 (바이트)입니다. 기본값은 `64 * 1024 * 1024` (64 MB)입니다. |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> | 응답 캐시 미들웨어의 크기 제한 (바이트)입니다. 기본값은 `100 * 1024 * 1024` (100 MB)입니다. |
@@ -215,7 +215,7 @@ if (responseCachingFeature != null)
 
 응답 캐싱 옵션은 다음 표에 나와 있습니다.
 
-| 옵션 | 설명 |
+| 옵션 | Description |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> | 응답 본문에 대해 캐시할 수 있는 최대 크기 (바이트)입니다. 기본값은 `64 * 1024 * 1024` (64 MB)입니다. |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> | 응답 캐시 미들웨어의 크기 제한 (바이트)입니다. 기본값은 `100 * 1024 * 1024` (100 MB)입니다. |
