@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: c90ac92cf0866b78bcdb11663e76c116d714ca5d
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: eeae0ef44fc9b8a92da40481f5dbc7422ed8d43c
+ms.sourcegitcommit: d5fa39765959738eed4bcf5ee0b207cefddb4873
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102589064"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103460445"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>ASP.NET Core의 컨트롤러 작업에 라우팅
 
@@ -220,7 +220,7 @@ ASP.NET Core 3.0 이상의 엔드포인트 라우팅은 다음과 같습니다.
 * 가장 적합 한 후보를 선택 합니다.
 * 예외를 throw합니다.
 
-예를 들면 다음과 같습니다.
+예를 들어:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet9)]
 
@@ -509,10 +509,6 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 `[Route("[controller]/[action]", Name="[controller]_[action]")]`각 작업에 대해 고유한 경로 이름을 생성 합니다.
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet5)]
-
-토큰 교체는 특성 경로에 정의된 경로 이름에도 적용됩니다.
-`[Route("[controller]/[action]", Name="[controller]_[action]")]`
-는 각 작업의 고유한 경로 이름을 생성합니다.
 
 리터럴 토큰 교체 구분 기호 `[` 또는 `]`와 매칭하려면 문자(`[[` 또는 `]]`)를 반복하여 이스케이프합니다.
 
@@ -1008,7 +1004,7 @@ app.UseMvc(routes =>
 
 ### <a name="disambiguating-actions"></a>명확한 작업 구분
 
-두 작업이 라우팅을 통해 일치하는 경우 MVC는 작업을 명확히 구분하여 '최적의' 후보를 선택해야 하며, 그렇지 못하면 예외가 throw됩니다. 예를 들면 다음과 같습니다.
+두 작업이 라우팅을 통해 일치하는 경우 MVC는 작업을 명확히 구분하여 '최적의' 후보를 선택해야 하며, 그렇지 못하면 예외가 throw됩니다. 예를 들어:
 
 ```csharp
 public class ProductsController : Controller
