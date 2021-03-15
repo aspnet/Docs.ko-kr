@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 059ddc18d0c531efaba8aab916ddbb27b42b5e2c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7961890becc8f4513e0750f28341c9d4cf94e7ad
+ms.sourcegitcommit: 07e7ee573fe4e12be93249a385db745d714ff6ae
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053555"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103413338"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>ASP.NET에서 ASP.NET Core로 마이그레이션
 
 작성자: [Isaac Levin](https://isaaclevin.com)
 
-이 문서는 ASP.NET 앱을 ASP.NET Core로 마이그레이션하기 위한 참조 가이드로 사용됩니다.
+이 문서는 ASP.NET 앱을 ASP.NET Core로 마이그레이션하기 위한 참조 가이드로 사용됩니다. 포괄적인 포팅 가이드는 eBook [Porting existing ASP.NET apps to .NET Core](https://aka.ms/aspnet-porting-ebook)를 참조하세요.
 
 ## <a name="prerequisites"></a>사전 요구 사항
 
@@ -155,7 +155,7 @@ Unity에서 삽입한 것처럼 리포지토리는 어디든지 삽입될 수 �
 
 ASP.NET에서 정적 파일은 다양한 디렉터리에 저장되고 뷰에서 참조됩니다.
 
-ASP.NET Core에서 정적 파일은 별도로 구성되지 않는 한 “웹 루트”( *&lt;content root&gt;/wwwroot* )에 저장됩니다. 파일은 `Startup.Configure`에서 `UseStaticFiles` 확장 메서드를 호출하는 방식으로 요청 파이프라인에 로드됩니다.
+ASP.NET Core에서 정적 파일은 별도로 구성되지 않는 한 “웹 루트”( *&lt;content root&gt;/wwwroot*)에 저장됩니다. 파일은 `Startup.Configure`에서 `UseStaticFiles` 확장 메서드를 호출하는 방식으로 요청 파이프라인에 로드됩니다.
 
 [!code-csharp[](../../fundamentals/static-files/samples/1.x/StaticFilesSample/StartupStaticFiles.cs?highlight=3&name=snippet_ConfigureMethod)]
 
@@ -167,9 +167,13 @@ ASP.NET Core에서 정적 파일은 별도로 구성되지 않는 한 “웹 루
 > [!NOTE]
 > ASP.NET Core의 정적 파일 지원에 대한 자세한 내용은 [정적 파일](xref:fundamentals/static-files)을 참조하세요.
 
-## <a name="multi-value-no-loccookies"></a>다중 값 cookie 여부
+## <a name="multi-value-cookies"></a>다중 값 cookie 여부
 
 [다중 값 cookie](xref:System.Web.HttpCookie.Values)는 ASP.NET Core에서 지원되지 않습니다. 값마다 하나의 cookie를 만듭니다.
+
+## <a name="authentication-cookies-are-not-compressed-in-aspnet-core"></a>인증 cookie는 ASP.NET Core에서 압축되지 않습니다.
+
+[!INCLUDE[](~/includes/cookies-not-compressed.md)]
 
 ## <a name="partial-app-migration"></a>부분 앱 마이그레이션
 
