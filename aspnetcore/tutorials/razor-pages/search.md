@@ -19,26 +19,26 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: d852766c9706941a1a5f4f3af2c9293ffc4e6a26
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 0ffe4ed251eed551b2799c1a66424ba31137dc18
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97486215"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589519"
 ---
-# <a name="part-6-add-search-to-aspnet-core-no-locrazor-pages"></a>6부. ASP.NET Core Razor Pages에 검색 추가
+# <a name="part-6-add-search-to-aspnet-core-razor-pages"></a>6부. ASP.NET Core Razor Pages에 검색 추가
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0 >= aspnetcore-3.0"
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
 
 ::: moniker-end
 
@@ -71,7 +71,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-이 시점에 쿼리는 정의되기만 했으며, 데이터베이스에 대해 실행되지 않았습니다.
+이 시점에 쿼리는 ‘정의’되기만 했으며 데이터베이스에 대해 실행되지 ‘않았습니다’.
 
 `SearchString` 속성이 Null 또는 비어 있는 경우 영화 쿼리는 검색 문자열에 대해 필터링하도록 수정됩니다.
 
@@ -96,11 +96,11 @@ Movies 페이지로 이동하고 `?searchString=Ghost`와 같은 쿼리 문자�
 
 ![URL에 ghost라는 단어가 추가되고 Ghostbusters 및 Ghostbusters 2라는 두 개의 반환된 영화 목록이 있는 Index 보기](search/_static/g2.png)
 
-ASP.NET Core 런타임은 [모델 바인딩](xref:mvc/models/model-binding)을 사용하여 쿼리 문자열(`?searchString=Ghost`) 또는 경로 데이터(`https://localhost:5001/Movies/Ghost`)에서 `SearchString` 속성의 값을 설정합니다. 모델 바인딩은 대/소문자를 구분하지 않습니다.
+ASP.NET Core 런타임은 [모델 바인딩](xref:mvc/models/model-binding)을 사용하여 쿼리 문자열(`?searchString=Ghost`) 또는 경로 데이터(`https://localhost:5001/Movies/Ghost`)에서 `SearchString` 속성의 값을 설정합니다. 모델 바인딩은 대/소문자를 구분하지 ‘않습니다’.
 
 그러나 사용자는 영화 검색을 위해 URL을 수정할 수 없습니다. 이 단계에서 동영상을 필터링하도록 UI가 추가됩니다. 경로 제약 조건 `"{searchString?}"`을 추가한 경우 이를 제거합니다.
 
-Pages/Movies/Index.cshtml 파일을 열고, 다음 코드에서 강조 표시된 태그를 추가합니다.
+*Pages/Movies/Index.cshtml* 파일을 열고 다음 코드에서 강조 표시된 태그를 추가합니다.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/SnapShots/Index2.cshtml?highlight=14-19&range=1-22)]
 
@@ -127,7 +127,7 @@ Index 페이지의 `OnGetAsync` 메서드를 다음 코드로 업데이트합니
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]
 
-### <a name="add-search-by-genre-to-the-no-locrazor-page"></a>Razor 페이지에 장르별 검색 추가
+### <a name="add-search-by-genre-to-the-razor-page"></a>Razor 페이지에 장르별 검색 추가
 
 1. 다음 태그에 강조 표시된 것처럼 *Index.cshtml*[`<form>` 요소](https://developer.mozilla.org/docs/Web/HTML/Element/form) 를 업데이트합니다.
 
@@ -145,7 +145,7 @@ Index 페이지의 `OnGetAsync` 메서드를 다음 코드로 업데이트합니
 
 ::: moniker range="< aspnetcore-3.0"
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다.
 
 다음 섹션에서는 *장르* 또는 *이름* 으로 영화 검색이 추가됩니다.
 
@@ -196,11 +196,11 @@ Movies 페이지로 이동하고 `?searchString=Ghost`와 같은 쿼리 문자�
 
 ![URL에 ghost라는 단어가 추가되고 Ghostbusters 및 Ghostbusters 2라는 두 개의 반환된 영화 목록이 있는 Index 보기](search/_static/g2.png)
 
-ASP.NET Core 런타임은 [모델 바인딩](xref:mvc/models/model-binding)을 사용하여 쿼리 문자열(`?searchString=Ghost`) 또는 경로 데이터(`https://localhost:5001/Movies/Ghost`)에서 `SearchString` 속성의 값을 설정합니다. 모델 바인딩은 대/소문자를 구분하지 않습니다.
+ASP.NET Core 런타임은 [모델 바인딩](xref:mvc/models/model-binding)을 사용하여 쿼리 문자열(`?searchString=Ghost`) 또는 경로 데이터(`https://localhost:5001/Movies/Ghost`)에서 `SearchString` 속성의 값을 설정합니다. 모델 바인딩은 대/소문자를 구분하지 ‘않습니다’.
 
 그러나 사용자는 영화 검색을 위해 URL을 수정할 수 없습니다. 이 단계에서 동영상을 필터링하도록 UI가 추가됩니다. 경로 제약 조건 `"{searchString?}"`을 추가한 경우 이를 제거합니다.
 
-Pages/Movies/Index.cshtml 파일을 열고, 다음 코드에서 강조 표시된 `<form>` 태그를 추가합니다.
+*Pages/Movies/Index.cshtml* 파일을 열고 다음 코드에서 강조 표시된 `<form>` 태그를 추가합니다.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index2.cshtml?highlight=14-19&range=1-22)]
 
@@ -227,7 +227,7 @@ HTML `<form>` 태그는 다음과 같은 [태그 도우미](xref:mvc/views/tag-h
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]
 
-### <a name="add-search-by-genre-to-the-no-locrazor-page"></a>Razor 페이지에 장르별 검색 추가
+### <a name="add-search-by-genre-to-the-razor-page"></a>Razor 페이지에 장르별 검색 추가
 
 다음 태그에 강조 표시된 것처럼 *Index.cshtml*[`<form>` 요소](https://developer.mozilla.org/docs/Web/HTML/Element/form) 를 업데이트합니다.
 
