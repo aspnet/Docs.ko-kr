@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: f1c7acba0b7fb7dc07da576b188e580328ff4b89
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 6d82611eb2176126652d0d6c8db3779cde70dab5
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96901160"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586243"
 ---
 # <a name="deploy-an-app-to-app-service"></a>App Service에 앱 배포
 
@@ -141,10 +141,10 @@ ms.locfileid: "96901160"
     git remote add azure-prod GIT_DEPLOYMENT_URL
     ```
 
-    b. 로컬 기본 분기(마스터)를 *azure-prod* 원격의 기본 분기(마스터)로 푸시합니다.
+    b. 로컬 기본 분기(*main*)를 *azure-prod* 원격의 기본 분기(*main*)로 푸시합니다.
 
     ```console
-    git push azure-prod master
+    git push azure-prod main
     ```
 
     앞에서 만든 배포 자격 증명을 입력하라는 메시지가 표시됩니다. 명령 셸의 출력을 확인합니다. Azure에서 ASP.NET Core 앱을 원격으로 빌드합니다.
@@ -214,10 +214,10 @@ Visual Studio에서 앱을 빌드하고 Azure에 배포합니다. 웹앱 URL로 
     git remote add azure-staging <Git_staging_deployment_URL>
     ```
 
-    b. 로컬 기본 분기(마스터)를 *azure-staging* 원격의 기본 분기(마스터)로 푸시합니다.
+    b. 로컬 기본 분기(*main*)를 *azure-staging* 원격의 기본 분기(*main*)로 푸시합니다.
 
     ```console
-    git push azure-staging master
+    git push azure-staging main
     ```
 
     Azure에서 앱을 빌드하고 배포하는 동안 기다립니다.

@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 47bb9b96bd5565a3a67f3cbdf9a4b6bc1f987447
-ms.sourcegitcommit: ef8d8c79993a6608bf597ad036edcf30b231843f
+ms.openlocfilehash: 4afee8c09a3eb1030bf68e7591e1686b18d5f7e9
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99975263"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394449"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>2부. ASP.NET Core MVC 앱에 컨트롤러 추가
 
@@ -44,8 +44,8 @@ MVC 기반 앱에는 다음이 포함됩니다.
 
 MVC 앱에서는 뷰에 정보만 표시됩니다. 컨트롤러는 사용자 입력 및 상호 작용을 처리하고 응답합니다. 예를 들어 컨트롤러는 URL 세그먼트 및 쿼리 문자열 값을 처리하고 이러한 값을 모델에 전달합니다. 모델은 이러한 값을 사용하여 데이터베이스를 쿼리할 수 있습니다. 다음은 그 예입니다. 
 
-* `Https://localhost:5001/Home/Privacy`: `Home` 컨트롤러 및 `Privacy` 작업을 지정합니다.
-* `Https://localhost:5001/Movies/Edit/5`: `Movies` 컨트롤러 및 `Edit` 작업을 사용하여 ID가 5인 동영상을 편집하는 요청으로, 자습서의 뒷부분에서 자세히 설명합니다.
+* `https://localhost:5001/Home/Privacy`: `Home` 컨트롤러 및 `Privacy` 작업을 지정합니다.
+* `https://localhost:5001/Movies/Edit/5`: `Movies` 컨트롤러 및 `Edit` 작업을 사용하여 ID가 5인 동영상을 편집하는 요청으로, 자습서의 뒷부분에서 자세히 설명합니다.
 
 경로 데이터는 자습서의 뒷 부분에서 설명합니다.
 
@@ -166,7 +166,7 @@ URL에서 `name` 및 `numtimes`에 다른 값을 사용합니다. MVC [모델 �
 
 * 세 번째 URL 세그먼트는 경로 매개 변수 `id`와 일치합니다. 
 * `Welcome` 메서드는 `MapControllerRoute` 메서드의 URL 템플릿과 일치하는 `id` 매개 변수를 포함하고 있습니다.
-* 후행 `?`(`id?`의)는 `id` 매개 변수가 선택 사항임을 나타냅니다.
+* 후행 `?`는 [쿼리 문자열](https://wikipedia.org/wiki/Query_string)을 시작합니다.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie5/Startup.cs?name=snippet_route&highlight=5)]
 

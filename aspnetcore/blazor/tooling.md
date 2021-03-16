@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 6b61d9a4645d273b0c78fae0388d569771c43a2d
-ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.openlocfilehash: 19270bb74326dccfee9466b7c1fa61daeab805a2
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100536248"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394462"
 ---
 # <a name="tooling-for-aspnet-core-blazor"></a>ASP.NET Core Blazor용 도구
 
@@ -125,7 +125,7 @@ ASP.NET Core HTTPS 개발 인증서 신뢰에 대한 자세한 내용은 <xref:s
    위의 인수는 다음과 같습니다.
 
    * `{SERVER APP FOLDER}` 자리 표시자는 **`Server`** 프로젝트의 폴더(일반적으로 “`Server`”)입니다.
-   * `{PROJECT NAME}` 자리 표시자는 앱의 이름이며, 일반적으로 Blazor 프로젝트 템플릿에서 생성된 앱에서 솔루션 이름과 그 뒤에 오는 “`.Server`”를 기반으로 합니다.
+   * `{PROJECT NAME}` 자리 표시자는 앱의 이름이며 일반적으로 [Blazor 프로젝트 템플릿](xref:blazor/project-structure)에서 생성된 앱에서 솔루션 이름과 그 뒤에 오는 “`.Server`”를 기반으로 합니다.
 
    [Blazor WebAssembly 앱에서 SignalR 사용에 대한 자습서](xref:tutorials/signalr-blazor)의 다음 예제에서는 `Server`의 프로젝트 폴더 이름과 `BlazorWebAssemblySignalRApp.Server`의 프로젝트 이름을 사용합니다.
 
@@ -191,7 +191,7 @@ Blazor 프레임워크는 두 개의 각 Blazor 호스팅 모델용 새 앱을 �
 * Blazor WebAssembly 프로젝트 템플릿: `blazorwasm`
 * Blazor Server 프로젝트 템플릿: `blazorserver`
 
-Blazor의 호스팅 모델에 대한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.
+Blazor의 호스팅 모델에 대한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요. Blazor 프로젝트 템플릿에 대한 자세한 내용은 <xref:blazor/project-structure>를 참조하세요.
 
 템플릿 옵션은 명령 셸에서 도움말 옵션(`-h` 또는 `--help`)을 [`dotnet new`](/dotnet/core/tools/dotnet-new) CLI 명령에 전달하여 사용할 수 있습니다.
 
@@ -199,3 +199,8 @@ Blazor의 호스팅 모델에 대한 자세한 내용은 <xref:blazor/hosting-mo
 dotnet new blazorwasm -h
 dotnet new blazorserver -h
 ```
+
+## <a name="additional-resources"></a>추가 리소스
+
+* <xref:blazor/hosting-models>
+* <xref:blazor/project-structure>

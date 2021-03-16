@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/cicd
-ms.openlocfilehash: 2ac7a130d223b21330d0a797c1d460fc0cf467d7
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 18b2c6ce27132844402f88b2817a07e3588d81c1
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96901212"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586269"
 ---
 # <a name="continuous-integration-and-deployment"></a>연속 통합 및 배포
 
@@ -65,7 +65,7 @@ ms.locfileid: "96901212"
 1. 로컬 Git 리포지토리를 새로 만든 GitHub 리포지토리에 게시합니다. 다음 명령을 실행합니다.
 
     ```console
-    git push -u origin master
+    git push -u origin main
     ```
 
 1. 브라우저 창을 열고 `https://github.com/<GitHub_username>/simple-feed-reader/`로 이동합니다. 코드가 GitHub 리포지토리에 나타나는지 확인합니다.
@@ -118,7 +118,7 @@ ms.locfileid: "96901212"
 1. GitHub 계정에서 2단계 인증을 사용하도록 설정한 경우 개인용 액세스 토큰이 필요합니다. 이 경우 **GitHub 개인용 액세스 토큰으로 권한 부여** 링크를 클릭합니다. 도움말을 보려면 [공식 GitHub 개인용 액세스 토큰 만들기 지침](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)을 참조하세요. *리포지토리* 사용 권한 범위만 필요합니다. 그렇지 않으면 **OAuth를 사용하여 권한 부여** 단추를 클릭합니다.
 1. 메시지가 표시되면 GitHub 계정에 로그인합니다. 그런 다음, 권한 부여를 선택하여 Azure DevOps 조직에 대한 액세스 권한을 부여합니다. 성공하면 새 서비스 엔드포인트가 만들어집니다.
 1. **리포지토리** 단추 옆에 있는 줄임표 단추를 클릭합니다. 목록에서 *<GitHub_username>/simple-feed-reader* 리포지토리를 선택합니다. **선택** 단추를 클릭합니다.
-1. **수동 및 예약된 빌드의 기본 분기** 드롭다운에서 기본 분기(마스터)를 선택합니다. **계속** 단추를 클릭합니다. 템플릿 선택 페이지가 나타납니다.
+1. **수동 및 예약된 빌드의 기본 분기** 드롭다운에서 기본 분기(*main*)를 선택합니다. **계속** 단추를 클릭합니다. 템플릿 선택 페이지가 나타납니다.
 
 ### <a name="create-the-build-definition"></a>빌드 정의 만들기
 
@@ -128,11 +128,11 @@ ms.locfileid: "96901212"
 
 1. 템플릿 검색 결과가 표시됩니다. **ASP.NET Core** 템플릿 위로 마우스를 이동하고 **적용** 단추를 클릭합니다.
 1. 빌드 정의의 **작업** 탭이 나타납니다. **트리거** 탭을 클릭합니다.
-1. **지속적인 통합 사용** 상자를 선택합니다. **분기 필터** 섹션에서 **형식** 드롭다운이 *포함* 으로 설정되어 있는지 확인합니다. **분기 사양** 드롭다운을 *마스터* 로 설정합니다.
+1. **지속적인 통합 사용** 상자를 선택합니다. **분기 필터** 섹션에서 **형식** 드롭다운이 *포함* 으로 설정되어 있는지 확인합니다. **분기 사양** 드롭다운을 *main* 으로 설정합니다.
 
     ![지속적인 통합 사용 설정](media/cicd/vsts-enable-ci.png)
 
-    이러한 설정으로 인해 변경 내용이 GitHub 리포지토리의 기본 분기(마스터)로 푸시될 때 빌드가 트리거됩니다. 지속적인 통합은 [GitHub에 변경 내용 커밋 및 자동으로 Azure에 배포](#commit-changes-to-github-and-automatically-deploy-to-azure) 섹션에서 테스트됩니다.
+    이러한 설정으로 인해 변경 내용이 GitHub 리포지토리의 기본 분기(*main*)로 푸시될 때 빌드가 트리거됩니다. 지속적인 통합은 [GitHub에 변경 내용 커밋 및 자동으로 Azure에 배포](#commit-changes-to-github-and-automatically-deploy-to-azure) 섹션에서 테스트됩니다.
 
 1. **저장 및 큐에 넣기** 단추를 클릭하고 **저장** 옵션을 선택합니다.
 
@@ -176,7 +176,7 @@ ms.locfileid: "96901212"
 
     이 옵션을 사용하도록 설정하면 새 빌드를 사용할 수 있을 때마다 배포가 발생합니다.
 1. **지속적인 배포 트리거** 패널이 오른쪽에 나타납니다. 설정/해제 단추를 클릭하여 기능을 사용하도록 설정합니다. **끌어오기 요청 트리거** 를 사용하도록 설정할 필요는 없습니다.
-1. **빌드 분기 필터** 섹션에서 **추가** 드롭다운을 클릭합니다. **빌드 정의의 기본 분기** 옵션을 선택합니다. 이 필터를 설정하면 GitHub 리포지토리 기본 분기(마스터)의 빌드에 대해서만 릴리스가 트리거됩니다.
+1. **빌드 분기 필터** 섹션에서 **추가** 드롭다운을 클릭합니다. **빌드 정의의 기본 분기** 옵션을 선택합니다. 이 필터를 설정하면 GitHub 리포지토리 기본 분기(*main*)의 빌드에 대해서만 릴리스가 트리거됩니다.
 1. **저장** 단추를 클릭합니다. 결과 **저장** 모달 대화 상자에서 **확인** 단추를 클릭합니다.
 1. **환경 1** 상자를 클릭합니다. **환경** 패널이 오른쪽에 나타납니다. **환경 이름** 텍스트 상자의 *환경 1* 텍스트를 *프로덕션* 으로 변경합니다.
 
@@ -211,15 +211,15 @@ ms.locfileid: "96901212"
     git commit -a -m "upgraded to V4"
     ```
 
-1. 기본 분기(마스터)의 변경 내용을 GitHub 리포지토리의 *origin* 원격으로 푸시합니다. 다음 명령에서 자리 표시자 `{BRANCH}`를 기본 분기로 바꿉니다(`master` 사용).
+1. 기본 분기(*main*)의 변경 내용을 GitHub 리포지토리의 *origin* 원격으로 푸시합니다. 다음 명령에서 자리 표시자 `{BRANCH}`를 기본 분기로 바꿉니다(`main` 사용).
 
     ```console
     git push origin {BRANCH}
     ```
 
-    커밋이 GitHub 리포지토리의 기본 분기(마스터)에 표시됩니다.
+    커밋이 GitHub 리포지토리의 기본 분기(*main*)에 표시됩니다.
 
-    ![기본 분기(마스터)의 GitHub 커밋](media/cicd/github-commit.png)
+    ![기본 분기(main)의 GitHub 커밋](media/cicd/github-commit.png)
 
     빌드 정의의 **트리거** 탭에서 연속 통합을 사용하도록 설정했으므로 빌드가 트리거됩니다.
 

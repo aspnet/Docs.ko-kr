@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/test
-ms.openlocfilehash: 67ebfcd322ae08acf2fddae9bd6101f13fa77e7e
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 1a7b1114934f4fe7006d60bdbd0f06792d2c6935
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280702"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394553"
 ---
 # <a name="test-components-in-aspnet-core-blazor"></a>ASP.NET Core에서 구성 요소 테스트Blazor
 
@@ -100,7 +100,7 @@ bUnit은 [MSTest](/dotnet/core/testing/unit-testing-with-mstest), [NUnit](https:
 > [!NOTE]
 > 여러 테스트 프레임워크의 테스트 개념 및 테스트 구현은 비슷하지만 동일하지는 않습니다. 지침은 테스트 프레임워크 설명서를 참조하세요.
 
-다음은 Blazor 프로젝트 템플릿을 기반으로 하는 앱의 `Counter` 구성 요소에 대한 bUnit 테스트 구조를 보여 줍니다. `Counter` 구성 요소는 페이지에서 단추를 선택하는 사용자를 기반으로 카운터를 표시하고 증가시킵니다.
+다음은 [Blazor 프로젝트 템플릿](xref:blazor/project-structure)을 기반으로 하는 앱의 `Counter` 구성 요소에 대한 bUnit 테스트 구조를 보여 줍니다. `Counter` 구성 요소는 페이지에서 단추를 선택하는 사용자를 기반으로 카운터를 표시하고 증가시킵니다.
 
 ```razor
 @page "/counter"

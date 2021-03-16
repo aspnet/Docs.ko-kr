@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 811ec08eb457fcf0697a64dc4990d29082454f73
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: fee4473aede3fd213314c51a18284b4e4ad95b2b
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280861"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394670"
 ---
 # <a name="aspnet-core-blazor-state-management"></a>ASP.NET Core Blazor 상태 관리
 
@@ -254,7 +254,7 @@ ASP.NET Core 보호된 브라우저 스토리지는 [ASP.NET Core 데이터 보�
 
 구성 요소 대신 앱의 `_Imports.razor` 파일에 `@using` 지시문을 배치할 수 있습니다. `_Imports.razor` 파일을 사용하면 더 큰 앱 세그먼트나 전체 앱에서 네임스페이스를 사용할 수 있게 됩니다.
 
-Blazor Server 프로젝트 템플릿에 기반한 앱의 `Counter` 구성 요소에서 `currentCount` 값을 유지하려면 `ProtectedSessionStore.SetAsync`를 사용하도록 `IncrementCount` 메서드를 수정합니다.
+[Blazor Server 프로젝트 템플릿](xref:blazor/project-structure)을 기반으로 하는 앱의 `Counter` 구성 요소에서 `currentCount` 값을 유지하려면 `ProtectedSessionStore.SetAsync`를 사용하도록 `IncrementCount` 메서드를 수정합니다.
 
 ```csharp
 private async Task IncrementCount()
@@ -502,7 +502,7 @@ ASP.NET Core 보호된 브라우저 스토리지는 [ASP.NET Core 데이터 보�
 
 구성 요소 대신 `_Imports.razor` 파일에 `@using` 문을 배치할 수 있습니다. `_Imports.razor` 파일을 사용하면 더 큰 앱 세그먼트나 전체 앱에서 네임스페이스를 사용할 수 있게 됩니다.
 
-Blazor Server 프로젝트 템플릿에 기반한 앱의 `Counter` 구성 요소에서 `currentCount` 값을 유지하려면 `ProtectedSessionStore.SetAsync`를 사용하도록 `IncrementCount` 메서드를 수정합니다.
+[Blazor Server 프로젝트 템플릿](xref:blazor/project-structure)을 기반으로 하는 앱의 `Counter` 구성 요소에서 `currentCount` 값을 유지하려면 `ProtectedSessionStore.SetAsync`를 사용하도록 `IncrementCount` 메서드를 수정합니다.
 
 ```csharp
 private async Task IncrementCount()

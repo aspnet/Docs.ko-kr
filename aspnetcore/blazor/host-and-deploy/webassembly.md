@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 04eba2e004e920e9ca799b316781857f0b0b4ca3
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: bb45b763fb24b5270c92b3ffd18f3fbc3ba1093b
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100279785"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589428"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>ASP.NET Core 호스트 및 배포 Blazor WebAssembly
 
@@ -53,7 +53,13 @@ Blazor는 호스트를 사용하여 적절한 압축 파일을 제공합니다. 
   * [google/brotli GitHub 리포지토리](https://github.com/google/brotli)에서 JavaScript Brotli 디코더를 가져옵니다. 디코더 파일은 이름이 `decode.js`이며 리포지토리의 [`js` 폴더](https://github.com/google/brotli/tree/master/js)에 있습니다.
   
     > [!NOTE]
-    > 회귀는 [google/brotli GitHub 리포지토리](https://github.com/google/brotli)에서 `decode.js` 스크립트(`decode.min.js`)의 축소 버전으로 제공됩니다. [decode.min.js(google/brotli #881)의 TypeError](https://github.com/google/brotli/issues/881) 이슈가 해결될 때까지 스크립트를 직접 축소(예: [BuildBundlerMinifier 묶음 및 축소](xref:client-side/bundling-and-minification#configure-bundling-and-minification) 참조)하거나 [npm 패키지](https://www.npmjs.com/package/brotli)를 사용하세요. 이 섹션의 예제 코드는 **축소되지 않은** 버전의 스크립트를 사용합니다.
+    > 회귀는 [google/brotli GitHub 리포지토리](https://github.com/google/brotli)에서 `decode.js` 스크립트(`decode.min.js`)의 축소 버전으로 제공됩니다. [decode.min.js의 TypeError(google/brotli #881)](https://github.com/google/brotli/issues/881) 문제가 해결될 때까지 다음 접근 방법 중 하나를 사용합니다.
+    >
+    > * 축소되지 않은 버전의 스크립트를 일시적으로 사용합니다.
+    > * ASP.NET Core와 호환되는 타사 축소 도구를 사용하여 빌드 시 스크립트를 자동으로 축소합니다.
+    > * [npm 패키지](https://www.npmjs.com/package/brotli)를 사용합니다.
+    >
+    > 이 섹션의 예제 코드는 **축소되지 않은** 버전의 스크립트(`decode.js`)를 사용합니다.
 
   * 디코더를 사용하도록 앱을 업데이트합니다. `wwwroot/index.html`에서 닫는 `<body>` 태그 내부의 태그를 다음과 같이 변경합니다.
   
@@ -125,9 +131,11 @@ IIS 서버에 배포하는 경우 앱의 게시된 `web.config` 파일과 함께
 
 클라이언트 Blazor WebAssembly 앱이 서버 앱의 `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` 폴더에 서버 앱의 다른 정적 웹 자산과 함께 게시됩니다. 두 앱이 함께 배포됩니다. ASP.NET Core 앱을 호스트할 수 있는 웹 서버가 필요합니다. 호스트된 배포의 경우 Visual Studio는 **`Hosted`** (`dotnet new` 명령을 사용하는 경우 `-ho|--hosted`) 옵션이 선택된 **Blazor WebAssembly 앱** 프로젝트 템플릿([`dotnet new`](/dotnet/core/tools/dotnet-new) 명령을 사용하는 경우 `blazorwasm` 템플릿)을 포함합니다.
 
-ASP.NET Core 앱 호스팅 및 배포에 대한 자세한 내용은 <xref:host-and-deploy/index>를 참조하세요.
+자세한 내용은 다음 문서를 참조하세요.
 
-Azure App Service 배포에 대한 자세한 내용은 <xref:tutorials/publish-to-azure-webapp-using-vs>를 참조하세요.
+* ASP.NET Core 앱 호스팅 및 배포: <xref:host-and-deploy/index>
+* Azure App Service에 배포: <xref:tutorials/publish-to-azure-webapp-using-vs>
+* Blazor 프로젝트 템플릿: <xref:blazor/project-structure>
 
 ## <a name="hosted-deployment-with-multiple-blazor-webassembly-apps"></a>여러 Blazor WebAssembly 앱을 사용하여 호스트된 배포
 
@@ -163,7 +171,7 @@ Azure App Service 배포에 대한 자세한 내용은 <xref:tutorials/publish-t
     * `Server`(폴더)
     * `Shared`(폴더)
     * `{SOLUTION NAME}.sln`(파일)
-    
+
     자리 표시자 `{SOLUTION NAME}`은 솔루션의 이름입니다.
 
   * Blazor WebAssembly 프로젝트 템플릿의 `SecondClient` 폴더에 `SecondBlazorApp.Client`라는 Blazor WebAssembly 앱을 만듭니다.
@@ -544,7 +552,7 @@ URL을 다시 생성하려면 [URL 다시 생성 모듈](https://www.iis.net/dow
 
 이 섹션은 독립 실행형 Blazor WebAssembly 앱에만 적용됩니다. 호스트된 Blazor 앱은 이 섹션에 연결된 파일이 아니라 기본 ASP.NET Core 앱 `web.config` 파일을 사용합니다.
 
-`web.config`를 통해 IIS를 구성하여 독립 실행형 Blazor WebAssembly 앱을 위한 Brotli 또는 Gzip 압축 Blazor 자산을 제공할 수 있습니다. 구성 파일 예제는 [`web.config`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/web.config?raw=true)를 참조하세요.
+`web.config`를 통해 IIS를 구성하여 독립 실행형 Blazor WebAssembly 앱을 위한 Brotli 또는 Gzip 압축 Blazor 자산을 제공할 수 있습니다. 구성 파일 예제는 [`web.config`](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/blazor/host-and-deploy/webassembly/_samples/web.config?raw=true)를 참조하세요.
 
 다음 시나리오에서는 예제 `web.config` 파일의 추가 구성이 필요할 수 있습니다.
 
@@ -948,7 +956,7 @@ Blazor WebAssembly는 앱의 시작 파일을 다운로드할 때 응답에 대�
 
 ### <a name="troubleshoot-integrity-powershell-script"></a>무결성 PowerShell 스크립트 문제 해결
 
-[`integrity.ps1`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/integrity.ps1?raw=true) PowerShell 스크립트를 사용하여 게시 및 배포된 Blazor 앱의 유효성을 검사합니다. 이 스크립트는 앱에 Blazor 프레임워크가 식별할 수 없는 무결성 문제가 있는 경우 시작 지점으로 제공됩니다. 앱에서 스크립트 사용자 지정이 필요할 수 있습니다.
+[`integrity.ps1`](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/blazor/host-and-deploy/webassembly/_samples/integrity.ps1?raw=true) PowerShell 스크립트를 사용하여 게시 및 배포된 Blazor 앱의 유효성을 검사합니다. 이 스크립트는 앱에 Blazor 프레임워크가 식별할 수 없는 무결성 문제가 있는 경우 시작 지점으로 제공됩니다. 앱에서 스크립트 사용자 지정이 필요할 수 있습니다.
 
 이 스크립트는 `publish` 폴더의 파일과 배포된 앱에서 다운로드한 파일을 검사하여 무결성 해시가 포함된 다른 매니페스트의 문제를 검색합니다. 이 검사에서 다음과 같은 가장 일반적인 문제가 검색되어야 합니다.
 

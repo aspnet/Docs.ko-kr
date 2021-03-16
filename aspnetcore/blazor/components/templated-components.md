@@ -5,7 +5,7 @@ description: 템플릿 기반 구성 요소에서 하나 이상의 UI 템플릿�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/18/2020
+ms.date: 03/04/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/templated-components
-ms.openlocfilehash: 579cabd9e6b7141ec6af4c6e221b805272a2fe40
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 6c94218f3808baca18f23a53688bafdd6354e760
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280034"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589480"
 ---
 # <a name="aspnet-core-blazor-templated-components"></a>ASP.NET Core Blazor 템플릿 기반 구성 요소
 
@@ -33,133 +33,89 @@ ms.locfileid: "100280034"
 * 사용자가 테이블의 헤더, 행, 바닥글의 템플릿을 지정할 수 있게 해주는 테이블 구성 요소
 * 사용자가 목록으로 항목을 렌더링하기 위한 템플릿을 지정할 수 있게 해주는 목록 구성 요소
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([다운로드 방법](xref:index#how-to-download-a-sample))
-
-## <a name="template-parameters"></a>템플릿 매개 변수
-
 템플릿 기반 구성 요소는 <xref:Microsoft.AspNetCore.Components.RenderFragment> 또는 <xref:Microsoft.AspNetCore.Components.RenderFragment%601> 형식의 구성 요소 매개 변수를 하나 이상 지정하여 정의합니다. 렌더링 조각은 렌더링할 UI 세그먼트를 나타냅니다. <xref:Microsoft.AspNetCore.Components.RenderFragment%601>는 렌더링 조각을 호출할 때 지정할 수 있는 형식 매개 변수를 사용합니다.
 
-`TableTemplate` 구성 요소(`TableTemplate.razor`):
+다음 `TableTemplate` 구성 요소에서 보여 주는 것처럼 템플릿 기반 구성 요소는 일반적으로 형식이 지정되는 경우가 많습니다. 이 예에서 제네릭 형식 `<T>`는 `IReadOnlyList<T>` 값을 렌더링하는 데 사용됩니다. 이 경우에는 애완동물(pets) 테이블을 표시하는 구성 요소의 일련의 애완동물 행입니다.
 
-[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
+`Shared/TableTemplate.razor`:
 
-템플릿 기반 구성 요소를 사용하는 경우, 매개 변수 이름(다음 예제에서 `TableHeader` 및 `RowTemplate`)과 일치하는 자식 요소를 사용하여 템플릿 매개 변수를 지정할 수 있습니다.
+::: moniker range=">= aspnetcore-5.0"
 
-```razor
-<TableTemplate Items="pets">
-    <TableHeader>
-        <th>ID</th>
-        <th>Name</th>
-    </TableHeader>
-    <RowTemplate>
-        <td>@context.PetId</td>
-        <td>@context.Name</td>
-    </RowTemplate>
-</TableTemplate>
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Shared/templated-components/TableTemplate.razor)]
 
-@code {
-    private List<Pet> pets = new List<Pet>
-    {
-        new Pet { PetId = 2, Name = "Mr. Bigglesworth" },
-        new Pet { PetId = 4, Name = "Salem Saberhagen" },
-        new Pet { PetId = 7, Name = "K-9" }
-    };
+::: moniker-end
 
-    private class Pet
-    {
-        public int PetId { get; set; }
-        public string Name { get; set; }
-    }
-}
-```
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Shared/templated-components/TableTemplate.razor)]
+
+::: moniker-end
+
+템플릿 기반 구성 요소를 사용하는 경우, 매개 변수 이름과 일치하는 자식 요소를 사용하여 템플릿 매개 변수를 지정할 수 있습니다. 다음 예제에서는 `<TableHeader>...</TableHeader>` 및 `<RowTemplate>...<RowTemplate>`이 `TableTemplate` 구성 요소의 `TableHeader` 및 `RowTemplate`용 <xref:Microsoft.AspNetCore.Components.RenderFragment%601> 템플릿을 제공합니다.
+
+래핑 자식 요소 없이 암시적 자식 콘텐츠의 콘텐츠 매개 변수 이름을 지정하려는 경우 구성 요소에서 `Context` 특성을 지정합니다. 다음 예제에서 `Context` 특성은 `TableTemplate` 요소에 표시되고 모든 <xref:Microsoft.AspNetCore.Components.RenderFragment%601> 템플릿 매개 변수에 적용됩니다.
+
+`Pages/Pets.razor`:
+
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/templated-components/Pets1.razor)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/templated-components/Pets1.razor)]
+
+::: moniker-end
+
+또는 <xref:Microsoft.AspNetCore.Components.RenderFragment%601> 자식 요소의 `Context` 특성을 사용하여 매개 변수 이름을 변경할 수 있습니다. 다음 예제에서는 `RowTemplate`에서 `TableTemplate` 대신 `Context`가 설정됩니다.
+
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/templated-components/Pets2.razor?name=snippet&highlight=6)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/templated-components/Pets2.razor?name=snippet&highlight=6)]
+
+::: moniker-end
+
+<xref:Microsoft.AspNetCore.Components.RenderFragment%601> 형식의 구성 요소 인수에 `context`라는 암시적 매개 변수가 있는데, 이것을 사용할 수 있습니다. 다음 예제에서는 `Context`가 설정되어 있지 않습니다. `@context.{PROPERTY}`는 템플릿에 애완동물 값을 제공합니다. 여기서 `{PROPERTY}`는 `Pet` 속성입니다.
+
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/templated-components/Pets3.razor?name=snippet&highlight=7-8)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/templated-components/Pets3.razor?name=snippet&highlight=7-8)]
+
+::: moniker-end
+
+제네릭 형식 구성 요소를 사용할 때 가능한 경우 형식 매개 변수가 유추됩니다. 그러나 형식 매개 변수와 일치하는 이름이 있는 특성을 사용하여 형식을 명시적으로 지정할 수 있습니다(이전 예제의 `TItem`).
+
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/templated-components/Pets4.razor?name=snippet&highlight=1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/templated-components/Pets4.razor?name=snippet&highlight=1)]
+
+::: moniker-end
+
+## <a name="generic-type-constraints"></a>제네릭 형식 제약 조건
 
 > [!NOTE]
 > 제네릭 형식 제약 조건은 향후 릴리스에서 지원될 예정입니다. 자세한 내용은 [Allow generic type constraints(dotnet/aspnetcore #8433)](https://github.com/dotnet/aspnetcore/issues/8433)(제네릭 형식 제약 조건 허용)를 참조하세요.
 
-## <a name="template-context-parameters"></a>템플릿 컨텍스트 매개 변수
-
-요소로 전달된 <xref:Microsoft.AspNetCore.Components.RenderFragment%601> 형식의 구성 요소 인수에는 `context`라는 암시적 매개 변수(예: 위의 코드 샘플에서 `@context.PetId`)가 있지만, 자식 요소의 `Context` 특성을 사용하여 매개 변수 이름을 변경할 수 있습니다. 다음 예제에서 `RowTemplate` 요소의 `Context` 특성은 `pet` 매개 변수를 지정합니다.
-
-```razor
-<TableTemplate Items="pets">
-    <TableHeader>
-        <th>ID</th>
-        <th>Name</th>
-    </TableHeader>
-    <RowTemplate Context="pet">
-        <td>@pet.PetId</td>
-        <td>@pet.Name</td>
-    </RowTemplate>
-</TableTemplate>
-
-@code {
-    ...
-}
-```
-
-또는 구성 요소 요소에 `Context` 특성을 지정할 수 있습니다. 지정한 `Context` 특성은 지정한 모든 템플릿 매개 변수에 적용됩니다. 이 기능은 래핑 자식 요소 없이 암시적 자식 콘텐츠의 콘텐츠 매개 변수 이름을 지정하려는 경우에 유용할 수 있습니다. 다음 예제에서 `Context` 특성은 `TableTemplate` 요소에 표시되고 모든 템플릿 매개 변수에 적용됩니다.
-
-```razor
-<TableTemplate Items="pets" Context="pet">
-    <TableHeader>
-        <th>ID</th>
-        <th>Name</th>
-    </TableHeader>
-    <RowTemplate>
-        <td>@pet.PetId</td>
-        <td>@pet.Name</td>
-    </RowTemplate>
-</TableTemplate>
-
-@code {
-    ...
-}
-```
-
-## <a name="generic-typed-components"></a>제네릭 형식 구성 요소
-
-템플릿 기반 구성 요소는 제네릭 형식인 경우가 많습니다. 예를 들어 제네릭 `ListViewTemplate` 구성 요소(`ListViewTemplate.razor`)를 사용하여 `IEnumerable<T>` 값을 렌더링할 수 있습니다. 제네릭 구성 요소를 정의하려면 [`@typeparam`](xref:mvc/views/razor#typeparam) 지시문을 사용하여 형식 매개 변수를 지정합니다.
-
-[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
-
-제네릭 형식 구성 요소를 사용하는 경우, 가능하면 형식 매개 변수가 유추됩니다.
-
-```razor
-<ListViewTemplate Items="pets">
-    <ItemTemplate Context="pet">
-        <li>@pet.Name</li>
-    </ItemTemplate>
-</ListViewTemplate>
-
-@code {
-    private List<Pet> pets = new List<Pet>
-    {
-        new Pet { Name = "Mr. Bigglesworth" },
-        new Pet { Name = "Salem Saberhagen" },
-        new Pet { Name = "K-9" }
-    };
-
-    private class Pet
-    {
-        public string Name { get; set; }
-    }
-}
-```
-
-불가능한 경우 형식 매개 변수 이름과 일치하는 특성을 사용하여 형식 매개 변수를 명시적으로 지정해야 합니다. 다음 예제에서 `TItem="Pet"`은 형식을 지정합니다.
-
-```razor
-<ListViewTemplate Items="pets" TItem="Pet">
-    <ItemTemplate Context="pet">
-        <li>@pet.Name</li>
-    </ItemTemplate>
-</ListViewTemplate>
-
-@code {
-    ...
-}
-```
-
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * <xref:blazor/webassembly-performance-best-practices#define-reusable-renderfragments-in-code>

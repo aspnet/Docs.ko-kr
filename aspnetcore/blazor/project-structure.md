@@ -19,20 +19,22 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/project-structure
-ms.openlocfilehash: 94b5a3d8c0f5b94ecac32e6fc5f94efeb8337f37
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: fe42c2d43b79ea959bb0ba8e5b96e6c865b2a416
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280361"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394878"
 ---
 # <a name="aspnet-core-blazor-project-structure"></a>ASP.NET Core Blazor 프로젝트 구조
 
-이 문서에서는 Blazor 프로젝트 템플릿에서 생성된 Blazor 앱을 구성하는 파일과 폴더를 설명합니다.
+이 문서에서는 Blazor 프레임워크의 프로젝트 템플릿 중 하나에서 생성된 Blazor 앱을 구성하는 파일과 폴더를 설명합니다. 도구를 사용하여 Blazor 프로젝트 템플릿에서 Blazor 앱을 만드는 방법에 대한 자세한 내용은 <xref:blazor/tooling>을 참조하세요. Blazor의 호스팅 모델인 Blazor WebAssembly 및 Blazor Server에 대한 자세한 내용은 <xref:blazor/hosting-models>를 참조하세요.
 
 ## Blazor WebAssembly
 
-Blazor WebAssembly 템플릿(`blazorwasm`)은 Blazor WebAssembly 앱의 초기 파일 및 디렉터리 구조를 만듭니다. 이 앱은 정적 자산에서 데이터를 로드하는 `FetchData` 구성 요소의 데모 코드, `weather.json`, `Counter` 구성 요소와의 사용자 상호 작용으로 채워집니다.
+Blazor WebAssembly 프로젝트 템플릿: `blazorwasm`
+
+Blazor WebAssembly 템플릿은 Blazor WebAssembly 앱의 초기 파일 및 디렉터리 구조를 만듭니다. 이 앱은 정적 자산에서 데이터를 로드하는 `FetchData` 구성 요소의 데모 코드, `weather.json`, `Counter` 구성 요소와의 사용자 상호 작용으로 채워집니다.
 
 * `Pages` 폴더: Blazor 앱을 구성하는 라우팅 가능한 구성 요소/페이지(`.razor`)가 포함되어 있습니다. 각 페이지에 대한 경로는 [`@page`](xref:mvc/views/razor#page) 지시어를 사용하여 지정합니다. 이 템플릿은 다음 구성 요소를 포함합니다.
   * `Counter` 구성 요소(`Counter.razor`): 카운터 페이지를 구현합니다.
@@ -104,7 +106,9 @@ Blazor WebAssembly 템플릿(`blazorwasm`)은 Blazor WebAssembly 앱의 초기 �
 
 ## Blazor Server
 
-Blazor Server 템플릿(`blazorserver`)은 Blazor Server 앱의 초기 파일 및 디렉터리 구조를 만듭니다. 이 앱은 등록된 서비스에서 데이터를 로드하는 `FetchData` 구성 요소의 데모 코드, `WeatherForecastService`, `Counter` 구성 요소와의 사용자 상호 작용으로 채워집니다.
+Blazor Server 프로젝트 템플릿: `blazorserver`
+
+Blazor Server 템플릿은 Blazor Server 앱의 초기 파일 및 디렉터리 구조를 만듭니다. 이 앱은 등록된 서비스에서 데이터를 로드하는 `FetchData` 구성 요소의 데모 코드, `WeatherForecastService`, `Counter` 구성 요소와의 사용자 상호 작용으로 채워집니다.
 
 * `Data` 폴더: 앱의 `FetchData` 구성 요소에 예제 날씨 데이터를 제공하는 `WeatherForecastService` 구현과 `WeatherForecast` 클래스가 포함되어 있습니다.
 
@@ -158,3 +162,8 @@ Blazor Server 템플릿(`blazorserver`)은 Blazor Server 앱의 초기 파일 �
   * `Configure`: 앱의 요청 처리 파이프라인을 구성합니다.
     * <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A>는 브라우저와의 실시간 연결을 위해 엔드포인트를 설정하도록 호출됩니다. 연결은 애플리케이션에 앱에 실시간 웹 기능을 추가하기 위한 프레임워크인 [SignalR](xref:signalr/introduction)를 사용하여 만들어집니다.
     * [`MapFallbackToPage("/_Host")`](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*)는 앱의 루트 페이지(`Pages/_Host.cshtml`)를 설정하고 탐색을 사용하도록 설정하기 위해 호출됩니다.
+
+## <a name="additional-resources"></a>추가 리소스
+
+* <xref:blazor/tooling>
+* <xref:blazor/hosting-models>

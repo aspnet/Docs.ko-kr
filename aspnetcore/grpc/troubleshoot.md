@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/troubleshoot
-ms.openlocfilehash: 61d4d2204886f26b4ff55bc876825012809f1dfa
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 1fd89059183300993c7fa78aa8dab1bda247a530
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253100"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586984"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>.NET Core에서 gRPC 문제 해결
 
@@ -87,19 +87,24 @@ var client = new Greet.GreeterClient(channel);
 
 ## <a name="call-insecure-grpc-services-with-net-core-client"></a>.NET Core 클라이언트를 사용하여 안전하지 않은 gRPC 서비스 호출
 
-앱이 .NET Core 3.x를 사용하는 경우 .NET Core 클라이언트로 안전하지 않은 gRPC 서비스를 호출하려면 추가 구성이 필요합니다. gRPC 클라이언트는 `System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport` 스위치를 `true`로 설정하고 서버 주소에 `http`를 사용해야 합니다.
+.NET gRPC 클라이언트는 서버 주소에서 `http`를 지정하여 안전하지 않은 gRPC 서비스를 호출할 수 있습니다. 예들 들어 `GrpcChannel.ForAddress("http://localhost:5000")`입니다.
 
-```csharp
-// This switch must be set before creating the GrpcChannel/HttpClient.
-AppContext.SetSwitch(
-    "System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+앱이 사용하는 .NET 버전에 따라 안전하지 않은 gRPC 서비스를 호출하기 위한 몇 가지 추가 요구 사항이 있습니다.
 
-// The port number(5000) must match the port of the gRPC server.
-var channel = GrpcChannel.ForAddress("http://localhost:5000");
-var client = new Greet.GreeterClient(channel);
-```
+* .NET 5 이상에는 [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client) 버전 2.32.0 이상이 필요합니다.
+* .NET Core 3.x에는 추가 구성이 필요합니다. 앱은 `System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport` 스위치를 `true`로 설정해야 합니다.
+    
+    ```csharp
+    // This switch must be set before creating the GrpcChannel/HttpClient.
+    AppContext.SetSwitch(
+        "System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+    
+    // The port number(5000) must match the port of the gRPC server.
+    var channel = GrpcChannel.ForAddress("http://localhost:5000");
+    var client = new Greet.GreeterClient(channel);
+    ```
 
-.NET 5 앱에는 추가 구성이 필요하지 않지만 안전하지 않은 gRPC 서비스를 호출하려면 `Grpc.Net.Client` 버전 2.32.0 이상을 사용해야 합니다.
+`System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport` 스위치는 .NET Core 3.x에만 필요합니다. .NET 5에서는 아무것도 하지 않으며 필요하지도 않습니다.
 
 ## <a name="unable-to-start-aspnet-core-grpc-app-on-macos"></a>macOS에서 ASP.NET Core gRPC 앱을 시작할 수 없음
 

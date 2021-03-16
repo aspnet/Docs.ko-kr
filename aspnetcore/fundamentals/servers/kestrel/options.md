@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel/options
-ms.openlocfilehash: 198d509a68224077d3764cc836121b89e96c6853
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 48b4af2dfc925c4444c2bd0e43d04f2f0f3ddd17
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253870"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587010"
 ---
 # <a name="configure-options-for-the-aspnet-core-kestrel-web-server"></a>ASP.NET Core Kestrel 웹 서버의 옵션 구성
 
 Kestrel 웹 서버에는 인터넷 연결 배포에 특히 유용한 제약 조건 구성 옵션이 있습니다.
 
-`ConfigureWebHostDefaults`를 호출한 후 추가 구성을 제공하려면 `ConfigureKestrel`을 사용합니다.
+<xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults%2A>를 호출한 후 추가 구성을 제공하려면 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.ConfigureKestrel%2A>을 사용합니다.
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -53,7 +53,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-이 문서의 뒷부분에 나오는 예제에서 Kestrel 옵션은 C# 코드로 구성됩니다. Kestrel 옵션은 [구성 공급자](xref:fundamentals/configuration/index)를 사용하여 설정할 수도 있습니다. 예를 들어 [파일 구성 공급자](xref:fundamentals/configuration/index#file-configuration-provider)는 *appsettings.json* 또는 *appsettings.{Environment}.json* 파일에서 Kestrel 구성을 로드할 수 있습니다.
+이 문서의 뒷부분에 나오는 예제에서 Kestrel 옵션은 C# 코드로 구성됩니다. Kestrel 옵션은 [구성 공급자](xref:fundamentals/configuration/index)를 사용하여 설정할 수도 있습니다. 예를 들어 [파일 구성 공급자](xref:fundamentals/configuration/index#file-configuration-provider)는 `appsettings.json` 또는 `appsettings.{Environment}.json` 파일에서 Kestrel 구성을 로드할 수 있습니다.
 
 ```json
 {
@@ -104,7 +104,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 * 호스트를 빌드할 때 Kestrel을 구성합니다.
 
-  *Program.cs* 에서 구성의 `Kestrel` 섹션을 Kestrel의 구성으로 로드합니다.
+  `Program.cs`에서 구성의 `Kestrel` 섹션을 Kestrel의 구성으로 로드합니다.
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -136,7 +136,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 ### <a name="maximum-client-connections"></a>최대 클라이언트 연결
 
-<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MaxConcurrentConnections>
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MaxConcurrentConnections><br>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MaxConcurrentUpgradedConnections>
 
 다음 코드를 사용하여 전체 앱에 대한 동시 개방 TCP 연결의 최대 수를 설정할 수 있습니다.
@@ -176,7 +176,7 @@ public IActionResult MyActionMethod()
 
 ### <a name="minimum-request-body-data-rate"></a>최소 요청 본문 데이터 속도
 
-<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinRequestBodyDataRate>
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinRequestBodyDataRate><br>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinResponseDataRate>
 
 Kestrel은 데이터가 지정된 속도(바이트/초)로 도착하는지 1초마다 확인합니다. 속도가 최소 아래로 떨어지면 연결이 시간 초과됩니다. 유예 기간은 Kestrel에서 클라이언트가 전송 속도를 최소로 높일 수 있는 시간입니다. 이 기간에는 속도가 확인되지 않습니다. 유예 기간은 TCP 느린 시작으로 인해 느린 속도로 처음에 데이터를 보내는 연결 중단을 방지하는 데 도움이 됩니다.
@@ -185,7 +185,7 @@ Kestrel은 데이터가 지정된 속도(바이트/초)로 도착하는지 1초�
 
 최소 속도는 응답에도 적용됩니다. 요청 제한 및 응답 제한을 설정하는 코드는 속성 및 인터페이스 이름에 `RequestBody` 또는 `Response`를 갖는 것을 제외하고 동일합니다.
 
-*Program.cs* 에서 최소 데이터 속도를 구성하는 방법을 보여 주는 예제는 다음과 같습니다.
+`Program.cs`에서 최소 데이터 속도를 구성하는 방법을 보여 주는 예제는 다음과 같습니다.
 
 [!code-csharp[](samples/3.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=6-11)]
 
@@ -193,9 +193,9 @@ Kestrel은 데이터가 지정된 속도(바이트/초)로 도착하는지 1초�
 
 [!code-csharp[](samples/3.x/KestrelSample/Startup.cs?name=snippet_Limits&highlight=6-21)]
 
-이전 샘플에서 참조하는 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinResponseDataRateFeature>는 HTTP/2 요청의 `HttpContext.Features`에 없습니다. 프로토콜의 요청 멀티플렉싱 지원 때문에 HTTP/2의 경우 일반적으로 각 요청을 기준으로 속도 제한을 수정할 수 없습니다. 그러나 HTTP/2 요청에 대해서도 `IHttpMinRequestBodyDataRateFeature.MinDataRate`를 `null`로 설정하여 요청별 읽기 속도 제한을 *완전히 비활성화* 할 수 있으므로 HTTP/2 요청에 대한 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinRequestBodyDataRateFeature>는 여전히 존재합니다`HttpContext.Features`. `IHttpMinRequestBodyDataRateFeature.MinDataRate` 읽기를 시도하거나 `null`이 아닌 값으로 설정하려고 하면 HTTP/2 요청이 있을 때 `NotSupportedException`이 throw됩니다.
+이전 샘플에서 참조하는 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinResponseDataRateFeature>는 HTTP/2 요청의 <xref:Microsoft.AspNetCore.Http.HttpContext.Features?displayProperty=nameWithType>에 없습니다. 프로토콜의 요청 멀티플렉싱 지원 때문에 HTTP/2의 경우 일반적으로 각 요청을 기준으로 속도 제한을 수정할 수 없습니다. 그러나 HTTP/2 요청에 대해서도 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinResponseDataRateFeature.MinDataRate?displayProperty=nameWithType>를 `null`로 설정하여 요청별 읽기 속도 제한을 *완전히 비활성화* 할 수 있으므로 HTTP/2 요청에 대한 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinRequestBodyDataRateFeature>는 여전히 존재합니다`HttpContext.Features`. `IHttpMinRequestBodyDataRateFeature.MinDataRate` 읽기를 시도하거나 `null`이 아닌 값으로 설정하려고 하면 HTTP/2 요청이 있을 때 <xref:System.NotSupportedException>이 throw됩니다.
 
-`KestrelServerOptions.Limits`를 통해 구성된 서버 전체 속도 제한은 여전히 HTTP/1.x 및 HTTP/2 연결 모두에 적용됩니다.
+<xref:Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions.Limits?displayProperty=nameWithType>를 통해 구성된 서버 전체 속도 제한은 여전히 HTTP/1.x 및 HTTP/2 연결 모두에 적용됩니다.
 
 ### <a name="request-headers-timeout"></a>요청 헤더 시간 제한
 
@@ -207,9 +207,13 @@ Kestrel은 데이터가 지정된 속도(바이트/초)로 도착하는지 1초�
 
 ## <a name="http2-limits"></a>HTTP/2 제한
 
+이 섹션의 제한은 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.Http2?displayProperty=nameWithType>에 설정되어 있습니다.
+
 ### <a name="maximum-streams-per-connection"></a>연결당 최대 스트림
 
-`Http2.MaxStreamsPerConnection`은 HTTP/2 연결당 동시 요청 스트림 수를 제한합니다. 초과 스트림은 거부됩니다.
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.Http2Limits.MaxStreamsPerConnection>
+
+HTTP/2 연결당 동시 요청 스트림 수를 제한합니다. 초과 스트림은 거부됩니다.
 
 ```csharp
 webBuilder.ConfigureKestrel(serverOptions =>
@@ -222,7 +226,9 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### <a name="header-table-size"></a>헤더 테이블 크기
 
-HPACK 디코더는 HTTP/2 연결에 대한 HTTP 헤더의 압축을 풉니다. `Http2.HeaderTableSize`는 HPACK 디코더가 사용하는 헤더 압축 테이블의 크기를 제한합니다. 값은 8진수로 제공되며 영(0)보다 커야 합니다.
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.Http2Limits.HeaderTableSize>
+
+HPACK 디코더는 HTTP/2 연결에 대한 HTTP 헤더의 압축을 풉니다. `HeaderTableSize`는 HPACK 디코더가 사용하는 헤더 압축 테이블의 크기를 제한합니다. 값은 8진수로 제공되며 영(0)보다 커야 합니다.
 
 ```csharp
 webBuilder.ConfigureKestrel(serverOptions =>
@@ -235,7 +241,9 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### <a name="maximum-frame-size"></a>최대 프레임 크기
 
-`Http2.MaxFrameSize`는 서버에서 받거나 보낸 HTTP/2 연결 프레임 페이로드의 최대 허용 크기를 나타냅니다. 값은 8진수로 제공되며 2^14(16,384)와 2^24-1(16,777,215) 사이여야 합니다.
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.Http2Limits.MaxFrameSize>
+
+서버에서 받거나 보낸 HTTP/2 연결 프레임 페이로드의 최대 허용 크기를 나타냅니다. 값은 8진수로 제공되며 2^14(16,384)와 2^24-1(16,777,215) 사이여야 합니다.
 
 ```csharp
 webBuilder.ConfigureKestrel(serverOptions =>
@@ -248,7 +256,9 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### <a name="maximum-request-header-size"></a>최대 요청 헤더 크기
 
-`Http2.MaxRequestHeaderFieldSize`는 요청 헤더 값의 8진수로 허용되는 최대 크기를 나타냅니다. 이 한도는 모두 압축된 표현과 압축되지 않은 표현으로 이름과 값 모두에 적용됩니다. 값은 0보다 커야 합니다(0).
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.Http2Limits.MaxRequestHeaderFieldSize>
+
+요청 헤더 값의 8진수로 허용되는 최대 크기를 나타냅니다. 이 한도는 모두 압축된 표현과 압축되지 않은 표현으로 이름과 값 모두에 적용됩니다. 값은 0보다 커야 합니다(0).
 
 ```csharp
 webBuilder.ConfigureKestrel(serverOptions =>
@@ -261,7 +271,9 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### <a name="initial-connection-window-size"></a>초기 연결 창 크기
 
-`Http2.InitialConnectionWindowSize`는 연결당 모든 요청(스트림)을 통해 한 번에 집계하는 서버 버퍼의 최대 요청 본문 데이터를 바이트 단위로 나타냅니다. 요청은 `Http2.InitialStreamWindowSize`에 의해서도 제한됩니다. 값은 65,535보다 크거나 같아야 하며 2^31(2,147,483,648)보다 작아야 합니다.
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.Http2Limits.InitialConnectionWindowSize>
+
+연결당 모든 요청(스트림)을 통해 한 번에 집계하는 서버 버퍼의 최대 요청 본문 데이터를 바이트 단위로 나타냅니다. 요청은 `Http2.InitialStreamWindowSize`에 의해서도 제한됩니다. 값은 65,535보다 크거나 같아야 하며 2^31(2,147,483,648)보다 작아야 합니다.
 
 ```csharp
 webBuilder.ConfigureKestrel(serverOptions =>
@@ -274,7 +286,9 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### <a name="initial-stream-window-size"></a>초기 스트림 창 크기
 
-`Http2.InitialStreamWindowSize`는 요청(스트림)당 한 번에 서버 버퍼의 최대 요청 본문 데이터를 바이트 단위로 나타냅니다. 요청은 `Http2.InitialConnectionWindowSize`에 의해서도 제한됩니다. 값은 65,535보다 크거나 같아야 하며 2^31(2,147,483,648)보다 작아야 합니다.
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.Http2Limits.InitialStreamWindowSize>
+
+요청(스트림)당 한 번에 서버 버퍼의 최대 요청 본문 데이터를 바이트 단위로 나타냅니다. 요청은 [`InitialConnectionWindowSize`](#initial-connection-window-size)에 의해서도 제한됩니다. 값은 65,535보다 크거나 같아야 하며 2^31(2,147,483,648)보다 작아야 합니다.
 
 ```csharp
 webBuilder.ConfigureKestrel(serverOptions =>
@@ -294,13 +308,13 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 HTTP/2 연결 유지 ping과 관련된 두 가지 구성 옵션이 있습니다.
 
-* `Http2.KeepAlivePingInterval`은 ping 간격을 구성하는 `TimeSpan`입니다. 서버가 이 기간 동안 프레임을 받지 못하면 클라이언트로 연결 유지 ping을 보냅니다. 이 옵션을 `TimeSpan.MaxValue`로 설정하면 연결 유지 ping을 사용할 수 없습니다. 기본값은 `TimeSpan.MaxValue`입니다.
-* `Http2.KeepAlivePingTimeout`은 ping 시간 제한을 구성하는 `TimeSpan`입니다. 서버가 이 시간 제한 동안 응답 ping과 같은 프레임을 받지 못하면 연결이 닫힙니다. 이 옵션을 `TimeSpan.MaxValue`로 설정하면 연결 유지 시간 제한을 사용할 수 없습니다. 기본값은 20초입니다.
+* <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Http2Limits.KeepAlivePingDelay>은 ping 간격을 구성하는 <xref:System.TimeSpan>입니다. 서버가 이 기간 동안 프레임을 받지 못하면 클라이언트로 연결 유지 ping을 보냅니다. 이 옵션을 <xref:System.TimeSpan.MaxValue?displayProperty=nameWithType>로 설정하면 연결 유지 ping을 사용할 수 없습니다. 기본값은 <xref:System.TimeSpan.MaxValue?displayProperty=nameWithType>입니다.
+* <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Http2Limits.KeepAlivePingTimeout>은 ping 시간 제한을 구성하는 <xref:System.TimeSpan>입니다. 서버가 이 시간 제한 동안 응답 ping과 같은 프레임을 받지 못하면 연결이 닫힙니다. 이 옵션을 <xref:System.TimeSpan.MaxValue?displayProperty=nameWithType>로 설정하면 연결 유지 시간 제한을 사용할 수 없습니다. 기본값은 20초입니다.
 
 ```csharp
 webBuilder.ConfigureKestrel(serverOptions =>
 {
-    serverOptions.Limits.Http2.KeepAlivePingInterval = TimeSpan.FromSeconds(30);
+    serverOptions.Limits.Http2.KeepAlivePingDelay = TimeSpan.FromSeconds(30);
     serverOptions.Limits.Http2.KeepAlivePingTimeout = TimeSpan.FromSeconds(60);
 });
 ```

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 515da543fc6b6cca0b90968b154d91b611ea3345
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 9e7063297e124aabbdf1defd01ac90f735ef5321
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280554"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395008"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>ASP.NET Core Blazor WebAssembly를 사용하여 프로그레시브 웹 애플리케이션 빌드
 
@@ -104,15 +104,17 @@ dotnet new blazorwasm -o MyBlazorPwa --pwa
   
   이전 명령에서 `-o|--output` 옵션은 `MyBlazorPwa`라는 앱의 새 폴더를 만듭니다.
   
-  최신 릴리스용 앱을 변환하지 않는 경우 `-f|--framework` 옵션을 전달합니다. 다음 예제에서는 ASP.NET Core 버전 3.1용 앱을 만듭니다.
+  **최신 릴리스용 앱을 변환하지 않는 경우** `-f|--framework` 옵션을 전달합니다. 다음 예제에서는 ASP.NET Core 버전 3.1용 앱을 만듭니다.
   
   ```dotnetcli
   dotnet new blazorwasm -o MyBlazorPwa --pwa -f netcoreapp3.1
   ```
 
-* 5\.0 릴리스 참조 소스 및 자산에 연결되는 다음 URL에서 ASP.NET Core GitHub 리포지토리로 이동합니다. 5\.0 릴리스용 앱을 변환하지 않는 경우에는 앱에 적용되는 **스위치 분기 또는 태그** 드롭다운 목록에서 작업 중인 릴리스를 선택합니다.
+* `main` 분기 참조 원본 및 자산에 연결되는 다음 URL에서 ASP.NET Core GitHub 리포지토리로 이동합니다. 앱에 적용되는 **Switch branches or tags**(분기 또는 태그 전환) 드롭다운 목록에서 작업 중인 릴리스를 선택합니다.
 
-  [dotnet/aspnetcore(릴리스 5.0)Blazor WebAssembly 프로젝트 템플릿 `wwwroot` 폴더](https://github.com/dotnet/aspnetcore/tree/release/5.0/src/ProjectTemplates/Web.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+  [Blazor WebAssembly 프로젝트 템플릿 `wwwroot` 폴더(dotnet/aspnetcore GitHub 리포지토리 `main` 분기)](https://github.com/dotnet/aspnetcore/tree/main/src/ProjectTemplates/Web.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+
+  [!INCLUDE[](~/blazor/includes/aspnetcore-repo-ref-source-links.md)]
 
 ::: moniker-end
 
@@ -128,12 +130,14 @@ dotnet new blazorwasm -o MyBlazorPwa --pwa
 
 * 3\.1 릴리스 참조 소스 및 자산에 연결되는 다음 URL에서 ASP.NET Core GitHub 리포지토리로 이동합니다.
 
-  [dotnet/aspnetcore(릴리스 3.1) Blazor WebAssembly 프로젝트 템플릿 `wwwroot` 폴더](https://github.com/dotnet/aspnetcore/tree/release/3.1/src/ProjectTemplates/ComponentsWebAssembly.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+  [Blazor WebAssembly 프로젝트 템플릿 `wwwroot` 폴더(dotnet/aspnetcore GitHub 리포지토리 `release 3.1` 분기)](https://github.com/dotnet/aspnetcore/tree/release/3.1/src/ProjectTemplates/ComponentsWebAssembly.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
 
   > [!NOTE]
-  > ASP.NET Core 3.1 릴리스 후에 변경된 Blazor WebAssembly 프로젝트 템플릿의 URL 5\.0 이상의 참조 자산은 다음 URL에서 사용할 수 있습니다.
+  > ASP.NET Core 3.1 릴리스 후에 변경된 Blazor WebAssembly 프로젝트 템플릿의 URL 릴리스에 대한 참조 자산은 ASP.NET Core 참조 원본에서 사용할 수 있습니다. 앱에 적용되는 **Switch branches or tags**(분기 또는 태그 전환) 드롭다운 목록에서 작업 중인 릴리스를 선택합니다.
   >
-  > [dotnet/aspnetcore(릴리스 5.0)Blazor WebAssembly 프로젝트 템플릿 `wwwroot` 폴더](https://github.com/dotnet/aspnetcore/tree/release/5.0/src/ProjectTemplates/Web.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+  > [Blazor WebAssembly 프로젝트 템플릿 `wwwroot` 폴더(dotnet/aspnetcore GitHub 리포지토리 `main` 분기)](https://github.com/dotnet/aspnetcore/tree/main/src/ProjectTemplates/Web.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+  >
+  > [!INCLUDE[](~/blazor/includes/aspnetcore-repo-ref-source-links.md)]
 
 ::: moniker-end
 

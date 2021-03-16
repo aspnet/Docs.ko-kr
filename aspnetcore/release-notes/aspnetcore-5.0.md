@@ -18,18 +18,18 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: 5caa412773bf9c8e3bed5ebc529d48b886de6956
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 64e068194744d6c5495d8ecaf31076c7a1c1f349
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253074"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585801"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>ASP.NET Core 5.0의 새로운 기능
 
 이 문서에서는 ASP.NET Core 5.0의 가장 중요한 변경 내용을 중점적으로 설명하고 관련 문서의 링크를 제공합니다.
 
-## <a name="aspnet-core-mvc-and-no-locrazor-improvements"></a>ASP.NET Core MVC 및 Razor 개선 사항
+## <a name="aspnet-core-mvc-and-razor-improvements"></a>ASP.NET Core MVC 및 Razor 개선 사항
 
 ### <a name="model-binding-datetime-as-utc"></a>모델 바인딩 DateTime(UTC)
 
@@ -154,7 +154,7 @@ Blazor 프레임워크의 기본 제공 가상화 지원을 사용하여 구성 
 
 Blazor 이벤트는 이제 `ontoggle` DOM 이벤트를 지원합니다. 자세한 내용은 <xref:blazor/components/event-handling#event-argument-types>를 참조하세요.
 
-### <a name="set-ui-focus-in-no-locblazor-apps"></a>Blazor 앱에서 UI 포커스 설정
+### <a name="set-ui-focus-in-blazor-apps"></a>Blazor 앱에서 UI 포커스 설정
 
 요소 참조에서 `FocusAsync` 편의 메서드를 사용하여 UI 포커스를 해당 요소로 설정합니다. 자세한 내용은 <xref:blazor/components/event-handling#focus-an-element>를 참조하세요.
 
@@ -188,15 +188,15 @@ Blazor에서는 표준 [JavaScript 모듈](https://developer.mozilla.org/docs/We
 
 ASP.NET Core 5.0에서 Blazor WebAssembly 앱 디버깅이 개선되었습니다. 또한 이제 Mac용 Visual Studio에서 디버깅이 지원됩니다. 자세한 내용은 <xref:blazor/debug>를 참조하세요.
 
-### <a name="microsoft-no-locidentity-v20-and-msal-v20"></a>Microsoft Identity v2.0 및 MSAL v2.0
+### <a name="microsoft-identity-v20-and-msal-v20"></a>Microsoft Identity v2.0 및 MSAL v2.0
 
 Blazor 보안이 이제 Microsoft Identity v2.0([`Microsoft.Identity.Web`](https://www.nuget.org/packages/Microsoft.Identity.Web) 및 [`Microsoft.Identity.Web.UI`](https://www.nuget.org/packages/Microsoft.Identity.Web.UI))과 MSAL v2.0을 사용합니다. 자세한 내용은 [Blazor 보안 및 Identity 노드](xref:blazor/security/index) 토픽을 참조하세요.
 
-### <a name="protected-browser-storage-for-no-locblazor-server"></a>Blazor Server의 보호된 브라우저 스토리지
+### <a name="protected-browser-storage-for-blazor-server"></a>Blazor Server의 보호된 브라우저 스토리지
 
 이제 Blazor Server 앱이 ASP.NET Core 데이터 보호를 사용하여 변조로부터 보호된 브라우저에 앱 상태 저장에 대한 기본 제공 지원을 사용할 수 있습니다. 로컬 브라우저 스토리지 또는 세션 스토리지에 데이터를 저장할 수 있습니다. 자세한 내용은 <xref:blazor/state-management>를 참조하세요.
 
-### <a name="no-locblazor-webassembly-prerendering"></a>Blazor WebAssembly 미리 렌더링
+### <a name="blazor-webassembly-prerendering"></a>Blazor WebAssembly 미리 렌더링
 
 여러 호스팅 모델에서 구성 요소 통합이 개선되고, 이제 Blazor WebAssembly 앱이 서버에서 출력을 미리 렌더링할 수 있습니다. <!-- UNCOMMENT AFTER https://github.com/dotnet/AspNetCore.Docs/pull/19887 MERGES: For more information, see <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps> and <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>. -->
 
@@ -224,19 +224,19 @@ ICU(International Components for Unicode)를 기반으로 하는 세계화 지�
 
 ## SignalR
 
-### <a name="no-locsignalr-hub-filters"></a>SignalR 허브 필터
+### <a name="signalr-hub-filters"></a>SignalR 허브 필터
 
 ASP.NET SignalR에서 허브 파이프라인이라고 하는 SignalR 허브 필터는 허브 메서드가 호출되기 전과 후에 코드를 실행할 수 있는 기능입니다. 허브 메서드가 호출되기 전과 후에 코드를 실행하는 것은 미들웨어가 HTTP 요청 전후에 코드를 실행할 수 있는 것과 유사합니다. 일반적인 용도로는 로깅, 오류 처리, 인수 유효성 검사 등이 있습니다.
 
 자세한 내용은 [ASP.NET Core에서 허브 필터 사용SignalR](xref:signalr/hub-filters)을 참조하세요.
 
-### <a name="no-locsignalr-parallel-hub-invocations"></a>SignalR 병렬 허브 호출
+### <a name="signalr-parallel-hub-invocations"></a>SignalR 병렬 허브 호출
 
 ASP.NET Core SignalR이 이제 병렬 허브 호출을 처리할 수 있습니다. 클라이언트가 한 번에 둘 이상의 허브 메서드를 호출할 수 있도록 기본 동작을 변경할 수 있습니다.
 
 [!code-csharp[](~/release-notes/sample/StartupSignalRhubs.cs?name=snippet)]
 
-### <a name="added-messagepack-support-in-no-locsignalr-java-client"></a>SignalR Java 클라이언트에 Messagepack 지원 추가
+### <a name="added-messagepack-support-in-signalr-java-client"></a>SignalR Java 클라이언트에 Messagepack 지원 추가
 
 새 패키지인 [com.microsoft.signalr.messagepack](https://mvnrepository.com/artifact/com.microsoft.signalr.messagepack)은 SignalR Java 클라이언트에 MessagePack 지원을 추가합니다. MessagePack 허브 프로토콜을 사용하려면 연결 작성기에 `.withHubProtocol(new MessagePackHubProtocol())`을 추가하세요.
 
@@ -278,7 +278,7 @@ See [Update SignalR code](xref:migration/31-to-50#signalr) for migration instruc
         });
   ```
 
-### <a name="no-lockestrel-endpoint-specific-options-via-configuration"></a>구성을 통한 Kestrel 엔드포인트별 옵션
+### <a name="kestrel-endpoint-specific-options-via-configuration"></a>구성을 통한 Kestrel 엔드포인트별 옵션
 
 [구성](xref:fundamentals/configuration/index)을 통한 Kestrel 엔드포인트별 옵션 구성에 대한 지원이 추가되었습니다. 엔드포인트별 구성에는 다음이 포함됩니다.
 
@@ -359,7 +359,7 @@ SNI(서버 이름 표시)는 SSL 협상의 일부로 가상 도메인을 포함�
 
 ## <a name="authentication-and-authorization"></a>인증 및 권한 부여
 
-### <a name="azure-active-directory-authentication-with-microsoftno-locidentityweb"></a>Microsoft.Identity.Web을 사용한 Azure Active Directory 인증
+### <a name="azure-active-directory-authentication-with-microsoftidentityweb"></a>Microsoft.Identity.Web을 사용한 Azure Active Directory 인증
 
 이제 ASP.NET Core 프로젝트 템플릿이 <xref:Microsoft.Identity.Web?displayProperty=fullName>과 통합되어 [Azure AD](/azure/active-directory/fundamentals/active-directory-whatis)(Azure Active Directory)를 사용하여 인증을 처리합니다. [Microsoft.Identity.Web 패키지](https://www.nuget.org/packages/Microsoft.Identity.Web/)는 다음을 제공합니다.
 
@@ -374,7 +374,7 @@ SNI(서버 이름 표시)는 SSL 협상의 일부로 가상 도메인을 포함�
 
 ### <a name="custom-handling-of-authorization-failures"></a>권한 부여 오류의 사용자 지정 처리
 
-이제 [권한 부여](xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization%2A) [미들웨어](xref:fundamentals/middleware/index)에 의해 호출되는 [IAuthorizationMiddlewareResultHandler](https://github.com/dotnet/aspnetcore/blob/v5.0.0-rc.1.20451.17/src/Security/Authorization/Policy/src/IAuthorizationMiddlewareResultHandler.cs) 인터페이스로 인증 오류의 사용자 지정 처리가 더 쉬워집니다. 기본 구현은 동일하게 유지되지만 사용자 지정 처리기를 종속성 주입에 등록하면 권한 부여에 실패한 이유를 기준으로 사용자 지정 HTTP 응답을 허용할 수 있습니다. `IAuthorizationMiddlewareResultHandler` 사용을 보여 주는 [이 샘플](https://github.com/dotnet/aspnetcore/blob/master/src/Security/samples/CustomAuthorizationFailureResponse/Authorization/SampleAuthorizationMiddlewareResultHandler.cs)을 참조하세요.
+이제 [권한 부여](xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization%2A) [미들웨어](xref:fundamentals/middleware/index)에 의해 호출되는 [IAuthorizationMiddlewareResultHandler](https://github.com/dotnet/aspnetcore/blob/v5.0.0-rc.1.20451.17/src/Security/Authorization/Policy/src/IAuthorizationMiddlewareResultHandler.cs) 인터페이스로 인증 오류의 사용자 지정 처리가 더 쉬워집니다. 기본 구현은 동일하게 유지되지만 사용자 지정 처리기를 종속성 주입에 등록하면 권한 부여에 실패한 이유를 기준으로 사용자 지정 HTTP 응답을 허용할 수 있습니다. `IAuthorizationMiddlewareResultHandler` 사용을 보여 주는 [이 샘플](https://github.com/dotnet/aspnetcore/blob/main/src/Security/samples/CustomAuthorizationFailureResponse/Authorization/SampleAuthorizationMiddlewareResultHandler.cs)을 참조하세요.
 
 ### <a name="authorization-when-using-endpoint-routing"></a>엔드포인트 라우팅 사용 시 권한 부여
 
@@ -390,7 +390,7 @@ SNI(서버 이름 표시)는 SSL 협상의 일부로 가상 도메인을 포함�
 
 새로운 <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> 및 `WriteAsJsonAsync` 확장 메서드를 사용하여 `HttpRequest` 및 `HttpResponse`에서 JSON 데이터를 읽고 쓸 수 있습니다. 이러한 확장 메서드는 [System.Text.Json](xref:System.Text.Json) 직렬 변환기를 사용하여 JSON 데이터를 처리합니다. 새 `HasJsonContentType` 확장 메서드는 요청에 JSON 콘텐츠 형식이 있는지 여부도 확인할 수 있습니다.
 
-JSON 확장 메서드를 [엔드포인트 라우팅](xref:fundamentals/routing)과 결합하여 **라우팅 대상 코드** 라고 하는 프로그래밍 스타일로 JSON API를 만들 수 있습니다. 이것은 경량 방식으로 기본 JSON API를 만들려는 개발자에게 새롭게 제공되는 옵션입니다. 예를 들어 엔드포인트가 몇 개만 있는 웹앱은 ASP.NET Core MVC의 전체 기능이 아니라 라우팅 대상 코드를 사용하도록 선택할 수 있습니다.
+JSON 확장 메서드를 [엔드포인트 라우팅](xref:fundamentals/routing)과 결합하여 ‘라우팅 대상 코드’라고 하는 프로그래밍 스타일로 JSON API를 만들 수 있습니다. 이것은 경량 방식으로 기본 JSON API를 만들려는 개발자에게 새롭게 제공되는 옵션입니다. 예를 들어 엔드포인트가 몇 개만 있는 웹앱은 ASP.NET Core MVC의 전체 기능이 아니라 라우팅 대상 코드를 사용하도록 선택할 수 있습니다.
 
 ```csharp
 endpoints.MapGet("/weather/{city:alpha}", async context =>
@@ -450,7 +450,7 @@ public class Program
 
 .NET 5에서는 [dotnet watch](xref:tutorials/dotnet-watch)를 ASP.NET Core 프로젝트에서 실행하면 기본 브라우저가 시작되고 코드를 변경할 때 브라우저가 자동으로 새로 고침됩니다. 즉, 다음이 가능합니다.
 
-텍스트 편집기에서 ASP.NET Core 프로젝트를 엽니다.
+* 텍스트 편집기에서 ASP.NET Core 프로젝트를 엽니다.
 * `dotnet watch`을 실행합니다.
 * 도구가 앱 다시 빌드, 다시 시작, 다시 로드를 처리하는 동안 코드 변경에 집중하세요.
 

@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/components/prerendering-and-integration
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: d120440c292d15b7741260ed31af92d60db2261c
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: a0c5cc0bdc78f2ea70b8c128616ad09328ccf87d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280074"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587387"
 ---
 # <a name="prerender-and-integrate-aspnet-core-razor-components"></a>ASP.NET Core Razor 구성 요소 미리 렌더링 및 통합
 
@@ -39,7 +39,7 @@ Razor 구성 요소는 Razor Pages 및 호스트된 Blazor WebAssembly 솔루션
 
 Blazor WebAssembly 앱의 미리 렌더링을 설정하려면:
 
-1. ASP.NET Core 앱에서 Blazor WebAssembly 앱을 호스트합니다. 독립 실행형 Blazor WebAssembly 앱을 ASP.NET Core 솔루션에 추가하거나 Blazor Hosted 프로젝트 템플릿에서 만든 호스트된 Blazor WebAssembly 앱을 사용할 수 있습니다.
+1. ASP.NET Core 앱에서 Blazor WebAssembly 앱을 호스트합니다. 독립 실행형 Blazor WebAssembly 앱을 ASP.NET Core 솔루션에 추가하거나, [Blazor WebAssembly 프로젝트 템플릿](xref:blazor/project-structure)에서 만든 호스트된 Blazor WebAssembly 앱을 사용할 수 있습니다.
 
 1. Blazor WebAssembly 클라이언트 프로젝트에서 기본 정적 `wwwroot/index.html` 파일을 제거합니다.
 
@@ -76,7 +76,7 @@ Blazor WebAssembly 앱의 미리 렌더링을 설정하려면:
 
    * 개발 환경의 앱 작성기에서 `UseDeveloperExceptionPage`를 호출합니다.
    * 앱 작성기에서 `UseBlazorFrameworkFiles`를 호출합니다.
-   * `index.html` 페이지(`endpoints.MapFallbackToFile("index.html");`)에서 `_Host.cshtml` 페이지로 대체를 변경합니다.
+   * `index.html` 파일(`endpoints.MapFallbackToFile("index.html");`)에서 `_Host.cshtml` 페이지(`endpoints.MapFallbackToPage("/_Host");`)로 대체를 변경합니다.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -205,6 +205,10 @@ builder.RootComponents.Add<Counter>("#my-counter");
     <link href="BlazorHosted.Client.styles.css" rel="stylesheet" />
 </head>
 ```
+
+## <a name="additional-resources"></a>추가 리소스
+
+* [인증을 사용한 미리 렌더링 지원](xref:blazor/security/webassembly/additional-scenarios#support-prerendering-with-authentication)
 
 ::: moniker-end
 

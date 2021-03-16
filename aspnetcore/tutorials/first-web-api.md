@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 1f7c7db857090ff0a174d37b86e1265bab40b4fd
-ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
+ms.openlocfilehash: 789cd1a867bc8c17401bbac5c02951b4bd2999b6
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100564084"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587660"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>자습서: ASP.NET Core를 사용하여 웹 API 만들기
 
@@ -268,8 +268,8 @@ Swagger가 제거되었기 때문에 위의 태그는 다음 섹션에 추가된
 ### <a name="add-nuget-packages"></a>NuGet 패키지 추가
 
 * **도구** 메뉴에서 **NuGet 패키지 관리자 > 솔루션용 NuGet 패키지 관리** 를 선택합니다.
-* **찾아보기** 탭을 선택한 다음, 검색 상자에 **Microsoft.EntityFrameworkCore.InMemory** 를 입력합니다.
-* 왼쪽 창에서 **Microsoft.EntityFrameworkCore.InMemory** 를 선택합니다.
+* **찾아보기** 탭을 선택한 다음, 검색 상자에 `Microsoft.EntityFrameworkCore.InMemory`를 입력합니다.
+* 왼쪽 창에서 `Microsoft.EntityFrameworkCore.InMemory`를 선택합니다.
 * 오른쪽 창에서 **프로젝트** 확인란을 선택하고 **설치** 를 선택합니다.
 
 ![NuGet 패키지 관리자](first-web-api/_static/5/vsNuGet.png)
@@ -323,8 +323,8 @@ ASP.NET Core에서는 DB 컨텍스트와 같은 서비스를 [DI(종속성 주�
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet tool install -g dotnet-aspnet-codegenerator
-dotnet tool update -g dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
 ```
 
@@ -1489,7 +1489,7 @@ jQuery는 요청 본문에 있는 할 일 항목을 사용하여 HTTP POST 요�
 
 ## <a name="additional-resources-21"></a>추가 리소스 2.1
 
-[이 자습서에서 샘플 코드 보기 또는 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples) [다운로드하는 방법](xref:index#how-to-download-a-sample)을 참조하세요.
+[이 자습서에서 샘플 코드 보기 또는 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/first-web-api/samples) [다운로드하는 방법](xref:index#how-to-download-a-sample)을 참조하세요.
 
 자세한 내용은 다음 자료를 참조하세요.
 
@@ -1501,3 +1501,4 @@ jQuery는 요청 본문에 있는 할 일 항목을 사용하여 HTTP POST 요�
 * <xref:host-and-deploy/azure-apps/index>
 * <xref:host-and-deploy/index>
 * [이 자습서의 YouTube 버전](https://www.youtube.com/watch?v=TTkhEyGBfAk)
+* [Microsoft Learn: ASP.NET Core를 사용하여 웹 API 만들기](/learn/modules/build-web-api-aspnet-core/)

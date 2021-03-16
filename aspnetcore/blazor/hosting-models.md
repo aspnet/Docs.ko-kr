@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 780161090d376f08b849fadb47127810d6661d0c
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 8dd11251358bbeea444661970fadf19cb1390fd3
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100279753"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394930"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 호스팅 모델
 
@@ -36,7 +36,7 @@ Blazor는 [WebAssembly](https://webassembly.org/) 기반 .NET 런타임( *Blazor
 
 ![Blazor WebAssembly: Blazor 앱은 브라우저 내의 UI 스레드에서 실행됩니다.](hosting-models/_static/blazor-webassembly.png)
 
-해당 파일을 제공하는 백 엔드 ASP.NET Core 앱을 사용하지 않는 배포용으로 Blazor WebAssembly 앱을 만드는 경우 ‘독립 실행형’ Blazor WebAssembly 앱이라고 합니다. 해당 파일을 제공하는 백 엔드 앱을 사용하는 배포용으로 앱을 만드는 경우 ‘호스트된’ Blazor WebAssembly 앱이라고 합니다. 호스트된 Blazor WebAssembly 앱은 일반적으로 웹 API 호출 또는 [SignalR](xref:signalr/introduction)(<xref:tutorials/signalr-blazor>)을 사용하여 네트워크를 통해 서버와 상호 작용합니다.
+해당 파일을 제공하는 백 엔드 ASP.NET Core 앱을 사용하지 않는 배포용으로 Blazor WebAssembly 앱을 만드는 경우 ‘독립 실행형’ Blazor WebAssembly 앱이라고 합니다. 해당 파일을 제공하는 백 엔드 앱을 사용하는 배포용으로 앱을 만드는 경우 ‘호스트된’ Blazor WebAssembly 앱이라고 합니다. 호스트된 Blazor WebAssembly **`Client`** 앱은 일반적으로 웹 API 호출 또는 [SignalR](xref:signalr/introduction)(<xref:tutorials/signalr-blazor>)을 사용하여 네트워크를 통해 백 엔드 **`Server`** 앱과 상호 작용합니다.
 
 `blazor.webassembly.js` 스크립트는 프레임워크 및 핸들에서 제공됩니다.
 
@@ -59,7 +59,7 @@ Blazor WebAssembly 호스팅 모델에는 다음과 같은 제한 사항이 있�
 
 Blazor WebAssembly 앱을 만들려면 <xref:blazor/tooling>를 참조하세요.
 
-호스트된 Blazor 앱 모델은 [Docker 컨테이너](/dotnet/standard/microservices-architecture/container-docker-introduction/index)를 지원합니다. Visual Studio에서 Docker 지원이 필요하면 호스트된 Blazor WebAssembly 솔루션의 `Server` 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **Docker 지원** 을 선택합니다.
+호스트된 Blazor 앱 모델은 [Docker 컨테이너](/dotnet/standard/microservices-architecture/container-docker-introduction/index)를 지원합니다. Visual Studio에서 Docker 지원이 필요하면 호스트된 Blazor WebAssembly 솔루션의 **`Server`** 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가** > **Docker 지원** 을 선택합니다.
 
 ## Blazor Server
 
@@ -157,6 +157,7 @@ IIS를 사용하는 경우 ‘애플리케이션 요청 라우팅’을 사용�
 ## <a name="additional-resources"></a>추가 자료
 
 * <xref:blazor/tooling>
+* <xref:blazor/project-structure>
 * <xref:signalr/introduction>
 * <xref:blazor/fundamentals/signalr>
 * <xref:tutorials/signalr-blazor>

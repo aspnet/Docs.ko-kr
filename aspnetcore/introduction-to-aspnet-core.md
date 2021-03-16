@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: index
-ms.openlocfilehash: 4301e0d59364573767ab4cae25a4818ff84b9abc
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 3e41336d084e25319f8b1ab4c4ab3175b758d23d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93052229"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588804"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 소개
 
@@ -198,8 +198,8 @@ ASP.NET 앱을 ASP.NET Core로 마이그레이션하기 위한 참조 가이드�
 
 대부분의 문서 및 자습서에는 예제 코드에 대한 링크가 포함되어 있습니다.
 
-1. [ASP.NET 리포지토리 zip 파일을 다운로드합니다](https://codeload.github.com/dotnet/AspNetCore.Docs/zip/master).
-1. *Docs-master.zip* 파일의 압축을 풉니다.
+1. [ASP.NET 리포지토리 zip 파일을 다운로드합니다](https://codeload.github.com/dotnet/AspNetCore.Docs/zip/main).
+1. *Docs-main.zip* 파일의 압축을 풉니다.
 1. 예제 링크의 URL을 참고하여 예제 디렉터리로 이동할 수 있습니다.
 
 ### <a name="preprocessor-directives-in-sample-code"></a>예제 코드의 전처리기 지시문
@@ -244,7 +244,7 @@ Host.CreateDefaultBuilder(args)
 
 코드를 둘러싸고 있는 `#region` 및 `#endregion` 지시문은 안전하게 무시(또는 제거)할 수 있습니다. 항목에 설명된 예제 시나리오를 실행하려는 경우 이러한 지시문 내에서 코드를 변경하지 마세요. 다른 시나리오를 실험하는 경우 자유롭게 코드를 변경할 수 있습니다.
 
-자세한 내용은 [ASP.NET 설명서에 참여: 코드 조각](https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md#code-snippets)을 참조하세요.
+자세한 내용은 [ASP.NET 설명서에 참여: 코드 조각](https://github.com/dotnet/AspNetCore.Docs/blob/main/CONTRIBUTING.md#code-snippets)을 참조하세요.
 
 ## <a name="next-steps"></a>다음 단계
 

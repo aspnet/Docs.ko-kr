@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: f6a93eb9d95182d29a60cc1a5c48122b9166aa84
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 4c574a630176010ab30006b53c42e5cad7f93a54
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280149"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395190"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>ASP.NET Core Blazor 이벤트 처리
 
@@ -128,7 +128,10 @@ private void ShowMessage(MouseEventArgs e)
 
 자세한 내용은 다음 자료를 참조하세요.
 
-* [ASP.NET Core 참조 원본(dotnet/aspnetcore `master` 분기)의 `EventArgs` 클래스](https://github.com/dotnet/aspnetcore/tree/master/src/Components/Web/src/Web). `master` 분기는 ‘다음’ ASP.NET Core 릴리스에 대해 개발 중인 API를 나타냅니다. 현재 릴리스의 경우 적절한 GitHub 리포지토리 분기(예: `release/3.1`)를 선택합니다.
+* [ASP.NET Core 참조 원본(dotnet/aspnetcore `main` 분기)의 `EventArgs` 클래스](https://github.com/dotnet/aspnetcore/tree/main/src/Components/Web/src/Web)
+
+  [!INCLUDE[](~/blazor/includes/aspnetcore-repo-ref-source-links.md)]
+
 * [MDN 웹 문서: GlobalEventHandlers](https://developer.mozilla.org/docs/Web/API/GlobalEventHandlers): 각 DOM 이벤트를 지원하는 HTML 요소에 대한 정보를 포함합니다.
 
 ## <a name="lambda-expressions"></a>람다 식
@@ -174,7 +177,7 @@ private void ShowMessage(MouseEventArgs e)
 
 샘플 앱(`Components/ChildComponent.razor`)의 `ChildComponent`는 단추의 `onclick` 처리기가 샘플의 `ParentComponent`에서 <xref:Microsoft.AspNetCore.Components.EventCallback> 대리자를 수신하도록 설정된 방법을 보여 줍니다. <xref:Microsoft.AspNetCore.Components.EventCallback>은 주변 디바이스의 `onclick` 이벤트에 적합한 `MouseEventArgs` 형식입니다.
 
-[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
+[!code-razor[](~/blazor/common/samples/5.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
 `ParentComponent`는 자식의 <xref:Microsoft.AspNetCore.Components.EventCallback%601>(`OnClickCallback`)를 해당 `ShowMessage` 메서드에 설정합니다.
 

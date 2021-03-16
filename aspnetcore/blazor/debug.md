@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 9214fa10a2bf7d53a4cb12263a3fa69bded84b29
-ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.openlocfilehash: adf22001e7d9b8ee4f36456cd4b07d2791a7331f
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100536235"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395152"
 ---
 # <a name="debug-aspnet-core-blazor-webassembly"></a>ASP.NET Core Blazor WebAssembly 디버그
 
@@ -48,7 +48,7 @@ Blazor WebAssembly 앱은 Chromium 기반 브라우저(Edge/Chrome)의 브라우
 * 처리되지 않은 예외에서 중단합니다.
 * 디버그 프록시가 실행되기 전에 앱을 시작하는 동안 중단점에 적중합니다. 여기에는 `Program.Main`(`Program.cs`)의 중단점과 애플리케이션에서 요청하는 첫 페이지에서 로드되는 구성 요소의 [`OnInitialized{Async}` 메서드](xref:blazor/components/lifecycle#component-initialization-methods)의 중단점이 포함됩니다.
 * 비로컬 시나리오(예: [Linux용 Windows 하위 시스템(WSL)](/windows/wsl/) 또는 [Visual Studio Codespaces](/visualstudio/codespaces/overview/what-is-vsonline))에서 디버그합니다.
-* 예를 들어 [`dotnet watch run`](xref:tutorials/dotnet-watch)으로 앱을 실행하여 디버그하는 동안 호스트된 Blazor 솔루션의 백 엔드 `*Server*` 앱을 자동으로 다시 빌드합니다.
+* 예를 들어 [`dotnet watch run`](xref:tutorials/dotnet-watch)으로 앱을 실행하여 디버그하는 동안 호스트된 Blazor WebAssembly 솔루션의 백 엔드 `*Server*` 앱을 자동으로 다시 빌드합니다.
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
@@ -58,6 +58,13 @@ Blazor WebAssembly 앱은 Chromium 기반 브라우저(Edge/Chrome)의 브라우
 * Microsoft Edge(버전 80 이상)
 
 방화벽 또는 프록시가 디버그 프록시(`NodeJS` 프로세스)와의 통신을 차단하지 않아야 합니다. 자세한 내용은 [방화벽 구성](#firewall-configuration) 섹션을 참조하세요.
+
+Visual Studio Code 사용자는 다음 확장이 필요합니다.
+
+* [Visual Studio Code용 C# 확장](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+* [Blazor WASM 디버깅 확장](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.blazorwasm-companion)(Visual Studio Code용 C# 확장 버전 1.23.9 이상을 사용하는 경우)
+
+VS Code에서 프로젝트를 연 후, 디버깅을 사용하기 위해 추가 설정이 필요하다는 알림이 표시될 수 있습니다. 요청하는 경우 Visual Studio Marketplace에서 필요한 확장을 설치합니다. 설치된 확장을 검사하려면 메뉴 모음에서 **보기** > **확장** 을 열거나 **작업** 사이드바에서 **확장** 아이콘을 선택합니다.
 
 Mac용 Visual Studio에는 버전 8.8(빌드 1532) 이상이 필요합니다.
 
@@ -90,7 +97,7 @@ Mac용 Visual Studio에는 버전 8.8(빌드 1532) 이상이 필요합니다.
 
 Visual Studio에서 Blazor WebAssembly 앱을 디버그하려면:
 
-1. 새 ASP.NET Core 호스트된 Blazor WebAssembly 앱을 만듭니다.
+1. 호스트된 새 Blazor WebAssembly 솔루션을 만듭니다.
 1. <kbd>F5</kbd> 키를 눌러 디버거에서 앱을 실행합니다.
 
    > [!NOTE]
@@ -173,7 +180,8 @@ Blazor WebAssembly 앱에서의 사용자 지정 앱 기본 경로 사용에 대
    이러한 알림이 표시되면 다음을 수행합니다.
 
    * 최신 [Visual Studio Code용 C# 확장](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)이 설치되어 있는지 확인합니다. 설치된 확장을 검사하려면 메뉴 모음에서 **보기** > **확장** 을 열거나 **작업** 사이드바에서 **확장** 아이콘을 선택합니다.
-   * JavaScript 미리 보기 디버깅이 사용되는지 확인합니다. 메뉴 모음에서 설정을 엽니다(**파일** > **기본 설정** > **설정**). `debug preview` 키워드를 사용하여 검색합니다. 검색 결과에서 **디버그 > JavaScript: 미리 보기 사용** 확인란이 선택되어 있는지 확인합니다. 미리 보기 디버깅을 사용하도록 설정하는 옵션이 없는 경우 최신 버전의 VS Code로 업그레이드하거나 [JavaScript 디버거 확장](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)(VS Code 버전 1.46 이전)을 설치합니다.
+   * [Visual Studio Code용 C# 확장](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) **버전 1.23.9 이상** 을 사용하는 경우 최신 [Blazor WASM 디버깅 확장](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.blazorwasm-companion)이 설치되어 있는지 확인합니다. 설치된 확장을 검사하려면 메뉴 모음에서 **보기** > **확장** 을 열거나 **작업** 사이드바에서 **확장** 아이콘을 선택합니다.
+   * JavaScript 미리 보기 디버깅이 사용되는지 확인합니다. 메뉴 모음에서 설정을 엽니다(**파일** > **기본 설정** > **설정**). `debug preview` 키워드를 사용하여 검색합니다. 검색 결과에서 **디버그 > JavaScript: 미리 보기 사용** 의 확인란을 선택하거나 선택되어 있는지 확인합니다. 미리 보기 디버깅을 사용하도록 설정하는 옵션이 없는 경우 최신 버전의 VS Code로 업그레이드하거나 [JavaScript 디버거 확장](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)(VS Code 버전 1.46 이전)을 설치합니다.
    * 윈도우를 다시 로드합니다.
 
 1. <kbd>F5</kbd> 바로 가기 키 또는 메뉴 항목을 사용하여 디버깅을 시작합니다.
@@ -194,7 +202,7 @@ Blazor WebAssembly 앱에서의 사용자 지정 앱 기본 경로 사용에 대
 
 ## <a name="debug-hosted-blazor-webassembly"></a>호스트된 Blazor WebAssembly 디버그
 
-1. VS Code에서 호스트된 Blazor WebAssembly 앱의 솔루션 폴더를 엽니다.
+1. VS Code에서 호스트된  **솔루션 폴더의 `Client`** Blazor 프로젝트 폴더를 엽니다.
 
 1. 프로젝트에 대한 시작 구성 집합이 없는 경우 다음과 같은 알림이 나타납니다. **예** 를 선택합니다.
 

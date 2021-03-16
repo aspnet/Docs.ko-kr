@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/performance
-ms.openlocfilehash: 622c6ba042c5832f99bba379fadd9aba7d7163f2
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5d19ace2e844f2159c1ba0e8bc92960bcf00d54e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93060406"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586997"
 ---
 # <a name="performance-best-practices-with-grpc"></a>gRPC 관련 성능 모범 사례
 
@@ -105,7 +105,7 @@ gRPC의 부하를 효과적으로 분산하는 두 가지 옵션이 있습니다
 
 ### <a name="client-side-load-balancing"></a>클라이언트 쪽 부하 분산
 
-클라이언트 쪽 부하 분산을 사용하면 클라이언트가 엔드포인트를 인식합니다. 각 gRPC 호출을 위해 클라이언트는 호출을 전송할 다른 엔드포인트를 선택합니다. 클라이언트 쪽 부하 분산은 대기 시간이 중요한 경우에 적합합니다. 클라이언트와 서비스 간에 프록시가 없으므로 호출이 서비스로 직접 전송됩니다. 클라이언트 쪽 부하 분산의 단점은 각 클라이언트가 사용해야 하는 사용 가능한 엔드포인트를 추적해야 한다는 것입니다.
+클라이언트 쪽 부하 분산을 사용하면 클라이언트가 엔드포인트를 인식합니다. 각 gRPC 호출을 위해 클라이언트는 호출을 보낼 다른 엔드포인트를 선택합니다. 클라이언트 쪽 부하 분산은 대기 시간이 중요한 경우에 적합합니다. 클라이언트와 서비스 간에 프록시가 없으므로 호출이 서비스로 직접 전송됩니다. 클라이언트 쪽 부하 분산의 단점은 각 클라이언트가 사용해야 하는 사용 가능한 엔드포인트를 추적해야 한다는 것입니다.
 
 할당 준비 클라이언트 부하 분산은 부하 분산 상태가 중앙 위치에 저장되는 기술입니다. 클라이언트는 부하 분산을 결정할 때 사용할 정보를 중앙 위치에서 주기적으로 쿼리합니다.
 
@@ -205,3 +205,30 @@ while (true)
 1. 서비스 또는 연결 오류로 인해 스트림이 중단될 수 있습니다. 오류가 발생하는 경우 스트림을 다시 시작하기 위한 논리가 필요합니다.
 2. `RequestStream.WriteAsync`는 다중 스레딩에 안전하게 사용할 수 없습니다. 한 번에 하나의 메시지만 스트림에 쓸 수 있습니다. 여러 스레드의 메시지를 단일 스트림을 통해 보내려면 <xref:System.Threading.Channels.Channel%601> 같은 생산자/소비자 큐가 메시지를 마샬링해야 합니다.
 3. gRPC 스트리밍 방법은 한 유형의 메시지를 수신하고 한 유형의 메시지 유형을 보내는 것으로 제한됩니다. 예를 들어 `rpc StreamingCall(stream RequestMessage) returns (stream ResponseMessage)`는 `RequestMessage`를 수신하고 `ResponseMessage`를 보냅니다. Protobuf가 `Any` 및 `oneof`를 사용하여 알 수 없는 메시지나 조건부 메시지를 지원하면 이러한 제한을 해결할 수 있습니다.
+
+## <a name="send-binary-payloads"></a>이진 페이로드 보내기
+
+이진 페이로드는 Protobuf에서 `bytes` 스칼라 값 형식으로 지원됩니다. C#에서 생성된 속성은 `ByteString`을 속성 형식으로 사용합니다.
+
+```protobuf
+syntax = "proto3";
+
+message PayloadResponse {
+    bytes data = 1;
+}  
+```
+
+`ByteString` 인스턴스는 `ByteString.CopyFrom(byte[] data)`을 사용하여 만듭니다. 이 메서드는 새 `ByteString` 및 새 `byte[]`를 할당합니다. 데이터가 새 바이트 배열에 복사됩니다.
+
+`UnsafeByteOperations.UnsafeWrap(ReadOnlyMemory<byte> bytes)`을 사용하여 `ByteString` 인스턴스를 만들면 추가 할당과 복사를 방지할 수 있습니다.
+
+```csharp
+var data = await File.ReadAllBytesAsync(path);
+
+var payload = new PayloadResponse();
+payload.Data = UnsafeByteOperations.UnsafeWrap(data);
+```
+
+바이트는 `UnsafeByteOperations.UnsafeWrap`으로 복사되지 않으므로 `ByteString`이 사용되는 동안 수정해서는 안 됩니다.
+
+`UnsafeByteOperations.UnsafeWrap`에는 [Google.Protobuf](https://www.nuget.org/packages/Google.Protobuf/) 버전 3.15.0 이상이 필요합니다.

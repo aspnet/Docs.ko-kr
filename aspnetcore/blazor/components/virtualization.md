@@ -5,7 +5,7 @@ description: ASP.NET Core Blazor 앱에서 구성 요소 가상화를 사용하�
 monikerRange: '>= aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/02/2020
+ms.date: 02/26/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,24 +19,30 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: d9fc767a4b5160c616053b075ba92194bcffa275
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: c81732c29b262e9134a4ff7dab077a4f31db96af
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280013"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109821"
 ---
 # <a name="aspnet-core-blazor-component-virtualization"></a>ASP.NET Core Blazor 구성 요소 가상화
 
-Blazor 프레임워크의 기본 제공 가상화 지원을 사용하여 구성 요소 렌더링의 인식된 성능을 향상합니다. 가상화는 UI 렌더링을 현재 표시되는 부분으로만 제한하는 기술입니다. 예를 들어 가상화는 앱에서 긴 항목 목록을 렌더링해야 하고 지정된 시간에 항목의 하위 집합만 표시해야 하는 경우에 유용합니다. Blazor는 앱의 구성 요소에 가상화를 추가하는 데 사용할 수 있는 [`Virtualize` 구성 요소](xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601)를 제공합니다.
+[`Virtualize` 구성 요소](xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601)와 함께 Blazor 프레임워크의 기본 제공 가상화 지원을 사용하여 구성 요소 렌더링의 인식된 성능을 향상합니다. 가상화는 UI 렌더링을 현재 표시되는 부분으로만 제한하는 기술입니다. 예를 들어 가상화는 앱에서 긴 항목 목록을 렌더링해야 하고 지정된 시간에 항목의 하위 집합만 표시해야 하는 경우에 유용합니다.
 
-`Virtualize` 구성 요소는 다음과 같은 경우에 사용할 수 있습니다.
+`Virtualize` 구성 요소를 사용하는 경우:
 
 * 루프에서 데이터 항목 세트를 렌더링하는 경우.
 * 스크롤로 인해 대부분 항목이 표시되지 않는 경우.
-* 렌더링된 항목의 크기가 똑같은 경우. 사용자가 임의 지점으로 스크롤하면 구성 요소는 표시할 표시되는 항목을 계산할 수 있습니다.
+* 렌더링된 항목의 크기가 동일한 경우.
 
-가상화를 사용하지 않는 경우 일반적인 목록은 C# [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) 루프를 사용하여 목록의 각 항목을 렌더링할 수 있습니다.
+사용자가 `Virtualize` 구성 요소의 항목 목록에 있는 임의의 지점으로 스크롤하면, 구성 요소는 어떤 항목을 표시할지를 계산합니다. 보이지 않는 항목은 렌더링되지 않습니다.
+
+가상화를 사용하지 않는 경우 일반적인 목록은 C# [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) 루프를 사용하여 목록의 각 항목을 렌더링할 수도 있습니다. 다음 예제에서는
+
+* `allFlights`는 비행기 항공편의 컬렉션입니다.
+* `FlightSummary` 구성 요소는 각 항공편에 대한 세부 정보를 표시합니다.
+* [`@key` 지시문 특성](xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components)은 각 `FlightSummary` 구성 요소와 항공편의 `FlightId`에 의해 렌더링된 항공편의 관계를 유지합니다.
 
 ```razor
 <div style="height:500px;overflow-y:scroll">
@@ -47,9 +53,12 @@ Blazor 프레임워크의 기본 제공 가상화 지원을 사용하여 구성 
 </div>
 ```
 
-목록에 수천 개의 항목이 포함된 경우 목록을 렌더링하는 데 시간이 오래 걸릴 수 있습니다. 따라서 사용자가 눈에 띄는 UI 지연을 경험할 수 있습니다.
+컬렉션에 수천 개의 항공편이 포함되어 있으면 항공편을 렌더링하는 데 시간이 오래 걸리고 사용자는 UI에서 큰 지연을 경험하게 됩니다. 대부분의 항공편은 `<div>` 요소의 높이를 벗어나므로 렌더링되지 않습니다.
 
-목록의 각 항목을 한 번에 모두 렌더링하는 대신 [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) 루프를 `Virtualize` 구성 요소로 바꾸고 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.Items%2A?displayProperty=nameWithType>로 고정된 항목 원본을 지정합니다. 현재 표시되는 항목만 렌더링됩니다.
+항공편의 전체 목록을 동시에 렌더링하는 대신 앞의 예제에 있는 [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) 루프를 `Virtualize` 구성 요소로 바꿉니다.
+
+* `allFlights`를 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.Items%2A?displayProperty=nameWithType>에 대한 고정 항목 원본으로 지정합니다. 현재 표시되는 항공편만 `Virtualize` 구성 요소에 의해 렌더링됩니다.
+* `Context` 매개 변수를 사용하여 각 항공편에 대한 컨텍스트를 지정합니다. 다음 예제에서 `flight`는 각 항공편 멤버에 대한 액세스를 제공하는 컨텍스트로 사용됩니다.
 
 ```razor
 <div style="height:500px;overflow-y:scroll">
@@ -59,7 +68,7 @@ Blazor 프레임워크의 기본 제공 가상화 지원을 사용하여 구성 
 </div>
 ```
 
-`Context`로 구성 요소에 대한 컨텍스트를 지정하지 않은 경우 항목 콘텐츠 템플릿에서 `context` 값을 사용합니다.
+`Context` 매개 변수로 컨텍스트를 지정하지 않은 경우, 각 항공편의 멤버에 액세스하려면 항목 콘텐츠 템플릿에서 `context` 값을 사용합니다.
 
 ```razor
 <div style="height:500px;overflow-y:scroll">
@@ -68,14 +77,6 @@ Blazor 프레임워크의 기본 제공 가상화 지원을 사용하여 구성 
     </Virtualize>
 </div>
 ```
-
-> [!NOTE]
-> 요소 및 구성 요소에 모델 개체를 매핑하는 프로세스는 [`@key`](xref:mvc/views/razor#key) 지시문 특성을 사용하여 제어할 수 있습니다. `@key`를 사용하면 diff 알고리즘은 키의 값에 따라 요소 또는 구성 요소가 유지되도록 보장합니다.
->
-> 자세한 내용은 다음 문서를 참조하세요.
->
-> * <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components>
-> * [ASP.NET Core용 Razor 구문 참조](xref:mvc/views/razor#key)
 
 `Virtualize` 구성 요소는 다음과 같습니다.
 
@@ -120,7 +121,7 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
 }
 ```
 
-<xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.RefreshDataAsync%2A?displayProperty=nameWithType>는 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemsProvider%2A>에서 데이터를 다시 요청하도록 구성 요소에 지시합니다. 이는 외부 데이터가 변경되는 경우에 유용합니다. <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.Items%2A>를 사용하는 경우 이를 호출할 필요가 없습니다.
+<xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.RefreshDataAsync%2A?displayProperty=nameWithType>는 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemsProvider%2A>에서 데이터를 다시 요청하도록 구성 요소에 지시합니다. 이는 외부 데이터가 변경되는 경우에 유용합니다. <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.Items%2A>를 사용하는 경우 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.RefreshDataAsync%2A>를 호출할 필요가 없습니다.
 
 ## <a name="placeholder"></a>자리표시자
 
@@ -147,7 +148,7 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
 
 ## <a name="item-size"></a>항목 크기
 
-각 항목의 높이(픽셀 단위)를 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A?displayProperty=nameWithType>(기본값: 50):
+각 항목의 높이(픽셀 단위)를 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A?displayProperty=nameWithType>(기본값: 50)으로 설정할 수 있습니다. 다음 예에서는 각 항목의 높이를 기본값인 50픽셀에서 25픽셀로 변경합니다.
 
 ```razor
 <Virtualize Context="employee" Items="@employees" ItemSize="25">
@@ -155,11 +156,11 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
 </Virtualize>
 ```
 
-기본적으로 `Virtualize` 구성 요소는 초기 렌더링이 수행된 ‘후’에 실제 렌더링 크기를 측정합니다. 정확한 초기 렌더링 성능을 지원하고 페이지 다시 로드에 적합한 스크롤 위치를 보장하려면 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A>를 사용하여 정확한 항목 크기를 미리 제공합니다. 기본 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A>를 사용하여 일부 항목이 현재 표시된 뷰 외부에서 렌더링되는 경우 두 번째 다시 렌더링이 트리거됩니다. 가상화된 목록에서 브라우저의 스크롤 위치를 올바르게 유지 관리하려면 초기 렌더링이 정확해야 합니다. 그렇지 않으면 사용자에게 잘못된 항목이 표시될 수 있습니다. 
+기본적으로 `Virtualize` 구성 요소는 초기 렌더링이 수행된 ‘후’에 개별 항목의 렌더링 크기(높이)를 측정합니다. 정확한 초기 렌더링 성능을 지원하고 페이지 다시 로드에 적합한 스크롤 위치를 보장하려면 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A>를 사용하여 정확한 항목 크기를 미리 제공합니다. 기본 <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A>를 사용하여 일부 항목이 현재 표시된 뷰 외부에서 렌더링되는 경우 두 번째 다시 렌더링이 트리거됩니다. 가상화된 목록에서 브라우저의 스크롤 위치를 올바르게 유지 관리하려면 초기 렌더링이 정확해야 합니다. 그렇지 않으면 사용자에게 잘못된 항목이 표시될 수 있습니다.
 
 ## <a name="overscan-count"></a>오버스캔 개수
 
-<xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.OverscanCount%2A?displayProperty=nameWithType>는 표시되는 지역 앞뒤에 렌더링되는 추가 항목 수를 결정합니다. 이 설정은 스크롤 중 렌더링 빈도를 줄이는 데 도움이 됩니다. 그러나 값이 높을수록 페이지에서 더 많은 요소가 렌더링됩니다(기본값: 3).
+<xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.OverscanCount%2A?displayProperty=nameWithType>는 표시되는 지역 앞뒤에 렌더링되는 추가 항목 수를 결정합니다. 이 설정은 스크롤 중 렌더링 빈도를 줄이는 데 도움이 됩니다. 그러나 값이 클수록 페이지에서 더 많은 요소가 렌더링됩니다(기본값: 3). 다음 예제에서는 overscan count를 기본값인 3개 항목에서 4개 항목으로 변경합니다.
 
 ```razor
 <Virtualize Context="employee" Items="@employees" OverscanCount="4">

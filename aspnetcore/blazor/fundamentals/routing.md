@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 55e2cbc01af7352facad7121c05c754e9d438ae3
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: ee6de9a13a69154eef6b677663091667d391452f
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100279890"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395060"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 라우팅
 
@@ -59,7 +59,7 @@ ms.locfileid: "100279890"
 * 경로 매개 변수와 함께 <xref:Microsoft.AspNetCore.Components.Routing.Router>에서 <xref:Microsoft.AspNetCore.Components.RouteData>를 받습니다.
 * 추가로 중첩된 레이아웃을 포함하여 해당 [레이아웃](xref:blazor/layouts)과 함께 지정된 구성 요소를 렌더링합니다.
 
-필요한 경우, [`@layout` 지시문](xref:blazor/layouts#specify-a-layout-in-a-component)으로 레이아웃을 지정하지 않는 구성 요소에 레이아웃 클래스가 포함된 <xref:Microsoft.AspNetCore.Components.RouteView.DefaultLayout> 매개 변수를 지정합니다. 프레임워크의 Blazor 프로젝트 템플릿은 `MainLayout` 구성 요소(`Shared/MainLayout.razor`)를 앱의 기본 레이아웃으로 지정합니다. 레이아웃에 대한 자세한 내용은 <xref:blazor/layouts>을 참조하세요.
+필요한 경우, [`@layout` 지시문](xref:blazor/layouts#apply-a-layout-to-a-component)으로 레이아웃을 지정하지 않는 구성 요소에 레이아웃 클래스가 포함된 <xref:Microsoft.AspNetCore.Components.RouteView.DefaultLayout> 매개 변수를 지정합니다. 프레임워크의 [Blazor 프로젝트 템플릿](xref:blazor/project-structure)은 `MainLayout` 구성 요소(`Shared/MainLayout.razor`)를 앱의 기본 레이아웃으로 지정합니다. 레이아웃에 대한 자세한 내용은 <xref:blazor/layouts>을 참조하세요.
 
 구성 요소는 여러 [`@page` 지시문](xref:mvc/views/razor#page)을 사용하여 여러 경로 템플릿을 지원합니다. 다음 예제 구성 요소는 `/BlazorRoute` 및 `/DifferentBlazorRoute`에 대한 요청을 로드합니다.
 
@@ -102,7 +102,7 @@ ms.locfileid: "100279890"
 
 ::: moniker-end
 
-다른 대화형 구성 요소와 같은 임의 항목이 `<NotFound>` 태그의 콘텐츠로 지원됩니다. <xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound> 콘텐츠에 기본 레이아웃을 적용하려면 <xref:blazor/layouts#default-layout>을 참조하세요.
+다른 대화형 구성 요소와 같은 임의 항목이 `<NotFound>` 태그의 콘텐츠로 지원됩니다. <xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound> 콘텐츠에 기본 레이아웃을 적용하려면 <xref:blazor/layouts#apply-a-layout-to-arbitrary-content-layoutview-component>을 참조하세요.
 
 ## <a name="route-to-components-from-multiple-assemblies"></a>여러 어셈블리에서 구성 요소로 라우팅
 
@@ -230,7 +230,7 @@ URL의 마지막 세그먼트에서 경로 매개 변수를 받을 수 있는 �
 
 ::: moniker-end
 
-호스트된 Blazor WebAssembly 솔루션의 *`Server`* 앱이 `param` 경로 매개 변수에 점을 사용하여 요청을 라우팅하도록 허용하려면 `Startup.Configure`에서 선택적 매개 변수를 사용하여 대체 파일 경로 템플릿을 추가합니다.
+호스트된 Blazor WebAssembly 솔루션의 **`Server`** 앱이 `param` 경로 매개 변수에 점을 사용하여 요청을 라우팅하도록 허용하려면 `Startup.Configure`에서 선택적 매개 변수를 사용하여 대체 파일 경로 템플릿을 추가합니다.
 
 `Startup.cs`:
 
@@ -371,7 +371,7 @@ var query = new Uri(NavigationManager.Uri).Query;
 ::: moniker-end
 
 > [!NOTE]
-> `NavMenu` 구성 요소(`NavMenu.razor`)는 Blazor 프로젝트 템플릿에서 생성된 앱의 `Shared` 폴더에 제공됩니다.
+> `NavMenu` 구성 요소(`NavMenu.razor`)는 [Blazor 프로젝트 템플릿](xref:blazor/project-structure)에서 생성된 앱의 `Shared` 폴더에서 제공됩니다.
 
 `<NavLink>` 요소의 `Match` 특성에 할당할 수 있는 다음 두 가지 <xref:Microsoft.AspNetCore.Components.Routing.NavLinkMatch> 옵션이 있습니다.
 

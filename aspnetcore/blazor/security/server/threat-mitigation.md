@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: 524a1f85838d083ed2f01afd96601bcd5e6ce12b
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 2a5add79d60ddcbb1afdb9489fa16da692a7d6bd
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280984"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109665"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>ASP.NET Core Blazor Server를 위한 위협 완화 지침
 
@@ -139,7 +139,7 @@ DoS(서비스 거부) 공격에서는 클라이언트가 서버로 하여금 하
 
 위와 같은 시나리오를 방지하려면 다음과 같은 예방 조치를 수행하세요.
 
-* 호출 중에 발생할 수 있는 오류를 고려하여 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 문 내에 JS interop 호출을 래핑합니다. 자세한 내용은 <xref:blazor/fundamentals/handle-errors#javascript-interop>를 참조하세요.
+* 호출 중에 발생할 수 있는 오류를 고려하여 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 문 내에 JS interop 호출을 래핑합니다. 자세한 내용은 <xref:blazor/fundamentals/handle-errors?pivots=server#javascript-interop-server>를 참조하세요.
 * 다른 동작을 수행하기 전에 JS interop 호출에서 반환된 데이터(오류 메시지 포함)의 유효성을 검사합니다.
 
 ### <a name="net-methods-invoked-from-the-browser"></a>브라우저에서 호출된 .NET 메서드

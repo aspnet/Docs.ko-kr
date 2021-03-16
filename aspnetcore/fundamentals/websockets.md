@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/websockets
-ms.openlocfilehash: 6edf2017cc889321cfb484e643b75711fd66004d
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: 1ed586745ba4d678272547785c6ffa77aa841392
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058352"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588999"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core에서 WebSocket 지원
 
@@ -32,7 +32,7 @@ ms.locfileid: "98058352"
 
 본문에서는 ASP.NET Core에서 Websocket을 사용하는 방법을 알아봅니다. [WebSocket](https://wikipedia.org/wiki/WebSocket)([RFC 6455](https://tools.ietf.org/html/rfc6455))은 TCP 연결을 통해 지속적인 양방향 통신 채널을 사용할 수 있도록 해주는 프로토콜입니다. 채팅, 대시보드 및 게임 앱 등 신속한 실시간 통신을 활용하는 앱에서 사용됩니다.
 
-[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다. [실행 방법](#sample-app).
+[예제 코드 살펴보기 및 다운로드](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/websockets/samples) ([다운로드 방법](xref:index#how-to-download-a-sample)). 다운로드 예제는 영역을 테스트하기 위한 기초적인 앱을 제공합니다. [실행 방법](#sample-app).
 
 ## SignalR
 
@@ -61,6 +61,9 @@ ms.locfileid: "98058352"
 `Startup` 클래스의 `Configure` 메서드에 WebSockets 미들웨어를 추가합니다.
 
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSockets)]
+
+> [!NOTE]
+> 컨트롤러에서 WebSocket 요청을 허용하려면 `app.UseWebSockets`에 대한 호출이 `app.UseEndpoints` 이전에 발생해야 합니다.
 
 ::: moniker range="< aspnetcore-2.2"
 
@@ -186,7 +189,7 @@ Windows 8 이상에서 WebSocket 프로토콜을 지원하려면:
 
 ## <a name="sample-app"></a>샘플 앱
 
-이 아티클과 함께 제공되는 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples)은 에코 앱입니다. WebSocket 연결을 생성하는 웹 페이지가 제공되며 서버는 수신한 메시지를 클라이언트로 재전송합니다. 샘플 앱은 IIS Express를 사용하여 Visual Studio에서 실행되도록 구성되지 않으므로, [`dotnet run`](/dotnet/core/tools/dotnet-run)을 사용하여 명령 셸에서 앱을 실행하고 브라우저에서 `http://localhost:5000`으로 이동합니다. 웹 페이지에 연결 상태가 표시됩니다.
+이 아티클과 함께 제공되는 [샘플 앱](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/websockets/samples)은 에코 앱입니다. WebSocket 연결을 생성하는 웹 페이지가 제공되며 서버는 수신한 메시지를 클라이언트로 재전송합니다. 샘플 앱은 IIS Express를 사용하여 Visual Studio에서 실행되도록 구성되지 않으므로, [`dotnet run`](/dotnet/core/tools/dotnet-run)을 사용하여 명령 셸에서 앱을 실행하고 브라우저에서 `http://localhost:5000`으로 이동합니다. 웹 페이지에 연결 상태가 표시됩니다.
 
 ![WebSocket 연결 전 웹 페이지 초기 상태](websockets/_static/start.png)
 
