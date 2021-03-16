@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 012c8794b3d239ce93ac942000c7ec4f71d06cbf
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: eb72810a5b65232aa778daa556a9b2d406807e87
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280006"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395138"
 ---
-# <a name="aspnet-core-blazor-forms-and-validation"></a><span data-ttu-id="09231-103">ASP.NET Core Blazor 양식 및 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="09231-103">ASP.NET Core Blazor forms and validation</span></span>
+# <a name="aspnet-core-blazor-forms-and-validation"></a><span data-ttu-id="36895-103">ASP.NET Core Blazor 양식 및 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="36895-103">ASP.NET Core Blazor forms and validation</span></span>
 
-<span data-ttu-id="09231-104">양식 및 유효성 검사는 [데이터 주석](xref:mvc/models/validation)을 사용하여 Blazor에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-104">Forms and validation are supported in Blazor using [data annotations](xref:mvc/models/validation).</span></span>
+<span data-ttu-id="36895-104">양식 및 유효성 검사는 [데이터 주석](xref:mvc/models/validation)을 사용하여 Blazor에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-104">Forms and validation are supported in Blazor using [data annotations](xref:mvc/models/validation).</span></span>
 
-<span data-ttu-id="09231-105">다음 `ExampleModel` 형식은 데이터 주석을 사용하여 유효성 검사 논리를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-105">The following `ExampleModel` type defines validation logic using data annotations:</span></span>
+<span data-ttu-id="36895-105">다음 `ExampleModel` 형식은 데이터 주석을 사용하여 유효성 검사 논리를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-105">The following `ExampleModel` type defines validation logic using data annotations:</span></span>
 
 ```csharp
 using System.ComponentModel.DataAnnotations;
@@ -43,7 +43,7 @@ public class ExampleModel
 }
 ```
 
-<span data-ttu-id="09231-106">양식은 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> 구성 요소를 사용하여 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-106">A form is defined using the <xref:Microsoft.AspNetCore.Components.Forms.EditForm> component.</span></span> <span data-ttu-id="09231-107">다음 양식은 일반적인 요소, 구성 요소 및 Razor 코드를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="09231-107">The following form demonstrates typical elements, components, and Razor code:</span></span>
+<span data-ttu-id="36895-106">양식은 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> 구성 요소를 사용하여 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-106">A form is defined using the <xref:Microsoft.AspNetCore.Components.Forms.EditForm> component.</span></span> <span data-ttu-id="36895-107">다음 양식은 일반적인 요소, 구성 요소 및 Razor 코드를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="36895-107">The following form demonstrates typical elements, components, and Razor code:</span></span>
 
 ```razor
 <EditForm Model="@exampleModel" OnValidSubmit="@HandleValidSubmit">
@@ -65,23 +65,23 @@ public class ExampleModel
 }
 ```
 
-<span data-ttu-id="09231-108">앞의 예제에서:</span><span class="sxs-lookup"><span data-stu-id="09231-108">In the preceding example:</span></span>
+<span data-ttu-id="36895-108">앞의 예제에서:</span><span class="sxs-lookup"><span data-stu-id="36895-108">In the preceding example:</span></span>
 
-* <span data-ttu-id="09231-109">양식은 `ExampleModel` 형식에서 정의된 유효성 검사를 사용하여 `name` 필드에서 사용자 입력의 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-109">The form validates user input in the `name` field using the validation defined in the `ExampleModel` type.</span></span> <span data-ttu-id="09231-110">모델은 구성 요소의 `@code` 블록에 생성되고 프라이빗 필드(`exampleModel`)에 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-110">The model is created in the component's `@code` block and held in a private field (`exampleModel`).</span></span> <span data-ttu-id="09231-111">필드는 `<EditForm>` 요소의 `Model` 특성에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-111">The field is assigned to the `Model` attribute of the `<EditForm>` element.</span></span>
-* <span data-ttu-id="09231-112"><xref:Microsoft.AspNetCore.Components.Forms.InputText> 구성 요소의 `@bind-Value`는 다음과 같이 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-112">The <xref:Microsoft.AspNetCore.Components.Forms.InputText> component's `@bind-Value` binds:</span></span>
-  * <span data-ttu-id="09231-113">모델 속성(`exampleModel.Name`)을 <xref:Microsoft.AspNetCore.Components.Forms.InputText> 구성 요소의 `Value` 속성에 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-113">The model property (`exampleModel.Name`) to the <xref:Microsoft.AspNetCore.Components.Forms.InputText> component's `Value` property.</span></span> <span data-ttu-id="09231-114">속성 바인딩에 대한 자세한 내용은 <xref:blazor/components/data-binding#binding-with-component-parameters>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="09231-114">For more information on property binding, see <xref:blazor/components/data-binding#binding-with-component-parameters>.</span></span>
-  * <span data-ttu-id="09231-115">변경 이벤트 대리자를 <xref:Microsoft.AspNetCore.Components.Forms.InputText> 구성 요소의 `ValueChanged` 속성에 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-115">A change event delegate to the <xref:Microsoft.AspNetCore.Components.Forms.InputText> component's `ValueChanged` property.</span></span>
-* <span data-ttu-id="09231-116"><xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> [유효성 검사기 구성 요소](#validator-components)는 데이터 주석을 사용하여 유효성 검사 지원을 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-116">The <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> [validator component](#validator-components) attaches validation support using data annotations.</span></span>
-* <span data-ttu-id="09231-117"><xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 구성 요소는 유효성 검사 메시지를 요약합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-117">The <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> component summarizes validation messages.</span></span>
-* <span data-ttu-id="09231-118">양식이 성공적으로 제출되면(유효성 검사 통과) `HandleValidSubmit`가 트리거됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-118">`HandleValidSubmit` is triggered when the form successfully submits (passes validation).</span></span>
+* <span data-ttu-id="36895-109">양식은 `ExampleModel` 형식에서 정의된 유효성 검사를 사용하여 `name` 필드에서 사용자 입력의 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-109">The form validates user input in the `name` field using the validation defined in the `ExampleModel` type.</span></span> <span data-ttu-id="36895-110">모델은 구성 요소의 `@code` 블록에 생성되고 프라이빗 필드(`exampleModel`)에 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-110">The model is created in the component's `@code` block and held in a private field (`exampleModel`).</span></span> <span data-ttu-id="36895-111">필드는 `<EditForm>` 요소의 `Model` 특성에 할당됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-111">The field is assigned to the `Model` attribute of the `<EditForm>` element.</span></span>
+* <span data-ttu-id="36895-112"><xref:Microsoft.AspNetCore.Components.Forms.InputText> 구성 요소의 `@bind-Value`는 다음과 같이 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-112">The <xref:Microsoft.AspNetCore.Components.Forms.InputText> component's `@bind-Value` binds:</span></span>
+  * <span data-ttu-id="36895-113">모델 속성(`exampleModel.Name`)을 <xref:Microsoft.AspNetCore.Components.Forms.InputText> 구성 요소의 `Value` 속성에 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-113">The model property (`exampleModel.Name`) to the <xref:Microsoft.AspNetCore.Components.Forms.InputText> component's `Value` property.</span></span> <span data-ttu-id="36895-114">속성 바인딩에 대한 자세한 내용은 <xref:blazor/components/data-binding#binding-with-component-parameters>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="36895-114">For more information on property binding, see <xref:blazor/components/data-binding#binding-with-component-parameters>.</span></span>
+  * <span data-ttu-id="36895-115">변경 이벤트 대리자를 <xref:Microsoft.AspNetCore.Components.Forms.InputText> 구성 요소의 `ValueChanged` 속성에 바인딩합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-115">A change event delegate to the <xref:Microsoft.AspNetCore.Components.Forms.InputText> component's `ValueChanged` property.</span></span>
+* <span data-ttu-id="36895-116"><xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> [유효성 검사기 구성 요소](#validator-components)는 데이터 주석을 사용하여 유효성 검사 지원을 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-116">The <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> [validator component](#validator-components) attaches validation support using data annotations.</span></span>
+* <span data-ttu-id="36895-117"><xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 구성 요소는 유효성 검사 메시지를 요약합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-117">The <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> component summarizes validation messages.</span></span>
+* <span data-ttu-id="36895-118">양식이 성공적으로 제출되면(유효성 검사 통과) `HandleValidSubmit`가 트리거됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-118">`HandleValidSubmit` is triggered when the form successfully submits (passes validation).</span></span>
 
-## <a name="built-in-forms-components"></a><span data-ttu-id="09231-119">기본 제공 양식 구성 요소</span><span class="sxs-lookup"><span data-stu-id="09231-119">Built-in forms components</span></span>
+## <a name="built-in-forms-components"></a><span data-ttu-id="36895-119">기본 제공 양식 구성 요소</span><span class="sxs-lookup"><span data-stu-id="36895-119">Built-in forms components</span></span>
 
-<span data-ttu-id="09231-120">기본 제공 구성 요소 세트를 사용하여 사용자 입력을 수신하고 유효성을 검사할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-120">A set of built-in components are available to receive and validate user input.</span></span> <span data-ttu-id="09231-121">입력을 변경할 때와 양식을 제출할 때 입력의 유효성이 검사됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-121">Inputs are validated when they're changed and when a form is submitted.</span></span> <span data-ttu-id="09231-122">사용 가능한 입력 구성 요소는 다음 표에 나와 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-122">Available input components are shown in the following table.</span></span>
+<span data-ttu-id="36895-120">기본 제공 구성 요소 세트를 사용하여 사용자 입력을 수신하고 유효성을 검사할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-120">A set of built-in components are available to receive and validate user input.</span></span> <span data-ttu-id="36895-121">입력을 변경할 때와 양식을 제출할 때 입력의 유효성이 검사됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-121">Inputs are validated when they're changed and when a form is submitted.</span></span> <span data-ttu-id="36895-122">사용 가능한 입력 구성 요소는 다음 표에 나와 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-122">Available input components are shown in the following table.</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-| <span data-ttu-id="09231-123">입력 구성 요소</span><span class="sxs-lookup"><span data-stu-id="09231-123">Input component</span></span> | <span data-ttu-id="09231-124">렌더링 형식&hellip;</span><span class="sxs-lookup"><span data-stu-id="09231-124">Rendered as&hellip;</span></span> |
+| <span data-ttu-id="36895-123">입력 구성 요소</span><span class="sxs-lookup"><span data-stu-id="36895-123">Input component</span></span> | <span data-ttu-id="36895-124">렌더링 형식&hellip;</span><span class="sxs-lookup"><span data-stu-id="36895-124">Rendered as&hellip;</span></span> |
 | --------------- | ------------------- |
 | <xref:Microsoft.AspNetCore.Components.Forms.InputCheckbox> | `<input type="checkbox">` |
 | <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> | `<input type="date">` |
@@ -97,7 +97,7 @@ public class ExampleModel
 
 ::: moniker range="< aspnetcore-5.0"
 
-| <span data-ttu-id="09231-125">입력 구성 요소</span><span class="sxs-lookup"><span data-stu-id="09231-125">Input component</span></span> | <span data-ttu-id="09231-126">렌더링 형식&hellip;</span><span class="sxs-lookup"><span data-stu-id="09231-126">Rendered as&hellip;</span></span> |
+| <span data-ttu-id="36895-125">입력 구성 요소</span><span class="sxs-lookup"><span data-stu-id="36895-125">Input component</span></span> | <span data-ttu-id="36895-126">렌더링 형식&hellip;</span><span class="sxs-lookup"><span data-stu-id="36895-126">Rendered as&hellip;</span></span> |
 | --------------- | ------------------- |
 | <xref:Microsoft.AspNetCore.Components.Forms.InputCheckbox> | `<input type="checkbox">` |
 | <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> | `<input type="date">` |
@@ -107,15 +107,15 @@ public class ExampleModel
 | <xref:Microsoft.AspNetCore.Components.Forms.InputTextArea> | `<textarea>` |
 
 > [!NOTE]
-> <span data-ttu-id="09231-127">`InputRadio` 및 `InputRadioGroup` 구성 요소는 ASP.NET Core 5.0 이상에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-127">The `InputRadio` and `InputRadioGroup` components are available in ASP.NET Core 5.0 or later.</span></span> <span data-ttu-id="09231-128">자세한 내용을 보려면 이 문서의 5.0 이상 버전을 선택하세요.</span><span class="sxs-lookup"><span data-stu-id="09231-128">For more information, select a 5.0 or later version of this article.</span></span>
+> <span data-ttu-id="36895-127">`InputRadio` 및 `InputRadioGroup` 구성 요소는 ASP.NET Core 5.0 이상에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-127">The `InputRadio` and `InputRadioGroup` components are available in ASP.NET Core 5.0 or later.</span></span> <span data-ttu-id="36895-128">자세한 내용을 보려면 이 문서의 5.0 이상 버전을 선택하세요.</span><span class="sxs-lookup"><span data-stu-id="36895-128">For more information, select a 5.0 or later version of this article.</span></span>
 
 ::: moniker-end
 
-<span data-ttu-id="09231-129"><xref:Microsoft.AspNetCore.Components.Forms.EditForm>을 비롯한 모든 입력 구성 요소는 임의 특성을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-129">All of the input components, including <xref:Microsoft.AspNetCore.Components.Forms.EditForm>, support arbitrary attributes.</span></span> <span data-ttu-id="09231-130">구성 요소 매개 변수와 일치하지 않는 특성은 렌더링된 HTML 요소에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-130">Any attribute that doesn't match a component parameter is added to the rendered HTML element.</span></span>
+<span data-ttu-id="36895-129"><xref:Microsoft.AspNetCore.Components.Forms.EditForm>을 비롯한 모든 입력 구성 요소는 임의 특성을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-129">All of the input components, including <xref:Microsoft.AspNetCore.Components.Forms.EditForm>, support arbitrary attributes.</span></span> <span data-ttu-id="36895-130">구성 요소 매개 변수와 일치하지 않는 특성은 렌더링된 HTML 요소에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-130">Any attribute that doesn't match a component parameter is added to the rendered HTML element.</span></span>
 
-<span data-ttu-id="09231-131">입력 구성 요소는 필드 상태를 반영하기 위해 필드 CSS 클래스를 업데이트하는 작업을 포함하여 필드 변경이 발생하는 경우 유효성 검사의 기본 동작을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-131">Input components provide default behavior for validating when a field is changed, including updating the field CSS class to reflect the field state.</span></span> <span data-ttu-id="09231-132">일부 구성 요소는 유용한 구문 분석 논리를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-132">Some components include useful parsing logic.</span></span> <span data-ttu-id="09231-133">예를 들어 <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> 및 <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601>는 구문 분석할 수 없는 값을 유효성 검사 오류로 등록하여 구문 분석 불가능한 값을 정상적으로 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-133">For example, <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> and <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> handle unparseable values gracefully by registering unparseable values as validation errors.</span></span> <span data-ttu-id="09231-134">Null 값을 허용할 수 있는 형식은 대상 필드의 Null 허용 여부도 지원합니다(예: `int?`).</span><span class="sxs-lookup"><span data-stu-id="09231-134">Types that can accept null values also support nullability of the target field (for example, `int?`).</span></span>
+<span data-ttu-id="36895-131">입력 구성 요소는 필드 상태를 반영하기 위해 필드 CSS 클래스를 업데이트하는 작업을 포함하여 필드 변경이 발생하는 경우 유효성 검사의 기본 동작을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-131">Input components provide default behavior for validating when a field is changed, including updating the field CSS class to reflect the field state.</span></span> <span data-ttu-id="36895-132">일부 구성 요소는 유용한 구문 분석 논리를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-132">Some components include useful parsing logic.</span></span> <span data-ttu-id="36895-133">예를 들어 <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> 및 <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601>는 구문 분석할 수 없는 값을 유효성 검사 오류로 등록하여 구문 분석 불가능한 값을 정상적으로 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-133">For example, <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> and <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> handle unparseable values gracefully by registering unparseable values as validation errors.</span></span> <span data-ttu-id="36895-134">Null 값을 허용할 수 있는 형식은 대상 필드의 Null 허용 여부도 지원합니다(예: `int?`).</span><span class="sxs-lookup"><span data-stu-id="36895-134">Types that can accept null values also support nullability of the target field (for example, `int?`).</span></span>
 
-<span data-ttu-id="09231-135">다음 `Starship` 형식은 이전 `ExampleModel`보다 큰 속성 및 데이터 주석 집합을 사용하여 유효성 검사 논리를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-135">The following `Starship` type defines validation logic using a larger set of properties and data annotations than the earlier `ExampleModel`:</span></span>
+<span data-ttu-id="36895-135">다음 `Starship` 형식은 이전 `ExampleModel`보다 큰 속성 및 데이터 주석 집합을 사용하여 유효성 검사 논리를 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-135">The following `Starship` type defines validation logic using a larger set of properties and data annotations than the earlier `ExampleModel`:</span></span>
 
 ```csharp
 using System;
@@ -145,9 +145,9 @@ public class Starship
 }
 ```
 
-<span data-ttu-id="09231-136">위의 예제에서 `Description`은 데이터 주석이 없으므로 선택 사항입니다.</span><span class="sxs-lookup"><span data-stu-id="09231-136">In the preceding example, `Description` is optional because no data annotations are present.</span></span>
+<span data-ttu-id="36895-136">위의 예제에서 `Description`은 데이터 주석이 없으므로 선택 사항입니다.</span><span class="sxs-lookup"><span data-stu-id="36895-136">In the preceding example, `Description` is optional because no data annotations are present.</span></span>
 
-<span data-ttu-id="09231-137">다음 양식은 `Starship` 모델에서 정의된 유효성 검사를 사용하여 사용자 입력의 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-137">The following form validates user input using the validation defined in the `Starship` model:</span></span>
+<span data-ttu-id="36895-137">다음 양식은 `Starship` 모델에서 정의된 유효성 검사를 사용하여 사용자 입력의 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-137">The following form validates user input using the validation defined in the `Starship` model:</span></span>
 
 ```razor
 @page "/FormsValidation"
@@ -221,22 +221,22 @@ public class Starship
 }
 ```
 
-<span data-ttu-id="09231-138"><xref:Microsoft.AspNetCore.Components.Forms.EditForm>은 수정된 필드와 현재 유효성 검사 메시지를 포함하여 편집 프로세스에 대한 메타데이터를 추적하는 [계단식 값](xref:blazor/components/cascading-values-and-parameters)으로 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="09231-138">The <xref:Microsoft.AspNetCore.Components.Forms.EditForm> creates an <xref:Microsoft.AspNetCore.Components.Forms.EditContext> as a [cascading value](xref:blazor/components/cascading-values-and-parameters) that tracks metadata about the edit process, including which fields have been modified and the current validation messages.</span></span>
+<span data-ttu-id="36895-138"><xref:Microsoft.AspNetCore.Components.Forms.EditForm>은 수정된 필드와 현재 유효성 검사 메시지를 포함하여 편집 프로세스에 대한 메타데이터를 추적하는 [계단식 값](xref:blazor/components/cascading-values-and-parameters)으로 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="36895-138">The <xref:Microsoft.AspNetCore.Components.Forms.EditForm> creates an <xref:Microsoft.AspNetCore.Components.Forms.EditContext> as a [cascading value](xref:blazor/components/cascading-values-and-parameters) that tracks metadata about the edit process, including which fields have been modified and the current validation messages.</span></span>
 
-<span data-ttu-id="09231-139"><xref:Microsoft.AspNetCore.Components.Forms.EditContext> **또는** <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType>을 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>에 할당합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-139">Assign **either** an <xref:Microsoft.AspNetCore.Components.Forms.EditContext> **or** an <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType> to an <xref:Microsoft.AspNetCore.Components.Forms.EditForm>.</span></span> <span data-ttu-id="09231-140">두 항목을 모두 할당할 수 없으며, 그러면 **런타임 오류** 가 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-140">Assignment of both isn't supported and generates a **runtime error**.</span></span>
+<span data-ttu-id="36895-139"><xref:Microsoft.AspNetCore.Components.Forms.EditContext> **또는** <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType>을 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>에 할당합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-139">Assign **either** an <xref:Microsoft.AspNetCore.Components.Forms.EditContext> **or** an <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType> to an <xref:Microsoft.AspNetCore.Components.Forms.EditForm>.</span></span> <span data-ttu-id="36895-140">두 항목을 모두 할당할 수 없으며, 그러면 **런타임 오류** 가 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-140">Assignment of both isn't supported and generates a **runtime error**.</span></span>
 
-<span data-ttu-id="09231-141"><xref:Microsoft.AspNetCore.Components.Forms.EditForm>은 유효한 양식 제출과 잘못된 양식 제출에 대한 편리한 이벤트를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-141">The <xref:Microsoft.AspNetCore.Components.Forms.EditForm> provides convenient events for valid and invalid form submission:</span></span>
+<span data-ttu-id="36895-141"><xref:Microsoft.AspNetCore.Components.Forms.EditForm>은 유효한 양식 제출과 잘못된 양식 제출에 대한 편리한 이벤트를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-141">The <xref:Microsoft.AspNetCore.Components.Forms.EditForm> provides convenient events for valid and invalid form submission:</span></span>
 
 * <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit>
 * <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnInvalidSubmit>
 
-<span data-ttu-id="09231-142">사용자 지정 코드를 사용하여 유효성 검사를 트리거하고 필드 값을 확인하려면 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit>을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-142">Use <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit> to use custom code to trigger validation and check field values.</span></span>
+<span data-ttu-id="36895-142">사용자 지정 코드를 사용하여 유효성 검사를 트리거하고 필드 값을 확인하려면 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit>을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-142">Use <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit> to use custom code to trigger validation and check field values.</span></span>
 
-<span data-ttu-id="09231-143">다음 예제에서는</span><span class="sxs-lookup"><span data-stu-id="09231-143">In the following example:</span></span>
+<span data-ttu-id="36895-143">다음 예제에서는</span><span class="sxs-lookup"><span data-stu-id="36895-143">In the following example:</span></span>
 
-* <span data-ttu-id="09231-144">**`Submit`** 단추를 선택하면 `HandleSubmit` 메서드가 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-144">The `HandleSubmit` method executes when the **`Submit`** button is selected.</span></span>
-* <span data-ttu-id="09231-145"><xref:Microsoft.AspNetCore.Components.Forms.EditContext.Validate%2A?displayProperty=nameWithType>를 호출하여 양식의 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-145">The form is validated by calling <xref:Microsoft.AspNetCore.Components.Forms.EditContext.Validate%2A?displayProperty=nameWithType>.</span></span>
-* <span data-ttu-id="09231-146">유효성 검사 결과에 따라 추가 코드가 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-146">Additional code is executed depending on the validation result.</span></span> <span data-ttu-id="09231-147"><xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit>에 할당된 메서드에 비즈니스 논리를 삽입합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-147">Place business logic in the method assigned to <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit>.</span></span>
+* <span data-ttu-id="36895-144">**`Submit`** 단추를 선택하면 `HandleSubmit` 메서드가 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-144">The `HandleSubmit` method executes when the **`Submit`** button is selected.</span></span>
+* <span data-ttu-id="36895-145"><xref:Microsoft.AspNetCore.Components.Forms.EditContext.Validate%2A?displayProperty=nameWithType>를 호출하여 양식의 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-145">The form is validated by calling <xref:Microsoft.AspNetCore.Components.Forms.EditContext.Validate%2A?displayProperty=nameWithType>.</span></span>
+* <span data-ttu-id="36895-146">유효성 검사 결과에 따라 추가 코드가 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-146">Additional code is executed depending on the validation result.</span></span> <span data-ttu-id="36895-147"><xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit>에 할당된 메서드에 비즈니스 논리를 삽입합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-147">Place business logic in the method assigned to <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit>.</span></span>
 
 ```razor
 <EditForm EditContext="@editContext" OnSubmit="@HandleSubmit">
@@ -272,24 +272,24 @@ public class Starship
 ```
 
 > [!NOTE]
-> <span data-ttu-id="09231-148"><xref:Microsoft.AspNetCore.Components.Forms.EditContext>에서 직접 유효성 검사 메시지를 지울 수 있는 프레임워크 API는 없습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-148">Framework API doesn't exist to clear validation messages directly from an <xref:Microsoft.AspNetCore.Components.Forms.EditContext>.</span></span> <span data-ttu-id="09231-149">따라서 일반적으로 양식의 새 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>에 유효성 검사 메시지를 추가하지 않는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-149">Therefore, we don't generally recommend adding validation messages to a new <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> in a form.</span></span> <span data-ttu-id="09231-150">유효성 검사 메시지를 관리하려면 이 문서에 설명된 대로 [비즈니스 논리 유효성 검사 코드](#business-logic-validation)에서 [유효성 검사기 구성 요소](#validator-components)를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-150">To manage validation messages, use a [validator component](#validator-components) with your [business logic validation code](#business-logic-validation), as described in this article.</span></span>
+> <span data-ttu-id="36895-148"><xref:Microsoft.AspNetCore.Components.Forms.EditContext>에서 직접 유효성 검사 메시지를 지울 수 있는 프레임워크 API는 없습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-148">Framework API doesn't exist to clear validation messages directly from an <xref:Microsoft.AspNetCore.Components.Forms.EditContext>.</span></span> <span data-ttu-id="36895-149">따라서 일반적으로 양식의 새 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>에 유효성 검사 메시지를 추가하지 않는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-149">Therefore, we don't generally recommend adding validation messages to a new <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> in a form.</span></span> <span data-ttu-id="36895-150">유효성 검사 메시지를 관리하려면 이 문서에 설명된 대로 [비즈니스 논리 유효성 검사 코드](#business-logic-validation)에서 [유효성 검사기 구성 요소](#validator-components)를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-150">To manage validation messages, use a [validator component](#validator-components) with your [business logic validation code](#business-logic-validation), as described in this article.</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-## <a name="display-name-support"></a><span data-ttu-id="09231-151">표시 이름 지원</span><span class="sxs-lookup"><span data-stu-id="09231-151">Display name support</span></span>
+## <a name="display-name-support"></a><span data-ttu-id="36895-151">표시 이름 지원</span><span class="sxs-lookup"><span data-stu-id="36895-151">Display name support</span></span>
 
-<span data-ttu-id="09231-152">‘이 섹션은 .NET 5 RC1(릴리스 후보 1) 이상의 ASP.NET Core에 적용됩니다.’</span><span class="sxs-lookup"><span data-stu-id="09231-152">*This section applies to ASP.NET Core in .NET 5 Release Candidate 1 (RC1) or later.*</span></span>
+<span data-ttu-id="36895-152">‘이 섹션은 .NET 5 RC1(릴리스 후보 1) 이상의 ASP.NET Core에 적용됩니다.’</span><span class="sxs-lookup"><span data-stu-id="36895-152">*This section applies to ASP.NET Core in .NET 5 Release Candidate 1 (RC1) or later.*</span></span>
 
-<span data-ttu-id="09231-153">다음 기본 제공 구성 요소는 `DisplayName` 매개 변수를 사용하여 표시 이름을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-153">The following built-in components support display names with the `DisplayName` parameter:</span></span>
+<span data-ttu-id="36895-153">다음 기본 제공 구성 요소는 `DisplayName` 매개 변수를 사용하여 표시 이름을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-153">The following built-in components support display names with the `DisplayName` parameter:</span></span>
 
 * <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601>
 * <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601>
 * <xref:Microsoft.AspNetCore.Components.Forms.InputSelect%601>
 
-<span data-ttu-id="09231-154">다음 `InputDate` 구성 요소 예제에서</span><span class="sxs-lookup"><span data-stu-id="09231-154">In the following `InputDate` component example:</span></span>
+<span data-ttu-id="36895-154">다음 `InputDate` 구성 요소 예제에서</span><span class="sxs-lookup"><span data-stu-id="36895-154">In the following `InputDate` component example:</span></span>
 
-* <span data-ttu-id="09231-155">표시 이름(`DisplayName`)이 `birthday`로 설정되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-155">The display name (`DisplayName`) is set to `birthday`.</span></span>
-* <span data-ttu-id="09231-156">구성 요소는 `BirthDate` 속성에 `DateTime` 형식으로 바인딩됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-156">The component is bound to the `BirthDate` property as a `DateTime` type.</span></span>
+* <span data-ttu-id="36895-155">표시 이름(`DisplayName`)이 `birthday`로 설정되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-155">The display name (`DisplayName`) is set to `birthday`.</span></span>
+* <span data-ttu-id="36895-156">구성 요소는 `BirthDate` 속성에 `DateTime` 형식으로 바인딩됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-156">The component is bound to the `BirthDate` property as a `DateTime` type.</span></span>
 
 ```razor
 <InputDate @bind-Value="BirthDate" DisplayName="birthday" />
@@ -299,7 +299,7 @@ public class Starship
 }
 ```
 
-<span data-ttu-id="09231-157">사용자가 날짜 값을 제공하지 않는 경우 다음과 같은 유효성 검사 오류가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-157">If the user doesn't provide a date value, the validation error appears as:</span></span>
+<span data-ttu-id="36895-157">사용자가 날짜 값을 제공하지 않는 경우 다음과 같은 유효성 검사 오류가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-157">If the user doesn't provide a date value, the validation error appears as:</span></span>
 
 ```
 The birthday must be a date.
@@ -307,27 +307,27 @@ The birthday must be a date.
 
 ::: moniker-end
 
-## <a name="validator-components"></a><span data-ttu-id="09231-158">유효성 검사기 구성 요소</span><span class="sxs-lookup"><span data-stu-id="09231-158">Validator components</span></span>
+## <a name="validator-components"></a><span data-ttu-id="36895-158">유효성 검사기 구성 요소</span><span class="sxs-lookup"><span data-stu-id="36895-158">Validator components</span></span>
 
-<span data-ttu-id="09231-159">유효성 검사기 구성 요소는 양식의 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>에 대한 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>를 관리하여 양식 유효성 검사를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-159">Validator components support form validation by managing a <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> for a form's <xref:Microsoft.AspNetCore.Components.Forms.EditContext>.</span></span>
+<span data-ttu-id="36895-159">유효성 검사기 구성 요소는 양식의 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>에 대한 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>를 관리하여 양식 유효성 검사를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-159">Validator components support form validation by managing a <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> for a form's <xref:Microsoft.AspNetCore.Components.Forms.EditContext>.</span></span>
 
-<span data-ttu-id="09231-160">Blazor 프레임워크는 [유효성 검사 특성(데이터 주석)](xref:mvc/models/validation#validation-attributes)을 기반으로 양식에 유효성 검사 지원을 연결하는 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-160">The Blazor framework provides the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component to attach validation support to forms based on [validation attributes (data annotations)](xref:mvc/models/validation#validation-attributes).</span></span> <span data-ttu-id="09231-161">사용자 지정 유효성 검사기 구성 요소를 만들어 동일한 페이지의 다른 양식에 대한 유효성 검사 메시지를 처리하거나, 다양한 양식 처리 단계에서 동일한 양식에 대한 유효성 검사 메시지를 처리할 수 있습니다. 예를 들어 클라이언트 쪽 유효성 검사 후 서버 쪽 유효성 검사를 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-161">Create custom validator components to process validation messages for different forms on the same page or the same form at different steps of form processing, for example client-side validation followed by server-side validation.</span></span> <span data-ttu-id="09231-162">이 섹션에 표시된 유효성 검사기 구성 요소 예제(`CustomValidator`)는 이 문서의 다음 섹션에서 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-162">The validator component example shown in this section, `CustomValidator`, is used in the following sections of this article:</span></span>
+<span data-ttu-id="36895-160">Blazor 프레임워크는 [유효성 검사 특성(데이터 주석)](xref:mvc/models/validation#validation-attributes)을 기반으로 양식에 유효성 검사 지원을 연결하는 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-160">The Blazor framework provides the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component to attach validation support to forms based on [validation attributes (data annotations)](xref:mvc/models/validation#validation-attributes).</span></span> <span data-ttu-id="36895-161">사용자 지정 유효성 검사기 구성 요소를 만들어 동일한 페이지의 다른 양식에 대한 유효성 검사 메시지를 처리하거나, 다양한 양식 처리 단계에서 동일한 양식에 대한 유효성 검사 메시지를 처리할 수 있습니다. 예를 들어 클라이언트 쪽 유효성 검사 후 서버 쪽 유효성 검사를 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-161">Create custom validator components to process validation messages for different forms on the same page or the same form at different steps of form processing, for example client-side validation followed by server-side validation.</span></span> <span data-ttu-id="36895-162">이 섹션에 표시된 유효성 검사기 구성 요소 예제(`CustomValidator`)는 이 문서의 다음 섹션에서 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-162">The validator component example shown in this section, `CustomValidator`, is used in the following sections of this article:</span></span>
 
-* [<span data-ttu-id="09231-163">비즈니스 논리 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="09231-163">Business logic validation</span></span>](#business-logic-validation)
-* [<span data-ttu-id="09231-164">서버 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="09231-164">Server validation</span></span>](#server-validation)
+* [<span data-ttu-id="36895-163">비즈니스 논리 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="36895-163">Business logic validation</span></span>](#business-logic-validation)
+* [<span data-ttu-id="36895-164">서버 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="36895-164">Server validation</span></span>](#server-validation)
 
 > [!NOTE]
-> <span data-ttu-id="09231-165">대부분의 경우 사용자 지정 유효성 검사기 구성 요소 대신 사용자 지정 데이터 주석 유효성 검사 특성을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-165">Custom data annotation validation attributes can be used instead of custom validator components in many cases.</span></span> <span data-ttu-id="09231-166">양식의 모델에 적용된 사용자 지정 특성은 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 사용하여 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-166">Custom attributes applied to the form's model activate with the use of the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span> <span data-ttu-id="09231-167">서버 쪽 유효성 검사에 사용하는 경우 모델에 적용된 사용자 지정 특성을 서버에서 실행 가능해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-167">When used with server-side validation, any custom attributes applied to the model must be executable on the server.</span></span> <span data-ttu-id="09231-168">자세한 내용은 <xref:mvc/models/validation#alternatives-to-built-in-attributes>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="09231-168">For more information, see <xref:mvc/models/validation#alternatives-to-built-in-attributes>.</span></span>
+> <span data-ttu-id="36895-165">대부분의 경우 사용자 지정 유효성 검사기 구성 요소 대신 사용자 지정 데이터 주석 유효성 검사 특성을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-165">Custom data annotation validation attributes can be used instead of custom validator components in many cases.</span></span> <span data-ttu-id="36895-166">양식의 모델에 적용된 사용자 지정 특성은 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 사용하여 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-166">Custom attributes applied to the form's model activate with the use of the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span> <span data-ttu-id="36895-167">서버 쪽 유효성 검사에 사용하는 경우 모델에 적용된 사용자 지정 특성을 서버에서 실행 가능해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-167">When used with server-side validation, any custom attributes applied to the model must be executable on the server.</span></span> <span data-ttu-id="36895-168">자세한 내용은 <xref:mvc/models/validation#alternatives-to-built-in-attributes>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="36895-168">For more information, see <xref:mvc/models/validation#alternatives-to-built-in-attributes>.</span></span>
 
-<span data-ttu-id="09231-169"><xref:Microsoft.AspNetCore.Components.ComponentBase>에서 유효성 검사기 구성 요소를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="09231-169">Create a validator component from <xref:Microsoft.AspNetCore.Components.ComponentBase>:</span></span>
+<span data-ttu-id="36895-169"><xref:Microsoft.AspNetCore.Components.ComponentBase>에서 유효성 검사기 구성 요소를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="36895-169">Create a validator component from <xref:Microsoft.AspNetCore.Components.ComponentBase>:</span></span>
 
-* <span data-ttu-id="09231-170">양식의 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>는 구성 요소의 [연계 매개 변수](xref:blazor/components/cascading-values-and-parameters)입니다.</span><span class="sxs-lookup"><span data-stu-id="09231-170">The form's <xref:Microsoft.AspNetCore.Components.Forms.EditContext> is a [cascading parameter](xref:blazor/components/cascading-values-and-parameters) of the component.</span></span>
-* <span data-ttu-id="09231-171">유효성 검사기 구성 요소가 초기화되면 현재 양식 오류 목록을 유지하기 위해 새 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>가 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="09231-171">When the validator component is initialized, a new <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> is created to maintain a current list of form errors.</span></span>
-* <span data-ttu-id="09231-172">양식의 구성 요소에 있는 개발자 코드에서 `DisplayErrors` 메서드를 호출하면 메시지 저장소에 오류가 수신됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-172">The message store receives errors when developer code in the form's component calls the `DisplayErrors` method.</span></span> <span data-ttu-id="09231-173">오류는 [`Dictionary<string, List<string>>`](xref:System.Collections.Generic.Dictionary`2)의 `DisplayErrors` 메서드에 전달됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-173">The errors are passed to the `DisplayErrors` method in a [`Dictionary<string, List<string>>`](xref:System.Collections.Generic.Dictionary`2).</span></span> <span data-ttu-id="09231-174">사전에서 키는 하나 이상의 오류가 발생한 양식 필드의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="09231-174">In the dictionary, the key is the name of the form field that has one or more errors.</span></span> <span data-ttu-id="09231-175">값은 오류 목록입니다.</span><span class="sxs-lookup"><span data-stu-id="09231-175">The value is the error list.</span></span>
-* <span data-ttu-id="09231-176">다음 중 하나가 발생하면 메시지가 지워집니다.</span><span class="sxs-lookup"><span data-stu-id="09231-176">Messages are cleared when any of the following have occurred:</span></span>
-  * <span data-ttu-id="09231-177"><xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnValidationRequested> 이벤트가 발생하면 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>에서 유효성 검사가 요청됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-177">Validation is requested on the <xref:Microsoft.AspNetCore.Components.Forms.EditContext> when the <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnValidationRequested> event is raised.</span></span> <span data-ttu-id="09231-178">모든 오류는 지워집니다.</span><span class="sxs-lookup"><span data-stu-id="09231-178">All of the errors are cleared.</span></span>
-  * <span data-ttu-id="09231-179"><xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> 이벤트가 발생하면 양식의 필드가 변경됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-179">A field changes in the form when the <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> event is raised.</span></span> <span data-ttu-id="09231-180">해당 필드에 대한 오류만 지워집니다.</span><span class="sxs-lookup"><span data-stu-id="09231-180">Only the errors for the field are cleared.</span></span>
-  * <span data-ttu-id="09231-181">`ClearErrors` 메서드는 개발자 코드에 의해 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-181">The `ClearErrors` method is called by developer code.</span></span> <span data-ttu-id="09231-182">모든 오류는 지워집니다.</span><span class="sxs-lookup"><span data-stu-id="09231-182">All of the errors are cleared.</span></span>
+* <span data-ttu-id="36895-170">양식의 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>는 구성 요소의 [연계 매개 변수](xref:blazor/components/cascading-values-and-parameters)입니다.</span><span class="sxs-lookup"><span data-stu-id="36895-170">The form's <xref:Microsoft.AspNetCore.Components.Forms.EditContext> is a [cascading parameter](xref:blazor/components/cascading-values-and-parameters) of the component.</span></span>
+* <span data-ttu-id="36895-171">유효성 검사기 구성 요소가 초기화되면 현재 양식 오류 목록을 유지하기 위해 새 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>가 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="36895-171">When the validator component is initialized, a new <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> is created to maintain a current list of form errors.</span></span>
+* <span data-ttu-id="36895-172">양식의 구성 요소에 있는 개발자 코드에서 `DisplayErrors` 메서드를 호출하면 메시지 저장소에 오류가 수신됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-172">The message store receives errors when developer code in the form's component calls the `DisplayErrors` method.</span></span> <span data-ttu-id="36895-173">오류는 [`Dictionary<string, List<string>>`](xref:System.Collections.Generic.Dictionary`2)의 `DisplayErrors` 메서드에 전달됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-173">The errors are passed to the `DisplayErrors` method in a [`Dictionary<string, List<string>>`](xref:System.Collections.Generic.Dictionary`2).</span></span> <span data-ttu-id="36895-174">사전에서 키는 하나 이상의 오류가 발생한 양식 필드의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="36895-174">In the dictionary, the key is the name of the form field that has one or more errors.</span></span> <span data-ttu-id="36895-175">값은 오류 목록입니다.</span><span class="sxs-lookup"><span data-stu-id="36895-175">The value is the error list.</span></span>
+* <span data-ttu-id="36895-176">다음 중 하나가 발생하면 메시지가 지워집니다.</span><span class="sxs-lookup"><span data-stu-id="36895-176">Messages are cleared when any of the following have occurred:</span></span>
+  * <span data-ttu-id="36895-177"><xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnValidationRequested> 이벤트가 발생하면 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>에서 유효성 검사가 요청됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-177">Validation is requested on the <xref:Microsoft.AspNetCore.Components.Forms.EditContext> when the <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnValidationRequested> event is raised.</span></span> <span data-ttu-id="36895-178">모든 오류는 지워집니다.</span><span class="sxs-lookup"><span data-stu-id="36895-178">All of the errors are cleared.</span></span>
+  * <span data-ttu-id="36895-179"><xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> 이벤트가 발생하면 양식의 필드가 변경됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-179">A field changes in the form when the <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> event is raised.</span></span> <span data-ttu-id="36895-180">해당 필드에 대한 오류만 지워집니다.</span><span class="sxs-lookup"><span data-stu-id="36895-180">Only the errors for the field are cleared.</span></span>
+  * <span data-ttu-id="36895-181">`ClearErrors` 메서드는 개발자 코드에 의해 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-181">The `ClearErrors` method is called by developer code.</span></span> <span data-ttu-id="36895-182">모든 오류는 지워집니다.</span><span class="sxs-lookup"><span data-stu-id="36895-182">All of the errors are cleared.</span></span>
 
 ```csharp
 using System;
@@ -380,18 +380,18 @@ public class CustomValidator : ComponentBase
 ```
 
 > [!NOTE]
-> <span data-ttu-id="09231-183">익명 람다 식은 위 예제에서 <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnValidationRequested> 및 <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged>에 대해 등록된 이벤트 처리기입니다.</span><span class="sxs-lookup"><span data-stu-id="09231-183">Anonymous lambda expressions are registered event handlers for <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnValidationRequested> and <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> in the preceding example.</span></span> <span data-ttu-id="09231-184">이 시나리오에서는 <xref:System.IDisposable>을 구현하고 이벤트 대리자를 구독 취소할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-184">It isn't necessary to implement <xref:System.IDisposable> and unsubscribe the event delegates in this scenario.</span></span> <span data-ttu-id="09231-185">자세한 내용은 <xref:blazor/components/lifecycle#component-disposal-with-idisposable>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="09231-185">For more information, see <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.</span></span>
+> <span data-ttu-id="36895-183">익명 람다 식은 위 예제에서 <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnValidationRequested> 및 <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged>에 대해 등록된 이벤트 처리기입니다.</span><span class="sxs-lookup"><span data-stu-id="36895-183">Anonymous lambda expressions are registered event handlers for <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnValidationRequested> and <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> in the preceding example.</span></span> <span data-ttu-id="36895-184">이 시나리오에서는 <xref:System.IDisposable>을 구현하고 이벤트 대리자를 구독 취소할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-184">It isn't necessary to implement <xref:System.IDisposable> and unsubscribe the event delegates in this scenario.</span></span> <span data-ttu-id="36895-185">자세한 내용은 <xref:blazor/components/lifecycle#component-disposal-with-idisposable>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="36895-185">For more information, see <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.</span></span>
 
-## <a name="business-logic-validation"></a><span data-ttu-id="09231-186">비즈니스 논리 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="09231-186">Business logic validation</span></span>
+## <a name="business-logic-validation"></a><span data-ttu-id="36895-186">비즈니스 논리 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="36895-186">Business logic validation</span></span>
 
-<span data-ttu-id="09231-187">비즈니스 논리 유효성 검사는 사전에서 양식 오류를 수신하는 [유효성 검사기 구성 요소](#validator-components)를 사용하여 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-187">Business logic validation can be accomplished with a [validator component](#validator-components) that receives form errors in a dictionary.</span></span>
+<span data-ttu-id="36895-187">비즈니스 논리 유효성 검사는 사전에서 양식 오류를 수신하는 [유효성 검사기 구성 요소](#validator-components)를 사용하여 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-187">Business logic validation can be accomplished with a [validator component](#validator-components) that receives form errors in a dictionary.</span></span>
 
-<span data-ttu-id="09231-188">다음 예제에서는</span><span class="sxs-lookup"><span data-stu-id="09231-188">In the following example:</span></span>
+<span data-ttu-id="36895-188">다음 예제에서는</span><span class="sxs-lookup"><span data-stu-id="36895-188">In the following example:</span></span>
 
-* <span data-ttu-id="09231-189">이 문서의 [유효성 검사기 구성 요소](#validator-components) 섹션에서 `CustomValidator` 구성 요소가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-189">The `CustomValidator` component from the [Validator components](#validator-components) section of this article is used.</span></span>
-* <span data-ttu-id="09231-190">사용자가 `Defense` 배송 분류(`Classification`)를 선택하는 경우 유효성 검사에는 배송 설명(`Description`)에 대한 값이 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-190">The validation requires a value for the ship's description (`Description`) if the user selects the `Defense` ship classification (`Classification`).</span></span>
+* <span data-ttu-id="36895-189">이 문서의 [유효성 검사기 구성 요소](#validator-components) 섹션에서 `CustomValidator` 구성 요소가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-189">The `CustomValidator` component from the [Validator components](#validator-components) section of this article is used.</span></span>
+* <span data-ttu-id="36895-190">사용자가 `Defense` 배송 분류(`Classification`)를 선택하는 경우 유효성 검사에는 배송 설명(`Description`)에 대한 값이 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-190">The validation requires a value for the ship's description (`Description`) if the user selects the `Defense` ship classification (`Classification`).</span></span>
 
-<span data-ttu-id="09231-191">유효성 검사 메시지가 구성 요소에 설정되어 있으면 해당 메시지가 유효성 검사기의 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>에 추가되고 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>에 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-191">When validation messages are set in the component, they're added to the validator's <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> and shown in the <xref:Microsoft.AspNetCore.Components.Forms.EditForm>:</span></span>
+<span data-ttu-id="36895-191">유효성 검사 메시지가 구성 요소에 설정되어 있으면 해당 메시지가 유효성 검사기의 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>에 추가되고 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>에 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-191">When validation messages are set in the component, they're added to the validator's <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> and shown in the <xref:Microsoft.AspNetCore.Components.Forms.EditForm>:</span></span>
 
 ```razor
 @page "/FormsValidation"
@@ -440,28 +440,28 @@ public class CustomValidator : ComponentBase
 ```
 
 > [!NOTE]
-> <span data-ttu-id="09231-192">[유효성 검사 구성 요소](#validator-components)를 사용하는 대신 데이터 주석 유효성 검사 특성을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-192">As an alternative to using [validation components](#validator-components), data annotation validation attributes can be used.</span></span> <span data-ttu-id="09231-193">양식의 모델에 적용된 사용자 지정 특성은 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 사용하여 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-193">Custom attributes applied to the form's model activate with the use of the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span> <span data-ttu-id="09231-194">서버 쪽 유효성 검사에 사용하는 경우 특성을 서버에서 실행 가능해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-194">When used with server-side validation, the attributes must be executable on the server.</span></span> <span data-ttu-id="09231-195">자세한 내용은 <xref:mvc/models/validation#alternatives-to-built-in-attributes>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="09231-195">For more information, see <xref:mvc/models/validation#alternatives-to-built-in-attributes>.</span></span>
+> <span data-ttu-id="36895-192">[유효성 검사 구성 요소](#validator-components)를 사용하는 대신 데이터 주석 유효성 검사 특성을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-192">As an alternative to using [validation components](#validator-components), data annotation validation attributes can be used.</span></span> <span data-ttu-id="36895-193">양식의 모델에 적용된 사용자 지정 특성은 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 사용하여 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-193">Custom attributes applied to the form's model activate with the use of the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span> <span data-ttu-id="36895-194">서버 쪽 유효성 검사에 사용하는 경우 특성을 서버에서 실행 가능해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-194">When used with server-side validation, the attributes must be executable on the server.</span></span> <span data-ttu-id="36895-195">자세한 내용은 <xref:mvc/models/validation#alternatives-to-built-in-attributes>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="36895-195">For more information, see <xref:mvc/models/validation#alternatives-to-built-in-attributes>.</span></span>
 
-## <a name="server-validation"></a><span data-ttu-id="09231-196">서버 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="09231-196">Server validation</span></span>
+## <a name="server-validation"></a><span data-ttu-id="36895-196">서버 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="36895-196">Server validation</span></span>
 
-<span data-ttu-id="09231-197">서버 [유효성 검사기 구성 요소](#validator-components)를 사용하여 서버 유효성 검사를 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-197">Server validation can be accomplished with a server [validator component](#validator-components):</span></span>
+<span data-ttu-id="36895-197">서버 [유효성 검사기 구성 요소](#validator-components)를 사용하여 서버 유효성 검사를 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-197">Server validation can be accomplished with a server [validator component](#validator-components):</span></span>
 
-* <span data-ttu-id="09231-198"><xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 사용하여 양식에서 클라이언트 쪽 유효성 검사를 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-198">Process client-side validation in the form with the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span>
-* <span data-ttu-id="09231-199">양식이 클라이언트 쪽 유효성 검사를 통과하면(<xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit>이 호출됨) 양식 처리를 위해 <xref:Microsoft.AspNetCore.Components.Forms.EditContext.Model?displayProperty=nameWithType>을 백 엔드 서버 API로 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="09231-199">When the form passes client-side validation (<xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit> is called), send the <xref:Microsoft.AspNetCore.Components.Forms.EditContext.Model?displayProperty=nameWithType> to a backend server API for form processing.</span></span>
-* <span data-ttu-id="09231-200">서버에서 모델 유효성 검사를 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-200">Process model validation on the server.</span></span>
-* <span data-ttu-id="09231-201">서버 API는 개발자가 제공하는 기본 제공 프레임워크 데이터 주석 유효성 검사와 사용자 지정 유효성 검사 논리를 모두 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-201">The server API includes both the built-in framework data annotations validation and custom validation logic supplied by the developer.</span></span> <span data-ttu-id="09231-202">서버에서 유효성 검사를 통과하면 양식을 처리하고 성공 상태 코드(‘200 - 정상’)를 다시 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="09231-202">If validation passes on the server, process the form and send back a success status code (*200 - OK*).</span></span> <span data-ttu-id="09231-203">유효성 검사에 실패하면 실패 상태 코드(‘400 - 잘못된 요청’) 및 필드 유효성 검사 오류가 반환됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-203">If validation fails, return a failure status code (*400 - Bad Request*) and the field validation errors.</span></span>
-* <span data-ttu-id="09231-204">성공 시 양식을 사용하지 않도록 설정하거나 오류를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-204">Either disable the form on success or display the errors.</span></span>
+* <span data-ttu-id="36895-198"><xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 사용하여 양식에서 클라이언트 쪽 유효성 검사를 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-198">Process client-side validation in the form with the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span>
+* <span data-ttu-id="36895-199">양식이 클라이언트 쪽 유효성 검사를 통과하면(<xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit>이 호출됨) 양식 처리를 위해 <xref:Microsoft.AspNetCore.Components.Forms.EditContext.Model?displayProperty=nameWithType>을 백 엔드 서버 API로 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="36895-199">When the form passes client-side validation (<xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit> is called), send the <xref:Microsoft.AspNetCore.Components.Forms.EditContext.Model?displayProperty=nameWithType> to a backend server API for form processing.</span></span>
+* <span data-ttu-id="36895-200">서버에서 모델 유효성 검사를 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-200">Process model validation on the server.</span></span>
+* <span data-ttu-id="36895-201">서버 API는 개발자가 제공하는 기본 제공 프레임워크 데이터 주석 유효성 검사와 사용자 지정 유효성 검사 논리를 모두 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-201">The server API includes both the built-in framework data annotations validation and custom validation logic supplied by the developer.</span></span> <span data-ttu-id="36895-202">서버에서 유효성 검사를 통과하면 양식을 처리하고 성공 상태 코드(‘200 - 정상’)를 다시 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="36895-202">If validation passes on the server, process the form and send back a success status code (*200 - OK*).</span></span> <span data-ttu-id="36895-203">유효성 검사에 실패하면 실패 상태 코드(‘400 - 잘못된 요청’) 및 필드 유효성 검사 오류가 반환됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-203">If validation fails, return a failure status code (*400 - Bad Request*) and the field validation errors.</span></span>
+* <span data-ttu-id="36895-204">성공 시 양식을 사용하지 않도록 설정하거나 오류를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-204">Either disable the form on success or display the errors.</span></span>
 
-<span data-ttu-id="09231-205">다음 예제는 다음을 기반으로 합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-205">The following example is based on:</span></span>
+<span data-ttu-id="36895-205">다음 예제는 다음을 기반으로 합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-205">The following example is based on:</span></span>
 
-* <span data-ttu-id="09231-206">[Blazor 호스트된 프로젝트 템플릿](xref:blazor/hosting-models#blazor-webassembly)에서 만든 호스트된 Blazor 솔루션.</span><span class="sxs-lookup"><span data-stu-id="09231-206">A hosted Blazor solution created by the [Blazor Hosted project template](xref:blazor/hosting-models#blazor-webassembly).</span></span> <span data-ttu-id="09231-207">이 예제는 [보안 및 Identity 설명서](xref:blazor/security/webassembly/index#implementation-guidance)에 설명된 보안 호스트된 Blazor 솔루션과 함께 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-207">The example can be used with any of the secure hosted Blazor solutions described in the [Security and Identity documentation](xref:blazor/security/webassembly/index#implementation-guidance).</span></span>
-* <span data-ttu-id="09231-208">이전 [기본 제공 양식 구성 요소](#built-in-forms-components) 섹션의 ‘Starfleet Starship 데이터베이스’ 양식 예제.</span><span class="sxs-lookup"><span data-stu-id="09231-208">The *Starfleet Starship Database* form example in the preceding [Built-in forms components](#built-in-forms-components) section.</span></span>
-* <span data-ttu-id="09231-209">Blazor 프레임워크의 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소.</span><span class="sxs-lookup"><span data-stu-id="09231-209">The Blazor framework's <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span>
-* <span data-ttu-id="09231-210">[유효성 검사기 구성 요소](#validator-components) 섹션에 표시된 `CustomValidator` 구성 요소.</span><span class="sxs-lookup"><span data-stu-id="09231-210">The `CustomValidator` component shown in the [Validator components](#validator-components) section.</span></span>
+* <span data-ttu-id="36895-206">[Blazor WebAssembly 프로젝트 템플릿](xref:blazor/project-structure)에서 만든 호스트된 Blazor WebAssembly 솔루션.</span><span class="sxs-lookup"><span data-stu-id="36895-206">A hosted Blazor WebAssembly solution created from the [Blazor WebAssembly project template](xref:blazor/project-structure).</span></span> <span data-ttu-id="36895-207">이 예제는 [보안 및 Identity 설명서](xref:blazor/security/webassembly/index#implementation-guidance)에 설명된 보안 호스트된 Blazor 솔루션과 함께 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-207">The example can be used with any of the secure hosted Blazor solutions described in the [Security and Identity documentation](xref:blazor/security/webassembly/index#implementation-guidance).</span></span>
+* <span data-ttu-id="36895-208">이전 [기본 제공 양식 구성 요소](#built-in-forms-components) 섹션의 ‘Starfleet Starship 데이터베이스’ 양식 예제.</span><span class="sxs-lookup"><span data-stu-id="36895-208">The *Starfleet Starship Database* form example in the preceding [Built-in forms components](#built-in-forms-components) section.</span></span>
+* <span data-ttu-id="36895-209">Blazor 프레임워크의 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소.</span><span class="sxs-lookup"><span data-stu-id="36895-209">The Blazor framework's <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span>
+* <span data-ttu-id="36895-210">[유효성 검사기 구성 요소](#validator-components) 섹션에 표시된 `CustomValidator` 구성 요소.</span><span class="sxs-lookup"><span data-stu-id="36895-210">The `CustomValidator` component shown in the [Validator components](#validator-components) section.</span></span>
 
-<span data-ttu-id="09231-211">다음 예에서 사용자가 `Defense` 배송 분류(`Classification`)를 선택하는 경우 서버 API는 배송 설명(`Description`)에 대한 값이 제공되는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-211">In the following example, the server API validates that a value is provided for the ship's description (`Description`) if the user selects the `Defense` ship classification (`Classification`).</span></span>
+<span data-ttu-id="36895-211">다음 예에서 사용자가 `Defense` 배송 분류(`Classification`)를 선택하는 경우 서버 API는 배송 설명(`Description`)에 대한 값이 제공되는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-211">In the following example, the server API validates that a value is provided for the ship's description (`Description`) if the user selects the `Defense` ship classification (`Classification`).</span></span>
 
-<span data-ttu-id="09231-212">클라이언트 앱과 서버 앱이 모두 모델을 사용할 수 있도록 `Starship` 모델을 솔루션의 `Shared` 프로젝트에 배치합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-212">Place the `Starship` model into the solution's `Shared` project so that both the client and server apps can use the model.</span></span> <span data-ttu-id="09231-213">모델에 데이터 주석이 필요하므로 [`System.ComponentModel.Annotations`](https://www.nuget.org/packages/System.ComponentModel.Annotations)에 대한 패키지 참조를 `Shared` 프로젝트의 프로젝트 파일에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-213">Since the model requires data annotations, add a package reference for [`System.ComponentModel.Annotations`](https://www.nuget.org/packages/System.ComponentModel.Annotations) to the `Shared` project's project file:</span></span>
+<span data-ttu-id="36895-212">클라이언트 앱과 서버 앱이 모두 모델을 사용할 수 있도록 `Starship` 모델을 솔루션의 `Shared` 프로젝트에 배치합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-212">Place the `Starship` model into the solution's `Shared` project so that both the client and server apps can use the model.</span></span> <span data-ttu-id="36895-213">모델에 데이터 주석이 필요하므로 [`System.ComponentModel.Annotations`](https://www.nuget.org/packages/System.ComponentModel.Annotations)에 대한 패키지 참조를 `Shared` 프로젝트의 프로젝트 파일에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-213">Since the model requires data annotations, add a package reference for [`System.ComponentModel.Annotations`](https://www.nuget.org/packages/System.ComponentModel.Annotations) to the `Shared` project's project file:</span></span>
 
 ```xml
 <ItemGroup>
@@ -469,9 +469,9 @@ public class CustomValidator : ComponentBase
 </ItemGroup>
 ```
 
-<span data-ttu-id="09231-214">미리 보기가 아닌 최신 버전의 패키지를 확인하려면 [NuGet.org](https://www.nuget.org/packages/System.ComponentModel.Annotations)에서 패키지 **버전 기록** 을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="09231-214">To determine the latest non-preview version of the package, see the package **Version History** at [NuGet.org](https://www.nuget.org/packages/System.ComponentModel.Annotations).</span></span>
+<span data-ttu-id="36895-214">미리 보기가 아닌 최신 버전의 패키지를 확인하려면 [NuGet.org](https://www.nuget.org/packages/System.ComponentModel.Annotations)에서 패키지 **버전 기록** 을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="36895-214">To determine the latest non-preview version of the package, see the package **Version History** at [NuGet.org](https://www.nuget.org/packages/System.ComponentModel.Annotations).</span></span>
 
-<span data-ttu-id="09231-215">서버 API 프로젝트에서 starship 유효성 검사 요청(`Controllers/StarshipValidation.cs`)을 처리하고 실패한 유효성 검사 메시지를 반환하는 컨트롤러를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-215">In the server API project, add a controller to process starship validation requests (`Controllers/StarshipValidation.cs`) and return failed validation messages:</span></span>
+<span data-ttu-id="36895-215">서버 API 프로젝트에서 starship 유효성 검사 요청(`Controllers/StarshipValidation.cs`)을 처리하고 실패한 유효성 검사 메시지를 반환하는 컨트롤러를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-215">In the server API project, add a controller to process starship validation requests (`Controllers/StarshipValidation.cs`) and return failed validation messages:</span></span>
 
 ```csharp
 using System;
@@ -527,9 +527,9 @@ namespace {ASSEMBLY NAME}.Controllers
 }
 ```
 
-<span data-ttu-id="09231-216">앞의 예제에서 자리 표시자 `{ASSEMBLY NAME}`는 앱의 어셈블리 이름입니다(예: `BlazorSample.Server`).</span><span class="sxs-lookup"><span data-stu-id="09231-216">In the preceding example, the placeholder `{ASSEMBLY NAME}` is the app's assembly name (for example, `BlazorSample.Server`).</span></span>
+<span data-ttu-id="36895-216">앞의 예제에서 자리 표시자 `{ASSEMBLY NAME}`는 앱의 어셈블리 이름입니다(예: `BlazorSample.Server`).</span><span class="sxs-lookup"><span data-stu-id="36895-216">In the preceding example, the placeholder `{ASSEMBLY NAME}` is the app's assembly name (for example, `BlazorSample.Server`).</span></span>
 
-<span data-ttu-id="09231-217">서버에서 모델 바인딩 유효성 검사 오류가 발생하는 경우 [`ApiController`](xref:web-api/index)(<xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute>)는 일반적으로 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>를 사용하여 [기본 잘못된 요청 응답](xref:web-api/index#default-badrequest-response)을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-217">When a model binding validation error occurs on the server, an [`ApiController`](xref:web-api/index) (<xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute>) normally returns a [default bad request response](xref:web-api/index#default-badrequest-response) with a <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>.</span></span> <span data-ttu-id="09231-218">‘Starfleet Starship 데이터베이스’ 양식의 모든 필드가 제출되지 않고 양식에서 유효성 검사가 실패하는 경우, 다음 예제에 표시된 것처럼 응답에는 유효성 검사 오류 외에 추가 데이터가 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-218">The response contains more data than just the validation errors, as shown in the following example when all of the fields of the *Starfleet Starship Database* form aren't submitted and the form fails validation:</span></span>
+<span data-ttu-id="36895-217">서버에서 모델 바인딩 유효성 검사 오류가 발생하는 경우 [`ApiController`](xref:web-api/index)(<xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute>)는 일반적으로 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>를 사용하여 [기본 잘못된 요청 응답](xref:web-api/index#default-badrequest-response)을 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-217">When a model binding validation error occurs on the server, an [`ApiController`](xref:web-api/index) (<xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute>) normally returns a [default bad request response](xref:web-api/index#default-badrequest-response) with a <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>.</span></span> <span data-ttu-id="36895-218">‘Starfleet Starship 데이터베이스’ 양식의 모든 필드가 제출되지 않고 양식에서 유효성 검사가 실패하는 경우, 다음 예제에 표시된 것처럼 응답에는 유효성 검사 오류 외에 추가 데이터가 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-218">The response contains more data than just the validation errors, as shown in the following example when all of the fields of the *Starfleet Starship Database* form aren't submitted and the form fails validation:</span></span>
 
 ```json
 {
@@ -544,7 +544,7 @@ namespace {ASSEMBLY NAME}.Controllers
 }
 ```
 
-<span data-ttu-id="09231-219">서버 API가 이전의 기본 JSON 응답을 반환하는 경우 클라이언트는 응답을 구문 분석하여 `errors` 노드의 자식을 가져올 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-219">If the server API returns the preceding default JSON response, it's possible for the client to parse the response to obtain the children of the `errors` node.</span></span> <span data-ttu-id="09231-220">하지만 파일을 구문 분석하는 것은 불편할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-220">However, it's inconvenient to parse the file.</span></span> <span data-ttu-id="09231-221">JSON을 구문 분석하려면 양식 유효성 검사 오류 처리를 위한 오류 [`Dictionary<string, List<string>>`](xref:System.Collections.Generic.Dictionary`2)을 생성하기 위해 <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A>를 호출한 후 추가 코드가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-221">Parsing the JSON requires additional code after calling <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> in order to produce a [`Dictionary<string, List<string>>`](xref:System.Collections.Generic.Dictionary`2) of errors for forms validation error processing.</span></span> <span data-ttu-id="09231-222">서버 API는 유효성 검사 오류만 반환하는 것이 가장 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-222">Ideally, the server API should only return the validation errors:</span></span>
+<span data-ttu-id="36895-219">서버 API가 이전의 기본 JSON 응답을 반환하는 경우 클라이언트는 응답을 구문 분석하여 `errors` 노드의 자식을 가져올 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-219">If the server API returns the preceding default JSON response, it's possible for the client to parse the response to obtain the children of the `errors` node.</span></span> <span data-ttu-id="36895-220">하지만 파일을 구문 분석하는 것은 불편할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-220">However, it's inconvenient to parse the file.</span></span> <span data-ttu-id="36895-221">JSON을 구문 분석하려면 양식 유효성 검사 오류 처리를 위한 오류 [`Dictionary<string, List<string>>`](xref:System.Collections.Generic.Dictionary`2)을 생성하기 위해 <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A>를 호출한 후 추가 코드가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-221">Parsing the JSON requires additional code after calling <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> in order to produce a [`Dictionary<string, List<string>>`](xref:System.Collections.Generic.Dictionary`2) of errors for forms validation error processing.</span></span> <span data-ttu-id="36895-222">서버 API는 유효성 검사 오류만 반환하는 것이 가장 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-222">Ideally, the server API should only return the validation errors:</span></span>
 
 ```json
 {
@@ -555,7 +555,7 @@ namespace {ASSEMBLY NAME}.Controllers
 }
 ```
 
-<span data-ttu-id="09231-223">유효성 검사 오류만 반환하도록 서버 API의 응답을 수정하려면 `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute> 주석 처리된 작업에 대해 호출되는 대리자를 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-223">To modify the server API's response to make it only return the validation errors, change the delegate that's invoked on actions that are annotated with <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute> in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="09231-224">API 엔드포인트(`/StarshipValidation`)의 경우 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary>를 사용하여 <xref:Microsoft.AspNetCore.Mvc.BadRequestObjectResult>를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-224">For the API endpoint (`/StarshipValidation`), return a <xref:Microsoft.AspNetCore.Mvc.BadRequestObjectResult> with the <xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary>.</span></span> <span data-ttu-id="09231-225">다른 API 엔드포인트의 경우 새 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>를 통해 개체 결과를 반환하여 기본 동작을 유지합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-225">For any other API endpoints, preserve the default behavior by returning the object result with a new <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>:</span></span>
+<span data-ttu-id="36895-223">유효성 검사 오류만 반환하도록 서버 API의 응답을 수정하려면 `Startup.ConfigureServices`에서 <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute> 주석 처리된 작업에 대해 호출되는 대리자를 변경합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-223">To modify the server API's response to make it only return the validation errors, change the delegate that's invoked on actions that are annotated with <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute> in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="36895-224">API 엔드포인트(`/StarshipValidation`)의 경우 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary>를 사용하여 <xref:Microsoft.AspNetCore.Mvc.BadRequestObjectResult>를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-224">For the API endpoint (`/StarshipValidation`), return a <xref:Microsoft.AspNetCore.Mvc.BadRequestObjectResult> with the <xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary>.</span></span> <span data-ttu-id="36895-225">다른 API 엔드포인트의 경우 새 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>를 통해 개체 결과를 반환하여 기본 동작을 유지합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-225">For any other API endpoints, preserve the default behavior by returning the object result with a new <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -580,11 +580,11 @@ services.AddControllersWithViews()
     });
 ```
 
-<span data-ttu-id="09231-226">자세한 내용은 <xref:web-api/handle-errors#validation-failure-error-response>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="09231-226">For more information, see <xref:web-api/handle-errors#validation-failure-error-response>.</span></span>
+<span data-ttu-id="36895-226">자세한 내용은 <xref:web-api/handle-errors#validation-failure-error-response>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="36895-226">For more information, see <xref:web-api/handle-errors#validation-failure-error-response>.</span></span>
 
-<span data-ttu-id="09231-227">클라이언트 프로젝트에서 [유효성 검사기 구성 요소](#validator-components) 섹션에 표시된 유효성 검사기 구성 요소를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-227">In the client project, add the validator component shown in the [Validator components](#validator-components) section.</span></span>
+<span data-ttu-id="36895-227">클라이언트 프로젝트에서 [유효성 검사기 구성 요소](#validator-components) 섹션에 표시된 유효성 검사기 구성 요소를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-227">In the client project, add the validator component shown in the [Validator components](#validator-components) section.</span></span>
 
-<span data-ttu-id="09231-228">클라이언트 프로젝트에서 `CustomValidator` 구성 요소에 대한 도움말과 함께 서버 유효성 검사 오류를 표시하도록 ‘Starfleet Starship 데이터베이스’ 양식이 업데이트됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-228">In the client project, the *Starfleet Starship Database* form is updated to show server validation errors with help of the `CustomValidator` component.</span></span> <span data-ttu-id="09231-229">서버 API에서 반환되는 유효성 검사 메시지는 `CustomValidator` 구성 요소의 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-229">When the server API returns validation messages, they're added to the `CustomValidator` component's <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>.</span></span> <span data-ttu-id="09231-230">오류는 양식의 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary>에서 표시하기 위해 양식의 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-230">The errors are available in the form's <xref:Microsoft.AspNetCore.Components.Forms.EditContext> for display by the form's <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary>:</span></span>
+<span data-ttu-id="36895-228">클라이언트 프로젝트에서 `CustomValidator` 구성 요소에 대한 도움말과 함께 서버 유효성 검사 오류를 표시하도록 ‘Starfleet Starship 데이터베이스’ 양식이 업데이트됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-228">In the client project, the *Starfleet Starship Database* form is updated to show server validation errors with help of the `CustomValidator` component.</span></span> <span data-ttu-id="36895-229">서버 API에서 반환되는 유효성 검사 메시지는 `CustomValidator` 구성 요소의 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-229">When the server API returns validation messages, they're added to the `CustomValidator` component's <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore>.</span></span> <span data-ttu-id="36895-230">오류는 양식의 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary>에서 표시하기 위해 양식의 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-230">The errors are available in the form's <xref:Microsoft.AspNetCore.Components.Forms.EditContext> for display by the form's <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary>:</span></span>
 
 ```razor
 @page "/FormValidation"
@@ -717,22 +717,22 @@ services.AddControllersWithViews()
 ```
 
 > [!NOTE]
-> <span data-ttu-id="09231-231">[유효성 검사 구성 요소](#validator-components) 대신 데이터 주석 유효성 검사 특성을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-231">As an alternative to [validation components](#validator-components), data annotation validation attributes can be used.</span></span> <span data-ttu-id="09231-232">양식의 모델에 적용된 사용자 지정 특성은 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 사용하여 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-232">Custom attributes applied to the form's model activate with the use of the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span> <span data-ttu-id="09231-233">서버 쪽 유효성 검사에 사용하는 경우 특성을 서버에서 실행 가능해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-233">When used with server-side validation, the attributes must be executable on the server.</span></span> <span data-ttu-id="09231-234">자세한 내용은 <xref:mvc/models/validation#alternatives-to-built-in-attributes>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="09231-234">For more information, see <xref:mvc/models/validation#alternatives-to-built-in-attributes>.</span></span>
+> <span data-ttu-id="36895-231">[유효성 검사 구성 요소](#validator-components) 대신 데이터 주석 유효성 검사 특성을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-231">As an alternative to [validation components](#validator-components), data annotation validation attributes can be used.</span></span> <span data-ttu-id="36895-232">양식의 모델에 적용된 사용자 지정 특성은 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 사용하여 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-232">Custom attributes applied to the form's model activate with the use of the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span> <span data-ttu-id="36895-233">서버 쪽 유효성 검사에 사용하는 경우 특성을 서버에서 실행 가능해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-233">When used with server-side validation, the attributes must be executable on the server.</span></span> <span data-ttu-id="36895-234">자세한 내용은 <xref:mvc/models/validation#alternatives-to-built-in-attributes>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="36895-234">For more information, see <xref:mvc/models/validation#alternatives-to-built-in-attributes>.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="09231-235">이 섹션의 서버 쪽 유효성 검사 방법은 이 설명서 집합의 Blazor WebAssembly 호스트된 솔루션 예제에 적합합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-235">The server-side validation approach in this section is suitable for any of the Blazor WebAssembly hosted solution examples in this documentation set:</span></span>
+> <span data-ttu-id="36895-235">이 섹션의 서버 쪽 유효성 검사 방법은 이 설명서 집합의 Blazor WebAssembly 호스트된 솔루션 예제에 적합합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-235">The server-side validation approach in this section is suitable for any of the Blazor WebAssembly hosted solution examples in this documentation set:</span></span>
 >
-> * [<span data-ttu-id="09231-236">AAD(Azure Active Directory)</span><span class="sxs-lookup"><span data-stu-id="09231-236">Azure Active Directory (AAD)</span></span>](xref:blazor/security/webassembly/hosted-with-azure-active-directory)
-> * [<span data-ttu-id="09231-237">AAD(Azure Active Directory) B2C</span><span class="sxs-lookup"><span data-stu-id="09231-237">Azure Active Directory (AAD) B2C</span></span>](xref:blazor/security/webassembly/hosted-with-azure-active-directory-b2c)
-> * [<span data-ttu-id="09231-238">Identity서버</span><span class="sxs-lookup"><span data-stu-id="09231-238">Identity Server</span></span>](xref:blazor/security/webassembly/hosted-with-identity-server)
+> * [<span data-ttu-id="36895-236">AAD(Azure Active Directory)</span><span class="sxs-lookup"><span data-stu-id="36895-236">Azure Active Directory (AAD)</span></span>](xref:blazor/security/webassembly/hosted-with-azure-active-directory)
+> * [<span data-ttu-id="36895-237">AAD(Azure Active Directory) B2C</span><span class="sxs-lookup"><span data-stu-id="36895-237">Azure Active Directory (AAD) B2C</span></span>](xref:blazor/security/webassembly/hosted-with-azure-active-directory-b2c)
+> * [<span data-ttu-id="36895-238">Identity서버</span><span class="sxs-lookup"><span data-stu-id="36895-238">Identity Server</span></span>](xref:blazor/security/webassembly/hosted-with-identity-server)
 
-## <a name="inputtext-based-on-the-input-event"></a><span data-ttu-id="09231-239">입력 이벤트를 기반으로 하는 InputText</span><span class="sxs-lookup"><span data-stu-id="09231-239">InputText based on the input event</span></span>
+## <a name="inputtext-based-on-the-input-event"></a><span data-ttu-id="36895-239">입력 이벤트를 기반으로 하는 InputText</span><span class="sxs-lookup"><span data-stu-id="36895-239">InputText based on the input event</span></span>
 
-<span data-ttu-id="09231-240"><xref:Microsoft.AspNetCore.Components.Forms.InputText> 구성 요소를 사용하여 `change` 이벤트 대신 `input` 이벤트를 사용하는 사용자 지정 구성 요소를 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-240">Use the <xref:Microsoft.AspNetCore.Components.Forms.InputText> component to create a custom component that uses the `input` event instead of the `change` event.</span></span>
+<span data-ttu-id="36895-240"><xref:Microsoft.AspNetCore.Components.Forms.InputText> 구성 요소를 사용하여 `change` 이벤트 대신 `input` 이벤트를 사용하는 사용자 지정 구성 요소를 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-240">Use the <xref:Microsoft.AspNetCore.Components.Forms.InputText> component to create a custom component that uses the `input` event instead of the `change` event.</span></span>
 
-<span data-ttu-id="09231-241">다음 예제에서 `CustomInputText` 구성 요소는 프레임워크의 `InputText` 구성 요소를 상속하고 이벤트 바인딩을 `oninput` 이벤트로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-241">In the following example, the `CustomInputText` component inherits the framework's `InputText` component and sets event binding to the `oninput` event.</span></span>
+<span data-ttu-id="36895-241">다음 예제에서 `CustomInputText` 구성 요소는 프레임워크의 `InputText` 구성 요소를 상속하고 이벤트 바인딩을 `oninput` 이벤트로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-241">In the following example, the `CustomInputText` component inherits the framework's `InputText` component and sets event binding to the `oninput` event.</span></span>
 
-<span data-ttu-id="09231-242">`Shared/CustomInputText.razor`:</span><span class="sxs-lookup"><span data-stu-id="09231-242">`Shared/CustomInputText.razor`:</span></span>
+<span data-ttu-id="36895-242">`Shared/CustomInputText.razor`:</span><span class="sxs-lookup"><span data-stu-id="36895-242">`Shared/CustomInputText.razor`:</span></span>
 
 ```razor
 @inherits InputText
@@ -741,9 +741,9 @@ services.AddControllersWithViews()
     @bind="CurrentValueAsString" @bind:event="oninput" />
 ```
 
-<span data-ttu-id="09231-243">`CustomInputText` 구성 요소는 <xref:Microsoft.AspNetCore.Components.Forms.InputText>가 사용되는 모든 위치에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-243">The `CustomInputText` component can be used anywhere <xref:Microsoft.AspNetCore.Components.Forms.InputText> is used:</span></span>
+<span data-ttu-id="36895-243">`CustomInputText` 구성 요소는 <xref:Microsoft.AspNetCore.Components.Forms.InputText>가 사용되는 모든 위치에서 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-243">The `CustomInputText` component can be used anywhere <xref:Microsoft.AspNetCore.Components.Forms.InputText> is used:</span></span>
 
-<span data-ttu-id="09231-244">`Pages/TestForm.razor`:</span><span class="sxs-lookup"><span data-stu-id="09231-244">`Pages/TestForm.razor`:</span></span>
+<span data-ttu-id="36895-244">`Pages/TestForm.razor`:</span><span class="sxs-lookup"><span data-stu-id="36895-244">`Pages/TestForm.razor`:</span></span>
 
 ```razor
 @page "/testform"
@@ -779,11 +779,11 @@ services.AddControllersWithViews()
 }
 ```
 
-## <a name="radio-buttons"></a><span data-ttu-id="09231-245">라디오 단추</span><span class="sxs-lookup"><span data-stu-id="09231-245">Radio buttons</span></span>
+## <a name="radio-buttons"></a><span data-ttu-id="36895-245">라디오 단추</span><span class="sxs-lookup"><span data-stu-id="36895-245">Radio buttons</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-<span data-ttu-id="09231-246">`InputRadioGroup` 구성 요소와 함께 `InputRadio` 구성 요소를 사용하여 라디오 단추 그룹을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="09231-246">Use `InputRadio` components with the `InputRadioGroup` component to create a radio button group.</span></span> <span data-ttu-id="09231-247">다음 예제에서는 [기본 제공 양식 구성 요소](#built-in-forms-components) 단원에 설명된 `Starship` 모델에 속성을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-247">In the following example, properties are added to the `Starship` model described in the [Built-in forms components](#built-in-forms-components) section:</span></span>
+<span data-ttu-id="36895-246">`InputRadioGroup` 구성 요소와 함께 `InputRadio` 구성 요소를 사용하여 라디오 단추 그룹을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="36895-246">Use `InputRadio` components with the `InputRadioGroup` component to create a radio button group.</span></span> <span data-ttu-id="36895-247">다음 예제에서는 [기본 제공 양식 구성 요소](#built-in-forms-components) 단원에 설명된 `Starship` 모델에 속성을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-247">In the following example, properties are added to the `Starship` model described in the [Built-in forms components](#built-in-forms-components) section:</span></span>
 
 ```csharp
 [Required]
@@ -798,7 +798,7 @@ public Color? Color { get; set; } = null;
 public Engine? Engine { get; set; } = null;
 ```
 
-<span data-ttu-id="09231-248">앱에 다음 `enums`를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-248">Add the following `enums` to the app.</span></span> <span data-ttu-id="09231-249">`enums`를 저장할 새 파일을 만들거나 `Starship.cs` 파일에 `enums`를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-249">Create a new file to hold the `enums` or add the `enums` to the `Starship.cs` file.</span></span> <span data-ttu-id="09231-250">`Starship` 모델 및 ‘Starfleet Starship Database’ 양식에서 `enums`에 액세스할 수 있도록 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="09231-250">Make the `enums` accessible to the `Starship` model and the *Starfleet Starship Database* form:</span></span>
+<span data-ttu-id="36895-248">앱에 다음 `enums`를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-248">Add the following `enums` to the app.</span></span> <span data-ttu-id="36895-249">`enums`를 저장할 새 파일을 만들거나 `Starship.cs` 파일에 `enums`를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-249">Create a new file to hold the `enums` or add the `enums` to the `Starship.cs` file.</span></span> <span data-ttu-id="36895-250">`Starship` 모델 및 ‘Starfleet Starship Database’ 양식에서 `enums`에 액세스할 수 있도록 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="36895-250">Make the `enums` accessible to the `Starship` model and the *Starfleet Starship Database* form:</span></span>
 
 ```csharp
 public enum Manufacturer { SpaceX, NASA, ULA, VirginGalactic, Unknown }
@@ -806,10 +806,10 @@ public enum Color { ImperialRed, SpacecruiserGreen, StarshipBlue, VoyagerOrange 
 public enum Engine { Ion, Plasma, Fusion, Warp }
 ```
 
-<span data-ttu-id="09231-251">[기본 제공 양식 구성 요소](#built-in-forms-components) 섹션에 설명된 ‘Starfleet Starship Database’ 양식을 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-251">Update the *Starfleet Starship Database* form described in the [Built-in forms components](#built-in-forms-components) section.</span></span> <span data-ttu-id="09231-252">생성할 구성 요소를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-252">Add the components to produce:</span></span>
+<span data-ttu-id="36895-251">[기본 제공 양식 구성 요소](#built-in-forms-components) 섹션에 설명된 ‘Starfleet Starship Database’ 양식을 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-251">Update the *Starfleet Starship Database* form described in the [Built-in forms components](#built-in-forms-components) section.</span></span> <span data-ttu-id="36895-252">생성할 구성 요소를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-252">Add the components to produce:</span></span>
 
-* <span data-ttu-id="09231-253">선박 제조업체의 라디오 단추 그룹.</span><span class="sxs-lookup"><span data-stu-id="09231-253">A radio button group for the ship manufacturer.</span></span>
-* <span data-ttu-id="09231-254">선박 색 및 엔진에 해당하는 중첩된 라디오 단추 그룹.</span><span class="sxs-lookup"><span data-stu-id="09231-254">A nested radio button group for ship color and engine.</span></span>
+* <span data-ttu-id="36895-253">선박 제조업체의 라디오 단추 그룹.</span><span class="sxs-lookup"><span data-stu-id="36895-253">A radio button group for the ship manufacturer.</span></span>
+* <span data-ttu-id="36895-254">선박 색 및 엔진에 해당하는 중첩된 라디오 단추 그룹.</span><span class="sxs-lookup"><span data-stu-id="36895-254">A nested radio button group for ship color and engine.</span></span>
 
 ```razor
 <p>
@@ -846,16 +846,16 @@ public enum Engine { Ion, Plasma, Fusion, Warp }
 ```
 
 > [!NOTE]
-> <span data-ttu-id="09231-255">`Name`이 생략되면 `InputRadio` 구성 요소가 가장 최근 상위 항목을 기준으로 그룹화됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-255">If `Name` is omitted, `InputRadio` components are grouped by their most recent ancestor.</span></span>
+> <span data-ttu-id="36895-255">`Name`이 생략되면 `InputRadio` 구성 요소가 가장 최근 상위 항목을 기준으로 그룹화됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-255">If `Name` is omitted, `InputRadio` components are grouped by their most recent ancestor.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-<span data-ttu-id="09231-256">양식에서 라디오 단추를 사용하는 경우, 라디오 단추는 그룹으로 평가되기 때문에 데이터 바인딩이 다른 요소와 다르게 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-256">When working with radio buttons in a form, data binding is handled differently than other elements because radio buttons are evaluated as a group.</span></span> <span data-ttu-id="09231-257">각 라디오 단추의 값은 고정되어 있지만 라디오 단추 그룹의 값은 선택한 라디오 단추의 값입니다.</span><span class="sxs-lookup"><span data-stu-id="09231-257">The value of each radio button is fixed, but the value of the radio button group is the value of the selected radio button.</span></span> <span data-ttu-id="09231-258">아래 예제는 다음과 같은 작업의 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="09231-258">The following example shows how to:</span></span>
+<span data-ttu-id="36895-256">양식에서 라디오 단추를 사용하는 경우, 라디오 단추는 그룹으로 평가되기 때문에 데이터 바인딩이 다른 요소와 다르게 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-256">When working with radio buttons in a form, data binding is handled differently than other elements because radio buttons are evaluated as a group.</span></span> <span data-ttu-id="36895-257">각 라디오 단추의 값은 고정되어 있지만 라디오 단추 그룹의 값은 선택한 라디오 단추의 값입니다.</span><span class="sxs-lookup"><span data-stu-id="36895-257">The value of each radio button is fixed, but the value of the radio button group is the value of the selected radio button.</span></span> <span data-ttu-id="36895-258">아래 예제는 다음과 같은 작업의 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="36895-258">The following example shows how to:</span></span>
 
-* <span data-ttu-id="09231-259">라디오 단추 그룹의 데이터 바인딩을 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-259">Handle data binding for a radio button group.</span></span>
-* <span data-ttu-id="09231-260">사용자 지정 `InputRadio` 구성 요소를 사용하여 유효성 검사를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-260">Support validation using a custom `InputRadio` component.</span></span>
+* <span data-ttu-id="36895-259">라디오 단추 그룹의 데이터 바인딩을 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-259">Handle data binding for a radio button group.</span></span>
+* <span data-ttu-id="36895-260">사용자 지정 `InputRadio` 구성 요소를 사용하여 유효성 검사를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-260">Support validation using a custom `InputRadio` component.</span></span>
 
 ```razor
 @using System.Globalization
@@ -897,7 +897,7 @@ public enum Engine { Ion, Plasma, Fusion, Warp }
 }
 ```
 
-<span data-ttu-id="09231-261">다음 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>은 위의 `InputRadio` 구성 요소를 사용하여 사용자의 평가를 가져오고 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-261">The following <xref:Microsoft.AspNetCore.Components.Forms.EditForm> uses the preceding `InputRadio` component to obtain and validate a rating from the user:</span></span>
+<span data-ttu-id="36895-261">다음 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>은 위의 `InputRadio` 구성 요소를 사용하여 사용자의 평가를 가져오고 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-261">The following <xref:Microsoft.AspNetCore.Components.Forms.EditForm> uses the preceding `InputRadio` component to obtain and validate a rating from the user:</span></span>
 
 ```razor
 @page "/RadioButtonExample"
@@ -940,62 +940,64 @@ public enum Engine { Ion, Plasma, Fusion, Warp }
 
 ::: moniker-end
 
-## <a name="binding-select-element-options-to-c-object-null-values"></a><span data-ttu-id="09231-262">C# 개체 `null` 값에 `<select>` 요소 옵션 바인딩</span><span class="sxs-lookup"><span data-stu-id="09231-262">Binding `<select>` element options to C# object `null` values</span></span>
+## <a name="binding-select-element-options-to-c-object-null-values"></a><span data-ttu-id="36895-262">C# 개체 `null` 값에 `<select>` 요소 옵션 바인딩</span><span class="sxs-lookup"><span data-stu-id="36895-262">Binding `<select>` element options to C# object `null` values</span></span>
 
-<span data-ttu-id="09231-263">다음과 같은 이유로 `<select>` 요소 옵션 값을 C# 개체 `null` 값으로 나타낼 수 있는 적절한 방법은 없습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-263">There's no sensible way to represent a `<select>` element option value as a C# object `null` value, because:</span></span>
+<span data-ttu-id="36895-263">다음과 같은 이유로 `<select>` 요소 옵션 값을 C# 개체 `null` 값으로 나타낼 수 있는 적절한 방법은 없습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-263">There's no sensible way to represent a `<select>` element option value as a C# object `null` value, because:</span></span>
 
-* <span data-ttu-id="09231-264">HTML 특성에는 `null` 값을 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-264">HTML attributes can't have `null` values.</span></span> <span data-ttu-id="09231-265">HTML에서 `null`에 가장 근사한 값은 `<option>` 요소에서 HTML `value` 특성이 없는 상태입니다.</span><span class="sxs-lookup"><span data-stu-id="09231-265">The closest equivalent to `null` in HTML is absence of the HTML `value` attribute from the `<option>` element.</span></span>
-* <span data-ttu-id="09231-266">`value` 특성이 없는 `<option>`을 선택하면 브라우저가 해당 `<option>` 요소의 텍스트 내용을 값으로 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-266">When selecting an `<option>` with no `value` attribute, the browser treats the value as the *text content* of that `<option>`'s element.</span></span>
+* <span data-ttu-id="36895-264">HTML 특성에는 `null` 값을 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-264">HTML attributes can't have `null` values.</span></span> <span data-ttu-id="36895-265">HTML에서 `null`에 가장 근사한 값은 `<option>` 요소에서 HTML `value` 특성이 없는 상태입니다.</span><span class="sxs-lookup"><span data-stu-id="36895-265">The closest equivalent to `null` in HTML is absence of the HTML `value` attribute from the `<option>` element.</span></span>
+* <span data-ttu-id="36895-266">`value` 특성이 없는 `<option>`을 선택하면 브라우저가 해당 `<option>` 요소의 텍스트 내용을 값으로 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-266">When selecting an `<option>` with no `value` attribute, the browser treats the value as the *text content* of that `<option>`'s element.</span></span>
 
-<span data-ttu-id="09231-267">Blazor 프레임워크는 기본 동작에 다음을 포함하므로 기본 동작을 억제하려고 시도하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-267">The Blazor framework doesn't attempt to suppress the default behavior because it would involve:</span></span>
+<span data-ttu-id="36895-267">Blazor 프레임워크는 기본 동작에 다음을 포함하므로 기본 동작을 억제하려고 시도하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-267">The Blazor framework doesn't attempt to suppress the default behavior because it would involve:</span></span>
 
-* <span data-ttu-id="09231-268">프레임워크에서 일련의 특수 경우 해결 방법 만들기</span><span class="sxs-lookup"><span data-stu-id="09231-268">Creating a chain of special-case workarounds in the framework.</span></span>
-* <span data-ttu-id="09231-269">현재 프레임워크 동작에 대한 호환성이 손상되는 변경</span><span class="sxs-lookup"><span data-stu-id="09231-269">Breaking changes to current framework behavior.</span></span>
+* <span data-ttu-id="36895-268">프레임워크에서 일련의 특수 경우 해결 방법 만들기</span><span class="sxs-lookup"><span data-stu-id="36895-268">Creating a chain of special-case workarounds in the framework.</span></span>
+* <span data-ttu-id="36895-269">현재 프레임워크 동작에 대한 호환성이 손상되는 변경</span><span class="sxs-lookup"><span data-stu-id="36895-269">Breaking changes to current framework behavior.</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-<span data-ttu-id="09231-270">HTML에서 가장 타당한 `null` 근사값은 빈 문자열 `value`입니다.</span><span class="sxs-lookup"><span data-stu-id="09231-270">The most plausible `null` equivalent in HTML is an *empty string* `value`.</span></span> <span data-ttu-id="09231-271">Blazor 프레임워크는 `<select>`의 값에 대한 양방향 바인딩을 위해 `null`을 빈 문자열 변환으로 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-271">The Blazor framework handles `null` to empty string conversions for two-way binding to a `<select>`'s value.</span></span>
+<span data-ttu-id="36895-270">HTML에서 가장 타당한 `null` 근사값은 빈 문자열 `value`입니다.</span><span class="sxs-lookup"><span data-stu-id="36895-270">The most plausible `null` equivalent in HTML is an *empty string* `value`.</span></span> <span data-ttu-id="36895-271">Blazor 프레임워크는 `<select>`의 값에 대한 양방향 바인딩을 위해 `null`을 빈 문자열 변환으로 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-271">The Blazor framework handles `null` to empty string conversions for two-way binding to a `<select>`'s value.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-<span data-ttu-id="09231-272">Blazor 프레임워크는 `<select>`의 값에 대한 양방향 바인딩을 시도할 때 자동으로 `null`을 빈 문자열 변환으로 처리하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-272">The Blazor framework doesn't automatically handle `null` to empty string conversions when attempting two-way binding to a `<select>`'s value.</span></span> <span data-ttu-id="09231-273">자세한 내용은 [Null 값에 대한 `<select>` 바인딩 수정(dotnet/aspnetcore #23221)](https://github.com/dotnet/aspnetcore/pull/23221)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="09231-273">For more information, see [Fix binding `<select>` to a null value (dotnet/aspnetcore #23221)](https://github.com/dotnet/aspnetcore/pull/23221).</span></span>
+<span data-ttu-id="36895-272">Blazor 프레임워크는 `<select>`의 값에 대한 양방향 바인딩을 시도할 때 자동으로 `null`을 빈 문자열 변환으로 처리하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-272">The Blazor framework doesn't automatically handle `null` to empty string conversions when attempting two-way binding to a `<select>`'s value.</span></span> <span data-ttu-id="36895-273">자세한 내용은 [Null 값에 대한 `<select>` 바인딩 수정(dotnet/aspnetcore #23221)](https://github.com/dotnet/aspnetcore/pull/23221)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="36895-273">For more information, see [Fix binding `<select>` to a null value (dotnet/aspnetcore #23221)](https://github.com/dotnet/aspnetcore/pull/23221).</span></span>
 
 ::: moniker-end
 
-## <a name="validation-support"></a><span data-ttu-id="09231-274">유효성 검사 지원</span><span class="sxs-lookup"><span data-stu-id="09231-274">Validation support</span></span>
+## <a name="validation-support"></a><span data-ttu-id="36895-274">유효성 검사 지원</span><span class="sxs-lookup"><span data-stu-id="36895-274">Validation support</span></span>
 
-<span data-ttu-id="09231-275"><xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소는 데이터 주석을 사용하여 유효성 검사 지원을 계단식 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>에 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-275">The <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component attaches validation support using data annotations to the cascaded <xref:Microsoft.AspNetCore.Components.Forms.EditContext>.</span></span> <span data-ttu-id="09231-276">데이터 주석을 통해 유효성 검사 지원을 사용하도록 설정하려면 이 명시적 제스처가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-276">Enabling support for validation using data annotations requires this explicit gesture.</span></span> <span data-ttu-id="09231-277">데이터 주석이 아닌 다른 유효성 검사 시스템을 사용하려면 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>를 사용자 지정 구현으로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="09231-277">To use a different validation system than data annotations, replace the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> with a custom implementation.</span></span> <span data-ttu-id="09231-278">참조 원본 [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs)/[`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs)에서 ASP.NET Core 구현을 검사할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-278">The ASP.NET Core implementation is available for inspection in the reference source: [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs)/[`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs).</span></span> <span data-ttu-id="09231-279">위의 참조 원본 링크에서는 ASP.NET Core의 향후 릴리스를 위한 제품 단위의 최신 개발을 나타내는 리포지토리 `master` 분기의 코드를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-279">The preceding links to reference source provide code from the repository's `master` branch, which represents the product unit's current development for the next release of ASP.NET Core.</span></span> <span data-ttu-id="09231-280">다른 릴리스의 분기를 선택하려면 GitHub 분기 선택기를 사용합니다(예: `release/3.1`).</span><span class="sxs-lookup"><span data-stu-id="09231-280">To select the branch for a different release, use the GitHub branch selector (for example `release/3.1`).</span></span>
+<span data-ttu-id="36895-275"><xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소는 데이터 주석을 사용하여 유효성 검사 지원을 계단식 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>에 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-275">The <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component attaches validation support using data annotations to the cascaded <xref:Microsoft.AspNetCore.Components.Forms.EditContext>.</span></span> <span data-ttu-id="36895-276">데이터 주석을 통해 유효성 검사 지원을 사용하도록 설정하려면 이 명시적 제스처가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-276">Enabling support for validation using data annotations requires this explicit gesture.</span></span> <span data-ttu-id="36895-277">데이터 주석이 아닌 다른 유효성 검사 시스템을 사용하려면 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>를 사용자 지정 구현으로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="36895-277">To use a different validation system than data annotations, replace the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> with a custom implementation.</span></span> <span data-ttu-id="36895-278">참조 원본 [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/main/src/Components/Forms/src/DataAnnotationsValidator.cs)/[`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/main/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs)에서 ASP.NET Core 구현을 검사할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-278">The ASP.NET Core implementations are available for inspection in the reference source: [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/main/src/Components/Forms/src/DataAnnotationsValidator.cs)/[`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/main/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs).</span></span>
 
-<span data-ttu-id="09231-281">Blazor는 다음 두 가지 유형의 유효성 검사를 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-281">Blazor performs two types of validation:</span></span>
+[!INCLUDE[](~/blazor/includes/aspnetcore-repo-ref-source-links.md)]
 
-* <span data-ttu-id="09231-282">‘필드 유효성 검사’는 사용자가 Tab 키를 눌러 필드를 벗어날 때 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-282">*Field validation* is performed when the user tabs out of a field.</span></span> <span data-ttu-id="09231-283">필드 유효성을 검사하는 동안 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소는 보고된 모든 유효성 검사 결과를 필드에 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-283">During field validation, the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component associates all reported validation results with the field.</span></span>
-* <span data-ttu-id="09231-284">‘모델 유효성 검사’는 사용자가 양식을 제출할 때 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-284">*Model validation* is performed when the user submits the form.</span></span> <span data-ttu-id="09231-285">모델 유효성을 검사하는 동안 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소는 유효성 검사 결과에 보고된 멤버 이름을 기준으로 필드를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-285">During model validation, the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component attempts to determine the field based on the member name that the validation result reports.</span></span> <span data-ttu-id="09231-286">개별 멤버와 연결되지 않은 유효성 검사 결과는 필드가 아니라 모델과 연결됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-286">Validation results that aren't associated with an individual member are associated with the model rather than a field.</span></span>
+<span data-ttu-id="36895-279">Blazor는 다음 두 가지 유형의 유효성 검사를 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-279">Blazor performs two types of validation:</span></span>
 
-### <a name="validation-summary-and-validation-message-components"></a><span data-ttu-id="09231-287">유효성 검사 요약 및 유효성 검사 메시지 구성 요소</span><span class="sxs-lookup"><span data-stu-id="09231-287">Validation Summary and Validation Message components</span></span>
+* <span data-ttu-id="36895-280">‘필드 유효성 검사’는 사용자가 Tab 키를 눌러 필드를 벗어날 때 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-280">*Field validation* is performed when the user tabs out of a field.</span></span> <span data-ttu-id="36895-281">필드 유효성을 검사하는 동안 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소는 보고된 모든 유효성 검사 결과를 필드에 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-281">During field validation, the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component associates all reported validation results with the field.</span></span>
+* <span data-ttu-id="36895-282">‘모델 유효성 검사’는 사용자가 양식을 제출할 때 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-282">*Model validation* is performed when the user submits the form.</span></span> <span data-ttu-id="36895-283">모델 유효성을 검사하는 동안 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소는 유효성 검사 결과에 보고된 멤버 이름을 기준으로 필드를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-283">During model validation, the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component attempts to determine the field based on the member name that the validation result reports.</span></span> <span data-ttu-id="36895-284">개별 멤버와 연결되지 않은 유효성 검사 결과는 필드가 아니라 모델과 연결됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-284">Validation results that aren't associated with an individual member are associated with the model rather than a field.</span></span>
 
-<span data-ttu-id="09231-288"><xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 구성 요소는 [유효성 검사 요약 태그 도우미](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)와 유사하게, 모든 유효성 검사 메시지를 요약합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-288">The <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> component summarizes all validation messages, which is similar to the [Validation Summary Tag Helper](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper):</span></span>
+### <a name="validation-summary-and-validation-message-components"></a><span data-ttu-id="36895-285">유효성 검사 요약 및 유효성 검사 메시지 구성 요소</span><span class="sxs-lookup"><span data-stu-id="36895-285">Validation Summary and Validation Message components</span></span>
+
+<span data-ttu-id="36895-286"><xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 구성 요소는 [유효성 검사 요약 태그 도우미](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)와 유사하게, 모든 유효성 검사 메시지를 요약합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-286">The <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> component summarizes all validation messages, which is similar to the [Validation Summary Tag Helper](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper):</span></span>
 
 ```razor
 <ValidationSummary />
 ```
 
-<span data-ttu-id="09231-289">`Model` 매개 변수를 사용하여 특정 모델의 유효성 검사 메시지를 출력합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-289">Output validation messages for a specific model with the `Model` parameter:</span></span>
+<span data-ttu-id="36895-287">`Model` 매개 변수를 사용하여 특정 모델의 유효성 검사 메시지를 출력합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-287">Output validation messages for a specific model with the `Model` parameter:</span></span>
   
 ```razor
 <ValidationSummary Model="@starship" />
 ```
 
-<span data-ttu-id="09231-290"><xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601> 구성 요소는 [유효성 검사 메시지 태그 도우미](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)와 유사하게, 특정 필드의 유효성 검사 메시지를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-290">The <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601> component displays validation messages for a specific field, which is similar to the [Validation Message Tag Helper](xref:mvc/views/working-with-forms#the-validation-message-tag-helper).</span></span> <span data-ttu-id="09231-291">모델 속성 이름을 지정하는 람다 식과 `For` 특성을 사용하여 유효성을 검사할 필드를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-291">Specify the field for validation with the `For` attribute and a lambda expression naming the model property:</span></span>
+<span data-ttu-id="36895-288"><xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601> 구성 요소는 [유효성 검사 메시지 태그 도우미](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)와 유사하게, 특정 필드의 유효성 검사 메시지를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-288">The <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601> component displays validation messages for a specific field, which is similar to the [Validation Message Tag Helper](xref:mvc/views/working-with-forms#the-validation-message-tag-helper).</span></span> <span data-ttu-id="36895-289">모델 속성 이름을 지정하는 람다 식과 `For` 특성을 사용하여 유효성을 검사할 필드를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-289">Specify the field for validation with the `For` attribute and a lambda expression naming the model property:</span></span>
 
 ```razor
 <ValidationMessage For="@(() => starship.MaximumAccommodation)" />
 ```
 
-<span data-ttu-id="09231-292"><xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601> 및 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 구성 요소는 임의 특성을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-292">The <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601> and <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> components support arbitrary attributes.</span></span> <span data-ttu-id="09231-293">구성 요소 매개 변수와 일치하지 않는 특성은 생성된 `<div>` 또는 `<ul>` 요소에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="09231-293">Any attribute that doesn't match a component parameter is added to the generated `<div>` or `<ul>` element.</span></span>
+<span data-ttu-id="36895-290"><xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601> 및 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 구성 요소는 임의 특성을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-290">The <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601> and <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> components support arbitrary attributes.</span></span> <span data-ttu-id="36895-291">구성 요소 매개 변수와 일치하지 않는 특성은 생성된 `<div>` 또는 `<ul>` 요소에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="36895-291">Any attribute that doesn't match a component parameter is added to the generated `<div>` or `<ul>` element.</span></span>
 
-<span data-ttu-id="09231-294">앱의 스타일 시트(`wwwroot/css/app.css` 또는 `wwwroot/css/site.css`)에서 유효성 검사 메시지 스타일을 제어합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-294">Control the style of validation messages in the app's stylesheet (`wwwroot/css/app.css` or `wwwroot/css/site.css`).</span></span> <span data-ttu-id="09231-295">기본 `validation-message` 클래스는 유효성 검사 메시지의 텍스트 색을 빨간색으로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-295">The default `validation-message` class sets the text color of validation messages to red:</span></span>
+<span data-ttu-id="36895-292">앱의 스타일 시트(`wwwroot/css/app.css` 또는 `wwwroot/css/site.css`)에서 유효성 검사 메시지 스타일을 제어합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-292">Control the style of validation messages in the app's stylesheet (`wwwroot/css/app.css` or `wwwroot/css/site.css`).</span></span> <span data-ttu-id="36895-293">기본 `validation-message` 클래스는 유효성 검사 메시지의 텍스트 색을 빨간색으로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-293">The default `validation-message` class sets the text color of validation messages to red:</span></span>
 
 ```css
 .validation-message {
@@ -1003,15 +1005,15 @@ public enum Engine { Ion, Plasma, Fusion, Warp }
 }
 ```
 
-### <a name="custom-validation-attributes"></a><span data-ttu-id="09231-296">사용자 지정 유효성 검사 특성</span><span class="sxs-lookup"><span data-stu-id="09231-296">Custom validation attributes</span></span>
+### <a name="custom-validation-attributes"></a><span data-ttu-id="36895-294">사용자 지정 유효성 검사 특성</span><span class="sxs-lookup"><span data-stu-id="36895-294">Custom validation attributes</span></span>
 
-<span data-ttu-id="09231-297">[사용자 지정 유효성 검사 특성](xref:mvc/models/validation#custom-attributes)을 사용할 때 유효성 검사 결과가 필드와 올바르게 연결되도록 하려면 <xref:System.ComponentModel.DataAnnotations.ValidationResult>를 만들 때 유효성 검사 컨텍스트의 <xref:System.ComponentModel.DataAnnotations.ValidationContext.MemberName>을 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-297">To ensure that a validation result is correctly associated with a field when using a [custom validation attribute](xref:mvc/models/validation#custom-attributes), pass the validation context's <xref:System.ComponentModel.DataAnnotations.ValidationContext.MemberName> when creating the <xref:System.ComponentModel.DataAnnotations.ValidationResult>:</span></span>
+<span data-ttu-id="36895-295">[사용자 지정 유효성 검사 특성](xref:mvc/models/validation#custom-attributes)을 사용할 때 유효성 검사 결과가 필드와 올바르게 연결되도록 하려면 <xref:System.ComponentModel.DataAnnotations.ValidationResult>를 만들 때 유효성 검사 컨텍스트의 <xref:System.ComponentModel.DataAnnotations.ValidationContext.MemberName>을 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-295">To ensure that a validation result is correctly associated with a field when using a [custom validation attribute](xref:mvc/models/validation#custom-attributes), pass the validation context's <xref:System.ComponentModel.DataAnnotations.ValidationContext.MemberName> when creating the <xref:System.ComponentModel.DataAnnotations.ValidationResult>:</span></span>
 
 ```csharp
 using System;
 using System.ComponentModel.DataAnnotations;
 
-private class CustomValidator : ValidationAttribute
+public class CustomValidator : ValidationAttribute
 {
     protected override ValidationResult IsValid(object value, 
         ValidationContext validationContext)
@@ -1025,54 +1027,116 @@ private class CustomValidator : ValidationAttribute
 ```
 
 > [!NOTE]
-> <span data-ttu-id="09231-298"><xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType>이(가) `null`인 경우</span><span class="sxs-lookup"><span data-stu-id="09231-298"><xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> is `null`.</span></span> <span data-ttu-id="09231-299">`IsValid` 메서드에서 유효성 검사를 위한 서비스 삽입은 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-299">Injecting services for validation in the `IsValid` method isn't supported.</span></span>
+> <span data-ttu-id="36895-296"><xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType>이(가) `null`인 경우</span><span class="sxs-lookup"><span data-stu-id="36895-296"><xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> is `null`.</span></span> <span data-ttu-id="36895-297">`IsValid` 메서드에서 유효성 검사를 위한 서비스 삽입은 지원되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-297">Injecting services for validation in the `IsValid` method isn't supported.</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-## <a name="custom-validation-class-attributes"></a><span data-ttu-id="09231-300">사용자 지정 유효성 검사 클래스 특성</span><span class="sxs-lookup"><span data-stu-id="09231-300">Custom validation class attributes</span></span>
+## <a name="custom-validation-class-attributes"></a><span data-ttu-id="36895-298">사용자 지정 유효성 검사 클래스 특성</span><span class="sxs-lookup"><span data-stu-id="36895-298">Custom validation class attributes</span></span>
 
-<span data-ttu-id="09231-301">사용자 지정 유효성 검사 클래스 이름은 [부트스트랩](https://getbootstrap.com/) 같은 CSS 프레임워크와 통합하는 경우에 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-301">Custom validation class names are useful when integrating with CSS frameworks, such as [Bootstrap](https://getbootstrap.com/).</span></span> <span data-ttu-id="09231-302">사용자 지정 유효성 검사 클래스 이름을 지정하려면 `FieldCssClassProvider`에서 파생된 클래스를 만들고 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 인스턴스에서 클래스를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-302">To specify custom validation class names, create a class derived from `FieldCssClassProvider` and set the class on the <xref:Microsoft.AspNetCore.Components.Forms.EditContext> instance:</span></span>
+<span data-ttu-id="36895-299">사용자 지정 유효성 검사 클래스 이름은 [부트스트랩](https://getbootstrap.com/) 같은 CSS 프레임워크와 통합하는 경우에 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-299">Custom validation class names are useful when integrating with CSS frameworks, such as [Bootstrap](https://getbootstrap.com/).</span></span>
+
+<span data-ttu-id="36895-300">사용자 지정 유효성 검사 클래스 이름을 지정하려면:</span><span class="sxs-lookup"><span data-stu-id="36895-300">To specify custom validation class names:</span></span>
+
+* <span data-ttu-id="36895-301">사용자 지정 유효성 검사를 위한 CSS 스타일을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-301">Provide CSS styles for custom validation.</span></span> <span data-ttu-id="36895-302">다음 예제에서는 유효한 스타일과 잘못된 스타일이 지정되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-302">In the following example, valid and invalid styles are specified:</span></span>
+
+```css
+.validField {
+    border-color: lawngreen;
+}
+
+.invalidField {
+    background-color: tomato;
+}
+```
+
+* <span data-ttu-id="36895-303">`FieldCssClassProvider`에서 파생된 클래스를 만듭니다. 이 클래스는 필드 유효성 검사 메시지를 확인하고 적절한 유효한 스타일 또는 잘못된 스타일을 적용합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-303">Create a class derived from `FieldCssClassProvider` that checks for field validation messages and applies the appropriate valid or invalid style:</span></span>
 
 ```csharp
-var editContext = new EditContext(model);
-editContext.SetFieldCssClassProvider(new MyFieldClassProvider());
+using System.Linq;
+using Microsoft.AspNetCore.Components.Forms;
 
-...
-
-private class MyFieldClassProvider : FieldCssClassProvider
+public class MyFieldClassProvider : FieldCssClassProvider
 {
     public override string GetFieldCssClass(EditContext editContext, 
         in FieldIdentifier fieldIdentifier)
     {
         var isValid = !editContext.GetValidationMessages(fieldIdentifier).Any();
 
-        return isValid ? "good field" : "bad field";
+        return isValid ? "validField" : "invalidField";
+    }
+}
+```
+
+* <span data-ttu-id="36895-304">양식의 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 인스턴스에서 클래스를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-304">Set the class on the form's <xref:Microsoft.AspNetCore.Components.Forms.EditContext> instance:</span></span>
+
+```razor
+...
+
+<EditForm EditContext="@editContext" OnValidSubmit="@HandleValidSubmit">
+    ...
+</EditForm>
+
+...
+
+@code {
+    private EditContext editContext;
+    private Model model = new Model();
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(model);
+        editContext.SetFieldCssClassProvider(new MyFieldClassProvider());
+    }
+
+    private void HandleValidSubmit()
+    {
+        ...
+    }
+}
+```
+
+<span data-ttu-id="36895-305">위의 예에서는 모든 양식 필드의 유효성을 검사하고 각 필드에 스타일을 적용합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-305">The preceding example checks the validity of all form fields and applies a style to each field.</span></span> <span data-ttu-id="36895-306">양식이 필드의 하위 세트에만 사용자 지정 스타일을 적용해야 하는 경우에는 `MyFieldClassProvider`가 조건부로 스타일 적용을 적용하도록 하세요.</span><span class="sxs-lookup"><span data-stu-id="36895-306">If the form should only apply custom styles to a subset of the fields, make `MyFieldClassProvider` apply styles conditionally.</span></span> <span data-ttu-id="36895-307">다음 예제에서는 스타일을 `Identifier` 필드에만 적용합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-307">The following example only applies a style to the `Identifier` field:</span></span>
+
+```csharp
+public class MyFieldClassProvider : FieldCssClassProvider
+{
+    public override string GetFieldCssClass(EditContext editContext,
+        in FieldIdentifier fieldIdentifier)
+    {
+        if (fieldIdentifier.FieldName == "Identifier")
+        {
+            var isValid = !editContext.GetValidationMessages(fieldIdentifier).Any();
+
+            return isValid ? "validField" : "invalidField";
+        }
+
+        return string.Empty;
     }
 }
 ```
 
 ::: moniker-end
 
-### <a name="blazor-data-annotations-validation-package"></a><span data-ttu-id="09231-303">Blazor 데이터 주석 유효성 검사 패키지</span><span class="sxs-lookup"><span data-stu-id="09231-303">Blazor data annotations validation package</span></span>
+### <a name="blazor-data-annotations-validation-package"></a><span data-ttu-id="36895-308">Blazor 데이터 주석 유효성 검사 패키지</span><span class="sxs-lookup"><span data-stu-id="36895-308">Blazor data annotations validation package</span></span>
 
-<span data-ttu-id="09231-304">[`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation)는 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 사용하여 유효성 검사 환경 차이를 완화하는 패키지입니다.</span><span class="sxs-lookup"><span data-stu-id="09231-304">The [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) is a package that fills validation experience gaps using the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span> <span data-ttu-id="09231-305">이 패키지는 현재 ‘실험적’입니다.</span><span class="sxs-lookup"><span data-stu-id="09231-305">The package is currently *experimental*.</span></span>
+<span data-ttu-id="36895-309">[`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation)는 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소를 사용하여 유효성 검사 환경 차이를 완화하는 패키지입니다.</span><span class="sxs-lookup"><span data-stu-id="36895-309">The [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) is a package that fills validation experience gaps using the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component.</span></span> <span data-ttu-id="36895-310">이 패키지는 현재 ‘실험적’입니다.</span><span class="sxs-lookup"><span data-stu-id="36895-310">The package is currently *experimental*.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="09231-306">[`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) 패키지는 [Nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation)에 최신 버전의 ‘릴리스 후보’가 있습니다. 여기서는 ‘실험적’ 릴리스 후보 패키지를 계속 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-306">The [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) package has a latest version of *release candidate* at [Nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation). Continue to use the *experimental* release candidate package at this time.</span></span> <span data-ttu-id="09231-307">이후 릴리스에서 패키지의 어셈블리가 프레임워크 또는 런타임으로 이동될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-307">The package's assembly might be moved to either the framework or the runtime in a future release.</span></span> <span data-ttu-id="09231-308">[알림 GitHub 리포지토리](https://github.com/aspnet/Announcements), [dotnet/aspnetcore GitHub 리포지토리](https://github.com/dotnet/aspnetcore) 또는 이 항목 섹션에서 추가 업데이트를 확인하세요.</span><span class="sxs-lookup"><span data-stu-id="09231-308">Watch the [Announcements GitHub repository](https://github.com/aspnet/Announcements), the [dotnet/aspnetcore GitHub repository](https://github.com/dotnet/aspnetcore), or this topic section for further updates.</span></span>
+> <span data-ttu-id="36895-311">[`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) 패키지는 [Nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation)에 최신 버전의 ‘릴리스 후보’가 있습니다. 여기서는 ‘실험적’ 릴리스 후보 패키지를 계속 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-311">The [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) package has a latest version of *release candidate* at [Nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation). Continue to use the *experimental* release candidate package at this time.</span></span> <span data-ttu-id="36895-312">이후 릴리스에서 패키지의 어셈블리가 프레임워크 또는 런타임으로 이동될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-312">The package's assembly might be moved to either the framework or the runtime in a future release.</span></span> <span data-ttu-id="36895-313">[알림 GitHub 리포지토리](https://github.com/aspnet/Announcements), [dotnet/aspnetcore GitHub 리포지토리](https://github.com/dotnet/aspnetcore) 또는 이 항목 섹션에서 추가 업데이트를 확인하세요.</span><span class="sxs-lookup"><span data-stu-id="36895-313">Watch the [Announcements GitHub repository](https://github.com/aspnet/Announcements), the [dotnet/aspnetcore GitHub repository](https://github.com/dotnet/aspnetcore), or this topic section for further updates.</span></span>
 
 ::: moniker range="< aspnetcore-5.0"
 
-### <a name="compareproperty-attribute"></a><span data-ttu-id="09231-309">`[CompareProperty]` 특성</span><span class="sxs-lookup"><span data-stu-id="09231-309">`[CompareProperty]` attribute</span></span>
+### <a name="compareproperty-attribute"></a><span data-ttu-id="36895-314">`[CompareProperty]` 특성</span><span class="sxs-lookup"><span data-stu-id="36895-314">`[CompareProperty]` attribute</span></span>
 
-<span data-ttu-id="09231-310"><xref:System.ComponentModel.DataAnnotations.CompareAttribute>는 유효성 검사 결과를 특정 멤버에 연결하지 않으므로 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소에서 제대로 작동하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-310">The <xref:System.ComponentModel.DataAnnotations.CompareAttribute> doesn't work well with the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component because it doesn't associate the validation result with a specific member.</span></span> <span data-ttu-id="09231-311">이로 인해 제출 시 전체 모델의 유효성을 검사하는 경우와 필드 수준 유효성 검사 간에 동작이 일치하지 않을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-311">This can result in inconsistent behavior between field-level validation and when the entire model is validated on a submit.</span></span> <span data-ttu-id="09231-312">[`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) ‘실험적’ 패키지는 해당 제한 사항을 해결하는 추가 유효성 검사 특성인 `ComparePropertyAttribute`를 도입합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-312">The [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) *experimental* package introduces an additional validation attribute, `ComparePropertyAttribute`, that works around these limitations.</span></span> <span data-ttu-id="09231-313">Blazor 앱에서는 `[CompareProperty]`가 [`[Compare]` 특성](xref:System.ComponentModel.DataAnnotations.CompareAttribute)을 직접 대체합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-313">In a Blazor app, `[CompareProperty]` is a direct replacement for the [`[Compare]` attribute](xref:System.ComponentModel.DataAnnotations.CompareAttribute).</span></span>
+<span data-ttu-id="36895-315"><xref:System.ComponentModel.DataAnnotations.CompareAttribute>는 유효성 검사 결과를 특정 멤버에 연결하지 않으므로 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 구성 요소에서 제대로 작동하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-315">The <xref:System.ComponentModel.DataAnnotations.CompareAttribute> doesn't work well with the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> component because it doesn't associate the validation result with a specific member.</span></span> <span data-ttu-id="36895-316">이로 인해 제출 시 전체 모델의 유효성을 검사하는 경우와 필드 수준 유효성 검사 간에 동작이 일치하지 않을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-316">This can result in inconsistent behavior between field-level validation and when the entire model is validated on a submit.</span></span> <span data-ttu-id="36895-317">[`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) ‘실험적’ 패키지는 해당 제한 사항을 해결하는 추가 유효성 검사 특성인 `ComparePropertyAttribute`를 도입합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-317">The [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) *experimental* package introduces an additional validation attribute, `ComparePropertyAttribute`, that works around these limitations.</span></span> <span data-ttu-id="36895-318">Blazor 앱에서는 `[CompareProperty]`가 [`[Compare]` 특성](xref:System.ComponentModel.DataAnnotations.CompareAttribute)을 직접 대체합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-318">In a Blazor app, `[CompareProperty]` is a direct replacement for the [`[Compare]` attribute](xref:System.ComponentModel.DataAnnotations.CompareAttribute).</span></span>
 
 ::: moniker-end
 
-### <a name="nested-models-collection-types-and-complex-types"></a><span data-ttu-id="09231-314">중첩된 모델, 컬렉션 형식 및 복합 형식</span><span class="sxs-lookup"><span data-stu-id="09231-314">Nested models, collection types, and complex types</span></span>
+### <a name="nested-models-collection-types-and-complex-types"></a><span data-ttu-id="36895-319">중첩된 모델, 컬렉션 형식 및 복합 형식</span><span class="sxs-lookup"><span data-stu-id="36895-319">Nested models, collection types, and complex types</span></span>
 
-<span data-ttu-id="09231-315">Blazor는 기본 제공 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>와 함께 데이터 주석을 사용하여 양식 입력의 유효성 검사를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-315">Blazor provides support for validating form input using data annotations with the built-in <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>.</span></span> <span data-ttu-id="09231-316">그러나 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>는 컬렉션 형식 또는 복합 형식 속성이 아닌, 양식에 바인딩된 모델의 최상위 속성에 대해서만 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-316">However, the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> only validates top-level properties of the model bound to the form that aren't collection- or complex-type properties.</span></span>
+<span data-ttu-id="36895-320">Blazor는 기본 제공 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>와 함께 데이터 주석을 사용하여 양식 입력의 유효성 검사를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-320">Blazor provides support for validating form input using data annotations with the built-in <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>.</span></span> <span data-ttu-id="36895-321">그러나 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>는 컬렉션 형식 또는 복합 형식 속성이 아닌, 양식에 바인딩된 모델의 최상위 속성에 대해서만 유효성을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-321">However, the <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> only validates top-level properties of the model bound to the form that aren't collection- or complex-type properties.</span></span>
 
-<span data-ttu-id="09231-317">컬렉션 형식 및 복합 형식 속성을 포함한 바인딩된 모델의 전체 개체 그래프에 대해 유효성을 검사하려면 다음과 같이 ‘실험적’ [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) 패키지에서 제공하는 `ObjectGraphDataAnnotationsValidator`를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-317">To validate the bound model's entire object graph, including collection- and complex-type properties, use the `ObjectGraphDataAnnotationsValidator` provided by the *experimental* [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) package:</span></span>
+<span data-ttu-id="36895-322">컬렉션 형식 및 복합 형식 속성을 포함한 바인딩된 모델의 전체 개체 그래프에 대해 유효성을 검사하려면 다음과 같이 ‘실험적’ [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) 패키지에서 제공하는 `ObjectGraphDataAnnotationsValidator`를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-322">To validate the bound model's entire object graph, including collection- and complex-type properties, use the `ObjectGraphDataAnnotationsValidator` provided by the *experimental* [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) package:</span></span>
 
 ```razor
 <EditForm Model="@model" OnValidSubmit="@HandleValidSubmit">
@@ -1081,9 +1145,9 @@ private class MyFieldClassProvider : FieldCssClassProvider
 </EditForm>
 ```
 
-<span data-ttu-id="09231-318">`[ValidateComplexType]`을 사용하여 모델 속성에 주석을 답니다.</span><span class="sxs-lookup"><span data-stu-id="09231-318">Annotate model properties with `[ValidateComplexType]`.</span></span> <span data-ttu-id="09231-319">다음 모델 클래스에서 `ShipDescription` 클래스는 모델이 양식에 바인딩된 경우 유효성을 검사할 추가 데이터 주석을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-319">In the following model classes, the `ShipDescription` class contains additional data annotations to validate when the model is bound to the form:</span></span>
+<span data-ttu-id="36895-323">`[ValidateComplexType]`을 사용하여 모델 속성에 주석을 답니다.</span><span class="sxs-lookup"><span data-stu-id="36895-323">Annotate model properties with `[ValidateComplexType]`.</span></span> <span data-ttu-id="36895-324">다음 모델 클래스에서 `ShipDescription` 클래스는 모델이 양식에 바인딩된 경우 유효성을 검사할 추가 데이터 주석을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-324">In the following model classes, the `ShipDescription` class contains additional data annotations to validate when the model is bound to the form:</span></span>
 
-<span data-ttu-id="09231-320">`Starship.cs`:</span><span class="sxs-lookup"><span data-stu-id="09231-320">`Starship.cs`:</span></span>
+<span data-ttu-id="36895-325">`Starship.cs`:</span><span class="sxs-lookup"><span data-stu-id="36895-325">`Starship.cs`:</span></span>
 
 ```csharp
 using System;
@@ -1101,7 +1165,7 @@ public class Starship
 }
 ```
 
-<span data-ttu-id="09231-321">`ShipDescription.cs`:</span><span class="sxs-lookup"><span data-stu-id="09231-321">`ShipDescription.cs`:</span></span>
+<span data-ttu-id="36895-326">`ShipDescription.cs`:</span><span class="sxs-lookup"><span data-stu-id="36895-326">`ShipDescription.cs`:</span></span>
 
 ```csharp
 using System;
@@ -1119,16 +1183,16 @@ public class ShipDescription
 }
 ```
 
-### <a name="enable-the-submit-button-based-on-form-validation"></a><span data-ttu-id="09231-322">양식 유효성 검사에 따라 제출 단추 사용</span><span class="sxs-lookup"><span data-stu-id="09231-322">Enable the submit button based on form validation</span></span>
+### <a name="enable-the-submit-button-based-on-form-validation"></a><span data-ttu-id="36895-327">양식 유효성 검사에 따라 제출 단추 사용</span><span class="sxs-lookup"><span data-stu-id="36895-327">Enable the submit button based on form validation</span></span>
 
-<span data-ttu-id="09231-323">양식 유효성 검사에 따라 제출 단추를 사용하거나 사용하지 않도록 설정하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-323">To enable and disable the submit button based on form validation:</span></span>
+<span data-ttu-id="36895-328">양식 유효성 검사에 따라 제출 단추를 사용하거나 사용하지 않도록 설정하려면 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-328">To enable and disable the submit button based on form validation:</span></span>
 
-* <span data-ttu-id="09231-324">양식의 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>를 사용하여 구성 요소가 초기화될 때 모델을 할당할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-324">Use the form's <xref:Microsoft.AspNetCore.Components.Forms.EditContext> to assign the model when the component is initialized.</span></span>
-* <span data-ttu-id="09231-325">컨텍스트의 <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> 콜백에서 양식의 유효성을 검사하여 제출 단추를 사용하거나 사용하지 않도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-325">Validate the form in the context's <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> callback to enable and disable the submit button.</span></span>
-* <span data-ttu-id="09231-326"><xref:System.IDisposable>을 구현하고 `Dispose` 메서드에서 이벤트 처리기를 구독 취소합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-326">Implement <xref:System.IDisposable> and unsubscribe the event handler in the `Dispose` method.</span></span> <span data-ttu-id="09231-327">자세한 내용은 <xref:blazor/components/lifecycle#component-disposal-with-idisposable>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="09231-327">For more information, see <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.</span></span>
+* <span data-ttu-id="36895-329">양식의 <xref:Microsoft.AspNetCore.Components.Forms.EditContext>를 사용하여 구성 요소가 초기화될 때 모델을 할당할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-329">Use the form's <xref:Microsoft.AspNetCore.Components.Forms.EditContext> to assign the model when the component is initialized.</span></span>
+* <span data-ttu-id="36895-330">컨텍스트의 <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> 콜백에서 양식의 유효성을 검사하여 제출 단추를 사용하거나 사용하지 않도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-330">Validate the form in the context's <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> callback to enable and disable the submit button.</span></span>
+* <span data-ttu-id="36895-331"><xref:System.IDisposable>을 구현하고 `Dispose` 메서드에서 이벤트 처리기를 구독 취소합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-331">Implement <xref:System.IDisposable> and unsubscribe the event handler in the `Dispose` method.</span></span> <span data-ttu-id="36895-332">자세한 내용은 <xref:blazor/components/lifecycle#component-disposal-with-idisposable>를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="36895-332">For more information, see <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="09231-328"><xref:Microsoft.AspNetCore.Components.Forms.EditContext>를 사용하는 경우 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model>을 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>에 할당하지 마세요.</span><span class="sxs-lookup"><span data-stu-id="09231-328">When using an <xref:Microsoft.AspNetCore.Components.Forms.EditContext>, don't also assign a <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> to the <xref:Microsoft.AspNetCore.Components.Forms.EditForm>.</span></span>
+> <span data-ttu-id="36895-333"><xref:Microsoft.AspNetCore.Components.Forms.EditContext>를 사용하는 경우 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model>을 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>에 할당하지 마세요.</span><span class="sxs-lookup"><span data-stu-id="36895-333">When using an <xref:Microsoft.AspNetCore.Components.Forms.EditContext>, don't also assign a <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> to the <xref:Microsoft.AspNetCore.Components.Forms.EditForm>.</span></span>
 
 ```razor
 @implements IDisposable
@@ -1166,15 +1230,15 @@ public class ShipDescription
 }
 ```
 
-<span data-ttu-id="09231-329">위의 예제에서는 다음과 같은 경우 `formInvalid`를 `false`로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-329">In the preceding example, set `formInvalid` to `false` if:</span></span>
+<span data-ttu-id="36895-334">위의 예제에서는 다음과 같은 경우 `formInvalid`를 `false`로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-334">In the preceding example, set `formInvalid` to `false` if:</span></span>
 
-* <span data-ttu-id="09231-330">양식에 유효한 기본값이 미리 로드된 경우</span><span class="sxs-lookup"><span data-stu-id="09231-330">The form is preloaded with valid default values.</span></span>
-* <span data-ttu-id="09231-331">양식을 로드할 때 제출 단추를 사용할 수 있게 하려는 경우</span><span class="sxs-lookup"><span data-stu-id="09231-331">You want the submit button enabled when the form loads.</span></span>
+* <span data-ttu-id="36895-335">양식에 유효한 기본값이 미리 로드된 경우</span><span class="sxs-lookup"><span data-stu-id="36895-335">The form is preloaded with valid default values.</span></span>
+* <span data-ttu-id="36895-336">양식을 로드할 때 제출 단추를 사용할 수 있게 하려는 경우</span><span class="sxs-lookup"><span data-stu-id="36895-336">You want the submit button enabled when the form loads.</span></span>
 
-<span data-ttu-id="09231-332">이전 방법의 부작용으로, 사용자가 아무 필드나 하나를 조작하고 나면 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 구성 요소에 잘못된 필드가 채워집니다.</span><span class="sxs-lookup"><span data-stu-id="09231-332">A side effect of the preceding approach is that a <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> component is populated with invalid fields after the user interacts with any one field.</span></span> <span data-ttu-id="09231-333">이 시나리오는 다음 방법 중 하나로 해결할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-333">This scenario can be addressed in either of the following ways:</span></span>
+<span data-ttu-id="36895-337">이전 방법의 부작용으로, 사용자가 아무 필드나 하나를 조작하고 나면 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 구성 요소에 잘못된 필드가 채워집니다.</span><span class="sxs-lookup"><span data-stu-id="36895-337">A side effect of the preceding approach is that a <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> component is populated with invalid fields after the user interacts with any one field.</span></span> <span data-ttu-id="36895-338">이 시나리오는 다음 방법 중 하나로 해결할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-338">This scenario can be addressed in either of the following ways:</span></span>
 
-* <span data-ttu-id="09231-334">양식에서 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 구성 요소를 사용하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="09231-334">Don't use a <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> component on the form.</span></span>
-* <span data-ttu-id="09231-335">제출 단추를 선택할 때 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 구성 요소가 표시되도록 설정합니다(예: `HandleValidSubmit` 메서드에서).</span><span class="sxs-lookup"><span data-stu-id="09231-335">Make the <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> component visible when the submit button is selected (for example, in a `HandleValidSubmit` method).</span></span>
+* <span data-ttu-id="36895-339">양식에서 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 구성 요소를 사용하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="36895-339">Don't use a <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> component on the form.</span></span>
+* <span data-ttu-id="36895-340">제출 단추를 선택할 때 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 구성 요소가 표시되도록 설정합니다(예: `HandleValidSubmit` 메서드에서).</span><span class="sxs-lookup"><span data-stu-id="36895-340">Make the <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> component visible when the submit button is selected (for example, in a `HandleValidSubmit` method).</span></span>
 
 ```razor
 <EditForm EditContext="@editContext" OnValidSubmit="@HandleValidSubmit">
@@ -1198,13 +1262,13 @@ public class ShipDescription
 }
 ```
 
-## <a name="troubleshoot"></a><span data-ttu-id="09231-336">문제 해결</span><span class="sxs-lookup"><span data-stu-id="09231-336">Troubleshoot</span></span>
+## <a name="troubleshoot"></a><span data-ttu-id="36895-341">문제 해결</span><span class="sxs-lookup"><span data-stu-id="36895-341">Troubleshoot</span></span>
 
-> <span data-ttu-id="09231-337">InvalidOperationException: EditForm에는 모델 매개 변수 또는 EditContext 매개 변수를 사용해야 합니다(둘 다 사용할 필요는 없음).</span><span class="sxs-lookup"><span data-stu-id="09231-337">InvalidOperationException: EditForm requires a Model parameter, or an EditContext parameter, but not both.</span></span>
+> <span data-ttu-id="36895-342">InvalidOperationException: EditForm에는 모델 매개 변수 또는 EditContext 매개 변수를 사용해야 합니다(둘 다 사용할 필요는 없음).</span><span class="sxs-lookup"><span data-stu-id="36895-342">InvalidOperationException: EditForm requires a Model parameter, or an EditContext parameter, but not both.</span></span>
 
-<span data-ttu-id="09231-338"><xref:Microsoft.AspNetCore.Components.Forms.EditForm>에 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> **또는** <xref:Microsoft.AspNetCore.Components.Forms.EditContext>가 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-338">Confirm that the <xref:Microsoft.AspNetCore.Components.Forms.EditForm> has a <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> **or** <xref:Microsoft.AspNetCore.Components.Forms.EditContext>.</span></span> <span data-ttu-id="09231-339">동일한 양식에 대해 둘 다 사용하지 마세요.</span><span class="sxs-lookup"><span data-stu-id="09231-339">Don't use both for the same form.</span></span>
+<span data-ttu-id="36895-343"><xref:Microsoft.AspNetCore.Components.Forms.EditForm>에 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> **또는** <xref:Microsoft.AspNetCore.Components.Forms.EditContext>가 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-343">Confirm that the <xref:Microsoft.AspNetCore.Components.Forms.EditForm> has a <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> **or** <xref:Microsoft.AspNetCore.Components.Forms.EditContext>.</span></span> <span data-ttu-id="36895-344">동일한 양식에 대해 둘 다 사용하지 마세요.</span><span class="sxs-lookup"><span data-stu-id="36895-344">Don't use both for the same form.</span></span>
 
-<span data-ttu-id="09231-340">양식에 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model>을 할당하는 경우 다음 예제와 같이 모델 형식이 인스턴스화되는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="09231-340">When assigning a <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> to the form, confirm that the model type is instantiated, as the following example shows:</span></span>
+<span data-ttu-id="36895-345">양식에 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model>을 할당하는 경우 다음 예제와 같이 모델 형식이 인스턴스화되는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="36895-345">When assigning a <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> to the form, confirm that the model type is instantiated, as the following example shows:</span></span>
 
 ```csharp
 private ExampleModel exampleModel = new ExampleModel();
@@ -1212,7 +1276,7 @@ private ExampleModel exampleModel = new ExampleModel();
 
 ::: moniker range=">= aspnetcore-5.0"
 
-## <a name="additional-resources"></a><span data-ttu-id="09231-341">추가 리소스</span><span class="sxs-lookup"><span data-stu-id="09231-341">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="36895-346">추가 리소스</span><span class="sxs-lookup"><span data-stu-id="36895-346">Additional resources</span></span>
 
 * <xref:blazor/file-uploads>
 
